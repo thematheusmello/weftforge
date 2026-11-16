@@ -1,0 +1,8 @@
+{
+  "status": "refused_before_seal",
+  "exit_code": 1,
+  "cause": "Exclusive creation correctly refused the existing first-attempt PROTOCOL.json.",
+  "archived_protocol_sha256": "cacb7d6a36bbca58de1653fe5f7737fc416f206fc5ea465973628a42e0620794",
+  "archive": "checks/PROTOCOL-ATTEMPT1.json",
+  "correction": "Archive the entire first metadata seal pair before creating a new prospective seal; no code/build/selfcheck/case changed."
+}

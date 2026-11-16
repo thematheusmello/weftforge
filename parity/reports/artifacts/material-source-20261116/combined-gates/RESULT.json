@@ -1,0 +1,276 @@
+{
+  "status": "passed",
+  "commit": "96d3baee4543c7edbdb804df6090697a9f65da09",
+  "source_count": 88,
+  "stages": [
+    {
+      "stage": "fmt",
+      "argv": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "pid": 15044,
+      "started_at_utc": "2026-11-16T20:24:55.679639+00:00",
+      "status": "terminal",
+      "source_count": 88,
+      "source_unchanged_before": true,
+      "metadata_unchanged_before": true,
+      "exit_code": 0,
+      "finished_at_utc": "2026-11-16T20:24:56.467564+00:00",
+      "seconds": 0.7878808750538155,
+      "source_unchanged_after": true,
+      "metadata_unchanged_after": true,
+      "git_status_after": "",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "stage": "workspace-tests",
+      "argv": [
+        "cargo",
+        "test",
+        "--workspace"
+      ],
+      "pid": 15161,
+      "started_at_utc": "2026-11-16T20:24:56.673327+00:00",
+      "status": "terminal",
+      "source_count": 88,
+      "source_unchanged_before": true,
+      "metadata_unchanged_before": true,
+      "exit_code": 0,
+      "finished_at_utc": "2026-11-16T20:30:28.071092+00:00",
+      "seconds": 331.39564533298835,
+      "source_unchanged_after": true,
+      "metadata_unchanged_after": true,
+      "git_status_after": "",
+      "log_sha256": "3c4d1fc6cba6331c6a2c2fde439f76e245e95ac981326601221181ddcd585a31"
+    },
+    {
+      "stage": "workspace-clippy",
+      "argv": [
+        "cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "pid": 20377,
+      "started_at_utc": "2026-11-16T20:30:28.295463+00:00",
+      "status": "terminal",
+      "source_count": 88,
+      "source_unchanged_before": true,
+      "metadata_unchanged_before": true,
+      "exit_code": 0,
+      "finished_at_utc": "2026-11-16T20:31:37.434184+00:00",
+      "seconds": 69.138279124978,
+      "source_unchanged_after": true,
+      "metadata_unchanged_after": true,
+      "git_status_after": "",
+      "log_sha256": "bbaa8483d3a908c83818590ed342bb2b44f649b3ce9737202d7a4c8b02cef4e6"
+    },
+    {
+      "stage": "native-cli-debug-build",
+      "argv": [
+        "cargo",
+        "build",
+        "-p",
+        "weftforge",
+        "-p",
+        "weftforge-cli"
+      ],
+      "pid": 20932,
+      "started_at_utc": "2026-11-16T20:31:37.666810+00:00",
+      "status": "terminal",
+      "source_count": 88,
+      "source_unchanged_before": true,
+      "metadata_unchanged_before": true,
+      "exit_code": 0,
+      "finished_at_utc": "2026-11-16T20:31:52.706059+00:00",
+      "seconds": 15.039148458046839,
+      "source_unchanged_after": true,
+      "metadata_unchanged_after": true,
+      "git_status_after": "",
+      "log_sha256": "f17d472c0c68601731f74f98fb2478c01773f9a224d70e5a7d4429d92ff70da6"
+    }
+  ],
+  "seconds": 417.2889450000366,
+  "test_summary_rows": [
+    {
+      "passed": 145,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 3,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 18,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 29,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 14,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 4,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 6,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 4,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 3,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 5,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 12,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 10,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 7,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 11,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 14,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 8,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 2,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 20,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 8,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 10,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 57,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    }
+  ],
+  "rust_passed_total": 398,
+  "rust_failed_total": 0,
+  "rust_ignored_total": 0,
+  "binaries": {
+    "weftforge": {
+      "sha256": "eb82a84295f8558cdb094119e2a3c9796313efc17bae87c20ed4b4fa1c133933",
+      "size_bytes": 62736440,
+      "launched": false
+    },
+    "weftforge-cli": {
+      "sha256": "9544cbcb2635c1b29a8e4de7729f6a9b13a526fd97ae40a6a5638ffbe5147b25",
+      "size_bytes": 10626608,
+      "launched": false
+    }
+  },
+  "gui_launched": false,
+  "garment_execution": false,
+  "metadata_validation_or_refresh": false,
+  "all_source_and_metadata_pins_unchanged": true
+}

@@ -1,0 +1,3978 @@
+{
+  "schema_version": 1,
+  "prepared_at": "2026-11-16T22:10:44.194086+00:00",
+  "status": "PROPOSED_SELECTION_ONLY_NOT_APPLIED_OR_PUBLISHED",
+  "public_manifest_path": "parity/reports/artifacts/material-source-20261116/SELECTED-PUBLIC-MANIFEST-001.json",
+  "selection": {
+    "actual_component_source": "36524293b89686c2368f22d13ad09289fc70af03",
+    "actual_combined_tested_and_numerical_source": "96d3baee4543c7edbdb804df6090697a9f65da09",
+    "delivery_integration": "a9d5cf72cc966e6a2b8fc76fc245951f7c7ef031",
+    "root_source_selection_manifest_sha256": "7417fabd8b857d200ae99a5e27aee18c8cb9780055e4dfd96719d861483cddf7",
+    "root_source_integration_proof_sha256": "7be6af57fc60afaf1ef7dc850b745993be2ae9284a198226ef2744dd005d1eca",
+    "original_harbor_freeze_sha256": "d245716ea926b1d4cac6195205ebb31d619c39688ea420d57b932dbd2c703909",
+    "original_root_result_sha256": "019867ed8770435604a555fcd2a138ef82cb378a0d05da81a529e27cfa0c70c8"
+  },
+  "normalization": {
+    "method": "Plain literal ROOT/HOME locator normalization only; ROOT first, then HOME. No braces, shell variables, archive container or embedded-hash rewriting.",
+    "ROOT": "the private checkout root, represented only by this plain label",
+    "HOME": "the private home directory, represented only by this plain label",
+    "byte_changes_other_than_declared_literals": false,
+    "permissions": "All proposed public files are regular mode 0644 / Git 100644. Original POSIX modes are recorded per file; Git does not preserve read/write permissions. No executable is distributed.",
+    "hash_semantics": "Public hashes identify normalized derivatives. Every embedded original hash, source pin, clock, pending/current word, failed verdict and old path describes the immutable original context and is retained unchanged. This is an audit packet, not a portable runnable harness or permission to replay/regrade."
+  },
+  "totals": {
+    "files": 167,
+    "original_bytes": 19799837,
+    "public_bytes": 19794379,
+    "ROOT": 87,
+    "HOME": 25,
+    "byte_exact": 134,
+    "posix_mode_changed": 33
+  },
+  "groups": {
+    "source-component": {
+      "files": 20,
+      "original_bytes": 130240,
+      "public_bytes": 129945
+    },
+    "source-combined": {
+      "files": 19,
+      "original_bytes": 135779,
+      "public_bytes": 134953
+    },
+    "source-root-integration": {
+      "files": 1,
+      "original_bytes": 10873,
+      "public_bytes": 10873
+    },
+    "harbor-preparation-frozen": {
+      "files": 75,
+      "original_bytes": 345212,
+      "public_bytes": 342139
+    },
+    "harbor-seal-and-go": {
+      "files": 2,
+      "original_bytes": 22218,
+      "public_bytes": 22205
+    },
+    "harbor-numerical-inputs": {
+      "files": 1,
+      "original_bytes": 11808,
+      "public_bytes": 11808
+    },
+    "harbor-numerical-expected": {
+      "files": 1,
+      "original_bytes": 590865,
+      "public_bytes": 590865
+    },
+    "harbor-numerical-preflight-base": {
+      "files": 3,
+      "original_bytes": 820432,
+      "public_bytes": 820432
+    },
+    "harbor-numerical-runs": {
+      "files": 9,
+      "original_bytes": 17632443,
+      "public_bytes": 17632443
+    },
+    "harbor-numerical-runtime": {
+      "files": 27,
+      "original_bytes": 18541,
+      "public_bytes": 17480
+    },
+    "harbor-root-outer": {
+      "files": 7,
+      "original_bytes": 9033,
+      "public_bytes": 8843
+    },
+    "endpoint-exact-history": {
+      "files": 2,
+      "original_bytes": 72393,
+      "public_bytes": 72393
+    }
+  },
+  "files": [
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/FREEZE.json",
+      "group": "harbor-seal-and-go",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/FREEZE.json",
+      "original": {
+        "sha256": "d245716ea926b1d4cac6195205ebb31d619c39688ea420d57b932dbd2c703909",
+        "bytes": 21753,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "025e150d4e8d41eebb103af2c0d01e19d6d1e295a30c0fd331fd34d35895ed50",
+        "bytes": 21740,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 1
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/HANDOFF.md",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/HANDOFF.md",
+      "original": {
+        "sha256": "914d9e9ee172ff37c342758089f430a435334261574c00650e2a8d32f8d2f4d2",
+        "bytes": 9035,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "914d9e9ee172ff37c342758089f430a435334261574c00650e2a8d32f8d2f4d2",
+        "bytes": 9035,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/ORIGINS.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/ORIGINS.json",
+      "original": {
+        "sha256": "df47379bb79c364017f9f17cfe8eefa1aa5b011043445140cdb044c3c9b2650d",
+        "bytes": 2710,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "df47379bb79c364017f9f17cfe8eefa1aa5b011043445140cdb044c3c9b2650d",
+        "bytes": 2710,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/PREPARATION-DIFF.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/PREPARATION-DIFF.json",
+      "original": {
+        "sha256": "1064d69a85d51b71bf198cefbf4599caa8c455bad3b0cdd018522f7854a6b953",
+        "bytes": 3430,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "1064d69a85d51b71bf198cefbf4599caa8c455bad3b0cdd018522f7854a6b953",
+        "bytes": 3430,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/PROTOCOL.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/PROTOCOL.json",
+      "original": {
+        "sha256": "cacb7d6a36bbca58de1653fe5f7737fc416f206fc5ea465973628a42e0620794",
+        "bytes": 5703,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "3e55f40090702b6cab5ac911f8190dcee146e27cd2fae065d155921f985bb99f",
+        "bytes": 5225,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 7,
+        "HOME": 5
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/ROOT-GO.json",
+      "group": "harbor-seal-and-go",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/ROOT-GO.json",
+      "original": {
+        "sha256": "225ecccd71eeb645c72968d8c7e1a0975dc932875ddc23d8d632b6207c4b5474",
+        "bytes": 465,
+        "mode": "0o444"
+      },
+      "public": {
+        "sha256": "225ecccd71eeb645c72968d8c7e1a0975dc932875ddc23d8d632b6207c4b5474",
+        "bytes": 465,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/build_release.py",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/build_release.py",
+      "original": {
+        "sha256": "ed82e4d5245380a017a271911be0df583d39dca6c2a25c57adf8614ded5910d4",
+        "bytes": 3653,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "ed82e4d5245380a017a271911be0df583d39dca6c2a25c57adf8614ded5910d4",
+        "bytes": 3653,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/BUILD-PREFLIGHT.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/BUILD-PREFLIGHT.json",
+      "original": {
+        "sha256": "11f87a91c977465bae30c4b99ea54e826c208bba814cea891b84db2fc77e3120",
+        "bytes": 10518,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "11f87a91c977465bae30c4b99ea54e826c208bba814cea891b84db2fc77e3120",
+        "bytes": 10518,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/BUILD-RECEIPT.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/BUILD-RECEIPT.json",
+      "original": {
+        "sha256": "8450341a2060ff57d9e5e32ab7c1f452e1908939d3f8df81be9019397b82d5e4",
+        "bytes": 2247,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "db51945b0f4e758753ca19e44b33454c7c477c02e27c244c6226de17bd1075a0",
+        "bytes": 1893,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 6,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/BUILD-V2-RECEIPT.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/BUILD-V2-RECEIPT.json",
+      "original": {
+        "sha256": "d25680355135b90e96146dc861ee2fae15e8521bcbe4162dba259fc2dfc0e0de",
+        "bytes": 1363,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "88f6eadf6564be6ea334089ba006fabeb581c75ddd7bebc5406edcad581b81b7",
+        "bytes": 1186,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 3,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/FIRST-SEAL-ERROR.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/FIRST-SEAL-ERROR.json",
+      "original": {
+        "sha256": "f99379e074b38d19484973fdd721f9c8ecca76f99cef40e578fa23a67c71db3f",
+        "bytes": 725,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "f99379e074b38d19484973fdd721f9c8ecca76f99cef40e578fa23a67c71db3f",
+        "bytes": 725,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/FREEZE-ATTEMPT1.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/FREEZE-ATTEMPT1.json",
+      "original": {
+        "sha256": "d12762b474bac6d4260e8a1aa82928a273e09cfc51111ec2deed6e78060710e8",
+        "bytes": 21334,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "bd02af3bc2b09f2aa0a3d9a086eca5abb4c9fe3d39e966040757aa3a10145bfa",
+        "bytes": 21321,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 1
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/PROTOCOL-ATTEMPT1.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/PROTOCOL-ATTEMPT1.json",
+      "original": {
+        "sha256": "cacb7d6a36bbca58de1653fe5f7737fc416f206fc5ea465973628a42e0620794",
+        "bytes": 5703,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "3e55f40090702b6cab5ac911f8190dcee146e27cd2fae065d155921f985bb99f",
+        "bytes": 5225,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 7,
+        "HOME": 5
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/SECOND-SEAL-REFUSAL.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/SECOND-SEAL-REFUSAL.json",
+      "original": {
+        "sha256": "bd28bf1d22c9d7173f1dbf2a7877ba311d64a32d8c9b56c9d4cec798a3e1730d",
+        "bytes": 434,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "bd28bf1d22c9d7173f1dbf2a7877ba311d64a32d8c9b56c9d4cec798a3e1730d",
+        "bytes": 434,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/SELF-CHECK-FAILURE-1.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/SELF-CHECK-FAILURE-1.json",
+      "original": {
+        "sha256": "59848366b513fd4fb6d99cbe8eb629d04be711c48a617ab2d560c8d3e3bc0a87",
+        "bytes": 543,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "59848366b513fd4fb6d99cbe8eb629d04be711c48a617ab2d560c8d3e3bc0a87",
+        "bytes": 543,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/SELF-CHECKS.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/SELF-CHECKS.json",
+      "original": {
+        "sha256": "7ec097d9c29f7d4a0ec89af4bc60f1d89831993fa1da60d495a2cefc800cb3d1",
+        "bytes": 8543,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "6241524339ef4915a8d37316640b85f3caf0e01590113fc5a588d07b600f6799",
+        "bytes": 7560,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 16,
+        "HOME": 3
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/build-0.log",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/build-0.log",
+      "original": {
+        "sha256": "8ab22325f0fdc7d7bc97ac77e731c5f237be9a3bba5e698c3a214105f766b8ea",
+        "bytes": 67,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "8ab22325f0fdc7d7bc97ac77e731c5f237be9a3bba5e698c3a214105f766b8ea",
+        "bytes": 67,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/build-1.log",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/build-1.log",
+      "original": {
+        "sha256": "7a678563ea6d346cb940f6f76b8fa53344ec640c8c3091fb997cd5357ee7ee8d",
+        "bytes": 1226,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "3c5bd8770315fdc518aee3524afafc28b22330c84c6caaf2e652a757b484f1e7",
+        "bytes": 990,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 4,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/build-v2.log",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/build-v2.log",
+      "original": {
+        "sha256": "e97f3e80909c398edb655cc6ce160f564f8f86ed5d18ff5816ce047734a5e21c",
+        "bytes": 264,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "a2e26e266a0ce3b945fca45e4c37f30cffc7229bd0c79bbf633bb9a6a216eb71",
+        "bytes": 205,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/producer-built-v1.rs",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/producer-built-v1.rs",
+      "original": {
+        "sha256": "9d03c1922d99b6bfa4fbb158b436d8067b2772ce206c99e8736f44292f99f2db",
+        "bytes": 6937,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "9d03c1922d99b6bfa4fbb158b436d8067b2772ce206c99e8736f44292f99f2db",
+        "bytes": 6937,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/refusal-986534460908708.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/refusal-986534460908708.json",
+      "original": {
+        "sha256": "1bbd6e2944cebe0274eaf5fb3af92f4fa8a86a4b9c059b052b4d7b2e4fdc981e",
+        "bytes": 390,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "1bbd6e2944cebe0274eaf5fb3af92f4fa8a86a4b9c059b052b4d7b2e4fdc981e",
+        "bytes": 390,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/seal.log",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/seal.log",
+      "original": {
+        "sha256": "d68a616b091eaa1cc6a845dca1cd6106b99ecfef99f380f68df93fa1678d54e1",
+        "bytes": 323,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "d68a616b091eaa1cc6a845dca1cd6106b99ecfef99f380f68df93fa1678d54e1",
+        "bytes": 323,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/selfcheck-1.log",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/selfcheck-1.log",
+      "original": {
+        "sha256": "59eea8fc1b7c5f1ecb4a7ed8cd1f92f29d20b71310b1cd19eb8ec687c1a5d706",
+        "bytes": 1350,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "336414dbad9dbe348ecbd666459d181976c47fe478d465a645b6e098a1cf8328",
+        "bytes": 1055,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 5,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/selfcheck-2.log",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/selfcheck-2.log",
+      "original": {
+        "sha256": "0e15dd4375f14709558bc7b72263f730d8c6db4b31000932eff99f20f71c894d",
+        "bytes": 86,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "0e15dd4375f14709558bc7b72263f730d8c6db4b31000932eff99f20f71c894d",
+        "bytes": 86,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/selfcheck-attempt1.py",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/selfcheck-attempt1.py",
+      "original": {
+        "sha256": "104d0b60e6b8348242681746d4b3c9ebb9a4e6c0f1f44d4dc266b2018098f602",
+        "bytes": 11464,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "104d0b60e6b8348242681746d4b3c9ebb9a4e6c0f1f44d4dc266b2018098f602",
+        "bytes": 11464,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/approval-positive.stderr",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/approval-positive.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/approval-positive.stdout",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/approval-positive.stdout",
+      "original": {
+        "sha256": "38dde89a453487e736364cec15a6e47f005fcc06d8c52c1b9d715772322279d2",
+        "bytes": 41,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "38dde89a453487e736364cec15a6e47f005fcc06d8c52c1b9d715772322279d2",
+        "bytes": 41,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/approved-synthetic.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/approved-synthetic.json",
+      "original": {
+        "sha256": "4a6911e87caa7a85f27f9ca73b1ccf279babf44cff449ffd95e9b00de188ebf5",
+        "bytes": 6394,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "4a6911e87caa7a85f27f9ca73b1ccf279babf44cff449ffd95e9b00de188ebf5",
+        "bytes": 6394,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/checked/initialized-state.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/checked/initialized-state.json",
+      "original": {
+        "sha256": "256b6cb02fac530ab056532706d540a7044ee2579f0590262f7ffec537fa8ce0",
+        "bytes": 1370,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "256b6cb02fac530ab056532706d540a7044ee2579f0590262f7ffec537fa8ce0",
+        "bytes": 1370,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/checked/rest-metadata.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/checked/rest-metadata.json",
+      "original": {
+        "sha256": "b6e616e757718a27e66ceda98b921af0f798910a141bea57eb21a60e29ccbbb3",
+        "bytes": 6393,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "b6e616e757718a27e66ceda98b921af0f798910a141bea57eb21a60e29ccbbb3",
+        "bytes": 6393,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/checked/stage-000.obj",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/checked/stage-000.obj",
+      "original": {
+        "sha256": "ad2ba26b7efabd35d84e0ba3ab54348465139b5bef5c104ae49a07e2d3f1748e",
+        "bytes": 1559,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "ad2ba26b7efabd35d84e0ba3ab54348465139b5bef5c104ae49a07e2d3f1748e",
+        "bytes": 1559,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/closing-fail/runtime/SUPERVISOR.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/closing-fail/runtime/SUPERVISOR.json",
+      "original": {
+        "sha256": "018f0a1ec57fa643aa8c8eb941ed313e6e93b3f350938a4c5ba007b755fa94a1",
+        "bytes": 124,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "018f0a1ec57fa643aa8c8eb941ed313e6e93b3f350938a4c5ba007b755fa94a1",
+        "bytes": 124,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/closing-pass/runtime/SUPERVISOR.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/closing-pass/runtime/SUPERVISOR.json",
+      "original": {
+        "sha256": "018f0a1ec57fa643aa8c8eb941ed313e6e93b3f350938a4c5ba007b755fa94a1",
+        "bytes": 124,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "018f0a1ec57fa643aa8c8eb941ed313e6e93b3f350938a4c5ba007b755fa94a1",
+        "bytes": 124,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/go-refusal.stderr",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/go-refusal.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/go-refusal.stdout",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/go-refusal.stdout",
+      "original": {
+        "sha256": "d12809fe117385ad65c996c42db4d4a528990253686a37155f51c6ddbab89d1a",
+        "bytes": 368,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "d12809fe117385ad65c996c42db4d4a528990253686a37155f51c6ddbab89d1a",
+        "bytes": 368,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/new-triangle.weftforge",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/new-triangle.weftforge",
+      "original": {
+        "sha256": "ebcb624dc18dcd659fd60adb5011b79556a3878405c23fea462f73749826b0c9",
+        "bytes": 1743,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "ebcb624dc18dcd659fd60adb5011b79556a3878405c23fea462f73749826b0c9",
+        "bytes": 1743,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/numeric-type-approved.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/numeric-type-approved.json",
+      "original": {
+        "sha256": "7f192fc4b9b4dd7a5bfceed0b22ea0e9af4fb1486a3362fab15ab84f65d12dd4",
+        "bytes": 6392,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "7f192fc4b9b4dd7a5bfceed0b22ea0e9af4fb1486a3362fab15ab84f65d12dd4",
+        "bytes": 6392,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/numeric-type.stderr",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/numeric-type.stderr",
+      "original": {
+        "sha256": "43db27994a15f35697231d7704c2a12751124b656ea722b62a57e3d89eb1dfeb",
+        "bytes": 31941,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "43db27994a15f35697231d7704c2a12751124b656ea722b62a57e3d89eb1dfeb",
+        "bytes": 31941,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/numeric-type.stdout",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/numeric-type.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/overflow.stderr",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/overflow.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/overflow.stdout",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/overflow.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/prepare.stderr",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/prepare.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/prepare.stdout",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/prepare.stdout",
+      "original": {
+        "sha256": "38dde89a453487e736364cec15a6e47f005fcc06d8c52c1b9d715772322279d2",
+        "bytes": 41,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "38dde89a453487e736364cec15a6e47f005fcc06d8c52c1b9d715772322279d2",
+        "bytes": 41,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/prepared/initialized-state.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/prepared/initialized-state.json",
+      "original": {
+        "sha256": "eff0acb6c92e8ab933ede4a3267fffb05b765587848beac700a9e2e76d26bdcc",
+        "bytes": 1371,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "eff0acb6c92e8ab933ede4a3267fffb05b765587848beac700a9e2e76d26bdcc",
+        "bytes": 1371,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/prepared/rest-metadata.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/prepared/rest-metadata.json",
+      "original": {
+        "sha256": "b6e616e757718a27e66ceda98b921af0f798910a141bea57eb21a60e29ccbbb3",
+        "bytes": 6393,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "b6e616e757718a27e66ceda98b921af0f798910a141bea57eb21a60e29ccbbb3",
+        "bytes": 6393,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/prepared/stage-000.obj",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/prepared/stage-000.obj",
+      "original": {
+        "sha256": "ad2ba26b7efabd35d84e0ba3ab54348465139b5bef5c104ae49a07e2d3f1748e",
+        "bytes": 1559,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "ad2ba26b7efabd35d84e0ba3ab54348465139b5bef5c104ae49a07e2d3f1748e",
+        "bytes": 1559,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/signed-zero-approved.json",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/signed-zero-approved.json",
+      "original": {
+        "sha256": "2b8ebd9063a2612189e28fed594d8dc79cbd66a67f56f0c6424379631a769e3a",
+        "bytes": 6395,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "2b8ebd9063a2612189e28fed594d8dc79cbd66a67f56f0c6424379631a769e3a",
+        "bytes": 6395,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/signed-zero.stderr",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/signed-zero.stderr",
+      "original": {
+        "sha256": "c731133afd9ebae11af97e907f61b686e3601960cc72d9e816426c21f7813cb1",
+        "bytes": 31953,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "c731133afd9ebae11af97e907f61b686e3601960cc72d9e816426c21f7813cb1",
+        "bytes": 31953,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/signed-zero.stdout",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/signed-zero.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/synthetic-overflow.bin",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/synthetic-overflow.bin",
+      "original": {
+        "sha256": "18f8d2eb4a387bbc1e37ec099a7326805739bc9c99ecf0f14b808a5bcb65bf49",
+        "bytes": 8192,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "18f8d2eb4a387bbc1e37ec099a7326805739bc9c99ecf0f14b808a5bcb65bf49",
+        "bytes": 8192,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/timeout.stderr",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/timeout.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/timeout.stdout",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/timeout.stdout",
+      "original": {
+        "sha256": "9ac1ac28a6c481605c6d982cce7484e9bb8b3b5a1df719ee0f523cf6ab4d9b57",
+        "bytes": 6,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "9ac1ac28a6c481605c6d982cce7484e9bb8b3b5a1df719ee0f523cf6ab4d9b57",
+        "bytes": 6,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/volume/expected/synthetic.bin",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/volume/expected/synthetic.bin",
+      "original": {
+        "sha256": "d04fd59f3d9a1fd424c47874ae1dab0dde54fa73ba474245bfac79279afe6df7",
+        "bytes": 17,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "d04fd59f3d9a1fd424c47874ae1dab0dde54fa73ba474245bfac79279afe6df7",
+        "bytes": 17,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/volume/inputs/synthetic.bin",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/volume/inputs/synthetic.bin",
+      "original": {
+        "sha256": "d04fd59f3d9a1fd424c47874ae1dab0dde54fa73ba474245bfac79279afe6df7",
+        "bytes": 17,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "d04fd59f3d9a1fd424c47874ae1dab0dde54fa73ba474245bfac79279afe6df7",
+        "bytes": 17,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/volume/preflight-base/synthetic.bin",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/volume/preflight-base/synthetic.bin",
+      "original": {
+        "sha256": "d04fd59f3d9a1fd424c47874ae1dab0dde54fa73ba474245bfac79279afe6df7",
+        "bytes": 17,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "d04fd59f3d9a1fd424c47874ae1dab0dde54fa73ba474245bfac79279afe6df7",
+        "bytes": 17,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/volume/runs/synthetic.bin",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/volume/runs/synthetic.bin",
+      "original": {
+        "sha256": "d04fd59f3d9a1fd424c47874ae1dab0dde54fa73ba474245bfac79279afe6df7",
+        "bytes": 17,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "d04fd59f3d9a1fd424c47874ae1dab0dde54fa73ba474245bfac79279afe6df7",
+        "bytes": 17,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic-2/volume/runtime/synthetic.bin",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/volume/runtime/synthetic.bin",
+      "original": {
+        "sha256": "d04fd59f3d9a1fd424c47874ae1dab0dde54fa73ba474245bfac79279afe6df7",
+        "bytes": 17,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "d04fd59f3d9a1fd424c47874ae1dab0dde54fa73ba474245bfac79279afe6df7",
+        "bytes": 17,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic/new-triangle.weftforge",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic/new-triangle.weftforge",
+      "original": {
+        "sha256": "3c9733a633a79a144e376c1aed187f56783fab7ea861a9d50c27b99dc479c7b3",
+        "bytes": 1743,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "3c9733a633a79a144e376c1aed187f56783fab7ea861a9d50c27b99dc479c7b3",
+        "bytes": 1743,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic/prepare.stderr",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic/prepare.stderr",
+      "original": {
+        "sha256": "e9c0b0f17078dcb755d5cf87d2275964d023bcaab28d041a970dab2da234f80b",
+        "bytes": 64,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e9c0b0f17078dcb755d5cf87d2275964d023bcaab28d041a970dab2da234f80b",
+        "bytes": 64,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/checks/synthetic/prepare.stdout",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic/prepare.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/common.py",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/common.py",
+      "original": {
+        "sha256": "dcad1c5d91a118af92691c62d46308b41271f73bea53dfbff7cdca84fc831308",
+        "bytes": 9073,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "dcad1c5d91a118af92691c62d46308b41271f73bea53dfbff7cdca84fc831308",
+        "bytes": 9073,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/consumer/bindings.py",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/consumer/bindings.py",
+      "original": {
+        "sha256": "ba8499944ee4d63b55fcc86de997b9823cf5a949fdb118491569c5dbfcd69a4f",
+        "bytes": 138,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "ba8499944ee4d63b55fcc86de997b9823cf5a949fdb118491569c5dbfcd69a4f",
+        "bytes": 138,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/consumer/capsule_geometry.py",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/consumer/capsule_geometry.py",
+      "original": {
+        "sha256": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b",
+        "bytes": 11717,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b",
+        "bytes": 11717,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/consumer/decimal_oracle.py",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/consumer/decimal_oracle.py",
+      "original": {
+        "sha256": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d",
+        "bytes": 2959,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d",
+        "bytes": 2959,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/consumer/evaluator.py",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/consumer/evaluator.py",
+      "original": {
+        "sha256": "bc981d2333b4e02fb95c8fa83bb2b2a48d8d0486ae65594bf9173e935513c91b",
+        "bytes": 33339,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "bc981d2333b4e02fb95c8fa83bb2b2a48d8d0486ae65594bf9173e935513c91b",
+        "bytes": 33339,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/consumer/geometry_math.py",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/consumer/geometry_math.py",
+      "original": {
+        "sha256": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40",
+        "bytes": 1443,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40",
+        "bytes": 1443,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/consumer/metadata_adapter.py",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/consumer/metadata_adapter.py",
+      "original": {
+        "sha256": "f7aea5b61bafda604cb9b2112f40c83285497300c41c4d02b1344339fe00386e",
+        "bytes": 2594,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "f7aea5b61bafda604cb9b2112f40c83285497300c41c4d02b1344339fe00386e",
+        "bytes": 2594,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/consumer/metrics.py",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/consumer/metrics.py",
+      "original": {
+        "sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+        "bytes": 18354,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+        "bytes": 18354,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/consumer/static_geometry.py",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/consumer/static_geometry.py",
+      "original": {
+        "sha256": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34",
+        "bytes": 2388,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34",
+        "bytes": 2388,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/controller.py",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/controller.py",
+      "original": {
+        "sha256": "3e295b33b1f27c04669b4f85e3d5489f51ab521688ed832a344491b35790e456",
+        "bytes": 6252,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "3e295b33b1f27c04669b4f85e3d5489f51ab521688ed832a344491b35790e456",
+        "bytes": 6252,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/expected/approved-metadata.json",
+      "group": "harbor-numerical-expected",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/expected/approved-metadata.json",
+      "original": {
+        "sha256": "8dfb77d6d4234b0997683e98a0bbd76105d2274aba0f6eb36dc90e671d0589ff",
+        "bytes": 590865,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "8dfb77d6d4234b0997683e98a0bbd76105d2274aba0f6eb36dc90e671d0589ff",
+        "bytes": 590865,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/freeze_prep.py",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/freeze_prep.py",
+      "original": {
+        "sha256": "f7724bd9039a0034b75463b27fc8811e23157a237e9f45727e6406be5d76e38e",
+        "bytes": 8270,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "f7724bd9039a0034b75463b27fc8811e23157a237e9f45727e6406be5d76e38e",
+        "bytes": 8270,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/inputs/base.weftforge",
+      "group": "harbor-numerical-inputs",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/inputs/base.weftforge",
+      "original": {
+        "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+        "bytes": 11808,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+        "bytes": 11808,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/preflight-base/initialized-state.json",
+      "group": "harbor-numerical-preflight-base",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/preflight-base/initialized-state.json",
+      "original": {
+        "sha256": "dab78f774cd56342d7822eba55f3d7ada6612c90cfddf2b2c4cd425060138afc",
+        "bytes": 75440,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "dab78f774cd56342d7822eba55f3d7ada6612c90cfddf2b2c4cd425060138afc",
+        "bytes": 75440,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/preflight-base/rest-metadata.json",
+      "group": "harbor-numerical-preflight-base",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/preflight-base/rest-metadata.json",
+      "original": {
+        "sha256": "90128ed174829cd118e1d638ccba0fa501003889e85b5d70d214b4884f14aec7",
+        "bytes": 590840,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "90128ed174829cd118e1d638ccba0fa501003889e85b5d70d214b4884f14aec7",
+        "bytes": 590840,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/preflight-base/stage-000.obj",
+      "group": "harbor-numerical-preflight-base",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/preflight-base/stage-000.obj",
+      "original": {
+        "sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+        "bytes": 154152,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+        "bytes": 154152,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/producer/Cargo.lock",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/producer/Cargo.lock",
+      "original": {
+        "sha256": "6acc2df8d38cf70047cbe22ca2875a38a0fd204a63452edb2d42b4ce14c1ec89",
+        "bytes": 4086,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "6acc2df8d38cf70047cbe22ca2875a38a0fd204a63452edb2d42b4ce14c1ec89",
+        "bytes": 4086,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/producer/Cargo.toml",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/producer/Cargo.toml",
+      "original": {
+        "sha256": "bdbf9b113ba7bb05e968b25fbfc71a30317bfd66aa090fb809e2f551070ff5e8",
+        "bytes": 297,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "bdbf9b113ba7bb05e968b25fbfc71a30317bfd66aa090fb809e2f551070ff5e8",
+        "bytes": 297,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/producer/src/main.rs",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/producer/src/main.rs",
+      "original": {
+        "sha256": "87b15646929d7ed76b03970fe84626176eb6cef72207f5f75a247ff649907a0b",
+        "bytes": 6969,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "87b15646929d7ed76b03970fe84626176eb6cef72207f5f75a247ff649907a0b",
+        "bytes": 6969,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/resources.py",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/resources.py",
+      "original": {
+        "sha256": "395bc0e948748ea4ade134919b1911abf2c51faa63a0a56b9554d8f3ab8842a7",
+        "bytes": 6728,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "395bc0e948748ea4ade134919b1911abf2c51faa63a0a56b9554d8f3ab8842a7",
+        "bytes": 6728,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runs/base/analysis.json",
+      "group": "harbor-numerical-runs",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runs/base/analysis.json",
+      "original": {
+        "sha256": "b74860cf97ac7691f04b485b59251487139939afa6e6587d770f59a904ed922f",
+        "bytes": 1001176,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "b74860cf97ac7691f04b485b59251487139939afa6e6587d770f59a904ed922f",
+        "bytes": 1001176,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runs/base/completed-case.json",
+      "group": "harbor-numerical-runs",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runs/base/completed-case.json",
+      "original": {
+        "sha256": "ca40968c97da60b5260aa6f0b80dce11fd772292b3a23c6d328804cc8c74950d",
+        "bytes": 727,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "ca40968c97da60b5260aa6f0b80dce11fd772292b3a23c6d328804cc8c74950d",
+        "bytes": 727,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runs/base/initialized-state.json",
+      "group": "harbor-numerical-runs",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runs/base/initialized-state.json",
+      "original": {
+        "sha256": "2482770fee405c4f6a4fb94e77251f0056b41505b7678db1cd11790066e51ee9",
+        "bytes": 75439,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "2482770fee405c4f6a4fb94e77251f0056b41505b7678db1cd11790066e51ee9",
+        "bytes": 75439,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runs/base/rest-metadata.json",
+      "group": "harbor-numerical-runs",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runs/base/rest-metadata.json",
+      "original": {
+        "sha256": "90128ed174829cd118e1d638ccba0fa501003889e85b5d70d214b4884f14aec7",
+        "bytes": 590840,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "90128ed174829cd118e1d638ccba0fa501003889e85b5d70d214b4884f14aec7",
+        "bytes": 590840,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runs/base/stage-000.obj",
+      "group": "harbor-numerical-runs",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runs/base/stage-000.obj",
+      "original": {
+        "sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+        "bytes": 154152,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+        "bytes": 154152,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runs/base/stage-060.obj",
+      "group": "harbor-numerical-runs",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runs/base/stage-060.obj",
+      "original": {
+        "sha256": "2d17f76f26078988345171b0a5d9438d778cd0337e455804a0b2edfc5a2106b6",
+        "bytes": 154804,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "2d17f76f26078988345171b0a5d9438d778cd0337e455804a0b2edfc5a2106b6",
+        "bytes": 154804,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runs/base/stage-180.obj",
+      "group": "harbor-numerical-runs",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runs/base/stage-180.obj",
+      "original": {
+        "sha256": "31ff28a385f4af67c5ad0fb6de427dde24cfeeb951de419dd2249c313e06efb2",
+        "bytes": 154812,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "31ff28a385f4af67c5ad0fb6de427dde24cfeeb951de419dd2249c313e06efb2",
+        "bytes": 154812,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runs/base/steps.jsonl",
+      "group": "harbor-numerical-runs",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runs/base/steps.jsonl",
+      "original": {
+        "sha256": "814ef896bf1df33385fd2e9e49760e842dfcd112238a30b115c9e99136b4ddcd",
+        "bytes": 111271,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "814ef896bf1df33385fd2e9e49760e842dfcd112238a30b115c9e99136b4ddcd",
+        "bytes": 111271,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runs/base/trajectory.jsonl",
+      "group": "harbor-numerical-runs",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runs/base/trajectory.jsonl",
+      "original": {
+        "sha256": "d1dd4ad85d1565cefa49e24f0ad59001cd160a59a3c6f0acdd18749e2e7566cf",
+        "bytes": 15389222,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "d1dd4ad85d1565cefa49e24f0ad59001cd160a59a3c6f0acdd18749e2e7566cf",
+        "bytes": 15389222,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/FINAL-NUMERICAL.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/FINAL-NUMERICAL.json",
+      "original": {
+        "sha256": "53d574ecf496357888478426bc0fce965b79042c20e6da814dc12a20255658b5",
+        "bytes": 5649,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "53d574ecf496357888478426bc0fce965b79042c20e6da814dc12a20255658b5",
+        "bytes": 5649,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/SESSION.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/SESSION.json",
+      "original": {
+        "sha256": "a8001a104328a48e6c25711e2e58af5c38b29e6f0117286800267e40d8c41c40",
+        "bytes": 343,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "a8001a104328a48e6c25711e2e58af5c38b29e6f0117286800267e40d8c41c40",
+        "bytes": 343,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/SUPERVISOR.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/SUPERVISOR.json",
+      "original": {
+        "sha256": "a610812cc5c10cca774730b739e3d242f02a190040b0f0ebfbd0b637298656ce",
+        "bytes": 3478,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "d685396298ef53fbce303cf23e9445b1b946d96251e827e09dfd2f42252082a9",
+        "bytes": 3144,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 5,
+        "HOME": 3
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/analysis-stage.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/analysis-stage.json",
+      "original": {
+        "sha256": "8a060c073fe81c5211fb8b5291216576fd808bd8173b271d9524184bf6b21a29",
+        "bytes": 505,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "c35a4224cf7b8df313cabc6bfe117147bee21ff04593f427c9010ff5cb307080",
+        "bytes": 433,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 1
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/analysis-started.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/analysis-started.json",
+      "original": {
+        "sha256": "104c6c7b4d3a5e391dfd038b2530fe562da63a7d5183a86c86dc5484519e077d",
+        "bytes": 452,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "b9536d7beffa5cb4876ec519cbaf6fac7debf1f3fce55279b43cde4704e95900",
+        "bytes": 380,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 1
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/analysis-written.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/analysis-written.json",
+      "original": {
+        "sha256": "b534590df82591ae558d00805d808ea6dc39097dab45988414c1dbc608ab4415",
+        "bytes": 225,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "b534590df82591ae558d00805d808ea6dc39097dab45988414c1dbc608ab4415",
+        "bytes": 225,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/analysis.stderr",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/analysis.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/analysis.stdout",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/analysis.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/finalization-stage.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/finalization-stage.json",
+      "original": {
+        "sha256": "a09a22fc41e07ad04945a45b10e59c2d7d4e72589a627737769c896cecc332f2",
+        "bytes": 508,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "4b0167b0ad0579d72e8b6df5595d9e614b45691ac1c899067b7f347081b94796",
+        "bytes": 436,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 1
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/finalization-started.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/finalization-started.json",
+      "original": {
+        "sha256": "575e578c04532821ed83762216a72e9cbaa14005ee4a102bcc086e5104de52b9",
+        "bytes": 455,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "d0294526f5311be4ec3de8b9b417fc7f0b1f86704362e1cfb74c893f0aefb2be",
+        "bytes": 383,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 1
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/finalization.stderr",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/finalization.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/finalization.stdout",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/finalization.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/finalized.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/finalized.json",
+      "original": {
+        "sha256": "be8fa5edd7647d018e83e1a8b42ad57480a0f9b138867073c7c66a85b8ca2646",
+        "bytes": 214,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "be8fa5edd7647d018e83e1a8b42ad57480a0f9b138867073c7c66a85b8ca2646",
+        "bytes": 214,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/init-only-stage.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/init-only-stage.json",
+      "original": {
+        "sha256": "d3a3f41ef890fa474e1501455e723aeea5e40b7895fb6ee6c97f90cbf162dd33",
+        "bytes": 432,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "6ecba25c7701e0b6a4c4c42a1dbb54e9594b6820a641aacfc6cd45ad49b21224",
+        "bytes": 373,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/init-only-started.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/init-only-started.json",
+      "original": {
+        "sha256": "e6481387ae179f75dc39db68cbd8516708f6913962cddec7d8bca9af6584ec7a",
+        "bytes": 381,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "b510d4d6b8a22a807ac412e702924ed9fe641ab01478521953c9dacb91261cd7",
+        "bytes": 322,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/init-only.stderr",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/init-only.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/init-only.stdout",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/init-only.stdout",
+      "original": {
+        "sha256": "38dde89a453487e736364cec15a6e47f005fcc06d8c52c1b9d715772322279d2",
+        "bytes": 41,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "38dde89a453487e736364cec15a6e47f005fcc06d8c52c1b9d715772322279d2",
+        "bytes": 41,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/initialized-original-gate.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/initialized-original-gate.json",
+      "original": {
+        "sha256": "fb71ef4a487a609d0b63e3d19b76d86ba6bcc0626bf87360168144ced85735cc",
+        "bytes": 821,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "fb71ef4a487a609d0b63e3d19b76d86ba6bcc0626bf87360168144ced85735cc",
+        "bytes": 821,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/metadata-stage.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/metadata-stage.json",
+      "original": {
+        "sha256": "104e7b41d92d408ab992d78ce389e4136aa2db07925aa64f486660d5d70d0849",
+        "bytes": 510,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "2610b8de07ccf66d2700feb59d6da7ab627623113a46e5498906174c401a5093",
+        "bytes": 438,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 1
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/metadata-started.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/metadata-started.json",
+      "original": {
+        "sha256": "cc3fa92344eb7d071e80f21137bcce985537d8403a7da981fb344c17b9a41e2e",
+        "bytes": 457,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "c94d56f34eb8cb232ebc9cd351b969e8910b3717f8491ed614bae48a2537dc06",
+        "bytes": 385,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 1
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/metadata.stderr",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/metadata.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/metadata.stdout",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/metadata.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/producer-receipt.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/producer-receipt.json",
+      "original": {
+        "sha256": "620551b877dcc68c1120d7e86b700168706881a5dfab7a02066245c571700057",
+        "bytes": 1888,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "3d45a51a8c0d19983dbc0462e98cd4d0b678a306af7f6c5b37be54344ca50002",
+        "bytes": 1829,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/producer-stage.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/producer-stage.json",
+      "original": {
+        "sha256": "4ce35816cf993df2fa35f87ecdf2975df339c66770924980f4652d5138baae60",
+        "bytes": 463,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "ff180358a6c6ae96ed103eba425e58e6624d7a02c53494b9581195b9f7604aeb",
+        "bytes": 404,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/producer-started.json",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/producer-started.json",
+      "original": {
+        "sha256": "37f240ff994a6fb6c86162922105b92dcc79530c4f62955514a9c68468ea4dd7",
+        "bytes": 411,
+        "mode": "0o600"
+      },
+      "public": {
+        "sha256": "7f0444814d1d007afeb5b2a0d3677aef819c51e5e33316bfb2166353e6e14226",
+        "bytes": 352,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": true
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/producer.stderr",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/producer.stderr",
+      "original": {
+        "sha256": "b745b588d8f49f8e3735945713026b2929f6b715a6861af3e47b4b0c6e9a58e7",
+        "bytes": 1308,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "b745b588d8f49f8e3735945713026b2929f6b715a6861af3e47b4b0c6e9a58e7",
+        "bytes": 1308,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runtime/producer.stdout",
+      "group": "harbor-numerical-runtime",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/runtime/producer.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/selfcheck.py",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/selfcheck.py",
+      "original": {
+        "sha256": "08151cecadf65390fecf78b91b2a2cb7795511045d3885126c722660baa28ec2",
+        "bytes": 11466,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "08151cecadf65390fecf78b91b2a2cb7795511045d3885126c722660baa28ec2",
+        "bytes": 11466,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/worker.py",
+      "group": "harbor-preparation-frozen",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/worker.py",
+      "original": {
+        "sha256": "9165ad35796c9d610a5963d3e0c7eb76aad404ebb11ab2083dee5a5acacfc62e",
+        "bytes": 6840,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "9165ad35796c9d610a5963d3e0c7eb76aad404ebb11ab2083dee5a5acacfc62e",
+        "bytes": 6840,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/root-outer/GO-IDENTITY.json",
+      "group": "harbor-root-outer",
+      "original_locator": "ROOT/.local/harbor-coupled-root-run-20261116/GO-IDENTITY.json",
+      "original": {
+        "sha256": "1b5ed1cc56e609bccbc7933a7fecb68f16fee558a7d475ef8e750d652c55c2f3",
+        "bytes": 348,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "a2644c055844789bdabe4082d037f1db16fb90f3309153898937e98d13e5d399",
+        "bytes": 289,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/root-outer/RESULT.json",
+      "group": "harbor-root-outer",
+      "original_locator": "ROOT/.local/harbor-coupled-root-run-20261116/RESULT.json",
+      "original": {
+        "sha256": "019867ed8770435604a555fcd2a138ef82cb378a0d05da81a529e27cfa0c70c8",
+        "bytes": 5170,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "019867ed8770435604a555fcd2a138ef82cb378a0d05da81a529e27cfa0c70c8",
+        "bytes": 5170,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/root-outer/ROOT-REVIEW-001.json",
+      "group": "harbor-root-outer",
+      "original_locator": "ROOT/.local/harbor-coupled-root-run-20261116/ROOT-REVIEW-001.json",
+      "original": {
+        "sha256": "b8f9669b7284d0125012d93d5c5ba159d8bc157e71cd78721992d5bc9de945e0",
+        "bytes": 1768,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "b8f9669b7284d0125012d93d5c5ba159d8bc157e71cd78721992d5bc9de945e0",
+        "bytes": 1768,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/root-outer/RUNNING.json",
+      "group": "harbor-root-outer",
+      "original_locator": "ROOT/.local/harbor-coupled-root-run-20261116/RUNNING.json",
+      "original": {
+        "sha256": "17147669809cdd1f1a2ee13f52109eab3a9a9ca0823bf9b79ba3c6d715c304da",
+        "bytes": 839,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "1424c4826d746a4b20cef882697c2f1f76f8d6b2776fd8252c7dd587584b250c",
+        "bytes": 708,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 2,
+        "HOME": 1
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/root-outer/TERMINAL-WITNESS.json",
+      "group": "harbor-root-outer",
+      "original_locator": "ROOT/.local/harbor-coupled-root-run-20261116/TERMINAL-WITNESS.json",
+      "original": {
+        "sha256": "9c77b3ad7ebda644600ac6675695e72e83c5829d70b8fc4d75dd07d7fe041679",
+        "bytes": 510,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "9c77b3ad7ebda644600ac6675695e72e83c5829d70b8fc4d75dd07d7fe041679",
+        "bytes": 510,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/root-outer/controller.stderr",
+      "group": "harbor-root-outer",
+      "original_locator": "ROOT/.local/harbor-coupled-root-run-20261116/controller.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/root-outer/controller.stdout",
+      "group": "harbor-root-outer",
+      "original_locator": "ROOT/.local/harbor-coupled-root-run-20261116/controller.stdout",
+      "original": {
+        "sha256": "95d07fd043eccfef537b9a569af9660dfa039828f417cac3480952ea6acce3a5",
+        "bytes": 398,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "95d07fd043eccfef537b9a569af9660dfa039828f417cac3480952ea6acce3a5",
+        "bytes": 398,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/SOURCE-INTEGRATION-001.json",
+      "group": "source-root-integration",
+      "original_locator": "ROOT/.local/cloth-delivery-integration-review-20261116/SOURCE-INTEGRATION-001.json",
+      "original": {
+        "sha256": "7be6af57fc60afaf1ef7dc850b745993be2ae9284a198226ef2744dd005d1eca",
+        "bytes": 10873,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "7be6af57fc60afaf1ef7dc850b745993be2ae9284a198226ef2744dd005d1eca",
+        "bytes": 10873,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/ENVIRONMENT.json",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/ENVIRONMENT.json",
+      "original": {
+        "sha256": "efc49ba0fac4ecf6ccf04fee38055d34ddaceea82e6f68f6c7076dbd036c3032",
+        "bytes": 329,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "960521ac96aa0d9f511cd49a5d0fbe7a6d2d8c2b9ecbc80e064cbef9ccb7320c",
+        "bytes": 270,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/FINAL-MANIFEST.json",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/FINAL-MANIFEST.json",
+      "original": {
+        "sha256": "e800cbf23faa281e09854a3dc39284fa46889c4d441a76d81d9abe8c91b3bde2",
+        "bytes": 4025,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e800cbf23faa281e09854a3dc39284fa46889c4d441a76d81d9abe8c91b3bde2",
+        "bytes": 4025,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/HANDOFF.md",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/HANDOFF.md",
+      "original": {
+        "sha256": "cc1f7b419fabd349e82df3bcfc8f4a391480be9b0356b04fbfc1c2dd0d8e6a49",
+        "bytes": 5745,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "cc1f7b419fabd349e82df3bcfc8f4a391480be9b0356b04fbfc1c2dd0d8e6a49",
+        "bytes": 5745,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/LAUNCH-ATTRIBUTION.json",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/LAUNCH-ATTRIBUTION.json",
+      "original": {
+        "sha256": "21964d057ba835b6dcb5730a63fbda9f219aabb8a9743a630045ebff3c35c8ca",
+        "bytes": 705,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "21964d057ba835b6dcb5730a63fbda9f219aabb8a9743a630045ebff3c35c8ca",
+        "bytes": 705,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/METADATA-FREEZE.json",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/METADATA-FREEZE.json",
+      "original": {
+        "sha256": "62263a62e2e6a1dc5b783bc6f9dceacc82c17455a75676e2de664cd24e75c71e",
+        "bytes": 10900,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "62263a62e2e6a1dc5b783bc6f9dceacc82c17455a75676e2de664cd24e75c71e",
+        "bytes": 10900,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/RESULT.json",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/RESULT.json",
+      "original": {
+        "sha256": "acfe09704dfab6fc4c7640d1daed7166d3bd20c4d8d75ea3f22453902d27ea87",
+        "bytes": 5701,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "acfe09704dfab6fc4c7640d1daed7166d3bd20c4d8d75ea3f22453902d27ea87",
+        "bytes": 5701,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/SOURCE88.json",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/SOURCE88.json",
+      "original": {
+        "sha256": "1c7dfd33e2de90b40a69b3655dd8f73f1196ad369f1da0ab82896d2b7e8bb1d0",
+        "bytes": 10790,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "1c7dfd33e2de90b40a69b3655dd8f73f1196ad369f1da0ab82896d2b7e8bb1d0",
+        "bytes": 10790,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/fmt-SOURCE-AFTER.json",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/fmt-SOURCE-AFTER.json",
+      "original": {
+        "sha256": "724ef263a4e82951f9cda4a366f0ce3f0fe1a5fcea6bf14281b8064b856ddc2a",
+        "bytes": 9711,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "724ef263a4e82951f9cda4a366f0ce3f0fe1a5fcea6bf14281b8064b856ddc2a",
+        "bytes": 9711,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/fmt-receipt.json",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/fmt-receipt.json",
+      "original": {
+        "sha256": "8d85696a27e96da5cfe61dc099ba3001a35e670c49ad457dc336de049a588f4f",
+        "bytes": 567,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "8d85696a27e96da5cfe61dc099ba3001a35e670c49ad457dc336de049a588f4f",
+        "bytes": 567,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/fmt.log",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/fmt.log",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/native-cli-debug-build-SOURCE-AFTER.json",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/native-cli-debug-build-SOURCE-AFTER.json",
+      "original": {
+        "sha256": "724ef263a4e82951f9cda4a366f0ce3f0fe1a5fcea6bf14281b8064b856ddc2a",
+        "bytes": 9711,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "724ef263a4e82951f9cda4a366f0ce3f0fe1a5fcea6bf14281b8064b856ddc2a",
+        "bytes": 9711,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/native-cli-debug-build-receipt.json",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/native-cli-debug-build-receipt.json",
+      "original": {
+        "sha256": "2de8860402a17406b54dca88aab021f01023b3edd8ef8beaa5c90fc6e2ce2f65",
+        "bytes": 618,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "2de8860402a17406b54dca88aab021f01023b3edd8ef8beaa5c90fc6e2ce2f65",
+        "bytes": 618,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/native-cli-debug-build.log",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/native-cli-debug-build.log",
+      "original": {
+        "sha256": "f17d472c0c68601731f74f98fb2478c01773f9a224d70e5a7d4429d92ff70da6",
+        "bytes": 399,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "f2abf3cecbb2dba543c7cdff3c2daf3fc49534a9c26ddb44114a17db7e94607b",
+        "bytes": 340,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/workspace-clippy-SOURCE-AFTER.json",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/workspace-clippy-SOURCE-AFTER.json",
+      "original": {
+        "sha256": "724ef263a4e82951f9cda4a366f0ce3f0fe1a5fcea6bf14281b8064b856ddc2a",
+        "bytes": 9711,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "724ef263a4e82951f9cda4a366f0ce3f0fe1a5fcea6bf14281b8064b856ddc2a",
+        "bytes": 9711,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/workspace-clippy-receipt.json",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/workspace-clippy-receipt.json",
+      "original": {
+        "sha256": "795bd1b680c20599fef32da71dc1d7b7d7f2532f8666804ffa52a0465cefac20",
+        "bytes": 628,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "795bd1b680c20599fef32da71dc1d7b7d7f2532f8666804ffa52a0465cefac20",
+        "bytes": 628,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/workspace-clippy.log",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/workspace-clippy.log",
+      "original": {
+        "sha256": "bbaa8483d3a908c83818590ed342bb2b44f649b3ce9737202d7a4c8b02cef4e6",
+        "bytes": 6583,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "6d73f7684519dfd8f3454cdb6ab2a4d63fd9a33b31da322cdd62f499e1296f8a",
+        "bytes": 6229,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 6,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/workspace-tests-SOURCE-AFTER.json",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/workspace-tests-SOURCE-AFTER.json",
+      "original": {
+        "sha256": "724ef263a4e82951f9cda4a366f0ce3f0fe1a5fcea6bf14281b8064b856ddc2a",
+        "bytes": 9711,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "724ef263a4e82951f9cda4a366f0ce3f0fe1a5fcea6bf14281b8064b856ddc2a",
+        "bytes": 9711,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/workspace-tests-receipt.json",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/workspace-tests-receipt.json",
+      "original": {
+        "sha256": "8e9f8d7d782496dfaa660eb46887144aa36cba088287b30d354ed1223c04e222",
+        "bytes": 571,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "8e9f8d7d782496dfaa660eb46887144aa36cba088287b30d354ed1223c04e222",
+        "bytes": 571,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/combined-gates/workspace-tests.log",
+      "group": "source-combined",
+      "original_locator": "ROOT/.local/cloth-material-integration-20261116/.local/combined-gates-20261116/workspace-tests.log",
+      "original": {
+        "sha256": "3c4d1fc6cba6331c6a2c2fde439f76e245e95ac981326601221181ddcd585a31",
+        "bytes": 49374,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "f4518b84c90c58ae384cbb0bac0929f9270261e16af9bc4776e86c621a1025e4",
+        "bytes": 49020,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 6,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/FINAL-INPUTS.json",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/FINAL-INPUTS.json",
+      "original": {
+        "sha256": "579137767f45d3288a98990029def73b50d6e1c8284a31fc2c9dd9f067450ac8",
+        "bytes": 910,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "579137767f45d3288a98990029def73b50d6e1c8284a31fc2c9dd9f067450ac8",
+        "bytes": 910,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/FINAL-MANIFEST.json",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/FINAL-MANIFEST.json",
+      "original": {
+        "sha256": "9b98864c238b5bcbd033dcf477e782a27c5ae625449e7b4f3e4629ea95414cda",
+        "bytes": 5013,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "9b98864c238b5bcbd033dcf477e782a27c5ae625449e7b4f3e4629ea95414cda",
+        "bytes": 5013,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/FINDINGS.md",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/FINDINGS.md",
+      "original": {
+        "sha256": "59bd10fa804bbbb1afab4d6e90a79c094d6107eca43d8fd8e6813192de86f304",
+        "bytes": 7568,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "59bd10fa804bbbb1afab4d6e90a79c094d6107eca43d8fd8e6813192de86f304",
+        "bytes": 7568,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/GREEN-INPUTS.json",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/GREEN-INPUTS.json",
+      "original": {
+        "sha256": "f08e55a68347dc17cab0b7bfd486162db28c12a6c6af2909caeebafb2309ac50",
+        "bytes": 891,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "f08e55a68347dc17cab0b7bfd486162db28c12a6c6af2909caeebafb2309ac50",
+        "bytes": 891,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/RED-INPUTS.json",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/RED-INPUTS.json",
+      "original": {
+        "sha256": "9baecf5156ef1a59c4134edd8c806a61eb1d65656df19553ba0e74f6640a23f6",
+        "bytes": 972,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "9baecf5156ef1a59c4134edd8c806a61eb1d65656df19553ba0e74f6640a23f6",
+        "bytes": 972,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/RED-TERMINAL.json",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/RED-TERMINAL.json",
+      "original": {
+        "sha256": "cc4e944d649e31e1e5d4a485cf11b87a5bc27e840e347578464c2bebd1035fd9",
+        "bytes": 242,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "cc4e944d649e31e1e5d4a485cf11b87a5bc27e840e347578464c2bebd1035fd9",
+        "bytes": 242,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/REFERENCE.json",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/REFERENCE.json",
+      "original": {
+        "sha256": "20b421205c27a9d9a3e3a61c8b5e35b3f7a8615281e39c00ec91b74996eda103",
+        "bytes": 5593,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "20b421205c27a9d9a3e3a61c8b5e35b3f7a8615281e39c00ec91b74996eda103",
+        "bytes": 5593,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/REVIEW-INPUTS.json",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/REVIEW-INPUTS.json",
+      "original": {
+        "sha256": "ef884c4f0da0d47ec1cab62df32d8ed3c0d93c378e18fef116a988d12478a6d4",
+        "bytes": 1013,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "ef884c4f0da0d47ec1cab62df32d8ed3c0d93c378e18fef116a988d12478a6d4",
+        "bytes": 1013,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/analytic-shear-first-step.json",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/analytic-shear-first-step.json",
+      "original": {
+        "sha256": "d0cbf68c0c72be1761226c43db369444f73528a8c3fb0ddfc3ecd3fd14290078",
+        "bytes": 435,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "d0cbf68c0c72be1761226c43db369444f73528a8c3fb0ddfc3ecd3fd14290078",
+        "bytes": 435,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/final-sim-tests.log",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/final-sim-tests.log",
+      "original": {
+        "sha256": "25e3997c87d878baede8980d4792cd8244c183350429eebdcdf2cd717a673e7a",
+        "bytes": 6754,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "6707011ed7bc001b81dd688e328d142180ae499739bc02b23ef0334805a79c98",
+        "bytes": 6695,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/green-focused.log",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/green-focused.log",
+      "original": {
+        "sha256": "9abdc2dcd5c41fba1ed269f88288925af21436d9094c5edbc39714a8395e2008",
+        "bytes": 787,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "735a704b91fb61206b9ef2b6d27343a8e544d742ff50fa2eb627fdb6d1062e79",
+        "bytes": 728,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/implementation.patch",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/implementation.patch",
+      "original": {
+        "sha256": "46c79afcc10d1e5d463b7574b289ea87a595efc54501d3c50ee0192776ae3709",
+        "bytes": 19541,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "46c79afcc10d1e5d463b7574b289ea87a595efc54501d3c50ee0192776ae3709",
+        "bytes": 19541,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/oracle-preparation-failure.txt",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/oracle-preparation-failure.txt",
+      "original": {
+        "sha256": "9c62d6bed65aedef863d214a0fd85dc69e5f58c795886994a23694ebf75a4536",
+        "bytes": 219,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "9c62d6bed65aedef863d214a0fd85dc69e5f58c795886994a23694ebf75a4536",
+        "bytes": 219,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/red.log",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/red.log",
+      "original": {
+        "sha256": "6b926a0f6e2eb86a5cefc9a6ed1df36dde931de6fba75f9673148daa5178c26e",
+        "bytes": 1284,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "ec76765f00b08731a92d0efb6f321b3934993544f503434ff23f75742a3f55d1",
+        "bytes": 1225,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/reference-initial-oracle-stop.py",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/reference-initial-oracle-stop.py",
+      "original": {
+        "sha256": "0be52a342492322c8d000b3746dbd2994f1b8040f6bcc824671b7020adeec739",
+        "bytes": 5437,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "0be52a342492322c8d000b3746dbd2994f1b8040f6bcc824671b7020adeec739",
+        "bytes": 5437,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/reference.py",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/reference.py",
+      "original": {
+        "sha256": "28930e5a24099abeb98acb092c51598498e534000811c153cc8585118da7034f",
+        "bytes": 5526,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "28930e5a24099abeb98acb092c51598498e534000811c153cc8585118da7034f",
+        "bytes": 5526,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/review-clippy.log",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/review-clippy.log",
+      "original": {
+        "sha256": "d100b08f129a5191e50a0a8e934192985ae6aaf770123e39f3c83c05b0ff44e4",
+        "bytes": 229,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "154ee169d430143522ced16e98c56437675386c0ea171493fe8c7fd79e99223f",
+        "bytes": 170,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/review-fmt.log",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/review-fmt.log",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/review-sim-tests.log",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/review-sim-tests.log",
+      "original": {
+        "sha256": "9a976b833eacaea91df2a9544eb8310a71deb3c1831be59e2efcb1e3a8d1dd69",
+        "bytes": 6754,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "c89efdda4b15bfad64ca56db2d063f3d869ef68b58ad45a3f5f1bc2858887e4c",
+        "bytes": 6695,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/component/tests-red.rs",
+      "group": "source-component",
+      "original_locator": "ROOT/.local/coupled-cloth-solve-20261116/.local/coupled-proof/tests-red.rs",
+      "original": {
+        "sha256": "e4133b5e9bdbd3955426967ee16de9db0e996275c94f5f52ac47fa1346394f22",
+        "bytes": 61072,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "e4133b5e9bdbd3955426967ee16de9db0e996275c94f5f52ac47fa1346394f22",
+        "bytes": 61072,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/history/WF-20261116-ENDPOINT-EDIT-NATIVE-001.original.json",
+      "group": "endpoint-exact-history",
+      "original_locator": "ROOT/.local/cloth-delivery-integration-20261116/parity/reports/WF-20261116-ENDPOINT-EDIT-NATIVE-001.json",
+      "original": {
+        "sha256": "21f072df998aaee00b4f243c2ba8e7d8e54775fdf2102b5c7175a091995e5525",
+        "bytes": 41692,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "21f072df998aaee00b4f243c2ba8e7d8e54775fdf2102b5c7175a091995e5525",
+        "bytes": 41692,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    },
+    {
+      "path": "parity/reports/artifacts/material-source-20261116/history/WF-20261116-ENDPOINT-EDIT-SOURCE-001.original.json",
+      "group": "endpoint-exact-history",
+      "original_locator": "ROOT/.local/cloth-delivery-integration-20261116/parity/reports/WF-20261116-ENDPOINT-EDIT-SOURCE-001.json",
+      "original": {
+        "sha256": "25bd45e3262936bb256a38bd960ed95782dcfee9b796038b7fd99d163fc9327b",
+        "bytes": 30701,
+        "mode": "0o644"
+      },
+      "public": {
+        "sha256": "25bd45e3262936bb256a38bd960ed95782dcfee9b796038b7fd99d163fc9327b",
+        "bytes": 30701,
+        "mode": "0o644",
+        "git_mode": "100644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false,
+      "posix_mode_changed_for_public_git": false
+    }
+  ],
+  "original_component_inventory": {
+    "lib-before.rs": {
+      "sha256": "f69f2b18464ae980ada76d81fd86c46ee3dd575457b194be826fbd6cb1c2a546",
+      "bytes": 35786,
+      "mode": "0o644"
+    },
+    "tests-before.rs": {
+      "sha256": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+      "bytes": 59354,
+      "mode": "0o644"
+    },
+    "tests-red.rs": {
+      "sha256": "e4133b5e9bdbd3955426967ee16de9db0e996275c94f5f52ac47fa1346394f22",
+      "bytes": 61072,
+      "mode": "0o644"
+    },
+    "fmt.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0o644"
+    },
+    "red.log": {
+      "sha256": "6b926a0f6e2eb86a5cefc9a6ed1df36dde931de6fba75f9673148daa5178c26e",
+      "bytes": 1284,
+      "mode": "0o644"
+    },
+    "review-sim-tests.log": {
+      "sha256": "9a976b833eacaea91df2a9544eb8310a71deb3c1831be59e2efcb1e3a8d1dd69",
+      "bytes": 6754,
+      "mode": "0o644"
+    },
+    "sim-tests.log": {
+      "sha256": "323f39ddad83545dc5499ef1fb1787099abefa34c298196aef9a99a6fca45bbc",
+      "bytes": 5389,
+      "mode": "0o644"
+    },
+    "clippy.log": {
+      "sha256": "7d13d0cba6de7a1a721772a7a4dc76f731f678067875c42b90f7eae9e106d107",
+      "bytes": 290,
+      "mode": "0o644"
+    },
+    "review-clippy.log": {
+      "sha256": "d100b08f129a5191e50a0a8e934192985ae6aaf770123e39f3c83c05b0ff44e4",
+      "bytes": 229,
+      "mode": "0o644"
+    },
+    "FINAL-MANIFEST.json": {
+      "sha256": "9b98864c238b5bcbd033dcf477e782a27c5ae625449e7b4f3e4629ea95414cda",
+      "bytes": 5013,
+      "mode": "0o644"
+    },
+    "implementation.patch": {
+      "sha256": "46c79afcc10d1e5d463b7574b289ea87a595efc54501d3c50ee0192776ae3709",
+      "bytes": 19541,
+      "mode": "0o644"
+    },
+    "RED-TERMINAL.json": {
+      "sha256": "cc4e944d649e31e1e5d4a485cf11b87a5bc27e840e347578464c2bebd1035fd9",
+      "bytes": 242,
+      "mode": "0o644"
+    },
+    "REFERENCE.json": {
+      "sha256": "20b421205c27a9d9a3e3a61c8b5e35b3f7a8615281e39c00ec91b74996eda103",
+      "bytes": 5593,
+      "mode": "0o644"
+    },
+    "final-fmt.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0o644"
+    },
+    "final-sim-tests.log": {
+      "sha256": "25e3997c87d878baede8980d4792cd8244c183350429eebdcdf2cd717a673e7a",
+      "bytes": 6754,
+      "mode": "0o644"
+    },
+    "analytic-shear-first-step.json": {
+      "sha256": "d0cbf68c0c72be1761226c43db369444f73528a8c3fb0ddfc3ecd3fd14290078",
+      "bytes": 435,
+      "mode": "0o644"
+    },
+    "reference.log": {
+      "sha256": "20b421205c27a9d9a3e3a61c8b5e35b3f7a8615281e39c00ec91b74996eda103",
+      "bytes": 5593,
+      "mode": "0o644"
+    },
+    "RED-INPUTS.json": {
+      "sha256": "9baecf5156ef1a59c4134edd8c806a61eb1d65656df19553ba0e74f6640a23f6",
+      "bytes": 972,
+      "mode": "0o644"
+    },
+    "reference-initial-oracle-stop.py": {
+      "sha256": "0be52a342492322c8d000b3746dbd2994f1b8040f6bcc824671b7020adeec739",
+      "bytes": 5437,
+      "mode": "0o644"
+    },
+    "reference.py": {
+      "sha256": "28930e5a24099abeb98acb092c51598498e534000811c153cc8585118da7034f",
+      "bytes": 5526,
+      "mode": "0o644"
+    },
+    "green-focused.log": {
+      "sha256": "9abdc2dcd5c41fba1ed269f88288925af21436d9094c5edbc39714a8395e2008",
+      "bytes": 787,
+      "mode": "0o644"
+    },
+    "FINDINGS.md": {
+      "sha256": "59bd10fa804bbbb1afab4d6e90a79c094d6107eca43d8fd8e6813192de86f304",
+      "bytes": 7568,
+      "mode": "0o644"
+    },
+    "FINAL-INPUTS.json": {
+      "sha256": "579137767f45d3288a98990029def73b50d6e1c8284a31fc2c9dd9f067450ac8",
+      "bytes": 910,
+      "mode": "0o644"
+    },
+    "GREEN-INPUTS.json": {
+      "sha256": "f08e55a68347dc17cab0b7bfd486162db28c12a6c6af2909caeebafb2309ac50",
+      "bytes": 891,
+      "mode": "0o644"
+    },
+    "constraints-before.rs": {
+      "sha256": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+      "bytes": 7237,
+      "mode": "0o644"
+    },
+    "review-fmt.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0o644"
+    },
+    "oracle-preparation-failure.txt": {
+      "sha256": "9c62d6bed65aedef863d214a0fd85dc69e5f58c795886994a23694ebf75a4536",
+      "bytes": 219,
+      "mode": "0o644"
+    },
+    "REVIEW-INPUTS.json": {
+      "sha256": "ef884c4f0da0d47ec1cab62df32d8ed3c0d93c378e18fef116a988d12478a6d4",
+      "bytes": 1013,
+      "mode": "0o644"
+    }
+  },
+  "explicit_omissions": {
+    "source_component": [
+      {
+        "name": "clippy.log",
+        "reason": "Earlier/redundant source or log retained in private original namespace; baseline381c source is reachable in publishedGit history; selected redtests and all original input/manifest identities remain. No outcome repaired or regraded."
+      },
+      {
+        "name": "constraints-before.rs",
+        "reason": "Earlier/redundant source or log retained in private original namespace; baseline381c source is reachable in publishedGit history; selected redtests and all original input/manifest identities remain. No outcome repaired or regraded."
+      },
+      {
+        "name": "final-fmt.log",
+        "reason": "Earlier/redundant source or log retained in private original namespace; baseline381c source is reachable in publishedGit history; selected redtests and all original input/manifest identities remain. No outcome repaired or regraded."
+      },
+      {
+        "name": "fmt.log",
+        "reason": "Earlier/redundant source or log retained in private original namespace; baseline381c source is reachable in publishedGit history; selected redtests and all original input/manifest identities remain. No outcome repaired or regraded."
+      },
+      {
+        "name": "lib-before.rs",
+        "reason": "Earlier/redundant source or log retained in private original namespace; baseline381c source is reachable in publishedGit history; selected redtests and all original input/manifest identities remain. No outcome repaired or regraded."
+      },
+      {
+        "name": "reference.log",
+        "reason": "Earlier/redundant source or log retained in private original namespace; baseline381c source is reachable in publishedGit history; selected redtests and all original input/manifest identities remain. No outcome repaired or regraded."
+      },
+      {
+        "name": "sim-tests.log",
+        "reason": "Earlier/redundant source or log retained in private original namespace; baseline381c source is reachable in publishedGit history; selected redtests and all original input/manifest identities remain. No outcome repaired or regraded."
+      },
+      {
+        "name": "tests-before.rs",
+        "reason": "Earlier/redundant source or log retained in private original namespace; baseline381c source is reachable in publishedGit history; selected redtests and all original input/manifest identities remain. No outcome repaired or regraded."
+      }
+    ],
+    "combined_gate": [
+      {
+        "name": "CURRENT-JOB.json",
+        "reason": "intermediate handle; actual terminal receipts and RESULT selected"
+      },
+      {
+        "name": "run_checks.py",
+        "reason": "local gate orchestration only; exactcommands/argv/env/source/durations retained in actual receipts; no rerun"
+      }
+    ],
+    "harbor_preparation_and_case": "No file in the 75-file frozen preparation, FREEZE/ROOT-GO, five numerical directories or seven root-outer files is omitted. All 41 numerical files are selected, including raw trajectory.jsonl.",
+    "compiled_executables_targets_caches": "All compiled binaries, target trees, registry/build caches, app bundles and interpreter binaries are omitted. Their retained receipts identify exact hashes/bytes. No binary/cache was copied between worktrees.",
+    "private_reference_material": "Raw vendor/reference packets R011, R012 and R013 are wholly excluded; no raw file, account view, proprietary context, extract, image or absolute-private link is selected. Scholarly PDFs remain private.",
+    "other_diagnostic_namespaces": "Earlier derivative, archived-replay identity failure, stationarity/stage diagnostics and incomplete prior proposal are not newly selected or repaired. Their frozen private originals and existing public report outcomes remain unchanged. No acceptance is transferred."
+  },
+  "privacy_audit": {
+    "selected_files_scanned": 167,
+    "unresolved_personal_path_or_account_tokens": [],
+    "excluded_raw_reference_identifier_hits_in_selected_bytes": [],
+    "literal_substitution_counts": {
+      "ROOT": 87,
+      "HOME": 25
+    },
+    "six_bin_fixtures": "Six selected .bin files contain only ASCII x: one 8192-byte synthetic overflow fixture and five 17-byte synthetic volume fixtures. They are synthetic test data, not compiled programs.",
+    "individual_artifact_limit_bytes": 50000000,
+    "largest_selected_file": {
+      "path": "parity/reports/artifacts/coupled-harbor-20261116/experiment/runs/base/trajectory.jsonl",
+      "bytes": 15389222
+    }
+  },
+  "publication_qualification": "ROOT/HOME are plain locatorlabels with per-file substitutions; no braces/dollar convention. Original embedded manifests include omitted private artifacts; selected coverage is explicit. Historical current/pending words identify original stages. LAUNCH-ATTRIBUTION qualifies original RESULT launched:false as explicit build-stage only; CLI was invoked by workspace integration tests. No garment/UI/reference result is added. Scholarly primary PDFs remain private and are not selected. No target/binary/cache copied. All original case hashes remain unchanged. The inherited analyzer fields new_garment_execution:false and kind wording describe its saved-state consumer; actual_current_numerical_producer_executed:true plus producer/root receipts bind the fresh numerical run. Initial target/seam failures in frames0–28 remain visible but are not completed-fit acceptance; the independent strict trajectory fails strain at28–37. The original first invalid synthetic fixture, superseded producer build, failed first seal and second seal refusal are selected without repair. All full/native/reference/physics/garment/roadmap acceptance remains false."
+}

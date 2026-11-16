@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/selfcheck.py", line 169, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/selfcheck.py", line 93, in main
+    assert result["exit_code"] == 0 and result["stop_reason"] is None, result
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'argv': ['ROOT/.local/cloth-material-integration-20261116/target/release/harbor-coupled-producer', 'prepare', 'ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic/new-triangle.weftforge', 'ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic/prepared'], 'pid': 72548, 'process_group': 72548, 'exit_code': 1, 'peak_rss_bytes': 2473984, 'sampled_peak_rss_bytes': 32768, 'stop_reason': None, 'end_monotonic_seconds': 986305.451064666}

@@ -1,0 +1,12 @@
+   Compiling weftforge-sim v0.1.0 (ROOT/.local/coupled-cloth-solve-20261116/crates/weftforge-sim)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.34s
+     Running unittests src/lib.rs (target/debug/deps/weftforge_sim-40f8b89cc1ad501d)
+
+running 3 tests
+test tests::membrane_projection_matches_analytic_uniaxial_and_shear_updates ... ok
+independent energy position error=1.6940658945086007e-20m stationarity=1.457316402818693e-15N
+test tests::coupled_membrane_reaches_independent_incremental_energy_equilibrium ... ok
+test tests::membrane_affine_strain_follows_material_axes_under_arrangement_and_winding ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 54 filtered out; finished in 0.00s
+

@@ -1,8 +1,16 @@
 # WeftForge current-source addendum
 
-This additive engineering review explicitly rechecks original implementation candidates at immutable source `ac6c2e53b47f2d19772d2bfb341e1500dae2cf0c`. The historical map remains pinned to `3eddef067c8a1f03f192c8e6822a8da2a94f9bf9`: **949 unique IDs**, **205 packets**, **56 landmark identities** and its original **22-command** snapshot are byte-exact. This is source mapping, not a completed roadmap gate, native execution or reference parity.
+This additive engineering review explicitly rechecks original implementation candidates at immutable source `a9d5cf72cc966e6a2b8fc76fc245951f7c7ef031`. The historical map remains pinned to `3eddef067c8a1f03f192c8e6822a8da2a94f9bf9`: **949 unique IDs**, **205 packets**, **56 landmark identities** and its original **22-command** snapshot are byte-exact. This is source mapping, not a completed roadmap gate, native execution or reference parity.
 
 [Machine-readable addendum](weftforge-current-source-addendum.json). Current qualification, failures and freshness belong to [parity/features.yaml](../../parity/features.yaml) and the separately attributed reports. No source/product/native/reference execution was performed by this metadata update.
+
+## Coupled material source overlay
+
+The exact preceding addendum remains at metadata `f79f88e5749c24fb642bee5f75979c957c600f40`, pinned to source `ac6c2e53b47f2d19772d2bfb341e1500dae2cf0c`: JSON SHA-256 `5bc48301d84a43abee3c9a4a6b34de871bfbab0b2ef5b15177ba4e77b950a059`; Markdown SHA-256 `fc3878f8be8fac7fc92e2d833029b4cc061e18dea78b84d5fb11d31984259ed4`. Its **378 anchor identities**, complete prior history, full scopes and all preceding counts remain historical and exact. This overlay keeps **39 rows / 23 surfaces / 23 contracts**, re-pins two existing sim-file anchors and adds one direct material-method anchor for **379 current occurrences**. Command/schema/tool identities remain **34/33/9**; the historical 949/205/56 inventory and eight original files are unchanged.
+
+Integrated source `a9d5cf72cc966e6a2b8fc76fc245951f7c7ef031` preserves the actual `36524293b89686c2368f22d13ad09289fc70af03` correction and all 88 source inputs of actual tested `96d3baee4543c7edbdb804df6090697a9f65da09`, including [physics equations](../../docs/physics.md). The existing simulate row now describes retained per-triangle positional corrections, fixed local inertial/elastic anchors, a coupled 3×3 Gauss–Newton/Woodbury solve, at most 16 Armijo halvings and material-loop cancellation with whole-call rollback. Bending, sewing and contact retain their prior methods. The new direct anchor is `Membrane::solve` in [constraints.rs](../../crates/weftforge-sim/src/constraints.rs#L76); the other 378 identities remain.
+
+This map update performs no tests or native/reference workflow. Component convergence, historical source gates and the failed full strict headless Harbor trajectory remain separate report evidence; no equilibrium, calibrated cloth, complete contact, native/full garment or reference acceptance transfers from a source anchor. Later UI source and its separate workspace gates are outside this overlay.
 
 ## Explicit source review history
 

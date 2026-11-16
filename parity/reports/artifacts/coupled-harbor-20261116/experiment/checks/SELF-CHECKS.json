@@ -1,0 +1,170 @@
+{
+  "Cloth_step_calls": 0,
+  "Harbor_initialized": false,
+  "environment": {
+    "binary_path": "HOME/.pyenv/versions/3.13.0/bin/python3.13",
+    "binary_sha256": "dae804f93cd396de84720747c66218ff0aed9f74385f71dd9b3e62c49ce5b2ce",
+    "bytecode_disabled": true,
+    "implementation": "cpython",
+    "optimize": 0,
+    "platform": "Darwin",
+    "rss_units": "bytes",
+    "sum_probe": 1.0000000000000002,
+    "version": [
+      3,
+      13,
+      0
+    ]
+  },
+  "old_saved_frames_read_or_graded": false,
+  "producer_binary_sha256": "d9d430b819d4ac0787ec2faebfbd3f54b27d1c2096d005ac4104c69f27691c41",
+  "real_case_clock_started": false,
+  "status": "passed",
+  "synthetic_checks": [
+    {
+      "check": "exact_interpreter_arithmetic_and_no_optimization_guard",
+      "passed": true
+    },
+    {
+      "check": "complete_import_closure_and_independent_new_analytic_geometry_fixtures",
+      "passed": true
+    },
+    {
+      "check": "strict_empty_field_adapter_numeric_types_signed_zero_and_zero_step_gate",
+      "passed": true
+    },
+    {
+      "check": "actual_release_synthetic_init_and_approval_only_no_steps",
+      "init": {
+        "argv": [
+          "ROOT/.local/cloth-material-integration-20261116/target/release/harbor-coupled-producer",
+          "prepare",
+          "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/new-triangle.weftforge",
+          "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/prepared"
+        ],
+        "end_monotonic_seconds": 986533.956085333,
+        "exit_code": 0,
+        "peak_rss_bytes": 2981888,
+        "pid": 75282,
+        "process_group": 75282,
+        "sampled_peak_rss_bytes": 2932736,
+        "stop_reason": null
+      },
+      "known_mass_kg": 0.1,
+      "negative_guards": [
+        {
+          "argv": [
+            "ROOT/.local/cloth-material-integration-20261116/target/release/harbor-coupled-producer",
+            "check",
+            "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/new-triangle.weftforge",
+            "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/signed-zero-must-not-exist",
+            "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/signed-zero-approved.json"
+          ],
+          "case": "signed-zero",
+          "end_monotonic_seconds": 986534.022056,
+          "exit_code": 101,
+          "peak_rss_bytes": 3145728,
+          "pid": 75290,
+          "process_group": 75290,
+          "sampled_peak_rss_bytes": 3129344,
+          "stop_reason": null
+        },
+        {
+          "argv": [
+            "ROOT/.local/cloth-material-integration-20261116/target/release/harbor-coupled-producer",
+            "check",
+            "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/new-triangle.weftforge",
+            "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/numeric-type-must-not-exist",
+            "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/numeric-type-approved.json"
+          ],
+          "case": "numeric-type",
+          "end_monotonic_seconds": 986534.053304208,
+          "exit_code": 101,
+          "peak_rss_bytes": 3145728,
+          "pid": 75293,
+          "process_group": 75293,
+          "sampled_peak_rss_bytes": 0,
+          "stop_reason": null
+        }
+      ],
+      "passed": true,
+      "positive": {
+        "argv": [
+          "ROOT/.local/cloth-material-integration-20261116/target/release/harbor-coupled-producer",
+          "check",
+          "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/new-triangle.weftforge",
+          "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/checked",
+          "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/approved-synthetic.json"
+        ],
+        "end_monotonic_seconds": 986533.990691416,
+        "exit_code": 0,
+        "peak_rss_bytes": 3047424,
+        "pid": 75288,
+        "process_group": 75288,
+        "sampled_peak_rss_bytes": 2916352,
+        "stop_reason": null
+      }
+    },
+    {
+      "check": "real_timeout_process_group_output_cap_and_all_numerical_paths",
+      "grandchild_pid": 75297,
+      "grandchild_state_after_kill": "",
+      "overflow": {
+        "argv": [
+          "HOME/.pyenv/versions/3.13.0/bin/python3",
+          "-B",
+          "-c",
+          "from pathlib import Path;import time;Path('ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/synthetic-2/synthetic-overflow.bin').write_bytes(b'x'*8192);time.sleep(3)"
+        ],
+        "end_monotonic_seconds": 986534.345727833,
+        "exit_code": -9,
+        "peak_rss_bytes": 16416768,
+        "pid": 75310,
+        "process_group": 75310,
+        "sampled_peak_rss_bytes": 868352,
+        "stop_reason": "numerical_output_cap_stop_budget"
+      },
+      "passed": true,
+      "timeout": {
+        "argv": [
+          "HOME/.pyenv/versions/3.13.0/bin/python3",
+          "-B",
+          "-c",
+          "import subprocess,sys,time; p=subprocess.Popen([sys.executable,'-B','-c','import time;time.sleep(3)']); print(p.pid,flush=True); time.sleep(3)"
+        ],
+        "end_monotonic_seconds": 986534.308986166,
+        "exit_code": -9,
+        "peak_rss_bytes": 16842752,
+        "pid": 75295,
+        "process_group": 75295,
+        "sampled_peak_rss_bytes": 16826368,
+        "stop_reason": "whole_case_wall_cap"
+      }
+    },
+    {
+      "check": "post_persistence_clock_rejects_delayed_receipt_without_success_verdict",
+      "passed": true
+    },
+    {
+      "check": "real_command_refuses_without_root_GO_no_case_started",
+      "passed": true
+    }
+  ],
+  "tested_sources": {
+    "build_release.py": "ed82e4d5245380a017a271911be0df583d39dca6c2a25c57adf8614ded5910d4",
+    "common.py": "dcad1c5d91a118af92691c62d46308b41271f73bea53dfbff7cdca84fc831308",
+    "consumer/bindings.py": "ba8499944ee4d63b55fcc86de997b9823cf5a949fdb118491569c5dbfcd69a4f",
+    "consumer/capsule_geometry.py": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b",
+    "consumer/decimal_oracle.py": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d",
+    "consumer/evaluator.py": "bc981d2333b4e02fb95c8fa83bb2b2a48d8d0486ae65594bf9173e935513c91b",
+    "consumer/geometry_math.py": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40",
+    "consumer/metadata_adapter.py": "f7aea5b61bafda604cb9b2112f40c83285497300c41c4d02b1344339fe00386e",
+    "consumer/metrics.py": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+    "consumer/static_geometry.py": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34",
+    "controller.py": "3e295b33b1f27c04669b4f85e3d5489f51ab521688ed832a344491b35790e456",
+    "freeze_prep.py": "f7724bd9039a0034b75463b27fc8811e23157a237e9f45727e6406be5d76e38e",
+    "resources.py": "395bc0e948748ea4ade134919b1911abf2c51faa63a0a56b9554d8f3ab8842a7",
+    "selfcheck.py": "08151cecadf65390fecf78b91b2a2cb7795511045d3885126c722660baa28ec2",
+    "worker.py": "9165ad35796c9d610a5963d3e0c7eb76aad404ebb11ab2083dee5a5acacfc62e"
+  }
+}

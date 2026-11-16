@@ -1,0 +1,37 @@
+{
+  "actual_dynamics_runs": 1,
+  "approved_metadata_sha256": "8dfb77d6d4234b0997683e98a0bbd76105d2274aba0f6eb36dc90e671d0589ff",
+  "artifacts": {
+    "completed-case.json": "ca40968c97da60b5260aa6f0b80dce11fd772292b3a23c6d328804cc8c74950d",
+    "initialized-state.json": "2482770fee405c4f6a4fb94e77251f0056b41505b7678db1cd11790066e51ee9",
+    "rest-metadata.json": "90128ed174829cd118e1d638ccba0fa501003889e85b5d70d214b4884f14aec7",
+    "stage-000.obj": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+    "stage-060.obj": "2d17f76f26078988345171b0a5d9438d778cd0337e455804a0b2edfc5a2106b6",
+    "stage-180.obj": "31ff28a385f4af67c5ad0fb6de427dde24cfeeb951de419dd2249c313e06efb2",
+    "steps.jsonl": "814ef896bf1df33385fd2e9e49760e842dfcd112238a30b115c9e99136b4ddcd",
+    "trajectory.jsonl": "d1dd4ad85d1565cefa49e24f0ad59001cd160a59a3c6f0acdd18749e2e7566cf"
+  },
+  "init_only_step_calls": 0,
+  "input_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+  "original_initialized_gate_sha256": "fb71ef4a487a609d0b63e3d19b76d86ba6bcc0626bf87360168144ced85735cc",
+  "producer_sha256": "d9d430b819d4ac0787ec2faebfbd3f54b27d1c2096d005ac4104c69f27691c41",
+  "source88_sha256": "1c7dfd33e2de90b40a69b3655dd8f73f1196ad369f1da0ab82896d2b7e8bb1d0",
+  "source_commit": "96d3baee4543c7edbdb804df6090697a9f65da09",
+  "stage": {
+    "argv": [
+      "ROOT/.local/cloth-material-integration-20261116/target/release/harbor-coupled-producer",
+      "run",
+      "inputs/base.weftforge",
+      "runs/base",
+      "expected/approved-metadata.json"
+    ],
+    "end_monotonic_seconds": 987466.57839675,
+    "exit_code": 0,
+    "peak_rss_bytes": 10436608,
+    "pid": 93051,
+    "process_group": 93051,
+    "sampled_peak_rss_bytes": 10436608,
+    "stop_reason": null
+  },
+  "two_fresh_initializations": true
+}

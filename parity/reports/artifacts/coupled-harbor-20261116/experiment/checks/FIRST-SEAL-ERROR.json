@@ -1,0 +1,12 @@
+{
+  "status": "failed_unexecuted_seal",
+  "freeze_sha256": "d12762b474bac6d4260e8a1aa82928a273e09cfc51111ec2deed6e78060710e8",
+  "archive": "checks/FREEZE-ATTEMPT1.json",
+  "only_mismatch": "checks/seal.log",
+  "expected_open_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "completed_log_sha256": "d68a616b091eaa1cc6a845dca1cd6106b99ecfef99f380f68df93fa1678d54e1",
+  "cause": "Seal stdout was redirected inside the packet, and that open log grew after being hashed.",
+  "correction": "Retain first freeze and log; repeat metadata sealing with tool-captured stdout outside packet. No code/build/selfcheck/physical run repeated.",
+  "root_GO_existed": false,
+  "Harbor_initialized": false
+}

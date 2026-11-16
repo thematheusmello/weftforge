@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "cargo",
+    "build",
+    "--release",
+    "--locked",
+    "--offline",
+    "--manifest-path",
+    "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/producer/Cargo.toml"
+  ],
+  "cwd": "ROOT/.local/cloth-material-integration-20261116",
+  "CARGO_BUILD_JOBS": "1",
+  "CARGO_TARGET_DIR": "ROOT/.local/cloth-material-integration-20261116/target",
+  "pid": 71066,
+  "exit_code": 0,
+  "seconds": 3.4974732080008835,
+  "producer_sources": {
+    "producer/Cargo.toml": "bdbf9b113ba7bb05e968b25fbfc71a30317bfd66aa090fb809e2f551070ff5e8",
+    "producer/Cargo.lock": "6acc2df8d38cf70047cbe22ca2875a38a0fd204a63452edb2d42b4ce14c1ec89",
+    "producer/src/main.rs": "87b15646929d7ed76b03970fe84626176eb6cef72207f5f75a247ff649907a0b"
+  },
+  "source88_unchanged": true,
+  "binary": {
+    "path": "target/release/harbor-coupled-producer",
+    "sha256": "d9d430b819d4ac0787ec2faebfbd3f54b27d1c2096d005ac4104c69f27691c41",
+    "size_bytes": 1330880
+  },
+  "binary_copied": false,
+  "Harbor_initialized_or_stepped": false,
+  "new_validation_only_check_mode": true,
+  "log_sha256": "e97f3e80909c398edb655cc6ce160f564f8f86ed5d18ff5816ce047734a5e21c"
+}

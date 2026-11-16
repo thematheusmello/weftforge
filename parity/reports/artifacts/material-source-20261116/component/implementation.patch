@@ -1,0 +1,430 @@
+diff --git a/crates/weftforge-sim/src/constraints.rs b/crates/weftforge-sim/src/constraints.rs
+index daf658d..52c8d3c 100644
+--- a/crates/weftforge-sim/src/constraints.rs
++++ b/crates/weftforge-sim/src/constraints.rs
+@@ -40,39 +40,147 @@ impl Membrane {
+             && self.stiffness.iter().all(|s| s.is_finite() && *s > 0.)
+             && self.warp.iter().chain(&self.weft).all(|q| q.is_finite())
+     }
+-    fn deformation(&self, x: &[Vec3]) -> (Vec3, Vec3) {
++    fn deformation(&self, x: [Vec3; 3]) -> (Vec3, Vec3) {
+         // Relative positions avoid cancellation when the garment is translated far from the origin.
+-        let b = sub(x[self.vertices[1]], x[self.vertices[0]]);
+-        let c = sub(x[self.vertices[2]], x[self.vertices[0]]);
++        let b = sub(x[1], x[0]);
++        let c = sub(x[2], x[0]);
+         (
+             add(mul(b, self.warp[1]), mul(c, self.warp[2])),
+             add(mul(b, self.weft[1]), mul(c, self.weft[2])),
+         )
+     }
+-    pub fn solve(&self, x: &mut [Vec3], inverse_mass: &[f64], dt: f64, lambda: &mut [f64; 3]) {
+-        for (kind, lambda) in lambda.iter_mut().enumerate() {
+-            let (w, f) = self.deformation(x);
+-            let (value, gradient) = match kind {
+-                0 => (0.5 * (dot(w, w) - 1.), self.warp.map(|q| mul(w, q))),
+-                1 => (0.5 * (dot(f, f) - 1.), self.weft.map(|q| mul(f, q))),
+-                _ => (
+-                    dot(w, f),
+-                    std::array::from_fn(|i| add(mul(f, self.warp[i]), mul(w, self.weft[i]))),
++    fn local_energy(
++        &self,
++        x: [Vec3; 3],
++        correction: [Vec3; 3],
++        inverse_mass: [f64; 3],
++        dt_squared: f64,
++    ) -> f64 {
++        let inertia = correction
++            .into_iter()
++            .zip(inverse_mass)
++            .filter(|(_, weight)| *weight > 0.)
++            .map(|(p, weight)| dot(p, p) / weight)
++            .sum::<f64>();
++        let (w, f) = self.deformation(x);
++        let values = [0.5 * (dot(w, w) - 1.), 0.5 * (dot(f, f) - 1.), dot(w, f)];
++        0.5 * (inertia
++            + dt_squared
++                * values
++                    .into_iter()
++                    .zip(self.stiffness)
++                    .map(|(value, k)| k * value * value)
++                    .sum::<f64>())
++    }
++
++    pub fn solve(&self, x: &mut [Vec3], inverse_mass: &[f64], dt: f64, correction: &mut [Vec3; 3]) {
++        let positions = self.vertices.map(|v| x[v]);
++        let weights = self.vertices.map(|v| inverse_mass[v]);
++        let dt_squared = dt * dt;
++        let (w, f) = self.deformation(positions);
++        let values = [0.5 * (dot(w, w) - 1.), 0.5 * (dot(f, f) - 1.), dot(w, f)];
++        let gradients = [
++            self.warp.map(|q| mul(w, q)),
++            self.weft.map(|q| mul(f, q)),
++            std::array::from_fn(|i| add(mul(f, self.warp[i]), mul(w, self.weft[i]))),
++        ];
++        let matrix = std::array::from_fn(|i| {
++            std::array::from_fn(|j| {
++                (0..3)
++                    .map(|v| weights[v] * dot(gradients[i][v], gradients[j][v]))
++                    .sum::<f64>()
++                    + if i == j {
++                        self.stiffness[i].recip() / dt_squared
++                    } else {
++                        0.
++                    }
++            })
++        });
++        let rhs = std::array::from_fn(|i| {
++            (0..3)
++                .map(|v| dot(gradients[i][v], correction[v]))
++                .sum::<f64>()
++                - values[i]
++        });
++        let Some(multiplier) = solve_spd3(matrix, rhs) else {
++            return;
++        };
++        // Actual positional corrections retain the inertial anchor when nonlinear gradients rotate.
++        let direction: [Vec3; 3] = std::array::from_fn(|v| {
++            sub(
++                mul(
++                    (0..3).fold([0.; 3], |sum, i| {
++                        add(sum, mul(gradients[i][v], multiplier[i]))
++                    }),
++                    weights[v],
+                 ),
+-            };
+-            project(
+-                &self.vertices,
+-                &gradient,
+-                value,
+-                self.stiffness[kind].recip() / (dt * dt),
+-                lambda,
+-                x,
+-                inverse_mass,
+-            );
++                correction[v],
++            )
++        });
++        let slope = (0..3)
++            .filter(|&v| weights[v] > 0.)
++            .map(|v| dot(correction[v], direction[v]) / weights[v])
++            .sum::<f64>()
++            + dt_squared
++                * (0..3)
++                    .map(|i| {
++                        self.stiffness[i]
++                            * values[i]
++                            * (0..3)
++                                .map(|v| dot(gradients[i][v], direction[v]))
++                                .sum::<f64>()
++                    })
++                    .sum::<f64>();
++        if !slope.is_finite() || slope >= 0. {
++            return;
++        }
++        let energy = self.local_energy(positions, *correction, weights, dt_squared);
++        let mut fraction = 1.;
++        // shortcut: cap local backtracking at 16; use a trust region if extreme compression stalls.
++        for _ in 0..16 {
++            let trial = std::array::from_fn(|v| add(positions[v], mul(direction[v], fraction)));
++            let trial_correction =
++                std::array::from_fn(|v| add(correction[v], sub(trial[v], positions[v])));
++            let trial_energy = self.local_energy(trial, trial_correction, weights, dt_squared);
++            if trial_energy.is_finite() && trial_energy <= energy + 1e-4 * fraction * slope {
++                for (v, position) in self.vertices.into_iter().zip(trial) {
++                    x[v] = position;
++                }
++                *correction = trial_correction;
++                return;
++            }
++            fraction *= 0.5;
+         }
+     }
+ }
+ 
++fn solve_spd3(matrix: [[f64; 3]; 3], rhs: [f64; 3]) -> Option<[f64; 3]> {
++    let scale: [f64; 3] = std::array::from_fn(|i| matrix[i][i].sqrt());
++    if !scale.iter().all(|s| s.is_finite() && *s > 0.) {
++        return None;
++    }
++    let a: [[f64; 3]; 3] =
++        std::array::from_fn(|i| std::array::from_fn(|j| matrix[i][j] / scale[i] / scale[j]));
++    let b: [f64; 3] = std::array::from_fn(|i| rhs[i] / scale[i]);
++    let l00 = a[0][0].sqrt();
++    let l10 = a[1][0] / l00;
++    let l20 = a[2][0] / l00;
++    let l11 = (a[1][1] - l10 * l10).sqrt();
++    let l21 = (a[2][1] - l20 * l10) / l11;
++    let l22 = (a[2][2] - l20 * l20 - l21 * l21).sqrt();
++    if ![l00, l11, l22].iter().all(|s| s.is_finite() && *s > 0.) {
++        return None;
++    }
++    let y0 = b[0] / l00;
++    let y1 = (b[1] - l10 * y0) / l11;
++    let y2 = (b[2] - l20 * y0 - l21 * y1) / l22;
++    let z2 = y2 / l22;
++    let z1 = (y1 - l21 * z2) / l11;
++    let z0 = (y0 - l10 * z1 - l20 * z2) / l00;
++    let solution = [z0 / scale[0], z1 / scale[1], z2 / scale[2]];
++    solution.iter().all(|s| s.is_finite()).then_some(solution)
++}
++
+ #[derive(Clone, Debug)]
+ pub(crate) struct Bend {
+     vertices: [usize; 4],
+diff --git a/crates/weftforge-sim/src/lib.rs b/crates/weftforge-sim/src/lib.rs
+index 93a2f03..6abff9b 100644
+--- a/crates/weftforge-sim/src/lib.rs
++++ b/crates/weftforge-sim/src/lib.rs
+@@ -475,15 +475,16 @@ impl Cloth {
+             for remaining in &mut seam_remaining {
+                 *remaining -= (settings.seam_closure_speed * dt).min(*remaining);
+             }
+-            let mut membrane_lambda = vec![[0.; 3]; self.membrane.len()];
++            let mut membrane_corrections = vec![[[0.; 3]; 3]; self.membrane.len()];
+             let mut bend_lambda = vec![0.; self.bends.len()];
+             let mut seam_lambda = vec![[0.; 3]; self.input.stitches.len()];
+             for _ in 0..settings.iterations {
+                 if cancelled() {
+                     return Err(SimulationError::Cancelled);
+                 }
+-                for (m, lambda) in self.membrane.iter().zip(&mut membrane_lambda) {
+-                    m.solve(&mut x, &self.inverse_masses, dt, lambda);
++                for (m, correction) in self.membrane.iter().zip(&mut membrane_corrections) {
++                    check_cancel(&cancelled)?;
++                    m.solve(&mut x, &self.inverse_masses, dt, correction);
+                 }
+                 for (b, lambda) in self.bends.iter().zip(&mut bend_lambda) {
+                     b.solve(&mut x, &self.inverse_masses, dt, lambda);
+diff --git a/crates/weftforge-sim/src/tests.rs b/crates/weftforge-sim/src/tests.rs
+index 15ec19c..a9849b3 100644
+--- a/crates/weftforge-sim/src/tests.rs
++++ b/crates/weftforge-sim/src/tests.rs
+@@ -245,6 +245,55 @@ fn nonfinite_strain_after_a_finite_candidate_invalidates_diagnostics() {
+     assert!(!diagnostics.finite);
+ }
+ 
++#[test]
++fn coupled_membrane_reaches_independent_incremental_energy_equilibrium() {
++    let uv = [[0., 0.], [0.01, 0.], [0.003, 0.07]];
++    let material = Material {
++        areal_density: 0.18,
++        warp_stiffness: 400.,
++        weft_stiffness: 400.,
++        shear_stiffness: 100.,
++        grain_angle: std::f64::consts::FRAC_PI_2,
++        ..Default::default()
++    };
++    let membrane = constraints::Membrane::new([0, 1, 2], &uv, material);
++    let h = (1. / 60.) / 8.;
++    let area = 0.01 * 0.07 / 2.;
++    let mass = 0.18 * area / 3.;
++    let predicted = [0.012, 0.002, 0.];
++    let mut x = [[0.; 3], predicted, [0.003, 0.07, 0.]];
++    let mut state = [[0.; 3]; 3];
++    for _ in 0..32 {
++        membrane.solve(&mut x, &[0., 1. / mass, 0.], h, &mut state);
++    }
++
++    // Independent dense Newton root of inertia plus the direct deformation-gradient energy.
++    let expected = [0.010007132086944948, 0.000027306978065735514, 0.];
++    let position_error = length(sub(x[1], expected));
++    let u = mul(x[1], 100.);
++    let v = mul(sub([0.003, 0.07, 0.], mul(x[1], 0.3)), 1. / 0.07);
++    let cu = 0.5 * (dot(u, u) - 1.);
++    let cv = 0.5 * (dot(v, v) - 1.);
++    let cs = dot(u, v);
++    let elastic_gradient = add(
++        mul(
++            add(mul(u, 100. * cu), mul(v, -0.3 / 0.07 * cv)),
++            400. * area,
++        ),
++        mul(add(mul(v, 100.), mul(u, -0.3 / 0.07)), 100. * area * cs),
++    );
++    let stationarity = length(add(
++        mul(sub(x[1], predicted), mass / (h * h)),
++        elastic_gradient,
++    ));
++    println!(
++        "independent energy position error={position_error:e}m stationarity={stationarity:e}N"
++    );
++    assert!(position_error < 1e-8 && stationarity < 1e-6);
++    assert_eq!(x[0], [0.; 3]);
++    assert_eq!(x[2], [0.003, 0.07, 0.]);
++}
++
+ #[test]
+ fn membrane_projection_matches_analytic_uniaxial_and_shear_updates() {
+     let uv = [[0., 0.], [1., 0.], [0., 1.]];
+@@ -264,7 +313,7 @@ fn membrane_projection_matches_analytic_uniaxial_and_shear_updates() {
+         );
+         let mut x = [[0., 0., 0.], [1.2, 0., 0.], [0., 1., 0.]];
+         // Only x[1] moves: C=0.22, dC/dx=1.2, alpha=4 or 0.2 for area=0.5 m².
+-        membrane.solve(&mut x, &[0., 1., 0.], 0.1, &mut [0.; 3]);
++        membrane.solve(&mut x, &[0., 1., 0.], 0.1, &mut [[0.; 3]; 3]);
+         assert!((x[1][0] - expected_x).abs() < 1e-14);
+         assert_eq!(x[0], [0.; 3]);
+         assert_eq!(x[2], [0., 1., 0.]);
+@@ -279,12 +328,16 @@ fn membrane_projection_matches_analytic_uniaxial_and_shear_updates() {
+     );
+     let height = 0.91_f64.sqrt();
+     let mut x = [[0., 0., 0.], [1., 0., 0.], [0.3, height, 0.]];
+-    // Both axes have unit length: only shear acts, with C=0.3 and delta_lambda=-1/32.
+-    membrane.solve(&mut x, &[1.; 3], 0.2, &mut [0.; 3]);
++    // Exact rational solve of the coupled Gram matrix with rows [33/16,3/10,8/5],
++    // [3/10,25/12,8/5], [8/5,8/5,48/5] and RHS [0,0,-3/10].
++    membrane.solve(&mut x, &[1.; 3], 0.2, &mut [[0.; 3]; 3]);
++    let [warp, weft, shear] = [1284. / 46963., 1269. / 46963., -60579. / 1502816.];
++    let u = [1., 0., 0.];
++    let v = [0.3, height, 0.];
+     let expected = [
+-        [0.040625, height / 32., 0.],
+-        [0.990625, -height / 32., 0.],
+-        [0.26875, height, 0.],
++        mul(add(mul(u, warp + shear), mul(v, weft + shear)), -1.),
++        add(u, add(mul(u, warp), mul(v, shear))),
++        add(v, add(mul(v, weft), mul(u, shear))),
+     ];
+     for (actual, expected) in x.into_iter().zip(expected) {
+         assert!(length(sub(actual, expected)) < 1e-14);
+@@ -908,17 +961,25 @@ fn cancellation_after_measurement_preserves_peak_strain() {
+ 
+ #[test]
+ fn cancellation_and_failures_preserve_old_state_and_allow_recovery() {
+-    let mut cloth = Cloth::new(square()).unwrap();
++    let mut input = square();
++    for position in &mut input.positions {
++        position[0] *= 1.5;
++    }
++    let mut cloth = Cloth::new(input).unwrap();
+     let before = cloth.positions().to_vec();
+     let before_peak = cloth.diagnostics().peak_strain;
++    let before_state = format!("{cloth:?}");
+     let counter = std::cell::Cell::new(0);
+     let error = cloth
+         .step(settings(), || {
+             counter.set(counter.get() + 1);
++            // Cancel between material triangles after the strained first triangle was projected.
+             counter.get() > 4
+         })
+         .unwrap_err();
+     assert_eq!(error, SimulationError::Cancelled);
++    assert_eq!(counter.get(), 5);
++    assert_eq!(format!("{cloth:?}"), before_state);
+     assert_eq!(cloth.positions(), before);
+     assert_eq!(cloth.diagnostics().peak_strain, before_peak);
+     assert_eq!(cloth.simulation_time(), 0.);
+@@ -935,6 +996,7 @@ fn cancellation_and_failures_preserve_old_state_and_allow_recovery() {
+     );
+     assert_eq!(cloth.positions(), before);
+     assert_eq!(cloth.diagnostics().peak_strain, before_peak);
++    assert_eq!(format!("{cloth:?}"), before_state);
+     assert!(matches!(
+         cloth.step(
+             StepSettings {
+@@ -947,8 +1009,10 @@ fn cancellation_and_failures_preserve_old_state_and_allow_recovery() {
+     ));
+     assert_eq!(cloth.positions(), before);
+     assert_eq!(cloth.diagnostics().peak_strain, before_peak);
++    assert_eq!(format!("{cloth:?}"), before_state);
+     cloth.step(settings(), || false).unwrap();
+     assert!(cloth.diagnostics().finite);
++    assert_ne!(cloth.positions(), before);
+ }
+ 
+ #[test]
+diff --git a/docs/physics.md b/docs/physics.md
+index ad1df85..49fdbdd 100644
+--- a/docs/physics.md
++++ b/docs/physics.md
+@@ -31,9 +31,10 @@ colliders and duplicate pins are rejected before a solver is returned.
+ 
+ ## Integration and compliant constraints
+ 
+-The engineering choice is a deterministic sequential CPU XPBD path, using the
+-compliant local projection method from
++The engineering choice is a deterministic sequential CPU path. Bending and
++sewing retain the compliant local XPBD projection method from
+ [Macklin, Müller and Chentanez, XPBD (2016)](https://matthias-research.github.io/pages/publications/XPBD.pdf).
++Membrane projection uses the coupled incremental-energy update described below.
+ The small dependency surface and explicit physical energy coefficients make it
+ suitable for repeatable checks and future accelerated-path comparisons. It is not
+ a promise of time-step, mesh or iteration independence at finite convergence.
+@@ -45,9 +46,10 @@ v* = exp(-damping*h) * (v + h*gravity)
+ x* = x + h*v*
+ ```
+ 
+-The solver clears elastic/seam multipliers at each substep and iterates membrane,
+-bending, sewing, analytic contact, cloth contact and pins in that order. For an
+-energy E = k*C(x)^2/2, the constraint compliance is alpha = 1/k:
++The solver clears material correction history and bending/seam multipliers at
++each substep, then iterates membrane, bending, sewing, analytic contact, cloth
++contact and pins in that order. For a scalar bending or radial sewing energy
++E = k*C(x)^2/2, the constraint compliance is alpha = 1/k:
+ 
+ ```text
+ a = alpha / h²
+@@ -104,6 +106,63 @@ identified measured fabric or a reference-application preset. Shear, bending,
+ density, damping, friction and collision offset remain separate parameters;
+ changing the display color does not change them.
+ 
++### Coupled material projection
++
++Warp, weft and shear share each triangle's positions. A scalar multiplier history
++alone does not retain the nonlinear inertial relation when their gradients
++rotate. The original XPBD derivation explicitly omits that primal residual;
++[Chen et al. (2024)](https://physbam.stanford.edu/papers/stanford2024-02_2.pdf)
++also discuss its effect on backward-Euler force balance. The local update here
++is derived directly from this crate's existing material energy; it is not a
++calibrated implementation or a convergence claim for either paper's full method.
++
++For each triangle, p stores its three accumulated positional corrections, in
++metres. Removing its previous correction from current positions gives local
++anchor z=x-p. With other stages held fixed during this projection, the local
++incremental objective is:
++
++```text
++Phi(q) = (q-z)^T M (q-z)/(2*h²) + sum_a(k_a*C_a(q)²)/2
++```
++
++M contains the incident particle masses; pinned coordinates are fixed. Let J
++contain the three current constraint gradients, W their inverse masses and
++k the existing area-scaled warp/weft/shear coefficients. One Gauss–Newton step
++is reduced by the Woodbury identity to a three-by-three system:
++
++```text
++A = J*W*J^T + diag(1/(k_a*h²))
++A*eta = J*p - C
++d = -p + W*J^T*eta
++```
++
++Eta is a temporary linear-solve unknown, not a retained material multiplier.
++The system uses a diagonally scaled Cholesky factorization. Each declared outer
++iteration performs one such coupled material step per triangle. An Armijo energy
++check on h²*Phi uses coefficient 1e-4 and at most 16 trial fractions, starting at
++one and halving; these trials evaluate local energy, not additional material
++iterations. Only an accepted finite trial updates positions and p, using the
++rounded position displacement actually applied. An unusable factorization or
++exhausted line search leaves that projection unchanged. Extreme deformation or
++ill conditioning can therefore stall; existing strain/contact/finite diagnostics
++remain necessary and no general convergence guarantee is supplied.
++
++Correction history uses nine f64 values per triangle instead of three scalar
++multipliers and is reset each substep. It remains local to the candidate step,
++so cancellation or failure preserves the accepted cloth state. Cancellation
++is polled before each material triangle; one local solve and its bounded line
++search can finish before the next poll. This is cooperative cancellation, not
++a hard latency guarantee.
++
++The focused pinned/free-node regression compares the projected positions with
++an independent dense Newton solution of the inertial-plus-material energy and
++evaluates its force balance from a direct deformation gradient, with bounds of
++1e-8 m and 1e-6 N. This checks a small incremental-energy problem, not a garment
++answer. Inter-element convergence at finite budgets, the remaining scalar
++bending/sewing updates, friction, and complete coupled-contact equilibrium remain
++separate questions. Earlier garment results below retain their original source
++and algorithm attribution; this source change does not regrade them.
++
+ `max_stretch_error` reports max(abs(length(f_w)-1), abs(length(f_f)-1)). It is a
+ material-axis length diagnostic, not a bound on all principal strains or shear.
+ `peak_strain` identifies the current solver triangle, `warp` or `weft`, and
