@@ -1,6 +1,40 @@
 # WeftForge status — active development, 2026-11-16
 
-Current UI source is `b7767bc94c89196f93b4ddbd1e06245f569936ff`, integrated on
+An isolated pointer-release source increment updates endpoint preview positions
+on the release frame before the existing typed `MovePoint` transaction. The
+shared native handler covers exterior, internal-line and hole endpoints;
+captured snap, paused-gesture handling and project validation remain in place.
+Three full-Studio pointer regressions each exercise all three owners: a snapped
+no-op preview followed by a 10 mm release move, a release beyond a changed
+preview, and invalid final geometry preserving the old project and history.
+The unchanged handler failed all three tests once (session **81295**, terminal
+exit **101**); the two-line condition change passed all three (session **29690**,
+terminal exit **0**). Private red/green inputs and receipts await root review
+and publication; ignored local logs are not delivered evidence. No Cargo job
+or GUI window is active.
+
+This changes one frozen source input. At reviewed source checkpoint
+`4d8c2c381f7df1995720e3677b9b26df6ee063cf`, full formatting, **392 workspace
+Rust tests**, strict all-target workspace Clippy and the native debug build
+passed once, sequentially with one Cargo build job and this checkout's own
+target. All **87 source inputs** remained byte-identical before/after every
+gate. Sessions **88837 / 56926 / 11098 / 93104** are terminal, all exit **0**.
+Native binary identity is
+`3cac4e20fa13b4b9d4305ac2fb97375a64266e1860524244d018fab24a7742f2`;
+it was built but never launched. Actual raw logs, hashes and command receipts
+remain private review inputs pending tracked publication. The b776 source/native
+receipts below identify the published baseline.
+
+Exact next steps: reconcile source-map/report freshness, select and track the
+reviewed evidence, then run registry checks and clean committed `cargo xtask
+verify`. No new native UI run or reference comparison has occurred. Completely
+compressed gestures and
+CUA coordinate delivery remain separate unknowns; this source fix does not
+establish the cause or resolution of the closed exploratory E001 no-commit
+observation. All full contracts, inventory files, disabled Actions and static
+Pages remain unchanged.
+
+Published UI source is `b7767bc94c89196f93b4ddbd1e06245f569936ff`, integrated on
 `feat/photocraft-ui-integration`. Runtime source checkpoint `160562d` and
 ancestry checkpoint `d4c220d` match all **87 frozen b776 source inputs**;
 the tested b776 commit is reachable in the integrated history. Current-source
