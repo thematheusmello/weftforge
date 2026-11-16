@@ -91,7 +91,13 @@ with at least 1e-6 m clearance. Certified 1e-7 m curve flattening, conservative
 f64 reserve, depth 20, 20,000 contour samples and a one-million-step project
 validation budget are fixed; uncertain/exhausted inputs reject. Mesh resolution
 cannot change that decision. See the [engineering contract](../spec/features/PAT-006-internal-segments.md).
-Future cubics, grouping, holes and cuts require an explicit supported-model/version
+Straight topological cuts use two ordinary v4 pieces, independent boundary
+points/curves and explicit annotation ownership. The resulting exterior chords
+are ordinary editable edges. No cut object or persistent cross-cut relationship
+is stored; the format does not change. SVG/DXF export both closed boundaries and
+OBJ exports the two piece surfaces. The [straight-cut contract](../spec/features/PAT-006-straight-cut.md)
+defines supported construction and refusal rules. Future internal cubics,
+grouping, holes and persistent cut relationships require an explicit model/version
 decision; this reader never silently discards or straightens unsupported data.
 Legacy `seams` store two oriented curve intervals (`curve`, `t0`, `t1`) plus strictly
 increasing normalized correspondence pairs including `[0,0]` and `[1,1]`.
@@ -117,7 +123,7 @@ physical parameters. The mannequin stores
 analytic capsule endpoints/radii. Resolution is a document-wide mesh setting.
 The format does **not** yet store solver timestep/iterations, current drape or
 velocities, undo history, selection/camera, pins,
-attachments, holes/cuts/internal cubic shapes, external avatar assets, textures, animation,
+attachments, holes, persistent cut relationships, internal cubic shapes, external avatar assets, textures, animation,
 lighting or cache data. These are visible persistence gaps on the roadmap.
 
 ## Explicit v1, v2 and v3 migration

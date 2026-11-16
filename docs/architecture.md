@@ -50,6 +50,16 @@ self-touching and exhausted cases fail atomically. These are WeftForge engineeri
 policies under the [reviewed contract](../spec/features/PAT-006-internal-segments.md),
 with reference behavior and actual native acceptance recorded separately.
 
+`CutPiece` replaces one straight polygon with two ordinary independent pieces.
+It splits two distinct boundary edges, duplicates their new anchor points and
+closes each child with its own chord. Material, placement and grain are retained;
+there is no persistent link between the two cut edges. One command is one history
+entry. Target sewing refuses the whole cut; annotations must fit wholly inside
+exactly one child or the cut refuses. A separate one-million-step budget covers
+authored straight-contour/chord/assignment predicates across the outer transaction,
+independently of mesh resolution. The [straight-cut contract](../spec/features/PAT-006-straight-cut.md)
+defines numeric margins, ownership, nine-ID allocation and current eligibility.
+
 A seam stores two oriented [t0,t1]
 intervals and a monotone normalized parameter correspondence; it never refers to
 simulation vertex indices. Unequal lengths are deliberate easing.

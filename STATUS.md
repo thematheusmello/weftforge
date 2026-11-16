@@ -1,10 +1,45 @@
 # WeftForge status — active development, 2026-11-15
 
-The current runtime is ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5. The source/evidence
+The last published runtime is ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5, merged in
+[PR #47](https://github.com/thematheusmello/weftforge/pull/47) at
+bbada3f7f5228a9479a76c0c300d3aa716e57d77. GitHub Actions remains disabled and the
+existing Pages configuration is preserved. The source/evidence
 publication candidate retains **0/56 coarse reference contracts verified**,
 **39 partial / 17 planned**, discovery incomplete and **no roadmap gate accepted**.
 The historical 949 entries / 205 packets / 56 landmarks remain an engineering
 inventory, not a complete product denominator.
+
+## Current implementation: first straight piece cut
+
+The `feat/straight-topology-cut` candidate is in progress in its own worktree.
+Core/CLI and native UI have separate owners using the
+[reviewed engineering contract](spec/features/PAT-006-straight-cut.md). Original
+R240/L fixtures, literal geometry/ID/mass oracles and bounded R author/restart
+native procedures were declared before implementation. These are engineering
+criteria; no reference cut behavior or implementation acceptance follows from them.
+The original native-check worktree stays unchanged at db8/ad7. Its annotation C001
+case retained a prospective Select-tool correction and 170+1 operations / 1200 s
+caps. C001 stopped on an observer setup error before input. C002 reached R6, then
+its single drag produced no expected R7; all four required saved states are
+missing. Both windows were separately closed after retention. These private
+checks supply no new native acceptance; pointer delivery/origin remains unresolved.
+
+Core/CLI package checks passed 136 tests and strict Clippy; native headless checks
+passed 116 tests and strict Clippy. Independent source review found one opening-
+Return defect, fixed with two RED/GREEN regressions: opening review preserves
+construction and only a later Return applies a cut. The source review found no
+remaining blocker. Actual R240 meshes/initial cloth/analytic mass pass at
+0.005/0.07/0.5 m; L passes those checks at 0.07/0.5 m. At L 0.005 m, both original
+and cut meshes hit the existing vertex cap; cut eligibility still passes and no
+fine-L cloth/mass acceptance is claimed. Caps and tolerances are unchanged.
+
+The new cut candidate has not passed its integrated workspace or native gates. The
+retained checks below apply to the published annotation checkpoint and are not
+reused as cut acceptance. PAT-006 remains planned until an actual cut implementation
+is checked. Full cuts, holes, target sewing, Cut & Sew and reference behavior remain
+open. Package Cargo jobs are complete and their leases returned. Root owns the next
+workspace formatting/test/Clippy/build checks and source-map integration. No GUI
+lease is active. Fresh default targets stay separate across worktrees.
 
 ## Current straight-annotation evidence — bounded headless and native A
 
@@ -25,7 +60,8 @@ persistent measurements/constraints, folds, cuts and internal sewing remain open
 The [approved engineering contract](spec/features/PAT-006-internal-segments.md)
 provides policy rather than reference behavior despite its PAT-006 filename.
 
-All **65 runtime/build/test/contract/doc inputs** remain byte-identical to ad7.
+At the published checkpoint all **65 runtime/build/test/contract/doc inputs**
+were byte-identical to ad7.
 Original formatting, **282 workspace Rust tests / zero failures**, strict
 workspace/all-target Clippy and native+CLI debug builds are reused by exact source
 identity. Their manifest SHA is

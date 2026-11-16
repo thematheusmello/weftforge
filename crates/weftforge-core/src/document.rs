@@ -707,13 +707,17 @@ impl Project {
     fn import_patterns(
         &mut self,
         patterns: Vec<crate::persistence::ImportedPattern>,
+        cut_work: &mut crate::geometry::ContainmentWork,
     ) -> Result<()> {
         for pattern in patterns {
             let first_curve = self.curves.len();
-            self.apply(Command::AddPolygon {
-                name: pattern.name,
-                vertices: pattern.vertices,
-            })?;
+            self.apply(
+                Command::AddPolygon {
+                    name: pattern.name,
+                    vertices: pattern.vertices,
+                },
+                cut_work,
+            )?;
             for (curve, controls) in self.curves[first_curve..].iter_mut().zip(pattern.controls) {
                 curve.controls = controls;
             }
@@ -721,15 +725,19 @@ impl Project {
         Ok(())
     }
 
-    fn apply(&mut self, command: Command) -> Result<()> {
+    fn apply(
+        &mut self,
+        command: Command,
+        cut_work: &mut crate::geometry::ContainmentWork,
+    ) -> Result<()> {
         match command {
             Command::ImportSvgPatterns { svg } => {
                 let imported = crate::SvgPatternImport::from_bytes(svg.as_bytes())?;
-                self.import_patterns(imported.patterns)?;
+                self.import_patterns(imported.patterns, cut_work)?;
             }
             Command::ImportDxfPatterns { dxf } => {
                 let imported = crate::DxfPatternImport::from_bytes(dxf.as_bytes())?;
-                self.import_patterns(imported.patterns)?;
+                self.import_patterns(imported.patterns, cut_work)?;
             }
             Command::AddPolygon { name, vertices } => {
                 ensure(
@@ -783,15 +791,18 @@ impl Project {
                     width.is_finite() && height.is_finite() && width > 1.0e-6 && height > 1.0e-6,
                     "Rectangle dimensions must be positive metres",
                 )?;
-                self.apply(Command::AddPolygon {
-                    name,
-                    vertices: vec![
-                        [x, y],
-                        [x + width, y],
-                        [x + width, y + height],
-                        [x, y + height],
-                    ],
-                })?;
+                self.apply(
+                    Command::AddPolygon {
+                        name,
+                        vertices: vec![
+                            [x, y],
+                            [x + width, y],
+                            [x + width, y + height],
+                            [x, y + height],
+                        ],
+                    },
+                    cut_work,
+                )?;
             }
             Command::AddEllipse {
                 name,
@@ -806,10 +817,13 @@ impl Project {
                 let [rx, ry] = [width * 0.5, height * 0.5];
                 let [cx, cy, right, top] = [x + rx, y + ry, x + width, y + height];
                 let first_curve = self.curves.len();
-                self.apply(Command::AddPolygon {
-                    name,
-                    vertices: vec![[cx, y], [right, cy], [cx, top], [x, cy]],
-                })?;
+                self.apply(
+                    Command::AddPolygon {
+                        name,
+                        vertices: vec![[cx, y], [right, cy], [cx, top], [x, cy]],
+                    },
+                    cut_work,
+                )?;
                 // shortcut: four cubics approximate a conic; use a conic relation for exact ellipse editing.
                 let k = 4.0 * (std::f64::consts::SQRT_2 - 1.0) / 3.0;
                 let controls = [
@@ -956,6 +970,138 @@ impl Project {
                             .collect();
                     }
                 }
+            }
+            Command::CutPiece {
+                piece,
+                start_curve,
+                start_t,
+                end_curve,
+                end_t,
+            } => {
+                ensure(
+                    piece != 0 && start_curve != 0 && end_curve != 0,
+                    "Cut piece and curve IDs must be nonzero",
+                )?;
+                let piece_index = self
+                    .pieces
+                    .iter()
+                    .position(|item| item.id == piece)
+                    .ok_or_else(|| Error("Unknown cut piece".into()))?;
+                let original = self.pieces[piece_index].clone();
+                let boundary_index = |curve| {
+                    original
+                        .boundary
+                        .iter()
+                        .position(|&id| id == curve)
+                        .ok_or_else(|| {
+                            Error("Cut addresses must be this piece's outer boundaries".into())
+                        })
+                };
+                let mut a = (boundary_index(start_curve)?, start_curve, start_t);
+                let mut b = (boundary_index(end_curve)?, end_curve, end_t);
+                ensure(a.0 != b.0, "Cut needs two distinct boundary curves")?;
+                if a.0 > b.0 {
+                    std::mem::swap(&mut a, &mut b);
+                }
+                let owned: BTreeSet<_> = original.boundary.iter().copied().collect();
+                ensure(
+                    !self
+                        .seams
+                        .iter()
+                        .any(|seam| owned.contains(&seam.a.curve) || owned.contains(&seam.b.curve))
+                        && !self.sewing_groups.iter().any(|group| {
+                            group
+                                .a
+                                .iter()
+                                .chain(&group.b)
+                                .any(|interval| owned.contains(&interval.curve))
+                        }),
+                    "Cut cannot remap sewing on any boundary of the target piece",
+                )?;
+                ensure(
+                    self.points.len()
+                        + self.curves.len()
+                        + self.pieces.len()
+                        + self.materials.len()
+                        + self.seams.len()
+                        + self.sewing_groups.len()
+                        <= MAX_OBJECTS - 9,
+                    "Cut exceeds the project object limit",
+                )?;
+                let first_id = self.next_id;
+                ensure(
+                    first_id.checked_add(9).is_some(),
+                    "Cut exceeds the stable ID limit",
+                )?;
+                let reserve = crate::geometry::validate_straight_cut(
+                    self,
+                    &original,
+                    (a.0, a.2),
+                    (b.0, b.2),
+                    cut_work,
+                )?;
+                self.apply(Command::SplitCurve { curve: a.1, t: a.2 }, cut_work)?;
+                self.apply(Command::SplitCurve { curve: b.1, t: b.2 }, cut_work)?;
+                let (anchor_a, tail_a, anchor_b, tail_b) =
+                    (first_id, first_id + 1, first_id + 2, first_id + 3);
+                let new_piece = self.allocate_id()?;
+                let copy_a = self.allocate_id()?;
+                let copy_b = self.allocate_id()?;
+                let retained_chord = self.allocate_id()?;
+                let new_chord = self.allocate_id()?;
+                for (id, anchor) in [(copy_a, anchor_a), (copy_b, anchor_b)] {
+                    self.points.push(Point {
+                        id,
+                        position: self.point(anchor).unwrap().position,
+                    });
+                }
+                self.curves
+                    .iter_mut()
+                    .find(|curve| curve.id == tail_a)
+                    .unwrap()
+                    .start = copy_a;
+                self.curves
+                    .iter_mut()
+                    .find(|curve| curve.id == b.1)
+                    .unwrap()
+                    .end = copy_b;
+                self.curves.extend([
+                    Curve {
+                        id: retained_chord,
+                        start: anchor_a,
+                        end: anchor_b,
+                        controls: None,
+                    },
+                    Curve {
+                        id: new_chord,
+                        start: copy_b,
+                        end: copy_a,
+                        controls: None,
+                    },
+                ]);
+                let mut retained = original.clone();
+                retained.boundary = original.boundary[..=a.0].to_vec();
+                retained.boundary.extend([retained_chord, tail_b]);
+                retained
+                    .boundary
+                    .extend_from_slice(&original.boundary[b.0 + 1..]);
+                let mut child = Piece {
+                    id: new_piece,
+                    name: format!("Cut piece #{new_piece}"),
+                    boundary: vec![tail_a],
+                    internal_curves: Vec::new(),
+                    ..original.clone()
+                };
+                child
+                    .boundary
+                    .extend_from_slice(&original.boundary[a.0 + 1..=b.0]);
+                child.boundary.push(new_chord);
+                (retained.internal_curves, child.internal_curves) =
+                    crate::geometry::partition_cut_annotations(
+                        self, &original, &retained, &child, reserve, cut_work,
+                    )?;
+                self.pieces[piece_index] = retained;
+                self.pieces.push(child);
             }
             Command::JoinCurve { curve } => {
                 let piece_index = self
@@ -1232,12 +1378,15 @@ impl Project {
             Command::AddSewingByLength { name, a, b } => {
                 let a = self.interval_from_length(a)?;
                 let b = self.interval_from_length(b)?;
-                self.apply(Command::AddSewingGroup {
-                    name,
-                    a: vec![a],
-                    b: vec![b],
-                    correspondence: vec![[0., 0.], [1., 1.]],
-                })?;
+                self.apply(
+                    Command::AddSewingGroup {
+                        name,
+                        a: vec![a],
+                        b: vec![b],
+                        correspondence: vec![[0., 0.], [1., 1.]],
+                    },
+                    cut_work,
+                )?;
             }
             Command::UpdateSewingGroup { group } => {
                 let target = self
@@ -1293,7 +1442,7 @@ impl Project {
                         !matches!(command, Command::Transaction(_)),
                         "Nested transactions are unsupported",
                     )?;
-                    self.apply(command)?;
+                    self.apply(command, cut_work)?;
                 }
             }
         }
@@ -1589,6 +1738,13 @@ pub enum Command {
         curve: Id,
         t: f64,
     },
+    CutPiece {
+        piece: Id,
+        start_curve: Id,
+        start_t: f64,
+        end_curve: Id,
+        end_t: f64,
+    },
     JoinCurve {
         curve: Id,
     },
@@ -1692,7 +1848,7 @@ impl Editor {
 
     pub fn execute(&mut self, command: Command) -> Result<()> {
         let mut next = self.project.clone();
-        next.apply(command)?;
+        next.apply(command, &mut crate::geometry::ContainmentWork::new())?;
         next.validate()?;
         if !next.sewing_groups.is_empty() {
             use std::collections::BTreeMap;
