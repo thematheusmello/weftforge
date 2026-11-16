@@ -1,4 +1,4 @@
-# WeftForge status — active development, 2026-11-15
+# WeftForge status — active development, 2026-11-16
 
 The last published runtime is ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5, merged in
 [PR #47](https://github.com/thematheusmello/weftforge/pull/47) at
@@ -9,9 +9,37 @@ publication candidate retains **0/56 coarse reference contracts verified**,
 The historical 949 entries / 205 packets / 56 landmarks remain an engineering
 inventory, not a complete product denominator.
 
-## Current implementation: first straight piece cut
+## Current candidate: editable straight holes
 
-The `feat/straight-topology-cut` candidate is in progress in its own worktree.
+The isolated `feat/straight-pattern-holes` runtime checkpoint is
+`a021a2581c8e1dd000e535a417dcd964c3835884`. It adds a stable-ID straight hole
+inside a straight piece, numeric native review and corner editing, split/join,
+removal and history. Both boundary loops feed the real annular rest mesh and
+existing area masses/free-boundary bending. Strict native v5 reads v1–v4 through
+explicit migrations. SVG exports a compound outline but cannot reimport holes;
+the current DXF profile refuses holed projects before staging. Multiple/curved
+holes, internal-shape conversion and hole sewing remain open. See the
+[engineering contract](spec/features/PAT-006-straight-hole.md).
+
+Independent core/IO and native source reviews found no remaining blocker.
+The clean runtime passed formatting, **329 Rust tests / zero failures**, strict
+workspace/all-target Clippy and a fresh debug build in its own default target;
+all 73 scoped inputs remained exact. These local results await tracked evidence
+publication. The source-only addendum records 32 command variants / 31 schemas /
+9 tools, 38 retained rechecks, 22 native source surfaces, 21 contracts and 295
+anchors. Historical results keep their original outcomes and stale status.
+
+Actual native hole authoring/restart/export acceptance has not run. Its bounded
+procedure is being prepared; clean metadata/xtask validation remains next.
+The older cut runtime's R003 author/cut/save/Undo/Redo sequence completed and its
+single independent saved-file assessment passed; final raw-UI review and the
+separate fresh-process edit remain pending. Finished previews are closed. No
+Cargo job or native GUI lease is active. None of these source checks establishes
+reference parity or a completed roadmap gate.
+
+## Straight-cut checkpoint and qualification
+
+The `feat/straight-topology-cut` candidate remains isolated in its own worktree.
 Core/CLI and native UI have separate owners using the
 [reviewed engineering contract](spec/features/PAT-006-straight-cut.md). Original
 R240/L fixtures, literal geometry/ID/mass oracles and bounded R author/restart
@@ -36,14 +64,16 @@ fine-L cloth/mass acceptance is claimed. Caps and tolerances are unchanged.
 The clean runtime checkpoint19b1e88245dc627cfec8164f4924b335fe44853d passed
 workspace formatting, **304 Rust tests / zero failures**, and strict
 workspace/all-target Clippy. All69 runtime/build/test/doc/contract inputs remained
-exact through those checks. Source-map/registry integration, one clean xtask check,
-actual native build and CUT-R1/R2 remain pending. The candidate has no native cut
-acceptance. The
+exact through those checks. Source-map/registry integration, clean xtask validation
+and the actual native build also passed at clean metadata checkpoint 982ad03.
+CUT-R1/R003 completed with four raw native saves and passed its single saved-file
+assessment; raw-UI acceptance and CUT-R2 remain pending. The
 retained checks below apply to the published annotation checkpoint and are not
 reused as cut acceptance. PAT-006 remains planned until an actual cut implementation
-is checked. Full cuts, holes, target sewing, Cut & Sew and reference behavior remain
-open. Package and root workspace Cargo jobs are complete; no Cargo process or GUI lease
-is active. Root owns the next clean metadata/xtask/build gate and native binding.
+is checked. Full cuts, target sewing, Cut & Sew and reference behavior remain
+open. The newer hole candidate above is separate from these v4 cut observations.
+Package and root workspace Cargo jobs are complete; no Cargo process or GUI lease
+is active. Root owns raw-UI review, the restart binding and evidence publication.
 Prior reports with changed scoped source are marked stale without altering their
 original results, tested commits or artifacts. Fresh default targets stay separate across worktrees.
 
