@@ -927,6 +927,7 @@ struct Studio {
     sewing_draft: OrderedSewingDraft,
     free_sewing: Option<FreeSewingDraft>,
     sewing_edit: Option<SewingGroupEdit>,
+    reset_sewing_properties: bool,
     reversed: bool,
     intervals: [[f64; 2]; 2],
     name: String,
@@ -1011,6 +1012,7 @@ impl Studio {
             sewing_draft: OrderedSewingDraft::default(),
             free_sewing: None,
             sewing_edit: None,
+            reset_sewing_properties: true,
             reversed: true,
             intervals: [[0., 1.]; 2],
             name: "Pattern 1".into(),
@@ -1312,6 +1314,7 @@ impl Studio {
         self.selected_curve = None;
         self.reset_gestures();
         self.sewing_edit = None;
+        self.reset_sewing_properties = true;
         self.pattern_import = None;
         self.show_recovery = false;
         self.mesh = None;
@@ -1680,6 +1683,7 @@ impl Studio {
                 self.selected_curve = None;
                 self.reset_gestures();
                 self.sewing_edit = None;
+                self.reset_sewing_properties = true;
                 self.mesh = None;
                 self.reset_simulation();
                 self.rebuild();
@@ -2319,7 +2323,7 @@ impl Studio {
 
     fn toolbar(&mut self, ui: &mut egui::Ui) {
         ui.horizontal(|ui| {
-            ui.label(self.tool.label());
+            ui.strong(self.tool.label());
             ui.separator();
             self.position_snap_control(ui);
             ui.separator();
@@ -2399,8 +2403,8 @@ impl Studio {
     }
 
     fn document_tab(&self, ui: &mut egui::Ui) {
-        egui::Frame::new()
-            .fill(Color32::from_gray(56))
+        let tab = egui::Frame::new()
+            .fill(Color32::from_gray(52))
             .inner_margin(egui::Margin::symmetric(10, 2))
             .show(ui, |ui| {
                 ui.horizontal(|ui| {
@@ -2412,6 +2416,13 @@ impl Studio {
                     ui.weak(format!("rev {}", self.editor.project.revision));
                 });
             });
+        ui.painter().line_segment(
+            [
+                tab.response.rect.left_bottom(),
+                tab.response.rect.right_bottom(),
+            ],
+            Stroke::new(2.0, Color32::from_rgb(74, 143, 208)),
+        );
     }
     fn status_bar(&mut self, ui: &mut egui::Ui) {
         ui.horizontal(|ui| {
@@ -2627,6 +2638,10 @@ impl Studio {
                         "{} pattern pieces",
                         self.editor.project.pieces.len()
                     ));
+                    if self.editor.project.pieces.is_empty() {
+                        ui.add_space(8.0);
+                        ui.small("Create a pattern in 2D to see it here.");
+                    }
                     egui::ScrollArea::vertical()
                         .id_salt("scene")
                         .show(ui, |ui| {
@@ -2636,22 +2651,13 @@ impl Studio {
                                         .id(ui.make_persistent_id(("piece-row", piece.id))),
                                     |ui| {
                                         let selected = self.selected == Some(piece.id);
-                                        let mut button = egui::Button::selectable(
+                                        let response = scene_row(
+                                            ui,
+                                            &format!("{} · #{}", piece.name, piece.id),
                                             selected,
-                                            egui::RichText::new(format!(
-                                                "{} · #{}",
-                                                piece.name, piece.id
-                                            ))
-                                            .color(Color32::from_gray(222)),
+                                            SceneItem::Pattern,
                                         )
-                                        .min_size(Vec2::new(ui.available_width(), 25.0))
-                                        .truncate();
-                                        if selected {
-                                            button = button.fill(Color32::from_gray(82)).stroke(
-                                                Stroke::new(1.0, Color32::from_rgb(74, 143, 208)),
-                                            );
-                                        }
-                                        let response = ui.add(button).on_hover_text(&piece.name);
+                                        .on_hover_text(&piece.name);
                                         if self.tool == Tool::Transform
                                             || self.tool == Tool::InternalLine
                                             || self.tool == Tool::CutPiece
@@ -2663,10 +2669,12 @@ impl Studio {
                                             self.select(ui.ctx(), Some(piece.id));
                                         }
                                         for curve in &piece.internal_curves {
-                                            let response = ui.selectable_label(
+                                            let response = scene_row(
+                                                ui,
+                                                &format!("  Internal line #{curve}"),
                                                 self.selected == Some(piece.id)
                                                     && self.selected_curve == Some(*curve),
-                                                format!("  Internal line #{curve}"),
+                                                SceneItem::InternalLine,
                                             );
                                             self.retain_inspector_input(&response, false);
                                             if response.clicked() {
@@ -2677,9 +2685,11 @@ impl Studio {
                                             }
                                         }
                                         for hole in &piece.holes {
-                                            let response = ui.selectable_label(
+                                            let response = scene_row(
+                                                ui,
+                                                &format!("  Hole #{}", hole.id),
                                                 self.selected_hole() == Some(hole.id),
-                                                format!("  Hole #{}", hole.id),
+                                                SceneItem::Hole,
                                             );
                                             self.retain_inspector_input(&response, false);
                                             if response.clicked() {
@@ -2751,6 +2761,8 @@ impl Studio {
         egui::Frame::new().inner_margin(8).show(ui, |ui| {
         let _scroll=egui::ScrollArea::vertical().id_salt("inspector").show(ui,|ui| {
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
+                pane_heading(ui,"Pattern");
+                ui.strong(format!("{} · #{}",piece.name,piece.id));
                 ui.label("Boundary curve · select here or in 2D");
                 egui::ComboBox::from_id_salt(("boundary-curve",piece.id))
                     .selected_text(self.selected_boundary_curve().map_or("Choose boundary".into(),|id|format!("Curve #{id}")))
@@ -2794,7 +2806,6 @@ impl Studio {
             let mut remove_hole=None;
             let mut remove_piece=None;
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
-                ui.separator(); ui.strong(format!("{} · #{}",piece.name,piece.id));
                 let response=self.outline_offset_button(ui);
                 acting|=response.is_pointer_button_down_on() || response.clicked();
                 if response.clicked() { offset_outline=true; }
@@ -2867,6 +2878,7 @@ impl Studio {
                     });
                 }
                 ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("piece",piece.id))),|ui| {
+                pane_heading(ui,"Arrangement");
                 if let Some(dimensions)=&mut draft.dimensions {
                     ui.horizontal(|ui| { ui.label("Size m"); for value in dimensions { commit|=numeric_commit(&ui.add(numeric_value(ui,value).speed(0.005))); } });
                 }
@@ -2882,6 +2894,7 @@ impl Studio {
                     commit|=numeric_commit(&ui.add(numeric_value(ui,angle).speed(0.02)));
                 }
                 if let Some(material)=&mut draft.material {
+                    pane_heading(ui,"Fabric");
                     let count=self.editor.project.pieces.iter().filter(|piece|piece.material==material.id).count();
                     ui.label(format!("Shared fabric · {count} pieces")); ui.small("Changes affect every assigned piece. Uncalibrated approximation.");
                     ui.label("Mass/area kg/m²"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.areal_density).speed(0.01).range(0.001..=100.0).clamp_existing_to_range(false)));
@@ -2903,11 +2916,13 @@ impl Studio {
             let mut close_polygon = false;
             // Explicit scopes keep auto-ID edit buffers stable as dynamic rows appear.
             ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("creation")),|ui| {
-            ui.separator(); ui.strong("Create pattern"); ui.label("Pattern name"); ui.text_edit_singleline(&mut self.name);
+            pane_heading(ui,"Create pattern"); ui.label("Pattern name"); ui.text_edit_singleline(&mut self.name);
             ui.horizontal(|ui| { ui.label("W / H m"); for value in &mut self.size { ui.add(numeric_value(ui,value).speed(0.01).range(0.01..=5.0)); } });
             ui.horizontal(|ui| { ui.label("X / Y m"); for value in &mut self.coordinate { ui.add(numeric_value(ui,value).speed(0.01)); } });
-            if ui.button("Add rectangle").clicked() { acting=true; add_rectangle=true; }
-            if ui.button("Add ellipse").clicked() { acting=true; add_ellipse=true; }
+            ui.horizontal(|ui| {
+                if ui.button("Add rectangle").clicked() { acting=true; add_rectangle=true; }
+                if ui.button("Add ellipse").clicked() { acting=true; add_ellipse=true; }
+            });
             if self.selected.is_some() {
                 let response=self.add_hole_button(ui);
                 acting|=response.is_pointer_button_down_on() || response.clicked();
@@ -2922,8 +2937,24 @@ impl Studio {
             let mut remove=None;
             let mut group_action=None;
             let mut confirm_side=false;
+            ui.add_space(4.0);
+            let sewing_tool_changed=ui.ctx().data_mut(|data| {
+                let key=ui.make_persistent_id("sewing-tool-context");
+                let previous=data.get_temp::<Tool>(key);
+                data.insert_temp(key,self.tool);
+                previous!=Some(self.tool)
+            });
+            let sewing_tool=matches!(self.tool,Tool::Sew | Tool::FreeSewing | Tool::SewingPaths);
+            let sewing_open=if self.reset_sewing_properties {
+                self.reset_sewing_properties=false;
+                Some(sewing_tool || !self.editor.project.seams.is_empty() || !self.editor.project.sewing_groups.is_empty())
+            } else { (sewing_tool_changed && sewing_tool).then_some(true) };
+            let sewing=egui::CollapsingHeader::new(egui::RichText::new("Sewing").small().strong())
+                .id_salt("sewing-properties")
+                .open(sewing_open)
+                .show_unindented(ui,|ui| {
             ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("sewing")),|ui| {
-            ui.separator(); ui.strong("Sewing"); ui.checkbox(&mut self.reversed,"Reverse paired edge"); ui.label("A interval / B interval (0–1)");
+            ui.checkbox(&mut self.reversed,"Reverse paired edge"); ui.label("A interval / B interval (0–1)");
             for range in &mut self.intervals { ui.horizontal(|ui| { for value in range { ui.add(numeric_value(ui,value).speed(0.01).range(0.0..=1.0)); } }); }
             ui.label(if self.seam_start.is_some() { "Click paired boundary in 2D." } else { "Sew edges: click two 2D boundaries." });
             ui.small("Intervals use curve parameter t, not arc length. Reverse swaps B's direction and keeps the normalized mapping.");
@@ -2945,6 +2976,8 @@ impl Studio {
                         applied_length_heading(ui,self.editor.project.revision);
                         pair_length_feedback(ui,self.legacy_lengths.values.get(&seam.id).map(|lengths|lengths.as_ref().copied().map_err(String::as_str)));
                     });
+                    #[cfg(test)]
+                    ui.ctx().data_mut(|data|data.insert_temp(egui::Id::new(("authored-length-feedback",seam.id)),feedback.response.rect));
                     if ui.is_rect_visible(feedback.response.rect)
                         && let std::collections::btree_map::Entry::Vacant(entry)=self.legacy_lengths.values.entry(seam.id) {
                         #[cfg(test)]
@@ -2956,7 +2989,7 @@ impl Studio {
             }
             });
             ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("ordered-sewing")),|ui| {
-                ui.separator(); ui.strong("Ordered sewing groups");
+                pane_heading(ui,"Ordered sewing groups");
                 ui.small("Pairing: total authored arc length in metres. Span endpoints use curve parameter t.");
                 if self.tool==Tool::SewingPaths {
                     let draft=&mut self.sewing_draft;
@@ -3018,8 +3051,15 @@ impl Studio {
                     });
                 }
             });
+            });
+            if let Some(state)=egui::collapsing_header::CollapsingState::load(ui.ctx(),sewing.header_response.id) {
+                ui.ctx().accesskit_node_builder(sewing.header_response.id,|node|node.set_expanded(state.is_open()));
+            }
+            self.retain_inspector_input(&sewing.header_response,false);
+            acting|=sewing.header_response.is_pointer_button_down_on() || sewing.header_response.clicked();
             ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("mesh-settings")),|ui| {
-            ui.separator(); ui.label("Mesh edge length m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut draft.resolution).speed(0.005).range(0.005..=0.5)));
+            pane_heading(ui,"Simulation settings");
+            ui.label("Mesh edge length m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut draft.resolution).speed(0.005).range(0.005..=0.5)));
             ui.label("Iterations / substeps"); ui.horizontal(|ui| {
                 ui.add(egui::DragValue::new(&mut self.settings.iterations).range(1..=50));
                 ui.add(egui::DragValue::new(&mut self.settings.substeps).range(1..=16));
@@ -6220,13 +6260,78 @@ impl eframe::App for Studio {
 }
 fn pane_heading(ui: &mut egui::Ui, title: &str) -> egui::Response {
     egui::Frame::new()
-        .fill(Color32::from_gray(48))
+        .fill(Color32::from_gray(43))
+        .stroke(Stroke::new(1.0, Color32::from_gray(35)))
         .inner_margin(egui::Margin::symmetric(8, 4))
         .show(ui, |ui| {
             ui.set_width(ui.available_width());
-            ui.label(title)
+            ui.label(egui::RichText::new(title).small().strong())
         })
         .inner
+}
+
+enum SceneItem {
+    Pattern,
+    InternalLine,
+    Hole,
+}
+
+fn scene_row(ui: &mut egui::Ui, label: &str, selected: bool, item: SceneItem) -> egui::Response {
+    let icon = ui.next_auto_id().with("scene-icon");
+    let icon_width = if matches!(item, SceneItem::Pattern) {
+        18.0
+    } else {
+        30.0
+    };
+    let row = egui::Button::selectable(
+        selected,
+        (
+            egui::Atom::custom(icon, Vec2::new(icon_width, 18.0)),
+            label,
+            egui::Atom::grow(),
+        ),
+    )
+    .min_size(Vec2::new(ui.available_width(), 26.0))
+    .truncate()
+    .atom_ui(ui);
+    if let Some(rect) = row.rect(icon) {
+        let center = Pos2::new(rect.right() - 9.0, rect.center().y);
+        let stroke = ui
+            .style()
+            .interact_selectable(&row.response, selected)
+            .fg_stroke;
+        let painter = ui.painter();
+        match item {
+            SceneItem::Pattern => {
+                painter.add(egui::Shape::closed_line(
+                    [(-6., -6.), (2., -6.), (6., -1.), (6., 6.), (-6., 6.)]
+                        .map(|(x, y)| center + Vec2::new(x, y))
+                        .to_vec(),
+                    stroke,
+                ));
+            }
+            SceneItem::InternalLine => {
+                let ends = [center + Vec2::new(-5., 4.), center + Vec2::new(5., -4.)];
+                painter.line_segment(ends, stroke);
+                for end in ends {
+                    painter.circle_filled(end, 1.7, stroke.color);
+                }
+            }
+            SceneItem::Hole => {
+                painter.circle_stroke(center, 5.5, stroke);
+            }
+        }
+        if selected {
+            painter.line_segment(
+                [
+                    row.response.rect.left_top() + Vec2::new(1., 4.),
+                    row.response.rect.left_bottom() + Vec2::new(1., -4.),
+                ],
+                Stroke::new(2., Color32::from_rgb(74, 143, 208)),
+            );
+        }
+    }
+    row.response
 }
 
 fn tool_button(ui: &mut egui::Ui, tool: Tool, selected: bool) -> egui::Response {
@@ -6245,7 +6350,7 @@ fn tool_button(ui: &mut egui::Ui, tool: Tool, selected: bool) -> egui::Response 
             rect,
             2.0,
             if selected {
-                Color32::from_rgb(53, 73, 93)
+                Color32::from_rgb(47, 77, 105)
             } else {
                 Color32::from_gray(61)
             },
@@ -6260,7 +6365,14 @@ fn tool_button(ui: &mut egui::Ui, tool: Tool, selected: bool) -> egui::Response 
         }
     }
     let c = rect.center();
-    let stroke = Stroke::new(1.3, Color32::from_gray(200));
+    let stroke = Stroke::new(
+        1.3,
+        if selected || response.hovered() || response.has_focus() {
+            Color32::from_gray(240)
+        } else {
+            Color32::from_gray(200)
+        },
+    );
     let point = |x, y| c + Vec2::new(x, y);
     match tool {
         Tool::Select => {
@@ -6963,6 +7075,7 @@ fn studio_style(ctx: &egui::Context) {
     visuals.extreme_bg_color = Color32::from_gray(36);
     visuals.faint_bg_color = Color32::from_gray(46);
     visuals.weak_text_color = Some(Color32::from_gray(178));
+    visuals.collapsing_header_frame = true;
     visuals.widgets.noninteractive.bg_stroke = Stroke::new(1.0, Color32::from_gray(72));
     visuals.widgets.noninteractive.fg_stroke = Stroke::new(1.0, Color32::from_gray(222));
     visuals.widgets.inactive.bg_fill = Color32::from_gray(38);
@@ -6971,10 +7084,17 @@ fn studio_style(ctx: &egui::Context) {
     visuals.widgets.hovered.bg_fill = Color32::from_gray(64);
     visuals.widgets.hovered.weak_bg_fill = Color32::from_gray(60);
     visuals.widgets.hovered.bg_stroke = Stroke::new(1.0, Color32::from_gray(104));
+    visuals.widgets.hovered.fg_stroke = Stroke::new(1.0, Color32::from_gray(240));
     visuals.widgets.active.bg_fill = Color32::from_gray(72);
+    visuals.widgets.active.weak_bg_fill = Color32::from_gray(64);
     visuals.widgets.active.bg_stroke = Stroke::new(1.0, Color32::from_rgb(74, 143, 208));
-    visuals.selection.bg_fill = Color32::from_rgb(53, 73, 93);
-    visuals.selection.stroke = Stroke::new(1.0, Color32::from_gray(222));
+    visuals.widgets.active.fg_stroke = Stroke::new(1.0, Color32::from_gray(245));
+    visuals.widgets.open.bg_fill = Color32::from_gray(56);
+    visuals.widgets.open.weak_bg_fill = Color32::from_gray(56);
+    visuals.widgets.open.bg_stroke = Stroke::new(1.0, Color32::from_rgb(74, 143, 208));
+    visuals.widgets.open.fg_stroke = Stroke::new(1.0, Color32::from_gray(240));
+    visuals.selection.bg_fill = Color32::from_rgb(47, 77, 105);
+    visuals.selection.stroke = Stroke::new(1.0, Color32::from_rgb(228, 240, 252));
     visuals.hyperlink_color = Color32::from_rgb(74, 143, 208);
     visuals.window_corner_radius = egui::CornerRadius::same(3);
     visuals.menu_corner_radius = egui::CornerRadius::same(2);
@@ -7017,7 +7137,7 @@ mod native_idle_numeric_tests {
     use super::*;
     use egui::accesskit::{Action, ActionData, ActionRequest, NodeId, TreeId};
 
-    fn action(id: NodeId, action: Action, data: Option<ActionData>) -> egui::Event {
+    pub(super) fn action(id: NodeId, action: Action, data: Option<ActionData>) -> egui::Event {
         egui::Event::AccessKitActionRequest(ActionRequest {
             action,
             target_tree: TreeId::ROOT,
@@ -7025,7 +7145,7 @@ mod native_idle_numeric_tests {
             data,
         })
     }
-    fn button(output: &egui::FullOutput, label: &str) -> NodeId {
+    pub(super) fn button(output: &egui::FullOutput, label: &str) -> NodeId {
         output
             .platform_output
             .accesskit_update
@@ -7042,7 +7162,7 @@ mod native_idle_numeric_tests {
             .0
     }
 
-    fn frame(
+    pub(super) fn frame(
         ctx: &egui::Context,
         app: &mut Studio,
         height: f32,
@@ -7280,7 +7400,24 @@ mod native_idle_numeric_tests {
 
 #[cfg(test)]
 mod tests {
+    use super::native_idle_numeric_tests::{
+        action as native_action, button as native_button, frame as native_frame,
+    };
     use super::*;
+    fn sewing_expanded(output: &egui::FullOutput) -> Option<bool> {
+        let header = native_button(output, "Sewing");
+        output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(id, _)| *id == header)
+            .unwrap()
+            .1
+            .is_expanded()
+    }
     pub(super) fn command_search_action(
         output: &egui::FullOutput,
         label: &str,
@@ -7391,6 +7528,8 @@ mod tests {
                     "M:N sewing",
                     "Properties",
                     "Scene",
+                    "Create pattern",
+                    "Simulation settings",
                     "Undo",
                     "Add ellipse",
                     "Play",
@@ -7421,6 +7560,374 @@ mod tests {
                     );
                 }
             }
+        }
+    }
+
+    #[test]
+    fn workspace_sewing_properties_open_for_the_active_tool_without_authoring() {
+        use egui::accesskit::Action;
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        studio_style(&ctx);
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        let before = app.editor.project.clone();
+        native_frame(&ctx, &mut app, 1000., vec![]);
+        let output = native_frame(&ctx, &mut app, 1000., vec![]);
+        let nodes = &output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes;
+        assert!(
+            nodes
+                .iter()
+                .any(|(_, node)| node.label() == Some("Sewing")
+                    && node.supports_action(Action::Click))
+        );
+        assert!(
+            !nodes
+                .iter()
+                .any(|(_, node)| node.label() == Some("Reverse paired edge"))
+        );
+        assert_eq!(sewing_expanded(&output), Some(false));
+        let sew = native_button(&output, "Sew edges");
+        native_frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![native_action(sew, Action::Click, None)],
+        );
+        let output = native_frame(&ctx, &mut app, 1000., vec![]);
+        assert!(app.tool == Tool::Sew);
+        assert_eq!(sewing_expanded(&output), Some(true));
+        assert!(
+            output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .any(|(_, node)| node.label() == Some("Reverse paired edge")
+                    && node.supports_action(Action::Click))
+        );
+        let sewing = native_button(&output, "Sewing");
+        native_frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![native_action(sewing, Action::Click, None)],
+        );
+        for _ in 0..20 {
+            native_frame(&ctx, &mut app, 1000., vec![]);
+        }
+        let output = native_frame(&ctx, &mut app, 1000., vec![]);
+        assert_eq!(sewing_expanded(&output), Some(false));
+        assert!(
+            !output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .any(|(_, node)| node.label() == Some("Reverse paired edge"))
+        );
+        let ordered = native_button(&output, "M:N sewing");
+        native_frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![native_action(ordered, Action::Click, None)],
+        );
+        let output = native_frame(&ctx, &mut app, 1000., vec![]);
+        assert_eq!(sewing_expanded(&output), Some(true));
+        native_button(&output, "Confirm A (Enter)");
+        assert_eq!(app.editor.project, before);
+        assert!(!app.dirty && !app.editor.can_undo());
+    }
+
+    #[test]
+    fn sewing_section_defaults_follow_accepted_documents_and_preserve_failed_transitions() {
+        use egui::accesskit::Action;
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        studio_style(&ctx);
+        let dir = exit_test_directory("sewing-properties-document");
+        let path = dir.join("sewn.weftforge");
+        let corrupt = dir.join("corrupt.weftforge");
+        fs::write(&corrupt, b"{invalid").unwrap();
+        let mut sewn = Editor::default();
+        for index in 0..2 {
+            sewn.execute(Command::AddRectangle {
+                name: format!("Sewn panel {index}"),
+                origin: [index as f64, 0.],
+                width: 0.5,
+                height: 0.6,
+            })
+            .unwrap();
+        }
+        sewn.execute(Command::AddSeam {
+            name: "Existing sewing".into(),
+            a: CurveInterval::full(sewn.project.pieces[0].boundary[0]),
+            b: CurveInterval::reversed(sewn.project.pieces[1].boundary[0]),
+            correspondence: vec![[0., 0.], [1., 1.]],
+        })
+        .unwrap();
+        sewn.project.save(&path).unwrap();
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        native_frame(&ctx, &mut app, 1000., vec![]);
+        let output = native_frame(&ctx, &mut app, 1000., vec![]);
+        assert_eq!(sewing_expanded(&output), Some(false));
+        app.load_document(path, false);
+        let mut output = native_frame(&ctx, &mut app, 1000., vec![]);
+        assert_eq!(sewing_expanded(&output), Some(true));
+        assert_eq!(app.editor.project, sewn.project);
+        for expanded in [false, true] {
+            let header = native_button(&output, "Sewing");
+            native_frame(
+                &ctx,
+                &mut app,
+                1000.,
+                vec![native_action(header, Action::Click, None)],
+            );
+            output = native_frame(&ctx, &mut app, 1000., vec![]);
+            assert_eq!(sewing_expanded(&output), Some(expanded));
+            app.load_document(corrupt.clone(), false);
+            output = native_frame(&ctx, &mut app, 1000., vec![]);
+            assert!(
+                app.message
+                    .starts_with("Open failed; current document retained:")
+            );
+            assert_eq!(sewing_expanded(&output), Some(expanded));
+            assert_eq!(app.editor.project, sewn.project);
+            app.dirty = true;
+            app.new_empty(&ctx, None);
+            output = native_frame(&ctx, &mut app, 1000., vec![]);
+            assert_eq!(app.message, "Save current edits before creating New Empty.");
+            assert_eq!(sewing_expanded(&output), Some(expanded));
+            assert_eq!(app.editor.project, sewn.project);
+            app.dirty = false;
+        }
+        app.new_empty(&ctx, None);
+        let output = native_frame(&ctx, &mut app, 1000., vec![]);
+        assert_eq!(app.editor.project, Project::default());
+        assert_eq!(sewing_expanded(&output), Some(false));
+        app.set_tool(Tool::Sew);
+        app.new_empty(&ctx, None);
+        let output = native_frame(&ctx, &mut app, 1000., vec![]);
+        assert_eq!(sewing_expanded(&output), Some(true));
+        assert!(!app.dirty && !app.editor.can_undo());
+        fs::remove_dir_all(dir).unwrap();
+    }
+
+    #[test]
+    fn sewing_section_pointer_toggle_preserves_numeric_draft_text_and_caret() {
+        use egui::accesskit::Action;
+        for text in ["0.0850", "1e-", "NaN"] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            studio_style(&ctx);
+            let mut app = Studio::empty();
+            app.session_autosave = None;
+            native_frame(&ctx, &mut app, 1000., vec![]);
+            let output = native_frame(&ctx, &mut app, 1000., vec![]);
+            let resolution = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(_, node)| node.numeric_value() == Some(0.07))
+                .unwrap()
+                .0;
+            native_frame(
+                &ctx,
+                &mut app,
+                1000.,
+                vec![native_action(resolution, Action::Focus, None)],
+            );
+            native_frame(&ctx, &mut app, 1000., vec![]);
+            native_frame(
+                &ctx,
+                &mut app,
+                1000.,
+                vec![
+                    egui::Event::Key {
+                        key: egui::Key::A,
+                        physical_key: None,
+                        pressed: true,
+                        repeat: false,
+                        modifiers: egui::Modifiers::COMMAND,
+                    },
+                    egui::Event::Text(text.into()),
+                ],
+            );
+            let focused = numeric_focus(&ctx).unwrap();
+            let caret = egui::TextEdit::load_state(&ctx, focused)
+                .unwrap()
+                .cursor
+                .char_range();
+            let before = app.editor.project.clone();
+            let pending = app.draft.as_ref().unwrap().commands(&before);
+            let output = native_frame(&ctx, &mut app, 1000., vec![]);
+            let header = native_button(&output, "Sewing");
+            let bounds = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(id, _)| *id == header)
+                .unwrap()
+                .1
+                .bounds()
+                .unwrap();
+            let pos = Pos2::new(
+                ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                ((bounds.y0 + bounds.y1) * 0.5) as f32,
+            );
+            for pressed in [true, false] {
+                native_frame(
+                    &ctx,
+                    &mut app,
+                    1000.,
+                    vec![
+                        egui::Event::PointerMoved(pos),
+                        egui::Event::PointerButton {
+                            pos,
+                            button: egui::PointerButton::Primary,
+                            pressed,
+                            modifiers: egui::Modifiers::NONE,
+                        },
+                    ],
+                );
+            }
+            for _ in 0..3 {
+                native_frame(&ctx, &mut app, 1000., vec![]);
+            }
+            let output = native_frame(&ctx, &mut app, 1000., vec![]);
+            native_button(&output, "Reverse paired edge");
+            assert_eq!(
+                app.editor.project, before,
+                "section toggle committed {text:?}"
+            );
+            assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+            assert_eq!(numeric_focus(&ctx), Some(focused));
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(focused))
+                    .as_deref(),
+                Some(text)
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, focused)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            assert!(!app.dirty && !app.editor.can_undo());
+        }
+    }
+
+    #[test]
+    fn scene_hierarchy_rows_select_real_pattern_annotations_and_holes() {
+        use egui::accesskit::{Action, Toggled};
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        studio_style(&ctx);
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Working panel".into(),
+                origin: [0.; 2],
+                width: 0.5,
+                height: 0.6,
+            })
+            .unwrap();
+        let piece = app.editor.project.pieces[0].id;
+        app.editor
+            .execute(Command::AddInternalSegment {
+                piece,
+                start: [0.05, 0.1],
+                end: [0.45, 0.1],
+            })
+            .unwrap();
+        app.editor
+            .execute(Command::AddHole {
+                piece,
+                vertices: vec![[0.1, 0.2], [0.1, 0.3], [0.2, 0.3], [0.2, 0.2]],
+            })
+            .unwrap();
+        let internal = app.editor.project.pieces[0].internal_curves[0];
+        let hole = app.editor.project.pieces[0].holes[0].clone();
+        let before = app.editor.project.clone();
+        let owner = format!("Working panel · #{piece}");
+        let internal_label = format!("  Internal line #{internal}");
+        let hole_label = format!("  Hole #{}", hole.id);
+        let row_selected = |output: &egui::FullOutput, label: &str| {
+            let row = native_button(output, label);
+            output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(id, _)| *id == row)
+                .unwrap()
+                .1
+                .toggled()
+                .expect("scene row toggle semantics")
+                == Toggled::True
+        };
+        for (label, curve, tool) in [
+            (owner.clone(), None, Tool::Select),
+            (internal_label.clone(), Some(internal), Tool::Select),
+            (hole_label.clone(), Some(hole.boundary[0]), Tool::Select),
+            (internal_label, Some(internal), Tool::Transform),
+            (hole_label, Some(hole.boundary[0]), Tool::Transform),
+        ] {
+            app.set_tool(tool);
+            native_frame(&ctx, &mut app, 1000., vec![]);
+            let output = native_frame(&ctx, &mut app, 1000., vec![]);
+            let row = native_button(&output, &label);
+            native_frame(
+                &ctx,
+                &mut app,
+                1000.,
+                vec![native_action(row, Action::Click, None)],
+            );
+            let output = native_frame(&ctx, &mut app, 1000., vec![]);
+            assert_eq!((app.selected, app.selected_curve), (Some(piece), curve));
+            assert!(row_selected(&output, &owner));
+            assert!(row_selected(&output, &label));
+            if curve.is_some() {
+                let row = native_button(&output, &owner);
+                native_frame(
+                    &ctx,
+                    &mut app,
+                    1000.,
+                    vec![native_action(row, Action::Click, None)],
+                );
+                let output = native_frame(&ctx, &mut app, 1000., vec![]);
+                let retained = curve == Some(internal) || tool == Tool::Transform;
+                assert_eq!(
+                    (app.selected, app.selected_curve),
+                    (Some(piece), curve.filter(|_| retained))
+                );
+                assert!(row_selected(&output, &owner));
+                assert_eq!(row_selected(&output, &label), retained);
+            }
+            let _ = ctx.tessellate(output.shapes, output.pixels_per_point);
+            assert_eq!(app.editor.project, before);
+            assert!(!app.dirty);
         }
     }
 
@@ -19678,7 +20185,12 @@ mod authored_length_tests {
                 ))
             })
             .unwrap();
-        let row = output
+        let feedback_key =
+            egui::Id::new(("authored-length-feedback", app.editor.project.seams[0].id));
+        let feedback = ctx
+            .data_mut(|data| data.get_temp::<Rect>(feedback_key))
+            .unwrap();
+        let (row_id, row) = output
             .platform_output
             .accesskit_update
             .unwrap()
@@ -19687,17 +20199,41 @@ mod authored_length_tests {
             .find(|(_, node)| {
                 node.role() == egui::accesskit::Role::Label
                     && node.value().or_else(|| node.label()) == Some("A — mm")
+                    && node.bounds().is_some_and(|bounds| {
+                        bounds.y0 >= feedback.top() as f64 && bounds.y1 <= feedback.bottom() as f64
+                    })
             })
-            .unwrap()
-            .1
-            .bounds()
+            .map(|(id, node)| (id, node.bounds().unwrap()))
             .unwrap();
         let mut state = egui::scroll_area::State::load(&ctx, id).unwrap();
         // The value row is at the top while the block's heading is clipped above it.
         state.offset.y = row.y0 as f32 - viewport.top();
         state.store(&ctx, id);
         for _ in 0..4 {
-            frame(&ctx, &mut app, 300., vec![]);
+            let output = frame(&ctx, &mut app, 300., vec![]);
+            let feedback = ctx
+                .data_mut(|data| data.get_temp::<Rect>(feedback_key))
+                .unwrap();
+            let row = output
+                .platform_output
+                .accesskit_update
+                .unwrap()
+                .nodes
+                .into_iter()
+                .find(|(id, _)| *id == row_id)
+                .unwrap()
+                .1
+                .bounds()
+                .unwrap();
+            assert!(
+                feedback.top() < viewport.top() && feedback.bottom() > viewport.top(),
+                "feedback block must be partially clipped above: {feedback:?} in {viewport:?}"
+            );
+            assert!(
+                (row.y0 as f32 - viewport.top()).abs() <= 0.01
+                    && row.y1 <= viewport.bottom() as f64,
+                "value row must remain visible at the viewport top: {row:?} in {viewport:?}"
+            );
         }
         assert!(
             app.legacy_lengths
