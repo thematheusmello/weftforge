@@ -66,11 +66,20 @@ feature objects remain exact. UI-006 stays planned. No roadmap gate is accepted.
 Metadata cycle passed once: progress generation, progress check and **39
 registry tests**. Session **73628** is terminal, exit **0**. Raw command/output
 and exact-input records are retained privately for root review; no source gates
-were rerun. Clean committed xtask remains due before publication.
+were rerun.
 
-Next: root reviews the clean evidence checkpoint, runs clean-committed
-`cargo xtask verify`, then decides publication/PR scope. No push or PR action
-is performed by this integration task. GitHub Actions stays disabled and the
+Clean committed `cargo xtask verify` passed at
+`195c609c3ce459045c02c30e9b08ac4491e513c9` in 183.9 seconds, with all
+87 source inputs, 49 reports and five qualifying metadata files unchanged.
+Session **53753** is terminal, exit **0**; original receipt
+`57ad108caccf0ae50286760bdb13cbdaeb702083e72c9885a8d0553638491514`.
+Selected logs are under `photocraft-workspace-publication-checks-20261116`.
+This final append changes only status and those logs; no native, reference or
+complete-workflow acceptance transfers from the CLI verification.
+
+Next: execute the separately bound rectangle-offset native workflow using the
+calibrated input route, then independently check its saved files and exports.
+Prior closed cases remain unchanged. GitHub Actions stays disabled and the
 existing static Pages site remains unchanged. Full editable allowances,
 native offset acceptance, curved/concave/cancellation cases and the complete
 ROADMAP target remain due.
