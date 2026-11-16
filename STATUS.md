@@ -1,5 +1,32 @@
 # WeftForge status — active development, 2026-11-16
 
+The source follow-up for [endpoint input issue #52](https://github.com/thematheusmello/weftforge/issues/52)
+reconstructs one completed primary endpoint drag when its press/move/release
+arrives in one frame. It uses the existing boundary/internal/hole hit selection
+and typed transaction, with enabled, pause, clip, layer ownership, movement and
+unambiguous-input guards. Both normal and reconstructed endpoints use the
+release event coordinate. Pending inspector edits stay in that same transaction
+when later hover leaves the canvas; invalid final geometry preserves history.
+
+The exact original paused-test input
+`787fcadcbb1ceda7bb6f68d7f62ee291fa45e44b29b4a881ed9f17fb963a7a83`
+produced **5 passed / 3 failed**
+on unchanged production (session **6134**, terminal exit **101**); it was not
+rerun. Final source `3ddd1a624e7dd9af0c6228a12065782cc8dadef5bddb85f31d4958458f3adf21`
+passed **eight focused tests** (session **35485**, terminal exit **0**) and full
+formatting. Later added ownership, Escape and pending-property variants are
+adjacent green coverage and were not part of that original red input. Exact
+source snapshots and private receipts retain that distinction. No Cargo job or
+GUI run is active.
+
+This increment changes one source input; the source/native gates below remain
+identified baseline evidence. Next: root diff review, the required broad source
+gates and a separately bound native check, then source-map/report freshness and
+clean committed verification. No new native acceptance or reference parity is
+claimed. Rectangle, transform and pan gesture recognition remain outside this
+endpoint fix. Frozen cases, full contracts, inventory, Actions and Pages remain
+unchanged; temporary pointer tracing is not included.
+
 An isolated pointer-release source increment updates endpoint preview positions
 on the release frame before the existing typed `MovePoint` transaction. The
 shared native handler covers exterior, internal-line and hole endpoints;
