@@ -1,0 +1,15 @@
+{
+  "case": "POINT-EDIT-D003",
+  "phase": "fresh-process native reopen",
+  "bound_at": "2026-11-16T20:04:16.134715+00:00",
+  "pid": 3213,
+  "start": "Mon Nov 16 20:01:12 2026",
+  "actual_full_command": "ROOT/.local/native-point-release-20261116/D003/bundle/WeftForge Point Edit D003.app/Contents/MacOS/weftforge",
+  "native_sha256": "eccf633cbdb82dcd91952bf1123395e82a528180fc8959dab3509a3ea4c5d66d",
+  "ownership_verified_before_getApp": true,
+  "explicit_second_launch_performed": false,
+  "lifecycle_qualification": "After first normalQuit, the following AX query returned a new emptyrev0 process. Exactly this second owned executable is present. Its startup mechanism was not separately observed; auto-launch by observation is an inference. Use this existing fresh owned process for the predeclared read-only reopen phase, never launch a third.",
+  "actual_process_count": 2,
+  "elapsed_since_first_launch": 401.81645716703497,
+  "protocol_credit": "Lifecycle deviation retained explicitly; no full compliant workflow/reference acceptance."
+}

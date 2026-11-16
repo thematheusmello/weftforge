@@ -1,0 +1,105 @@
+{
+  "at": "2026-11-16T21:03:48.767788+00:00",
+  "verified_clean_commit": "f79f88e5749c24fb642bee5f75979c957c600f40",
+  "scope": "clean committed endpoint publication verification only; no new UI,geometry,physics,reference or full feature pass",
+  "files": [
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-publication-20261116/BEFORE.json",
+      "original_locator": "ROOT/.local/endpoint-publication-20261116/clean-f79f88e/BEFORE.json",
+      "original_sha256": "6fd619389e5c8d99fe9fae81d07214eaef1a88ade815bdb54efb961e18323fba",
+      "original_bytes": 17138,
+      "public_sha256": "6fd619389e5c8d99fe9fae81d07214eaef1a88ade815bdb54efb961e18323fba",
+      "public_bytes": 17138,
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-publication-20261116/AFTER.json",
+      "original_locator": "ROOT/.local/endpoint-publication-20261116/clean-f79f88e/AFTER.json",
+      "original_sha256": "82ec9ba85c8c0b252af4e006480b810aef0680e333af73c299cdf6992762b6c9",
+      "original_bytes": 17121,
+      "public_sha256": "82ec9ba85c8c0b252af4e006480b810aef0680e333af73c299cdf6992762b6c9",
+      "public_bytes": 17121,
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-publication-20261116/RESULT.json",
+      "original_locator": "ROOT/.local/endpoint-publication-20261116/clean-f79f88e/RESULT.json",
+      "original_sha256": "b673c5db7c9ecfdbc78f23ee8dabaefc472676f0f86ff7aa77d22c4c54ecc33a",
+      "original_bytes": 983,
+      "public_sha256": "8ec983514ddbc9396d33510fe1a29540630fa5a8d2916e041f1c7bfa5588dafc",
+      "public_bytes": 865,
+      "literal_replacements": {
+        "ROOT": 2,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-publication-20261116/xtask.stdout",
+      "original_locator": "ROOT/.local/endpoint-publication-20261116/clean-f79f88e/xtask.stdout",
+      "original_sha256": "d859b7d4206e88c1b8d13eac36c7793a27948cf2e9bde83be0e7c2dd79e86729",
+      "original_bytes": 2712,
+      "public_sha256": "d859b7d4206e88c1b8d13eac36c7793a27948cf2e9bde83be0e7c2dd79e86729",
+      "public_bytes": 2712,
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-publication-20261116/xtask.stderr",
+      "original_locator": "ROOT/.local/endpoint-publication-20261116/clean-f79f88e/xtask.stderr",
+      "original_sha256": "dff2d7f84f22716810e62bd58d9f8997d73d4037aec2e10435200154749fa78e",
+      "original_bytes": 1817,
+      "public_sha256": "3e5aa5946e66fbffa0293115a244596b115ed90156ffee0d82e4784cb70c77d3",
+      "public_bytes": 1522,
+      "literal_replacements": {
+        "ROOT": 5,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-publication-20261116/ROOT-METADATA-REVIEW-001.json",
+      "original_locator": "ROOT/.local/endpoint-delivery-review-20261116/ROOT-METADATA-REVIEW-001.json",
+      "original_sha256": "29c37f228c13b3100f7e1ff16c7fe72aec4f0209ed4d26f9c85f0b43faeff51e",
+      "original_bytes": 1514,
+      "public_sha256": "29c37f228c13b3100f7e1ff16c7fe72aec4f0209ed4d26f9c85f0b43faeff51e",
+      "public_bytes": 1514,
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-publication-20261116/PUBLICATION-SOURCE-GUARD-001.json",
+      "public_sha256": "21905c6d36f02e9869753a572fda362ea9d803b5e61219c4b9be4b0a1a1bd289",
+      "public_bytes": 1230,
+      "origin": "new root publication guard, not runtime evidence"
+    }
+  ],
+  "excluded_private_files": [
+    {
+      "path": "RUNNING.json",
+      "reason": "redundant pre-completion process receipt; complete identity retained in RESULT.json"
+    }
+  ],
+  "locator_convention": "plain ROOT and HOME labels, no dollar/braces; hashes identify public derivatives; exact originals retained privately",
+  "source_inputs144_unchanged": true,
+  "staged_whitespace_qualification": {
+    "full_check_exit": 0,
+    "exact_raw_log_exclusions": [],
+    "scoped_check_exit": 0,
+    "raw_bytes_preserved": true
+  }
+}

@@ -1,0 +1,2457 @@
+{
+  "prepared_utc": "2026-11-16T20:18:16.138268+00:00",
+  "status": "SELECTED_PUBLIC_DERIVATIVES_FOR_ROOT_REVIEW_ONLY_NOT_PUBLISHED",
+  "scope": "Own-source endpoint regressions/gates and bounded own-native D003/file observations; separate historical failures. No vendor material or compiled artifacts.",
+  "source_commit": "3fddeb9a72e5b4395e8e874a628086937331af2f",
+  "integrated_source_commit": "ac6c2e53b47f2d19772d2bfb341e1500dae2cf0c",
+  "native_sha256": "eccf633cbdb82dcd91952bf1123395e82a528180fc8959dab3509a3ea4c5d66d",
+  "selection_counts": {
+    "exact-report-archive": 4,
+    "historical-diagnostic-only": 3,
+    "historical-failure": 3,
+    "independent-file-check": 8,
+    "native-D003": 42,
+    "source": 23
+  },
+  "selected_files": 83,
+  "selected_public_bytes": 1166156,
+  "selected_D003_files": 42,
+  "original_D003_manifest_files": 165,
+  "selected_D003_images": 3,
+  "original_D003_images": 8,
+  "selected_D003_standalone_AX": 9,
+  "selected_files_do_not_repair_original_case_counts": true,
+  "literal_normalization": "Text bytes replace checkout root with ROOT, then account home with HOME; per-file counts/hashes below. Nothing else is altered. Images and saved documents retain exact bytes.",
+  "embedded_hash_qualification": "Embedded frozen original hashes continue to identify original bytes. Public derivative hashes below identify normalized public bytes; no embedded hash/pending wording/count was repaired.",
+  "frozen_D003_manifest": {
+    "sha256": "a8b75a01d14a4eb99795529321035808ac327bb8c03d5a37b980c860342ec134",
+    "bytes": 30169,
+    "not_copied": true
+  },
+  "originals_unchanged": true,
+  "case_reruns": 0,
+  "grader_reruns": 0,
+  "registry_or_map_checks": 0,
+  "registry_reports_or_map_edits": 0,
+  "lifecycle_qualification": "First Quit was followed by an AX query returning a new empty process, not App quit error. Second PID3213 was independently bound and used for the predeclared reopen; automatic observer launch is an inference, no third launch occurred. Owned PIDs2719/3213 were absent afterward. No compliant full-workflow claim.",
+  "disk_write_qualification": "Native saves, own working project, autosave and recovery writes remain retained; no zero-disk-writes claim.",
+  "historical_qualification": "E001/D001/D002 remain closed failures at their original commits. D002 trace47 artifacts are historical timing-sensitive diagnostics only and do not require or authorize trace47 in shipping ancestry.",
+  "complete_contract": false,
+  "native_ui_verified": false,
+  "reference_executed": false,
+  "reference_verified": false,
+  "physics_accepted": false,
+  "full_feature_accepted": false,
+  "full_garment_accepted": false,
+  "roadmap_accepted": false,
+  "files": [
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/HANDOFF.md",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/HANDOFF.md",
+      "original": {
+        "sha256": "01592a97db3f82bf6747de9965acd390c3d27942af85027fa9cc9591a1286ab0",
+        "bytes": 5138,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "01592a97db3f82bf6747de9965acd390c3d27942af85027fa9cc9591a1286ab0",
+        "bytes": 5138,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/red.json",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/red.json",
+      "original": {
+        "sha256": "77a5427cc7d6ea78d12ef65fc98d3744419205c4d19a57b06bca9bb633f65b7a",
+        "bytes": 20526,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "0985aeda68eed55aeaa1f0dc5ba703701d2577c8fe619143c2eee4d52b159916",
+        "bytes": 20408,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 2,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/red.log",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/red.log",
+      "original": {
+        "sha256": "e4f84567675c433072e7efb17dc3c0b3698fc41755c06910f69d9e7b6b1348b8",
+        "bytes": 14267,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "7a6e3df1c52088a60a2aa75f9aff60076b72d981d8369991db1f99c605c1e35f",
+        "bytes": 14031,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 4,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/red.patch",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/red.patch",
+      "original": {
+        "sha256": "8d3d16e91976371b2c239c4f0b6154e3e5d2a2fb4f8e640aa03f1ebc42fc4461",
+        "bytes": 7448,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "8d3d16e91976371b2c239c4f0b6154e3e5d2a2fb4f8e640aa03f1ebc42fc4461",
+        "bytes": 7448,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/green.json",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/green.json",
+      "original": {
+        "sha256": "082ccd5ed53324ece5a4fd2bfd114bcb11646eb598ae25f20009c10ba398648b",
+        "bytes": 20526,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "7869be72effc311f175362a596ef66a4ca986c31af99b33911cfd52c04ca32e5",
+        "bytes": 20408,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 2,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/green.log",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/green.log",
+      "original": {
+        "sha256": "e9ae2205f6957ebee81e7ee89c97d1b71d4df895bd9b182acfbe36aacab9f0c0",
+        "bytes": 1282,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "7eedc1aec916c2e2a638e9bce1eaec61331fd878a1eff4702dcd8b9d1005c9a8",
+        "bytes": 1223,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/green.patch",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/green.patch",
+      "original": {
+        "sha256": "0df29fc71e7db12d4ed60ed666b9819f06ec4eceae0356820465a754af2f746e",
+        "bytes": 17791,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "0df29fc71e7db12d4ed60ed666b9819f06ec4eceae0356820465a754af2f746e",
+        "bytes": 17791,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/format.json",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/format.json",
+      "original": {
+        "sha256": "a31dd63ccd2410c17c292e8dff9fe49fb924383c86ee57b4a76a666b3c59d21e",
+        "bytes": 366,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "a31dd63ccd2410c17c292e8dff9fe49fb924383c86ee57b4a76a666b3c59d21e",
+        "bytes": 366,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/format.log",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/format.log",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/CHECKPOINT.json",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/CHECKPOINT.json",
+      "original": {
+        "sha256": "a4899466204a0e478b6d08c3ff6e3eec30f52baa146b1f80315e2ebb68f74b30",
+        "bytes": 11952,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "a4899466204a0e478b6d08c3ff6e3eec30f52baa146b1f80315e2ebb68f74b30",
+        "bytes": 11952,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/HANDOFF.md",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/broad-gates/HANDOFF.md",
+      "original": {
+        "sha256": "903df31c749838267294bac55cbd6c44ba991daff7294258c3717071ad264ddc",
+        "bytes": 2674,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "501e70dcfe5ed47902cf41ebe772f1c61ce24fea205de6dda452d60d83c43097",
+        "bytes": 2615,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/SUMMARY.json",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/broad-gates/SUMMARY.json",
+      "original": {
+        "sha256": "132906bd7d9549645c7fa5f37bc3881fbc0abc69a254ab1ed7eae730df30a581",
+        "bytes": 3104,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "fc028adc7af4c383bb5e58067096b6572a9060a32bee56c30b26a8c64c44a79e",
+        "bytes": 3045,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/SOURCE87.before.json",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/broad-gates/SOURCE87.before.json",
+      "original": {
+        "sha256": "6136868510b0afaa30c1546a44bfae39246841ce342e2d3b12b1aba4adff5b5f",
+        "bytes": 9899,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "6136868510b0afaa30c1546a44bfae39246841ce342e2d3b12b1aba4adff5b5f",
+        "bytes": 9899,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/SOURCE87.after.json",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/broad-gates/SOURCE87.after.json",
+      "original": {
+        "sha256": "6136868510b0afaa30c1546a44bfae39246841ce342e2d3b12b1aba4adff5b5f",
+        "bytes": 9899,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "6136868510b0afaa30c1546a44bfae39246841ce342e2d3b12b1aba4adff5b5f",
+        "bytes": 9899,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/format-reused.json",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/broad-gates/format-reused.json",
+      "original": {
+        "sha256": "3cf915dbb7d83a43aa7a3a5f3077dc2812281ffd8be49e5f1d9d778bdb3430ae",
+        "bytes": 10744,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "3cf915dbb7d83a43aa7a3a5f3077dc2812281ffd8be49e5f1d9d778bdb3430ae",
+        "bytes": 10744,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/NATIVE-BINDING.json",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/broad-gates/NATIVE-BINDING.json",
+      "original": {
+        "sha256": "0c75d0a66e5919fbc3758d3fdb595e06ce7e9217b48d64a23dde9fa6ffa7e6d0",
+        "bytes": 999,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "33e5ce34443766d10d5512cb88a0450ac17a52de86408cc34e120519afd284cb",
+        "bytes": 940,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/workspace-tests.json",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/broad-gates/workspace-tests.json",
+      "original": {
+        "sha256": "4ccab198c2f1809d0673f135fd701b9e48e1ef815b87a9acad8e6362f36a16ae",
+        "bytes": 20487,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "f063b10037d8ef8acb00f7aa03e16b4e09adbe8d9524f8d9064591ecd1c50a7b",
+        "bytes": 20369,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 2,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/workspace-tests.log",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/broad-gates/workspace-tests.log",
+      "original": {
+        "sha256": "a1c4c734609eee70ed6fcb0e769916bda8140290d2f45b896df9970cadda81b3",
+        "bytes": 43617,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "ddbcb6e163f2cc99d0b22d59a2cfea04085e12f1a8c53d5a2d610367cb69cf7a",
+        "bytes": 43322,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 5,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/clippy.json",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/broad-gates/clippy.json",
+      "original": {
+        "sha256": "6e338bfa8f59eed3b4a34cd68b0c01a9df87dc181fbc0d244ec2410053578424",
+        "bytes": 20536,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "7e95b2064bc2ec7aba70801a077329d514b646d84801352d4573027637c5c2b5",
+        "bytes": 20418,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 2,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/clippy.log",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/broad-gates/clippy.log",
+      "original": {
+        "sha256": "c7c023696a254cf144120a35b4a6a6f5e965eba80a2dac91d6b17d2f91fcf5c8",
+        "bytes": 6565,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "a22dde98c47f9a2f984b238643acb479bc024164046ed93737429c39493b6115",
+        "bytes": 6211,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 6,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/native-build.json",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/broad-gates/native-build.json",
+      "original": {
+        "sha256": "288d718a0d3e54966dd0736c960ee17b54f0fb952d2e02289b0bf4732780aba3",
+        "bytes": 20754,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "65406b11d9a858fbe76c2f5ff9717b07ffc3aa96ed8a0da45cf238eb44db5ea5",
+        "bytes": 20577,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 3,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/native-build.log",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-endpoint-drag-20261116/.local/coalesced-endpoint-drag-20261116/broad-gates/native-build.log",
+      "original": {
+        "sha256": "7015277ec3687406d0dc87fc93fa199919a4bec90483bf6457fa431a8894e319",
+        "bytes": 223,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "640ae87799b5e8663ff21e37ac339f7da792c7fd5b21012419e1d14594e49b9a",
+        "bytes": 164,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/SOURCE-INTEGRATION.json",
+      "group": "source",
+      "original_locator": "ROOT/.local/coalesced-source-integration-review-20261116/SOURCE-INTEGRATION.json",
+      "original": {
+        "sha256": "8fc101c27fbf212e89e09f7f559e64fd006ae81183ac115895f0fc1a7a87e1fd",
+        "bytes": 17297,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "8fc101c27fbf212e89e09f7f559e64fd006ae81183ac115895f0fc1a7a87e1fd",
+        "bytes": 17297,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/PLAN.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/PLAN.json",
+      "original": {
+        "sha256": "e3398378031162cee7604e27ef75313fbde9c3225f9a032257d149ad45aa79b6",
+        "bytes": 13511,
+        "mode": "0444"
+      },
+      "public": {
+        "sha256": "bbea8b66135a708f8319fccaf9aec32569976023b621a7de18ead42aab01b836",
+        "bytes": 13452,
+        "mode": "0444"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/OUTCOME.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/OUTCOME.json",
+      "original": {
+        "sha256": "7cace728b9f377d39f8586d00700b845639d977f615c6abb14b9d516d430364b",
+        "bytes": 2980,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "7cace728b9f377d39f8586d00700b845639d977f615c6abb14b9d516d430364b",
+        "bytes": 2980,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/PHASE-1-RESULT.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/PHASE-1-RESULT.json",
+      "original": {
+        "sha256": "f9d19863991c370e351516fd252ec23af400662d05e439741b4d520d8a44e205",
+        "bytes": 608,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "f9d19863991c370e351516fd252ec23af400662d05e439741b4d520d8a44e205",
+        "bytes": 608,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/PHASE-2-RESULT.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/PHASE-2-RESULT.json",
+      "original": {
+        "sha256": "f7a09d74a7dac1be751130d32eca2064f57143e86f3dc096cc5c510982ed2649",
+        "bytes": 682,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "f7a09d74a7dac1be751130d32eca2064f57143e86f3dc096cc5c510982ed2649",
+        "bytes": 682,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/CUA-PHASE-1-END.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/CUA-PHASE-1-END.json",
+      "original": {
+        "sha256": "1f0dd6db978bb924c46807b091af10ab00194e954e0cdcb3ff89801263e2a788",
+        "bytes": 279,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "1f0dd6db978bb924c46807b091af10ab00194e954e0cdcb3ff89801263e2a788",
+        "bytes": 279,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/CUA-PHASE-2-END.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/CUA-PHASE-2-END.json",
+      "original": {
+        "sha256": "0d0d02751cd407cb886bb5f5ee45eab0506a1a4470534f5b11f638f57aa69b63",
+        "bytes": 378,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "0d0d02751cd407cb886bb5f5ee45eab0506a1a4470534f5b11f638f57aa69b63",
+        "bytes": 378,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/DRAG-GEOMETRY.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/DRAG-GEOMETRY.json",
+      "original": {
+        "sha256": "8f259df4114b25c925fd6f5fec792d0432ebe3a1bdae08841d644b2832fd3dc0",
+        "bytes": 302,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "8f259df4114b25c925fd6f5fec792d0432ebe3a1bdae08841d644b2832fd3dc0",
+        "bytes": 302,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/input/seed.weftforge",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/input/seed.weftforge",
+      "original": {
+        "sha256": "ba14733d505c8f9ee0bc71b0d38c7a3236c31ba25e9640ae6dd77d4124040077",
+        "bytes": 3308,
+        "mode": "0444"
+      },
+      "public": {
+        "sha256": "ba14733d505c8f9ee0bc71b0d38c7a3236c31ba25e9640ae6dd77d4124040077",
+        "bytes": 3308,
+        "mode": "0444"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/snapshots/edited.weftforge",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/snapshots/edited.weftforge",
+      "original": {
+        "sha256": "c916a6f3fc1e5bb9d49fea37742cd44742fc664bf002d07ca29de3e08c7f9eb3",
+        "bytes": 3276,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "c916a6f3fc1e5bb9d49fea37742cd44742fc664bf002d07ca29de3e08c7f9eb3",
+        "bytes": 3276,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/snapshots/undo.weftforge",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/snapshots/undo.weftforge",
+      "original": {
+        "sha256": "bfe3243c6222d03a1449284228154b4f62b83d9e8b1ac0cce620a25854680cbd",
+        "bytes": 3308,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "bfe3243c6222d03a1449284228154b4f62b83d9e8b1ac0cce620a25854680cbd",
+        "bytes": 3308,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/snapshots/redo.weftforge",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/snapshots/redo.weftforge",
+      "original": {
+        "sha256": "25187f68130d53b6d22c1cab2525b67268571d6c91d3bc1d6d2ac60393a79bc5",
+        "bytes": 3276,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "25187f68130d53b6d22c1cab2525b67268571d6c91d3bc1d6d2ac60393a79bc5",
+        "bytes": 3276,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/snapshots/edited-receipt.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/snapshots/edited-receipt.json",
+      "original": {
+        "sha256": "a3a00ef83b82610f8bc47784ef8ba5c053947f63a36867dd690ee25a3e057c56",
+        "bytes": 158,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "a3a00ef83b82610f8bc47784ef8ba5c053947f63a36867dd690ee25a3e057c56",
+        "bytes": 158,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/snapshots/undo-receipt.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/snapshots/undo-receipt.json",
+      "original": {
+        "sha256": "9290a3340ec782a01f904df52dc757c4929908c487c57ededab488e0c060974f",
+        "bytes": 158,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "9290a3340ec782a01f904df52dc757c4929908c487c57ededab488e0c060974f",
+        "bytes": 158,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/snapshots/redo-receipt.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/snapshots/redo-receipt.json",
+      "original": {
+        "sha256": "abd2faf5c36f81deeb02efab8c3d0bbb98d4561e5aab1cff3bca9babd2601e0a",
+        "bytes": 158,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "abd2faf5c36f81deeb02efab8c3d0bbb98d4561e5aab1cff3bca9babd2601e0a",
+        "bytes": 158,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/work/point-release.weftforge",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/work/point-release.weftforge",
+      "original": {
+        "sha256": "25187f68130d53b6d22c1cab2525b67268571d6c91d3bc1d6d2ac60393a79bc5",
+        "bytes": 3276,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "25187f68130d53b6d22c1cab2525b67268571d6c91d3bc1d6d2ac60393a79bc5",
+        "bytes": 3276,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/work/point-release.weftforge.autosave",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/work/point-release.weftforge.autosave",
+      "original": {
+        "sha256": "c916a6f3fc1e5bb9d49fea37742cd44742fc664bf002d07ca29de3e08c7f9eb3",
+        "bytes": 3276,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "c916a6f3fc1e5bb9d49fea37742cd44742fc664bf002d07ca29de3e08c7f9eb3",
+        "bytes": 3276,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/work/point-release.weftforge.recovery",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/work/point-release.weftforge.recovery",
+      "original": {
+        "sha256": "bfe3243c6222d03a1449284228154b4f62b83d9e8b1ac0cce620a25854680cbd",
+        "bytes": 3308,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "bfe3243c6222d03a1449284228154b4f62b83d9e8b1ac0cce620a25854680cbd",
+        "bytes": 3308,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/process/LAUNCH-1.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/process/LAUNCH-1.json",
+      "original": {
+        "sha256": "345e48767eec2b9b84820cf66873b52100a82bc1e859cf1b14895ba0e10df713",
+        "bytes": 1106,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "040ee3e5f326c44ed61ab846719eee605c35084b9170cd231d3e36e9877c0be8",
+        "bytes": 870,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 4,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/process/BINDING-2.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/process/BINDING-2.json",
+      "original": {
+        "sha256": "312a3ae6744f4094906e563b9b39b15cccfef999a327589b12b3d27c53ab1aff",
+        "bytes": 1106,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "1903cf350ae2aaee3e7cce1cdd9dceec32ecc780c027a7d010a4a06952da9628",
+        "bytes": 1047,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/process/AFTER-QUIT-OWNED-INVENTORY.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/process/AFTER-QUIT-OWNED-INVENTORY.json",
+      "original": {
+        "sha256": "137d700e9617aa026bdc826a90ca924bd5d99632234bdc68c3e3463a69b01df5",
+        "bytes": 399,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "da5ab8128fb77a7443533a6638926e0361fede18b78961cc8074366cdab45a08",
+        "bytes": 340,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 1,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/process/POST-PHASE-1-CLEANUP.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/process/POST-PHASE-1-CLEANUP.json",
+      "original": {
+        "sha256": "c04d2cab2046f9db83a7b26e0f177a31974066daf487a0f2e7eddc80afd1f2a1",
+        "bytes": 348,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "c04d2cab2046f9db83a7b26e0f177a31974066daf487a0f2e7eddc80afd1f2a1",
+        "bytes": 348,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/process/POST-CASE-CLEANUP.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/process/POST-CASE-CLEANUP.json",
+      "original": {
+        "sha256": "7541116cc4908e0f6faadffe7752ce6f060fc2f7839cbb8406d59154607d050a",
+        "bytes": 289,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "7541116cc4908e0f6faadffe7752ce6f060fc2f7839cbb8406d59154607d050a",
+        "bytes": 289,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/observations/0012-boundary1-selected-ax.txt",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/observations/0012-boundary1-selected-ax.txt",
+      "original": {
+        "sha256": "89563b6aaf6cbaccd06c4cd688b4072848c28e81e37dfcd0876ae0ef470336af",
+        "bytes": 4101,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "89563b6aaf6cbaccd06c4cd688b4072848c28e81e37dfcd0876ae0ef470336af",
+        "bytes": 4101,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/observations/0015-after-one-drag-ax.txt",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/observations/0015-after-one-drag-ax.txt",
+      "original": {
+        "sha256": "4c9181f719d4b8e52b3a58cb6829ab9213ca39766498237b7e65b0af984ff705",
+        "bytes": 4097,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "4c9181f719d4b8e52b3a58cb6829ab9213ca39766498237b7e65b0af984ff705",
+        "bytes": 4097,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/observations/0018-edited-saved-ax.txt",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/observations/0018-edited-saved-ax.txt",
+      "original": {
+        "sha256": "2f0ff1ddca2f92c6c90165eb5256d0bc207480f6ccdee9d158e35511ae5ca464",
+        "bytes": 4090,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "2f0ff1ddca2f92c6c90165eb5256d0bc207480f6ccdee9d158e35511ae5ca464",
+        "bytes": 4090,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/observations/0023-undo-saved-ax.txt",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/observations/0023-undo-saved-ax.txt",
+      "original": {
+        "sha256": "f19bdf6d0d5920eb55dc131c4a9523241c628f94a252d3c3ba8b751c3a760e53",
+        "bytes": 4090,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "f19bdf6d0d5920eb55dc131c4a9523241c628f94a252d3c3ba8b751c3a760e53",
+        "bytes": 4090,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/observations/0028-redo-saved-ax.txt",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/observations/0028-redo-saved-ax.txt",
+      "original": {
+        "sha256": "a11c9a299b187a9bedf3bcb1498f8182883487e92106a111b85420f538ff1514",
+        "bytes": 4090,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "a11c9a299b187a9bedf3bcb1498f8182883487e92106a111b85420f538ff1514",
+        "bytes": 4090,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/observations/0030-first-process-post-quit-ax.txt",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/observations/0030-first-process-post-quit-ax.txt",
+      "original": {
+        "sha256": "c4debbbb8479a445d75785c1255a8228112b49dfa08e55bf8ac412d07c9852df",
+        "bytes": 2743,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "c4debbbb8479a445d75785c1255a8228112b49dfa08e55bf8ac412d07c9852df",
+        "bytes": 2743,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/observations/0032-second-process-empty-ax.txt",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/observations/0032-second-process-empty-ax.txt",
+      "original": {
+        "sha256": "15a9d53360c82394af60c2c06daaff2265d98152cfb6301c29a94085d6c0cb25",
+        "bytes": 2622,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "15a9d53360c82394af60c2c06daaff2265d98152cfb6301c29a94085d6c0cb25",
+        "bytes": 2622,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/observations/0041-final-reopened-ax.txt",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/observations/0041-final-reopened-ax.txt",
+      "original": {
+        "sha256": "6f11bd1f3b50a71639492cffd3346640d630c5c5eefba14d7da8585624a23595",
+        "bytes": 2734,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "6f11bd1f3b50a71639492cffd3346640d630c5c5eefba14d7da8585624a23595",
+        "bytes": 2734,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/observations/0052-reopened-final-framed-ax.txt",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/observations/0052-reopened-final-framed-ax.txt",
+      "original": {
+        "sha256": "50ff28b1e5ba8ad07201b5103c5de98a00cc2c0ec4922d096d6c1c20c5167d47",
+        "bytes": 4101,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "50ff28b1e5ba8ad07201b5103c5de98a00cc2c0ec4922d096d6c1c20c5167d47",
+        "bytes": 4101,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/observations/0013-pre-drag.jpg",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/observations/0013-pre-drag.jpg",
+      "original": {
+        "sha256": "07e07d0ec2496f17ec43611368c9a8f4bec6b518fa2481aca87f5c4d3638d47e",
+        "bytes": 177728,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "07e07d0ec2496f17ec43611368c9a8f4bec6b518fa2481aca87f5c4d3638d47e",
+        "bytes": 177728,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/observations/0016-after-one-drag.jpg",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/observations/0016-after-one-drag.jpg",
+      "original": {
+        "sha256": "5c9faa20c2ce60580cf6a7d563de2e9f7baea178f915fc12ed95a780eca85a27",
+        "bytes": 179148,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "5c9faa20c2ce60580cf6a7d563de2e9f7baea178f915fc12ed95a780eca85a27",
+        "bytes": 179148,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/observations/0053-reopened-final-editable.jpg",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/observations/0053-reopened-final-editable.jpg",
+      "original": {
+        "sha256": "b49e4af1dcb0de2528fea2fcfe414d468234bfdd179e1d855d123b8d3a4094a5",
+        "bytes": 176600,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "b49e4af1dcb0de2528fea2fcfe414d468234bfdd179e1d855d123b8d3a4094a5",
+        "bytes": 176600,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/trace/0014-before.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/trace/0014-before.json",
+      "original": {
+        "sha256": "a24d328674c1226344c3f63c41cb51902004c2b992617f450d5968d3b8510f27",
+        "bytes": 466,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "a24d328674c1226344c3f63c41cb51902004c2b992617f450d5968d3b8510f27",
+        "bytes": 466,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/trace/0014-after.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/trace/0014-after.json",
+      "original": {
+        "sha256": "2647c05e1e13a7ac73f175dbee6ebba39a58825b91bd78ed012e10322e56e93e",
+        "bytes": 185,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "2647c05e1e13a7ac73f175dbee6ebba39a58825b91bd78ed012e10322e56e93e",
+        "bytes": 185,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/trace/0029-before.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/trace/0029-before.json",
+      "original": {
+        "sha256": "dd1480ca144fcd55d6bb3a85705a3373dfb29c14805d505fdacf4d498d982336",
+        "bytes": 163,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "dd1480ca144fcd55d6bb3a85705a3373dfb29c14805d505fdacf4d498d982336",
+        "bytes": 163,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/trace/0029-after.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/trace/0029-after.json",
+      "original": {
+        "sha256": "f2306fc476bf6a46961cb5283ccbecee2abcfa2574752bed40a53b4ce92138b2",
+        "bytes": 187,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "f2306fc476bf6a46961cb5283ccbecee2abcfa2574752bed40a53b4ce92138b2",
+        "bytes": 187,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/trace/0040-before.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/trace/0040-before.json",
+      "original": {
+        "sha256": "25cc09ef1c5365fce8740d387426fa12421aaf7fe8115344ce00b5fea3257a6c",
+        "bytes": 208,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "25cc09ef1c5365fce8740d387426fa12421aaf7fe8115344ce00b5fea3257a6c",
+        "bytes": 208,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/trace/0040-after.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/trace/0040-after.json",
+      "original": {
+        "sha256": "fd73096347cf0baabda2b9200005b4f25bdb33862df5196776085b1609b0342c",
+        "bytes": 186,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "fd73096347cf0baabda2b9200005b4f25bdb33862df5196776085b1609b0342c",
+        "bytes": 186,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/trace/0054-before.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/trace/0054-before.json",
+      "original": {
+        "sha256": "2309a5c8f53dfb73f1537e206e105d9f82cee6c711921dc72f469c304257b7de",
+        "bytes": 318,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "2309a5c8f53dfb73f1537e206e105d9f82cee6c711921dc72f469c304257b7de",
+        "bytes": 318,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/native-point-release-20261116/D003/trace/0054-after.json",
+      "group": "native-D003",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D003/trace/0054-after.json",
+      "original": {
+        "sha256": "7f798b8bae42e1dad9793d64006ee94f41bcb90174aa84333db98a136910e5a7",
+        "bytes": 188,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "7f798b8bae42e1dad9793d64006ee94f41bcb90174aa84333db98a136910e5a7",
+        "bytes": 188,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/point-edit-output-review-20261116/check_outputs.py",
+      "group": "independent-file-check",
+      "original_locator": "ROOT/.local/point-edit-output-review-20261116/check_outputs.py",
+      "original": {
+        "sha256": "e2eb412b12f7e5fb5f1a1150b45375bb9da5f6d31548aebb5f0f7c0be70b1c22",
+        "bytes": 14800,
+        "mode": "0444"
+      },
+      "public": {
+        "sha256": "e2eb412b12f7e5fb5f1a1150b45375bb9da5f6d31548aebb5f0f7c0be70b1c22",
+        "bytes": 14800,
+        "mode": "0444"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/point-edit-output-review-20261116/targets.json",
+      "group": "independent-file-check",
+      "original_locator": "ROOT/.local/point-edit-output-review-20261116/targets.json",
+      "original": {
+        "sha256": "7ce9327027ac4b48a9ae5435e447eff9ae3a6d942c5607f653d8e24d3fc205ac",
+        "bytes": 1795,
+        "mode": "0444"
+      },
+      "public": {
+        "sha256": "7ce9327027ac4b48a9ae5435e447eff9ae3a6d942c5607f653d8e24d3fc205ac",
+        "bytes": 1795,
+        "mode": "0444"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/point-edit-output-review-20261116/seed.expected.json",
+      "group": "independent-file-check",
+      "original_locator": "ROOT/.local/point-edit-output-review-20261116/seed.expected.json",
+      "original": {
+        "sha256": "ba14733d505c8f9ee0bc71b0d38c7a3236c31ba25e9640ae6dd77d4124040077",
+        "bytes": 3308,
+        "mode": "0444"
+      },
+      "public": {
+        "sha256": "ba14733d505c8f9ee0bc71b0d38c7a3236c31ba25e9640ae6dd77d4124040077",
+        "bytes": 3308,
+        "mode": "0444"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/point-edit-output-review-20261116/freeze.json",
+      "group": "independent-file-check",
+      "original_locator": "ROOT/.local/point-edit-output-review-20261116/freeze.json",
+      "original": {
+        "sha256": "a7a19895968ce5cd3b97f91d2e330382c61dd6746ccf1320a3e4dcf49a935ce9",
+        "bytes": 1342,
+        "mode": "0444"
+      },
+      "public": {
+        "sha256": "a7a19895968ce5cd3b97f91d2e330382c61dd6746ccf1320a3e4dcf49a935ce9",
+        "bytes": 1342,
+        "mode": "0444"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/point-edit-output-review-20261116/self-check.json",
+      "group": "independent-file-check",
+      "original_locator": "ROOT/.local/point-edit-output-review-20261116/self-check.json",
+      "original": {
+        "sha256": "1fcd5c76fc689c938ac5146ae26bd3bcae0947acad0a8b54a2f72ed9575e9d5f",
+        "bytes": 751,
+        "mode": "0444"
+      },
+      "public": {
+        "sha256": "1fcd5c76fc689c938ac5146ae26bd3bcae0947acad0a8b54a2f72ed9575e9d5f",
+        "bytes": 751,
+        "mode": "0444"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/point-edit-output-review-20261116/result.json",
+      "group": "independent-file-check",
+      "original_locator": "ROOT/.local/point-edit-output-review-20261116/result.json",
+      "original": {
+        "sha256": "0f8aae1f9c68531140f72bbec3209f60de746c3286fa902f10cd27e2b75e0f31",
+        "bytes": 5758,
+        "mode": "0444"
+      },
+      "public": {
+        "sha256": "0f8aae1f9c68531140f72bbec3209f60de746c3286fa902f10cd27e2b75e0f31",
+        "bytes": 5758,
+        "mode": "0444"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/point-edit-output-review-20261116/result-artifacts.json",
+      "group": "independent-file-check",
+      "original_locator": "ROOT/.local/point-edit-output-review-20261116/result-artifacts.json",
+      "original": {
+        "sha256": "e2fd15d8b6b2dcf018eeec6df5967f09789df23b72f0b4c49147346620e4601f",
+        "bytes": 288,
+        "mode": "0444"
+      },
+      "public": {
+        "sha256": "e2fd15d8b6b2dcf018eeec6df5967f09789df23b72f0b4c49147346620e4601f",
+        "bytes": 288,
+        "mode": "0444"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/point-edit-output-review-20261116/run.lock",
+      "group": "independent-file-check",
+      "original_locator": "ROOT/.local/point-edit-output-review-20261116/run.lock",
+      "original": {
+        "sha256": "ccbfe37577c6eb5c2814bf8cec43067a95f38368c4f76ed2a63a607385fd3caa",
+        "bytes": 33,
+        "mode": "0444"
+      },
+      "public": {
+        "sha256": "ccbfe37577c6eb5c2814bf8cec43067a95f38368c4f76ed2a63a607385fd3caa",
+        "bytes": 33,
+        "mode": "0444"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/history/E001/OUTCOME.json",
+      "group": "historical-failure",
+      "original_locator": "ROOT/.local/native-offset-exploration-20261116/E001/OUTCOME.json",
+      "original": {
+        "sha256": "5607bb7d799eabee4519f39746a225a63fbb01468c75bb65d8fc3d6fb37b44b7",
+        "bytes": 3703,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "5607bb7d799eabee4519f39746a225a63fbb01468c75bb65d8fc3d6fb37b44b7",
+        "bytes": 3703,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/history/D001/OUTCOME.json",
+      "group": "historical-failure",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D001/OUTCOME.json",
+      "original": {
+        "sha256": "f3c223d72bbf1cf6cde56c1f89693bb216e2b36357532723a7cdf8a1ddce64ef",
+        "bytes": 2018,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "f3c223d72bbf1cf6cde56c1f89693bb216e2b36357532723a7cdf8a1ddce64ef",
+        "bytes": 2018,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/history/D002/OUTCOME.json",
+      "group": "historical-failure",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D002/OUTCOME.json",
+      "original": {
+        "sha256": "4668435a5a1bb9d320da2155830247a4650fccb6d37be945deea6af94eabfbca",
+        "bytes": 1370,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "4668435a5a1bb9d320da2155830247a4650fccb6d37be945deea6af94eabfbca",
+        "bytes": 1370,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/history/D002/process/native-1.stderr.log",
+      "group": "historical-diagnostic-only",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D002/process/native-1.stderr.log",
+      "original": {
+        "sha256": "a82b7aa03b82ffe0d74e46a5693d6a60b0c43b19f92787793b5fe8b8569fb08e",
+        "bytes": 129400,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "a82b7aa03b82ffe0d74e46a5693d6a60b0c43b19f92787793b5fe8b8569fb08e",
+        "bytes": 129400,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/history/D002/trace/0014-before.json",
+      "group": "historical-diagnostic-only",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D002/trace/0014-before.json",
+      "original": {
+        "sha256": "d3a8605a2da4bc8a38c7edf0d10a8dee844c19e5e7ce4813329c40e35b6fd369",
+        "bytes": 452,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "d3a8605a2da4bc8a38c7edf0d10a8dee844c19e5e7ce4813329c40e35b6fd369",
+        "bytes": 452,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-native-20261116/history/D002/trace/0014-after.json",
+      "group": "historical-diagnostic-only",
+      "original_locator": "ROOT/.local/native-point-release-20261116/D002/trace/0014-after.json",
+      "original": {
+        "sha256": "0542669a6f7e30f0848144432c316a35eedd2be1eb237da0917f221710d4942b",
+        "bytes": 171,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "0542669a6f7e30f0848144432c316a35eedd2be1eb237da0917f221710d4942b",
+        "bytes": 171,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-OFFSET-NATIVE-CONTROLLER-STOPS-001.original.json",
+      "group": "exact-report-archive",
+      "original_locator": "ROOT/.local/pointer-release-integration-20261116/parity/reports/WF-20261116-OFFSET-NATIVE-CONTROLLER-STOPS-001.json",
+      "original": {
+        "sha256": "8f9d87fd7478f82b9ea5c032ca8bc11ed83b3d9a6a31f3ae5e18eb184b0b5889",
+        "bytes": 35383,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "8f9d87fd7478f82b9ea5c032ca8bc11ed83b3d9a6a31f3ae5e18eb184b0b5889",
+        "bytes": 35383,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-NATIVE-STOPS-001.original.json",
+      "group": "exact-report-archive",
+      "original_locator": "ROOT/.local/pointer-release-integration-20261116/parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-NATIVE-STOPS-001.json",
+      "original": {
+        "sha256": "bddc676f2b387993847c48253808fc9d18d9d37ce5f476acd9cf316dd5ea786d",
+        "bytes": 32404,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "bddc676f2b387993847c48253808fc9d18d9d37ce5f476acd9cf316dd5ea786d",
+        "bytes": 32404,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-PREVIEW-001.original.json",
+      "group": "exact-report-archive",
+      "original_locator": "ROOT/.local/pointer-release-integration-20261116/parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-PREVIEW-001.json",
+      "original": {
+        "sha256": "dc846dea3f0aca0262806212f1a3ca232d4e39d6ae15afb501346cc7fa7cfe0c",
+        "bytes": 32720,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "dc846dea3f0aca0262806212f1a3ca232d4e39d6ae15afb501346cc7fa7cfe0c",
+        "bytes": 32720,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    },
+    {
+      "path": "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-SOURCE-001.original.json",
+      "group": "exact-report-archive",
+      "original_locator": "ROOT/.local/pointer-release-integration-20261116/parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-SOURCE-001.json",
+      "original": {
+        "sha256": "7f333e952710a65a5679f6ab85cf043c06ef28c90e8273aa03642c8c845915b9",
+        "bytes": 23073,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "7f333e952710a65a5679f6ab85cf043c06ef28c90e8273aa03642c8c845915b9",
+        "bytes": 23073,
+        "mode": "0644"
+      },
+      "literal_replacements": {
+        "ROOT": 0,
+        "HOME": 0
+      },
+      "other_byte_changes": false
+    }
+  ],
+  "omitted_D003_manifest_entries": [
+    {
+      "path": "observations/0001-loaded-seed-ax.txt",
+      "sha256": "8321d57696866688c0710aa2c7318e372ef2c4eeb4860891e4c635b08fdcf440",
+      "bytes": 2734,
+      "reason": "Omitted redundant own-app observation or image; compact decisive selection only."
+    },
+    {
+      "path": "observations/0003-raised-ax.txt",
+      "sha256": "0f3748b203b83567f2df5c4668a606652236ebfda69a979fe678381740539ef6",
+      "bytes": 2613,
+      "reason": "Omitted redundant own-app observation or image; compact decisive selection only."
+    },
+    {
+      "path": "observations/0005-piece2-selected-ax.txt",
+      "sha256": "295f708ad9422f5770db9d83be64e9da7715aa7fb591d2b5ef4ee6d522450330",
+      "bytes": 3863,
+      "reason": "Omitted redundant own-app observation or image; compact decisive selection only."
+    },
+    {
+      "path": "observations/0007-framed-ax.txt",
+      "sha256": "295f708ad9422f5770db9d83be64e9da7715aa7fb591d2b5ef4ee6d522450330",
+      "bytes": 3863,
+      "reason": "Omitted redundant own-app observation or image; compact decisive selection only."
+    },
+    {
+      "path": "observations/0009-boundary-menu-ax.txt",
+      "sha256": "ad35318d1d4236c09de3011520e3b12f025e8d6a8438a9c9a711d34c74bba8b6",
+      "bytes": 3863,
+      "reason": "Omitted redundant own-app observation or image; compact decisive selection only."
+    },
+    {
+      "path": "observations/0010-boundary-menu.jpg",
+      "sha256": "462b6a075b497e691222160a5389358ac436ffaf4a2a905aed91a6e2084e8d0f",
+      "bytes": 169743,
+      "reason": "Omitted redundant own-app observation or image; compact decisive selection only."
+    },
+    {
+      "path": "observations/0020-after-undo-ax.txt",
+      "sha256": "d88426df7aefb28aef9f795d0efd772ea05f5d5852cb270b89c28bf3d608a6f1",
+      "bytes": 4097,
+      "reason": "Omitted redundant own-app observation or image; compact decisive selection only."
+    },
+    {
+      "path": "observations/0021-after-undo.jpg",
+      "sha256": "5d951e5c082d12d85adf4353681b49891d0f5a02d1c3735f1afd85f99717f0ed",
+      "bytes": 178714,
+      "reason": "Omitted redundant own-app observation or image; compact decisive selection only."
+    },
+    {
+      "path": "observations/0025-after-redo-ax.txt",
+      "sha256": "43336f42438af3ace63ff23775fa185b09bd1489bea81185de88e68e7971c011",
+      "bytes": 4097,
+      "reason": "Omitted redundant own-app observation or image; compact decisive selection only."
+    },
+    {
+      "path": "observations/0026-after-redo.jpg",
+      "sha256": "34dd9c6f58f1209e62b0619174c1f95a2664870169bf585f37e67cfe6ea92f5c",
+      "bytes": 179099,
+      "reason": "Omitted redundant own-app observation or image; compact decisive selection only."
+    },
+    {
+      "path": "observations/0034-open-dialog-ax.txt",
+      "sha256": "b0881ec7fd32810ebe311e47ddc46f4534a306f66a6d89a56d70e65409a9c8a8",
+      "bytes": 4815,
+      "reason": "Omitted entire native panel observation: personal names or unrelated directory listings; ROOT/HOME replacement is insufficient."
+    },
+    {
+      "path": "observations/0036-go-to-folder-ax.txt",
+      "sha256": "7bf9be6faf86d60696b65b0da046152cd234a88b1de3bd385b19edfd14317809",
+      "bytes": 1193,
+      "reason": "Omitted entire native panel observation: personal names or unrelated directory listings; ROOT/HOME replacement is insufficient."
+    },
+    {
+      "path": "observations/0039-owned-folder-open-panel-ax.txt",
+      "sha256": "c9632fb4dac9ef7b7c2669c13b78840bdc9b476180b5e0bd432bd1bb0ec1431d",
+      "bytes": 3047,
+      "reason": "Omitted entire native panel observation: personal names or unrelated directory listings; ROOT/HOME replacement is insufficient."
+    },
+    {
+      "path": "observations/0042-final-reopened.jpg",
+      "sha256": "c660ea8196c0f991e9180f4ddf800a37ab6f9a6c03b6466d89e28ad4587da130",
+      "bytes": 178673,
+      "reason": "Omitted redundant own-app observation or image; compact decisive selection only."
+    },
+    {
+      "path": "observations/0043-reopened-pre-select-ax.txt",
+      "sha256": "aa5f6d77ef9873f685a211a0388bbe1cf1a50709ae5ba8e9b01b5644479414bd",
+      "bytes": 2613,
+      "reason": "Omitted redundant own-app observation or image; compact decisive selection only."
+    },
+    {
+      "path": "observations/0045-reopened-piece2-selected-ax.txt",
+      "sha256": "6586c545cc3a5605f41d6aa60db2973ca37c229ff7d451d92c23e727e9d00e49",
+      "bytes": 3863,
+      "reason": "Omitted redundant own-app observation or image; compact decisive selection only."
+    },
+    {
+      "path": "observations/0047-reopened-boundary-menu-ax.txt",
+      "sha256": "b66456a5089fe454a6c456d25ead54fb337039a0ef260cc9de75d04dd9691e85",
+      "bytes": 3863,
+      "reason": "Omitted redundant own-app observation or image; compact decisive selection only."
+    },
+    {
+      "path": "observations/0048-reopened-boundary-menu.jpg",
+      "sha256": "f22a674222d9e53b3d3d1d161f75c1fafdeaf67de791a9cab0eadcb5f7555c3c",
+      "bytes": 199138,
+      "reason": "Omitted redundant own-app observation or image; compact decisive selection only."
+    },
+    {
+      "path": "observations/0050-reopened-authored-point-ax.txt",
+      "sha256": "50ff28b1e5ba8ad07201b5103c5de98a00cc2c0ec4922d096d6c1c20c5167d47",
+      "bytes": 4101,
+      "reason": "Omitted redundant own-app observation or image; compact decisive selection only."
+    },
+    {
+      "path": "process/native-1.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "reason": "Omitted empty process stream; no additional evidence beyond retained case outcome."
+    },
+    {
+      "path": "process/native-1.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "reason": "Omitted empty process stream; no additional evidence beyond retained case outcome."
+    },
+    {
+      "path": "trace/0000-after.json",
+      "sha256": "d5503594d3e0a6a6571bea55eae8030f05ecac832e5110b9c7854e9aea397623",
+      "bytes": 177,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0000-before.json",
+      "sha256": "5e0a694e7231a76153dcff665f68f777154c8fa014b66688ccb7845b0772e12a",
+      "bytes": 132,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0001-after.json",
+      "sha256": "a0d81ca4cf13c551376d5e9de6de7e76310713011500875d37eed8587e5474f6",
+      "bytes": 3093,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0001-before.json",
+      "sha256": "69ea22d4929bb0f2d9f888a4e64dd4179b940b30c49d292374236ef8c844f796",
+      "bytes": 124,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0002-after.json",
+      "sha256": "68ddf34d1d875234ea84ad157e169818d482e5903aa122dad05d40b18a095b90",
+      "bytes": 182,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0002-before.json",
+      "sha256": "6519a8407cf1bc3e16bce10d2030bd75c3121b8fc0bca6c07f84b9dda1034d33",
+      "bytes": 175,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0003-after.json",
+      "sha256": "5822b8169c0748df637b8de70cd12ba632a59a455fc2d3e5306d35f876be5151",
+      "bytes": 2964,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0003-before.json",
+      "sha256": "536be0a7ed3b05864f5276cf3d21b3fed21cdb0fa4a338b61828f34467bbad18",
+      "bytes": 119,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0004-after.json",
+      "sha256": "1affc1e539a1e3288d473586421ebef7295ef41e8bade459a328ff9f0036557b",
+      "bytes": 176,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0004-before.json",
+      "sha256": "2726fe1b87407d7f4d17a2630e41fd8bbbb1f2bce93cc34a1e1af7e7dbfe3c91",
+      "bytes": 170,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0005-after.json",
+      "sha256": "1241f35310aaebd235442d28df6ea90328887cc25e38541c80e57180f4a58bba",
+      "bytes": 4325,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0005-before.json",
+      "sha256": "66c4e121e385f39c4fab5a0c94a6f1aa9af4970f967deb884bccbf61afe02054",
+      "bytes": 128,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0006-after.json",
+      "sha256": "1800619491d790b5bcfe994f2aa294424306ad04827ccd2a849c0cedddb96b99",
+      "bytes": 172,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0006-before.json",
+      "sha256": "b71a106b19ac6cbaaf4ec14fd9df9d6249dbe1ecf564687f149d817ba2ee024a",
+      "bytes": 160,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0007-after.json",
+      "sha256": "34c66def94e41c7e128edb55bb0831bf51810aaf0b203acfe626fe42f3fe2d65",
+      "bytes": 4316,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0007-before.json",
+      "sha256": "156ea776d2cf63b438996c1b7c7edfa8afe2e52e20811ea4af05b9805fb6d2e4",
+      "bytes": 119,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0008-after.json",
+      "sha256": "5830427fea0b2c90ebfb7d18b57fe1975d562563dbd961e2e94d07934be956fd",
+      "bytes": 184,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0008-before.json",
+      "sha256": "14a94f803588e852f79be0c8180a997cd54813843797b9f96dac33c7f2493713",
+      "bytes": 178,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0009-after.json",
+      "sha256": "4a28069dda63f4e939c4bb270a65e1b371004c094224523c348c895f589edc39",
+      "bytes": 4323,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0009-before.json",
+      "sha256": "2b5649cbece65b90f3d0e54d5a81cacd914db246614c938da46696d9ec94c4b8",
+      "bytes": 126,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0010-after.json",
+      "sha256": "7203a75047648dba10379595dd6d69d344dc4195a9632890949f200f4d74cdc3",
+      "bytes": 187,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0010-before.json",
+      "sha256": "22397064cdee9c181cfbb06bd45bb1dcc1558d9c76ebc9ac9c1823a615dbe475",
+      "bytes": 135,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0011-after.json",
+      "sha256": "84817a86feae6c3b2624323f98246f384821e839da82451fc958c67f8b738e88",
+      "bytes": 181,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0011-before.json",
+      "sha256": "12abceeb46fb507a0dbac7a1f54f957766760dcb915bf8219ee65a237fa83e69",
+      "bytes": 274,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0012-after.json",
+      "sha256": "7f1eac2277e290563c37ee2d7404669b82367e6ecb50a0f895bed8ffc59ad872",
+      "bytes": 4567,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0012-before.json",
+      "sha256": "de9bb0b08ed16c532652ed2446ef5bc069a2480a3f59cfaee47f67cdfb61ac9a",
+      "bytes": 132,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0013-after.json",
+      "sha256": "c646b8c937c71f332e46f463be8977a8f20dd7ba5afb35d07dc25686d2697899",
+      "bytes": 182,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0013-before.json",
+      "sha256": "072ac01702bfe5b582b17d8d97e38804c101506ac3804250c221c2fef1e13dc1",
+      "bytes": 130,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0015-after.json",
+      "sha256": "c5f8b0f4802f2e39c9724542e18480a323358ae902dee8d366c149886dd12901",
+      "bytes": 4559,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0015-before.json",
+      "sha256": "e92b57edc1b06c52b3883e8468ea98b2e83fa3d3d9481ba01ae6c33dcf29a7e2",
+      "bytes": 128,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0016-after.json",
+      "sha256": "63d9800ef683f4754d7e85b4f2982e9a7d67501ac68dbb944cfc8a3f2db5121c",
+      "bytes": 189,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0016-before.json",
+      "sha256": "e0a1fe3f59e95e455030003b3f14db72da3bd9d899455792af8759d0f49ebea9",
+      "bytes": 136,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0017-after.json",
+      "sha256": "8551967bae5707f3759184f21244a1cac72e7e64c04d28e83d3101487321752d",
+      "bytes": 174,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0017-before.json",
+      "sha256": "987126bf342c4bbf88aeafb1c8cc93727978f200600200c91c71444f096b453f",
+      "bytes": 198,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0018-after.json",
+      "sha256": "a66581fd0dd143d9a57c649630bc194c0291928985b45971da136f51c0369238",
+      "bytes": 4550,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0018-before.json",
+      "sha256": "95d9cf1c9d52c28744afdc6ed5aa8b3884d6836e25d8f8badec97a970bb2ba4f",
+      "bytes": 126,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0019-after.json",
+      "sha256": "fec20d7c678e8ae9c59a5aa5cdc2e880a765ee01818091b9e372617ef0a14fbc",
+      "bytes": 173,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0019-before.json",
+      "sha256": "aad6de267444e621d45853be709864f3ecbaa3f8a59fe6539a3cad808e47384a",
+      "bytes": 156,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0020-after.json",
+      "sha256": "3e0e50b7f4af6f46b221967048cf21271f7e6441d43e5f03a70d95dbaaba7daf",
+      "bytes": 4555,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0020-before.json",
+      "sha256": "2c2a55ad85deae446f4035a1e49f2ec2ac06527f89e6a76ffa5cf0f047c0874d",
+      "bytes": 124,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0021-after.json",
+      "sha256": "cd947ea9e629b964de01aa3173a7763b142dc3613a5c9df3970415ad7321a04a",
+      "bytes": 184,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0021-before.json",
+      "sha256": "980c27595c15947bb1e309a03c4ed5c761ba255bdc892e22980dd5fc01d0acd9",
+      "bytes": 132,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0022-after.json",
+      "sha256": "1867a4c502cbe772025a4f44a72ff05f80d69e4ebdcf825265e13e44937a6d5e",
+      "bytes": 172,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0022-before.json",
+      "sha256": "083539fe23e3ff0626c5b09d4b9317241ab77acd720c803c4dee5c627e72da77",
+      "bytes": 148,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0023-after.json",
+      "sha256": "2f30057f19eded605cd45b9babafce549ba3f2c3c71bc9d0cef7230ebc40e39d",
+      "bytes": 4548,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0023-before.json",
+      "sha256": "64af5409b03ada86bb6bd8d180b7fec82c6ba2d48fb3a9a95a29e494e2f779cd",
+      "bytes": 124,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0024-after.json",
+      "sha256": "7944a6085c2cb8e65d81d1bc4e26eaf76dc05e8950695df519aa41835a23c8b0",
+      "bytes": 173,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0024-before.json",
+      "sha256": "819f12c278d9e1d4f99a8b2704f35cd7056e6a3d957066cbf19446c4726d9c7b",
+      "bytes": 156,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0025-after.json",
+      "sha256": "ad69f8b38d5a40fc529f364cbd4091663afd19cc1d374e23f41ff80382d1a2a4",
+      "bytes": 4555,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0025-before.json",
+      "sha256": "e6931edaffa6aa9c63912963a241273b403050f9b47dc102a92fcda265003dd5",
+      "bytes": 124,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0026-after.json",
+      "sha256": "0ab4cb4d75601fe3b6034b6c3514cacde3d8ca0a7fea7542846d74d844241895",
+      "bytes": 184,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0026-before.json",
+      "sha256": "00799892137cc24160cea9e21c550591d7899580a89380b070485b96fbec74e8",
+      "bytes": 132,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0027-after.json",
+      "sha256": "93c887a9e9f971bab3eefa3bad3aa2086782d6a2d5bebba7bc7217089ea04ad0",
+      "bytes": 172,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0027-before.json",
+      "sha256": "c6f9d74977f138d9e6aeb64e27d3c158bbc5bbad203a7b7eaee454ab8e5133bd",
+      "bytes": 148,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0028-after.json",
+      "sha256": "ea38163b26a4a789bf538e687b86385790145b6d1a6eaba07896acd4cd2f14c7",
+      "bytes": 4548,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0028-before.json",
+      "sha256": "8fa36ce4fa249f89d506b6cf14299c642c7a1127ddeff5702bc8aff755842014",
+      "bytes": 124,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0030-after.json",
+      "sha256": "465f7db52bf2ac0e850f5395d67aa447f72eb01f0e8cd8e2b0e32eddb1c1f246",
+      "bytes": 3117,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0030-before.json",
+      "sha256": "cf89cbb702d8b25f4d796879525c8bdd9cbd9808beba8ec10deb46bd24f85474",
+      "bytes": 137,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0031-after.json",
+      "sha256": "a2dd94742bead9b49cf15b8136b95eb6653295846f707664e301dc7489056821",
+      "bytes": 192,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0031-before.json",
+      "sha256": "4b2cc81ee7c781f87a8d2eb20363dc44c8ffa46316c994c61dd70e9f354339ee",
+      "bytes": 147,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0032-after.json",
+      "sha256": "0b25ff3e71541cd162ac4551cf5f29199930a704abda00702a339afe2e0f2045",
+      "bytes": 2988,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0032-before.json",
+      "sha256": "e882e4e04e86c224f06774378fa76b8fec7404a29173d382b83525094d16d241",
+      "bytes": 134,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0033-after.json",
+      "sha256": "3de425d60426f8ac5614369e2d572d50a047e5e319bc8f4b6ab43d4d4103da02",
+      "bytes": 183,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0033-before.json",
+      "sha256": "640b71e85223aeeebafbcd65b4f0a569714b95e4c93bf95022363eeeb61e63d5",
+      "bytes": 207,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0034-after.json",
+      "sha256": "4bdef803b89024122be70a1caf712b583d058b8da5ff7d7dae6b2b621767cd68",
+      "bytes": 5300,
+      "reason": "Omitted entire native panel observation: personal names or unrelated directory listings; ROOT/HOME replacement is insufficient."
+    },
+    {
+      "path": "trace/0034-before.json",
+      "sha256": "0a6bf2df85cde5ddfd77c5c5e112e0e539ee79eb0d37177eabf0def08030f6a7",
+      "bytes": 125,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0035-after.json",
+      "sha256": "c8da12fd830a8c686731691e5921c79ed650114e8e59dec12eef400716eae2df",
+      "bytes": 181,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0035-before.json",
+      "sha256": "65ae9825479937fa360ae2cc7269a7445ebd4344a153aca1fb65b34e534f44ba",
+      "bytes": 162,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0036-after.json",
+      "sha256": "dfba56c5e5b2ed7332128a3d75e4761b9f2d253969ad14a4b6185f203ed67d53",
+      "bytes": 1398,
+      "reason": "Omitted entire native panel observation: personal names or unrelated directory listings; ROOT/HOME replacement is insufficient."
+    },
+    {
+      "path": "trace/0036-before.json",
+      "sha256": "7f75339ac8f2c3587abad2feb5b9190a8cde5de593506601fb2575661cb5c067",
+      "bytes": 126,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0037-after.json",
+      "sha256": "bec0b8d49278cb651c3897466957c4f53f8d19b2eb5d1acf6ce69563b68556f3",
+      "bytes": 181,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0037-before.json",
+      "sha256": "3531179891e01e6de019e3570a38cfbee247a19b2b2681e9c434b91f1a35e538",
+      "bytes": 200,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0038-after.json",
+      "sha256": "2429a41dbf5f660979d57c7af77a4c289dd700878b28b2bb48a83e73f5bbe92c",
+      "bytes": 183,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0038-before.json",
+      "sha256": "f62b0425653b8661a9a83a8d3e17767f4a8fddb19360e0043a765e54289f4eeb",
+      "bytes": 158,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0039-after.json",
+      "sha256": "7b6fe428bcc7fc3d42100691a2f3f8d8888fe5af31feb64ab872617604a86977",
+      "bytes": 3425,
+      "reason": "Omitted entire native panel observation: personal names or unrelated directory listings; ROOT/HOME replacement is insufficient."
+    },
+    {
+      "path": "trace/0039-before.json",
+      "sha256": "7893b18dc9b95b1172daa9c919e79b25485a6d4d435e31a901f75e689c15d220",
+      "bytes": 137,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0041-after.json",
+      "sha256": "97c6e095df0eaa95e36f61c796a66d5c42010eb595ac00ce05d325c3a70cf9e4",
+      "bytes": 3098,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0041-before.json",
+      "sha256": "0f27d10fc73c0c6c2736289c284c44647b89c9d40dbcae4c595cbcd0941c3043",
+      "bytes": 128,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0042-after.json",
+      "sha256": "0c57537236977758f20753f3d8c4fd2bce42f4dfb9bafc6c32ffea0923935371",
+      "bytes": 189,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0042-before.json",
+      "sha256": "28de036228362e2874683c19c426e3b141a26c4e0071cde9e8a44431704cc520",
+      "bytes": 136,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0043-after.json",
+      "sha256": "fd944d233d39a1fc0123848f0443b136cb445a6b7bb6e0a4870ed328f3893dd3",
+      "bytes": 2977,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0043-before.json",
+      "sha256": "60ea43038bc28d72af0fe100a955314a1a23bb929611bc7a7029e4df08f8af30",
+      "bytes": 133,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0044-after.json",
+      "sha256": "061890623a1814bdc77381ff31f92280c92f62b8ca79fafa6c38434eb8a413e5",
+      "bytes": 186,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0044-before.json",
+      "sha256": "decbf3a6ab747b4bc750063ec96fb36713740830bb8b22e6294cc6fa62f166aa",
+      "bytes": 180,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0045-after.json",
+      "sha256": "186d862403b940c56a5a40f6d9edaad87b3ff4cac828e8c1d7b5837c96843134",
+      "bytes": 4335,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0045-before.json",
+      "sha256": "16e225b4d7721dade8c307c04453514c31f2966ba934df4aa40c3cba88d24548",
+      "bytes": 138,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0046-after.json",
+      "sha256": "31feb53febc1bf14e5e9286a8cb52ee6136c06422512ac6b5ed92c0821e644fc",
+      "bytes": 188,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0046-before.json",
+      "sha256": "4df9e23eb0fc48710916d25b1e8c9e3732a271aa3fadef4793bd8a0310a4b60e",
+      "bytes": 182,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0047-after.json",
+      "sha256": "3e55ac22cf4bfc7052679c4b25054bfd856acb3969fdcfe38503e93a20d0cafe",
+      "bytes": 4333,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0047-before.json",
+      "sha256": "a3665f4c80c446483653779ae2fc60dbbf1481f30abd967e13cb2ba268c62634",
+      "bytes": 136,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0048-after.json",
+      "sha256": "18064bdca08fe310fcfa952a9e81c086a58c6c0c63a8af1b20c5aecb25ff5a8d",
+      "bytes": 196,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0048-before.json",
+      "sha256": "7b6bc861c415c3b09c50886d5d91e72a915c40eb585b0f32fb9fbbf79d3f0a21",
+      "bytes": 144,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0049-after.json",
+      "sha256": "16008329ab1064ab4947ddcf68aba0b12ada3412aa0a694c161b6144463469a1",
+      "bytes": 190,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0049-before.json",
+      "sha256": "0c176aa6d5a9014d75792fdcda214fcb8df0b6f2087290e6fbcc9cdbd6ae1ddd",
+      "bytes": 293,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0050-after.json",
+      "sha256": "21a3ed95ec638027f457df8cd892daf9b36be5836a91b24bec11162cea4ac846",
+      "bytes": 4572,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0050-before.json",
+      "sha256": "5ae443e5db7bd6c9ee385a6325acb38940843d18b2b5af56b9adfd4ce474770a",
+      "bytes": 137,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0051-after.json",
+      "sha256": "ee3ddb3dd81d5948a4080bf6f3342dac9a255fe3cc1df1ec67b554820c6e428e",
+      "bytes": 184,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0051-before.json",
+      "sha256": "4e420415418bdd5f779ab37c132d6d293a1372b7bb1d6e175c437e4f61b4752b",
+      "bytes": 172,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0052-after.json",
+      "sha256": "c3459888918647687a36fe3d30572662928cae54af12df581c890b40375993cd",
+      "bytes": 4570,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0052-before.json",
+      "sha256": "f9e463f6583b94137fd98478f4dce3130f5f4f29bbc799ef5389c2bf4a3f31c6",
+      "bytes": 135,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0053-after.json",
+      "sha256": "972abf5dcaf9bd78857d1be056ca5b7189903d7ea518a92279e8fffc106c5863",
+      "bytes": 197,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    },
+    {
+      "path": "trace/0053-before.json",
+      "sha256": "2c58fb8b870efe6d37e47823581e71d4c9ef6fe19308dff6d378f445ff0a6574",
+      "bytes": 145,
+      "reason": "Omitted unselected API record; compact decisive selection only. Any panel-bearing result remains private in full."
+    }
+  ],
+  "other_omissions": [
+    "All owned compiled bundles, Cargo target directories and binaries; only hashes/identities are retained.",
+    "D003 frozen full private manifest is identified by hash; selected and omitted entries are listed here.",
+    "Unselected source snapshots/PAUSED logs and final whole-source copies; exact red/green patches, receipts, source hashes and raw logs are selected instead.",
+    "All vendor/reference-app or research material.",
+    "Historical E001/D001 full native captures, saves and dialogs; only original outcomes are selected.",
+    "Historical D002 full capture/API corpus; only original outcome, full own stderr and declared drag14 pair are selected."
+  ]
+}

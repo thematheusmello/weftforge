@@ -1,0 +1,247 @@
+{
+  "recorded_utc": "2026-11-16T20:39:37.960004Z",
+  "kind": "METADATA_CHECKPOINT_ONLY",
+  "working_head": "ac6c2e53b47f2d19772d2bfb341e1500dae2cf0c",
+  "scope": "One approved local current-map/progress-generation/progress-check/39-registry-test cycle after all84 selected evidence/provenance artifacts were Git-tracked. This working-tree cycle is not clean-checkout publication verification or a product/evidence replay.",
+  "all_four_passed_once": true,
+  "registry_tests": 39,
+  "gate_results": [
+    {
+      "gate": "current-map",
+      "argv": [
+        "python3",
+        "spec/inventory/verify_implementation_map.py"
+      ],
+      "started_utc": "2026-11-16T20:35:02.195682+00:00",
+      "pid": 22434,
+      "exit_code": 0,
+      "elapsed_seconds": 17.89032245799899,
+      "finished_utc": "2026-11-16T20:35:20.086131+00:00",
+      "log_bytes": 421,
+      "log_sha256": "4b3bcca5afea527f56ef564c9ac7d92a7577f6d5a747767c95a8ca8921dea107",
+      "terminal": true,
+      "raw_log_utf8": "PASS: additive source ac6c2e53b47f2d19772d2bfb341e1500dae2cf0c; 39 candidate rechecks; 34 Rust variants / 33 schema commands / 9 MCP tools; historical snapshot unchanged. No behavior/parity verification.\nPASS: 949 unique catalog IDs; preserved 949 entries/205 packets and original 928-entry expansion; 205 reviewed groups/packets; 56 source landmarks; catalog hashes, feature/source links and acyclic dependencies valid.\n",
+      "log_byte_edits": 0
+    },
+    {
+      "gate": "progress-generate",
+      "argv": [
+        "python3",
+        "scripts/progress.py"
+      ],
+      "started_utc": "2026-11-16T20:35:20.086887+00:00",
+      "pid": 23370,
+      "exit_code": 0,
+      "elapsed_seconds": 47.54565675009508,
+      "finished_utc": "2026-11-16T20:36:07.632858+00:00",
+      "log_bytes": 69,
+      "log_sha256": "5e56cf9d6e6f9bff5b9d6ff939685c7c957d21c10f2b0019b158fe96825b6236",
+      "terminal": true,
+      "raw_log_utf8": "Registry valid: 56 inventoried contracts; generated reports updated.\n",
+      "log_byte_edits": 0
+    },
+    {
+      "gate": "progress-check",
+      "argv": [
+        "python3",
+        "scripts/progress.py",
+        "--check"
+      ],
+      "started_utc": "2026-11-16T20:36:07.633555+00:00",
+      "pid": 26435,
+      "exit_code": 0,
+      "elapsed_seconds": 46.92016358394176,
+      "finished_utc": "2026-11-16T20:36:54.554023+00:00",
+      "log_bytes": 69,
+      "log_sha256": "1f9b2cd3d90cae23eba2b811c4d4cfdbb1816721598ce827cc85456e609fffcb",
+      "terminal": true,
+      "raw_log_utf8": "Registry valid: 56 inventoried contracts; generated reports checked.\n",
+      "log_byte_edits": 0
+    },
+    {
+      "gate": "registry-tests",
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts",
+        "-p",
+        "test_progress.py"
+      ],
+      "started_utc": "2026-11-16T20:36:54.554373+00:00",
+      "pid": 29660,
+      "exit_code": 0,
+      "elapsed_seconds": 127.82461383391637,
+      "finished_utc": "2026-11-16T20:39:02.379828+00:00",
+      "log_bytes": 140,
+      "log_sha256": "4ca7dd35be5ddadb8c6ba5398e626b911f15da314f165fff3689fbc3b25085c0",
+      "terminal": true,
+      "raw_log_utf8": ".......................................\n----------------------------------------------------------------------\nRan 39 tests in 127.657s\n\nOK\n",
+      "log_byte_edits": 0
+    }
+  ],
+  "before_after_invariants": {
+    "source87_exact": true,
+    "other46_reports_byte_exact": true,
+    "four_report_changes_freshness_reason_only": true,
+    "top_level_reports": 52,
+    "precisely_two_new_implementation_only_reports_all_full_acceptance_flags_false": true,
+    "four_exact_report_archives": true,
+    "full56_scopes_and_coarse_statuses_preserved": true,
+    "preserved56_scope_digest": "557d6d17e036d9b7aa7af2536a22d113861642b401f4b3d3abcc3a3e03566ddd",
+    "other50_features_exact": true,
+    "eight_immutable_inventory_files_and_README_ROADMAP_Actions_exact": true,
+    "approved83_selected_derivatives_and_manifest_exact_and_tracked": true,
+    "all165_frozen_D003_entries_exact_hash_size_mode": true,
+    "trace47_excluded_from_shipping_ancestry": true,
+    "map_rows_surfaces_contracts": [
+      39,
+      23,
+      23
+    ],
+    "map_actual_anchors": 378,
+    "main_anchors_refreshed": 171,
+    "other_anchors_exact": 199,
+    "actual_definitions_appended_once": 8,
+    "Rust_variants_schemas_MCP_tools": [
+      34,
+      33,
+      9
+    ],
+    "feature_counts": {
+      "partial": 41,
+      "planned": 15,
+      "full": 0,
+      "reference_verified": 0
+    }
+  },
+  "four_freshness_transitions": [
+    {
+      "path": "parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-NATIVE-STOPS-001.json",
+      "original_sha256": "bddc676f2b387993847c48253808fc9d18d9d37ce5f476acd9cf316dd5ea786d",
+      "stale_sha256": "87b8ab33e3c3f829cdead36285f2edc6b626d2809b074c265b2748533d1b0bf7",
+      "exact_archive": "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-NATIVE-STOPS-001.original.json",
+      "changed_fields_only": [
+        "freshness",
+        "freshness_reason"
+      ]
+    },
+    {
+      "path": "parity/reports/WF-20261116-OFFSET-NATIVE-CONTROLLER-STOPS-001.json",
+      "original_sha256": "8f9d87fd7478f82b9ea5c032ca8bc11ed83b3d9a6a31f3ae5e18eb184b0b5889",
+      "stale_sha256": "e2d8f106c01313acf431bf06ea2b8781318bad71d4a12aa26ccd7b937481d46b",
+      "exact_archive": "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-OFFSET-NATIVE-CONTROLLER-STOPS-001.original.json",
+      "changed_fields_only": [
+        "freshness",
+        "freshness_reason"
+      ]
+    },
+    {
+      "path": "parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-SOURCE-001.json",
+      "original_sha256": "7f333e952710a65a5679f6ab85cf043c06ef28c90e8273aa03642c8c845915b9",
+      "stale_sha256": "39adce8623a1679d345f62d9d94b1e97ba5ea3172c0d8bc689f42d7f41030d2e",
+      "exact_archive": "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-SOURCE-001.original.json",
+      "changed_fields_only": [
+        "freshness",
+        "freshness_reason"
+      ]
+    },
+    {
+      "path": "parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-PREVIEW-001.json",
+      "original_sha256": "dc846dea3f0aca0262806212f1a3ca232d4e39d6ae15afb501346cc7fa7cfe0c",
+      "stale_sha256": "8b963263787872145a86fc83fe5c315a4d8426171327e60798ef816e72402122",
+      "exact_archive": "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-PREVIEW-001.original.json",
+      "changed_fields_only": [
+        "freshness",
+        "freshness_reason"
+      ]
+    }
+  ],
+  "Cargo_or_GUI_run": false,
+  "case_or_evaluator_rerun": false,
+  "physics_merge": false,
+  "remote_or_deployment_changes": false,
+  "clean_committed_cargo_xtask_verify": "Not run here; remains root-owned before publication.",
+  "raw_case_or_source_artifacts_rewritten": false,
+  "staged_whitespace": {
+    "checked_utc": "2026-11-16T20:39:52.090434+00:00",
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "exit_code": 2,
+    "log_sha256": "884b7e2e974b4ab39b3e82691c383ee561dd0735a8f4a509eb08c382be4f9750",
+    "log_bytes": 584,
+    "flagged_paths": [
+      "parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/workspace-tests.log",
+      "parity/reports/artifacts/endpoint-edit-source-20261116/green.log",
+      "parity/reports/artifacts/endpoint-edit-source-20261116/green.patch",
+      "parity/reports/artifacts/endpoint-edit-source-20261116/red.patch"
+    ],
+    "raw_artifacts_not_modified": true,
+    "raw_log_utf8": "parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/workspace-tests.log:597: new blank line at EOF.\nparity/reports/artifacts/endpoint-edit-source-20261116/green.log:16: new blank line at EOF.\nparity/reports/artifacts/endpoint-edit-source-20261116/green.patch:149: trailing whitespace.\n+ \nparity/reports/artifacts/endpoint-edit-source-20261116/green.patch:157: trailing whitespace.\n+ \nparity/reports/artifacts/endpoint-edit-source-20261116/red.patch:6: trailing whitespace.\n+ \nparity/reports/artifacts/endpoint-edit-source-20261116/red.patch:12: trailing whitespace.\n+ \n",
+    "qualification": "Full staged whitespace check exits2 only on two preserved raw log EOFs and single-space blank context lines in the exact red/green patches. No raw bytes are trimmed, normalized or excluded; no full whitespace pass is claimed. Patch context whitespace is retained as part of the frozen original patch syntax.",
+    "root_authorized_exact_exclusions": [
+      "parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/workspace-tests.log",
+      "parity/reports/artifacts/endpoint-edit-source-20261116/green.log",
+      "parity/reports/artifacts/endpoint-edit-source-20261116/green.patch",
+      "parity/reports/artifacts/endpoint-edit-source-20261116/red.patch"
+    ],
+    "patch_marker_inspection": [
+      {
+        "path": "parity/reports/artifacts/endpoint-edit-source-20261116/green.patch",
+        "line": 149,
+        "exact_bytes_hex": "200a",
+        "structural_blank_context_marker": true
+      },
+      {
+        "path": "parity/reports/artifacts/endpoint-edit-source-20261116/green.patch",
+        "line": 157,
+        "exact_bytes_hex": "200a",
+        "structural_blank_context_marker": true
+      },
+      {
+        "path": "parity/reports/artifacts/endpoint-edit-source-20261116/red.patch",
+        "line": 6,
+        "exact_bytes_hex": "200a",
+        "structural_blank_context_marker": true
+      },
+      {
+        "path": "parity/reports/artifacts/endpoint-edit-source-20261116/red.patch",
+        "line": 12,
+        "exact_bytes_hex": "200a",
+        "structural_blank_context_marker": true
+      }
+    ],
+    "shipping_source_inputs_changed": 0,
+    "format_qualification": "Root authorized only these four exact preserved raw artifacts: two log EOFs and two patch files whose only flagged lines are valid single-space blank unified-diff context markers. Trimming them would alter frozen evidence/patch syntax. Original full exit2 and all raw bytes remain retained; scoped filtering is a format qualification, never a full-check rerun or evidence/test regrade.",
+    "scoped_result": {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "--",
+        ".",
+        ":(exclude)parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/workspace-tests.log",
+        ":(exclude)parity/reports/artifacts/endpoint-edit-source-20261116/green.log",
+        ":(exclude)parity/reports/artifacts/endpoint-edit-source-20261116/green.patch",
+        ":(exclude)parity/reports/artifacts/endpoint-edit-source-20261116/red.patch"
+      ],
+      "pid": 39171,
+      "started_utc": "2026-11-16T20:42:04.349333+00:00",
+      "finished_utc": "2026-11-16T20:42:04.445523+00:00",
+      "elapsed_seconds": 0.09623329190071672,
+      "exit_code": 0,
+      "log_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_utf8": "",
+      "terminal": true,
+      "exclusions_exactly_four_root_authorized_paths": true
+    }
+  }
+}

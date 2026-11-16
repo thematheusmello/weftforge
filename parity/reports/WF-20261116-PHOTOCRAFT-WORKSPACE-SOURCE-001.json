@@ -6,7 +6,7 @@
   "platform": "macOS27.2 arm64; source-bound Rust/headless egui gates and separately bounded own-app native observations",
   "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
   "kind": "implementation_only",
-  "freshness": "current",
+  "freshness": "stale",
   "complete_contract": false,
   "reference_executed": false,
   "reference_verified": false,
@@ -343,5 +343,6 @@
     "Headless layout/selection/focus definitions do not establish actual native gestures, complete accessibility/high-DPI, full UI contracts or reference parity.",
     "Docking, independent panel/window arrangements and complete hierarchy/material/timeline workflows remain open.",
     "Native preview and stopped input cases are separately reported; no offset, saved output, physics, full garment, roadmap or release acceptance follows."
-  ]
+  ],
+  "freshness_reason": "The original b776 source no longer matches current integrated runtime ac6. This exact original result remains historical; endpoint source/native reports at3fd are separately bounded and do not revive or regrade this result."
 }

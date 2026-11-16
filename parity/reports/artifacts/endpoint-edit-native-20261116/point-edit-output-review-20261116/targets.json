@@ -1,0 +1,60 @@
+{
+  "case": "D003",
+  "comparison": "All envelope and authoring fields, nested object keys and ordered arrays must match the independent seed, except each declared revision and point 3 position. Position coordinates use the declared absolute SI tolerance; all other values match exactly after strict JSON parsing. Booleans cannot substitute for numbers. Final work must additionally be byte-identical to redo.",
+  "curve_ids": [
+    7,
+    8,
+    9,
+    10
+  ],
+  "format": "weftforge",
+  "piece_id": 2,
+  "point_id": 3,
+  "point_ids": [
+    3,
+    4,
+    5,
+    6
+  ],
+  "run_policy": "Freeze before reading outputs; explicit parent instruction required; one grading run; preserve failures without reruns.",
+  "scope": "Own native D003 file content and analytic straight-edge area only. No reference parity, UI gesture, fresh-process reopening, format compatibility, physics, or workflow acceptance is inferred.",
+  "seed_area_m2": "0.2604",
+  "seed_sha256": "ba14733d505c8f9ee0bc71b0d38c7a3236c31ba25e9640ae6dd77d4124040077",
+  "states": {
+    "edited": {
+      "area_m2": "0.2635",
+      "path": "snapshots/edited.weftforge",
+      "point_position_m": [
+        "-0.02",
+        "-0.01"
+      ],
+      "revision": 6
+    },
+    "final_work": {
+      "area_m2": "0.2635",
+      "path": "work/point-release.weftforge",
+      "point_position_m": [
+        "-0.02",
+        "-0.01"
+      ],
+      "revision": 8
+    },
+    "redo": {
+      "area_m2": "0.2635",
+      "path": "snapshots/redo.weftforge",
+      "point_position_m": [
+        "-0.02",
+        "-0.01"
+      ],
+      "revision": 8
+    },
+    "undo": {
+      "area_m2": "0.2604",
+      "path": "snapshots/undo.weftforge",
+      "point_position_m": null,
+      "revision": 7
+    }
+  },
+  "tolerance_si": "0.000000000001",
+  "version": 5
+}

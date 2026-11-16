@@ -7,7 +7,7 @@
   "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
   "kind": "implementation_only",
   "status": "blocked",
-  "freshness": "current",
+  "freshness": "stale",
   "feature_ids": [
     "PAT-009"
   ],
@@ -459,5 +459,6 @@
     "Native offset preview/refusal/cancel/Apply, numeric/modal/caret/shortcut routes, history/reopen/point-drag and exports.",
     "Independent saved geometry/offset math, native rest-mesh/actual Cloth mass, physics or reference comparisons.",
     "Full PAT-009 persistent allowances and its complete existing behavior/scenario/dependency/comparison scope; no feature, inventory or roadmap completion."
-  ]
+  ],
+  "freshness_reason": "The original b776 source no longer matches current integrated runtime ac6. This exact original result remains historical; endpoint source/native reports at3fd are separately bounded and do not revive or regrade this result."
 }
