@@ -1,0 +1,219 @@
+{
+  "review": "cloth metadata independent semantic review",
+  "status": "NO_BLOCKER",
+  "at_utc": "2026-11-16T22:53:49.697303+00:00",
+  "immutable_inputs": {
+    "head": "a9d5cf72cc966e6a2b8fc76fc245951f7c7ef031",
+    "initial_index_tree_confirmed_first": "00191144886d6a8641eb87a51b20ae303d0b7042",
+    "corrected_reviewed_tree_confirmed": "4b450972dd8ef498b859c1429fd5dbb130d5cace",
+    "critical_files": {
+      "STATUS.md": {
+        "git_blob": "d38abfd8697568e8b6ce8dc644916402f1f1263e",
+        "sha256": "ad05cc1d19d3fdefb7323d20c8d4bb754e68cebda4ed82457b59bb7887dc640b",
+        "bytes": 66580
+      },
+      "docs/progress.md": {
+        "git_blob": "3cf2024b1a71b7dd9107632709c02065fce7a82c",
+        "sha256": "45f888c09116c7fe22bad57ba2fbab6cefeeb6a76ad664e0fcf23d55bfc4d087",
+        "bytes": 120759
+      },
+      "docs/dashboard/index.html": {
+        "git_blob": "cf079ae13c329e060d0164a517ed06f1ccf1e0a2",
+        "sha256": "d8252df394244ce2c2a69dccb63f6d110a05218dd04466848d60bcf30074fc85",
+        "bytes": 283066
+      },
+      "parity/features.yaml": {
+        "git_blob": "f8b51f5748103204a5b721d9708d13234b59dc57",
+        "sha256": "12b174922406225c1c6521ce42e91ce2e20be4064db2b8c1e911328c84f0c5fa",
+        "bytes": 7720832
+      },
+      "spec/inventory/weftforge-current-source-addendum.json": {
+        "git_blob": "7a514669989d4cf324a911f4a9c4d9ff84f9a771",
+        "sha256": "db5a1a12cf8ec8783a708a52071201db9e0bfcbf4aa224f6e7f997043d5f8cf5",
+        "bytes": 239600
+      },
+      "spec/inventory/weftforge-current-source-addendum.md": {
+        "git_blob": "6f75fc2f5b43b0430e1b951f406dd4637f880cb1",
+        "sha256": "5c2bc4527ae4a4537c85e896aff40e6b2752a7a19615e2d69c69d934373fad2f",
+        "bytes": 129397
+      },
+      "parity/reports/WF-20261116-COUPLED-MATERIAL-SOURCE-001.json": {
+        "git_blob": "a4b8b3a053992ad57c8194e443f3a728b3da63a3",
+        "sha256": "bfc0f4d6bc7b67386cd5e2d541dd52839056e29e10daf9e10d75beb157fc6d4f",
+        "bytes": 17327
+      },
+      "parity/reports/WF-20261116-COUPLED-HARBOR-A8-001.json": {
+        "git_blob": "d03523fe02a6c2e3caf81077f2fb53f36ae0cd57",
+        "sha256": "c87a54d43a1094818084132d7d2ba9d5ab3a6c1b0e30e123c23b245a4e1db6b9",
+        "bytes": 32527
+      },
+      "parity/reports/WF-20261116-ENDPOINT-EDIT-SOURCE-001.json": {
+        "git_blob": "5182ebe36437714928f0ada37dc4e2ab6ae21511",
+        "sha256": "721fa2fa54d116d65d61850c82287623cd759cbe4f060e8de44eaf7165dec29e",
+        "bytes": 31136
+      },
+      "parity/reports/WF-20261116-ENDPOINT-EDIT-NATIVE-001.json": {
+        "git_blob": "39f68e8b88b6e9033b012a10b3a8d7b82ac798c7",
+        "sha256": "368dfbf7ea8d431918707fe47ee87877a9bf32ba17edd84180999648774719e9",
+        "bytes": 42127
+      },
+      "parity/reports/artifacts/material-source-20261116/SELECTED-PUBLIC-MANIFEST-001.json": {
+        "git_blob": "bc872dafd9faf24035ead9775409a46de5b9ce44",
+        "sha256": "518e2cd8515201fe324d756065b990c1f71ee38417467172b79246bbe8407ac2",
+        "bytes": 148993
+      }
+    }
+  },
+  "review_scope": "Staged metadata and retained evidence semantics; immutable Git blobs. No product modifications, generators, Cargo, native app, reference, remote, or commits. Earlier FS001 actual checker was not read or rerun.",
+  "closed_findings": [
+    {
+      "id": 1,
+      "severity_at_initial_tree": "must_fix",
+      "path": "spec/inventory/weftforge-current-source-addendum.md",
+      "line": 9,
+      "problem": "Named f79/ac6 predecessor was paired with the earlier48e3264 JSON/Markdown hashes. This broke the stated audit identity.",
+      "fix_verified": "Root changed only the two digest literals on line9; all other files and all other bytes in that Markdown remain exact between the two trees.",
+      "correct_json_sha256": "5bc48301d84a43abee3c9a4a6b34de871bfbab0b2ef5b15177ba4e77b950a059",
+      "correct_markdown_sha256": "fc3878f8be8fac7fc92e2d833029b4cc061e18dea78b84d5fb11d31984259ed4",
+      "basis": "SHA256 of actual f79 Git blobs; agrees with current JSON source_update_origin."
+    }
+  ],
+  "open_findings": [],
+  "checks": {
+    "protected_contracts": {
+      "count": 56,
+      "protected_field_comparisons": 1008,
+      "exact": true,
+      "fields": [
+        "id",
+        "category",
+        "title",
+        "required_reference_behavior",
+        "reference_baseline",
+        "source_links",
+        "reference_observation_status",
+        "scenarios",
+        "comparison_criteria",
+        "dependencies",
+        "implementation_locations",
+        "issues",
+        "prs",
+        "implementation_status",
+        "verification_status",
+        "contradictions",
+        "blockers",
+        "contract_documents"
+      ],
+      "prior_evidence_runs_and_known_gaps_preserved_as_exact_prefixes": true
+    },
+    "historical_preservation": {
+      "inventory_files_byte_exact": 8,
+      "unaffected_prior_reports_byte_exact": 50,
+      "endpoint_archives_byte_exact": 2,
+      "endpoint_only_changed_top_level_fields": [
+        "freshness",
+        "freshness_reason"
+      ],
+      "endpoint_original_statuses_and_source_artifacts_unchanged": true
+    },
+    "current_map": {
+      "prior_anchor_occurrences_preserved": 378,
+      "current_anchor_occurrences": 379,
+      "existing_repins": 2,
+      "all379_literal_lines_and_file_hashes_checked": true,
+      "source_files_read_for_anchor_validation": 33,
+      "rows": 39,
+      "surfaces": 23,
+      "contracts": 23,
+      "historical_949_205_56_and_command_schema_tool_34_33_9_preserved": true,
+      "new_material_anchor": "crates/weftforge-sim/src/constraints.rs:76",
+      "history_amendment_duplicate_anchor_record_excluded_from_current_count": true,
+      "old_sim_candidate_text_exact_prefix_of_new": true
+    },
+    "source_and_gate_boundaries": {
+      "source_scope_expands_exactly_31_files": true,
+      "all31_actual96_hashes_equal_staged": true,
+      "all88_actual96_to_a9_source_blob_identities_equal": true,
+      "historical_398_rust_gate_rows_and_zero_exit_receipts_consistent": true,
+      "later_UI_404_gates_explicitly_outside_new_reports": true,
+      "no_current_whole_workspace_native_or_reference_acceptance_inferred": true,
+      "CLI_test_launch_attribution_preserved_separately": true
+    },
+    "Harbor": {
+      "report_status": "failed",
+      "actual_saved_states": 181,
+      "retained_analysis_errors": [],
+      "strain_failure_frames": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37
+      ],
+      "all_frame_strict_failure_preserved": true,
+      "final_frame_pass_does_not_override": true,
+      "new_report_screen_failure_lists_and_attribution_match_retained_analysis": true,
+      "initial_target_and_seam_failure_lists_preserved": true,
+      "all_full_native_reference_physics_garment_roadmap_acceptance_flags_false": true,
+      "original_timing_scopes_distinguished_by_terminal_witness": true
+    },
+    "registry_and_generated_docs": {
+      "implementation": {
+        "partial": 41,
+        "planned": 15
+      },
+      "verification": {
+        "failed": 5,
+        "blocked": 3,
+        "not_run": 48
+      },
+      "freshness": {
+        "current": 5,
+        "stale": 30,
+        "missing": 21
+      },
+      "seven_new_run_mirrors_match_report_fields": true,
+      "SIM005_cross_reference_only_no_run_or_freshness_upgrade": true,
+      "generated_counters_and_no_complete_workflow_statement_match_registry": true,
+      "README_and_ROADMAP_exact": true,
+      "GitHub_Actions_and_deploy_files_unchanged": true
+    },
+    "artifact_maps": {
+      "source_map_entries": 43,
+      "Harbor_map_entries": 128,
+      "union": 168,
+      "selected_originals": 167,
+      "generated_manifest": 1,
+      "union_equals_exact_staged_artifact_addition_set": true,
+      "map_hashes_agree_with_public_manifest": true,
+      "all_selected_Git_modes": "100644",
+      "all_declared_public_POSIX_modes": "0644",
+      "public_manifest_hash_checked": true,
+      "declared_original_mode_differences": 33,
+      "byte_exact_originals": 134,
+      "ROOT_literal_substitutions": 87,
+      "HOME_literal_substitutions": 25,
+      "group_counts_and_byte_totals_consistent": true,
+      "bulk_original_to_public_normalization_hash_recheck": "Not repeated; root already proved exact original/normalized bytes. This review independently checked set/hash-map agreement, staged mode identities, totals and semantic attribution."
+    },
+    "disclosure": {
+      "all178_changed_file_bytes_scanned": true,
+      "personal_path_account_email_locator_or_credential_pattern_hits": 0,
+      "compiled_executable_magic_hits": 0,
+      "six_bin_fixtures_verified_ASCII_x_only": true,
+      "raw_reference_R011_R012_R013_artifacts_not_selected": true,
+      "proprietary_source_or_assets_not_inspected": true
+    }
+  },
+  "limits": [
+    "Metadata/source-attribution review only. No new execution, reference parity, physics or garment acceptance.",
+    "No Cargo, generators, native apps or FS001 re-execution. Pending clean committed cargo xtask verify remains outside this review.",
+    "No repeat of root-proved bulk original-to-public normalization hashing. Disclosure scan is a bounded pattern/content check, not a claim about unreviewed private files."
+  ],
+  "verdict": "No semantic blocker remains for corrected staged tree4b450972dd8ef498b859c1429fd5dbb130d5cace."
+}

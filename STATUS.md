@@ -1,5 +1,24 @@
 # WeftForge status — active development, 2026-11-16
 
+## Reviewed publication checkpoint
+
+Metadata commit `2ac29945142f6675d606b480331c3e2062d972ba` passed one clean
+committed `cargo xtask verify` in 204.238 seconds: registry and generated progress,
+historical/current maps, 48 script tests, six evaluator tests and actual CLI help.
+All **147 verification inputs** (88 source, 54 reports, five metadata) remained
+unchanged, and the checkout was clean afterward. See the [retained local
+verification receipt](parity/reports/artifacts/material-publication-checks-20261116/XTASK-RESULT-001.json)
+and [public derivative manifest](parity/reports/artifacts/material-publication-checks-20261116/MANIFEST.json).
+The independent review corrected only two predecessor digest literals against
+actual f79 Git objects. Original whitespace failures remain retained; the passing
+scoped check excludes exactly five preserved raw-artifact paths. Source/math gates
+are reused, and the complete Harbor strain failure remains unchanged. This later
+receipt/status-only checkpoint adds no source or report changes and repeats no
+checks. Local verification PID 54511/session 52320 is terminal exit 0; no owned
+Cargo or WeftForge GUI job is active. Publication is prepared on
+`feat/cloth-delivery-integration`, stacked on PR #53, with Actions disabled and
+existing Pages preserved. The full 56-contract target remains unfinished.
+
 Current physical source is actual tested `96d3baee4543c7edbdb804df6090697a9f65da09`, preserved byte-for-byte across all **88 source inputs** at delivery integration `a9d5cf72cc966e6a2b8fc76fc245951f7c7ef031`. The reviewed material correction `36524293b89686c2368f22d13ad09289fc70af03` and actual endpoint source remain in ancestry; trace47 stays excluded. Later Rectangle/UI source and its separate 404-test gates belong to another increment.
 
 The [bounded source/math report](parity/reports/WF-20261116-COUPLED-MATERIAL-SOURCE-001.json) is **passed**. Its independent small-patch inertial/elastic equilibrium reference changes from RED on unchanged production (2.843544361e-6 m position error / 1.763599204e-3 N force residual) to GREEN on reviewed material source (8.810015435e-16 m / 5.759318500e-13 N). Material sweeps retain positional corrections and use a coupled 3×3 Gauss–Newton/Woodbury descent with at most 16 Armijo halvings; material-loop cancellation preserves whole-call rollback. Later cancellation/docs changes have their own final source maps. Bending, sewing and contact retain their prior algorithms; full coupled-contact equilibrium and fabric calibration remain unproved.
