@@ -57,13 +57,49 @@ from the scoped whitespace check. Exact old 4f80 reports are archived in the
 separate history namespace before freshness/reason-only transitions to stale.
 No old failed outcome, grade, identity, run or artifact map is rewritten.
 
+## Rectangle-offset controller follow-up
+
+[Current b776 controller stops](parity/reports/WF-20261116-OFFSET-NATIVE-CONTROLLER-STOPS-001.json)
+retain two separate closed cases on unchanged source87/native1bfb. All **54
+reviewed derivative files** are tracked under
+`parity/reports/artifacts/offset-native-stops-followup-20261116/`.
+
+- R004 reached clean activation AX, then the local screenshot return-type guard
+  stopped storage. **Zero images** were retained. The outcome's 14.556 s and event
+  ledger's 14.555 s / 16:40:41.846Z remain distinct. Delayed 0005 metadata at 16:43:04.862Z
+  is not screenshot return time or API latency. The secondary wrong-record
+  wx/EEXIST attempt preserved the correct 0004 AX record.
+- R005 retained 13 original AX returns (seven standalone files selected, with all
+  original AX strings in the selected ledger) and three original images. Draft
+  name OFFSET-R1 / W0.40 / H0.60 / X0.00 / Y0.00 remained revision 0/zero pieces. Local
+  `r5DraftAX is not defined` stopped before Add. Its exact failure UTC/pair
+  remain missing, bounded only after 17:03:25.585Z and before 17:06:18.659Z.
+  The 41 paired app calls plus final post-Quit error remain 42 app calls; the local
+  unpaired JavaScript failure is not an additional app API call.
+
+Neither case creates a rectangle/material, saves/exports, invokes offset or
+simulation, or reaches a formal grader. No product defect/source fix, geometry,
+native-full, physics, reference, feature or roadmap acceptance follows. The
+separate cleanup receipts retain owned PIDs 68629/76165 absence without a new
+process/UI probe. R005 images do not restore or regrade R004 lost return.
+All 49 prior reports, 87 source inputs, 370 source-map anchors and 56 full scopes
+remain exact.
+
+Follow-up metadata cycle passed once: full staged whitespace check, progress
+generation/check and **39 registry tests**. Session **47760** is terminal,
+exit **0**. Report/feature inputs stayed unchanged during every command; raw
+outputs and before/after input hashes are retained privately for root review.
+No Cargo, build, native or reference action ran in this follow-up.
+
 Progress remains **41 partial / 15 planned / 0 full contracts / 0 reference
 contracts verified**. UI-001/UI-002/PAT-003 whole verification remains
-`not_run`; PAT-009 remains `partial/blocked` with stale 4f80 evidence.
-All 56 full behavior/scenario/dependency/comparison scopes and the other 52
-feature objects remain exact. UI-006 stays planned. No roadmap gate is accepted.
+`not_run`; PAT-009 remains `partial/blocked` with current b776 controller-stop
+evidence; the earlier 4f80 source/native reports remain stale.
+All 56 full behavior/scenario/dependency/comparison scopes remain exact. This
+follow-up changes only PAT-009 evidence/freshness; the other 55 feature objects
+remain exact. UI-006 stays planned. No roadmap gate is accepted.
 
-Metadata cycle passed once: progress generation, progress check and **39
+The preceding UI metadata cycle passed once: progress generation, progress check and **39
 registry tests**. Session **73628** is terminal, exit **0**. Raw command/output
 and exact-input records are retained privately for root review; no source gates
 were rerun.
@@ -74,12 +110,13 @@ Clean committed `cargo xtask verify` passed at
 Session **53753** is terminal, exit **0**; original receipt
 `57ad108caccf0ae50286760bdb13cbdaeb702083e72c9885a8d0553638491514`.
 Selected logs are under `photocraft-workspace-publication-checks-20261116`.
-This final append changes only status and those logs; no native, reference or
+That publication append changed only status and those logs; no native, reference or
 complete-workflow acceptance transfers from the CLI verification.
 
-Next: execute the separately bound rectangle-offset native workflow using the
-calibrated input route, then independently check its saved files and exports.
-Prior closed cases remain unchanged. GitHub Actions stays disabled and the
+Next: root reviews this clean follow-up checkpoint, runs its clean committed
+xtask and decides publication. The full separately bound rectangle-offset native
+workflow and independent saved-file/export assessment remain due. Prior closed
+cases remain unchanged. GitHub Actions stays disabled and the
 existing static Pages site remains unchanged. Full editable allowances,
 native offset acceptance, curved/concave/cancellation cases and the complete
 ROADMAP target remain due.

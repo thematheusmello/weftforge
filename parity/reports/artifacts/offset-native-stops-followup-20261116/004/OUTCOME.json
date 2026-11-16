@@ -1,0 +1,167 @@
+{
+  "attempt_id": "OFFSET-R1-004",
+  "status": "CLOSED_CONTROLLER_EVIDENCE_STOP_DURING_STEP1_ACTIVATION",
+  "finalized_utc": "2026-11-16T16:46:02.395373+00:00",
+  "binding_sha256": "92777eca47c7cd1f4596d1bb6660ba00e456d0d8baca661f784dd2cd31436ca7",
+  "protocol_sha256": "1fd27eb263d136bba3fd80524eba3cafb3bfb36dfbf5bd50bc109b6af6d6d819",
+  "runtime_source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "source87_sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+  "main_rs_sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd",
+  "native_sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+  "first_failure": {
+    "step": 1,
+    "seconds_from_launch": 14.556,
+    "reason": "Unexpected screenshot return type",
+    "origin": "Actor recorder local instanceof Uint8Array guard after app.getScreenshot awaited return; no app API exception was returned at this call.",
+    "screenshot_call_record": "observations/trace/0005-before.json / 0005-after.json",
+    "raw_screenshot_value_retained": false,
+    "raw_screenshot_type_or_backend_cause": "Unknown; returned value was not retained before local rejection. No screenshot is reconstructed.",
+    "bookkeeping_exception": "Prior attempt to write screenshot-failure after-record used observation counter4 instead of actual call sequence5. wx rejected EEXIST; correct existing AX record4 was preserved. Actual screenshot failure is call5."
+  },
+  "actual_reached": [
+    "One unique owned process launched through the bound proper app route; exact PID/executable/full argv proved before getApp.",
+    "getApp automatically emitted own native window chrome; its App binding result was stored, not a raw automatic AX return.",
+    "Initial standalone AX showed native window chrome with exposed Raise.",
+    "One observed Raise action performed on owned window0.",
+    "Post-Raise standalone full AX showed clean rev0/0pieces and Pattern1.",
+    "The required screenshot capture was called, but the recorder rejected its return and retained no raw image; the activation evidence gate was therefore not completed.",
+    "After freezing the first failure, one separate cleanup-only full AX still showed clean rev0/0pieces and no exposed close control."
+  ],
+  "step_results": {
+    "1": "Stopped during activation before File > New Empty or any text replacement. No before snapshot or stable authored IDs/revisionR were established.",
+    "2": "not_run",
+    "3": "not_run",
+    "4": "not_run",
+    "5": "not_run",
+    "6": "not_run; no second process",
+    "7": "not_run",
+    "8": "not_run"
+  },
+  "counts": {
+    "launches": 1,
+    "semantic_deliberate_actions_before_cleanup": 3,
+    "semantic_UI_cleanup_actions": 0,
+    "physical_CUA_input_API_calls": 1,
+    "physical_input_detail": {
+      "performSecondaryAction_Raise": 1
+    },
+    "app_API_calls": 6,
+    "method_counts_including_external_launch": {
+      "open": 1,
+      "cua.getApp": 1,
+      "app.getAXState": 3,
+      "app.performSecondaryAction": 1,
+      "app.getScreenshot": 1
+    },
+    "own_app_observations_including_automatic_emission_and_unretained_capture": 5,
+    "retained_raw_standalone_AX_returns": 3,
+    "retained_images": 0,
+    "automatic_getApp_tool_state_emissions": 1,
+    "screenshot_API_returns_rejected_by_local_storage_guard": 1,
+    "New_Empty": 0,
+    "whole_value_replacements": 0,
+    "Add_rectangle": 0,
+    "Save": 0,
+    "Export": 0,
+    "offset_preview_or_Apply": 0,
+    "simulation": 0,
+    "retries_or_fallbacks": 0,
+    "formal_grader_invocations": 0
+  },
+  "raw_AX_artifacts": [
+    "observations/0002-process1-initial-standalone-AX.ax.txt",
+    "observations/0004-process1-after-Raise-AX.ax.txt",
+    "observations/0006-cleanup-fresh-owned-close-controls.ax.txt"
+  ],
+  "trace": {
+    "paired_records_including_launch": 7,
+    "screenshot_pair_explicitly_marks_raw_result_loss": true,
+    "paired_metadata_is_not_a_claim_all_raw_returns_were_retained": true,
+    "correct_call0004_AX_preserved_after_wx_rejected_wrong_record_target": true
+  },
+  "outputs": {
+    "before": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/snapshots/before.weftforge",
+      "exists": false
+    },
+    "cancel": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/snapshots/cancel.weftforge",
+      "exists": false
+    },
+    "applied": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/snapshots/applied.weftforge",
+      "exists": false
+    },
+    "undo": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/snapshots/undo.weftforge",
+      "exists": false
+    },
+    "redo": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/snapshots/redo.weftforge",
+      "exists": false
+    },
+    "edited": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/snapshots/edited.weftforge",
+      "exists": false
+    },
+    "final": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/snapshots/final.weftforge",
+      "exists": false
+    },
+    "svg": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/exports/OFFSET-R1.svg",
+      "exists": false
+    },
+    "dxf": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/exports/OFFSET-R1.dxf",
+      "exists": false
+    },
+    "rest_obj": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/exports/OFFSET-R1.obj",
+      "exists": false
+    },
+    "independent_file_measurements": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/independent-file-measurements.json",
+      "exists": false
+    }
+  },
+  "independent_file_measurement": {
+    "method_sha256": "cd8ab9e04b930778636323c821b619b9512bce3192e785e7b44db69cc7468d0b",
+    "invoked": false,
+    "result": "No formal assessment; all authored/export paths unreached and absent."
+  },
+  "cleanup": {
+    "record": "POST-CASE-CLEANUP.json",
+    "owned_pid": 68629,
+    "final_CUA_outcome": "Cleanup-only full AX had no exposed close route.",
+    "very_next_tool": "CUA completion_summary only, exactly once",
+    "native_window_dismissal_observed": false,
+    "exact_executable_full_argv_reproved_after_summary": true,
+    "termination_signal": "SIGTERM",
+    "independent_owned_PID_absence_confirmed": true,
+    "remaining_exact_owned_processes": [],
+    "other_processes_targeted": false,
+    "seconds_launch_to_independent_absence": 196.640885
+  },
+  "budget": {
+    "semantic_actions_hard_cap": 100,
+    "actual_semantic_actions": 3,
+    "physical_input_calls_counted_separately": true,
+    "observation_numeric_ceiling": null,
+    "wall_seconds_hard_cap": 1500,
+    "within_total_wall_cap": true,
+    "first_failure_before_initial_window30s_deadline": true,
+    "no_authoring_timeout_extension_or_retry": true
+  },
+  "source_after": "SOURCE-AFTER.json",
+  "limits": [
+    "This is an actor controller/evidence stop. No product defect or product failure cause is inferred.",
+    "Full rectangle offset workflow, numeric/modal/caret/shortcut/cancel/Apply/history/reopen/drag/export criteria remain unexecuted.",
+    "No saved geometry/density/IDs or actual Cloth UI mass result was established. Source-only Cloth audit remains source-only.",
+    "No native authoring, reference, physics, full-feature or release acceptance from this case.",
+    "All older cases remain closed with their original outcomes; no repair, replay or regrade.",
+    "No Save/Export was invoked; no claim the app or OS made no disk writes.",
+    "Ignored private artifacts are not public delivery."
+  ],
+  "gui_lease_released": true
+}

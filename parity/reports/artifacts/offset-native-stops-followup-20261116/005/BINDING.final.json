@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "case_id": "OFFSET-R1",
+  "attempt_id": "OFFSET-R1-005",
+  "status": "BOUND_UNEXECUTED_ROOT_GO",
+  "execution_allowed": true,
+  "protocol": {
+    "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/NATIVE-PROTOCOL-005.md",
+    "sha256": "f7bfa0be2350e54b221c3c7fc2eb1aedb99a39a47f3f540d5d6a46cc78fea94c",
+    "frozen": true,
+    "diff_path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/PROTOCOL.diff",
+    "unchanged_sections_vs_closed004": {
+      "eight_steps": {
+        "byte_identical": true,
+        "sha256": "0c8b3b581d0a8380597d4fd14391e0fa6f19ad44ca2786709d495de845b428b8"
+      },
+      "precision_targets_claims_and_limits": {
+        "byte_identical": true,
+        "sha256": "d690766ef06362e18166794cbca35b4c0f778c5ba3f1d9a3b84c0eb5e07b67fa"
+      },
+      "budget_paragraph": {
+        "byte_identical": true,
+        "sha256": "e14a1ec3bc613db93292f68ca375779238a30cc410b19616488c812ff504e800"
+      },
+      "fixed_input_route": {
+        "byte_identical": true,
+        "sha256": "0faf40f7d57bbb6e89c3425a3cbec00b4648f670d43a66d510169b592f8ffcdc"
+      }
+    },
+    "allowed_changes": "New case paths/descriptor, source-gate context and explicit prior004 closed-case context only."
+  },
+  "runtime": {
+    "source_checkout": "${ROOT}/.local/photocraft-workspace-polish-20261116",
+    "source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+    "source_manifest": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/SOURCE87.json",
+    "source_manifest_sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+    "source_count": 87,
+    "all87_actual_hashes_match": true,
+    "main_rs_sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd",
+    "native_source_build_path": "${ROOT}/.local/photocraft-workspace-polish-20261116/target/debug/weftforge",
+    "native_source_build": {
+      "sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+      "bytes": 62635032,
+      "mode": "0755"
+    },
+    "bundle_path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/bundle/WeftForge.app",
+    "bundle_id": "org.weftforge.nativecase.offsetr1.r005",
+    "bundled_executable": {
+      "sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+      "bytes": 62635032,
+      "mode": "0755"
+    },
+    "Info_plist": {
+      "sha256": "e4c2e673577e9e92250d01a898d63247f077e14825e482f58c2bf4aef25583f0",
+      "bytes": 691,
+      "mode": "0644"
+    },
+    "launch_argv": [
+      "/usr/bin/open",
+      "-n",
+      "-a",
+      "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/bundle/WeftForge.app"
+    ],
+    "product_arguments": [],
+    "ownership_and_activation": "Same bound route as004: new exact owned PID/executable/full argv before exact getApp descriptor, one observed Raise, standalone AX and real owned screenshot proving clean0/0.",
+    "binary_copy_scope": "Only own frozen UI target/debug/weftforge copied; no target directory, cache or cross-worktree compiled artifacts copied.",
+    "clean_checkout_context": "Previously ROOT-verified clean b776 and same actual87 inputs; this preparation performs no Git operation."
+  },
+  "inherited_artifacts": [
+    {
+      "origin": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/SOURCE87.json",
+      "packaged_path": "SOURCE87.json",
+      "sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+      "bytes": 10161,
+      "content": "Inherited byte-identical pre-run artifact; not a new execution or audit result."
+    },
+    {
+      "origin": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/measure_saved_files.py",
+      "packaged_path": "measure_saved_files.py",
+      "sha256": "cd8ab9e04b930778636323c821b619b9512bce3192e785e7b44db69cc7468d0b",
+      "bytes": 16228,
+      "content": "Inherited byte-identical pre-run artifact; not a new execution or audit result."
+    },
+    {
+      "origin": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/GATES.proposed.json",
+      "packaged_path": "GATES.inherited-004.json",
+      "sha256": "5dbfb9cfb578a27fc09fdd8e92cfc3f2a849581742f18dbd31827fa093b0d7b3",
+      "bytes": 4503,
+      "content": "Inherited byte-identical pre-run artifact; not a new execution or audit result."
+    },
+    {
+      "origin": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/CLOTH-DATAFLOW.proposed-004.json",
+      "packaged_path": "CLOTH-DATAFLOW.reused-004.json",
+      "sha256": "76561c05f5622ffddcde4288e524162b7bf401ec9d12ce6f06e1fc723b823b6c",
+      "bytes": 5894,
+      "content": "Inherited byte-identical pre-run artifact; not a new execution or audit result."
+    },
+    {
+      "origin": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/oracles/CONTRACT-REVIEWED-001.md",
+      "packaged_path": "oracles/CONTRACT-REVIEWED-001.md",
+      "sha256": "b5e0b8c441d0fdc595840ee13ca8d56ae113b682e7c42ae499ad4a5466c2f73a",
+      "bytes": 14139,
+      "content": "Inherited byte-identical pre-run artifact; not a new execution or audit result."
+    },
+    {
+      "origin": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/oracles/ORIGINAL-SCENARIOS-001.json",
+      "packaged_path": "oracles/ORIGINAL-SCENARIOS-001.json",
+      "sha256": "6de6eefff1bc040363f1f2de335f5c4f70dc526dacd5224ba22e1c33e1820bec",
+      "bytes": 31080,
+      "content": "Inherited byte-identical pre-run artifact; not a new execution or audit result."
+    },
+    {
+      "origin": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/oracles/PAT-009-offset-reviewed-additions.json",
+      "packaged_path": "oracles/PAT-009-offset-reviewed-additions.json",
+      "sha256": "fc4b133cadada09a676266cea90c736a35342767552cb54a573460eea9f41991",
+      "bytes": 10015,
+      "content": "Inherited byte-identical pre-run artifact; not a new execution or audit result."
+    },
+    {
+      "origin": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/oracles/REVIEWED-SCENARIO-ADDENDUM-001.json",
+      "packaged_path": "oracles/REVIEWED-SCENARIO-ADDENDUM-001.json",
+      "sha256": "3e2a1e8064b5bb4a810d168095ec5d0e8fef4ee664a6394ce62cb020be47462a",
+      "bytes": 9703,
+      "content": "Inherited byte-identical pre-run artifact; not a new execution or audit result."
+    },
+    {
+      "origin": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/gates/WORKSPACE-CLIPPY-RECEIPT.json",
+      "packaged_path": "gates/WORKSPACE-CLIPPY-RECEIPT.json",
+      "sha256": "fd18154ee9868ee50f9a00b9e2a9d2996f6fcebccd18fd663fbc62c8546dde70",
+      "bytes": 10432,
+      "content": "Inherited byte-identical pre-run artifact; not a new execution or audit result."
+    },
+    {
+      "origin": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/gates/WORKSPACE-TEST-RECEIPT.json",
+      "packaged_path": "gates/WORKSPACE-TEST-RECEIPT.json",
+      "sha256": "8bd30ac98dfb4417164048830b0c968a19ba12e7ce49f1d884f3fc7f93ffbdc8",
+      "bytes": 10420,
+      "content": "Inherited byte-identical pre-run artifact; not a new execution or audit result."
+    },
+    {
+      "origin": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/gates/cargo-build-native.log",
+      "packaged_path": "gates/cargo-build-native.log",
+      "sha256": "cb97adcb1ae25745bd33f46689ce6ac3b573b4bc63de0c0a4849ff6e7a0c1454",
+      "bytes": 227,
+      "content": "Inherited byte-identical pre-run artifact; not a new execution or audit result."
+    },
+    {
+      "origin": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/gates/cargo-clippy-workspace-all-targets.log",
+      "packaged_path": "gates/cargo-clippy-workspace-all-targets.log",
+      "sha256": "36643441c484657d53e5a99b6b17c2bb0bed66eda76334f6324415bb49fece69",
+      "bytes": 1092,
+      "content": "Inherited byte-identical pre-run artifact; not a new execution or audit result."
+    },
+    {
+      "origin": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/gates/cargo-fmt-all-check.log",
+      "packaged_path": "gates/cargo-fmt-all-check.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "content": "Inherited byte-identical pre-run artifact; not a new execution or audit result."
+    },
+    {
+      "origin": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/gates/cargo-test-workspace.log",
+      "packaged_path": "gates/cargo-test-workspace.log",
+      "sha256": "bcf2e6b718da212eb22ab1b59a9040c6aa0c605c3812771cfe66c5236a9686a0",
+      "bytes": 42776,
+      "content": "Inherited byte-identical pre-run artifact; not a new execution or audit result."
+    }
+  ],
+  "independent_oracles": {
+    "CONTRACT-REVIEWED-001.md": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/oracles/CONTRACT-REVIEWED-001.md",
+      "sha256": "b5e0b8c441d0fdc595840ee13ca8d56ae113b682e7c42ae499ad4a5466c2f73a",
+      "bytes": 14139
+    },
+    "ORIGINAL-SCENARIOS-001.json": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/oracles/ORIGINAL-SCENARIOS-001.json",
+      "sha256": "6de6eefff1bc040363f1f2de335f5c4f70dc526dacd5224ba22e1c33e1820bec",
+      "bytes": 31080
+    },
+    "PAT-009-offset-reviewed-additions.json": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/oracles/PAT-009-offset-reviewed-additions.json",
+      "sha256": "fc4b133cadada09a676266cea90c736a35342767552cb54a573460eea9f41991",
+      "bytes": 10015
+    },
+    "REVIEWED-SCENARIO-ADDENDUM-001.json": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/oracles/REVIEWED-SCENARIO-ADDENDUM-001.json",
+      "sha256": "3e2a1e8064b5bb4a810d168095ec5d0e8fef4ee664a6394ce62cb020be47462a",
+      "bytes": 9703
+    }
+  },
+  "gate_context": {
+    "path": "GATE-CONTEXT-005.json",
+    "sha256": "58e235d3765644fde4ff09384cce27957fdde8e92a4ddbed91b31638f3215771"
+  },
+  "reused_Cloth_source_only_audit": {
+    "path": "CLOTH-DATAFLOW.reused-004.json",
+    "sha256": "76561c05f5622ffddcde4288e524162b7bf401ec9d12ce6f06e1fc723b823b6c",
+    "qualification_path": "CLOTH-AUDIT-REUSE-005.json",
+    "qualification_sha256": "009ca3d2ae46a8c7bf34103aade45c8ccf6696b590625fa99144b71918e74b7b",
+    "new_audit_or_live_object_claim": false
+  },
+  "read_only_file_measurement_method": {
+    "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/measure_saved_files.py",
+    "sha256": "cd8ab9e04b930778636323c821b619b9512bce3192e785e7b44db69cc7468d0b",
+    "mode": "0444",
+    "byte_identical_to_closed004_and003": true,
+    "tool_executable": "${HOME}/.pyenv/versions/3.13.0/bin/python3",
+    "tool_executable_sha256": "dae804f93cd396de84720747c66218ff0aed9f74385f71dd9b3e62c49ce5b2ce",
+    "tool_version": "3.13.0 (main, Nov 12 2025, 18:15:04) [Clang 17.0.0 (clang-1700.0.13.3)]",
+    "formal_invocations_allowed": 1,
+    "formal_assessments_so_far": 0,
+    "actor_must_not_invoke": true,
+    "formal_grader": "ROOT-designated independent formal assessment only after actual outputs are frozen",
+    "invocation_argv": [
+      "${HOME}/.pyenv/versions/3.13.0/bin/python3",
+      "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/measure_saved_files.py",
+      "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/BINDING.final.json"
+    ],
+    "selfcheck_or_synthetic_outputs_created": false
+  },
+  "controller_storage_and_counter_helper": {
+    "prepared_by_this_agent": false,
+    "recorder_or_helper_code_created": false,
+    "path": null,
+    "sha256": null,
+    "required_before_GO": "ROOT independently prepares/tests the proven N003-derived crossrealm-safe storage and single local call counter outside closed cases, then binds its exact artifact/code. No helper is supplied in this package."
+  },
+  "paths": {
+    "before": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/snapshots/before.weftforge",
+    "cancel": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/snapshots/cancel.weftforge",
+    "applied": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/snapshots/applied.weftforge",
+    "undo": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/snapshots/undo.weftforge",
+    "redo": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/snapshots/redo.weftforge",
+    "edited": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/snapshots/edited.weftforge",
+    "final": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/snapshots/final.weftforge",
+    "svg": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/exports/OFFSET-R1.svg",
+    "dxf": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/exports/OFFSET-R1.dxf",
+    "rest_obj": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/exports/OFFSET-R1.obj",
+    "native_action_trace": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/observations/native-actions.jsonl",
+    "screenshots_or_AX": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/observations",
+    "independent_file_measurements": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/independent-file-measurements.json",
+    "post_case_cleanup_record": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/POST-CASE-CLEANUP.json"
+  },
+  "precision_policy": {
+    "mass_kg_decimals": 12,
+    "area_m2_decimals": 9,
+    "dimensions_mm_decimals": 3,
+    "coordinate_tolerance_m": 1e-09,
+    "area_tolerance_m2": 1e-09,
+    "mass_tolerance_kg": 2e-10,
+    "saved_restore_tolerance_m": 1e-12,
+    "svg_physical_dimension_tolerance_mm": 0.01,
+    "mass_rest_relation": "abs(Mdisplay-0.2*Arest_display)+1.005e-10 <=2e-10 kg"
+  },
+  "limits": {
+    "total_minutes": 25,
+    "meaningful_UI_actions": 100,
+    "fresh_processes": 2,
+    "window_or_open_seconds": 30,
+    "preview_mesh_or_write_seconds_after_dialog": 10,
+    "file_dialog_seconds": 60,
+    "quit_seconds": 10,
+    "first_unexpected_failure": "stop, freeze, cleanup only; no repair/replay/regrade"
+  },
+  "observation_budget": {
+    "numeric_ceiling": null,
+    "qualification": "No new numerical observation cap; count actual AX/images/automatic getApp emissions/errors within unchanged25min/per-operation deadlines.",
+    "semantic_and_physical_call_count_qualification": "Original100 semantic deliberate actions retained; physical CUA input/API calls are recorded separately by ROOT helper."
+  },
+  "closed_R1_004": {
+    "attempt_id": "OFFSET-R1-004",
+    "status": "CLOSED_CONTROLLER_EVIDENCE_STOP_DURING_STEP1_ACTIVATION",
+    "outcome_path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/OUTCOME.json",
+    "outcome_sha256": "734bdc77e13b177f6a16e6def6b04374495b018ec6161a7cf326c7dffc1b9999",
+    "manifest_sha256": "7ec4660e427fa6c28c1542695cda92ca43315d31e1954ae9d45074309752ee46",
+    "first_failure_seconds": 14.556,
+    "failure": "Local controller screenshot storage type guard; raw screenshot return not retained.",
+    "authoring_or_New_Empty_or_text_replacement": 0,
+    "saved_or_exported_outputs": 0,
+    "grader_invocations": 0,
+    "source_binary_unchanged": true,
+    "product_defect_inferred": false,
+    "repaired_replayed_or_regraded": false
+  },
+  "older_cases": "OFFSET-R1-001/002/003/P001/N002/N003 remain closed with their original outcomes; this package changes no case or reference evidence.",
+  "ROOT_remaining_requirements": [
+    "Review package identity/protocol diff and unchanged eight steps/targets/precision/claims/budgets.",
+    "Independently prepare/test/bind ROOT recorder helper; none is provided here.",
+    "Confirm own source/binary/package identity, current hardware/OS/display and no existing owned005 process.",
+    "Create final frozen binding and explicit ROOT GO before any CUA selection/launch."
+  ],
+  "case_result": "not_run",
+  "launches_so_far": 0,
+  "CUA_calls_so_far": 0,
+  "grader_invocations_so_far": 0,
+  "no_final_GO_or_protocol_freeze": true,
+  "bound_utc": "2026-11-16T16:57:56.648808+00:00",
+  "proposal_sha256": "18bb5760e12e6c0cc644e6c5b54b41306aa0836783c23bf93adc5624d9a586c5",
+  "root_review_sha256": "43774d66f5b0e1c4a582860180438d93c31796e581c486f7039e3438672dc34d",
+  "root_controller_helper": {
+    ".local/native-recorder-fix-20261116/record-call.source.js": "390193e5e22bcca64f054e2c7909f364e242aaf98aa9f127d3fc876d1b8b27ad",
+    ".local/native-recorder-fix-20261116/store-screenshot.source.js": "b31184d45f5f73d2f1caa31bccecddbb522c94ae3edd3d8c7d4616e24ce427f8",
+    ".local/native-recorder-fix-20261116/SELFCHECK.json": "b5b360e6663b8fb9d353e831f01773521c312e6d0e797be509bb5edb37bef177",
+    ".local/native-recorder-fix-20261116/PAIR-COUNTER-SELFCHECK.json": "f0fbfe74d6122ca95fc1e9b3328f335a1ac218c2c56b58ff96ad29f7f347614b"
+  },
+  "remaining_ROOT_requirements": [],
+  "root_is_runtime_actor": true,
+  "root_designated_file_grader": "One independent file checker invocation only after all actual outputs are frozen; no synthetic output, retry, repair or regrade."
+}

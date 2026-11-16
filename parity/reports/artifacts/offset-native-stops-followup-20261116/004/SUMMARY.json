@@ -1,0 +1,78 @@
+{
+  "attempt_id": "OFFSET-R1-004",
+  "kind": "Selected public derivative of a closed controller stop",
+  "frozen_status": "CLOSED_CONTROLLER_EVIDENCE_STOP_DURING_STEP1_ACTIVATION",
+  "runtime_source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "source87_sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+  "native_sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+  "actual_scope": "One owned launch/getApp, initial AX, one exposed Raise, clean0/0 post-Raise AX; local image-storage type guard stopped activation before New Empty or text entry.",
+  "image_qualification": {
+    "retained_images_original": 0,
+    "selected_images": 0,
+    "actual_getScreenshot_call": 1,
+    "raw_return_retained": false,
+    "fabricated_or_reconstructed_image": false
+  },
+  "raw_AX_qualification": {
+    "retained_original": 3,
+    "selected_standalone_files": 3,
+    "raw_AX_file_bytes_unchanged": true
+  },
+  "frozen_counts": {
+    "launches": 1,
+    "semantic_deliberate_actions_before_cleanup": 3,
+    "semantic_UI_cleanup_actions": 0,
+    "physical_CUA_input_API_calls": 1,
+    "physical_input_detail": {
+      "performSecondaryAction_Raise": 1
+    },
+    "app_API_calls": 6,
+    "method_counts_including_external_launch": {
+      "open": 1,
+      "cua.getApp": 1,
+      "app.getAXState": 3,
+      "app.performSecondaryAction": 1,
+      "app.getScreenshot": 1
+    },
+    "own_app_observations_including_automatic_emission_and_unretained_capture": 5,
+    "retained_raw_standalone_AX_returns": 3,
+    "retained_images": 0,
+    "automatic_getApp_tool_state_emissions": 1,
+    "screenshot_API_returns_rejected_by_local_storage_guard": 1,
+    "New_Empty": 0,
+    "whole_value_replacements": 0,
+    "Add_rectangle": 0,
+    "Save": 0,
+    "Export": 0,
+    "offset_preview_or_Apply": 0,
+    "simulation": 0,
+    "retries_or_fallbacks": 0,
+    "formal_grader_invocations": 0
+  },
+  "first_failure_qualification": {
+    "OUTCOME_seconds_from_launch": 14.556,
+    "native_actions_ledger_first_failure_seconds": 14.555,
+    "native_actions_ledger_first_failure_UTC": "2026-11-16T16:40:41.846Z",
+    "interpretation": "The frozen one-millisecond difference is preserved, not silently reconciled.",
+    "screenshot_after_record_UTC": "2026-11-16T16:43:04.862Z",
+    "after_record_role": "Delayed storage-failure metadata documenting an already-observed rejected/unretained return; this is not the actual screenshot return timestamp or API latency.",
+    "secondary_wx_EEXIST": "The wrong attempt to write call0004-after was rejected by wx; correct AX record0004 stayed intact. Correct screenshot record0005 later explicitly marks unretained return."
+  },
+  "cleanup": {
+    "owned_pid": 68629,
+    "route": "Recorded exact-owned PID re-proof and SIGTERM after next-tool summary",
+    "independent_absence_recorded": true,
+    "elapsed_seconds": 196.640885,
+    "new_check_during_derivative_preparation": false
+  },
+  "selection": "Outcome/stop/binding/root review/protocol/source-after/source87/ownership/cleanup, all three raw AX files, full original event ledger and critical paired records0004\u20130006. Other successful setup pairs remain explicitly omitted files, not invented failures.",
+  "limits": [
+    "Both cases are closed controller stops with zero Add, authored/saved/exported outputs and formal-grader invocations.",
+    "Constructor draft values do not establish created geometry, density, rest mesh, actual Cloth mass or offset results.",
+    "No product bug, source fix, reference, physics, full-feature, full-contract, inventory or roadmap acceptance is inferred.",
+    "All older outcomes remain frozen; no replay, repair or regrade.",
+    "Full protocols and targets remain intact; this is a selected evidence derivative, not a changed contract or grader.",
+    "Existing independent process-cleanup receipts are retained; no new process or UI check was performed during preparation.",
+    "Private staging is not tracked public delivery."
+  ]
+}

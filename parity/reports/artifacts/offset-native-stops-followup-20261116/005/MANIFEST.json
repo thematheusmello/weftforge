@@ -1,0 +1,696 @@
+{
+  "attempt_id": "OFFSET-R1-005",
+  "kind": "Selected public derivative of closed controller failure; no regrade",
+  "prepared_utc": "2026-11-16T17:22:34.563287+00:00",
+  "runtime_source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "native_sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+  "original_case_locator": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005",
+  "original_whole_case_manifest": {
+    "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/ARTIFACT-MANIFEST.json",
+    "sha256": "b5e797fe2d96ac5fdd4a1220dd5b03bd423e7be772a86dbb38c5f952b205028d",
+    "bytes": 22813,
+    "mode": "0644"
+  },
+  "selected_original_file_count": 29,
+  "generated_context_files": [
+    "SUMMARY.json",
+    "README.md"
+  ],
+  "public_case_file_count_including_manifest": 32,
+  "manifest_self_excluded": true,
+  "original_immutability_audit": {
+    "scope": "Every original regular case file, including unselected files, owned compiled bundle and original manifest; SHA256/bytes/mode before and after",
+    "original_file_count": 128,
+    "before_snapshot_sha256": "2b783d9a3dc6927dbb90b7e0578e0ee105ec9db9ee61bce711bb19595b0f222d",
+    "after_snapshot_sha256": "2b783d9a3dc6927dbb90b7e0578e0ee105ec9db9ee61bce711bb19595b0f222d",
+    "all_files_identical": true
+  },
+  "prior_126_payload_immutability": {
+    "public_case_files": 126,
+    "all_previous_stage_files_including_audits": 134,
+    "before_snapshot_sha256": "86a03b6da7d55ddb1d6d0a63d2c40c39be7d637829eeaa7d087114eeb8e21cee",
+    "after_snapshot_sha256": "86a03b6da7d55ddb1d6d0a63d2c40c39be7d637829eeaa7d087114eeb8e21cee",
+    "all_files_identical": true
+  },
+  "source_identity_audit": {
+    "all87_actual_source_hashes_unchanged": true,
+    "native_target_hash_size_mode_unchanged": true
+  },
+  "transform_policy": {
+    "ROOT": "Literal original absolute repository locator replaced by ${ROOT}; original spelling SHA256 recorded per affected file.",
+    "HOME": "After ROOT replacement, literal original absolute home locator replaced by ${HOME}; original spelling SHA256 recorded per affected file.",
+    "raw_ps": "Only005 observations/process-1-launch.json /raw_ps omitted with exact decoded-string hash/reason. No other semantic original field changed.",
+    "unchanged": "All raw AX and images byte-identical. No outcome/status/count/timestamp/pair gap is silently repaired.",
+    "historical_nested_hashes": "Frozen nested hashes refer to originals; use this mapping for public derivative hashes.",
+    "historical_binding_fields": "Inherited proposal-era pending/not_run fields are preserved; appended root binding and closed outcome remain distinct historical evidence."
+  },
+  "failure_and_count_annotations": {
+    "message": "r5DraftAX is not defined",
+    "app_input_attempted_in_failing_call": false,
+    "paired_record_for_failed_tool_call": false,
+    "exact_failure_UTC_recorded": false,
+    "bounded_interval": {
+      "after_last_success": "2026-11-16T17:03:25.585Z",
+      "before_stop_record": "2026-11-16T17:06:18.659Z"
+    },
+    "interval_anchors": [
+      "trace/0036-after.json",
+      "trace/0037-before.json"
+    ],
+    "failed_tool_call_receives_no_invented_trace_number": true,
+    "final_post_Quit_App_quit_error": "One additional actual app API error beyond the41 paired calls; recorded by frozen outcome/cleanup rather than a separate paired raw error trace.",
+    "selected_trace_gaps": "Only existing controller-stop/cleanup pairs0036\u20130040 are selected here. Other existing pairs are omitted by file selection; the local failing call had no original pair at all."
+  },
+  "original_images": 3,
+  "selected_images": 3,
+  "original_standalone_AX": 13,
+  "selected_standalone_AX": 7,
+  "no_authored_exported_outputs_or_formal_grading": true,
+  "omitted_original_case_files": [
+    "ARTIFACT-MANIFEST.json",
+    "BINDING.proposed.json",
+    "CLOTH-AUDIT-REUSE-005.json",
+    "CLOTH-DATAFLOW.reused-004.json",
+    "GATE-CONTEXT-005.json",
+    "GATES.inherited-004.json",
+    "PACKAGE-CHECKS.proposed.json",
+    "PROTOCOL.diff",
+    "bundle/WeftForge.app/Contents/Info.plist",
+    "bundle/WeftForge.app/Contents/MacOS/weftforge",
+    "gates/WORKSPACE-CLIPPY-RECEIPT.json",
+    "gates/WORKSPACE-TEST-RECEIPT.json",
+    "gates/cargo-build-native.log",
+    "gates/cargo-clippy-workspace-all-targets.log",
+    "gates/cargo-fmt-all-check.log",
+    "gates/cargo-test-workspace.log",
+    "measure_saved_files.py",
+    "observations/0001-initial-ax.txt",
+    "observations/0005-pre-File-new-ax.txt",
+    "observations/0007-File-new-menu-ax.txt",
+    "observations/0021-width-after-Tab-ax.txt",
+    "observations/0026-height-after-Tab-ax.txt",
+    "observations/0031-origin-U-after-Tab-ax.txt",
+    "oracles/CONTRACT-REVIEWED-001.md",
+    "oracles/ORIGINAL-SCENARIOS-001.json",
+    "oracles/PAT-009-offset-reviewed-additions.json",
+    "oracles/REVIEWED-SCENARIO-ADDENDUM-001.json",
+    "trace/0000-after.json",
+    "trace/0000-before.json",
+    "trace/0001-after.json",
+    "trace/0001-before.json",
+    "trace/0002-after.json",
+    "trace/0002-before.json",
+    "trace/0003-after.json",
+    "trace/0003-before.json",
+    "trace/0004-after.json",
+    "trace/0004-before.json",
+    "trace/0005-after.json",
+    "trace/0005-before.json",
+    "trace/0006-after.json",
+    "trace/0006-before.json",
+    "trace/0007-after.json",
+    "trace/0007-before.json",
+    "trace/0008-after.json",
+    "trace/0008-before.json",
+    "trace/0009-after.json",
+    "trace/0009-before.json",
+    "trace/0010-after.json",
+    "trace/0010-before.json",
+    "trace/0011-after.json",
+    "trace/0011-before.json",
+    "trace/0012-after.json",
+    "trace/0012-before.json",
+    "trace/0013-after.json",
+    "trace/0013-before.json",
+    "trace/0014-after.json",
+    "trace/0014-before.json",
+    "trace/0015-after.json",
+    "trace/0015-before.json",
+    "trace/0016-after.json",
+    "trace/0016-before.json",
+    "trace/0017-after.json",
+    "trace/0017-before.json",
+    "trace/0018-after.json",
+    "trace/0018-before.json",
+    "trace/0019-after.json",
+    "trace/0019-before.json",
+    "trace/0020-after.json",
+    "trace/0020-before.json",
+    "trace/0021-after.json",
+    "trace/0021-before.json",
+    "trace/0022-after.json",
+    "trace/0022-before.json",
+    "trace/0023-after.json",
+    "trace/0023-before.json",
+    "trace/0024-after.json",
+    "trace/0024-before.json",
+    "trace/0025-after.json",
+    "trace/0025-before.json",
+    "trace/0026-after.json",
+    "trace/0026-before.json",
+    "trace/0027-after.json",
+    "trace/0027-before.json",
+    "trace/0028-after.json",
+    "trace/0028-before.json",
+    "trace/0029-after.json",
+    "trace/0029-before.json",
+    "trace/0030-after.json",
+    "trace/0030-before.json",
+    "trace/0031-after.json",
+    "trace/0031-before.json",
+    "trace/0032-after.json",
+    "trace/0032-before.json",
+    "trace/0033-after.json",
+    "trace/0033-before.json",
+    "trace/0034-after.json",
+    "trace/0034-before.json",
+    "trace/0035-after.json",
+    "trace/0035-before.json"
+  ],
+  "omitted_policy": "Compiled bundle, duplicate pre-run gates/oracles/checker/setup/proposal files, original whole-case manifest and noncritical successful pairs omitted by explicit file selection. No missing runtime artifact is reconstructed.",
+  "files": [
+    {
+      "public_file": "OUTCOME.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/OUTCOME.json",
+      "original": {
+        "sha256": "c444eb8b2fe4fb94bf491b3f9ef5344f27752ece7eb8ee768d3706c3aab8e6d0",
+        "bytes": 2815,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "c444eb8b2fe4fb94bf491b3f9ef5344f27752ece7eb8ee768d3706c3aab8e6d0",
+        "bytes": 2815,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "BINDING.final.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/BINDING.final.json",
+      "original": {
+        "sha256": "59b4862ce2b673fbbc6f5b8b8710128737b450544034b97cdfcb659aa85fbb01",
+        "bytes": 19780,
+        "mode": "0444"
+      },
+      "public": {
+        "sha256": "3b385e8489b697a340532edc564653a802efc31bd9f47da7989ba781ea8cfae5",
+        "bytes": 17352,
+        "mode": "0644"
+      },
+      "transforms": [
+        {
+          "operation": "literal_locator_replacement",
+          "locator": "ROOT",
+          "original_locator_utf8_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "${ROOT}",
+          "occurrences": 43
+        },
+        {
+          "operation": "literal_locator_replacement",
+          "locator": "HOME",
+          "original_locator_utf8_sha256": "47f3872666c1be3dd23a1de2a618a1b79bd7afac2e088a3fd73d2a28e834d12c",
+          "replacement": "${HOME}",
+          "occurrences": 2
+        }
+      ]
+    },
+    {
+      "public_file": "ROOT-REVIEW.final.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/ROOT-REVIEW.final.json",
+      "original": {
+        "sha256": "43774d66f5b0e1c4a582860180438d93c31796e581c486f7039e3438672dc34d",
+        "bytes": 2041,
+        "mode": "0444"
+      },
+      "public": {
+        "sha256": "43774d66f5b0e1c4a582860180438d93c31796e581c486f7039e3438672dc34d",
+        "bytes": 2041,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "NATIVE-PROTOCOL-005.md",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/NATIVE-PROTOCOL-005.md",
+      "original": {
+        "sha256": "f7bfa0be2350e54b221c3c7fc2eb1aedb99a39a47f3f540d5d6a46cc78fea94c",
+        "bytes": 15557,
+        "mode": "0444"
+      },
+      "public": {
+        "sha256": "b9397a072dbdc1687bee5b6e6eefc7be0d6c0e8e25e3ea4733f607a20b9be052",
+        "bytes": 15501,
+        "mode": "0644"
+      },
+      "transforms": [
+        {
+          "operation": "literal_locator_replacement",
+          "locator": "ROOT",
+          "original_locator_utf8_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "${ROOT}",
+          "occurrences": 1
+        }
+      ]
+    },
+    {
+      "public_file": "SOURCE-AFTER.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/SOURCE-AFTER.json",
+      "original": {
+        "sha256": "71ab5321d7589092c9d0adef6ee5d822a4646427eee5c5366fa850685b7d947c",
+        "bytes": 252,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "71ab5321d7589092c9d0adef6ee5d822a4646427eee5c5366fa850685b7d947c",
+        "bytes": 252,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "SOURCE87.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/SOURCE87.json",
+      "original": {
+        "sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+        "bytes": 10161,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+        "bytes": 10161,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "POST-CASE-CLEANUP.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/POST-CASE-CLEANUP.json",
+      "original": {
+        "sha256": "9cd767ec13cd8da9a98a9ca3f7a90125960a7aa2fb988fc7908dcbbebce5215f",
+        "bytes": 582,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "9cd767ec13cd8da9a98a9ca3f7a90125960a7aa2fb988fc7908dcbbebce5215f",
+        "bytes": 582,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "observations/process-1-launch.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/observations/process-1-launch.json",
+      "original": {
+        "sha256": "11f5af9fd4a2a7476d497d9a7a437d8260944f801cbac716f7dd4c24203858b4",
+        "bytes": 1149,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "fae457213a5b6585e6e72aef51d244079b380e93656c70f2ca3e5e0c756f5082",
+        "bytes": 741,
+        "mode": "0644"
+      },
+      "transforms": [
+        {
+          "operation": "omit_json_field",
+          "json_pointer": "/raw_ps",
+          "reason": "Redundant process-table line contains a column-truncated personal executable locator. Complete executable and full_argv fields and ownership_verified_before_getApp remain after declared literal normalization; no process/result repair.",
+          "omitted_decoded_string_utf8_sha256": "ccd80713853fc9706c2a722dfd1258de0b85b4940f1d6e8c111c4f31ca058546",
+          "serialization": "JSON indent=2, ensure_ascii=true, terminal newline"
+        },
+        {
+          "operation": "literal_locator_replacement",
+          "locator": "ROOT",
+          "original_locator_utf8_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "${ROOT}",
+          "occurrences": 3
+        }
+      ]
+    },
+    {
+      "public_file": "observations/native-actions.jsonl",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/observations/native-actions.jsonl",
+      "original": {
+        "sha256": "38f1efef68bc5152fb0dbf7fa8ec17f31e17760f56bf3c63927e7e81b5d478c0",
+        "bytes": 47063,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "d37d6041dea8b9b7d471d258d791fa2e4da18ecaf8cf35c77b95f8ed4b931e7e",
+        "bytes": 46895,
+        "mode": "0644"
+      },
+      "transforms": [
+        {
+          "operation": "literal_locator_replacement",
+          "locator": "ROOT",
+          "original_locator_utf8_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "${ROOT}",
+          "occurrences": 3
+        }
+      ]
+    },
+    {
+      "public_file": "observations/0003-raised-ax.txt",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/observations/0003-raised-ax.txt",
+      "original": {
+        "sha256": "9eac877907b6cf363f5d0ce597d1b7e1ec45ec95239a1e7990ffd93791be81f7",
+        "bytes": 2741,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "9eac877907b6cf363f5d0ce597d1b7e1ec45ec95239a1e7990ffd93791be81f7",
+        "bytes": 2741,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "observations/0009-new-empty-ax.txt",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/observations/0009-new-empty-ax.txt",
+      "original": {
+        "sha256": "4f3b3beec4ded054ebeba7cccc01397f3584ecf97e01922b7e1d74290d4f1b3c",
+        "bytes": 2633,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "4f3b3beec4ded054ebeba7cccc01397f3584ecf97e01922b7e1d74290d4f1b3c",
+        "bytes": 2633,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "observations/0014-name-immediate-ax.txt",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/observations/0014-name-immediate-ax.txt",
+      "original": {
+        "sha256": "653c618a168c1e9355d8af6374be05b0e33e852adad0cd328445bc6264c05f97",
+        "bytes": 2694,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "653c618a168c1e9355d8af6374be05b0e33e852adad0cd328445bc6264c05f97",
+        "bytes": 2694,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "observations/0016-name-after-Tab-ax.txt",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/observations/0016-name-after-Tab-ax.txt",
+      "original": {
+        "sha256": "9b5923251a9313756fd2ce8ee7b8ab599bcb67239560c389070c412187536ed7",
+        "bytes": 2926,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "9b5923251a9313756fd2ce8ee7b8ab599bcb67239560c389070c412187536ed7",
+        "bytes": 2926,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "observations/0036-origin-V-after-Tab-ax.txt",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/observations/0036-origin-V-after-Tab-ax.txt",
+      "original": {
+        "sha256": "f454e7c24eda2bb00b1d192f185718c7555d8cd83e3275218f3fea768c889d9f",
+        "bytes": 2682,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "f454e7c24eda2bb00b1d192f185718c7555d8cd83e3275218f3fea768c889d9f",
+        "bytes": 2682,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "observations/0037-stopped-before-Add-ax.txt",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/observations/0037-stopped-before-Add-ax.txt",
+      "original": {
+        "sha256": "f454e7c24eda2bb00b1d192f185718c7555d8cd83e3275218f3fea768c889d9f",
+        "bytes": 2682,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "f454e7c24eda2bb00b1d192f185718c7555d8cd83e3275218f3fea768c889d9f",
+        "bytes": 2682,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "observations/0039-pre-cleanup-ax.txt",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/observations/0039-pre-cleanup-ax.txt",
+      "original": {
+        "sha256": "f454e7c24eda2bb00b1d192f185718c7555d8cd83e3275218f3fea768c889d9f",
+        "bytes": 2682,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "f454e7c24eda2bb00b1d192f185718c7555d8cd83e3275218f3fea768c889d9f",
+        "bytes": 2682,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "observations/0004-raised-clean.jpg",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/observations/0004-raised-clean.jpg",
+      "original": {
+        "sha256": "59cb64d2a6a4482f57c4f0374cfdbe911859086d703e2e0acb2d0a6a7ddd5671",
+        "bytes": 159572,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "59cb64d2a6a4482f57c4f0374cfdbe911859086d703e2e0acb2d0a6a7ddd5671",
+        "bytes": 159572,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "observations/0010-new-empty.jpg",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/observations/0010-new-empty.jpg",
+      "original": {
+        "sha256": "0bda6a619be289630b64952cf14e246f44493af9a2e888ae844edb04c389b865",
+        "bytes": 159742,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "0bda6a619be289630b64952cf14e246f44493af9a2e888ae844edb04c389b865",
+        "bytes": 159742,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "observations/0038-stopped-before-Add.jpg",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/observations/0038-stopped-before-Add.jpg",
+      "original": {
+        "sha256": "efef8b69520b1947d328412b588261166859ff1dea9c199330a5528c9894c089",
+        "bytes": 160768,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "efef8b69520b1947d328412b588261166859ff1dea9c199330a5528c9894c089",
+        "bytes": 160768,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "trace/0036-before.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/trace/0036-before.json",
+      "original": {
+        "sha256": "b8796f4992b2d2c60f7fbf629afd99408d0fd4b46515351d7eb622b80bbcea7c",
+        "bytes": 125,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "b8796f4992b2d2c60f7fbf629afd99408d0fd4b46515351d7eb622b80bbcea7c",
+        "bytes": 125,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "trace/0036-after.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/trace/0036-after.json",
+      "original": {
+        "sha256": "594c1ef0936590dc1cb886de16a2de399cc9aef607633657bb9f89760d9c8430",
+        "bytes": 3035,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "594c1ef0936590dc1cb886de16a2de399cc9aef607633657bb9f89760d9c8430",
+        "bytes": 3035,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "trace/0037-before.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/trace/0037-before.json",
+      "original": {
+        "sha256": "bb4192e040c8665652adc2162b29bd99d6f484e2188aed793fd3e41c18fac563",
+        "bytes": 125,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "bb4192e040c8665652adc2162b29bd99d6f484e2188aed793fd3e41c18fac563",
+        "bytes": 125,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "trace/0037-after.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/trace/0037-after.json",
+      "original": {
+        "sha256": "056581a90baa2c6582588da0a89227946b24b24a92a21edbecaf04bca8659ad2",
+        "bytes": 3035,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "056581a90baa2c6582588da0a89227946b24b24a92a21edbecaf04bca8659ad2",
+        "bytes": 3035,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "trace/0038-before.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/trace/0038-before.json",
+      "original": {
+        "sha256": "1e3a4ebc1eac7682041e6e039ed0f0a9f5cb260ccaa1d748d30b185a7826f785",
+        "bytes": 125,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "1e3a4ebc1eac7682041e6e039ed0f0a9f5cb260ccaa1d748d30b185a7826f785",
+        "bytes": 125,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "trace/0038-after.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/trace/0038-after.json",
+      "original": {
+        "sha256": "fd5e77d5fb45734a8458af66b48777d1ad9c3409e6fac21d1795e59cc58c8288",
+        "bytes": 345,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "82795e36711583afa3096338f1895cbf00de8eb2eb099c46fd1713896dde8ff6",
+        "bytes": 289,
+        "mode": "0644"
+      },
+      "transforms": [
+        {
+          "operation": "literal_locator_replacement",
+          "locator": "ROOT",
+          "original_locator_utf8_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "${ROOT}",
+          "occurrences": 1
+        }
+      ]
+    },
+    {
+      "public_file": "trace/0039-before.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/trace/0039-before.json",
+      "original": {
+        "sha256": "92322b8bed92e3d35362ac8509725fc478bd82b8e634a5cd4b05c761a33ee157",
+        "bytes": 118,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "92322b8bed92e3d35362ac8509725fc478bd82b8e634a5cd4b05c761a33ee157",
+        "bytes": 118,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "trace/0039-after.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/trace/0039-after.json",
+      "original": {
+        "sha256": "a15c463a201691309ec2751aa264da6ea7afcd61e47c1620f2caa6875c964b14",
+        "bytes": 3027,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "a15c463a201691309ec2751aa264da6ea7afcd61e47c1620f2caa6875c964b14",
+        "bytes": 3027,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "trace/0040-before.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/trace/0040-before.json",
+      "original": {
+        "sha256": "33add0764f7e96e9cce4431fa851b0bcebbf492a7496e1bc3695926e03e74820",
+        "bytes": 122,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "33add0764f7e96e9cce4431fa851b0bcebbf492a7496e1bc3695926e03e74820",
+        "bytes": 122,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "trace/0040-after.json",
+      "original_file": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-005/trace/0040-after.json",
+      "original": {
+        "sha256": "e774288c8ed72947480d8f9456de4ea309310538ba2fe431813b7fc156966381",
+        "bytes": 264,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "e774288c8ed72947480d8f9456de4ea309310538ba2fe431813b7fc156966381",
+        "bytes": 264,
+        "mode": "0644"
+      },
+      "transforms": []
+    },
+    {
+      "public_file": "SUMMARY.json",
+      "original_file": null,
+      "original": null,
+      "public": {
+        "sha256": "8e58fc9c7ddf2ac03efae3b436ecfb8a678c8b4dc44c1a64c4366d8281bd7f69",
+        "bytes": 5054,
+        "mode": "0644"
+      },
+      "transforms": [
+        {
+          "operation": "new_derivative_context",
+          "description": "Explicit selected-case summary/limits/evidence-gap clarification; not a new runtime artifact or semantic repair."
+        }
+      ]
+    },
+    {
+      "public_file": "README.md",
+      "original_file": null,
+      "original": null,
+      "public": {
+        "sha256": "016a79b02884d24a6b78983dccc03ae1042b86361a6c21fc7415d2a76cdfae61",
+        "bytes": 3457,
+        "mode": "0644"
+      },
+      "transforms": [
+        {
+          "operation": "new_derivative_context",
+          "description": "Explicit selected-case summary/limits/evidence-gap clarification; not a new runtime artifact or semantic repair."
+        }
+      ]
+    }
+  ],
+  "new_UI_process_check_or_grader_invocation": false,
+  "full_contracts_targets_inventory_or_older_cases_changed": false
+}

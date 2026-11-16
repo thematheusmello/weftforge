@@ -1,0 +1,59 @@
+{
+  "attempt_id": "OFFSET-R1-005",
+  "status": "CLOSED_CONTROLLER_LOCAL_STATE_ERROR_BEFORE_ADD",
+  "binding_sha256": "59b4862ce2b673fbbc6f5b8b8710128737b450544034b97cdfcb659aa85fbb01",
+  "protocol_sha256": "f7bfa0be2350e54b221c3c7fc2eb1aedb99a39a47f3f540d5d6a46cc78fea94c",
+  "runtime_source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "source_count": 87,
+  "native_sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+  "first_failure": {
+    "message": "r5DraftAX is not defined",
+    "kind": "CUA JavaScript local-variable persistence error at next tool boundary",
+    "app_input_attempted_in_failing_call": false,
+    "paired_record_for_failed_tool_call": false,
+    "reason": "The local reference failed before rootRecordCall or any app API. Last numeric-field AX was retained; it is not reconstructed as a successful Add.",
+    "UTC_interval": {
+      "after_last_success": "2026-11-16T17:03:25.585Z",
+      "before_stop_record": "2026-11-16T17:06:18.659Z"
+    },
+    "exact_failure_UTC_recorded": false
+  },
+  "actual_native_scope": {
+    "initial_and_NewEmpty": "clean revision0/0pieces",
+    "name": "OFFSET-R1 retained through macOS paste and Tab",
+    "constructor": "W0.40/H0.60/X0.00/Y0.00 visible after separate whole-value replacements",
+    "authoring_reached": false,
+    "Add_rectangle_calls": 0,
+    "Save_Export_offset_simulation_calls": 0,
+    "formal_grader_invocations": 0,
+    "all_planned_authored_export_grader_paths_absent": true,
+    "product_defect_or_source_fix_claimed": false
+  },
+  "counts": {
+    "semantic_before_stop": 10,
+    "physical_inputs_before_cleanup": 23,
+    "physical_inputs_including_Quit_cleanup": 24,
+    "paired_app_API_calls": 41,
+    "final_post_Quit_AX_error_additional": 1,
+    "actual_app_API_calls_including_final_error": 42,
+    "observations_including_automatic_getApp_and_cleanup": 18,
+    "retained_standalone_AX": 13,
+    "retained_images": 3,
+    "unrecorded_local_failure_tool_call_additional": 1
+  },
+  "controller_fix_observed": "Cross-realm-safe direct write retained three actual screenshots; the prior image-storage rejection did not recur. This case instead failed at a later controller variable reference.",
+  "source_after": {
+    "all87_unchanged": true,
+    "runtime_git_clean": true,
+    "target_bundle_native_unchanged": true
+  },
+  "cleanup": "POST-CASE-CLEANUP.json",
+  "limits": [
+    "No Add/material/offset/save/reopen/edit/export result or acceptance.",
+    "No reference/physics/full-feature/roadmap acceptance.",
+    "Old cases remain closed with original failures; no repair or regrade.",
+    "The local controller failure is retained with its missing exact timestamp/pair rather than fabricated evidence.",
+    "No claim that app or OS made no disk writes."
+  ],
+  "gui_lease_released": true
+}

@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "case_id": "OFFSET-R1",
+  "attempt_id": "OFFSET-R1-004",
+  "status": "BOUND_UNEXECUTED_ROOT_GO",
+  "execution_allowed": true,
+  "protocol": {
+    "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/NATIVE-PROTOCOL-004.md",
+    "sha256": "1fd27eb263d136bba3fd80524eba3cafb3bfb36dfbf5bd50bc109b6af6d6d819",
+    "frozen": true,
+    "eight_steps_unchanged": true,
+    "targets_tolerances_rounding_caret_shortcuts_cancel_apply_history_reopen_drag_exports_timeouts_and_stops_unchanged": true,
+    "diff_path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/PROTOCOL.diff",
+    "change_summary_sha256": "6973878f46604c4bb82e8ffefe387fddd51eac9ff7290146d3203fcdd2dce22b"
+  },
+  "runtime": {
+    "source_checkout": "${ROOT}/.local/photocraft-workspace-polish-20261116",
+    "source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+    "source_manifest": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/SOURCE87.json",
+    "source_manifest_sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+    "source_count": 87,
+    "all_actual_source_hashes_match": true,
+    "main_rs_sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd",
+    "source_clean_commit_context": "Previously root-verified clean b776; this preparation performs no Git operations. ROOT must confirm clean source before final binding.",
+    "native_source_build_path": "${ROOT}/.local/photocraft-workspace-polish-20261116/target/debug/weftforge",
+    "native_source_build": {
+      "sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+      "bytes": 62635032,
+      "mode": "0755"
+    },
+    "bundle_path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/bundle/WeftForge.app",
+    "bundle_id": "org.weftforge.nativecase.offsetr1.r004",
+    "bundled_executable": {
+      "sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+      "bytes": 62635032,
+      "mode": "0755"
+    },
+    "info_plist": {
+      "sha256": "6b3aa671ba25a1dbf4246aa590927fcb77b320e551417336ce46a9f95bd2cf1d",
+      "bytes": 691,
+      "mode": "0644"
+    },
+    "launch_argv": [
+      "/usr/bin/open",
+      "-n",
+      "-a",
+      "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/bundle/WeftForge.app"
+    ],
+    "document_arguments": [],
+    "ownership": "For each of two fresh processes prove exact new owned PID/executable/full argv before getApp; never bare-executable getApp.",
+    "CUA_selector": "org.weftforge.nativecase.offsetr1.r004",
+    "activation": "One currently exposed native-window Raise per process, then fresh standalone full AX and real own-app screenshot proving clean revision0/0pieces."
+  },
+  "independent_oracles": {
+    "ORIGINAL-SCENARIOS-001.json": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/oracles/ORIGINAL-SCENARIOS-001.json",
+      "origin": "${ROOT}/.local/seam-allowance-contract-20261116/ORIGINAL-SCENARIOS-001.json",
+      "sha256": "6de6eefff1bc040363f1f2de335f5c4f70dc526dacd5224ba22e1c33e1820bec",
+      "bytes": 31080
+    },
+    "REVIEWED-SCENARIO-ADDENDUM-001.json": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/oracles/REVIEWED-SCENARIO-ADDENDUM-001.json",
+      "origin": "${ROOT}/.local/seam-allowance-contract-review-20261116/REVIEWED-SCENARIO-ADDENDUM-001.json",
+      "sha256": "3e2a1e8064b5bb4a810d168095ec5d0e8fef4ee664a6394ce62cb020be47462a",
+      "bytes": 9703
+    },
+    "CONTRACT-REVIEWED-001.md": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/oracles/CONTRACT-REVIEWED-001.md",
+      "origin": "${ROOT}/.local/seam-allowance-contract-review-20261116/CONTRACT-REVIEWED-001.md",
+      "sha256": "b5e0b8c441d0fdc595840ee13ca8d56ae113b682e7c42ae499ad4a5466c2f73a",
+      "bytes": 14139
+    },
+    "PAT-009-offset-reviewed-additions.json": {
+      "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/oracles/PAT-009-offset-reviewed-additions.json",
+      "origin": "${ROOT}/.local/photocraft-workspace-polish-20261116/spec/features/fixtures/PAT-009-offset-reviewed-additions.json",
+      "sha256": "fc4b133cadada09a676266cea90c736a35342767552cb54a573460eea9f41991",
+      "bytes": 10015
+    }
+  },
+  "read_only_file_measurement_method": {
+    "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/measure_saved_files.py",
+    "sha256": "cd8ab9e04b930778636323c821b619b9512bce3192e785e7b44db69cc7468d0b",
+    "mode": "0444",
+    "byte_identical_to_closed003": true,
+    "tool_executable": "${HOME}/.pyenv/versions/3.13.0/bin/python3",
+    "tool_version": "3.13.0 (main, Nov 12 2025, 18:15:04) [Clang 17.0.0 (clang-1700.0.13.3)]",
+    "tool_executable_sha256": "dae804f93cd396de84720747c66218ff0aed9f74385f71dd9b3e62c49ce5b2ce",
+    "formal_invocations_allowed": 1,
+    "formal_assessments_so_far": 0,
+    "invocation_argv": [
+      "${HOME}/.pyenv/versions/3.13.0/bin/python3",
+      "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/measure_saved_files.py",
+      "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/BINDING.final.json"
+    ],
+    "actor_must_not_invoke": true,
+    "formal_grader": "ROOT-designated independent grader only, after actual output bytes are frozen",
+    "scope": "Saved authored/output files only; native UI/table/focus, actual Cloth readouts, source dataflow and cleanup separately assessed.",
+    "selfcheck_or_synthetic_outputs_generated_during_preparation": false
+  },
+  "source_only_Cloth_audit": {
+    "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/CLOTH-DATAFLOW.proposed-004.json",
+    "sha256": "76561c05f5622ffddcde4288e524162b7bf401ec9d12ce6f06e1fc723b823b6c",
+    "live_object_identity_observed": false
+  },
+  "implementation_gates": {
+    "path": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/GATES.proposed.json",
+    "sha256": "5dbfb9cfb578a27fc09fdd8e92cfc3f2a849581742f18dbd31827fa093b0d7b3",
+    "workspace_tests_passed": 389,
+    "workspace_tests_failed": 0,
+    "strict_workspace_clippy_fmt_and_native_build": "Prior source-identical passed receipts/logs, hash verified; no new Cargo invocation",
+    "new_metadata_or_UI_integration_xtask": "Not claimed completed; ROOT review remains required.",
+    "root_clean_metadata_gate": {
+      "commit": "195c609c3ce459045c02c30e9b08ac4491e513c9",
+      "session": 53753,
+      "exit_code": 0,
+      "receipt_sha256": "57ad108caccf0ae50286760bdb13cbdaeb702083e72c9885a8d0553638491514",
+      "source_inputs": 87,
+      "reports": 49,
+      "qualifying_metadata": 5
+    }
+  },
+  "paths": {
+    "before": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/snapshots/before.weftforge",
+    "cancel": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/snapshots/cancel.weftforge",
+    "applied": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/snapshots/applied.weftforge",
+    "undo": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/snapshots/undo.weftforge",
+    "redo": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/snapshots/redo.weftforge",
+    "edited": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/snapshots/edited.weftforge",
+    "final": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/snapshots/final.weftforge",
+    "svg": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/exports/OFFSET-R1.svg",
+    "dxf": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/exports/OFFSET-R1.dxf",
+    "rest_obj": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/exports/OFFSET-R1.obj",
+    "native_action_trace": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/observations/native-actions.jsonl",
+    "screenshots_or_AX": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/observations",
+    "independent_file_measurements": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/independent-file-measurements.json",
+    "post_case_cleanup_record": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/POST-CASE-CLEANUP.json"
+  },
+  "precision_policy": {
+    "mass_kg_decimals": 12,
+    "area_m2_decimals": 9,
+    "dimensions_mm_decimals": 3,
+    "coordinate_tolerance_m": 1e-09,
+    "area_tolerance_m2": 1e-09,
+    "mass_tolerance_kg": 2e-10,
+    "saved_restore_tolerance_m": 1e-12,
+    "svg_physical_dimension_tolerance_mm": 0.01,
+    "mass_rest_relation": "abs(Mdisplay-0.2*Arest_display)+1.005e-10 <=2e-10 kg"
+  },
+  "limits": {
+    "total_minutes": 25,
+    "meaningful_UI_actions": 100,
+    "fresh_processes": 2,
+    "window_or_open_seconds": 30,
+    "preview_mesh_or_write_seconds_after_dialog": 10,
+    "file_dialog_seconds": 60,
+    "quit_seconds": 10,
+    "first_unexpected_failure": "stop, freeze, cleanup only; no repair/replay/regrade"
+  },
+  "observation_budget": {
+    "numeric_ceiling_in_original_protocol": null,
+    "proposal_silently_adds_or_relaxes_a_ceiling": false,
+    "hard_bounds": "All observations must fit unchanged25minutes and per-window/open30s, preview/rest/write10s after dialog, file-dialog60s, quit10s deadlines.",
+    "accounting": "Record each explicit AX, screenshot and combined observation, plus each automatic getApp tool emission, separately; retain actual errors too.",
+    "ROOT_review_item": "The inherited protocol has no separate numerical maximum observation count; this missing ceiling remains explicit for review."
+  },
+  "action_planning_estimate": {
+    "not_an_executed_result_or_relaxation": true,
+    "estimated_actions_by_step": [
+      16,
+      5,
+      13,
+      8,
+      12,
+      8,
+      16,
+      15
+    ],
+    "estimated_total": 93,
+    "hard_cap": 100,
+    "assumptions": "Counts each fixed launch/getApp/Raise/menu/control/shortcut separately; one whole-value replacement or one pointer gesture counts as one original deliberate action; a Save-as/export dialog is budgeted4 actions.",
+    "risk": "Only7 estimated actions remain for needed Property scrolling or extra native dialog controls; actual action100 stops the case if unfinished. No fallback/retry or timeout extension."
+  },
+  "prior_cases": "OFFSET-R1-001/002/003/P001/N002/N003 remain closed with their own outcomes; N003 calibrates only its bounded input/one-rectangle route.",
+  "remaining_ROOT_requirements": [],
+  "case_result": "not_run",
+  "launches_so_far": 0,
+  "CUA_calls_so_far": 0,
+  "grader_invocations_so_far": 0,
+  "reference_app_or_proprietary_research_used": false,
+  "bound_utc": "2026-11-16T16:36:19.539226+00:00",
+  "proposal_sha256": "c175509ed1700e674a542fede85de69b9f7909df8bee90c77557071c99ce40b6",
+  "root_review_sha256": "edaf68f43fa20a9fec25392a7df97fbd2b1e91391ad44af7808db765639e0c46",
+  "observation_budget_root_resolution": "No separate numerical ceiling is added; all actual AX/image/getApp emissions and errors are counted and retained within unchanged25min/per-operation deadlines.",
+  "physical_CUA_input_calls_also_recorded": true
+}
