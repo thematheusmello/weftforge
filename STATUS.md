@@ -1,45 +1,75 @@
 # WeftForge status — active development, 2026-11-16
 
-The last published runtime is ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5, merged in
-[PR #47](https://github.com/thematheusmello/weftforge/pull/47) at
-bbada3f7f5228a9479a76c0c300d3aa716e57d77. GitHub Actions remains disabled and the
-existing Pages configuration is preserved. The source/evidence
-publication candidate retains **0/56 coarse reference contracts verified**,
-**39 partial / 17 planned**, discovery incomplete and **no roadmap gate accepted**.
-The historical 949 entries / 205 packets / 56 landmarks remain an engineering
-inventory, not a complete product denominator.
+Current integrated runtime source is `5898f1a1274f8632d96b5fd0898f8253dee2f4db`. The inherited published
+straight-cut collection remains bound to 19b1; origin/main 734e5762 is being merged
+with the newer hole/CutAndSew candidate. Registry progress remains **40 partial /
+16 planned**, **0/56 coarse reference contracts verified**, discovery incomplete
+and **no roadmap gate accepted**. PAT-006 remains partial with whole-contract
+verification not_run. Historical 949/205/56 inventory/maps remain byte-exact.
+GitHub Actions stays disabled; existing static Pages configuration is preserved.
 
-## Current candidate: editable straight holes
+## Current candidate: straight Cut & Sew and inherited editable holes
 
-The isolated `feat/straight-pattern-holes` runtime checkpoint is
-`a021a2581c8e1dd000e535a417dcd964c3835884`. It adds a stable-ID straight hole
-inside a straight piece, numeric native review and corner editing, split/join,
-removal and history. Both boundary loops feed the real annular rest mesh and
-existing area masses/free-boundary bending. Strict native v5 reads v1–v4 through
-explicit migrations. SVG exports a compound outline but cannot reimport holes;
-the current DXF profile refuses holed projects before staging. Multiple/curved
-holes, internal-shape conversion and hole sewing remain open. See the
-[engineering contract](spec/features/PAT-006-straight-hole.md).
+The shared five-field `CutAndSew` reuses the private straight-cut helper and adds
+one ordinary full-A/reversed-B identity-map Seam in the same candidate. It
+reserves ten IDs/objects; ordinary `CutPiece` retains its exact nine-ID unsewn
+construction. Both pieces keep independent construction/mesh/particle identities.
+The existing native cut review has a default-off `Sew cut edges` option with
+clone-only preview, raw text/caret retention, candidate seam inspection and
+checkbox keyboard shielding. RemoveSeam removes only the constraint. Strict v5,
+all inherited hole restrictions, conservative guards and target-sewing refusals
+remain. See the [engineering contract](spec/features/SEW-001-cut-and-sew.md).
 
-Independent core/IO and native source reviews found no remaining blocker.
-The clean runtime passed formatting, **329 Rust tests / zero failures**, strict
-workspace/all-target Clippy and a fresh debug build in its own default target;
-all 73 scoped inputs remained exact. These local results await tracked evidence
-publication. The source-only addendum records 32 command variants / 31 schemas /
-9 tools, 38 retained rechecks, 22 native source surfaces, 21 contracts and 295
-anchors. Historical results keep their original outcomes and stale status.
+The clean 5898 runtime passed formatting, **336 Rust tests / zero failures**,
+strict workspace/all-target Clippy and fresh native+CLI debug builds in its own
+target. All **74 runtime/build/test/doc/contract inputs** stayed exact. Root's
+retained local gate receipt SHA-256 is
+`34db1fa96460c6468cb4c6ea93da198dcdac6907e9016dd2ff5dc039ab945599`.
+Earlier failed compile/UI-test attempts and their corrections remain retained;
+they were not converted into successful runs. These private local results are
+not tracked published native/reference evidence. Metadata conflicts are resolved
+in the working files. Python map, registry generation/check and 39 registry unit
+tests passed locally; root still owns staging, the merge commit and final clean
+`cargo xtask verify`.
+No Cargo job is active.
 
-Actual native hole authoring/restart/export acceptance has not run. Its bounded
-procedure is being prepared; clean metadata/xtask validation remains next.
-The older cut runtime's R003 author/cut/save/Undo/Redo sequence completed and its
-single independent saved-file assessment passed; final raw-UI review and the
-separate fresh-process edit remain pending. Finished previews are closed. No
-Cargo job or native GUI lease is active. None of these source checks establishes
-reference parity or a completed roadmap gate.
+The source-only addendum now pins actual **33 Rust alternatives / 32 schemas /
+9 tools**, retaining 38 candidate rows and 22 native surfaces, with 22 reviewed
+contracts and 318 actual source-anchor occurrences. Source tests inspect real initial Mesh
+and retained Cloth stitches/masses; no drape, calibrated fabric, reference physics
+or actual native CutAndSew lifecycle follows from those tests. Current 5898 native
+off/on preview, one Apply/history/save, real process restart/reopen and persisted
+seam inspection/removal remain **unobserved**.
 
-## Straight-cut checkpoint and qualification
+The inherited one-straight-hole/v5 source remains separately described by its
+[contract](spec/features/PAT-006-straight-hole.md). Private H1-002 acceptance is
+bound to a021a25 and is not a published/current 5898 hole or CutAndSew result.
+H2-001 on sealed source 73/metadata 52163ad is closed. Its one formal V2 grade
+**failed** (private receipt prefix `5457c733`): SVG exports a fixed
+`1000 mm × 1000 mm` canvas with `viewBox="0 -1000 1000 1000"`, while the declared
+R240 export bounds require `240 mm × 360 mm` and `viewBox="0 -360 240 360"`.
+Passive inspection found the shape's physical coordinates correct; the export
+canvas/bounds mismatch remains a product defect to fix separately. The old case
+was not repaired or regraded and earns no accepted H2 result.
 
-The `feat/straight-topology-cut` candidate remains isolated in its own worktree.
+Root separately verified all test windows closed at `2026-11-16T06:02:33.966Z`;
+that cleanup is outside the frozen case evidence. No GUI lease is active. A
+read-only SVG-writer diagnosis is the confirmed follow-up job. This metadata
+task changes no H1/H2 packet or frozen source. Full hole/CutAndSew/reference
+qualification remains open.
+
+Exact next steps: finish this metadata merge without changing source 74; let root
+stage/commit and run the clean tracked registry/map/xtask gate; keep the published
+v4 cut outcomes/qualifiers while marking their changed-source freshness stale;
+finish the read-only SVG diagnosis and make any writer correction in a new
+isolated product change after this metadata checkpoint. Preserve the failed H2
+case unchanged. Current native CutAndSew remains unobserved and needs its own
+declared source/executable/lifecycle acceptance plan.
+
+## Published bounded v4 cut qualification — historical source 19b1
+
+The straight-cut runtime is complete for its bounded engineering subset; its
+publication branch is `feat/straight-cut-publication` in a separate worktree.
 Core/CLI and native UI have separate owners using the
 [reviewed engineering contract](spec/features/PAT-006-straight-cut.md). Original
 R240/L fixtures, literal geometry/ID/mass oracles and bounded R author/restart
@@ -61,38 +91,57 @@ remaining blocker. Actual R240 meshes/initial cloth/analytic mass pass at
 and cut meshes hit the existing vertex cap; cut eligibility still passes and no
 fine-L cloth/mass acceptance is claimed. Caps and tolerances are unchanged.
 
-The clean runtime checkpoint19b1e88245dc627cfec8164f4924b335fe44853d passed
+The clean runtime checkpoint 19b1e88245dc627cfec8164f4924b335fe44853d passed
 workspace formatting, **304 Rust tests / zero failures**, and strict
-workspace/all-target Clippy. All69 runtime/build/test/doc/contract inputs remained
+workspace/all-target Clippy. All 69 runtime/build/test/doc/contract inputs remained
 exact through those checks. Source-map/registry integration, clean xtask validation
-and the actual native build also passed at clean metadata checkpoint 982ad03.
-CUT-R1/R003 completed with four raw native saves and passed its single saved-file
-assessment; raw-UI acceptance and CUT-R2 remain pending. The
-retained checks below apply to the published annotation checkpoint and are not
-reused as cut acceptance. PAT-006 remains planned until an actual cut implementation
-is checked. Full cuts, target sewing, Cut & Sew and reference behavior remain
-open. The newer hole candidate above is separate from these v4 cut observations.
-Package and root workspace Cargo jobs are complete; no Cargo process or GUI lease
-is active. Root owns raw-UI review, the restart binding and evidence publication.
+and the native build also passed at metadata checkpoint 982ad03.
+
+Actual native CUT-R1/R003 passed its separate raw-UI review and one-shot saved-file
+assessment: empty authoring, precise refusal/caret/cancellation, one accepted cut,
+four native saves, Undo and Redo. CUT-R2/R2-001 opened that actual accepted R4 in a
+fresh process, edited only child #15 to height 0.40 m, saved R5 and inspected the
+unchanged retained piece. Its separate review and one-shot assessment passed the
+original barriers. R2 retains a contradictory extra draft-only metadata flag;
+the canonical accepted dependency files/hashes were present before launch, and
+the clarification and qualified acceptance remain visible. Neither case was
+repaired or regraded. Both processes quit and exit was separately corroborated.
+See the [bounded report](parity/reports/WF-20261116-STRAIGHT-CUT-001.json) and
+[native gallery](docs/studio-preview.md).
+
+PAT-006 is now partial; whole-contract verification remains not_run and reference
+behavior unobserved. Full cuts and reference comparison remain open; this v4 collection supplies no
+hole/Cut & Sew acceptance, native concave or failed-I/O acceptance. Saved analytic area/density is not a native particle-
+mass or physics acceptance. Source and case originals remain isolated. Finished
+cut windows are closed and their jobs are terminal. Clean tracked checkpoint
+4fb6c47 passed its [publication gate](parity/reports/artifacts/straight-cut-publication-20261116/clean-4fb6c47/PUBLICATION.json):
+all 1, 262 evidence Git blobs match, source 69 is unchanged, and registry/map/Python
+checks plus CLI help pass through `cargo xtask verify`. Public screenshot copies
+remove only eight device-identifier metadata bytes each; decoded pixels, scan data
+and color characterization remain exact. Original private captures stay untouched.
+GitHub Actions remains disabled and the existing static Pages site is preserved.
+The separate strict-v5 hole source passed329 Rust tests and local source gates;
+its native/private qualification is outside this published v4 cut collection.
+Current candidate and H1/H2 boundaries are stated above.
 Prior reports with changed scoped source are marked stale without altering their
 original results, tested commits or artifacts. Fresh default targets stay separate across worktrees.
 
-## Current straight-annotation evidence — bounded headless and native A
+## Prior straight-annotation evidence — bounded headless and native A
 
 The [implementation-only report](parity/reports/WF-20261115-INTERNAL-ANNOTATIONS-001.json)
 retains its original passed result for the 86-observation headless run and
 root-accepted native A003; it is now stale on the straight-cut candidate. PAT-007, UI-004 and APP-001 remain partial/not_run for their coarse
 contracts. APP-001 attribution covers the exercised shared-command/input/history
 adapters and A's empty launch; it supplies no native New/Recover, full automation
-or process-restart acceptance. PAT-006 stays wholly planned: straight annotations
-do not implement cutting or holes.
+or process-restart acceptance. Straight annotations add no cut/hole credit;
+PAT-006's partial status comes from the separate bounded cut report above.
 
 The source implements piece-owned straight annotations, native two-point creation,
 precise endpoint editing, selection/removal, applied lengths and one transaction
 with valid staged properties. Strict native v4 stores ownership; supported v1/v2/v3
 reads add empty internal lists. Annotations remain separate from exterior topology,
 sewing targets, mesh constraints and simulation. Internal cubics/shapes, notches,
-persistent measurements/constraints, folds, cuts and internal sewing remain open.
+persistent measurements/constraints, folds, general cuts and internal sewing remain open.
 The [approved engineering contract](spec/features/PAT-006-internal-segments.md)
 provides policy rather than reference behavior despite its PAT-006 filename.
 
@@ -115,7 +164,7 @@ metadata-only closure keeps that checked-commit attribution. Rust/native/headles
 saved-grader and physical consumers are not rerun for publication.
 
 The original independent v2 run001 passed **86 observations / 434 paired target
-processes**. Root collection verified all 3,100 original regular files, three
+processes**. Root collection verified all 3, 100 original regular files, three
 relative link nodes and 65 source pins. All 868 raw target stdout/stderr files and
 link target bytes remain exact. The immutable evaluated CLI stays
 71ef84c7c90e9ffdf291f3dd2e031a476ff8b99097258256bf46e17afeb8b2bd, mode 0555.
@@ -193,7 +242,7 @@ No driver binary or target/cache is published. Publication performs no new
 physical run and changes no production default.
 No native/reference/contact-completeness or sufficient-fix credit follows.
 
-The current source-only addendum records 29 command variants / 28 nontransaction
+The current source-only addendum records 30 command variants / 29 nontransaction
 schemas/nine MCP tools. Historical JSON remains unchanged. Old Transform pointer,
 New/recovery, garment-contact and physics gaps below remain visible. Keep only
 active test windows; close finished windows after retaining evidence and record
@@ -362,7 +411,7 @@ surface contact, full persistence and full garment acceptance remain open.
 ## Exact next work
 
 Root independently audits the clean tracked publication candidate, mappings,
-source65, scopes and check receipts before remote publication. Continue the
+source 65, scopes and check receipts before remote publication. Continue the
 remaining native C–E work under separate reviewed source/input/criteria bindings
 and GO, preserving the separately accepted private B checkpoint. Actual accepted
 native bytes may become bound inputs; never synthesize a model substitute. Do not

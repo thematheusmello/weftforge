@@ -1,0 +1,85 @@
+{
+  "id": "0003",
+  "status": "returned",
+  "result": {
+    "source_record": "0003",
+    "actual_cua_runtime": true,
+    "native_UI_calls": 0,
+    "helper_types": {
+      "cutModule": "object",
+      "cutRequire": "function",
+      "cutFs": "object",
+      "cutPath": "object",
+      "cutCrypto": "object",
+      "cutProcess": "object",
+      "cutRoot": "string",
+      "cutRepo": "string",
+      "cutPacket": "string",
+      "cutHash": "function",
+      "cutWrite": "function",
+      "cutBindingBytes": "object",
+      "cutBindingSha": "string",
+      "cutBinding": "object",
+      "cutRecorder": "object",
+      "cutController": "object",
+      "cutObserve": "function",
+      "cutMark": "function",
+      "cutProofId": "string",
+      "cutProofSha": "string"
+    },
+    "helper_flags": {
+      "cutModule": true,
+      "cutRequire": true,
+      "cutFs": true,
+      "cutPath": true,
+      "cutCrypto": true,
+      "cutProcess": true,
+      "cutRoot": true,
+      "cutRepo": true,
+      "cutPacket": true,
+      "cutHash": true,
+      "cutWrite": true,
+      "cutBindingBytes": true,
+      "cutBindingSha": true,
+      "cutBinding": true,
+      "cutRecorder": true,
+      "cutController": true,
+      "cutObserve": true,
+      "cutMark": true,
+      "cutProofId": true,
+      "cutProofSha": true
+    },
+    "helpers_ready": true,
+    "root": {
+      "expected": "<WORKSPACE>/.local/native-straight-cut-20261116/R003",
+      "actual": "<WORKSPACE>/.local/native-straight-cut-20261116/R003"
+    },
+    "controller_configuration": {
+      "expected": {
+        "root": "<WORKSPACE>/.local/native-straight-cut-20261116/R003",
+        "recorderPath": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+        "evidenceKind": "native",
+        "callCap": 175,
+        "elapsedCapS": 1200,
+        "baselineCalls": 0
+      },
+      "actual": {
+        "root": "<WORKSPACE>/.local/native-straight-cut-20261116/R003",
+        "recorderPath": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+        "evidenceKind": "native",
+        "callCap": 175,
+        "elapsedCapS": 1200,
+        "baselineCalls": 0
+      }
+    },
+    "context_schema_ready": true,
+    "proof_schema_ready": true,
+    "proof_result_ready": true,
+    "offline_artifact_ready": true,
+    "controller_status_ready": true,
+    "proof_sha256": "c37a2bec0150e4867a333db5c333b86614a6ec3b345bf68c63d2e066b29b19e8"
+  },
+  "error": null,
+  "utc": "2026-11-16T02:31:17.309Z",
+  "monotonic_ns": "918593041346333"
+}

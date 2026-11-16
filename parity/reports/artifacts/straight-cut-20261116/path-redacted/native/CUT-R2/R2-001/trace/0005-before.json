@@ -1,0 +1,16 @@
+{
+  "id": "0005",
+  "label": "account-exact-live-owned-pid",
+  "method": "external.pid",
+  "arguments": {
+    "executable": "/bin/ps",
+    "argv": [
+      "-axo",
+      "pid=,command="
+    ],
+    "expected_command": "<WORKSPACE>/.local/native-straight-cut-20261116/R2-001/WeftForgeCutR2001.app/Contents/MacOS/weftforge <WORKSPACE>/.local/native-straight-cut-20261116/R2-001/inputs/accepted-redo-r4.weftforge",
+    "evidenceKind": "native"
+  },
+  "utc": "2026-11-16T03:08:54.572Z",
+  "monotonic_ns": "920850288888458"
+}

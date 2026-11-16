@@ -1,0 +1,74 @@
+{
+  "schema": "weftforge.straight-cut.R003-preparation-freeze.v1",
+  "status": "actor preparation freeze only; root review/final binding/GO absent",
+  "case": "CUT-R1",
+  "attempt": "R003",
+  "root_authorized_for_case": false,
+  "native_lease_granted": false,
+  "original_packet_freeze_sha256": "e8a1a0f2d2b744dcb143bbefe9b3c848c0505be6d71b9ec96c64cefa8e63d3bb",
+  "files": {
+    "ACTOR-BOOTSTRAP.js": {
+      "sha256": "9eb7cd6362c968af6df837c4ccb0ed3f9dc629330053fc7594e85944fc211f79",
+      "bytes": 8693,
+      "mode": "0o444"
+    },
+    "ACTOR-INITIAL-CAPTURE.js": {
+      "sha256": "7ccca394ecd13cba4afc61b85c89fc99f06f623a22b6bb0c50031fe4b7f421df",
+      "bytes": 440,
+      "mode": "0o444"
+    },
+    "ACTOR-PERSISTENCE-CHECK.js": {
+      "sha256": "559a5dc04924b06ffb1aac929f449758973f32a586f3fb21534815b137b2bc52",
+      "bytes": 10047,
+      "mode": "0o444"
+    },
+    "ORCHESTRATION-ADDENDUM.json": {
+      "sha256": "17569569ff8e26a6d7fca009792297fc01651268157e77ce28a798eb9f9f6b6a",
+      "bytes": 4987,
+      "mode": "0o444"
+    },
+    "PASSIVE-STATIC-CHECK.cjs": {
+      "sha256": "6df298af301d275f2ab4b07b4bf96c64db07652212a56e6db2a67a9df71d1d0d",
+      "bytes": 10125,
+      "mode": "0o444"
+    },
+    "PASSIVE-STATIC-CHECK.json": {
+      "sha256": "200cd4e15da5655dbc7a3f46f1dfe5444b18565f0a8f7a8fe4116226e8219355",
+      "bytes": 1285,
+      "mode": "0o444"
+    },
+    "PREPARATION-PRESERVATION.json": {
+      "sha256": "95b5c4ebfd5b341744476362ee1380983bcd1cad1b6121f83729b225cffa8952",
+      "bytes": 32451,
+      "mode": "0o444"
+    },
+    "ROOT-BINDING-DRAFT.json": {
+      "sha256": "436014b93c01045dedecbddad8aa481e8273847fea44132ed7ed4e080386abbc",
+      "bytes": 13748,
+      "mode": "0o444"
+    },
+    "WeftForgeCutR003.app/Contents/Info.plist": {
+      "sha256": "64330836359b7636bacc715bdbebf3b72f30ae53dfa91ba3ac773b86c188a4a9",
+      "bytes": 858,
+      "mode": "0o444"
+    },
+    "WeftForgeCutR003.app/Contents/MacOS/weftforge": {
+      "sha256": "117981304290aca8ea5f2d63bb77d81641791667bdc8ee89e5cb2b92de3c8d3e",
+      "bytes": 61532936,
+      "mode": "0o555"
+    },
+    "STAGING-MANIFEST.json": {
+      "sha256": "4e8e7aa4c20ea2360b737a82e43bf830984e7935e72989bef4e154cf5004cbb4",
+      "bytes": 10974,
+      "mode": "0o444"
+    }
+  },
+  "static_operations": 159,
+  "startup_operations": 13,
+  "reserve_operations": 16,
+  "operation_cap": 175,
+  "summary_calls": 1,
+  "overall_call_cap": 176,
+  "elapsed_cap_s": 1200,
+  "actual_runtime_proof_or_native_acceptance": false
+}

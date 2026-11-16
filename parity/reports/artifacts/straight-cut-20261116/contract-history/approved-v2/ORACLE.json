@@ -1,0 +1,768 @@
+{
+  "status": "prospective independent literal oracle; no production/reference execution; no grant",
+  "units": {
+    "length": "m",
+    "area": "m^2",
+    "mass": "kg",
+    "density": "kg/m^2"
+  },
+  "default_density": 0.18,
+  "unchanged": "All unlisted authored fields/global order/default material/mannequin exact; f64 IEEE bits incl signed zero, RGB f32. New anchor copies exactly equal source-anchor bits. Native v4 strict objects/bytes unchanged.",
+  "tolerances": {
+    "ordinary_new_point_length_m": 1e-12,
+    "ordinary_area_m2": 1e-12,
+    "ordinary_mass_kg": 1e-12,
+    "tilted_world_landmark_m": 1e-10,
+    "large_offset_point_length_m": 1e-09,
+    "large_offset_area_m2": 1e-09,
+    "large_offset_mass_kg": 1e-09,
+    "eligibility": "Strict upward-rounded contract margins; these measurement budgets never relax eligibility."
+  },
+  "R240": {
+    "input": "fixtures/R240.weftforge",
+    "command": {
+      "type": "cut_piece",
+      "data": {
+        "piece": 2,
+        "start_curve": 7,
+        "start_t": 0.375,
+        "end_curve": 9,
+        "end_t": 0.625
+      }
+    },
+    "ui_t_literals": [
+      "0.375",
+      "0.625"
+    ],
+    "parent": {
+      "revision": 1,
+      "next_id": 11,
+      "piece": 2,
+      "area": 0.0864,
+      "perimeter": 1.2,
+      "mass": 0.015552
+    },
+    "cut": {
+      "revision": 2,
+      "next_id": 20,
+      "piece_order": [
+        2,
+        15
+      ],
+      "point_order": [
+        3,
+        4,
+        5,
+        6,
+        11,
+        13,
+        16,
+        17
+      ],
+      "curve_order": [
+        7,
+        8,
+        9,
+        10,
+        12,
+        14,
+        18,
+        19
+      ],
+      "new_points": {
+        "11": [
+          0.09,
+          0.0
+        ],
+        "13": [
+          0.09,
+          0.36
+        ],
+        "16": [
+          0.09,
+          0.0
+        ],
+        "17": [
+          0.09,
+          0.36
+        ]
+      },
+      "copy_bits": [
+        [
+          16,
+          11
+        ],
+        [
+          17,
+          13
+        ]
+      ],
+      "all_curve_incidences": {
+        "7": [
+          3,
+          11
+        ],
+        "8": [
+          4,
+          5
+        ],
+        "9": [
+          5,
+          17
+        ],
+        "10": [
+          6,
+          3
+        ],
+        "12": [
+          16,
+          4
+        ],
+        "14": [
+          13,
+          6
+        ],
+        "18": [
+          11,
+          13
+        ],
+        "19": [
+          17,
+          16
+        ]
+      },
+      "retained": {
+        "id": 2,
+        "name": "Original Cut R240",
+        "boundary": [
+          7,
+          18,
+          14,
+          10
+        ],
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            0.09,
+            0
+          ],
+          [
+            0.09,
+            0.36
+          ],
+          [
+            0,
+            0.36
+          ]
+        ],
+        "area": 0.0324,
+        "perimeter": 0.9,
+        "mass": 0.005832
+      },
+      "new": {
+        "id": 15,
+        "name": "Cut piece #15",
+        "boundary": [
+          12,
+          8,
+          9,
+          19
+        ],
+        "polygon": [
+          [
+            0.09,
+            0
+          ],
+          [
+            0.24,
+            0
+          ],
+          [
+            0.24,
+            0.36
+          ],
+          [
+            0.09,
+            0.36
+          ]
+        ],
+        "area": 0.054,
+        "perimeter": 1.02,
+        "mass": 0.00972
+      },
+      "cut_length": 0.36,
+      "union_area": 0.0864,
+      "perimeter_sum": 1.92,
+      "mass_sum": 0.015552
+    },
+    "history": [
+      {
+        "revision": 2,
+        "state": "cut",
+        "next_id": 20
+      },
+      {
+        "revision": 3,
+        "state": "original one-piece geometry",
+        "next_id": 20
+      },
+      {
+        "revision": 4,
+        "state": "same cut IDs/data",
+        "next_id": 20
+      },
+      {
+        "revision": 5,
+        "state": "original one-piece geometry",
+        "next_id": 20
+      },
+      {
+        "revision": 6,
+        "state": "new branch cut",
+        "next_id": 29,
+        "anchors": [
+          20,
+          22
+        ],
+        "tails": [
+          21,
+          23
+        ],
+        "new_piece": 24,
+        "copies": [
+          25,
+          26
+        ],
+        "chords": [
+          27,
+          28
+        ]
+      }
+    ],
+    "reopen_edit": {
+      "input_state": "actual native saved R4; fresh process, empty undo/redo",
+      "selected_piece": 15,
+      "height_ui": "0.40",
+      "commit": "one Tab",
+      "revision": 5,
+      "next_id": 20,
+      "only_changed_points": {
+        "5": [
+          0.24,
+          0.4
+        ],
+        "17": [
+          0.09,
+          0.4
+        ]
+      },
+      "retained_piece2": "exact including points11/13; no shared ownership",
+      "new_area": 0.06,
+      "new_mass": 0.0108,
+      "total_area": 0.0924,
+      "total_mass": 0.016632,
+      "conservation": "evaluated before this intentional edit only"
+    }
+  },
+  "L": {
+    "input": "fixtures/L.weftforge",
+    "parent": {
+      "revision": 1,
+      "next_id": 15,
+      "area": 0.64,
+      "perimeter": 4.0,
+      "mass": 0.1152
+    },
+    "valid_command": {
+      "type": "cut_piece",
+      "data": {
+        "piece": 2,
+        "start_curve": 10,
+        "start_t": 0.5,
+        "end_curve": 14,
+        "end_t": 0.8
+      }
+    },
+    "valid": {
+      "revision": 2,
+      "next_id": 24,
+      "new_piece": 19,
+      "anchors": [
+        15,
+        17
+      ],
+      "tails": [
+        16,
+        18
+      ],
+      "copies": [
+        20,
+        21
+      ],
+      "chords": [
+        22,
+        23
+      ],
+      "new_points": {
+        "15": [
+          1,
+          0.2
+        ],
+        "17": [
+          0,
+          0.2
+        ],
+        "20": [
+          1,
+          0.2
+        ],
+        "21": [
+          0,
+          0.2
+        ]
+      },
+      "copy_bits": [
+        [
+          20,
+          15
+        ],
+        [
+          21,
+          17
+        ]
+      ],
+      "all_curve_incidences": {
+        "9": [
+          3,
+          4
+        ],
+        "10": [
+          4,
+          15
+        ],
+        "11": [
+          5,
+          6
+        ],
+        "12": [
+          6,
+          7
+        ],
+        "13": [
+          7,
+          8
+        ],
+        "14": [
+          8,
+          21
+        ],
+        "16": [
+          20,
+          5
+        ],
+        "18": [
+          17,
+          3
+        ],
+        "22": [
+          15,
+          17
+        ],
+        "23": [
+          21,
+          20
+        ]
+      },
+      "retained": {
+        "id": 2,
+        "boundary": [
+          9,
+          10,
+          22,
+          18
+        ],
+        "polygon": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0.2
+          ],
+          [
+            0,
+            0.2
+          ]
+        ],
+        "area": 0.2,
+        "perimeter": 2.4,
+        "mass": 0.036
+      },
+      "new": {
+        "id": 19,
+        "name": "Cut piece #19",
+        "boundary": [
+          16,
+          11,
+          12,
+          13,
+          14,
+          23
+        ],
+        "polygon": [
+          [
+            1,
+            0.2
+          ],
+          [
+            1,
+            0.4
+          ],
+          [
+            0.4,
+            0.4
+          ],
+          [
+            0.4,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0.2
+          ]
+        ],
+        "area": 0.44,
+        "perimeter": 3.6,
+        "mass": 0.0792
+      },
+      "cut_length": 1.0,
+      "union_area": 0.64,
+      "perimeter_sum": 6.0,
+      "mass_sum": 0.1152
+    },
+    "invalid": {
+      "command": {
+        "type": "cut_piece",
+        "data": {
+          "piece": 2,
+          "start_curve": 11,
+          "start_t": 0.3333333333333333,
+          "end_curve": 12,
+          "end_t": 0.6666666666666666
+        }
+      },
+      "analytic_endpoints": [
+        [
+          0.8,
+          0.4
+        ],
+        [
+          0.4,
+          0.8
+        ]
+      ],
+      "midpoint": [
+        0.6,
+        0.6
+      ],
+      "reason": "midpoint outside missing upper-right square despite only two endpoint hits",
+      "unchanged_revision": 1,
+      "unchanged_next_id": 15
+    }
+  },
+  "annotations": {
+    "base": "R240; use shared commands, no generated expected construction",
+    "contained": {
+      "setup_one_transaction": [
+        {
+          "type": "add_internal_segment",
+          "data": {
+            "piece": 2,
+            "start": [
+              0.02,
+              0.1
+            ],
+            "end": [
+              0.06,
+              0.3
+            ]
+          }
+        },
+        {
+          "type": "add_internal_segment",
+          "data": {
+            "piece": 2,
+            "start": [
+              0.12,
+              0.1
+            ],
+            "end": [
+              0.21,
+              0.3
+            ]
+          }
+        }
+      ],
+      "before_cut": {
+        "revision": 2,
+        "next_id": 17,
+        "point_ids": [
+          [
+            11,
+            12
+          ],
+          [
+            14,
+            15
+          ]
+        ],
+        "curve_ids": [
+          13,
+          16
+        ]
+      },
+      "command": {
+        "type": "cut_piece",
+        "data": {
+          "piece": 2,
+          "start_curve": 7,
+          "start_t": 0.375,
+          "end_curve": 9,
+          "end_t": 0.625
+        }
+      },
+      "after_cut": {
+        "revision": 3,
+        "next_id": 26,
+        "new_piece": 21,
+        "anchors": [
+          17,
+          19
+        ],
+        "tails": [
+          18,
+          20
+        ],
+        "copies": [
+          22,
+          23
+        ],
+        "chords": [
+          24,
+          25
+        ],
+        "retained_boundary": [
+          7,
+          24,
+          20,
+          10
+        ],
+        "new_boundary": [
+          18,
+          8,
+          9,
+          25
+        ],
+        "retained_internal_curves": [
+          13
+        ],
+        "new_internal_curves": [
+          16
+        ],
+        "all_annotation_data": "exact; original list order filtered"
+      }
+    },
+    "atomic_refusals": [
+      {
+        "name": "crossing",
+        "start": [
+          0.05,
+          0.18
+        ],
+        "end": [
+          0.13,
+          0.18
+        ]
+      },
+      {
+        "name": "on cut",
+        "start": [
+          0.09,
+          0.1
+        ],
+        "end": [
+          0.09,
+          0.3
+        ]
+      },
+      {
+        "name": "0.5 micrometre near cut",
+        "start": [
+          0.0900005,
+          0.1
+        ],
+        "end": [
+          0.0900005,
+          0.3
+        ]
+      }
+    ],
+    "each_negative": "Fresh R240 + ONE add_internal_segment gives R2/next14/line13. cut_piece then refuses with accepted bytes, selection, revision2, allocator14, undo/redo unchanged."
+  },
+  "relationships": {
+    "target_refusal_setup": "Fresh R240; add_rectangle partner at [.4,0], width .24 height .36: piece11, points12..15, curves16..19, R2/next20. Add ONE relationship below: ID20,R3/next21. Cut target2 refuses before split/allocation, all data/history exact.",
+    "target_legacy": {
+      "type": "add_seam",
+      "data": {
+        "name": "Target remote legacy",
+        "a": {
+          "curve": 7,
+          "t0": 0.05,
+          "t1": 0.1
+        },
+        "b": {
+          "curve": 16,
+          "t0": 0.05,
+          "t1": 0.1
+        },
+        "correspondence": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    "target_group": {
+      "type": "add_sewing_group",
+      "data": {
+        "name": "Target remote group",
+        "a": [
+          {
+            "curve": 8,
+            "t0": 0.1,
+            "t1": 0.2
+          }
+        ],
+        "b": [
+          {
+            "curve": 17,
+            "t0": 0.1,
+            "t1": 0.2
+          }
+        ],
+        "correspondence": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    "unaffected_other_pair": "Fresh R240; sequentially add .24x.36 rectangles at [.4,0] and [.8,0], pieces11/20, boundary16..19/25..28, R3/next29. Add legacy ID29 (R4/next30), group ID30 (R5/next31), then cut target2: R6/next40, new child35, anchors31/33, tails32/34, copies36/37,chords38/39. Both relationships and other pieces exact.",
+    "unaffected_legacy": {
+      "type": "add_seam",
+      "data": {
+        "name": "Other reversed partial legacy",
+        "a": {
+          "curve": 16,
+          "t0": 0.125,
+          "t1": 0.875
+        },
+        "b": {
+          "curve": 25,
+          "t0": 0.875,
+          "t1": 0.125
+        },
+        "correspondence": [
+          [
+            0,
+            0
+          ],
+          [
+            0.25,
+            0.625
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    "unaffected_group": {
+      "type": "add_sewing_group",
+      "data": {
+        "name": "Other reversed partial group",
+        "a": [
+          {
+            "curve": 17,
+            "t0": 0.125,
+            "t1": 0.875
+          }
+        ],
+        "b": [
+          {
+            "curve": 26,
+            "t0": 0.875,
+            "t1": 0.125
+          }
+        ],
+        "correspondence": [
+          [
+            0,
+            0
+          ],
+          [
+            0.5,
+            0.75
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    }
+  },
+  "required_core_variants": [
+    "swapped arguments identical output",
+    "clockwise winding preserved",
+    "same edge",
+    "vertex and near vertex",
+    "collinear",
+    "cross owner/internal/missing IDs",
+    "nonfinite/out-of-range t",
+    "degenerate child",
+    "overflow/object/work caps",
+    "late transaction rollback preserves Redo",
+    "tilted placement/grain",
+    "large translated R240",
+    "resolutions .005/.07/.5",
+    "strict original-byte adapter/schema refusals",
+    "failed same-path IO/recovery retention",
+    "SVG/DXF exterior copies; OBJ independent surfaces"
+  ],
+  "physical_checks": "Independently measure complete directed walks/disjoint child interiors/arranged union/duplicated interface; sum fresh UV triangle areas and Cloth.masses by per-piece ownership against these analytic areas*density, stable sum, before simulation. No shared particles or automatic cross-cut sewing/bending; stale mesh rejected, fresh accepted. Counts/area totals alone insufficient.",
+  "native_scope": "NATIVE-R.md only; L/IO/other full contract native coverage remains future-required, no full-feature/reference credit."
+}

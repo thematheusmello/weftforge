@@ -1,0 +1,73 @@
+// Prospective actual-CUA cell. Execute only after root GO and the clocked standalone getState.
+// Cross-cell bindings must be initialized at program top level for cua_repl persistence.
+var cutModule = await import('node:module');
+var cutRequire = cutModule.createRequire('<WORKSPACE>/.local/native-straight-cut-20261116/R2-001/ACTOR-BOOTSTRAP.js');
+var cutFs = cutRequire('node:fs');
+var cutPath = cutRequire('node:path');
+var cutCrypto = cutRequire('node:crypto');
+var cutProcess = cutRequire('node:process');
+var cutRoot = '<WORKSPACE>/.local/native-straight-cut-20261116/R2-001';
+var cutRepo = '<WORKSPACE>';
+var cutPacket = cutPath.join(cutRepo, '.local/straight-cut-native-plan-v2-20261116');
+var cutHash = bytes => cutCrypto.createHash('sha256').update(bytes).digest('hex');
+var cutWrite = (file, value) => cutFs.writeFileSync(file, JSON.stringify(value, null, 2) + '\n', {flag:'wx',mode:0o600});
+var cutBindingBytes = cutFs.readFileSync(cutPath.join(cutRoot, 'ROOT-BINDING.json'));
+var cutBindingSha = cutHash(cutBindingBytes);
+var cutBinding = JSON.parse(cutBindingBytes);
+if (cutBinding.root_authorized_for_case !== true || cutBinding.native_lease_granted !== true || cutBinding.case !== 'CUT-R2' || cutBinding.attempt !== 'R2-001') throw new Error('No exact R2-001 root grant');
+if (cutBinding.actor_filename !== cutPath.join(cutRoot, 'ACTOR-BOOTSTRAP.js') || cutHash(cutFs.readFileSync(cutBinding.actor_filename)) !== cutBinding.actor_sha256) throw new Error('Complete bootstrap binding mismatch');
+if (cutBinding.controller !== cutPath.join(cutRepo, '.local/native-transform-controller-20261115/controller.cjs') || cutBinding.controller_sha256 !== '9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b' || cutHash(cutFs.readFileSync(cutBinding.controller)) !== cutBinding.controller_sha256) throw new Error('Controller mismatch');
+if (cutBinding.recorder !== cutPath.join(cutRepo, '.local/native-length-readouts-v2-20261115/recorder.cjs') || cutBinding.recorder_sha256 !== '45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc' || cutHash(cutFs.readFileSync(cutBinding.recorder)) !== cutBinding.recorder_sha256) throw new Error('Recorder mismatch');
+if (cutBinding.observer !== cutPath.join(cutRepo, '.local/native-internal-annotations-20261115/C002/OBSERVER-FRAGMENT.cjs') || cutBinding.observer_sha256 !== 'd580450b45fc2fe42b19c146fb7023f84d04e7b9596ac24a8f5afe3e81be7729' || cutHash(cutFs.readFileSync(cutBinding.observer)) !== cutBinding.observer_sha256) throw new Error('Observer mismatch');
+var cutRecorder = cutRequire(cutBinding.recorder).createRecorder(cutRoot);
+cutRecorder.returned('0001', {tool_returned:true,entrypoint:'mcp__cua_repl.js',code:'await cua.getState();',native_UI_calls:0,raw_result_retained_in_actual_tool_history:true});
+var cutController = cutRequire(cutBinding.controller).createController(cutBinding.controller_configuration);
+var cutObserve = cutRequire(cutBinding.observer).observe;
+var cutMark = sourceRecord => {
+  if (!cutFs.existsSync(cutPath.join(cutRoot, 'trace', sourceRecord + '-after.json'))) throw new Error('Marker source is not returned');
+  cutWrite(cutPath.join(cutRoot, 'SUMMARY-LOWER-' + sourceRecord + '.json'), {kind:'conditional_marker_only_not_a_summary_attempt',source_record:sourceRecord,utc:new Date().toISOString(),monotonic_ns:cutProcess.hrtime.bigint().toString()});
+};
+var cutProofId = cutRecorder.before('actual-cua-runtime-filesystem-proof', 'local-filesystem-proof', {evidenceKind:'native',native_UI_calls:0});
+var cutEntry = null;
+var cutFreezeBytes = null;
+var cutFreeze = null;
+var cutOffline = null;
+var cutOfflineId = null;
+var cutOfflineReceipt = null;
+var cutProof = null;
+var cutProofSha = null;
+try {
+  if (cutProofId !== '0002') throw new Error('Filesystem proof must be record0002');
+  cutFreezeBytes = cutFs.readFileSync(cutPath.join(cutPacket, 'FREEZE.json'));
+  if (cutHash(cutFreezeBytes) !== 'e8a1a0f2d2b744dcb143bbefe9b3c848c0505be6d71b9ec96c64cefa8e63d3bb' || cutBinding.freeze_sha256 !== cutHash(cutFreezeBytes)) throw new Error('Frozen V2 packet mismatch');
+  cutFreeze = JSON.parse(cutFreezeBytes);
+  for (cutEntry of Object.entries(cutFreeze.files)) if (cutHash(cutFs.readFileSync(cutPath.join(cutPacket, cutEntry[0]))) !== cutEntry[1]) throw new Error('Frozen packet artifact mismatch: ' + cutEntry[0]);
+  for (cutEntry of Object.entries(cutFreeze.external_dependencies)) if (cutHash(cutFs.readFileSync(cutPath.join(cutRepo, cutEntry[0]))) !== cutEntry[1]) throw new Error('Frozen external artifact mismatch: ' + cutEntry[0]);
+  if (cutBinding.source_input_count !== 69 || Object.keys(cutBinding.source_inputs).length !== 69) throw new Error('Source69 count mismatch');
+  for (cutEntry of Object.entries(cutBinding.source_inputs)) if (cutHash(cutFs.readFileSync(cutPath.join(cutBinding.source_worktree, cutEntry[0]))) !== cutEntry[1]) throw new Error('Source69 mismatch: ' + cutEntry[0]);
+  for (cutEntry of Object.values(cutBinding.integrated_local_gate_receipts)) if (cutHash(cutFs.readFileSync(cutEntry.path)) !== cutEntry.sha256) throw new Error('Integrated gate receipt mismatch');
+  if (cutHash(cutFs.readFileSync(cutBinding.native_binary_path)) !== cutBinding.native_binary_sha256 || cutHash(cutFs.readFileSync(cutPath.join(cutBinding.own_target_directory, 'debug/weftforge'))) !== cutBinding.native_binary_sha256) throw new Error('Owned native/build original mismatch');
+  if (cutHash(cutFs.readFileSync(cutPath.join(cutBinding.bundle, 'Contents/Info.plist'))) !== cutBinding.bundle_plist_sha256) throw new Error('Owned plist mismatch');
+  cutEntry = cutBinding.accepted_cut_r1_dependency;
+  if (!cutEntry || cutEntry.case !== 'CUT-R1' || cutEntry.attempt !== 'R003' || cutEntry.root_accepted !== true || cutEntry.snapshot_label !== 'redo-r4' || cutEntry.snapshot_sha256 !== '85ef9d89d4080a8994ca7c11f060e37d3c9ad91a613b090e07182fb5de6df366' || cutEntry.root_binding_sha256 !== '7cb154dbb530e63a397a4f9671b970effc558fa3085937ade08a62d140315e1e') throw new Error('Accepted actual R003 dependency missing');
+  if (JSON.stringify(cutBinding.input_argv) !== JSON.stringify([cutPath.join(cutRoot, 'inputs/accepted-redo-r4.weftforge')]) || JSON.stringify(cutBinding.inputs) !== JSON.stringify({'inputs/accepted-redo-r4.weftforge':cutEntry.snapshot_sha256}) || (cutFs.statSync(cutBinding.input_argv[0]).mode & 0o222) !== 0 || cutHash(cutFs.readFileSync(cutBinding.input_argv[0])) !== cutEntry.snapshot_sha256 || !cutFs.readFileSync(cutBinding.input_argv[0]).equals(cutFs.readFileSync(cutEntry.snapshot_path))) throw new Error('Actual read-only R4 input mismatch');
+  if (cutHash(cutFs.readFileSync(cutEntry.root_binding_path)) !== cutEntry.root_binding_sha256 || cutHash(cutFs.readFileSync(cutEntry.saved_grade_report)) !== cutEntry.saved_grade_report_sha256 || !cutEntry.root_native_ui_review_sha256 || cutHash(cutFs.readFileSync(cutEntry.root_native_ui_review)) !== cutEntry.root_native_ui_review_sha256) throw new Error('Accepted R003 dependency receipt mismatch');
+  if (Object.keys(cutBinding.controller_configuration).sort().join(',') !== 'baselineCalls,callCap,elapsedCapS,evidenceKind,recorderPath,root' || cutBinding.controller_configuration.root !== cutRoot || cutBinding.controller_configuration.recorderPath !== cutBinding.recorder || cutBinding.controller_configuration.evidenceKind !== 'native' || cutBinding.controller_configuration.callCap !== 65 || cutBinding.controller_configuration.elapsedCapS !== 600 || cutBinding.controller_configuration.baselineCalls !== 0) throw new Error('Six-key controller configuration mismatch');
+  for (cutEntry of [cutBinding.actor_persistence_check, cutBinding.actor_initial_capture, cutBinding.orchestration_addendum]) if (!cutEntry || cutHash(cutFs.readFileSync(cutEntry.path)) !== cutEntry.sha256) throw new Error('Bound R2-001 orchestration artifact mismatch');
+  cutOffline = cutRequire(cutBinding.recorder).createRecorder(cutPath.join(cutRoot, 'offline-proof'));
+  cutOfflineId = cutOffline.before('exact-root-binding-opaque-copy', 'opaque-binding-proof', {});
+  cutOffline.returned(cutOfflineId, {raw_binding_sha256:cutBindingSha});
+  cutOfflineReceipt = cutOffline.artifact('binding-raw.json', cutBindingBytes, cutOfflineId);
+  if (cutOfflineId !== '0001' || cutOfflineReceipt.sha256 !== cutBindingSha || !cutFs.readFileSync(cutPath.join(cutRoot, 'offline-proof', cutOfflineReceipt.file)).equals(cutBindingBytes)) throw new Error('Opaque binding proof failed');
+  cutProof = JSON.parse(cutFs.readFileSync(cutPath.join(cutPacket, 'ACTOR-RUNTIME-PROOF.template.json'), 'utf8'));
+  Object.assign(cutProof, {case:'CUT-R2',attempt:'R2-001',root_binding_sha256:cutBindingSha,evidence_kind:'native_cua_runtime',actual_cua_runtime:true,native_UI_calls:0,createRequire:true,fs_writable:true,source_record:cutProofId,actor_filename:cutBinding.actor_filename,actor_sha256:cutBinding.actor_sha256,controller_configuration:cutBinding.controller_configuration,marker_initialized_synchronous_before_observer:true,offline_receipt:cutOfflineReceipt});
+  cutWrite(cutPath.join(cutRoot, 'ACTOR-RUNTIME-PROOF.json'), cutProof);
+  cutProofSha = cutHash(cutFs.readFileSync(cutPath.join(cutRoot, 'ACTOR-RUNTIME-PROOF.json')));
+  cutRecorder.returned(cutProofId, {proof_sha256:cutProofSha,actual_cua_runtime:true,native_UI_calls:0});
+  cutMark(cutProofId);
+  nodeRepl.write({source_record:cutProofId,proof_sha256:cutProofSha,actual_cua_runtime:true,native_UI_calls:0,status:cutController.status()});
+} catch (cutError) {
+  if (!cutFs.existsSync(cutPath.join(cutRoot, 'trace', cutProofId + '-after.json'))) cutRecorder.returned(cutProofId, null, cutError);
+  cutWrite(cutPath.join(cutRoot, 'ACTOR-FAILURE.json'), {phase:'actual-runtime-filesystem-proof',message:cutError.message,utc:new Date().toISOString(),monotonic_ns:cutProcess.hrtime.bigint().toString()});
+  throw cutError;
+}

@@ -1,0 +1,47 @@
+{
+  "status": "passed_saved_files_only",
+  "case": "CUT-R1",
+  "attempt": "R003",
+  "source_commit": "19b1e88245dc627cfec8164f4924b335fe44853d",
+  "native_binary_sha256": "117981304290aca8ea5f2d63bb77d81641791667bdc8ee89e5cb2b92de3c8d3e",
+  "native_ui_verified": false,
+  "reference_verified": false,
+  "full_feature_accepted": false,
+  "root_binding_sha256": "7cb154dbb530e63a397a4f9671b970effc558fa3085937ade08a62d140315e1e",
+  "freeze_sha256": "e8a1a0f2d2b744dcb143bbefe9b3c848c0505be6d71b9ec96c64cefa8e63d3bb",
+  "snapshot_sha256": {
+    "parent-r1": "afb60f6babbd8667698a84e86a3daf18d1d92a3ae555e302f46f5cd4e9f53e7d",
+    "cut-r2": "05034a5aed0e8440133abb4158b67ec9ca35daeb932d7015191714439f298172",
+    "undo-r3": "534dbf09ee0cf8e712415e241eafea58c0be604346b1e0a0446921cfbe1d09ca",
+    "redo-r4": "85ef9d89d4080a8994ca7c11f060e37d3c9ad91a613b090e07182fb5de6df366"
+  },
+  "result": {
+    "full_v4_construction": true,
+    "ids_order_walks_ownership_highwater_revision": "checked",
+    "unchanged_fields": "exact f64 bits including signed zero; color f32 bits",
+    "declared_point_tolerance_m": 1e-12,
+    "analytic_saved_geometry": {
+      "cut-r2": {
+        "areas_m2": [
+          0.0324,
+          0.05399999999999999
+        ],
+        "analytic_material_masses_kg": [
+          0.0058319999999999995,
+          0.009719999999999998
+        ]
+      },
+      "redo-r4": {
+        "areas_m2": [
+          0.0324,
+          0.05399999999999999
+        ],
+        "analytic_material_masses_kg": [
+          0.0058319999999999995,
+          0.009719999999999998
+        ]
+      }
+    },
+    "solver_mesh_or_particle_mass_verified": false
+  }
+}

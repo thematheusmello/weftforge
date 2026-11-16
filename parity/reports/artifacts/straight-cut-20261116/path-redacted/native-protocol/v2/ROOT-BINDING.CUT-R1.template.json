@@ -1,0 +1,76 @@
+{
+  "schema": "weftforge.straight-cut.root-binding.v2",
+  "status": "TEMPLATE ONLY; no authority; root fills/freezes after integrated gates and before separate GO",
+  "case": "CUT-R1",
+  "attempt": null,
+  "root_authorized_for_case": false,
+  "native_lease_granted": false,
+  "freeze_sha256": null,
+  "source_commit": null,
+  "prospective_candidate_commit": "19b1e88245dc627cfec8164f4924b335fe44853d",
+  "source_worktree": null,
+  "source_input_count": 69,
+  "source_inputs": {},
+  "integrated_local_gate_receipts": {
+    "runtime": {
+      "path": null,
+      "sha256": "9ebba8d0f05e26fef075d18338ea75f9ffd9a1e9b7bd2c23754ae2bbd9a2614c"
+    },
+    "clean_build": {
+      "path": null,
+      "sha256": "21e8652f901da8570ab42c8c0b8b9d7e16064fe5c06cee9580d54234e2c1fefd"
+    }
+  },
+  "own_target_directory": null,
+  "bundle": null,
+  "bundle_identifier": null,
+  "bundle_plist_sha256": null,
+  "native_binary_path": null,
+  "native_binary_sha256": null,
+  "os_version": null,
+  "launcher_path": "/usr/bin/open",
+  "launcher_argv": null,
+  "input_argv": [],
+  "inputs": {},
+  "accepted_cut_r1_dependency": null,
+  "controller": "<WORKSPACE>/.local/native-transform-controller-20261115/controller.cjs",
+  "controller_sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+  "recorder": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+  "recorder_sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+  "observer": "<WORKSPACE>/.local/native-internal-annotations-20261115/C002/OBSERVER-FRAGMENT.cjs",
+  "observer_sha256": "d580450b45fc2fe42b19c146fb7023f84d04e7b9596ac24a8f5afe3e81be7729",
+  "controller_configuration": {
+    "root": null,
+    "recorderPath": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+    "evidenceKind": "native",
+    "callCap": 175,
+    "elapsedCapS": 1200,
+    "baselineCalls": 0
+  },
+  "clock_policy": "continuous FS UTC/monotonic clock BEFORE first standalone getState/import proof/launch/PID/getApp/capture; never reset",
+  "actual_CUA_runtime_import_recorder_proof_required": true,
+  "source69_inventory_recheck_required": true,
+  "owned_PID_before_getApp_required": true,
+  "operation_cap": 175,
+  "completion_summary_calls": 1,
+  "overall_call_cap": 176,
+  "elapsed_cap_s": 1200,
+  "saved_states": [
+    "parent-r1",
+    "cut-r2",
+    "undo-r3",
+    "redo-r4"
+  ],
+  "output_primary": "work/cut-r240.work.weftforge",
+  "native_input_closure_schema": "weftforge.straight-cut.native-input-closure.v2",
+  "one_formal_grade_after_input_closure_only": true,
+  "root_raw_image_trace_review_required": true,
+  "reference_parity_or_full_feature_credit": false,
+  "clean_metadata_commit": null,
+  "clean_source_metadata_receipt": {
+    "path": null,
+    "sha256": "21e8652f901da8570ab42c8c0b8b9d7e16064fe5c06cee9580d54234e2c1fefd"
+  },
+  "actor_filename": null,
+  "actor_sha256": null
+}

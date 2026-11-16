@@ -1,0 +1,36 @@
+{
+  "utc": "2026-11-16T00:15:51.217191+00:00",
+  "runtime": "19b1e88245dc627cfec8164f4924b335fe44853d",
+  "report_changes": {
+    "parity/reports/WF-20261115-HARBOR-HALF-STEP-001.json": {
+      "before_sha256": "541e4d2914b248b1c4601113df09fb00e739dd815ddc6aa80046d19fb60858fd",
+      "after_sha256": "f681a1a266e7f85edf2a601842cf255b07aef1d0375351bc1f3d50868a6f3521",
+      "allowed_changed_fields": [
+        "freshness",
+        "freshness_reason"
+      ],
+      "status_preserved": "failed",
+      "tested_commit_preserved": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5"
+    },
+    "parity/reports/WF-20261115-INTERNAL-ANNOTATIONS-001.json": {
+      "before_sha256": "16ff1a1f3b29a5368d476786141bd42555ae7ba7c01154a343209e5755a01113",
+      "after_sha256": "7d8a66771ef9e9c57f92ed8142ce4a31319af13b34637d376fd08f9ea67561b2",
+      "allowed_changed_fields": [
+        "freshness",
+        "freshness_reason"
+      ],
+      "status_preserved": "passed",
+      "tested_commit_preserved": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5"
+    }
+  },
+  "feature_freshness_to_stale": [
+    "UI-004",
+    "PAT-007",
+    "SIM-006",
+    "APP-001"
+  ],
+  "all_feature_verification_runs_unchanged": true,
+  "other_report_result_fields_unchanged": true,
+  "PAT006_implementation_unchanged_until_native_check": true,
+  "new_execution_or_grade": false
+}

@@ -1,0 +1,27 @@
+{
+  "case": "CUT-R1",
+  "attempt": "R001",
+  "outcome": "stopped_unverified",
+  "terminal_source_record": "0005",
+  "planned_quit_source_record": null,
+  "owned_pid": 48121,
+  "owned_window_left_for_separate_root_cleanup": true,
+  "actual_empty_R0_seen_in_getApp_return": true,
+  "first_barrier": "cutObserve is not defined",
+  "barrier_context": "The exact bound initial fragment completed counted getApp record0005, then JavaScript name lookup failed before the initial ordinary observer could run. cutObserve and cutMark had been declared inside the try block in the prior proof cell; their persistent REPL bindings were unavailable in the next cell.",
+  "native_authoring_inputs": 0,
+  "native_saves": 0,
+  "saved_snapshots": [],
+  "completion_summary": "Stopped cut run at bootstrap",
+  "immediate_next_tool_call_was_summary_only": true,
+  "summary_calls": 1,
+  "documentation_refresh_calls": 0,
+  "paired_operations": 5,
+  "overall_actual_calls": 6,
+  "post_case_recorded": {
+    "utc": "2026-11-16T01:09:14.735Z",
+    "monotonic_ns": "913670497549250"
+  },
+  "no_retry_repair_or_cleanup_within_case": true,
+  "reference_app_touched": false
+}

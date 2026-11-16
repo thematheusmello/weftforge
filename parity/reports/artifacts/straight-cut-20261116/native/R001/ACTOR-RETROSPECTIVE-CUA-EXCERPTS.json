@@ -1,0 +1,39 @@
+{
+  "schema": "weftforge.actor.retrospective-tool-excerpts.v1",
+  "case": "CUT-R1",
+  "attempt": "R001",
+  "kind": "retrospective actor transcription of actual visible CUA tool-return excerpts",
+  "prepared_utc": "2026-11-16T01:24:00.480630+00:00",
+  "original_invocation_utc_exact": false,
+  "original_invocation_utc": null,
+  "in_situ_receipt": false,
+  "native_observer_or_operation_added": false,
+  "prior_files_edited": false,
+  "getState_excerpt_scope": "One exact contiguous app-entry substring from the actual inventory, not the full result or full inventory. Root must corroborate actual tool history.",
+  "initial_getApp_scope": "Combined actual tool output containing automatic getApp AX and JavaScript name lookup error before the planned observer.",
+  "fs_proof_scope": "Complete displayed data object returned by the actual counted CUA FS proof cell.",
+  "summary_scope": "Complete displayed summary-only tool return.",
+  "artifacts": [
+    {
+      "path": "ACTOR-RETROSPECTIVE-GETSTATE-EXCERPT.txt",
+      "bytes": 111,
+      "sha256": "219670569a059df907cdee3290d183dd2de9b86af386b626520743dcf025b493"
+    },
+    {
+      "path": "ACTOR-RETROSPECTIVE-FS-PROOF-TOOL-RETURN.txt",
+      "bytes": 267,
+      "sha256": "4789df4e0e8e65e38b2da3ba9bc56c8e955148bcdd8e357e939d734ac8c11dad"
+    },
+    {
+      "path": "ACTOR-RETROSPECTIVE-INITIAL-GETAPP-TOOL-RETURN.txt",
+      "bytes": 3255,
+      "sha256": "8c8486ee2f9d82c20006ce25bdc74022731953d1fca0b98ee92a191e55724c38"
+    },
+    {
+      "path": "ACTOR-RETROSPECTIVE-SUMMARY-TOOL-RETURN.txt",
+      "bytes": 28,
+      "sha256": "473c6d243580c5b7acc248e8cfdcb6167ca262a275fd97d60479e2d75670ed5a"
+    }
+  ],
+  "root_postcase_history_corroboration_still_required": true
+}
