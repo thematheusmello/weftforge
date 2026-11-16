@@ -5,8 +5,9 @@ The latest public main is `1fc1d71993cf193801e44982b757fca8abc5aba7`:
 Cut & Sew and SVG canvas work. Actions remains disabled; the existing Pages
 configuration and recent run IDs were unchanged in the last remote check.
 
-Active offset integration is on `feat/cancellable-triangulation`, based on the
-frozen `89e6d53` offset checkpoint (runtime `d8cef84`). It combines the editable
+Active offset integration is on `feat/cancellable-triangulation`, runtime
+`4f80d064a60cbdba1358df9074beb74b803e1ee8`, based on the frozen `89e6d53`
+offset checkpoint (runtime `d8cef84`). It combines the editable
 material-outline preview/Apply operation with a locally licensed triangulator
 that supports fallible internal callbacks, shared geometry work accounting,
 sewing and Cloth initialization control, and shared offset-transaction budgets.
@@ -23,8 +24,13 @@ receipt `6257e853ec5404dd7d4cd6446beb1bf3648345c09f02fcac62903a5809eae66a`.
 Clean committed verification/build at `89e6d53` also passed, receipt
 `160ac382f1590dc05214f5e7540fdc4a6734cef0a1a174b35813bc166d4f78d9`.
 Those results identify the frozen source and do not validate this later runtime.
-The source map/progress checkpoint records 39 rows, 23 surfaces, 23 contracts,
-349 anchors, 34 Rust commands, 33 schemas and nine tools. Progress remains
+The current source map/progress cycle passed with 39 rows, 23 surfaces,
+23 contracts, **363 anchors**, 34 Rust commands, 33 schemas and nine tools.
+All 39 registry tests passed (session 19049, terminal exit 0; receipt
+`c42aaf4b693a1faef796d84bb950937f4506d55ed3f7b5fc3fc3933e6dc71c25`).
+Two separately attributable reports retain current source checks and the
+closed native stops; the older offset source report is stale with its original
+bytes archived. Progress remains
 **41 partial / 15 planned / 0 of 56 reference contracts verified**, with no
 roadmap gate accepted.
 
@@ -48,9 +54,11 @@ Final sessions 11517/6268/70912/10226 are terminal exit 0; no Cargo job remains.
 The earlier constructor-handoff compile failure and fixture-assumption failures
 remain recorded separately. No binaries or target caches crossed worktrees.
 
-Next: commit this runtime, update current maps/reports, run clean committed
-xtask verification, then bind a fresh native rectangle workflow to that exact
-binary. The successor is prepared separately and has not launched.
+Next: run clean committed xtask verification, then bind a fresh native rectangle
+workflow to that exact binary. OFFSET-R1-003 is packaged separately and has not
+launched. A further PhotoCraft-inspired inspector/Scene polish is isolated on
+`feat/photocraft-workspace-polish`; its source changes have no Cargo/native
+result yet and do not alter this frozen candidate.
 Closed native cases are never replayed or regraded. Curved/concave native cases,
 full editable allowances and the rest of the roadmap remain due.
 

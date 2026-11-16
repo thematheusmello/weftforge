@@ -19352,7 +19352,11 @@
         "spec/features/fixtures/PAT-009-offset-reviewed-additions.json",
         "parity/reports/WF-20261116-MATERIAL-OUTLINE-OFFSET-001.json",
         "parity/reports/artifacts/material-outline-offset-20261116/PUBLICATION-SCOPE-001.json",
-        "parity/reports/artifacts/material-outline-offset-20261116/SOURCE-CHECK-PUBLICATION-001.json"
+        "parity/reports/artifacts/material-outline-offset-20261116/SOURCE-CHECK-PUBLICATION-001.json",
+        "parity/reports/WF-20261116-MATERIAL-OUTLINE-OFFSET-NATIVE-STOPS-001.json",
+        "parity/reports/WF-20261116-OFFSET-WORK-CONTROL-001.json",
+        "parity/reports/artifacts/material-outline-offset-work-control-20261116/SOURCE-CHECK-PUBLICATION.json",
+        "parity/reports/artifacts/material-outline-offset-native-stops-20261116/PUBLICATION-MANIFEST.json"
       ],
       "scenarios": [],
       "comparison_criteria": {
@@ -19375,7 +19379,12 @@
         "apps/weftforge/src/main.rs",
         "apps/weftforge-cli/src/main.rs",
         "apps/weftforge-cli/src/mcp.rs",
-        "apps/weftforge-cli/tests/mcp_stdio.rs"
+        "apps/weftforge-cli/tests/mcp_stdio.rs",
+        "crates/weftforge-core/src/sewing.rs",
+        "crates/weftforge-sim/src/lib.rs",
+        "crates/weftforge-sim/src/contact.rs",
+        "crates/weftforge-sim/src/capsule.rs",
+        "vendor/earcutr/src/lib.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3"
@@ -19418,14 +19427,86 @@
             "parity/reports/artifacts/material-outline-offset-20261116/review/SUPPLEMENT-PUBLICATION-002.json": "5a2477bb031204d9cad0ab39747b84236d8007c1139ce46e08eda4448724c860"
           },
           "path": "parity/reports/WF-20261116-MATERIAL-OUTLINE-OFFSET-001.json"
+        },
+        {
+          "id": "WF-20261116-MATERIAL-OUTLINE-OFFSET-NATIVE-STOPS-001",
+          "commit": "d8cef845630e381c4f3339ee867ebc66ed17e443",
+          "timestamp": "2026-11-16T13:33:50.191694Z",
+          "platform": "macOS27.2 arm64; two historical native CUA stops and a separate different-binary diagnostic",
+          "artifact_hashes": {
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/PUBLICATION-MANIFEST.json": "ccab6682cba0417a6c174166f76ea82599d6248d495b8ba027cd4c49c46dc67c",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/README.md": "750428a1d03ab327094cdd15ae8e66ecd6ba1232a5cecd79e0a2e2751c7054c2",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/SUMMARY.json": "1590a719e3db1aa814ae78c4ff867a8337b901761425b52402690ca770801894",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/NATIVE-IDLE-DIAG-001/001-idle.ax.txt": "6ddeccd617064bdb2662a2186f8970272c5660b65ade46e5dc52ead38098e4f6",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/NATIVE-IDLE-DIAG-001/001-idle.png": "47d491801d2c0ac29d5c4b0aefe0c1f12a13fd5ed90a3d0e3557300b016badc2",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/NATIVE-IDLE-DIAG-001/002-file-menu.ax.txt": "36e06f1cd171deecc95f2a3962f2e6540abbb224c6d5378dafa56a68bf4e6d38",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/NATIVE-IDLE-DIAG-001/003-new-empty.ax.txt": "5ff0c2e00adfe80ca3861367d47fe1185282399dc6c543f622300f6871b138d0",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/NATIVE-IDLE-DIAG-001/003-new-empty.png": "da1a95e1f50bad3175101a095ee24873454db35eb03d3519b83bb13676a29806",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/NATIVE-IDLE-DIAG-001/CUA-ACTIONS.json": "c6ca97b655d9239b377d73fbf4340aae8fe56118109375085258040343da2a7e",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/NATIVE-IDLE-DIAG-001/DIAGNOSTIC-PLAN.json": "5ddc1bdd60834359b8535ffa93d452e7f9fa31174ac4f31317bb3af6b04335b7",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/NATIVE-IDLE-DIAG-001/DIAGNOSTIC.patch": "64b404425d3048cbae9d4f739448b93605534b0637f8c4646abdd680ee4b6b37",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/NATIVE-IDLE-DIAG-001/POST-DIAGNOSTIC-CLEANUP.json": "bb1f6597d367a2858e01e415cdeac1a549d94da13a1b65410417a03e3641b6bc",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/NATIVE-IDLE-DIAG-001/PROCESS-LAUNCH.json": "ce42ff451a3fcd01564eac69c3a41898a984e238aacf8ee018682e4374e62ef9",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/NATIVE-IDLE-DIAG-001/REMOVE-TEMPORARY-TRACE.patch": "3c858c9a149bf0c0bb4c6df7656045ea3005949eac689b152f34f44b47ae2043",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/NATIVE-IDLE-DIAG-001/ROOT-DIAGNOSTIC-BINDING.json": "7bc216e805c3a5bc8a643940a129214a0ba70a8cfbbb759954bb8a09e76943a9",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/NATIVE-IDLE-DIAG-001/RUN-OUTCOME.json": "c2588030efd9298e4f5a0afbecd591a43bb9090e685d08f1320436770c98d6ad",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/NATIVE-IDLE-DIAG-001/diagnostic.stderr.log": "d4f9cbce22857c811079f6e2ccd94d36761b3e6b83dc6d726fb659284dea9924",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/NATIVE-IDLE-DIAG-001/diagnostic.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-001/ARTIFACTS-after-stop.json": "3232db5cdae691d2caf5ee47a27b161f5c5952e61d3e31721f51e25524fd3145",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-001/BINDING.final.json": "1afecd7e539de424c7e2439f7a9117c6a0390d78ff258a2b593488a9e7db064f",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-001/NATIVE-PROTOCOL-001.md": "5ecee7b014419806e284e246869652e750ae77e88baebe6b0350399275c1bd13",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-001/POST-CASE-CLEANUP.json": "185568b8e8281b06bd3f442495107fde37e9c2b8ec6b1baad0b6083268ffa6ac",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-001/RUN-STOP-001.json": "71cadb433345eb5ee1358f9298d42b7def2028ff4e2490e97c4fbbfc134f6780",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-001/observations/native-actions.jsonl": "0f08aeecb2377a014de57e0eb2e45a5ad92b698706341d700cf4c21d91a0ba2b",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-001/observations/process-1-launch.json": "8903f0db20387007fe432e670e68353e4842dca3f424c5482719700b4d6f3f6d",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-001/observations/process-1.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-001/observations/process-1.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-002/ARTIFACTS-after-stop.json": "2bf82c1d0da59d5a71fd13c8135beaa6a7516cc2f055511e559dc3b1999f0027",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-002/BINDING.final.json": "a8a7a847bbdf6fff3d33c5afc42ee520cbb7b7d5d27475b0fb5b0e4eac6a3b00",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-002/NATIVE-PROTOCOL-002.md": "a7862ffc6c5853303cdee2a61056f1c537933fba37d6c5ddeddb0c576cb0c5cb",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-002/POST-CASE-CLEANUP.json": "a851a5a26b8828c042497a7d2e3fc363a35d0a8dd58c7c8bfad3be1477be22ba",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-002/RUN-STOP-002.json": "adc734e689744b610b59fa857763897669f809a6b40a91738e1267ea94710154",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-002/observations/001-initial.ax.txt": "3c8696c9f1e5f6a4a579f905a53722376582bf0534288f9cf6235da75c287848",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-002/observations/001-initial.png": "3541147e12c0da05aa6119e1ad9d0a02af7211bcadab26eee47143b782483e6d",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-002/observations/001-initial.time.json": "e2895693d42ccd26e6d0ad1b9fcea18bf4daf5183c485f986e6417d7eeb4393b",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-002/observations/002-file-menu.ax.txt": "636de76107e27eb1dce4379c8669a8cc77e678c6bd181ffccf6c82741abe1966",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-002/observations/002-file-menu.png": "6cc6bde79ce9abdd87b18f15ad9327916a6a4544803d35b5ea48e26789815a44",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-002/observations/002-file-menu.time.json": "ee78cfaef663bc7edfd46194f670455f7b84a3b830d202085a35acc88eb04d72",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-002/observations/003-new-empty.ax.txt": "bd526f3431ed75633ae08bba980fedc1dd5a6cb4d3c7a91c026b740897a75afd",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-002/observations/003-new-empty.png": "0c794e6aa7b900d1fe53afb3f0dbd115dcfd3135fe7d94491c6bd923f89f6a1a",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-002/observations/003-new-empty.time.json": "50f8b27fbad6e2be8781346f08248ea3ef0a55b699a04a11e63a2ce2f632a318",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-002/observations/native-actions.jsonl": "730cfc72a1b0f710baa667e6d9e78806e1a0c2ef43dd3a652d1d65e4d59cb3bb",
+            "parity/reports/artifacts/material-outline-offset-native-stops-20261116/runs/OFFSET-R1-002/observations/process-1-launch.json": "63a1fe8e1b6943c7eb1f7e1cb54a6a7d2980a0ca64e091baf81628c75deb93ee"
+          },
+          "path": "parity/reports/WF-20261116-MATERIAL-OUTLINE-OFFSET-NATIVE-STOPS-001.json"
+        },
+        {
+          "id": "WF-20261116-OFFSET-WORK-CONTROL-001",
+          "commit": "4f80d064a60cbdba1358df9074beb74b803e1ee8",
+          "timestamp": "2026-11-16T13:33:50.191694Z",
+          "platform": "macOS27.2 arm64; own-target native/CLI debug builds; source/CLI/MCP/headless egui and standalone vendor tests only",
+          "artifact_hashes": {
+            "parity/reports/artifacts/material-outline-offset-work-control-20261116/SOURCE-CHECK-PUBLICATION.json": "684a5b1f855bdc8467508a9c018dd68da555fe6163739b5aca90f1f0e4631d44",
+            "parity/reports/artifacts/material-outline-offset-work-control-20261116/SOURCE-REVIEW-PUBLICATION.json": "0228bf49f29ac2377b97aad5334ba1da9a117da1f24d6b8243308927022b31df",
+            "parity/reports/artifacts/material-outline-offset-work-control-20261116/gates/CHECKS.json": "bf6a0a955300b085a9b2c8a3adb1a18a850cfd50e55ac672618060a7661b7d25",
+            "parity/reports/artifacts/material-outline-offset-work-control-20261116/gates/HANDOFF.md": "12ef32b58c9e8c9d85d988401040eac67f2e31eb3f7d029ba76c2e00cc544699",
+            "parity/reports/artifacts/material-outline-offset-work-control-20261116/gates/SOURCE-INPUTS.json": "6ceebeb9e7335ca88650c30b6b25c52521b3934dd67c941165bf6b25cdd03d12",
+            "parity/reports/artifacts/material-outline-offset-work-control-20261116/history/WF-20261116-MATERIAL-OUTLINE-OFFSET-001.original.json": "460c429e0dc23cb9cde4bc4d0035e4f141cb8d5475a022320219b4ed5251df06",
+            "parity/reports/artifacts/material-outline-offset-work-control-20261116/source-review/pins-final.json": "546fd517eb39a3d83ff1a408004ded0dc57bfc391c2eed59a97068a8ddd0a785",
+            "parity/reports/artifacts/material-outline-offset-work-control-20261116/source-review/pins-start.json": "663887d56efc867b4a57f8781dee57e2c54d10cc81cbbe2e1ffde6f6549f1a35",
+            "parity/reports/artifacts/material-outline-offset-work-control-20261116/source-review/provenance-checked.json": "c601a8e58ed426d5dec2d1d65d93b3840ee2ca9f23b1e57da4a779fd65272b40",
+            "parity/reports/artifacts/material-outline-offset-work-control-20261116/source-review/review.txt": "1a09080c943f495e9075381612d52a91b90628f27fe07f074c097cf3d818f9c2"
+          },
+          "path": "parity/reports/WF-20261116-OFFSET-WORK-CONTROL-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "Strict whole-request16777216 work cap and every256 cancellation polling remain UNMET inside the existing opaque earcutr0.5.0 call. Controlled geometry/validation/mesh/Cloth work is charged/polled, with checks around the monolithic call; hidden predicates are not individually charged or polled. No hard request-wide latency or whole-first-increment acceptance.",
+        "The shared request counter and internal cooperative triangulation control have source-test coverage. A work unit is a documented task/candidate, not a wall-clock bound. Hard native cancellation latency, complete first-increment acceptance and full PAT-009 remain unverified.",
         "Actual native curved/concave/cancellation cases and all required first-phase SA-001–010/013–015 plus reviewed additions remain unexecuted. Source tests, preview labels and analytic area*density do not establish native particle mass, reference semantics, full feature or roadmap acceptance.",
         "Full persistent seam allowances, guide/material/construction roles, per-edge/interval widths, holes/internal/open offsets/endpoint extension, multiple offsets, source-to-internal retention, relationship remapping and manufacturing/printing/reference workflows remain open. Conservative refusal does not complete those requirements.",
-        "Current freshness describes only the exact gated implementation-evidence subset on d8cef/source79. Whole PAT-009 verification stays not_run and reference behavior unobserved; source/headless UI tests add no actual native-case, complete first-phase or reference credit. Existing original scenarios/dependencies/comparison criteria remain unchanged."
+        "Current freshness describes only gated source87 implementation evidence at 4f80d06. Whole PAT-009 stays partial/not_run and reference unobserved. No actual native-case, complete first-phase or reference credit; original full scope/scenarios/dependencies/comparison criteria remain unchanged.",
+        "Closed OFFSET-R1-001 stopped at controller binding; OFFSET-R1-002 stopped at step1 after unexplained revision0-to2/dirty drift and New Empty refusal, before authoring. The separate instrumented NATIVE-IDLE-DIAG-001 did not reproduce that behavior and established no cause or fix. No old case was replayed/regraded; all geometry, apply/cancel/history/reopen/output/native/reference acceptance remains unproved."
       ],
       "contradictions": [],
       "blockers": [
@@ -19433,7 +19514,7 @@
       ],
       "freshness": "current",
       "contract_documents": {
-        "spec/features/PAT-009-material-outline-offset.md": "3e5759ad49f2f3a6b7d3342222e62d67b8bee8fa956f8a3f96a8422f0e914b6b",
+        "spec/features/PAT-009-material-outline-offset.md": "604d9cc5d12da398a90bd819b78eb7b9999a48a2f96c32e900780d4457b6dbc6",
         "spec/features/fixtures/PAT-009-offset-originals.json": "6de6eefff1bc040363f1f2de335f5c4f70dc526dacd5224ba22e1c33e1820bec",
         "spec/features/fixtures/PAT-009-offset-reviewed-additions.json": "fc4b133cadada09a676266cea90c736a35342767552cb54a573460eea9f41991"
       }

@@ -7,7 +7,7 @@
   "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
   "kind": "implementation_only",
   "status": "passed",
-  "freshness": "current",
+  "freshness": "stale",
   "feature_ids": [
     "PAT-009"
   ],
@@ -268,5 +268,6 @@
     "Only this report's source79 and declared source-test subset are current. All prior native cut/hole/Sew results remain bound to their actual historical builds; H3 current947 result is stale after scoped source changes. No old case/grader replay or acceptance transfer occurred.",
     "Original independent recipes/reviewed additions keep planned/unexecuted fields as freeze history, not current scenario results. Every required first-phase native/output workflow remains pending independently of source test coverage.",
     "No full-contract, whole-first-increment, reference, full-feature, physics, native particle-mass, complete garment or roadmap gate is accepted. Source constructor mass is actual Cloth evidence only within those executed source tests."
-  ]
+  ],
+  "freshness_reason": "Scoped runtime sources changed for shared request work/cancellation control at 4f80d06. Original d8cef/source79 test results, identities and artifacts remain historical and exact; this is a freshness-only transition, not a rerun."
 }
