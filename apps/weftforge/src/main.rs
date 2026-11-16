@@ -16376,11 +16376,18 @@ mod cut_piece_tests {
                 for expected in [
                     "Sewing: Cut seam #20 · #20",
                     "A #18: t 0 → 1 · B #19: t 1 → 0",
-                    "A 360.000 mm\nB 360.000 mm\nB − A +0.000 mm",
+                    "A 360.000 mm",
+                    "B 360.000 mm",
+                    "B − A +0.000 mm",
                 ] {
-                    assert!(output.shapes.iter().any(|shape| {
-                        matches!(&shape.shape, egui::Shape::Text(text) if text.galley.job.text == expected)
-                    }), "{expected}");
+                    assert!(
+                        output.shapes.iter().any(|shape| {
+                            matches!(&shape.shape, egui::Shape::Text(text)
+                            if text.galley.job.text == expected
+                                && shape.clip_rect.contains_rect(text.visual_bounding_rect()))
+                        }),
+                        "{expected}"
+                    );
                 }
             }
             assert_eq!(format!("{:?}", app.editor), before);
@@ -17225,68 +17232,86 @@ mod cut_piece_tests {
     #[test]
     fn cut_sew_review_resets_on_accepted_lifecycle_changes_and_survives_failed_io_and_new_refusal()
     {
-        for change in [
-            "tool",
-            "owner",
-            "curve",
-            "revision",
-            "history",
-            "load",
-            "recover",
-            "reset",
-            "rebuild",
-            "new",
-            "failed-open",
-            "failed-save",
-        ] {
-            let ctx = context();
-            let mut app = fixture();
-            let dir = directory();
-            let source = dir.join("source.weftforge");
-            app.editor.project.save(&source).unwrap();
-            click(&ctx, &mut app, "Cut piece");
-            pick(&ctx, &mut app, [0.09, 0.]);
-            app.open_cut_piece(&ctx);
-            click(&ctx, &mut app, "Sew cut edges");
-            let before = format!("{:?}", app.editor);
-            assert!(app.cut_piece.is_some());
-            match change {
-                "tool" => app.set_tool(Tool::Select),
-                "owner" => {
-                    assert!(app.select(&ctx, None));
+        for review in [false, true] {
+            for change in [
+                "tool",
+                "owner",
+                "curve",
+                "revision",
+                "history",
+                "load",
+                "recover",
+                "reset",
+                "rebuild",
+                "new",
+                "failed-open",
+                "failed-save",
+            ] {
+                let ctx = context();
+                let mut app = fixture();
+                let dir = directory();
+                let source = dir.join("source.weftforge");
+                app.editor.project.save(&source).unwrap();
+                click(&ctx, &mut app, "Cut piece");
+                pick(&ctx, &mut app, [0.09, 0.]);
+                assert!(!app.cut_piece.as_ref().unwrap().modal);
+                if review {
+                    frame(
+                        &ctx,
+                        &mut app,
+                        vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+                    );
+                    assert!(
+                        app.cut_piece.as_ref().unwrap().modal,
+                        "{change}: Return opens review"
+                    );
+                    click(&ctx, &mut app, "Sew cut edges");
                 }
-                "curve" => app.select_curve(&ctx, Some((2, 9))),
-                "revision" => {
-                    app.editor
-                        .execute(Command::SetResolution { metres: 0.03 })
-                        .unwrap();
+                let before = format!("{:?}", app.editor);
+                assert!(app.cut_piece.is_some());
+                match change {
+                    "tool" => app.set_tool(Tool::Select),
+                    "owner" => {
+                        assert!(app.select(&ctx, None));
+                    }
+                    "curve" => app.select_curve(&ctx, Some((2, 9))),
+                    "revision" => {
+                        app.editor
+                            .execute(Command::SetResolution { metres: 0.03 })
+                            .unwrap();
+                    }
+                    "history" => app.history(&ctx, false),
+                    "load" => app.open(source),
+                    "recover" => app.recover(source),
+                    "reset" => app.reset_gestures(),
+                    "rebuild" => app.rebuild(),
+                    "new" => app.new_empty(&ctx, None),
+                    "failed-open" => app.open(dir.join("missing.weftforge")),
+                    "failed-save" => {
+                        app.path = Some(dir.join("missing/primary.weftforge"));
+                        app.save(false);
+                    }
+                    _ => unreachable!(),
                 }
-                "history" => app.history(&ctx, false),
-                "load" => app.open(source),
-                "recover" => app.recover(source),
-                "reset" => app.reset_gestures(),
-                "rebuild" => app.rebuild(),
-                "new" => app.new_empty(&ctx, None),
-                "failed-open" => app.open(dir.join("missing.weftforge")),
-                "failed-save" => {
-                    app.path = Some(dir.join("missing/primary.weftforge"));
-                    app.save(false);
+                frame(&ctx, &mut app, vec![]);
+                if matches!(change, "new" | "failed-open" | "failed-save") {
+                    let draft = app.cut_piece.as_ref().unwrap();
+                    assert_eq!(
+                        (draft.modal, draft.sew_cut_edges),
+                        (review, review),
+                        "{change}"
+                    );
+                    assert_eq!(format!("{:?}", app.editor), before);
+                    if change == "new" {
+                        app.cancel_cut_piece(&ctx);
+                        app.new_empty(&ctx, None);
+                        assert!(app.editor.project.pieces.is_empty());
+                    }
+                } else {
+                    assert!(app.cut_piece.is_none(), "{change}");
                 }
-                _ => unreachable!(),
+                fs::remove_dir_all(dir).unwrap();
             }
-            frame(&ctx, &mut app, vec![]);
-            if matches!(change, "new" | "failed-open" | "failed-save") {
-                assert!(app.cut_piece.as_ref().unwrap().sew_cut_edges, "{change}");
-                assert_eq!(format!("{:?}", app.editor), before);
-                if change == "new" {
-                    app.cancel_cut_piece(&ctx);
-                    app.new_empty(&ctx, None);
-                    assert!(app.editor.project.pieces.is_empty());
-                }
-            } else {
-                assert!(app.cut_piece.is_none(), "{change}");
-            }
-            fs::remove_dir_all(dir).unwrap();
         }
     }
 }
