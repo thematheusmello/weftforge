@@ -605,7 +605,7 @@ fn independent_obj_parser_observes_metres_y_up_uvs_normals_and_piece_groups() {
     let svg = base.with_extension("svg");
     editor.project.export_svg(&svg).unwrap();
     let xml = fs::read_to_string(&svg).unwrap();
-    assert!(xml.contains("width=\"1000mm\""));
+    assert!(xml.contains("width=\"500mm\" height=\"700mm\" viewBox=\"0 -700 500 700\""));
     assert!(xml.contains("Original &lt;front&gt; &amp; &quot;piece&quot;"));
     fs::remove_file(obj).unwrap();
     fs::remove_file(svg).unwrap();
