@@ -78,14 +78,27 @@ blocked status while keeping all 45 prior reports and source87 exact. Its
 progress/check/39-registry-test cycle passed (session 50454, exit 0; receipt
 `61d79aae5dad4325269b73bc2ec94a728917a9f64ac567cb050d7d556bc1a9ce`).
 
-Next: run clean committed xtask in this publication checkout, then publish the
-evidence follow-up to PR #50. Calibrate name entry and inspect the new UI on a
-separate checked executable before binding another full offset workflow.
+Clean committed `cargo xtask verify` passed at `3f16230368bfed61ebd0bb3228f85bcf09cf40bc`
+in 166.4 seconds, with all 87 source inputs, 46 reports and five qualifying
+metadata files unchanged. Session 35392 is terminal exit 0; original receipt
+`0b77063021dd9940d58e347688fc3994ae8a291119727e3482381ae4a6113a32`.
+Selected logs are in `offset-input-publication-checks-20261116`.
+This append changes only status and those check artifacts. It supplies no new
+native, reference, physics or complete-workflow acceptance.
+
+Next: publish this evidence follow-up to draft PR #50, then integrate the
+separately checked UI polish. Calibrate name entry before binding another full
+offset workflow.
 
 A further PhotoCraft-inspired inspector/Scene polish is isolated on
-`feat/photocraft-workspace-polish`; its 137 headless app tests, formatting, strict app Clippy and native build passed.
-Full workspace checks and an actual OS-window preview remain pending. It does
-not alter this frozen source candidate.
+`feat/photocraft-workspace-polish`, runtime `b7767bc94c89196f93b4ddbd1e06245f569936ff`.
+Formatting, all **389 workspace tests**, strict workspace all-target Clippy and
+the native build passed. An actual empty OS-window preview was captured. Its
+name-entry calibration retained “Pattern 1”, so no rectangle or populated Scene
+was accepted. That closed P001 result has unknown input/controller cause; owned
+PID 85382 was confirmed absent. A separately bound N002 keyboard focus/paste
+probe is diagnostic only. The UI candidate does not alter this frozen offset
+source or grant any complete-workflow acceptance.
 Closed native cases are never replayed or regraded. Curved/concave native cases,
 full editable allowances and the rest of the roadmap remain due.
 
