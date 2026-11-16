@@ -1,0 +1,47 @@
+{
+  "status": "passed_saved_files_only",
+  "case": "HOLE-H3",
+  "attempt": "H3-001",
+  "source_commit": "947bfbe4dcb74fb253d584709376ace5a08db838",
+  "native_binary_sha256": "f74350126898e07729f898cb641442baecacc29404f5620b1cfabb03926e282a",
+  "historical_h1_dependency_sha256": "5b6f9599b9c3ed6b1c28c0782fd5d8fd6fde445eefd154d007677f62678cb704",
+  "root_binding_sha256": "cf935f50874beb3d2ef0a4059a4fe66219f627e60afb3dc837daac2d40c6f8b5",
+  "freeze_sha256": "64077323f7f1ac3998f4e6763099c0bbf04e8dd1be710a3900ed8a4c59c07c55",
+  "snapshot_sha256": {
+    "reopened-r6": "934538360a8ed2dc106b616ec7dd1bbcd68f42fde485802535c04485637bcac3"
+  },
+  "result": {
+    "full_v5_construction": true,
+    "unchanged_fields": "exact f64/signed-zero; color f32",
+    "IDs_global_order_Hole11_ownership_highwater_history": "checked",
+    "areas_m2": {
+      "reopened-r6": 0.0768
+    },
+    "analytic_area_times_density_only_kg": {
+      "reopened-r6": 0.013823999999999998
+    },
+    "actual_Cloth_masses_verified": false,
+    "native_UI_verified": false,
+    "reference_parity": false,
+    "exports": {
+      "OBJ": {
+        "surface_area_m2": 0.0768,
+        "piece_components": 1,
+        "boundary_components": 2,
+        "euler_characteristic": 0,
+        "units_and_UV": "metres; [u,v,0]; Y up",
+        "actual_Cloth_masses_verified": false
+      },
+      "SVG": {
+        "compound_paths": 1,
+        "closed_subpaths": 2,
+        "physical_scale": "mm",
+        "fill_rule": "evenodd"
+      },
+      "DXF": "intentional refusal; original destination/recovery bytes exact"
+    }
+  },
+  "native_ui_verified": false,
+  "reference_verified": false,
+  "full_feature_accepted": false
+}

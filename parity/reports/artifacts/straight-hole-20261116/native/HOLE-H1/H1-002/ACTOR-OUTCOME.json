@@ -1,0 +1,157 @@
+{
+  "schema": "weftforge.native.actor-outcome.v1",
+  "case": "HOLE-H1",
+  "attempt": "H1-002",
+  "outcome": "native_route_completed_saved_r5_pending_root_assessment",
+  "root_binding_sha256": "e9e2bed535024602b54a285f8ccd28a0f3a8ecf93fdcc5be4e8629f05e2f3cfc",
+  "owned_pid": 81929,
+  "actual_runtime_proof_sha256": "e07d12c85876b3c778a1ea6f7b8be5473a6348185ee2412c1693ef5949c624cc",
+  "prelaunch_readiness_all_flags_true": true,
+  "actual_initial_empty_argv": true,
+  "initial_capture_record": "0007",
+  "terminal_source_record": "0171",
+  "final_saved_capture_record": "0167",
+  "final_inspection_capture_record": "0170",
+  "planned_quit_source_record": "0171",
+  "immediate_completion_summary_calls": 1,
+  "completion_summary": "Completed the fresh hole sequence",
+  "completion_summary_tool_return": "Completion summary received.",
+  "summary_invocation_time_exact": false,
+  "paired_native_external_operations": 171,
+  "documentation_refresh_calls": 0,
+  "overall_actual_calls": 172,
+  "continuous_elapsed_upper_bound_s": 744.725048417,
+  "operation_cap": 200,
+  "overall_cap": 201,
+  "elapsed_cap_s": 1800,
+  "method_counts": {
+    "getState": 1,
+    "local-filesystem-proof": 1,
+    "local-runtime-bindings-check": 1,
+    "external.open": 1,
+    "external.pid": 1,
+    "getApp": 1,
+    "getAXStateAndScreenshot": 74,
+    "click": 42,
+    "pressKey": 27,
+    "typeText": 14,
+    "setValue": 1,
+    "fs.raw_snapshot": 5,
+    "scroll": 2
+  },
+  "raw_JPG_capture_count": 74,
+  "raw_AX_capture_count": 74,
+  "modal_cancellation_observed": {
+    "explicit_cancel_capture": "0059",
+    "escape_capture": "0065",
+    "background_undo_backdrop_capture": "0071"
+  },
+  "keyboard_open_observed": {
+    "creation_y_focus_capture": "0075",
+    "add_rectangle_focus_capture": "0077",
+    "add_ellipse_focus_capture": "0079",
+    "add_hole_focus_capture": "0081",
+    "return_review_only_capture": "0083"
+  },
+  "shortcut_shield_capture_records": [
+    "0085",
+    "0087",
+    "0089",
+    "0091"
+  ],
+  "raw_caret_witness": {
+    "text": "1e0-",
+    "capture": "0102",
+    "no_refocus_after_refused_apply": true
+  },
+  "outside_candidate_refused_capture": "0109",
+  "accepted_apply_records": [
+    "0132"
+  ],
+  "single_vertex_edit_commit_record": "0148",
+  "undo_record": "0155",
+  "redo_record": "0162",
+  "final_visible_identity": {
+    "owner": 2,
+    "hole": 11,
+    "curve": 16,
+    "point0": 12,
+    "point3": 13,
+    "revision": 5,
+    "point0_display_m": [
+      0.06,
+      0.12
+    ],
+    "point3_display_m": [
+      0.08,
+      0.24
+    ]
+  },
+  "snapshots": [
+    {
+      "label": "parent-r1",
+      "snapshot_path": "snapshots/parent-r1.weftforge",
+      "snapshot_sha256": "525855265074aed8ff1af10297c353973cc294a3d83fca818161ce702ba7310f",
+      "bytes": 3232,
+      "mode": "444",
+      "receipt_sha256": "fd3bd8c669d15db245aeb7260872cab499660de5a5af9eed89e9e37acead9404",
+      "native_save_record": "0049",
+      "clean_capture_record": "0050",
+      "raw_copy_record": "0051"
+    },
+    {
+      "label": "hole-r2",
+      "snapshot_path": "snapshots/hole-r2.weftforge",
+      "snapshot_sha256": "cf9ab135a02d5bfc3da3c7292d58bd61b25263eabcb7588bf7bc69c3cfc53920",
+      "bytes": 4190,
+      "mode": "444",
+      "receipt_sha256": "742ddd73fbc7a93c7a01408e07078d1a70015471e6ac57cf14285e907dccda57",
+      "native_save_record": "0136",
+      "clean_capture_record": "0137",
+      "raw_copy_record": "0138"
+    },
+    {
+      "label": "edit-r3",
+      "snapshot_path": "snapshots/edit-r3.weftforge",
+      "snapshot_sha256": "de7e0664599bb40280ec2148270140fc57765443bd02621275feb25a4496dcfb",
+      "bytes": 4190,
+      "mode": "444",
+      "receipt_sha256": "3b06585d7224827fae1dd5593b73d7893b2e92aea1f4b60eb53cdd7353258a25",
+      "native_save_record": "0152",
+      "clean_capture_record": "0153",
+      "raw_copy_record": "0154"
+    },
+    {
+      "label": "undo-r4",
+      "snapshot_path": "snapshots/undo-r4.weftforge",
+      "snapshot_sha256": "67b29fd49696c17755eaa291364bd176e9e768bc3050d6da4ebd98214c601891",
+      "bytes": 4190,
+      "mode": "444",
+      "receipt_sha256": "69e3b0490a2c8553746bbcf784ba8dfda660044459c6cf15d5c1baa76ae6b9fb",
+      "native_save_record": "0159",
+      "clean_capture_record": "0160",
+      "raw_copy_record": "0161"
+    },
+    {
+      "label": "redo-r5",
+      "snapshot_path": "snapshots/redo-r5.weftforge",
+      "snapshot_sha256": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41",
+      "bytes": 4190,
+      "mode": "444",
+      "receipt_sha256": "dd852e4e5b0add2bb2d366a0780f1f42ef3f4db94749b0d392d24b193ae695d4",
+      "native_save_record": "0166",
+      "clean_capture_record": "0167",
+      "raw_copy_record": "0168"
+    }
+  ],
+  "source_inputs_unchanged": true,
+  "native_binary_unchanged": true,
+  "source_head_unchanged": true,
+  "postflight_raw_sha256": "6dbeeae2b12baea5ca027f138d5be4410a84e3f33e1907c08ea98f668b9003b2",
+  "delegated_actual_tool_transcript_sha256": "85d1cfd3da6ff6dbf19006d9a7b1fb030dbb697bd8525bf151c4797c3c064c83",
+  "unexpected_barrier": null,
+  "formal_grading_performed": false,
+  "native_exit_independently_verified": false,
+  "actual_closure_verification": "root separate GUI part after raw-retention handoff",
+  "scope": "bounded actual HOLE-H1 UI observations and opaque saved bytes only; root review and sole formal assessment remain required; no parity/native physics claim"
+}

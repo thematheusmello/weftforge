@@ -1,0 +1,4773 @@
+{
+  "schema": "weftforge.private.hole-native-ui-review-capture-manifest.v1",
+  "case": "HOLE-H1",
+  "attempt": "H1-001",
+  "scope": "Files-only independent review; original JPEGs viewed individually and all AX texts/172 input pairs read. No CUA, product, grader, evaluator or source/case/packet mutation. Hash/size/mode/raw-byte checks use independent Python standard library only.",
+  "capture_count": 74,
+  "trace_pair_count": 172,
+  "trace_file_count": 344,
+  "method_counts": {
+    "getState": 1,
+    "local-filesystem-proof": 1,
+    "local-runtime-bindings-check": 1,
+    "external.open": 1,
+    "external.pid": 1,
+    "getApp": 1,
+    "getAXStateAndScreenshot": 74,
+    "click": 42,
+    "pressKey": 27,
+    "typeText": 14,
+    "setValue": 1,
+    "fs.raw_snapshot": 5,
+    "local-retained-capture-recovery": 1,
+    "scroll": 2
+  },
+  "documentation_refresh_calls": 1,
+  "summary_calls": 1,
+  "overall_actual_calls": 174,
+  "continuous_elapsed_upper_bound_s": 821.144232708,
+  "summary_exact_invocation_or_native_pair_claimed": false,
+  "saved_geometry_graded_by_this_review": false,
+  "formal_assessment_status": "failed_saved_files_or_preflight: KeyError expected_binary; no saved geometry grade reached; unaccepted",
+  "captures": [
+    {
+      "index": 0,
+      "record": "0007",
+      "label": "initial-owned-hole-state",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/initial-owned-hole-state-0.jpg",
+        "sha256": "c6c4e48aab4cf8744387eefbe4d937be5a5bfc3622d71f4736016398aa6d54b0",
+        "bytes": 175782,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/initial-owned-hole-state.txt",
+        "sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+        "bytes": 75,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 1,
+      "record": "0009",
+      "label": "creation-name-focused",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-name-focused-0.jpg",
+        "sha256": "af42a773982f7f20771e81a5fc6be0239d32286601012347cb0552ed7a88b4b5",
+        "bytes": 177317,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-name-focused.txt",
+        "sha256": "1d2c34a6b01329d991a028834a7c0abcabddf829b6d0b8d49a2192acd7dbb03d",
+        "bytes": 337,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 2,
+      "record": "0012",
+      "label": "creation-name-raw",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-name-raw-0.jpg",
+        "sha256": "92747930d8d020f3a16dda6f02a7c3ef65a3698ec1e2be91a9212cb3f79d22d6",
+        "bytes": 177834,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-name-raw.txt",
+        "sha256": "4ad925c60be2c77469a87adbd5ad502fb73c45fda4021281ea7c49108235f6a4",
+        "bytes": 314,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 3,
+      "record": "0014",
+      "label": "creation-width-focused",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-width-focused-0.jpg",
+        "sha256": "b1fe69019c3fbf3a39445120aa0281a96b44f2fbeb8e4d57c09e2f193f8f0eba",
+        "bytes": 177666,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-width-focused.txt",
+        "sha256": "7746ad42696e36eaade50684c03542cabfc472466825403c451277abd2ed4f3c",
+        "bytes": 520,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 4,
+      "record": "0017",
+      "label": "creation-width-raw",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-width-raw-0.jpg",
+        "sha256": "dad15de260f1dce779d162fe71580e109194820f114a6be5afb14bae7ea187c9",
+        "bytes": 177643,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-width-raw.txt",
+        "sha256": "375a25c22532e0fe19eb734e973a53deab9e76f5af57a0188f7c314355c80e9b",
+        "bytes": 278,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 5,
+      "record": "0019",
+      "label": "creation-height-focused",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-height-focused-0.jpg",
+        "sha256": "d3e4bd9258cdc2391ea56f222a49dacd79a87e75b3f8c3b7fd6893c51e6cfff4",
+        "bytes": 177722,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-height-focused.txt",
+        "sha256": "864f48316d862b52f790d63fdb454498de8ee0dd828cbc1f08eda100c112f75a",
+        "bytes": 550,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 6,
+      "record": "0022",
+      "label": "creation-height-raw",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-height-raw-0.jpg",
+        "sha256": "a9afd58eb48870295b8c468786d1a95fee2a0a2d257d3e66837eee4275f6cba3",
+        "bytes": 177690,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-height-raw.txt",
+        "sha256": "897624ab813ccc307814b08d12d5a2f6d1d5194b2fc209335dc42887672d61c2",
+        "bytes": 278,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 7,
+      "record": "0024",
+      "label": "creation-x-focused",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-x-focused-0.jpg",
+        "sha256": "b55b48e242044037b2182b4ee2f23e757fe0def9a2972100763b8faf1af63b59",
+        "bytes": 177666,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-x-focused.txt",
+        "sha256": "bf32d3aea82fab303c6434dd397cedbbe9c6ee37e16396295fc2e2eca11cbdce",
+        "bytes": 523,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 8,
+      "record": "0027",
+      "label": "creation-x-raw",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-x-raw-0.jpg",
+        "sha256": "7de097faba77aa230afcb28a6279bd1251113a975b8c1f442ef27a67fafc353a",
+        "bytes": 177458,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-x-raw.txt",
+        "sha256": "4bf8aa8158bb40e5161d5caab792917fe6621b19fd8caabbfecb62947b61093d",
+        "bytes": 274,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 9,
+      "record": "0029",
+      "label": "creation-y-focused",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-y-focused-0.jpg",
+        "sha256": "17e905b8e3d878f5ddb54d02644dcd928b821270ae83ac22095e3214817977b7",
+        "bytes": 177547,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-y-focused.txt",
+        "sha256": "ba7f9bef5f271e816608d0f255760f5f667241672690a784b248e839c5596735",
+        "bytes": 546,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 10,
+      "record": "0032",
+      "label": "creation-y-raw",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-y-raw-0.jpg",
+        "sha256": "39d94374378d0c88843b0a27b4f6ac0058c69054f9b11f47c5e34bef747cfcd3",
+        "bytes": 177570,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-y-raw.txt",
+        "sha256": "4fea57fe7f9ab7593639a43896e35a2bc3bbf2243409092410e5ecdd513ade36",
+        "bytes": 274,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 11,
+      "record": "0034",
+      "label": "parent-rectangle-created-r1",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-rectangle-created-r1-0.jpg",
+        "sha256": "49cb5b788cf16b28af43c9342b4c27a97cb3b7361515b45f6b5af95bb513ddd8",
+        "bytes": 182852,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-rectangle-created-r1.txt",
+        "sha256": "93a53755f6028dd23bf2ef80c432e5cad5b4540b4aaf3a0a1e22b04ac9dc1246",
+        "bytes": 2004,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 12,
+      "record": "0036",
+      "label": "parent-framed-r1",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-framed-r1-0.jpg",
+        "sha256": "d1d74ef9ac4b7505b0fc01a2f722ad3a6aa6301c2d7005cb7b89eb33cf104180",
+        "bytes": 161656,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-framed-r1.txt",
+        "sha256": "f7d0d4c30c588fc00a8ca27e53481fbde8fc352ae58478c6a09ac428817a1ccb",
+        "bytes": 125,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 13,
+      "record": "0038",
+      "label": "parent-save-as-file-menu-open",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-save-as-file-menu-open-0.jpg",
+        "sha256": "58bab31758e7d3c71bd24e10260d689ec72b760aaaf844069aea06b919f32621",
+        "bytes": 163984,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-save-as-file-menu-open.txt",
+        "sha256": "f7d0d4c30c588fc00a8ca27e53481fbde8fc352ae58478c6a09ac428817a1ccb",
+        "bytes": 125,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 14,
+      "record": "0040",
+      "label": "parent-save-as-dialog",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-save-as-dialog-0.jpg",
+        "sha256": "a1fa885293b66d670f6b72c3d2f3bbc64f286f78c374eb96ed034c50f487fdb5",
+        "bytes": 14963,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-save-as-dialog.txt",
+        "sha256": "e6791d386966358604bcc1fe0a69d03656c2d20ea6200965d859936174f3d9af",
+        "bytes": 1107,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 15,
+      "record": "0042",
+      "label": "parent-save-as-folder-entry-open",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-save-as-folder-entry-open-0.jpg",
+        "sha256": "1619baccdafe993b89d69e788d936709759834f23655e1153bc19452b31ad4e3",
+        "bytes": 17140,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-save-as-folder-entry-open.txt",
+        "sha256": "22ef1144bf31444d40434e1cd9a360acf051da5fec145176d92d5726a0a16354",
+        "bytes": 1332,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 16,
+      "record": "0044",
+      "label": "parent-save-as-owned-folder-raw",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-save-as-owned-folder-raw-0.jpg",
+        "sha256": "09fb86b3f4b79e29c84c02264a7fb918deba8e638b5e612cf597958a076808b9",
+        "bytes": 16233,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-save-as-owned-folder-raw.txt",
+        "sha256": "c842f24d2a49aa2f35040488b27fe94cf974fbaa7c04a477e2f3a8b3802a7c31",
+        "bytes": 544,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 17,
+      "record": "0046",
+      "label": "parent-save-as-owned-folder-selected",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-save-as-owned-folder-selected-0.jpg",
+        "sha256": "9028ca1fca4f1f431bec2bed325d1b9552cd89a3e292f1b6ae39dc849c5dd68d",
+        "bytes": 14442,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-save-as-owned-folder-selected.txt",
+        "sha256": "dfb4507a8a3a3e9c1a26e82ab4cfbc503b8ec244376f82fe0565365e4b21076e",
+        "bytes": 1081,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 18,
+      "record": "0048",
+      "label": "parent-save-as-basename-ready",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-save-as-basename-ready-0.jpg",
+        "sha256": "b563d1c3cde125b69fbccdfc0a18361f2c32a70a9a5e72288fd3832a268ad524",
+        "bytes": 15708,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-save-as-basename-ready.txt",
+        "sha256": "36b4862cb2ae65244be453dcb43196b3b6357ef58873586a0df06226ed82e811",
+        "bytes": 385,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 19,
+      "record": "0050",
+      "label": "parent-r1-clean-save",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-r1-clean-save-0.jpg",
+        "sha256": "810b36f3f14101071bac9dbdab8fb3018e8da598b845491b0860f724033f8107",
+        "bytes": 160539,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-r1-clean-save.txt",
+        "sha256": "d2f4442cee1f89e6485fdb1aec2a3adc4dcc7a5928b112f30265f40f98f2a715",
+        "bytes": 4549,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 20,
+      "record": "0053",
+      "label": "parent-owner-two-selected",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-owner-two-selected-0.jpg",
+        "sha256": "98f88d0eda7236ab61181e87c105153de86a06315d7d3d7d2987eaeaa4789e43",
+        "bytes": 160085,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/parent-owner-two-selected.txt",
+        "sha256": "8688d3d6343786168020bc50690dbc0c575bbb3f848c883752caf65f59a73630",
+        "bytes": 126,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 21,
+      "record": "0055",
+      "label": "first-hole-create-menu-open",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/first-hole-create-menu-open-0.jpg",
+        "sha256": "0bbdd8b36ebb8077d349d086b808525e7be3aa53227092ee6ec798a88af9d57f",
+        "bytes": 159218,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/first-hole-create-menu-open.txt",
+        "sha256": "8688d3d6343786168020bc50690dbc0c575bbb3f848c883752caf65f59a73630",
+        "bytes": 126,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 22,
+      "record": "0057",
+      "label": "first-hole-review-open-r1",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/first-hole-review-open-r1-0.jpg",
+        "sha256": "771c3f62ba1e5bb4fcb356c80f5acf824b446b86837e86d7ee44b2c821ac7f1a",
+        "bytes": 137146,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/first-hole-review-open-r1.txt",
+        "sha256": "4bfe051644a0325d54b4235c8d820dbc9da647d73fd3a6123d17fe3721faf7d3",
+        "bytes": 3270,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 23,
+      "record": "0059",
+      "label": "first-hole-explicit-cancelled-r1",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/first-hole-explicit-cancelled-r1-0.jpg",
+        "sha256": "8a66abbd04918124e20b41f6a7defb4de60fbe1090729b6e15c0182b2ee4beee",
+        "bytes": 160561,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/first-hole-explicit-cancelled-r1.txt",
+        "sha256": "6f24d1d9eded027ada7dde146e1376d745a1f70f6558139667f91431e7c26c3b",
+        "bytes": 2712,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 24,
+      "record": "0061",
+      "label": "escape-hole-create-menu-open",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/escape-hole-create-menu-open-0.jpg",
+        "sha256": "9267899485bdc587159ddc17fdd1ada63515da9cb0d2436caf97eb00ec0ba37f",
+        "bytes": 159264,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/escape-hole-create-menu-open.txt",
+        "sha256": "8688d3d6343786168020bc50690dbc0c575bbb3f848c883752caf65f59a73630",
+        "bytes": 126,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 25,
+      "record": "0063",
+      "label": "escape-hole-review-open-r1",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/escape-hole-review-open-r1-0.jpg",
+        "sha256": "4f62619a50de3281aabd6dc9031439b0f66f4a566c27c949bb65586d8c37b9cd",
+        "bytes": 137313,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/escape-hole-review-open-r1.txt",
+        "sha256": "d80f3815387319cb0612fbc291e23b221dac95bb3243302d72b1465196912ae8",
+        "bytes": 3270,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 26,
+      "record": "0065",
+      "label": "escape-hole-review-cancelled-r1",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/escape-hole-review-cancelled-r1-0.jpg",
+        "sha256": "9bd61e98d64dbcda82e661c7284206d4ee40fa1cf52cbd3b86d4a21bf9cac27e",
+        "bytes": 160147,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/escape-hole-review-cancelled-r1.txt",
+        "sha256": "eaff29d5fb2a6f1e2c63b5fed819946e46d922daa669be59ef7dd6fb688cb86e",
+        "bytes": 2649,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 27,
+      "record": "0068",
+      "label": "backdrop-create-menu-current",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/backdrop-create-menu-current-0.jpg",
+        "sha256": "19ebfe6a4fc3f27999e2b20b1ddb0d31ab0b792eae0c98136f6673c47b4d1494",
+        "bytes": 159415,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/backdrop-create-menu-current.txt",
+        "sha256": "8688d3d6343786168020bc50690dbc0c575bbb3f848c883752caf65f59a73630",
+        "bytes": 126,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 28,
+      "record": "0070",
+      "label": "backdrop-hole-review-open-r1",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/backdrop-hole-review-open-r1-0.jpg",
+        "sha256": "608f9da7958670b086bf81f1c08a696acb8f3838578e4a1d54593d52cdb9ebeb",
+        "bytes": 137353,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/backdrop-hole-review-open-r1.txt",
+        "sha256": "d80f3815387319cb0612fbc291e23b221dac95bb3243302d72b1465196912ae8",
+        "bytes": 3270,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 29,
+      "record": "0072",
+      "label": "backdrop-cancel-unchanged-r1",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/backdrop-cancel-unchanged-r1-0.jpg",
+        "sha256": "c1eb637b2f3a51cedaaaca0359d8a329c667d994b393b771bdcd1332c97a6db6",
+        "bytes": 160280,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/backdrop-cancel-unchanged-r1.txt",
+        "sha256": "eaff29d5fb2a6f1e2c63b5fed819946e46d922daa669be59ef7dd6fb688cb86e",
+        "bytes": 2649,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 30,
+      "record": "0074",
+      "label": "creation-y-and-button-focus-route-visible",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-y-and-button-focus-route-visible-0.jpg",
+        "sha256": "a08aa184984b2975ec06a36847af3e971b114e1bc8c22c9951d997c3e6f6efdb",
+        "bytes": 164828,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-y-and-button-focus-route-visible.txt",
+        "sha256": "bc3b83981b2f807542df7e6b4824b28a403568110822ac19ff81c8c2d437761a",
+        "bytes": 528,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 31,
+      "record": "0076",
+      "label": "creation-y-focused-before-three-tabs",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-y-focused-before-three-tabs-0.jpg",
+        "sha256": "d95440ac30119f49eca24a23114054f89d5dcf3bca2c8d7e853c85217d094768",
+        "bytes": 164561,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/creation-y-focused-before-three-tabs.txt",
+        "sha256": "8688d3d6343786168020bc50690dbc0c575bbb3f848c883752caf65f59a73630",
+        "bytes": 126,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 32,
+      "record": "0078",
+      "label": "add-rectangle-visible-keyboard-focus",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/add-rectangle-visible-keyboard-focus-0.jpg",
+        "sha256": "eace7ed77af451b8c3e9224ef6eb7d45c311e0ae3fb5a79985b438acb7c8452e",
+        "bytes": 165083,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/add-rectangle-visible-keyboard-focus.txt",
+        "sha256": "bb72c8eddc41fb287543fd4736aab48cc2ad06f31caac5b5bbf974c3ccc95a01",
+        "bytes": 279,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 33,
+      "record": "0080",
+      "label": "add-ellipse-visible-keyboard-focus",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/add-ellipse-visible-keyboard-focus-0.jpg",
+        "sha256": "2f4d3137986d03c2104fa4e3084997f9eb25ac6a22c8c369b0d139b562c3ca9c",
+        "bytes": 165029,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/add-ellipse-visible-keyboard-focus.txt",
+        "sha256": "6dbdd4fb7a9a54a0220a9926437de7fbb567382a45b413cf10b5ffd300b4895b",
+        "bytes": 124,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 34,
+      "record": "0082",
+      "label": "add-hole-visible-keyboard-focus",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/add-hole-visible-keyboard-focus-0.jpg",
+        "sha256": "bebc472ea72f1b35e0ae9a02ecb932e8570542d9118e589d52e44da164246299",
+        "bytes": 165089,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/add-hole-visible-keyboard-focus.txt",
+        "sha256": "137709e29b0f64f760c902d527a568006ea5ff6c798ddd081ca67c3ac8274376",
+        "bytes": 124,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 35,
+      "record": "0084",
+      "label": "return-opened-hole-review-only-r1",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/return-opened-hole-review-only-r1-0.jpg",
+        "sha256": "8d2ed26f0703a8c31ccaa51d23a5d0fb4ae1da5763e5455b1d57d90384387b06",
+        "bytes": 139403,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/return-opened-hole-review-only-r1.txt",
+        "sha256": "2c6b8affc7ca5051d54035177350132a8c59fce882062609669511888b9c024f",
+        "bytes": 3384,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 36,
+      "record": "0086",
+      "label": "modal-shield-save-keeps-review-r1",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/modal-shield-save-keeps-review-r1-0.jpg",
+        "sha256": "cd345b691a0a528ca560063c46b38e4fd5f298516b75ed02f8d4b74aed46378b",
+        "bytes": 139406,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/modal-shield-save-keeps-review-r1.txt",
+        "sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+        "bytes": 75,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 37,
+      "record": "0088",
+      "label": "modal-shield-undo-keeps-review-r1",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/modal-shield-undo-keeps-review-r1-0.jpg",
+        "sha256": "ee7c845952807f48657f9a19e1fad2d1fa6827ec2207bfc54c1031515ecc08ac",
+        "bytes": 139408,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/modal-shield-undo-keeps-review-r1.txt",
+        "sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+        "bytes": 75,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 38,
+      "record": "0090",
+      "label": "modal-shield-space-remains-stopped-r1",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/modal-shield-space-remains-stopped-r1-0.jpg",
+        "sha256": "c40ca3a52f856058a3d9a679f53a65c41b467adacad8ee0d29e79d2e88214174",
+        "bytes": 139406,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/modal-shield-space-remains-stopped-r1.txt",
+        "sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+        "bytes": 75,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 39,
+      "record": "0092",
+      "label": "modal-shield-command-palette-keeps-review-r1",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/modal-shield-command-palette-keeps-review-r1-0.jpg",
+        "sha256": "be2de6032aabb81d067fb27c804e30c0f72bc44246849dec95794082fb05423a",
+        "bytes": 139404,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/modal-shield-command-palette-keeps-review-r1.txt",
+        "sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+        "bytes": 75,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 40,
+      "record": "0094",
+      "label": "origin-u-focused-before-invalid-entry",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/origin-u-focused-before-invalid-entry-0.jpg",
+        "sha256": "7d681562e59da30f8063eb3ad8e8ba83771d64f1db102c937d0658edb0dccb66",
+        "bytes": 140167,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/origin-u-focused-before-invalid-entry.txt",
+        "sha256": "2c719b23de9554f7a50ded08a6f79b1b0259d2439f72817abedde07def4b8e9b",
+        "bytes": 151,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 41,
+      "record": "0097",
+      "label": "origin-u-incomplete-exponent-preserved",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/origin-u-incomplete-exponent-preserved-0.jpg",
+        "sha256": "3d5843dbe7e53b19df5471934e1993d2c5f28819385b658e114574f6d79cb3b8",
+        "bytes": 138965,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/origin-u-incomplete-exponent-preserved.txt",
+        "sha256": "aa7c5400e34eae21c5991c51c92c462620c3fa6c46c56bd253e823f9fd1ca449",
+        "bytes": 406,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 42,
+      "record": "0099",
+      "label": "origin-u-caret-left-before-refused-apply",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/origin-u-caret-left-before-refused-apply-0.jpg",
+        "sha256": "a673d70fff9318c1cdfd93350bfecb5f08caf71d3425c13e5a82e3da2b33588c",
+        "bytes": 138941,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/origin-u-caret-left-before-refused-apply.txt",
+        "sha256": "4680cb4cf5b658b3999e44a4041a3bcfe252ab4f1252d8feda986f300e9da198",
+        "bytes": 150,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 43,
+      "record": "0101",
+      "label": "invalid-apply-refused-text-and-focus-preserved-r1",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/invalid-apply-refused-text-and-focus-preserved-r1-0.jpg",
+        "sha256": "7a0fbefe6db3c959a717a21d50b894528937785585f0c62fc809d6bb62e5ecf3",
+        "bytes": 138997,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/invalid-apply-refused-text-and-focus-preserved-r1.txt",
+        "sha256": "4680cb4cf5b658b3999e44a4041a3bcfe252ab4f1252d8feda986f300e9da198",
+        "bytes": 150,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 44,
+      "record": "0103",
+      "label": "raw-caret-witness-origin-u-one-e-zero-minus",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/raw-caret-witness-origin-u-one-e-zero-minus-0.jpg",
+        "sha256": "607a3cbe07305c5e6771da5b85016abfc109dca86dd10c8d4d8785ec301fa6d4",
+        "bytes": 139070,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/raw-caret-witness-origin-u-one-e-zero-minus.txt",
+        "sha256": "2400dda6eab818f96daf238a613e34c2cf7f62fd096c3228647b5754caa85836",
+        "bytes": 326,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 45,
+      "record": "0105",
+      "label": "origin-u-focused-before-outside-entry",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/origin-u-focused-before-outside-entry-0.jpg",
+        "sha256": "a9b57bc42071e2ad1e15b109dcb793ae7c92a3b86d427e0865d766d6f7459a36",
+        "bytes": 139379,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/origin-u-focused-before-outside-entry.txt",
+        "sha256": "5d5cbc786674c8880f99042bf6125a0d70bfc384e9be4e116a114fb16e48623d",
+        "bytes": 151,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 46,
+      "record": "0108",
+      "label": "outside-candidate-visible-before-refused-apply",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/outside-candidate-visible-before-refused-apply-0.jpg",
+        "sha256": "cd3d1f435a77637bc0083d2f22a9401f0b2d6a30607b9b73d03a942040145603",
+        "bytes": 140729,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/outside-candidate-visible-before-refused-apply.txt",
+        "sha256": "ebe271731d4d748b5deedc3f5e9ae5f726f5641b4446ba45ce5bd07128504578",
+        "bytes": 420,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 47,
+      "record": "0110",
+      "label": "outside-apply-refused-owner-r1-unchanged",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/outside-apply-refused-owner-r1-unchanged-0.jpg",
+        "sha256": "3ed6462f3586e6db7e730c7e1d38aa43cedff71a33be5fa44b98800a313b0541",
+        "bytes": 140462,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/outside-apply-refused-owner-r1-unchanged.txt",
+        "sha256": "7db516a16396fb847a7a54740bd1f054e85ace76f9dfd6772e70c5f6c349bb06",
+        "bytes": 151,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 48,
+      "record": "0112",
+      "label": "origin-u-focused-before-valid-entry",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/origin-u-focused-before-valid-entry-0.jpg",
+        "sha256": "b38c3e8fad6fb7245eced6663e3b1a307e878a73e9bd5b884e6d4b302932fe36",
+        "bytes": 140696,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/origin-u-focused-before-valid-entry.txt",
+        "sha256": "7db516a16396fb847a7a54740bd1f054e85ace76f9dfd6772e70c5f6c349bb06",
+        "bytes": 151,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 49,
+      "record": "0115",
+      "label": "valid-origin-u-and-candidate-visible",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/valid-origin-u-and-candidate-visible-0.jpg",
+        "sha256": "f6aec9b15aae11fd7935b2b10cc1a84a1ffeff5c8394446942af8589e9036e51",
+        "bytes": 140050,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/valid-origin-u-and-candidate-visible.txt",
+        "sha256": "b9e5cfb00962bd098609ff160a0b9c6d90f6c87c3e21be9295b7ee6af783203c",
+        "bytes": 385,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 50,
+      "record": "0117",
+      "label": "origin-v-focused-before-valid-entry",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/origin-v-focused-before-valid-entry-0.jpg",
+        "sha256": "8d676aba97426bb48e9e57578b08a2cace8277e1000733277810839428259b53",
+        "bytes": 140201,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/origin-v-focused-before-valid-entry.txt",
+        "sha256": "e62df4c757e90a90cf106c7e26d0f46a25892aa16567421dd3faa42ed12459b6",
+        "bytes": 151,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 51,
+      "record": "0120",
+      "label": "valid-origin-v-and-candidate-visible",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/valid-origin-v-and-candidate-visible-0.jpg",
+        "sha256": "c697d17119b41ff237cae31c2fddab3489e54ba4a7552f71ff339ec3af65a7fe",
+        "bytes": 140207,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/valid-origin-v-and-candidate-visible.txt",
+        "sha256": "e62df4c757e90a90cf106c7e26d0f46a25892aa16567421dd3faa42ed12459b6",
+        "bytes": 151,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 52,
+      "record": "0122",
+      "label": "hole-width-focused-before-valid-entry",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/hole-width-focused-before-valid-entry-0.jpg",
+        "sha256": "769f0ae5e45b867bee21897cf9d36b74ec643166f8ef68fcbd25547b9bd53275",
+        "bytes": 139915,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/hole-width-focused-before-valid-entry.txt",
+        "sha256": "6617491f41377a7a826d8f7c4f531737cce2486f0c62a12122757d0ad53e61e2",
+        "bytes": 148,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 53,
+      "record": "0125",
+      "label": "valid-hole-width-visible",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/valid-hole-width-visible-0.jpg",
+        "sha256": "ee793015727194a018c95e631d5d24e489de0a3b0c50274bd190b41525e25155",
+        "bytes": 139924,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/valid-hole-width-visible.txt",
+        "sha256": "6617491f41377a7a826d8f7c4f531737cce2486f0c62a12122757d0ad53e61e2",
+        "bytes": 148,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 54,
+      "record": "0127",
+      "label": "hole-height-focused-before-valid-entry",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/hole-height-focused-before-valid-entry-0.jpg",
+        "sha256": "846f414915ffbc73d76649a0556e2a7dceaa2d7383a52bf481c906e06433daa3",
+        "bytes": 139795,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/hole-height-focused-before-valid-entry.txt",
+        "sha256": "d465b56413d6e2f8e9e0375f37ae64ad160e2f18198a447b7b18d685e52d7847",
+        "bytes": 149,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 55,
+      "record": "0130",
+      "label": "all-four-exact-hole-fields-visible",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/all-four-exact-hole-fields-visible-0.jpg",
+        "sha256": "dedc7c23f825b5bc1176086cc277bd8692eee26f5bf05246014a5cfeeab61002",
+        "bytes": 139803,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/all-four-exact-hole-fields-visible.txt",
+        "sha256": "d465b56413d6e2f8e9e0375f37ae64ad160e2f18198a447b7b18d685e52d7847",
+        "bytes": 149,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 56,
+      "record": "0132",
+      "label": "exact-hole-candidate-reviewed-before-single-accepted-apply",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/exact-hole-candidate-reviewed-before-single-accepted-apply-0.jpg",
+        "sha256": "5591d88b7d474cbc50e80d853340eea456d4c138a89ca556066e0451b4536f12",
+        "bytes": 140004,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/exact-hole-candidate-reviewed-before-single-accepted-apply.txt",
+        "sha256": "256bb4ee89343203bd3c20efdf9c39f99f8a8290c18217d7a8bd6438c13bfd16",
+        "bytes": 143,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 57,
+      "record": "0134",
+      "label": "hole-single-accepted-apply-r2",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/hole-single-accepted-apply-r2-0.jpg",
+        "sha256": "bf54265a50119813e8e297bb9c4ca7a61835ce265078071af1f0ba839fb5dcc8",
+        "bytes": 161094,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/hole-single-accepted-apply-r2.txt",
+        "sha256": "9e0b447137a1ded399a76a47734c7696d3b57cb5bef51d6f1fc1ddbfcba3f703",
+        "bytes": 3338,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 58,
+      "record": "0136",
+      "label": "file-save-hole-r2-menu-current",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/file-save-hole-r2-menu-current-0.jpg",
+        "sha256": "e47603f60955bbef48b8d7775f3f2c0617cdb1ed754751d61960a784fc41266d",
+        "bytes": 163209,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/file-save-hole-r2-menu-current.txt",
+        "sha256": "eb880e870032113fb2f9d170d6d7f20b74daddf6cdef3e73e351c67ee6708ec6",
+        "bytes": 713,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 59,
+      "record": "0138",
+      "label": "hole-r2-clean-native-save",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/hole-r2-clean-native-save-0.jpg",
+        "sha256": "5880a902a5aa7cacee9e6e86f1809a64af9b306f511aab88f2493543aea4898a",
+        "bytes": 159676,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/hole-r2-clean-native-save.txt",
+        "sha256": "a169773a5f4443a298e7cd9afd8c83e1cea2ccd12d7e6e24cefcf008fcd8aa76",
+        "bytes": 312,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 60,
+      "record": "0141",
+      "label": "selected-hole-eleven-edge-sixteen-r2",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/selected-hole-eleven-edge-sixteen-r2-0.jpg",
+        "sha256": "fd3554d6077c256ae54a627406375f333223d1aac8a6878863ca63a0a157fc40",
+        "bytes": 158985,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/selected-hole-eleven-edge-sixteen-r2.txt",
+        "sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+        "bytes": 75,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 61,
+      "record": "0143",
+      "label": "hole-edge-sixteen-and-point-twelve-fields-visible",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/hole-edge-sixteen-and-point-twelve-fields-visible-0.jpg",
+        "sha256": "fb81b9c3beded329f42cecc7faea28fb572a8f1e65de81a358c5b9129ded4f12",
+        "bytes": 176186,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/hole-edge-sixteen-and-point-twelve-fields-visible.txt",
+        "sha256": "0747696dbafa13c80972ebc006a338eb6e6f81f656d1f2fd476fd9bb82a8652f",
+        "bytes": 1463,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 62,
+      "record": "0145",
+      "label": "vertex-twelve-u-focused-before-edit",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/vertex-twelve-u-focused-before-edit-0.jpg",
+        "sha256": "256d96adb14b17ffc8d39468cee34dc9e2937d981be89e4bf23dee11a45a4349",
+        "bytes": 176165,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/vertex-twelve-u-focused-before-edit.txt",
+        "sha256": "8375adf2a6f34128335e11add115d6121d5978f943ca74e6018fe98c0ddc6cd8",
+        "bytes": 546,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 63,
+      "record": "0148",
+      "label": "vertex-twelve-u-draft-before-tab-commit",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/vertex-twelve-u-draft-before-tab-commit-0.jpg",
+        "sha256": "2eb20640b1127d32cd1b943992522d24b6e3d72fe2bf2bfa719c0cc4653a86b4",
+        "bytes": 176151,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/vertex-twelve-u-draft-before-tab-commit.txt",
+        "sha256": "16079f71ecddf5d2a7c5fa350d939b050d940bcae1ea6ef80d611dc5b18923cb",
+        "bytes": 328,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 64,
+      "record": "0150",
+      "label": "vertex-twelve-u-edit-committed-r3",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/vertex-twelve-u-edit-committed-r3-0.jpg",
+        "sha256": "6b727b861870c01586a547dadcdea84764dad9b6a00942e92c5b5f55a4e130b8",
+        "bytes": 179397,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/vertex-twelve-u-edit-committed-r3.txt",
+        "sha256": "888f1364ce5ae54cf1a56cd4ff5a9ea729d1bcc60a4e6bb04b8ff2578e645931",
+        "bytes": 1128,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 65,
+      "record": "0152",
+      "label": "file-save-edit-r3-menu-current",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/file-save-edit-r3-menu-current-0.jpg",
+        "sha256": "e9c5b395ecbbe8c4eef990e327a73920c1d3a7d1a7cc6d3be504eab2d77efe0a",
+        "bytes": 181878,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/file-save-edit-r3-menu-current.txt",
+        "sha256": "71c6b1cdf2bd9a0f9d2f71c47b4230ab2394436604980d18e95cee45bd74a60b",
+        "bytes": 370,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 66,
+      "record": "0154",
+      "label": "edit-r3-clean-native-save",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/edit-r3-clean-native-save-0.jpg",
+        "sha256": "d27dea917242a0206be24f8bb3ab3a3e7dcdf8143fdd3d1d63eb713e60b7d3bb",
+        "bytes": 176948,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/edit-r3-clean-native-save.txt",
+        "sha256": "e09b1a4d9e50bf48c0e424b25af793992a9e0b803d1e6e754410cd2a434bddf1",
+        "bytes": 776,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 67,
+      "record": "0157",
+      "label": "single-undo-restores-hole-shape-r4",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/single-undo-restores-hole-shape-r4-0.jpg",
+        "sha256": "da706f47c1a0a0b4af7a65b6f5518e492800bcdd9facce9978ba6f9ecfdb59bc",
+        "bytes": 177565,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/single-undo-restores-hole-shape-r4.txt",
+        "sha256": "9546f2da7dd85d79d727e5a6c976208e74aa98729efbcb292caf7d38dfd20da1",
+        "bytes": 753,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 68,
+      "record": "0159",
+      "label": "file-save-undo-r4-menu-current",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/file-save-undo-r4-menu-current-0.jpg",
+        "sha256": "a0c87fb5303f4a331cecc301d311c2a2900a35024a99aff1e8531fc3cd44cc63",
+        "bytes": 180056,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/file-save-undo-r4-menu-current.txt",
+        "sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+        "bytes": 75,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 69,
+      "record": "0161",
+      "label": "undo-r4-clean-native-save",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/undo-r4-clean-native-save-0.jpg",
+        "sha256": "87e608ad0ef89ae0b0b923bf7eb318826c2bc32cdffeb8a28ef9027429342f15",
+        "bytes": 175687,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/undo-r4-clean-native-save.txt",
+        "sha256": "a99f81f7c5cdeb60f9ab828339bcedc9a9b910708a00cc6f903d3e80602c356c",
+        "bytes": 481,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 70,
+      "record": "0164",
+      "label": "single-redo-restores-edited-hole-r5",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/single-redo-restores-edited-hole-r5-0.jpg",
+        "sha256": "53eac7cf1e7b032d52f2e83e76b9666b70dfa4fcfb61ca2a863411482de2079a",
+        "bytes": 178747,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/single-redo-restores-edited-hole-r5.txt",
+        "sha256": "a293709c74e103682d63edcaa8fe85480bbefbe8c5e1f9ce04ad499ba4fdf05c",
+        "bytes": 698,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 71,
+      "record": "0166",
+      "label": "file-save-redo-r5-menu-current",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/file-save-redo-r5-menu-current-0.jpg",
+        "sha256": "6034643c68456d6ba96aacff048ba8a4d2baf2bc7395066dfaa3f14174cb9f22",
+        "bytes": 181100,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/file-save-redo-r5-menu-current.txt",
+        "sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+        "bytes": 75,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 72,
+      "record": "0168",
+      "label": "redo-r5-clean-native-save",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/redo-r5-clean-native-save-0.jpg",
+        "sha256": "ccf440c16a6f4d00b87a72bf8b9d71e738638c2fb7c456242b15e0371d616bc5",
+        "bytes": 176732,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/redo-r5-clean-native-save.txt",
+        "sha256": "141709240403e5dd8acf7197b837e4d99de761da843ce3e4bdf4f414e57ae8c9",
+        "bytes": 481,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    },
+    {
+      "index": 73,
+      "record": "0171",
+      "label": "final-saved-r5-stable-hole-eleven-curve-sixteen",
+      "image": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/final-saved-r5-stable-hole-eleven-curve-sixteen-0.jpg",
+        "sha256": "0f9bb04b87705c1e15a8790884fd54ca0cdb84f16ed22e9c5801925646406229",
+        "bytes": 176617,
+        "mode": "600"
+      },
+      "AX": {
+        "path": ".local/native-straight-hole-20261116/H1-001/captures/final-saved-r5-stable-hole-eleven-curve-sixteen.txt",
+        "sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+        "bytes": 75,
+        "mode": "600"
+      },
+      "original_image_visually_reviewed": true,
+      "AX_text_read": true,
+      "raw_pair_bytes_exact": true
+    }
+  ],
+  "trace_pairs": [
+    {
+      "record": "0001",
+      "label": "fresh-standalone-cua-inventory",
+      "method": "getState",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0001-before.json",
+        "sha256": "113981fc22c943c7655c9c4e820726f4fe679717d6558981a36cb63a2f7038cc",
+        "bytes": 312,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0001-after.json",
+        "sha256": "e46294a5d36e7f133a8639cdd140c4d8f949982a5035952794bec77204894fcf",
+        "bytes": 336,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0002",
+      "label": "actual-cua-runtime-filesystem-proof",
+      "method": "local-filesystem-proof",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0002-before.json",
+        "sha256": "09b5f7edd047e84f8dcc9380fcf88be74a81f03191f396672d78fd54e55c7e44",
+        "bytes": 258,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0002-after.json",
+        "sha256": "e1c4222b10991d43b40fca4a06a15f7b20681e46d4b3cb007cb743c19d122691",
+        "bytes": 298,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0003",
+      "label": "actual-cross-cell-runtime-bindings",
+      "method": "local-runtime-bindings-check",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0003-before.json",
+        "sha256": "c246cc4aeef9a7c347dffdceaec9fd786df9b1913d37c1f51927d9ada159632b",
+        "bytes": 301,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0003-after.json",
+        "sha256": "0d3deeeb5a71ccb3a88c6ecdafa5a312592617b2a37a3bd130b17f1948591910",
+        "bytes": 3076,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0004",
+      "label": "launch-exact-empty-owned-hole-bundle",
+      "method": "external.open",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0004-before.json",
+        "sha256": "ef317d025d1e655ab70870b623547c75ae84699235f5a57d7d8d15c014bd2c40",
+        "bytes": 431,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0004-after.json",
+        "sha256": "f7846c894f8ba07510770075336a1be56b3486379a47f3d49aaf4cd284801c1d",
+        "bytes": 205,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0005",
+      "label": "account-exact-live-owned-hole-pid",
+      "method": "external.pid",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0005-before.json",
+        "sha256": "6a7510ddb34cb16617b7ce0f0b953b91a9b5973456d212ca63d0d1e990a3feac",
+        "bytes": 489,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0005-after.json",
+        "sha256": "84bdaaf66ccc43e5d6b8fdb68bd2468b56764b768505042940cf814958984f41",
+        "bytes": 432,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0006",
+      "label": "bind-already-running-owned-hole",
+      "method": "getApp",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0006-before.json",
+        "sha256": "226f82e74201286940ee4698a8eb2b4c4146abfcc562bc9734423418ea04e3aa",
+        "bytes": 372,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0006-after.json",
+        "sha256": "7f46091c716dfdd27825827941d55eb657c90d0ced4131867b0f296f2f494e35",
+        "bytes": 150,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0007",
+      "label": "initial-owned-hole-state",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0007-before.json",
+        "sha256": "a83bda10fae05d75f04b4c1614cfce2bb45444c1de018aec3c1ff9ef359f2860",
+        "bytes": 281,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0007-after.json",
+        "sha256": "02fed88d6f70347d49e1efd5caf57fa074eae78d2a6a6f28bdd93111a7def9fb",
+        "bytes": 2204834,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0008",
+      "label": "creation-name-coordinate-focus",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0008-before.json",
+        "sha256": "77d33c3cdef04d954e0d0d751dd47168afdfd2e7371701c3544668720c396bb7",
+        "bytes": 273,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0008-after.json",
+        "sha256": "49f1db787368e637a9fcdf0d76469eeb5e9019730bfab7bdeb272f2f64a6c683",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0009",
+      "label": "creation-name-focused",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0009-before.json",
+        "sha256": "4a6b894c7f4a434fc9996eb6f19741840a6374b86130a343f2ad0604a2afd6c9",
+        "bytes": 278,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0009-after.json",
+        "sha256": "1cec98aae1ace144620c52ce5fa0ab6fa88678bf29d8f1dffbf198e9ecbcf31c",
+        "bytes": 2224695,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0010",
+      "label": "creation-name-select-all",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0010-before.json",
+        "sha256": "12ea38c3ee4fc63b20b73f63fac4dfd7ed31f61630484217b41c0e44eed9df29",
+        "bytes": 244,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0010-after.json",
+        "sha256": "0ae5d8dd80e2defd11cc083fe364d50536c3f8a5ca1be736f19b58ddccac17bf",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0011",
+      "label": "creation-name-literal",
+      "method": "typeText",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0011-before.json",
+        "sha256": "a819b80a667379747dfa8117d21e226f15efb59a98a5b3c422ca2255796c2683",
+        "bytes": 252,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0011-after.json",
+        "sha256": "1ad7c2e725b013c75b521edff7dbf0031fa0c2b4b5ec0b0d996214640e73ac8a",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0012",
+      "label": "creation-name-raw",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0012-before.json",
+        "sha256": "5dc93f81bd0aa9ae2bb1fa38c1df6f61a7da6bdd5a66f527a07b011e78f87270",
+        "bytes": 274,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0012-after.json",
+        "sha256": "ff0755f9e0863f3fb98bfe9ca0aa9a66474f4cc6c1f7fd98b26c518448b71a73",
+        "bytes": 2231147,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0013",
+      "label": "creation-width-coordinate-focus",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0013-before.json",
+        "sha256": "d4f3c2a573e810914fef0e56f05d895ba2542e3d39850eed00c0affc9cac0e15",
+        "bytes": 274,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0013-after.json",
+        "sha256": "f1556c1702ce87188068856fb6745de6038c9d474770ce71fc1b43c70b6b642d",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0014",
+      "label": "creation-width-focused",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0014-before.json",
+        "sha256": "e1f2b0f5e19b539042c62bbadad85a6289bfecc2492810f81443c4f29f54364f",
+        "bytes": 279,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0014-after.json",
+        "sha256": "6aaa97321cbeacd9a842c3b9ab2962ccf07ca20b859ad3101a0012b2897cc3c9",
+        "bytes": 2229263,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0015",
+      "label": "creation-width-select-all",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0015-before.json",
+        "sha256": "fc4aaa34b5405b038a54211f33aed3c6cfc202bdb20a3f0b4a6872a7da8c24be",
+        "bytes": 245,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0015-after.json",
+        "sha256": "29f9042ad82f0f807ad714ddad2b40f20216cdac22534568ff72592b3d9c6244",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0016",
+      "label": "creation-width-literal",
+      "method": "typeText",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0016-before.json",
+        "sha256": "21a8688dd1e006154706eb1ca16de6f9b91df143984aef04f6e49b9ae639bb89",
+        "bytes": 238,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0016-after.json",
+        "sha256": "f21d1aa0dc7f36325058b4aa84abedffa91544737fc6a97d0d9ebd4cd344df88",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0017",
+      "label": "creation-width-raw",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0017-before.json",
+        "sha256": "4613390bdf9800afb26aeb7f44a8a375400a2d9d23d0082041e3c3e8ebf61db4",
+        "bytes": 275,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0017-after.json",
+        "sha256": "d51aba02379204611a29f719d82fa7237e6762b24b9108b15523c5a265248ff4",
+        "bytes": 2228738,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0018",
+      "label": "creation-height-coordinate-focus",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0018-before.json",
+        "sha256": "7cb289a4e1e74941221899b7f9b9d0a324d306310b027f1af5240fc02730208c",
+        "bytes": 275,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0018-after.json",
+        "sha256": "361fbec672b76ec8c14d843d4575205afeae64849d0e608f78c6583785e08fae",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0019",
+      "label": "creation-height-focused",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0019-before.json",
+        "sha256": "002e82dd85f4f953aaf0384b0d90d4ed0e29c671b77512c36554f610e2f18873",
+        "bytes": 280,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0019-after.json",
+        "sha256": "63db33d08861116dfc474648bc9a2378fa63559f1e31c7dfb76a9603f8c20ceb",
+        "bytes": 2229965,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0020",
+      "label": "creation-height-select-all",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0020-before.json",
+        "sha256": "725ba7aeeda72912bab0e9fa811e3471694dc3c8f6b7e97cd0d514d780169f7d",
+        "bytes": 246,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0020-after.json",
+        "sha256": "676735f46a6ebce9eb50119846a19b64b6e1ae6d17e207f40b93839acd97d4a5",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0021",
+      "label": "creation-height-literal",
+      "method": "typeText",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0021-before.json",
+        "sha256": "f2f89dab7da42a2bd8c3bd6da48aa0ff7dfab778d3884f43b5d6b8d4d1cb0550",
+        "bytes": 239,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0021-after.json",
+        "sha256": "e89385f93edc9e7040b63980702e7f47442279213c2e7db99d8adc94503bc26f",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0022",
+      "label": "creation-height-raw",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0022-before.json",
+        "sha256": "a04e603dc6b40fa52960b36566a45ce9d095fd47187c5d3871633bc11b4751e6",
+        "bytes": 276,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0022-after.json",
+        "sha256": "9f6577b5bf70643ca8e954d29b0653d8097945b83028c16752074c56bfe8d43a",
+        "bytes": 2229257,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0023",
+      "label": "creation-x-coordinate-focus",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0023-before.json",
+        "sha256": "20b44397785fb77b7b1e8c0c5bb367b5960f82cc30d0c1a10083f09ccaeb7a74",
+        "bytes": 270,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0023-after.json",
+        "sha256": "5622879e9cf0b5de29220a6ec3d3cd4c13f08c1c99e764ce420e0724b6de90a9",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0024",
+      "label": "creation-x-focused",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0024-before.json",
+        "sha256": "aa24bd7b88c5d941136bb81c28f02839992887b1fde358daff66851de7d62e5c",
+        "bytes": 275,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0024-after.json",
+        "sha256": "a3ab0303de4548a9d2886f57fdd8549fdc878dcc4d9b652f42e278ee474b67fd",
+        "bytes": 2229248,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0025",
+      "label": "creation-x-select-all",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0025-before.json",
+        "sha256": "ee356eea12617304f0315cc287bcb0e893ec600e6c2eee404d88efff0cf43ffb",
+        "bytes": 241,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0025-after.json",
+        "sha256": "e57a1aafdb0f17a702653bf67ac92a5519a7197b9b37637b90a1be6a92129d12",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0026",
+      "label": "creation-x-literal",
+      "method": "typeText",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0026-before.json",
+        "sha256": "dc0b4564cc1f704be1f00259c2ed4702ae1f4b3a6879ba8f3252ca7b8407bfc5",
+        "bytes": 232,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0026-after.json",
+        "sha256": "03db53ec113042fa7fd41c69a19689f6c07933e713a15d13467eee70f3e52a7b",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0027",
+      "label": "creation-x-raw",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0027-before.json",
+        "sha256": "89dade2b46a17921545adfe2329ef922c6554033cbad93c6e181625b4ddb3f0b",
+        "bytes": 271,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0027-after.json",
+        "sha256": "665f2b655364d3a887eb852b64e123d150f2b964a3d593c7cb7d01f8b01b351d",
+        "bytes": 2226319,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0028",
+      "label": "creation-y-coordinate-focus",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0028-before.json",
+        "sha256": "7aa58776bb54c06265bafd188db4d6ab00f8eeb5cc5729d2ca1a1e4b25965034",
+        "bytes": 270,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0028-after.json",
+        "sha256": "61f406d5afc4f510d1bf5f78e6fe3f39ea63d2aeece069fd1c1105ff9e1be650",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0029",
+      "label": "creation-y-focused",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0029-before.json",
+        "sha256": "0f79c2ef977e96772ae8731e34a82f7df8af21140875b368552a21a29905448a",
+        "bytes": 275,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0029-after.json",
+        "sha256": "234bbfd29502d4bd0422e477207f5829aa73a082709fdf0959db59217bfc53fa",
+        "bytes": 2227791,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0030",
+      "label": "creation-y-select-all",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0030-before.json",
+        "sha256": "cc638527ac84200dffad9354f6af6e6a0ca1a3793c8fa2bc99c2a45301704a92",
+        "bytes": 241,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0030-after.json",
+        "sha256": "f52bbeeffde2285b28152b512095014ecf8aee925ee8f050d973901498b1e465",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0031",
+      "label": "creation-y-literal",
+      "method": "typeText",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0031-before.json",
+        "sha256": "199e0bedd141623b98bc165f824c0a1c7cce5fd9b2325ca1a70483114ce9ab0d",
+        "bytes": 232,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0031-after.json",
+        "sha256": "c5032e70434669444cd68d8ad1b81cbc5ccee729be14a62bf33d9d60178e9230",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0032",
+      "label": "creation-y-raw",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0032-before.json",
+        "sha256": "380aa38b01a01f398d385cc018fd631bb515a6ae108438453eca7b1d239493c4",
+        "bytes": 271,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0032-after.json",
+        "sha256": "3bdc0b7e2bb65da8fbbd4325dbed3ed10fc62ad8b7e96bdd6a7b13cb0ba73974",
+        "bytes": 2227780,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0033",
+      "label": "add-parent-rectangle-once",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0033-before.json",
+        "sha256": "e4ced8175c705b0316a5d18caf754bbbaeceef81a6d4315cf429874fb5454b4b",
+        "bytes": 235,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0033-after.json",
+        "sha256": "77d37dba070f4299d409a58c6684a854bbf51be22dfd3b762893beb0cbd045ec",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0034",
+      "label": "parent-rectangle-created-r1",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0034-before.json",
+        "sha256": "4642fa3dce2b63c5e0ca253bf6fab48792ce9654daab97066deccf820889181a",
+        "bytes": 284,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0034-after.json",
+        "sha256": "a3cea4032759e775333b72cc4af5ff0fd7d83322441ff1147e9217152845b6b4",
+        "bytes": 2296005,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0035",
+      "label": "frame-parent-once",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0035-before.json",
+        "sha256": "8b959bbf896e7109c2a414b1cf99bfe67a72c64f474041404b08cfd6c1ad1406",
+        "bytes": 227,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0035-after.json",
+        "sha256": "b014d149d2e23dbebf6c03405979318dd31e1d76dcc322ffb76feb3c61579e26",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0036",
+      "label": "parent-framed-r1",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0036-before.json",
+        "sha256": "a1489a259c3112ce553bb560ff78309b319bfb435b85a6b110bd5ed17c43065f",
+        "bytes": 273,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0036-after.json",
+        "sha256": "920719facdb94c5ddb71cb6df13be046e5bc43a24a31265141678e004b273e25",
+        "bytes": 2024366,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0037",
+      "label": "parent-save-as-file-menu",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0037-before.json",
+        "sha256": "414dc459fb1f3ce5a882000c2c36d4dd96c6835c6a8ad48eea91ed2546c09d3c",
+        "bytes": 233,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0037-after.json",
+        "sha256": "eef1e3e99b64f9919efcdf31d4bddfb6d3fa70756ed67b79a661c9ad4325115b",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0038",
+      "label": "parent-save-as-file-menu-open",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0038-before.json",
+        "sha256": "3b5a8473ac1cf7e5b91a4666fed56f611abdcce20b2a644ec48caf550d8c3af2",
+        "bytes": 286,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0038-after.json",
+        "sha256": "0952fbb5de8b5f7f5f747ebc7227f0ed6d76a6e3fef8d36d8a5b7f49009a6838",
+        "bytes": 2053063,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0039",
+      "label": "parent-save-as-menu-action",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0039-before.json",
+        "sha256": "7b2cf0eb512ce8403d9f63a1bae8f67850a020c5192c66ae3fb74d8dbbc26726",
+        "bytes": 267,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0039-after.json",
+        "sha256": "35ad374cc9d756e8be8171239790c7c18cde47ae281bfd6a61ef2110acdd649a",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0040",
+      "label": "parent-save-as-dialog",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0040-before.json",
+        "sha256": "929ade60c06f3ef36dcc42f65a302af47c8e4bb399dd651698a959d8f8406d77",
+        "bytes": 278,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0040-after.json",
+        "sha256": "b582d8bafc91e88e5e0a4d0ef85db75d931ef63597fd42c105074fd3ae093f5d",
+        "bytes": 187099,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0041",
+      "label": "parent-save-as-go-to-folder-once",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0041-before.json",
+        "sha256": "c01c714fa771a5c4691bb6ef750068653bc36bf6d496960a6dfd01462f131821",
+        "bytes": 258,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0041-after.json",
+        "sha256": "187dc04d48e424252a26c66157e102b1eac4f59e78753630d0281806b81c49b6",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0042",
+      "label": "parent-save-as-folder-entry-open",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0042-before.json",
+        "sha256": "010c5b62f9053bbf76b30d719b5793db85c460a929e61cedaca822e68c5291c6",
+        "bytes": 289,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0042-after.json",
+        "sha256": "f46296df992d0f43d74a58ba45d59f83f3a4aa56779ebd11a7a0b988b6bcdc1f",
+        "bytes": 214903,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0043",
+      "label": "parent-save-as-owned-folder-literal",
+      "method": "typeText",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0043-before.json",
+        "sha256": "6082e379fe909a773a76e6cba1831375845d14132ba991bc7560577257a3ab2d",
+        "bytes": 360,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0043-after.json",
+        "sha256": "fc045bc2e9823baa5124d79bece36245f9f9c17821735ba3428480d742531df0",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0044",
+      "label": "parent-save-as-owned-folder-raw",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0044-before.json",
+        "sha256": "49245dedd80f2239d5e7a24b1f5ac8883fab2dccd95b4b5abe21d569cca33fce",
+        "bytes": 288,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0044-after.json",
+        "sha256": "a8ee9dc6e9e782723f0f463a7be2258b69a1e5d212130ce78ba375b685c4536e",
+        "bytes": 202514,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0045",
+      "label": "parent-save-as-owned-folder-return",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0045-before.json",
+        "sha256": "270bdb2b9a9b0ca18e291c3c4a3c1c0a0cb9ccb1e822add67031b6037b60df08",
+        "bytes": 253,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0045-after.json",
+        "sha256": "bf4804d7258c2ba3d6e91879505a7df400832fe26ed47e88cba424b5c55c2f75",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0046",
+      "label": "parent-save-as-owned-folder-selected",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0046-before.json",
+        "sha256": "0f5343a5564bd2fb2959a5f27eabb339d3f39da084a1fef7885be8b4e620fac7",
+        "bytes": 293,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0046-after.json",
+        "sha256": "087ef6aa7ee20eb13abcba5e68354d617108539e4290fe79960eeed1a87e1ef2",
+        "bytes": 180568,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0047",
+      "label": "parent-save-as-exact-basename-once",
+      "method": "setValue",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0047-before.json",
+        "sha256": "d3b6fd0d848a3c293e2606dc097ccc586b93b12c2206194f72ab82e7b11d6a39",
+        "bytes": 281,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0047-after.json",
+        "sha256": "3ad81353484186a91b3cd2e39e4784f12bb18e76410328dcbb1aaa5c898a0dc2",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0048",
+      "label": "parent-save-as-basename-ready",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0048-before.json",
+        "sha256": "085691423a69e64f014c2e38b1d7e1d3a9e1aa4ae0fbdff66547507b90ca8494",
+        "bytes": 286,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0048-after.json",
+        "sha256": "871d2540bd5e4cd09a1215270958a17a1176a4ae67c8c464b2d95f31fbf002d0",
+        "bytes": 195813,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0049",
+      "label": "parent-save-as-single-save",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0049-before.json",
+        "sha256": "a1dafe8a2270fae3ac81447fe6cd58121e51175f823189974b8e3189759c4220",
+        "bytes": 236,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0049-after.json",
+        "sha256": "bf1b3e01e6c7e5f96c7fc38ddc43d76b995c02ce9aefacff28e04e2842ddaa4e",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0050",
+      "label": "parent-r1-clean-save",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0050-before.json",
+        "sha256": "9a1e0cf9864c5aa3b190459beeabbeedef80c8708ae1989465b7633bc964d955",
+        "bytes": 277,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0050-after.json",
+        "sha256": "cc5f81606f619343f58f942fcebcafdb18ff1628b0701f97b383a2bc3b47f6aa",
+        "bytes": 2014706,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0051",
+      "label": "retain-parent-r1",
+      "method": "fs.raw_snapshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0051-before.json",
+        "sha256": "e4da61191587d4dcdd5a94ffa35aac81a8a12e0efe01c1bb9604a1974cea03f3",
+        "bytes": 312,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0051-after.json",
+        "sha256": "dd552ecd727b9d35067149228b870aa2c60e7f573827462447707d26bcefbe95",
+        "bytes": 1064,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0052",
+      "label": "select-parent-owner-two-by-id",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0052-before.json",
+        "sha256": "997c40802a23e371a2e84d0b0a76bdb31c01ec0489f2fddc11234695d07f05c6",
+        "bytes": 240,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0052-after.json",
+        "sha256": "76aea5657cdce74e3d1b72922c8c2cd23bdaf0142b4a6145451df20ffc465b40",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0053",
+      "label": "parent-owner-two-selected",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0053-before.json",
+        "sha256": "87f44b192fc2a0d0b8e6fac3364dbed98b4867bbccfc4f4d8c2da75cefda682f",
+        "bytes": 282,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0053-after.json",
+        "sha256": "287ec001ab6daabff8f4fe9f40223e10eb290440a839df3fd2779a2ad08df6b7",
+        "bytes": 2004439,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0054",
+      "label": "first-hole-create-menu",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0054-before.json",
+        "sha256": "5d8c83d6bf5eabd105be2bdbc5fcfd357904e1b319c3f378e772f7759292ef62",
+        "bytes": 232,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0054-after.json",
+        "sha256": "0bfdcc78631493dd1dbc7ba9429746975b01db7fa3ce501cda33a9431649a74f",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0055",
+      "label": "first-hole-create-menu-open",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0055-before.json",
+        "sha256": "8be37183b1869d69b66fae9d1deec228628c2a90c10893202457b5589b70c3a3",
+        "bytes": 284,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0055-after.json",
+        "sha256": "e7e8a0858e15eacb5bdf98e034a585712982c6373c3dc5f0f9295fe6b83d422c",
+        "bytes": 1992794,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0056",
+      "label": "first-add-hole-menu-action",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0056-before.json",
+        "sha256": "7460c2b5389e5a723e2ee279d0a61efcff9b96d968ef8eb2ab8e1c1ffc40b33a",
+        "bytes": 267,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0056-after.json",
+        "sha256": "437f95d47ef7dd96b3595841d23d4fd13a986ab3f6a1a17b0ee2793491356f8d",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0057",
+      "label": "first-hole-review-open-r1",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0057-before.json",
+        "sha256": "b60dda1580b155f260697d77151fe88b814e5f9c9f4f99273423f1eb886491ff",
+        "bytes": 282,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0057-after.json",
+        "sha256": "e08efdd651f358dd23b0026a2de04a5e5c0a49cd7c280d3916357ae0c70cbcfa",
+        "bytes": 1718090,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0058",
+      "label": "first-hole-explicit-cancel",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0058-before.json",
+        "sha256": "25daa81c07f89076004dbef1d27bbd884a70cb83cb2033b3926deb571f932f7c",
+        "bytes": 268,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0058-after.json",
+        "sha256": "07de44979f14ea009e8dbb1ec07b97bcaffd2b398394cf05f39439ec131ff7ea",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0059",
+      "label": "first-hole-explicit-cancelled-r1",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0059-before.json",
+        "sha256": "da55a678dd1c122e0d40dc3245fd3d252407e5beaea8197eef88f1baa9c78a04",
+        "bytes": 289,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0059-after.json",
+        "sha256": "407f0929264f9def2b3f35d0a92a94e30d3b21a1de5be0c59351dd692c318f1f",
+        "bytes": 2013065,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0060",
+      "label": "escape-hole-create-menu",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0060-before.json",
+        "sha256": "f848f9eb107cf2d2ce861cfc24dfc277527c189ff0439ef8c04c208eb66017ee",
+        "bytes": 233,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0060-after.json",
+        "sha256": "e3e4d365ae935f642b1b202cf93cefff47d4bdd02ac7ae85ea094b2444ddffb6",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0061",
+      "label": "escape-hole-create-menu-open",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0061-before.json",
+        "sha256": "1903e8a6145a0b9461f4e33605cc5aeb72fc064b226ce8c6e28873d2ef3eb055",
+        "bytes": 285,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0061-after.json",
+        "sha256": "f18230a0b110c2b568d81d12a78e7acc070b17092c33e7f46391c4a4379e09fc",
+        "bytes": 1993400,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0062",
+      "label": "escape-add-hole-menu-action",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0062-before.json",
+        "sha256": "295ea88caf91af2ca5c2bae129ad9cf3a27d05f415c441768e38b7c09f9b12e7",
+        "bytes": 268,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0062-after.json",
+        "sha256": "ec02e4b75ca8708953922eb09dceb4d981b1917ce4118731513ac51b647f94d1",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0063",
+      "label": "escape-hole-review-open-r1",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0063-before.json",
+        "sha256": "670b6830599f1ce756ee125f5530a380110b96c29890573fe65eb5d5eff9658d",
+        "bytes": 283,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0063-after.json",
+        "sha256": "22297d55145906b8e0647a7949cbd1cbda766a29979fb218df9fa05d0dd44029",
+        "bytes": 1719424,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0064",
+      "label": "escape-hole-review-once",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0064-before.json",
+        "sha256": "c5d1b75402f971082d00f8da03a5e13096c8ea9773e51a5cd2d9ad6f9a652b27",
+        "bytes": 242,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0064-after.json",
+        "sha256": "b4276db1a70e9a0da015ca6addf453e05eec050a9d6cc42cf470487ff0e1ee0a",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0065",
+      "label": "escape-hole-review-cancelled-r1",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0065-before.json",
+        "sha256": "6b019be31c68e0072edfdfecb63c890c773d1c134b2985d8757aa80bbeaf2a08",
+        "bytes": 288,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0065-after.json",
+        "sha256": "55c3119ec93f520ba1a570cff75e697dcbc89c8fe0a2b930d3131779384bdff2",
+        "bytes": 2007879,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0066",
+      "label": "recover-retained-escape-capture-after-context-refresh",
+      "method": "local-retained-capture-recovery",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0066-before.json",
+        "sha256": "62b11f3f3c5bf3b7f793abea87f794cbf59ba07d67e7da863a1ad81866768d91",
+        "bytes": 227,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0066-after.json",
+        "sha256": "92a12c03c5e346d1ad41d1ebcd02410da7ac3b2707a4dd744a326251f1ffa8e4",
+        "bytes": 310,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0067",
+      "label": "open-create-menu-for-backdrop-hole-review",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0067-before.json",
+        "sha256": "8127c9bdcf6a70899628cd3e45d3f4f54d15cf64907e579ba9535e39d76a0025",
+        "bytes": 251,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0067-after.json",
+        "sha256": "2998c872c0eeea0f7a5bdf648e2ef01ac83c59335cb7a0e7eb9674c213ef1401",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0068",
+      "label": "backdrop-create-menu-current",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0068-before.json",
+        "sha256": "a4d22461b06afc6689acaab0e62b9849efac083973105d4dde1579f71db10cc5",
+        "bytes": 285,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0068-after.json",
+        "sha256": "eb65a6d2c2cc57454a11447938d7f0186046267cdbb7a243c64cbad4918ce2b8",
+        "bytes": 1995806,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0069",
+      "label": "open-hole-review-for-backdrop-cancel",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0069-before.json",
+        "sha256": "215394fc54b0c6b7139e6709d2e62e6a978ab688d51084503fc48ced36278de4",
+        "bytes": 277,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0069-after.json",
+        "sha256": "708ebac240959bec72670e611993696ffe788fbf337d2c300aff51d044de0cfe",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0070",
+      "label": "backdrop-hole-review-open-r1",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0070-before.json",
+        "sha256": "eb53a71ba0dd2df9e971fa1c5d5fc11b749e5817802b7436187eef58d1bbe4bd",
+        "bytes": 285,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0070-after.json",
+        "sha256": "d6d4c38311bff9b04d1cf37c7677e91c1efa13ab32ccc90644487d84f3a64fef",
+        "bytes": 1719916,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0071",
+      "label": "background-undo-click-cancels-hole-review",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0071-before.json",
+        "sha256": "c69d13a6d55d7108004f568397a0b7b7d1e23905a0949bd8fbbbc58b8fa814f6",
+        "bytes": 283,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0071-after.json",
+        "sha256": "2b495e563a9e6c98895ec8db5a86bd7e96eb5c2cd45c0040860a771f0cf30414",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0072",
+      "label": "backdrop-cancel-unchanged-r1",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0072-before.json",
+        "sha256": "a8e758edd3708e5c926e7b02a8d7e98fc5d9c533e71c48872cbb53902fd04fb5",
+        "bytes": 285,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0072-after.json",
+        "sha256": "e86403a8a61b47b9f431901486ff848272a1a0aac0e750f23ec1d2c3df978299",
+        "bytes": 2009608,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0073",
+      "label": "scroll-properties-to-creation-y-for-return-route",
+      "method": "scroll",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0073-before.json",
+        "sha256": "735b5da234d562d9e2e26420edbd6e0fb182de25c91c4f32d0844bc4eb4574fd",
+        "bytes": 315,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0073-after.json",
+        "sha256": "af09bccd757e81ac52e7969bdeb1fbea6fbbe7b42d848398da247d2acc6d4f0f",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0074",
+      "label": "creation-y-and-button-focus-route-visible",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0074-before.json",
+        "sha256": "4105c7f98892f154235abdf86a1c59a7939ae8d4a223fb81532486142e8fb9c2",
+        "bytes": 298,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0074-after.json",
+        "sha256": "5884d31dc372916ac6ed0d49ae21eb187bd271b4bb3ea3d557778504c3ebe3ed",
+        "bytes": 2064731,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0075",
+      "label": "focus-visible-creation-y-for-tab-route",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0075-before.json",
+        "sha256": "8e0ca164b5776384e13226a2dd3156440291b17e09b0af8aa4b30615abbefec6",
+        "bytes": 281,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0075-after.json",
+        "sha256": "cd811d36e612840951ef763649b782ef27cfc9cc3c39269d8296f8b2d573516d",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0076",
+      "label": "creation-y-focused-before-three-tabs",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0076-before.json",
+        "sha256": "f9f4f642dd3a8cdce19b438b88e0c339fcd0c726cfdb0452a7a7bfce244e2fce",
+        "bytes": 293,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0076-after.json",
+        "sha256": "48cedbef8bd02cad9b9daddd8f3ff53eab58fea9d0d6315d56bce70b199def6c",
+        "bytes": 2060969,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0077",
+      "label": "tab-once-from-creation-y-to-add-rectangle",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0077-before.json",
+        "sha256": "e28182a18f1b1352fa355521e88f0bb590cc5728416017ff4cda492d5ca1dfc8",
+        "bytes": 257,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0077-after.json",
+        "sha256": "8ef50d30e6e0dbede83527717d3c1fd5bb889fa4a5836ba968d1ecfe7d73575d",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0078",
+      "label": "add-rectangle-visible-keyboard-focus",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0078-before.json",
+        "sha256": "945728e31911aa7c145f0be2d73fb7409254ec3c880dc5ded6cfd34eba472be4",
+        "bytes": 293,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0078-after.json",
+        "sha256": "50d673b1560c42dfcbe75b466bd115c1c17204991c77478cf43d036676adecb1",
+        "bytes": 2067738,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0079",
+      "label": "tab-once-from-add-rectangle-to-add-ellipse",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0079-before.json",
+        "sha256": "f5e944bfb3dc1117755ecbe90365d2909b7c6376ef920de9203a49a3ec6e38bd",
+        "bytes": 258,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0079-after.json",
+        "sha256": "8454973cf7c0a781a202cd24261a92405ff30b0adcd0fc384c9dc4a5d26deac2",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0080",
+      "label": "add-ellipse-visible-keyboard-focus",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0080-before.json",
+        "sha256": "25dfcfcfa9cc512af3d91520402a5039e6b9ed2b474001561f7083b13ca57b5d",
+        "bytes": 291,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0080-after.json",
+        "sha256": "6d93d4ccf0bb31842b682dc97dc62a5645f889afc2bc17954f3a9f5627e74cdf",
+        "bytes": 2066871,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0081",
+      "label": "tab-once-from-add-ellipse-to-add-hole",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0081-before.json",
+        "sha256": "cf4dbef85e8bd8d3ce33d1f7a2ca84466ad841a8c1bb0efb4c133ce891dda18e",
+        "bytes": 253,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0081-after.json",
+        "sha256": "563c97ef4904bcc60bed3f34009aad2f79a9984c0bd54b74cafa6f55d67373bd",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0082",
+      "label": "add-hole-visible-keyboard-focus",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0082-before.json",
+        "sha256": "412379dec61c850e738d09aba25e5e6486c5884c7c7b629ec5248e74d66cce94",
+        "bytes": 288,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0082-after.json",
+        "sha256": "139be2c6bb29ae91721fc65a9ca62cc3e06426fbda333cf5f5407708031a688b",
+        "bytes": 2067562,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0083",
+      "label": "return-once-on-visibly-focused-add-hole",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0083-before.json",
+        "sha256": "5bf9fa744ed0f3f7adb2667f001f7ecdcf0c98feac118d3f56fe950e95ad07ff",
+        "bytes": 258,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0083-after.json",
+        "sha256": "a9d1143e4742bd58eeb52a540741b7dd6f79323138beec067d3292ea81875d4d",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0084",
+      "label": "return-opened-hole-review-only-r1",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0084-before.json",
+        "sha256": "215c974f8b1aa5420b687d97bd61bb478f694e7acef85335f7643465ffd8dfc2",
+        "bytes": 290,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0084-after.json",
+        "sha256": "c1b0a9715119743828998f722474a3418daedf92acab962e6b1efb0e9e6dc594",
+        "bytes": 1746058,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0085",
+      "label": "modal-shield-save-shortcut-once",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0085-before.json",
+        "sha256": "dae51c529eb1c57c2f729667c7bc5a04e68044c1ec360ca00b744ec0a5795d8d",
+        "bytes": 251,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0085-after.json",
+        "sha256": "b9757c102f2fd01ad968a0ca012a52ea8a675980d26fa42cdc04f438fd018e24",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0086",
+      "label": "modal-shield-save-keeps-review-r1",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0086-before.json",
+        "sha256": "3700dfc78e78543c7b9517112a1e7e5f574b53f959f5892ff19bcc11a921a355",
+        "bytes": 290,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0086-after.json",
+        "sha256": "4be50a0a5ae683ca9d9e7403538be9c4c2bd422f95a927dde7bdd36667f33217",
+        "bytes": 1742593,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0087",
+      "label": "modal-shield-undo-shortcut-once",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0087-before.json",
+        "sha256": "3c22e0d4441433ce497b1f3dc64bbcd1e830f02e410d2c3de8dbb14bf5aba072",
+        "bytes": 251,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0087-after.json",
+        "sha256": "dd035f9e32e44f333b84a4ad58812ab0bb47ca21f0c5774f56c3aa97b021b158",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0088",
+      "label": "modal-shield-undo-keeps-review-r1",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0088-before.json",
+        "sha256": "713fd3df679f1c23e53db030f160c5ac6e8b33e3fbb644d9ed104bd9a1347365",
+        "bytes": 290,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0088-after.json",
+        "sha256": "1ea8bfcd6d09382f3a402f4675afb4e92c1aad99e2dfa01491aa14b38543896b",
+        "bytes": 1742619,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0089",
+      "label": "modal-shield-space-once",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0089-before.json",
+        "sha256": "070a71a623143a2f93f41ae02a7bb6a3c07ba93d5461e4d1353f3df78ac12583",
+        "bytes": 241,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0089-after.json",
+        "sha256": "33182ed5d2c5c64d9631e0e6012f2f9f83e5f5b8870764dbcfe7226ee2907e40",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0090",
+      "label": "modal-shield-space-remains-stopped-r1",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0090-before.json",
+        "sha256": "590325b44a6122b8c68ef4445dabc8cf80d3553bf542cf90a0c1725fa5e6cf88",
+        "bytes": 294,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0090-after.json",
+        "sha256": "410bf6f053c8069fc62fd6da94bc9475a106d80fee47648517a0f208fcd8af77",
+        "bytes": 1742595,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0091",
+      "label": "modal-shield-command-palette-shortcut-once",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0091-before.json",
+        "sha256": "23c313b624ba7e3afb976218280eac72cfaad30332dc8d3b4f59199f14a67fe6",
+        "bytes": 262,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0091-after.json",
+        "sha256": "d8f5141fd3aa2bec96b96d037e01a1c983635ee9bb08c2791789bb313dbd4d89",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0092",
+      "label": "modal-shield-command-palette-keeps-review-r1",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0092-before.json",
+        "sha256": "fda2f3d6094551b93207890448321170838538b0f82355723934c0bdde50fbb9",
+        "bytes": 301,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0092-after.json",
+        "sha256": "86dc4a6bf9f050a3b28826138a00e16267cca0d0ad5d63d81bf01f24058e64f5",
+        "bytes": 1742555,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0093",
+      "label": "focus-origin-u-for-invalid-raw-text",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0093-before.json",
+        "sha256": "016a3f5fc6940c8f41348ba874eee1fbe45c7654cd90cf0d97c35169f03f75a0",
+        "bytes": 277,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0093-after.json",
+        "sha256": "1bb43460405b5ce5810ef2e383f03f7bec4f70340ec5b92f5ad636a53856fe05",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0094",
+      "label": "origin-u-focused-before-invalid-entry",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0094-before.json",
+        "sha256": "5f11ca038e43a34b751b3da67d3a318caccb0d2f16c9f53f28acaa50337d19fc",
+        "bytes": 294,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0094-after.json",
+        "sha256": "333a4a371c71c918e442b9f1b32768e0af0ef7c4f1d6df9cc9d7163cc79bdb1c",
+        "bytes": 1752170,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0095",
+      "label": "select-origin-u-text-for-invalid-entry",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0095-before.json",
+        "sha256": "3642512e4923c02160b5b95d23fc05ea72f8a0e155bc5ff28819ede29ffba62a",
+        "bytes": 258,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0095-after.json",
+        "sha256": "b739ab72608dccd609fd6f45ff99c221d2b602b21336f868e3ecf3afbf16440f",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0096",
+      "label": "type-origin-u-incomplete-exponent",
+      "method": "typeText",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0096-before.json",
+        "sha256": "2fce2c70e76894801197bad0460d9d20acc216fafcac7dde8ac8f46be9b938d1",
+        "bytes": 249,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0096-after.json",
+        "sha256": "381be9b9bf6bdcd39fb23490977d460053f45086ee2d8da7ea315fad2d991c1e",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0097",
+      "label": "origin-u-incomplete-exponent-preserved",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0097-before.json",
+        "sha256": "b5957307c24bad1e7c1af1ea1b173c7f7d3721860c146e96b320598817ed0056",
+        "bytes": 295,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0097-after.json",
+        "sha256": "8367adcfacde7ab04ad4250c96e1c80add81ca88d2c125973ace9d3e1e8a5e8d",
+        "bytes": 1737428,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0098",
+      "label": "move-origin-u-caret-left-once",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0098-before.json",
+        "sha256": "5fa09fb69082637385daae073600833f1df7031c285937f3cf555aebd9927a9c",
+        "bytes": 246,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0098-after.json",
+        "sha256": "d79e37b256d4e2b3511a7b9b07dc3ee940b646d647852729d8d0212193373903",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0099",
+      "label": "origin-u-caret-left-before-refused-apply",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0099-before.json",
+        "sha256": "7c72d9a70262db63a6577437d83878feeb1202bb7268f3604b24e0b2977c2c2e",
+        "bytes": 297,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0099-after.json",
+        "sha256": "0a4fbfef45b7d3a100a6fe0e70ac31089398835047d900214ab9285100f55b25",
+        "bytes": 1736857,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0100",
+      "label": "apply-incomplete-origin-u-once-refused",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0100-before.json",
+        "sha256": "cc6b154a7a3e9a4ecb25c411a8082e30071b0e10c60dabed8d87b87736e0719b",
+        "bytes": 280,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0100-after.json",
+        "sha256": "2a0f6e47d60fedc3c4bfd33194dc753f29173c548a0b2eda031278f74a3618f3",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0101",
+      "label": "invalid-apply-refused-text-and-focus-preserved-r1",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0101-before.json",
+        "sha256": "f5d3c718e45f6bf4ae6e0c22f371b7c8a5dc6cdd95d92ae2444791d0ef0e9a6f",
+        "bytes": 306,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0101-after.json",
+        "sha256": "4970b7aa7dbdc96121e11e791806cdec1565b972c10549a46876f56b45de88c4",
+        "bytes": 1737227,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0102",
+      "label": "insert-zero-after-refusal-without-refocus",
+      "method": "typeText",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0102-before.json",
+        "sha256": "c73efeeaeea7c199ea4ff55724508b16e8d7a8eb2cf81b23dd55fb6863330796",
+        "bytes": 255,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0102-after.json",
+        "sha256": "f0356085d953338bbc40a06ba60208f5c8d340ad6af69bcbcda7a123621fcbec",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0103",
+      "label": "raw-caret-witness-origin-u-one-e-zero-minus",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0103-before.json",
+        "sha256": "4dcdda02ade6717302964b74b23e0037681ff87459d6932f01ab712eb058766f",
+        "bytes": 300,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0103-after.json",
+        "sha256": "71330f7e7d80f99533d15d8d9ad080c6414b7809c9b0f814fea720286c6ab971",
+        "bytes": 1738394,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0104",
+      "label": "focus-origin-u-for-outside-rectangle-candidate",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0104-before.json",
+        "sha256": "fdf11bb8d237c5addf007f8cf94259ee605c1decce90055993af6dd70308fe19",
+        "bytes": 288,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0104-after.json",
+        "sha256": "53dfcc4065cc5540a866d3ef2bd70a1a2dc3186959beece5076ace4ee5c7b844",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0105",
+      "label": "origin-u-focused-before-outside-entry",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0105-before.json",
+        "sha256": "940f09a3f2eaa3dfd6417934e1dbb5340697001c8e7015f149ec0514f5ee86a6",
+        "bytes": 294,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0105-after.json",
+        "sha256": "72a8753d512021c6a0ff48068ec5d69cf97286840eb18020441d3da5defcf758",
+        "bytes": 1742396,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0106",
+      "label": "select-origin-u-text-for-outside-candidate",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0106-before.json",
+        "sha256": "aadb3013a22d5b70fefbcae7cef639a81f3e6a31bac3c649c42467ee1f22ddd9",
+        "bytes": 262,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0106-after.json",
+        "sha256": "c682073fde8873037b451787bb1623d7b43d974b5d6350d11e0cc4d125836bbe",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0107",
+      "label": "type-origin-u-outside-candidate",
+      "method": "typeText",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0107-before.json",
+        "sha256": "54b14f84c514b5f326dc58a045f38a3cd43d60a2c9235f6a24c4a3f0eb7dd29e",
+        "bytes": 248,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0107-after.json",
+        "sha256": "d25bcd383c6d6428035345491165cf1c75423ed518111e582c0b0fa80f3a36e5",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0108",
+      "label": "outside-candidate-visible-before-refused-apply",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0108-before.json",
+        "sha256": "16e236b8b9fc98113d18ac53def54df2b1254ca718cacd7f7e6f8b741a80ef31",
+        "bytes": 303,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0108-after.json",
+        "sha256": "cc90705b1c2bdf5d9688ee09da2e5754bd1166c6d6df358cd4bd5dc32010529c",
+        "bytes": 1759908,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0109",
+      "label": "apply-outside-hole-candidate-once-refused",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0109-before.json",
+        "sha256": "bc8c228afb4cc37654ada04ff8feaefe3f977169803f30ebb34c15cd44b23eb7",
+        "bytes": 283,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0109-after.json",
+        "sha256": "dd68c623e6dd8ac676121645a2c28179940b7efdec1d5683e776f45e799a63e2",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0110",
+      "label": "outside-apply-refused-owner-r1-unchanged",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0110-before.json",
+        "sha256": "c1b4cb3e556d48f3063e118790edbace5ee555a52aa51c2a56422a8b7f718ec0",
+        "bytes": 297,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0110-after.json",
+        "sha256": "d98de8e4b9ebef141fbd0b301a372efadb7a84e04baa1507777b8ccd5fe4f64e",
+        "bytes": 1755908,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0111",
+      "label": "focus-origin-u-for-accepted-candidate",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0111-before.json",
+        "sha256": "457a28d24ec009abacbb7c9522d29cd22bb6f80425aaf4204eb22e3b4f5cf944",
+        "bytes": 279,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0111-after.json",
+        "sha256": "2e0adde5debc07b91837bd86503230f3dfbf9cc1ce0bf8b245ef8538fe12d43a",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0112",
+      "label": "origin-u-focused-before-valid-entry",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0112-before.json",
+        "sha256": "fe7ae0dc4b6c6ab5321ef190cb35d72e437a31fb5aac5c84723a4476e96f7589",
+        "bytes": 292,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0112-after.json",
+        "sha256": "5ee88c98e60f5018ec358a6d1af4074794ef6710be3af1688683e6b81ebcf365",
+        "bytes": 1759133,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0113",
+      "label": "select-origin-u-before-valid-entry",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0113-before.json",
+        "sha256": "c162c2c159a3b3887fa36d85b82cbf5a08794957c76c118f85423d98f3bfe371",
+        "bytes": 254,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0113-after.json",
+        "sha256": "e9905e41ce3f3019cfb929061c87c1885da17142a4b29ff64847e5003f8850dc",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0114",
+      "label": "type-origin-u-valid-008",
+      "method": "typeText",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0114-before.json",
+        "sha256": "618e8df4703cda8db5d070773d94cc4822210e17ad2ec068478ea9b027d3b4eb",
+        "bytes": 240,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0114-after.json",
+        "sha256": "28fbc81e49f784cd77b7579d71823da497fb56a7baae09f3fd87a8cfe6271fae",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0115",
+      "label": "valid-origin-u-and-candidate-visible",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0115-before.json",
+        "sha256": "45e4d825640d18a1fa1ed8029b8b719f9879e2d1414e4d8a7bbb7e71c1fe544f",
+        "bytes": 293,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0115-after.json",
+        "sha256": "d00fbb25f66105911d41e24c73a4a2a062429ff2352d28478a5bcf9f74a88957",
+        "bytes": 1751170,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0116",
+      "label": "focus-origin-v-for-accepted-candidate",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0116-before.json",
+        "sha256": "839dde13e94dfc0fa26c9a203c4b67d731e5174e46605fc31e75edde342ab52b",
+        "bytes": 279,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0116-after.json",
+        "sha256": "472d2a81ba09ef928e88e33a82a530c6717ae9a616ee8e7d4c7374c87de4a759",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0117",
+      "label": "origin-v-focused-before-valid-entry",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0117-before.json",
+        "sha256": "806cea897e91099519e6fdf3f970263e0689e60176c990f202e9c0c5456e3c64",
+        "bytes": 292,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0117-after.json",
+        "sha256": "70a5905a40874bb4d29bc6bac57a1ef6ac706d6e328ce7782ed208b319108cd4",
+        "bytes": 1752624,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0118",
+      "label": "select-origin-v-before-valid-entry",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0118-before.json",
+        "sha256": "4cf610ae21cd98814e59dd3eedac3c29eb88cee9bf22c6d055fca757aa5427b7",
+        "bytes": 254,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0118-after.json",
+        "sha256": "a5d405b2abb88c5c211cc37b8187db4b7ed5f3d139aa980d9e037ce5609158de",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0119",
+      "label": "type-origin-v-valid-012",
+      "method": "typeText",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0119-before.json",
+        "sha256": "f8977a6d2a6775205ce66ace8e2c24160d7d3fc1d8be4b6726e243b475608ad7",
+        "bytes": 240,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0119-after.json",
+        "sha256": "5731827e49e24d1d19b3a2a3aa61a0231fc98f408bb780288ce919c4bb707fc5",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0120",
+      "label": "valid-origin-v-and-candidate-visible",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0120-before.json",
+        "sha256": "385effe2a13277bf28d40535eec71f47eb1c52a422438f15f82d52abff07577f",
+        "bytes": 293,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0120-after.json",
+        "sha256": "0039f8ad5a96d8dadbb7ecc25bf67b0b0e801044cf929265d01036dce49959eb",
+        "bytes": 1752628,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0121",
+      "label": "focus-width-for-accepted-hole-candidate",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0121-before.json",
+        "sha256": "298c34e2ced5e72c6f614c1e9a2fd2caeea2b25e9faa807143669cd411b1d520",
+        "bytes": 281,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0121-after.json",
+        "sha256": "3ede79cf75b3bd013a42e4665e3a9c165d82d594fc5f49517fddc4c1c6e56db4",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0122",
+      "label": "hole-width-focused-before-valid-entry",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0122-before.json",
+        "sha256": "42e47440ef217c2e6adcc310b249b945ff0573f44374d3e3857cda80256bbc2e",
+        "bytes": 294,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0122-after.json",
+        "sha256": "fc16f72bf9cdc52af2511cb2801f732d64af5bbb01e2f54884ce96dc9074ad1f",
+        "bytes": 1748981,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0123",
+      "label": "select-hole-width-before-valid-entry",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0123-before.json",
+        "sha256": "a31baddc9dad55949f0c723c301ab5cbae5625641b6977d02232a66beb2bd25a",
+        "bytes": 256,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0123-after.json",
+        "sha256": "f25ebc5fcaef825cd8594f325944806196aaca71c81897a922038dc52c39924e",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0124",
+      "label": "type-hole-width-valid-008",
+      "method": "typeText",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0124-before.json",
+        "sha256": "f4357d3d97ef2a7bfe4188b4e8e7682d7cdc478f153e0bde31aabd6a28643942",
+        "bytes": 242,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0124-after.json",
+        "sha256": "d442b50d938e9a9d7c4ea1f59d5ef858736a07ac3f4737d31fc042e1b7af365c",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0125",
+      "label": "valid-hole-width-visible",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0125-before.json",
+        "sha256": "0825862e121cce30edcf0efc6a54406eec657d30f1be5300fdca5936385e487e",
+        "bytes": 281,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0125-after.json",
+        "sha256": "1d09ac9ba32f5ca20be26f00718cec9ce6272715a8a3e71e3719d0ccec15930b",
+        "bytes": 1749239,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0126",
+      "label": "focus-height-for-accepted-hole-candidate",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0126-before.json",
+        "sha256": "954e7d972702cfead7dd40cef32082407dd0d818074580244439329037578f82",
+        "bytes": 282,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0126-after.json",
+        "sha256": "63061507dfb2123872113fde398882c32fa78facee343b079e3f7a00ec434521",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0127",
+      "label": "hole-height-focused-before-valid-entry",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0127-before.json",
+        "sha256": "c61733f9eccbd6878b02a2d06e7635a2e3809d56b445545312300b861c09e8c7",
+        "bytes": 295,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0127-after.json",
+        "sha256": "b3fbb5912936d56fa51dc6106944ac4ab3cd3ae2b13e7a4addf9d370fc9827e8",
+        "bytes": 1747663,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0128",
+      "label": "select-hole-height-before-valid-entry",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0128-before.json",
+        "sha256": "a844802fdaee02ac7c116197e41f74107cb45d86caf0cd8ffc7028995f3dbc1a",
+        "bytes": 257,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0128-after.json",
+        "sha256": "fc9f61950b8f1ad01189884e98a06aa12174b366831845e1bf92ff7292bcd47d",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0129",
+      "label": "type-hole-height-valid-012",
+      "method": "typeText",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0129-before.json",
+        "sha256": "b4e163a566e57d310f7b988b8c898c9e21d584520441d0eb7ccc84641a1c389f",
+        "bytes": 243,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0129-after.json",
+        "sha256": "56a04c720d232e671d4d1f54e3a1d3eebb08908271b440f7b65585e251dd175d",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0130",
+      "label": "all-four-exact-hole-fields-visible",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0130-before.json",
+        "sha256": "823d5c10be370b95998cd4b2028bb0f4b7ae8542d55c80818acde2f68e87b01d",
+        "bytes": 291,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0130-after.json",
+        "sha256": "0f42831f64fc43ca54f9b02a75ea6c0c7cd54ced89eea948120c8a7d49dbf68a",
+        "bytes": 1747565,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0131",
+      "label": "tab-once-inspect-exact-hole-candidate-before-apply",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0131-before.json",
+        "sha256": "51e7f9785a74152bfd24a587c787d79dc51296e7259500b833517bdf2f55b11e",
+        "bytes": 266,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0131-after.json",
+        "sha256": "8999252a68eea61d8778e2835c9781ced03ec8cdb1ba5ef4a35678119cad91fc",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0132",
+      "label": "exact-hole-candidate-reviewed-before-single-accepted-apply",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0132-before.json",
+        "sha256": "1ecb12d67eb03e15f604fca51e4ef4323fee60ae945bb4c80e9a0ea5b2f3f6fe",
+        "bytes": 315,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0132-after.json",
+        "sha256": "8ae8403bcfab0f7758a8e13657fff2681da1a58b00f85253baa011fbdacc5921",
+        "bytes": 1750363,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0133",
+      "label": "apply-exact-hole-candidate-once",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0133-before.json",
+        "sha256": "9abe1ae78e5cfcf856761b5710a8aec8c70904e5ee8587d263c849de023bf13e",
+        "bytes": 273,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0133-after.json",
+        "sha256": "476c01e9cb4c6be2235c27c5c4abf42598420b01df9e7734e216fa2180d9fcc7",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0134",
+      "label": "hole-single-accepted-apply-r2",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0134-before.json",
+        "sha256": "ed0e4f5ca437cf4b3cc03691408b081b825a4b5a3ebf5ae1a2ecbf398af459cb",
+        "bytes": 286,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0134-after.json",
+        "sha256": "bbb3b8a2dfa3c9070ef93ca8604e10bbb070b0d35f25fbbbdf687c49bbc7db31",
+        "bytes": 2020548,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0135",
+      "label": "open-file-menu-to-save-hole-r2",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0135-before.json",
+        "sha256": "b5aef14ef9001b8babb4943fcce82423bd4e0b503c421944b799315ed76bdf92",
+        "bytes": 270,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0135-after.json",
+        "sha256": "d69c2f7f3a4f7ec54ca33e10a0149736e28d2c4c5c02ba41786c2646a96a8ece",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0136",
+      "label": "file-save-hole-r2-menu-current",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0136-before.json",
+        "sha256": "1ac886140897018f577a6ecdc9e209fe87c10a83786f40f5e024747acdb3ee73",
+        "bytes": 287,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0136-after.json",
+        "sha256": "76b993318342ddf1a51ce404313c7ece0e6daa1a22de758dce1497e0a4f66506",
+        "bytes": 2044209,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0137",
+      "label": "save-hole-r2-native-once",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0137-before.json",
+        "sha256": "aebeb52875f25d7fd8cf6edcecb8a0e2a641a603600828f6590f905717d5724c",
+        "bytes": 235,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0137-after.json",
+        "sha256": "0d943701ec963a7e381520b85b99a733343f453097fda8db24ad48e51313bd68",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0138",
+      "label": "hole-r2-clean-native-save",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0138-before.json",
+        "sha256": "ff8c8a7ac6e5c731a0c9c1924589133e42b09d32fb8158ac17630a9eac23316b",
+        "bytes": 282,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0138-after.json",
+        "sha256": "35499fd869bd885f401b8aaa981b284bacecaa2a1e6b97223cdda861bd41fe04",
+        "bytes": 1998963,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0139",
+      "label": "retain-clean-native-hole-r2",
+      "method": "fs.raw_snapshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0139-before.json",
+        "sha256": "3087a010a63f010eacaa69eaaad89a65af743b602d47afbf8b05ab189fb68be2",
+        "bytes": 268,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0139-after.json",
+        "sha256": "07c326be92d542b98a8192b02bb9e31963ffe556e26084a1627e3d17a4c6819a",
+        "bytes": 1200,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0140",
+      "label": "select-hole-eleven-for-edge-inspection",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0140-before.json",
+        "sha256": "d94ebc56c036b8ccfe34d7ee62f9fe4f2d882ec40d8aa44f559d61f619ac2047",
+        "bytes": 281,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0140-after.json",
+        "sha256": "c5c0d391389d3786cc97e212779bc5f7d3042f8c79e755257eacc970783741e8",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0141",
+      "label": "selected-hole-eleven-edge-sixteen-r2",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0141-before.json",
+        "sha256": "8aed07a84df263ead0500c57561a1a4f266c4178c7eae50a5936965015f9a3e0",
+        "bytes": 293,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0141-after.json",
+        "sha256": "433cb1d235b384a822f40f79f046271a18d195e5afc22ea2e4d1f0e545b0099c",
+        "bytes": 1990295,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0142",
+      "label": "scroll-properties-up-to-hole-edge-and-point-twelve",
+      "method": "scroll",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0142-before.json",
+        "sha256": "dd04e60b084658bd1be6bae35e6b78aca1dfba5182294a0573d8f04a8aa633b3",
+        "bytes": 315,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0142-after.json",
+        "sha256": "1a4c12a6e0588648653e762602f1d9f4f9b568e1a470b7fc6d35043e8461c734",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0143",
+      "label": "hole-edge-sixteen-and-point-twelve-fields-visible",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0143-before.json",
+        "sha256": "dd8deb69a2464444accfd2fae8c8d4dda329d3b49f0da6a418d40e18d4ff9ea3",
+        "bytes": 306,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0143-after.json",
+        "sha256": "8428d6e59a2073873c81316f6341c2592437af69bc169dba76ac49b7e846ba13",
+        "bytes": 2208861,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0144",
+      "label": "focus-hole-vertex-twelve-u-for-single-edit",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0144-before.json",
+        "sha256": "fb3c3b6488a3d206e6805f39c6b84f8ebdd4ec6596fe91a20ecf0f53bd1a0557",
+        "bytes": 285,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0144-after.json",
+        "sha256": "46d1be1bf4c3ad1ea0448ffbc5a983d1bdb92d3dbe8b7cdc00ef0c9fb86ee0a8",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0145",
+      "label": "vertex-twelve-u-focused-before-edit",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0145-before.json",
+        "sha256": "4d17d09b7c5b525dfe724fc0b3aca0e7c363397151cb1398a23acd1bfc48bd50",
+        "bytes": 292,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0145-after.json",
+        "sha256": "4b80d9b54cf34f0d2bbfd47cce16abe3cc368ad99233efea1258043742f28781",
+        "bytes": 2207592,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0146",
+      "label": "select-vertex-twelve-u-before-single-edit",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0146-before.json",
+        "sha256": "64254dee858ed682eb71d4db7fe66ca86bc88a9cb8dc60dfd84e6610e352b856",
+        "bytes": 261,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0146-after.json",
+        "sha256": "464a965ddc9fe47a5c35d931cdf076760dee37f8a54347f0578872bbbeb748b0",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0147",
+      "label": "type-vertex-twelve-u-006",
+      "method": "typeText",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0147-before.json",
+        "sha256": "11b663053445478bc4d69f53ff9be2cd7f3ffe6994d2d1c24c2cf2d89e5b4cf6",
+        "bytes": 241,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0147-after.json",
+        "sha256": "7351a581ac949f8e63bdae751c118afd56ab600952f5757b59672baf6307be34",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0148",
+      "label": "vertex-twelve-u-draft-before-tab-commit",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0148-before.json",
+        "sha256": "c8b344b6690302201cbb5c7133ef6446eca5b8ba5fdfeceefb8abd85c7f67776",
+        "bytes": 296,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0148-after.json",
+        "sha256": "78c2569137fa1c13bb6b6e3623d2e73fb627ab4ed176a44d091305a57f05fa76",
+        "bytes": 2207208,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0149",
+      "label": "tab-once-commit-vertex-twelve-u-edit",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0149-before.json",
+        "sha256": "a4b1f7f8ea4487b1323f80ab43d9919c0d2a29e23383f3a55c60f39e822be7f2",
+        "bytes": 252,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0149-after.json",
+        "sha256": "21f44fbfdfd7d38909b6fb69d68da543d2cf70c6425a10ca52b85a95a0b21727",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0150",
+      "label": "vertex-twelve-u-edit-committed-r3",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0150-before.json",
+        "sha256": "6c42ad9eb868f203d4613220df55aeac0bdeb0f968880c92d48e20f6e37d91e4",
+        "bytes": 290,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0150-after.json",
+        "sha256": "f4170205a0bdb4c44fea3dec897417ff277fd575b63e64bb96c6d9bafc5d8071",
+        "bytes": 2249277,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0151",
+      "label": "open-file-menu-to-save-edit-r3",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0151-before.json",
+        "sha256": "270ab936653e74a940bb1b451168436e861871330c04650b53a2aa74b8c5ab2b",
+        "bytes": 241,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0151-after.json",
+        "sha256": "1f986e93fb4e2b749d67519207f4d9564e03c9caaadc657a582473c4315e8d03",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0152",
+      "label": "file-save-edit-r3-menu-current",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0152-before.json",
+        "sha256": "61c37f136c9317d8412a6f6c0ded5eb9039ab7ffcdd67b2acc17bf5011191a62",
+        "bytes": 287,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0152-after.json",
+        "sha256": "7ec6dab7ba33639f9d2e8d010ad461b9d5feb9f46015088e440e54cd95bd7202",
+        "bytes": 2279575,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0153",
+      "label": "save-edit-r3-native-once",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0153-before.json",
+        "sha256": "a77539cbcd1d4248c6575600ad06bd1d0846ed1cfc30b9034201c04f289fb395",
+        "bytes": 265,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0153-after.json",
+        "sha256": "ee99d8d26a474c95f8d8c7a204444b21c3cf03c0c72b7be84a137cb8041a785c",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0154",
+      "label": "edit-r3-clean-native-save",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0154-before.json",
+        "sha256": "49409fc7cb51ee0584a41df4b3bab7df65d4fd6398126ccf06db86fa80501e1a",
+        "bytes": 282,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0154-after.json",
+        "sha256": "df24c5a13d12b8c18635c7cfc285a319e1bae563359c4b73f6eb98f8ac029527",
+        "bytes": 2218174,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0155",
+      "label": "retain-clean-native-edit-r3",
+      "method": "fs.raw_snapshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0155-before.json",
+        "sha256": "b3e2bb4dc15d1cdd83cce7e4a3870a663a701450990a1a5743759255fc2b5fea",
+        "bytes": 268,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0155-after.json",
+        "sha256": "5acb6953cd7c96f63022a450c5b0db3b6c59353dbbc9c2f0ba3a1d52e0dd8135",
+        "bytes": 1261,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0156",
+      "label": "undo-vertex-edit-once",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0156-before.json",
+        "sha256": "45472b75d6fb859366a9d4e3ae43a236d9e6d412c104ed7d3f82a0506f46c113",
+        "bytes": 263,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0156-after.json",
+        "sha256": "4def8067453892a5f10a9e41cbdddf67de3eba2c5bcb37f0af0472b5388fcf55",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0157",
+      "label": "single-undo-restores-hole-shape-r4",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0157-before.json",
+        "sha256": "d1ca7e3ccf596071a87a68a7ea106ca5baa192ecbc4ff3dd39531e258f6bdcdc",
+        "bytes": 291,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0157-after.json",
+        "sha256": "3eb4645b9cb58d1c46be77b2384f1cf663fa9cac640b62a0c4e0fab8053f90fd",
+        "bytes": 2225856,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0158",
+      "label": "open-file-menu-to-save-undo-r4",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0158-before.json",
+        "sha256": "b2c6c537f728e3e352f3f3df7088c22a38b1721fa8a2e6c2607828d5dfc38eb3",
+        "bytes": 270,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0158-after.json",
+        "sha256": "b3e1109f58139c6941dab57fbcd21e5a7c151dbe2c27aeddf0af0b5ae58c3c1b",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0159",
+      "label": "file-save-undo-r4-menu-current",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0159-before.json",
+        "sha256": "d3e96d925ef29303df75306b62eddd2877e4f0daedbf0f0e53438b791901f06e",
+        "bytes": 287,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0159-after.json",
+        "sha256": "a3ada5b04f1d03d8481a1ff875bf0e3af2b2d6fce9670aac5b61ff6fc89fc791",
+        "bytes": 2255686,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0160",
+      "label": "save-undo-r4-native-once",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0160-before.json",
+        "sha256": "4ec0bf328020be1b4613d80f3afa9c1bbdf89cfbec261b52c5e82c4fc7d9eeb2",
+        "bytes": 265,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0160-after.json",
+        "sha256": "b016ad3459100da322e1ea6e5826fafff96d24eef7849e3683b766acfe97ff06",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0161",
+      "label": "undo-r4-clean-native-save",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0161-before.json",
+        "sha256": "8f3d5b6613bb906d9278c7caaeb22002e69e40f559ed47bc8f9a1994bdc14050",
+        "bytes": 282,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0161-after.json",
+        "sha256": "136d3b19bec4a2fe0abf48d12a76a317d20f43aaf52ddc98a2f55521a8b6430f",
+        "bytes": 2201960,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0162",
+      "label": "retain-clean-native-undo-r4",
+      "method": "fs.raw_snapshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0162-before.json",
+        "sha256": "ef948766c4bb005cb28ee73e06d380f63c6c2b8b0db2d06a3af7d1cfc5dbb992",
+        "bytes": 268,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0162-after.json",
+        "sha256": "bb2465ac7237382ca5e09299fb848322e6b99c85bf96dd4322878e30f432f585",
+        "bytes": 1261,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0163",
+      "label": "redo-vertex-edit-once",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0163-before.json",
+        "sha256": "33f9c3722114608b88c93eded45a53fcab62567d84b15490b7316a76dd925001",
+        "bytes": 263,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0163-after.json",
+        "sha256": "8a6c879de2a139f548e9c09701cc0927e9c4798a97a426d3ba6577f4c2e7eab2",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0164",
+      "label": "single-redo-restores-edited-hole-r5",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0164-before.json",
+        "sha256": "8c2c633ff49dd27151be0d665a741d30675de628f4f3a21e2082bc1da2f50051",
+        "bytes": 292,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0164-after.json",
+        "sha256": "3cdc0bd3b8fd76935758b725638c2d3c43926db61a835dc6dfc1db231c3e5ab2",
+        "bytes": 2240243,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0165",
+      "label": "open-file-menu-to-save-redo-r5",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0165-before.json",
+        "sha256": "3b92e9b1fc6a2d51f7313b7fb06e3c01ab13b0af7c68db94a5cd6f7d6918285c",
+        "bytes": 270,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0165-after.json",
+        "sha256": "7c6b3c6a55eb0913a6eff58303a53eeff2c8be3f64aee0809d77df4018413ab6",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0166",
+      "label": "file-save-redo-r5-menu-current",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0166-before.json",
+        "sha256": "f1f324aa1a49bcd62ce56fae3206ef195702107ba21e5895ea52b6376ac44394",
+        "bytes": 287,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0166-after.json",
+        "sha256": "315d978bdd0066c7e1e74c2fe5af6b36bc7bf65cf68b81b19666ee622cd636ba",
+        "bytes": 2268867,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0167",
+      "label": "save-redo-r5-native-once",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0167-before.json",
+        "sha256": "97c8b4404f85bb11da92ec375089a3aeaafe82e1d2926412c882aafd1d81cf72",
+        "bytes": 265,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0167-after.json",
+        "sha256": "d1770f497a65d131a91ba9bf6ad8885b4767789506674b9fbb74a002db9fc2e8",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0168",
+      "label": "redo-r5-clean-native-save",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0168-before.json",
+        "sha256": "b6d1fbe5d512aca20336cdc0ffb93376be9375fbb541065b51205aa560365717",
+        "bytes": 282,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0168-after.json",
+        "sha256": "f04d125ac6c19682df1331678c5227e111df93b9f08a24a63d92cce362aa73b2",
+        "bytes": 2215501,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0169",
+      "label": "retain-clean-native-redo-r5",
+      "method": "fs.raw_snapshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0169-before.json",
+        "sha256": "3c32949f119c7c739b2244b8199c0cb8185bd94a6b16fd958c230751504e0b39",
+        "bytes": 268,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0169-after.json",
+        "sha256": "83b862bee27ceac4c77b2e2d0c0d411d42e0c023a9d6134ba3a4af19e69d4de3",
+        "bytes": 1261,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0170",
+      "label": "inspect-stable-hole-eleven-after-redo-r5",
+      "method": "click",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0170-before.json",
+        "sha256": "3fca36d87223419a2db2cbca928034a0834e951de1e87f8761e9472136890fa5",
+        "bytes": 283,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0170-after.json",
+        "sha256": "17c27d8aa9fe3776c6d94971a56e24dc0bb7dddd3171597d76eb88fa82c7ca43",
+        "bytes": 152,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0171",
+      "label": "final-saved-r5-stable-hole-eleven-curve-sixteen",
+      "method": "getAXStateAndScreenshot",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0171-before.json",
+        "sha256": "963868c364e09cca6489175238596c7d1249af9af0b8916a58f5c0299b1c47ac",
+        "bytes": 304,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0171-after.json",
+        "sha256": "84fdbdb106081917b120f9673c8d30d7340700663bc1803d6bd0a1aee1c23cd5",
+        "bytes": 2213237,
+        "mode": "600"
+      }
+    },
+    {
+      "record": "0172",
+      "label": "planned-real-quit-last-native-operation",
+      "method": "pressKey",
+      "before": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0172-before.json",
+        "sha256": "7f88c385706df2b82a48d6ea65e2192e3945c37c9af9b3bdc3eda43153fa9ffa",
+        "bytes": 259,
+        "mode": "600"
+      },
+      "after": {
+        "path": ".local/native-straight-hole-20261116/H1-001/trace/0172-after.json",
+        "sha256": "5b7d297753341bba967956ef2e25ded61b5bfe40248b93c5cca83ad03c6ff6fd",
+        "bytes": 152,
+        "mode": "600"
+      }
+    }
+  ],
+  "raw_retention_checks": [
+    {
+      "manifest": {
+        "path": ".local/native-straight-hole-20261116/H1-001/ACTOR-RAW-RETENTION-MANIFEST.json",
+        "sha256": "3789f9f15d525d62b48c5f43613c651fb2b437c130a412131879ff8f7a337245",
+        "bytes": 162339,
+        "mode": "444"
+      },
+      "checked_entries": 848,
+      "hash_size_mode_mismatches": []
+    },
+    {
+      "manifest": {
+        "path": ".local/native-straight-hole-20261116/H1-001/ACTOR-RAW-RETENTION-MANIFEST-V2.json",
+        "sha256": "4d970f3920473589be8ac07454fa11e57d48db93e6129f1d45fb4e843116a1db",
+        "bytes": 163156,
+        "mode": "444"
+      },
+      "checked_entries": 851,
+      "hash_size_mode_mismatches": []
+    }
+  ],
+  "snapshots": [
+    {
+      "label": "parent-r1",
+      "revision": 1,
+      "save_record": "0049",
+      "capture_record": "0050",
+      "retention_record": "0051",
+      "snapshot": {
+        "path": ".local/native-straight-hole-20261116/H1-001/snapshots/parent-r1.weftforge",
+        "sha256": "525855265074aed8ff1af10297c353973cc294a3d83fca818161ce702ba7310f",
+        "bytes": 3232,
+        "mode": "444"
+      },
+      "receipt": {
+        "path": ".local/native-straight-hole-20261116/H1-001/snapshots/parent-r1.receipt.json",
+        "sha256": "fd3bd8c669d15db245aeb7260872cab499660de5a5af9eed89e9e37acead9404",
+        "bytes": 904,
+        "mode": "444"
+      },
+      "sidecars": {},
+      "geometry_graded_by_this_review": false
+    },
+    {
+      "label": "hole-r2",
+      "revision": 2,
+      "save_record": "0137",
+      "capture_record": "0138",
+      "retention_record": "0139",
+      "snapshot": {
+        "path": ".local/native-straight-hole-20261116/H1-001/snapshots/hole-r2.weftforge",
+        "sha256": "cf9ab135a02d5bfc3da3c7292d58bd61b25263eabcb7588bf7bc69c3cfc53920",
+        "bytes": 4190,
+        "mode": "444"
+      },
+      "receipt": {
+        "path": ".local/native-straight-hole-20261116/H1-001/snapshots/hole-r2.receipt.json",
+        "sha256": "c14cbf02ff022d1fd3c1839cf8a86ad53ea678500fa440db4e75b8579e53640e",
+        "bytes": 1031,
+        "mode": "444"
+      },
+      "sidecars": {
+        ".recovery": {
+          "path": ".local/native-straight-hole-20261116/H1-001/snapshots/hole-r2.recovery",
+          "sha256": "525855265074aed8ff1af10297c353973cc294a3d83fca818161ce702ba7310f",
+          "bytes": 3232,
+          "mode": "444"
+        },
+        ".autosave": {
+          "path": ".local/native-straight-hole-20261116/H1-001/snapshots/hole-r2.autosave",
+          "sha256": "cf9ab135a02d5bfc3da3c7292d58bd61b25263eabcb7588bf7bc69c3cfc53920",
+          "bytes": 4190,
+          "mode": "444"
+        }
+      },
+      "geometry_graded_by_this_review": false
+    },
+    {
+      "label": "edit-r3",
+      "revision": 3,
+      "save_record": "0153",
+      "capture_record": "0154",
+      "retention_record": "0155",
+      "snapshot": {
+        "path": ".local/native-straight-hole-20261116/H1-001/snapshots/edit-r3.weftforge",
+        "sha256": "de7e0664599bb40280ec2148270140fc57765443bd02621275feb25a4496dcfb",
+        "bytes": 4190,
+        "mode": "444"
+      },
+      "receipt": {
+        "path": ".local/native-straight-hole-20261116/H1-001/snapshots/edit-r3.receipt.json",
+        "sha256": "0dd532ef06b7d010b06cda3ed455f4cefc129188c7cb9414e5bc08558b15fbf2",
+        "bytes": 1090,
+        "mode": "444"
+      },
+      "sidecars": {
+        ".recovery": {
+          "path": ".local/native-straight-hole-20261116/H1-001/snapshots/edit-r3.recovery",
+          "sha256": "cf9ab135a02d5bfc3da3c7292d58bd61b25263eabcb7588bf7bc69c3cfc53920",
+          "bytes": 4190,
+          "mode": "444"
+        },
+        ".autosave": {
+          "path": ".local/native-straight-hole-20261116/H1-001/snapshots/edit-r3.autosave",
+          "sha256": "de7e0664599bb40280ec2148270140fc57765443bd02621275feb25a4496dcfb",
+          "bytes": 4190,
+          "mode": "444"
+        },
+        ".autosave.recovery": {
+          "path": ".local/native-straight-hole-20261116/H1-001/snapshots/edit-r3.autosave.recovery",
+          "sha256": "cf9ab135a02d5bfc3da3c7292d58bd61b25263eabcb7588bf7bc69c3cfc53920",
+          "bytes": 4190,
+          "mode": "444"
+        }
+      },
+      "geometry_graded_by_this_review": false
+    },
+    {
+      "label": "undo-r4",
+      "revision": 4,
+      "save_record": "0160",
+      "capture_record": "0161",
+      "retention_record": "0162",
+      "snapshot": {
+        "path": ".local/native-straight-hole-20261116/H1-001/snapshots/undo-r4.weftforge",
+        "sha256": "67b29fd49696c17755eaa291364bd176e9e768bc3050d6da4ebd98214c601891",
+        "bytes": 4190,
+        "mode": "444"
+      },
+      "receipt": {
+        "path": ".local/native-straight-hole-20261116/H1-001/snapshots/undo-r4.receipt.json",
+        "sha256": "5e7d63254d819529c685a4389e03a56620821f0786fed67b0a893ad3d20626fb",
+        "bytes": 1090,
+        "mode": "444"
+      },
+      "sidecars": {
+        ".recovery": {
+          "path": ".local/native-straight-hole-20261116/H1-001/snapshots/undo-r4.recovery",
+          "sha256": "de7e0664599bb40280ec2148270140fc57765443bd02621275feb25a4496dcfb",
+          "bytes": 4190,
+          "mode": "444"
+        },
+        ".autosave": {
+          "path": ".local/native-straight-hole-20261116/H1-001/snapshots/undo-r4.autosave",
+          "sha256": "de7e0664599bb40280ec2148270140fc57765443bd02621275feb25a4496dcfb",
+          "bytes": 4190,
+          "mode": "444"
+        },
+        ".autosave.recovery": {
+          "path": ".local/native-straight-hole-20261116/H1-001/snapshots/undo-r4.autosave.recovery",
+          "sha256": "cf9ab135a02d5bfc3da3c7292d58bd61b25263eabcb7588bf7bc69c3cfc53920",
+          "bytes": 4190,
+          "mode": "444"
+        }
+      },
+      "geometry_graded_by_this_review": false
+    },
+    {
+      "label": "redo-r5",
+      "revision": 5,
+      "save_record": "0167",
+      "capture_record": "0168",
+      "retention_record": "0169",
+      "snapshot": {
+        "path": ".local/native-straight-hole-20261116/H1-001/snapshots/redo-r5.weftforge",
+        "sha256": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41",
+        "bytes": 4190,
+        "mode": "444"
+      },
+      "receipt": {
+        "path": ".local/native-straight-hole-20261116/H1-001/snapshots/redo-r5.receipt.json",
+        "sha256": "612fa1fca7397c0bd2e4c3bfb0d5b193b5390b8af6e0ac60bffc39cae2399046",
+        "bytes": 1090,
+        "mode": "444"
+      },
+      "sidecars": {
+        ".recovery": {
+          "path": ".local/native-straight-hole-20261116/H1-001/snapshots/redo-r5.recovery",
+          "sha256": "67b29fd49696c17755eaa291364bd176e9e768bc3050d6da4ebd98214c601891",
+          "bytes": 4190,
+          "mode": "444"
+        },
+        ".autosave": {
+          "path": ".local/native-straight-hole-20261116/H1-001/snapshots/redo-r5.autosave",
+          "sha256": "de7e0664599bb40280ec2148270140fc57765443bd02621275feb25a4496dcfb",
+          "bytes": 4190,
+          "mode": "444"
+        },
+        ".autosave.recovery": {
+          "path": ".local/native-straight-hole-20261116/H1-001/snapshots/redo-r5.autosave.recovery",
+          "sha256": "cf9ab135a02d5bfc3da3c7292d58bd61b25263eabcb7588bf7bc69c3cfc53920",
+          "bytes": 4190,
+          "mode": "444"
+        }
+      },
+      "geometry_graded_by_this_review": false
+    }
+  ],
+  "case_crosslinks": [
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/ROOT-BINDING.json",
+      "sha256": "48ffa015e8edb213037fa39dcde743ec0f9f5d42c2312189087229417e33e385",
+      "bytes": 12575,
+      "mode": "644"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/CONTEXT.json",
+      "sha256": "90bfa439003763dbd50f02b239ca8e0464ec96bcd1d74fbe707dc5f9cd03d5d2",
+      "bytes": 322,
+      "mode": "600"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/ACTOR-RUNTIME-PROOF.json",
+      "sha256": "1d1a40c88811d94287b161683bf8e6afb801713509413e23e0c243897ce05d9c",
+      "bytes": 1669,
+      "mode": "600"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/ACTOR-PERSISTENCE-CHECK-RESULT.json",
+      "sha256": "594dc91675edfd49d7aa3c117f39e68b68c3dae265ca5cfb890c2cd39a6b604c",
+      "bytes": 2767,
+      "mode": "600"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/ACTOR-RUNTIME-TOOL-HISTORY.json",
+      "sha256": "3768b90783bbea7d0985885a370441e22577579b03c6f40594edeebc3132b3f0",
+      "bytes": 800,
+      "mode": "644"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/ACTOR-RUNTIME-RAW-TOOL-HISTORY.json",
+      "sha256": "c28d4953268ff9f0a0a7524b079f8a621f1483260a6dc2976e14348cf6679bc5",
+      "bytes": 15750,
+      "mode": "644"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/ROOT-TOOL-HISTORY-CORRELATION.json",
+      "sha256": "2768d0eb5fd8452798fec5a92018d2623b4e9929a3e685963a077e3a77d369b2",
+      "bytes": 957,
+      "mode": "644"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/DOCUMENTATION-REFRESH-001.json",
+      "sha256": "5ac27323d53608a6c70a8da499085449c90972ba2783d2fba290d6c1f56b1e84",
+      "bytes": 373,
+      "mode": "600"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/LAUNCH-CLOCK.json",
+      "sha256": "dd6396716e620c8680903ee79333bd6addd2916762cbaf90cab11ee828d788ea",
+      "bytes": 105,
+      "mode": "600"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/COMPLETION-SUMMARY-RETURN.json",
+      "sha256": "71eff10c56d89360fe14162675c7baf6b2036c6946af95d488d461faca975267",
+      "bytes": 776,
+      "mode": "444"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/SUMMARY-RETURN-OBSERVED.json",
+      "sha256": "95ca36228a05858547151ca7e448157bbb586a69175b334cf6b5233069d8a188",
+      "bytes": 426,
+      "mode": "444"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/SUMMARY-LOWER-0172.json",
+      "sha256": "d82e5272d1c0d809770ad3377334719748de1f674056adb2da6420b34e78c129",
+      "bytes": 163,
+      "mode": "600"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/NATIVE-LEASE-CLOSED.json",
+      "sha256": "568eef22877aa7105dee7b8e7fd5ec730c80123a6671e92deeb1b2b12686c6d6",
+      "bytes": 500,
+      "mode": "644"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/POSTFLIGHT.json",
+      "sha256": "1c2cce0bbd1451f67d27809eb730fbe023ae064aa25cedf851aa593f8c32f02f",
+      "bytes": 1183,
+      "mode": "644"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/ACTOR-POSTFLIGHT-RAW.json",
+      "sha256": "dda30b76fece83b7caf1ee3ad7d7e254eeead23f29e1c506747d81b110c84648",
+      "bytes": 82176,
+      "mode": "444"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/ACTOR-POSTFLIGHT-RAW-CORRECTED.json",
+      "sha256": "e3b9b36e648c84372052f54222b50cdd0107e9ae4abc8d4a7f239821f798ee10",
+      "bytes": 84009,
+      "mode": "444"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/POSTFLIGHT-METADATA-CORRECTION.json",
+      "sha256": "f1f1b38ee603fa6d2a4db7607801346a5d436f520d2e1620d697bcdc4c886bad",
+      "bytes": 631,
+      "mode": "444"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/SAVED-GRADE-001.json",
+      "sha256": "c5cc4cf2facc494f34982f3012423c1a850562ddb567881633706f6b4e4881a1",
+      "bytes": 278,
+      "mode": "644"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/SAVED-GRADE-INVOCATION-001.json",
+      "sha256": "dbfbc837adc078206673f7e3e47a6cf65efe1dfbccb0f0a841cf0e666ebe19a3",
+      "bytes": 853,
+      "mode": "644"
+    },
+    {
+      "path": ".local/native-straight-hole-20261116/H1-001/SAVED-GRADE-ATTEMPT.json",
+      "sha256": "1e63ac93db3d5a1877187397564354933c38553bf7221805a2c493c4fb2f6f7e",
+      "bytes": 138,
+      "mode": "644"
+    }
+  ],
+  "packet_freeze": {
+    "path": ".local/straight-hole-native-plan-v2-20261116/FREEZE.json",
+    "sha256": "13fb9c37e4d3c56f5e017f39fcf9db1b87ddb821cffd9ee96627e778db69193c",
+    "bytes": 10656,
+    "mode": "444"
+  },
+  "separate_root_exit_receipt": {
+    "path": ".local/window-cleanup-20261116/H1-001-OUTCOME.json",
+    "sha256": "6113843e2b3d6b30bbc44afa4e190a371afb7f8cd0b2ba430f147f2b76da84de",
+    "bytes": 909,
+    "mode": "644"
+  }
+}

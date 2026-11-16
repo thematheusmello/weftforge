@@ -1,0 +1,36 @@
+{
+  "scope": "Append only closed failed HOLE-H2/H2-001 to immutable H1-only1893-node archive. No S1 active case or H3 pending file read/staged; no actual future state/export answer.",
+  "case": "HOLE-H2",
+  "attempt": "H2-001",
+  "status": "FAILED_unaccepted",
+  "source_runtime": "a021a2581c8e1dd000e535a417dcd964c3835884",
+  "metadata_commit": "52163adb86b9f48fdd06f042e4ddf615797c3947",
+  "source_inputs": 73,
+  "native_binary_sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c",
+  "root_binding_sha256": "f09209ccfaba7083b8fb9f55b6c4bb81668f297b735efdac34589cd85f36a556",
+  "single_failed_grade_sha256": "5457c733571b632dcc8cbde58a878d86035b6701db4284063ba8d19f9fe7db1d",
+  "formal_invocations": 1,
+  "repaired_or_regraded": false,
+  "accepted": false,
+  "error": "export coordinates/scale differ",
+  "failure_diagnosis": "SVG path coordinates retain correct mm/inverted-Y scale; old0..1m seed/control-hull bounds add blank viewport padding. Actual1000x1000mm/viewBox0 -1000 1000 1000 differs from required exterior240x360mm/viewBox0 -360 240360. No observed clipping or per-export formal-pass claim.",
+  "accounting": {
+    "paired_records": 79,
+    "refresh_calls": 0,
+    "required_immediate_summary": 1,
+    "overall_calls": 80,
+    "overall_cap": 101,
+    "elapsed_upper_s": 538.413611,
+    "elapsed_cap_s": 1200,
+    "invocation_time_exact": false
+  },
+  "input": "Actual accepted H1-002 R5 primary c381... stays read-only and exact; normal input-path R6 autosave sidecar is separately retained, not substituted as accepted input.",
+  "native_UI_review": "All34 original JPEG/AX and79 pairs reviewed separately; no additional UI barrier failure. Original observation-only report and failed-grade qualification addendum are both retained.",
+  "exit_receipt_sha256": "b21a1503b8c7b033e6dd26002000b916fd8df0f2dd378695b4fdb2dfdcf843a0",
+  "qualifications": [
+    "No accepted whole H2 or per-export formal pass from the aborted aggregate assessment.",
+    "Saved area*density is analytic only; no actual native Cloth/particle mass, reference parity or full-feature/physics acceptance.",
+    "First-stage history, failed H1-001 and bounded H1-002 scope remain unchanged. Curation is not new authority.",
+    "Private successor pending independent privacy review; no public/Git/registry/source/native/product/Cargo/evaluator action."
+  ]
+}

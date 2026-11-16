@@ -1,0 +1,26 @@
+{
+  "utc": "2026-11-16T08:02:11.408389+00:00",
+  "case": "HOLE-H3",
+  "attempt": "H3-001",
+  "root_binding_sha256": "cf935f50874beb3d2ef0a4059a4fe66219f627e60afb3dc837daac2d40c6f8b5",
+  "preparation_freeze_sha256": "84a07d8e7e2bfce8225c8a3aa78febd919251488046ddea5e20ab9c5e68d2aa6",
+  "packet_freeze_sha256": "64077323f7f1ac3998f4e6763099c0bbf04e8dd1be710a3900ed8a4c59c07c55",
+  "all29_prepared_files_exact": true,
+  "all48_packet_and110_dependency_files_exact": true,
+  "source74_clean_meta": "a362f64ea84b60407501dd641c9f5f51a327351a",
+  "reviewed_complete_six_actor_sources": true,
+  "order_sensitive_bootstrap_JSON_guards_checked": true,
+  "canonical_binding_complete": true,
+  "priorS1_input_closed_and_window_process_verified_gone": true,
+  "no_live_weftforge_before_grant": true,
+  "exclusive_H3_GUI_lease_granted": true,
+  "clock_or_native_launch_in_this_review": false,
+  "limits": {
+    "static_operations": 95,
+    "paired_plus_documentation_cap": 100,
+    "summary_calls": 1,
+    "elapsed_s": 1200
+  },
+  "root_preflight_note": "Initial root-only manifest checker compared integer mode with octal string and stopped before any binding/write/launch. Correct comparison uses manifest integer; frozen prep bytes unchanged. This is not a native case attempt.",
+  "scope": "One fresh H3 only; not old H2 repair/regrade. Separate explicit GO and postcase formal grade/UI review remain root-owned."
+}

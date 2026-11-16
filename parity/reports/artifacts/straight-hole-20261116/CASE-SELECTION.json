@@ -1,0 +1,52 @@
+{
+  "scope": "First private H1-only publication curation. H2 has no actual case/output/answer in this stage; a separate later append requires its closed evidence.",
+  "source": {
+    "runtime": "a021a2581c8e1dd000e535a417dcd964c3835884",
+    "metadata": "52163adb86b9f48fdd06f042e4ddf615797c3947",
+    "source_input_count": 73,
+    "native_sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c"
+  },
+  "cases": {
+    "H1-001": {
+      "pairs": 172,
+      "refresh": 1,
+      "calls": 174,
+      "upper_s": 821.144232708,
+      "manifest": "ACTOR-RAW-RETENTION-MANIFEST-V2.json",
+      "raw_count": 851,
+      "manifest_sha256": "4d970f3920473589be8ac07454fa11e57d48db93e6129f1d45fb4e843116a1db",
+      "accepted": false,
+      "status": "unaccepted_formal_preflight_failure"
+    },
+    "H1-002": {
+      "pairs": 171,
+      "refresh": 0,
+      "calls": 172,
+      "upper_s": 744.725048417,
+      "manifest": "ACTOR-RAW-RETENTION-MANIFEST.json",
+      "raw_count": 849,
+      "manifest_sha256": "892bb93748745eec9cfd7b846d0f3dd548456585a0248f19c1c1bed85206b5c1",
+      "accepted": true,
+      "status": "root_accepted_bounded_H1_saved_state_and_UI"
+    }
+  },
+  "required_summary_calls_each": 1,
+  "time_cap_seconds_each": 1800,
+  "call_cap_each": 201,
+  "H1-001": "FAILED/unaccepted. Sole frozen grade KeyError expected_binary before saved geometry assessment. Original actor object-vs-string false postflight and corrected successor both preserved; no repair/regrade.",
+  "H1-002": "Root accepted bounded H1 from its own binding, actual UI, five saves and sole passed saved-files grade. Prior H1-001 is never substituted despite equal save bytes.",
+  "JPEGs": {
+    "original_each": 74,
+    "whole_private_chooser_pairs_omitted_each": 5,
+    "selected_each": 69,
+    "total_metadata_derivatives": 138
+  },
+  "frozen_protocols": "V1 is preserved UNEXECUTED. V2 is frozen and used for H1. Protocol fixtures/models/export code/synthetic checks are prospective assessment inputs, not actual H2 state/export answers or native evidence.",
+  "historical_helpers": "Pinned earlier cut/internal controller/grader sources are generic protocol dependencies, not the active Hole source/runtime or new case evidence.",
+  "authority_limits": [
+    "No native particle/Cloth mass proof from analytic saved area*density.",
+    "No reference parity or complete feature/physics claim.",
+    "Root UI acceptance is separate from saved-files grade; curation adds no acceptance.",
+    "Separate privacy review, Git tracking, clean registry/map checks and publication pending."
+  ]
+}

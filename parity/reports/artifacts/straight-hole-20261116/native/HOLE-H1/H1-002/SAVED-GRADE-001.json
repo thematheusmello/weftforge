@@ -1,0 +1,41 @@
+{
+  "status": "passed_saved_files_only",
+  "case": "HOLE-H1",
+  "attempt": "H1-002",
+  "source_commit": "a021a2581c8e1dd000e535a417dcd964c3835884",
+  "native_binary_sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c",
+  "root_binding_sha256": "e9e2bed535024602b54a285f8ccd28a0f3a8ecf93fdcc5be4e8629f05e2f3cfc",
+  "freeze_sha256": "13fb9c37e4d3c56f5e017f39fcf9db1b87ddb821cffd9ee96627e778db69193c",
+  "snapshot_sha256": {
+    "parent-r1": "525855265074aed8ff1af10297c353973cc294a3d83fca818161ce702ba7310f",
+    "hole-r2": "cf9ab135a02d5bfc3da3c7292d58bd61b25263eabcb7588bf7bc69c3cfc53920",
+    "edit-r3": "de7e0664599bb40280ec2148270140fc57765443bd02621275feb25a4496dcfb",
+    "undo-r4": "67b29fd49696c17755eaa291364bd176e9e768bc3050d6da4ebd98214c601891",
+    "redo-r5": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41"
+  },
+  "result": {
+    "full_v5_construction": true,
+    "unchanged_fields": "exact f64/signed-zero; color f32",
+    "IDs_global_order_Hole11_ownership_highwater_history": "checked",
+    "areas_m2": {
+      "parent-r1": 0.08639999999999999,
+      "hole-r2": 0.0768,
+      "edit-r3": 0.07559999999999999,
+      "undo-r4": 0.0768,
+      "redo-r5": 0.07559999999999999
+    },
+    "analytic_area_times_density_only_kg": {
+      "parent-r1": 0.015551999999999998,
+      "hole-r2": 0.013823999999999998,
+      "edit-r3": 0.013607999999999997,
+      "undo-r4": 0.013823999999999998,
+      "redo-r5": 0.013607999999999997
+    },
+    "actual_Cloth_masses_verified": false,
+    "native_UI_verified": false,
+    "reference_parity": false
+  },
+  "native_ui_verified": false,
+  "reference_verified": false,
+  "full_feature_accepted": false
+}

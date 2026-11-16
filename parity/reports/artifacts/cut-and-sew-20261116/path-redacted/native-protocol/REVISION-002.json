@@ -1,0 +1,69 @@
+{
+  "revision": 2,
+  "status": "DRAFT_metadata_checkpoint_NOT_FREEZE_NO_GO",
+  "previous_inventory": {
+    "path": "DRAFT-INVENTORY.json",
+    "sha256": "8d2d65b076d6cdd67c3605fd786104f83a71d850874b3e0b0288916e1d71efe6",
+    "retained_unchanged_as_history": true
+  },
+  "reason": "Root supplied actual clean metadata385 receipt for the same sealed runtime5898/source74. Fill known metadata/source identities and receipt/log pins without changing geometry, case scope, evaluator code or native actions.",
+  "source_commit_unchanged": "5898f1a1274f8632d96b5fd0898f8253dee2f4db",
+  "clean_metadata_commit_now": "3858848afb3764014a5d305a0e5dfb5661ea6d86",
+  "actual_clean_receipt": {
+    "path": "<WORKSPACE>/.local/cut-and-sew-integration-20261116/clean-3858848-verify-build-001/CHECKS.json",
+    "sha256": "fd8e69195e15c996e668107a5a5f0012c99346fecb549347e01b06d184d77f5a"
+  },
+  "changed_files": {
+    "DRAFT.json": {
+      "before_sha256": "28ada8a6323760a9f083ab57e80032797742a6c3370f4d41f0eb4d8fba01f91b",
+      "revision002_sha256": "274d0a1485069ab2c6c2722008638d31dc1aed4e24fdc74a3b2a2669bd0fdfef"
+    },
+    "ORACLE.json": {
+      "before_sha256": "1aaf543fcb72abc28434c06db76b8e6efd01ecd32aa23dfedabe98771dcc77a6",
+      "revision002_sha256": "49f1e0c97661781c095113008a72487cc53b5d124d2b0f4e521376b03e5b3301"
+    },
+    "PROVENANCE.json": {
+      "before_sha256": "2016641ad49366916c32c0ff5b87c064ac22afe0a494146b819f0eb90efff1e8",
+      "revision002_sha256": "c0ca94468568b56e46d64c74daa9e645dcd94cfebfdae34ad18507ddb8c4dcf9"
+    },
+    "README.md": {
+      "before_sha256": "a6a0c07bc5843cd7b5c399fb10f53898524d41e77cae6ca01d9b06c58c2b137c",
+      "revision002_sha256": "c90b93c651eb8e128f51f62a82441ff1b752936afa991efdf4fe2f50c275f208"
+    },
+    "ROOT-BINDING.SEW-S1.template.json": {
+      "before_sha256": "2e127b27c183dd6a1db9c9dca76c86d3466d0cca5450c6b9305f8cb9744e5b6c",
+      "revision002_sha256": "1a7fa26a27c8a47d265f065b8290cc28f64075db27e8064e9ad47d63180a0b8c"
+    },
+    "ROOT-BINDING.SEW-S2.template.json": {
+      "before_sha256": "001ec9a94f86eb2381a77e83051890b99b577e066ccd4fc0d8e57902691b0230",
+      "revision002_sha256": "cf094299e2ad7c175c04bde8080a0b3b8e4e411bcfcfc965e72a342b89fc4dfb"
+    },
+    "SOURCE-74.json": {
+      "before_sha256": "af325a2b671c6874636630e9e604bd5e86c782d049728f7d2c666e6804cf2b45",
+      "revision002_sha256": "ee012acf52f6080f7608a8496ae4d4f2e789199bcfd6e2dcc86f52581a9491c8"
+    }
+  },
+  "added_review_records": [
+    "SELF-CHECK-002.json",
+    "DRAFT-STATIC-CHECK-002.json",
+    "REVISION-002.json",
+    "DRAFT-INVENTORY-002.json"
+  ],
+  "unchanged_hashed_artifacts": {
+    "EXPECTED-STATES.json": "811e2da7f34612ff9f6c92a07e6e24f1b76797873240e9f0ea46069faa4c303f",
+    "PLAN.json": "9ab5a3f4ff302ee1d6313a3ec1d7ad799ee8d679c422b6ea3189bb08e78161d4",
+    "grade_saved.py": "bd2d2cdcfc03bf5643a65489cb60d51dfefc3746fcc29e671aaec137e9d98fed",
+    "retain_saved.py": "cfa252e9c003730a7832a01740122180f4fd90300bf9fac9161362ba617fe11c",
+    "selfcheck.py": "cd83cf0d34aea17d8a116f272eebe2d55df93244c78eb31f69f200c7dd6b86a7"
+  },
+  "verification": "Actual CHECKS schema read; same74 source/native identities matched; four raw clean stdout/stderr logs hashed; offline33 synthetic refusals and static/in-memory binding controls passed. No source/runtime execution or actual case grading.",
+  "remaining_before_freeze": [
+    "separate source-backed actor route/count audit",
+    "independent packet review",
+    "root-reviewed final artifact/dependency freeze after those reviews"
+  ],
+  "case_staging_and_native_go": "still separate and not authorized",
+  "sealed_scope": "Only immutable .local/straight-cut-and-sew-20261116 runtime5898/metadata385/source74; no exports and no rebind to the separate SVG writer fix.",
+  "grants_remain_false": true,
+  "freeze_created": false
+}

@@ -1,0 +1,89 @@
+{
+  "id": "0003",
+  "status": "returned",
+  "result": {
+    "schema": "weftforge.straight-hole.actor-readiness.v1",
+    "case": "HOLE-H3",
+    "attempt": "H3-001",
+    "root_binding_sha256": "cf935f50874beb3d2ef0a4059a4fe66219f627e60afb3dc837daac2d40c6f8b5",
+    "source_record": "0003",
+    "actual_cua_runtime": true,
+    "native_UI_calls": 0,
+    "helper_types": {
+      "holeModule": "object",
+      "holeRequire": "function",
+      "holeFs": "object",
+      "holePath": "object",
+      "holeCrypto": "object",
+      "holeProcess": "object",
+      "holeRoot": "string",
+      "holeRepo": "string",
+      "holePacket": "string",
+      "holeHash": "function",
+      "holeWrite": "function",
+      "holeBindingBytes": "object",
+      "holeBindingSha": "string",
+      "holeBinding": "object",
+      "holeRecorder": "object",
+      "holeController": "object",
+      "holeObserve": "function",
+      "holeMark": "function",
+      "holeProofId": "string",
+      "holeProofSha": "string"
+    },
+    "helper_flags": {
+      "holeModule": true,
+      "holeRequire": true,
+      "holeFs": true,
+      "holePath": true,
+      "holeCrypto": true,
+      "holeProcess": true,
+      "holeRoot": true,
+      "holeRepo": true,
+      "holePacket": true,
+      "holeHash": true,
+      "holeWrite": true,
+      "holeBindingBytes": true,
+      "holeBindingSha": true,
+      "holeBinding": true,
+      "holeRecorder": true,
+      "holeController": true,
+      "holeObserve": true,
+      "holeMark": true,
+      "holeProofId": true,
+      "holeProofSha": true
+    },
+    "helpers_ready": true,
+    "root": {
+      "expected": "<WORKSPACE>/.local/native-svg-export-successor-20261116/H3-001",
+      "actual": "<WORKSPACE>/.local/native-svg-export-successor-20261116/H3-001"
+    },
+    "controller_configuration": {
+      "expected": {
+        "root": "<WORKSPACE>/.local/native-svg-export-successor-20261116/H3-001",
+        "recorderPath": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+        "evidenceKind": "native",
+        "callCap": 100,
+        "elapsedCapS": 1200,
+        "baselineCalls": 0
+      },
+      "actual": {
+        "root": "<WORKSPACE>/.local/native-svg-export-successor-20261116/H3-001",
+        "recorderPath": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+        "evidenceKind": "native",
+        "callCap": 100,
+        "elapsedCapS": 1200,
+        "baselineCalls": 0
+      }
+    },
+    "context_schema_ready": true,
+    "proof_schema_ready": true,
+    "proof_result_ready": true,
+    "offline_artifact_ready": true,
+    "controller_status_ready": true,
+    "proof_sha256": "90e00a8f1d0d758cbb1d3373bdc2d90c150a2a88a851f00a7ede372b085289f5"
+  },
+  "error": null,
+  "utc": "2026-11-16T08:06:04.245Z",
+  "monotonic_ns": "938679844212250"
+}

@@ -1,0 +1,37 @@
+{
+  "scope": "Separate post-case inventory after retained handoff; no native input/getApp/relaunch/case mutation",
+  "case": "HOLE-H2",
+  "attempt": "H2-001",
+  "actor_owned_pid": 95274,
+  "CUA_inventory": {
+    "observed_utc": "2026-11-16T06:02:33.966Z",
+    "matching_apps": [
+      {
+        "displayName": "WeftForge",
+        "id": "org.weftforge.studio",
+        "isRunning": false,
+        "lastUsedDate": 816220800,
+        "useCount": 7
+      }
+    ],
+    "running_WeftForge_apps": 0
+  },
+  "very_next_tool": {
+    "completion_summary": "Confirmed finished export window closed",
+    "return": "Completion summary received."
+  },
+  "ps_check": {
+    "utc": "2026-11-16T06:11:06.485310+00:00",
+    "argv": [
+      "ps",
+      "-p",
+      "95274",
+      "-o",
+      "pid=,comm="
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  "exited": true
+}

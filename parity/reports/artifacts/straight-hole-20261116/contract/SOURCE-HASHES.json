@@ -1,0 +1,73 @@
+{
+  "status": "read-only proposal source pins; no runtime acceptance",
+  "runtime_commit": "19b1e88245dc627cfec8164f4924b335fe44853d",
+  "metadata_commit": "982ad0340d3c848bb8a959dca7a934886f1d7ae9",
+  "source_worktree_clean": true,
+  "runtime_to_metadata_crates_apps_manifests_lock_diff": [],
+  "files": {
+    "AGENTS.md": "b9bdf4c9b881d0ab6c084a5314c45f4f55ff0bb17d19fafe357caa353cd7e78e",
+    "ROADMAP.md": "7b8195159bcae61017212c9bff7e2b3da5d36f7ba648824c4ab8831a73f7fb70",
+    "STATUS.md": "f4428bb4537d1226cca89e36bb43448a6af95995f4b054eda0777cded7761c6f",
+    "Cargo.toml": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+    "Cargo.lock": "5efe2ab4c54793e055438928f6adcc94747ef0153a02e71a24d01f9cca58747c",
+    "crates/weftforge-core/Cargo.toml": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+    "crates/weftforge-core/src/lib.rs": "157990183f20487c3b1494a837914e81fb98e3e4fb35a1f0dedc0542a1ec6661",
+    "crates/weftforge-core/src/document.rs": "2545e320e3a686d995cfcd810ca2daff3009a8c9217ec33ce8dae1edd6aa09d6",
+    "crates/weftforge-core/src/geometry.rs": "04763266b25960f164c5223840cbacad361c6bce62e1b1d7690d07354243c144",
+    "crates/weftforge-core/src/sewing.rs": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed",
+    "crates/weftforge-core/src/simulation.rs": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29",
+    "crates/weftforge-core/src/persistence.rs": "8a0072dcab625b12a358813f3706a41054a4a1f4a7f4fbabd3eb7cd0e5716ce8",
+    "crates/weftforge-core/src/persistence/svg.rs": "1f6792b629266a15200c1bdb543f0fb3ddb79360d09ec975693b7472a12811ae",
+    "crates/weftforge-core/src/persistence/dxf.rs": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338",
+    "crates/weftforge-core/src/persistence/dxf_import.rs": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+    "crates/weftforge-core/tests/cut_piece.rs": "f87fedc255c805fb4b5e0682a1eb3ed0f2f89c124ad99d6a561e7ce14b5b4029",
+    "crates/weftforge-core/tests/internal_lines.rs": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786",
+    "crates/weftforge-core/tests/joins.rs": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10",
+    "crates/weftforge-core/tests/migration.rs": "6778e1b29cc10513dcba97f060b57242bf65de438b0c06fbca8ad0e73d561175",
+    "crates/weftforge-core/tests/pattern_transform.rs": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31",
+    "crates/weftforge-core/tests/workflow.rs": "3f7ad8f050b6f749e85e7c865cf35d0cdc31d3f86023a05d5db19d4bfec495c2",
+    "crates/weftforge-core/tests/svg_import.rs": "3b9601a0023c1d91b96a309d0822439afa75e97f97a5e53c5104cbef3e6ed72e",
+    "crates/weftforge-core/tests/dxf.rs": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+    "crates/weftforge-core/tests/dxf_import.rs": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b",
+    "crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+    "crates/weftforge-core/tests/fixtures/original-cut-l.weftforge": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/lib.rs": "5bfc996e6bf1067ac261358fdd043815adf304a5d8d512a0e6429c913e90fa76",
+    "apps/weftforge/Cargo.toml": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+    "apps/weftforge/src/main.rs": "2e8a3f7003ab5ee56c38042162bcdfc325d30428510b878b0d0bf66053e68343",
+    "apps/weftforge-cli/Cargo.toml": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+    "apps/weftforge-cli/src/main.rs": "c425aab62ca8242266b9c27ee905f09dcc57098eac55eea75fc89540f7795012",
+    "apps/weftforge-cli/src/mcp.rs": "b79796b94675bbe2c4855302015bf88f0c2677de152bd2f56c67b0ea2075d182",
+    "apps/weftforge-cli/tests/mcp_stdio.rs": "b3285e74d4031a7ac91b8c60ab4f15fd03b0e413788b416893f133170e63f0e8",
+    "apps/weftforge-cli/tests/curves.rs": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+    "xtask/src/main.rs": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709",
+    "spec/features/PAT-006-internal-segments.md": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+    "spec/features/PAT-006-straight-cut.md": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c"
+  },
+  "installed_dependency": {
+    "name": "earcutr",
+    "version": "0.5.0",
+    "source_kind": "local Cargo registry, already installed",
+    "files": {
+      "README.md": "6ee6d557fa4e101d1849d7a960ec18308a2a1c20b76ff1590a6f3e575d260a14",
+      "src/lib.rs": "a59459f2a08030e29ae8ef86560d95e58714c86908e08b9d2ae4ea7086273f25"
+    }
+  },
+  "public_manuals_read_2026_11_16": [
+    "https://support.marvelousdesigner.com/hc/en-us/articles/47358440603161-Convert-to-Hole-Internal-Shape",
+    "https://support.marvelousdesigner.com/hc/en-us/articles/47358276422297-Internal-Polygon-Line",
+    "https://support.marvelousdesigner.com/hc/en-us/articles/47358433146393-Cut-Cut-Sew"
+  ],
+  "current_cut_policy": "original cut source/spec/fixtures/native packets were not written; no current cut native packet was accessed or qualified",
+  "proposal_artifacts": {
+    "CONTRACT.md": "88724542d5b3577bc03564223cd8efa9bd7f19d82c60addd417be8542fe393d8",
+    "ORACLE-SUMMARY.json": "6cce2ccc38d28e2bc4b724e32867a052461c63c9b711378d1a2b414a63a84ba2"
+  },
+  "proposal_only_checks": {
+    "all_38_pinned_source_files_still_exact": true,
+    "source_worktree_still_clean": true,
+    "current_Command_variants_counted_statically": 30,
+    "product_or_Cargo_or_UI_executed": false,
+    "cut_source_spec_fixtures_not_modified": true
+  }
+}

@@ -15,14 +15,14 @@ See [current status](STATUS.md), [generated progress](docs/progress.md), [dashbo
 Original sample projects are available in [fixtures](fixtures). See
 [verification](docs/verification.md) for tested workflows and current limits.
 
-![WeftForge’s native studio with two independently editable cut pieces](parity/reports/artifacts/straight-cut-20261116/native/R003/captures/accepted-cut-r2-new-fifteen-selected-0.jpg)
+![WeftForge’s native studio with two editable pieces and their cut seam](parity/reports/artifacts/cut-and-sew-20261116/native/SEW-S1/S1-001/captures/applied-seam-r2-inspection-0.jpg)
 
 The updated studio uses charcoal surfaces, compact menus, a left tool rail,
 a document tab, paired 2D/3D canvases, Properties and Scene docks, and a slim
 simulation transport. Inter and JetBrains Mono keep controls and values legible.
 [PhotoCraft](https://github.com/storytold/photocraft)
 informed the visual direction. See the [native preview gallery](docs/studio-preview.md)
-for the cut/reopen workflow, selected-boundary view, earlier SVG/DXF workflows, editable cubic
+for editable holes, Cut & Sew, reopened child editing, earlier SVG/DXF workflows, editable cubic
 controls, framing, ellipses, sewing and the build's limits.
 
 ## Current capabilities
@@ -51,18 +51,30 @@ chain workflows and garment simulation acceptance remain open.
 **Internal line** adds straight annotations owned by a pattern piece, with a
 two-point tool, exact endpoint editing, selection/removal and applied length
 feedback. A valid endpoint edit and staged piece properties share one Undo step.
-These editable annotations are stored in strict native v4; internal shapes,
+These editable annotations are stored in strict native v5; internal shapes,
 folds and internal sewing remain future work. See the
 [actual native annotation gallery](docs/studio-preview.md).
 
 **Cut piece** divides an eligible straight pattern into two independent editable
 pieces. Pick two boundaries or enter their exact curve parameters, review the
 preview, then apply once. Undo/Redo and native saves retain both pieces; the
-bounded restart check edits one child while preserving the other. Target sewing,
-curved contours and crossing annotations refuse the cut. Holes, Cut & Sew and
-general cutting workflows remain open. See the
+bounded restart check edits one child while preserving the other. Enable
+**Sew cut edges** in review to create an oriented seam in the same operation.
+The bounded Cut & Sew check covers preview/cancel, one Apply, Undo/Redo, saved
+construction and a fresh-process seam removal followed by child editing.
+Existing target sewing, curved contours, holes and crossing annotations refuse
+the cut. General cutting and garment simulation acceptance remain open. See the
 [native cut gallery](docs/studio-preview.md) and
 [straight-cut contract](spec/features/PAT-006-straight-cut.md).
+
+**Add hole…** creates one rectangular opening inside an eligible straight piece.
+Its boundary points stay editable, and the hole survives native saving and
+reopening. The rest mesh and OBJ export retain the opening; SVG exports a
+compound outline with an even-odd fill and canvas bounds matching the pattern.
+Holed projects refuse DXF export before replacing any file. Multiple or curved
+holes, curved owners, hole sewing and cuts through holes remain open. See the
+[hole contract](spec/features/PAT-006-straight-hole.md) and the
+[native hole/export gallery](docs/studio-preview.md).
 
 **Transform pattern** translates or rotates one 2D piece, with numeric angle,
 translation and pivot controls plus canvas handles. This layout operation keeps
@@ -82,10 +94,10 @@ with a signed percentage for extension or compression.
 The solver is early; general garment convergence and contact robustness remain
 ongoing work.
 
-Version 4 `.weftforge` JSON uses a strict schema for supported editable
+Version 5 `.weftforge` JSON uses a strict schema for supported editable
 construction, including ordered sewing groups and piece-owned straight internal
-annotations. The reader supports explicit version 1/2/3 migrations; older apps
-cannot open v4. OBJ mesh export and bounded SVG/DXF pattern import and export
+annotations and holes. The reader supports explicit version 1/2/3/4 migrations;
+older apps cannot open v5. OBJ mesh export and bounded SVG/DXF pattern import and export
 exist; [format details and gaps](docs/file-formats.md)
 explain what survives each path. Simulation frames/settings, imported avatars,
 textures, animation, advanced construction and third-party project formats

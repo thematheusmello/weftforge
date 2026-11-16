@@ -1,0 +1,22 @@
+{
+  "scope": "Tool-history metadata derivative. Raw session/journal lines and internal session locators omitted. Root corroboration receipt is retained separately; this derivative is not raw transport evidence.",
+  "original_private_sha256": "8caf4c3d81bf3c4836628bed55e578cce476c26c7c798be9f1da1bc600596c30",
+  "original_private_bytes": 3892,
+  "omitted_fields": [
+    "raw_lines",
+    "source_log"
+  ],
+  "record": {
+    "schema": "weftforge.native.delegated-retrospective-terminal-transcript.v1",
+    "case": "HOLE-H2",
+    "attempt": "H2-001",
+    "evidence_kind": "exact_actual_tool_journal_extraction_after_summary",
+    "exact_invocation_utc": null,
+    "journal_timestamps_are_invocation_timestamps": false,
+    "terminal_source_record": "0079",
+    "summary_calls": 1,
+    "very_next_tool_after_planned_quit_is_summary_only": true,
+    "root_independent_correlation_claimed": false,
+    "no_GUI_or_rerun": true
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "schema": "weftforge.independent-native-ui-review-hashes.v1",
+  "case": "SEW-S2",
+  "attempt": "S2-001",
+  "scope": "All25 original JPEG/AX captures and all57 input/result pairs;319 opaque raw-manifest nodes checked;259 retained postguard expected/actual rows consistent; root canonical and sole-grade metadata bound. No new native input, source read/mutation, construction/export parsing or grader execution.",
+  "review_outputs": {
+    "S2-001-UI-REVIEW.md": {
+      "sha256": "485f43e938da26a11dbc9bf5f3af3423ccd919cef942a1a300478e15e9b54e26",
+      "bytes": 12878
+    },
+    "S2-001-CAPTURE-NODE-INVENTORY.json": {
+      "sha256": "0994eef03adb2dc251ef2fe99c5038600fb89ae3d1412ef7f63e0660ee049c7b",
+      "bytes": 595430
+    }
+  },
+  "input_receipts": [
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/ROOT-BINDING.json",
+      "sha256": "a7ce2491428e3cef66a408c880c21cd11ae18598bc81d96d46f00bd79c2c9b1a",
+      "bytes": 13719,
+      "mode": "0o444"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/NATIVE-LEASE-CLOSED.json",
+      "sha256": "1deba4ae2b3393b158e8b6cc46c7aa615b0157bb8b64fc90c5082527f80d224b",
+      "bytes": 499,
+      "mode": "0o444"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/COMPLETION-SUMMARY-RETURN.json",
+      "sha256": "4d19ab5096319269aef7c236892d3fc7264665d722f2f15b7a8dec31e8ff23ad",
+      "bytes": 773,
+      "mode": "0o444"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/LAUNCH-CLOCK.json",
+      "sha256": "760f6f6e7d428c8a7c8bc3b34b96f3a837317fea86fa93ba20156feb6a2ed18f",
+      "bytes": 105,
+      "mode": "0o600"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/CONTEXT.json",
+      "sha256": "74501e43ebf2f34406222d9cc2ea2a1fd785fc213a39eda764c35b54f78cdece",
+      "bytes": 320,
+      "mode": "0o600"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/ACTOR-RUNTIME-PROOF.json",
+      "sha256": "b0668204ef1e28dd933220d3557eaf3af114c94654f12c156469d2dc863ae4e6",
+      "bytes": 1662,
+      "mode": "0o600"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/ACTOR-PERSISTENCE-CHECK-RESULT.json",
+      "sha256": "99a53ea5ba6e133116c170ace86af3339305192147265e48a5b13e3e90685020",
+      "bytes": 2721,
+      "mode": "0o600"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/OWNED-PID.json",
+      "sha256": "e5a2af572272036c205236f6012e40bf28488bc56734bd496b1605b2f6f1f611",
+      "bytes": 749,
+      "mode": "0o600"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/PREPARATION-FREEZE.json",
+      "sha256": "b7e590a0f9a42e25abe8aaf3b125d60e03fd70ed2e1d9f2920d9a9d83703a866",
+      "bytes": 4594,
+      "mode": "0o444"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/ACTOR-CUA-JOURNAL-EXCERPTS.json",
+      "sha256": "83a023d4a7a32aae9e97f03700015dbadcdddc20cbe6d6c50b314d978bbc9be5",
+      "bytes": 4807,
+      "mode": "0o444"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/ACTOR-CUA-JOURNAL-EXCERPTS.jsonl",
+      "sha256": "bbf2929e30b42906db22822cddac35f044c70e347fcc5898dc3f68904f609f2e",
+      "bytes": 348792,
+      "mode": "0o444"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/ACTOR-CUA-JOURNAL-POST-CLOSURE.json",
+      "sha256": "a6930e65d15703137c6df954d713dbc6df5953d34aa3d20a994ee15db4b3bfc5",
+      "bytes": 5079,
+      "mode": "0o444"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/ACTOR-CUA-JOURNAL-POST-CLOSURE.jsonl",
+      "sha256": "bbf2929e30b42906db22822cddac35f044c70e347fcc5898dc3f68904f609f2e",
+      "bytes": 348792,
+      "mode": "0o444"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/ACTOR-RAW-MANIFEST.json",
+      "sha256": "8cbd548190bec69231769fc5b563f65bf0f3cb5c6284499afdfe23142d87ed83",
+      "bytes": 57905,
+      "mode": "0o444"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/ACTOR-POSTFLIGHT-RAW.json",
+      "sha256": "8bf5b87bc9f24f99c1988c9af93b801c44d90c515960afb88b6409b0a17d177c",
+      "bytes": 141640,
+      "mode": "0o444"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/snapshots/removed-r5.receipt.json",
+      "sha256": "69f0027d77bad0d9f0882d9a2e42a47bbabee447bb2d38d90d55374c9bb00899",
+      "bytes": 920,
+      "mode": "0o444"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/snapshots/child-height-r6.receipt.json",
+      "sha256": "771ec9b630a143d1152b71b1e2c9d045238d4bab5c4bd7693e70c5f61f040742",
+      "bytes": 1055,
+      "mode": "0o444"
+    },
+    {
+      "path": ".local/cut-and-sew-native-plan-20261116/FREEZE.json",
+      "sha256": "5ab3b3238d2b50a5f6fdfa58965c94a7a057b5f5cb084c46117e949d986f3b0c",
+      "bytes": 21694,
+      "mode": "0o644"
+    },
+    {
+      "path": ".local/cut-and-sew-native-plan-20261116/PLAN.json",
+      "sha256": "17198471053042141f4bb64561fb3906b842645a7d364bfd21b8cd2a5517ac5f",
+      "bytes": 7402,
+      "mode": "0o644"
+    },
+    {
+      "path": ".local/cut-and-sew-native-plan-20261116/README.md",
+      "sha256": "012b10e034f016e170626225cbb0b6286d2a8c4456509ed21c8e592e82b183b3",
+      "bytes": 16853,
+      "mode": "0o644"
+    },
+    {
+      "path": ".local/cut-and-sew-native-plan-20261116/RUNTIME-PROTOCOL.json",
+      "sha256": "afb7c59deb5d70af31794f20de70aa048105f8d2f609f4483b90e18976ca7234",
+      "bytes": 6482,
+      "mode": "0o644"
+    },
+    {
+      "path": ".local/window-cleanup-20261116/S2-001-OUTCOME.json",
+      "sha256": "808ebd6b4e626f7b2466b7597084ea55941679ee83f445a645860e626a2ab5fe",
+      "bytes": 790,
+      "mode": "0o644"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S1-001/ROOT-BINDING.json",
+      "sha256": "80a45a09e7439792eddfc31be7000dfe9033760fad11a1baa8c00e4fe02ea807",
+      "bytes": 13732,
+      "mode": "0o444"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S1-001/snapshots/redo-r4.weftforge",
+      "sha256": "6b3c61c9f42c3bcc2c8be75008b69eec44038d9de94ac21d3a5fb9ec07a4cfab",
+      "bytes": 4894,
+      "mode": "0o444"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/SAVED-GRADE-001.json",
+      "sha256": "2782acdb5b94025bd813ddd2d094533e4edfcdeafa2e7bd31b25a6a757256d20",
+      "bytes": 1956,
+      "mode": "0o644"
+    },
+    {
+      "path": ".local/native-cut-and-sew-root-review-20261116/S2-001-GRADE-INVOCATION-001.json",
+      "sha256": "85cec7eafa6b438df29e8a4fffb06b424cdc0cdbdb313b424a0895cad85a2b40",
+      "bytes": 1738,
+      "mode": "0o644"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/ACTOR-RUNTIME-TOOL-HISTORY.json",
+      "sha256": "5824ed80e32616a82c6b3cec03708c2ae8a61385b72a8cdb291b36f42f1c2922",
+      "bytes": 799,
+      "mode": "0o444"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/ACTOR-RUNTIME-RAW-TOOL-HISTORY.json",
+      "sha256": "c0d32c91739a206750d52d9c0a2336a529f85323d2efd7f45696f597014a371f",
+      "bytes": 356531,
+      "mode": "0o444"
+    },
+    {
+      "path": ".local/native-cut-and-sew-20261116/S2-001/POSTFLIGHT.json",
+      "sha256": "36e51018a1f8be94c33614969253c24e3dfa3dc23b1a9dc9a6437d71355c70e0",
+      "bytes": 1181,
+      "mode": "0o444"
+    }
+  ],
+  "actor_manifest_nodes_checked": 319,
+  "postguard_pinned_rows_read_and_compared": 259,
+  "postguard_status": "passed_original_actor_guard",
+  "root_canonical_history_sha256": "5824ed80e32616a82c6b3cec03708c2ae8a61385b72a8cdb291b36f42f1c2922",
+  "root_postflight_sha256": "36e51018a1f8be94c33614969253c24e3dfa3dc23b1a9dc9a6437d71355c70e0",
+  "sole_root_saved_grade_sha256": "2782acdb5b94025bd813ddd2d094533e4edfcdeafa2e7bd31b25a6a757256d20",
+  "sole_root_saved_grade_status": "passed_saved_files_only",
+  "sole_root_invocation_sha256": "85cec7eafa6b438df29e8a4fffb06b424cdc0cdbdb313b424a0895cad85a2b40",
+  "verdict": "No visible UI barrier found in the bounded S2 route. No exact-saved-bits/native-physics/reference/full-feature claim from UI review."
+}

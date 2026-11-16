@@ -1,0 +1,75 @@
+{
+  "scope": "Tool-history metadata derivative. Raw session/journal lines and internal session locators omitted. Root corroboration receipt is retained separately; this derivative is not raw transport evidence.",
+  "original_private_sha256": "86920ec52f50cb249e93cbcd78bfcf6b50c199d13e78e2204d57058388daca11",
+  "original_private_bytes": 331169,
+  "omitted_fields": [
+    "source_journal_path",
+    "selected_original_lines[].raw_utf8"
+  ],
+  "record": {
+    "schema": "weftforge.root-correlated-session-tool-history.v1",
+    "case": "HOLE-H3",
+    "attempt": "H3-001",
+    "kind": "Root independently matched delegated retrospective excerpts to primary actual session; exact invocation timestamps not claimed",
+    "proof_sha256": "90e00a8f1d0d758cbb1d3373bdc2d90c150a2a88a851f00a7ede372b085289f5",
+    "selected_original_lines": [
+      {
+        "line": 179,
+        "sha256": "96fe0050a040876a7604c5da4812946dce63ecdc623039b412c9304a763f3e1f"
+      },
+      {
+        "line": 182,
+        "sha256": "1a2afcccbc6d26bb9f7dace17bab992d76b1743e0d3758f248ea1d1e32bad6b2"
+      },
+      {
+        "line": 186,
+        "sha256": "f6701350d4979c0d8379a8111e1aca0b90aa675b3e9eeccf3f43e30435042d11"
+      },
+      {
+        "line": 189,
+        "sha256": "b1998577b6bd3233fb330d451f383bcabeb9236840d642b8acff657b5129fece"
+      },
+      {
+        "line": 193,
+        "sha256": "8ee33a897613ec7ba2e6ff09605c19aeacd3ec6c4e03e664a8ba7c4658bd7134"
+      },
+      {
+        "line": 196,
+        "sha256": "4dd8e99bab42eecaace6539776da2d9ea3185e37ab249ba42d3afb8df1de1ef4"
+      },
+      {
+        "line": 203,
+        "sha256": "502bbfdf089c3e35e758cd4ae0d915456479b3643879b66194f02bafd74ddc1e"
+      },
+      {
+        "line": 206,
+        "sha256": "530531cc80600d132d8fe179ec14cc28f5791bacdf49e326d0ac7099810224c9"
+      },
+      {
+        "line": 436,
+        "sha256": "4f65b573197cc8452a0e742bc688acf2eff7bf3576ad753a18510c0177c45ccb"
+      },
+      {
+        "line": 439,
+        "sha256": "aa5bde31df76022e93f76c847fd789c31cee8b0da5d115a97e62c3181e5af156"
+      },
+      {
+        "line": 441,
+        "sha256": "f190c86683aa0bc37ee43000667b3c01808bb8a5db3ee8fe8b4337860c5e1753"
+      },
+      {
+        "line": 444,
+        "sha256": "f3e34275bb5931e228d5528d9a9d093b491e2ed443388456b90d20c415e47e9d"
+      }
+    ],
+    "all43_CUA_calls_checked": true,
+    "startup_code_hashes_byte_exact": {
+      "ACTOR-BOOTSTRAP.js": "61e39d6313c771d77e75dc1c923d43bd37b1823d777cbf06910fcbb5d5ffe058",
+      "ACTOR-PERSISTENCE-CHECK.js": "88f8ad5e51ab7fbcf96ad93c8437637981e7225bbc459886de88b9172e8c1606",
+      "ACTOR-INITIAL-CAPTURE.js": "a1ea6ecca48286eb017a7e8bad10f9e005ce2fcdbe7688241bb1f07ebaf9b01b"
+    },
+    "Quit_very_next_tool_single_summary": true,
+    "documentation_refresh_calls": 0,
+    "postcase_bookkeeping_qualification_sha256": "e3cf131f27bc09d0937a18adccd906f553d68ce5394e3265c5ffd68086f69e8b"
+  }
+}

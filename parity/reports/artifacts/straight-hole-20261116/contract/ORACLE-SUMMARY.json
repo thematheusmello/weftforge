@@ -1,0 +1,203 @@
+{
+  "status": "prospective analytic criteria, not a target result",
+  "method": "Python standard-library fractions.Fraction and direct polygon area arithmetic; no WeftForge code imported or executed",
+  "outer_uv_m": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.24,
+      0.0
+    ],
+    [
+      0.24,
+      0.36
+    ],
+    [
+      0.0,
+      0.36
+    ]
+  ],
+  "hole_uv_m_clockwise": [
+    [
+      0.08,
+      0.12
+    ],
+    [
+      0.08,
+      0.24
+    ],
+    [
+      0.16,
+      0.24
+    ],
+    [
+      0.16,
+      0.12
+    ]
+  ],
+  "edited_point12_uv_m": [
+    0.06,
+    0.12
+  ],
+  "values": {
+    "outer_area_m2": {
+      "exact_fraction": "54/625",
+      "decimal": 0.0864
+    },
+    "hole_area_m2": {
+      "exact_fraction": "6/625",
+      "decimal": 0.0096
+    },
+    "net_area_m2": {
+      "exact_fraction": "48/625",
+      "decimal": 0.0768
+    },
+    "density_kg_per_m2": {
+      "exact_fraction": "9/50",
+      "decimal": 0.18
+    },
+    "net_mass_kg": {
+      "exact_fraction": "216/15625",
+      "decimal": 0.013824
+    },
+    "filled_mass_kg": {
+      "exact_fraction": "243/15625",
+      "decimal": 0.015552
+    },
+    "edited_hole_area_m2": {
+      "exact_fraction": "27/2500",
+      "decimal": 0.0108
+    },
+    "edited_net_area_m2": {
+      "exact_fraction": "189/2500",
+      "decimal": 0.0756
+    },
+    "edited_mass_kg": {
+      "exact_fraction": "1701/125000",
+      "decimal": 0.013608
+    },
+    "resized_net_area_m2": {
+      "exact_fraction": "192/625",
+      "decimal": 0.3072
+    },
+    "resized_mass_kg": {
+      "exact_fraction": "864/15625",
+      "decimal": 0.055296
+    },
+    "outer_perimeter_m": {
+      "exact_fraction": "6/5",
+      "decimal": 1.2
+    },
+    "hole_perimeter_m": {
+      "exact_fraction": "2/5",
+      "decimal": 0.4
+    }
+  },
+  "tolerances": {
+    "area_absolute_m2": 1e-10,
+    "actual_cloth_mass_sum_absolute_kg": 1e-10,
+    "world_uv_boundary_absolute_m": 1e-12
+  },
+  "mesh_required_resolutions_m": [
+    0.005,
+    0.07,
+    0.5
+  ],
+  "topology": {
+    "piece_components": 1,
+    "boundary_components": 2,
+    "euler_characteristic": 0
+  },
+  "resource_case": {
+    "outer_m": 10,
+    "hole_m": 2,
+    "hole_min_uv_m": [
+      4,
+      4
+    ],
+    "net_area_m2": 96,
+    "resolution_m": 0.005,
+    "max_edge_rule_m": 0.007,
+    "expected": "authoring eligibility succeeds; bounded meshing/resource refusal preserves hole, no successful mesh/cloth demanded",
+    "elementary_bound": "triangle area <= sqrt(3)/4 * .007^2; 96 m2 requires more than 4,000,000 faces, exceeding cap200000"
+  },
+  "world_case": {
+    "placement_translation_m": [
+      0.4,
+      1,
+      0.2
+    ],
+    "placement_rotation_radians": [
+      0,
+      0,
+      0
+    ],
+    "transform_translation_uv_m": [
+      0.03,
+      -0.02
+    ],
+    "angle_radians": "pi/2",
+    "pivot_uv_m": [
+      0.12,
+      0.18
+    ],
+    "expected_authored_uv": "(.33-v, u+.04)",
+    "expected_compensated_world_m": "(u+.4, v+1, .2)",
+    "expected_grain_radians": "pi/2"
+  },
+  "base_creation_identity": {
+    "rectangle_revision": 1,
+    "piece": 2,
+    "outer_points": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "outer_curves": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "hole_revision": 2,
+    "hole": 11,
+    "hole_points": [
+      12,
+      13,
+      14,
+      15
+    ],
+    "hole_curves": [
+      16,
+      17,
+      18,
+      19
+    ],
+    "hole_edges": [
+      [
+        16,
+        12,
+        13
+      ],
+      [
+        17,
+        13,
+        14
+      ],
+      [
+        18,
+        14,
+        15
+      ],
+      [
+        19,
+        15,
+        12
+      ]
+    ],
+    "next_id": 20
+  }
+}

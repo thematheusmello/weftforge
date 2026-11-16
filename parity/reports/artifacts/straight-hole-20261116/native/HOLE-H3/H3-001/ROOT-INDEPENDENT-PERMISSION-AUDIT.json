@@ -1,0 +1,21 @@
+{
+  "schema": "weftforge.root-independent-postcase-mode-audit.v1",
+  "case": "HOLE-H3",
+  "attempt": "H3-001",
+  "utc": "2026-11-16T08:32:03.589004+00:00",
+  "original_actor_guard_sha256": "e135e9ac04daddad77360b0b99a05c5cb6f35030e28883afab89ebb3040c7368",
+  "original_actor_guard_still_failed_and_not_retried": true,
+  "original_failed_rows": 29,
+  "root_directly_checked_pins": 277,
+  "all_actual_hashes_byte_lengths_and_permissions_equal_expected": true,
+  "integer_preparation_mode_rows_match": true,
+  "mode_distribution": {
+    "readonly_292": 26,
+    "executable_493": 1,
+    "DXF_writable_420": 2
+  },
+  "all435_original_actor_manifest_nodes_exact": true,
+  "native_input_or_output_bytes_modified": false,
+  "new_grade_or_old_case_regrade": false,
+  "qualification": "Original reviewed postguard compared octal strings with numeric prep permissions and failed. Root direct OS permission-bit checks find no changed boundary; original report and all29 false rows remain immutable. This independent receipt does not turn the original guard into a pass."
+}

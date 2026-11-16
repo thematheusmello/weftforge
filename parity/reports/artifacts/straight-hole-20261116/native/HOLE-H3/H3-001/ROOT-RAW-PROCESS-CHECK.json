@@ -1,0 +1,27 @@
+{
+  "utc": "2026-11-16T08:25:56.728937+00:00",
+  "case": "HOLE-H3",
+  "attempt": "H3-001",
+  "scope": "Separate root post-case inventory/process verification, outside79paircase",
+  "inventory_observed_utc": "2026-11-16T08:24:16.498Z",
+  "inventory_method": "CUA listApps with running WeftForge filter; no getApp/relaunch",
+  "running_weftforge_apps": 0,
+  "very_next_tool_was_summary_only": true,
+  "completion_summary": "Confirmed finished export window closed",
+  "owned_pid": 78706,
+  "ps_argv": [
+    "/bin/ps",
+    "-p",
+    "78706",
+    "-o",
+    "pid=,command="
+  ],
+  "ps_exit_code": 1,
+  "ps_stdout": "",
+  "ps_stderr": "",
+  "owned_pid_absent": true,
+  "root_binding_sha256": "cf935f50874beb3d2ef0a4059a4fe66219f627e60afb3dc837daac2d40c6f8b5",
+  "input_closure_sha256": "7e641d66876f5486f6f6d5f7548ceac41ebd92d1797f4a64894826c8864b92b3",
+  "native_input_or_case_reentry": false,
+  "reference_app_untouched": true
+}

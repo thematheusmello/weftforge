@@ -1,0 +1,28 @@
+{
+  "utc": "2026-11-16T06:38:36.957760+00:00",
+  "case": "HOLE-H2",
+  "attempt": "H2-001",
+  "status": "unaccepted_export_canvas_bounds_failure",
+  "accepted": false,
+  "single_formal_grade_sha256": "5457c733571b632dcc8cbde58a878d86035b6701db4284063ba8d19f9fe7db1d",
+  "formal_invocations": 1,
+  "repaired_or_regraded": false,
+  "error": "export coordinates/scale differ",
+  "passive_diagnosis": "Frozen grade_svg requires actualexterior240x360mm/viewBox0 -360 240360. Writerinitializes0..1m andonlyexpandsbounds, emitting1000x1000mm/viewBox0 -1000 1000 1000 forR240. SVGpathcoordinatesretaincorrectmm/Yscale; existingwriteraddsblankpadding, not observedclipping. Independentfullnative/exportacceptancefailed.",
+  "diagnostic_sha256": "ddecf6fbc5f04c1cfcd7a87984d65d3034e803ac592869d1de65cf6072a5d1a2",
+  "UI_observation_review": {
+    "sha256": "b3ee737325907ce0de15171436af80d34b64f36e10641717ad346ce546659e0d",
+    "capture_manifest_sha256": "8a24e013c87f82bcc81d21ccee16f023d87c7c2f670ce89c8ec382c5bc4dfdfb",
+    "original_images_and_AX_reviewed": 34,
+    "trace_pairs": 79,
+    "additional_UI_barrier_failure": false
+  },
+  "separate_exit_receipt_sha256": "b21a1503b8c7b033e6dd26002000b916fd8df0f2dd378695b4fdb2dfdcf843a0",
+  "source73_and_original417_file_bytes_modes_unchanged": true,
+  "qualifications": [
+    "ActualreadonlyH1-002inputprimary unchanged; normal runtimeinput autosave separatelyretainsR6, not authorityforacceptedprimary.",
+    "Retrospectiveactualjournalproof+terminal/allthreeCUAcodehashescorrelated byroot; noexactinvocationtimes/in-situtransportreceiptclaim.",
+    "No actualnativeClothmass/reference/fullfeaturecredit. No per-exportformalpassclaimedfromanabortedaggregateassessment."
+  ],
+  "next": "MinimalsharedSVGwriterboundsfix in NEW .local/svg-export-fix-20261116; meaningfulred/green tests andfullgates, thenreviewedfreshnative successor onnewbuild. Preserveoldcase/packet/grade/outputunaltered."
+}

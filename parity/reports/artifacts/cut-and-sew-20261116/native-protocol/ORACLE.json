@@ -1,0 +1,357 @@
+{
+  "kind": "prospective_independent_native_saved_state_oracle",
+  "status": "DRAFT; not runtime result",
+  "representation": "Assertion metadata plus full literal states in EXPECTED-STATES.json; no new product serialization fields",
+  "units": {
+    "length": "m",
+    "area": "m^2",
+    "mass": "kg"
+  },
+  "runtime": "5898f1a1274f8632d96b5fd0898f8253dee2f4db",
+  "input": {
+    "case": "SEW-S1",
+    "actual_native_parent": ".local/native-straight-hole-20261116/H1-002/snapshots/parent-r1.weftforge",
+    "sha256": "525855265074aed8ff1af10297c353973cc294a3d83fca818161ce702ba7310f",
+    "assessment_only_parent": ".local/straight-hole-native-plan-v2-20261116/fixtures/R240-v5-assessment.weftforge",
+    "name": "Original Hole R240",
+    "version": 5,
+    "revision": 1,
+    "next_id": 11,
+    "piece": 2,
+    "boundary": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "vertices": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.24,
+        0.0
+      ],
+      [
+        0.24,
+        0.36
+      ],
+      [
+        0.0,
+        0.36
+      ]
+    ],
+    "holes": []
+  },
+  "command_requirement_only_not_executed": {
+    "type": "cut_and_sew",
+    "data": {
+      "piece": 2,
+      "start_curve": 7,
+      "start_t": 0.375,
+      "end_curve": 9,
+      "end_t": 0.625
+    }
+  },
+  "sewn": {
+    "revision": 2,
+    "next_id": 21,
+    "point_order": [
+      3,
+      4,
+      5,
+      6,
+      11,
+      13,
+      16,
+      17
+    ],
+    "curve_order": [
+      7,
+      8,
+      9,
+      10,
+      12,
+      14,
+      18,
+      19
+    ],
+    "piece_order": [
+      2,
+      15
+    ],
+    "retained_boundary": [
+      7,
+      18,
+      14,
+      10
+    ],
+    "child_boundary": [
+      12,
+      8,
+      9,
+      19
+    ],
+    "retained_points": [
+      3,
+      11,
+      13,
+      6
+    ],
+    "child_points": [
+      16,
+      4,
+      5,
+      17
+    ],
+    "new_points": {
+      "11": [
+        0.09,
+        0.0
+      ],
+      "13": [
+        0.09,
+        0.36
+      ],
+      "16": [
+        0.09,
+        0.0
+      ],
+      "17": [
+        0.09,
+        0.36
+      ]
+    },
+    "exact_coordinate_copies": [
+      [
+        16,
+        11
+      ],
+      [
+        17,
+        13
+      ]
+    ],
+    "curve_incidences": [
+      [
+        7,
+        3,
+        11
+      ],
+      [
+        8,
+        4,
+        5
+      ],
+      [
+        9,
+        5,
+        17
+      ],
+      [
+        10,
+        6,
+        3
+      ],
+      [
+        12,
+        16,
+        4
+      ],
+      [
+        14,
+        13,
+        6
+      ],
+      [
+        18,
+        11,
+        13
+      ],
+      [
+        19,
+        17,
+        16
+      ]
+    ],
+    "seam": {
+      "id": 20,
+      "name": "Cut seam #20",
+      "a": {
+        "curve": 18,
+        "t0": 0.0,
+        "t1": 1.0
+      },
+      "b": {
+        "curve": 19,
+        "t0": 1.0,
+        "t1": 0.0
+      },
+      "correspondence": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ]
+    },
+    "lengths_m": [
+      0.36,
+      0.36
+    ],
+    "independent_normalized_pair": "For f in [0,1], independently evaluate A t=f and B t=1-f: both (.09,.36*f). Saved intervals are tested at 0,.25,.5,.75,1; this is analytic saved-geometry assessment, not actual stitch evidence.",
+    "areas_m2": [
+      0.0324,
+      0.054
+    ],
+    "union_area_m2": 0.0864,
+    "perimeters_m": [
+      0.9,
+      1.02
+    ],
+    "areal_density_kg_m2": 0.18,
+    "analytic_area_times_density_only_kg": [
+      0.005832,
+      0.00972
+    ],
+    "analytic_total_kg": 0.015552,
+    "counts": {
+      "points": 8,
+      "curves": 8,
+      "pieces": 2,
+      "materials": 1,
+      "seams": 1,
+      "sewing_groups": 0,
+      "holes": 0,
+      "global_objects": 20
+    }
+  },
+  "history": [
+    {
+      "label": "parent-r1",
+      "revision": 1,
+      "next_id": 11,
+      "pieces": [
+        2
+      ],
+      "seams": []
+    },
+    {
+      "label": "sewn-r2",
+      "revision": 2,
+      "next_id": 21,
+      "pieces": [
+        2,
+        15
+      ],
+      "seams": [
+        20
+      ]
+    },
+    {
+      "label": "undo-r3",
+      "revision": 3,
+      "next_id": 21,
+      "pieces": [
+        2
+      ],
+      "seams": [],
+      "all_other_parent_fields": "exact"
+    },
+    {
+      "label": "redo-r4",
+      "revision": 4,
+      "next_id": 21,
+      "pieces": [
+        2,
+        15
+      ],
+      "seams": [
+        20
+      ],
+      "all_other_R2_fields": "exact actual R2 bits/IDs/order"
+    }
+  ],
+  "reopen": {
+    "only_input": "readonly accepted actual SEW-S1 redo-r4 from the exact accepted attempt, sole saved grade and independent root UI acceptance",
+    "history": "not serialized; persisted document revision4 remains4 until accepted RemoveSeam",
+    "remove_seam": {
+      "label": "removed-r5",
+      "revision": 5,
+      "next_id": 21,
+      "seams": [],
+      "points_curves_pieces_attributes": "all exact actual accepted R4; only seam20 removed; both chords retained"
+    },
+    "one_child_height_edit": {
+      "label": "child-height-r6",
+      "revision": 6,
+      "next_id": 21,
+      "child": 15,
+      "height_m": 0.4,
+      "only_point_deltas": {
+        "5": {
+          "v": 0.4,
+          "u": "exact actual accepted R4"
+        },
+        "17": {
+          "v": 0.4,
+          "u": "exact actual accepted R4"
+        }
+      },
+      "retained_2_anchors_11_13": "bit exact actual accepted R4",
+      "all_other_fields": "exact actual removed R5",
+      "areas_m2": [
+        0.0324,
+        0.06
+      ],
+      "union_area_m2": 0.0924,
+      "perimeters_m": [
+        0.9,
+        1.1
+      ],
+      "analytic_area_times_density_only_kg": [
+        0.005832,
+        0.0108
+      ],
+      "analytic_total_kg": 0.016632
+    }
+  },
+  "tolerances": {
+    "declared_new_anchor_or_edited_height_m": 1e-12,
+    "ordinary_area_m2": 1e-12,
+    "ordinary_mass_kg": 1e-12,
+    "ordinary_length_m": 1e-12,
+    "copied_anchor_coordinates": "IEEE f64 bit exact to source, except point17 V after the declared child-height edit",
+    "unchanged_f64": "IEEE bits including signed zero",
+    "color": "IEEE f32 bits",
+    "closed_v5_fields_and_global_list_order": "exact; unknown/missing fields rejected"
+  },
+  "negative_control": {
+    "B_forward_same_length_and_midpoint": "must refuse; endpoint mismatch .36m",
+    "native_input": "never stage this synthetic control"
+  },
+  "native_observations_required": [
+    "fresh unchecked checkbox and exact normalReturn review opener, End boundary explicitly curve9/Start7",
+    "THREE pointer off/on/off/on previews; seam20/A18full/B19reverse/paired360.000mm; no accidental Apply; native keyboard-toggle behavior unclaimed",
+    "raw invalid/caret/refused Apply/no-refocus0 witness1e0-; first-review shields while invalid field focused; Space may change raw; fullcorrection then Cancel",
+    "second review exact7/.375 to9/.625; Sew-on then ONE Apply cut, NO Space",
+    "one Undo/Redo and same IDs",
+    "native raw SaveAs/Save/recovery chain",
+    "real Quit and very next single completion_summary",
+    "restart from same-metadata385/source74/current-freeze accepted actual R4; Properties Sewing inspect then remove only seam20",
+    "one independent child15 second Size m height0.40 edit; retained2 chord18 inspected through Boundary2 choice, then child15 reselected"
+  ],
+  "not_claimed": [
+    "native empty authoring",
+    "new exports",
+    "actual mesh triangles/stitches or Cloth mass",
+    "simulation/drape/calibrated fabric",
+    "reference lifecycle or parity",
+    "full feature or roadmap acceptance"
+  ],
+  "clean_metadata_commit": "3858848afb3764014a5d305a0e5dfb5661ea6d86"
+}

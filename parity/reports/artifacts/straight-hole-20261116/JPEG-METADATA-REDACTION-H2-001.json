@@ -1,0 +1,565 @@
+{
+  "scope": "Fourteen H2 JPEG metadata-only derivatives. Original serial/date values and SDK payload absent; no raster editing/re-encoding, contact sheet, mockup or color transform. Every other JPEG/ICC/scan byte and decoded pixel is exact.",
+  "images": 14,
+  "actual_changed_bytes_per_image": 8,
+  "total_changed_bytes": 112,
+  "fields_zeroed": [
+    "ICC.mmod.serialNumber",
+    "ICC.mmod.manufactureDate"
+  ],
+  "profile_ID_already_zero": true,
+  "known_original_profile_sha256": "888b82c8c6dca8a09c3554fe9c039de82f7283daaef63324efae94907b1265b4",
+  "safe_profile_sha256": "a6e3f7665b794a386fcfc7e4167ed9ba75f148cd6236f6d6cd595f77e9923c00",
+  "prior_H1_redaction": "JPEG-METADATA-REDACTION.json remains byte-exact historical H1 proof;138 inherited JPEG copies are unchanged.",
+  "implementation": {
+    "exact_reused_parser_prefix_sha256": "7610d9016aa03127c002d09c20d81207aa45b90e81b29c8ac9499ed601cd70e0",
+    "current_node_curator_sha256": "5d3125ca7c9d90ce78a8f6202e1cb6b22401225924783dd13eb1a11c3e7fd63b",
+    "current_curator_sha256": "3696da1132be3789e9398407b1356555615b790dd6b0015decacd2450adaf512",
+    "prior_readonly_pixel_comparator_sha256": "ffdce20e007d177e7aed9399ece82281055dec395001a3cdf919730c99a83e24"
+  },
+  "decoder": {
+    "method": "Pillow Image.open/load/tobytes; no save/convert/ImageCms",
+    "Pillow_version": "12.3.0",
+    "JPEG_library_version": "6.2"
+  },
+  "selfchecks": [
+    "nonmetadata entropy mutation rejected",
+    "malformed ICC length rejected",
+    "unknown ICC tag type rejected"
+  ],
+  "privacy_clearance": "Pending independent root review of successor; consistency checks supply no blanket clearance.",
+  "files": {
+    "native/HOLE-H2/H2-001/captures/initial-owned-hole-state-0.jpg": {
+      "original_private_sha256": "410bd163a45577eccd7e94e708ae8db6919cb25543e7721d651813ea32d3efd6",
+      "original_bytes": 183876,
+      "public_sha256": "4c1d137e705d12976ab52aa7b4978b80e35522af40df20d1787d25c24ce5cc1a",
+      "public_bytes": 183876,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "2a0146e23fcf3864d9a0e4004b8e49e8aca85a1d9edd69119738fa20a4bfb956",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "original_decoded_pixels_sha256": "87ee7aed50e2ba2bbf18871c0b183c8d9789d1dd05d0fd384709721500f98e69",
+        "public_decoded_pixels_sha256": "87ee7aed50e2ba2bbf18871c0b183c8d9789d1dd05d0fd384709721500f98e69",
+        "decoded_pixels_equal": true
+      }
+    },
+    "native/HOLE-H2/H2-001/captures/native-dxf-export-file-menu-current-0.jpg": {
+      "original_private_sha256": "06a26b4abc9c0ce1aad7fd2072f5211f43fd95a93bda340676a390c6e8daad05",
+      "original_bytes": 202055,
+      "public_sha256": "5f0a50cd2e730d770d1cd63e4a1c7b1bbfd4cb6e485a350973540d153885534e",
+      "public_bytes": 202055,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "6a2f5fc3089d2b7f941a7856c46f6f701ca03001458f9b2bca0c2bf336c46a2f",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "original_decoded_pixels_sha256": "446cf4c31a6cfdc2e30c51dc30e5c9a466a882dbcaa140d6098ba74cb3ea7820",
+        "public_decoded_pixels_sha256": "446cf4c31a6cfdc2e30c51dc30e5c9a466a882dbcaa140d6098ba74cb3ea7820",
+        "decoded_pixels_equal": true
+      }
+    },
+    "native/HOLE-H2/H2-001/captures/native-dxf-observed-replace-prompt-0.jpg": {
+      "original_private_sha256": "846f84769532898c6f6f1d8039f02b5a8fac9453cc57dffa25d4a56cd78d072b",
+      "original_bytes": 24160,
+      "public_sha256": "1be058a9ce645898c9eb4b4a7d19336bc7695bb098b5acd404340894c772aab3",
+      "public_bytes": 24160,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "b03f660e2aa6ed9f3cb7b92133b62bb412caf05d7f9ba83e2ccd657436604225",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 260,
+        "height": 266,
+        "decoded_bytes": 207480,
+        "original_decoded_pixels_sha256": "9e039df8444f72d0efd628b56b911b3518fc4e8a3dfc0d0f5806c658cfc93275",
+        "public_decoded_pixels_sha256": "9e039df8444f72d0efd628b56b911b3518fc4e8a3dfc0d0f5806c658cfc93275",
+        "decoded_pixels_equal": true
+      }
+    },
+    "native/HOLE-H2/H2-001/captures/native-dxf-unsupported-hole-refusal-r6-0.jpg": {
+      "original_private_sha256": "dca2525e2a46c5d58bba3cf67f5bd998d7e0b4c82eeb7ab1448f6e98efd2260b",
+      "original_bytes": 197342,
+      "public_sha256": "42e3861c20a5b999ab73c2765503bb677a2d3745ac2bf20524cf948667f39e53",
+      "public_bytes": 197342,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "2a0c6c61f962d1bd48a5e414c0270fba121de33994089b42d99a7f432642b600",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "original_decoded_pixels_sha256": "837ecb9f57a3998985c032ed48d7b4c58f4cfd5ce093af91d53d86b5aa3b8ba7",
+        "public_decoded_pixels_sha256": "837ecb9f57a3998985c032ed48d7b4c58f4cfd5ce093af91d53d86b5aa3b8ba7",
+        "decoded_pixels_equal": true
+      }
+    },
+    "native/HOLE-H2/H2-001/captures/native-obj-export-file-menu-current-0.jpg": {
+      "original_private_sha256": "2e7ea09e74611f9a6d3624b06de4f39f1337104c29f5e8d059c1e5dd9b50edb9",
+      "original_bytes": 196971,
+      "public_sha256": "0df8bfc9ae5967fb57c2a304826af5ecc1bc6d534acc04ef441af89e695f78dd",
+      "public_bytes": 196971,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "4e4dd530e0b730d7917dbe83b8f26fa6bb368879d20128f13e90dbf4ed737a80",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "original_decoded_pixels_sha256": "347c427621147b73e35b054adea822fccb7d9f73f3185abac2d7440f758c0f85",
+        "public_decoded_pixels_sha256": "347c427621147b73e35b054adea822fccb7d9f73f3185abac2d7440f758c0f85",
+        "decoded_pixels_equal": true
+      }
+    },
+    "native/HOLE-H2/H2-001/captures/native-obj-export-returned-r6-0.jpg": {
+      "original_private_sha256": "4f845bdf8a0a56e760395fdc0dd4d5f5e1ced0f3160959e275d8a750beb1f13d",
+      "original_bytes": 197324,
+      "public_sha256": "95a4a5358ae328d845701e56158f15912cfff79cd076f81a0ce0d0d562ed906f",
+      "public_bytes": 197324,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "3a426ffa60ffb6daa0b4e4a10effc667530df52e847a59c2a95d51478f7b2549",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "original_decoded_pixels_sha256": "a20ed3bf7cf3a16916958b3a4694577a90adda3bd67863981c902ba4fc2d272f",
+        "public_decoded_pixels_sha256": "a20ed3bf7cf3a16916958b3a4694577a90adda3bd67863981c902ba4fc2d272f",
+        "decoded_pixels_equal": true
+      }
+    },
+    "native/HOLE-H2/H2-001/captures/native-svg-export-file-menu-current-0.jpg": {
+      "original_private_sha256": "15c3ddc4e6f6de61a896e45dfd4558a4930b8ac7963683609e37b2cdc6bac32b",
+      "original_bytes": 198770,
+      "public_sha256": "056d2cd1f31fac884c2679d677c34363a47b673cf54467cab5cf9417c036f1a7",
+      "public_bytes": 198770,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "e8f0b917d907bcd61373ec746828ec2d209c08c9d38ea42040355b202235ba93",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "original_decoded_pixels_sha256": "f4697d88d2c671d103d0f15126ec3571ed400abff409b93c34e4c6d13263b019",
+        "public_decoded_pixels_sha256": "f4697d88d2c671d103d0f15126ec3571ed400abff409b93c34e4c6d13263b019",
+        "decoded_pixels_equal": true
+      }
+    },
+    "native/HOLE-H2/H2-001/captures/native-svg-export-returned-r6-0.jpg": {
+      "original_private_sha256": "f4052539e9cbbaf55f555980093430833393ba6f86bc437b20b942525b6a104c",
+      "original_bytes": 200670,
+      "public_sha256": "17df58a8803244ebff4e5912e931acbf32df7ca59de74d353f2b8b45563e922f",
+      "public_bytes": 200670,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "482641a97e80c1f6cedfc2855028c3e10ab1764fd57f256e461ef87347cd9b3f",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "original_decoded_pixels_sha256": "57e1f7b0a85ced4242ff20f95bff0672378b26596ed98c15ab20f84a1fd009f6",
+        "public_decoded_pixels_sha256": "57e1f7b0a85ced4242ff20f95bff0672378b26596ed98c15ab20f84a1fd009f6",
+        "decoded_pixels_equal": true
+      }
+    },
+    "native/HOLE-H2/H2-001/captures/reopened-hole-eleven-curve-sixteen-r5-0.jpg": {
+      "original_private_sha256": "e986b376919d96ac532ed4f0dcf3cb87b4b548f004ebb502fdb4e7017ca7219b",
+      "original_bytes": 193846,
+      "public_sha256": "17bdd85f41872fc058b403b1920b1049416e2567a4df4232e41cf5b71f629dd6",
+      "public_bytes": 193846,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "26b4442bb5dd5dddf3e37f59df806c4bc5696ac5e7e09533879e5e1785d51e8d",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "original_decoded_pixels_sha256": "2566b0fd31fa3fa4607e59c759879c2c0789fd6d21058442c35ba85e01c3b39c",
+        "public_decoded_pixels_sha256": "2566b0fd31fa3fa4607e59c759879c2c0789fd6d21058442c35ba85e01c3b39c",
+        "decoded_pixels_equal": true
+      }
+    },
+    "native/HOLE-H2/H2-001/captures/reopened-r6-clean-native-save-0.jpg": {
+      "original_private_sha256": "3263ea301ebbbc862c3534b2df902300ef90ff9d126afab41b85180ee9b2d9c6",
+      "original_bytes": 195535,
+      "public_sha256": "f1d858238050454462c58aa9832afafa286caaab7d9ff1c2ab25d513ce5b91d0",
+      "public_bytes": 195535,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "e786af73f0863c3198c107069b261e6b5f20a73d3857dd09c774ce37517f657d",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "original_decoded_pixels_sha256": "bee1f86da3db48952a613e5b0fde325b157b63688e531539c4ec5d9606822f52",
+        "public_decoded_pixels_sha256": "bee1f86da3db48952a613e5b0fde325b157b63688e531539c4ec5d9606822f52",
+        "decoded_pixels_equal": true
+      }
+    },
+    "native/HOLE-H2/H2-001/captures/reopened-r6-file-menu-save-as-0.jpg": {
+      "original_private_sha256": "4436f10cbc241aa7308bf6deee650259c6f2c86defa48efd749411c9e2256b79",
+      "original_bytes": 198313,
+      "public_sha256": "e388d79bc9d8f0ab850782c1b03e2094ae728e36960bbb02fb75a94a34a8a9a4",
+      "public_bytes": 198313,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "377d5bb74baa58c97b638e3daec5c958545513b39676af5c21a6590887d2ca6c",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "original_decoded_pixels_sha256": "7502e521d527ae599b81201a1243f15224be3a1d5e8d1c5c44c49bd6d69129e6",
+        "public_decoded_pixels_sha256": "7502e521d527ae599b81201a1243f15224be3a1d5e8d1c5c44c49bd6d69129e6",
+        "decoded_pixels_equal": true
+      }
+    },
+    "native/HOLE-H2/H2-001/captures/reopened-vertex-twelve-u-committed-r6-0.jpg": {
+      "original_private_sha256": "3a7fee4201a5bb1d7f5b2c22fc5184e5678888732e99087a8f94137727e770da",
+      "original_bytes": 196541,
+      "public_sha256": "507290feddb3f2ba54f8d6a263d9daa0b1e278d76a7d8207c4754e37aadcec14",
+      "public_bytes": 196541,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "9c2a6426b3a94e0f2cd24336dbb75e402a369fbafd533afc3f4db225cc6d5fa6",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "original_decoded_pixels_sha256": "019c07d928e7475149da81ccd46c623419b7140b421918a9673da84341f46d40",
+        "public_decoded_pixels_sha256": "019c07d928e7475149da81ccd46c623419b7140b421918a9673da84341f46d40",
+        "decoded_pixels_equal": true
+      }
+    },
+    "native/HOLE-H2/H2-001/captures/reopened-vertex-twelve-u-draft-before-tab-0.jpg": {
+      "original_private_sha256": "757ae4e7c2ac950e6c3286253aed8589c1a0c8cc716731dee023ca318df85bea",
+      "original_bytes": 194570,
+      "public_sha256": "460ffe2ea88313ba5a58c91c2c0fb7f75265f8cea79fb39424e2d1f7a5d5b9a2",
+      "public_bytes": 194570,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "7f691118e93fc968c9193ccd0a0c87e343b1d9f12607babfd058cdfc41c564c2",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "original_decoded_pixels_sha256": "f3193aadcfc8b1b18828396d2bc160fc38bb3644d04c4fecf22f455369b8690f",
+        "public_decoded_pixels_sha256": "f3193aadcfc8b1b18828396d2bc160fc38bb3644d04c4fecf22f455369b8690f",
+        "decoded_pixels_equal": true
+      }
+    },
+    "native/HOLE-H2/H2-001/captures/reopened-vertex-twelve-u-focused-0.jpg": {
+      "original_private_sha256": "76698f21022cc27f4585a01916b828960ad4997daa00b10d295bb09fff308bd6",
+      "original_bytes": 194583,
+      "public_sha256": "6d196bf823e819970e6e3cd312643963f629f8e320f265f24e216135a96d62ef",
+      "public_bytes": 194583,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "3dbc5b0f2925252f99b16cbba5c3836a57f3b17b31db450763f26550cf4a57ab",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "original_decoded_pixels_sha256": "82a14ac69a65086d2a733f87461b9b85fe2c57c28408bc13ae29eeaa60e0a326",
+        "public_decoded_pixels_sha256": "82a14ac69a65086d2a733f87461b9b85fe2c57c28408bc13ae29eeaa60e0a326",
+        "decoded_pixels_equal": true
+      }
+    }
+  }
+}

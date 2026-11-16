@@ -1,0 +1,138 @@
+{
+  "kind": "S1-001 prospective actor preparation freeze for root review; no final binding or GO",
+  "case": "SEW-S1",
+  "attempt": "S1-001",
+  "current_packet_freeze_sha256": "5ab3b3238d2b50a5f6fdfa58965c94a7a057b5f5cb084c46117e949d986f3b0c",
+  "root_authorized_for_case": false,
+  "native_lease_granted": false,
+  "files": {
+    "ACTOR-BOOTSTRAP.js": {
+      "sha256": "9ae48868aa0295234da34923b2d9d04a4583c851c0026df19c92587356d3b3ed",
+      "bytes": 12451,
+      "mode": "0o444"
+    },
+    "ACTOR-INITIAL-CAPTURE.js": {
+      "sha256": "501d44a850e0897c3d987db7688770f77c451bf7daef3637c4e886d7bcb95d4b",
+      "bytes": 365,
+      "mode": "0o444"
+    },
+    "ACTOR-LAUNCH-PID.cjs": {
+      "sha256": "59c54e48d27038b30ca451d67460b2a0c9e7935d40c6a9952092ef6fb3465fe4",
+      "bytes": 2531,
+      "mode": "0o444"
+    },
+    "ACTOR-PERSISTENCE-CHECK.js": {
+      "sha256": "8a4bafceabf47096fde940f25a55256677dbbc2c6ab73247df1aafb8ad81956b",
+      "bytes": 10543,
+      "mode": "0o444"
+    },
+    "ACTOR-POSTFLIGHT-RAW.cjs": {
+      "sha256": "f1b6e6f1ccf1fb40734b2c18159458efd71e815fcea0d193dff7a1984487a74c",
+      "bytes": 6433,
+      "mode": "0o444"
+    },
+    "ACTOR-START-CLOCK.cjs": {
+      "sha256": "a745ed2e1f5aeb9c09d4f1e137ab15d6ab9d01f4f5e590456aa4f1a54e163a92",
+      "bytes": 1613,
+      "mode": "0o444"
+    },
+    "FILESYSTEM-GUARD.json": {
+      "sha256": "410fbeb41aaa360a9cbf10f0a43635455b47fb857b6c4273a4364e9b28519a8c",
+      "bytes": 24404,
+      "mode": "0o444"
+    },
+    "ORCHESTRATION.md": {
+      "sha256": "b71754c77d10e7e4fa82444efa21275f52a5c9c9fba7bd32678370a622d03022",
+      "bytes": 6988,
+      "mode": "0o444"
+    },
+    "PASSIVE-STATIC-CHECK.cjs": {
+      "sha256": "b04153b0627f33251b0fce788b957d1a103c45da16f7265081016f27b71b4269",
+      "bytes": 24479,
+      "mode": "0o444"
+    },
+    "PASSIVE-STATIC-CHECK.json": {
+      "sha256": "06ab0e8e10dc136d4244c3a55845a51cfa879b60e908ff167dae0ee812405e77",
+      "bytes": 2457,
+      "mode": "0o444"
+    },
+    "ROOT-BINDING-DRAFT.json": {
+      "sha256": "0650c9173d02e2eba5b55a84fd36d89d61929a4f72293fe28af497cd7468d166",
+      "bytes": 13734,
+      "mode": "0o444"
+    },
+    "STAGING-MANIFEST.json": {
+      "sha256": "3289bad898cceba3c200af16908ce275e175c52c0ad5626ad276964df1982b22",
+      "bytes": 3456,
+      "mode": "0o444"
+    },
+    "WeftForgeSewS1001.app/Contents/Info.plist": {
+      "sha256": "f13562ed221dd4d30b9c421674f96bf4a1189d701954cd5eb55c842164a0da4c",
+      "bytes": 863,
+      "mode": "0o444"
+    },
+    "WeftForgeSewS1001.app/Contents/MacOS/weftforge": {
+      "sha256": "7809e41948e19d0055da45e10a3b55225173df48e43465fab1b48effd7efa1c8",
+      "bytes": 62245032,
+      "mode": "0o555"
+    },
+    "inputs/accepted-parent-r1.weftforge": {
+      "sha256": "525855265074aed8ff1af10297c353973cc294a3d83fca818161ce702ba7310f",
+      "bytes": 3232,
+      "mode": "0o444"
+    },
+    "templates/ACTOR-RUNTIME-TOOL-HISTORY.template.json": {
+      "sha256": "337cc358500e607d510a255a1078b655d3d3f69de40c3ef1efb96006cb326f24",
+      "bytes": 549,
+      "mode": "0o444"
+    },
+    "templates/COMPLETION-SUMMARY-RETURN.template.json": {
+      "sha256": "8d3b04a1930f1c79df236ac581a00927790847db770ba28a91ff5543215034d9",
+      "bytes": 639,
+      "mode": "0o444"
+    },
+    "templates/NATIVE-LEASE-CLOSED.template.json": {
+      "sha256": "02d297943f9750c990de11625d65d850439c7b9ce56930d61003f421d8cca72b",
+      "bytes": 423,
+      "mode": "0o444"
+    },
+    "templates/POSTFLIGHT.template.json": {
+      "sha256": "b80f3f74c1e11256c1400c3e91c32b7c14dd7ed3759eaf71488530b26c40c3ac",
+      "bytes": 583,
+      "mode": "0o444"
+    }
+  },
+  "file_count": 19,
+  "passive_check_passed": true,
+  "staged_actor_cells_executed": false,
+  "actual_cua_runtime_proved": false,
+  "native_clock_or_controller_started": false,
+  "native_launched": false,
+  "formal_grade_performed": false,
+  "S2_staged": false,
+  "runtime_files_absent": [
+    "ROOT-BINDING.json",
+    "LAUNCH-CLOCK.json",
+    "CONTEXT.json",
+    "OWNED-PID.json",
+    "trace",
+    "offline-proof",
+    "ACTOR-RUNTIME-PROOF.json",
+    "ACTOR-PERSISTENCE-CHECK-RESULT.json",
+    "SAVED-GRADE-ATTEMPT.json",
+    "SAVED-GRADE-001.json"
+  ],
+  "work_empty": true,
+  "planned_operations": 149,
+  "planned_paired_operations": 148,
+  "mandatory_documentation_refresh_calls": 1,
+  "operation_cap": 160,
+  "summary_calls": 1,
+  "overall_cap": 161,
+  "elapsed_cap_s": 1800,
+  "prospective_actor_corrections": [
+    "exact CLOSED0004 {executable,argv} and0005 {expected_binary,expected_command}; executable/argv retained in results; full input command exact-match preserved",
+    "postflight canonical accepted_input_dependency plus passive property-access audit"
+  ],
+  "root_review_and_separate_explicit_GO_required": true
+}

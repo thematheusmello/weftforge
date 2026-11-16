@@ -1,0 +1,82 @@
+{
+  "schema": "weftforge.straight-hole.actor-readiness.v1",
+  "case": "HOLE-H1",
+  "attempt": "H1-001",
+  "root_binding_sha256": "48ffa015e8edb213037fa39dcde743ec0f9f5d42c2312189087229417e33e385",
+  "source_record": "0003",
+  "actual_cua_runtime": true,
+  "native_UI_calls": 0,
+  "helper_types": {
+    "holeModule": "object",
+    "holeRequire": "function",
+    "holeFs": "object",
+    "holePath": "object",
+    "holeCrypto": "object",
+    "holeProcess": "object",
+    "holeRoot": "string",
+    "holeRepo": "string",
+    "holePacket": "string",
+    "holeHash": "function",
+    "holeWrite": "function",
+    "holeBindingBytes": "object",
+    "holeBindingSha": "string",
+    "holeBinding": "object",
+    "holeRecorder": "object",
+    "holeController": "object",
+    "holeObserve": "function",
+    "holeMark": "function",
+    "holeProofId": "string",
+    "holeProofSha": "string"
+  },
+  "helper_flags": {
+    "holeModule": true,
+    "holeRequire": true,
+    "holeFs": true,
+    "holePath": true,
+    "holeCrypto": true,
+    "holeProcess": true,
+    "holeRoot": true,
+    "holeRepo": true,
+    "holePacket": true,
+    "holeHash": true,
+    "holeWrite": true,
+    "holeBindingBytes": true,
+    "holeBindingSha": true,
+    "holeBinding": true,
+    "holeRecorder": true,
+    "holeController": true,
+    "holeObserve": true,
+    "holeMark": true,
+    "holeProofId": true,
+    "holeProofSha": true
+  },
+  "helpers_ready": true,
+  "root": {
+    "expected": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-001",
+    "actual": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-001"
+  },
+  "controller_configuration": {
+    "expected": {
+      "root": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-001",
+      "recorderPath": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+      "evidenceKind": "native",
+      "callCap": 200,
+      "elapsedCapS": 1800,
+      "baselineCalls": 0
+    },
+    "actual": {
+      "root": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-001",
+      "recorderPath": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+      "evidenceKind": "native",
+      "callCap": 200,
+      "elapsedCapS": 1800,
+      "baselineCalls": 0
+    }
+  },
+  "context_schema_ready": true,
+  "proof_schema_ready": true,
+  "proof_result_ready": true,
+  "offline_artifact_ready": true,
+  "controller_status_ready": true,
+  "proof_sha256": "1d1a40c88811d94287b161683bf8e6afb801713509413e23e0c243897ce05d9c"
+}

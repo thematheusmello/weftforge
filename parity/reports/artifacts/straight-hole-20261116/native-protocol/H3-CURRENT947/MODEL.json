@@ -1,0 +1,87 @@
+{
+  "schema": "weftforge.svg-hole-successor.literal-model.v1",
+  "authoring_contract": ".local/straight-holes-20261116/spec/features/PAT-006-straight-hole.md",
+  "assessment_fixture": "fixtures/R240-v5-assessment.weftforge",
+  "fixture_use": "assessment only; never staged native input",
+  "saved_math": {
+    "path": ".local/straight-hole-native-plan-v2-20261116/grade_saved.py",
+    "sha256": "486328f13c49018e240cbbd3f52e8b1cf9dd0d97747d3653ee3b927d3b2a31b9",
+    "function": "grade_states",
+    "selector": "HOLE-H2",
+    "selector_is": "frozen literal R5 to R6 math only; no old run or entrypoint invocation"
+  },
+  "export_grader": {
+    "path": "grade_exports.py",
+    "sha256": "56ab4c66ea5d70846b532e3abae951e2af1e2c1ea0a9baee5a924a154d06ba11"
+  },
+  "outer_uv_m": [
+    [
+      0,
+      0
+    ],
+    [
+      0.24,
+      0
+    ],
+    [
+      0.24,
+      0.36
+    ],
+    [
+      0,
+      0.36
+    ]
+  ],
+  "hole_uv_m_R6": [
+    [
+      0.08,
+      0.12
+    ],
+    [
+      0.08,
+      0.24
+    ],
+    [
+      0.16,
+      0.24
+    ],
+    [
+      0.16,
+      0.12
+    ]
+  ],
+  "R5_to_R6": {
+    "piece": 2,
+    "hole": 11,
+    "curve": 16,
+    "point": 12,
+    "from_U_m": 0.06,
+    "to_U_m": 0.08,
+    "V_m": 0.12,
+    "revision": 6,
+    "next_id": 20,
+    "one_Tab_commit": true
+  },
+  "analytic_net_area_m2": 0.0768,
+  "analytic_area_times_density_kg": 0.013824,
+  "actual_particle_mass_claimed": false,
+  "point_tolerance_m": 1e-12,
+  "area_tolerance_m2": 1e-10,
+  "SVG_dimensions_mm": [
+    240,
+    360
+  ],
+  "SVG_viewBox": [
+    0,
+    -360,
+    240,
+    360
+  ],
+  "SVG_canvas_tolerance": 1e-09,
+  "topology": {
+    "connected_components": 1,
+    "boundary_loops": 2,
+    "euler_characteristic": 0
+  },
+  "export_expected_construction": "the same exact retained R6 object only AFTER full frozen literal v5 state grade"
+}

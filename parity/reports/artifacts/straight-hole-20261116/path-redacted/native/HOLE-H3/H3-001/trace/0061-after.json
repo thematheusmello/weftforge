@@ -1,0 +1,28 @@
+{
+  "id": "0061",
+  "status": "returned",
+  "result": {
+    "status": 0,
+    "stdout": "{\"schema\": \"weftforge.straight-hole.export-copy.v1\", \"case\": \"HOLE-H3\", \"label\": \"hole-r6.svg\", \"revision\": 6, \"sha256\": \"2742339bdd02dcfd8b54e0cdeaf3cd6a442e2bf4b3e28d0bf2c15cb409fe6427\", \"bytes\": 672, \"ui_action_record\": \"0059\", \"clean_capture_record\": \"0060\", \"raw_copy_record\": \"0061\", \"sidecars\": {\".recovery\": {\"present\": false, \"bytes\": null, \"sha256\": null}, \".autosave\": {\"present\": false, \"bytes\": null, \"sha256\": null}, \".autosave.recovery\": {\"present\": false, \"bytes\": null, \"sha256\": null}}, \"intentional_refusal\": false, \"construction_graded\": false}\n",
+    "stderr": "",
+    "executable": "python3",
+    "argv": [
+      "<WORKSPACE>/.local/svg-export-native-successor-plan-20261116/retain_saved.py",
+      "--run",
+      "<WORKSPACE>/.local/native-svg-export-successor-20261116/H3-001",
+      "--case",
+      "HOLE-H3",
+      "--label",
+      "hole-r6.svg",
+      "--save-record",
+      "0059",
+      "--capture-record",
+      "0060",
+      "--retain-record",
+      "0061"
+    ]
+  },
+  "error": null,
+  "utc": "2026-11-16T08:13:16.830Z",
+  "monotonic_ns": "939112427112750"
+}

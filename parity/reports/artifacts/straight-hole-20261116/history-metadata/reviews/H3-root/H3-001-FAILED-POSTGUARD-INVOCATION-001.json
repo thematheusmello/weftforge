@@ -1,0 +1,29 @@
+{
+  "scope": "Tool-history metadata derivative. Raw session/journal lines and internal session locators omitted. Root corroboration receipt is retained separately; this derivative is not raw transport evidence.",
+  "original_private_sha256": "88ad6f4d5998efb968a153f8f56111a8215251eecafb94adfb4ea1ea26b0bae2",
+  "original_private_bytes": 1353,
+  "omitted_fields": [
+    "actual_call_id",
+    "source_journal_path"
+  ],
+  "record": {
+    "schema": "weftforge.root.failed-postguard-invocation.v1",
+    "case": "HOLE-H3",
+    "attempt": "H3-001",
+    "root_correlated_utc": "2026-11-16T08:49:27.633123+00:00",
+    "kind": "Retrospective primary actual-tool correlation for preserved postcase bookkeeping failure; no new invocation",
+    "command": [
+      "node",
+      ".local/native-svg-export-successor-20261116/H3-001/ACTOR-POSTFLIGHT-RAW.cjs"
+    ],
+    "actual_exit_code": 1,
+    "actual_call_line": 473,
+    "actual_return_line": 477,
+    "verbatim_two_line_excerpts_sha256": "8d33a82ab71e24968c673fe7c15f4ab1966a1d35b5d783b27d82fe8d14508f1f",
+    "exact_selected_guard_tool_output_sha256": "4b1badd41cd29d4e8fa5f5de440ea5ab990a3bd145915c1cfd13a219d967378c",
+    "original_failed_report_sha256": "e135e9ac04daddad77360b0b99a05c5cb6f35030e28883afab89ebb3040c7368",
+    "original_false29rows_preserved": true,
+    "script_or_guard_retried_or_changed": false,
+    "scope_note": "The actual function call also read closed S1 journal metadata in a separate parallel branch. Selected output contains only H3 failed-guard branch1; primary excerpts stay private and require metadata-only public derivation/omission."
+  }
+}

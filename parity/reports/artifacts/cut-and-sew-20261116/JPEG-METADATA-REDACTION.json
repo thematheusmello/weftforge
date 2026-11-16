@@ -1,0 +1,2845 @@
+{
+  "scope": "74 new owned native JPEG metadata derivatives, individually byte-checked against this archive's originals. Only eight ICC monitor serial/manufacture-date bytes zeroed. ProfileID already zero; every other JPEG/ICC/color/scan/EOI byte and decoded pixel is exact. No raster edit, encoder, ImageGen or ImageCms. Not whole-byte-original or metadata-free JPEGs.",
+  "images": 74,
+  "actual_changed_bytes_per_image": 8,
+  "total_changed_bytes": 592,
+  "fields_zeroed": [
+    "ICC.mmod.serialNumber",
+    "ICC.mmod.manufactureDate"
+  ],
+  "profile_ID_already_zero": true,
+  "known_original_profile_sha256": "888b82c8c6dca8a09c3554fe9c039de82f7283daaef63324efae94907b1265b4",
+  "safe_profile_sha256": "a6e3f7665b794a386fcfc7e4167ed9ba75f148cd6236f6d6cd595f77e9923c00",
+  "prior_policy_reviews": {
+    "first": "ee1559436af21a22ece54d22a03bb91b26c3d4ee9c022d26ffda85203f1da8cf",
+    "successor": "3a4f86df0d17877344e2b5af3181e07618a7ee6b5d055accd5becadac8480cae"
+  },
+  "prior_policy_is_not_clearance_for_new_images": true,
+  "implementation": {
+    "exact_reused_parser_prefix_sha256": "7610d9016aa03127c002d09c20d81207aa45b90e81b29c8ac9499ed601cd70e0",
+    "current_node_curator_sha256": "74838551969cec1545f755cc014e064e2ecb0ed3c744a05b30212584c537d5d0",
+    "prior_readonly_pixel_comparator_sha256": "ffdce20e007d177e7aed9399ece82281055dec395001a3cdf919730c99a83e24",
+    "current_curator_sha256": "e28ea22848bbf777dad17e2f7d2b58c128d3ab8c7bf418ead3bf172ec14dee3e"
+  },
+  "decoder": {
+    "method": "Pillow Image.open/load/tobytes; no save/convert/ImageCms",
+    "Pillow_version": "12.3.0",
+    "JPEG_library_version": "6.2"
+  },
+  "product_or_parser_selfchecks_run": false,
+  "privacy_clearance": "PENDING independent root audit of these new images and all bytes",
+  "files": {
+    "native/SEW-S1/S1-001/captures/accepted-cut-and-sew-r2-0.jpg": {
+      "original_private_sha256": "c15522211bc94b642d219ba70c02e3b3e97e297735b650bb6717b95b914dca57",
+      "original_bytes": 167506,
+      "public_sha256": "bff7a1212dec879e903232904dd766f4d31a75ebb6a6dac490e77ccf13b1abf2",
+      "public_bytes": 167506,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "c0cd6acc1cee8f1a4047932d3d3fff480f8c1f33f2daab015e6a7af90fe3b7d0",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "806c07e932246147c190d14e8a6e7fa67a0842ba13602c4fffcb738877cffb46",
+        "public_decoded_pixels_sha256": "806c07e932246147c190d14e8a6e7fa67a0842ba13602c4fffcb738877cffb46"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/after-frame-all-0.jpg": {
+      "original_private_sha256": "43f139fb74a02b3b1dcf8eabf2816518f6d4f67733b771920528a23f56100f20",
+      "original_bytes": 158829,
+      "public_sha256": "a4746f3be43480622f9fe0d7bcfb1a9e4d605202bf75cd3a315852747ecd4fa7",
+      "public_bytes": 158829,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "1fdf8894364076de6e8dc8dece08cc6237cdc802d584adde2fa5a497f6a14db7",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "8ccfa79e262b1cf0f77c31b1d3570caa6ad43339a21778dd08360e72f97fc7c2",
+        "public_decoded_pixels_sha256": "8ccfa79e262b1cf0f77c31b1d3570caa6ad43339a21778dd08360e72f97fc7c2"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/applied-seam-r2-inspection-0.jpg": {
+      "original_private_sha256": "f4e5d6cbfab777dcc3cb6260526e848c863c7b8d94e6473ee6aa10330ac8455a",
+      "original_bytes": 173931,
+      "public_sha256": "b0043805d05cbd1c75bc5aa702331289a76cd6668a651b51b27b919583655923",
+      "public_bytes": 173931,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "87749c1cc58548e266c3a9626d2b777010bd5219f663742d2088dd8efbf83634",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "311cbfed2d9758d566b8c152f1628f28d1d35a0f66fa631bf497dba378438e95",
+        "public_decoded_pixels_sha256": "311cbfed2d9758d566b8c152f1628f28d1d35a0f66fa631bf497dba378438e95"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/child-fifteen-r2-inspector-0.jpg": {
+      "original_private_sha256": "c5d857ef5f561b69a425a1ad7a1f444ebfcd37e6ba83736d2c298156c8fd84fd",
+      "original_bytes": 165401,
+      "public_sha256": "aff87d8e2cd7cf6ea2cbee640f3330e921b54f234cee3ccaccc3f0ad0be846ce",
+      "public_bytes": 165401,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "4d617b8e5fe60af881f9a06026044d8fa2621ae1c0d3445cdb415a2d0d761b1f",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "a9dd42fb04f3c9d3f941c61fd9fdd834dd05eb8ec2cce16b6ae0085716947bc6",
+        "public_decoded_pixels_sha256": "a9dd42fb04f3c9d3f941c61fd9fdd834dd05eb8ec2cce16b6ae0085716947bc6"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/clean-native-parent-r1-save-0.jpg": {
+      "original_private_sha256": "83c59df2dff64c8429536c9ddf49660302df4253619e33bac9ece1d90bfee056",
+      "original_bytes": 166235,
+      "public_sha256": "0ea8c2e5e54f8998ef02e16913b8da301ea16a803635a8d2d2841e4cd25b52e0",
+      "public_bytes": 166235,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "7b348f7c6b6c424409d6c10b6c0922ff07b39633bbd3affbf31de3348e055204",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "cf79c61b725886bf2021f33952028836e19058620f9c5663901ccf1472c0559f",
+        "public_decoded_pixels_sha256": "cf79c61b725886bf2021f33952028836e19058620f9c5663901ccf1472c0559f"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/clean-native-redo-r4-save-0.jpg": {
+      "original_private_sha256": "2a51d33cfdbebff38958ae61fb4f2ddb438a965665d311df8878b55f85a9e783",
+      "original_bytes": 165737,
+      "public_sha256": "986fea8ed8904f1b359c67346822a6f1f13004c86cebebf727e53844a61ea905",
+      "public_bytes": 165737,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "c74b68f1b1429bb7e8ab9857d2558a5b3d97dd3aaeb037dfe346bc08b739ff27",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "4e1e5b537d7525c293c38b13d7a2c59cc2c6e858f6f058370cacb8c91c1951ca",
+        "public_decoded_pixels_sha256": "4e1e5b537d7525c293c38b13d7a2c59cc2c6e858f6f058370cacb8c91c1951ca"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/clean-native-sewn-r2-save-0.jpg": {
+      "original_private_sha256": "54b5e2f06399a591eeab9a3cbeeb86e508ee8e0b4fb95532522fcaa66d2264db",
+      "original_bytes": 165317,
+      "public_sha256": "cd255e23732e44cfdfeb50cbf5c6ac1f017c7b11f302bf414acdf87842573738",
+      "public_bytes": 165317,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "2b8d8ee48dd8fe8208bf2aff30166f543e1cef41ad36dc569e95b040e4b1a3f6",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "e905a9eb8465108651f02614451691915a9b04338dfc760ebcf8ae338d19029b",
+        "public_decoded_pixels_sha256": "e905a9eb8465108651f02614451691915a9b04338dfc760ebcf8ae338d19029b"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/clean-native-undo-r3-save-0.jpg": {
+      "original_private_sha256": "813c2ef91c23ae92b1624bbed5d59f4cccf5d114ee28ef6c11f1c694b8a79d8f",
+      "original_bytes": 161517,
+      "public_sha256": "e86e37d66e63e75f41b25fdac77e5502d02e1b56833cd477b6a2d2e7cace6ddd",
+      "public_bytes": 161517,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "d6968d8e48d93ecc286352b1f4bfb8730398ceb8eaf2b00c2eb78ac5154fe2b8",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "6710712de48ada8aa55af870333d238f23d14bab98e6c5fba885e20fbc126317",
+        "public_decoded_pixels_sha256": "6710712de48ada8aa55af870333d238f23d14bab98e6c5fba885e20fbc126317"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/corrected-candidate-before-cancel-0.jpg": {
+      "original_private_sha256": "cfebafbc59beb2f8276ba22cb233c1ab5172fa1a70076320daeed45490fe2106",
+      "original_bytes": 168665,
+      "public_sha256": "b9b4f2ac74078ad77109d65f0923ffdca4ec9561877b334948b8261a7f4241bd",
+      "public_bytes": 168665,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "ae60d6ec394fa052ee062330c3bc63aa35fcc985fce3e15dba02f79569ecc71f",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "1abe8fb36e99f4864fb442c4bb7391bdfad4b74c9c4a358a5a984296182d415c",
+        "public_decoded_pixels_sha256": "1abe8fb36e99f4864fb442c4bb7391bdfad4b74c9c4a358a5a984296182d415c"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/corrected-first-sewn-candidate-0.jpg": {
+      "original_private_sha256": "c3cfb20e14622c848e8e60c32bbb810f6cbfc1ee608ace9b10c7ec70ac4931ed",
+      "original_bytes": 168532,
+      "public_sha256": "d212178e5a7085853caadba450745f7578acd7e99619c7189ebe31731687d969",
+      "public_bytes": 168532,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "1d81470b7cd502bc1b3ceab830a2ffd722c3b045d67a7f6a601900a4bf0014b7",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "13a120267b82da948f606692152b5e5ca21a0f5f8d6458f34b1bcf20e7154215",
+        "public_decoded_pixels_sha256": "13a120267b82da948f606692152b5e5ca21a0f5f8d6458f34b1bcf20e7154215"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/cut-tool-before-opening-return-0.jpg": {
+      "original_private_sha256": "1d447b383b3793bc7aec81dcbaf221d4ae7c0ab21131c48ddb13af08121fcfe0",
+      "original_bytes": 165552,
+      "public_sha256": "bde3a65e20ec8745e9a9622170c8b66a986e8d244c5a268957411529772dbcc3",
+      "public_bytes": 165552,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "b66aca82e42ff7340ef934653211d8f157097f9131c7ce59fd60d593e7fe5c2f",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "a585c8431950075093ecf0caa11ceca26b81ad14d38843c388f825b48134d4ec",
+        "public_decoded_pixels_sha256": "a585c8431950075093ecf0caa11ceca26b81ad14d38843c388f825b48134d4ec"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/file-menu-before-first-save-as-0.jpg": {
+      "original_private_sha256": "68d3d83fb2d9fe5c350e4c4d92714feaebb92874ac13ff383ff3b4fb52425e7b",
+      "original_bytes": 167678,
+      "public_sha256": "78dcbea6f177611f342d49c1144db7d91894fd2b949c26b2f892118e8b7497d3",
+      "public_bytes": 167678,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "7c40204a41fb7afce071815e32f0c1233b59b68112645233bdd81f40c36b7ed6",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "a342cdb6795bc8f2a3b19a921056d668ddcfdcbdbab054a8241b908ccea76acf",
+        "public_decoded_pixels_sha256": "a342cdb6795bc8f2a3b19a921056d668ddcfdcbdbab054a8241b908ccea76acf"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/file-menu-before-redo-r4-save-0.jpg": {
+      "original_private_sha256": "f3c348cb06f83641e96957e08bb5835ab0ee72fab51470c2a956f94702cafa98",
+      "original_bytes": 169810,
+      "public_sha256": "1fd863d105661ebb6f2e2e146bcb8c74934433969f2629218e4a11c6f7a4b629",
+      "public_bytes": 169810,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "35f5e912d619d9f0ae0c40ab2f932e090d4a6d334e689493c2e8da1867846855",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "67bbe033e8ead50652028bdcd9816b40617908fee38dbbcad2425886632fea08",
+        "public_decoded_pixels_sha256": "67bbe033e8ead50652028bdcd9816b40617908fee38dbbcad2425886632fea08"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/file-menu-before-sewn-r2-save-0.jpg": {
+      "original_private_sha256": "198dd52fedaaad65d75dc51b629b6a0c40e735cec85017397bf76ca2d687b31b",
+      "original_bytes": 169596,
+      "public_sha256": "f83ba25ab1b1804db9f85b76b45832999e07aeb6b0eda4f683f4bae4d0d2b31e",
+      "public_bytes": 169596,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "e626a678f674baf4a581352ef14696d6211593fbe19943243c4b71af309679a7",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "b1360fad4ae7ed1ef428698caad3d25ed9372bb8f7cb18da149eacc0d736c15b",
+        "public_decoded_pixels_sha256": "b1360fad4ae7ed1ef428698caad3d25ed9372bb8f7cb18da149eacc0d736c15b"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/file-menu-before-undo-r3-save-0.jpg": {
+      "original_private_sha256": "7bba85fc0972e9b9727105bf6965525630cff86d3ca04fe5d567a7f44b441a09",
+      "original_bytes": 165683,
+      "public_sha256": "313cc0ca7678217465028134a3aa282ad7d8e912dd13412afe1236d0f1b72737",
+      "public_bytes": 165683,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "ec5dc3ec4cf0ebc1dd934aaca3fb8fa56fdbdc20dd656ab1ce04392fc9ef24c4",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "1f92b51c18ed54d2992c78faf0c6922a85cc55c184bea67dcd14b02f52d137cd",
+        "public_decoded_pixels_sha256": "1f92b51c18ed54d2992c78faf0c6922a85cc55c184bea67dcd14b02f52d137cd"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/final-child-fifteen-r4-state-0.jpg": {
+      "original_private_sha256": "b8eb32fb432d472b2e6453446980b52326cc61b1de45b4402b52f9f56fb9d62a",
+      "original_bytes": 163376,
+      "public_sha256": "f67e15fce77d46176bf3be88ef409acdd72bd24e646c39fc38fdc383c9eceb86",
+      "public_bytes": 163376,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "1b606f2955eca3a7fd0df5ba5199373cf9cdcf407a7e31f6e0405919cfdb5dd9",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "c11c050f9429debaff360aef90e5bd3fa0a90355f67b534e214e83645c78a952",
+        "public_decoded_pixels_sha256": "c11c050f9429debaff360aef90e5bd3fa0a90355f67b534e214e83645c78a952"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/final-r4-seam-and-piece-ids-0.jpg": {
+      "original_private_sha256": "91268ed12f11662c52d8c5e77af3430a60308f03e337451a28ae60d2e8b05998",
+      "original_bytes": 173906,
+      "public_sha256": "6e65edb5d95ec10a4c773d27d24dacfc982b14b09809666e183ac9904b91c0a4",
+      "public_bytes": 173906,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "ebcfb2b882a9a2e81abe6926422cd88ca21be37b2b3e6357c76fceec7aff98b5",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "dfe6048d24622fb175e74415cd51cf3151050f62e5d30cbbbbe0b7a5d54ed9ac",
+        "public_decoded_pixels_sha256": "dfe6048d24622fb175e74415cd51cf3151050f62e5d30cbbbbe0b7a5d54ed9ac"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/first-end-boundary-options-0.jpg": {
+      "original_private_sha256": "c15fa4b8026239f0ddafee715402a12982ae7df3c49f74ad381cd25056262c37",
+      "original_bytes": 167333,
+      "public_sha256": "47eeb4e59b2bfaf3214bcd72e5e3e91bb8bc2ae03378ab7b87b523788ef5d639",
+      "public_bytes": 167333,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "e5eac9c2cdca02ccae11d335bfa274c77271d518fc07771dfb4f12248713f7c6",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "5e9bdb86b091f4f889bbaa04eaf8afc85378aa121b4609ccaba84118e98ec1d4",
+        "public_decoded_pixels_sha256": "5e9bdb86b091f4f889bbaa04eaf8afc85378aa121b4609ccaba84118e98ec1d4"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/first-end-t-focused-0.jpg": {
+      "original_private_sha256": "1cef939dddd35b25cfb2580dbba42f78b5bb24b6e902e526f764da0f6bce23a4",
+      "original_bytes": 165602,
+      "public_sha256": "d460c6214d08be4add2dc6681f1fdcef1c111c59abca924aa992d64500859ce0",
+      "public_bytes": 165602,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "defb74ea45c683fbf15f7e07e3ac3e5392da59fc1f6e62b48cb776527694cb57",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "5b48636cda0ca07b9f7cf22da26b0b70ee812156430ffb6967f73e73c1033fd5",
+        "public_decoded_pixels_sha256": "5b48636cda0ca07b9f7cf22da26b0b70ee812156430ffb6967f73e73c1033fd5"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/first-exact-unsewn-preview-0.jpg": {
+      "original_private_sha256": "2ef056a9274a4d0ede190e4f798320beb7f6e4ac3e6c064c16d19422e5d6904d",
+      "original_bytes": 165296,
+      "public_sha256": "5ae52d746fe3306dcec859a37ff652ea1d2cf4cdddbb55155d5de9f0071f0b78",
+      "public_bytes": 165296,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "020d40a7271d2f516aaabcd1eefa25c5331da4220017869bd9c00ca897c55428",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "398372838a5ea4a89ce5476438dfcb8e0594736266a0c8d60e38c840d225fb7b",
+        "public_decoded_pixels_sha256": "398372838a5ea4a89ce5476438dfcb8e0594736266a0c8d60e38c840d225fb7b"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/first-preview-sewing-off-again-0.jpg": {
+      "original_private_sha256": "b1309d1ad81c23f737ccceb34982933cb3c2895c80f1f797e9320f73d9490ab6",
+      "original_bytes": 164657,
+      "public_sha256": "394193a94735bab96504a25c14aad99a65bc3a7d6f9b02c08a15647d3d5254e3",
+      "public_bytes": 164657,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "0a96b0f846e0646878d5742da8d8e4a2b871aba545630a73e74d3648bf0c0f39",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "f20ded17d23a055636229d6ec83676f6810fb4ce58d68044e1983dedbb3ed90b",
+        "public_decoded_pixels_sha256": "f20ded17d23a055636229d6ec83676f6810fb4ce58d68044e1983dedbb3ed90b"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/first-preview-sewing-on-again-0.jpg": {
+      "original_private_sha256": "4e4e87fdb3351afaaf0181ce6b9b3616ce57b8d7759885d1ee53e95760b1422f",
+      "original_bytes": 167788,
+      "public_sha256": "2aa48c4f1962f226a33969539c1dfa5427c093fb689f6e050634b539bbad5fdc",
+      "public_bytes": 167788,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "b7121f4075959a1628b0a7965b01e911a81020d01c958a755bfca6c2ebe1e062",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "1704cbdc7088a4051a17abc0b42e2f0b6f0a639f05d4743e257be76ea1f33011",
+        "public_decoded_pixels_sha256": "1704cbdc7088a4051a17abc0b42e2f0b6f0a639f05d4743e257be76ea1f33011"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/first-review-cancelled-r1-0.jpg": {
+      "original_private_sha256": "e1cad83295a68513b0d7e5a1f1a2fa3f5aebfa365e52fc7d136a8e03fcb3b4a7",
+      "original_bytes": 165613,
+      "public_sha256": "a75a6ed38991264e5fc5594aadd635e60fa8707bcb02c7ab29baed187accdbdd",
+      "public_bytes": 165613,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "2da90eb91fb3dc4cd3bf13bcb552cf5c68a45bae9a49e036060df2d195289a7c",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "21270a40f906a934b1c3c900f8f1f6dfb53c3d140b608d730ae841c2a82357b1",
+        "public_decoded_pixels_sha256": "21270a40f906a934b1c3c900f8f1f6dfb53c3d140b608d730ae841c2a82357b1"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/first-review-curves-seven-nine-0.jpg": {
+      "original_private_sha256": "3b27662e9eed98cabe86995e1eb53a847e84082255e33fd30c8f9987338b1e74",
+      "original_bytes": 164397,
+      "public_sha256": "b6cb86142449f55dd52d6d6f4a8e3fc64efc6587f0e502219ab23efbd08301c9",
+      "public_bytes": 164397,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "43d04cc1268a0b87cb8d7ed21ae490b7ced60a8036f3b01a6d1128e38ac45771",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "950d983368dacd8a5fbc31bb3fe8ff1dfdda0039874aef94c37c18d9ec6db498",
+        "public_decoded_pixels_sha256": "950d983368dacd8a5fbc31bb3fe8ff1dfdda0039874aef94c37c18d9ec6db498"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/first-review-opened-by-return-0.jpg": {
+      "original_private_sha256": "37093718a6fc7969ef3a0b4eebac6cb9b531e6b19c25686645e0ff0408c56c08",
+      "original_bytes": 164076,
+      "public_sha256": "3ed00f37f21fba46875c811ac606cdbda1b2112e0f6cbc1ae1f43863a91a6ccd",
+      "public_bytes": 164076,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "ab67e110735f2000518588aebff7fc9f7a621ec5e9e1632ef1aeb69d5ab3be4a",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "19eef879db2ae9882721b895db84515ef47962eaa091e6d3ccec6218824a0108",
+        "public_decoded_pixels_sha256": "19eef879db2ae9882721b895db84515ef47962eaa091e6d3ccec6218824a0108"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/first-review-unchecked-after-required-docs-0.jpg": {
+      "original_private_sha256": "11b3d71caa31698ac74ba403f37fc014ca7d918b0151f5f8615e60addc78c175",
+      "original_bytes": 164412,
+      "public_sha256": "00bac56390b80cf382c7b235178bcf7ffcb927f86c669666992d16d83c880bba",
+      "public_bytes": 164412,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "011ea4828db85d1621308a029981c1a98f3c6812d05891efb331d439df2e88b4",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "3e04772ffc6af2e4d803b398eb34b1688e58cdf540fdd6c2c5fd64dda7d07d4c",
+        "public_decoded_pixels_sha256": "3e04772ffc6af2e4d803b398eb34b1688e58cdf540fdd6c2c5fd64dda7d07d4c"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/first-sewn-clone-preview-0.jpg": {
+      "original_private_sha256": "587ee7ea87f68e045ca2bfcfdcd6b47eeff715cb0210fac2f7844e7c9cb10526",
+      "original_bytes": 167806,
+      "public_sha256": "0287fe1dba8751d71c3b7836b1f01e752af0236cdb03dbcc93e1f9c4790d3642",
+      "public_bytes": 167806,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "340dc76c6d87b855fb4a2f96e23aa6a6da60800557718649ecb2c1e42c3b29bb",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "dc9c732cac277b0ab9a6e9941d7d3dc4ba32c852f838e052e9bac5de706d0f52",
+        "public_decoded_pixels_sha256": "dc9c732cac277b0ab9a6e9941d7d3dc4ba32c852f838e052e9bac5de706d0f52"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/first-start-t-exact-0.jpg": {
+      "original_private_sha256": "165ff5f60f637f6b06b19fc119e61f0737900a0e12a9df2c5ddcddc506f2be20",
+      "original_bytes": 165678,
+      "public_sha256": "72cd9013f83b8155c008b09ba680c1d7a15165b3ec708c6b43182dfe1e45ac00",
+      "public_bytes": 165678,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "4b37584421acf73599579c9f47d94d3212dc5ac86d248253d3818110acf5126f",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "7b174bffd920455f53581de11f261c96db61439133ee73393f30bdac1b7106d8",
+        "public_decoded_pixels_sha256": "7b174bffd920455f53581de11f261c96db61439133ee73393f30bdac1b7106d8"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/first-start-t-focused-0.jpg": {
+      "original_private_sha256": "3b758e4238e4a0ea936e566547b7e7f200dc5a5c1416c54306d3abe06b6c00a5",
+      "original_bytes": 164852,
+      "public_sha256": "9793794969d7546a90f4199cf4ba31a1974debe4d6bbc76cf612383f5cc2cad2",
+      "public_bytes": 164852,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "1ae9c20fb66f27b0db2300a1b464951246666b1c9729cb3068eab8156f37d601",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "4c8b2377d24b42e4a206e40982f406ade6ecdd0e2991237f7bb21b3e0a16994a",
+        "public_decoded_pixels_sha256": "4c8b2377d24b42e4a206e40982f406ade6ecdd0e2991237f7bb21b3e0a16994a"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/fresh-second-review-checkbox-reset-off-0.jpg": {
+      "original_private_sha256": "7b7e2fe3188e1deb2273e74dcb57efa089f3164951277cc397bdf9d512a49455",
+      "original_bytes": 164621,
+      "public_sha256": "dd9ee5f6cbe196e832907b5ac5ca35dd5e25fea0ac55fa7974a96680de2f398f",
+      "public_bytes": 164621,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "35b814640db280b98015b3d4241c8860d8e52e38753f087b9a03d1f50c3c7aa5",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "43eac686bb9ff1e30c57cd778bfd93a0f4ecd9ff5ab6f4b31831573fcd1fed88",
+        "public_decoded_pixels_sha256": "43eac686bb9ff1e30c57cd778bfd93a0f4ecd9ff5ab6f4b31831573fcd1fed88"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/incomplete-exponent-caret-before-minus-0.jpg": {
+      "original_private_sha256": "422624a5334c548d480c757c067483fd72956786cf8e1a43dbddd7c700b6480d",
+      "original_bytes": 147633,
+      "public_sha256": "d02f5f1eea198a8c751c6296e2eabb4285e0f0b4e2c72e6e9b250be5f9df6163",
+      "public_bytes": 147633,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "34397ce797f48e5ace74b92e6a95d292460888da5e590b8235d6996a0af67a41",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "3fab0caada10d3e2bfb46e6b5af64bfa3f9e9f4b5b6e9a2b985d6618b61f9d2d",
+        "public_decoded_pixels_sha256": "3fab0caada10d3e2bfb46e6b5af64bfa3f9e9f4b5b6e9a2b985d6618b61f9d2d"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/incomplete-exponent-raw-0.jpg": {
+      "original_private_sha256": "385856e5a10618d6b3d952022353a0a8cafd75e0a2f2b3671800766e495a4aec",
+      "original_bytes": 147752,
+      "public_sha256": "2d05bb3d468c3911ce4f8b9ba879a4e9a2123d455a6e399c64eed40741063219",
+      "public_bytes": 147752,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "1edd9bd603beec8801a58147847cf17157aac1a12abc4299e26968928462b704",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "b31bf5f104bcd02c347577d12dfc303f63c30ef2f2561d5794f1c576df45051e",
+        "public_decoded_pixels_sha256": "b31bf5f104bcd02c347577d12dfc303f63c30ef2f2561d5794f1c576df45051e"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/initial-owned-sew-state-0.jpg": {
+      "original_private_sha256": "840b3fd24b13605f267870c6d42f7c9816c8b17982d761e17b14b45d10eeed19",
+      "original_bytes": 182826,
+      "public_sha256": "d131a9d1342438c97a036aecb8ecba1c62f512545f681799e2b38d4de105d9b7",
+      "public_bytes": 182826,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "43247ced94cf96d2a5f134f8809523d61c798f54a0a2012064b0e2fa9ebdf155",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "3dcac0351b878110f02fac36b2bdb6e794c7ed157744caff1bb2502d29538356",
+        "public_decoded_pixels_sha256": "3dcac0351b878110f02fac36b2bdb6e794c7ed157744caff1bb2502d29538356"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/invalid-apply-refused-caret-retained-0.jpg": {
+      "original_private_sha256": "b211091c51f26307778d0af2d9a7ea81bd64446fd6e7ddad067e5cba7c9f61a7",
+      "original_bytes": 147603,
+      "public_sha256": "d8668564e9e0740f494d25b043edbff7d8f6153aa3c6014ba9925e69e5d2ccef",
+      "public_bytes": 147603,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "2209f92c5ab79feb1daedac40aa33c571ad1d6134ccf542ad09905a81aa0abd6",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "45f537bda9dbe0e75dafe91b7a39f18387ddb92377397a4f3210b23cfff0f874",
+        "public_decoded_pixels_sha256": "45f537bda9dbe0e75dafe91b7a39f18387ddb92377397a4f3210b23cfff0f874"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/invalid-review-after-command-shortcut-0.jpg": {
+      "original_private_sha256": "b508fc6ee4c3e0aeb25efdc83131e96001fd933914fc552c4791e7ff5007d134",
+      "original_bytes": 147652,
+      "public_sha256": "76d5756f60a785c0bdf6541a21fc79a9af1eea0ef5eb37b67cb10b4bea7699e3",
+      "public_bytes": 147652,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "58379ae77a01da632b1c2bd31765ff4be6e4c03e4c2b595ce30e1fe8b3b656b5",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "34133cf1ad0297ade5c53f106828724fa7e824812d7d6cf3e90080952187743e",
+        "public_decoded_pixels_sha256": "34133cf1ad0297ade5c53f106828724fa7e824812d7d6cf3e90080952187743e"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/invalid-review-after-save-shortcut-0.jpg": {
+      "original_private_sha256": "fe7b1df6a30b6d202eabcae1403b9249a555065f6175a0c6406e90be2d779537",
+      "original_bytes": 147692,
+      "public_sha256": "5d61098bdbc317948cb13c0242192cc435b9d2171a4d51dea881a161e08f370e",
+      "public_bytes": 147692,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "6119e615e323b3b95b688ba4e0048ca95fd9bb7de38aaf60223445813d1c6160",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "2d7a6ec59ef20522e5389f3dfad95a5083240bfab8a3315f2c4db5b07feffe54",
+        "public_decoded_pixels_sha256": "2d7a6ec59ef20522e5389f3dfad95a5083240bfab8a3315f2c4db5b07feffe54"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/invalid-review-after-space-shortcut-0.jpg": {
+      "original_private_sha256": "41947d724a4a2fdc373b5ff2561a448d1d94a7e63dc58f0ee6776570fa00035a",
+      "original_bytes": 147657,
+      "public_sha256": "8bcc72c9c7799ad0092018a074fc4572134091fda36e1b7f36f3e594fcd9e732",
+      "public_bytes": 147657,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "00dec435ea8b7fe26bae1788f521974057eea4acf5770a39a722843b536cba60",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "a843bfc7440c611d1c95aa8b6888d5e4c3a87e690b143fb2bc9fcbf063556a20",
+        "public_decoded_pixels_sha256": "a843bfc7440c611d1c95aa8b6888d5e4c3a87e690b143fb2bc9fcbf063556a20"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/invalid-review-after-undo-shortcut-0.jpg": {
+      "original_private_sha256": "ccb7a28b3c603efaa8dcadee4ae6afaafa1080d6f013f1c51fe77b6f73598b2a",
+      "original_bytes": 147577,
+      "public_sha256": "770e5cea7fe6f4f1315fcb239253e9e8f55cb3584ce71e23d61c38a734c411ab",
+      "public_bytes": 147577,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "c6388a8418a16ccc4baf4a125335e33a1a19447e6269b75c8581a2d8438fe25b",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "657cf6d89db541a4d84352c55c600b7f846de69480c52b3abbe6a5e4b99dbd65",
+        "public_decoded_pixels_sha256": "657cf6d89db541a4d84352c55c600b7f846de69480c52b3abbe6a5e4b99dbd65"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/no-refocus-caret-witness-one-e-zero-minus-0.jpg": {
+      "original_private_sha256": "a0f0c1bb44e8b8e216b1b36070b5883b8721a17a26d174c41f7957c4bb3214f9",
+      "original_bytes": 147683,
+      "public_sha256": "02cfd597c08e32cb9a9e77651f479de503246a6f0e695862af59ec8e769be9ad",
+      "public_bytes": 147683,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "eb1f7d28a0ce5f802e15c047d84e163983144a94db3249d4b8c0cb9048275a8d",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "7f87d22aa4baf3f716a0a87f4ba7c0d45b7d45c36b2ccdb1fe907709261ae28b",
+        "public_decoded_pixels_sha256": "7f87d22aa4baf3f716a0a87f4ba7c0d45b7d45c36b2ccdb1fe907709261ae28b"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/owner-two-selected-0.jpg": {
+      "original_private_sha256": "6192a4a4cc4ecbfc84eb8d59a2ad63d83b4e2928989540143410590cd9c91319",
+      "original_bytes": 160931,
+      "public_sha256": "ee3ebb0a0b921b29ebd1b8acde9f486537f16ef9a71f02c83b13605cacb3a28e",
+      "public_bytes": 160931,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "dcb6187c9ad667cb5de9f2ac6c116b83f5ebfa225fc2712c6af556202d757faf",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "065def1d8f2c054dc1bda0c0198e3edef0b166892a33de7a76cd71858f3ea75b",
+        "public_decoded_pixels_sha256": "065def1d8f2c054dc1bda0c0198e3edef0b166892a33de7a76cd71858f3ea75b"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/redo-once-r4-0.jpg": {
+      "original_private_sha256": "056ea60f15da2b39af8b1931b4eced917f53c24bbcaedefcc5ea276d907759a7",
+      "original_bytes": 167425,
+      "public_sha256": "05a69fb44be266b37f6a4efe9899f624086cebf9cd872173037585be597e62df",
+      "public_bytes": 167425,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "d37541d716085cc32ad01cf0f16c646375b088f5d763452cfd877c58a5be1d4c",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "0d4d3162f7a34cc4bd4c6a65ed7e987ab5ebf1a1c36f66eb82bdad099d8d7858",
+        "public_decoded_pixels_sha256": "0d4d3162f7a34cc4bd4c6a65ed7e987ab5ebf1a1c36f66eb82bdad099d8d7858"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/retained-piece-two-r2-inspector-0.jpg": {
+      "original_private_sha256": "5846e66fa49e18439dd377df3dd4cbced50844554825a2f686c14f234fc92454",
+      "original_bytes": 164801,
+      "public_sha256": "49b87699ba27d3bc9ba00a255b50f366f8670bee47645be5560f65b87640bacc",
+      "public_bytes": 164801,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "1b6ae5b7f6be7c6f7c616db3cc5bace2e0563c9f94e44581b3662feee3d9f602",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "1190f11ec8603d8111deecd676a959b8673c3d6cc92ed3e87558f11ee42c38df",
+        "public_decoded_pixels_sha256": "1190f11ec8603d8111deecd676a959b8673c3d6cc92ed3e87558f11ee42c38df"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/second-cut-tool-before-return-0.jpg": {
+      "original_private_sha256": "fa5472608a0d980643786a1ce1f29e6ee60af22e0134993a7a757af4ae7827c7",
+      "original_bytes": 165837,
+      "public_sha256": "a1bf95b78c3d57b398bf4e0e9c0f8fd157acbf6fb8a9431a5af5671f8579b918",
+      "public_bytes": 165837,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "36967bb6b0744a1a22d24a0fca3e1e1a4bb3122062463ae7296c257d41189881",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "6179115c41ba4facf11ae2423984c67db8346984c90ee1bbbe9ba94cc2b56f99",
+        "public_decoded_pixels_sha256": "6179115c41ba4facf11ae2423984c67db8346984c90ee1bbbe9ba94cc2b56f99"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/second-end-boundary-options-0.jpg": {
+      "original_private_sha256": "57a3fa69b2b1504cf9bc84e68b2c18bc88d87cabb1ff307bef8ad4bc5d7beae7",
+      "original_bytes": 167522,
+      "public_sha256": "5b8337bbc9266e94ca22d19985b978f0079239c53cb705b14c77c7de3f5c499c",
+      "public_bytes": 167522,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "c5659d1f12528a20124cb00c6b1fe7bd1300e297f3d3c480d212cb4f5b627b16",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "203fff527f039b59e6581351f1da4902055fc30285018f2ec9b13cd18aba5a49",
+        "public_decoded_pixels_sha256": "203fff527f039b59e6581351f1da4902055fc30285018f2ec9b13cd18aba5a49"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/second-end-t-focused-0.jpg": {
+      "original_private_sha256": "0a76441587cec49540033dbc95ff1ca4f57823480f4612ade8e23a5243791aa9",
+      "original_bytes": 165793,
+      "public_sha256": "885d1da8165e6b7bbb6ef48904e68b602bdf28ceee0fddd05083cdfcf35fb941",
+      "public_bytes": 165793,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "787757965b3738d57c523519f8e3565483074838087c030ad1c1554b4fc02eed",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "ccbb92fc49d2b845312d0d3a7928fcc8515c3e0c497c4cac45678c364f9d5a25",
+        "public_decoded_pixels_sha256": "ccbb92fc49d2b845312d0d3a7928fcc8515c3e0c497c4cac45678c364f9d5a25"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/second-exact-unsewn-candidate-0.jpg": {
+      "original_private_sha256": "13286f0a42337f947fc17e2a122a9a25fd268ce8c330291b560f01ea0b1f428d",
+      "original_bytes": 165490,
+      "public_sha256": "f52daedf67f2423fbc54a5a8bc5c623d881b38e26310db54482203013c6c2919",
+      "public_bytes": 165490,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "97ecfc500cfd497bca69d8e7ff941e0227642b4e114b30e2eaa522e78d7102a6",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "9c086143a0f749b4fc911d1894af4cf36f81595eb46757d288845a4d3f118650",
+        "public_decoded_pixels_sha256": "9c086143a0f749b4fc911d1894af4cf36f81595eb46757d288845a4d3f118650"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/second-review-curves-seven-nine-0.jpg": {
+      "original_private_sha256": "58976e89c08108d413c678c640cb592f15b9cee8c326468567aacfc90318c73e",
+      "original_bytes": 164629,
+      "public_sha256": "7c4d782f873f9547e7c0de5ed74da759dc567d69110e9a988897a94310a14766",
+      "public_bytes": 164629,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "ec54a09d9dad70256b8ed7dbd98770d1cf121b67a5c25af9c44e40a6ef8c0e58",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "43c38492d39192dd11b42414b3f2cd20ba74344f17ed880285aa576c2132b498",
+        "public_decoded_pixels_sha256": "43c38492d39192dd11b42414b3f2cd20ba74344f17ed880285aa576c2132b498"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/second-review-opened-by-return-0.jpg": {
+      "original_private_sha256": "0c6a91cbff20a22c38cf6dde83010e5ad0684369ccf6b94c6d7fc1d03c0f1b81",
+      "original_bytes": 164289,
+      "public_sha256": "fc9f1fcb9f7cb7b14538c54be05694b355076dafd967d9b1591001a29497c077",
+      "public_bytes": 164289,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "3a02903a4263c3c67dab9d12e99c2359e887692b08183fce11c5c8c39526b1da",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "4372400d1856f0acfd593b11b1ef02f9e84b40e383fee21a531914c9e93c7caf",
+        "public_decoded_pixels_sha256": "4372400d1856f0acfd593b11b1ef02f9e84b40e383fee21a531914c9e93c7caf"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/second-sewn-preview-before-sole-apply-0.jpg": {
+      "original_private_sha256": "98786a3ef32568b03779139e61f4f3791e835e8417e031bf41cd89fb70c3f313",
+      "original_bytes": 168001,
+      "public_sha256": "7978ca35cf1ebfff49fb46afbbdd1c70dbb296b444a89bc8e9e0a9b4579f2b88",
+      "public_bytes": 168001,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "05cafad6528d24a788d44aa4d8107e1b2c4d0ab4d86bedf0ee0c9bedac8fc985",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "98560f5eae5d542e96694d11685c20e7ce0e37a117114ec29d7f63a60a9cba83",
+        "public_decoded_pixels_sha256": "98560f5eae5d542e96694d11685c20e7ce0e37a117114ec29d7f63a60a9cba83"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/second-start-t-exact-0.jpg": {
+      "original_private_sha256": "407ae07bc46fcd98f326f93d5a651ef466b5172c025398dbbd1978da71a6b36b",
+      "original_bytes": 165918,
+      "public_sha256": "685cda3ab19110c55ce9f63a531086e4f45dda250a2b621253757b7c829961d9",
+      "public_bytes": 165918,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "4f0967104ed107a7e9e1bf350b76aa9f88d658175cfd937c2ee18a8d3b6312db",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "294c01a37d08286bfb8aafa2d0627a6ccfc5d12ba8428ea3eed5c731d94f22e3",
+        "public_decoded_pixels_sha256": "294c01a37d08286bfb8aafa2d0627a6ccfc5d12ba8428ea3eed5c731d94f22e3"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/second-start-t-focused-0.jpg": {
+      "original_private_sha256": "eeed8742e83302a70eaedf3345b1a3ade9b8b956fb1153c0bc15de8d196c3337",
+      "original_bytes": 165083,
+      "public_sha256": "2720ee1253b3be6a8f1029035ce38b8ffb3b90c94797d92f076353a532f5a4e0",
+      "public_bytes": 165083,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "dc32fa1c58f1f2fd3e866736b655f0b1010a9984b1a028f1254eb90605160284",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "a9467225a054393d9a22b58eced64b54a37bda7c52938dad0481f7efc53dd567",
+        "public_decoded_pixels_sha256": "a9467225a054393d9a22b58eced64b54a37bda7c52938dad0481f7efc53dd567"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/start-t-focused-before-invalid-text-0.jpg": {
+      "original_private_sha256": "5a87269e7a6a0f14e4479b21f5efe056f06f931f64f3aa47c53252ce234dcdca",
+      "original_bytes": 168407,
+      "public_sha256": "3ebb4bdde8243ccb15375ac9fdf4ed4f5b3fc6554854d4bc293acb4524b561fd",
+      "public_bytes": 168407,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "603549815484987b38bd784ff881b5e9703cefb65c7d98ef23d1c49aee900b40",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "da6daddb759b8bb245a69053c8d9b228066c8025901bf6849951b1cc2e8ce14f",
+        "public_decoded_pixels_sha256": "da6daddb759b8bb245a69053c8d9b228066c8025901bf6849951b1cc2e8ce14f"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/start-t-focused-for-correction-0.jpg": {
+      "original_private_sha256": "2aebcddc867828baa1cca12d960579fba55e36c2d46c168d33cf1b70066bef79",
+      "original_bytes": 147915,
+      "public_sha256": "8bdf3772efdb2c0918f8909203074ced62f464c8b3c873c2c4f060963afec58b",
+      "public_bytes": 147915,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "cff4cb5824ab76eeea7b14cdf207be667c45f3697515ea6dcbf61aa613fe91a9",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "124b46c4142335554893fc0957b5affc9db32522b03c6ac77e5c3e9db9796737",
+        "public_decoded_pixels_sha256": "124b46c4142335554893fc0957b5affc9db32522b03c6ac77e5c3e9db9796737"
+      }
+    },
+    "native/SEW-S1/S1-001/captures/undo-once-r3-0.jpg": {
+      "original_private_sha256": "c68d478304ebe2538637c946636a16f52735d09f617794e42c327afcc0d5aa95",
+      "original_bytes": 163291,
+      "public_sha256": "07aef405a91b24448814198256f92f4b16181cdaa7a3695c829986582314f27b",
+      "public_bytes": 163291,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "3904a3c53255f37864680103c9c69b685932b80493274c10252bbde87ed65408",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "207dc781291484fd458a8a68c947934e278064593cd10186616cef31b242b2d4",
+        "public_decoded_pixels_sha256": "207dc781291484fd458a8a68c947934e278064593cd10186616cef31b242b2d4"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/initial-owned-sew-state-0.jpg": {
+      "original_private_sha256": "2f966c83b5232837798a4d124a58fb023019cd9a1b77244c6cda9136e43c6782",
+      "original_bytes": 184011,
+      "public_sha256": "251e830c85f79d01a04f483dabfaf3952842d4dfdccb42a59b502cca0a48d40c",
+      "public_bytes": 184011,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "8ea8dd9188e777083c05b53dfba33acf79b4dbeeaeb3b43b3345bfe373b53933",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "1cd331afa2029130f938d055d33637266f309a6faff833b25b82bb069272afcc",
+        "public_decoded_pixels_sha256": "1cd331afa2029130f938d055d33637266f309a6faff833b25b82bb069272afcc"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-child-fifteen-before-seam-removal-0.jpg": {
+      "original_private_sha256": "9f94647cfb736c69e5442e933458ac7844afc6f0c29c0feff16972f41bd91a3c",
+      "original_bytes": 183619,
+      "public_sha256": "250d9f619bf64308307f1b2959b01513d2b68613f5140c5c8953031bb5d9f6c8",
+      "public_bytes": 183619,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "ff05982af14c4606376f580132771a9ea532b7a4c474fdd23f5ac312e0d1ac9d",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "eb5cae9070b9e36386d9c4016a2be08b99fd59cd6ee674fdfcd9db2bf65ec341",
+        "public_decoded_pixels_sha256": "eb5cae9070b9e36386d9c4016a2be08b99fd59cd6ee674fdfcd9db2bf65ec341"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-child-fifteen-selected-for-height-0.jpg": {
+      "original_private_sha256": "95edd845bd99377cf06eedea0754f65b5ab076dc42f307d7a4c0878e0f412502",
+      "original_bytes": 189496,
+      "public_sha256": "a032741115bb5917f5895d9fe5b132937ed1118ede384e8296ec070b0ca7bf63",
+      "public_bytes": 189496,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "4db5b0ebd69d536bb68a9267f8dee92158d9f2d18223a192b3ed08a9218f657f",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "806137f4fc6277ca41357c3e4a512e451522e9581b7feb297d2d0787677520ec",
+        "public_decoded_pixels_sha256": "806137f4fc6277ca41357c3e4a512e451522e9581b7feb297d2d0787677520ec"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-child-height-committed-r6-0.jpg": {
+      "original_private_sha256": "045d48ed82c0b1571fec9e03136e13d59901991d805f82792fde41e6c6f091a1",
+      "original_bytes": 188706,
+      "public_sha256": "f0bd786f4bdd2d255c43f282470560a1c692b7716824470aa58dea4e31ac4dbe",
+      "public_bytes": 188706,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "06ff2d72589980e1b6ba7a68e144f2808b66dc4ecd899c48d642f6d7ef253e00",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "44d737e24856f2c730fdd778ca612b0f9a3bb30ffe6790d2bffeecfae6c03b5a",
+        "public_decoded_pixels_sha256": "44d737e24856f2c730fdd778ca612b0f9a3bb30ffe6790d2bffeecfae6c03b5a"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-child-height-focused-0.jpg": {
+      "original_private_sha256": "1c23d035927a767d9420dbfcb264821b76691e669c94ce6dfd68397f3b0f48c9",
+      "original_bytes": 186262,
+      "public_sha256": "9e36050a6506f7ce284d9244c3f21b43ba9155142f92f1f85298dcc6a74b355c",
+      "public_bytes": 186262,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "414b348bd21fa08e2412abb2813f63325f6d71bdd644c2163735a0cf232699e9",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "cf85fbeb794ac6300d8cae20ebf9d62a3bc93e26686f98828478cf94c03924ed",
+        "public_decoded_pixels_sha256": "cf85fbeb794ac6300d8cae20ebf9d62a3bc93e26686f98828478cf94c03924ed"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-child-height-raw-before-single-tab-0.jpg": {
+      "original_private_sha256": "616fbd135e937ff29315b0206e0cb93ddd1fdbfa0f53c34eeb5fe319b21c79f7",
+      "original_bytes": 186257,
+      "public_sha256": "0915500ffae822b4f5d8450f0372f1dd45804557acef68a4bdb6f30080301cdc",
+      "public_bytes": 186257,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "25fdb963c022d244c269e2ec4e1cc4c49b71ee6dd612749d94dc8ecc51544ee5",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "75070f0547aef41805be076b90f25b191281ebc2700fe4f68251f406f653c88b",
+        "public_decoded_pixels_sha256": "75070f0547aef41805be076b90f25b191281ebc2700fe4f68251f406f653c88b"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-child-size-fields-visible-0.jpg": {
+      "original_private_sha256": "5b4dea295c073aefd0bd72c1e63aec8e9933b9a964972bbfc3277e2d2f62343b",
+      "original_bytes": 186298,
+      "public_sha256": "870ee1890d24ae548521198a43b768acbd4e6ca21a3923c9111f021c05a7083b",
+      "public_bytes": 186298,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "e9572859913f0bfcbcb2247a5bbec5198f82351846dbada0b25c7cb78119ea8a",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "8e5b8652615a68e53949484ba38c956197bfb48e2c41f92b67590f4b565dc2c8",
+        "public_decoded_pixels_sha256": "8e5b8652615a68e53949484ba38c956197bfb48e2c41f92b67590f4b565dc2c8"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-clean-native-child-height-r6-save-0.jpg": {
+      "original_private_sha256": "d04dab936e68431a96c5fabe638f7e03c6866b45697ca9d2a4dee56ba21c761a",
+      "original_bytes": 185777,
+      "public_sha256": "da2951dfb7230da137f0175b39c0a03f8cbaffa5aee9a56e7da7a18c55ed99d3",
+      "public_bytes": 185777,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "aa7be2c90b85442286ed57959112db26623fb8f2392898bb2a5cc64fcdf4ea33",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "3e431f90560d96d205fe0ffb4376487b04ffab7668d794451e85f4cf08f3f0a6",
+        "public_decoded_pixels_sha256": "3e431f90560d96d205fe0ffb4376487b04ffab7668d794451e85f4cf08f3f0a6"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-clean-native-removed-r5-save-0.jpg": {
+      "original_private_sha256": "90a20678bf193b4a9ec34d54971af84fe8d73a670a5a885f5220bb2b786ba160",
+      "original_bytes": 189741,
+      "public_sha256": "9dd233f0117a7a794c0da8f0417ff5fe978ec02b9efc6b3d2c1e20bbecd4d380",
+      "public_bytes": 189741,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "4a4a6812a293738ec8150cef232eaafcbfffe5c87bcd21be1d26941bcf334518",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "c7b035ccbeba06bfe91b7c20c9a35e7499b4d5662ff5679aa9ba937674c37fe3",
+        "public_decoded_pixels_sha256": "c7b035ccbeba06bfe91b7c20c9a35e7499b4d5662ff5679aa9ba937674c37fe3"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-declared-persisted-seam-capture-one-0.jpg": {
+      "original_private_sha256": "0894f192955cea372ac85975b81618a1c7fba90916a37b3a3f0c01c35eda2f8e",
+      "original_bytes": 192334,
+      "public_sha256": "5a47a96f3c57dc9b7366847810ecc9a62201b7da43fe70c74d96c7bbd338436d",
+      "public_bytes": 192334,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "a3a3ca0cf36878e303e38118900eb2b2571bb148e641291af4ee5393d20cade5",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "409ea8328b2b60fe1abae049570d7377d2738bd92def7400d293e8ad8ded582f",
+        "public_decoded_pixels_sha256": "409ea8328b2b60fe1abae049570d7377d2738bd92def7400d293e8ad8ded582f"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-declared-persisted-seam-capture-two-0.jpg": {
+      "original_private_sha256": "6d5cee95e23ffff9a354d171d78d93d159cc7e26e9e6da4cab236ce38ad9b61a",
+      "original_bytes": 192335,
+      "public_sha256": "bcb155f4409ba0d1dbfe8da3e439b0446d155851cebe44a88096910d1988ac8b",
+      "public_bytes": 192335,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "b655b429ebc7eb8615674b6e716b7f9aa0ef0622116f1cebeba4ca88f4648c41",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "eafdfdfcf64a499e733e6a93f8ec1d47e6ad6552c211d7c02f5c62e46ee2a405",
+        "public_decoded_pixels_sha256": "eafdfdfcf64a499e733e6a93f8ec1d47e6ad6552c211d7c02f5c62e46ee2a405"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-file-menu-before-height-save-0.jpg": {
+      "original_private_sha256": "eb29b2e49627ff99c7b47fb3a79769390a3bfa186c005cd19c1dfbabcbc16ccd",
+      "original_bytes": 190454,
+      "public_sha256": "381abca31148b0618bb6f0e3b5a34b5fb4e7f60e47804cf46818355f6333e7ec",
+      "public_bytes": 190454,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "8d696e12fc417e0bc740965f74911805c2b89c08de9a4d135629805a9341b828",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "20abc8208a363577115412f9b890544223f94c31866af67d91dd4e68ad9fd04b",
+        "public_decoded_pixels_sha256": "20abc8208a363577115412f9b890544223f94c31866af67d91dd4e68ad9fd04b"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-file-menu-before-save-as-0.jpg": {
+      "original_private_sha256": "a98e5e96a6fbf29a6bf7be5a31400a7f95992536a12cc81a0bfd21e4f11da458",
+      "original_bytes": 191305,
+      "public_sha256": "bc3c5887d8f8f563652e4bcd297106b0ee7e0387e856d01771adb33ff49d351f",
+      "public_bytes": 191305,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "17c9bcad3fa490852666814ba667c62f3d4bd67d20591497f915603a1a7d3199",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "9be34d78c47aed60a1d4f73febcb84255d94694d058e99fbf54fddc02f384504",
+        "public_decoded_pixels_sha256": "9be34d78c47aed60a1d4f73febcb84255d94694d058e99fbf54fddc02f384504"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-final-child-fifteen-r6-state-0.jpg": {
+      "original_private_sha256": "bc2346541c0d93fc22bec1ef75d1e4be11fec77a074157897a7e6a4164108be1",
+      "original_bytes": 186580,
+      "public_sha256": "0c99183398f2af605395a1232736b85e32819c991122ade2c6e0ac98327a22a1",
+      "public_bytes": 186580,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "06b71c10a47b79da81c60d36dff76ea86a734d6bca40c95f0747b11e647f5ee7",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "b238cf7adcb241da51818aa7950060ff2d089e3271d27a28180f430caabe9bf4",
+        "public_decoded_pixels_sha256": "b238cf7adcb241da51818aa7950060ff2d089e3271d27a28180f430caabe9bf4"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-persisted-seam-visible-0.jpg": {
+      "original_private_sha256": "ccc5d73a129c3a2834d01fa886b213df9de72ec7f31aaa580c853b7ea6853eb6",
+      "original_bytes": 192341,
+      "public_sha256": "aee7bf3b9ce448381908d0cb1acfd6017543430e45e5fd14e5011e088bfb11d4",
+      "public_bytes": 192341,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "471df6a8eb7d294385c40a9840fb4103ce22bb49c13a9eaa82444507886e4a1d",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "e612dc93df255906334adcadbf41dabccfb991df7818692f70e186c7b9a85fba",
+        "public_decoded_pixels_sha256": "e612dc93df255906334adcadbf41dabccfb991df7818692f70e186c7b9a85fba"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-retained-anchor-eleven-thirteen-inspection-0.jpg": {
+      "original_private_sha256": "2a40115250717424364a9233873102964c168530fa6375de0dd199788dc0a1d9",
+      "original_bytes": 200218,
+      "public_sha256": "bdef53a6bae9233612d0f26e56c337717b514cb7162e4284638db8558b640176",
+      "public_bytes": 200218,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "08d56fcee29b86dfdda12954977b1cf0d68bd18fa6d140b3b175f9b867fe0b24",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "8195cd829beae1772ee4ae4b30b39d4e8ca46b59547c608a62d6fa8f6088e49f",
+        "public_decoded_pixels_sha256": "8195cd829beae1772ee4ae4b30b39d4e8ca46b59547c608a62d6fa8f6088e49f"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-retained-boundary-options-0.jpg": {
+      "original_private_sha256": "cb375d026da5339143c2036fe79ca22b8e701613111391deeb4bd912aa7b2fe0",
+      "original_bytes": 184406,
+      "public_sha256": "d0d569c4eb956090460d757a36ab30840e989dc9f6442c992c979d2a212cae7c",
+      "public_bytes": 184406,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "7f63cd6bcce7da6e20fe08d1e780dff83b39f3679f5814a862935364c8b4370f",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "7ae0e2666951b319d3183be0a4f3b479b00e167f512b7a0721e6fab4f8b656a9",
+        "public_decoded_pixels_sha256": "7ae0e2666951b319d3183be0a4f3b479b00e167f512b7a0721e6fab4f8b656a9"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-retained-two-after-child-height-0.jpg": {
+      "original_private_sha256": "438e4a2f5b930271354a056debdcedf10132766c4be787a4dd4c20f5ab53691a",
+      "original_bytes": 186143,
+      "public_sha256": "0f1adf93a6f7a9ea2bd917290bcc88a45220106628d0eea524c6752fb4f748f6",
+      "public_bytes": 186143,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "56ba07f22cd986f368ddea2a1e942ac2dce5df694ded2fc391b25d13d72f55f4",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "b09ad19e28d5c13ba0c27c9a4e38f895ab0fe890aa2b1fb19f3bcaf1a26ae266",
+        "public_decoded_pixels_sha256": "b09ad19e28d5c13ba0c27c9a4e38f895ab0fe890aa2b1fb19f3bcaf1a26ae266"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-retained-two-before-seam-removal-0.jpg": {
+      "original_private_sha256": "5f520a0ee14e6614f735a319fd86487dd74d49ba8efe5b5c0954332f5f84b290",
+      "original_bytes": 184016,
+      "public_sha256": "908cdb8ab79aa806e4208d53afc150c899f79701ca8dc05ac58c4367687bab24",
+      "public_bytes": 184016,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "28a57baceff79c417a0c68ba0bdbdbe396aae70ae28521d8b77806acbf47e1fc",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "0200b91fbe2972e09385df6f83839cb141d23c72b195d66bd4d6b600d9b9e125",
+        "public_decoded_pixels_sha256": "0200b91fbe2972e09385df6f83839cb141d23c72b195d66bd4d6b600d9b9e125"
+      }
+    },
+    "native/SEW-S2/S2-001/captures/s2-seam-only-removed-r5-0.jpg": {
+      "original_private_sha256": "8cbfc1c83ffc9073cbab17e94e60014bfb31de3aa70e6a24e9ff89bd591b8f59",
+      "original_bytes": 190063,
+      "public_sha256": "3f2987b599dfe0c02f7c4a1eb7ba580f801d587e1f1c96021dacbf9a0b2cbef7",
+      "public_bytes": 190063,
+      "metadata_ranges_zeroed": [
+        {
+          "field": "ICC.header.profileID",
+          "profile_offset": 84,
+          "bytes": 16,
+          "file_offset": 246
+        },
+        {
+          "field": "ICC.mmod.serialNumber_and_manufactureDate",
+          "profile_offset": 3292,
+          "bytes": 8,
+          "file_offset": 3454
+        }
+      ],
+      "allowed_bytes": 24,
+      "actual_changed_bytes": 8,
+      "every_other_JPEG_byte_exact": true,
+      "entropy_scan_and_EOI_bytes_exact": true,
+      "entropy_scan_and_EOI_sha256": "a89496f8d242a0a2413417fded944277b682711084eb9325206e22bf2ef798be",
+      "all_ICC_tags_except_mmod_exact": true,
+      "mmod_manufacturer_model_reserved_bytes_exact": true,
+      "ICC_header_outside_profileID_exact": true,
+      "public_profileID_all_zero": true,
+      "independent_decoded_pixels": {
+        "mode": "RGB",
+        "width": 1640,
+        "height": 1032,
+        "decoded_bytes": 5077440,
+        "decoded_pixels_equal": true,
+        "original_decoded_pixels_sha256": "8cf6128a23c0cfd5ac058b484774cdbfa9fe36f0b3485e583d55695325ee306a",
+        "public_decoded_pixels_sha256": "8cf6128a23c0cfd5ac058b484774cdbfa9fe36f0b3485e583d55695325ee306a"
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "weftforge.svg-hole-successor.clean-identity-check.v1",
+  "method": "read JSON/AST and hash retained receipt/log/artifact bytes only; no reviewed-module imports or execution",
+  "status": "completed identity matches actual root receipts; independent final recheck pending",
+  "current_source74_has_no_nulls": true,
+  "source74_sha256": "7df737742f95884e854dcda1d67adc3e1f622905a2a272b06ea432d68a10b00c",
+  "clean_metadata_commit": "a362f64ea84b60407501dd641c9f5f51a327351a",
+  "runtime_checks": {
+    "path": "<WORKSPACE>/.local/svg-export-bounds-20261116/runtime-947bfbe-001/CHECKS.json",
+    "sha256": "15d3225ef669621690f7aabfe47d481509d2b78a232c3b4d61779898e83b78bd"
+  },
+  "clean_checks": {
+    "path": "<WORKSPACE>/.local/svg-export-bounds-20261116/clean-a362f64-verify-build-001/CHECKS.json",
+    "sha256": "c50c3a39a1782250b1fdc201e1ce36716ff9817995e877efa244b743f0aea9aa"
+  },
+  "clean_receipt_and_four_log_hashes": {
+    ".local/svg-export-bounds-20261116/clean-a362f64-verify-build-001/CHECKS.json": "c50c3a39a1782250b1fdc201e1ce36716ff9817995e877efa244b743f0aea9aa",
+    ".local/svg-export-bounds-20261116/clean-a362f64-verify-build-001/xtask.stdout": "870b50f32949d2a8d296d831bef36385064df1328f316aeef3b04491bc330074",
+    ".local/svg-export-bounds-20261116/clean-a362f64-verify-build-001/xtask.stderr": "2d33593ed7e74ac4c1c7a48b13b13adfb53cad20a09a68ab9adb67555e6e5914",
+    ".local/svg-export-bounds-20261116/clean-a362f64-verify-build-001/debug-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".local/svg-export-bounds-20261116/clean-a362f64-verify-build-001/debug-build.stderr": "9d892c5778d0c975f64a671e66ea5a753502353da3addd1dfdf3825225e406a2"
+  },
+  "actual_clean_schema_matches_wrapper": true,
+  "current_source74_and_binaries_equal_runtime_and_clean_receipts": true,
+  "native_binary_sha256": "f74350126898e07729f898cb641442baecacc29404f5620b1cfabb03926e282a",
+  "native_binary_bytes": 62231992,
+  "root_clean_gate_handle": {
+    "kind": "root exec session",
+    "id": 69487,
+    "status": "terminal passed per supplied completed receipt"
+  },
+  "remaining_binding_nulls": [
+    "/freeze_sha256",
+    "/bundle",
+    "/bundle_identifier",
+    "/bundle_plist_sha256",
+    "/native_binary_path",
+    "/os_version",
+    "/launcher_argv",
+    "/input_argv",
+    "/actor_filename",
+    "/actor_sha256",
+    "/actor_persistence_check/path",
+    "/actor_persistence_check/sha256",
+    "/actor_initial_capture/path",
+    "/actor_initial_capture/sha256",
+    "/controller_configuration/root"
+  ],
+  "remaining_null_scope": "future final freeze plus actual actor/owned bundle/OS/argv/controller-root staging; no pending source/gate/native identity",
+  "grants_remain_false": true,
+  "code_sha256_unchanged_from_reviewed_initial_draft": {
+    "grade_saved.py": "dcb5cfe24c294c785867977b330e7bf6d173c5879645f7c2b6c58165b67ebd48",
+    "retain_saved.py": "0c1a092450e6f9840f70d4705c94a5b8d3dfb419e81e56e11c123127ad8dc84d",
+    "grade_exports.py": "56ab4c66ea5d70846b532e3abae951e2af1e2c1ea0a9baee5a924a154d06ba11",
+    "selfcheck.py": "4dcfb93987c06ded02d5107a990af0c776177aebeb200f2df23e6eb32a21e280"
+  },
+  "pure21_controls_unchanged_and_not_rerun": true,
+  "prior_indexes_and_changed_artifact_bytes_preserved": true,
+  "actual_formal_old_case_or_product_CUA_controller_clock_Cargo_Git_executed": false,
+  "FREEZE_or_GO_created": false
+}

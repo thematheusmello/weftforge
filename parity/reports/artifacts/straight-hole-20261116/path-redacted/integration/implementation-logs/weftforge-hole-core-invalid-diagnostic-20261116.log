@@ -1,0 +1,19 @@
+   Compiling weftforge-core v0.1.0 (<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.61s
+     Running tests/holes.rs (target/debug/deps/holes-1e0c481417c2cc30)
+
+running 1 test
+
+thread 'invalid_commands_are_atomic_and_do_not_consume_ids_or_abandon_redo' (65634929) panicked at crates/weftforge-core/tests/holes.rs:53:5:
+Unexpected success: ResizePiece { piece: 2, width: 1e-5, height: 0.36 }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test invalid_commands_are_atomic_and_do_not_consume_ids_or_abandon_redo ... FAILED
+
+failures:
+
+failures:
+    invalid_commands_are_atomic_and_do_not_consume_ids_or_abandon_redo
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 11 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p weftforge-core --test holes`

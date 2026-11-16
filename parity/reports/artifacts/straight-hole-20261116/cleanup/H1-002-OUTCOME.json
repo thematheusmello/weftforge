@@ -1,0 +1,37 @@
+{
+  "scope": "Separate post-case exit verification after retained handoff; no native input, getApp/relaunch or frozen evidence mutation",
+  "case": "HOLE-H1",
+  "attempt": "H1-002",
+  "actor_owned_pid": 81929,
+  "CUA_inventory": {
+    "observed_utc": "2026-11-16T05:17:31.447Z",
+    "matching_apps": [
+      {
+        "displayName": "WeftForge",
+        "id": "org.weftforge.studio",
+        "isRunning": false,
+        "lastUsedDate": 816220800,
+        "useCount": 7
+      }
+    ],
+    "running_WeftForge_apps": 0
+  },
+  "immediate_next_tool": {
+    "completion_summary": "Confirmed test windows stayed closed",
+    "return": "Completion summary received."
+  },
+  "ps_check": {
+    "utc": "2026-11-16T05:20:44.491602+00:00",
+    "argv": [
+      "ps",
+      "-p",
+      "81929",
+      "-o",
+      "pid=,comm="
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  "exited": true
+}

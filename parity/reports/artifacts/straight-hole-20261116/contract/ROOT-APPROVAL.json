@@ -1,0 +1,17 @@
+{
+  "utc": "2026-11-16T01:56:46.077861+00:00",
+  "kind": "Reviewed first straight-hole implementation contract",
+  "status": "root approved for isolated implementation only; no acceptance/parity",
+  "base_runtime": "19b1e88245dc627cfec8164f4924b335fe44853d",
+  "base_metadata": "982ad0340d3c848bb8a959dca7a934886f1d7ae9",
+  "review": ".local/straight-hole-contract-review-20261116/REVIEW.md",
+  "review_sha256": "dadbf4a85cbbc03bef64db31616baf08df1f974d02a84268c795272a2806c1fe",
+  "only_blocker_resolution": "Recovery wording now matches existing staged native-save behavior; no two-file atomicity promise or IO redesign",
+  "files": {
+    "CONTRACT.md": "dc6b66c6d278ec25165979c2a2c729b4a871f8798baa1f7fe53a5d7299dd8797",
+    "ORACLE-SUMMARY.json": "6cce2ccc38d28e2bc4b724e32867a052461c63c9b711378d1a2b414a63a84ba2",
+    "SOURCE-HASHES.json": "6c3417a60769d0c790d312b3aa0c8779d970dfc1f715ede944daa3be33cf2884"
+  },
+  "cut_source69_and_packets": "untouched; all new implementation in separate hole worktree",
+  "no_runtime_claim": true
+}

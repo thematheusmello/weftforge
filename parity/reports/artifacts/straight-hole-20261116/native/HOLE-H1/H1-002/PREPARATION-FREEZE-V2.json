@@ -1,0 +1,93 @@
+{
+  "kind": "H1-002 actor preparation freeze for root review only; no final binding/GO",
+  "case": "HOLE-H1",
+  "attempt": "H1-002",
+  "current_packet_freeze_sha256": "13fb9c37e4d3c56f5e017f39fcf9db1b87ddb821cffd9ee96627e778db69193c",
+  "root_authorized_for_case": false,
+  "native_lease_granted": false,
+  "files": {
+    "ACTOR-BOOTSTRAP.js": {
+      "sha256": "17227bbb25ad91426fda7955e406ab31135bbd8d2625a062e618edc653cbc893",
+      "bytes": 9641,
+      "mode": "0o444"
+    },
+    "ACTOR-INITIAL-CAPTURE.js": {
+      "sha256": "c3462f887bb51245cd3209791147359036b2bdbadb83d20281e91b2498edddac",
+      "bytes": 377,
+      "mode": "0o444"
+    },
+    "ACTOR-LAUNCH-PID.cjs": {
+      "sha256": "9edbbc267b3ec3924d8a2483bc74154de8b19e397210afd68070ca4c7a2b5c25",
+      "bytes": 2438,
+      "mode": "0o444"
+    },
+    "ACTOR-PERSISTENCE-CHECK.js": {
+      "sha256": "af3c55e6ac4e733fd659dd7a48d223860758f189cdd71dd2a08a5d2d549bc948",
+      "bytes": 10869,
+      "mode": "0o444"
+    },
+    "ACTOR-POSTFLIGHT-RAW.cjs": {
+      "sha256": "2800f635e20ca9bb89bed4126337fc7c28ed8537d433af8fe2cf9a2f32c554e3",
+      "bytes": 5858,
+      "mode": "0o444"
+    },
+    "ACTOR-START-CLOCK.cjs": {
+      "sha256": "9cb6c895eedc5d0da29ec0c585727de624addbbd99ccd0c8af97c94a3cac075f",
+      "bytes": 1615,
+      "mode": "0o444"
+    },
+    "FILESYSTEM-GUARD.json": {
+      "sha256": "dc6a6552388919a4493ec4f24049bf0db4150575eda3d16ed85145a8209dc180",
+      "bytes": 66809,
+      "mode": "0o444"
+    },
+    "ORCHESTRATION-V2.json": {
+      "sha256": "4d88195cd9a2f1cf85c5375ea693ae4dc9188aeff4806c8fca0e4a85e6af9163",
+      "bytes": 3497,
+      "mode": "0o444"
+    },
+    "PASSIVE-STATIC-CHECK.cjs": {
+      "sha256": "e71f3cb9740fa8cf7c2e91064acc551583e91e83566abad37bb3e20b7215c79d",
+      "bytes": 16814,
+      "mode": "0o444"
+    },
+    "PASSIVE-STATIC-CHECK.json": {
+      "sha256": "9eb64d40d3e80e63bb70a8a1a49142110fccfabbea806872ae9c4fa318a64d29",
+      "bytes": 1609,
+      "mode": "0o444"
+    },
+    "RECORDER-PREFLIGHT-AUDIT.json": {
+      "sha256": "40a81008060412b865639baea3a58bd9891b645758b1f587a47164b1b18f3727",
+      "bytes": 3555,
+      "mode": "0o444"
+    },
+    "ROOT-BINDING-V2-DRAFT.json": {
+      "sha256": "2943bbb94e08f62d080bdc043116b8ac972d0f19caaf63977996fa971a3c7fb6",
+      "bytes": 12577,
+      "mode": "0o444"
+    },
+    "WeftForgeHoleH1002.app/Contents/Info.plist": {
+      "sha256": "37893440a2dcc61b82ed873376a8cfe35ad1fb26786fb56497aedf3b9ee81d99",
+      "bytes": 866,
+      "mode": "0o444"
+    },
+    "WeftForgeHoleH1002.app/Contents/MacOS/weftforge": {
+      "sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c",
+      "bytes": 62233432,
+      "mode": "0o555"
+    },
+    "STAGING-MANIFEST-V2.json": {
+      "sha256": "1477815acea9dd32ce592722deb2ce1a2857344d792f0fea019d3d4d8dc2b344",
+      "bytes": 2891,
+      "mode": "0o444"
+    }
+  },
+  "static_operations": 187,
+  "startup_operations": 13,
+  "operation_cap": 200,
+  "summary_calls": 1,
+  "overall_cap": 201,
+  "elapsed_cap_s": 1800,
+  "budgets_are_laboratory_bounds_not_product_speed_criteria": true,
+  "actual_runtime_proof_or_native_acceptance": false
+}

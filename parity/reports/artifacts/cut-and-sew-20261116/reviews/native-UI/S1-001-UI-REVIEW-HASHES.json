@@ -1,0 +1,103 @@
+{
+  "schema": "weftforge.private.independent-native-S1-UI-review-hashes.v1",
+  "case": "SEW-S1",
+  "attempt": "S1-001",
+  "verdict": "required visible S1 route observed; no UI task barrier; bounded UI evidence only; canonical acceptance remains root-owned",
+  "inputs": {
+    ".local/native-cut-and-sew-20261116/S1-001/ROOT-BINDING.json": {
+      "sha256": "80a45a09e7439792eddfc31be7000dfe9033760fad11a1baa8c00e4fe02ea807",
+      "bytes": 13732,
+      "mode": "0o444"
+    },
+    ".local/native-cut-and-sew-20261116/S1-001/NATIVE-LEASE-CLOSED.json": {
+      "sha256": "eca65faa200f595f0ed17b4f8356ed5d86e53b0894b9fbe2c4805489fb6d3b45",
+      "bytes": 499,
+      "mode": "0o444"
+    },
+    ".local/native-cut-and-sew-20261116/S1-001/COMPLETION-SUMMARY-RETURN.json": {
+      "sha256": "bf496ab69b069811a2c9816c605921107003daa644c16dd431cb39a37068f0d3",
+      "bytes": 775,
+      "mode": "0o444"
+    },
+    ".local/native-cut-and-sew-20261116/S1-001/LAUNCH-CLOCK.json": {
+      "sha256": "b37080d5650c9cd43f1c0c534eab1fc238fbe39a2d23582adf6e9c866ff5fd70",
+      "bytes": 105,
+      "mode": "0o600"
+    },
+    ".local/native-cut-and-sew-20261116/S1-001/ACTOR-RUNTIME-PROOF.json": {
+      "sha256": "b20e3981eb69c7b905fda50d67a41591ccd1696012fce47d0ff36e36361b0190",
+      "bytes": 1664,
+      "mode": "0o600"
+    },
+    ".local/native-cut-and-sew-20261116/S1-001/ACTOR-PERSISTENCE-CHECK-RESULT.json": {
+      "sha256": "63b4b4cdbdbf163c6c2330ab735824759f3572306c7c6951de059e27cfa536e9",
+      "bytes": 2725,
+      "mode": "0o600"
+    },
+    ".local/native-cut-and-sew-20261116/S1-001/ACTOR-RAW-MANIFEST.json": {
+      "sha256": "fcda8bf7a6c4b7d05024b5f406652c4b9d54b19ffaeedac3457abb5825710b0f",
+      "bytes": 121921,
+      "mode": "0o444"
+    },
+    ".local/native-cut-and-sew-20261116/S1-001/ACTOR-POSTFLIGHT-RAW.json": {
+      "sha256": "c5e589eee59225dbb0058d2d81d0a7aae42833abafbf1752fb38cd5bbc2c96db",
+      "bytes": 141657,
+      "mode": "0o444"
+    },
+    ".local/native-cut-and-sew-20261116/S1-001/ACTOR-CUA-JOURNAL-EXCERPTS.json": {
+      "sha256": "f1e3c25a7dc534a38d9856fd44b0262dfbfcebb7ecee592348925f9e5d0184ee",
+      "bytes": 4740,
+      "mode": "0o444"
+    },
+    ".local/native-cut-and-sew-20261116/S1-001/ACTOR-CUA-JOURNAL-EXCERPTS.jsonl": {
+      "sha256": "a531a044431e157d3fda18bd0a528a1be03d92569a7c3322a3d074939bfdafe6",
+      "bytes": 343362,
+      "mode": "0o444"
+    },
+    ".local/native-cut-and-sew-20261116/S1-001/ACTOR-RUNTIME-TOOL-HISTORY.json": {
+      "sha256": "fd5fa2b3b04c5b72cefea53ef87103812c4d3f800be6be3d8bbc32cbd8f728e5",
+      "bytes": 799,
+      "mode": "0o444"
+    },
+    ".local/native-cut-and-sew-20261116/S1-001/ACTOR-RUNTIME-RAW-TOOL-HISTORY.json": {
+      "sha256": "f2f64634a8fa1d39d2ab24cd15df38fb55ec301a32d0725e64c59a23b040bc81",
+      "bytes": 351015,
+      "mode": "0o444"
+    },
+    ".local/native-cut-and-sew-20261116/S1-001/POSTFLIGHT.json": {
+      "sha256": "e7873d6b795d971863ab7ce1893a242c23029804d6892985a30a1b35fda79c19",
+      "bytes": 1182,
+      "mode": "0o444"
+    },
+    ".local/native-cut-and-sew-20261116/S1-001/SAVED-GRADE-001.json": {
+      "sha256": "174cb2e6540edf4934a2211ef775802d50857951cd1b3de5ac0a190527f8512c",
+      "bytes": 4212,
+      "mode": "0o644"
+    },
+    ".local/native-cut-and-sew-root-review-20261116/S1-001-GRADE-INVOCATION-001.json": {
+      "sha256": "2dfbe47e6c11916ebde3a422279f21aadd6b5ba41c4eeb13ec93120a2daea224",
+      "bytes": 1621,
+      "mode": "0o644"
+    },
+    ".local/window-cleanup-20261116/S1-001-OUTCOME.json": {
+      "sha256": "a953c7cbeccc6a1ae61b27e0da35bd0efd6f14b2d1fb1b074e6693d5c16fc889",
+      "bytes": 816,
+      "mode": "0o644"
+    }
+  },
+  "outputs": {
+    "S1-001-UI-REVIEW.md": {
+      "sha256": "28d9a01e56d57b965550a5d94d1dd2571539b362a89742d157ab0ad0fe80d589",
+      "bytes": 9269,
+      "mode": "0o644"
+    },
+    "S1-001-CAPTURE-NODE-INVENTORY.json": {
+      "sha256": "85d7cd160af7991eb600f7c931dcf1f77e7e6e36ae39c2db71eae4a368318a9d",
+      "bytes": 476101,
+      "mode": "0o644"
+    }
+  },
+  "grade_scope": "only existing report metadata/hash; no evaluator rerun or saved-construction parse",
+  "canonical_UI_acceptance_written_by_reviewer": false,
+  "native_reference_fullfeature_or_particle_mass_inferred": false
+}

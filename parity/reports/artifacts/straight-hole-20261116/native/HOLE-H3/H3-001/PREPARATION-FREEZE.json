@@ -1,0 +1,159 @@
+{
+  "schema": "weftforge.svg-hole-successor.actor-preparation-freeze.v1",
+  "case": "HOLE-H3",
+  "attempt": "H3-001",
+  "status": "immutable private preparation only; no final root binding, grant or GO",
+  "packet_freeze_sha256": "64077323f7f1ac3998f4e6763099c0bbf04e8dd1be710a3900ed8a4c59c07c55",
+  "root_packet_freeze_receipt_sha256": "a1f93ba3556cf7f6b964b392a82cbe5176b712dd3f13a3af3f06aab531cf7167",
+  "root_authorized_for_case": false,
+  "native_lease_granted": false,
+  "GO": false,
+  "staged_cells_executed": false,
+  "files": {
+    "ACTOR-BOOTSTRAP.js": {
+      "sha256": "61e39d6313c771d77e75dc1c923d43bd37b1823d777cbf06910fcbb5d5ffe058",
+      "bytes": 17134,
+      "mode": 292
+    },
+    "ACTOR-INITIAL-CAPTURE.js": {
+      "sha256": "a1ea6ecca48286eb017a7e8bad10f9e005ce2fcdbe7688241bb1f07ebaf9b01b",
+      "bytes": 1028,
+      "mode": 292
+    },
+    "ACTOR-LAUNCH-PID.cjs": {
+      "sha256": "6c0f182493d1019be2030352cd2a416065dc08a35f0719d45f1c828ac50230ee",
+      "bytes": 3718,
+      "mode": 292
+    },
+    "ACTOR-PERSISTENCE-CHECK.js": {
+      "sha256": "88f8ad5e51ab7fbcf96ad93c8437637981e7225bbc459886de88b9172e8c1606",
+      "bytes": 10891,
+      "mode": 292
+    },
+    "ACTOR-POSTFLIGHT-RAW.cjs": {
+      "sha256": "6177c2e180f82d28192ac79890f7cec2da517fa71c913516d96d8d7f2413b431",
+      "bytes": 6564,
+      "mode": 292
+    },
+    "ACTOR-START-CLOCK.cjs": {
+      "sha256": "b8474c630f582a753713b315efec58d6739ef4ce4e85152111535b2fee7d257a",
+      "bytes": 2129,
+      "mode": 292
+    },
+    "ORCHESTRATION.md": {
+      "sha256": "a6880e9e26e047cc9f9112ea3314e0b40600252d387664cc412fb4a2deda5728",
+      "bytes": 9244,
+      "mode": 292
+    },
+    "PASSIVE-STATIC-CHECK.cjs": {
+      "sha256": "3dd1758a82a110bd39f5e0d64f85f76e53dd9e9625b42aa3d88b45e455802804",
+      "bytes": 25974,
+      "mode": 292
+    },
+    "PASSIVE-STATIC-CHECK.json": {
+      "sha256": "d334fdc61091f13103aa1971b6c0125cbd234bc6631b5fa9e2701b41a32c3b2f",
+      "bytes": 2552,
+      "mode": 292
+    },
+    "ROOT-BINDING-DRAFT.json": {
+      "sha256": "cfa8afd9416d046e3f09492a614310a2e3955941868eec878b31cc5987be1c24",
+      "bytes": 15253,
+      "mode": 292
+    },
+    "STAGING-MANIFEST.json": {
+      "sha256": "f0cb28cca8aba1375bbf554d471462e8ba526a0ff511db8a2533f60d65d4fc3d",
+      "bytes": 8683,
+      "mode": 292
+    },
+    "WeftForgeSvgHoleH3001.app/Contents/Info.plist": {
+      "sha256": "2d317eaf39fd9a30ce03a080c4c15af5dfb76efd780c58c159a85a2bb0a36283",
+      "bytes": 614,
+      "mode": 292
+    },
+    "WeftForgeSvgHoleH3001.app/Contents/MacOS/weftforge": {
+      "sha256": "f74350126898e07729f898cb641442baecacc29404f5620b1cfabb03926e282a",
+      "bytes": 62231992,
+      "mode": 493
+    },
+    "exports/hole-r6.dxf": {
+      "sha256": "a013339c8be1e5fb5f0f81c7d2df390c7c81fd404572916ba191cc50b2599cdf",
+      "bytes": 41,
+      "mode": 420
+    },
+    "exports/hole-r6.dxf.recovery": {
+      "sha256": "90503ddab50b562191e7bccb3d37315bbf01a356e2dac8d5ab69686ac8988fee",
+      "bytes": 42,
+      "mode": 420
+    },
+    "inputs/accepted-h1-002-redo-r5.weftforge": {
+      "sha256": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41",
+      "bytes": 4190,
+      "mode": 292
+    },
+    "templates/ACTOR-PERSISTENCE-CHECK-RESULT.template.json": {
+      "sha256": "ea7c4c537834c5357adcd11f9f90ca135caaec84b73b79569bbe2fd836fc06ac",
+      "bytes": 1976,
+      "mode": 292
+    },
+    "templates/ACTOR-RUNTIME-PROOF.template.json": {
+      "sha256": "ae88eea2f57bc527b70b5868fa4c3e2e4d2448905b373dd4c413c8fe802a174d",
+      "bytes": 1222,
+      "mode": 292
+    },
+    "templates/ACTOR-RUNTIME-TOOL-HISTORY.template.json": {
+      "sha256": "b13164210e503e166ed543bc68c5c07743ffb3d23412c4f2f95cc0a4137ed6eb",
+      "bytes": 550,
+      "mode": 292
+    },
+    "templates/COMPLETION-SUMMARY-RETURN.template.json": {
+      "sha256": "5b8269c8da3018425ab6b9c7d2aff7cf074dc2c2bb4014d55b1f337f6ac26e4f",
+      "bytes": 640,
+      "mode": 292
+    },
+    "templates/FREEZE.template.json": {
+      "sha256": "76036e00502a7622df877e6c9bf39d5c0bd3f70dcc6f2278ba7fe54b340763f6",
+      "bytes": 151,
+      "mode": 292
+    },
+    "templates/NATIVE-LEASE-CLOSED.template.json": {
+      "sha256": "a2edaa15cc4f211c5a309e5bccdda792f316b93dca3ff5cc3c39ae8f889e8eba",
+      "bytes": 424,
+      "mode": 292
+    },
+    "templates/OWNED-PROCESS-EXIT.template.json": {
+      "sha256": "f8c0f5c35c6f178212d6297c0749dd2269d0f1caa32bd710de8e91e491fda164",
+      "bytes": 385,
+      "mode": 292
+    },
+    "templates/POSTFLIGHT.template.json": {
+      "sha256": "f0f1de4409fbe5d9f2e3fb392dc59431108daf81a7951d0ce0db8f929fc5b288",
+      "bytes": 584,
+      "mode": 292
+    },
+    "templates/RAW-ARTIFACT-MANIFEST.template.json": {
+      "sha256": "9afcda1522a7c1f02b877deb71e6db27715212833988244ba27211338246fde4",
+      "bytes": 80,
+      "mode": 292
+    },
+    "templates/RAW-RETENTION.template.json": {
+      "sha256": "4c0cda3917b86f623c71b7e16872c5dc5decd855a12e92a78794fa8f44f45b2e",
+      "bytes": 352,
+      "mode": 292
+    },
+    "templates/ROOT-BINDING.HOLE-H3.template.json": {
+      "sha256": "96c373a4a027c742cefcd29d921aef43e0be780c86e4febc36685d6d7667bb19",
+      "bytes": 13582,
+      "mode": 292
+    },
+    "templates/ROOT-TOOL-HISTORY-CORRELATION.template.json": {
+      "sha256": "8a9e4b37b6e960897044ae108afa6c0cf124d3f85f0d19f71c3f23e5db29bef9",
+      "bytes": 1021,
+      "mode": 292
+    },
+    "templates/ROOT-UI-ACCEPTANCE.template.json": {
+      "sha256": "6b10f671534397281f4a2f3b4706f3e638bcbd10ee09aeeeebd983fb705f8dce",
+      "bytes": 627,
+      "mode": 292
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "kind": "fresh S2 preparation only; no authority/GO",
+  "case": "SEW-S2",
+  "attempt": "S2-001",
+  "root_authorized_for_case": false,
+  "native_lease_granted": false,
+  "current_packet_freeze_sha256": "5ab3b3238d2b50a5f6fdfa58965c94a7a057b5f5cb084c46117e949d986f3b0c",
+  "source_native": {
+    "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/target/debug/weftforge",
+    "sha256": "7809e41948e19d0055da45e10a3b55225173df48e43465fab1b48effd7efa1c8",
+    "bytes": 62245032,
+    "mode": "0o755"
+  },
+  "own_bundle": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S2-001/WeftForgeSewS2001.app",
+  "bundle_identifier": "org.weftforge.preview.sew20261116.s2001",
+  "own_native": {
+    "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S2-001/WeftForgeSewS2001.app/Contents/MacOS/weftforge",
+    "sha256": "7809e41948e19d0055da45e10a3b55225173df48e43465fab1b48effd7efa1c8",
+    "bytes": 62245032,
+    "mode": "0o555"
+  },
+  "plist": {
+    "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S2-001/WeftForgeSewS2001.app/Contents/Info.plist",
+    "sha256": "760cdc22cca0912459a5b573b8527b493aff394f11af413826bec0d7937e9950",
+    "bytes": 863,
+    "mode": "0o444"
+  },
+  "accepted_input": {
+    "source": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/snapshots/redo-r4.weftforge",
+    "destination": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S2-001/inputs/accepted-redo-r4.weftforge",
+    "sha256": "6b3c61c9f42c3bcc2c8be75008b69eec44038d9de94ac21d3a5fb9ec07a4cfab",
+    "bytes": 4894,
+    "mode": "0o444",
+    "copy_only_actual_accepted_native_bytes": true,
+    "never_assessment_or_generated_input": true
+  },
+  "accepted_input_dependency": {
+    "case": "SEW-S1",
+    "attempt": "S1-001",
+    "snapshot_label": "redo-r4",
+    "root_binding_path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/ROOT-BINDING.json",
+    "root_binding_sha256": "80a45a09e7439792eddfc31be7000dfe9033760fad11a1baa8c00e4fe02ea807",
+    "snapshot_sha256": "6b3c61c9f42c3bcc2c8be75008b69eec44038d9de94ac21d3a5fb9ec07a4cfab",
+    "saved_grade_report_sha256": "174cb2e6540edf4934a2211ef775802d50857951cd1b3de5ac0a190527f8512c",
+    "root_native_ui_review_sha256": "37a7a2d5858aac346583c52952da14f2157cba92d0f6247839ae1ca03a6789e5"
+  },
+  "input_argv": [
+    "<WORKSPACE>/.local/native-cut-and-sew-20261116/S2-001/inputs/accepted-redo-r4.weftforge"
+  ],
+  "launcher_path": "/usr/bin/open",
+  "launcher_argv": [
+    "-n",
+    "<WORKSPACE>/.local/native-cut-and-sew-20261116/S2-001/WeftForgeSewS2001.app",
+    "--args",
+    "<WORKSPACE>/.local/native-cut-and-sew-20261116/S2-001/inputs/accepted-redo-r4.weftforge"
+  ],
+  "canonical_draft_has_no_extra_keys_or_required_nulls": true,
+  "grants_still_false": true,
+  "work_empty": true,
+  "exports_in_case_scope": false,
+  "staged_cells_executed": false,
+  "clock_or_controller_started": false,
+  "formal_grade_performed": false,
+  "old_S1_files_mutated": false
+}

@@ -1,0 +1,50 @@
+{
+  "scope": "Tool-history metadata derivative. Raw session/journal lines and internal session locators omitted. Root corroboration receipt is retained separately; this derivative is not raw transport evidence.",
+  "original_private_sha256": "c22ca64188b9c942eecdac533831b42dae5c0b450b5065752821addd07df9654",
+  "original_private_bytes": 16703,
+  "omitted_fields": [
+    "all_CUA_calls_between_standalone_inventory_and_summary",
+    "raw_excerpts_path",
+    "source_journal_path",
+    "source_records_and_calls"
+  ],
+  "record": {
+    "kind": "delegated retrospective exact primary actual-session journal excerpts; root correlation remains separate",
+    "case": "HOLE-H3",
+    "attempt": "H3-001",
+    "raw_excerpts_sha256": "ed74649b22111bbc4baae524e000adf8e7b7d1cc58ec757b04bf4919b75cc2e4",
+    "copied_response_item_lines": 12,
+    "raw_line_hashes_include_original_line_ending": true,
+    "source_lines_verbatim_unedited": true,
+    "retained_after_native_input_closure_sha256": "7e641d66876f5486f6f6d5f7548ceac41ebd92d1797f4a64894826c8864b92b3",
+    "exact_tool_invocation_UTC_claimed": false,
+    "journal_record_timestamps_promoted_to_case_clock": false,
+    "new_CUA_calls_to_obtain_history": false,
+    "complete_startup_cell_code_matches_staged_sources": {
+      "ACTOR-BOOTSTRAP.js": {
+        "actual_tool_code_sha256": "61e39d6313c771d77e75dc1c923d43bd37b1823d777cbf06910fcbb5d5ffe058",
+        "staged_file_sha256": "61e39d6313c771d77e75dc1c923d43bd37b1823d777cbf06910fcbb5d5ffe058",
+        "byte_exact": true
+      },
+      "ACTOR-PERSISTENCE-CHECK.js": {
+        "actual_tool_code_sha256": "88f8ad5e51ab7fbcf96ad93c8437637981e7225bbc459886de88b9172e8c1606",
+        "staged_file_sha256": "88f8ad5e51ab7fbcf96ad93c8437637981e7225bbc459886de88b9172e8c1606",
+        "byte_exact": true
+      },
+      "ACTOR-INITIAL-CAPTURE.js": {
+        "actual_tool_code_sha256": "a1ea6ecca48286eb017a7e8bad10f9e005ce2fcdbe7688241bb1f07ebaf9b01b",
+        "staged_file_sha256": "a1ea6ecca48286eb017a7e8bad10f9e005ce2fcdbe7688241bb1f07ebaf9b01b",
+        "byte_exact": true
+      }
+    },
+    "quit_followed_by_very_next_tool_summary_only": true,
+    "summary_calls": 1,
+    "documentation_refresh_calls": 0,
+    "documentation_refresh_no_native_input": true,
+    "proof0002_displayed_return_text_path": "ACTOR-PROOF0002-DISPLAYED-RETURN.txt",
+    "proof0002_displayed_return_text_sha256": "eaef955b3c9dff8429c869b6585e4afb65a4d3faec4d06845fd57b54f302ed1b",
+    "runtime_proof_sha256": "90e00a8f1d0d758cbb1d3373bdc2d90c150a2a88a851f00a7ede372b085289f5",
+    "root_correlated_with_actual_CUA_tool_history": false,
+    "formal_grading_performed": false
+  }
+}

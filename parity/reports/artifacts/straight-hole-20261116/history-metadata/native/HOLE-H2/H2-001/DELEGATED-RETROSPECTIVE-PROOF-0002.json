@@ -1,0 +1,50 @@
+{
+  "scope": "Tool-history metadata derivative. Raw session/journal lines and internal session locators omitted. Root corroboration receipt is retained separately; this derivative is not raw transport evidence.",
+  "original_private_sha256": "0452bf9a71e9c73b783ac48ba2d4b3e7eccfa6c77560a555c86226be9534e9da",
+  "original_private_bytes": 17516,
+  "omitted_fields": [
+    "actual_tool_call_id",
+    "documentation_refresh_actual_calls",
+    "proof_call_and_return_raw_lines",
+    "raw_log_source",
+    "summary_actual_call",
+    "staged_initial_cells_source_checks[].actual_tool_call_id",
+    "staged_initial_cells_source_checks[].journal_line"
+  ],
+  "record": {
+    "schema": "weftforge.native.delegated-retrospective-proof-transcript.v1",
+    "evidence_kind": "delegated_retrospective_exact_actual_tool_history_extraction",
+    "case": "HOLE-H2",
+    "attempt": "H2-001",
+    "transcribed_after_case": true,
+    "exact_invocation_utc": null,
+    "journal_timestamps_are_invocation_timestamps": false,
+    "source_record": "0002",
+    "proof_sha256": "7c21452ff981468a662b04deaff7c03b142ab982943515ecd714ee4e168ffe99",
+    "displayed_proof_return_verbatim": "{\n  source_record: '0002',\n  proof_sha256: '7c21452ff981468a662b04deaff7c03b142ab982943515ecd714ee4e168ffe99',\n  actual_cua_runtime: true,\n  native_UI_calls: 0,\n  status: {\n    evidenceKind: 'native',\n    calls: 2,\n    elapsedS: 78.296174792,\n    stopped: false\n  }\n}",
+    "documentation_refresh_count": 0,
+    "staged_initial_cells_source_checks": [
+      {
+        "file": "ACTOR-BOOTSTRAP.js",
+        "staged_sha256": "46811852d34a8a8aeaec6226ade489af01f4b9b954608fe136fc3ba1dcae8aaf",
+        "actual_CUA_code_sha256": "46811852d34a8a8aeaec6226ade489af01f4b9b954608fe136fc3ba1dcae8aaf",
+        "exact_code_bytes": true
+      },
+      {
+        "file": "ACTOR-PERSISTENCE-CHECK.js",
+        "staged_sha256": "16d941f762ec656732be4eed2e6ea147e6600f6da5a31b1236dde20209f70b4f",
+        "actual_CUA_code_sha256": "16d941f762ec656732be4eed2e6ea147e6600f6da5a31b1236dde20209f70b4f",
+        "exact_code_bytes": true
+      },
+      {
+        "file": "ACTOR-INITIAL-CAPTURE.js",
+        "staged_sha256": "c3462f887bb51245cd3209791147359036b2bdbadb83d20281e91b2498edddac",
+        "actual_CUA_code_sha256": "c3462f887bb51245cd3209791147359036b2bdbadb83d20281e91b2498edddac",
+        "exact_code_bytes": true
+      }
+    ],
+    "unretained_native_inputs": false,
+    "no_GUI_or_runtime_rerun_performed": true,
+    "root_independent_correlation_claimed": false
+  }
+}

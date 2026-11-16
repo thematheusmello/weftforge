@@ -1,81 +1,112 @@
 # WeftForge status — active development, 2026-11-16
 
-Current integrated runtime source is `947bfbe4dcb74fb253d584709376ace5a08db838`. The published bounded
-straight-cut collection remains bound to 19b1 and stale on changed current source.
-Registry progress remains **40 partial / 16 planned**, **0/56 coarse reference
-contracts verified**, discovery incomplete and **no roadmap gate accepted**.
-PAT-006 remains partial with whole-contract verification not_run. Historical
-949/205/56 maps and all 39 report results/artifact hashes remain unchanged.
-GitHub Actions stays disabled; the existing static Pages configuration is preserved.
+Current integrated runtime source is `947bfbe4dcb74fb253d584709376ace5a08db838`,
+with clean metadata `a362f64ea84b60407501dd641c9f5f51a327351a`. PR #49 remains
+a draft; Hole and Cut & Sew publication is in progress on
+`feat/holes-sewn-cuts-publication`. No merge, tracked-delivery or final public-gate
+completion is claimed. Registry progress remains **40 partial / 16 planned**,
+**0/56 coarse reference contracts verified**, discovery incomplete and **no
+roadmap gate accepted**. All 56 feature statuses/contract verification and all
+39 earlier report bytes/results/artifact hashes stay exact. Actions remains
+disabled and the existing static Pages configuration is preserved.
 
-## Current candidate: bounded SVG canvas correction
+## Three separately attributable bounded reports
 
-The shared SVG writer now unions ALL existing analytic exterior curve bounds,
-including cubic extrema, preserving absolute authored U/V, millimetre scale and
-inverted SVG Y. Only an empty project keeps the one-metre blank canvas. The old
-0–1 m seed/control hull added blank padding; clipping was not observed in H2-001.
-Compound path bytes, validation/path guards and staged atomic replacement remain
-unchanged. Source regressions cover R240 at 240×360 mm with `viewBox="0 -360 240 360"`,
-all-negative/large-offset/multipiece layouts, true cubic extrema and empty fallback.
-The legacy workflow's obsolete 1000 mm expectation was corrected to its literal
-500×700 mm geometry. No schema/version/command/tool/UI/dependency or print-margin
-contract is added. Source checks do not establish native exports or reference parity.
+- [Historical straight hole](parity/reports/WF-20261116-STRAIGHT-HOLE-001.json):
+  runtime `a021a2581c8e1dd000e535a417dcd964c3835884`, source73, metadata521,
+  native4b56. Accepted H1-002 covers actual empty creation, review/refusal/cancel,
+  one Apply, point edit/history and five saves. Its sole saved grade7c939 and
+  separate root UI b6d79 remain bounded and stale on changed947. H1-001 remains
+  FAILED/unaccepted at `expected_binary` preflight, before geometry assessment.
+  H2-001 remains FAILED/unaccepted at sole grade
+  `5457c733571b632dcc8cbde58a878d86035b6701db4284063ba8d19f9fe7db1d`:
+  old SVG canvas1000x1000mm instead of240x360mm. Path scale was correct; old
+  seed/control-hull bounds added blank padding, not observed clipping. Neither
+  failed case was repaired/regraded, and no per-export H2 formal pass is claimed.
+- [Current hole export](parity/reports/WF-20261116-HOLE-EXPORT-001.json):
+  runtime947/source74/metadataa362/nativef743, H3-001 only. Actual accepted
+  historical H1-002 R5 is the explicit strict-v5 compatibility input; it supplies
+  no current947 empty-creation authority. Sole grade44c414 passes own R6/full-v5
+  bits and the unchanged56ab export consumer: OBJ.0768m2/one component/two loops/
+  Euler0/metre positions+UV/Y-up; compound-evenodd SVG240x360mm with
+  `viewBox="0 -360 240 360"`; planned DXF refusal preserves both sentinels.
+  Separate root UI aa8491/root0a3f and all34-image review6988 support only that
+  bounded native route. Original postguarde135 STILL FAILED/exited1 with29
+  permission string/integer false rows; failed invocation88ad/code/report stay
+  unchanged. Separate e3cf direct277-pin/435-raw hash/length/permbit audit and UI
+  review qualify unchanged boundary without turning the original guard green.
+  Actor435/canonical363 manifests share361 and retain separate receipts; the
+  canonical set contains two later root files.79 pairs+0 docs+1 immediate summary
+  =80/101, conservative upper804.867825666s/1200. History corroboration is
+  retrospective, not exact invocation UTC; cleanup remains separate.
+- [Historical Cut & Sew](parity/reports/WF-20261116-CUT-AND-SEW-001.json):
+  sealed runtime5898/source74/metadata385/native7809/freeze5ab. Accepted S1 covers
+  default off/on-off-on, raw/caret/refusal/cancel/shields, one Apply/history/save;
+  accepted S2 uses only actual S1R4, reopens, removes only seam20, edits child15
+  height.40m and preserves retained2/anchors11+13 independently. S1 sole
+  grade174cb/UI37a/rootd741 and S2 grade2782/UI3673/rootefd756 remain separately
+  bounded, stale on changed947. S1:59 images,132 pairs+1 doc+1 summary=134/161,
+  upper1070.583932333s/1800. S2:25 images,57+1+1=59/76,
+  upper602.617138334s/900. No current947 native Sew authority transfers.
 
-Root's clean 947 runtime passed formatting, **339 Rust tests / zero failures**,
-strict workspace/all-target Clippy and fresh native+CLI debug builds in this
-worktree's separate target; all **74 runtime/build/test/doc/contract inputs**
-remain immutable. The retained local gate receipt SHA-256 is
-`15d3225ef669621690f7aabfe47d481509d2b78a232c3b4d61779898e83b78bd`.
-The native executable identity is
+All three are implementation-only passes of declared subsets; coarse PAT-006,
+SEW-001 and FILE-005 remain partial/not_run. Saved area*density is analytic only.
+No actual native Cloth/stitch/particle mass, simulation/drape/calibration,
+reference parity, complete feature, garment or roadmap acceptance is added.
+Saved-grade native_ui_verified:false remains unchanged beside separate UI
+acceptances. Every cleanup receipt stays outside frozen case accounting.
+
+## Current source and publication gates
+
+Shared SVG export now unions ALL existing analytic exterior bounds, including
+true cubic extrema, preserving absolute U/-V, millimetres and path bytes. Only
+empty export keeps the1m fallback. Regressions cover R240, all-negative/large-
+offset/multipiece layouts, cubic extrema and empty fallback; the legacy500x700mm
+expectation matches its literal geometry. No command/schema/tool/version/UI/
+dependency or print-margin contract was added. Current source remains **74
+immutable inputs**, **33 Rust alternatives / 32 schemas / 9 tools** and **38
+source rows / 22 native surfaces / 22 contracts / 321 anchor occurrences**.
+Historical949/205/56/8 maps and5898/385/521/982/ad7/B657 lineage stay exact.
+
+Retained947 source gates passed fmt, **339 Rust tests**, strict all-target Clippy
+and fresh debug builds: runtime receipt
+`15d3225ef669621690f7aabfe47d481509d2b78a232c3b4d61779898e83b78bd`;
+clean a362 xtask/debug receipt
+`c50c3a39a1782250b1fdc201e1ce36716ff9817995e877efa244b743f0aea9aa`.
+Native identity is
 `f74350126898e07729f898cb641442baecacc29404f5620b1cfabb03926e282a`
-(62,231,992B); CLI is
-`45fac9485a32699ee1b9dfe882d6481099e2e75fa8c2de6f3f507a0040006dc1`
-(10,328,720B). Earlier failed assertions and their correction receipts remain
-retained rather than converted to passes. These local source/build checks are
-separate from tracked native/reference evidence. No Cargo job is active.
+(62,231,992B). Historical hole329 and Sew336 source gates retain their tested
+build identities. Root's publication-worktree fresh debug job37501 is terminal
+exit0 with source74 unchanged; receipt SHA-256
+`a9b7dea7e659feafb56a32f74144c619be91277ef63fcd8ea4b952bca13ec648`.
+No cross-worktree Cargo target was copied. That locally built executable is
+separate from reviewed native f743 and receives no transferred UI acceptance.
+No Cargo job, GUI lease or native preview window is active.
 
-The source-only addendum repins **33 Rust alternatives / 32 schemas / 9 tools**,
-**38 candidate rows / 22 native surfaces / 22 reviewed contracts / 321 actual
-source-anchor occurrences** to 947. Exact 5898-source / 385-metadata JSON/Markdown
-history and the older 52163ad/982ad03/ad7/B657 chain remain read-only Git references.
-All 39 reports were already stale; no old report result, identity or artifact was
-rewritten. Root owns this metadata commit and the clean xtask/debug-build gate.
+The indexed archives are Hole v3 **2,863 nodes** and Sew **1,195 nodes**. Hole
+CURRENT003 supersedes exact historical CURRENT/002 only at this version. Whole
+chooser/PID/bundle/session omissions, literal-path/result/history derivatives
+and selected JPEG8-byte ICC identifier redactions retain original/public hashes,
+all other encoded bytes and identical pixels. No whole-byte-original JPEG claim
+is made. Both independent private privacy/byte reviews passed; Hole v3 is bound to
+review df08c016. Root copied exactly2,863 Hole+1,195 Sew files/64,545,387B
+without overwrites and rechecked every destination SHA/size/mode; copy receipt
+`902d78b7fb77527130f1ae1157092e8ad56498105a84c7c645dca0e7b438f51f`.
+Root public tracking and clean-checkout publication gates remain pending. Old
+stage/case/source/packet bytes remain immutable.
 
-## Inherited CutAndSew and hole scope remains separately qualified
+The single metadata-only Python cycle passed: implementation-map check, progress
+generation/check and **39/39 registry tests**. Preservation audit confirms all39
+older report bytes/results/artifact hashes, five historical inventory files, all74
+current source bytes, all56 feature authority records and prior run attribution
+remain exact. Metadata-cycle receipt SHA-256 is
+`33ad5319a6b229a3830068e9d906ebdf5ff8060d17cc67605269ab19a8ccd137`.
 
-The five-field CutAndSew retains its ten-ID cut-plus-ordinary-reversed-B seam
-candidate and default-off Sew cut edges preview; ordinary CutPiece keeps its
-nine-ID unsewn behavior. Construction, rest meshes, Cloth and display state stay
-revision-separated. Existing strict v5, hole restrictions, target sewing refusals,
-atomic command/history and raw/caret/checkbox guards remain. Source Mesh/Cloth
-stitch/mass assertions establish no current native Sew, drape/calibration,
-reference physics or full-feature acceptance. The separate private SEW-S1/S2 REV003 packet passed independent review and is
-prospectively frozen on sealed source 5898 / metadata 385. S1 actor preparation
-is separate; no native Sew case or GO exists. This metadata update changes
-neither that source nor its packet.
-
-The [hole contract](spec/features/PAT-006-straight-hole.md) remains bounded.
-Private H1-002's acceptance is bound to a021/source73/meta521, not current 947.
-H2-001 on that old source is closed FAILED: sole frozen grade
-`5457c733571b632dcc8cbde58a878d86035b6701db4284063ba8d19f9fe7db1d`
-found `1000×1000 mm / viewBox="0 -1000 1000 1000"` instead of the R240
-`240×360 mm / viewBox="0 -360 240 360"`.
-Its path coordinates had correct physical scale. It has no accepted H2 exports;
-the case/output/evaluator were not repaired or regraded. Current writer correction
-does not retroactively accept it. Root's separate exit receipt SHA-256 is
-`b21a1503b8c7b033e6dd26002000b916fd8df0f2dd378695b4fdb2dfdcf843a0`:
-fresh 06:02:33.966Z inventory showed no running WeftForge, immediately followed by
-summary-only, with owned PID 95274 later absent. Cleanup remains outside frozen
-case evidence. No GUI lease is active.
-
-The metadata map/progress checks and all 39 registry tests passed in one local
-cycle. Exact next handles: root metadata commit and clean tracked xtask/debug
-build; bind those results into the separately reviewed current 947 SVG/H3 draft
-and recheck its completed identities before freeze. H3 remains prospective and
-unexecuted, without current native/export acceptance. Keep the sealed5898 Sew
-S1/S2 packet and actor preparation separate, preserve failed H2-001 unchanged,
-and retain all historical cut/hole/physics/reference limits. No Cargo, Rust test,
-GUI/product/evaluator or Git staging/commit is performed by this metadata task.
+Exact next steps: root reviews and commits metadata/artifacts, verifies every
+artifact is tracked, then runs final registry/map gates from a clean checkout.
+Root owns subsequent push, PR readiness and merge; those delivery steps remain
+pending. No Cargo/native/evaluator/grade replay, Git staging or commit is part
+of this metadata task.
 
 ## Published bounded v4 cut qualification — historical source 19b1
 

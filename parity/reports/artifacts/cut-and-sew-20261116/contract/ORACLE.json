@@ -1,0 +1,200 @@
+{
+  "kind": "prospective_analytic_engineering_oracle",
+  "prepared_date": "2026-11-16",
+  "implementation_or_runtime_result": false,
+  "representation": "Analytic assertions, not a native Project wire envelope; owner, area, mass and other check metadata are not new serialized document fields.",
+  "reference_equivalence": "unobserved",
+  "source_runtime_commit": "a021a2581c8e1dd000e535a417dcd964c3835884",
+  "inspected_metadata_ref": "52163adb86b9f48fdd06f042e4ddf615797c3947",
+  "provenance": "Original R240 literals, independent arithmetic and own-source identity/ownership reading; no application, Cargo, evaluator, project CLI or GUI execution.",
+  "units": { "length": "m", "area": "m^2", "mass": "kg", "time": "s" },
+  "input": {
+    "fixture": "crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge",
+    "fixture_sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+    "fixture_native_version": 4,
+    "current_migration_adds": { "piece_holes": [] },
+    "revision": 1,
+    "next_id": 11,
+    "piece": 2,
+    "vertices": [[0.0, 0.0], [0.24, 0.0], [0.24, 0.36], [0.0, 0.36]],
+    "boundary": [7, 8, 9, 10],
+    "areal_density": 0.18,
+    "command": {
+      "type": "cut_and_sew",
+      "data": { "piece": 2, "start_curve": 7, "start_t": 0.375, "end_curve": 9, "end_t": 0.625 }
+    },
+    "swapped_command_must_match": {
+      "type": "cut_and_sew",
+      "data": { "piece": 2, "start_curve": 9, "start_t": 0.625, "end_curve": 7, "end_t": 0.375 }
+    }
+  },
+  "expected": {
+    "native_version_on_save": 5,
+    "revision": 2,
+    "next_id": 21,
+    "new_object_and_id_count": 10,
+    "global_counts": { "points": 8, "curves": 8, "pieces": 2, "materials": 1, "seams": 1, "sewing_groups": 0, "holes": 0, "total": 20 },
+    "point_order": [3, 4, 5, 6, 11, 13, 16, 17],
+    "points": [
+      { "id": 3, "position": [0.0, 0.0], "owner": 2 },
+      { "id": 4, "position": [0.24, 0.0], "owner": 15 },
+      { "id": 5, "position": [0.24, 0.36], "owner": 15 },
+      { "id": 6, "position": [0.0, 0.36], "owner": 2 },
+      { "id": 11, "position": [0.09, 0.0], "owner": 2 },
+      { "id": 13, "position": [0.09, 0.36], "owner": 2 },
+      { "id": 16, "position": [0.09, 0.0], "owner": 15, "position_bits_equal_point": 11 },
+      { "id": 17, "position": [0.09, 0.36], "owner": 15, "position_bits_equal_point": 13 }
+    ],
+    "curve_order": [7, 8, 9, 10, 12, 14, 18, 19],
+    "curves": [
+      { "id": 7, "start": 3, "end": 11, "controls": null, "owner": 2 },
+      { "id": 8, "start": 4, "end": 5, "controls": null, "owner": 15 },
+      { "id": 9, "start": 5, "end": 17, "controls": null, "owner": 15 },
+      { "id": 10, "start": 6, "end": 3, "controls": null, "owner": 2 },
+      { "id": 12, "start": 16, "end": 4, "controls": null, "owner": 15 },
+      { "id": 14, "start": 13, "end": 6, "controls": null, "owner": 2 },
+      { "id": 18, "start": 11, "end": 13, "controls": null, "owner": 2 },
+      { "id": 19, "start": 17, "end": 16, "controls": null, "owner": 15 }
+    ],
+    "pieces": [
+      {
+        "id": 2, "name": "Original Cut R240", "boundary": [7, 18, 14, 10],
+        "point_walk": [3, 11, 13, 6],
+        "polygon": [[0.0, 0.0], [0.09, 0.0], [0.09, 0.36], [0.0, 0.36]],
+        "holes": [], "internal_curves": [], "signed_area": 0.0324, "perimeter": 0.9, "mass": 0.005832
+      },
+      {
+        "id": 15, "name": "Cut piece #15", "boundary": [12, 8, 9, 19],
+        "point_walk": [16, 4, 5, 17],
+        "polygon": [[0.09, 0.0], [0.24, 0.0], [0.24, 0.36], [0.09, 0.36]],
+        "holes": [], "internal_curves": [], "signed_area": 0.054, "perimeter": 1.02, "mass": 0.00972
+      }
+    ],
+    "piece_attributes": {
+      "both_copy_original_exactly": ["material", "placement", "grain_angle"],
+      "original_material": 1,
+      "original_placement": { "translation": [0.0, 0.0, 0.0], "rotation": [0.0, 0.0, 0.0] },
+      "original_grain_angle": 0.0,
+      "all_other_original_objects_and_unaffected_fields": "IEEE-bit exact for f64, including signed zero; original object list order retained"
+    },
+    "seams": [
+      {
+        "id": 20, "name": "Cut seam #20",
+        "a": { "curve": 18, "t0": 0.0, "t1": 1.0 },
+        "b": { "curve": 19, "t0": 1.0, "t1": 0.0 },
+        "correspondence": [[0.0, 0.0], [1.0, 1.0]]
+      }
+    ],
+    "seam_lengths": [0.36, 0.36],
+    "oriented_endpoint_pairs": [
+      { "fraction": 0.0, "a_point": 11, "b_point": 16, "uv_a": [0.09, 0.0], "uv_b": [0.09, 0.0], "distance": 0.0 },
+      { "fraction": 1.0, "a_point": 13, "b_point": 17, "uv_a": [0.09, 0.36], "uv_b": [0.09, 0.36], "distance": 0.0 }
+    ],
+    "rest_pair_samples": [
+      { "fraction": 0.0, "uv_a": [0.09, 0.0], "uv_b": [0.09, 0.0] },
+      { "fraction": 0.25, "uv_a": [0.09, 0.09], "uv_b": [0.09, 0.09] },
+      { "fraction": 0.5, "uv_a": [0.09, 0.18], "uv_b": [0.09, 0.18] },
+      { "fraction": 0.75, "uv_a": [0.09, 0.27], "uv_b": [0.09, 0.27] },
+      { "fraction": 1.0, "uv_a": [0.09, 0.36], "uv_b": [0.09, 0.36] }
+    ],
+    "rest_pair_rule": "For every normalized fraction f, A t=f and B t=1-f evaluate independently to (0.09, 0.36*f), followed by the unchanged common placement.",
+    "union_area": 0.0864,
+    "original_perimeter": 1.2,
+    "child_perimeter_sum": 1.92,
+    "total_mass": 0.015552,
+    "geometric_interior_overlap_area": 0.0,
+    "welded_points_curves_mesh_vertices_or_particles": 0,
+    "cross_piece_triangles_or_bending_from_shared_edges": 0
+  },
+  "ordinary_cut_regression": {
+    "command_type": "cut_piece",
+    "expected_revision": 2,
+    "expected_next_id": 20,
+    "seams": [],
+    "mesh_stitches": [],
+    "cloth_stitches": [],
+    "all_construction_and_serialized_fields": "Exactly the existing current-v5 CutPiece result; CutAndSew differs only by appended seam20 and next_id21. Do not rewrite historical v4 fixtures."
+  },
+  "history": [
+    { "action": "CutAndSew from original R1", "revision": 2, "next_id": 21, "pieces": [2, 15], "seams": [20] },
+    { "action": "Undo once", "revision": 3, "next_id": 21, "pieces": [2], "seams": [], "construction": "Original R240 otherwise exact" },
+    { "action": "Redo once", "revision": 4, "next_id": 21, "pieces": [2, 15], "seams": [20], "construction": "Same R2 IDs/data, only revision changes" },
+    { "action": "Undo again", "revision": 5, "next_id": 21, "pieces": [2], "seams": [] },
+    {
+      "action": "CutAndSew after abandoning that branch", "revision": 6, "next_id": 31,
+      "pieces": [2, 25], "seams": [30],
+      "split_anchors": [21, 23], "split_tails": [22, 24], "copied_anchors": [26, 27],
+      "chords": [28, 29], "retained_boundary": [7, 28, 24, 10], "new_boundary": [22, 8, 9, 29], "redo_available": false
+    }
+  ],
+  "separate_remove_seam_branch": {
+    "from": "R2/next21 above",
+    "command": { "type": "remove_seam", "data": { "seam": 20 } },
+    "revision": 3, "next_id": 21, "pieces": [2, 15], "seams": [],
+    "construction_effect": "Only seam20 removed; all points/curves/pieces/attributes and both chord copies remain exact; no fill/join/merge",
+    "undo": { "revision": 4, "next_id": 21, "restored_seam": 20 }
+  },
+  "separate_annotation_branch": {
+    "input": "Original R240 plus a single transaction adding the two original annotations; R2/next17",
+    "left_annotation": { "curve": 13, "start": [0.02, 0.1], "end": [0.06, 0.3] },
+    "right_annotation": { "curve": 16, "start": [0.12, 0.1], "end": [0.21, 0.3] },
+    "after_cut_and_sew": {
+      "revision": 3, "next_id": 27, "retained_piece": 2, "new_piece": 21,
+      "retained_boundary": [7, 24, 20, 10], "new_boundary": [18, 8, 9, 25],
+      "retained_internal_curves": [13], "new_internal_curves": [16],
+      "seam": { "id": 26, "a": { "curve": 24, "t0": 0.0, "t1": 1.0 }, "b": { "curve": 25, "t0": 1.0, "t1": 0.0 }, "correspondence": [[0.0, 0.0], [1.0, 1.0]] },
+      "annotation_geometry_ids_and_order": "Unchanged; only owning piece list changes"
+    },
+    "crossing_on_cut_or_near_cut_annotation": "Whole command refuses with accepted bytes/history/allocator/redo unchanged"
+  },
+  "negative_orientation_control": {
+    "wrong_b": { "curve": 19, "t0": 0.0, "t1": 1.0 },
+    "lengths_still_equal": [0.36, 0.36],
+    "endpoint_distances": [0.36, 0.36],
+    "midpoint_distance": 0.0,
+    "purpose": "Independent endpoint/rest-pair checks must reject this incorrect orientation; this is not the proposed command output"
+  },
+  "future_actual_mesh_and_cloth_checks": {
+    "resolutions": [0.005, 0.07, 0.5],
+    "status": "not_run",
+    "required": [
+      "Fresh UV triangles reproduce each independent analytic polygon and area; union/disjointness and complete boundary walks verified",
+      "No triangle, boundary vertex or particle index is shared between the children",
+      "Every mesh stitch is tagged seam20 and uses actual piece2/chord18 and piece15/chord19 boundary samples only",
+      "Finite convex weighted rest pairs are independently evaluated against the analytic chord at all actual stitch fractions and both endpoints",
+      "Every chord boundary sample location is covered; pairing is monotone and noncrossing with no off-chord stitches",
+      "Actual Cloth retained stitches match mapped indices/weights, existing compliance1e-8, and analytic initial rest pairs",
+      "Actual initial Cloth mass per owner matches analytic density times child area; seam adds no area or mass",
+      "Old pre-cut mesh refuses current-revision Cloth initialization; fresh mesh succeeds; simulation_time remains zero"
+    ],
+    "stitch_count": "At least two; actual count depends on fresh boundary sampling/refinement, and count alone is not acceptance",
+    "tolerances": { "ordinary_length_m": 1e-12, "ordinary_area_m2": 1e-12, "ordinary_mass_kg": 1e-12, "tilted_world_m": 1e-10, "large_offset_length_area_mass": 1e-9 },
+    "fine_l_control": "At .005 m retain the existing vertex-cap refusal for original and cut L meshes; no fine-L Cloth/mass claim or cap relaxation",
+    "excluded_claims": ["drape acceptance", "reference physics", "calibrated fabric", "reference equivalence"]
+  },
+  "capacity_and_atomicity": {
+    "maximum_objects": 20000,
+    "largest_input_object_count_for_new_command": 19990,
+    "nine_only_object_headroom_must_refuse": 19991,
+    "maximum_start_next_id_for_ten_id_headroom": "18446744073709551605",
+    "final_next_id_at_exact_id_headroom": "18446744073709551615",
+    "nine_only_id_headroom_start_must_refuse": "18446744073709551606",
+    "shared_containment_work_steps": 1000000,
+    "command_or_schema_failure_state": "Accepted project, next_id, revision, undo/redo, selection and primary/output/recovery bytes unchanged",
+    "failed_io": "Accepted construction and old primary retained; a late writer failure may advance recovery to the valid prior primary. No atomic replacement of both files is promised.",
+    "late_failure": "A later invalid command in the same transaction rolls back construction and seam together"
+  },
+  "native_preview": {
+    "option": "Sew cut edges",
+    "default": false,
+    "unchecked_command": "cut_piece",
+    "checked_command": "cut_and_sew",
+    "accepted_state_after_any_preview_toggle": { "revision": 1, "next_id": 11, "pieces": [2], "seams": [] },
+    "toggle_keeps": ["raw t strings", "caret", "accepted history/dirty/mesh/cloth"],
+    "opening_return": "Review only",
+    "later_apply_or_return": "Exactly one shared command and one Undo entry",
+    "save_restart_reopen": "Native v5 retains ordinary pieces, seam20, intervals/map and next21; history is not serialized"
+  },
+  "public_primary_manual": "https://support.marvelousdesigner.com/hc/en-us/articles/47358433146393-Cut-Cut-Sew",
+  "one_later_reference_runtime_unknown": "On original R240 with one straight internal line (0.09,0) to (0.09,0.36) m, does one Cut & Sew leave two separate editable patterns whose connecting sewing survives save/quit/reopen?"
+}

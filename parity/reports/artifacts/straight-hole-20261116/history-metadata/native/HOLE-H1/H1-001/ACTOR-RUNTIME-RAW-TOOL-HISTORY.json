@@ -1,0 +1,31 @@
+{
+  "scope": "Tool-history metadata derivative. Raw session/journal lines and internal session locators omitted. Root corroboration receipt is retained separately; this derivative is not raw transport evidence.",
+  "original_private_sha256": "c28d4953268ff9f0a0a7524b079f8a621f1483260a6dc2976e14348cf6679bc5",
+  "original_private_bytes": 15750,
+  "omitted_fields": [
+    "actual_tool_call_id",
+    "documentation_refresh_and_recovery_actual_calls",
+    "proof_call_and_return_raw_lines",
+    "raw_log_source"
+  ],
+  "record": {
+    "schema": "weftforge.native.delegated-retrospective-proof-transcript.v1",
+    "evidence_kind": "delegated_retrospective_exact_actual_tool_history_extraction",
+    "case": "HOLE-H1",
+    "attempt": "H1-001",
+    "transcribed_after_case": true,
+    "exact_invocation_utc": null,
+    "journal_timestamps_are_invocation_timestamps": false,
+    "source_record": "0002",
+    "proof_sha256": "1d1a40c88811d94287b161683bf8e6afb801713509413e23e0c243897ce05d9c",
+    "displayed_proof_return_verbatim": "{\n  source_record: '0002',\n  proof_sha256: '1d1a40c88811d94287b161683bf8e6afb801713509413e23e0c243897ce05d9c',\n  actual_cua_runtime: true,\n  native_UI_calls: 0,\n  status: {\n    evidenceKind: 'native',\n    calls: 2,\n    elapsedS: 60.2246555,\n    stopped: false\n  }\n}",
+    "documentation_refresh_count": 1,
+    "refresh_code_only": "await cua.rewriteDocumentation();",
+    "next_case_action_was_paired_retained_capture_recovery": "0066",
+    "recovery_native_UI_calls": 0,
+    "unretained_native_inputs": false,
+    "no_GUI_or_runtime_rerun_performed": true,
+    "root_independent_correlation_claimed": false,
+    "excluded_from_original_851_file_manifest": true
+  }
+}
