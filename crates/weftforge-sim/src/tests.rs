@@ -1210,6 +1210,36 @@ fn shared_soft_sewing_cancellation_noop_and_invalid_inputs_are_atomic() {
         assert_eq!(x, predictor);
         assert_eq!(history, [[0.; 3]; 4]);
     }
+    // Exercise every singleton callback, including the final pre-copy cancellation.
+    for target in [0., 0.5] {
+        let total = Cell::new(0);
+        let mut accepted = predictor;
+        let mut accepted_history = [[0.; 3]; 4];
+        constraints::solve_sewing(&stitches[..1], &[target], &mut accepted, &[0.5, 1., 0., 0.], 0.5, &mut accepted_history, &|| {
+            total.set(total.get() + 1);
+            false
+        }).unwrap();
+        assert!(total.get() >= 2, "singleton entry and final successful pre-copy callback");
+        assert_ne!(accepted, predictor);
+        assert_ne!(accepted_history, [[0.; 3]; 4]);
+        assert_eq!([accepted[2], accepted[3]], [predictor[2], predictor[3]]);
+        assert_eq!([accepted_history[2], accepted_history[3]], [[0.; 3]; 2]);
+        assert!(accepted.into_iter().flatten().all(f64::is_finite));
+        assert!(accepted_history.into_iter().flatten().all(f64::is_finite));
+        for stop in 1..=total.get() {
+            let calls = Cell::new(0);
+            let mut x = predictor;
+            let mut history = [[0.; 3]; 4];
+            let result = constraints::solve_sewing(&stitches[..1], &[target], &mut x, &[0.5, 1., 0., 0.], 0.5, &mut history, &|| {
+                calls.set(calls.get() + 1);
+                calls.get() == stop
+            });
+            assert_eq!(result, Err(SimulationError::Cancelled));
+            assert_eq!(calls.get(), stop);
+            assert_eq!(x, predictor);
+            assert_eq!(history, [[0.; 3]; 4]);
+        }
+    }
     let mut x = predictor;
     let mut history = [[0.; 3]; 4];
     constraints::solve_sewing(&[], &[], &mut x, &[0.5, 1., 0., 0.], 0.5, &mut history, &|| false).unwrap();
