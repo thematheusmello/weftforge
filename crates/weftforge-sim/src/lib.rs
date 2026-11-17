@@ -5,7 +5,7 @@ mod contact;
 mod math;
 mod strain;
 
-use constraints::{Bend, MaterialGroup, Membrane};
+use constraints::{Bend, Membrane};
 use math::*;
 use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
@@ -208,7 +208,6 @@ pub struct Cloth {
     damping: Vec<f64>,
     friction: Vec<f64>,
     membrane: Vec<Membrane>,
-    material_groups: Vec<MaterialGroup>,
     bends: Vec<Bend>,
     excluded: Vec<BTreeSet<usize>>,
     seam_remaining: Vec<f64>,
@@ -283,7 +282,6 @@ impl Cloth {
             membrane.push(constraint);
         }
         let mut bends = Vec::new();
-        let mut group_edges = BTreeMap::new();
         for (edge, faces) in edge_faces {
             check_cancel(&cancelled)?;
             if faces.len() > 2 {
@@ -292,11 +290,6 @@ impl Cloth {
             if faces.len() == 2 {
                 let (a, p) = faces[0];
                 let (b, q) = faces[1];
-                let u = input.material_uv[edge[0]];
-                let v = input.material_uv[edge[1]];
-                let rest_length = (u[0] - v[0]).hypot(u[1] - v[1]);
-                // Positive f64 bits sort by length; edge IDs break ties deterministically.
-                group_edges.insert((rest_length.to_bits(), edge), [a, b]);
                 let rigidity = input.triangle_materials[a].bending_stiffness * 0.5
                     + input.triangle_materials[b].bending_stiffness * 0.5;
                 if rigidity > 0. {
@@ -306,25 +299,6 @@ impl Cloth {
                     }
                     bends.push(bend);
                 }
-            }
-        }
-        let mut partners = vec![None; membrane.len()];
-        for (_, [a, b]) in group_edges {
-            check_cancel(&cancelled)?;
-            if partners[a].is_none() && partners[b].is_none() {
-                partners[a] = Some(b);
-                partners[b] = Some(a);
-            }
-        }
-        let mut material_groups = Vec::new();
-        for (id, partner) in partners.into_iter().enumerate() {
-            check_cancel(&cancelled)?;
-            match partner {
-                Some(other) if id < other => {
-                    material_groups.push(MaterialGroup::pair(id, other, &membrane))
-                }
-                Some(_) => (),
-                None => material_groups.push(MaterialGroup::Single(id)),
             }
         }
         for stitch in &input.stitches {
@@ -382,7 +356,6 @@ impl Cloth {
             damping,
             friction,
             membrane,
-            material_groups,
             bends,
             excluded,
             seam_remaining,
@@ -502,19 +475,21 @@ impl Cloth {
             for remaining in &mut seam_remaining {
                 *remaining -= (settings.seam_closure_speed * dt).min(*remaining);
             }
-            let mut material_corrections = vec![[[0.; 3]; 4]; self.material_groups.len()];
+            let mut material_corrections = vec![[0.; 3]; x.len()];
             let mut bend_lambda = vec![0.; self.bends.len()];
             let mut seam_lambda = vec![[0.; 3]; self.input.stitches.len()];
             for _ in 0..settings.iterations {
                 if cancelled() {
                     return Err(SimulationError::Cancelled);
                 }
-                for (group, correction) in
-                    self.material_groups.iter().zip(&mut material_corrections)
-                {
-                    check_cancel(&cancelled)?;
-                    group.solve(&self.membrane, &mut x, &self.inverse_masses, dt, correction);
-                }
+                constraints::solve_material(
+                    &self.membrane,
+                    &mut x,
+                    &self.inverse_masses,
+                    dt,
+                    &mut material_corrections,
+                    &cancelled,
+                )?;
                 for (b, lambda) in self.bends.iter().zip(&mut bend_lambda) {
                     b.solve(&mut x, &self.inverse_masses, dt, lambda);
                 }
@@ -987,7 +962,7 @@ mod constructor_control_tests {
             + input.colliders.len();
         let initialization = 2 * input.positions.len()
             + 16 * input.triangles.len()
-            + 8 * patches
+            + 5 * patches
             + 6 * input.stitches.len()
             + input.pins.len();
         let contact_start = 1 + validation + initialization;
@@ -1001,12 +976,8 @@ mod constructor_control_tests {
             1,
             CANCELLATION_CHECK_INTERVAL + 1,
             1 + validation + CANCELLATION_CHECK_INTERVAL + 1,
-            // First pairing-candidate poll, after all five edges per square.
-            1 + validation
-                + 2 * input.positions.len()
-                + 16 * input.triangles.len()
-                + 5 * patches
-                + 1,
+            // First inverse-mass poll, after all five edges per square.
+            1 + validation + input.positions.len() + 16 * input.triangles.len() + 5 * patches + 1,
             contact_start,
             contact_start + CANCELLATION_CHECK_INTERVAL + 1,
             contact_start + contacts.get() / 2,

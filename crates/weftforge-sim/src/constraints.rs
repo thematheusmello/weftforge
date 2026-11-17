@@ -1,8 +1,8 @@
-use crate::{Material, Stitch, Vec3, math::*};
+use crate::{Material, SimulationError, Stitch, Vec3, check_cancel, math::*};
 
 #[derive(Clone, Debug)]
 pub(crate) struct Membrane {
-    vertices: [usize; 3],
+    pub(crate) vertices: [usize; 3],
     warp: [f64; 3],
     weft: [f64; 3],
     stiffness: [f64; 3],
@@ -61,239 +61,254 @@ impl Membrane {
         )
     }
 
-    fn energy(&self, positions: [Vec3; 3]) -> f64 {
+    fn energy(&self, positions: [Vec3; 3], dt: f64) -> f64 {
         let (w, f) = self.deformation(positions);
         [0.5 * (dot(w, w) - 1.), 0.5 * (dot(f, f) - 1.), dot(w, f)]
             .into_iter()
             .zip(self.stiffness)
-            .map(|(c, k)| 0.5 * k * c * c)
+            .map(|(c, k)| {
+                let residual = dt * k.sqrt() * c;
+                0.5 * residual * residual
+            })
             .sum()
     }
+}
 
-    pub fn solve(&self, x: &mut [Vec3], inverse_mass: &[f64], dt: f64, correction: &mut [Vec3; 3]) {
-        let (values, gradients) = self.values_gradients(self.vertices.map(|v| x[v]));
-        MaterialProjection {
-            vertices: self.vertices,
-            values,
-            gradients,
-            stiffness: self.stiffness,
+struct MaterialRow {
+    vertices: [usize; 3],
+    gradient: [Vec3; 3],
+    value: f64,
+}
+
+const MATERIAL_LINEAR_ITERATIONS: usize = 32;
+const MATERIAL_BACKTRACKING_STEPS: usize = 16;
+
+pub(crate) fn solve_material(
+    membrane: &[Membrane],
+    x: &mut [Vec3],
+    inverse_mass: &[f64],
+    dt: f64,
+    correction: &mut [Vec3],
+    cancelled: &impl Fn() -> bool,
+) -> Result<(), SimulationError> {
+    let unstable = || SimulationError::Unstable("non-finite global material solve".into());
+    let mut root_weight = Vec::with_capacity(x.len());
+    let mut diagonal: Vec<Vec3> = vec![[1.; 3]; x.len()];
+    for &weight in inverse_mass {
+        check_cancel(cancelled)?;
+        let root = weight.sqrt();
+        if !root.is_finite() {
+            return Err(unstable());
         }
-        .solve(x, inverse_mass, dt, correction, |q| self.energy(q));
+        root_weight.push(root);
     }
-}
-
-#[derive(Clone, Debug)]
-pub(crate) enum MaterialGroup {
-    Single(usize),
-    Pair {
-        membranes: [usize; 2],
-        vertices: [usize; 4],
-        local: [[usize; 3]; 2],
-    },
-}
-
-impl MaterialGroup {
-    pub(crate) fn pair(a: usize, b: usize, membrane: &[Membrane]) -> Self {
-        let first = membrane[a].vertices;
-        let second = membrane[b].vertices;
-        let fourth = second
-            .into_iter()
-            .find(|v| !first.contains(v))
-            .expect("validated adjacent distinct triangles have four union vertices");
-        let vertices = [first[0], first[1], first[2], fourth];
-        let local = [first, second].map(|triangle| {
-            triangle.map(|v| {
-                vertices
-                    .iter()
-                    .position(|&u| u == v)
-                    .expect("material group vertex")
-            })
-        });
-        Self::Pair {
-            membranes: [a, b],
-            vertices,
-            local,
-        }
-    }
-
-    pub(crate) fn solve(
-        &self,
-        membrane: &[Membrane],
-        x: &mut [Vec3],
-        inverse_mass: &[f64],
-        dt: f64,
-        correction: &mut [Vec3; 4],
-    ) {
-        match self {
-            Self::Single(id) => {
-                let mut single = [correction[0], correction[1], correction[2]];
-                membrane[*id].solve(x, inverse_mass, dt, &mut single);
-                correction[..3].copy_from_slice(&single);
-            }
-            Self::Pair {
-                membranes,
-                vertices,
-                local,
-            } => {
-                let positions = vertices.map(|v| x[v]);
-                let rows = std::array::from_fn::<_, 2, _>(|i| {
-                    membrane[membranes[i]].values_gradients(local[i].map(|v| positions[v]))
-                });
-                let values = std::array::from_fn::<_, 6, _>(|i| rows[i / 3].0[i % 3]);
-                let stiffness =
-                    std::array::from_fn(|i| membrane[membranes[i / 3]].stiffness[i % 3]);
-                let mut gradients = [[[0.; 3]; 4]; 6];
-                for i in 0..6 {
-                    for j in 0..3 {
-                        gradients[i][local[i / 3][j]] = rows[i / 3].1[i % 3][j];
-                    }
-                }
-                MaterialProjection {
-                    vertices: *vertices,
-                    values,
-                    gradients,
-                    stiffness,
-                }
-                .solve(x, inverse_mass, dt, correction, |q| {
-                    (0..2)
-                        .map(|i| membrane[membranes[i]].energy(local[i].map(|v| q[v])))
-                        .sum()
-                });
-            }
-        }
-    }
-}
-
-struct MaterialProjection<const V: usize, const C: usize> {
-    vertices: [usize; V],
-    values: [f64; C],
-    gradients: [[Vec3; V]; C],
-    stiffness: [f64; C],
-}
-
-impl<const V: usize, const C: usize> MaterialProjection<V, C> {
-    fn solve(
-        self,
-        x: &mut [Vec3],
-        inverse_mass: &[f64],
-        dt: f64,
-        correction: &mut [Vec3; V],
-        elastic_energy: impl Fn([Vec3; V]) -> f64,
-    ) {
-        let positions = self.vertices.map(|v| x[v]);
-        let weights = self.vertices.map(|v| inverse_mass[v]);
-        let dt_squared = dt * dt;
-        let matrix = std::array::from_fn(|i| {
-            std::array::from_fn(|j| {
-                (0..V)
-                    .map(|v| weights[v] * dot(self.gradients[i][v], self.gradients[j][v]))
-                    .sum::<f64>()
-                    + if i == j {
-                        self.stiffness[i].recip() / dt_squared
-                    } else {
-                        0.
-                    }
-            })
-        });
-        let rhs = std::array::from_fn(|i| {
-            (0..V)
-                .map(|v| dot(self.gradients[i][v], correction[v]))
-                .sum::<f64>()
-                - self.values[i]
-        });
-        let Some(multiplier) = solve_spd::<C>(matrix, rhs) else {
-            return;
-        };
-        let direction: [Vec3; V] = std::array::from_fn(|v| {
-            sub(
+    let mut rows = Vec::new();
+    for triangle in membrane {
+        let (values, gradients) = triangle.values_gradients(triangle.vertices.map(|v| x[v]));
+        for mode in 0..3 {
+            check_cancel(cancelled)?;
+            let scale = dt * triangle.stiffness[mode].sqrt();
+            let value = scale * values[mode];
+            let gradient = std::array::from_fn(|i| {
                 mul(
-                    (0..C).fold([0.; 3], |sum, i| {
-                        add(sum, mul(self.gradients[i][v], multiplier[i]))
-                    }),
-                    weights[v],
-                ),
-                correction[v],
-            )
-        });
-        let slope = (0..V)
-            .filter(|&v| weights[v] > 0.)
-            .map(|v| dot(correction[v], direction[v]) / weights[v])
-            .sum::<f64>()
-            + dt_squared
-                * (0..C)
-                    .map(|i| {
-                        self.stiffness[i]
-                            * self.values[i]
-                            * (0..V)
-                                .map(|v| dot(self.gradients[i][v], direction[v]))
-                                .sum::<f64>()
-                    })
-                    .sum::<f64>();
-        if !slope.is_finite() || slope >= 0. {
-            return;
-        }
-        let objective = |q: [Vec3; V], p: [Vec3; V]| {
-            0.5 * p
-                .into_iter()
-                .zip(weights)
-                .filter(|(_, w)| *w > 0.)
-                .map(|(p, w)| dot(p, p) / w)
-                .sum::<f64>()
-                + dt_squared * elastic_energy(q)
-        };
-        let energy = objective(positions, *correction);
-        let mut fraction = 1.;
-        // shortcut: cap local backtracking at 16; use a trust region if extreme compression stalls.
-        for _ in 0..16 {
-            let trial = std::array::from_fn(|v| add(positions[v], mul(direction[v], fraction)));
-            let trial_correction =
-                std::array::from_fn(|v| add(correction[v], sub(trial[v], positions[v])));
-            let trial_energy = objective(trial, trial_correction);
-            if trial_energy.is_finite() && trial_energy <= energy + 1e-4 * fraction * slope {
-                for (v, position) in self.vertices.into_iter().zip(trial) {
-                    x[v] = position;
-                }
-                *correction = trial_correction;
-                return;
+                    gradients[mode][i],
+                    scale * root_weight[triangle.vertices[i]],
+                )
+            });
+            if !value.is_finite() || !gradient.into_iter().all(finite) {
+                return Err(unstable());
             }
-            fraction *= 0.5;
+            for (vertex, gradient) in triangle.vertices.into_iter().zip(gradient) {
+                for (axis, component) in gradient.into_iter().enumerate() {
+                    diagonal[vertex][axis] = diagonal[vertex][axis].hypot(component);
+                    if !diagonal[vertex][axis].is_finite() {
+                        return Err(unstable());
+                    }
+                }
+            }
+            rows.push(MaterialRow {
+                vertices: triangle.vertices,
+                gradient,
+                value,
+            });
         }
     }
+    let mut rhs = vec![[0.; 3]; x.len()];
+    for i in 0..x.len() {
+        check_cancel(cancelled)?;
+        if root_weight[i] > 0. {
+            rhs[i] = std::array::from_fn(|axis| {
+                -correction[i][axis] / root_weight[i] / diagonal[i][axis]
+            });
+        }
+    }
+    for row in &mut rows {
+        check_cancel(cancelled)?;
+        for (vertex, gradient) in row.vertices.into_iter().zip(&mut row.gradient) {
+            for (axis, component) in gradient.iter_mut().enumerate() {
+                *component /= diagonal[vertex][axis];
+            }
+            rhs[vertex] = sub(rhs[vertex], mul(*gradient, row.value));
+        }
+    }
+    let energy = material_energy(membrane, x, correction, &root_weight, dt, cancelled)?;
+    if !energy.is_finite() {
+        return Err(unstable());
+    }
+    let mut rhs_scale = 0_f64;
+    for value in &rhs {
+        check_cancel(cancelled)?;
+        if !finite(*value) {
+            return Err(unstable());
+        }
+        for component in value {
+            rhs_scale = rhs_scale.max(component.abs());
+        }
+    }
+    if rhs_scale == 0. {
+        return Ok(());
+    }
+    for value in &mut rhs {
+        check_cancel(cancelled)?;
+        for component in value {
+            *component /= rhs_scale;
+        }
+    }
+    let mut solution = vec![[0.; 3]; x.len()];
+    let mut residual = rhs.clone();
+    let mut search = residual.clone();
+    let mut product = vec![[0.; 3]; x.len()];
+    let mut squared_residual = material_dot(&residual, &residual, cancelled)?;
+    let initial_squared_residual = squared_residual;
+    // shortcut: at most 32 diagonal-PCG steps; reassess this cap with large-mesh residual evidence.
+    for _ in 0..MATERIAL_LINEAR_ITERATIONS {
+        check_cancel(cancelled)?;
+        for i in 0..x.len() {
+            check_cancel(cancelled)?;
+            product[i] =
+                std::array::from_fn(|axis| search[i][axis] / diagonal[i][axis] / diagonal[i][axis]);
+        }
+        for row in &rows {
+            check_cancel(cancelled)?;
+            let value = row
+                .vertices
+                .into_iter()
+                .zip(row.gradient)
+                .map(|(v, g)| dot(g, search[v]))
+                .sum::<f64>();
+            for (vertex, gradient) in row.vertices.into_iter().zip(row.gradient) {
+                product[vertex] = add(product[vertex], mul(gradient, value));
+            }
+        }
+        let curvature = material_dot(&search, &product, cancelled)?;
+        if !curvature.is_finite() || curvature <= 0. {
+            return Err(unstable());
+        }
+        let alpha = squared_residual / curvature;
+        let mut next_squared_residual = 0.;
+        for i in 0..x.len() {
+            check_cancel(cancelled)?;
+            solution[i] = add(solution[i], mul(search[i], alpha));
+            residual[i] = sub(residual[i], mul(product[i], alpha));
+            if !finite(solution[i]) || !finite(residual[i]) {
+                return Err(unstable());
+            }
+            next_squared_residual += dot(residual[i], residual[i]);
+        }
+        if !next_squared_residual.is_finite() {
+            return Err(unstable());
+        }
+        if next_squared_residual <= 1e-24 * initial_squared_residual {
+            break;
+        }
+        let beta = next_squared_residual / squared_residual;
+        for i in 0..x.len() {
+            check_cancel(cancelled)?;
+            search[i] = add(residual[i], mul(search[i], beta));
+        }
+        squared_residual = next_squared_residual;
+    }
+    let slope = -material_dot(&rhs, &solution, cancelled)? * rhs_scale * rhs_scale;
+    if !slope.is_finite() {
+        return Err(unstable());
+    }
+    if slope >= 0. {
+        return Ok(());
+    }
+    for i in 0..x.len() {
+        check_cancel(cancelled)?;
+        for axis in 0..3 {
+            solution[i][axis] *= rhs_scale * (root_weight[i] / diagonal[i][axis]);
+        }
+        if !finite(solution[i]) {
+            return Err(unstable());
+        }
+    }
+    let mut trial = x.to_vec();
+    let mut trial_correction = correction.to_vec();
+    let mut fraction = 1.;
+    // shortcut: cap Armijo backtracking at 16; use a trust region if extreme compression stalls.
+    for _ in 0..MATERIAL_BACKTRACKING_STEPS {
+        check_cancel(cancelled)?;
+        for i in 0..x.len() {
+            check_cancel(cancelled)?;
+            if root_weight[i] > 0. {
+                trial[i] = add(x[i], mul(solution[i], fraction));
+                trial_correction[i] = add(correction[i], sub(trial[i], x[i]));
+            }
+        }
+        let trial_energy = material_energy(
+            membrane,
+            &trial,
+            &trial_correction,
+            &root_weight,
+            dt,
+            cancelled,
+        )?;
+        if trial_energy.is_finite() && trial_energy <= energy + 1e-4 * fraction * slope {
+            x.copy_from_slice(&trial);
+            correction.copy_from_slice(&trial_correction);
+            return Ok(());
+        }
+        fraction *= 0.5;
+    }
+    Ok(())
 }
 
-// The only two sizes are three rows for a singleton and six for an adjacent pair.
-fn solve_spd<const N: usize>(matrix: [[f64; N]; N], rhs: [f64; N]) -> Option<[f64; N]> {
-    let scale: [f64; N] = std::array::from_fn(|i| matrix[i][i].sqrt());
-    if !scale.iter().all(|s| s.is_finite() && *s > 0.) {
-        return None;
+fn material_dot(
+    a: &[Vec3],
+    b: &[Vec3],
+    cancelled: &impl Fn() -> bool,
+) -> Result<f64, SimulationError> {
+    let mut result = 0.;
+    for (&a, &b) in a.iter().zip(b) {
+        check_cancel(cancelled)?;
+        result += dot(a, b);
     }
-    let a: [[f64; N]; N] =
-        std::array::from_fn(|i| std::array::from_fn(|j| matrix[i][j] / scale[i] / scale[j]));
-    let b: [f64; N] = std::array::from_fn(|i| rhs[i] / scale[i]);
-    let mut l = [[0.; N]; N];
-    for i in 0..N {
-        for j in 0..=i {
-            let value = a[i][j] - (0..j).map(|k| l[i][k] * l[j][k]).sum::<f64>();
-            l[i][j] = if i == j {
-                value.sqrt()
-            } else {
-                value / l[j][j]
-            };
-            if !l[i][j].is_finite() || (i == j && l[i][j] <= 0.) {
-                return None;
-            }
+    Ok(result)
+}
+
+fn material_energy(
+    membrane: &[Membrane],
+    x: &[Vec3],
+    correction: &[Vec3],
+    root_weight: &[f64],
+    dt: f64,
+    cancelled: &impl Fn() -> bool,
+) -> Result<f64, SimulationError> {
+    let mut energy = 0.;
+    for (&p, &weight) in correction.iter().zip(root_weight) {
+        check_cancel(cancelled)?;
+        if weight > 0. {
+            let inertia = p.map(|component| component / weight);
+            energy += 0.5 * dot(inertia, inertia);
         }
     }
-    let mut y = [0.; N];
-    for i in 0..N {
-        y[i] = (b[i] - (0..i).map(|j| l[i][j] * y[j]).sum::<f64>()) / l[i][i];
+    for triangle in membrane {
+        check_cancel(cancelled)?;
+        energy += triangle.energy(triangle.vertices.map(|v| x[v]), dt);
     }
-    let mut z = [0.; N];
-    for i in (0..N).rev() {
-        z[i] = (y[i] - (i + 1..N).map(|j| l[j][i] * z[j]).sum::<f64>()) / l[i][i];
-    }
-    let solution = std::array::from_fn(|i| z[i] / scale[i]);
-    solution.iter().all(|s| s.is_finite()).then_some(solution)
+    Ok(energy)
 }
 
 #[derive(Clone, Debug)]
