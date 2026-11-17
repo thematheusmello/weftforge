@@ -3399,10 +3399,11 @@ impl Studio {
             let Some(id) = input.focus else {
                 return false;
             };
+            let frame = ui.ctx().cumulative_frame_nr();
             let resumed = ui
                 .ctx()
-                .data_mut(|data| data.remove_temp::<u64>(id.with("resumed-property-input")))
-                == Some(ui.ctx().cumulative_frame_nr());
+                .data_mut(|data| data.remove_temp::<(u64, bool)>(id.with("resumed-property-input")))
+                .filter(|(resumed, _)| *resumed == frame);
             let editing = ui.input(|input| {
                 input.events.iter().any(|event| {
                     matches!(
@@ -3414,7 +3415,9 @@ impl Studio {
                     )
                 })
             });
-            if numeric_replacement_requested(ui.ctx(), id) || (resumed && editing) {
+            if numeric_replacement_requested(ui.ctx(), id)
+                || resumed.is_some_and(|(_, stepped)| stepped || editing)
+            {
                 ui.ctx().data_mut(|data| {
                     data.remove::<RetainedInspectorInput>(id.with("suspended-property-input"))
                 });
@@ -7469,6 +7472,12 @@ fn numeric_value<'a>(ui: &egui::Ui, value: &'a mut f64) -> egui::DragValue<'a> {
     let id = ui.next_auto_id();
     let ctx = ui.ctx().clone();
     let formatter = ui.style().number_formatter.clone();
+    let keyboard_step = ui.input(|input| {
+        input.events.iter().any(|event|matches!(event,
+        egui::Event::Key { key:egui::Key::ArrowUp | egui::Key::ArrowDown,pressed:true,modifiers,.. }
+            if modifiers.matches_logically(egui::Modifiers::NONE)
+    ))
+    });
     egui::DragValue::new(value).custom_formatter(move |value, decimals| {
         if ctx.memory(|memory| memory.has_focus(id))
             && !numeric_replacement_requested(&ctx, id)
@@ -7476,10 +7485,18 @@ fn numeric_value<'a>(ui: &egui::Ui, value: &'a mut f64) -> egui::DragValue<'a> {
                 data.get_temp::<RetainedInspectorInput>(id.with("suspended-property-input"))
             })
         {
-            // DragValue clears its raw text before calling the formatter on refocus.
-            input.restore(&ctx);
+            // DragValue consumes numeric step keys before the formatter runs.
+            if keyboard_step {
+                ctx.data_mut(|data| {
+                    data.remove::<RetainedInspectorInput>(id.with("suspended-property-input"))
+                });
+            } else {
+                input.restore(&ctx);
+            }
             let frame = ctx.cumulative_frame_nr();
-            ctx.data_mut(|data| data.insert_temp(id.with("resumed-property-input"), frame));
+            ctx.data_mut(|data| {
+                data.insert_temp(id.with("resumed-property-input"), (frame, keyboard_step))
+            });
         }
         // egui reparses its edit buffer on blur even when the text was never changed.
         if ctx.memory(|memory| memory.has_focus(id)) {
@@ -9221,6 +9238,80 @@ mod contextual_properties_tests {
                 );
                 assert_eq!(app.draft.as_ref().unwrap().dimensions.unwrap()[0], 0.01);
                 assert_eq!(format!("{:?}", app.editor), history);
+            }
+        }
+        for (source, value) in [
+            (PropertiesTab::Pattern, 0.4),
+            (PropertiesTab::Simulation, 0.005),
+            (PropertiesTab::Simulation, 0.5),
+        ] {
+            for step in [egui::Key::ArrowUp, egui::Key::ArrowDown] {
+                for modifiers in [
+                    egui::Modifiers::NONE,
+                    egui::Modifiers::SHIFT,
+                    egui::Modifiers::ALT,
+                ] {
+                    for blur in [false, true] {
+                        let run = |suspend| {
+                            let (ctx, mut app) = fixture();
+                            if source == PropertiesTab::Simulation {
+                                app.editor
+                                    .execute(Command::SetResolution { metres: value })
+                                    .unwrap();
+                            }
+                            let output = click(&ctx, &mut app, source.label());
+                            let field = numeric(&output, value);
+                            if suspend {
+                                frame(
+                                    &ctx,
+                                    &mut app,
+                                    1000.,
+                                    vec![action(field, Action::Focus, None)],
+                                );
+                                frame(&ctx, &mut app, 1000., vec![]);
+                                frame(
+                                    &ctx,
+                                    &mut app,
+                                    1000.,
+                                    vec![
+                                        key(egui::Key::A, egui::Modifiers::COMMAND),
+                                        egui::Event::Text("1e-".into()),
+                                    ],
+                                );
+                                click(&ctx, &mut app, "Fabric");
+                                click(&ctx, &mut app, source.label());
+                            }
+                            let mut events =
+                                vec![action(field, Action::Focus, None), key(step, modifiers)];
+                            if blur {
+                                events.push(key(egui::Key::Tab, egui::Modifiers::NONE));
+                            }
+                            frame(&ctx, &mut app, 1000., events);
+                            for _ in 0..3 {
+                                frame(&ctx, &mut app, 1000., vec![]);
+                            }
+                            assert!(
+                                !app.has_unfinished_properties_input(),
+                                "numeric step left old invalid input"
+                            );
+                            (
+                                format!("{:?}", app.editor),
+                                format!(
+                                    "{:?}",
+                                    app.draft
+                                        .as_ref()
+                                        .map(|draft| draft.commands(&app.editor.project))
+                                ),
+                            )
+                        };
+                        assert_eq!(
+                            run(true),
+                            run(false),
+                            "{}/{value}/{step:?}/{modifiers:?}/blur={blur}",
+                            source.label()
+                        );
+                    }
+                }
             }
         }
     }
