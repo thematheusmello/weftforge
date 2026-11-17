@@ -3008,8 +3008,8 @@ impl Studio {
         let action_focus = self.inspector_focus(ui.ctx());
         egui::Frame::new().inner_margin(8).show(ui, |ui| {
         let _scroll=egui::ScrollArea::vertical().id_salt(("inspector", self.properties_tab.label())).show(ui,|ui| {
-            if self.properties_tab == PropertiesTab::Pattern {
-            if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
+            if self.properties_tab == PropertiesTab::Pattern
+                && let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
                 pane_heading(ui,"Pattern");
                 ui.strong(format!("{} · #{}",piece.name,piece.id));
                 ui.label("Boundary curve · select here or in 2D");
@@ -3041,7 +3041,6 @@ impl Studio {
                         if response.clicked() { self.select_curve(ui.ctx(),Some((piece.id,*curve))); }
                     }
                 }
-            }
             }
             let mut draft=self.draft.take().filter(|draft|draft.revision==self.editor.project.revision && draft.selected==self.selected && draft.curve.as_ref().map(|curve|curve.id)==self.selected_curve)
                 .unwrap_or_else(||InspectorDraft::new(&self.editor.project,self.selected,self.selected_curve));
