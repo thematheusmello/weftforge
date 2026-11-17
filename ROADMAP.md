@@ -13,6 +13,43 @@ Complete garment fitting, distribution and end-to-end acceptance remain in
 progress. See [current status](STATUS.md) for tested builds, known failures and
 remaining work.
 
+## Current execution order — 17 November 2026
+
+The registry currently contains 56 broad contracts: 42 partial and 14 planned.
+None is fully implemented or reference verified, and no delivery gate is accepted.
+Discovery is incomplete, so these 56 contracts are not a final product denominator.
+
+1. Finish the native UI and interaction foundation in the PhotoCraft-inspired
+   visual direction: consistent panels/tools/dialogs, linked selection, precise
+   input, focus, history and responsive job feedback. Complete actual authoring,
+   save/export and fresh-process reopen checks on the current integrated build.
+   The latest native accessibility bootstrap remained empty; a separate supported
+   native-control route is available for investigation, not yet a workflow pass.
+2. Close the first garment path. Correct shared soft-sewing stationarity while
+   preserving physical energy, constraints and declared tolerances; distinguish
+   the corner closure burst from the contact-supported collar transient. Then
+   independently approve the unchanged original physical rest under v6 metadata
+   and run a fresh complete garment test. The historical 181-state case still
+   fails strain at frames 28/29, with 50.9602% peak against the 15% limit.
+3. Complete the real empty-document shirt workflow through the UI: create pieces,
+   sew, arrange, simulate, change dimension/material, save, quit, reopen, edit and
+   export. Independently verify output and compare the recorded reference case.
+4. Work through Gates 2–4 below: professional editing/construction and fitting,
+   fabric/contact robustness, avatars/animation/materials/rendering and output.
+   Run reference discovery and comparison alongside implementation throughout.
+5. Close Gate 5 across every required feature and format, including additional
+   capabilities discovered during the full reference audit. Keep file compatibility
+   research distinct from successful mesh import or export.
+6. Complete Gate 6 locally across macOS/Apple Silicon, Windows and Linux; finish
+   recovery, packaging, documentation, assets/licenses and reproducible releases.
+   Keep GitHub Actions disabled throughout development. Re-enable it only after
+   the complete project is finished, as the user requested.
+
+The latest integrated source passes 446 tests, formatting, strict Clippy and
+native/CLI builds. A separate actual CLI check confirms editable notch identity,
+native v6, a 10 mm SVG marker and DXF refusal without replacement. These checks
+leave the native garment workflow, full feature contracts and release gates open.
+
 ## Before and throughout every gate
 
 - Freeze reference build, installer/executable hashes, OS/architecture, units,

@@ -29,14 +29,23 @@ accessibility tree exposed only window chrome. A supported window action failed;
 no notch authoring, save, export or reopen step ran. The exact owned process and
 windows were closed. Source tests do not establish this native workflow.
 
-Next: run the distinct read-only accessibility bootstrap diagnostic and reconcile
-registry/evidence, then perform the complete native notch workflow on a new
-recorded case. A frozen test-only two-row sewing regression is ready to check
-shared stiff-row stationarity against an independent energy oracle. Diagnose
-closure from the retained states before changing the solver or running another
-full garment test. Native v6 adds empty notch metadata; a future physical rest
-comparison must explicitly distinguish that empty authoring metadata from any
-physical geometry change.
+The distinct read-only N005 bootstrap completed: count and unconditional full
+children-value reads all succeeded but returned zero children. The app was closed
+in 18.221 seconds; no authoring action ran. A separately available native-control
+tool successfully listed applications; its own-app interaction is still untested.
+
+The fresh duplicate-sewing regression produced a genuine test failure at the
+fixed Cartesian force criterion: 0.0877711 N exceeds 1e-6 N after 32 sweeps,
+although position error is only 2.1943e-10 m. A coupled soft-sewing candidate is
+being authored separately; no candidate test or new garment run has been approved.
+This does not prove the cause of either garment failure.
+
+Next: finish local registry/generated/xtask verification and the complete current
+native notch workflow using the supported control route. Review the sewing
+candidate against unchanged independent physical criteria before testing it.
+Native v6 adds empty notch metadata; a future physical rest comparison must
+explicitly distinguish that metadata from any physical geometry change. See the
+updated ROADMAP for the complete delivery sequence and all six open gates.
 
 GitHub Actions remain disabled. PR #60 is a draft; main and the existing Pages
 site are unchanged. No test application or owned simulation job is running.
