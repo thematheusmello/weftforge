@@ -1,0 +1,191 @@
+{
+  "deadline": 1000510.064484833,
+  "experiment": "WF-20261116-MATERIAL-GROUPS-HARBOR-A8-001",
+  "final_numerical_receipt_sha256": "51db30f6429d59e37d67f863d1039e1c74f2c34236932732fbfbf4139791d63e",
+  "finalization_process_end_monotonic_seconds": 1000340.175762458,
+  "native_or_reference_acceptance": false,
+  "root_go_sha256": "b91b6cd57ee3d535e20a36aa8d6cdbb37113adba452f6ddb3d4409c833406387",
+  "source_commit": "13fb43fe08c045f08a1b85007aff3c15388a1e24",
+  "stages": [
+    {
+      "argv": [
+        "<ROOT>/.local/coupled-edge-regression-20261116/target/release/harbor-coupled-producer",
+        "prepare",
+        "inputs/base.weftforge",
+        "preflight-base"
+      ],
+      "end_monotonic_seconds": 1000091.553411541,
+      "exit_code": 0,
+      "name": "init-only",
+      "peak_rss_bytes": 8601600,
+      "pid": 70515,
+      "process_group": 70515,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.051737790927290916,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 19,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 8552448,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1000510.064484833,
+        "output_bytes": 915597,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    },
+    {
+      "argv": [
+        "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+        "-B",
+        "<ROOT>/.local/coupled-edge-regression-20261116/.local/harbor-material-groups-preparation-20261116-v2/worker.py",
+        "metadata",
+        "--deadline",
+        "1000510.064484833"
+      ],
+      "end_monotonic_seconds": 1000092.303377708,
+      "exit_code": 0,
+      "name": "metadata",
+      "peak_rss_bytes": 36192256,
+      "pid": 70555,
+      "process_group": 70555,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.05535570904612541,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 15,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 32538624,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1000510.064484833,
+        "output_bytes": 1509170,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    },
+    {
+      "argv": [
+        "<ROOT>/.local/coupled-edge-regression-20261116/target/release/harbor-coupled-producer",
+        "run",
+        "inputs/base.weftforge",
+        "runs/base",
+        "expected/approved-metadata.json"
+      ],
+      "end_monotonic_seconds": 1000297.614209583,
+      "exit_code": 0,
+      "name": "producer",
+      "peak_rss_bytes": 10698752,
+      "pid": 70593,
+      "process_group": 70593,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.3103849160252139,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 3797,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 10698752,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1000510.064484833,
+        "output_bytes": 18190279,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    },
+    {
+      "argv": [
+        "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+        "-B",
+        "<ROOT>/.local/coupled-edge-regression-20261116/.local/harbor-material-groups-preparation-20261116-v2/worker.py",
+        "analyze",
+        "--deadline",
+        "1000510.064484833"
+      ],
+      "end_monotonic_seconds": 1000338.202492083,
+      "exit_code": 2,
+      "name": "analysis",
+      "peak_rss_bytes": 39862272,
+      "pid": 79383,
+      "process_group": 79383,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.07954399997834116,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 781,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 39862272,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1000510.064484833,
+        "output_bytes": 19196889,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    },
+    {
+      "argv": [
+        "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+        "-B",
+        "<ROOT>/.local/coupled-edge-regression-20261116/.local/harbor-material-groups-preparation-20261116-v2/worker.py",
+        "finalize",
+        "--deadline",
+        "1000510.064484833"
+      ],
+      "end_monotonic_seconds": 1000340.175762458,
+      "exit_code": 0,
+      "name": "finalization",
+      "peak_rss_bytes": 36126720,
+      "pid": 81382,
+      "process_group": 81382,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.06150508299469948,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 37,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 36126720,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1000510.064484833,
+        "output_bytes": 19204775,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    }
+  ],
+  "started": 1000090.064484833,
+  "status": "pending_post_persistence_terminal_verdict",
+  "strict_quality_passed": false
+}

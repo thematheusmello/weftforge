@@ -1,0 +1,39 @@
+{
+  "source_hashes": {
+    "crates/weftforge-sim/src/constraints.rs": "7b07c9750569bd1962d7986b41fc5a00da9b1e319dfb90aa6ab50167e9f35596",
+    "crates/weftforge-sim/src/lib.rs": "22c50515e20f6fa4fd6d95ee122ea0c140964722e18e0e71ececbeb5c7d1608b",
+    "crates/weftforge-sim/src/tests.rs": "72d04821f2f9bde25ec531bef8d5429151b3971bbf65c938ea473eae8d43ecaf",
+    "docs/physics.md": "b4ef9c0124e8c29d87969baacc45d0b00908d1c4b0caa20a2c0baca764e64e28"
+  },
+  "original_RED_freeze_sha256": "e2104078f7b99ffc6664eeba230f52490d85ae18da139a042a6104875cd37d76",
+  "first_GREEN_inputs_sha256": "63a93ca5c273540686fca02dd8aefe8d7381b2d08316ab49922ec5bc6d9ae663",
+  "planned_stages": [
+    [
+      "cargo",
+      "fmt",
+      "-p",
+      "weftforge-sim",
+      "--check"
+    ],
+    [
+      "cargo",
+      "clippy",
+      "--locked",
+      "--offline",
+      "-p",
+      "weftforge-sim",
+      "--all-targets",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "-p",
+      "weftforge-sim"
+    ]
+  ]
+}

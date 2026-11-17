@@ -1,0 +1,128 @@
+{
+  "actual_dynamics_runs": 1,
+  "actual_run_initializations": 1,
+  "analysis_path": "runs/base/analysis.json",
+  "argv": {
+    "controller": [
+      "<PINNED_PYTHON>",
+      "-B",
+      "controller.py",
+      "--go",
+      "ROOT-GO.json",
+      "--go-sha256",
+      "<EXACT_NEW_ROOT_GO_SHA256>"
+    ],
+    "init_only": [
+      "<OWN_CANDIDATE_BINARY>",
+      "prepare",
+      "inputs/base.weftforge",
+      "preflight-base"
+    ],
+    "original_metadata_gate": [
+      "<PINNED_PYTHON>",
+      "-B",
+      "worker.py",
+      "metadata",
+      "--deadline",
+      "<ONE_ABSOLUTE_DEADLINE>"
+    ],
+    "producer": [
+      "<OWN_CANDIDATE_BINARY>",
+      "run",
+      "inputs/base.weftforge",
+      "runs/base",
+      "expected/approved-metadata.json"
+    ],
+    "analysis": [
+      "<PINNED_PYTHON>",
+      "-B",
+      "worker.py",
+      "analyze",
+      "--deadline",
+      "<ONE_ABSOLUTE_DEADLINE>"
+    ],
+    "finalization": [
+      "<PINNED_PYTHON>",
+      "-B",
+      "worker.py",
+      "finalize",
+      "--deadline",
+      "<ONE_ABSOLUTE_DEADLINE>"
+    ]
+  },
+  "both_initializations_charged_to_one_case_clock": true,
+  "caps": {
+    "numerical_output_bytes": 268435456,
+    "peak_rss_bytes_each_numerical_child": 268435456,
+    "whole_case_seconds": 420.0
+  },
+  "case": "base",
+  "clock": "Controller starts before input copying and both initializations; every numerical phase, analysis inner work/serialization and final guards/receipt persistence is supervised under one absolute deadline. Final positive witness is controller terminal stdout+exit after its pending receipt is fsynced/hashed and an external post-persistence clock/volume check. Late negative failure appendices cannot create a successful grade.",
+  "cwd": "<ROOT>/.local/coupled-edge-regression-20261116/.local/harbor-material-groups-preparation-20261116",
+  "exit_semantics": {
+    "0": "operational completion and independent strict quality pass",
+    "1": "operational failure/refusal; no prefix regrade",
+    "2": "operational completion but independent strict quality failed"
+  },
+  "experiment": "WF-20261116-MATERIAL-GROUPS-HARBOR-A8-001",
+  "grading": "Exact original A8 evaluator measure_frame/screen/summarize: all181 finite/strain/contact/uncertainty screens, completed-assembly seam/target screens, no disagreement/blocked diagnostic. Final-only flags do not grade the trajectory.",
+  "init_only_initializations": 1,
+  "init_only_step_calls": 0,
+  "large_analysis_is_fully_counted": true,
+  "no_retry_reset_continuation_or_sweep": true,
+  "numerical_output_directories": [
+    "inputs",
+    "expected",
+    "preflight-base",
+    "runs",
+    "runtime"
+  ],
+  "pre_step_gate": "Init-only mode constructs actual current mesh/cloth/masses but executes zero steps. Independent metadata worker compares all original gold physical/project fields bit/type-exact after four empty v5 piece fields. Actual run freshly constructs again and compares canonical round-trip metadata against that independently approved record before first Cloth::step.",
+  "python": null,
+  "receipt_reserve_bytes": 131072,
+  "scope": "New headless numerical case only. No equilibrium/calibration/CCD/edge-edge/moving-avatar/native/full-garment/reference acceptance; all old cases and replay failures remain untouched.",
+  "screens": {
+    "assembly_target_exact_zero_frames": [
+      60,
+      180
+    ],
+    "axis_strain_strict_below": 0.15,
+    "capsule_uncertain_pairs": 0,
+    "finite_all181_states": true,
+    "seam_gap_strict_below_m_after_zero_target": 0.005,
+    "supported_contact_strict_below_m": 0.002
+  },
+  "settings": {
+    "assembly_gravity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "assembly_steps": 60,
+    "drape_gravity": [
+      0.0,
+      -9.81,
+      0.0
+    ],
+    "drape_steps": 120,
+    "dt": 0.016666666666666666,
+    "iterations": 32,
+    "seam_closure_speed_m_per_s": 1.0,
+    "substeps": 8
+  },
+  "source_commit": "13fb43fe08c045f08a1b85007aff3c15388a1e24",
+  "status": "SOURCE_BOUND_BUILD_AND_EXECUTION_NOT_AUTHORIZED",
+  "termination": "Exact own wait4 plus sampled RSS,20ms monitor, process-group SIGKILL and reap on cap/error/completion; all failed outputs retained; no continuation.",
+  "validation_only_check_mode": "Synthetic preparation only; not an actual Harbor command or authorized dynamics attempt.",
+  "source_pending": false,
+  "producer_binary": null,
+  "build_binding_sha256": null,
+  "input_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+  "original_rest_sha256": "d96697949c686fbf15f19b99b6d7551b35d3449b17157009aceb75649fbaeeb9",
+  "source_prerequisites": "Root provides exact reviewed candidate commit/source manifest plus source-review and green-check evidence; install packet in that checkout, root approves bound source/compiler/commands before build, then reviews final binary/freeze before distinct execution GO.",
+  "saved_state_wording_qualification": "Independent evaluator code and inherited saved-state labels remain exact. Worker explicitly records that these 181 snapshots came from the new separately fresh candidate producer after the original-rest init-only gate.",
+  "planned_producer_path": "target/release/harbor-coupled-producer",
+  "workspace_gate_scope": "Four declared stages green; metadata freshness/xtask remains pending. No garment/reference acceptance.",
+  "own_candidate_target": "target",
+  "same_checkout_existing_target_allowed": true
+}

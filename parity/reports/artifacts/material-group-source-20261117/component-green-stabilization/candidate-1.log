@@ -1,0 +1,10 @@
+   Compiling weftforge-sim v0.1.0 (<ROOT>/.local/coupled-edge-regression-20261116/crates/weftforge-sim)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.58s
+     Running unittests src/lib.rs (target/debug/deps/weftforge_sim-40f8b89cc1ad501d)
+
+running 1 test
+shared-edge positions=[[5.2112142431833235e-18, -0.004000552234905839, 0.0], [5.0532253538504326e-18, 0.004000552234905836, 0.0]] reference=[[6.729906241347043e-23, -0.004000552234905839, 0.0], [-6.729906241347043e-23, 0.004000552234905839, 0.0]] position_error=5.683890753411727e-18m stationarity=1.0747913121812962e-14N
+test tests::shared_edge_material_reaches_independent_incremental_energy_equilibrium ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 57 filtered out; finished in 0.00s
+

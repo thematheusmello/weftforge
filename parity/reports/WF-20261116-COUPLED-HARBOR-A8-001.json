@@ -1,6 +1,6 @@
 {
   "kind": "implementation_only",
-  "freshness": "current",
+  "freshness": "stale",
   "commit": "96d3baee4543c7edbdb804df6090697a9f65da09",
   "timestamp": "2026-11-16T22:10:44.194086Z",
   "timestamp_qualification": "Metadata proposal preparation time only; each retained execution has its original clock and source identity. No execution is added by this report.",
@@ -380,12 +380,13 @@
     "final_frame_quality_passed": true,
     "strict_delivery_passed": false,
     "initial_arrangement_unclosed_seams_are_completed_fit_failure": false,
-    "no_prefix_regrade": "Frames 0–28 target/seam failures remain raw. Protocol distinguishes initial arrangement from completed-fit phases; strain failure at 28–37 independently makes the original complete strict trajectory fail.",
+    "no_prefix_regrade": "Frames 0\u201328 target/seam failures remain raw. Protocol distinguishes initial arrangement from completed-fit phases; strain failure at 28\u201337 independently makes the original complete strict trajectory fail.",
     "inherited_analyzer_wording": "new_garment_execution:false and kind wording describe saved-state consumer, while actual_current_numerical_producer_executed:true and fresh producer/root receipts bind this new run. Original analyzer bytes are not rewritten."
   },
   "remaining_gaps": [
-    "Strict material strain failed 28–37 despite finite/contact/uncertainty and final frame passing. No root cause, convergence/equilibrium proof or accepted garment follows from this report.",
+    "Strict material strain failed 28\u201337 despite finite/contact/uncertainty and final frame passing. No root cause, convergence/equilibrium proof or accepted garment follows from this report.",
     "Bounded static supported contact samples passed for this trajectory; no full physics/contact/CCD/edge-edge/moving-avatar/calibration claim.",
     "Original archived replay identity failure 96213, earlier garment failures and original authoring/native/reference gaps remain unchanged. Further diagnosis must use a distinct authorization/source/protocol, never repair or regrade these outputs."
-  ]
+  ],
+  "freshness_reason": "Actual13fb material-group source changes crates/weftforge-sim/src/constraints.rs, crates/weftforge-sim/src/lib.rs, crates/weftforge-sim/src/tests.rs, docs/physics.md from this report's original tested source. The complete original report is archived exactly at parity/reports/artifacts/material-group-source-20261117/history/WF-20261116-COUPLED-HARBOR-A8-001.original.json. All outcomes, source scopes/hashes, timestamps, cases and artifact maps remain unchanged; no replay/regrade or native/garment/reference acceptance transfers."
 }

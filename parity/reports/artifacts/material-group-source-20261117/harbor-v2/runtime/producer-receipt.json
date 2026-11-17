@@ -1,0 +1,55 @@
+{
+  "actual_dynamics_runs": 1,
+  "approved_metadata_sha256": "8dfb77d6d4234b0997683e98a0bbd76105d2274aba0f6eb36dc90e671d0589ff",
+  "artifacts": {
+    "completed-case.json": "b2319f902cde6d50192d7f0fc8e106f05bd3a444636384fa96a913e7a1c908d2",
+    "initialized-state.json": "2482770fee405c4f6a4fb94e77251f0056b41505b7678db1cd11790066e51ee9",
+    "rest-metadata.json": "90128ed174829cd118e1d638ccba0fa501003889e85b5d70d214b4884f14aec7",
+    "stage-000.obj": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+    "stage-060.obj": "e7d5206739b1372fdcf788e46e688d642c2059fb53567c1b3b3f1df0685ce3e8",
+    "stage-180.obj": "0a1ab9422664a40a3a3b5bf6bdc37f6eaf39e5b1711043c38e20d9292e69a03f",
+    "steps.jsonl": "b7fdeae72d8f7f10d821bf47bae0f37e5fa2b17c4d05963000fade5640ca2b3c",
+    "trajectory.jsonl": "c04e7fbc469d4f95cd0776758ba56c49beaf317b6ad894d1a82e273ba8d69b1a"
+  },
+  "init_only_step_calls": 0,
+  "input_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+  "original_initialized_gate_sha256": "583cc6c05d08efb14f500a00d754a3acbdcfbf0676c64d8f52e685d7aa98d69e",
+  "producer_sha256": "133d5cd2c11255270902238c1d5dfca2fc80eae221eb7414b0fdca3233f4c8b1",
+  "source_commit": "13fb43fe08c045f08a1b85007aff3c15388a1e24",
+  "source_manifest_sha256": "16bad9a4dae0676d227c155503abebee34d4b89d2e26293ebbaa2318bc46f49e",
+  "stage": {
+    "argv": [
+      "<ROOT>/.local/coupled-edge-regression-20261116/target/release/harbor-coupled-producer",
+      "run",
+      "inputs/base.weftforge",
+      "runs/base",
+      "expected/approved-metadata.json"
+    ],
+    "end_monotonic_seconds": 1000297.614209583,
+    "exit_code": 0,
+    "peak_rss_bytes": 10698752,
+    "pid": 70593,
+    "process_group": 70593,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.3103849160252139,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 3797,
+      "timeouts": 0
+    },
+    "sampled_peak_rss_bytes": 10698752,
+    "stop_reason": null,
+    "terminal_phase_checks": {
+      "deadline": 1000510.064484833,
+      "output_bytes": 18190279,
+      "output_cap_bytes": 268435456,
+      "reserve_bytes": 131072
+    }
+  },
+  "two_fresh_initializations": true
+}

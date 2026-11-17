@@ -1,0 +1,131 @@
+diff --git a/crates/weftforge-sim/src/tests.rs b/crates/weftforge-sim/src/tests.rs
+index a9849b3..cf394b9 100644
+--- a/crates/weftforge-sim/src/tests.rs
++++ b/crates/weftforge-sim/src/tests.rs
+@@ -245,6 +245,126 @@ fn nonfinite_strain_after_a_finite_candidate_invalidates_diagnostics() {
+     assert!(!diagnostics.finite);
+ }
+ 
++#[test]
++fn shared_edge_material_reaches_independent_incremental_energy_equilibrium() {
++    let rest = [
++        [-0.064, 0., 0.],
++        [0., -0.004, 0.],
++        [0., 0.004, 0.],
++        [0.064, 0., 0.],
++    ];
++    let material = Material {
++        areal_density: 0.18,
++        warp_stiffness: 400.,
++        weft_stiffness: 400.,
++        shear_stiffness: 100.,
++        grain_angle: std::f64::consts::FRAC_PI_2,
++        bending_stiffness: 0.,
++        damping: 0.,
++        friction: 0.,
++        collision_thickness: 0.003,
++    };
++    let mut cloth = Cloth::new(ClothInput {
++        positions: rest.to_vec(),
++        material_uv: rest.map(|v| [v[0], v[1]]).to_vec(),
++        triangles: vec![[0, 1, 2], [1, 3, 2]],
++        triangle_materials: vec![material; 2],
++        pins: vec![
++            Pin {
++                vertex: 0,
++                target: rest[0],
++            },
++            Pin {
++                vertex: 3,
++                target: rest[3],
++            },
++        ],
++        ..Default::default()
++    })
++    .unwrap();
++    let h = (1. / 60.) / 8.;
++    let speed = 0.0005 / h;
++    cloth.velocities[1] = [0., -speed, 0.];
++    cloth.velocities[2] = [0., speed, 0.];
++    let predicted = [
++        add(rest[1], mul(cloth.velocities[1], h)),
++        add(rest[2], mul(cloth.velocities[2], h)),
++    ];
++    let area = 0.064 * 0.008 / 2.;
++    let mass = 2. * 0.18 * area / 3.;
++    for v in [1, 2] {
++        assert!((cloth.masses()[v] - mass).abs() < 1e-18);
++    }
++    assert!(cloth.bends.is_empty() && cloth.input.stitches.is_empty());
++    assert!(cloth.input.colliders.is_empty());
++    cloth
++        .step(
++            StepSettings {
++                dt: h,
++                substeps: 1,
++                iterations: 32,
++                gravity: [0.; 3],
++                seam_closure_speed: 0.,
++            },
++            || false,
++        )
++        .unwrap();
++
++    // Independent 100-digit Newton root of the six-DOF physical energy;
++    // the symmetric quarter-turn reduction also gives an independent cubic.
++    let expected = [
++        [6.729906241347043e-23, -0.004000552234905839, 0.],
++        [-6.729906241347043e-23, 0.004000552234905839, 0.],
++    ];
++    let x = [cloth.positions()[1], cloth.positions()[2]];
++    let position_error = (0..2)
++        .map(|i| length(sub(x[i], expected[i])))
++        .fold(0., f64::max);
++
++    // Direct columns for this independent two-face geometry, with one inertia
++    // per free particle. No cached constraint gradients or multipliers enter.
++    let center = mul(add(x[0], x[1]), 0.5);
++    let v = mul(sub(x[1], x[0]), 1. / 0.008);
++    let (sin, cos) = material.grain_angle.sin_cos();
++    let mut gradient: [Vec3; 2] =
++        std::array::from_fn(|i| mul(sub(x[i], predicted[i]), mass / (h * h)));
++    for sign in [1., -1.] {
++        let u = add([1., 0., 0.], mul(center, sign / 0.064));
++        let w = add(mul(u, cos), mul(v, sin));
++        let f = add(mul(u, -sin), mul(v, cos));
++        let cw = (dot(w, w) - 1.) / 2.;
++        let cf = (dot(f, f) - 1.) / 2.;
++        let cs = dot(w, f);
++        let gu = add(
++            add(
++                mul(w, 400. * area * cw * cos),
++                mul(f, -400. * area * cf * sin),
++            ),
++            mul(sub(mul(f, cos), mul(w, sin)), 100. * area * cs),
++        );
++        let gv = add(
++            add(
++                mul(w, 400. * area * cw * sin),
++                mul(f, 400. * area * cf * cos),
++            ),
++            mul(add(mul(f, sin), mul(w, cos)), 100. * area * cs),
++        );
++        for i in 0..2 {
++            gradient[i] = add(
++                gradient[i],
++                add(mul(gu, sign / 0.128), mul(gv, (2. * i as f64 - 1.) / 0.008)),
++            );
++        }
++    }
++    let stationarity = gradient.into_iter().map(length).fold(0., f64::max);
++    println!(
++        "shared-edge positions={x:?} reference={expected:?} position_error={position_error:e}m stationarity={stationarity:e}N"
++    );
++    assert!(position_error < 1e-8 && stationarity < 1e-6);
++    assert_eq!(cloth.positions()[0], rest[0]);
++    assert_eq!(cloth.positions()[3], rest[3]);
++}
++
+ #[test]
+ fn coupled_membrane_reaches_independent_incremental_energy_equilibrium() {
+     let uv = [[0., 0.], [0.01, 0.], [0.003, 0.07]];

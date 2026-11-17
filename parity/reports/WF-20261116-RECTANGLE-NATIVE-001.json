@@ -212,7 +212,7 @@
   "current_source_commit": "ae8dd6ebe6da760501f507248a11b069a02cb453",
   "source_identity_public_receipt": "parity/reports/artifacts/rectangle-gesture-20261116/source-integration/ROOT-INTEGRATION-001.json",
   "platform": "macOS local; Rust1.94.1 from frozen ENVIRONMENT; exact OS release and CPU target not separately recorded in selected case artifacts.",
-  "freshness": "current",
+  "freshness": "stale",
   "selected_manifest": {
     "path": "parity/reports/artifacts/rectangle-gesture-20261116/SELECTED-PUBLIC-MANIFEST-001.json",
     "sha256": "77bcc113cdbd8ea6998a6883fcc2bc8bf22ab91d8afdf30b9fca42ad449c18ec"
@@ -255,5 +255,6 @@
     "sha256": "86ba6854eaa26aa2212a637db9649f0bd3e1341b646f6e2ac5e00649ef6a4b67"
   },
   "selected_manifest_qualification": "Historical selection77bcc113 remains byte-exact. PUBLICATION-CURRENT.json supersedes only nine JPEG hashes and earlier wholly byte-exact/unedited JPEG wording. Other201 prior artifacts remain exact; private209 originals/case/clocks/outcomes are unchanged.",
-  "public_image_qualification": "Encoded image scans and color-characterization tags remain exact. Only eight ICC display identifier bytes per public JPEG are zeroed; no raster editing/re-encoding or case-result change."
+  "public_image_qualification": "Encoded image scans and color-characterization tags remain exact. Only eight ICC display identifier bytes per public JPEG are zeroed; no raster editing/re-encoding or case-result change.",
+  "freshness_reason": "Actual13fb material-group source changes crates/weftforge-sim/src/lib.rs from this report's original tested source. The complete original report is archived exactly at parity/reports/artifacts/material-group-source-20261117/history/WF-20261116-RECTANGLE-NATIVE-001.original.json. All outcomes, source scopes/hashes, timestamps, cases and artifact maps remain unchanged; no replay/regrade or native/garment/reference acceptance transfers."
 }

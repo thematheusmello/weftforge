@@ -1,0 +1,52 @@
+{
+  "status": "FIRST_CANDIDATE_SAME_FROZEN_REGRESSION",
+  "source_commit": "ae8dd6ebe6da760501f507248a11b069a02cb453",
+  "original_RED_freeze_sha256": "e2104078f7b99ffc6664eeba230f52490d85ae18da139a042a6104875cd37d76",
+  "original_RED_proof_files": {
+    "tests-red.rs": "04f53392d30f4bc1e9ae8535064f0e9a58fbf23b4bf9965e9f965adbb3113a6b",
+    "red.log": "b01629e50416c72f4dbe3ddfafa634c3da612150760e942d8a0d70946b12a4b9",
+    "SOURCE-BEFORE.json": "c98f04367099b042a51436ee57d183be695bb0394d70f8e7c468c6df4bebb8f9",
+    "RED-RUNNING.json": "ebdd03ee683ab8c0835ae89d16efe4a27a7b77ba3f3517ecc91496c0b973427f",
+    "INPUT.json": "3fa66e4f92b92776faf80ada0eb17bf19ce474a7270dc07b69d9d31095c23b65",
+    "FINAL-MANIFEST.json": "a0683ef27bcc55ce299f2e50c04c7d76370c0c88fee5a393457a9b9af7fda935",
+    "RED-TERMINAL.json": "c4710d826cc17451a8ca5a029b8fefafae77fd46e5d777dc27d6fc98eeba614a",
+    "REFERENCE.json": "7fb99a51d2991a9bcaab7907973220ba4dbd1f4e15771998c9f43c49f25c0519",
+    "RED-INDEPENDENT-ARITHMETIC.json": "c9f9fbd4bf31d91c94b71481d9251a7585450fa3ff956563a024f9d226b36191",
+    "ORACLE-PROOF.md": "0ec00e583e9d2f7d0997335b7817849283523a54b617fcf0f0f2ed7ffd001fed",
+    "reference.log": "7fb99a51d2991a9bcaab7907973220ba4dbd1f4e15771998c9f43c49f25c0519",
+    "reference.py": "ec796082364b332b56aef9e0adb823c20a4464f348e06764548df8a7289db51b",
+    "test-only.patch": "cf46c27efa9e0f307c911274fdf3ed68b3e83996e04028702e68988a8a3929e9",
+    "HANDOFF.md": "04b835eaa883c0782eb5f3feccc5d5414083dcd94ca07b96cdcd4935eb141e24",
+    "FREEZE.json": "e2104078f7b99ffc6664eeba230f52490d85ae18da139a042a6104875cd37d76"
+  },
+  "source_hashes": {
+    ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "Cargo.lock": "eb8a60650b473c79dda2e58a56f68b1abe9ca9a68c15115c9c8754c561732f3a",
+    "Cargo.toml": "032b32e80547618a72d39e42c0204611ff37908b8a6bf28615b3e592f79fa499",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/capsule.rs": "04634a93371e4e7f513401fa617075e28c1b4776023b158c3f6dc168d24371a0",
+    "crates/weftforge-sim/src/constraints.rs": "7b07c9750569bd1962d7986b41fc5a00da9b1e319dfb90aa6ab50167e9f35596",
+    "crates/weftforge-sim/src/contact.rs": "20df8876462dcbf7d32761b0e061ab66def60e7f88a5eccbfb6e7839108c26c8",
+    "crates/weftforge-sim/src/lib.rs": "97b4dfb8967b9af1d8649afdaff542622527293ce4da6742c6ec903f29bf490c",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/strain.rs": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+    "crates/weftforge-sim/src/tests.rs": "04f53392d30f4bc1e9ae8535064f0e9a58fbf23b4bf9965e9f965adbb3113a6b",
+    "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+    "docs/physics.md": "d95c8c6087bf8e90a89e077e02134724192e92a757e15940d3ccf525d56d9fff"
+  },
+  "argv": [
+    "cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--lib",
+    "tests::shared_edge_material_reaches_independent_incremental_energy_equilibrium",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "original_oracle_and_bounds_unchanged": true,
+  "tracked_diff": " crates/weftforge-sim/src/constraints.rs | 243 +++++++++++++++++++++++---------\n crates/weftforge-sim/src/lib.rs         |  37 ++++-\n crates/weftforge-sim/src/tests.rs       | 120 ++++++++++++++++\n 3 files changed, 332 insertions(+), 68 deletions(-)\n"
+}

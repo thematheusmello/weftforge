@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--lib",
+    "tests::shared_edge_material_reaches_independent_incremental_energy_equilibrium",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "pid": 83305,
+  "status": "running",
+  "started_at": "2026-11-16T23:27:22.798836+00:00",
+  "freeze_sha256": "e2104078f7b99ffc6664eeba230f52490d85ae18da139a042a6104875cd37d76",
+  "test_executions": 1,
+  "own_target": "<ROOT>/.local/coupled-edge-regression-20261116/target",
+  "CARGO_BUILD_JOBS": "1"
+}

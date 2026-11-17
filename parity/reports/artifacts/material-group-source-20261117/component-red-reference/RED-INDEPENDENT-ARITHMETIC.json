@@ -1,0 +1,34 @@
+{
+  "status": "INDEPENDENT_DIRECT_ENERGY_ARITHMETIC_ON_RETAINED_NEW_COMPONENT_OUTPUT_ONLY",
+  "no_Rust_production_or_test_reexecution": true,
+  "raw_log_sha256": "b01629e50416c72f4dbe3ddfafa634c3da612150760e942d8a0d70946b12a4b9",
+  "input_sha256": "3fa66e4f92b92776faf80ada0eb17bf19ce474a7270dc07b69d9d31095c23b65",
+  "actual_positions_m": [
+    [
+      8.78663273616807e-18,
+      -0.00400012560747117,
+      0.0
+    ],
+    [
+      9.066299007269424e-18,
+      0.004000125607471172,
+      0.0
+    ]
+  ],
+  "direct_energy_gradient_N": [
+    [
+      "6.15667169834785749721500958321434372775461643e-17",
+      "0.00273412928312983865876157607387162272031481408",
+      "0.0"
+    ],
+    [
+      "5.11117627954154074931584689025717285452458559e-16",
+      "-0.00273412928312981553788044712761543020588156623",
+      "0.0"
+    ]
+  ],
+  "maximum_node_force_residual_N": "0.00273412928312983865876157607456479781329810871",
+  "maximum_node_position_error_m": "0.000000426627434668522700445444908563387159604429621",
+  "physical_energy_J": "0.00000176868405354302475142362869721897247284076246",
+  "result": "Both original frozen component bounds fail independently of the Rust force implementation"
+}
