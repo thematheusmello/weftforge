@@ -62,7 +62,7 @@ The new velocity is the solved displacement divided by h. Damping is exponential
 velocity damping in s^-1, rather than a frame-dependent interpolation. Its
 operator splitting introduces a finite-step error in forced trajectories. The
 zero-damping gravity test has the expected symplectic Euler error. There is no
-restitution, air drag, wind, calibrated viscoelasticity or implicit global solve.
+restitution, air drag, wind, calibrated viscoelasticity or fully coupled implicit solve.
 
 The defaults are dt=1/60 s, four substeps, eight constraint iterations, sewing
 closure speed 0.5 m/s and gravity (0,-9.81,0) m/s². Step arguments require finite
@@ -106,71 +106,93 @@ identified measured fabric or a reference-application preset. Shear, bending,
 density, damping, friction and collision offset remain separate parameters;
 changing the display color does not change them.
 
-### Coupled material projection
+### Global material projection
 
-Warp, weft and shear share each triangle's positions. A scalar multiplier history
-alone does not retain the nonlinear inertial relation when their gradients
-rotate. The original XPBD derivation explicitly omits that primal residual;
+Warp, weft and shear share triangle positions, and adjacent triangles share nodal
+inertia. A scalar multiplier history alone does not retain the nonlinear inertial
+relation when gradients rotate. The original XPBD derivation explicitly omits
+that primal residual;
 [Chen et al. (2024)](https://physbam.stanford.edu/papers/stanford2024-02_2.pdf)
-also discuss its effect on backward-Euler force balance. The local update here
-is derived directly from this crate's existing material energy; it is not a
-calibrated implementation or a convergence claim for either paper's full method.
+also discuss its effect on backward-Euler force balance. This material stage is
+derived directly from this crate's existing energy. It is not a calibrated
+implementation or a convergence claim for either paper's full method.
 
-Adjacent material triangles are partitioned into two-face groups, with singleton
-leftovers. Shared edges are considered by increasing rest material-UV length;
-vertex IDs break equal-length ties. A face is paired only while both faces are
-unassigned. Groups are visited by their first triangle index. Every triangle's
-unchanged energy belongs to exactly one group; bending, sewing, contact and pins
-retain their previous algorithms and stage order. This deterministic pairing is
-a coupling heuristic, not a mesh-independent convergence guarantee.
-
-For each group, p stores its accumulated actual positional correction, in metres,
-for its three or four union nodes. Removing its previous correction from current
-positions gives local anchor z=x-p. With other groups/stages held fixed during
-this projection, the local incremental objective is:
+One actual material displacement p per vertex resets to zero each substep.
+During a material sweep its anchor z=x-p stays fixed; displacements from the
+other stages move x without changing p, so the next material anchor follows them.
+All triangles enter one physical incremental objective, with each triangle's
+unchanged energy once and each free vertex's physical lumped inertia once:
 
 ```text
-Phi(q) = (q-z)^T M (q-z)/(2*h²) + sum_triangles_in_group sum_a(k_a*C_a(q)²)/2
+Phi(q) = sum_free_i m_i*|q_i-z_i|²/(2*h²) + sum_triangles sum_a k_a*C_a(q)²/2
 ```
 
-M contains each union node's physical lumped mass once; pinned coordinates are
-fixed. Let J contain the three singleton or six paired constraint gradients,
-embedded in those same union-node coordinates, W their inverse masses and k the
-existing per-triangle area-scaled warp/weft/shear coefficients. One Gauss–Newton
-step is reduced by the Woodbury identity to a three- or six-row system:
+Pinned coordinates stay fixed. There are no material pairs or separate group
+anchors. Bending, sewing, analytic contact, cloth contact and pins retain their
+previous equations and stage order. Each outer iteration makes one global
+Gauss–Newton material update before those stages. The garment acceptance settings
+remain dt=1/60 s, eight substeps and 32 outer iterations; the standalone DTO
+defaults above are unchanged.
+
+Let J contain every triangle's three existing mode gradients, K the diagonal of
+its area-scaled stiffnesses and W the inverse nodal masses, zero at pins. Using
+mass-weighted displacement coordinates gives:
 
 ```text
-A = J*W*J^T + diag(1/(k_a*h²))
-A*eta = J*p - C
-d = -p + W*J^T*eta
+B = h*sqrt(K)*J*sqrt(W)
+r = h*sqrt(K)*C
+A = I + B^T*B
+b = -p/sqrt(W) - B^T*r
+A*u = b
+d = sqrt(W)*u
 ```
 
-Eta is a temporary linear-solve unknown, not a retained material multiplier.
-The system uses a diagonally scaled Cholesky factorization. Each declared outer
-iteration performs one such coupled material step per group. An Armijo energy
-check on h²*Phi uses coefficient 1e-4 and at most 16 trial fractions, starting at
-one and halving; these trials evaluate local energy, not additional material
-iterations. Only an accepted finite trial updates positions and p, using the
-rounded position displacement actually applied. An unusable factorization or
-exhausted line search leaves that projection unchanged. Extreme deformation or
-ill conditioning can therefore stall; existing strain/contact/finite diagnostics
-remain necessary and no general convergence guarantee is supplied.
+The inertia term in b is zero at pins. Matrix products visit the cached sparse
+three-node rows of B and the identity; no dense global matrix is stored. A
+symmetric diagonal preconditioner uses S_ii=1/sqrt(A_ii), solving S*A*S and
+recovering u=S*v. Repeated `hypot` computes sqrt(A_ii) without first squaring
+large coefficients. The preconditioned right-hand side is divided by its largest
+absolute component before conjugate gradients and restored afterward. This
+normalization does not change the objective or direction. An exactly zero
+right-hand side leaves positions and p unchanged, including an all-pinned mesh.
 
-Correction history uses twelve f64 values per group, with the fourth node slot
-unused for a singleton, and resets each substep. A fully paired region therefore
-uses twelve correction values per two faces versus the previous eighteen;
-singletons use twelve versus nine. Immutable group/union-node mappings add cache
-storage. The six-row factor costs more than two three-row factors; no speed or
-large-mesh benchmark is implied. Pair construction and each material group poll
-cancellation; one local solve and its at-most-sixteen energy trials can finish
-before the next poll. Candidate histories remain local to the step, so failure or
-cancellation preserves the accepted cloth state.
+The linear solve starts at zero, takes at most 32 conjugate-gradient iterations,
+and stops when the recursive residual norm is at most 1e-12 of its initial norm
+(squared comparison 1e-24), with no absolute tolerance floor. Reaching the cap
+uses the finite approximate direction and still requires descent. This internal
+linear work is additional to the public outer-iteration count; 32 outer iterations
+do not mean only 32 local projections. Finite convergence and the recursive
+residual do not certify a physical force tolerance on an arbitrary mesh.
 
-The sum of actual group corrections retains the material stage's displacement
-accounting while each triangle energy occurs once. If every group equation and
-the remaining stages converge, their force balances sum with the physical nodal
-inertia. A finite number of group sweeps can still leave inter-group, bending,
-sewing or contact residuals. Pairing does not establish full coupled equilibrium.
+The same complete objective h²*Phi governs Armijo descent, with coefficient
+1e-4 and at most 16 fractions starting at one and halving. Each trial evaluates
+all triangle energies and one inertia per free vertex. Only an accepted finite
+trial changes x and p; p accumulates the actual rounded position displacement.
+An exhausted search or non-descent direction leaves that sweep unchanged.
+Current non-finite coefficients, diagonal scales, objective, linear curvature,
+iterates or reconstructed directions abort with `Unstable`. Non-finite trial
+energies are rejected during backtracking. Positive linear curvature is required.
+Products, accumulated dot products and energies must fit finite f64; diagonal
+scaling and RHS normalization reduce overflow exposure but do not supply arbitrary
+range arithmetic. Underflow, rounding, extreme compression and ill conditioning
+can still stall. Existing strain/contact/finite diagnostics remain necessary.
+
+For N vertices and T triangles, each sweep stores 3*T sparse rows and O(N+T)
+workspace, plus the retained three-component p per vertex. Its fixed budget is
+at most 32 matrix products and 17 complete objective scans (current plus trials),
+with at most 168*N + 119*T + 48 cancellation callback work units over all vertex,
+row, CG-iteration and backtracking scans. Each unit has bounded scalar work;
+vector allocations/copies add O(N+T) work. Every input vector is finite in length;
+the solver introduces no smaller geometry/input limit. A complete step runs at
+most substeps*iterations such sweeps under the existing 1..=1000 settings limits.
+Rows, vertices, every CG iteration and every trial poll cancellation. Candidate
+arrays and p stay local to the whole-call transaction, so cancellation or numerical
+failure preserves accepted positions, velocities, seam targets, time and
+diagnostics. These bounds do not assert a wall-time or aggregate-memory limit.
+
+The global objective resolves material coupling across the entire mesh in each
+direction. It does not establish convergence of the separately projected bending,
+sewing, friction or contact equations, nor general garment equilibrium.
 
 The focused pinned/free-node regression compares the projected positions with
 an independent dense Newton solution of the inertial-plus-material energy and
@@ -180,9 +202,16 @@ edge nodes and independently derived UV-area masses. Its six-DOF energy referenc
 has a positive Hessian bound on an inertia ball containing every minimizer; an
 independent cubic reduction and high-precision/finite-difference checks support
 the same predeclared position/force bounds. Mixed anisotropy/grain, fixed pins,
-once-only face coverage and whole-call cancellation are checked separately.
+once-only face coverage and whole-call cancellation remain separate checks.
 These are small incremental-energy component checks, not garment answers.
-Inter-group convergence at finite budgets, the remaining scalar bending/sewing
+A frozen eight-face component retains exact original masses, material data and
+saved predictor positions at two free nodes. Its test invokes this production
+global stage for 32 sweeps and checks the same predeclared 1e-8 m position and
+1e-6 N independently differenced physical-force bounds. Its 80/100-digit
+reference establishes a strict local minimum near the expected point, without
+global uniqueness. Obsolete pair/order guards are replaced with exact face-order
+and free/pinned-partition guards; the physical data and oracle stay unchanged.
+Material convergence at finite budgets, the remaining scalar bending/sewing
 updates, friction, and complete coupled-contact equilibrium remain separate
 questions. Earlier garment results below retain their original source
 and algorithm attribution; this source change does not regrade them.
