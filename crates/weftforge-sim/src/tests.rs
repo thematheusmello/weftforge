@@ -1555,15 +1555,22 @@ fn physical_stiffness_changes_extension_and_refinement_preserves_mass_and_sag() 
 #[test]
 fn bending_reaches_independent_pinned_hinge_incremental_energy_equilibrium() {
     let rest = [[0., 0., 0.], [1., 0., 0.], [0., 1., 0.], [0., -1., 0.]];
-    let bend = constraints::Bend::new([0, 1, 2, 3], &rest, 0.5);
+    let bends = [constraints::Bend::new([0, 1, 2, 3], &rest, 0.5)];
     let (sin, cos) = 1_f64.sin_cos();
     let predicted = [0., cos, sin];
     let mut x = rest;
     x[2] = predicted;
     let mut correction = [[0.; 3]; 4];
     for _ in 0..32 {
-        bend.solve(&mut x, &[0., 0., 100., 0.], 0.1, &mut correction, &|| false)
-            .unwrap();
+        constraints::solve_bending(
+            &bends,
+            &mut x,
+            &[0., 0., 100., 0.],
+            0.1,
+            &mut correction,
+            &|| false,
+        )
+        .unwrap();
     }
 
     // Independent polar minimization: m/h²=1, k=0.5, r=cos(theta-1).
@@ -1601,16 +1608,102 @@ fn bending_reaches_independent_pinned_hinge_incremental_energy_equilibrium() {
 }
 
 #[test]
+fn shared_bending_n32_matches_independent_nonlinear_cartesian_energy() {
+    let a = 7.575757575757576e-5_f64;
+    let l = 0.0675_f64;
+    let w = 0.008181818181818182_f64;
+    let h = 1. / 480.;
+    let mass = 6.627272727272728e-5_f64;
+    let stiffness = 0.024750031175957105_f64;
+    let rigidity = 0.003_f64;
+    let rest = [[0.; 3], [a, l, 0.], [-a, -l, 0.], [w, 0., 0.], [-w, 0., 0.]];
+    let predictor = [0., 0., 1e-5];
+    let inverse_mass = [mass.recip(), 0., 0., 0., 0.];
+    let hinge_vertices = [[1, 0, 3, 4], [2, 0, 3, 4]];
+
+    // Production adapter only; a future group API needs separate adapter review.
+    let bends = hinge_vertices.map(|vertices| constraints::Bend::new(vertices, &rest, rigidity));
+    let mut histories = [[0.; 3]; 5];
+    let mut advance_bending = |positions: &mut [Vec3; 5]| {
+        constraints::solve_bending(&bends, positions, &inverse_mass, h, &mut histories, &|| {
+            false
+        })
+        .unwrap();
+    };
+    // End production adapter; fixture, sweeps, oracle and assertions stay fixed.
+
+    let mut x = rest;
+    x[0] = predictor;
+    for _ in 0..32 {
+        advance_bending(&mut x);
+        assert_eq!(&x[1..], &rest[1..]);
+        assert!(x.into_iter().flatten().all(f64::is_finite));
+    }
+
+    // Independent Cartesian derivative of D|q-p|²/2 + k(theta_+²+theta_-²)/2.
+    let independent = |q: Vec3| {
+        let [x, y, z] = q;
+        let b = a * a + l * l;
+        let inertia = mass / (h * h);
+        let offset = [x, y, z - predictor[2]];
+        let mut energy = 0.5 * inertia * offset.into_iter().map(|v| v * v).sum::<f64>();
+        let mut residual = offset.map(|v| inertia * v);
+        for sign in [1., -1.] {
+            let v = [x - sign * a, y - sign * l, z];
+            let radius = (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
+            let n = sign * 2. * l * w * z * radius;
+            let d = w * w * (y - sign * l).powi(2) - (l * x - a * y).powi(2) + (w * w - b) * z * z;
+            let theta = n.atan2(d);
+            let mut dn = v.map(|value| sign * 2. * l * w * z * value / radius);
+            dn[2] += sign * 2. * l * w * radius;
+            let dd = [
+                -2. * l * (l * x - a * y),
+                2. * w * w * (y - sign * l) + 2. * a * (l * x - a * y),
+                2. * (w * w - b) * z,
+            ];
+            energy += 0.5 * stiffness * theta * theta;
+            for axis in 0..3 {
+                residual[axis] +=
+                    stiffness * theta * (d * dn[axis] - n * dd[axis]) / (n * n + d * d);
+            }
+        }
+        (energy, residual)
+    };
+    // Strict convexity and in-plane symmetry reduce the independent minimum to this scalar root.
+    let expected = [0., 0., 5.1358750877942195e-8];
+    let norm = |v: Vec3| (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
+    let (energy, residual) = independent(x[0]);
+    let (expected_energy, expected_residual) = independent(expected);
+    let position_error = norm(std::array::from_fn(|axis| x[0][axis] - expected[axis]));
+    let force_residual = norm(residual);
+    println!(
+        "shared_bending_N=32 h_s={h} mass_kg={mass} k_Nm_each={stiffness}\n\
+         predictor_m={predictor:?}\nq_m={:?}\nexpected_m={expected:?}\n\
+         independent_force_residual_N={residual:?}\nforce_residual_N={force_residual:e}\n\
+         expected_force_residual_N={expected_residual:?}\nposition_error_m={position_error:e}\n\
+         objective_J={energy:e}\nexpected_objective_J={expected_energy:e}",
+        x[0]
+    );
+    assert!(energy.is_finite());
+    assert!(residual.into_iter().all(f64::is_finite));
+    assert!(position_error <= 1e-8, "shared bending position: m");
+    assert!(
+        force_residual <= 1e-6,
+        "independent Cartesian force residual: N"
+    );
+}
+
+#[test]
 fn bending_reduces_fold_angle_without_translating_center_of_mass() {
     let rest = vec![[0., 0., 0.], [1., 0., 0.], [0.5, 1., 0.], [0.5, -1., 0.]];
-    let bend = constraints::Bend::new([0, 1, 2, 3], &rest, 0.1);
+    let bends = [constraints::Bend::new([0, 1, 2, 3], &rest, 0.1)];
     let mut x = rest;
     x[2][2] = 0.4;
     let before_angle = constraints::dihedral([0, 1, 2, 3], &x).unwrap().0.abs();
     let before_center = x.iter().copied().fold([0.; 3], add);
     let mut correction = [[0.; 3]; 4];
     for _ in 0..8 {
-        bend.solve(&mut x, &[1.; 4], 0.1, &mut correction, &|| false)
+        constraints::solve_bending(&bends, &mut x, &[1.; 4], 0.1, &mut correction, &|| false)
             .unwrap();
     }
     let after_angle = constraints::dihedral([0, 1, 2, 3], &x).unwrap().0.abs();
@@ -1621,13 +1714,20 @@ fn bending_reduces_fold_angle_without_translating_center_of_mass() {
 #[test]
 fn bending_cancellation_retains_positions_and_displacement_history() {
     let rest = [[0., 0., 0.], [1., 0., 0.], [0., 1., 0.], [0., -1., 0.]];
-    let bend = constraints::Bend::new([0, 1, 2, 3], &rest, 0.5);
+    let bends = [constraints::Bend::new([0, 1, 2, 3], &rest, 0.5)];
     let mut x = rest;
     x[2] = [0., 1_f64.cos(), 1_f64.sin()];
     let predictor = x;
     let mut correction = [[0.; 3]; 4];
-    bend.solve(&mut x, &[0., 0., 100., 0.], 0.1, &mut correction, &|| false)
-        .unwrap();
+    constraints::solve_bending(
+        &bends,
+        &mut x,
+        &[0., 0., 100., 0.],
+        0.1,
+        &mut correction,
+        &|| false,
+    )
+    .unwrap();
     assert_ne!(x, predictor);
     for i in 0..4 {
         assert_eq!(correction[i], sub(x[i], predictor[i]));
@@ -1635,10 +1735,17 @@ fn bending_cancellation_retains_positions_and_displacement_history() {
     let before = x;
     let history = correction;
     let calls = std::cell::Cell::new(0);
-    bend.solve(&mut x, &[0., 0., 100., 0.], 0.1, &mut correction, &|| {
-        calls.set(calls.get() + 1);
-        false
-    })
+    constraints::solve_bending(
+        &bends,
+        &mut x,
+        &[0., 0., 100., 0.],
+        0.1,
+        &mut correction,
+        &|| {
+            calls.set(calls.get() + 1);
+            false
+        },
+    )
     .unwrap();
     assert_ne!(x, before);
     for stop_at in 1..=calls.get() {
@@ -1646,7 +1753,80 @@ fn bending_cancellation_retains_positions_and_displacement_history() {
         let mut correction = history;
         let polls = std::cell::Cell::new(0);
         assert_eq!(
-            bend.solve(&mut x, &[0., 0., 100., 0.], 0.1, &mut correction, &|| {
+            constraints::solve_bending(
+                &bends,
+                &mut x,
+                &[0., 0., 100., 0.],
+                0.1,
+                &mut correction,
+                &|| {
+                    polls.set(polls.get() + 1);
+                    polls.get() == stop_at
+                },
+            ),
+            Err(SimulationError::Cancelled)
+        );
+        assert_eq!(polls.get(), stop_at);
+        assert_eq!(x, before);
+        assert_eq!(correction, history);
+    }
+    let extreme = [constraints::Bend::new([0, 1, 2, 3], &rest, 1e308)];
+    let mut x = before;
+    let mut correction = history;
+    assert!(matches!(
+        constraints::solve_bending(
+            &extreme,
+            &mut x,
+            &[0., 0., 100., 0.],
+            1.,
+            &mut correction,
+            &|| false,
+        ),
+        Err(SimulationError::Unstable(_))
+    ));
+    assert_eq!(x, before);
+    assert_eq!(correction, history);
+}
+
+#[test]
+fn shared_bending_cancellation_retains_group_displacement_and_pins() {
+    let rest = [
+        [0.; 3],
+        [1., 0., 0.],
+        [-1., 0., 0.],
+        [0., 1., 0.],
+        [0., -1., 0.],
+    ];
+    let bends =
+        [[1, 0, 3, 4], [2, 0, 3, 4]].map(|vertices| constraints::Bend::new(vertices, &rest, 0.5));
+    let weights = [100., 0., 0., 0., 0.];
+    let mut x = rest;
+    x[0][2] = 0.2;
+    let predictor = x;
+    let mut correction = [[0.; 3]; 5];
+    constraints::solve_bending(&bends, &mut x, &weights, 0.1, &mut correction, &|| false).unwrap();
+    assert_ne!(x, predictor);
+    assert_eq!(&x[1..], &rest[1..]);
+    for i in 0..x.len() {
+        assert_eq!(correction[i], sub(x[i], predictor[i]));
+    }
+    assert!(x.into_iter().flatten().all(f64::is_finite));
+    let before = x;
+    let history = correction;
+    let calls = std::cell::Cell::new(0);
+    constraints::solve_bending(&bends, &mut x, &weights, 0.1, &mut correction, &|| {
+        calls.set(calls.get() + 1);
+        false
+    })
+    .unwrap();
+    assert_ne!(x, before);
+    assert!(calls.get() >= 2);
+    for stop_at in 1..=calls.get() {
+        let mut x = before;
+        let mut correction = history;
+        let polls = std::cell::Cell::new(0);
+        assert_eq!(
+            constraints::solve_bending(&bends, &mut x, &weights, 0.1, &mut correction, &|| {
                 polls.set(polls.get() + 1);
                 polls.get() == stop_at
             }),
@@ -1656,15 +1836,120 @@ fn bending_cancellation_retains_positions_and_displacement_history() {
         assert_eq!(x, before);
         assert_eq!(correction, history);
     }
-    let extreme = constraints::Bend::new([0, 1, 2, 3], &rest, 1e308);
-    let mut x = before;
-    let mut correction = history;
-    assert!(matches!(
-        extreme.solve(&mut x, &[0., 0., 100., 0.], 1., &mut correction, &|| false),
-        Err(SimulationError::Unstable(_))
-    ));
-    assert_eq!(x, before);
-    assert_eq!(correction, history);
+}
+
+#[test]
+fn global_bending_noop_and_invalid_inputs_preserve_stage_state() {
+    let rest = [[0., 0., 0.], [1., 0., 0.], [0., 1., 0.], [0., -1., 0.]];
+    let bends = [constraints::Bend::new([0, 1, 2, 3], &rest, 0.5)];
+    let mut deformed = rest;
+    deformed[2][2] = 0.4;
+    for (before, weights, hinges) in [
+        (rest, [1.; 4], bends.as_slice()),
+        (deformed, [0.; 4], bends.as_slice()),
+        ([[0.; 3]; 4], [1.; 4], bends.as_slice()),
+        (deformed, [1.; 4], &[]),
+    ] {
+        let calls = std::cell::Cell::new(0);
+        let mut x = before;
+        let mut correction = [[0.; 3]; 4];
+        constraints::solve_bending(hinges, &mut x, &weights, 0.1, &mut correction, &|| {
+            calls.set(calls.get() + 1);
+            false
+        })
+        .unwrap();
+        assert_eq!(calls.get(), 2);
+        assert_eq!(x, before);
+        assert_eq!(correction, [[0.; 3]; 4]);
+        for stop_at in 1..=calls.get() {
+            let polls = std::cell::Cell::new(0);
+            assert_eq!(
+                constraints::solve_bending(hinges, &mut x, &weights, 0.1, &mut correction, &|| {
+                    polls.set(polls.get() + 1);
+                    polls.get() == stop_at
+                }),
+                Err(SimulationError::Cancelled)
+            );
+            assert_eq!(polls.get(), stop_at);
+            assert_eq!(x, before);
+            assert_eq!(correction, [[0.; 3]; 4]);
+        }
+    }
+    let mut invalid_position = deformed;
+    invalid_position[2][2] = f64::NAN;
+    let mut invalid_history = [[0.; 3]; 4];
+    invalid_history[2][2] = f64::INFINITY;
+    for (before, weights, history) in [
+        (invalid_position, [1.; 4], [[0.; 3]; 4]),
+        (deformed, [-1., 1., 1., 1.], [[0.; 3]; 4]),
+        (deformed, [1.; 4], invalid_history),
+    ] {
+        let mut x = before;
+        let mut correction = history;
+        assert!(matches!(
+            constraints::solve_bending(&bends, &mut x, &weights, 0.1, &mut correction, &|| false),
+            Err(SimulationError::Unstable(_))
+        ));
+        assert_eq!(
+            x.map(|v| v.map(f64::to_bits)),
+            before.map(|v| v.map(f64::to_bits))
+        );
+        assert_eq!(
+            correction.map(|v| v.map(f64::to_bits)),
+            history.map(|v| v.map(f64::to_bits))
+        );
+    }
+}
+
+#[test]
+fn bending_cancellation_at_every_cloth_callback_rolls_back_all_persistent_state() {
+    let mut input = square();
+    for material in &mut input.triangle_materials {
+        material.bending_stiffness = 0.5;
+    }
+    input.pins = [0, 1, 3]
+        .map(|vertex| Pin {
+            vertex,
+            target: input.positions[vertex],
+        })
+        .to_vec();
+    let mut accepted = Cloth::new(input).unwrap();
+    assert_eq!(accepted.bends.len(), 1);
+    accepted.velocities[2] = [0., 1., 0.];
+    let settings = StepSettings {
+        substeps: 2,
+        iterations: 2,
+        ..settings()
+    };
+    let before = format!("{accepted:?}");
+    let mut complete = accepted.clone();
+    let calls = std::cell::Cell::new(0);
+    complete
+        .step(settings, || {
+            calls.set(calls.get() + 1);
+            false
+        })
+        .unwrap();
+    assert_ne!(complete.positions, accepted.positions);
+    for stop_at in 1..=calls.get() {
+        let mut candidate = accepted.clone();
+        let polls = std::cell::Cell::new(0);
+        assert_eq!(
+            candidate
+                .step(settings, || {
+                    polls.set(polls.get() + 1);
+                    polls.get() == stop_at
+                })
+                .unwrap_err(),
+            SimulationError::Cancelled
+        );
+        assert_eq!(polls.get(), stop_at);
+        assert_eq!(format!("{candidate:?}"), before);
+        assert_eq!(candidate.positions, accepted.positions);
+        assert_eq!(candidate.velocities, accepted.velocities);
+        assert_eq!(candidate.seam_remaining, accepted.seam_remaining);
+        assert_eq!(candidate.simulation_time(), accepted.simulation_time());
+    }
 }
 
 #[test]

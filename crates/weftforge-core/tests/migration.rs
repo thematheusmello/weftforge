@@ -177,6 +177,10 @@ fn assert_lossless_v1(bytes: &[u8]) -> Project {
     );
     for piece in current["project"]["pieces"].as_array_mut().unwrap() {
         assert_eq!(
+            piece.as_object_mut().unwrap().remove("notches"),
+            Some(json!([]))
+        );
+        assert_eq!(
             piece.as_object_mut().unwrap().remove("holes"),
             Some(json!([]))
         );
@@ -294,13 +298,18 @@ fn current_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes()
 #[test]
 fn version_dispatch_rejects_mixed_schemas_unknown_fields_and_unsupported_versions() {
     let old: Value = serde_json::from_slice(V1_FIXTURES[0]).unwrap();
-    let v5: Value = serde_json::from_slice(
+    let v6: Value = serde_json::from_slice(
         &Project::from_json(V1_FIXTURES[0])
             .unwrap()
             .to_json()
             .unwrap(),
     )
     .unwrap();
+    let mut v5 = v6.clone();
+    v5["version"] = json!(5);
+    for piece in v5["project"]["pieces"].as_array_mut().unwrap() {
+        piece.as_object_mut().unwrap().remove("notches");
+    }
     let mut v4 = v5.clone();
     v4["version"] = json!(4);
     for piece in v4["project"]["pieces"].as_array_mut().unwrap() {
@@ -376,12 +385,23 @@ fn version_dispatch_rejects_mixed_schemas_unknown_fields_and_unsupported_version
     }
     for document in [&old, &v2, &v3, &v4, &v5] {
         let mut bad = document.clone();
+        bad["project"]["pieces"][0]["notches"] = json!([]);
+        reject(&bad);
+    }
+    let mut bad = v6.clone();
+    bad["project"]["pieces"][0]
+        .as_object_mut()
+        .unwrap()
+        .remove("notches");
+    reject(&bad);
+    for document in [&old, &v2, &v3, &v4, &v5, &v6] {
+        let mut bad = document.clone();
         bad["unknown"] = json!(0);
         reject(&bad);
         let mut bad = document.clone();
         bad["project"]["unknown"] = json!(0);
         reject(&bad);
-        for version in [0, 6, 999] {
+        for version in [0, 7, 999] {
             let mut bad = document.clone();
             bad["version"] = json!(version);
             reject(&bad);
@@ -430,6 +450,10 @@ fn original_v3_migrates_only_empty_internal_and_hole_ownership_and_keeps_f64_bit
         let mut current: Value = serde_json::from_slice(&project.to_json().unwrap()).unwrap();
         for piece in current["project"]["pieces"].as_array_mut().unwrap() {
             assert_eq!(
+                piece.as_object_mut().unwrap().remove("notches"),
+                Some(json!([]))
+            );
+            assert_eq!(
                 piece.as_object_mut().unwrap().remove("holes"),
                 Some(json!([]))
             );
@@ -464,8 +488,12 @@ fn original_v4_adds_only_empty_holes_without_reordering_or_renumbering() {
         assert_eq!(old["version"], 4);
         assert_disk_roundtrip(bytes, |project| {
             let mut current: Value = serde_json::from_slice(&project.to_json().unwrap()).unwrap();
-            assert_eq!(current["version"], 5);
+            assert_eq!(current["version"], weftforge_core::FORMAT_VERSION);
             for piece in current["project"]["pieces"].as_array_mut().unwrap() {
+                assert_eq!(
+                    piece.as_object_mut().unwrap().remove("notches"),
+                    Some(json!([]))
+                );
                 assert_eq!(
                     piece.as_object_mut().unwrap().remove("holes"),
                     Some(json!([]))

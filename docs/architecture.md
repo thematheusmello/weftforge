@@ -30,7 +30,7 @@ The libraries do not depend on egui, a browser, Python, REA, or commercial SDKs.
 
 ## Authored geometry, rest mesh and state
 
-Every point, curve, piece, hole, material, seam and sewing group has a stable integer ID. Curves
+Every point, curve, piece, hole, notch, material, seam and sewing group has a stable integer ID. Curves
 reference authored points and optional absolute Bezier control coordinates.
 Piece boundaries are ordered closed chains. Each piece also owns an explicit
 `internal_curves` array of independent straight annotations backed by dedicated
@@ -39,7 +39,17 @@ coincident coordinates do not create shared topology. These lines are editable
 construction with no cut, hole, fold, sewing, mass or simulation effect. Boundary
 controls/split/join and every sewing route reject internal targets. Resize, rigid
 transform and removal traverse both endpoints, while bounds, mesh construction
-and exports omit annotations. OBJ contains no annotation primitives.
+and exports omit internal lines. OBJ contains no annotation primitives.
+
+Pieces own required `notches` arrays of stable-ID annotations attached to their
+construction curves by parameter `t`. The first notch path draws a perpendicular
+I marker with a fixed physical length; it has no mesh/solver effect. The shared
+Add/Update/Remove commands reach native numeric editing and CLI/MCP execution.
+Point/control edits, resize and transform preserve the attachment; split/join
+remap its parameter. Cut/offset and removal of an attached hole/internal line
+refuse until the notches are explicitly removed. SVG retains physical-scale
+markers; DXF refuses them before replacing output. The [notch contract](../spec/features/PAT-006-authored-notches.md)
+separates these engineering decisions from unverified reference behavior.
 
 Each piece also owns a required `holes` array. The first supported increment permits
 one simple straight hole in a simple straight exterior, with a stable Hole ID and
@@ -83,7 +93,7 @@ in its forward direction and the child's oppositely directed chord in reverse,
 with identity correspondence. One successful command is one revision/Undo entry.
 The pieces keep disjoint point/curve IDs, mesh indices and particles; sewing
 constrains weighted boundary samples without welding or adding material or
-cross-cut bending. RemoveSeam removes only the constraint. Native v5 already
+cross-cut bending. RemoveSeam removes only the constraint. The native model already
 stores all resulting objects; no persistent cut link or format change is added.
 The [Cut & Sew contract](../spec/features/SEW-001-cut-and-sew.md) separates this
 engineering behavior from still-unqualified native/reference execution.
@@ -97,7 +107,7 @@ normalized cumulative arc lengths. Each interval retains its curve t endpoints;
 gaps between disconnected spans add no length. Both one-sided endpoints at a
 path knot survive. Metric work is bounded, with a1e-8m authored-path budget and
 explicit errors for exhausted work or unsupported floating-point precision.
-Native v5 saves legacy seams, groups, owned annotations and holes; strict v1–v4 migration
+Native v6 saves legacy seams, groups, owned annotations, holes and notches; strict v1–v5 migration
 does not reinterpret legacy correspondence.
 
 The rebuildable rest mesh has material coordinates, physical arranged positions,

@@ -11,7 +11,7 @@ use std::{
     time::{Duration, Instant, SystemTime, UNIX_EPOCH},
 };
 use weftforge_core::{
-    Command, Curve, CurveInterval, DxfPatternImport, Editor, Id, Material, Mesh, Placement,
+    Command, Curve, CurveInterval, DxfPatternImport, Editor, Id, Material, Mesh, Notch, Placement,
     PreparedOutlineOffset, Project, SewingDirection, SewingGroup, SewingSideByLength,
     SvgPatternImport,
 };
@@ -418,6 +418,65 @@ struct InternalLineDraft {
     invalid_text: [Option<String>; 4],
     epoch: u64,
     error: Option<String>,
+}
+
+#[derive(Clone)]
+struct NotchDraft {
+    piece: Id,
+    curve: Id,
+    notch: Option<Notch>,
+    revision: u64,
+    t: String,
+    length_mm: String,
+    input: RetainedInspectorInput,
+    epoch: u64,
+    error: Option<String>,
+}
+impl NotchDraft {
+    fn command(&self) -> Result<Command, String> {
+        let t = self
+            .t
+            .trim()
+            .parse::<f64>()
+            .map_err(|_| "Enter a finite curve parameter t between 0 and 1.")?;
+        if !t.is_finite() || !(0.0..=1.0).contains(&t) {
+            return Err("Enter a finite curve parameter t between 0 and 1.".into());
+        }
+        let mut length = self
+            .length_mm
+            .trim()
+            .parse::<f64>()
+            .map_err(|_| "Enter a finite notch length between 0.1 and 100 mm.")?
+            / 1000.;
+        if !length.is_finite()
+            || !(weftforge_core::MIN_NOTCH_LENGTH..=weftforge_core::MAX_NOTCH_LENGTH)
+                .contains(&length)
+        {
+            return Err("Enter a finite notch length between 0.1 and 100 mm.".into());
+        }
+        if let Some(original) = &self.notch
+            && self.length_mm == (original.length * 1000.).to_string()
+        {
+            length = original.length;
+        }
+        Ok(if let Some(original) = &self.notch {
+            Command::UpdateNotch {
+                notch: Notch {
+                    id: original.id,
+                    curve: self.curve,
+                    t,
+                    length,
+                },
+            }
+        } else {
+            Command::AddNotch {
+                piece: self.piece,
+                curve: self.curve,
+                t,
+                length,
+            }
+        })
+    }
 }
 
 struct CutPreview {
@@ -915,6 +974,7 @@ struct Studio {
     transform: Option<TransformDraft>,
     transform_gesture: Option<TransformGesture>,
     internal_line: Option<InternalLineDraft>,
+    notch: Option<NotchDraft>,
     cut_piece: Option<CutDraft>,
     hole: Option<HoleDraft>,
     outline_offset: Option<OutlineOffsetDraft>,
@@ -1000,6 +1060,7 @@ impl Studio {
             transform: None,
             transform_gesture: None,
             internal_line: None,
+            notch: None,
             cut_piece: None,
             hole: None,
             outline_offset: None,
@@ -1118,6 +1179,7 @@ impl Studio {
         self.transform = None;
         self.transform_gesture = None;
         self.internal_line = None;
+        self.notch = None;
         self.cut_piece = None;
         self.hole = None;
         self.drag_input = None;
@@ -1281,6 +1343,7 @@ impl Studio {
             || self.transform.is_some()
             || self.transform_gesture.is_some()
             || self.internal_line.is_some()
+            || self.notch.is_some()
             || self.cut_piece.is_some()
             || self.hole.is_some()
             || self.outline_offset.is_some()
@@ -1346,6 +1409,7 @@ impl Studio {
             self.selected_curve = None;
             self.draft = None;
             self.internal_line = None;
+            self.notch = None;
             self.cut_piece = None;
             self.hole = None;
             self.drag_point = None;
@@ -1397,6 +1461,7 @@ impl Studio {
         }
         if (self.selected != piece || self.selected_curve != curve) && self.commit_draft() {
             self.internal_line = None;
+            self.notch = None;
             self.cut_piece = None;
             self.hole = None;
             self.selected = piece;
@@ -1449,6 +1514,7 @@ impl Studio {
         self.transform = None;
         self.transform_gesture = None;
         self.internal_line = None;
+        self.notch = None;
         self.cut_piece = None;
         self.hole = None;
         self.drag_point = None;
@@ -1914,8 +1980,8 @@ impl Studio {
             Ok(false) => "Export cancelled; pending edits retained.".into(),
             Ok(true) => match format {
                 ExportFormat::Dxf => "Exported exterior DXF boundaries in millimetres; internal annotations, sewing and materials stay in .weftforge.".into(),
-                ExportFormat::Svg => "Exported compound SVG boundaries, including holes, in millimetres; hole-aware reimport is not yet supported. Internal annotations stay in .weftforge.".into(),
-                ExportFormat::Obj => "Exported OBJ cloth surface in metres; internal annotations stay in .weftforge.".into(),
+                ExportFormat::Svg => "Exported SVG boundaries and notches in millimetres; holes/notches cannot yet be reimported. Internal lines stay in .weftforge.".into(),
+                ExportFormat::Obj => "Exported OBJ cloth surface in metres; internal lines and authored notches stay in .weftforge.".into(),
             },
             Err(error) => error,
         };
@@ -1925,6 +1991,7 @@ impl Studio {
         self.cancel_outline_offset(ctx);
         self.free_sewing = None;
         self.internal_line = None;
+        self.notch = None;
         self.cut_piece = None;
         self.hole = None;
         self.drag_point = None;
@@ -2710,6 +2777,7 @@ impl Studio {
         let mut commit = false;
         let mut acting = self.search
             || self.internal_line.is_some()
+            || self.notch.is_some()
             || self.cut_piece.is_some()
             || self.hole.is_some()
             || self.outline_offset.is_some()
@@ -2822,6 +2890,9 @@ impl Studio {
             let mut create_hole=false;
             let mut offset_outline=false;
             let mut remove_internal=None;
+            let mut create_notch=false;
+            let mut edit_notch=None;
+            let mut remove_notch=None;
             let mut remove_hole=None;
             let mut remove_piece=None;
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
@@ -2893,6 +2964,25 @@ impl Studio {
                             }
                         }
                     });
+                    ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("notches")),|ui| {
+                        ui.strong("Authored notches");
+                        ui.small("Perpendicular I markers · no cut or cloth effect.");
+                        let response=ui.button("Add notch…");
+                        self.retain_inspector_input(&response,false);
+                        acting|=response.is_pointer_button_down_on() || response.clicked();
+                        if response.clicked() { create_notch=true; }
+                        for notch in piece.notches.iter().filter(|notch| notch.curve==curve.id) {
+                            ui.label(format!("Notch #{} · t {} · {} mm",notch.id,notch.t,1000.*notch.length));
+                            ui.horizontal(|ui| {
+                                for (label,edit) in [(format!("Edit notch #{}…",notch.id),true),(format!("Remove notch #{}",notch.id),false)] {
+                                    let response=ui.small_button(label);
+                                    self.retain_inspector_input(&response,false);
+                                    acting|=response.is_pointer_button_down_on() || response.clicked();
+                                    if response.clicked() { if edit { edit_notch=Some(notch.id); } else { remove_notch=Some(notch.id); } }
+                                }
+                            });
+                        }
+                    });
                     ui.separator();
                     });
                 }
@@ -2935,7 +3025,7 @@ impl Studio {
             let mut close_polygon = false;
             // Explicit scopes keep auto-ID edit buffers stable as dynamic rows appear.
             ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("creation")),|ui| {
-            pane_heading(ui,"Create pattern"); ui.label("Pattern name"); ui.text_edit_singleline(&mut self.name);
+            pane_heading(ui,"Create pattern"); ui.label("Pattern name"); native_text_edit(ui,&mut self.name,None,usize::MAX,|edit|edit);
             ui.horizontal(|ui| { ui.label("W / H m"); for value in &mut self.size { ui.add(numeric_value(ui,value).speed(0.01).range(0.01..=5.0)); } });
             ui.horizontal(|ui| { ui.label("X / Y m"); for value in &mut self.coordinate { ui.add(numeric_value(ui,value).speed(0.01)); } });
             ui.horizontal(|ui| {
@@ -3090,6 +3180,9 @@ impl Studio {
             if create_hole { self.open_hole(ui.ctx()); }
             if create_internal { self.open_internal_line(ui.ctx(),None); }
             if let Some(curve)=edit_internal { self.open_internal_line(ui.ctx(),Some(curve)); }
+            if create_notch { self.open_notch(ui.ctx(),None); }
+            if let Some(notch)=edit_notch { self.open_notch(ui.ctx(),Some(notch)); }
+            if let Some(notch)=remove_notch { acting=true; self.apply_inspector_action(ui.ctx(),Command::RemoveNotch { notch },action_focus); }
             if let Some(curve)=remove_internal { acting=true; self.apply_inspector_action(ui.ctx(),Command::RemoveInternalCurve { curve },action_focus); }
             if let Some(hole)=remove_hole { acting=true; self.apply_inspector_action(ui.ctx(),Command::RemoveHole { hole },action_focus); }
             if let Some(piece)=remove_piece { acting=true; self.apply_inspector_action(ui.ctx(),Command::RemovePiece { piece },action_focus); }
@@ -3121,6 +3214,7 @@ impl Studio {
             && self.transform.is_none()
             && self.transform_gesture.is_none()
             && self.internal_line.is_none()
+            && self.notch.is_none()
             && self.cut_piece.is_none()
             && self.hole.is_none()
             && !opening_rectangle
@@ -3281,6 +3375,9 @@ impl Studio {
         if !inset.is_finite() || inset.width() <= 0.0 || inset.height() <= 0.0 {
             return;
         }
+        let Ok(notch_segments) = self.editor.project.notch_segments() else {
+            return;
+        };
         let mut min = [f64::INFINITY; 2];
         let mut max = [f64::NEG_INFINITY; 2];
         for piece in &self.editor.project.pieces {
@@ -3290,6 +3387,15 @@ impl Studio {
             for axis in 0..2 {
                 min[axis] = min[axis].min(piece_min[axis]);
                 max[axis] = max[axis].max(piece_max[axis]);
+            }
+            for notch in &piece.notches {
+                let segment = notch_segments[&notch.id];
+                for point in segment {
+                    for axis in 0..2 {
+                        min[axis] = min[axis].min(point[axis]);
+                        max[axis] = max[axis].max(point[axis]);
+                    }
+                }
             }
         }
         let center = std::array::from_fn(|axis| (min[axis] + max[axis]) * 0.5);
@@ -3434,13 +3540,11 @@ impl Studio {
                 ] {
                     ui.horizontal(|ui| {
                         let label = ui.label(name);
-                        let response = ui
-                            .add(
-                                egui::TextEdit::singleline(value)
-                                    .id_salt(salt)
-                                    .desired_width(160.),
-                            )
-                            .labelled_by(label.id);
+                        let id = ui.make_persistent_id(salt);
+                        let response = native_text_edit(ui, value, Some(id), usize::MAX, |edit| {
+                            edit.desired_width(160.)
+                        })
+                        .labelled_by(label.id);
                         if response.has_focus() {
                             draft.field_focus = Some(response.id);
                         }
@@ -3633,7 +3737,8 @@ impl Studio {
             for (index,label) in ["Origin U m","Origin V m","Width m","Height m"].into_iter().enumerate() {
                 ui.horizontal(|ui| {
                     let label=ui.label(label);
-                    let response=ui.add(egui::TextEdit::singleline(&mut draft.fields[index]).id_salt(("hole-field",index)).desired_width(180.)).labelled_by(label.id);
+                    let id=ui.make_persistent_id(("hole-field",index));
+                    let response=native_text_edit(ui,&mut draft.fields[index],Some(id),usize::MAX,|edit|edit.desired_width(180.)).labelled_by(label.id);
                     if response.has_focus() || response.lost_focus() { draft.field_focus=Some(response.id); }
                 });
             }
@@ -3737,6 +3842,7 @@ impl Studio {
             || self.transform.is_some()
             || self.transform_gesture.is_some()
             || self.internal_line.is_some()
+            || self.notch.is_some()
             || self.cut_piece.is_some()
             || self.hole.is_some()
             || self.free_sewing.is_some()
@@ -3922,7 +4028,8 @@ impl Studio {
             ui.small("Material change · extend adds fabric; retract removes fabric. The resulting boundary stays editable.");
             ui.horizontal(|ui| {
                 let label = ui.label("Width (mm)");
-                let response = ui.add(egui::TextEdit::singleline(&mut draft.width_mm).id_salt("outline-offset-width").desired_width(140.)).labelled_by(label.id);
+                let id = ui.make_persistent_id("outline-offset-width");
+                let response = native_text_edit(ui, &mut draft.width_mm, Some(id), usize::MAX, |edit| edit.desired_width(140.)).labelled_by(label.id);
                 if draft.field_focus.is_none() {
                     response.request_focus();
                 }
@@ -4106,7 +4213,8 @@ impl Studio {
                 });
                 ui.horizontal(|ui| {
                     let label = ui.label(parameter);
-                    let response = ui.add(egui::TextEdit::singleline(&mut draft.parameters[index]).id_salt(("cut-t",index)).desired_width(180.)).labelled_by(label.id);
+                    let id = ui.make_persistent_id(("cut-t",index));
+                    let response = native_text_edit(ui, &mut draft.parameters[index], Some(id), usize::MAX, |edit| edit.desired_width(180.)).labelled_by(label.id);
                     if response.has_focus() || response.lost_focus() { draft.field_focus=Some(response.id); }
                 });
             }
@@ -4217,6 +4325,142 @@ impl Studio {
                 .and_then(|piece| self.editor.project.piece(piece))
                 .is_some_and(|piece| piece.boundary.contains(curve))
         })
+    }
+    fn open_notch(&mut self, ctx: &egui::Context, notch: Option<Id>) {
+        let Some(piece) = self.selected.and_then(|id| self.editor.project.piece(id)) else {
+            self.message = "Select an owner pattern and curve before creating a notch.".into();
+            return;
+        };
+        let Some(curve) = self
+            .selected_curve
+            .filter(|id| piece.construction_curves().any(|curve| curve == id))
+        else {
+            self.message =
+                "Select a boundary, hole edge or internal line before creating a notch.".into();
+            return;
+        };
+        let original = notch
+            .and_then(|id| {
+                piece
+                    .notches
+                    .iter()
+                    .find(|notch| notch.id == id && notch.curve == curve)
+            })
+            .cloned();
+        if notch.is_some() && original.is_none() {
+            self.message = "The selected curve does not own that notch.".into();
+            return;
+        }
+        let edit = NotchDraft {
+            piece: piece.id,
+            curve,
+            t: original.as_ref().map_or(0.5, |notch| notch.t).to_string(),
+            length_mm: (original.as_ref().map_or(0.005, |notch| notch.length) * 1000.).to_string(),
+            notch: original,
+            revision: self.editor.project.revision,
+            input: self.free_sewing_input(ctx),
+            epoch: ctx.cumulative_frame_nr(),
+            error: None,
+        };
+        self.set_tool(Tool::Select);
+        finish_numeric_action(ctx, edit.input.focus, false);
+        self.notch = Some(edit);
+    }
+    fn discard_stale_notch(&mut self) {
+        if self.notch.as_ref().is_some_and(|edit| {
+            edit.revision != self.editor.project.revision
+                || self.tool != Tool::Select
+                || self.selected != Some(edit.piece)
+                || self.selected_curve != Some(edit.curve)
+                || !self.editor.project.piece(edit.piece).is_some_and(|piece| {
+                    piece
+                        .construction_curves()
+                        .any(|&curve| curve == edit.curve)
+                        && edit
+                            .notch
+                            .as_ref()
+                            .is_none_or(|original| piece.notches.contains(original))
+                })
+        }) {
+            self.notch = None;
+        }
+    }
+    fn apply_notch(&mut self, ctx: &egui::Context, edit: &NotchDraft) -> Result<(), String> {
+        if edit.revision != self.editor.project.revision
+            || self.tool != Tool::Select
+            || self.selected != Some(edit.piece)
+            || self.selected_curve != Some(edit.curve)
+            || !self.editor.project.piece(edit.piece).is_some_and(|piece| {
+                piece
+                    .construction_curves()
+                    .any(|&curve| curve == edit.curve)
+                    && edit
+                        .notch
+                        .as_ref()
+                        .is_none_or(|original| piece.notches.contains(original))
+            })
+        {
+            return Err(
+                "Notch cancelled: owner, selection or construction revision changed.".into(),
+            );
+        }
+        if edit.input.text.as_ref().is_some_and(|(text, _)| {
+            text.trim()
+                .parse::<f64>()
+                .ok()
+                .is_none_or(|value| !value.is_finite())
+        }) {
+            return Err("Correct the pending property value before applying a notch.".into());
+        }
+        let command = edit.command()?;
+        if let Command::UpdateNotch { notch } = &command
+            && self.editor.project.notch(notch.id) == Some(notch)
+        {
+            return Ok(());
+        }
+        if self.apply_inspector_action(ctx, command, edit.input.focus) {
+            Ok(())
+        } else {
+            Err(self.message.clone())
+        }
+    }
+    fn notch_window(&mut self, ctx: &egui::Context) {
+        self.discard_stale_notch();
+        let Some(mut edit) = self.notch.take() else {
+            return;
+        };
+        let enter = ctx.input(|input| input.key_pressed(egui::Key::Enter));
+        let mut accept = false;
+        let mut cancel = false;
+        let response = egui::Modal::new(egui::Id::new(("notch", edit.piece, edit.curve, edit.revision, edit.epoch))).show(ctx, |ui| {
+            ui.set_width(390.);
+            ui.heading(if edit.notch.is_some() { "Edit authored notch" } else { "Create authored notch" });
+            ui.label(format!("Owner #{} · curve #{}", edit.piece, edit.curve));
+            ui.label("Perpendicular I marker centred on the curve. Annotation only; no cut, fold or cloth effect.");
+            ui.small("Position follows curve parameter t, not arc length; length stays fixed in metres when resizing.");
+            for (label, text) in [("Curve parameter t (0–1)", &mut edit.t), ("Notch length (mm)", &mut edit.length_mm)] {
+                ui.horizontal(|ui| {
+                    let label = ui.label(label);
+                    native_text_edit(ui,text,None,64,|edit|edit.desired_width(160.)).labelled_by(label.id);
+                });
+            }
+            if let Some(error) = &edit.error { ui.colored_label(Color32::LIGHT_RED, error); }
+            ui.horizontal(|ui| {
+                accept = ui.button("Apply notch").clicked();
+                cancel = ui.button("Cancel notch").clicked();
+            });
+        });
+        if cancel || response.should_close() {
+            edit.input.close_without_commit(ctx);
+            return;
+        }
+        if accept || enter {
+            match self.apply_notch(ctx, &edit) {
+                Ok(()) => return,
+                Err(error) => edit.error = Some(error),
+            }
+        }
+        self.notch = Some(edit);
     }
     fn internal_line_edit(
         &self,
@@ -4684,8 +4928,10 @@ impl Studio {
             {
                 ui.horizontal(|ui| {
                     let label = ui.label(label);
-                    ui.add(egui::TextEdit::singleline(value).desired_width(100.0))
-                        .labelled_by(label.id);
+                    native_text_edit(ui, value, None, usize::MAX, |edit| {
+                        edit.desired_width(100.0)
+                    })
+                    .labelled_by(label.id);
                 });
             }
             if let Some(error) = &rectangle.error {
@@ -4735,12 +4981,14 @@ impl Studio {
     }
     fn patterns(&mut self, ui: &mut egui::Ui) {
         self.discard_stale_transform();
+        self.discard_stale_notch();
         self.discard_stale_internal_line();
         self.discard_stale_cut_piece();
         self.discard_stale_hole();
         self.discard_stale_free_sewing();
         self.refresh_free_sewing();
         let gesture_paused = self.search
+            || self.notch.is_some()
             || egui::Popup::is_any_open(ui.ctx())
             || ui
                 .ctx()
@@ -4857,6 +5105,7 @@ impl Studio {
         let mut distance = 12_f32;
         let mut boundary_nearest = None;
         let mut boundary_distance = 12_f32;
+        let notch_segments = doc.notch_segments().unwrap_or_default();
         for piece in &doc.pieces {
             let selected = self.selected == Some(piece.id);
             let color = if selected {
@@ -4952,6 +5201,22 @@ impl Studio {
                     );
                     for point in points {
                         painter.circle_stroke(point, 4., Stroke::new(1.5, color));
+                    }
+                }
+            }
+            for notch in &piece.notches {
+                if let Some(segment) = notch_segments.get(&notch.id) {
+                    let points = segment.map(|point| self.to_screen(point, r));
+                    let color = Color32::from_rgb(243, 182, 101);
+                    painter.line_segment(points, Stroke::new(2., color));
+                    if self.selected_curve == Some(notch.curve) {
+                        painter.text(
+                            points[1] + Vec2::new(4., -4.),
+                            egui::Align2::LEFT_BOTTOM,
+                            format!("N#{}", notch.id),
+                            egui::FontId::proportional(10.),
+                            color,
+                        );
                     }
                 }
             }
@@ -5830,7 +6095,7 @@ impl Studio {
         let response = egui::Modal::new(egui::Id::new(("edit-sewing-group", edit.group.id, edit.epoch))).show(ctx, |ui| {
             ui.set_width(620.);
             ui.heading(format!("Edit sewing group #{}", edit.group.id));
-            ui.horizontal(|ui| { let label=ui.label("Name"); ui.text_edit_singleline(&mut edit.group.name).labelled_by(label.id); });
+            ui.horizontal(|ui| { let label=ui.label("Name"); native_text_edit(ui,&mut edit.group.name,None,usize::MAX,|edit|edit).labelled_by(label.id); });
             ui.small("Pairing uses normalized total authored arc length. Each span keeps its own curve parameter endpoints and direction; gaps add no length.");
             egui::ScrollArea::vertical().id_salt("group-fields").max_height(420.).show(ui, |ui| {
                 let b_fields=ui.columns(2, |columns| {
@@ -6054,6 +6319,7 @@ impl eframe::App for Studio {
         self.poll_autosave();
         self.discard_stale_transform();
         self.discard_stale_free_sewing();
+        self.discard_stale_notch();
         self.discard_stale_internal_line();
         self.discard_stale_cut_piece();
         self.discard_stale_hole();
@@ -6061,6 +6327,7 @@ impl eframe::App for Studio {
         let authoring_modal = self.rectangle.is_some()
             || self.transform.is_some()
             || self.internal_line.as_ref().is_some_and(|edit| edit.modal)
+            || self.notch.is_some()
             || self.cut_piece.as_ref().is_some_and(|draft| draft.modal)
             || self.hole.is_some()
             || self.outline_offset.is_some()
@@ -6312,7 +6579,7 @@ impl eframe::App for Studio {
                 .open(&mut open)
                 .collapsible(false)
                 .show(&ctx, |ui| {
-                    ui.text_edit_singleline(&mut self.query);
+                    native_text_edit(ui, &mut self.query, None, usize::MAX, |edit| edit);
                     for label in [
                         "New Empty",
                         "Save project",
@@ -6401,6 +6668,7 @@ impl eframe::App for Studio {
         self.rectangle_window(&ctx);
         self.transform_window(&ctx);
         self.internal_line_window(&ctx);
+        self.notch_window(&ctx);
         self.cut_piece_window(&ctx);
         self.hole_window(&ctx);
         self.outline_offset_window(&ctx);
@@ -6803,6 +7071,160 @@ fn finish_numeric_action(ctx: &egui::Context, focused: Option<egui::Id>, succeed
         )
     });
 }
+fn native_text_edit<'a>(
+    ui: &mut egui::Ui,
+    text: &'a mut String,
+    id: Option<egui::Id>,
+    char_limit: usize,
+    configure: impl FnOnce(egui::TextEdit<'a>) -> egui::TextEdit<'a>,
+) -> egui::Response {
+    use egui::TextBuffer as _;
+    use egui::accesskit::{Action, ActionData, ActionRequest, TreeId};
+    use egui::text::{CCursor, CCursorRange};
+
+    // Match TextEdit's existing auto-ID allocation when the caller has no salt.
+    let id = id.unwrap_or_else(|| {
+        let id = ui.next_auto_id();
+        ui.skip_ahead_auto_ids(1);
+        id
+    });
+    fn replacement(event: &egui::Event, id: egui::Id) -> Option<&str> {
+        match event {
+            egui::Event::AccessKitActionRequest(ActionRequest {
+                action: Action::SetValue,
+                target_tree,
+                target_node,
+                data: Some(ActionData::Value(value)),
+            }) if *target_tree == TreeId::ROOT && *target_node == id.accesskit_id() => {
+                Some(value.as_ref())
+            }
+            _ => None,
+        }
+    }
+    fn bounded_singleline(value: &str, char_limit: usize) -> String {
+        let mut text = String::new();
+        text.insert_text_at(
+            &mut CCursor::new(0),
+            &value.replace(['\r', '\n'], " "),
+            char_limit,
+        );
+        text
+    }
+    fn may_edit_text(event: &egui::Event, owns_ime: bool) -> bool {
+        match event {
+            egui::Event::Text(text) => !text.is_empty() && text != "\n" && text != "\r",
+            egui::Event::Paste(text) => !text.is_empty(),
+            egui::Event::Cut => true,
+            egui::Event::Key {
+                key,
+                pressed: true,
+                modifiers,
+                ..
+            } => match key {
+                egui::Key::Backspace | egui::Key::Delete => true,
+                egui::Key::Z | egui::Key::Y => modifiers.command,
+                egui::Key::H | egui::Key::K | egui::Key::U | egui::Key::W => modifiers.ctrl,
+                _ => false,
+            },
+            egui::Event::Ime(_) => owns_ime,
+            _ => false,
+        }
+    }
+    let values: Vec<_> = ui.input(|input| {
+        input
+            .events
+            .iter()
+            .filter_map(|event| replacement(event, id))
+            .map(|value| bounded_singleline(value, char_limit))
+            .collect()
+    });
+    let requested = ui.is_enabled() && !values.is_empty();
+    let focused = ui.memory(|memory| memory.has_focus(id));
+    let owns_ime = ui.memory(|memory| memory.owns_ime_events(id));
+    let original_events = (requested && focused).then(|| {
+        ui.input_mut(|input| {
+            let original = std::mem::take(&mut input.events);
+            let mut prior_edit = false;
+            for event in &original {
+                if let Some(raw) = replacement(event, id) {
+                    let value = bounded_singleline(raw, char_limit);
+                    // The initial buffer proves a no-op only until an earlier
+                    // event could have edited it. Keep subsequent setters in order.
+                    if !prior_edit && value == *text {
+                        input.events.push(event.clone());
+                        continue;
+                    }
+                    let key = |key, modifiers| egui::Event::Key {
+                        key,
+                        physical_key: None,
+                        pressed: true,
+                        repeat: false,
+                        modifiers,
+                    };
+                    input
+                        .events
+                        .push(key(egui::Key::A, egui::Modifiers::COMMAND));
+                    input.events.push(if value.is_empty() {
+                        key(egui::Key::Backspace, egui::Modifiers::NONE)
+                    } else {
+                        egui::Event::Paste(value)
+                    });
+                    prior_edit = true;
+                } else {
+                    prior_edit |= may_edit_text(event, owns_ime);
+                    input.events.push(event.clone());
+                }
+            }
+            original
+        })
+    });
+    let mut unfocused_changed = false;
+    if requested && !focused {
+        // A native value setter does not take keyboard focus. Use egui's public
+        // bounded buffer/cursor/undo APIs without replaying another field's input.
+        let mut state = None;
+        let time = ui.input(|input| input.time);
+        for value in values {
+            if value == *text {
+                continue;
+            }
+            let state = state.get_or_insert_with(|| {
+                egui::TextEdit::load_state(ui.ctx(), id).unwrap_or_default()
+            });
+            let before = state
+                .cursor
+                .char_range()
+                .unwrap_or_else(|| CCursorRange::one(CCursor::new(text.chars().count())));
+            let mut undoer = state.undoer();
+            undoer.feed_state(time, &(before, text.clone()));
+            *text = value;
+            let range = CCursorRange::one(CCursor::new(text.chars().count()));
+            state.cursor.set_char_range(Some(range));
+            undoer.feed_state(time, &(range, text.clone()));
+            state.set_undoer(undoer);
+            unfocused_changed = true;
+        }
+        if let Some(state) = state {
+            state.store(ui.ctx(), id);
+        }
+    }
+    // Keep ordinary events in order for the already-focused field. An unfocused
+    // target leaves egui's genuine focus, pointer, navigation and IME handling alone.
+    let mut response = ui.add(
+        configure(egui::TextEdit::singleline(text))
+            .id(id)
+            .char_limit(char_limit),
+    );
+    if unfocused_changed {
+        response.mark_changed();
+    }
+    if let Some(events) = original_events {
+        // Synthetic keys/paste must never reach a later text or numeric field.
+        ui.input_mut(|input| input.events = events);
+    }
+    response
+}
+
 fn numeric_value<'a>(ui: &egui::Ui, value: &'a mut f64) -> egui::DragValue<'a> {
     let id = ui.next_auto_id();
     let ctx = ui.ctx().clone();
@@ -7315,6 +7737,249 @@ fn main() -> eframe::Result {
         Box::new(|cc| Ok(Box::new(Studio::new(cc)))),
     )
 }
+#[cfg(test)]
+mod native_text_accessibility_tests {
+    use super::native_idle_numeric_tests::action;
+    use super::pattern_transform_tests::key;
+    use super::*;
+    use egui::accesskit::{Action, ActionData};
+    use egui::text::{CCursor, CCursorRange};
+
+    fn frame(
+        ctx: &egui::Context,
+        values: &mut [String; 2],
+        events: Vec<egui::Event>,
+        enabled: bool,
+    ) -> ([egui::Id; 2], [bool; 2]) {
+        let mut ids = [egui::Id::NULL; 2];
+        let mut changed = [false; 2];
+        let _ = ctx.run_ui(
+            egui::RawInput {
+                screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(800., 600.))),
+                events,
+                ..Default::default()
+            },
+            |ui| {
+                let original = ui.input(|input| input.events.clone());
+                if !enabled {
+                    ui.disable();
+                }
+                let expected_auto_id = ui.next_auto_id();
+                let first = native_text_edit(ui, &mut values[0], None, 4, |edit| edit);
+                assert_eq!(first.id, expected_auto_id);
+                let salted_id = ui.make_persistent_id("existing-salt");
+                let second =
+                    native_text_edit(ui, &mut values[1], Some(salted_id), usize::MAX, |edit| edit);
+                assert_eq!(second.id, salted_id);
+                ids = [first.id, second.id];
+                changed = [first.changed(), second.changed()];
+                assert_eq!(ui.input(|input| input.events.clone()), original);
+            },
+        );
+        (ids, changed)
+    }
+
+    #[test]
+    fn native_text_set_value_uses_existing_ids_limits_and_scoped_ordinary_editing() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut values = ["base".into(), "keep".into()];
+        let (ids, _) = frame(&ctx, &mut values, vec![], true);
+        frame(
+            &ctx,
+            &mut values,
+            vec![action(ids[1].accesskit_id(), Action::Focus, None)],
+            true,
+        );
+        frame(&ctx, &mut values, vec![], true);
+        assert_eq!(ctx.memory(|memory| memory.focused()), Some(ids[1]));
+        let set = |id: egui::Id, text: &str| {
+            action(
+                id.accesskit_id(),
+                Action::SetValue,
+                Some(ActionData::Value(text.into())),
+            )
+        };
+        let (next_ids, changed) = frame(&ctx, &mut values, vec![set(ids[0], "ab\r\n🙂xyz")], true);
+        assert_eq!(next_ids, ids);
+        assert_eq!(values, ["ab  ", "keep"]);
+        assert_eq!(changed, [true, false]);
+        assert_eq!(ctx.memory(|memory| memory.focused()), Some(ids[1]));
+        frame(
+            &ctx,
+            &mut values,
+            vec![action(ids[0].accesskit_id(), Action::Focus, None)],
+            true,
+        );
+        frame(&ctx, &mut values, vec![], true);
+        frame(
+            &ctx,
+            &mut values,
+            vec![key(egui::Key::ArrowLeft, egui::Modifiers::NONE); 3],
+            true,
+        );
+        frame(
+            &ctx,
+            &mut values,
+            vec![action(ids[1].accesskit_id(), Action::Focus, None)],
+            true,
+        );
+        frame(&ctx, &mut values, vec![], true);
+        let state = egui::TextEdit::load_state(&ctx, ids[0]).unwrap();
+        let caret = state.cursor.char_range();
+        assert_eq!(caret, Some(CCursorRange::one(CCursor::new(1))));
+        let undo = format!("{:?}", state.undoer());
+        for normalized_noop in ["ab\r\n🙂xyz", "ab  more"] {
+            let (_, changed) = frame(&ctx, &mut values, vec![set(ids[0], normalized_noop)], true);
+            assert_eq!(values, ["ab  ", "keep"]);
+            assert_eq!(changed, [false, false]);
+            assert_eq!(ctx.memory(|memory| memory.focused()), Some(ids[1]));
+            let state = egui::TextEdit::load_state(&ctx, ids[0]).unwrap();
+            assert_eq!(state.cursor.char_range(), caret);
+            assert_eq!(format!("{:?}", state.undoer()), undo);
+        }
+        frame(
+            &ctx,
+            &mut values,
+            vec![
+                egui::Event::Text("x".into()),
+                set(ids[0], "abc"),
+                egui::Event::Paste("Y".into()),
+                key(egui::Key::Backspace, egui::Modifiers::NONE),
+                egui::Event::Text("z".into()),
+            ],
+            true,
+        );
+        assert_eq!(values, ["abc", "keepxz"]);
+        assert_eq!(ctx.memory(|memory| memory.focused()), Some(ids[1]));
+        frame(
+            &ctx,
+            &mut values,
+            vec![action(ids[0].accesskit_id(), Action::Focus, None)],
+            true,
+        );
+        frame(&ctx, &mut values, vec![], true);
+        frame(
+            &ctx,
+            &mut values,
+            vec![
+                egui::Event::Text("X".into()),
+                set(ids[1], "target"),
+                key(egui::Key::Backspace, egui::Modifiers::NONE),
+                egui::Event::Paste("Y".into()),
+            ],
+            true,
+        );
+        assert_eq!(values, ["abcY", "target"]);
+        assert_eq!(ctx.memory(|memory| memory.focused()), Some(ids[0]));
+        frame(
+            &ctx,
+            &mut values,
+            vec![
+                set(ids[0], "ab"),
+                egui::Event::Text("c".into()),
+                set(ids[0], "x"),
+                egui::Event::Paste("yz".into()),
+            ],
+            true,
+        );
+        assert_eq!(values, ["xyz", "target"]);
+        frame(
+            &ctx,
+            &mut values,
+            vec![key(egui::Key::ArrowLeft, egui::Modifiers::NONE)],
+            true,
+        );
+        let focused = ctx.memory(|memory| memory.focused());
+        let caret = egui::TextEdit::load_state(&ctx, ids[0])
+            .unwrap()
+            .cursor
+            .char_range();
+        assert_eq!(caret, Some(CCursorRange::one(CCursor::new(2))));
+        let (_, changed) = frame(&ctx, &mut values, vec![set(ids[0], "xyz")], true);
+        assert_eq!(changed, [false, false]);
+        assert_eq!(ctx.memory(|memory| memory.focused()), focused);
+        assert_eq!(
+            egui::TextEdit::load_state(&ctx, ids[0])
+                .unwrap()
+                .cursor
+                .char_range(),
+            caret
+        );
+        frame(&ctx, &mut values, vec![set(ids[0], "x")], true);
+        frame(
+            &ctx,
+            &mut values,
+            vec![egui::Event::Text("a".into()), set(ids[0], "x")],
+            true,
+        );
+        assert_eq!(values, ["x", "target"]);
+        assert_eq!(ctx.memory(|memory| memory.focused()), focused);
+        frame(
+            &ctx,
+            &mut values,
+            vec![
+                key(egui::Key::ArrowLeft, egui::Modifiers::NONE),
+                set(ids[0], "x"),
+            ],
+            true,
+        );
+        assert_eq!(
+            egui::TextEdit::load_state(&ctx, ids[0])
+                .unwrap()
+                .cursor
+                .char_range(),
+            Some(CCursorRange::one(CCursor::new(0)))
+        );
+        frame(
+            &ctx,
+            &mut values,
+            vec![set(ids[0], "x"), egui::Event::Text("a".into())],
+            true,
+        );
+        assert_eq!(values, ["ax", "target"]);
+        let (_, changed) = frame(&ctx, &mut values, vec![set(ids[0], "")], true);
+        assert_eq!(values, ["", "target"]);
+        assert_eq!(changed, [true, false]);
+        frame(
+            &ctx,
+            &mut values,
+            vec![egui::Event::Text("é🙂xyz".into())],
+            true,
+        );
+        assert_eq!(values, ["é🙂xy", "target"]);
+        let (_, changed) = frame(
+            &ctx,
+            &mut values,
+            vec![
+                set(egui::Id::new("unrelated"), "wrong target"),
+                action(
+                    ids[0].accesskit_id(),
+                    Action::SetValue,
+                    Some(ActionData::NumericValue(3.)),
+                ),
+            ],
+            true,
+        );
+        assert_eq!(values, ["é🙂xy", "target"]);
+        assert_eq!(changed, [false, false]);
+        let (_, changed) = frame(&ctx, &mut values, vec![set(ids[0], "disabled")], false);
+        assert_eq!(values, ["é🙂xy", "target"]);
+        assert_eq!(changed, [false, false]);
+        frame(
+            &ctx,
+            &mut values,
+            vec![
+                set(ids[1], "explicit focus"),
+                action(ids[1].accesskit_id(), Action::Focus, None),
+            ],
+            true,
+        );
+        assert_eq!(values, ["é🙂xy", "explicit focus"]);
+        assert_eq!(ctx.memory(|memory| memory.focused()), Some(ids[1]));
+    }
+}
+
 #[cfg(test)]
 mod native_idle_numeric_tests {
     use super::*;
@@ -18035,7 +18700,7 @@ mod cut_piece_tests {
         assert!(!app.dirty);
         assert_eq!(
             serde_json::from_slice::<serde_json::Value>(&fs::read(&path).unwrap()).unwrap()["version"],
-            5
+            weftforge_core::FORMAT_VERSION
         );
         let mut reopened = Studio::empty();
         reopened.session_autosave = None;
@@ -18850,6 +19515,471 @@ mod cut_piece_tests {
                 }
                 fs::remove_dir_all(dir).unwrap();
             }
+        }
+    }
+}
+
+#[cfg(test)]
+mod notch_tests {
+    use super::cut_piece_tests::{labelled, parameter};
+    use super::pattern_transform_tests::{action, button, focus_property, frame, key};
+    use super::*;
+    use egui::accesskit::{Action, ActionData};
+
+    fn fixture() -> (egui::Context, Studio) {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        for command in [
+            Command::AddRectangle {
+                name: "Original native notch panel".into(),
+                origin: [0.; 2],
+                width: 0.24,
+                height: 0.36,
+            },
+            Command::SetGrain {
+                piece: 2,
+                angle: 0.37,
+            },
+            Command::SetResolution { metres: 0.2 },
+        ] {
+            app.editor.execute(command).unwrap();
+        }
+        assert!(app.editor.undo());
+        app.selected = Some(2);
+        app.selected_curve = Some(7);
+        app.center = [0.12, 0.18];
+        app.scale = 1000.;
+        (ctx, app)
+    }
+    fn click(ctx: &egui::Context, app: &mut Studio, label: &str) {
+        let output = frame(ctx, app, vec![]);
+        frame(
+            ctx,
+            app,
+            vec![action(button(&output, label), Action::Click, None)],
+        );
+    }
+
+    #[test]
+    fn native_text_set_value_retains_raw_modal_input_and_uses_notch_validation() {
+        let (ctx, mut app) = fixture();
+        let before = app.editor.project.clone();
+        let history = format!("{:?}", app.editor);
+        click(&ctx, &mut app, "Add notch…");
+        let output = frame(&ctx, &mut app, vec![]);
+        let t = labelled(
+            &output,
+            "Curve parameter t (0–1)",
+            egui::accesskit::Role::TextInput,
+        );
+        let length = labelled(
+            &output,
+            "Notch length (mm)",
+            egui::accesskit::Role::TextInput,
+        );
+        frame(
+            &ctx,
+            &mut app,
+            vec![
+                action(t, Action::SetValue, Some(ActionData::Value("2".into()))),
+                action(
+                    length,
+                    Action::SetValue,
+                    Some(ActionData::Value("8".into())),
+                ),
+            ],
+        );
+        let draft = app.notch.as_ref().unwrap();
+        assert_eq!(
+            draft.t, "2",
+            "native SetValue must reach the raw text draft"
+        );
+        assert_eq!(draft.length_mm, "8");
+        assert_eq!(format!("{:?}", app.editor), history);
+        click(&ctx, &mut app, "Apply notch");
+        let draft = app.notch.as_ref().unwrap();
+        assert!(draft.error.is_some());
+        assert_eq!((draft.t.as_str(), draft.length_mm.as_str()), ("2", "8"));
+        assert_eq!(format!("{:?}", app.editor), history);
+        assert!(app.editor.can_redo() && !app.dirty);
+
+        let output = frame(&ctx, &mut app, vec![]);
+        assert_eq!(
+            labelled(
+                &output,
+                "Curve parameter t (0–1)",
+                egui::accesskit::Role::TextInput
+            ),
+            t
+        );
+        assert_eq!(
+            labelled(
+                &output,
+                "Notch length (mm)",
+                egui::accesskit::Role::TextInput
+            ),
+            length
+        );
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(
+                t,
+                Action::SetValue,
+                Some(ActionData::Value("0.25".into())),
+            )],
+        );
+        click(&ctx, &mut app, "Apply notch");
+        assert!(app.notch.is_none());
+        assert_eq!(app.editor.project.revision, before.revision + 1);
+        let notches = &app.editor.project.pieces[0].notches;
+        assert_eq!(notches.len(), 1);
+        assert_eq!((notches[0].t, notches[0].length), (0.25, 0.008));
+        app.history(&ctx, false);
+        assert_eq!(app.editor.project.pieces, before.pieces);
+        app.history(&ctx, true);
+        assert_eq!(app.editor.project.pieces[0].notches.len(), 1);
+    }
+
+    #[test]
+    fn native_text_set_value_noop_and_cancel_preserve_pending_properties() {
+        let (ctx, mut app) = fixture();
+        let property = focus_property(&ctx, &mut app, "0.4700");
+        let before = format!("{:?}", app.editor);
+        click(&ctx, &mut app, "Add notch…");
+        let output = frame(&ctx, &mut app, vec![]);
+        let t = labelled(
+            &output,
+            "Curve parameter t (0–1)",
+            egui::accesskit::Role::TextInput,
+        );
+        let length = labelled(
+            &output,
+            "Notch length (mm)",
+            egui::accesskit::Role::TextInput,
+        );
+        frame(&ctx, &mut app, vec![action(length, Action::Focus, None)]);
+        frame(&ctx, &mut app, vec![]);
+        let values = || {
+            vec![
+                action(t, Action::SetValue, Some(ActionData::Value("0.25".into()))),
+                action(
+                    length,
+                    Action::SetValue,
+                    Some(ActionData::Value("8".into())),
+                ),
+            ]
+        };
+        frame(&ctx, &mut app, values());
+        assert_eq!(format!("{:?}", app.editor), before);
+        let focused = ctx.memory(|memory| memory.focused()).unwrap();
+        let caret = egui::TextEdit::load_state(&ctx, focused)
+            .unwrap()
+            .cursor
+            .char_range();
+        frame(&ctx, &mut app, values());
+        assert_eq!(ctx.memory(|memory| memory.focused()), Some(focused));
+        assert_eq!(
+            egui::TextEdit::load_state(&ctx, focused)
+                .unwrap()
+                .cursor
+                .char_range(),
+            caret
+        );
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(
+                length,
+                Action::SetValue,
+                Some(ActionData::Value("é".repeat(80).into())),
+            )],
+        );
+        let draft = app.notch.as_ref().unwrap();
+        assert_eq!(draft.t, "0.25");
+        assert_eq!(draft.length_mm, "é".repeat(64));
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert!(!app.dirty && app.editor.can_redo());
+        click(&ctx, &mut app, "Cancel notch");
+        assert!(app.notch.is_none());
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert_eq!(
+            ctx.data_mut(|data| data.get_temp::<String>(property))
+                .as_deref(),
+            Some("0.4700")
+        );
+    }
+
+    #[test]
+    fn native_text_set_value_does_not_blur_or_commit_unrelated_numeric_input() {
+        let (ctx, mut app) = fixture();
+        let property = focus_property(&ctx, &mut app, "0.4700");
+        let before = format!("{:?}", app.editor);
+        let caret = egui::TextEdit::load_state(&ctx, property)
+            .unwrap()
+            .cursor
+            .char_range();
+        let name = app.name.clone();
+        let output = frame(&ctx, &mut app, vec![]);
+        let fields: Vec<_> = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .filter(|(_, node)| {
+                node.role() == egui::accesskit::Role::TextInput
+                    && !node.is_disabled()
+                    && node.value() == Some(name.as_str())
+            })
+            .map(|(id, _)| *id)
+            .collect();
+        assert_eq!(fields.len(), 1);
+        let set_name = |value: &str| {
+            action(
+                fields[0],
+                Action::SetValue,
+                Some(ActionData::Value(value.into())),
+            )
+        };
+        frame(&ctx, &mut app, vec![set_name("AX pattern name")]);
+        for _ in 0..3 {
+            frame(&ctx, &mut app, vec![]);
+        }
+        assert_eq!(app.name, "AX pattern name");
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert_eq!(ctx.memory(|memory| memory.focused()), Some(property));
+        assert_eq!(
+            egui::TextEdit::load_state(&ctx, property)
+                .unwrap()
+                .cursor
+                .char_range(),
+            caret
+        );
+        assert_eq!(
+            ctx.data_mut(|data| data.get_temp::<String>(property))
+                .as_deref(),
+            Some("0.4700")
+        );
+        frame(
+            &ctx,
+            &mut app,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("0.5900".into()),
+                set_name("Mixed pattern name"),
+            ],
+        );
+        for _ in 0..3 {
+            frame(&ctx, &mut app, vec![]);
+        }
+        assert_eq!(app.name, "Mixed pattern name");
+        assert_eq!(
+            ctx.data_mut(|data| data.get_temp::<String>(property))
+                .as_deref(),
+            Some("0.5900")
+        );
+        assert_eq!(ctx.memory(|memory| memory.focused()), Some(property));
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert!(app.editor.can_redo() && !app.dirty);
+    }
+
+    #[test]
+    fn native_notch_create_edit_remove_and_pending_properties_share_single_history_actions() {
+        let (ctx, mut app) = fixture();
+        focus_property(&ctx, &mut app, "0.47");
+        let before = app.editor.project.clone();
+        click(&ctx, &mut app, "Add notch…");
+        assert!(app.notch.is_some());
+        assert_eq!(app.editor.project, before);
+        parameter(&ctx, &mut app, "Curve parameter t (0–1)", "0.125");
+        parameter(&ctx, &mut app, "Notch length (mm)", "20");
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+        );
+        assert!(app.notch.is_none());
+        assert_eq!(app.editor.project.revision, before.revision + 1);
+        assert_eq!(app.editor.project.pieces[0].grain_angle, 0.47);
+        let notch = app.editor.project.notch(11).unwrap().clone();
+        assert_eq!(notch.t, 0.125);
+        assert_eq!(notch.length, 0.02);
+        let output = frame(&ctx, &mut app, vec![]);
+        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+        let expected = notch
+            .segment(&app.editor.project)
+            .unwrap()
+            .map(|point| app.to_screen(point, rect));
+        assert!(output.shapes.iter().any(|shape| matches!(&shape.shape, egui::Shape::LineSegment { points, stroke } if *points == expected && stroke.color == Color32::from_rgb(243, 182, 101))));
+        app.history(&ctx, false);
+        assert_eq!(app.editor.project.pieces, before.pieces);
+        app.history(&ctx, true);
+        let revision = app.editor.project.revision;
+        click(&ctx, &mut app, "Edit notch #11…");
+        parameter(&ctx, &mut app, "Curve parameter t (0–1)", "0.75");
+        parameter(&ctx, &mut app, "Notch length (mm)", "7");
+        click(&ctx, &mut app, "Apply notch");
+        assert_eq!(app.editor.project.revision, revision + 1);
+        assert_eq!(app.editor.project.notch(11).unwrap().t, 0.75);
+        assert_eq!(app.editor.project.notch(11).unwrap().length, 0.007);
+        click(&ctx, &mut app, "Remove notch #11");
+        assert!(app.editor.project.notch(11).is_none());
+        app.history(&ctx, false);
+        assert_eq!(app.editor.project.notch(11).unwrap().t, 0.75);
+        app.history(&ctx, false);
+        assert_eq!(app.editor.project.notch(11), Some(&notch));
+    }
+
+    #[test]
+    fn invalid_notch_text_and_cancel_preserve_document_redo_and_pending_raw_property() {
+        for (label, entered) in [
+            ("Curve parameter t (0–1)", "1e-"),
+            ("Curve parameter t (0–1)", "NaN"),
+            ("Curve parameter t (0–1)", "1.1"),
+            ("Notch length (mm)", "0"),
+            ("Notch length (mm)", "100.1"),
+            ("Notch length (mm)", "Infinity"),
+        ] {
+            let (ctx, mut app) = fixture();
+            let property = focus_property(&ctx, &mut app, "0.4700");
+            let before = format!("{:?}", app.editor);
+            click(&ctx, &mut app, "Add notch…");
+            parameter(&ctx, &mut app, label, entered);
+            click(&ctx, &mut app, "Apply notch");
+            assert!(app.notch.as_ref().unwrap().error.is_some());
+            let text = if label.starts_with("Curve") {
+                &app.notch.as_ref().unwrap().t
+            } else {
+                &app.notch.as_ref().unwrap().length_mm
+            };
+            assert_eq!(text, entered);
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert!(app.editor.can_redo() && !app.dirty);
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+            );
+            assert!(app.notch.is_none());
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(property))
+                    .as_deref(),
+                Some("0.4700")
+            );
+        }
+        let (ctx, mut app) = fixture();
+        focus_property(&ctx, &mut app, "1e-");
+        let before = format!("{:?}", app.editor);
+        click(&ctx, &mut app, "Add notch…");
+        click(&ctx, &mut app, "Apply notch");
+        assert!(
+            app.notch
+                .as_ref()
+                .unwrap()
+                .error
+                .as_ref()
+                .unwrap()
+                .contains("pending property")
+        );
+        assert_eq!(format!("{:?}", app.editor), before);
+    }
+
+    #[test]
+    fn notch_modal_shields_shortcuts_and_background_accessibility_and_stale_edits_refuse() {
+        let (ctx, mut app) = fixture();
+        let output = frame(&ctx, &mut app, vec![]);
+        let numeric = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| node.numeric_value() == Some(0.37))
+            .unwrap()
+            .0;
+        let background = button(&output, "Add rectangle");
+        click(&ctx, &mut app, "Add notch…");
+        let before = format!("{:?}", app.editor);
+        for event in [
+            action(background, Action::Click, None),
+            action(
+                numeric,
+                Action::SetValue,
+                Some(ActionData::NumericValue(0.8)),
+            ),
+            key(egui::Key::S, egui::Modifiers::COMMAND),
+            key(egui::Key::O, egui::Modifiers::COMMAND),
+            key(egui::Key::Z, egui::Modifiers::COMMAND),
+            key(egui::Key::Space, egui::Modifiers::NONE),
+            key(egui::Key::K, egui::Modifiers::COMMAND),
+        ] {
+            frame(&ctx, &mut app, vec![event]);
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert!(app.notch.is_some() && !app.dirty && !app.playing && !app.search);
+        }
+        for stale in ["revision", "owner", "curve", "tool"] {
+            let (ctx, mut app) = fixture();
+            app.open_notch(&ctx, None);
+            let edit = app.notch.as_ref().unwrap().clone();
+            match stale {
+                "revision" => app
+                    .editor
+                    .execute(Command::SetGrain {
+                        piece: 2,
+                        angle: 0.2,
+                    })
+                    .unwrap(),
+                "owner" => app.selected = None,
+                "curve" => app.selected_curve = Some(8),
+                "tool" => app.tool = Tool::Transform,
+                _ => unreachable!(),
+            }
+            let before = format!("{:?}", app.editor);
+            assert!(app.apply_notch(&ctx, &edit).is_err());
+            app.discard_stale_notch();
+            assert!(app.notch.is_none());
+            assert_eq!(format!("{:?}", app.editor), before);
+        }
+    }
+
+    #[test]
+    fn unchanged_notch_editor_keeps_float_bits_redo_and_framing_includes_marker_ends() {
+        let (ctx, mut app) = fixture();
+        app.editor
+            .execute(Command::AddNotch {
+                piece: 2,
+                curve: 7,
+                t: 0.,
+                length: 0.012345678901234567,
+            })
+            .unwrap();
+        app.editor
+            .execute(Command::SetResolution { metres: 0.2 })
+            .unwrap();
+        assert!(app.editor.undo());
+        let before = format!("{:?}", app.editor);
+        app.open_notch(&ctx, Some(11));
+        let edit = app.notch.take().unwrap();
+        assert!(app.apply_notch(&ctx, &edit).is_ok());
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert!(app.editor.can_redo() && !app.dirty);
+        let rect = Rect::from_min_size(Pos2::ZERO, Vec2::new(800., 600.));
+        app.frame_patterns(rect);
+        for endpoint in app
+            .editor
+            .project
+            .notch(11)
+            .unwrap()
+            .segment(&app.editor.project)
+            .unwrap()
+        {
+            assert!(rect.shrink(27.).contains(app.to_screen(endpoint, rect)));
         }
     }
 }

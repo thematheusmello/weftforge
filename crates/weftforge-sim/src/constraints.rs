@@ -380,93 +380,267 @@ impl Bend {
     pub fn valid_scale(&self) -> bool {
         self.rest_angle.is_finite() && self.stiffness.is_finite() && self.stiffness > 0.
     }
-    pub fn solve(
-        &self,
-        x: &mut [Vec3],
-        inverse_mass: &[f64],
-        dt: f64,
-        correction: &mut [Vec3; 4],
-        cancelled: &impl Fn() -> bool,
-    ) -> Result<(), SimulationError> {
+}
+
+struct BendingRow {
+    bend: usize,
+    vertices: [usize; 4],
+    gradient: [Vec3; 4],
+    value: f64,
+}
+
+const BENDING_LINEAR_ITERATIONS: usize = 32;
+
+pub(crate) fn solve_bending(
+    bends: &[Bend],
+    x: &mut [Vec3],
+    inverse_mass: &[f64],
+    dt: f64,
+    correction: &mut [Vec3],
+    cancelled: &impl Fn() -> bool,
+) -> Result<(), SimulationError> {
+    // correction is the actual stage displacement p_b, not a force or multiplier.
+    // Its anchor z=x-p_b follows other stages; mass-normalized inertia is p_b/sqrt(w).
+    check_cancel(cancelled)?;
+    let original_cancelled = cancelled;
+    let bounded_cancelled = material_cancellation(original_cancelled);
+    let cancelled = &bounded_cancelled;
+    let unstable = || SimulationError::Unstable("non-finite global bending solve".into());
+    if !dt.is_finite() || dt <= 0. {
+        return Err(unstable());
+    }
+    if bends.is_empty() {
+        check_cancel(original_cancelled)?;
+        return Ok(());
+    }
+    let mut root_weight = Vec::with_capacity(x.len());
+    let mut diagonal = vec![[1_f64; 3]; x.len()];
+    for i in 0..x.len() {
         check_cancel(cancelled)?;
-        let Some((angle, gradient)) = dihedral(self.vertices, x) else {
-            return Ok(());
-        };
-        let unstable = || SimulationError::Unstable("non-finite bending energy solve".into());
-        let difference = angle - self.rest_angle;
-        let value = difference.sin().atan2(difference.cos());
-        let scale = dt * self.stiffness.sqrt();
-        let root_weight = self.vertices.map(|v| inverse_mass[v].sqrt());
-        let inertia: [Vec3; 4] = std::array::from_fn(|i| {
-            if root_weight[i] > 0. {
-                mul(correction[i], root_weight[i].recip())
-            } else {
-                [0.; 3]
-            }
-        });
-        let row: [Vec3; 4] = std::array::from_fn(|i| mul(gradient[i], scale * root_weight[i]));
-        let residual = scale * value;
-        let denominator = 1. + row.into_iter().map(|g| dot(g, g)).sum::<f64>();
-        let multiplier = (row
-            .into_iter()
-            .zip(inertia)
-            .map(|(g, p)| dot(g, p))
-            .sum::<f64>()
-            - residual)
-            / denominator;
-        // Retain actual displacements: a rotating angle gradient cannot reconstruct inertia from lambda.
-        let direction: [Vec3; 4] =
-            std::array::from_fn(|i| sub(mul(row[i], multiplier), inertia[i]));
-        let slope = (0..4)
-            .map(|i| dot(add(inertia[i], mul(row[i], residual)), direction[i]))
-            .sum::<f64>();
-        let energy =
-            0.5 * (inertia.into_iter().map(|p| dot(p, p)).sum::<f64>() + residual * residual);
-        if !denominator.is_finite() || !slope.is_finite() || !energy.is_finite() {
+        let root = inverse_mass[i].sqrt();
+        if !root.is_finite() || !finite(x[i]) || !finite(correction[i]) {
             return Err(unstable());
         }
-        if slope >= 0. {
+        root_weight.push(root);
+    }
+    let mut rows = Vec::with_capacity(bends.len());
+    for (index, bend) in bends.iter().enumerate() {
+        check_cancel(cancelled)?;
+        let Some((angle, gradient)) = dihedral(bend.vertices, x) else {
+            continue;
+        };
+        let difference = angle - bend.rest_angle;
+        let scale = dt * bend.stiffness.sqrt();
+        let value = scale * difference.sin().atan2(difference.cos());
+        let gradient =
+            std::array::from_fn(|i| mul(gradient[i], scale * root_weight[bend.vertices[i]]));
+        // Keep the single-hinge overflow guard before normalizing the global rows.
+        let denominator = 1. + gradient.into_iter().map(|g| dot(g, g)).sum::<f64>();
+        if !value.is_finite() || !denominator.is_finite() || !gradient.into_iter().all(finite) {
+            return Err(unstable());
+        }
+        for (vertex, gradient) in bend.vertices.into_iter().zip(gradient) {
+            for (axis, component) in gradient.into_iter().enumerate() {
+                diagonal[vertex][axis] = diagonal[vertex][axis].hypot(component);
+                if !diagonal[vertex][axis].is_finite() {
+                    return Err(unstable());
+                }
+            }
+        }
+        rows.push(BendingRow {
+            bend: index,
+            vertices: bend.vertices,
+            gradient,
+            value,
+        });
+    }
+    if rows.is_empty() {
+        check_cancel(original_cancelled)?;
+        return Ok(());
+    }
+    let energy = bending_energy(bends, &rows, x, correction, &root_weight, dt, cancelled)?;
+    if !energy.is_finite() {
+        return Err(unstable());
+    }
+    let mut rhs = vec![[0.; 3]; x.len()];
+    for i in 0..x.len() {
+        check_cancel(cancelled)?;
+        if root_weight[i] > 0. {
+            rhs[i] = std::array::from_fn(|axis| {
+                -correction[i][axis] / root_weight[i] / diagonal[i][axis]
+            });
+        }
+    }
+    for row in &mut rows {
+        check_cancel(cancelled)?;
+        for (vertex, gradient) in row.vertices.into_iter().zip(&mut row.gradient) {
+            for (axis, component) in gradient.iter_mut().enumerate() {
+                *component /= diagonal[vertex][axis];
+            }
+            rhs[vertex] = sub(rhs[vertex], mul(*gradient, row.value));
+        }
+    }
+    let mut rhs_scale = 0_f64;
+    for value in &rhs {
+        check_cancel(cancelled)?;
+        if !finite(*value) {
+            return Err(unstable());
+        }
+        for component in value {
+            rhs_scale = rhs_scale.max(component.abs());
+        }
+    }
+    if rhs_scale == 0. {
+        check_cancel(original_cancelled)?;
+        return Ok(());
+    }
+    let mut solution = vec![[0.; 3]; x.len()];
+    let mut residual = vec![[0.; 3]; x.len()];
+    let mut search = vec![[0.; 3]; x.len()];
+    let mut product = vec![[0.; 3]; x.len()];
+    for i in 0..x.len() {
+        check_cancel(cancelled)?;
+        rhs[i] = rhs[i].map(|component| component / rhs_scale);
+        residual[i] = rhs[i];
+        search[i] = rhs[i];
+    }
+    let mut squared_residual = material_dot(&residual, &residual, cancelled)?;
+    let initial_squared_residual = squared_residual;
+    // shortcut: 32 diagonal-PCG steps, matching the bounded global material solve.
+    for _ in 0..BENDING_LINEAR_ITERATIONS {
+        check_cancel(cancelled)?;
+        for i in 0..x.len() {
             check_cancel(cancelled)?;
+            product[i] =
+                std::array::from_fn(|axis| search[i][axis] / diagonal[i][axis] / diagonal[i][axis]);
+        }
+        for row in &rows {
+            check_cancel(cancelled)?;
+            let value = row
+                .vertices
+                .into_iter()
+                .zip(row.gradient)
+                .map(|(v, g)| dot(g, search[v]))
+                .sum::<f64>();
+            for (vertex, gradient) in row.vertices.into_iter().zip(row.gradient) {
+                product[vertex] = add(product[vertex], mul(gradient, value));
+            }
+        }
+        let curvature = material_dot(&search, &product, cancelled)?;
+        if !curvature.is_finite() || curvature <= 0. {
+            return Err(unstable());
+        }
+        let alpha = squared_residual / curvature;
+        let mut next_squared_residual = 0.;
+        for i in 0..x.len() {
+            check_cancel(cancelled)?;
+            solution[i] = add(solution[i], mul(search[i], alpha));
+            residual[i] = sub(residual[i], mul(product[i], alpha));
+            if !finite(solution[i]) || !finite(residual[i]) {
+                return Err(unstable());
+            }
+            next_squared_residual += dot(residual[i], residual[i]);
+        }
+        if !next_squared_residual.is_finite() {
+            return Err(unstable());
+        }
+        if next_squared_residual <= 1e-24 * initial_squared_residual {
+            break;
+        }
+        let beta = next_squared_residual / squared_residual;
+        for i in 0..x.len() {
+            check_cancel(cancelled)?;
+            search[i] = add(residual[i], mul(search[i], beta));
+        }
+        squared_residual = next_squared_residual;
+    }
+    let slope = -material_dot(&rhs, &solution, cancelled)? * rhs_scale * rhs_scale;
+    if !slope.is_finite() {
+        return Err(unstable());
+    }
+    if slope >= 0. {
+        check_cancel(original_cancelled)?;
+        return Ok(());
+    }
+    for i in 0..x.len() {
+        check_cancel(cancelled)?;
+        for axis in 0..3 {
+            solution[i][axis] *= rhs_scale * (root_weight[i] / diagonal[i][axis]);
+        }
+        if !finite(solution[i]) {
+            return Err(unstable());
+        }
+    }
+    let mut trial = vec![[0.; 3]; x.len()];
+    let mut trial_correction = vec![[0.; 3]; x.len()];
+    let mut fraction = 1.;
+    // shortcut: 16 Armijo trials; a trust region is needed if a highly folded block stalls.
+    for _ in 0..ENERGY_BACKTRACKING_STEPS {
+        check_cancel(cancelled)?;
+        let mut trial_finite = true;
+        for i in 0..x.len() {
+            check_cancel(cancelled)?;
+            trial[i] = if root_weight[i] > 0. {
+                add(x[i], mul(solution[i], fraction))
+            } else {
+                x[i]
+            };
+            trial_correction[i] = add(correction[i], sub(trial[i], x[i]));
+            trial_finite &= finite(trial[i]) && finite(trial_correction[i]);
+        }
+        let trial_energy = if trial_finite {
+            bending_energy(
+                bends,
+                &rows,
+                &trial,
+                &trial_correction,
+                &root_weight,
+                dt,
+                cancelled,
+            )?
+        } else {
+            f64::INFINITY
+        };
+        if trial_energy.is_finite() && trial_energy <= energy + 1e-4 * fraction * slope {
+            check_cancel(original_cancelled)?;
+            x.copy_from_slice(&trial);
+            correction.copy_from_slice(&trial_correction);
             return Ok(());
         }
-        let original = self.vertices.map(|v| x[v]);
-        let mut fraction = 1.;
-        // shortcut: 16 Armijo trials; a trust region is needed if a highly folded hinge stalls.
-        for _ in 0..ENERGY_BACKTRACKING_STEPS {
-            check_cancel(cancelled)?;
-            let trial: [Vec3; 4] = std::array::from_fn(|i| {
-                add(original[i], mul(direction[i], fraction * root_weight[i]))
-            });
-            let trial_correction: [Vec3; 4] =
-                std::array::from_fn(|i| add(correction[i], sub(trial[i], original[i])));
-            let Some((angle, _)) = dihedral([0, 1, 2, 3], &trial) else {
-                fraction *= 0.5;
-                continue;
-            };
-            let difference = angle - self.rest_angle;
-            let residual = scale * difference.sin().atan2(difference.cos());
-            let trial_energy = 0.5
-                * ((0..4)
-                    .filter(|&i| root_weight[i] > 0.)
-                    .map(|i| {
-                        let p = mul(trial_correction[i], root_weight[i].recip());
-                        dot(p, p)
-                    })
-                    .sum::<f64>()
-                    + residual * residual);
-            if trial_energy.is_finite() && trial_energy <= energy + 1e-4 * fraction * slope {
-                check_cancel(cancelled)?;
-                for i in 0..4 {
-                    x[self.vertices[i]] = trial[i];
-                }
-                *correction = trial_correction;
-                return Ok(());
-            }
-            fraction *= 0.5;
-        }
-        check_cancel(cancelled)?;
-        Ok(())
+        fraction *= 0.5;
     }
+    check_cancel(original_cancelled)?;
+    Ok(())
+}
+
+fn bending_energy(
+    bends: &[Bend],
+    rows: &[BendingRow],
+    x: &[Vec3],
+    correction: &[Vec3],
+    root_weight: &[f64],
+    dt: f64,
+    cancelled: &impl Fn() -> bool,
+) -> Result<f64, SimulationError> {
+    let mut energy = 0.;
+    for (&p, &weight) in correction.iter().zip(root_weight) {
+        check_cancel(cancelled)?;
+        if weight > 0. {
+            let inertia = p.map(|component| component / weight);
+            energy += 0.5 * dot(inertia, inertia);
+        }
+    }
+    for row in rows {
+        check_cancel(cancelled)?;
+        let bend = &bends[row.bend];
+        let Some((angle, _)) = dihedral(bend.vertices, x) else {
+            return Ok(f64::INFINITY);
+        };
+        let difference = angle - bend.rest_angle;
+        let residual = dt * bend.stiffness.sqrt() * difference.sin().atan2(difference.cos());
+        energy += 0.5 * residual * residual;
+    }
+    Ok(energy)
 }
 
 pub(crate) fn dihedral(vertices: [usize; 4], x: &[Vec3]) -> Option<(f64, [Vec3; 4])> {
@@ -644,4 +818,34 @@ pub(crate) fn solve_stitch(
         x,
         inverse_mass,
     );
+}
+
+#[cfg(test)]
+mod bending_energy_tests {
+    use super::*;
+
+    #[test]
+    fn active_hinge_trial_degeneracy_rejects_the_whole_bending_energy() {
+        let rest = [[0., 0., 0.], [1., 0., 0.], [0., 1., 0.], [0., -1., 0.]];
+        let bends = [Bend::new([0, 1, 2, 3], &rest, 0.5)];
+        let rows = [BendingRow {
+            bend: 0,
+            vertices: [0, 1, 2, 3],
+            gradient: [[0.; 3]; 4],
+            value: 0.,
+        }];
+        let correction = [[0.; 3]; 4];
+        let weights = [1.; 4];
+        assert!(
+            bending_energy(&bends, &rows, &rest, &correction, &weights, 0.1, &|| false)
+                .unwrap()
+                .is_finite()
+        );
+        let mut trial = rest;
+        trial[1] = trial[0];
+        assert_eq!(
+            bending_energy(&bends, &rows, &trial, &correction, &weights, 0.1, &|| false).unwrap(),
+            f64::INFINITY
+        );
+    }
 }

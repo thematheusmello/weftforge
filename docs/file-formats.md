@@ -9,17 +9,18 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 
 | Format | Import/read | Export/write | Editable construction | Static/animated | Current limits |
 | --- | --- | --- | --- | --- | --- |
-| `.weftforge` v5 | Yes | Yes | Patterns, one editable straight hole per piece, straight annotations, grain, orthotropy, seams and ordered groups | Static authoring | Required holes/ownership arrays, strict JSON, 16 MiB; no embedded external assets or saved simulation frames |
-| `.weftforge` v4 | Yes, explicit migration | No | Patterns, straight annotations, grain, orthotropy, seams and ordered groups | Static authoring | Preserves all fields; adds empty holes arrays; saving writes v5 |
-| `.weftforge` v3 | Yes, explicit migration | No | Legacy patterns, grain, orthotropy, seams and ordered groups | Static authoring | Preserves all legacy fields; adds empty internal/holes arrays; saving writes v5 |
-| `.weftforge` v2 | Yes, explicit migration | No | Legacy grain/orthotropy model and parameter-based seams | Static authoring | Fields and seam metrics preserved; saving writes v5 with empty group/internal/holes lists |
-| `.weftforge` v1 | Yes, explicit migration | No | Original supported model | Static authoring | Old stretch maps to both axes; grain defaults to zero; saving writes v5; round-trip numeric decoding; tested native I/O subset |
-| `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1–v5 model | Static authoring | One prior saved document; no silent fallback |
-| `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1–v5 model | Static authoring | Dirty named documents only; no automatic recovery UI |
+| `.weftforge` v6 | Yes | Yes | Patterns, one editable straight hole per piece, straight annotations, authored notches, grain, orthotropy, seams and ordered groups | Static authoring | Required holes/notches/ownership arrays, strict JSON, 16 MiB; no embedded external assets or saved simulation frames |
+| `.weftforge` v5 | Yes, explicit migration | No | Patterns, holes, annotations, grain, orthotropy, seams and ordered groups | Static authoring | Preserves all fields; adds empty notch arrays; saving writes v6 |
+| `.weftforge` v4 | Yes, explicit migration | No | Patterns, straight annotations, grain, orthotropy, seams and ordered groups | Static authoring | Preserves all fields; adds empty holes/notches arrays; saving writes v6 |
+| `.weftforge` v3 | Yes, explicit migration | No | Legacy patterns, grain, orthotropy, seams and ordered groups | Static authoring | Preserves all legacy fields; adds empty internal/holes/notches arrays; saving writes v6 |
+| `.weftforge` v2 | Yes, explicit migration | No | Legacy grain/orthotropy model and parameter-based seams | Static authoring | Fields and seam metrics preserved; saving writes v6 with empty group/internal/holes/notches lists |
+| `.weftforge` v1 | Yes, explicit migration | No | Original supported model | Static authoring | Old stretch maps to both axes; grain defaults to zero; saving writes v6; round-trip numeric decoding; tested native I/O subset |
+| `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1–v6 model | Static authoring | One prior saved document; no silent fallback |
+| `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1–v6 model | Static authoring | Dirty named documents only; no automatic recovery UI |
 | OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups; no annotation lines or MTL/textures |
-| SVG | Bounded additive import of one-contour paths | Yes, compound outlines with holes | Editable exterior boundaries and names on import | Static 2D | Explicit mm and uniform viewBox; compound hole import, sewing/materials/internal annotations/print tiling unsupported |
+| SVG | Bounded additive import of one-contour paths | Yes, compound outlines with holes and physical notch markers | Editable exterior boundaries and names on import | Static 2D | Explicit mm and uniform viewBox; holes/notches cannot yet be reimported; sewing/materials/internal lines/print tiling unsupported |
 | glTF/GLB | No | No | None yet | None yet | Planned validated avatar/mesh/animation workflows |
-| DXF R2000 | Bounded additive import | Yes, hole-free projects only | Editable exterior boundaries with layer names | Static 2D | Holed projects refuse before staging. Strict existing ASCII `LINE`/clamped cubic `SPLINE` profile, mm and `WF_PIECE` layers; no sewing, materials, grain, internal annotations, 3D placement, apparel conventions or print layout |
+| DXF R2000 | Bounded additive import | Yes, projects without holes or authored notches | Editable exterior boundaries with layer names | Static 2D | Holed/notched projects refuse before staging. Strict existing ASCII `LINE`/clamped cubic `SPLINE` profile, mm and `WF_PIECE` layers; no sewing, materials, grain, internal lines, 3D placement, apparel conventions or print layout |
 | Animation/cache formats | No | No | None yet | None yet | Timeline, frame caches and export not implemented |
 | Marvelous Designer `.zprj` / `.zpac` | No | No | None | None | Separate FILE-006 research/compatibility workstream |
 
@@ -28,14 +29,14 @@ avatar reader is wired into the project model; an installed parsing dependency
 does not establish an import feature. Export validation with independent software
 must be evidenced separately from our own writer/reader round trips.
 
-## Native v5 representation
+## Native v6 representation
 
 The UTF-8 JSON envelope is:
 
 ```json
 {
   "format": "weftforge",
-  "version": 5,
+  "version": 6,
   "project": {
     "revision": 0,
     "points": [],
@@ -53,8 +54,8 @@ The UTF-8 JSON envelope is:
 
 This structural illustration omits a valid default material; generate a valid
 empty project with `weftforge-cli new FILE.weftforge`. Treat the current Rust
-serialized types and validation as authoritative for v5. The reader accepts v1,
-v2, v3 and v4 through the explicit migrations below. A different format marker, unsupported
+serialized types and validation as authoritative for v6. The reader accepts v1,
+v2, v3, v4 and v5 through the explicit migrations below. A different format marker, unsupported
 version, unknown or duplicate field, malformed JSON or invalid construction is
 rejected without replacing the open project. Schemas are strict: a v1 envelope
 cannot contain newer fields, v2 cannot contain sewing_groups, and v3 requires
@@ -62,6 +63,8 @@ the explicit group array. V1/v2/v3 pieces reject `internal_curves`, including an
 empty array; v4 requires both the project group array and every piece's explicit
 internal array, and rejects `holes`. V5 additionally requires each piece's `holes`
 array, including an empty one. Hole objects require exactly `id` and `boundary`.
+V6 additionally requires every piece's `notches` array. Each notch requires
+exactly `id`, `curve`, `t` and `length`; v1–v5 reject that newer field.
 Modern materials cannot retain the old stretch field.
 
 Authoring coordinates use f64 metres. 3D is right-handed/Y-up; pattern coordinates
@@ -71,7 +74,7 @@ seconds, density kg/m², membrane stiffness N/m, and bending rigidity N·m.
 
 Points and straight/cubic curves retain stable IDs. A piece contains a name,
 ordered closed `boundary` of curve IDs, a `holes` array of stable-ID closed loops,
-independent `internal_curves` ownership array, placement, material ID and `grain_angle`.
+independent `internal_curves` ownership array, `notches`, placement, material ID and `grain_angle`.
 The angle is f64 radians counterclockwise from material +U toward +V and identifies
 the warp axis; weft is perpendicular. Zero points right in the V-up 2D canvas.
 Placement changes the arranged orientation without changing the authored grain.
@@ -94,6 +97,16 @@ with at least 1e-6 m clearance. Certified 1e-7 m curve flattening, conservative
 f64 reserve, depth 20, 20,000 contour samples and a one-million-step project
 validation budget are fixed; uncertain/exhausted inputs reject. Mesh resolution
 cannot change that decision. See the [engineering contract](../spec/features/PAT-006-internal-segments.md).
+
+Each notch has a globally unique stable ID and belongs to one piece-owned curve.
+It stores finite curve parameter `t` in `[0,1]` and total physical marker length
+in `[0.0001,0.1]` metres. The perpendicular I marker is centred on the evaluated
+anchor and requires a usable analytic tangent. It is annotation only, with no
+mesh/solver effect. Native geometry edits preserve or explicitly refuse its
+relationship; see the [notch contract](../spec/features/PAT-006-authored-notches.md).
+SVG retains physical-scale markers and includes them in its view bounds; the
+bounded importer refuses notch line elements. DXF refuses authored notches before
+replacing output. OBJ contains triangle geometry only.
 Straight topological cuts use two ordinary pieces, independent boundary
 points/curves and explicit annotation ownership. The resulting exterior chords
 are ordinary editable edges. No cut object or persistent cross-cut relationship
@@ -120,7 +133,7 @@ Decreasing interval endpoints encode reversed direction. Derived seam samples
 reference those authored relationships rather than persistent vertex indices.
 
 `cut_and_sew` saves exactly these ordinary piece/curve/point and seam objects;
-native v5 gains no fields, command tag or migration. In the original R240 example,
+the native representation gains no fields, command tag or migration. In the original R240 example,
 seam 20 joins full retained chord 18 (`t0=0,t1=1`) to reversed child chord 19
 (`t0=1,t1=0`) with `[[0,0],[1,1]]`. The two chords keep disjoint IDs even though
 their endpoint coordinates coincide. Removing the seam keeps both pieces and
@@ -151,18 +164,19 @@ velocities, undo history, selection/camera, pins,
 attachments, persistent cut relationships, internal cubic shapes, external avatar assets, textures, animation,
 lighting or cache data. These are visible persistence gaps on the roadmap.
 
-## Explicit v1–v4 migration
+## Explicit v1–v5 migration
 
 The version-1 schema stored `material.stretch_stiffness` and no per-piece grain.
 Its reader uses the strict original field types, then maps:
 
 ```text
-v5.piece.grain_angle = 0 radians (v1 input)
-v5.material.warp_stiffness = v1.material.stretch_stiffness
-v5.material.weft_stiffness = v1.material.stretch_stiffness
-v5.sewing_groups = [] (v1 and v2 input)
-v5.piece.internal_curves = [] (v1, v2 and v3 input)
-v5.piece.holes = [] (v1, v2, v3 and v4 input)
+v6.piece.grain_angle = 0 radians (v1 input)
+v6.material.warp_stiffness = v1.material.stretch_stiffness
+v6.material.weft_stiffness = v1.material.stretch_stiffness
+v6.sewing_groups = [] (v1 and v2 input)
+v6.piece.internal_curves = [] (v1, v2 and v3 input)
+v6.piece.holes = [] (v1, v2, v3 and v4 input)
+v6.piece.notches = [] (v1, v2, v3, v4 and v5 input)
 ```
 
 These were the old document-to-solver inputs. The migration retains the other
@@ -178,11 +192,12 @@ that check's 1e-12 m geometric limit. The corrected native I/O subset now preser
 float fields exactly against an independent IEEE-bit oracle; see the
 [native I/O report](../parity/reports/WF-20261114-NATIVE-IEEE-001.json). It cannot
 restore values already saved after rounding, and is not complete format parity.
-V4 retains its complete annotation/group data and gains only empty holes arrays.
-Loading v1–v4 does not rewrite it or create an authoring revision; the next
-explicit save writes v5.
+V4 retains its complete annotation/group data and gains empty holes/notches arrays.
+V5 retains all supported geometry, hole, annotation and group fields and gains
+only empty notch arrays. Loading v1–v5 does not rewrite it or create an authoring
+revision; the next explicit save writes v6.
 When saving over a valid v1 primary, recovery retains its exact original bytes.
-Older builds cannot read v5, and there is no downgrade writer.
+Older builds cannot read v6, and there is no downgrade writer.
 
 The four existing v1 fixtures and retained snapshots stay byte-identical in the
 repository. Migration tests compare every authored value, rest arrangement/mass,
@@ -227,7 +242,7 @@ cargo run --release -p weftforge-cli -- recover garment.weftforge recovered.weft
 The desktop writes dirty named documents to `<filename>.autosave` every 30 seconds
 and also retains session autosaves for untitled work in the platform data directory.
 The Recover window lists session files and current project sidecars; recovering
-creates a dirty copy requiring Save As. Autosave writes v5 and recovery uses the
+creates a dirty copy requiring Save As. Autosave writes v6 and recovery uses the
 same strict versioned reader;
 failed recovery preserves the current document. A window-close request with
 unsaved edits is blocked until save or an explicit discard action. macOS

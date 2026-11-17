@@ -23,7 +23,7 @@ pub(crate) struct ImportedPattern {
     pub controls: Vec<Option<[[f64; 2]; 2]>>,
 }
 
-pub const FORMAT_VERSION: u32 = 5;
+pub const FORMAT_VERSION: u32 = 6;
 pub const MAX_PROJECT_BYTES: u64 = 16 * 1024 * 1024;
 static TEMP_ID: AtomicU64 = AtomicU64::new(0);
 
@@ -146,6 +146,67 @@ impl From<ProjectV4> for Project {
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
+struct ProjectV5 {
+    revision: u64,
+    points: Vec<Point>,
+    curves: Vec<Curve>,
+    pieces: Vec<PieceV5>,
+    materials: Vec<Material>,
+    seams: Vec<Seam>,
+    sewing_groups: Vec<crate::SewingGroup>,
+    mannequin: Mannequin,
+    resolution: f64,
+    next_id: Id,
+}
+
+impl From<ProjectV5> for Project {
+    fn from(old: ProjectV5) -> Self {
+        Self {
+            revision: old.revision,
+            points: old.points,
+            curves: old.curves,
+            pieces: old.pieces.into_iter().map(Into::into).collect(),
+            materials: old.materials,
+            seams: old.seams,
+            sewing_groups: old.sewing_groups,
+            mannequin: old.mannequin,
+            resolution: old.resolution,
+            next_id: old.next_id,
+        }
+    }
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct PieceV5 {
+    id: Id,
+    name: String,
+    boundary: Vec<Id>,
+    holes: Vec<crate::Hole>,
+    internal_curves: Vec<Id>,
+    placement: Placement,
+    material: Id,
+    grain_angle: f64,
+}
+
+impl From<PieceV5> for Piece {
+    fn from(old: PieceV5) -> Self {
+        Self {
+            id: old.id,
+            name: old.name,
+            boundary: old.boundary,
+            holes: old.holes,
+            internal_curves: old.internal_curves,
+            notches: Vec::new(),
+            placement: old.placement,
+            material: old.material,
+            grain_angle: old.grain_angle,
+        }
+    }
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
 struct PieceV4 {
     id: Id,
     name: String,
@@ -164,6 +225,7 @@ impl From<PieceV4> for Piece {
             boundary: old.boundary,
             holes: Vec::new(),
             internal_curves: old.internal_curves,
+            notches: Vec::new(),
             placement: old.placement,
             material: old.material,
             grain_angle: old.grain_angle,
@@ -190,6 +252,7 @@ impl From<PieceV2V3> for Piece {
             boundary: old.boundary,
             holes: Vec::new(),
             internal_curves: Vec::new(),
+            notches: Vec::new(),
             placement: old.placement,
             material: old.material,
             grain_angle: old.grain_angle,
@@ -237,6 +300,7 @@ impl From<ProjectV1> for Project {
                     boundary: piece.boundary,
                     holes: Vec::new(),
                     internal_curves: Vec::new(),
+                    notches: Vec::new(),
                     placement: piece.placement,
                     material: piece.material,
                     grain_angle: 0.0,
@@ -311,6 +375,9 @@ impl Project {
             4 => serde_json::from_slice::<Document<ProjectV4>>(bytes)?
                 .project
                 .into(),
+            5 => serde_json::from_slice::<Document<ProjectV5>>(bytes)?
+                .project
+                .into(),
             FORMAT_VERSION => serde_json::from_slice::<Document>(bytes)?.project,
             _ => {
                 return Err(Error(
@@ -374,6 +441,7 @@ impl Project {
     pub fn export_svg(&self, path: impl AsRef<Path>) -> Result<()> {
         export_path_guard(path.as_ref())?;
         self.validate()?;
+        let notch_segments = self.notch_segments()?;
         let mut min = [f64::INFINITY; 2];
         let mut max = [f64::NEG_INFINITY; 2];
         for piece in &self.pieces {
@@ -381,6 +449,14 @@ impl Project {
             for axis in 0..2 {
                 min[axis] = min[axis].min(piece_min[axis]);
                 max[axis] = max[axis].max(piece_max[axis]);
+            }
+            for notch in &piece.notches {
+                for point in notch_segments[&notch.id] {
+                    for axis in 0..2 {
+                        min[axis] = min[axis].min(point[axis]);
+                        max[axis] = max[axis].max(point[axis]);
+                    }
+                }
             }
         }
         if self.pieces.is_empty() {
@@ -390,7 +466,7 @@ impl Project {
         let width = (max[0] - min[0]) * 1000.0;
         let height = (max[1] - min[1]) * 1000.0;
         let mut svg = format!(
-            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width}mm\" height=\"{height}mm\" viewBox=\"{} {} {width} {height}\">\n<title>WeftForge editable pattern export</title>\n<desc>Scale: one SVG user unit is one millimetre. Pattern V points upward; SVG Y is inverted. Each piece uses one evenodd path with closed exterior and hole subpaths; internal annotations are omitted. Compound paths with holes cannot yet be reimported.</desc>\n",
+            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width}mm\" height=\"{height}mm\" viewBox=\"{} {} {width} {height}\">\n<title>WeftForge editable pattern export</title>\n<desc>Scale: one SVG user unit is one millimetre. Pattern V points upward; SVG Y is inverted. Each piece uses one evenodd path with closed exterior and hole subpaths; internal lines are omitted. Authored notches are physical-scale perpendicular I markers. Compound paths with holes and notch line elements cannot yet be reimported.</desc>\n",
             min[0] * 1000.0,
             -max[1] * 1000.0
         );
@@ -433,20 +509,29 @@ impl Project {
                 data.push_str("Z ");
             }
             writeln!(svg,"<path id=\"piece-{}\" data-name=\"{}\" d=\"{}\" fill=\"none\" fill-rule=\"evenodd\" stroke=\"black\" stroke-width=\"0.3\"/> ",piece.id,xml_escape(&piece.name),data.trim_end()).expect("Writing a String cannot fail");
+            for notch in &piece.notches {
+                let [a, b] = notch_segments[&notch.id];
+                writeln!(svg, "<line id=\"notch-{}\" data-piece=\"{}\" x1=\"{}\" y1=\"{}\" x2=\"{}\" y2=\"{}\" stroke=\"black\" stroke-width=\"0.3\"/>", notch.id, piece.id, a[0] * 1000., -a[1] * 1000., b[0] * 1000., -b[1] * 1000.)
+                    .expect("Writing a String cannot fail");
+            }
         }
         svg.push_str("</svg>\n");
         StagedFile::write(path.as_ref(), svg.as_bytes())?.replace(path.as_ref())
     }
 
     /// Exports authored pattern boundaries in millimetres, using the FILE-005-v1
-    /// ASCII R2000 profile. Holes are unsupported; sewing, materials, placement
+    /// ASCII R2000 profile. Holes and notches are unsupported; sewing, materials, placement
     /// and simulation are omitted.
     pub fn export_dxf(&self, path: impl AsRef<Path>) -> Result<()> {
         export_path_guard(path.as_ref())?;
         self.validate()?;
         ensure(
             self.pieces.iter().all(|piece| piece.holes.is_empty()),
-            "DXF v1 export does not support holes; save native v5 or export SVG/OBJ instead",
+            "DXF v1 export does not support holes; save native or export SVG/OBJ instead",
+        )?;
+        ensure(
+            self.pieces.iter().all(|piece| piece.notches.is_empty()),
+            "DXF v1 export does not support authored notches; save native or export SVG instead",
         )?;
         let dxf = dxf::render(self)?;
         StagedFile::write(path.as_ref(), dxf.as_bytes())?.replace(path.as_ref())
@@ -454,6 +539,7 @@ impl Project {
 }
 
 impl Mesh {
+    /// Exports triangle geometry only; authored annotations such as notches have no mesh effect.
     pub fn export_obj(&self, path: impl AsRef<Path>) -> Result<()> {
         export_path_guard(path.as_ref())?;
         self.validate()?;

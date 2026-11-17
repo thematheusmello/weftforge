@@ -1017,7 +1017,7 @@ fn native_v5_and_physical_svg_cubic_dxf_and_real_rest_obj_follow_applied_constru
         e.project.save(&native).unwrap();
         let reopened = Project::load(&native).unwrap();
         assert_eq!(e.project, reopened);
-        assert_eq!(weftforge_core::FORMAT_VERSION, 5);
+        assert_eq!(weftforge_core::FORMAT_VERSION, 6);
         let svg = directory.join("fixture.svg");
         let dxf = directory.join("fixture.dxf");
         let obj = directory.join("fixture.obj");

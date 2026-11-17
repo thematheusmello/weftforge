@@ -702,6 +702,177 @@ fn trim_line_cubic(
 mod tests {
     use super::*;
 
+    fn unrelated_notches() -> crate::Editor {
+        let mut editor = crate::Editor::default();
+        editor
+            .execute(crate::Command::AddRectangle {
+                name: "Original clean offset target".into(),
+                origin: [-0.8, 0.],
+                width: 0.4,
+                height: 0.6,
+            })
+            .unwrap();
+        editor
+            .execute(crate::Command::AddPolygon {
+                name: "Original unrelated notched panel".into(),
+                vertices: (0..512)
+                    .map(|i| {
+                        let angle = std::f64::consts::TAU * i as f64 / 512.;
+                        [2. + 0.3 * angle.cos(), 0.5 + 0.3 * angle.sin()]
+                    })
+                    .collect(),
+            })
+            .unwrap();
+        let curve = editor.project.pieces[1].boundary[510];
+        for i in 0..1024 {
+            let id = editor.project.allocate_id().unwrap();
+            editor.project.pieces[1].notches.push(crate::Notch {
+                id,
+                curve,
+                t: (i % 97) as f64 / 96.,
+                length: 0.005,
+            });
+        }
+        let mut editor = crate::Editor::new(editor.project).unwrap();
+        editor
+            .execute(crate::Command::SetGrain {
+                piece: 2,
+                angle: 0.2,
+            })
+            .unwrap();
+        editor
+            .execute(crate::Command::SetGrain {
+                piece: 2,
+                angle: 0.37,
+            })
+            .unwrap();
+        assert!(editor.undo());
+        editor
+    }
+
+    #[test]
+    fn notch_batch_indexes_and_marker_queries_share_the_request_budget_and_cancellation() {
+        let editor = unrelated_notches();
+        let project = &editor.project;
+        let original = project.clone();
+        let complete = Work::new(&|| false);
+        let segments = project
+            .notch_segments_with_work(&crate::geometry::ContainmentWork::for_offset(&complete))
+            .unwrap();
+        let notches = &project.pieces[1].notches;
+        assert_eq!(segments.len(), notches.len());
+        for notch in [&notches[0], notches.last().unwrap()] {
+            assert_eq!(segments[&notch.id], notch.segment(project).unwrap());
+        }
+        let cost = complete.units.get();
+        let input = project.points.len() + project.curves.len() + notches.len();
+        assert!(cost > 4 * notches.len() && cost < 10 * input);
+        let exhausted = Work {
+            units: Cell::new(MAX_WORK - cost + 1),
+            cancelled: &|| false,
+        };
+        let error = project
+            .notch_segments_with_work(&crate::geometry::ContainmentWork::for_offset(&exhausted))
+            .unwrap_err();
+        assert!(error.to_string().starts_with("OffsetBudgetExceeded"));
+        assert_eq!(exhausted.units.get(), MAX_WORK);
+
+        let indexed = project.points.len()
+            + project.curves.len()
+            + project.pieces[1].boundary.len()
+            + project.pieces.len();
+        let polls = Cell::new(0);
+        let cancel_at = indexed / 256 + 3;
+        let cancelled = || {
+            polls.set(polls.get() + 1);
+            polls.get() == cancel_at
+        };
+        let work = Work::new(&cancelled);
+        let error = project
+            .notch_segments_with_work(&crate::geometry::ContainmentWork::for_offset(&work))
+            .unwrap_err();
+        assert!(error.to_string().starts_with("OffsetCancelled"));
+        assert_eq!(polls.get(), cancel_at);
+        assert!(work.units.get() > indexed && work.units.get() < cost);
+        assert_eq!(project, &original);
+    }
+
+    #[test]
+    fn unrelated_notched_panel_bounds_real_offset_preparation_and_preserves_saved_state() {
+        let editor = unrelated_notches();
+        let original = format!("{editor:?}");
+        let project = &editor.project;
+        let target = project.pieces[0].id;
+        assert!(project.pieces[0].notches.is_empty());
+        let batch = Work::new(&|| false);
+        project
+            .notch_segments_with_work(&crate::geometry::ContainmentWork::for_offset(&batch))
+            .unwrap();
+        let validation = Work::new(&|| false);
+        project.validate_for_offset(&validation).unwrap();
+        let preflight_work = Work::new(&|| false);
+        preflight(project, target, 0.01, Some(&preflight_work)).unwrap();
+        // Stop inside the unrelated marker batch, after the complete indexed ownership checks.
+        let cutoff = preflight_work.units.get() + validation.units.get() - batch.units.get() / 2;
+        assert!(cutoff > 256 && cutoff < preflight_work.units.get() + validation.units.get());
+
+        let directory = std::env::temp_dir().join(format!(
+            "weftforge-notch-offset-{}-{}",
+            std::process::id(),
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        std::fs::create_dir(&directory).unwrap();
+        let path = directory.join("original.weftforge");
+        let svg = directory.join("original.svg");
+        project.save(&path).unwrap();
+        let bytes = std::fs::read(&path).unwrap();
+        std::fs::write(crate::recovery_path(&path), b"retained recovery").unwrap();
+        project.export_svg(&svg).unwrap();
+        let svg_bytes = std::fs::read(&svg).unwrap();
+
+        let exhausted = Work {
+            units: Cell::new(MAX_WORK - cutoff),
+            cancelled: &|| false,
+        };
+        let error = project
+            .prepare_outline_offset_with_work(target, 0.01, true, &exhausted)
+            .unwrap_err();
+        assert!(
+            error.to_string().starts_with("OffsetBudgetExceeded"),
+            "{error}"
+        );
+        assert_eq!(exhausted.units.get(), MAX_WORK);
+        let polls = Cell::new(0);
+        let cancel_at = cutoff / 256 + 2;
+        let cancelled = || {
+            polls.set(polls.get() + 1);
+            polls.get() == cancel_at
+        };
+        let work = Work::new(&cancelled);
+        let error = project
+            .prepare_outline_offset_with_work(target, 0.01, true, &work)
+            .unwrap_err();
+        assert!(error.to_string().starts_with("OffsetCancelled"), "{error}");
+        assert!(work.units.get() <= cutoff && work.units.get() + 256 > cutoff);
+        assert_eq!(format!("{editor:?}"), original);
+        assert!(editor.can_undo() && editor.can_redo());
+
+        let mut invalid = project.clone();
+        invalid.pieces[1].notches.last_mut().unwrap().t = f64::NAN;
+        assert!(invalid.export_svg(&svg).is_err());
+        assert!(invalid.save(&path).is_err());
+        assert_eq!(std::fs::read(&path).unwrap(), bytes);
+        assert_eq!(
+            std::fs::read(crate::recovery_path(&path)).unwrap(),
+            b"retained recovery"
+        );
+        assert_eq!(std::fs::read(&svg).unwrap(), svg_bytes);
+        std::fs::remove_dir_all(directory).unwrap();
+    }
+
     #[test]
     fn unbounded_interval_arithmetic_never_narrows_nan_products() {
         for x in [
@@ -2150,6 +2321,12 @@ fn preflight(project: &Project, piece: Id, width: f64, work: Option<&Work<'_>>) 
             owner.internal_curves.first().copied().unwrap_or(0)
         ),
     )?;
+    ensure(
+        owner.notches.is_empty(),
+        &format!(
+            "OffsetUnsupportedNotch: piece {piece} contains authored notches; remove them first"
+        ),
+    )?;
     let mut owned = BTreeSet::new();
     for &id in &owner.boundary {
         if let Some(work) = work {
@@ -2300,10 +2477,10 @@ impl Project {
         simple_contour(&originals, work)?;
         let (spans, corners) = joins(&sources, d, epsilon, work)?;
         continuation(&sources, &corners, d, work)?;
-        let mut holes = 0;
+        let mut details = 0;
         for piece in &self.pieces {
             work.step()?;
-            holes += piece.holes.len();
+            details += piece.holes.len() + piece.notches.len();
         }
         let objects = self.points.len()
             + self.curves.len()
@@ -2311,7 +2488,7 @@ impl Project {
             + self.materials.len()
             + self.seams.len()
             + self.sewing_groups.len()
-            + holes;
+            + details;
         let other = objects - 2 * sources.len();
         let limit = MAX_OUTPUT.min((crate::MAX_OBJECTS - other) / 2);
         let mut join_count = 0;

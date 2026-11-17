@@ -104,10 +104,10 @@ are rejected. The tool names and arguments are:
 Results include a text block containing the same JSON for older clients.
 Inspection returns authoritative authored state without building a mesh.
 Its `project` uses the native writer's JSON number representation, including f32
-display colors and f64 authored values. For v5 files written by this version,
+display colors and f64 authored values. For v6 files written by this version,
 parsed inspection and saved-project values agree exactly without changing stored
 numeric precision. Legacy-file inspection returns the migrated current model.
-DXF exports hole-free authored exterior curves directly, independently of mesh resolution
+DXF exports authored exterior curves from projects without holes or notches, independently of mesh resolution
 or 3D placement. Its [R2000 profile](../spec/features/FILE-005-dxf-pattern-export.md)
 preserves straight/cubic geometry and stable piece layers. Sewing, materials,
 grain, internal annotations, drape and native editing relationships require the `.weftforge` project.
@@ -131,7 +131,7 @@ The example's newly created default project assigns its first piece ID 2;
 existing projects may assign different IDs. Current-profile calls use the same
 arguments and additionally include the per-request `_meta` shown above.
 
-The supported shared commands are `import_svg_patterns`, `import_dxf_patterns`, `add_polygon`, `add_rectangle`, `add_ellipse`, `add_hole`, `remove_hole`, `add_internal_segment`, `remove_internal_curve`, `move_point`,
+The supported shared commands are `import_svg_patterns`, `import_dxf_patterns`, `add_polygon`, `add_rectangle`, `add_ellipse`, `add_hole`, `remove_hole`, `add_internal_segment`, `remove_internal_curve`, `add_notch`, `update_notch`, `remove_notch`, `move_point`,
 `set_curve_controls`, `split_curve`, `join_curve`, `cut_piece`, `cut_and_sew`, `offset_outline`, `resize_piece`, `transform_piece`, `set_placement`, `set_grain`,
 `set_material`, `add_material`, `update_material`, `add_seam`, `update_seam`,
 `remove_seam`, `add_sewing_group`, `add_sewing_by_length`, `update_sewing_group`, `remove_sewing_group`,
@@ -161,8 +161,28 @@ Outer edits revalidate retained annotations. Boundary split/join/controls and al
 sewing commands reject internal targets. Existing read-only interval length queries
 can measure them. They do not affect triangulation, stitches, cloth or mass; an
 accepted edit still invalidates old derived revisions. CLI `inspect` exposes each
-pattern's `boundary`, `holes` and `internal_curves`; MCP inspection returns full construction.
+pattern's `boundary`, `holes`, `internal_curves` and `notches`; MCP inspection returns full construction.
 These are two alternatives on the existing nine tools, with no new CLI verb.
+
+Authored notch commands use the same validated engine and no extra tool or CLI
+verb. Each piece owns its notch IDs and curve attachments. For a newly created
+rectangle, with no later allocations, the first notch has ID 11:
+
+```json
+{"type":"add_notch","data":{"piece":2,"curve":7,"t":0.25,"length":0.005}}
+{"type":"update_notch","data":{"notch":{"id":11,"curve":7,"t":0.75,"length":0.008}}}
+{"type":"remove_notch","data":{"notch":11}}
+```
+
+Position is finite curve parameter `t` in `[0,1]`, not arc length; length is
+finite total perpendicular I marker length in `[0.0001,0.1]` metres. Curve
+ownership, stable IDs, usable tangent and evaluated marker coordinates validate
+before publication. Update retains the owner and ID and may reattach within that
+owner. Invalid input rejects the complete transaction without replacing output.
+Split/join remap positions; cut/offset and deletion of an attached hole/internal
+line refuse explicitly. SVG preserves physical-scale markers; DXF refuses them
+before staging and OBJ remains mesh-only. See the [bounded notch contract](../spec/features/PAT-006-authored-notches.md)
+for migration, numeric decisions and the unverified reference boundary.
 
 `cut_piece` takes an owner and two distinct straight boundary addresses. Each
 address uses a dimensionless curve parameter strictly between `1e-6` and
@@ -187,7 +207,7 @@ legacy seam or ordered sewing group also refuses, including remote intervals.
 Existing annotations move unchanged to exactly one child; crossing, near-cut or
 ambiguous annotations refuse. See the [engineering contract](../spec/features/PAT-006-straight-cut.md)
 for clearance and work limits. This is one schema alternative on `project_execute`
-and CLI `execute`; the nine MCP tools are retained. Native v5 stores the resulting
+and CLI `execute`; the nine MCP tools are retained. Native v6 stores the resulting
 ordinary pieces. Curved cuts, cuts through holes and target relationship
 remapping remain open.
 
@@ -206,7 +226,7 @@ before construction; next ID becomes 21. The command adds no material, welded
 points, linked editing or simulation step. Removing seam 20 with `remove_seam`
 keeps both editable pieces and their cut boundaries; it does not fill or join
 them. Already sewn targets still refuse, including a child until its seam is
-removed. Save/reopen preserves the ordinary seam in native v5 with no format bump.
+removed. Save/reopen preserves the ordinary seam in native v6 with no format bump.
 See the [Cut & Sew engineering contract](../spec/features/SEW-001-cut-and-sew.md).
 The existing `execute`/`project_execute` routes and nine tools remain unchanged.
 Command/schema failures preserve primary/output/recovery bytes; on a late IO
@@ -251,7 +271,7 @@ The new Hole ID survives corner edits and split/join, including last-to-first
 joins. One hole per piece is supported; hole curves cannot be sewn, and a holed
 piece cannot be cut. Existing exterior sewing remains attached.
 
-Native v5 preserves both editable loops. SVG exports one compound evenodd path
+Native v6 preserves both editable loops. SVG exports one compound evenodd path
 per piece, but current SVG import refuses hole subpaths. DXF export refuses a
 holed project before staging; OBJ exports its actual annular surface. See the
 [hole contract](../spec/features/PAT-006-straight-hole.md). With `offset_outline`,
@@ -385,7 +405,7 @@ with reference numerical/rounding/selection behavior still unobserved.
 lengths. Legacy seam maps retain their original normalized-t meaning. Different
 pieces/disconnected spans are supported; gaps never add sewing length. Group
 identity and map survive supported split/join/remesh operations. The native
-writer saves v5; strict v1/v2/v3/v4 readers preserve legacy data and semantics.
+writer saves v6; strict v1/v2/v3/v4/v5 readers preserve legacy data and semantics.
 
 `add_sewing_by_length` creates one ordinary sewing group with one interval per
 side and the normalized physical arc-length map `[[0,0],[1,1]]`:
@@ -405,7 +425,7 @@ errors reject the whole transaction and preserve existing output/recovery bytes.
 Disjoint spans on one curve remain valid. Different side lengths use the existing
 group's normalized proportional semantics. Only resolved t intervals are saved;
 later geometry edits retain those attachments and recompute lengths, without
-persistent length locks. Native v5, CLI `execute`, MCP `project_execute` and the
+persistent length locks. Native v6, CLI `execute`, MCP `project_execute` and the
 nine-tool surface stay unchanged. This is bounded WeftForge engineering behavior;
 reference easing, continuous correspondence and numeric parity remain unqualified.
 See the [physical-length contract](../spec/features/SEW-002-physical-length.md).
@@ -420,7 +440,7 @@ weftforge-cli inspect-sewing output.weftforge
 `commands.json` is a strict JSON array of 1–1024 shared commands, at most 1 MiB.
 Nested transactions and duplicate fields are rejected. CLI and MCP use the same
 transaction/save function; a failed command batch never partially replaces its
-output. Inspection reports the authoritative native-v5 source, group lengths,
+output. Inspection reports the authoritative native-v6 source, group lengths,
 source-owned proportional portions, rest vertices/UVs/triangles, boundary
 parameters and actual weighted stitches. It builds a rest mesh and performs no
 simulation. Its native source uses native scalar serialization, including f32

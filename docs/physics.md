@@ -282,39 +282,45 @@ cannot provide a usable dihedral gradient and are skipped for that projection;
 reported strain/residuals and the numerical checks remain relevant. Zero D
 intentionally disables that material's bending energy, not collision.
 
-Each bend retains its actual displacement `p_b` at its four nodes, reset to zero
-every substep. Its anchor `z=x-p_b` stays fixed during that bend's update and
-follows displacements from other stages. The unchanged angular energy enters
-the local incremental objective:
+The bending stage retains one actual displacement `p_b` per node, reset to zero
+once every substep. This is a displacement, not a force or scalar multiplier.
+Its anchor `z=x-p_b` stays fixed during the stage's update and follows
+displacements from other stages. All active hinges share the same inertial
+term in the incremental objective:
 
 ```text
-h²*Phi_b(q) = sum_free_i m_i*|q_i-z_i|²/2 + h²*k_b*C_b(q)²/2
+h²*Phi_b(q) = sum_free_i m_i*|q_i-z_i|²/2 + h²*sum_b k_b*C_b(q)²/2
 ```
 
-Writing `a_i=p_b_i/sqrt(w_i)`, `g_i=h*sqrt(k_b*w_i)*gradient_i(C_b)` and
-`r=h*sqrt(k_b)*C_b`, its rank-one Gauss–Newton direction is:
+Writing `a_i=p_b_i/sqrt(w_i)`, each row
+`J_bi=h*sqrt(k_b*w_i)*gradient_i(C_b)` and residual
+`r_b=h*sqrt(k_b)*C_b`, the mass-normalized Gauss–Newton system is:
 
 ```text
-t = (sum_i dot(g_i,a_i) - r) / (1 + sum_i dot(g_i,g_i))
-d_i = sqrt(w_i)*(g_i*t-a_i)
+(I + J^T J) y = -(a + J^T r)
+d_i = sqrt(w_i)*y_i
 ```
 
-Pinned nodes have zero `a_i`, `g_i` and displacement. A scalar multiplier cannot
-recover `p_b` when the dihedral gradient rotates; the previous update could
-therefore satisfy its scalar equation while retaining a spurious inertial force.
-The displacement term above preserves that nonlinear inertial relation. These
-are separate stage histories, not extra physical masses: at convergence each
-history contributes its stage's force to the displacement from the predictor.
-This does not establish convergence of the combined stages at finite iterations.
+Pinned nodes have zero `a_i`, row entries and displacement. Shared-node rows
+are summed in one matrix-free solve, using diagonal preconditioning, at most
+32 PCG iterations and relative residual `1e-12`. This replaces separately
+iterated hinge objectives whose shared-node coupling can remain unresolved
+after 32 outer sweeps. It changes neither rigidity nor the angular energy.
+These histories remain separate from the material and sewing histories; they
+are not extra physical masses. Finite-budget convergence of the combined
+stages is not established.
 
-The same local objective accepts an Armijo descent with coefficient `1e-4` and at
-most 16 fractions, starting at one and halving. Only an accepted finite trial
-changes the four positions and their history, using actual rounded displacement.
-Non-finite current quantities abort the whole-call transaction. Degenerate or
-non-finite trials are rejected; an exhausted search leaves that bend unchanged.
-Cancellation is checked on entry, at each trial and immediately before the
-accepted position/history copy. Histories remain local to the candidate substep,
-so cancellation or failure cannot publish partial state.
+The complete block objective accepts an Armijo descent with coefficient `1e-4`
+and at most 16 fractions, starting at one and halving. Current degenerate
+hinges are omitted from that invocation. Any trial degenerating an active
+hinge is rejected for the whole block, as is a non-finite trial. Non-finite
+current quantities abort; an exhausted search leaves the stage unchanged.
+Only an accepted finite trial changes positions and history, using actual
+rounded displacement. The original cancellation callback is checked on entry,
+at most every 64 bounded internal checkpoints and immediately before every
+successful return or accepted position/history copy. No cancellation result
+is returned after that copy. All history and scratch storage is local to the
+candidate substep/call, preserving the whole-Cloth transaction.
 
 An independent pinned-hinge check uses one free 0.01 kg node, a 0.1 s substep,
 0.5 N m bend coefficient and a predictor at radius 1 m and angle 1 radian.
@@ -324,11 +330,26 @@ Eliminating radius gives `r=cos(theta-1)` and the strictly increasing equation
 residuals without the production dihedral gradient. The fixed bounds are
 `1e-8 m` and `1e-6 N`. At 32 sweeps the old scalar history misses by
 0.1185816818 m / 0.1065595925 N; displacement history gives
-3.835502563e-9 m / 3.349162043e-9 N. Separate checks cover center-of-mass preservation,
-every direct cancellation callback, whole-call rollback and substep history reset.
-This proves a bounded component correction, not the cause of a garment transient,
-full garment quality, equilibrium, reference parity or measured-fabric behavior.
-The added four-node history and line search have no garment runtime measurement.
+3.835502563e-9 m / 3.349162043e-9 N. Those numbers describe the earlier
+single-hinge implementation, not a run of the coupled stage. Its checks now
+call the shared production stage while retaining their independent criteria.
+
+A fresh five-node/two-hinge case has one free node, mass
+`6.627272727272728e-5 kg`, substep `1/480 s`, two coefficients
+`0.024750031175957105 N m`, and a `1e-5 m` normal predictor. Independent
+Cartesian derivatives and a strict-convexity proof give the unique minimum
+`[0,0,5.1358750877942195e-8] m`. At 32 ordered local-hinge sweeps, the
+compiled RED misses by `2.661405569226554e-8 m` with force residual
+`7.912503711575184e-5 N`, exceeding the fixed `1e-8 m` / `1e-6 N` bounds.
+On coupled-stage commit `9643ad0a430380f85b7c42f915c5ead3352c98b8`, the one
+filtered component check passes with position error `5.360130369343619e-22 m`
+and independent Cartesian force residual `1.6534083130403943e-18 N`.
+The reference-force norm is `2.710505431213761e-20 N`; pins and finiteness
+pass after each of the unchanged 32 sweeps. Four additional source checks cover
+shared history/pins/cancellation, no-op/invalid-input atomicity, active-trial
+degeneration and whole-call rollback; they remain unexecuted at this checkpoint.
+This bounded component result establishes neither garment causality nor garment
+quality, reference parity, measured-fabric behavior or a runtime budget result.
 
 ## Sewing, pins and construction correspondence
 

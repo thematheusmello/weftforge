@@ -1,3 +1,40 @@
+# Current development integration — 17 November 2026
+
+The `feat/notch-bend-integration` branch combines the source from tested native
+notch/text-input commit `06329f2a` with the four coupled-bending files from
+`82cc77ee`, on the safe published PR #60 head `2a64b175`. All 91 source inputs
+match those exact origins. No dependency, vendor or toolchain changes are added.
+This combined source has not yet run its integration checks.
+
+The separate UI source passed 441 workspace tests, formatting, strict Clippy and
+native/CLI builds. The separate coupled-bending source passed 425 tests and the
+same build/lint checks. These are separate results, not a combined test total.
+
+The full coupled-bending garment run completed all 180 steps and independently
+analyzed 181 states. It still fails the unchanged strain screen at frames 28 and
+29: peak 50.9602% exceeds the 15% limit. Finite-value and supported-contact screens
+passed. The remaining closure spike is under investigation; no garment or
+reference acceptance is claimed.
+
+Native check N004 launched the new UI build into an empty document, but the
+accessibility tree exposed only window chrome. A supported window action failed;
+no notch authoring, save, export or reopen step ran. The exact owned process and
+windows were closed. Source tests do not establish this native workflow.
+
+Next: resolve native accessibility activation, run the combined source checks,
+then repeat the complete native notch workflow on a new recorded case. Diagnose
+closure from the retained states before changing the solver or running another
+full garment test. Native v6 adds empty notch metadata; a future physical rest
+comparison must explicitly distinguish that empty authoring metadata from any
+physical geometry change.
+
+GitHub Actions remain disabled. PR #60 is a draft; main and the existing Pages
+site are unchanged. No test application or owned simulation job is running.
+The feature inventory remains incomplete: 41 partial, 15 planned, 0 fully
+implemented or reference verified among the 56 inventoried contracts.
+
+Earlier checkpoints and retained evidence follow.
+
 # WeftForge status — active development, 2026-11-17
 
 ## Clean sewing-history verification

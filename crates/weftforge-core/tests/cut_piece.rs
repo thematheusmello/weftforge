@@ -698,7 +698,7 @@ fn cut_and_sew_exact_seam_history_high_water_removal_and_native_v5() {
     let bytes = fs::read(&path).unwrap();
     assert_eq!(
         serde_json::from_slice::<serde_json::Value>(&bytes).unwrap()["version"],
-        5
+        weftforge_core::FORMAT_VERSION
     );
     let reopened = Editor::new(Project::load(&path).unwrap()).unwrap();
     assert_eq!(wire(&reopened.project), wire(&accepted));

@@ -51,9 +51,15 @@ chain workflows and garment simulation acceptance remain open.
 **Internal line** adds straight annotations owned by a pattern piece, with a
 two-point tool, exact endpoint editing, selection/removal and applied length
 feedback. A valid endpoint edit and staged piece properties share one Undo step.
-These editable annotations are stored in strict native v5; internal shapes,
+These editable annotations are stored in the strict native project format; internal shapes,
 folds and internal sewing remain future work. See the
 [actual native annotation gallery](docs/studio-preview.md).
+
+**Notches** attach a physical-length I marker to an authored boundary at an
+exact curve parameter. Numeric creation, editing and removal share the document
+history; supported split/join edits retain the attachment. Native projects and
+SVG retain markers. DXF refuses notched projects to prevent losing annotations.
+Other notch shapes and the complete native workflow remain in development.
 
 **Cut piece** divides an eligible straight pattern into two independent editable
 pieces. Pick two boundaries or enter their exact curve parameters, review the
@@ -105,10 +111,10 @@ with a signed percentage for extension or compression.
 The solver is early; general garment convergence and contact robustness remain
 ongoing work.
 
-Version 5 `.weftforge` JSON uses a strict schema for supported editable
+Version 6 `.weftforge` JSON uses a strict schema for supported editable
 construction, including ordered sewing groups and piece-owned straight internal
-annotations and holes. The reader supports explicit version 1/2/3/4 migrations;
-older apps cannot open v5. OBJ mesh export and bounded SVG/DXF pattern import and export
+annotations, holes and notches. The reader supports explicit version 1–5 migrations;
+older apps cannot open v6. OBJ mesh export and bounded SVG/DXF pattern import and export
 exist; [format details and gaps](docs/file-formats.md)
 explain what survives each path. Simulation frames/settings, imported avatars,
 textures, animation, advanced construction and third-party project formats

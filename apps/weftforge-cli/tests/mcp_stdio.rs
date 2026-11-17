@@ -218,7 +218,7 @@ fn check_cut_command(kind: &str, modern: bool) {
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 33);
+    assert_eq!(variants.len(), 36);
     let execute = tools
         .iter()
         .find(|tool| tool["name"] == "project_execute")
@@ -726,7 +726,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
             .as_array()
             .unwrap()
             .len(),
-        33
+        36
     );
     success(&server.call("project_create", json!({"output":project_path})));
     let initial = server.call("project_inspect", json!({"path":project_path}));
@@ -863,7 +863,7 @@ fn sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constrai
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 33);
+    assert_eq!(variants.len(), 36);
     for name in [
         "add_sewing_group",
         "update_sewing_group",
@@ -1088,7 +1088,7 @@ fn physical_length_sewing_schema_and_cli_mcp_use_the_shared_candidate_transactio
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 33);
+    assert_eq!(variants.len(), 36);
     let variant = variants
         .iter()
         .find(|variant| variant["properties"]["type"]["const"] == "add_sewing_by_length")
@@ -2477,6 +2477,156 @@ fn inspection_matches_saved_native_json_without_changing_f32_materials_or_f64_ge
 }
 
 #[test]
+fn authored_notches_share_closed_typed_commands_across_cli_and_both_mcp_profiles() {
+    for modern in [false, true] {
+        let directory = Directory::new();
+        let empty = directory.path("empty.weftforge");
+        let cli_path = directory.path("cli.weftforge");
+        let mcp_path = directory.path("mcp.weftforge");
+        let commands_file = directory.path("commands.json");
+        Project::default().save(&empty).unwrap();
+        let commands = json!([
+            {"type":"add_rectangle","data":{"name":"Original notch panel","origin":[0,0],"width":0.24,"height":0.36}},
+            {"type":"add_notch","data":{"piece":2,"curve":7,"t":0.25,"length":0.005}},
+            {"type":"update_notch","data":{"notch":{"id":11,"curve":7,"t":0.75,"length":0.008}}},
+            {"type":"add_notch","data":{"piece":2,"curve":9,"t":1,"length":0.01}},
+            {"type":"remove_notch","data":{"notch":12}}
+        ]);
+        let run_cli = |input: &Path, output: &Path, commands: &Value| {
+            fs::write(&commands_file, serde_json::to_vec(commands).unwrap()).unwrap();
+            Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+                .arg("execute")
+                .arg(input)
+                .arg(output)
+                .arg(&commands_file)
+                .output()
+                .unwrap()
+        };
+        let cli = run_cli(&empty, &cli_path, &commands);
+        assert!(
+            cli.status.success(),
+            "{}",
+            String::from_utf8_lossy(&cli.stderr)
+        );
+        let mut server = Server::start();
+        if !modern {
+            server.initialize("2025-11-25");
+        }
+        let profile = |mut params: Value| {
+            if modern {
+                params["_meta"] = modern_metadata("2026-07-28");
+            }
+            params
+        };
+        let listed = server.request("tools/list", profile(json!({})));
+        let tools = listed["result"]["tools"].as_array().unwrap();
+        assert_eq!(tools.len(), 9);
+        let variants = tools
+            .iter()
+            .find(|tool| tool["name"] == "project_execute")
+            .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
+            .as_array()
+            .unwrap();
+        assert_eq!(variants.len(), 36);
+        for (name, required) in [
+            ("add_notch", json!(["piece", "curve", "t", "length"])),
+            ("update_notch", json!(["notch"])),
+            ("remove_notch", json!(["notch"])),
+        ] {
+            let variant = variants
+                .iter()
+                .find(|variant| variant["properties"]["type"]["const"] == name)
+                .unwrap();
+            assert_eq!(variant["additionalProperties"], false);
+            let data = &variant["properties"]["data"];
+            assert_eq!(data["required"], required);
+            assert_eq!(data["additionalProperties"], false);
+            let fields = if name == "update_notch" {
+                &data["properties"]["notch"]
+            } else {
+                data
+            };
+            if name != "remove_notch" {
+                assert_eq!(fields["additionalProperties"], false);
+                for field in [
+                    "curve",
+                    if name == "update_notch" {
+                        "id"
+                    } else {
+                        "piece"
+                    },
+                ] {
+                    assert_eq!(fields["properties"][field]["minimum"], 1);
+                    assert_eq!(fields["properties"][field]["maximum"], u64::MAX);
+                }
+                assert_eq!(fields["properties"]["t"]["minimum"], 0);
+                assert_eq!(fields["properties"]["t"]["maximum"], 1);
+                assert_eq!(
+                    fields["properties"]["length"]["minimum"],
+                    weftforge_core::MIN_NOTCH_LENGTH
+                );
+                assert_eq!(
+                    fields["properties"]["length"]["maximum"],
+                    weftforge_core::MAX_NOTCH_LENGTH
+                );
+            } else {
+                assert_eq!(data["properties"]["notch"]["minimum"], 1);
+                assert_eq!(data["properties"]["notch"]["maximum"], u64::MAX);
+            }
+        }
+        let executed = server.request("tools/call", profile(json!({"name":"project_execute","arguments":{"input":empty,"output":mcp_path,"commands":commands}})));
+        assert_eq!(success(&executed)["revision"], 1);
+        assert_eq!(fs::read(&cli_path).unwrap(), fs::read(&mcp_path).unwrap());
+        let inspected = server.request(
+            "tools/call",
+            profile(json!({"name":"project_inspect","arguments":{"path":mcp_path}})),
+        );
+        assert_eq!(
+            success(&inspected)["project"]["pieces"][0]["notches"],
+            json!([{"id":11,"curve":7,"t":0.75,"length":0.008}])
+        );
+        let inspected_cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+            .arg("inspect")
+            .arg(&cli_path)
+            .output()
+            .unwrap();
+        assert!(
+            inspected_cli.status.success(),
+            "{}",
+            String::from_utf8_lossy(&inspected_cli.stderr)
+        );
+        assert_eq!(
+            serde_json::from_slice::<Value>(&inspected_cli.stdout).unwrap()["patterns"][0]["notches"],
+            success(&inspected)["project"]["pieces"][0]["notches"]
+        );
+        let primary = fs::read(&mcp_path).unwrap();
+        let backup = b"retained prior recovery";
+        for path in [&cli_path, &mcp_path] {
+            fs::write(recovery_path(path), backup).unwrap();
+        }
+        for bad in [
+            json!([{"type":"add_notch","data":{"piece":2,"curve":7,"t":1.1,"length":0.005}}]),
+            json!([{"type":"add_notch","data":{"piece":2,"curve":7,"t":0.5,"length":0}}]),
+            json!([{"type":"add_notch","data":{"piece":2,"curve":7,"t":0.5,"length":0.101}}]),
+            json!([{"type":"add_notch","data":{"piece":2,"curve":7,"t":0.5,"length":0.005,"extra":true}}]),
+            json!([{"type":"update_notch","data":{"notch":{"id":11,"curve":7,"t":0.5,"length":0.005,"extra":true}}}]),
+            json!([{"type":"update_notch","data":{"notch":{"id":11,"curve":3,"t":0.5,"length":0.005}}}]),
+            json!([{"type":"remove_notch","data":{"notch":0}}]),
+            json!([{"type":"add_notch","data":{"piece":2,"curve":7,"t":0.5,"length":0.005}},{"type":"remove_notch","data":{"notch":999}}]),
+        ] {
+            assert!(!run_cli(&cli_path, &cli_path, &bad).status.success());
+            let response = server.request("tools/call", profile(json!({"name":"project_execute","arguments":{"input":mcp_path,"output":mcp_path,"commands":bad}})));
+            assert_eq!(response["result"]["isError"], true, "{response}");
+            for path in [&cli_path, &mcp_path] {
+                assert_eq!(fs::read(path).unwrap(), primary);
+                assert_eq!(fs::read(recovery_path(path)).unwrap(), backup);
+            }
+        }
+        server.finish();
+    }
+}
+
+#[test]
 fn internal_annotations_share_closed_schema_cli_and_mcp_transactions_without_new_tools() {
     let directory = Directory::new();
     let empty = directory.path("empty.weftforge");
@@ -2525,7 +2675,7 @@ fn internal_annotations_share_closed_schema_cli_and_mcp_transactions_without_new
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 33);
+    assert_eq!(variants.len(), 36);
     for (name, required, id_field) in [
         (
             "add_internal_segment",
@@ -2728,7 +2878,7 @@ fn outline_offsets_share_closed_schemas_material_domain_and_atomic_files() {
     let variants = execute["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 33);
+    assert_eq!(variants.len(), 36);
     let matches = variants
         .iter()
         .filter(|variant| variant["properties"]["type"]["const"] == "offset_outline")
@@ -2908,7 +3058,7 @@ fn straight_holes_keep_closed_discovery_shared_ids_and_atomic_refusal() {
     assert_eq!(commands["minItems"], 1);
     assert_eq!(commands["maxItems"], 1024);
     let variants = commands["items"]["oneOf"].as_array().unwrap();
-    assert_eq!(variants.len(), 33);
+    assert_eq!(variants.len(), 36);
     for (name, required, id) in [
         ("add_hole", json!(["piece", "vertices"]), "piece"),
         ("remove_hole", json!(["hole"]), "hole"),

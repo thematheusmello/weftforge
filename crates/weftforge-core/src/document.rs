@@ -1,12 +1,14 @@
 use crate::{Error, Id, Result, ensure};
 use serde::{Deserialize, Serialize};
-use std::collections::BTreeSet;
+use std::collections::{BTreeMap, BTreeSet};
 
 pub const MAX_OBJECTS: usize = 20_000;
 pub const MAX_SEWING_SPANS: usize = 20_000;
 pub const MIN_RESOLUTION: f64 = 0.005;
 pub const MAX_RESOLUTION: f64 = 0.5;
 pub const MAX_COORDINATE: f64 = 1_000.0;
+pub const MIN_NOTCH_LENGTH: f64 = 0.0001;
+pub const MAX_NOTCH_LENGTH: f64 = 0.1;
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -77,7 +79,11 @@ impl Curve {
             .point(self.end)
             .ok_or_else(|| Error("Missing curve end".into()))?
             .position;
-        Ok(match self.controls {
+        Ok(self.evaluate_positions(a, b, t))
+    }
+
+    fn evaluate_positions(&self, a: [f64; 2], b: [f64; 2], t: f64) -> [f64; 2] {
+        match self.controls {
             None => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t],
             Some([c, d]) => {
                 let s = 1.0 - t;
@@ -88,7 +94,7 @@ impl Curve {
                         + t.powi(3) * b[axis]
                 })
             }
-        })
+        }
     }
 }
 
@@ -177,6 +183,70 @@ pub struct Hole {
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
+pub struct Notch {
+    pub id: Id,
+    pub curve: Id,
+    /// Authored curve parameter, not arc length; retained when the curve changes shape.
+    pub t: f64,
+    /// Total length of a perpendicular I marker centred on the curve, in metres.
+    pub length: f64,
+}
+
+impl Notch {
+    /// Evaluates one marker; use `Project::notch_segments` for a complete document pass.
+    pub fn segment(&self, project: &Project) -> Result<[[f64; 2]; 2]> {
+        let curve = project
+            .curve(self.curve)
+            .ok_or_else(|| Error("Missing notch curve".into()))?;
+        let a = project
+            .point(curve.start)
+            .ok_or_else(|| Error("Missing curve start".into()))?
+            .position;
+        let b = project
+            .point(curve.end)
+            .ok_or_else(|| Error("Missing curve end".into()))?
+            .position;
+        self.segment_geometry(curve, a, b)
+    }
+
+    fn segment_geometry(&self, curve: &Curve, a: [f64; 2], b: [f64; 2]) -> Result<[[f64; 2]; 2]> {
+        ensure(
+            self.length.is_finite() && (MIN_NOTCH_LENGTH..=MAX_NOTCH_LENGTH).contains(&self.length),
+            "Notch length must be between 0.0001 and 0.1 metres",
+        )?;
+        ensure(
+            self.t.is_finite() && (0.0..=1.0).contains(&self.t),
+            "Curve t must be in [0, 1]",
+        )?;
+        let point = curve.evaluate_positions(a, b, self.t);
+        let tangent: [f64; 2] = if let Some([c, d]) = curve.controls {
+            let s = 1. - self.t;
+            std::array::from_fn(|axis| {
+                3. * (s * s * (c[axis] - a[axis])
+                    + 2. * s * self.t * (d[axis] - c[axis])
+                    + self.t * self.t * (b[axis] - d[axis]))
+            })
+        } else {
+            std::array::from_fn(|axis| b[axis] - a[axis])
+        };
+        let norm = tangent[0].hypot(tangent[1]);
+        ensure(
+            norm.is_finite() && norm > 1.0e-12,
+            "Notch needs a usable curve tangent (greater than 1e-12 metres)",
+        )?;
+        let half = 0.5 * self.length;
+        let normal = [-tangent[1] / norm * half, tangent[0] / norm * half];
+        let segment =
+            [-1., 1.].map(|sign| std::array::from_fn(|axis| point[axis] + sign * normal[axis]));
+        for endpoint in &segment {
+            validate_coordinates(endpoint)?;
+        }
+        Ok(segment)
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct Piece {
     pub id: Id,
     pub name: String,
@@ -185,6 +255,7 @@ pub struct Piece {
     pub holes: Vec<Hole>,
     /// Independent straight annotations, each with two exclusive endpoint IDs.
     pub internal_curves: Vec<Id>,
+    pub notches: Vec<Notch>,
     pub placement: Placement,
     pub material: Id,
     /// Warp axis in material UV: radians counterclockwise from +U toward +V.
@@ -405,6 +476,75 @@ impl Project {
     pub fn material(&self, id: Id) -> Option<&Material> {
         self.materials.iter().find(|item| item.id == id)
     }
+    pub fn notch(&self, id: Id) -> Option<&Notch> {
+        self.pieces
+            .iter()
+            .flat_map(|piece| &piece.notches)
+            .find(|notch| notch.id == id)
+    }
+
+    /// Evaluates all owned markers with one document lookup build, without changing construction.
+    pub fn notch_segments(&self) -> Result<BTreeMap<Id, [[f64; 2]; 2]>> {
+        self.notch_segments_with_work(&crate::geometry::ContainmentWork::new())
+    }
+
+    pub(crate) fn notch_segments_with_work(
+        &self,
+        work: &crate::geometry::ContainmentWork<'_>,
+    ) -> Result<BTreeMap<Id, [[f64; 2]; 2]>> {
+        let mut owners = Vec::new();
+        for piece in &self.pieces {
+            work.charge_request()?;
+            if !piece.notches.is_empty() {
+                owners.push(piece);
+            }
+        }
+        let mut segments = BTreeMap::new();
+        if owners.is_empty() {
+            return Ok(segments);
+        }
+        let mut points = BTreeMap::new();
+        for point in &self.points {
+            work.charge_request()?;
+            points.insert(point.id, point.position);
+        }
+        let mut curves = BTreeMap::new();
+        for curve in &self.curves {
+            work.charge_request()?;
+            curves.insert(curve.id, curve);
+        }
+        for piece in owners {
+            let mut owned = BTreeSet::new();
+            for curve in piece.construction_curves() {
+                work.charge_request()?;
+                owned.insert(*curve);
+            }
+            for notch in &piece.notches {
+                work.charge_request()?;
+                ensure(
+                    owned.contains(&notch.curve),
+                    "Notch curve must belong to its owner piece",
+                )?;
+                work.charge_request()?;
+                let curve = curves
+                    .get(&notch.curve)
+                    .ok_or_else(|| Error("Missing notch curve".into()))?;
+                work.charge_request()?;
+                let a = points
+                    .get(&curve.start)
+                    .ok_or_else(|| Error("Missing curve start".into()))?;
+                work.charge_request()?;
+                let b = points
+                    .get(&curve.end)
+                    .ok_or_else(|| Error("Missing curve end".into()))?;
+                work.charge_request()?;
+                let segment = notch.segment_geometry(curve, *a, *b)?;
+                work.charge_request()?;
+                segments.insert(notch.id, segment);
+            }
+        }
+        Ok(segments)
+    }
 
     pub(crate) fn require_boundary_curve(&self, id: Id) -> Result<()> {
         ensure(self.curve(id).is_some(), "Authored curve is missing")?;
@@ -458,10 +598,10 @@ impl Project {
         &self,
         containment_work: &mut crate::geometry::ContainmentWork,
     ) -> Result<()> {
-        let mut hole_count = 0;
+        let mut detail_count = 0;
         for piece in &self.pieces {
             containment_work.charge_request()?;
-            hole_count += piece.holes.len();
+            detail_count += piece.holes.len() + piece.notches.len();
         }
         ensure(
             self.points.len()
@@ -470,7 +610,7 @@ impl Project {
                 + self.materials.len()
                 + self.seams.len()
                 + self.sewing_groups.len()
-                + hole_count
+                + detail_count
                 <= MAX_OBJECTS,
             "Project object limit exceeded",
         )?;
@@ -492,6 +632,11 @@ impl Project {
                     .flat_map(|piece| piece.holes.iter().map(|hole| hole.id)),
             )
             .chain(self.materials.iter().map(|x| x.id))
+            .chain(
+                self.pieces
+                    .iter()
+                    .flat_map(|piece| piece.notches.iter().map(|notch| notch.id)),
+            )
             .chain(self.seams.iter().map(|x| x.id))
             .chain(self.sewing_groups.iter().map(|x| x.id))
         {
@@ -669,6 +814,7 @@ impl Project {
             used_curves.len() == self.curves.len() && used_points.len() == self.points.len(),
             "Orphan construction geometry is unsupported",
         )?;
+        self.notch_segments_with_work(containment_work)?;
         for seam in &self.seams {
             containment_work.charge_request()?;
             validate_name(&seam.name)?;
@@ -844,6 +990,10 @@ impl Project {
             original.holes.is_empty(),
             "Cutting a piece with a hole is unsupported",
         )?;
+        ensure(
+            original.notches.is_empty(),
+            "Cutting a piece with notches is unsupported; remove its notches first",
+        )?;
         let boundary_index = |curve| {
             original
                 .boundary
@@ -883,7 +1033,7 @@ impl Project {
                 + self
                     .pieces
                     .iter()
-                    .map(|piece| piece.holes.len())
+                    .map(|piece| piece.holes.len() + piece.notches.len())
                     .sum::<usize>()
                 <= MAX_OBJECTS - additions,
             "Cut exceeds the project object limit",
@@ -1021,6 +1171,7 @@ impl Project {
                     boundary,
                     holes: Vec::new(),
                     internal_curves: Vec::new(),
+                    notches: Vec::new(),
                     placement: Placement::default(),
                     material,
                     grain_angle: 0.,
@@ -1152,6 +1303,13 @@ impl Project {
                     .find(|piece| piece.holes.iter().any(|item| item.id == hole))
                     .ok_or_else(|| Error("Unknown hole".into()))?;
                 let index = owner.holes.iter().position(|item| item.id == hole).unwrap();
+                ensure(
+                    !owner
+                        .notches
+                        .iter()
+                        .any(|notch| owner.holes[index].boundary.contains(&notch.curve)),
+                    "Removing a hole with notches is unsupported; remove its notches first",
+                )?;
                 let boundary = owner.holes.remove(index).boundary;
                 let points: BTreeSet<_> = self
                     .curves
@@ -1196,6 +1354,10 @@ impl Project {
                     .iter_mut()
                     .find(|piece| piece.internal_curves.contains(&curve))
                     .ok_or_else(|| Error(format!("Curve {curve} is not an internal annotation")))?;
+                ensure(
+                    !owner.notches.iter().any(|notch| notch.curve == curve),
+                    "Removing an internal line with notches is unsupported; remove its notches first",
+                )?;
                 owner.internal_curves.retain(|&id| id != curve);
                 let original = self
                     .curve(curve)
@@ -1203,6 +1365,43 @@ impl Project {
                 let endpoints = [original.start, original.end];
                 self.curves.retain(|item| item.id != curve);
                 self.points.retain(|item| !endpoints.contains(&item.id));
+            }
+            Command::AddNotch {
+                piece,
+                curve,
+                t,
+                length,
+            } => {
+                ensure(self.piece(piece).is_some(), "Unknown notch owner piece")?;
+                let id = self.allocate_id()?;
+                self.pieces
+                    .iter_mut()
+                    .find(|owner| owner.id == piece)
+                    .unwrap()
+                    .notches
+                    .push(Notch {
+                        id,
+                        curve,
+                        t,
+                        length,
+                    });
+            }
+            Command::UpdateNotch { notch } => {
+                let target = self
+                    .pieces
+                    .iter_mut()
+                    .flat_map(|piece| &mut piece.notches)
+                    .find(|item| item.id == notch.id)
+                    .ok_or_else(|| Error("Unknown notch".into()))?;
+                *target = notch;
+            }
+            Command::RemoveNotch { notch } => {
+                let owner = self
+                    .pieces
+                    .iter_mut()
+                    .find(|piece| piece.notches.iter().any(|item| item.id == notch))
+                    .ok_or_else(|| Error("Unknown notch".into()))?;
+                owner.notches.retain(|item| item.id != notch);
             }
             Command::MovePoint { point, position } => {
                 self.points
@@ -1306,6 +1505,17 @@ impl Project {
                     .position(|&id| id == curve)
                     .ok_or_else(|| Error("Curve has no piece".into()))?;
                 boundary.insert(index + 1, second);
+                for notch in &mut piece.notches {
+                    cut_work.charge_request()?;
+                    if notch.curve == curve {
+                        if notch.t <= t {
+                            notch.t /= t;
+                        } else {
+                            notch.curve = second;
+                            notch.t = (notch.t - t) / (1. - t);
+                        }
+                    }
+                }
                 for seam in std::mem::take(&mut self.seams) {
                     cut_work.charge_request()?;
                     let portions = split_seam(seam, curve, second, t, cut_work)?;
@@ -1458,6 +1668,15 @@ impl Project {
                 joined.end = right.end;
                 joined.controls = controls;
                 let owner = &mut self.pieces[piece_index];
+                for notch in &mut owner.notches {
+                    cut_work.charge_request()?;
+                    if notch.curve == curve {
+                        notch.t *= t;
+                    } else if notch.curve == second {
+                        notch.curve = curve;
+                        notch.t = t + (1. - t) * notch.t;
+                    }
+                }
                 let boundary = if owner.boundary.contains(&curve) {
                     &mut owner.boundary
                 } else {
@@ -2046,6 +2265,18 @@ pub enum Command {
     },
     RemoveInternalCurve {
         curve: Id,
+    },
+    AddNotch {
+        piece: Id,
+        curve: Id,
+        t: f64,
+        length: f64,
+    },
+    UpdateNotch {
+        notch: Notch,
+    },
+    RemoveNotch {
+        notch: Id,
     },
     MovePoint {
         point: Id,
