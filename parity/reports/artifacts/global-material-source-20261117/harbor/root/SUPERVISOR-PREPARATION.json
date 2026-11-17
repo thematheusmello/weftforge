@@ -1,0 +1,21 @@
+{
+  "original_supervisor": ".local/material-group-full-case-root-20261117-v2/supervise.py",
+  "original_sha256": "67a376f7a15559a29b68b582821beb6105d5c6872de4e7885dfbfaae29a428c7",
+  "new_supervisor": ".local/global-material-full-case-root-20261117/supervise.py",
+  "new_sha256": "5e54e1ca6eb3c1cfe0cba226631ee8f2ae1183f5cd1420d2d6300e855b1d3860",
+  "changes": [
+    "candidate namespace",
+    "packet namespace",
+    "reproduce approved parent PATH in controller child environment"
+  ],
+  "selfcheck_exit_code": 0,
+  "selfcheck": {
+    "five_original_acceptance_asserts_passed": true,
+    "namespace_and_bound_child_environment_selfcheck_passed": true,
+    "model_or_evaluator_or_controller_execution": false
+  },
+  "whole_case_seconds": 420,
+  "full_181_state_workload_and_original_limits_unchanged": true,
+  "numerical_GO_created": false,
+  "actual_garment_execution": false
+}

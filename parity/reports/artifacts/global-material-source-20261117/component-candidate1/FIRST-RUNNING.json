@@ -1,0 +1,40 @@
+{
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--lib",
+    "tests::material_network_reaches_independent_incremental_energy_equilibrium",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "at_utc": "2026-11-17T02:52:49.024541+00:00",
+  "compiler_binaries": {
+    "cargo": {
+      "path": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "sha256": "532141271ce821135f63822c21fcd76c7972cbf69c19bc35e6ca8b00fcd5c40e"
+    },
+    "rustc": {
+      "path": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+      "sha256": "b69cbcffa5e990057035d53ccc8163e8392ce784f6abb114c19ceb61528ba9f6"
+    }
+  },
+  "cwd": "<ROOT>/.local/global-material-repair-20261117",
+  "environment": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_HOME": "<HOME>/.cargo",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/global-material-repair-20261117/target",
+    "RUSTC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTFLAGS": ""
+  },
+  "freeze_sha256": "335e95c2f67961ec42c9f3ebc40bdc938be0429b2de6a3cc159a0a700ae065e1",
+  "monitor_sha256": "4df98ac4595d45a71059fb12ad5c66da7b4fdbf9c1dfe7a0b74144f17f606987",
+  "root_design_GO_sha256": "b3fa570692203dc89355918f4a3dd776bc4aafa8c23966259c18dadc9ee4bafd",
+  "runner_sha256": "fc66ff207b42ec09569c5802be4195088be23d72c2a84a12ea19aa445b6b70ec",
+  "status": "ONE_AUTHORIZED_FIRST_CANDIDATE_STARTING"
+}

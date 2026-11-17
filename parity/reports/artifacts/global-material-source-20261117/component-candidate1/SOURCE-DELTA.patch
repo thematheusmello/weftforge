@@ -1,0 +1,1283 @@
+diff --git a/crates/weftforge-sim/src/constraints.rs b/crates/weftforge-sim/src/constraints.rs
+index 439fae3b..8943e447 100644
+--- a/crates/weftforge-sim/src/constraints.rs
++++ b/crates/weftforge-sim/src/constraints.rs
+@@ -1,8 +1,8 @@
+-use crate::{Material, Stitch, Vec3, math::*};
++use crate::{Material, SimulationError, Stitch, Vec3, check_cancel, math::*};
+ 
+ #[derive(Clone, Debug)]
+ pub(crate) struct Membrane {
+-    vertices: [usize; 3],
++    pub(crate) vertices: [usize; 3],
+     warp: [f64; 3],
+     weft: [f64; 3],
+     stiffness: [f64; 3],
+@@ -61,239 +61,254 @@ impl Membrane {
+         )
+     }
+ 
+-    fn energy(&self, positions: [Vec3; 3]) -> f64 {
++    fn energy(&self, positions: [Vec3; 3], dt: f64) -> f64 {
+         let (w, f) = self.deformation(positions);
+         [0.5 * (dot(w, w) - 1.), 0.5 * (dot(f, f) - 1.), dot(w, f)]
+             .into_iter()
+             .zip(self.stiffness)
+-            .map(|(c, k)| 0.5 * k * c * c)
++            .map(|(c, k)| {
++                let residual = dt * k.sqrt() * c;
++                0.5 * residual * residual
++            })
+             .sum()
+     }
+-
+-    pub fn solve(&self, x: &mut [Vec3], inverse_mass: &[f64], dt: f64, correction: &mut [Vec3; 3]) {
+-        let (values, gradients) = self.values_gradients(self.vertices.map(|v| x[v]));
+-        MaterialProjection {
+-            vertices: self.vertices,
+-            values,
+-            gradients,
+-            stiffness: self.stiffness,
+-        }
+-        .solve(x, inverse_mass, dt, correction, |q| self.energy(q));
+-    }
+ }
+ 
+-#[derive(Clone, Debug)]
+-pub(crate) enum MaterialGroup {
+-    Single(usize),
+-    Pair {
+-        membranes: [usize; 2],
+-        vertices: [usize; 4],
+-        local: [[usize; 3]; 2],
+-    },
++struct MaterialRow {
++    vertices: [usize; 3],
++    gradient: [Vec3; 3],
++    value: f64,
+ }
+ 
+-impl MaterialGroup {
+-    pub(crate) fn pair(a: usize, b: usize, membrane: &[Membrane]) -> Self {
+-        let first = membrane[a].vertices;
+-        let second = membrane[b].vertices;
+-        let fourth = second
+-            .into_iter()
+-            .find(|v| !first.contains(v))
+-            .expect("validated adjacent distinct triangles have four union vertices");
+-        let vertices = [first[0], first[1], first[2], fourth];
+-        let local = [first, second].map(|triangle| {
+-            triangle.map(|v| {
+-                vertices
+-                    .iter()
+-                    .position(|&u| u == v)
+-                    .expect("material group vertex")
+-            })
+-        });
+-        Self::Pair {
+-            membranes: [a, b],
+-            vertices,
+-            local,
++const MATERIAL_LINEAR_ITERATIONS: usize = 32;
++const MATERIAL_BACKTRACKING_STEPS: usize = 16;
++
++pub(crate) fn solve_material(
++    membrane: &[Membrane],
++    x: &mut [Vec3],
++    inverse_mass: &[f64],
++    dt: f64,
++    correction: &mut [Vec3],
++    cancelled: &impl Fn() -> bool,
++) -> Result<(), SimulationError> {
++    let unstable = || SimulationError::Unstable("non-finite global material solve".into());
++    let mut root_weight = Vec::with_capacity(x.len());
++    let mut diagonal = vec![[1.; 3]; x.len()];
++    for &weight in inverse_mass {
++        check_cancel(cancelled)?;
++        let root = weight.sqrt();
++        if !root.is_finite() {
++            return Err(unstable());
+         }
++        root_weight.push(root);
+     }
+-
+-    pub(crate) fn solve(
+-        &self,
+-        membrane: &[Membrane],
+-        x: &mut [Vec3],
+-        inverse_mass: &[f64],
+-        dt: f64,
+-        correction: &mut [Vec3; 4],
+-    ) {
+-        match self {
+-            Self::Single(id) => {
+-                let mut single = [correction[0], correction[1], correction[2]];
+-                membrane[*id].solve(x, inverse_mass, dt, &mut single);
+-                correction[..3].copy_from_slice(&single);
++    let mut rows = Vec::new();
++    for triangle in membrane {
++        let (values, gradients) = triangle.values_gradients(triangle.vertices.map(|v| x[v]));
++        for mode in 0..3 {
++            check_cancel(cancelled)?;
++            let scale = dt * triangle.stiffness[mode].sqrt();
++            let value = scale * values[mode];
++            let gradient = std::array::from_fn(|i| {
++                mul(
++                    gradients[mode][i],
++                    scale * root_weight[triangle.vertices[i]],
++                )
++            });
++            if !value.is_finite() || !gradient.into_iter().all(finite) {
++                return Err(unstable());
+             }
+-            Self::Pair {
+-                membranes,
+-                vertices,
+-                local,
+-            } => {
+-                let positions = vertices.map(|v| x[v]);
+-                let rows = std::array::from_fn::<_, 2, _>(|i| {
+-                    membrane[membranes[i]].values_gradients(local[i].map(|v| positions[v]))
+-                });
+-                let values = std::array::from_fn::<_, 6, _>(|i| rows[i / 3].0[i % 3]);
+-                let stiffness =
+-                    std::array::from_fn(|i| membrane[membranes[i / 3]].stiffness[i % 3]);
+-                let mut gradients = [[[0.; 3]; 4]; 6];
+-                for i in 0..6 {
+-                    for j in 0..3 {
+-                        gradients[i][local[i / 3][j]] = rows[i / 3].1[i % 3][j];
++            for (vertex, gradient) in triangle.vertices.into_iter().zip(gradient) {
++                for (axis, component) in gradient.into_iter().enumerate() {
++                    diagonal[vertex][axis] = diagonal[vertex][axis].hypot(component);
++                    if !diagonal[vertex][axis].is_finite() {
++                        return Err(unstable());
+                     }
+                 }
+-                MaterialProjection {
+-                    vertices: *vertices,
+-                    values,
+-                    gradients,
+-                    stiffness,
+-                }
+-                .solve(x, inverse_mass, dt, correction, |q| {
+-                    (0..2)
+-                        .map(|i| membrane[membranes[i]].energy(local[i].map(|v| q[v])))
+-                        .sum()
+-                });
+             }
++            rows.push(MaterialRow {
++                vertices: triangle.vertices,
++                gradient,
++                value,
++            });
+         }
+     }
+-}
+-
+-struct MaterialProjection<const V: usize, const C: usize> {
+-    vertices: [usize; V],
+-    values: [f64; C],
+-    gradients: [[Vec3; V]; C],
+-    stiffness: [f64; C],
+-}
+-
+-impl<const V: usize, const C: usize> MaterialProjection<V, C> {
+-    fn solve(
+-        self,
+-        x: &mut [Vec3],
+-        inverse_mass: &[f64],
+-        dt: f64,
+-        correction: &mut [Vec3; V],
+-        elastic_energy: impl Fn([Vec3; V]) -> f64,
+-    ) {
+-        let positions = self.vertices.map(|v| x[v]);
+-        let weights = self.vertices.map(|v| inverse_mass[v]);
+-        let dt_squared = dt * dt;
+-        let matrix = std::array::from_fn(|i| {
+-            std::array::from_fn(|j| {
+-                (0..V)
+-                    .map(|v| weights[v] * dot(self.gradients[i][v], self.gradients[j][v]))
+-                    .sum::<f64>()
+-                    + if i == j {
+-                        self.stiffness[i].recip() / dt_squared
+-                    } else {
+-                        0.
+-                    }
+-            })
+-        });
+-        let rhs = std::array::from_fn(|i| {
+-            (0..V)
+-                .map(|v| dot(self.gradients[i][v], correction[v]))
+-                .sum::<f64>()
+-                - self.values[i]
+-        });
+-        let Some(multiplier) = solve_spd::<C>(matrix, rhs) else {
+-            return;
+-        };
+-        let direction: [Vec3; V] = std::array::from_fn(|v| {
+-            sub(
+-                mul(
+-                    (0..C).fold([0.; 3], |sum, i| {
+-                        add(sum, mul(self.gradients[i][v], multiplier[i]))
+-                    }),
+-                    weights[v],
+-                ),
+-                correction[v],
+-            )
+-        });
+-        let slope = (0..V)
+-            .filter(|&v| weights[v] > 0.)
+-            .map(|v| dot(correction[v], direction[v]) / weights[v])
+-            .sum::<f64>()
+-            + dt_squared
+-                * (0..C)
+-                    .map(|i| {
+-                        self.stiffness[i]
+-                            * self.values[i]
+-                            * (0..V)
+-                                .map(|v| dot(self.gradients[i][v], direction[v]))
+-                                .sum::<f64>()
+-                    })
+-                    .sum::<f64>();
+-        if !slope.is_finite() || slope >= 0. {
+-            return;
++    let mut rhs = vec![[0.; 3]; x.len()];
++    for i in 0..x.len() {
++        check_cancel(cancelled)?;
++        if root_weight[i] > 0. {
++            rhs[i] = std::array::from_fn(|axis| {
++                -correction[i][axis] / root_weight[i] / diagonal[i][axis]
++            });
++        }
++    }
++    for row in &mut rows {
++        check_cancel(cancelled)?;
++        for (vertex, gradient) in row.vertices.into_iter().zip(&mut row.gradient) {
++            for (axis, component) in gradient.iter_mut().enumerate() {
++                *component /= diagonal[vertex][axis];
++            }
++            rhs[vertex] = sub(rhs[vertex], mul(*gradient, row.value));
+         }
+-        let objective = |q: [Vec3; V], p: [Vec3; V]| {
+-            0.5 * p
++    }
++    let energy = material_energy(membrane, x, correction, &root_weight, dt, cancelled)?;
++    if !energy.is_finite() {
++        return Err(unstable());
++    }
++    let mut rhs_scale = 0_f64;
++    for value in &rhs {
++        check_cancel(cancelled)?;
++        if !finite(*value) {
++            return Err(unstable());
++        }
++        for component in value {
++            rhs_scale = rhs_scale.max(component.abs());
++        }
++    }
++    if rhs_scale == 0. {
++        return Ok(());
++    }
++    for value in &mut rhs {
++        check_cancel(cancelled)?;
++        for component in value {
++            *component /= rhs_scale;
++        }
++    }
++    let mut solution = vec![[0.; 3]; x.len()];
++    let mut residual = rhs.clone();
++    let mut search = residual.clone();
++    let mut product = vec![[0.; 3]; x.len()];
++    let mut squared_residual = material_dot(&residual, &residual, cancelled)?;
++    let initial_squared_residual = squared_residual;
++    // shortcut: at most 32 diagonal-PCG steps; reassess this cap with large-mesh residual evidence.
++    for _ in 0..MATERIAL_LINEAR_ITERATIONS {
++        check_cancel(cancelled)?;
++        for i in 0..x.len() {
++            check_cancel(cancelled)?;
++            product[i] =
++                std::array::from_fn(|axis| search[i][axis] / diagonal[i][axis] / diagonal[i][axis]);
++        }
++        for row in &rows {
++            check_cancel(cancelled)?;
++            let value = row
++                .vertices
+                 .into_iter()
+-                .zip(weights)
+-                .filter(|(_, w)| *w > 0.)
+-                .map(|(p, w)| dot(p, p) / w)
+-                .sum::<f64>()
+-                + dt_squared * elastic_energy(q)
+-        };
+-        let energy = objective(positions, *correction);
+-        let mut fraction = 1.;
+-        // shortcut: cap local backtracking at 16; use a trust region if extreme compression stalls.
+-        for _ in 0..16 {
+-            let trial = std::array::from_fn(|v| add(positions[v], mul(direction[v], fraction)));
+-            let trial_correction =
+-                std::array::from_fn(|v| add(correction[v], sub(trial[v], positions[v])));
+-            let trial_energy = objective(trial, trial_correction);
+-            if trial_energy.is_finite() && trial_energy <= energy + 1e-4 * fraction * slope {
+-                for (v, position) in self.vertices.into_iter().zip(trial) {
+-                    x[v] = position;
+-                }
+-                *correction = trial_correction;
+-                return;
++                .zip(row.gradient)
++                .map(|(v, g)| dot(g, search[v]))
++                .sum::<f64>();
++            for (vertex, gradient) in row.vertices.into_iter().zip(row.gradient) {
++                product[vertex] = add(product[vertex], mul(gradient, value));
++            }
++        }
++        let curvature = material_dot(&search, &product, cancelled)?;
++        if !curvature.is_finite() || curvature <= 0. {
++            return Err(unstable());
++        }
++        let alpha = squared_residual / curvature;
++        let mut next_squared_residual = 0.;
++        for i in 0..x.len() {
++            check_cancel(cancelled)?;
++            solution[i] = add(solution[i], mul(search[i], alpha));
++            residual[i] = sub(residual[i], mul(product[i], alpha));
++            if !finite(solution[i]) || !finite(residual[i]) {
++                return Err(unstable());
++            }
++            next_squared_residual += dot(residual[i], residual[i]);
++        }
++        if !next_squared_residual.is_finite() {
++            return Err(unstable());
++        }
++        if next_squared_residual <= 1e-24 * initial_squared_residual {
++            break;
++        }
++        let beta = next_squared_residual / squared_residual;
++        for i in 0..x.len() {
++            check_cancel(cancelled)?;
++            search[i] = add(residual[i], mul(search[i], beta));
++        }
++        squared_residual = next_squared_residual;
++    }
++    let slope = -material_dot(&rhs, &solution, cancelled)? * rhs_scale * rhs_scale;
++    if !slope.is_finite() {
++        return Err(unstable());
++    }
++    if slope >= 0. {
++        return Ok(());
++    }
++    for i in 0..x.len() {
++        check_cancel(cancelled)?;
++        for axis in 0..3 {
++            solution[i][axis] *= rhs_scale * (root_weight[i] / diagonal[i][axis]);
++        }
++        if !finite(solution[i]) {
++            return Err(unstable());
++        }
++    }
++    let mut trial = x.to_vec();
++    let mut trial_correction = correction.to_vec();
++    let mut fraction = 1.;
++    // shortcut: cap Armijo backtracking at 16; use a trust region if extreme compression stalls.
++    for _ in 0..MATERIAL_BACKTRACKING_STEPS {
++        check_cancel(cancelled)?;
++        for i in 0..x.len() {
++            check_cancel(cancelled)?;
++            if root_weight[i] > 0. {
++                trial[i] = add(x[i], mul(solution[i], fraction));
++                trial_correction[i] = add(correction[i], sub(trial[i], x[i]));
+             }
+-            fraction *= 0.5;
+         }
++        let trial_energy = material_energy(
++            membrane,
++            &trial,
++            &trial_correction,
++            &root_weight,
++            dt,
++            cancelled,
++        )?;
++        if trial_energy.is_finite() && trial_energy <= energy + 1e-4 * fraction * slope {
++            x.copy_from_slice(&trial);
++            correction.copy_from_slice(&trial_correction);
++            return Ok(());
++        }
++        fraction *= 0.5;
+     }
++    Ok(())
+ }
+ 
+-// The only two sizes are three rows for a singleton and six for an adjacent pair.
+-fn solve_spd<const N: usize>(matrix: [[f64; N]; N], rhs: [f64; N]) -> Option<[f64; N]> {
+-    let scale: [f64; N] = std::array::from_fn(|i| matrix[i][i].sqrt());
+-    if !scale.iter().all(|s| s.is_finite() && *s > 0.) {
+-        return None;
++fn material_dot(
++    a: &[Vec3],
++    b: &[Vec3],
++    cancelled: &impl Fn() -> bool,
++) -> Result<f64, SimulationError> {
++    let mut result = 0.;
++    for (&a, &b) in a.iter().zip(b) {
++        check_cancel(cancelled)?;
++        result += dot(a, b);
+     }
+-    let a: [[f64; N]; N] =
+-        std::array::from_fn(|i| std::array::from_fn(|j| matrix[i][j] / scale[i] / scale[j]));
+-    let b: [f64; N] = std::array::from_fn(|i| rhs[i] / scale[i]);
+-    let mut l = [[0.; N]; N];
+-    for i in 0..N {
+-        for j in 0..=i {
+-            let value = a[i][j] - (0..j).map(|k| l[i][k] * l[j][k]).sum::<f64>();
+-            l[i][j] = if i == j {
+-                value.sqrt()
+-            } else {
+-                value / l[j][j]
+-            };
+-            if !l[i][j].is_finite() || (i == j && l[i][j] <= 0.) {
+-                return None;
+-            }
++    Ok(result)
++}
++
++fn material_energy(
++    membrane: &[Membrane],
++    x: &[Vec3],
++    correction: &[Vec3],
++    root_weight: &[f64],
++    dt: f64,
++    cancelled: &impl Fn() -> bool,
++) -> Result<f64, SimulationError> {
++    let mut energy = 0.;
++    for (&p, &weight) in correction.iter().zip(root_weight) {
++        check_cancel(cancelled)?;
++        if weight > 0. {
++            let inertia = p.map(|component| component / weight);
++            energy += 0.5 * dot(inertia, inertia);
+         }
+     }
+-    let mut y = [0.; N];
+-    for i in 0..N {
+-        y[i] = (b[i] - (0..i).map(|j| l[i][j] * y[j]).sum::<f64>()) / l[i][i];
+-    }
+-    let mut z = [0.; N];
+-    for i in (0..N).rev() {
+-        z[i] = (y[i] - (i + 1..N).map(|j| l[j][i] * z[j]).sum::<f64>()) / l[i][i];
++    for triangle in membrane {
++        check_cancel(cancelled)?;
++        energy += triangle.energy(triangle.vertices.map(|v| x[v]), dt);
+     }
+-    let solution = std::array::from_fn(|i| z[i] / scale[i]);
+-    solution.iter().all(|s| s.is_finite()).then_some(solution)
++    Ok(energy)
+ }
+ 
+ #[derive(Clone, Debug)]
+diff --git a/crates/weftforge-sim/src/lib.rs b/crates/weftforge-sim/src/lib.rs
+index 3f9d5da8..48c3a76c 100644
+--- a/crates/weftforge-sim/src/lib.rs
++++ b/crates/weftforge-sim/src/lib.rs
+@@ -5,7 +5,7 @@ mod contact;
+ mod math;
+ mod strain;
+ 
+-use constraints::{Bend, MaterialGroup, Membrane};
++use constraints::{Bend, Membrane};
+ use math::*;
+ use serde::{Deserialize, Serialize};
+ use std::collections::{BTreeMap, BTreeSet};
+@@ -208,7 +208,6 @@ pub struct Cloth {
+     damping: Vec<f64>,
+     friction: Vec<f64>,
+     membrane: Vec<Membrane>,
+-    material_groups: Vec<MaterialGroup>,
+     bends: Vec<Bend>,
+     excluded: Vec<BTreeSet<usize>>,
+     seam_remaining: Vec<f64>,
+@@ -283,7 +282,6 @@ impl Cloth {
+             membrane.push(constraint);
+         }
+         let mut bends = Vec::new();
+-        let mut group_edges = BTreeMap::new();
+         for (edge, faces) in edge_faces {
+             check_cancel(&cancelled)?;
+             if faces.len() > 2 {
+@@ -292,11 +290,6 @@ impl Cloth {
+             if faces.len() == 2 {
+                 let (a, p) = faces[0];
+                 let (b, q) = faces[1];
+-                let u = input.material_uv[edge[0]];
+-                let v = input.material_uv[edge[1]];
+-                let rest_length = (u[0] - v[0]).hypot(u[1] - v[1]);
+-                // Positive f64 bits sort by length; edge IDs break ties deterministically.
+-                group_edges.insert((rest_length.to_bits(), edge), [a, b]);
+                 let rigidity = input.triangle_materials[a].bending_stiffness * 0.5
+                     + input.triangle_materials[b].bending_stiffness * 0.5;
+                 if rigidity > 0. {
+@@ -308,25 +301,6 @@ impl Cloth {
+                 }
+             }
+         }
+-        let mut partners = vec![None; membrane.len()];
+-        for (_, [a, b]) in group_edges {
+-            check_cancel(&cancelled)?;
+-            if partners[a].is_none() && partners[b].is_none() {
+-                partners[a] = Some(b);
+-                partners[b] = Some(a);
+-            }
+-        }
+-        let mut material_groups = Vec::new();
+-        for (id, partner) in partners.into_iter().enumerate() {
+-            check_cancel(&cancelled)?;
+-            match partner {
+-                Some(other) if id < other => {
+-                    material_groups.push(MaterialGroup::pair(id, other, &membrane))
+-                }
+-                Some(_) => (),
+-                None => material_groups.push(MaterialGroup::Single(id)),
+-            }
+-        }
+         for stitch in &input.stitches {
+             check_cancel(&cancelled)?;
+             // Sewing neighborhoods are one surface after closure, so thickness must not oppose the seam.
+@@ -382,7 +356,6 @@ impl Cloth {
+             damping,
+             friction,
+             membrane,
+-            material_groups,
+             bends,
+             excluded,
+             seam_remaining,
+@@ -502,19 +475,21 @@ impl Cloth {
+             for remaining in &mut seam_remaining {
+                 *remaining -= (settings.seam_closure_speed * dt).min(*remaining);
+             }
+-            let mut material_corrections = vec![[[0.; 3]; 4]; self.material_groups.len()];
++            let mut material_corrections = vec![[0.; 3]; x.len()];
+             let mut bend_lambda = vec![0.; self.bends.len()];
+             let mut seam_lambda = vec![[0.; 3]; self.input.stitches.len()];
+             for _ in 0..settings.iterations {
+                 if cancelled() {
+                     return Err(SimulationError::Cancelled);
+                 }
+-                for (group, correction) in
+-                    self.material_groups.iter().zip(&mut material_corrections)
+-                {
+-                    check_cancel(&cancelled)?;
+-                    group.solve(&self.membrane, &mut x, &self.inverse_masses, dt, correction);
+-                }
++                constraints::solve_material(
++                    &self.membrane,
++                    &mut x,
++                    &self.inverse_masses,
++                    dt,
++                    &mut material_corrections,
++                    &cancelled,
++                )?;
+                 for (b, lambda) in self.bends.iter().zip(&mut bend_lambda) {
+                     b.solve(&mut x, &self.inverse_masses, dt, lambda);
+                 }
+@@ -987,7 +962,7 @@ mod constructor_control_tests {
+             + input.colliders.len();
+         let initialization = 2 * input.positions.len()
+             + 16 * input.triangles.len()
+-            + 8 * patches
++            + 5 * patches
+             + 6 * input.stitches.len()
+             + input.pins.len();
+         let contact_start = 1 + validation + initialization;
+@@ -1001,12 +976,8 @@ mod constructor_control_tests {
+             1,
+             CANCELLATION_CHECK_INTERVAL + 1,
+             1 + validation + CANCELLATION_CHECK_INTERVAL + 1,
+-            // First pairing-candidate poll, after all five edges per square.
+-            1 + validation
+-                + 2 * input.positions.len()
+-                + 16 * input.triangles.len()
+-                + 5 * patches
+-                + 1,
++            // First inverse-mass poll, after all five edges per square.
++            1 + validation + input.positions.len() + 16 * input.triangles.len() + 5 * patches + 1,
+             contact_start,
+             contact_start + CANCELLATION_CHECK_INTERVAL + 1,
+             contact_start + contacts.get() / 2,
+diff --git a/crates/weftforge-sim/src/tests.rs b/crates/weftforge-sim/src/tests.rs
+index e5dccd36..c69e4995 100644
+--- a/crates/weftforge-sim/src/tests.rs
++++ b/crates/weftforge-sim/src/tests.rs
+@@ -384,7 +384,15 @@ fn coupled_membrane_reaches_independent_incremental_energy_equilibrium() {
+     let mut x = [[0.; 3], predicted, [0.003, 0.07, 0.]];
+     let mut state = [[0.; 3]; 3];
+     for _ in 0..32 {
+-        membrane.solve(&mut x, &[0., 1. / mass, 0.], h, &mut state);
++        constraints::solve_material(
++            std::slice::from_ref(&membrane),
++            &mut x,
++            &[0., 1. / mass, 0.],
++            h,
++            &mut state,
++            &|| false,
++        )
++        .unwrap();
+     }
+ 
+     // Independent dense Newton root of inertia plus the direct deformation-gradient energy.
+@@ -433,7 +441,15 @@ fn membrane_projection_matches_analytic_uniaxial_and_shear_updates() {
+         );
+         let mut x = [[0., 0., 0.], [1.2, 0., 0.], [0., 1., 0.]];
+         // Only x[1] moves: C=0.22, dC/dx=1.2, alpha=4 or 0.2 for area=0.5 m².
+-        membrane.solve(&mut x, &[0., 1., 0.], 0.1, &mut [[0.; 3]; 3]);
++        constraints::solve_material(
++            &[membrane],
++            &mut x,
++            &[0., 1., 0.],
++            0.1,
++            &mut [[0.; 3]; 3],
++            &|| false,
++        )
++        .unwrap();
+         assert!((x[1][0] - expected_x).abs() < 1e-14);
+         assert_eq!(x[0], [0.; 3]);
+         assert_eq!(x[2], [0., 1., 0.]);
+@@ -450,7 +466,15 @@ fn membrane_projection_matches_analytic_uniaxial_and_shear_updates() {
+     let mut x = [[0., 0., 0.], [1., 0., 0.], [0.3, height, 0.]];
+     // Exact rational solve of the coupled Gram matrix with rows [33/16,3/10,8/5],
+     // [3/10,25/12,8/5], [8/5,8/5,48/5] and RHS [0,0,-3/10].
+-    membrane.solve(&mut x, &[1.; 3], 0.2, &mut [[0.; 3]; 3]);
++    constraints::solve_material(
++        &[membrane],
++        &mut x,
++        &[1.; 3],
++        0.2,
++        &mut [[0.; 3]; 3],
++        &|| false,
++    )
++    .unwrap();
+     let [warp, weft, shear] = [1284. / 46963., 1269. / 46963., -60579. / 1502816.];
+     let u = [1., 0., 0.];
+     let v = [0.3, height, 0.];
+@@ -1092,20 +1116,36 @@ fn cancellation_and_failures_preserve_old_state_and_allow_recovery() {
+         position[0] *= 1.5;
+     }
+     let mut cloth = Cloth::new(input).unwrap();
+-    assert_eq!(cloth.material_groups.len(), 2);
++    assert_eq!(cloth.membrane.len(), 4);
+     let before = cloth.positions().to_vec();
+     let before_peak = cloth.diagnostics().peak_strain;
+     let before_state = format!("{cloth:?}");
++    let stage_calls = std::cell::Cell::new(0);
++    let mut projected = before.clone();
++    constraints::solve_material(
++        &cloth.membrane,
++        &mut projected,
++        &cloth.inverse_masses,
++        settings().dt,
++        &mut vec![[0.; 3]; before.len()],
++        &|| {
++            stage_calls.set(stage_calls.get() + 1);
++            false
++        },
++    )
++    .unwrap();
++    assert_ne!(projected, before);
++    let stop_at = 3 + stage_calls.get() + 1;
+     let counter = std::cell::Cell::new(0);
+     let error = cloth
+         .step(settings(), || {
+             counter.set(counter.get() + 1);
+-            // Cancel before the second group, after the first strained pair was projected.
+-            counter.get() > 4
++            // The first material sweep has already changed the staged positions.
++            counter.get() == stop_at
+         })
+         .unwrap_err();
+     assert_eq!(error, SimulationError::Cancelled);
+-    assert_eq!(counter.get(), 5);
++    assert_eq!(counter.get(), stop_at);
+     assert_eq!(format!("{cloth:?}"), before_state);
+     assert_eq!(cloth.positions(), before);
+     assert_eq!(cloth.diagnostics().peak_strain, before_peak);
+@@ -1914,90 +1954,104 @@ fn capsule_projection_and_final_surface_analysis_cancellation_preserve_the_accep
+ }
+ 
+ #[test]
+-fn material_groups_choose_short_rest_edges_and_cover_each_triangle_once() {
+-    fn make(uv: Vec<[f64; 2]>, triangles: Vec<[usize; 3]>) -> Cloth {
+-        let count = triangles.len();
+-        Cloth::new(ClothInput {
+-            positions: uv.iter().map(|p| [p[0], p[1], 0.]).collect(),
+-            material_uv: uv,
+-            triangles,
+-            triangle_materials: vec![
+-                Material {
+-                    bending_stiffness: 0.,
+-                    ..Default::default()
+-                };
+-                count
+-            ],
+-            ..Default::default()
+-        })
+-        .unwrap()
+-    }
+-    fn coverage(cloth: &Cloth) {
+-        let mut ids = Vec::new();
+-        for group in &cloth.material_groups {
+-            match group {
+-                MaterialGroup::Single(id) => ids.push(*id),
+-                MaterialGroup::Pair {
+-                    membranes,
+-                    vertices,
+-                    local,
+-                } => {
+-                    assert_eq!(vertices.iter().collect::<BTreeSet<_>>().len(), 4);
+-                    ids.extend(membranes);
+-                    for i in 0..2 {
+-                        assert_eq!(
+-                            local[i].map(|j| vertices[j]),
+-                            cloth.input.triangles[membranes[i]]
+-                        );
+-                    }
+-                }
+-            }
+-        }
+-        ids.sort_unstable();
+-        assert_eq!(ids, (0..cloth.input.triangles.len()).collect::<Vec<_>>());
+-    }
+-    let cloth = make(
+-        vec![[0., 0.], [0.1, 0.], [0.1, 0.04], [0., 0.2], [-0.3, 0.1]],
++fn material_stage_retains_each_input_face_once_in_order() {
++    let mut input = square();
++    input.positions.push([-0.3, 2., 0.1]);
++    input.material_uv.push([-0.3, 0.1]);
++    input.triangles.push([0, 3, 4]);
++    input.triangle_materials.push(Material::default());
++    let cloth = Cloth::new(input).unwrap();
++    assert_eq!(
++        cloth
++            .membrane
++            .iter()
++            .map(|m| m.vertices)
++            .collect::<Vec<_>>(),
+         vec![[0, 1, 2], [0, 2, 3], [0, 3, 4]],
+     );
+-    assert!(matches!(
+-        &cloth.material_groups[0],
+-        MaterialGroup::Pair {
+-            membranes: [0, 1],
+-            ..
+-        }
+-    ));
+-    assert!(matches!(
+-        &cloth.material_groups[1],
+-        MaterialGroup::Single(2)
+-    ));
+-    coverage(&cloth);
+-    // Four equal-length shared edges: ascending vertex IDs decide the partition.
+-    let tied = make(
+-        vec![[0., 0.], [1., 0.], [0., 1.], [-1., 0.], [0., -1.]],
+-        vec![[0, 1, 2], [0, 2, 3], [0, 3, 4], [0, 4, 1]],
+-    );
+-    assert!(matches!(
+-        &tied.material_groups[0],
+-        MaterialGroup::Pair {
+-            membranes: [0, 3],
+-            ..
+-        }
+-    ));
+-    assert!(matches!(
+-        &tied.material_groups[1],
+-        MaterialGroup::Pair {
+-            membranes: [1, 2],
+-            ..
+-        }
+-    ));
+-    coverage(&tied);
+     assert_eq!(
+-        format!("{:?}", tied.material_groups),
+-        format!("{:?}", tied.clone().material_groups)
++        format!("{:?}", cloth.membrane),
++        format!("{:?}", cloth.clone().membrane)
+     );
+ }
+ 
++#[test]
++fn global_material_zero_rhs_pins_and_cancellation_preserve_stage_state() {
++    let cloth = Cloth::new(square()).unwrap();
++    let before = cloth.positions().to_vec();
++    let mut x = before.clone();
++    let mut correction = vec![[0.; 3]; x.len()];
++    constraints::solve_material(
++        &cloth.membrane,
++        &mut x,
++        &cloth.inverse_masses,
++        settings().dt,
++        &mut correction,
++        &|| false,
++    )
++    .unwrap();
++    assert_eq!(x, before);
++    assert_eq!(correction, vec![[0.; 3]; x.len()]);
++
++    x.iter_mut().for_each(|p| p[0] *= 1.5);
++    let strained = x.clone();
++    constraints::solve_material(
++        &cloth.membrane,
++        &mut x,
++        &[0.; 4],
++        settings().dt,
++        &mut correction,
++        &|| false,
++    )
++    .unwrap();
++    assert_eq!(x, strained);
++    assert_eq!(correction, vec![[0.; 3]; x.len()]);
++
++    let calls = std::cell::Cell::new(0);
++    constraints::solve_material(
++        &cloth.membrane,
++        &mut x,
++        &cloth.inverse_masses,
++        settings().dt,
++        &mut correction,
++        &|| {
++            calls.set(calls.get() + 1);
++            false
++        },
++    )
++    .unwrap();
++    assert_ne!(x, strained);
++    for i in 0..x.len() {
++        assert_eq!(correction[i], sub(x[i], strained[i]));
++    }
++    // First material row, first CG product vertex and the final energy scan.
++    for stop_at in [
++        x.len() + 1,
++        6 * x.len() + 7 * cloth.membrane.len() + 2,
++        calls.get() - 1,
++    ] {
++        let mut candidate = strained.clone();
++        let mut p = vec![[0.; 3]; x.len()];
++        let polls = std::cell::Cell::new(0);
++        let error = constraints::solve_material(
++            &cloth.membrane,
++            &mut candidate,
++            &cloth.inverse_masses,
++            settings().dt,
++            &mut p,
++            &|| {
++                polls.set(polls.get() + 1);
++                polls.get() == stop_at
++            },
++        )
++        .unwrap_err();
++        assert_eq!(error, SimulationError::Cancelled);
++        assert_eq!(polls.get(), stop_at);
++        assert_eq!(candidate, strained);
++        assert_eq!(p, vec![[0.; 3]; x.len()]);
++    }
++}
++
+ #[test]
+ fn grouped_mixed_grain_materials_reach_direct_energy_balance_with_pins() {
+     fn objective(x: &[Vec3], predicted: &[Vec3], input: &ClothInput, mass: &[f64], h: f64) -> f64 {
+@@ -2083,7 +2137,7 @@ fn grouped_mixed_grain_materials_reach_direct_energy_balance_with_pins() {
+     };
+     let h = (1. / 60.) / 8.;
+     let mut cloth = Cloth::new(input.clone()).unwrap();
+-    assert_eq!(cloth.material_groups.len(), 1);
++    assert_eq!(cloth.membrane.len(), 2);
+     cloth.velocities[1] = [0.0001 / h, -0.00015 / h, 0.00003 / h];
+     cloth.velocities[2] = [-0.00008 / h, 0.00012 / h, -0.00002 / h];
+     let predicted: Vec<_> = rest
+@@ -2139,3 +2193,211 @@ fn grouped_mixed_grain_materials_reach_direct_energy_balance_with_pins() {
+         );
+     }
+ }
++
++#[test]
++#[allow(clippy::approx_constant)] // Preserve the independently frozen material literal.
++fn material_network_reaches_independent_incremental_energy_equilibrium() {
++    fn objective(
++        x: &[Vec3],
++        input: &ClothInput,
++        predictor: &[Vec3],
++        masses: [f64; 2],
++        h: f64,
++    ) -> f64 {
++        let inertia = [5, 6]
++            .into_iter()
++            .zip(masses)
++            .map(|(node, mass)| {
++                let delta = sub(x[node], predictor[node]);
++                0.5 * mass * dot(delta, delta) / (h * h)
++            })
++            .sum::<f64>();
++        inertia
++            + input
++                .triangles
++                .iter()
++                .zip(&input.triangle_materials)
++                .map(|(t, m)| {
++                    let [a, b, c] = t.map(|i| input.material_uv[i]);
++                    let du1 = b[0] - a[0];
++                    let du2 = c[0] - a[0];
++                    let dv1 = b[1] - a[1];
++                    let dv2 = c[1] - a[1];
++                    let det = du1 * dv2 - du2 * dv1;
++                    let e1 = sub(x[t[1]], x[t[0]]);
++                    let e2 = sub(x[t[2]], x[t[0]]);
++                    let u = mul(sub(mul(e1, dv2), mul(e2, dv1)), det.recip());
++                    let v = mul(sub(mul(e2, du1), mul(e1, du2)), det.recip());
++                    let (s, c) = m.grain_angle.sin_cos();
++                    let w = add(mul(u, c), mul(v, s));
++                    let f = add(mul(u, -s), mul(v, c));
++                    let cw = (dot(w, w) - 1.) / 2.;
++                    let cf = (dot(f, f) - 1.) / 2.;
++                    let cs = dot(w, f);
++                    det.abs() / 4.
++                        * (m.warp_stiffness * cw * cw
++                            + m.weft_stiffness * cf * cf
++                            + m.shear_stiffness * cs * cs)
++                })
++                .sum::<f64>()
++    }
++    // Complete actual groups around global free nodes500/501 at saved frame28.
++    // Global nodes:39,307,308,498,499,500,501,561; faces:214,215,216,221,286,288,414,416.
++    let rest = vec![
++        [-0.033333333333333326, 1.5, 0.24],
++        [-0.0331818181818182, 1.365, 0.24],
++        [-0.016818181818181843, 1.365, 0.24],
++        [-0.00840909090909081, 1.4325, 0.24],
++        [-0.041439393939394, 1.4325, 0.24],
++        [-0.03325757575757571, 1.4325, 0.24],
++        [-0.02507575757575764, 1.4325, 0.24],
++        [-0.024924242424242404, 1.2974999999999999, 0.24],
++    ];
++    let uv = vec![
++        [-0.7533333333333333, 1.5],
++        [-0.7531818181818182, 1.365],
++        [-0.7368181818181818, 1.365],
++        [-0.7284090909090908, 1.4325],
++        [-0.761439393939394, 1.4325],
++        [-0.7532575757575757, 1.4325],
++        [-0.7450757575757576, 1.4325],
++        [-0.7449242424242424, 1.2974999999999999],
++    ];
++    let predictor = vec![
++        [
++            -0.033498148833116595,
++            1.5168706938759002,
++            0.14566104866625693,
++        ],
++        [-0.0334210793269415, 1.3870810608749282, 0.18200059013621286],
++        [-0.01683930195603287, 1.387278279312309, 0.18465908192500208],
++        [-0.008383278964555426, 1.45621973330344, 0.17850616015501183],
++        [
++            -0.043347835925128614,
++            1.4559258593972446,
++            0.17374173905854726,
++        ],
++        [-0.0350218534159662, 1.4560676877118206, 0.17520016483975107],
++        [
++            -0.025356882744323836,
++            1.455932023624931,
++            0.17679416384316252,
++        ],
++        [-0.02469902892629936, 1.31825428209096, 0.1827706602096836],
++    ];
++    let triangles = vec![
++        [0, 5, 6],
++        [2, 6, 1],
++        [6, 5, 1],
++        [1, 7, 2],
++        [0, 4, 5],
++        [4, 1, 5],
++        [0, 6, 3],
++        [3, 6, 2],
++    ];
++    let material = Material {
++        areal_density: 0.18,
++        warp_stiffness: 400.0,
++        weft_stiffness: 400.0,
++        shear_stiffness: 100.0,
++        bending_stiffness: 0.003,
++        grain_angle: 1.5707963267948966,
++        damping: 0.2,
++        friction: 0.4,
++        collision_thickness: 0.003,
++    };
++    let input = ClothInput {
++        positions: rest,
++        material_uv: uv,
++        triangles,
++        triangle_materials: vec![material; 8],
++        pins: (0..8)
++            .filter(|v| ![5, 6].contains(v))
++            .map(|vertex| Pin {
++                vertex,
++                target: predictor[vertex],
++            })
++            .collect(),
++        ..Default::default()
++    };
++    let cloth = Cloth::new(input.clone()).unwrap();
++    let expected_mass: [f64; 2] = [6.627272727272724e-05, 0.00013377272727272752];
++    for (node, mass) in [5, 6].into_iter().zip(expected_mass) {
++        assert_eq!(cloth.masses()[node].to_bits(), mass.to_bits());
++    }
++    // The global stage retains every original face in order; it has no pair partition.
++    assert_eq!(
++        cloth
++            .membrane
++            .iter()
++            .map(|m| m.vertices)
++            .collect::<Vec<_>>(),
++        input.triangles,
++    );
++    for node in 0..8 {
++        assert_eq!(cloth.inverse_masses[node] == 0., ![5, 6].contains(&node));
++    }
++    let h: f64 = (1. / 60.) / 8.;
++    let mut x = predictor.clone();
++    let mut corrections = vec![[0.; 3]; x.len()];
++    // One isolated material substep: no prediction, damping, bending, sewing or contact stage.
++    cloth.apply_pins(&mut x);
++    for _ in 0..32 {
++        constraints::solve_material(
++            &cloth.membrane,
++            &mut x,
++            &cloth.inverse_masses,
++            h,
++            &mut corrections,
++            &|| false,
++        )
++        .unwrap();
++        cloth.apply_pins(&mut x);
++    }
++    // Independent100-digit stationary reference, locally positive Hessian; no global uniqueness claim.
++    let expected: [Vec3; 2] = [
++        [
++            -0.03468793525197834,
++            1.4559016208026938,
++            0.17491839356990843,
++        ],
++        [
++            -0.02602759678104083,
++            1.4559576701123809,
++            0.17611347479474232,
++        ],
++    ];
++    let position_error = [5, 6]
++        .into_iter()
++        .zip(expected)
++        .map(|(node, target)| length(sub(x[node], target)))
++        .fold(0., f64::max);
++    let epsilon = 1e-7;
++    let mut force_residual = 0_f64;
++    for node in [5, 6] {
++        let mut gradient = [0.; 3];
++        for (axis, entry) in gradient.iter_mut().enumerate() {
++            let energy_at = |offset| {
++                let mut q = x.clone();
++                q[node][axis] += offset;
++                objective(&q, &input, &predictor, expected_mass, h)
++            };
++            *entry = (energy_at(-2. * epsilon) - 8. * energy_at(-epsilon)
++                + 8. * energy_at(epsilon)
++                - energy_at(2. * epsilon))
++                / (12. * epsilon);
++        }
++        force_residual = force_residual.max(length(gradient));
++    }
++    println!(
++        "material-network q={:?} reference={expected:?} position_error={position_error:e}m force_residual={force_residual:e}N",
++        [x[5], x[6]]
++    );
++    assert!(position_error < 1e-8 && force_residual < 1e-6);
++    for pin in &input.pins {
++        assert_eq!(
++            x[pin.vertex].map(f64::to_bits),
++            pin.target.map(f64::to_bits)
++        );
++    }
++}
+diff --git a/docs/physics.md b/docs/physics.md
+index 93fc2277..e2981e9a 100644
+--- a/docs/physics.md
++++ b/docs/physics.md
+@@ -62,7 +62,7 @@ The new velocity is the solved displacement divided by h. Damping is exponential
+ velocity damping in s^-1, rather than a frame-dependent interpolation. Its
+ operator splitting introduces a finite-step error in forced trajectories. The
+ zero-damping gravity test has the expected symplectic Euler error. There is no
+-restitution, air drag, wind, calibrated viscoelasticity or implicit global solve.
++restitution, air drag, wind, calibrated viscoelasticity or fully coupled implicit solve.
+ 
+ The defaults are dt=1/60 s, four substeps, eight constraint iterations, sewing
+ closure speed 0.5 m/s and gravity (0,-9.81,0) m/s². Step arguments require finite
+@@ -106,71 +106,93 @@ identified measured fabric or a reference-application preset. Shear, bending,
+ density, damping, friction and collision offset remain separate parameters;
+ changing the display color does not change them.
+ 
+-### Coupled material projection
++### Global material projection
+ 
+-Warp, weft and shear share each triangle's positions. A scalar multiplier history
+-alone does not retain the nonlinear inertial relation when their gradients
+-rotate. The original XPBD derivation explicitly omits that primal residual;
++Warp, weft and shear share triangle positions, and adjacent triangles share nodal
++inertia. A scalar multiplier history alone does not retain the nonlinear inertial
++relation when gradients rotate. The original XPBD derivation explicitly omits
++that primal residual;
+ [Chen et al. (2024)](https://physbam.stanford.edu/papers/stanford2024-02_2.pdf)
+-also discuss its effect on backward-Euler force balance. The local update here
+-is derived directly from this crate's existing material energy; it is not a
+-calibrated implementation or a convergence claim for either paper's full method.
+-
+-Adjacent material triangles are partitioned into two-face groups, with singleton
+-leftovers. Shared edges are considered by increasing rest material-UV length;
+-vertex IDs break equal-length ties. A face is paired only while both faces are
+-unassigned. Groups are visited by their first triangle index. Every triangle's
+-unchanged energy belongs to exactly one group; bending, sewing, contact and pins
+-retain their previous algorithms and stage order. This deterministic pairing is
+-a coupling heuristic, not a mesh-independent convergence guarantee.
+-
+-For each group, p stores its accumulated actual positional correction, in metres,
+-for its three or four union nodes. Removing its previous correction from current
+-positions gives local anchor z=x-p. With other groups/stages held fixed during
+-this projection, the local incremental objective is:
++also discuss its effect on backward-Euler force balance. This material stage is
++derived directly from this crate's existing energy. It is not a calibrated
++implementation or a convergence claim for either paper's full method.
++
++One actual material displacement p per vertex resets to zero each substep.
++During a material sweep its anchor z=x-p stays fixed; displacements from the
++other stages move x without changing p, so the next material anchor follows them.
++All triangles enter one physical incremental objective, with each triangle's
++unchanged energy once and each free vertex's physical lumped inertia once:
+ 
+ ```text
+-Phi(q) = (q-z)^T M (q-z)/(2*h²) + sum_triangles_in_group sum_a(k_a*C_a(q)²)/2
++Phi(q) = sum_free_i m_i*|q_i-z_i|²/(2*h²) + sum_triangles sum_a k_a*C_a(q)²/2
+ ```
+ 
+-M contains each union node's physical lumped mass once; pinned coordinates are
+-fixed. Let J contain the three singleton or six paired constraint gradients,
+-embedded in those same union-node coordinates, W their inverse masses and k the
+-existing per-triangle area-scaled warp/weft/shear coefficients. One Gauss–Newton
+-step is reduced by the Woodbury identity to a three- or six-row system:
++Pinned coordinates stay fixed. There are no material pairs or separate group
++anchors. Bending, sewing, analytic contact, cloth contact and pins retain their
++previous equations and stage order. Each outer iteration makes one global
++Gauss–Newton material update before those stages. The garment acceptance settings
++remain dt=1/60 s, eight substeps and 32 outer iterations; the standalone DTO
++defaults above are unchanged.
++
++Let J contain every triangle's three existing mode gradients, K the diagonal of
++its area-scaled stiffnesses and W the inverse nodal masses, zero at pins. Using
++mass-weighted displacement coordinates gives:
+ 
+ ```text
+-A = J*W*J^T + diag(1/(k_a*h²))
+-A*eta = J*p - C
+-d = -p + W*J^T*eta
++B = h*sqrt(K)*J*sqrt(W)
++r = h*sqrt(K)*C
++A = I + B^T*B
++b = -p/sqrt(W) - B^T*r
++A*u = b
++d = sqrt(W)*u
+ ```
+ 
+-Eta is a temporary linear-solve unknown, not a retained material multiplier.
+-The system uses a diagonally scaled Cholesky factorization. Each declared outer
+-iteration performs one such coupled material step per group. An Armijo energy
+-check on h²*Phi uses coefficient 1e-4 and at most 16 trial fractions, starting at
+-one and halving; these trials evaluate local energy, not additional material
+-iterations. Only an accepted finite trial updates positions and p, using the
+-rounded position displacement actually applied. An unusable factorization or
+-exhausted line search leaves that projection unchanged. Extreme deformation or
+-ill conditioning can therefore stall; existing strain/contact/finite diagnostics
+-remain necessary and no general convergence guarantee is supplied.
+-
+-Correction history uses twelve f64 values per group, with the fourth node slot
+-unused for a singleton, and resets each substep. A fully paired region therefore
+-uses twelve correction values per two faces versus the previous eighteen;
+-singletons use twelve versus nine. Immutable group/union-node mappings add cache
+-storage. The six-row factor costs more than two three-row factors; no speed or
+-large-mesh benchmark is implied. Pair construction and each material group poll
+-cancellation; one local solve and its at-most-sixteen energy trials can finish
+-before the next poll. Candidate histories remain local to the step, so failure or
+-cancellation preserves the accepted cloth state.
+-
+-The sum of actual group corrections retains the material stage's displacement
+-accounting while each triangle energy occurs once. If every group equation and
+-the remaining stages converge, their force balances sum with the physical nodal
+-inertia. A finite number of group sweeps can still leave inter-group, bending,
+-sewing or contact residuals. Pairing does not establish full coupled equilibrium.
++The inertia term in b is zero at pins. Matrix products visit the cached sparse
++three-node rows of B and the identity; no dense global matrix is stored. A
++symmetric diagonal preconditioner uses S_ii=1/sqrt(A_ii), solving S*A*S and
++recovering u=S*v. Repeated `hypot` computes sqrt(A_ii) without first squaring
++large coefficients. The preconditioned right-hand side is divided by its largest
++absolute component before conjugate gradients and restored afterward. This
++normalization does not change the objective or direction. An exactly zero
++right-hand side leaves positions and p unchanged, including an all-pinned mesh.
++
++The linear solve starts at zero, takes at most 32 conjugate-gradient iterations,
++and stops when the recursive residual norm is at most 1e-12 of its initial norm
++(squared comparison 1e-24), with no absolute tolerance floor. Reaching the cap
++uses the finite approximate direction and still requires descent. This internal
++linear work is additional to the public outer-iteration count; 32 outer iterations
++do not mean only 32 local projections. Finite convergence and the recursive
++residual do not certify a physical force tolerance on an arbitrary mesh.
++
++The same complete objective h²*Phi governs Armijo descent, with coefficient
++1e-4 and at most 16 fractions starting at one and halving. Each trial evaluates
++all triangle energies and one inertia per free vertex. Only an accepted finite
++trial changes x and p; p accumulates the actual rounded position displacement.
++An exhausted search or non-descent direction leaves that sweep unchanged.
++Current non-finite coefficients, diagonal scales, objective, linear curvature,
++iterates or reconstructed directions abort with `Unstable`. Non-finite trial
++energies are rejected during backtracking. Positive linear curvature is required.
++Products, accumulated dot products and energies must fit finite f64; diagonal
++scaling and RHS normalization reduce overflow exposure but do not supply arbitrary
++range arithmetic. Underflow, rounding, extreme compression and ill conditioning
++can still stall. Existing strain/contact/finite diagnostics remain necessary.
++
++For N vertices and T triangles, each sweep stores 3*T sparse rows and O(N+T)
++workspace, plus the retained three-component p per vertex. Its fixed budget is
++at most 32 matrix products and 17 complete objective scans (current plus trials),
++with at most 168*N + 119*T + 48 cancellation callback work units over all vertex,
++row, CG-iteration and backtracking scans. Each unit has bounded scalar work;
++vector allocations/copies add O(N+T) work. Every input vector is finite in length;
++the solver introduces no smaller geometry/input limit. A complete step runs at
++most substeps*iterations such sweeps under the existing 1..=1000 settings limits.
++Rows, vertices, every CG iteration and every trial poll cancellation. Candidate
++arrays and p stay local to the whole-call transaction, so cancellation or numerical
++failure preserves accepted positions, velocities, seam targets, time and
++diagnostics. These bounds do not assert a wall-time or aggregate-memory limit.
++
++The global objective resolves material coupling across the entire mesh in each
++direction. It does not establish convergence of the separately projected bending,
++sewing, friction or contact equations, nor general garment equilibrium.
+ 
+ The focused pinned/free-node regression compares the projected positions with
+ an independent dense Newton solution of the inertial-plus-material energy and
+@@ -180,9 +202,16 @@ edge nodes and independently derived UV-area masses. Its six-DOF energy referenc
+ has a positive Hessian bound on an inertia ball containing every minimizer; an
+ independent cubic reduction and high-precision/finite-difference checks support
+ the same predeclared position/force bounds. Mixed anisotropy/grain, fixed pins,
+-once-only face coverage and whole-call cancellation are checked separately.
++once-only face coverage and whole-call cancellation remain separate checks.
+ These are small incremental-energy component checks, not garment answers.
+-Inter-group convergence at finite budgets, the remaining scalar bending/sewing
++A frozen eight-face component retains exact original masses, material data and
++saved predictor positions at two free nodes. Its test invokes this production
++global stage for 32 sweeps and checks the same predeclared 1e-8 m position and
++1e-6 N independently differenced physical-force bounds. Its 80/100-digit
++reference establishes a strict local minimum near the expected point, without
++global uniqueness. Obsolete pair/order guards are replaced with exact face-order
++and free/pinned-partition guards; the physical data and oracle stay unchanged.
++Material convergence at finite budgets, the remaining scalar bending/sewing
+ updates, friction, and complete coupled-contact equilibrium remain separate
+ questions. Earlier garment results below retain their original source
+ and algorithm attribution; this source change does not regrade them.

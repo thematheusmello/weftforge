@@ -1,0 +1,15 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.27
+   Compiling serde_core v1.0.229
+   Compiling syn v3.0.10
+   Compiling serde v1.0.229
+   Compiling serde_derive v1.0.229
+   Compiling weftforge-sim v0.1.0 (<ROOT>/.local/material-network-regression-20261117/crates/weftforge-sim)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 13.04s
+     Running unittests src/lib.rs (target/debug/deps/weftforge_sim-40f8b89cc1ad501d)
+
+thread 'tests::material_network_reaches_independent_incremental_energy_equilibrium' (77448281) panicked at crates/weftforge-sim/src/tests.rs:2312:5:
+assertion failed: position_error < 1e-8 && force_residual < 1e-6
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+error: test failed, to rerun pass `-p weftforge-sim --lib`

@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--lib",
+    "tests::material_network_reaches_independent_incremental_energy_equilibrium",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "exit_code": null,
+  "peak_rss_bytes": null,
+  "pid": 23577,
+  "process_group": 23577,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.0,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 0,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 0,
+  "stop_reason": null
+}

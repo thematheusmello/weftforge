@@ -1,0 +1,69 @@
+{
+  "deadline": 1010634.100234541,
+  "errors": [
+    "Owned stage group remained after controller terminal: 89763",
+    "ValueError:Controller operational failure"
+  ],
+  "go_sha256": "215a7185d2acd9165048cfa68eb587144a7b2fb30913cc5f5df4a3da3759e9fd",
+  "native_or_reference_acceptance": false,
+  "numerical_hashes": {},
+  "operational_candidate": false,
+  "owned_groups": [
+    {
+      "group_absent": true,
+      "pid": 89688,
+      "signal_sent": false
+    },
+    {
+      "group_absent": true,
+      "pid": 89726,
+      "signal_sent": false
+    },
+    {
+      "group_absent": false,
+      "pid": 89763,
+      "signal_sent": true
+    }
+  ],
+  "retry_or_continuation_allowed": false,
+  "source_commit": "52099b6f6b7aff43b3e9ada8bad4f830cb987134",
+  "stage": {
+    "argv": [
+      "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+      "-B",
+      "<ROOT>/.local/global-material-repair-20261117/.local/harbor-global-material-preparation-20261117/controller.py",
+      "--go",
+      "ROOT-GO.json",
+      "--go-sha256",
+      "215a7185d2acd9165048cfa68eb587144a7b2fb30913cc5f5df4a3da3759e9fd"
+    ],
+    "end_monotonic_seconds": 1010634.103667541,
+    "exit_code": -9,
+    "peak_rss_bytes": 36339712,
+    "pid": 89644,
+    "process_group": 89644,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.2279370839241892,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 8040,
+      "timeouts": 0
+    },
+    "sampled_peak_rss_bytes": 32325632,
+    "stop_reason": "whole_case_wall_cap",
+    "terminal_phase_checks": {
+      "deadline": 1010634.100234541,
+      "output_bytes": 15689992,
+      "output_cap_bytes": 268435456,
+      "reserve_bytes": 262144
+    }
+  },
+  "started": 1010214.100234541,
+  "status": "pending_external_post_persistence_clock_verdict",
+  "strict_quality_passed": false
+}

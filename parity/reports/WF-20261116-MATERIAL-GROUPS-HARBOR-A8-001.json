@@ -1,6 +1,6 @@
 {
   "kind": "implementation_only",
-  "freshness": "current",
+  "freshness": "stale",
   "commit": "13fb43fe08c045f08a1b85007aff3c15388a1e24",
   "current_source_commit": "8fe1c7b3018e807a61afffc3d0af77f5bbbe45d7",
   "platform": "macOS local; Rust1.94.1/CPython3.13.0 from retained compiler/child receipts; numerical resources/caps are separately qualified.",
@@ -523,5 +523,6 @@
     "Strict material strain fails every frame28..40 despite final-frame strain14.03608985percent.",
     "Deterministic pairing addresses the small shared-edge component but does not prove inter-group/bend/sew/contact equilibrium or calibrated fabric.",
     "No native garment workflow, reference parity, full feature, full physics or roadmap acceptance."
-  ]
+  ],
+  "freshness_reason": "Historical13fb/integrated8fe paired-material result is stale at reviewed global material source52099/integrated97a1524 because constraints.rs, lib.rs, tests.rs and docs/physics.md changed inside its declared31-file scope. Exact original is archived at parity/reports/artifacts/global-material-source-20261117/history/WF-20261116-MATERIAL-GROUPS-HARBOR-A8-001.original.json. Original status/results/scopes/identities/artifacts and prior full Harbor strict strain failure remain unchanged; the new incomplete420s global case is a separate operational failure with no computed quality grade."
 }

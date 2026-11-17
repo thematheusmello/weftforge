@@ -1,0 +1,226 @@
+{
+  "Cargo_invocations": 0,
+  "Cloth_initializations": 0,
+  "Cloth_steps": 0,
+  "ROOT_GO_template_exact13_keys": true,
+  "actual_evaluator_runs": 0,
+  "at_utc": "2026-11-17T03:33:20.656945+00:00",
+  "build_GO_present": false,
+  "build_binding_sha256": "4177dbd2064e746081f3a0be1c543aeb54b7a5327387e22332d4bcb86463d0d7",
+  "build_caps": {
+    "output_bytes": 8388608,
+    "sampled_per_process_rss_bytes": 1073741824,
+    "seconds": 120
+  },
+  "compiled_binary_or_cache_cross_copy": false,
+  "compiler_and_dependency_closure_limit": "Actual Cargo/rustc/rustdoc executables, full child PATH/toolchain/known flags, local/config and locked crate source inputs are bound. Linker/macOS SDK/sysroot shared-library closure is not certified.",
+  "execution_GO_present": false,
+  "experiment": "WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001",
+  "file_count": 45,
+  "files": {
+    "BUILD-GO.template.json": {
+      "mode": 420,
+      "sha256": "33d9cea602f712678bdc21add2293191e63a68f60eb12751456a9ae9da81e7a2"
+    },
+    "CANDIDATE.json": {
+      "mode": 420,
+      "sha256": "a732cc76a2cf802d02012c411e972132920ee8684d821200691bb8845f925d2c"
+    },
+    "COMMANDS.md": {
+      "mode": 420,
+      "sha256": "dfd381e7972032936d1210f8f89e4c15fa30519a7a3ab1bbbb146bbc53374280"
+    },
+    "DELTA.json": {
+      "mode": 420,
+      "sha256": "86d2601afe68500fbe444ae1fbc12b7b8bf7e0689df6578bde2a561cdb76eff4"
+    },
+    "DRAFT-ORIGIN.json": {
+      "mode": 420,
+      "sha256": "a6589a221441a793148bd671954b1dc78ece5a21e305ca11d86d1a1cf5980ca1"
+    },
+    "HANDOFF.md": {
+      "mode": 420,
+      "sha256": "b79ec628db75a0bd56bec993009f3db1438c46ec8ad29caf6293985e1e867008"
+    },
+    "PRESERVATION.json": {
+      "mode": 420,
+      "sha256": "184d4c57ca6d3ac9a3bf35cc0b4152fddf82944cc860176297b1908874b17d39"
+    },
+    "PROTOCOL-DRAFT.json": {
+      "mode": 420,
+      "sha256": "c78e20aba94d08ff301ea8c728ab3a92d13ab5db534e8b53dfe888a2e96594b9"
+    },
+    "REUSED-SOURCES.json": {
+      "mode": 420,
+      "sha256": "eb2f82e024483ea1c006fa16aae3553cc3511a35ceddf0562567ea23d1ee7b67"
+    },
+    "ROOT-GO.template.json": {
+      "mode": 420,
+      "sha256": "1460b58f8dc631a7cbe38eb87d33c3495757b97ff5c17cd0ff3c200fc0e75913"
+    },
+    "SOURCE-ONLY-DELTA.patch": {
+      "mode": 420,
+      "sha256": "ef8d8dd5005a1aebe4d9f688b9047dc61ee78eac67a01e9e1661e92dae6c5dab"
+    },
+    "SOURCE-PREFLIGHT.json": {
+      "mode": 384,
+      "sha256": "f9fde5c5bd48bb7caec469c3c7011099fe5e82474ef8b7b6d61e654eccf45cf8"
+    },
+    "SOURCE.json": {
+      "mode": 420,
+      "sha256": "55e5f037e2d811804d099e5b3aa47661dd3c14687052a6590c26877e33d30424"
+    },
+    "bind_source.py": {
+      "mode": 420,
+      "sha256": "5b883da7b83e2a88918e9ecda3011dc1b7ef6fcfa34cd6870c178945a942a384"
+    },
+    "build_release.py": {
+      "mode": 420,
+      "sha256": "019721222496afee79075815c825195fa0fac11a574997c635c52c5904c70949"
+    },
+    "checks/ENV-SELFCHECK.json": {
+      "mode": 420,
+      "sha256": "f57fb4c1c5cbb88c09ed5b61e44aa7e9841a54318ba4cb7a8e8ecd8b0da990f8"
+    },
+    "checks/PRESERVATION-AND-STATIC.json": {
+      "mode": 420,
+      "sha256": "57b3ecc93f6e3ce8a4510b5fc6759047d3e2bfd10652343fc334fb3926dd6b8b"
+    },
+    "common.py": {
+      "mode": 420,
+      "sha256": "7bc63963ee490d649b7e56d98d03e7dce9180a97cfa5292fddc966d0275bb2bb"
+    },
+    "compiler_inputs.py": {
+      "mode": 420,
+      "sha256": "3336bf9a89046d93bf71b4ea19aeade7fdb13da6cee0fb54c4b832199bbe76a3"
+    },
+    "consumer/bindings.py": {
+      "mode": 420,
+      "sha256": "ba8499944ee4d63b55fcc86de997b9823cf5a949fdb118491569c5dbfcd69a4f"
+    },
+    "consumer/capsule_geometry.py": {
+      "mode": 420,
+      "sha256": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b"
+    },
+    "consumer/decimal_oracle.py": {
+      "mode": 420,
+      "sha256": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d"
+    },
+    "consumer/evaluator.py": {
+      "mode": 420,
+      "sha256": "bc981d2333b4e02fb95c8fa83bb2b2a48d8d0486ae65594bf9173e935513c91b"
+    },
+    "consumer/geometry_math.py": {
+      "mode": 420,
+      "sha256": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40"
+    },
+    "consumer/metadata_adapter.py": {
+      "mode": 420,
+      "sha256": "f7aea5b61bafda604cb9b2112f40c83285497300c41c4d02b1344339fe00386e"
+    },
+    "consumer/metrics.py": {
+      "mode": 420,
+      "sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610"
+    },
+    "consumer/static_geometry.py": {
+      "mode": 420,
+      "sha256": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34"
+    },
+    "controller.py": {
+      "mode": 420,
+      "sha256": "353192e160e999a94cede0e2c8bca62e55c012da3e684004c1716a042988fd35"
+    },
+    "evidence/CANDIDATE2-FINAL-MANIFEST.json": {
+      "mode": 420,
+      "sha256": "101de5696da2a83a0317033bb022dce0e4085123ba56b750d51088d7a0ad62b0"
+    },
+    "evidence/INDEPENDENT-SOURCE-REVIEW.json": {
+      "mode": 420,
+      "sha256": "cb6cb936d724a97e8adddf0c3762808396f926a204aa4e1038eed8f64926432d"
+    },
+    "evidence/ORIGINAL8-GUARD.json": {
+      "mode": 420,
+      "sha256": "d2395f6f50922ea764f9caba74ff3c65881fcb5d42f97a04deff0b276e4d1ca7"
+    },
+    "evidence/REUSED-FMT-RESULT.json": {
+      "mode": 420,
+      "sha256": "2bce86476bbc9d35a4a542ca7bc946d221901c69d4f27a6c096056af85e5f1e5"
+    },
+    "evidence/ROOT-SOURCE-BINDING.json": {
+      "mode": 420,
+      "sha256": "47d62346e700bf4c6cca9c7f74694f594eba198ae0ddc8f465d3bf34db454104"
+    },
+    "evidence/TARGETED-FINAL-MANIFEST.json": {
+      "mode": 420,
+      "sha256": "dc05ea2a44007729938e3f4bb2ac0fd69c675930cabeb9ab6a4ab2e8d4eabb52"
+    },
+    "evidence/WORKSPACE-GATE-START-FREEZE.json": {
+      "mode": 420,
+      "sha256": "e65c361a976a61de175fa6ed6e065a8794b2b2bfab361950acd1bd01ac47faa9"
+    },
+    "evidence/WORKSPACE-GATES-RESULT.json": {
+      "mode": 420,
+      "sha256": "2fd970b4569e11e4488417707265861833006774c6cb043464b638f6cd1e3206"
+    },
+    "freeze_prep.py": {
+      "mode": 420,
+      "sha256": "691cd98517a0ce43a8cd60c0a330c73b8c25fe53620040ccf81308353306688b"
+    },
+    "history/PENDING-DRAFT-FREEZE.json": {
+      "mode": 420,
+      "sha256": "fa72708aa126c66a405658ccb9f8fcc9ad42d49f6c98cda90d94648691254f63"
+    },
+    "producer/Cargo.lock": {
+      "mode": 420,
+      "sha256": "6acc2df8d38cf70047cbe22ca2875a38a0fd204a63452edb2d42b4ce14c1ec89"
+    },
+    "producer/Cargo.toml": {
+      "mode": 420,
+      "sha256": "bdbf9b113ba7bb05e968b25fbfc71a30317bfd66aa090fb809e2f551070ff5e8"
+    },
+    "producer/src/main.rs": {
+      "mode": 420,
+      "sha256": "87b15646929d7ed76b03970fe84626176eb6cef72207f5f75a247ff649907a0b"
+    },
+    "resources.py": {
+      "mode": 420,
+      "sha256": "4df98ac4595d45a71059fb12ad5c66da7b4fdbf9c1dfe7a0b74144f17f606987"
+    },
+    "source_inputs.py": {
+      "mode": 420,
+      "sha256": "d537a78588c980d6d846286dcce93cbfa8d0df7215d8b580f85af584037c514b"
+    },
+    "test_toolchain_env.py": {
+      "mode": 420,
+      "sha256": "c48173c6c67146d41768f3788000094a720805f755089a249210dc05198faecd"
+    },
+    "worker.py": {
+      "mode": 420,
+      "sha256": "bd2958bcb03d3c54ffb44b9fa5c29cbb80b52ff568011d9c6a0ca85ddd5e4eb2"
+    }
+  },
+  "full_FMT_reused_exact88_sha256": "2bce86476bbc9d35a4a542ca7bc946d221901c69d4f27a6c096056af85e5f1e5",
+  "global_PCG_and_Armijo_work_in_same_numerical_clock": true,
+  "metadata_freshness_xtask": "separately pending",
+  "native_UI_launches": 0,
+  "native_seal_descriptors_only_nonruntime": true,
+  "new_global_garment_result": "unknown_not_executed",
+  "no_raw_native_OSdialog_payload_copied_or_used": true,
+  "original_producer_consumer11_exact": true,
+  "own_existing_target": "target",
+  "owned_active_jobs": [],
+  "physical_settings_screens_counts_and420s256MiB_caps_unchanged": true,
+  "pure_environment_test": {
+    "model_or_tool_invocations": 0,
+    "passed": true,
+    "tests": 1
+  },
+  "root_source_review_sha256": "47d62346e700bf4c6cca9c7f74694f594eba198ae0ddc8f465d3bf34db454104",
+  "source88_metadata59_original8_and_old133_preserved": true,
+  "source_commit": "52099b6f6b7aff43b3e9ada8bad4f830cb987134",
+  "source_preflight_sha256": "f9fde5c5bd48bb7caec469c3c7011099fe5e82474ef8b7b6d61e654eccf45cf8",
+  "source_preflight_verify_only_passed": true,
+  "status": "SOURCE_ONLY_READY_FOR_ROOT_BUILD_REVIEW_NO_BUILD_OR_EXECUTION_GO",
+  "three_new_workspace_stages_passed_409": true,
+  "workspace_gates_result_sha256": "2fd970b4569e11e4488417707265861833006774c6cb043464b638f6cd1e3206"
+}

@@ -1,0 +1,25 @@
+{
+  "requires_explicit_root_input_reference_freeze_review_and_GO": true,
+  "cwd": "<ROOT>/.local/material-network-regression-20261117",
+  "argv": [
+    "cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--lib",
+    "tests::material_network_reaches_independent_incremental_energy_equilibrium",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "environment": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/material-network-regression-20261117/target",
+    "RUSTFLAGS": "",
+    "CARGO_ENCODED_RUSTFLAGS": ""
+  },
+  "production_executions_before_GO": 0,
+  "classification": "A force-residual failure is a physical incremental-energy stationarity failure. Position-only failure with passing force requires branch/oracle review before calling it a production defect or changing anything; no global minimum is assumed."
+}

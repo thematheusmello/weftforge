@@ -1,6 +1,6 @@
 {
   "kind": "implementation_only",
-  "freshness": "current",
+  "freshness": "stale",
   "commit": "13fb43fe08c045f08a1b85007aff3c15388a1e24",
   "current_source_commit": "8fe1c7b3018e807a61afffc3d0af77f5bbbe45d7",
   "platform": "macOS local; Rust1.94.1/CPython3.13.0 from retained compiler/child receipts; numerical resources/caps are separately qualified.",
@@ -338,5 +338,6 @@
     "parity/reports/artifacts/material-group-source-20261117/history/WF-20261116-RECTANGLE-NATIVE-001.original.json": "9042647db284a35369303ebff07de159948d7cf108488868241aa79cfd0dc411",
     "parity/reports/artifacts/material-group-source-20261117/history/WF-20261116-RECTANGLE-SOURCE-001.original.json": "a1b2a693de9e8ba0010726cc4a14dacde79540efa9d4cfa142e068304b9aa1c9",
     "parity/reports/artifacts/material-group-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "039761fe166fe8953d06f3a26d5ade5879f7ea2ca71de53ebe080091786947ed"
-  }
+  },
+  "freshness_reason": "Historical13fb/integrated8fe paired-material result is stale at reviewed global material source52099/integrated97a1524 because constraints.rs, lib.rs, tests.rs and docs/physics.md changed inside its declared31-file scope. Exact original is archived at parity/reports/artifacts/global-material-source-20261117/history/WF-20261117-MATERIAL-GROUP-SOURCE-001.original.json. Original status/results/scopes/identities/artifacts and prior full Harbor strict strain failure remain unchanged; the new incomplete420s global case is a separate operational failure with no computed quality grade."
 }

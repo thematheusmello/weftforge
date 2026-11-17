@@ -1,0 +1,21 @@
+{
+  "owned_pids": [
+    89614,
+    89644,
+    89688,
+    89726,
+    89763
+  ],
+  "argv": [
+    "/bin/ps",
+    "-p",
+    "89614,89644,89688,89726,89763",
+    "-o",
+    "pid=,ppid=,pgid=,stat=,command="
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "",
+  "all_owned_PIDs_absent": true,
+  "signal_sent_by_postcheck": false
+}

@@ -1,0 +1,141 @@
+--- closedV2/common.py
++++ newGlobal/common.py
+@@ -16,7 +16,7 @@
+ import evaluator as c
+ import resources as r
+ 
+-EXPERIMENT = "WF-20261116-MATERIAL-GROUPS-HARBOR-A8-001"
++EXPERIMENT = "WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001"
+ SOURCE = _candidate.get("source_commit")
+ OWN_TARGET = "target"
+ CAP_SECONDS = 420.0
+@@ -31,7 +31,7 @@
+     r.require(_candidate.get("status") == "root_reviewed_candidate" and _candidate.get("root_confirms_green_source_and_review") is True and REPO is not None and
+               isinstance(SOURCE, str) and len(SOURCE) == 40 and all(q in "0123456789abcdef" for q in SOURCE),
+               "Reviewed candidate source is pending; no build/freeze/initialization/dynamics authorized")
+-    r.require(ROOT == REPO / ".local/harbor-material-groups-preparation-20261116-v2",
++    r.require(ROOT == REPO / ".local/harbor-global-material-preparation-20261117",
+               "Install the source-only packet in the reviewed candidate checkout before final preparation")
+     r.require(c.same(read(ROOT / "CANDIDATE.json"), _candidate), "Candidate binding changed")
+     for path_key, sha_key in [("source_manifest", "source_manifest_sha256"),
+@@ -40,7 +40,7 @@
+         r.require(r.sha(r.safe_file(_candidate[path_key], REPO), deadline) == _candidate[sha_key],
+                   "Reviewed candidate evidence changed: " + path_key)
+     source = read(REPO / _candidate["source_manifest"])
+-    r.require(source["commit"] == SOURCE and type(source["source_count"]) is int and source["source_count"] == len(source["source_hashes"]) > 0,
++    r.require(source["commit"] == SOURCE and type(source["source_count"]) is int and source["source_count"] == len(source["source_hashes"]) == 88,
+               "Wrong reviewed source manifest")
+     for name, digest in source["source_hashes"].items():
+         r.require(r.sha(r.safe_file(name, REPO), deadline) == digest, "Reviewed source changed: " + name)
+@@ -58,9 +58,29 @@
+     gate = read(REPO / _candidate["workspace_gate_start_freeze"])
+     r.require(gate["commit"] == SOURCE and gate["source88"] == source["source_hashes"], "Workspace source freeze differs")
+     workspace = read(REPO / _candidate["workspace_gates_evidence"])
+-    r.require(workspace["commit"] == SOURCE and workspace["all4_stages_passed"] is True and
+-              all(workspace["all_source88_metadata59_inventory8_unchanged"][key] is True for key in ["source88", "metadata59", "original8", "clean"]),
+-              "Declared workspace stages/source guards are not green")
++    r.require(workspace["commit"] == SOURCE and workspace["all3_new_stages_passed"] is True and
++              workspace["Rust_workspace_actual_counts"] == {"passed":409,"failed":0,"ignored":0,"summaries":31} and
++              [stage["name"] for stage in workspace["stages"]] == ["workspace-tests","workspace-clippy","native-cli-debug"] and
++              all(stage["exit_code"] == 0 and stage["stop_reason"] is None and
++                  stage["all_source88_metadata59_original8_exact"] is True for stage in workspace["stages"]),
++              "Three actual workspace stages/source guards are not green")
++    r.require(review["workspace_gates_result_sha256"] == _candidate["workspace_gates_sha256"] and
++              review["old_case_regrade"] is False and review["full_garment_or_reference_acceptance"] is False,
++              "Root source/workspace review qualification differs")
++    fmt_descriptor = workspace["fmt_reused_exact88_source"]
++    r.require(fmt_descriptor == gate["source_gates_reuse_fmt"] and
++              fmt_descriptor["author_receipt_sha256"] == _candidate["fmt_receipt_sha256"] and
++              fmt_descriptor["path"] == str(REPO / _candidate["fmt_origin_evidence"]),
++              "Exact-source reused FMT descriptor differs")
++    for name in [_candidate["fmt_origin_evidence"], _candidate["fmt_receipt_evidence"]]:
++        r.require(r.sha(r.safe_file(name, REPO), deadline) == _candidate["fmt_receipt_sha256"],
++                  "Actual reused FMT receipt changed")
++    fmt = read(REPO / _candidate["fmt_receipt_evidence"])
++    r.require(fmt["classification"] == "GREEN" and fmt["stage_name"] == "FMT" and
++              fmt["source_before_after_exact"] is True and fmt["source_after"] == source["source_hashes"] and
++              fmt["stage"]["exit_code"] == 0 and fmt["stage"]["stop_reason"] is None and
++              fmt["stage"]["argv"][1:] == ["fmt","--all","--check"],
++              "Full fmt was not passed on the exact88 source; do not imply a new fmt command")
+     for name, digest in {**gate["metadata_frozen"], **read(REPO / _candidate["original8_guard"])}.items():
+         r.require(r.sha(r.safe_file(name, REPO), deadline) == digest, "Frozen pre-existing metadata/inventory changed: " + name)
+     timeout = max(.001, deadline-time.monotonic()) if deadline is not None else None
+--- closedV2/compiler_inputs.py
++++ newGlobal/compiler_inputs.py
+@@ -4,7 +4,7 @@
+ from pathlib import Path
+ import tomllib
+ 
+-LOCAL_ROOTS=('crates/weftforge-core','crates/weftforge-sim','vendor/earcutr','.local/harbor-material-groups-preparation-20261116-v2/producer')
++LOCAL_ROOTS=('crates/weftforge-core','crates/weftforge-sim','vendor/earcutr','.local/harbor-global-material-preparation-20261117/producer')
+ 
+ 
+ def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+@@ -28,7 +28,7 @@
+ 
+ 
+ def dependency_inventory(wt,cargo_home):
+-    lock=tomllib.loads((Path(wt)/'.local/harbor-material-groups-preparation-20261116-v2/producer/Cargo.lock').read_text());result=[]
++    lock=tomllib.loads((Path(wt)/'.local/harbor-global-material-preparation-20261117/producer/Cargo.lock').read_text());result=[]
+     for package in lock['package']:
+         if 'source' not in package:continue
+         if package['source']!='registry+https://github.com/rust-lang/crates.io-index':raise ValueError('unexpected dependency source')
+--- closedV2/source_inputs.py
++++ newGlobal/source_inputs.py
+@@ -2,7 +2,6 @@
+ import hashlib
+ import os
+ from pathlib import Path
+-import subprocess
+ from datetime import datetime, timezone
+ 
+ import common as b
+@@ -21,9 +20,11 @@
+ def clean_child_env(binding):
+     for key in ["RUSTC_WRAPPER","RUSTC_WORKSPACE_WRAPPER","CARGO_BUILD_RUSTC_WRAPPER","CARGO_BUILD_RUSTC_WORKSPACE_WRAPPER"]:
+         r.require(os.environ.get(key) in (None,""),"Unexpected compiler wrapper: "+key)
+-    r.require(os.environ.get("RUSTC") in (None,"",binding["rustc"]["path"]),"Unexpected inherited RUSTC")
++    for key in ["RUSTC","RUSTDOC","RUSTUP_TOOLCHAIN"]:
++        r.require(os.environ.get(key) in (None,"",binding["child_env"][key]),"Unexpected inherited "+key)
++    r.require(os.environ.get("PATH","")==binding["parent_path"],"Parent PATH changed after compiler binding")
+     r.require(ambient_build_env()==binding["ambient_build_env"],"Cargo build/profile/target environment changed")
+-    r.require(os.environ.get("RUSTFLAGS","")==binding["child_env"]["RUSTFLAGS"] and os.environ.get("CARGO_ENCODED_RUSTFLAGS","")==binding["child_env"]["CARGO_ENCODED_RUSTFLAGS"],"Rust flags changed")
++    r.require(all(os.environ.get(key,"")==binding["child_env"][key] for key in ["RUSTFLAGS","CARGO_ENCODED_RUSTFLAGS","RUSTDOCFLAGS"]),"Rust/compiler documentation flags changed")
+     r.require(str(Path(os.environ.get("CARGO_HOME") or Path.home()/".cargo").resolve())==binding["cargo_home"],"Cargo home changed")
+     env=dict(os.environ)
+     for key in ["CARGO_BUILD_RUSTC_WRAPPER","CARGO_BUILD_RUSTC_WORKSPACE_WRAPPER"]:env.pop(key,None)
+@@ -38,16 +39,21 @@
+     for name,digest in READONLY.items():r.require(r.sha(r.safe_file(name,REPO))==digest,"Original input/rest changed")
+     for name,digest in b.read(ROOT/"REUSED-SOURCES.json")["original_files"].items():
+         if name.startswith(("consumer/","producer/")):r.require(r.sha(ROOT/name)==digest,"Original producer/evaluator source changed")
+-    compiler=Path(subprocess.check_output(["rustup","which","rustc"],cwd=REPO,text=True).strip())
+-    cargo=compiler.with_name("cargo");r.require(cargo.is_file(),"Actual Cargo executable missing")
++    toolchain=Path(b._candidate["rust_toolchain_bin"])
++    r.require(toolchain.is_absolute() and toolchain.name=="bin" and toolchain.parent.name=="1.94.1-aarch64-apple-darwin","Wrong fixed toolchain directory")
++    compiler=toolchain/"rustc";cargo=toolchain/"cargo";rustdoc=toolchain/"rustdoc"
++    for executable in [compiler,cargo,rustdoc]:
++        r.require(executable.is_file() and not executable.is_symlink(),"Actual compiler tool missing or symlinked: "+executable.name)
++    parent_path=os.environ.get("PATH","")
++    child_path=os.pathsep.join([str(toolchain),*[part for part in parent_path.split(os.pathsep) if part and part!=str(toolchain)]])
+     cargo_home=str(Path(os.environ.get("CARGO_HOME") or Path.home()/".cargo").resolve())
+-    binding={"rustc":{"path":str(compiler),"sha256":r.sha(compiler)},"cargo":{"path":str(cargo),"sha256":r.sha(cargo)},"argv":[str(cargo),"build","--release","--locked","--offline","--manifest-path",str(ROOT/"producer/Cargo.toml")],"cargo_home":cargo_home,"ambient_build_env":ambient_build_env(),"child_env":{"RUSTC":str(compiler),"RUSTC_WRAPPER":"","RUSTC_WORKSPACE_WRAPPER":"","RUSTFLAGS":os.environ.get("RUSTFLAGS",""),"CARGO_ENCODED_RUSTFLAGS":os.environ.get("CARGO_ENCODED_RUSTFLAGS",""),"CARGO_BUILD_JOBS":"1","CARGO_TARGET_DIR":str(REPO/b.OWN_TARGET),"CARGO_HOME":cargo_home,"PYTHONOPTIMIZE":"0","PYTHONDONTWRITEBYTECODE":"1"},"scope_limit":"Known local/config and locked crate source inputs are inventoried; linker/macOS SDK/sysroot shared-library closure is not certified."}
++    binding={"rustc":{"path":str(compiler),"sha256":r.sha(compiler)},"cargo":{"path":str(cargo),"sha256":r.sha(cargo)},"rustdoc":{"path":str(rustdoc),"sha256":r.sha(rustdoc)},"argv":[str(cargo),"build","--release","--locked","--offline","--manifest-path",str(ROOT/"producer/Cargo.toml")],"cargo_home":cargo_home,"parent_path":parent_path,"ambient_build_env":ambient_build_env(),"child_env":{"RUSTC":str(compiler),"RUSTDOC":str(rustdoc),"RUSTUP_TOOLCHAIN":"1.94.1","PATH":child_path,"RUSTC_WRAPPER":"","RUSTC_WORKSPACE_WRAPPER":"","RUSTFLAGS":os.environ.get("RUSTFLAGS",""),"CARGO_ENCODED_RUSTFLAGS":os.environ.get("CARGO_ENCODED_RUSTFLAGS",""),"RUSTDOCFLAGS":os.environ.get("RUSTDOCFLAGS",""),"CARGO_BUILD_JOBS":"1","CARGO_TARGET_DIR":str(REPO/b.OWN_TARGET),"CARGO_HOME":cargo_home,"PYTHONOPTIMIZE":"0","PYTHONDONTWRITEBYTECODE":"1"},"scope_limit":"Actual Cargo/rustc/rustdoc executables, full child PATH/toolchain/known flags, local/config and locked crate source inputs are bound. Linker/macOS SDK/sysroot shared-library closure is not certified."}
+     clean_child_env(binding)
+     binding["local_inputs"]=local_inventory(REPO)
+     binding["dependency_sources"]=dependency_inventory(REPO,cargo_home)
+     binding["cargo_config_inputs"]=cargo_config_inventory(REPO,cargo_home)
+     digest=hashlib.sha256(r.encoded(binding)).hexdigest()
+-    paths=code_paths()+["producer/Cargo.toml","producer/Cargo.lock","CANDIDATE.json","REUSED-SOURCES.json","PROTOCOL-DRAFT.json","SOURCE.json","DRAFT-ORIGIN.json","V1-PRESERVED.json","PREVIOUS-ROOT-PRESERVED.json","MONITOR-DELTA.json"]
++    paths=code_paths()+["producer/Cargo.toml","producer/Cargo.lock","CANDIDATE.json","REUSED-SOURCES.json","PROTOCOL-DRAFT.json","SOURCE.json","DRAFT-ORIGIN.json","PRESERVATION.json","DELTA.json"]
+     paths += [str(p.relative_to(ROOT)) for p in sorted((ROOT/"evidence").glob("*.json"))]
+     preflight={"status":"reviewed_source_bound_no_build","bound_at_utc":datetime.now(timezone.utc).isoformat(),"source_commit":b.SOURCE,"candidate_binding_sha256":r.sha(ROOT/"CANDIDATE.json"),"python":b.environment(),"code_paths":code_paths(),"files":{name:r.sha(ROOT/name) for name in paths},"original_input_rest":READONLY,"build_binding":binding,"build_binding_sha256":digest,"source_review_sha256":b._candidate["source_review_sha256"],"green_checks_sha256":b._candidate["green_checks_sha256"],"workspace_gate_status_at_binding":b._candidate["workspace_gates_status_at_binding"],"build_authorized":False,"own_target_preexisting":(REPO/b.OWN_TARGET).exists(),"same_checkout_target_reuse_allowed":True,"compiled_target_cross_copy":False,"Cloth_initializations":0,"Cloth_steps":0,"Cargo_invocations":0}
+     b.validate_environment(preflight["python"])
+@@ -64,7 +70,7 @@
+     for name,digest in READONLY.items():r.require(r.sha(r.safe_file(name,REPO),deadline)==digest,"Original input/rest changed")
+     binding=value["build_binding"]
+     r.require(hashlib.sha256(r.encoded(binding)).hexdigest()==value["build_binding_sha256"],"Build binding changed")
+-    for name in ["rustc","cargo"]:r.require(r.sha(binding[name]["path"],deadline)==binding[name]["sha256"],"Compiler executable changed")
++    for name in ["rustc","cargo","rustdoc"]:r.require(r.sha(binding[name]["path"],deadline)==binding[name]["sha256"],"Compiler executable changed")
+     r.require(local_inventory(REPO)==binding["local_inputs"],"Added/deleted/changed local compiler source, including build.rs")
+     r.require(dependency_inventory(REPO,binding["cargo_home"])==binding["dependency_sources"],"Immutable dependency sources changed")
+     r.require(cargo_config_inventory(REPO,binding["cargo_home"])==binding["cargo_config_inputs"],"Cargo configuration/absence changed")

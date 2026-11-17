@@ -1,0 +1,208 @@
+{
+  "adapted_packet_test_embedded_exact": true,
+  "at_utc": "2026-11-17T03:08:56.950997+00:00",
+  "base_commit_before_after": "13fb43fe08c045f08a1b85007aff3c15388a1e24",
+  "bend_and_later_constraints_base_bytes_exact": true,
+  "bound_source88_before_after_exact": true,
+  "bound_source88_sha256": "a873137937e4b27e7c4bcae84994427d0e42abb14fb65dfa9d3f117af8882444",
+  "bound_source_count": 88,
+  "candidate2_and_final_source_maps_exact": true,
+  "changed_source_after": {
+    "crates/weftforge-sim/src/constraints.rs": {
+      "bytes": 15204,
+      "mode": "0644",
+      "sha256": "975d043dba7b67a8546d854cec7c96577353c4111490579d18a97dc7542bbf11"
+    },
+    "crates/weftforge-sim/src/lib.rs": {
+      "bytes": 36052,
+      "mode": "0644",
+      "sha256": "904f373d8e4f3b314b388731458f36a364c309badaed3175752da2c5f9d88d1f"
+    },
+    "crates/weftforge-sim/src/tests.rs": {
+      "bytes": 82069,
+      "mode": "0644",
+      "sha256": "4b77ef465ec5ec150aaad6e7b6d4191a7e377404b7b9375fd4e48865ffeb9383"
+    },
+    "docs/physics.md": {
+      "bytes": 45101,
+      "mode": "0644",
+      "sha256": "43a221cf3b1c1a5694cce34e2e4b8fbd55bf781051dcf24afcae728974c8d629"
+    }
+  },
+  "changed_source_before": {
+    "crates/weftforge-sim/src/constraints.rs": {
+      "bytes": 15204,
+      "mode": "0644",
+      "sha256": "975d043dba7b67a8546d854cec7c96577353c4111490579d18a97dc7542bbf11"
+    },
+    "crates/weftforge-sim/src/lib.rs": {
+      "bytes": 36052,
+      "mode": "0644",
+      "sha256": "904f373d8e4f3b314b388731458f36a364c309badaed3175752da2c5f9d88d1f"
+    },
+    "crates/weftforge-sim/src/tests.rs": {
+      "bytes": 82069,
+      "mode": "0644",
+      "sha256": "4b77ef465ec5ec150aaad6e7b6d4191a7e377404b7b9375fd4e48865ffeb9383"
+    },
+    "docs/physics.md": {
+      "bytes": 45101,
+      "mode": "0644",
+      "sha256": "43a221cf3b1c1a5694cce34e2e4b8fbd55bf781051dcf24afcae728974c8d629"
+    }
+  },
+  "execution_by_reviewer": {
+    "Cargo": 0,
+    "UI": 0,
+    "evaluators": 0,
+    "network": 0,
+    "production_programs": 0,
+    "tests": 0
+  },
+  "findings": [],
+  "limitations": [
+    "Source and receipt review only; no new run or grade.",
+    "PCG uses a bounded approximate direction and recursive residual, not a general physical force guarantee.",
+    "The frozen network reference is local; no global uniqueness or full garment/equilibrium/performance/reference acceptance."
+  ],
+  "oracle_regions_independently_compared": {
+    "direct_F_objective": {
+      "normalized_sha256": "e0ea1bf48979144ba4fcf8ef701da2795fc5f203d4637681f09d35f90a6b78f3",
+      "tokens_equal_ignoring_whitespace_comments_commas": true
+    },
+    "literal_input": {
+      "normalized_sha256": "53dfb0685cd3c05b1ddbcd652cfdff83c7bd3f54553affec6b997640bf4f01f1",
+      "tokens_equal_ignoring_whitespace_comments_commas": true
+    },
+    "mass_guard": {
+      "normalized_sha256": "c2b01059a6ca32911d0a4b002196f4311e79582de191c93a1473b802aa29f418",
+      "tokens_equal_ignoring_whitespace_comments_commas": true
+    },
+    "reference_FD_and_limits": {
+      "normalized_sha256": "b5aa3c5f32649450f493ea655c845a17df3cc3c9665e4f66e484a236b95fdf60",
+      "tokens_equal_ignoring_whitespace_comments_commas": true
+    }
+  },
+  "report": {
+    "bytes": 3578,
+    "mode": "0644",
+    "sha256": "bafa1e855fce214039c8ca4ce6d76c10e8e73cacb35bdb3528d93aba50a80138"
+  },
+  "review_inputs_after_exact": true,
+  "review_inputs_before": {
+    ".local/global-material-repair-20261117/.local/candidate2-20261117/CANDIDATE-NETWORK-TEST.rs": {
+      "bytes": 7203,
+      "mode": "0444",
+      "sha256": "b0a314545ee1fac18f68c342d9781ae6e1f4090c8a02b535a75e422cdeb5d311"
+    },
+    ".local/global-material-repair-20261117/.local/candidate2-20261117/CANDIDATE1-PRESERVATION.json": {
+      "bytes": 495,
+      "mode": "0444",
+      "sha256": "2226ba3dc72fa275396556a8d158cec8fdc101e976ddc12b15541c73418f5a50"
+    },
+    ".local/global-material-repair-20261117/.local/candidate2-20261117/CANDIDATE2-FINAL-MANIFEST.json": {
+      "bytes": 6136,
+      "mode": "0444",
+      "sha256": "101de5696da2a83a0317033bb022dce0e4085123ba56b750d51088d7a0ad62b0"
+    },
+    ".local/global-material-repair-20261117/.local/candidate2-20261117/CANDIDATE2-TERMINAL.json": {
+      "bytes": 17868,
+      "mode": "0444",
+      "sha256": "2e7564748b5ec35870138d8def43d24b4263ec15302cfc453dbf29c4dcf6e87a"
+    },
+    ".local/global-material-repair-20261117/.local/candidate2-20261117/HANDOFF.md": {
+      "bytes": 1440,
+      "mode": "0444",
+      "sha256": "48b26a335716b40a72201c1bff3af53e8f933775b0f48bbbe02b2f10c0164e65"
+    },
+    ".local/global-material-repair-20261117/.local/candidate2-20261117/NETWORK-LITERAL-GUARDS.json": {
+      "bytes": 1342,
+      "mode": "0444",
+      "sha256": "a1a8c15ae82c784f4fd9ffb5139f21b66688639f74a04ad08847d78539d8d6fc"
+    },
+    ".local/global-material-repair-20261117/.local/candidate2-20261117/NETWORK-STAGE-ADAPTER.patch": {
+      "bytes": 4033,
+      "mode": "0444",
+      "sha256": "b31481521a61af277196dfc6ea916f9b10458ca28670ad479235f43c0b20daf4"
+    },
+    ".local/global-material-repair-20261117/.local/candidate2-20261117/SOURCE-FREEZE.json": {
+      "bytes": 15302,
+      "mode": "0444",
+      "sha256": "86888b71b8aa75693199e0ba99d93ba124178b2f80c141f7f3fa843ac11958f0"
+    },
+    ".local/global-material-repair-20261117/.local/candidate2-20261117/original-RED-test.rs": {
+      "bytes": 6820,
+      "mode": "0444",
+      "sha256": "ab917733c28eebd9a9ab813818b2f03945660b8c0bb9a67d9babdd4090342560"
+    },
+    ".local/global-material-repair-20261117/.local/targeted-stabilization-20261117/HANDOFF.md": {
+      "bytes": 1357,
+      "mode": "0444",
+      "sha256": "4bbec70ff8c115a27c7f63687d1d0e071f5b162ca5fb88e7d10c77c81b59df5e"
+    },
+    ".local/global-material-repair-20261117/.local/targeted-stabilization-20261117/SOURCE-FREEZE.json": {
+      "bytes": 12844,
+      "mode": "0444",
+      "sha256": "24bfc16435c64156f2468f79843e1a6f9a49d360d37d93a1d455b535f2905df3"
+    },
+    ".local/global-material-repair-20261117/.local/targeted-stabilization-20261117/TARGETED-FINAL-MANIFEST.json": {
+      "bytes": 5413,
+      "mode": "0444",
+      "sha256": "dc05ea2a44007729938e3f4bb2ac0fd69c675930cabeb9ab6a4ab2e8d4eabb52"
+    },
+    ".local/material-network-proof-20261117/FREEZE.json": {
+      "bytes": 23447,
+      "mode": "0444",
+      "sha256": "ad4d326900deda803a76e0f42686e46048abaf21f4589dac7e1aeefdb96e0c67"
+    },
+    ".local/material-network-proof-20261117/INPUT.json": {
+      "bytes": 6327,
+      "mode": "0444",
+      "sha256": "fb2a80ebc94b8cef4269f5c906af64a821255c3f3b2e998eae07f34fc6c6a21e"
+    },
+    ".local/material-network-proof-20261117/ORACLE-PROOF.md": {
+      "bytes": 3702,
+      "mode": "0444",
+      "sha256": "1c6a4a2862361c97f77c64e6c4a72a2202fcd8ae00ae4adaa82c68d6a2426134"
+    },
+    ".local/material-network-proof-20261117/ORACLE-SELFCHECKS.json": {
+      "bytes": 447,
+      "mode": "0444",
+      "sha256": "68ce57ffb393eba6a99df93745c4cee37f1809dba108c3f10d7e87755b4d60ba"
+    },
+    ".local/material-network-proof-20261117/PROPOSED-TEST.rs": {
+      "bytes": 6820,
+      "mode": "0444",
+      "sha256": "ab917733c28eebd9a9ab813818b2f03945660b8c0bb9a67d9babdd4090342560"
+    },
+    ".local/material-network-proof-20261117/RED-FINAL-MANIFEST.json": {
+      "bytes": 6138,
+      "mode": "0444",
+      "sha256": "99be7ba76328360d55f68c02a9d0241b09622e17f6f1440a6ce9750bca6d4778"
+    },
+    ".local/material-network-proof-20261117/RED-TERMINAL.json": {
+      "bytes": 17813,
+      "mode": "0444",
+      "sha256": "6aa072efb107f39e6f01fde1acd6070cc3285352714eb4031fc4211cf9d89a3c"
+    },
+    ".local/material-network-proof-20261117/REFERENCE.json": {
+      "bytes": 11755,
+      "mode": "0444",
+      "sha256": "81e34a2c1d3f5b5992abd4bf7dafbb2bc809488f7956828546cb3d33a20d9d3b"
+    },
+    ".local/material-network-proof-20261117/reference.py": {
+      "bytes": 12360,
+      "mode": "0444",
+      "sha256": "968ecf606f589cbf058dc79da4161ef3fc92402bd91fc53cb00ac2b0e301816a"
+    }
+  },
+  "reviewed_changed_paths": [
+    "crates/weftforge-sim/src/constraints.rs",
+    "crates/weftforge-sim/src/lib.rs",
+    "crates/weftforge-sim/src/tests.rs",
+    "docs/physics.md"
+  ],
+  "reviewed_worktree": ".local/global-material-repair-20261117",
+  "source_edits_observed": 0,
+  "status": "NO_BLOCKER_FOUND_BOUNDED_SOURCE_REVIEW"
+}
