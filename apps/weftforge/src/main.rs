@@ -3399,30 +3399,32 @@ impl Studio {
             let Some(id) = input.focus else {
                 return false;
             };
-            if numeric_replacement_requested(ui.ctx(), id) {
+            let resumed = ui
+                .ctx()
+                .data_mut(|data| data.remove_temp::<u64>(id.with("resumed-property-input")))
+                == Some(ui.ctx().cumulative_frame_nr());
+            let editing = ui.input(|input| {
+                input.events.iter().any(|event| {
+                    matches!(
+                        event,
+                        egui::Event::Text(_)
+                            | egui::Event::Paste(_)
+                            | egui::Event::Cut
+                            | egui::Event::Key { pressed: true, .. }
+                    )
+                })
+            });
+            if numeric_replacement_requested(ui.ctx(), id) || (resumed && editing) {
                 ui.ctx().data_mut(|data| {
                     data.remove::<RetainedInspectorInput>(id.with("suspended-property-input"))
                 });
                 return false;
             }
             if ui.ctx().memory(|memory| memory.has_focus(id)) {
-                let editing = ui.input(|input| {
-                    input.events.iter().any(|event| {
-                        matches!(
-                            event,
-                            egui::Event::Text(_)
-                                | egui::Event::Paste(_)
-                                | egui::Event::Cut
-                                | egui::Event::Key { pressed: true, .. }
-                        )
-                    })
-                });
-                if !editing {
-                    input.restore(ui.ctx());
-                }
+                input.restore(ui.ctx());
                 finish_numeric_action(ui.ctx(), input.focus, false);
                 commit = false;
-                let keep = !editing && !ui.ctx().memory(|memory| memory.had_focus_last_frame(id));
+                let keep = !ui.ctx().memory(|memory| memory.had_focus_last_frame(id));
                 if !keep {
                     ui.ctx().data_mut(|data| {
                         data.remove::<RetainedInspectorInput>(id.with("suspended-property-input"))
@@ -7476,6 +7478,9 @@ fn numeric_value<'a>(ui: &egui::Ui, value: &'a mut f64) -> egui::DragValue<'a> {
         {
             // DragValue clears its raw text before calling the formatter on refocus.
             input.restore(&ctx);
+            ctx.data_mut(|data| {
+                data.insert_temp(id.with("resumed-property-input"), ctx.cumulative_frame_nr())
+            });
         }
         // egui reparses its edit buffer on blur even when the text was never changed.
         if ctx.memory(|memory| memory.has_focus(id)) {
@@ -9146,48 +9151,79 @@ mod contextual_properties_tests {
 
     #[test]
     fn refocus_and_paste_in_one_frame_uses_the_retained_input_without_overwriting_the_new_edit() {
-        let (ctx, mut app) = fixture();
-        let output = frame(&ctx, &mut app, 1000., vec![]);
-        let width = numeric(&output, 0.4);
-        frame(
-            &ctx,
-            &mut app,
-            1000.,
-            vec![action(width, Action::Focus, None)],
-        );
-        frame(&ctx, &mut app, 1000., vec![]);
-        frame(
-            &ctx,
-            &mut app,
-            1000.,
-            vec![
-                key(egui::Key::A, egui::Modifiers::COMMAND),
-                egui::Event::Text("1e-".into()),
-            ],
-        );
-        let focused = numeric_focus(&ctx).unwrap();
-        let history = format!("{:?}", app.editor);
-        click(&ctx, &mut app, "Fabric");
-        click(&ctx, &mut app, "Pattern");
-        frame(
-            &ctx,
-            &mut app,
-            1000.,
-            vec![
+        for blur in [false, true] {
+            let (ctx, mut app) = fixture();
+            let output = frame(&ctx, &mut app, 1000., vec![]);
+            let width = numeric(&output, 0.4);
+            frame(
+                &ctx,
+                &mut app,
+                1000.,
+                vec![action(width, Action::Focus, None)],
+            );
+            frame(&ctx, &mut app, 1000., vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                1000.,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text("1e-".into()),
+                ],
+            );
+            let focused = numeric_focus(&ctx).unwrap();
+            let history = format!("{:?}", app.editor);
+            let before = app.editor.project.clone();
+            click(&ctx, &mut app, "Fabric");
+            click(&ctx, &mut app, "Pattern");
+            let mut events = vec![
                 action(width, Action::Focus, None),
                 egui::Event::Paste("2".into()),
-            ],
-        );
-        for _ in 0..3 {
-            frame(&ctx, &mut app, 1000., vec![]);
+            ];
+            if blur {
+                events.push(key(egui::Key::Tab, egui::Modifiers::NONE));
+            }
+            frame(&ctx, &mut app, 1000., events);
+            for _ in 0..3 {
+                frame(&ctx, &mut app, 1000., vec![]);
+            }
+            if blur {
+                assert_eq!(app.editor.project.revision, before.revision + 1);
+                assert!(
+                    (app.editor
+                        .project
+                        .piece_bounds(before.pieces[0].id)
+                        .unwrap()[1][0]
+                        - 0.01)
+                        .abs()
+                        < 1e-14
+                );
+                frame(
+                    &ctx,
+                    &mut app,
+                    1000.,
+                    vec![action(width, Action::Focus, None)],
+                );
+                for _ in 0..3 {
+                    frame(&ctx, &mut app, 1000., vec![]);
+                }
+                assert_ne!(
+                    ctx.data_mut(|data| data.get_temp::<String>(focused))
+                        .as_deref(),
+                    Some("1e-")
+                );
+                assert!(app.editor.undo());
+                assert_eq!(app.editor.project, before);
+            } else {
+                assert_eq!(
+                    ctx.data_mut(|data| data.get_temp::<String>(focused))
+                        .as_deref(),
+                    Some("1e-2")
+                );
+                assert_eq!(app.draft.as_ref().unwrap().dimensions.unwrap()[0], 0.01);
+                assert_eq!(format!("{:?}", app.editor), history);
+            }
         }
-        assert_eq!(
-            ctx.data_mut(|data| data.get_temp::<String>(focused))
-                .as_deref(),
-            Some("1e-2")
-        );
-        assert_eq!(app.draft.as_ref().unwrap().dimensions.unwrap()[0], 0.01);
-        assert_eq!(format!("{:?}", app.editor), history);
     }
 
     #[test]
