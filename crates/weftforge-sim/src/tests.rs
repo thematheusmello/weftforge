@@ -1930,9 +1930,8 @@ fn capsule_projection_and_final_surface_analysis_cancellation_preserve_the_accep
     let old_velocities = accepted.velocities().to_vec();
     let old_targets = accepted.seam_remaining.clone();
     let old_diagnostics = format!("{:?}", accepted.diagnostics());
-    // The first iteration's last collider poll follows a projected first triangle;
-    // the complete call's penultimate poll is inside the final surface residual scan.
-    for stop_at in [3 + collider_calls.get(), total.get() - 1] {
+    // Cover every actual callback, including projected contacts and final surface analysis.
+    for stop_at in 1..=total.get() {
         let calls = Cell::new(0);
         let error = accepted
             .step(settings(), || {
@@ -2024,12 +2023,8 @@ fn global_material_zero_rhs_pins_and_cancellation_preserve_stage_state() {
     for i in 0..x.len() {
         assert_eq!(correction[i], sub(x[i], strained[i]));
     }
-    // First material row, first CG product vertex and the final energy scan.
-    for stop_at in [
-        x.len() + 1,
-        6 * x.len() + 7 * cloth.membrane.len() + 2,
-        calls.get() - 1,
-    ] {
+    // Cancel at every actual callback, including entry and the final pre-copy check.
+    for stop_at in 1..=calls.get() {
         let mut candidate = strained.clone();
         let mut p = vec![[0.; 3]; x.len()];
         let polls = std::cell::Cell::new(0);
@@ -2049,6 +2044,110 @@ fn global_material_zero_rhs_pins_and_cancellation_preserve_stage_state() {
         assert_eq!(polls.get(), stop_at);
         assert_eq!(candidate, strained);
         assert_eq!(p, vec![[0.; 3]; x.len()]);
+    }
+}
+
+#[test]
+fn material_cancellation_checks_entry_and_each_noop_return() {
+    let cloth = Cloth::new(square()).unwrap();
+    let rest = cloth.positions().to_vec();
+    let mut strained = rest.clone();
+    strained.iter_mut().for_each(|p| p[0] *= 1.5);
+    for (before, weights) in [
+        (rest, cloth.inverse_masses.as_slice()),
+        (strained, &[0.; 4]),
+    ] {
+        let calls = std::cell::Cell::new(0);
+        let mut x = before.clone();
+        let mut p = vec![[0.; 3]; x.len()];
+        constraints::solve_material(
+            &cloth.membrane,
+            &mut x,
+            weights,
+            settings().dt,
+            &mut p,
+            &|| {
+                calls.set(calls.get() + 1);
+                false
+            },
+        )
+        .unwrap();
+        assert_eq!(calls.get(), 2);
+        assert_eq!(x, before);
+        assert_eq!(p, vec![[0.; 3]; x.len()]);
+        for stop_at in 1..=calls.get() {
+            let polls = std::cell::Cell::new(0);
+            assert_eq!(
+                constraints::solve_material(
+                    &cloth.membrane,
+                    &mut x,
+                    weights,
+                    settings().dt,
+                    &mut p,
+                    &|| {
+                        polls.set(polls.get() + 1);
+                        polls.get() == stop_at
+                    },
+                ),
+                Err(SimulationError::Cancelled)
+            );
+            assert_eq!(polls.get(), stop_at);
+            assert_eq!(x, before);
+            assert_eq!(p, vec![[0.; 3]; x.len()]);
+        }
+    }
+}
+
+#[test]
+fn material_cancellation_at_every_cloth_callback_rolls_back_all_persistent_state() {
+    let mut input = square();
+    input.positions.iter_mut().for_each(|p| p[0] *= 1.5);
+    input.pins.push(Pin {
+        vertex: 0,
+        target: input.positions[0],
+    });
+    input.stitches.push(Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(1),
+        compliance: 0.01,
+    });
+    input.colliders.push(Collider::Ground { height: 0. });
+    let settings = StepSettings {
+        iterations: 2,
+        gravity: [0., -9.81, 0.],
+        ..settings()
+    };
+    let mut accepted = Cloth::new(input).unwrap();
+    accepted.step(settings, || false).unwrap();
+    let before = format!("{accepted:?}");
+    let mut complete = accepted.clone();
+    let calls = std::cell::Cell::new(0);
+    complete
+        .step(settings, || {
+            calls.set(calls.get() + 1);
+            false
+        })
+        .unwrap();
+    assert_ne!(complete.positions, accepted.positions);
+    assert!(complete.seam_remaining[0] < accepted.seam_remaining[0]);
+    for stop_at in 1..=calls.get() {
+        let mut candidate = accepted.clone();
+        let polls = std::cell::Cell::new(0);
+        assert_eq!(
+            candidate
+                .step(settings, || {
+                    polls.set(polls.get() + 1);
+                    polls.get() == stop_at
+                })
+                .unwrap_err(),
+            SimulationError::Cancelled
+        );
+        assert_eq!(polls.get(), stop_at);
+        assert_eq!(format!("{candidate:?}"), before);
+        assert_eq!(candidate.positions, accepted.positions);
+        assert_eq!(candidate.velocities, accepted.velocities);
+        assert_eq!(candidate.seam_remaining, accepted.seam_remaining);
+        assert_eq!(candidate.simulation_time(), accepted.simulation_time());
     }
 }
 

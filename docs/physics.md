@@ -180,12 +180,18 @@ can still stall. Existing strain/contact/finite diagnostics remain necessary.
 For N vertices and T triangles, each sweep stores 3*T sparse rows and O(N+T)
 workspace, plus the retained three-component p per vertex. Its fixed budget is
 at most 32 matrix products and 17 complete objective scans (current plus trials),
-with at most 168*N + 119*T + 48 cancellation callback work units over all vertex,
+with at most 168*N + 119*T + 48 cancellation checkpoints over all vertex,
 row, CG-iteration and backtracking scans. Each unit has bounded scalar work;
 vector allocations/copies add O(N+T) work. Every input vector is finite in length;
 the solver introduces no smaller geometry/input limit. A complete step runs at
 most substeps*iterations such sweeps under the existing 1..=1000 settings limits.
-Rows, vertices, every CG iteration and every trial poll cancellation. Candidate
+Rows, vertices, every CG iteration and every trial visit these checkpoints. The
+material stage polls the original cancellation callback at entry, at every 64th
+checkpoint, and immediately before each successful return or accepted x/p copy.
+At most 63 checkpoints can skip the callback between polls; the callback budget
+is at most 2 + floor((168*N + 119*T + 48)/64) per sweep. Vector allocation and
+copying remain uninterruptible, so this is not a wall-time latency guarantee.
+A cancelled direct material stage returns before changing x or p. Candidate
 arrays and p stay local to the whole-call transaction, so cancellation or numerical
 failure preserves accepted positions, velocities, seam targets, time and
 diagnostics. These bounds do not assert a wall-time or aggregate-memory limit.
