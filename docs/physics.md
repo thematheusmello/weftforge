@@ -427,14 +427,46 @@ The actual nodal displacement is retained, not a reconstructed per-row multiplie
 This preserves the isolated analytic guards without normal-solver rounding.
 Both duplicate inputs remain separate energies and therefore take the shared path.
 
-For two or more soft springs the block uses the same fixed-four-node PCG/Armijo
-tail as bending: unchanged diagonal/RHS scaling,
-at most32 linear iterations, relative residual1e-12, Armijo coefficient1e-4
-and at most16 halvings. The bending tail is mechanically extracted with the
-same numerical expressions, evaluation/visit order and cancellation checkpoints;
-material arithmetic is unchanged. Only a finite accepted trial copies x and
-p_s; the history accumulates the actual rounded displacement. The actual complete
-radial/vector energy, not just the linearized residual, governs Armijo.
+For two or more soft springs, the block solves the equivalent row-space
+Woodbury system. Here J is the physical scaled residual Jacobian,
+W is the inverse nodal mass (zero at pins), and p is the retained nodal history:
+
+```text
+(I + J*W*J^T) eta = J*p_free - r
+delta_free = -p_free + W*J^T*eta
+delta_pin = 0
+p_new = (1-alpha)*p + alpha*W*J^T*eta   # free nodes, exact arithmetic
+```
+
+The old history appears in both RHS and recovery. A zero dual RHS does not
+mean no movement: eta=0 still requires delta=-p. This distinction is tested
+with a nonzero old history and a zero-energy manufactured minimum.
+Each finite dual iterate produces an actual weighted row scatter. With
+balanced endpoint weights this retains equal/opposite internal actions;
+more generally it respects the actual coefficients rather than recentering COM
+or silently normalizing accepted weights. Floating position rounding remains.
+
+With B=J*sqrt(W), a=p_free/sqrt(W), the row diagonal is
+D_j=sqrt(1+sum_i |B_ji|^2), accumulated using hypot. Diagonal PCG solves
+D^-1*(I+B*B^T)*D^-1 with at most32 iterations and relative residual1e-12.
+The operator scatters B^T into nodal workspace then gathers B back to rows;
+every duplicate physical row remains present. The true primal gradient
+`a+B^T*r` dotted with the recovered mass-normalized direction controls descent.
+The unchanged full radial/vector objective controls Armijo1e-4 with at most16
+fractions. Only finite accepted trials copy x/p, retaining actual rounded delta.
+A zero/non-descent direction or exhausted search leaves the stage unchanged.
+The singleton, material and bending numerical paths are unchanged.
+
+This replaces finite diagonal-primal PCG for soft sewing: that approximation
+can move outside the weighted row-action space before convergence. In a frozen
+five-panel core integration test, first ground/capsule contact produces59.26%
+compression; subsequent sewing stages amplify the coupled state, reaching798.7%
+extension and the existing500% instability rejection. Temporary read hooks
+reproduce the exact failure and show non-roundoff sewing-history action drift,
+even though every sewing update decreases its own complete objective. This is
+an integration failure, not a new accepted garment case. The row-space repair
+addresses the demonstrated invariant gap; complete stability still needs the
+unchanged integration test and broader checks.
 
 In the shared block, positive zero-gap rows choose the nonzero weighted
 inertial-anchor direction, or world+X when that anchor is also zero. Nonzero current directions first divide
@@ -456,7 +488,7 @@ iteration limits change. No fully coupled sewing/contact equilibrium is claimed.
 For N vertices, S input stitches and R=3*S_zero+S_positive<=3*S soft rows,
 workspace is O(N+R), with one retained Vec3 history per node. One sweep performs
 at most32 matrix products and17 complete objective scans. Bounded internal
-checkpoint count is at most168*N+34*R+19*S+48 (at most168*N+121*S+48).
+checkpoint count is at most71*N+166*R+19*S+48 (at most71*N+517*S+48).
 The original cancellation callback is polled at entry, every64th checkpoint,
 and immediately before each successful return or x/p_s copy: at most63 skipped
 checkpoints and at most2+floor(bound/64) calls. Allocation/copying remain
@@ -474,8 +506,16 @@ minimum. At32 old local sweeps, compiled source `d8bcb3b7` passes position with
 `2.1942782660322457e-10 m` error but fails full force balance with
 `0.08777113262758984 N` residual. Both physical spring energies remain in the
 new block and the independent oracle/32/1e-8m/1e-6N/COM-finite checks stay fixed.
-This candidate has not executed. These are component facts and a source-only
-candidate, not a garment-spike causal verdict, garment acceptance or reference parity.
+The primal component passed the same fixed criteria, but its subsequent full
+source checks stopped at the separate integration failure above; remaining
+stages were not run. The dual candidate is unexecuted. A new independent guard
+uses a six-node/two-row weighted network with a nonconstant kernel vector,
+nonzero old row-scattered history, free/pinned partitions, and analytically
+manufactured strictly convex zero-target minima. It checks nonconstant-kernel
+action orthogonality rather than just COM, exact pins, finite/history transport,
+and1e-12 position/force bounds. A second configuration has exactly zero dual
+RHS but nonzero p. These are source/component facts, not a garment-spike causal
+verdict, garment acceptance or reference parity.
 
 This explicitly models assembly, separate from fabric stiffness. A zero target
 requests coincidence; finite compliance can leave a gap. The default speed is

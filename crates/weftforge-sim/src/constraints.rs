@@ -737,7 +737,6 @@ pub(crate) fn solve_sewing(
         return Ok(());
     }
     let mut root_weight = Vec::with_capacity(x.len());
-    let mut diagonal = vec![[1_f64; 3]; x.len()];
     for i in 0..x.len() {
         check_cancel(cancelled)?;
         let root = inverse_mass[i].sqrt();
@@ -810,14 +809,6 @@ pub(crate) fn solve_sewing(
             {
                 return Err(unstable());
             }
-            for (vertex, gradient) in vertices.into_iter().zip(gradient) {
-                for (axis, component) in gradient.into_iter().enumerate() {
-                    diagonal[vertex][axis] = diagonal[vertex][axis].hypot(component);
-                    if !diagonal[vertex][axis].is_finite() {
-                        return Err(unstable());
-                    }
-                }
-            }
             rows.push(CoupledRow {
                 source: index,
                 vertices,
@@ -826,21 +817,204 @@ pub(crate) fn solve_sewing(
             });
         }
     }
-    CoupledBlock {
-        rows,
-        root_weight,
-        diagonal,
-        failure: "non-finite global sewing solve",
-    }
-    .update(
+    // Dual/Woodbury GN keeps every finite iterate in the weighted row-action space.
+    // a=p/sqrt(W), B=J*sqrt(W): (I+B*B^T)eta=B*a-r, delta=-p+sqrt(W)*B^T*eta.
+    let energy = sewing_energy(
+        stitches,
+        targets,
         x,
         correction,
+        &root_weight,
+        dt,
         cancelled,
-        original_cancelled,
-        |_, x, correction, root_weight| {
-            sewing_energy(stitches, targets, x, correction, root_weight, dt, cancelled)
-        },
-    )
+    )?;
+    if !energy.is_finite() {
+        return Err(unstable());
+    }
+    let mut action = vec![[0.; 3]; x.len()];
+    for i in 0..x.len() {
+        check_cancel(cancelled)?;
+        if root_weight[i] > 0. {
+            action[i] = correction[i].map(|value| value / root_weight[i]);
+        }
+        if !finite(action[i]) {
+            return Err(unstable());
+        }
+    }
+    let mut gradient = action.clone();
+    let mut diagonal = Vec::with_capacity(rows.len());
+    let mut rhs = Vec::with_capacity(rows.len());
+    for row in &mut rows {
+        check_cancel(cancelled)?;
+        let mut scale = 1_f64;
+        let mut jp = 0.;
+        for (vertex, g) in row.vertices.into_iter().zip(row.gradient) {
+            jp += dot(g, action[vertex]);
+            gradient[vertex] = add(gradient[vertex], mul(g, row.value));
+            for component in g {
+                scale = scale.hypot(component);
+            }
+        }
+        let value = (jp - row.value) / scale;
+        if !scale.is_finite() || !value.is_finite() {
+            return Err(unstable());
+        }
+        diagonal.push(scale);
+        rhs.push(value);
+        for g in &mut row.gradient {
+            *g = g.map(|component| component / scale);
+        }
+    }
+    for &g in &gradient {
+        check_cancel(cancelled)?;
+        if !finite(g) {
+            return Err(unstable());
+        }
+    }
+    let dot_rows = |a: &[f64], b: &[f64]| -> Result<f64, SimulationError> {
+        let mut value = 0.;
+        for (&a, &b) in a.iter().zip(b) {
+            check_cancel(cancelled)?;
+            value += a * b;
+        }
+        Ok(value)
+    };
+    let mut rhs_scale = 0_f64;
+    for &value in &rhs {
+        check_cancel(cancelled)?;
+        rhs_scale = rhs_scale.max(value.abs());
+    }
+    let mut solution = vec![0.; rows.len()];
+    if rhs_scale > 0. {
+        for value in &mut rhs {
+            check_cancel(cancelled)?;
+            *value /= rhs_scale;
+        }
+        let mut residual = rhs.clone();
+        let mut search = residual.clone();
+        let mut product = vec![0.; rows.len()];
+        let mut nodal = vec![[0.; 3]; x.len()];
+        let mut squared_residual = dot_rows(&residual, &residual)?;
+        let initial_squared_residual = squared_residual;
+        for _ in 0..COUPLED_LINEAR_ITERATIONS {
+            check_cancel(cancelled)?;
+            for value in &mut nodal {
+                check_cancel(cancelled)?;
+                *value = [0.; 3];
+            }
+            for (row, &value) in rows.iter().zip(&search) {
+                check_cancel(cancelled)?;
+                for (vertex, g) in row.vertices.into_iter().zip(row.gradient) {
+                    nodal[vertex] = add(nodal[vertex], mul(g, value));
+                }
+            }
+            for (i, row) in rows.iter().enumerate() {
+                check_cancel(cancelled)?;
+                product[i] = search[i] / diagonal[i] / diagonal[i]
+                    + row
+                        .vertices
+                        .into_iter()
+                        .zip(row.gradient)
+                        .map(|(vertex, g)| dot(g, nodal[vertex]))
+                        .sum::<f64>();
+            }
+            let curvature = dot_rows(&search, &product)?;
+            if !curvature.is_finite() || curvature <= 0. {
+                return Err(unstable());
+            }
+            let alpha = squared_residual / curvature;
+            let mut next_squared_residual = 0.;
+            for i in 0..rows.len() {
+                check_cancel(cancelled)?;
+                solution[i] += alpha * search[i];
+                residual[i] -= alpha * product[i];
+                if !solution[i].is_finite() || !residual[i].is_finite() {
+                    return Err(unstable());
+                }
+                next_squared_residual += residual[i] * residual[i];
+            }
+            if !next_squared_residual.is_finite() {
+                return Err(unstable());
+            }
+            if next_squared_residual <= 1e-24 * initial_squared_residual {
+                break;
+            }
+            let beta = next_squared_residual / squared_residual;
+            for i in 0..rows.len() {
+                check_cancel(cancelled)?;
+                search[i] = residual[i] + beta * search[i];
+            }
+            squared_residual = next_squared_residual;
+        }
+    }
+    // A zero dual RHS still requires delta=-p: never discard the old nodal history.
+    let mut direction = vec![[0.; 3]; x.len()];
+    for i in 0..x.len() {
+        check_cancel(cancelled)?;
+        direction[i] = mul(action[i], -1.);
+    }
+    for (row, &value) in rows.iter().zip(&solution) {
+        check_cancel(cancelled)?;
+        let value = value * rhs_scale;
+        for (vertex, g) in row.vertices.into_iter().zip(row.gradient) {
+            direction[vertex] = add(direction[vertex], mul(g, value));
+        }
+    }
+    // This is the true mass-normalized primal gradient dot recovered direction.
+    let slope = material_dot(&gradient, &direction, cancelled)?;
+    if !slope.is_finite() {
+        return Err(unstable());
+    }
+    if slope >= 0. {
+        check_cancel(original_cancelled)?;
+        return Ok(());
+    }
+    for i in 0..x.len() {
+        check_cancel(cancelled)?;
+        direction[i] = mul(direction[i], root_weight[i]);
+        if !finite(direction[i]) {
+            return Err(unstable());
+        }
+    }
+    let mut trial = vec![[0.; 3]; x.len()];
+    let mut trial_correction = vec![[0.; 3]; x.len()];
+    let mut fraction = 1.;
+    for _ in 0..ENERGY_BACKTRACKING_STEPS {
+        check_cancel(cancelled)?;
+        let mut trial_finite = true;
+        for i in 0..x.len() {
+            check_cancel(cancelled)?;
+            trial[i] = if root_weight[i] > 0. {
+                add(x[i], mul(direction[i], fraction))
+            } else {
+                x[i]
+            };
+            trial_correction[i] = add(correction[i], sub(trial[i], x[i]));
+            trial_finite &= finite(trial[i]) && finite(trial_correction[i]);
+        }
+        let trial_energy = if trial_finite {
+            sewing_energy(
+                stitches,
+                targets,
+                &trial,
+                &trial_correction,
+                &root_weight,
+                dt,
+                cancelled,
+            )?
+        } else {
+            f64::INFINITY
+        };
+        if trial_energy.is_finite() && trial_energy <= energy + 1e-4 * fraction * slope {
+            check_cancel(original_cancelled)?;
+            x.copy_from_slice(&trial);
+            correction.copy_from_slice(&trial_correction);
+            return Ok(());
+        }
+        fraction *= 0.5;
+    }
+    check_cancel(original_cancelled)?;
+    Ok(())
 }
 
 fn single_soft_trial(
