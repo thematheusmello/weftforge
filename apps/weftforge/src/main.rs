@@ -9410,6 +9410,91 @@ mod contextual_properties_tests {
         assert!(!app.dirty && !app.editor.can_undo());
         fs::remove_dir_all(directory).unwrap();
     }
+    #[test]
+    fn explicit_sewing_row_invalidation_retires_hidden_input_before_same_frame_authoring() {
+        for operation in ["Down", "Direction", "Remove span"] {
+            let (ctx, mut app) = fixture();
+            let mesh = Arc::new(app.editor.project.mesh().unwrap());
+            let cloth = Arc::new(weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap());
+            app.mesh = Some(mesh.clone());
+            app.cloth = Some(cloth.clone());
+            click(&ctx, &mut app, "M:N sewing");
+            let output = frame(&ctx, &mut app, 1000., vec![]);
+            let width = numeric(&output, 0.4);
+            frame(&ctx, &mut app, 1000., vec![action(width, Action::Focus, None)]);
+            frame(&ctx, &mut app, 1000., vec![]);
+            frame(&ctx, &mut app, 1000., vec![key(egui::Key::A, egui::Modifiers::COMMAND), egui::Event::Text("0.4500".into())]);
+            let width_focus = numeric_focus(&ctx).unwrap();
+            let width_caret = egui::TextEdit::load_state(&ctx, width_focus).unwrap().cursor.char_range();
+            click(&ctx, &mut app, "Fabric");
+            click(&ctx, &mut app, "Pattern");
+            app.sewing_draft.a = vec![
+                CurveInterval { curve: 7, t0: 0.125, t1: 0.875 },
+                CurveInterval { curve: 8, t0: 0.25, t1: 0.75 },
+            ];
+            app.sewing_draft.b = vec![CurveInterval { curve: 8, t0: 0.375, t1: 0.625 }];
+            app.sewing_draft.selecting_b = true;
+            let output = frame(&ctx, &mut app, 1000., vec![]);
+            let row = numeric(&output, 0.125);
+            frame(&ctx, &mut app, 1000., vec![action(row, Action::Focus, None)]);
+            frame(&ctx, &mut app, 1000., vec![]);
+            frame(&ctx, &mut app, 1000., vec![key(egui::Key::A, egui::Modifiers::COMMAND), egui::Event::Text("1e-".into())]);
+            click(&ctx, &mut app, "Fabric");
+            let output = click(&ctx, &mut app, "Pattern");
+            assert!(numeric_focus(&ctx).is_none());
+            let before = app.editor.project.clone();
+            let history = format!("{:?}", app.editor);
+            let pending = app.draft.as_ref().unwrap().commands(&before);
+            assert_eq!(pending.len(), 1);
+            let mut expected_a = app.sewing_draft.a.clone();
+            match operation {
+                "Down" => expected_a.swap(0, 1),
+                "Direction" => {
+                    let interval = &mut expected_a[0];
+                    std::mem::swap(&mut interval.t0, &mut interval.t1);
+                }
+                "Remove span" => { expected_a.remove(0); }
+                _ => unreachable!(),
+            }
+            let before_b = app.sewing_draft.b.clone();
+            frame(&ctx, &mut app, 1000., vec![
+                action(button(&output, operation), Action::Click, None),
+                action(button(&output, "Create sewing group (Enter)"), Action::Click, None),
+            ]);
+            assert_eq!(app.sewing_draft.a, expected_a);
+            assert_eq!(app.sewing_draft.b, before_b);
+            let mut expected = Editor::new(before.clone()).unwrap();
+            let mut commands = pending.clone();
+            commands.push(Command::AddSewingGroup {
+                name: format!("Sewing group {}", before.sewing_groups.len() + 1),
+                a: expected_a.clone(), b: before_b,
+                correspondence: vec![[0., 0.], [1., 1.]],
+            });
+            let expected_error = expected.execute(Command::Transaction(commands)).unwrap_err().to_string();
+            assert_eq!(app.message, expected_error, "{operation}: stale raw blocked the real validation error");
+            assert_eq!(format!("{:?}", app.editor), history);
+            assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+            assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+            let output = frame(&ctx, &mut app, 1000., vec![]);
+            let current = numeric(&output, expected_a[0].t0);
+            assert_eq!(current, row, "the row ID is deliberately reused");
+            frame(&ctx, &mut app, 1000., vec![action(current, Action::Focus, None)]);
+            for _ in 0..3 { frame(&ctx, &mut app, 1000., vec![]); }
+            let row_focus = numeric_focus(&ctx).unwrap();
+            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(row_focus)).as_deref(), Some(expected_a[0].t0.to_string().as_str()));
+            frame(&ctx, &mut app, 1000., vec![action(width, Action::Focus, None)]);
+            for _ in 0..3 { frame(&ctx, &mut app, 1000., vec![]); }
+            assert_eq!(numeric_focus(&ctx), Some(width_focus));
+            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(width_focus)).as_deref(), Some("0.4500"));
+            assert_eq!(egui::TextEdit::load_state(&ctx, width_focus).unwrap().cursor.char_range(), width_caret);
+            assert_eq!(format!("{:?}", app.editor), history);
+            assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+            assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+        }
+    }
+
 }
 
 #[cfg(test)]
