@@ -246,6 +246,126 @@ fn nonfinite_strain_after_a_finite_candidate_invalidates_diagnostics() {
 }
 
 #[test]
+fn shared_edge_material_reaches_independent_incremental_energy_equilibrium() {
+    let rest = [
+        [-0.064, 0., 0.],
+        [0., -0.004, 0.],
+        [0., 0.004, 0.],
+        [0.064, 0., 0.],
+    ];
+    let material = Material {
+        areal_density: 0.18,
+        warp_stiffness: 400.,
+        weft_stiffness: 400.,
+        shear_stiffness: 100.,
+        grain_angle: std::f64::consts::FRAC_PI_2,
+        bending_stiffness: 0.,
+        damping: 0.,
+        friction: 0.,
+        collision_thickness: 0.003,
+    };
+    let mut cloth = Cloth::new(ClothInput {
+        positions: rest.to_vec(),
+        material_uv: rest.map(|v| [v[0], v[1]]).to_vec(),
+        triangles: vec![[0, 1, 2], [1, 3, 2]],
+        triangle_materials: vec![material; 2],
+        pins: vec![
+            Pin {
+                vertex: 0,
+                target: rest[0],
+            },
+            Pin {
+                vertex: 3,
+                target: rest[3],
+            },
+        ],
+        ..Default::default()
+    })
+    .unwrap();
+    let h = (1. / 60.) / 8.;
+    let speed = 0.0005 / h;
+    cloth.velocities[1] = [0., -speed, 0.];
+    cloth.velocities[2] = [0., speed, 0.];
+    let predicted = [
+        add(rest[1], mul(cloth.velocities[1], h)),
+        add(rest[2], mul(cloth.velocities[2], h)),
+    ];
+    let area = 0.064 * 0.008 / 2.;
+    let mass = 2. * 0.18 * area / 3.;
+    for v in [1, 2] {
+        assert!((cloth.masses()[v] - mass).abs() < 1e-18);
+    }
+    assert!(cloth.bends.is_empty() && cloth.input.stitches.is_empty());
+    assert!(cloth.input.colliders.is_empty());
+    cloth
+        .step(
+            StepSettings {
+                dt: h,
+                substeps: 1,
+                iterations: 32,
+                gravity: [0.; 3],
+                seam_closure_speed: 0.,
+            },
+            || false,
+        )
+        .unwrap();
+
+    // Independent 100-digit Newton root of the six-DOF physical energy;
+    // the symmetric quarter-turn reduction also gives an independent cubic.
+    let expected = [
+        [6.729906241347043e-23, -0.004000552234905839, 0.],
+        [-6.729906241347043e-23, 0.004000552234905839, 0.],
+    ];
+    let x = [cloth.positions()[1], cloth.positions()[2]];
+    let position_error = (0..2)
+        .map(|i| length(sub(x[i], expected[i])))
+        .fold(0., f64::max);
+
+    // Direct columns for this independent two-face geometry, with one inertia
+    // per free particle. No cached constraint gradients or multipliers enter.
+    let center = mul(add(x[0], x[1]), 0.5);
+    let v = mul(sub(x[1], x[0]), 1. / 0.008);
+    let (sin, cos) = material.grain_angle.sin_cos();
+    let mut gradient: [Vec3; 2] =
+        std::array::from_fn(|i| mul(sub(x[i], predicted[i]), mass / (h * h)));
+    for sign in [1., -1.] {
+        let u = add([1., 0., 0.], mul(center, sign / 0.064));
+        let w = add(mul(u, cos), mul(v, sin));
+        let f = add(mul(u, -sin), mul(v, cos));
+        let cw = (dot(w, w) - 1.) / 2.;
+        let cf = (dot(f, f) - 1.) / 2.;
+        let cs = dot(w, f);
+        let gu = add(
+            add(
+                mul(w, 400. * area * cw * cos),
+                mul(f, -400. * area * cf * sin),
+            ),
+            mul(sub(mul(f, cos), mul(w, sin)), 100. * area * cs),
+        );
+        let gv = add(
+            add(
+                mul(w, 400. * area * cw * sin),
+                mul(f, 400. * area * cf * cos),
+            ),
+            mul(add(mul(f, sin), mul(w, cos)), 100. * area * cs),
+        );
+        for (i, entry) in gradient.iter_mut().enumerate() {
+            *entry = add(
+                *entry,
+                add(mul(gu, sign / 0.128), mul(gv, (2. * i as f64 - 1.) / 0.008)),
+            );
+        }
+    }
+    let stationarity = gradient.into_iter().map(length).fold(0., f64::max);
+    println!(
+        "shared-edge positions={x:?} reference={expected:?} position_error={position_error:e}m stationarity={stationarity:e}N"
+    );
+    assert!(position_error < 1e-8 && stationarity < 1e-6);
+    assert_eq!(cloth.positions()[0], rest[0]);
+    assert_eq!(cloth.positions()[3], rest[3]);
+}
+
+#[test]
 fn coupled_membrane_reaches_independent_incremental_energy_equilibrium() {
     let uv = [[0., 0.], [0.01, 0.], [0.003, 0.07]];
     let material = Material {
@@ -962,10 +1082,17 @@ fn cancellation_after_measurement_preserves_peak_strain() {
 #[test]
 fn cancellation_and_failures_preserve_old_state_and_allow_recovery() {
     let mut input = square();
+    for position in square().positions {
+        input.positions.push(add(position, [3., 0., 0.]));
+    }
+    input.material_uv.extend(square().material_uv);
+    input.triangles.extend([[4, 5, 6], [4, 6, 7]]);
+    input.triangle_materials.extend(square().triangle_materials);
     for position in &mut input.positions {
         position[0] *= 1.5;
     }
     let mut cloth = Cloth::new(input).unwrap();
+    assert_eq!(cloth.material_groups.len(), 2);
     let before = cloth.positions().to_vec();
     let before_peak = cloth.diagnostics().peak_strain;
     let before_state = format!("{cloth:?}");
@@ -973,7 +1100,7 @@ fn cancellation_and_failures_preserve_old_state_and_allow_recovery() {
     let error = cloth
         .step(settings(), || {
             counter.set(counter.get() + 1);
-            // Cancel between material triangles after the strained first triangle was projected.
+            // Cancel before the second group, after the first strained pair was projected.
             counter.get() > 4
         })
         .unwrap_err();
@@ -1784,4 +1911,231 @@ fn capsule_projection_and_final_surface_analysis_cancellation_preserve_the_accep
     assert_eq!(accepted.positions(), complete.positions());
     assert_eq!(accepted.velocities(), complete.velocities());
     assert_eq!(accepted.seam_remaining, complete.seam_remaining);
+}
+
+#[test]
+fn material_groups_choose_short_rest_edges_and_cover_each_triangle_once() {
+    fn make(uv: Vec<[f64; 2]>, triangles: Vec<[usize; 3]>) -> Cloth {
+        let count = triangles.len();
+        Cloth::new(ClothInput {
+            positions: uv.iter().map(|p| [p[0], p[1], 0.]).collect(),
+            material_uv: uv,
+            triangles,
+            triangle_materials: vec![
+                Material {
+                    bending_stiffness: 0.,
+                    ..Default::default()
+                };
+                count
+            ],
+            ..Default::default()
+        })
+        .unwrap()
+    }
+    fn coverage(cloth: &Cloth) {
+        let mut ids = Vec::new();
+        for group in &cloth.material_groups {
+            match group {
+                MaterialGroup::Single(id) => ids.push(*id),
+                MaterialGroup::Pair {
+                    membranes,
+                    vertices,
+                    local,
+                } => {
+                    assert_eq!(vertices.iter().collect::<BTreeSet<_>>().len(), 4);
+                    ids.extend(membranes);
+                    for i in 0..2 {
+                        assert_eq!(
+                            local[i].map(|j| vertices[j]),
+                            cloth.input.triangles[membranes[i]]
+                        );
+                    }
+                }
+            }
+        }
+        ids.sort_unstable();
+        assert_eq!(ids, (0..cloth.input.triangles.len()).collect::<Vec<_>>());
+    }
+    let cloth = make(
+        vec![[0., 0.], [0.1, 0.], [0.1, 0.04], [0., 0.2], [-0.3, 0.1]],
+        vec![[0, 1, 2], [0, 2, 3], [0, 3, 4]],
+    );
+    assert!(matches!(
+        &cloth.material_groups[0],
+        MaterialGroup::Pair {
+            membranes: [0, 1],
+            ..
+        }
+    ));
+    assert!(matches!(
+        &cloth.material_groups[1],
+        MaterialGroup::Single(2)
+    ));
+    coverage(&cloth);
+    // Four equal-length shared edges: ascending vertex IDs decide the partition.
+    let tied = make(
+        vec![[0., 0.], [1., 0.], [0., 1.], [-1., 0.], [0., -1.]],
+        vec![[0, 1, 2], [0, 2, 3], [0, 3, 4], [0, 4, 1]],
+    );
+    assert!(matches!(
+        &tied.material_groups[0],
+        MaterialGroup::Pair {
+            membranes: [0, 3],
+            ..
+        }
+    ));
+    assert!(matches!(
+        &tied.material_groups[1],
+        MaterialGroup::Pair {
+            membranes: [1, 2],
+            ..
+        }
+    ));
+    coverage(&tied);
+    assert_eq!(
+        format!("{:?}", tied.material_groups),
+        format!("{:?}", tied.clone().material_groups)
+    );
+}
+
+#[test]
+fn grouped_mixed_grain_materials_reach_direct_energy_balance_with_pins() {
+    fn objective(x: &[Vec3], predicted: &[Vec3], input: &ClothInput, mass: &[f64], h: f64) -> f64 {
+        let inertia = [1, 2]
+            .into_iter()
+            .map(|i| {
+                let d = sub(x[i], predicted[i]);
+                0.5 * mass[i] * dot(d, d) / (h * h)
+            })
+            .sum::<f64>();
+        inertia
+            + input
+                .triangles
+                .iter()
+                .zip(&input.triangle_materials)
+                .map(|(t, m)| {
+                    let [a, b, c] = t.map(|i| input.material_uv[i]);
+                    let du1 = b[0] - a[0];
+                    let du2 = c[0] - a[0];
+                    let dv1 = b[1] - a[1];
+                    let dv2 = c[1] - a[1];
+                    let det = du1 * dv2 - du2 * dv1;
+                    let e1 = sub(x[t[1]], x[t[0]]);
+                    let e2 = sub(x[t[2]], x[t[0]]);
+                    let u = mul(sub(mul(e1, dv2), mul(e2, dv1)), det.recip());
+                    let v = mul(sub(mul(e2, du1), mul(e1, du2)), det.recip());
+                    let (s, c) = m.grain_angle.sin_cos();
+                    let w = add(mul(u, c), mul(v, s));
+                    let f = add(mul(u, -s), mul(v, c));
+                    let cw = (dot(w, w) - 1.) / 2.;
+                    let cf = (dot(f, f) - 1.) / 2.;
+                    let cs = dot(w, f);
+                    det.abs() / 4.
+                        * (m.warp_stiffness * cw * cw
+                            + m.weft_stiffness * cf * cf
+                            + m.shear_stiffness * cs * cs)
+                })
+                .sum::<f64>()
+    }
+    let rest = vec![
+        [-0.064, 0., -0.],
+        [0., -0.004, 0.],
+        [0., 0.004, 0.],
+        [0.064, 0., 0.],
+    ];
+    let input = ClothInput {
+        positions: rest.clone(),
+        material_uv: rest.iter().map(|v| [v[0], v[1]]).collect(),
+        triangles: vec![[0, 1, 2], [1, 3, 2]],
+        triangle_materials: vec![
+            Material {
+                areal_density: 0.18,
+                warp_stiffness: 300.,
+                weft_stiffness: 700.,
+                shear_stiffness: 55.,
+                grain_angle: 0.31,
+                bending_stiffness: 0.,
+                damping: 0.,
+                ..Default::default()
+            },
+            Material {
+                areal_density: 0.25,
+                warp_stiffness: 950.,
+                weft_stiffness: 120.,
+                shear_stiffness: 140.,
+                grain_angle: -0.47,
+                bending_stiffness: 0.,
+                damping: 0.,
+                ..Default::default()
+            },
+        ],
+        pins: vec![
+            Pin {
+                vertex: 0,
+                target: rest[0],
+            },
+            Pin {
+                vertex: 3,
+                target: rest[3],
+            },
+        ],
+        ..Default::default()
+    };
+    let h = (1. / 60.) / 8.;
+    let mut cloth = Cloth::new(input.clone()).unwrap();
+    assert_eq!(cloth.material_groups.len(), 1);
+    cloth.velocities[1] = [0.0001 / h, -0.00015 / h, 0.00003 / h];
+    cloth.velocities[2] = [-0.00008 / h, 0.00012 / h, -0.00002 / h];
+    let predicted: Vec<_> = rest
+        .iter()
+        .zip(&cloth.velocities)
+        .map(|(&p, &v)| add(p, mul(v, h)))
+        .collect();
+    let area = 0.064 * 0.008 / 2.;
+    let mass = [
+        0.18 * area / 3.,
+        (0.18 + 0.25) * area / 3.,
+        (0.18 + 0.25) * area / 3.,
+        0.25 * area / 3.,
+    ];
+    for (actual, expected) in cloth.masses().iter().zip(mass) {
+        assert!((actual - expected).abs() < 1e-18);
+    }
+    let initial = objective(&predicted, &predicted, &input, &mass, h);
+    cloth
+        .step(
+            StepSettings {
+                dt: h,
+                substeps: 1,
+                iterations: 32,
+                gravity: [0.; 3],
+                seam_closure_speed: 0.,
+            },
+            || false,
+        )
+        .unwrap();
+    assert!(objective(cloth.positions(), &predicted, &input, &mass, h) < initial);
+    let epsilon = 1e-8;
+    let mut maximum = 0_f64;
+    for node in [1, 2] {
+        let mut gradient = [0.; 3];
+        for axis in 0..3 {
+            let mut plus = cloth.positions().to_vec();
+            let mut minus = plus.clone();
+            plus[node][axis] += epsilon;
+            minus[node][axis] -= epsilon;
+            gradient[axis] = (objective(&plus, &predicted, &input, &mass, h)
+                - objective(&minus, &predicted, &input, &mass, h))
+                / (2. * epsilon);
+        }
+        maximum = maximum.max(length(gradient));
+    }
+    println!("mixed-grain pair direct energy force residual={maximum:e}N");
+    assert!(maximum < 1e-6);
+    for pin in &input.pins {
+        assert_eq!(
+            cloth.positions()[pin.vertex].map(f64::to_bits),
+            pin.target.map(f64::to_bits)
+        );
+    }
 }
