@@ -1,0 +1,1151 @@
+{
+  "schema_version": 1,
+  "kind": "bounded_publication_QC_derivative_manifest",
+  "actual_checked_commit": "bf100c3310bf6acf53df18e07052780312372965",
+  "actual_checked_tree": "1697e331b0334bc8a89a8c0f0d40453526c07317",
+  "actual_tested_source_commit": "40817073cd38e58a8438bb397d09a0ab9d95f9bb",
+  "public_source_equivalent_commit": "d28fb129857e97424cccb1001d1ad7f8899bdb74",
+  "public_base_PR59_commit": "f941dfa168162d7d003da7614fab019e691b2896",
+  "selected_originals": 61,
+  "public_artifacts_including_this_manifest": 62,
+  "transform_order": [
+    "UNRELATED_CWD",
+    "ROOT",
+    "HOME",
+    "TMPDIR",
+    "ACCOUNT"
+  ],
+  "transform_definitions": {
+    "ROOT": "Exact repository checkout locator -> <ROOT>",
+    "HOME": "Exact private home locator -> <HOME> after ROOT",
+    "TMPDIR": "Exact previously reviewed account-specific macOS temporary-directory locator -> <TMPDIR>/",
+    "UNRELATED_CWD": "Exact previously reviewed unrelated checkout locator -> <UNRELATED_CWD> before ROOT/HOME",
+    "ACCOUNT": "Exact previously reviewed account name -> <ACCOUNT>; no other raw byte rewriting"
+  },
+  "replacement_totals": {
+    "UNRELATED_CWD": 0,
+    "ROOT": 876,
+    "HOME": 63,
+    "TMPDIR": 0,
+    "ACCOUNT": 0
+  },
+  "public_modes": "0644",
+  "files": [
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-001/GO.json",
+      "original_sha256": "ad98c0050a920e11c7b893ee679c3813c64fb8178f3f5da0a2df9c13d003a7c6",
+      "original_bytes": 115021,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-001/GO.json",
+      "public_sha256": "fb62a6860eabfbe1bb8498c5515d0e67153205ecfea9c72d242c37ac8996c291",
+      "public_bytes": 115010,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 1,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "focused-001"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-001/STARTED.json",
+      "original_sha256": "6d1fa09b2012ae0cb342603428ccb2a6087760276db3db6ab400484370608d4c",
+      "original_bytes": 1477,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-001/STARTED.json",
+      "public_sha256": "245039290ab10a3587e54e6212199d7744f8ed2a5a61c4ca44d34242ce7e98cc",
+      "public_bytes": 1466,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 1,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "focused-001"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-001/CHILD-STARTED.json",
+      "original_sha256": "118f85dfdf01b8c347e8cb5470c5d1c4eef762e78a6b368f6d38cd896307ad09",
+      "original_bytes": 2007,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-001/CHILD-STARTED.json",
+      "public_sha256": "03781fb426fe995dfb9b1b9d8cf268bb1334189913ba6cae598b640eb370b912",
+      "public_bytes": 1939,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 1,
+        "HOME": 1,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "focused-001"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-001/RESULT.json",
+      "original_sha256": "0e0b1f55ea5ecc25f496851bc4e44d3a0465c7eb474b3a141921e44a951fc192",
+      "original_bytes": 2640,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-001/RESULT.json",
+      "public_sha256": "ebb461e18e24897ef7f0f052c23712d93d607c5e5f4dc3a0f43067c2659f86e9",
+      "public_bytes": 2572,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 1,
+        "HOME": 1,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "focused-001"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-001/TERMINAL.json",
+      "original_sha256": "ca6d4a89aa764cbef122e3797bfad75c4c7891af92372185d76b194d65d2b482",
+      "original_bytes": 143,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-001/TERMINAL.json",
+      "public_sha256": "ca6d4a89aa764cbef122e3797bfad75c4c7891af92372185d76b194d65d2b482",
+      "public_bytes": 143,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "focused-001"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-001/stdout.log",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-001/stdout.log",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "focused-001"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-001/stderr.log",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-001/stderr.log",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "focused-001"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-002/GO.json",
+      "original_sha256": "679be08693f5aa3ceb6bc487ca41e913b51ac63e535d45918774e5fb90430621",
+      "original_bytes": 115686,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-002/GO.json",
+      "public_sha256": "7814a3f03829d7c456699a38feff1e5dc0ce653b25b3047c0fcc13968954fa5c",
+      "public_bytes": 115618,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 1,
+        "HOME": 1,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "focused-002"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-002/STARTED.json",
+      "original_sha256": "f316a1ec1a57dc7bf7d3926fae2e58392de128e6c681e9bf9a3d980d8702d472",
+      "original_bytes": 1655,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-002/STARTED.json",
+      "public_sha256": "b4470f6ebd160de4b8483da9fb835a06fa6cc3cf80df639d4ca0c3415c3f0d5a",
+      "public_bytes": 1587,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 1,
+        "HOME": 1,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "focused-002"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-002/CHILD-STARTED.json",
+      "original_sha256": "8e62603b2e6570f8570d8c73f87857e3bfae536c3df0219f9cb127979093e375",
+      "original_bytes": 2149,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-002/CHILD-STARTED.json",
+      "public_sha256": "b04033503846bfc435c87572dd19de69bd43d1d03cce17690e4bacb16bc4c82c",
+      "public_bytes": 2081,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 1,
+        "HOME": 1,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "focused-002"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-002/RESULT.json",
+      "original_sha256": "933e2de83b0f101d47f780fe587f0f0a9c9f75a6a2bc14f47fe5fe3a70f17c6b",
+      "original_bytes": 2691,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-002/RESULT.json",
+      "public_sha256": "ffa59840140bd18bfc5dede920b3c4c1760eff97a20f042ad13297eb55072aca",
+      "public_bytes": 2623,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 1,
+        "HOME": 1,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "focused-002"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-002/TERMINAL.json",
+      "original_sha256": "10b20c6ae91baf6b925b34fc08aca55b4c8a89b2c534df0c064ac89936ed6631",
+      "original_bytes": 143,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-002/TERMINAL.json",
+      "public_sha256": "10b20c6ae91baf6b925b34fc08aca55b4c8a89b2c534df0c064ac89936ed6631",
+      "public_bytes": 143,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "focused-002"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-002/stdout.log",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-002/stdout.log",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "focused-002"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-002/stderr.log",
+      "original_sha256": "ee4602e9d48549d069acc451ae3f0c38884f1ef589995fb816c56e7cecc2b0b6",
+      "original_bytes": 110,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-002/stderr.log",
+      "public_sha256": "ee4602e9d48549d069acc451ae3f0c38884f1ef589995fb816c56e7cecc2b0b6",
+      "public_bytes": 110,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "focused-002"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-002/source/scripts/progress.py",
+      "original_sha256": "018af592bd6deb4e31a8ef3f9cc95369a3013c08731d273655ddda1e5c623fc3",
+      "original_bytes": 33114,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-002/source/scripts/progress.py",
+      "public_sha256": "018af592bd6deb4e31a8ef3f9cc95369a3013c08731d273655ddda1e5c623fc3",
+      "public_bytes": 33114,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "exact executed tooling snapshot shared byte-for-byte with focused-001"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-002/source/scripts/test_progress.py",
+      "original_sha256": "e856fa0f12b7bd0b31f19f56baa795430b76334fddd0b88eaf4a6bf1e6cc77c9",
+      "original_bytes": 39981,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-002/source/scripts/test_progress.py",
+      "public_sha256": "e856fa0f12b7bd0b31f19f56baa795430b76334fddd0b88eaf4a6bf1e6cc77c9",
+      "public_bytes": 39981,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "exact executed tooling snapshot shared byte-for-byte with focused-001"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-tooling-validation-20261117/focused-002/source/parity/README.md",
+      "original_sha256": "2449c2f2fc18bb407e7b37493c79db8087b494acddd9b783bb160db4e2c42bdb",
+      "original_bytes": 11346,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/focused-002/source/parity/README.md",
+      "public_sha256": "2449c2f2fc18bb407e7b37493c79db8087b494acddd9b783bb160db4e2c42bdb",
+      "public_bytes": 11346,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "exact executed tooling snapshot shared byte-for-byte with focused-001"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/GENERATOR-FREEZE.json",
+      "original_sha256": "224018a7a66f2431e76ea83d395acf1e745089c9a39376a531d3a5ff6c76a689",
+      "original_bytes": 462330,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/GENERATOR-FREEZE.json",
+      "public_sha256": "833f468de94d9a964c024b8e45259a75220c0a0b07ab93018ea4373c7ae0fd9a",
+      "public_bytes": 438094,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 425,
+        "HOME": 1,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/GENERATOR-ROOT-GO.json",
+      "original_sha256": "df1c6b929023862e90e4582c694d4cd188767723fc703f8da3cef02fe9b6c37a",
+      "original_bytes": 2303,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/GENERATOR-ROOT-GO.json",
+      "public_sha256": "12be43ef1d08148fb6f3b6bae7734107612ca78216c51bd84683fd150ce54b4d",
+      "public_bytes": 2169,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 1,
+        "HOME": 7,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/resources.py",
+      "original_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "original_bytes": 12679,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/resources.py",
+      "public_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "public_bytes": 12679,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/run_generator.py",
+      "original_sha256": "742bc5a052b5a3557b9b068a8876cfe57e1a07271a4652f7a982b324089cc5f7",
+      "original_bytes": 9578,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/run_generator.py",
+      "public_sha256": "74854cef98936dfb5044b1c1232e3ac1f21afd9f3aa3ca4c4f005880646170d0",
+      "public_bytes": 9567,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 1,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/RUN-ONCE.json",
+      "original_sha256": "dcc204cb54e5ab8f7d6d8d276171477e8c9fd0b536c27d7783b016793f86ce00",
+      "original_bytes": 181,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/RUN-ONCE.json",
+      "public_sha256": "dcc204cb54e5ab8f7d6d8d276171477e8c9fd0b536c27d7783b016793f86ce00",
+      "public_bytes": 181,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/runtime/STARTED.json",
+      "original_sha256": "09eff6f6f26a699545a0132fdf741f6325ef97acdfa955f8ba607cda16f1f4fc",
+      "original_bytes": 2342,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/runtime/STARTED.json",
+      "public_sha256": "dd58c216f5d3a1cefc2e8a9a0140b742e1190bb4dae68b74c8c22cd860a5ea5f",
+      "public_bytes": 2151,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 2,
+        "HOME": 7,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/runtime/stdout.log",
+      "original_sha256": "5e56cf9d6e6f9bff5b9d6ff939685c7c957d21c10f2b0019b158fe96825b6236",
+      "original_bytes": 69,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/runtime/stdout.log",
+      "public_sha256": "5e56cf9d6e6f9bff5b9d6ff939685c7c957d21c10f2b0019b158fe96825b6236",
+      "public_bytes": 69,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/runtime/stderr.log",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/runtime/stderr.log",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/ROOT-RESULT.json",
+      "original_sha256": "18be4ff26dc122786e8df437340909f41638611564eb16b9efd7b78e7259de34",
+      "original_bytes": 2952,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/ROOT-RESULT.json",
+      "public_sha256": "69ab0617103304c6dece40f3f4491d00bfcdd32e86401e36e5699a69a1a96542",
+      "public_bytes": 2884,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 1,
+        "HOME": 1,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/EXTERNAL-STARTED.json",
+      "original_sha256": "34a3dd4ff1a3510533a4ac34a21876cf461e9b26546a9a34a16d4e5a5acaeb39",
+      "original_bytes": 878,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/EXTERNAL-STARTED.json",
+      "public_sha256": "08239c2084b4fde808d0348905277dd4f430da14d26cfee85b02fa4c2712c2ec",
+      "public_bytes": 810,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 1,
+        "HOME": 1,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/EXTERNAL-TERMINAL.json",
+      "original_sha256": "beaa04839da36321648fe5e31d6eb408aae55670d3bc63cc70c0096bf6d4f592",
+      "original_bytes": 1581,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/EXTERNAL-TERMINAL.json",
+      "public_sha256": "beaa04839da36321648fe5e31d6eb408aae55670d3bc63cc70c0096bf6d4f592",
+      "public_bytes": 1581,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/EXTERNAL-OBSERVATION-001.json",
+      "original_sha256": "31447b76a6ed93b6f86d9f770ff8092e62b25cc9f1c43f3468df1064d6b972a2",
+      "original_bytes": 896,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/EXTERNAL-OBSERVATION-001.json",
+      "public_sha256": "31447b76a6ed93b6f86d9f770ff8092e62b25cc9f1c43f3468df1064d6b972a2",
+      "public_bytes": 896,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/controller.stdout.log",
+      "original_sha256": "91e54a64ff4e06c8c2c017a5e0df97d396c1ec92cd64038b36954a7437c69cb6",
+      "original_bytes": 914,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/controller.stdout.log",
+      "public_sha256": "91e54a64ff4e06c8c2c017a5e0df97d396c1ec92cd64038b36954a7437c69cb6",
+      "public_bytes": 914,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/controller.stderr.log",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/controller.stderr.log",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/SESSION.json",
+      "original_sha256": "babefb9e1d02a639601da8e2b0ff487d8270e839a5a800eb631d7652a873ec96",
+      "original_bytes": 2591,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/SESSION.json",
+      "public_sha256": "4d61bf5f45f61852505fe46e5e3cd306b30895b2e865c8be5e9a079281c12e6b",
+      "public_bytes": 2400,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 2,
+        "HOME": 7,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/GENERATOR-FINAL-MANIFEST-001.json",
+      "original_sha256": "203671639efab28f91635b5b32271c2ceb45e1b3e046f4a9a0e5152283edbd4d",
+      "original_bytes": 5964,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/GENERATOR-FINAL-MANIFEST-001.json",
+      "public_sha256": "203671639efab28f91635b5b32271c2ceb45e1b3e046f4a9a0e5152283edbd4d",
+      "public_bytes": 5964,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/PREP-ATTEMPT-001.json",
+      "original_sha256": "282b5854a24cbce22e399479b4b8babeb8d588c20bf08efd093240d80447fd15",
+      "original_bytes": 734,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/PREP-ATTEMPT-001.json",
+      "public_sha256": "282b5854a24cbce22e399479b4b8babeb8d588c20bf08efd093240d80447fd15",
+      "public_bytes": 734,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/PREP-CORRECTION-001.json",
+      "original_sha256": "4d3b8cf4ff45dbd9d4b75062105b568543ef0a0ca499c09a781eaf2f9b94b4fe",
+      "original_bytes": 428,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/PREP-CORRECTION-001.json",
+      "public_sha256": "4d3b8cf4ff45dbd9d4b75062105b568543ef0a0ca499c09a781eaf2f9b94b4fe",
+      "public_bytes": 428,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/PURE-CAPS-SELFCHECKS.json",
+      "original_sha256": "1d90a32badb6a88ad0eddb75e299b500ae39a17e1a015fd47de289802602b8ba",
+      "original_bytes": 447,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/PURE-CAPS-SELFCHECKS.json",
+      "public_sha256": "1d90a32badb6a88ad0eddb75e299b500ae39a17e1a015fd47de289802602b8ba",
+      "public_bytes": 447,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/GENERATED-DELTA-REVIEW-001.json",
+      "original_sha256": "4a3312c51dd00e4edf3ed3ec9d7976485b4322b472b5ed0bab99c23cc0a24b28",
+      "original_bytes": 5906,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/GENERATED-DELTA-REVIEW-001.json",
+      "public_sha256": "d011a2bf9e337fdd98349608e5c01ceb1f70a0c88fb78a45fcaa356638cbb718",
+      "public_bytes": 5838,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 1,
+        "HOME": 1,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/BEFORE.json",
+      "original_sha256": "c3efc3dec962118a82115cfabb5c3f8b52a6657f1fca0a67ba6cfa761bdd2c0a",
+      "original_bytes": 255199,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/BEFORE.json",
+      "public_sha256": "c3efc3dec962118a82115cfabb5c3f8b52a6657f1fca0a67ba6cfa761bdd2c0a",
+      "public_bytes": 255199,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-metadata-generation-20261117-001/AFTER.json",
+      "original_sha256": "3cd9d2c676e879983af1f9c25f15018846e1aa5c9995c0e79156e22f41480201",
+      "original_bytes": 255548,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/generator-001/AFTER.json",
+      "public_sha256": "3cd9d2c676e879983af1f9c25f15018846e1aa5c9995c0e79156e22f41480201",
+      "public_bytes": 255548,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one bounded generator; failed preparation and actual accepted closure retained"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/VERIFICATION-FREEZE-176.json",
+      "original_sha256": "5de334c2cd3d86b638e52eb511632b9924030f8cc7f9cb7243539fa36a85e351",
+      "original_bytes": 466652,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/VERIFICATION-FREEZE-176.json",
+      "public_sha256": "22be4c063e061d7a8cb63dcd321820899d03f8160841a88793c02bd237f2cc37",
+      "public_bytes": 442372,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 425,
+        "HOME": 5,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/VERIFICATION-ROOT-GO.json",
+      "original_sha256": "955fa0fc7c0b5ea715313266c5b5e45aad5394e5dc9a977cfce2bdade2fb4334",
+      "original_bytes": 2461,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/VERIFICATION-ROOT-GO.json",
+      "public_sha256": "c138e5b9c74551aaf5d00e537820eb846a657ec41274bed8795c8c22843749db",
+      "public_bytes": 2327,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 1,
+        "HOME": 7,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/resources.py",
+      "original_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "original_bytes": 12679,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/resources.py",
+      "public_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "public_bytes": 12679,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/run_verify.py",
+      "original_sha256": "9f44815e446308164631838514a7ecf0decb5ea74e9f037f3234ad2376fd6ba3",
+      "original_bytes": 9217,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/run_verify.py",
+      "public_sha256": "0908e904c80fd12996a65233a69c27ccc39b422bbd7328502787174590abf0d2",
+      "public_bytes": 9206,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 1,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/REUSED-PURE-CAPS-SELFCHECKS.json",
+      "original_sha256": "1d90a32badb6a88ad0eddb75e299b500ae39a17e1a015fd47de289802602b8ba",
+      "original_bytes": 447,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/REUSED-PURE-CAPS-SELFCHECKS.json",
+      "public_sha256": "1d90a32badb6a88ad0eddb75e299b500ae39a17e1a015fd47de289802602b8ba",
+      "public_bytes": 447,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/RUN-ONCE.json",
+      "original_sha256": "ca9e1b6db8e3763ca69a3ea812bdf5a1a77631e189727059f31a3502634df1ca",
+      "original_bytes": 183,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/RUN-ONCE.json",
+      "public_sha256": "ca9e1b6db8e3763ca69a3ea812bdf5a1a77631e189727059f31a3502634df1ca",
+      "public_bytes": 183,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/runtime/STARTED.json",
+      "original_sha256": "5b897e73929eea03b400b397f3909ed0d0728adea3085523334a4e22bf49f7a6",
+      "original_bytes": 2353,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/runtime/STARTED.json",
+      "public_sha256": "0f1ec9cf7c6bae93005a767489ead023a375744bedee5c8c59806033ed3506c9",
+      "public_bytes": 2162,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 2,
+        "HOME": 7,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/runtime/stdout.log",
+      "original_sha256": "54df13c7265285afc75a02955a480d397d53ea070c8da93adca1959b56e9e058",
+      "original_bytes": 2712,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/runtime/stdout.log",
+      "public_sha256": "54df13c7265285afc75a02955a480d397d53ea070c8da93adca1959b56e9e058",
+      "public_bytes": 2712,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/runtime/stderr.log",
+      "original_sha256": "f567fe37ae774de11cd101dfee8a2269cf32e15c34df7b5d9220d1a724750875",
+      "original_bytes": 1838,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/runtime/stderr.log",
+      "public_sha256": "b9c1e506b891a8fabc463ed95fe2daa04919ec9aeaa3566b393b22c4bbd93bca",
+      "public_bytes": 1553,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 5,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/ROOT-RESULT.json",
+      "original_sha256": "326e2dea359ec0ed93c766cb40675c00185ca2934b4f1c4a0b57f7a7405f3694",
+      "original_bytes": 2387,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/ROOT-RESULT.json",
+      "public_sha256": "6a3385282104521b588ba881c922d15b5b86a6306c8e327f87d912b5deb7e7cf",
+      "public_bytes": 2319,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 1,
+        "HOME": 1,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/EXTERNAL-STARTED.json",
+      "original_sha256": "f420cf7ab1a101c4c11a71d302b4f433762b5dd5a6ab1c413fb8a61608264be6",
+      "original_bytes": 877,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/EXTERNAL-STARTED.json",
+      "public_sha256": "fafdf3aabc1851ad17a19302cce484a6f52c678fbf0e3f10cc9a6254ab55c452",
+      "public_bytes": 809,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 1,
+        "HOME": 1,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/EXTERNAL-TERMINAL.json",
+      "original_sha256": "bc91025822786a7a3297789d2f0912e0a49e9f30bda8999c3961d4b0c170945a",
+      "original_bytes": 1661,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/EXTERNAL-TERMINAL.json",
+      "public_sha256": "bc91025822786a7a3297789d2f0912e0a49e9f30bda8999c3961d4b0c170945a",
+      "public_bytes": 1661,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/EXTERNAL-OBSERVATION-001.json",
+      "original_sha256": "bb647718c74aba698f7d71ab286978d11177714982c6f2085802cea918f344a4",
+      "original_bytes": 801,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/EXTERNAL-OBSERVATION-001.json",
+      "public_sha256": "bb647718c74aba698f7d71ab286978d11177714982c6f2085802cea918f344a4",
+      "public_bytes": 801,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/controller.stdout.log",
+      "original_sha256": "46214a68b068c461b0d25c7a3f635a3c572816534e369e1d5541fcdd3065ef3c",
+      "original_bytes": 977,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/controller.stdout.log",
+      "public_sha256": "46214a68b068c461b0d25c7a3f635a3c572816534e369e1d5541fcdd3065ef3c",
+      "public_bytes": 977,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/controller.stderr.log",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/controller.stderr.log",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/SESSION.json",
+      "original_sha256": "e1ac531b945fe3a8380d81d1ec62bd82ad205568ef00beecd0b679da10261b47",
+      "original_bytes": 2591,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/SESSION.json",
+      "public_sha256": "a54971e7166dfae9254cf707b1842887c27e45204215c0ed50ea3295c4a520bd",
+      "public_bytes": 2400,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 2,
+        "HOME": 7,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/OWNED-PROCESS-OBSERVATION-001.json",
+      "original_sha256": "31da68bb498bc58c42bd8e7bab0577c2ae8742426810ffdbd265d2d1fb5780ee",
+      "original_bytes": 325,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/OWNED-PROCESS-OBSERVATION-001.json",
+      "public_sha256": "31da68bb498bc58c42bd8e7bab0577c2ae8742426810ffdbd265d2d1fb5780ee",
+      "public_bytes": 325,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/FINAL-RECEIPT-001.json",
+      "original_sha256": "2d7510f7dbc28651a1c27eecd9df784fbc3a8dba77184305e2817b8123d3e6d5",
+      "original_bytes": 3256,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/FINAL-RECEIPT-001.json",
+      "public_sha256": "2d7510f7dbc28651a1c27eecd9df784fbc3a8dba77184305e2817b8123d3e6d5",
+      "public_bytes": 3256,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/FINAL-MANIFEST-001.json",
+      "original_sha256": "e74d9cf948ca6949b1e6544db06a58369dbbc65469cdfc186ccbd740a297a2ff",
+      "original_bytes": 4424,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/FINAL-MANIFEST-001.json",
+      "public_sha256": "e74d9cf948ca6949b1e6544db06a58369dbbc65469cdfc186ccbd740a297a2ff",
+      "public_bytes": 4424,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/GENERATED-COMMIT-RESULT-001.json",
+      "original_sha256": "fd5a8201696b57289be641e811ea20c49edff2357128dd086183a4b64a8152ec",
+      "original_bytes": 705,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/GENERATED-COMMIT-RESULT-001.json",
+      "public_sha256": "fd5a8201696b57289be641e811ea20c49edff2357128dd086183a4b64a8152ec",
+      "public_bytes": 705,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/BEFORE.json",
+      "original_sha256": "e34679754e4b516e890cff96811b055b9947575e80f9b2e2373c0f010b653b58",
+      "original_bytes": 256618,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/BEFORE.json",
+      "public_sha256": "e34679754e4b516e890cff96811b055b9947575e80f9b2e2373c0f010b653b58",
+      "public_bytes": 256618,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    },
+    {
+      "original_locator": "<ROOT>/.local/sewing-history-delivery-integration-20261117/.local/sewing-history-clean-verification-20261117-001/AFTER.json",
+      "original_sha256": "fcc9b3f897361ad74fa04fb777f233988fdc86a0510714ae62cdfaaaca137634",
+      "original_bytes": 256997,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/sewing-history-publication-checks-20261117/verify-001/AFTER.json",
+      "public_sha256": "fcc9b3f897361ad74fa04fb777f233988fdc86a0510714ae62cdfaaaca137634",
+      "public_bytes": 256997,
+      "public_mode": "0644",
+      "replacement_counts": {
+        "UNRELATED_CWD": 0,
+        "ROOT": 0,
+        "HOME": 0,
+        "TMPDIR": 0,
+        "ACCOUNT": 0
+      },
+      "role": "one clean committed verification and exact final source/output bindings"
+    }
+  ],
+  "qualifications": [
+    "Only declared literal substitutions and public modes differ; originals and their internal hashes/modes stay exact.",
+    "Focused001 child exited0 but executed zero tests; refused as verification. Focused002 ten tests passed on the same tooling bytes.",
+    "Generator preparation172/174 roster assertion failed before execution; correction retained; one actual generator then exited0.",
+    "Generator79.09636899991892s/120 and clean verify310.25626837508753s/360 are separate bounded tooling outcomes, not garment/performance thresholds.",
+    "Actual verify54 script +6 evaluator unit tests, registry/maps/generated --check and CLI help passed on clean bf100.",
+    "Inputs176 plus8 supporting tools,425 prior artifacts and424 prior raw originals stayed exact. Own target now exists from verification; no cache/binary copied.",
+    "Whole181-state Harbor strict-quality failure153 strain frames/peakframe170 remains unchanged. No native/reference/full-feature/garment/physics/roadmap credit.",
+    "Concurrent native functional UI during generation and separate SOURCE425 checks during verification are declared in actual GO/receipts, not removed.",
+    "No saved executable focused-controller source exists in the focused packets: actual argv/start/result/logs and exact executed tooling snapshots are selected; no wrapper source is invented."
+  ],
+  "exclusions": [
+    "images/native/reference/account/OS-dialog/model payloads",
+    "targets/caches/binaries/installers",
+    "new notch/coupled source/evidence and unfinished work",
+    "unneeded private precommit path list, duplicate staging and preparation bookkeeping; all private originals remain retained"
+  ],
+  "manifest_self_hash_cycle": false
+}

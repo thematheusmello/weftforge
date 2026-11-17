@@ -1,0 +1,62 @@
+{
+  "kind": "closed_one_clean_committed_xtask_verify",
+  "at_utc": "2026-11-17T14:11:50.625279Z",
+  "status": "PASSED",
+  "commit": "bf100c3310bf6acf53df18e07052780312372965",
+  "tree": "1697e331b0334bc8a89a8c0f0d40453526c07317",
+  "actual_tool_session": 4054,
+  "actual_Cargo_PID": 92595,
+  "actual_controller_PID": 92511,
+  "actual_external_PID": 92284,
+  "Cargo_xtask_exit_code": 0,
+  "controller_exit_code": 0,
+  "elapsed_through_external_receipt_persistence_seconds": 310.25626837508753,
+  "whole_tooling_cap_seconds": 360,
+  "cap_qualification": "Root expanded300 to360 before execution for six added bridge tests/report roster; not a performance or garment acceptance threshold.",
+  "script_unit_tests": {
+    "tests": 54,
+    "seconds": 202.886
+  },
+  "evaluator_unit_tests": {
+    "tests": 6,
+    "seconds": 0.004
+  },
+  "unit_test_OK_lines": 2,
+  "registry_and_generated_check_passed": true,
+  "historical_current_map_pass_lines": [
+    "PASS: additive source d28fb129857e97424cccb1001d1ad7f8899bdb74; 39 candidate rechecks; 34 Rust variants / 33 schema commands / 9 MCP tools; historical snapshot unchanged. No behavior/parity verification.",
+    "PASS: 949 unique catalog IDs; preserved 949 entries/205 packets and original 928-entry expansion; 205 reviewed groups/packets; 56 source landmarks; catalog hashes, feature/source links and acyclic dependencies valid."
+  ],
+  "CLI_help_passed": true,
+  "guards": {
+    "HEAD_fixed": true,
+    "all176_immutable_hashes_bytes_modes_exact": true,
+    "all424_original_hashes_bytes_modes_exact": true,
+    "all425_public_hashes_bytes_modes_exact": true,
+    "all8_supporting_tools_hashes_bytes_modes_exact": true,
+    "checkout_clean_after": true,
+    "controller_sources_fixed": true,
+    "index_empty_fixed": true,
+    "no_working_paths_dirty": true,
+    "project_tool_inputs_fixed": true
+  },
+  "raw_stdout_sha256": "54df13c7265285afc75a02955a480d397d53ea070c8da93adca1959b56e9e058",
+  "raw_stderr_sha256": "f567fe37ae774de11cd101dfee8a2269cf32e15c34df7b5d9220d1a724750875",
+  "ROOT_RESULT_sha256": "326e2dea359ec0ed93c766cb40675c00185ca2934b4f1c4a0b57f7a7405f3694",
+  "FREEZE_sha256": "5de334c2cd3d86b638e52eb511632b9924030f8cc7f9cb7243539fa36a85e351",
+  "GO_sha256": "955fa0fc7c0b5ea715313266c5b5e45aad5394e5dc9a977cfce2bdade2fb4334",
+  "exact_direct_child_wait4_RSS_bytes": 87851008,
+  "sampled_child_group_plus_controller_RSS_bytes": 570720256,
+  "RSS_sampling_failures": 0,
+  "RSS_sampling_timeouts": 0,
+  "all_owned_PIDs_and_groups_absent": true,
+  "HEAD_exact": true,
+  "index_empty": true,
+  "checkout_clean": true,
+  "own_target_now_exists": true,
+  "target_qualification": "Own worktree target was absent at preparation and now exists from this verification. No target/cache/binary copied; no compiled payload selected for publication.",
+  "concurrent_activity": "Root permits concurrent SOURCE425 checks on a different worktree under their own1GiB cap. No global-idle requirement; this is tooling verification, not a performance or garment threshold.",
+  "no_source420_425_or_separate_focused_generator_model_native_reference_network_publication": true,
+  "broad_feature_reference_physics_or_garment_acceptance": false,
+  "source_gate420_and_complete181_strict_failure_unchanged": true
+}

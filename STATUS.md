@@ -1,5 +1,23 @@
 # WeftForge status — active development, 2026-11-17
 
+## Clean sewing-history verification
+
+Checked candidate `bf100c3310bf6acf53df18e07052780312372965` passed one pinned, clean `cargo xtask verify`: **54 script tests, 6 evaluator unit tests**, registry/generated checks, historical/current maps and CLI help. Session 4054 exited 0 in **310.25626837508753 s / 360 s**, through external receipt persistence. The tooling cap was expanded before execution; it is not a performance or garment threshold. All **176 protected inputs, 8 supporting tools, 425 public artifacts and 424 originals** stayed exact; HEAD/index and checkout stayed clean. Owned processes/groups are absent. The own target now exists from verification; no cache/binary was copied.
+
+The [QC manifest](parity/reports/artifacts/sewing-history-publication-checks-20261117/SELECTED-PUBLIC-MANIFEST-001.json) binds **61 original records plus itself**. Focused-001 executed zero tests and was rejected despite child exit 0; focused-002 passed all 10 intended tests. One generator passed in **79.09636899991892 s / 120 s**. Its pre-execution roster failure/correction, actual logs, guards, and concurrent activity remain recorded.
+
+Actual tested source is `40817073cd38e58a8438bb397d09a0ab9d95f9bb`; its original **420-test source gates** are reused. Public `d28fb129857e97424cccb1001d1ad7f8899bdb74` matches all 88 source bytes/modes and is source-equivalent, not executed. The complete Harbor case remains **STRICT QUALITY FAILED**: 181 analyzed states, 153 failed strain frames (first 16, last 180), peak **+2.706940454071794 weft strain / 270.6940454071794% at frame 170**, triangle 915/piece 31/nodes 71,514,512. Operational completion at 335.2994576250203 s / 420 s does not override that failure. Finite/contact/uncertainty screens pass within their declared supported scope; initial 0–28 seam/target failures remain.
+
+The published base is draft PR59, `f941dfa168162d7d003da7614fab019e691b2896`. Later notch/coupled-solver source work is a separate, excluded increment. All 56 scopes/statuses/scenarios/dependencies remain unchanged: **41 partial, 15 planned, 0 implemented, 0 reference-verified**. README/ROADMAP/gallery and static Pages remain unchanged; Actions/automated deployments stay disabled.
+
+Next: resolve complete-garment quality and coupled physics, continue material/contact calibration and dependable editing/sewing, complete native/reference workflow coverage, and finish the remaining roadmap. This tooling result grants no full garment, feature, reference, physics-calibration or roadmap acceptance.
+
+## Historical sewing-history preparation checkpoint
+
+Everything below is the byte-exact preceding STATUS body. Its unrun/pending/next wording describes that earlier phase; the bounded tooling verification above is the later result.
+
+# WeftForge status — active development, 2026-11-17
+
 ## Tested sewing source and complete Harbor failure
 
 Public source integration `d28fb129857e97424cccb1001d1ad7f8899bdb74`, based only on safe PR59, preserves all88 bytes/modes of actually tested `40817073cd38e58a8438bb397d09a0ab9d95f9bb`. Five source/physics files changed; no private source ancestry or compiled payload was imported. The [source report](parity/reports/WF-20261117-SEWING-HISTORY-SOURCE-001.json) records bounded N32/subnormal RED-to-GREEN evidence and original420 tests/31 summaries, full fmt, strict all-target Clippy and native+CLI builds passing in260.4531114998972s. Original controller/command/format failures remain. Source/component passes establish no garment fix.

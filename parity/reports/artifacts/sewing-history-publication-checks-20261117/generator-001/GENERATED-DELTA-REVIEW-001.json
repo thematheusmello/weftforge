@@ -1,0 +1,110 @@
+{
+  "kind": "postgeneration_static_delta_for_root_review",
+  "at_utc": "2026-11-17T13:58:42.975890Z",
+  "metadata_commit": "b24d10f167093e1b0d0f2c62a30ec95d0e571e09",
+  "actual_generator_exit_code": 0,
+  "actual_controller_exit_code": 0,
+  "root_result_sha256": "18be4ff26dc122786e8df437340909f41638611564eb16b9efd7b78e7259de34",
+  "raw_generator_stdout": "Registry valid: 56 inventoried contracts; generated reports updated.\n",
+  "raw_generator_stdout_sha256": "5e56cf9d6e6f9bff5b9d6ff939685c7c957d21c10f2b0019b158fe96825b6236",
+  "raw_generator_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stage": {
+    "argv": [
+      "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+      "-B",
+      "scripts/progress.py"
+    ],
+    "disk_observation": {
+      "last_available_bytes": 15357710336,
+      "max_snapshot_gap_seconds": 0.3584829579340294,
+      "minimum_available_bytes": 15357710336,
+      "path": "<ROOT>/.local/sewing-history-delivery-integration-20261117",
+      "samples": 1201,
+      "stop_below_available_bytes": 8000000000
+    },
+    "end_monotonic_seconds": 1046160.469592166,
+    "exit_code": 0,
+    "peak_rss_bytes": 81166336,
+    "pid": 72664,
+    "process_group": 72664,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.36617612501140684,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 1198,
+      "timeouts": 0
+    },
+    "sampled_peak_rss_bytes": 115113984,
+    "stop_reason": null,
+    "terminal_phase_checks": {
+      "deadline": 1046201.94859575,
+      "output_bytes": 865945,
+      "output_cap_bytes": 8388608,
+      "reserve_bytes": 262144
+    }
+  },
+  "guards": {
+    "HEAD_fixed": true,
+    "all174_immutable_hashes_bytes_modes_exact": true,
+    "all424_original_hashes_bytes_modes_exact": true,
+    "all425_public_hashes_bytes_modes_exact": true,
+    "controller_sources_fixed": true,
+    "index_empty_fixed": true,
+    "only2_allowed_outputs_dirty": true,
+    "project_tool_inputs_fixed": true
+  },
+  "outputs": {
+    "docs/progress.md": {
+      "before_sha256": "7a93d08219d503ac06d106e2915aa0d89c2b2f787adcdb45892527ddbaf5e286",
+      "before_bytes": 157387,
+      "after_sha256": "666401ebce51e71203b3b4ecb5947c75174ad29bd1090de0ddfc9606ac724c3a",
+      "after_bytes": 160389,
+      "mode": "0644"
+    },
+    "docs/dashboard/index.html": {
+      "before_sha256": "b6611d8214cd7f37d43c03f646ff1c6195b9e95d42e00ae85689431357410c95",
+      "before_bytes": 324635,
+      "after_sha256": "f36c7bd995cc59086641f6f90f28e30f825428efd58a72e006d684dc79ba86dc",
+      "after_bytes": 331727,
+      "mode": "0644"
+    }
+  },
+  "diff_numstat": [
+    {
+      "added": 1,
+      "removed": 1,
+      "path": "docs/dashboard/index.html"
+    },
+    {
+      "added": 9,
+      "removed": 7,
+      "path": "docs/progress.md"
+    }
+  ],
+  "diff_sha256": "3ee66aa417c0cf838a00fe4c22e818d6cb958ed3edb8ca39c69f490d562a5969",
+  "only_two_expected_dirty_paths": true,
+  "all56_generated_coarse_columns_exact": true,
+  "generated_summary_lines_exact": true,
+  "generated_summary_lines": [
+    "Implementation: 0/56 implemented; 41/56 partial; 0/56 in progress; 15/56 planned.",
+    "Verified reference parity: **0/56** inventoried contracts. Implementation-only checks do not count as reference parity.",
+    "Verification states: passed 0/56, failed 5/56, blocked 3/56, stale 0/56, not_run 48/56.",
+    "Reference observation: observed 1/56, documentation_only 6/56, unobserved 49/56, blocked 0/56.",
+    "Evidence freshness: current 5/56, stale 30/56, missing 21/56."
+  ],
+  "new_attributable_run_lines": [
+    "- [WF-20261117-SEWING-HISTORY-HARBOR-A8-001](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261117-SEWING-HISTORY-HARBOR-A8-001.json): implementation_only, failed, **current**, tested commit `40817073cd38e58a8438bb397d09a0ab9d95f9bb`, macOS local; pinned Rust1.94.1 and CPython3.13.0 in original source/compiler/child receipts; resource observations retain their stated sampling/closure limits., 2026-11-17T11:54:49.935102Z. Source-equivalent public revision `d28fb129857e97424cccb1001d1ad7f8899bdb74` (not executed); [provenance](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/artifacts/sewing-history-source-20261117/source-integration/SOURCE-EQUIVALENCE-001.json).",
+    "- [WF-20261117-SEWING-HISTORY-SOURCE-001](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261117-SEWING-HISTORY-SOURCE-001.json): implementation_only, passed, **current**, tested commit `40817073cd38e58a8438bb397d09a0ab9d95f9bb`, macOS local; pinned Rust1.94.1 and CPython3.13.0 in original source/compiler/child receipts; resource observations retain their stated sampling/closure limits., 2026-11-17T11:19:06.753633Z. Source-equivalent public revision `d28fb129857e97424cccb1001d1ad7f8899bdb74` (not executed); [provenance](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/artifacts/sewing-history-source-20261117/source-integration/SOURCE-EQUIVALENCE-001.json)."
+  ],
+  "actual_tested408_private_commit_URL_absent": true,
+  "source_equivalent_d28_labeled_not_executed": true,
+  "HEAD_fixed": true,
+  "index_empty": true,
+  "concurrent_activity": "Parent performs a functional native notch UI case on a separate already-built worktree; no simulation/model or performance claim. This activity is recorded, not treated as execution refusal.",
+  "next": "Root reviews exact generated delta before any output commit or clean verification. No additional generator or checks authorized."
+}

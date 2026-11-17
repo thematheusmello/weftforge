@@ -1,0 +1,60 @@
+{
+  "argv": [
+    "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+    "-B",
+    "scripts/progress.py"
+  ],
+  "controller_PID": 72659,
+  "deadline": 1046201.94859575,
+  "disk_observation": {
+    "last_available_bytes": 15781748736,
+    "max_snapshot_gap_seconds": 0.0,
+    "minimum_available_bytes": 15781748736,
+    "path": "<ROOT>/.local/sewing-history-delivery-integration-20261117",
+    "samples": 1,
+    "stop_below_available_bytes": 8000000000
+  },
+  "exit_code": null,
+  "peak_rss_bytes": null,
+  "pid": 72664,
+  "pinned_env": {
+    "CARGO": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "CARGO_BUILD_JOBS": "2",
+    "CARGO_BUILD_RUSTC_WORKSPACE_WRAPPER": "",
+    "CARGO_BUILD_RUSTC_WRAPPER": "",
+    "CARGO_ENCODED_RUSTDOCFLAGS": "",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_HOME": "<HOME>/.cargo",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/sewing-history-delivery-integration-20261117/target",
+    "PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONOPTIMIZE": "0",
+    "RUSTC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTC_WORKSPACE_WRAPPER": "",
+    "RUSTC_WRAPPER": "",
+    "RUSTDOC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+    "RUSTDOCFLAGS": "",
+    "RUSTFLAGS": "",
+    "RUSTUP_TOOLCHAIN": "1.94.1-aarch64-apple-darwin"
+  },
+  "process_group": 72664,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.0,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 0,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 0,
+  "started": 1046081.94859575,
+  "stop_reason": null
+}
