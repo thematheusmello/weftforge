@@ -1,0 +1,26 @@
+{
+  "files": {
+    "REVIEW-001.md": {
+      "bytes": 6586,
+      "sha256": "e61f2d04a383a2906b5c510bc9faf152d0850d0cb957d625c01837971244dbda"
+    },
+    "REVIEW-RECEIPT-001.json": {
+      "bytes": 12330,
+      "sha256": "ee147abb494a62032c77cedf1a573bc42d25ada592120f2071c1aa42cb568d8f"
+    },
+    "REVIEW-RECEIPT-002.json": {
+      "bytes": 12910,
+      "sha256": "3eb5eebb6644667f2f519104fde7b721fed76c1d2e9a26235ad7717f58e2129f"
+    }
+  },
+  "findings": [
+    "PS-001 P2 static subnormal-anchor normalization correctness"
+  ],
+  "input_count": 30,
+  "kind": "INDEPENDENT_STATIC_REVIEW_MANIFEST",
+  "no_fullphysics_garment_reference_acceptance": true,
+  "no_source_old_record_WT_index_mutation": true,
+  "product_executions_by_reviewer": 0,
+  "reviewed_commit": "51dc403a46337a112c9eabcca4834d04611d2d3d",
+  "tree": "d82bd5771fdc5c63d4e70b5533b52fbf179b2904"
+}

@@ -1,0 +1,430 @@
+diff --git a/crates/weftforge-sim/src/constraints.rs b/crates/weftforge-sim/src/constraints.rs
+index a4d60845..a1c7aa2c 100644
+--- a/crates/weftforge-sim/src/constraints.rs
++++ b/crates/weftforge-sim/src/constraints.rs
+@@ -565,6 +565,64 @@ pub(crate) fn solve_stitch(
+         }
+         return;
+     }
++    if s.compliance > 0. {
++        let alpha = s.compliance / (dt * dt);
++        let weight = vertices
++            .iter()
++            .zip(coefficients)
++            .map(|(&v, coefficient)| inverse_mass[v] * (coefficient * coefficient))
++            .sum::<f64>();
++        let denominator = weight + alpha;
++        if !target_distance.is_finite()
++            || target_distance <= 0.
++            || weight < 0.
++            || denominator <= 1e-20
++            || !denominator.is_finite()
++        {
++            return;
++        }
++        let anchor = sub(difference, mul(*lambda, weight));
++        let radius = anchor[0].hypot(anchor[1]).hypot(anchor[2]);
++        if !radius.is_finite() {
++            return;
++        }
++        let direction = if radius > 0. {
++            anchor.map(|value| value / radius)
++        } else {
++            if weight == 0. {
++                return;
++            }
++            let distance = difference[0].hypot(difference[1]).hypot(difference[2]);
++            if !distance.is_finite() {
++                return;
++            }
++            // At a zero anchor every direction minimizes the radial objective.
++            if distance > 0. {
++                difference.map(|value| value / distance)
++            } else {
++                [1., 0., 0.]
++            }
++        };
++        let next = mul(direction, (target_distance - radius) / denominator);
++        let delta = sub(next, *lambda);
++        let updates = std::array::from_fn::<_, 4, _>(|i| {
++            mul(delta, inverse_mass[vertices[i]] * coefficients[i])
++        });
++        if !finite(next)
++            || !finite(delta)
++            || vertices
++                .iter()
++                .zip(updates)
++                .any(|(&v, update)| !finite(update) || !finite(add(x[v], update)))
++        {
++            return;
++        }
++        *lambda = next;
++        for (&v, update) in vertices.iter().zip(updates) {
++            x[v] = add(x[v], update);
++        }
++        return;
++    }
+     let distance = length(difference);
+     if distance < 1e-14 {
+         return;
+diff --git a/crates/weftforge-sim/src/tests.rs b/crates/weftforge-sim/src/tests.rs
+index f51484ae..68a17440 100644
+--- a/crates/weftforge-sim/src/tests.rs
++++ b/crates/weftforge-sim/src/tests.rs
+@@ -794,36 +794,43 @@ fn closed_elastic_stitch_handles_zero_gap_pins_and_denominator_guard() {
+ 
+ #[test]
+ fn positive_targets_and_hard_stitches_keep_radial_updates() {
+-    // Reciprocal normalization rounds the 3-4-5 direction's squared length above one.
+-    let r = 1.0_f64 / 5.;
+-    let d = 0.5 * ((3. * r).powi(2) + (4. * r).powi(2));
+-    let hard_expected = 0.25 - 5. / d;
+-    assert!((hard_expected + 9.75).abs() <= 1e-14);
+-    for (target, compliance, expected_x, expected_lambda) in [
+-        (1., 0.125, [1.7625, 2.35, 0.], -3.875),
+-        (f64::from_bits(1), 0.125, [1.4625, 1.95, 0.], -4.875),
+-        (0., 0., [0.; 3], hard_expected),
+-    ] {
++    for target in [1., f64::from_bits(1)] {
+         let stitch = Stitch {
+             a: WeightedPoint::vertex(0),
+             b: WeightedPoint::vertex(1),
+-            compliance,
++            compliance: 0.125,
+         };
+-        let mut x = [[3., 4., 0.], [0.; 3]];
+-        let mut lambda = [0.25, 7., -8.];
++        let predictor = [3., 4., 0.];
++        let mut x = [predictor, [0.; 3]];
++        let mut lambda = [0.; 3];
+         constraints::solve_stitch(stitch, target, &mut x, &[0.5, 0.], 0.5, &mut lambda);
+-        assert!(length(sub(x[0], expected_x)) <= 1e-14);
++        // Mass 2 kg and h=.5 s give Phi=4|q-p|²+4(|q|-target)².
++        let expected = predictor.map(|value| value * ((5. + target) / 10.));
++        assert!(length(sub(x[0], expected)) <= 1e-14);
+         assert_eq!(x[1], [0.; 3]);
+-        assert_eq!(lambda, [expected_lambda, 7., -8.]);
++        assert!(length(sub(lambda, mul(sub(expected, predictor), 2.))) <= 1e-14);
++        let force = mul(x[0], -(length(x[0]) - target) / (0.125 * length(x[0])));
++        assert!(length(sub(mul(sub(x[0], predictor), 8.), force)) <= 1e-14);
+     }
++    // Reciprocal normalization rounds the 3-4-5 direction's squared length above one.
++    let r = 1.0_f64 / 5.;
++    let d = 0.5 * ((3. * r).powi(2) + (4. * r).powi(2));
++    let hard_expected = 0.25 - 5. / d;
++    assert!((hard_expected + 9.75).abs() <= 1e-14);
+     let hard = Stitch {
+         a: WeightedPoint::vertex(0),
+         b: WeightedPoint::vertex(1),
+         compliance: 0.,
+     };
++    let mut x = [[3., 4., 0.], [0.; 3]];
++    let mut lambda = [0.25, 7., -8.];
++    constraints::solve_stitch(hard, 0., &mut x, &[0.5, 0.], 0.5, &mut lambda);
++    assert!(length(sub(x[0], [0.; 3])) <= 1e-14);
++    assert_eq!(x[1], [0.; 3]);
++    assert_eq!(lambda, [hard_expected, 7., -8.]);
+     let pinned = [[1., 0., 0.], [0.; 3]];
+-    let mut x = pinned;
+-    let mut lambda = [2., 3., 4.];
++    x = pinned;
++    lambda = [2., 3., 4.];
+     constraints::solve_stitch(hard, 0., &mut x, &[0.; 2], 1., &mut lambda);
+     assert_eq!(x, pinned);
+     assert_eq!(lambda, [2., 3., 4.]);
+@@ -833,6 +840,201 @@ fn positive_targets_and_hard_stitches_keep_radial_updates() {
+     assert_eq!(lambda, [2., 3., 4.]);
+ }
+ 
++#[test]
++fn positive_compliant_stitch_merges_shared_vertices_and_balances_physical_force() {
++    let stitch = Stitch {
++        a: WeightedPoint {
++            vertices: [0, 1],
++            weights: [0.25, 0.75],
++        },
++        b: WeightedPoint {
++            vertices: [0, 2],
++            weights: [0.25, 0.75],
++        },
++        compliance: 0.25,
++    };
++    let before = [[2., -1., 0.5], [3., 4., 0.], [0.; 3]];
++    let mut x = before;
++    let mut lambda = [0.; 3];
++    constraints::solve_stitch(stitch, 0.75, &mut x, &[0.5, 0.25, 0.], 0.5, &mut lambda);
++    // Phi=8|q-p|²+2(.75|q|-.75)² gives radius (80+2.25)/(16+2.25).
++    let expected = [3. / 5., 4. / 5., 0.].map(|value| value * (329. / 73.));
++    assert!(length(sub(x[1], expected)) <= 1e-14);
++    assert_eq!(x[0], before[0]);
++    assert_eq!(x[2], before[2]);
++    let difference = sub(stitch.a.position(&x), stitch.b.position(&x));
++    let force = mul(difference, -3. * (length(difference) - 0.75) / length(difference));
++    assert!(length(sub(mul(sub(x[1], before[1]), 16.), force)) <= 1e-14);
++    assert!(length(sub(mul(lambda, 3.), force)) <= 1e-14);
++}
++
++#[test]
++fn positive_compliant_stitch_handles_pins_zero_anchor_and_nonfinite_guards() {
++    let stitch = Stitch {
++        a: WeightedPoint::vertex(0),
++        b: WeightedPoint::vertex(1),
++        compliance: 0.125,
++    };
++    let pinned = [[3., 4., 0.], [0.; 3]];
++    let mut x = pinned;
++    let mut lambda = [2., 3., 4.];
++    constraints::solve_stitch(stitch, 1., &mut x, &[0.; 2], 0.5, &mut lambda);
++    assert_eq!(x, pinned);
++    assert!(length(sub(lambda, [-4.8, -6.4, 0.])) <= 1e-14);
++
++    for (start, history, expected) in [
++        ([0.; 3], [0.; 3], [0.5, 0., 0.]),
++        ([0., 1., 0.], [0., 2., 0.], [0., 0.5, 0.]),
++    ] {
++        x = [start, [0.; 3]];
++        lambda = history;
++        constraints::solve_stitch(stitch, 1., &mut x, &[0.5, 0.], 0.5, &mut lambda);
++        assert_eq!(x, [expected, [0.; 3]]);
++        assert_eq!(lambda, mul(expected, 2.));
++        assert_eq!(length(x[0]), 0.5);
++    }
++    x = [[0.; 3]; 2];
++    lambda = [1., -2., 3.];
++    constraints::solve_stitch(stitch, 1., &mut x, &[0.; 2], 0.5, &mut lambda);
++    assert_eq!(x, [[0.; 3]; 2]);
++    assert_eq!(lambda, [1., -2., 3.]);
++
++    for (target, compliance, dt) in [
++        (f64::INFINITY, 0.125, 0.5),
++        (f64::NAN, 0.125, 0.5),
++        (-1., 0.125, 0.5),
++        (1., 1e-21, 1.),
++        (1., 1., 1e-200),
++    ] {
++        x = pinned;
++        lambda = [2., 3., 4.];
++        constraints::solve_stitch(
++            Stitch { compliance, ..stitch },
++            target,
++            &mut x,
++            &[0.; 2],
++            dt,
++            &mut lambda,
++        );
++        assert_eq!(x, pinned);
++        assert_eq!(lambda, [2., 3., 4.]);
++    }
++    x = [[1., 0., 0.], [0.; 3]];
++    lambda = [0.; 3];
++    constraints::solve_stitch(
++        Stitch { compliance: 1e-20, ..stitch },
++        f64::MAX,
++        &mut x,
++        &[1e-21, 0.],
++        1.,
++        &mut lambda,
++    );
++    assert_eq!(x, [[1., 0., 0.], [0.; 3]]);
++    assert_eq!(lambda, [0.; 3]);
++}
++
++#[test]
++fn positive_target_stitch_n32_matches_independent_coupled_radial_energy() {
++    let mass = 0.01_f64;
++    let h = 0.1_f64;
++    let predictor = [0., 1., 0.];
++    let anchors = [[0.; 3], [1., 0., 0.]];
++    let mut x = [predictor, anchors[0], anchors[1]];
++    let inverse_mass = [mass.recip(), 0., 0.];
++    let stitches = [1, 2].map(|anchor| Stitch {
++        a: WeightedPoint::vertex(0),
++        b: WeightedPoint::vertex(anchor),
++        compliance: 2.,
++    });
++    let targets = [0.5, 0.];
++    let mut lambda = [[0.; 3]; 2];
++    let mut applied_action = [[0.; 3]; 2];
++    let mut last_update = [[0.; 3]; 2];
++    let norm = |v: Vec3| (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
++    for _ in 0..32 {
++        for i in 0..2 {
++            assert!(norm(x[0]) > 1e-6, "fixture stays away from radial singularity");
++            let before = x[0];
++            constraints::solve_stitch(
++                stitches[i],
++                targets[i],
++                &mut x,
++                &inverse_mass,
++                h,
++                &mut lambda[i],
++            );
++            for (axis, &value) in before.iter().enumerate() {
++                last_update[i][axis] = x[0][axis] - value;
++                applied_action[i][axis] += mass * last_update[i][axis] / (h * h);
++            }
++            assert_eq!([x[1], x[2]], anchors, "pins: m");
++            assert!(x.into_iter().flatten().all(f64::is_finite));
++            assert!(lambda.into_iter().flatten().all(f64::is_finite));
++            assert!(applied_action.into_iter().flatten().all(f64::is_finite));
++        }
++    }
++    // Direct differentiation of Phi=.5|q-p|²+.25(|q|-.5)²+.25|q-a|².
++    let independent_forces = |q: Vec3| {
++        let radius = norm(q);
++        [
++            q.map(|value| -0.5 * (radius - 0.5) * value / radius),
++            std::array::from_fn(|axis| -0.5 * (q[axis] - anchors[1][axis])),
++        ]
++    };
++    let objective = |q: Vec3| {
++        let predictor_distance_squared = (0..3)
++            .map(|axis| (q[axis] - predictor[axis]).powi(2))
++            .sum::<f64>();
++        let anchor_distance_squared = (0..3)
++            .map(|axis| (q[axis] - anchors[1][axis]).powi(2))
++            .sum::<f64>();
++        0.5 * predictor_distance_squared
++            + 0.25 * (norm(q) - 0.5).powi(2)
++            + 0.25 * anchor_distance_squared
++    };
++    let root_five = 5_f64.sqrt();
++    let expected = [
++        0.25 + 1. / (8. * root_five),
++        0.5 + 1. / (4. * root_five),
++        0.,
++    ];
++    let forces = independent_forces(x[0]);
++    let expected_forces = independent_forces(expected);
++    let stationarity = std::array::from_fn(|axis| {
++        mass * (x[0][axis] - predictor[axis]) / (h * h)
++            - forces[0][axis]
++            - forces[1][axis]
++    });
++    let oracle_stationarity = std::array::from_fn(|axis| {
++        expected[axis] - predictor[axis] - expected_forces[0][axis] - expected_forces[1][axis]
++    });
++    let action_error = std::array::from_fn::<_, 2, _>(|i| {
++        norm(std::array::from_fn(|axis| applied_action[i][axis] - forces[i][axis]))
++    });
++    let radius = norm(x[0]);
++    let history_force = lambda.map(|history| history.map(|value| value / (h * h)));
++    let position_error = norm(std::array::from_fn(|axis| x[0][axis] - expected[axis]));
++    let direction = x[0].map(|value| value / radius);
++    println!(
++        "positive_then_zero_N=32 mass_kg={mass} h_s={h} compliance_m_per_N=2\n\
++         predictor_m={predictor:?}\nx_m={x:?}\nexpected_m={expected:?}\n\
++         initial_radial_direction=[0,1,0]\nfinal_radial_direction={direction:?}\n\
++         lambda_private_kg_m={lambda:?}\ncurrent_history_force_N={history_force:?}\n\
++         independent_elastic_force_N={forces:?}\napplied_action_N={applied_action:?}\n\
++         action_error_N={action_error:?}\nlast_stage_update_m={last_update:?}\n\
++         stationarity_N={stationarity:?}\n\
++         position_error_m={position_error}\nobjective_J={}\nexpected_objective_J={}",
++        objective(x[0]),
++        objective(expected)
++    );
++    assert!(norm(oracle_stationarity) <= 1e-14, "independent oracle: N");
++    assert!(position_error <= 1e-8, "coupled radial position: m");
++    assert!(norm(stationarity) <= 1e-6, "independent stationarity: N");
++    for (i, error) in action_error.into_iter().enumerate() {
++        assert!(error <= 1e-6, "stitch{i} independent action balance: N");
++    }
++}
++
+ #[test]
+ fn elastic_stitch_substeps_reset_multipliers_when_target_reaches_zero() {
+     let mut input = square();
+diff --git a/docs/physics.md b/docs/physics.md
+index 8cd3dd5f..ced0c3ab 100644
+--- a/docs/physics.md
++++ b/docs/physics.md
+@@ -31,10 +31,10 @@ colliders and duplicate pins are rejected before a solver is returned.
+ 
+ ## Integration and compliant constraints
+ 
+-The engineering choice is a deterministic sequential CPU path. Sewing retains
+-the compliant local XPBD projection method from
++The engineering choice is a deterministic sequential CPU path. Compliant sewing,
++membrane and bending use the incremental-energy updates described below.
++Hard sewing retains the scalar projection from
+ [Macklin, Müller and Chentanez, XPBD (2016)](https://matthias-research.github.io/pages/publications/XPBD.pdf).
+-Membrane and bending use the incremental-energy updates described below.
+ The small dependency surface and explicit physical energy coefficients make it
+ suitable for repeatable checks and future accelerated-path comparisons. It is not
+ a promise of time-step, mesh or iteration independence at finite convergence.
+@@ -48,11 +48,11 @@ x* = x + h*v*
+ 
+ The solver clears material/bending displacement histories and seam multipliers at
+ each substep, then iterates membrane, bending, sewing, analytic contact, cloth
+-contact and pins in that order. For a radial sewing energy
+-E = k*C(x)^2/2, the constraint compliance is alpha = 1/k:
++contact and pins in that order. The scalar radial projection for hard sewing
++uses zero compliance in the following formula:
+ 
+ ```text
+-a = alpha / h²
++a = 0
+ delta_lambda = (-C - a*lambda) / (sum_i(w_i*|gradient_i(C)|²) + a)
+ x_i += w_i*gradient_i(C)*delta_lambda
+ lambda += delta_lambda
+@@ -128,8 +128,8 @@ Phi(q) = sum_free_i m_i*|q_i-z_i|²/(2*h²) + sum_triangles sum_a k_a*C_a(q)²/2
+ ```
+ 
+ Pinned coordinates stay fixed. There are no material pairs or separate group
+-anchors. Bending uses its separate incremental-energy update below; sewing,
+-analytic contact, cloth contact and pins retain their previous equations.
++anchors. Bending and compliant sewing use their separate incremental-energy
++updates below; analytic contact, cloth contact and pins retain their previous equations.
+ Each outer iteration makes one global Gauss–Newton material update before those
+ stages, in the same order. The garment acceptance settings
+ remain dt=1/60 s, eight substeps and 32 outer iterations; the standalone DTO
+@@ -348,12 +348,43 @@ L_next = max(0, L_previous - seam_closure_speed*h)
+ C_seam = length(weighted_a - weighted_b) - L_next
+ ```
+ 
+-At exactly zero target with positive compliance c, projection uses the vector
+-constraint `weighted_a - weighted_b`, preserving energy `|C|²/(2c)` with a
+-three-component multiplier. Positive targets and hard stitches retain the scalar
+-radial update above. The [closed soft stitch contract](../spec/features/SIM-001-closed-stitch-coordinates.md)
+-defines the bounded analytic checks; garment quality and reference parity remain
+-unmeasured for this change.
++For positive compliance c, each stitch retains a three-component weighted
++correction history H, reset once per substep. Let beta_i be its signed endpoint
++coefficient after combining repeated vertices, w_i the inverse mass, d its
++current endpoint difference, W=sum_i(w_i*beta_i²), a=c/h², and z=d-W*H.
++For W>0, minimizing nodal inertia at a proposed difference D gives the exact
++local objective (in h²-scaled energy units):
++
++```text
++Phi(D) = |D-z|²/(2W) + (|D|-target)²/(2a)
++r = |z|
++H_new = (z/r)*(target-r)/(a+W)       # r > 0
++x_i += w_i*beta_i*(H_new-H)
++H = H_new
++```
++
++The optimal D is parallel to z with radius (a*r+W*target)/(a+W).
++Retaining the full vector preserves the accumulated direction changes; a scalar
++multiplier against only the current direction does not retain that action.
++At target zero, the existing vector update `delta_H=(-d-a*H)/(a+W)` is
++algebraically identical and its arithmetic is unchanged. Hard stitches retain
++the scalar radial update above. No iterations, stiffnesses or stage order change.
++
++At exactly zero anchor and W>0, all directions minimize the radial objective:
++the update retains the current endpoint direction if defined, otherwise chooses
++world +X deterministically. An all-pinned zero gap is unchanged. All-pinned
++nonzero gaps retain their constitutive vector history without moving positions.
++Nonfinite or unrepresentable positive-target trial arithmetic leaves positions
++and history unchanged; all trial position updates are checked before committing.
++
++The fresh two-spring N=32 component uses one .01 kg free node, h=.1 s and two
++.5 N/m springs, with positive target .5 m and zero target at different pinned
++anchors. Its independent radial-energy oracle fixes position/force bounds at
++1e-8 m / 1e-6 N. The scalar history reaches zero further updates while missing
++by .0538715230 m / .0889778606 N; these are component findings, not garment
++causality. The [closed soft stitch contract](../spec/features/SIM-001-closed-stitch-coordinates.md)
++continues to define the existing zero-target checks. Garment quality and
++reference parity remain unmeasured for this change.
+ 
+ This explicitly models assembly, separate from fabric stiffness. A zero target
+ requests coincidence; finite compliance can leave a gap. The default speed is

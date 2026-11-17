@@ -1,0 +1,29 @@
+{
+  "experiment": "WF-20261117-POSITIVE-TARGET-SEWING-N32-001",
+  "scope": "fresh isolated direct solve_stitch component; no Cloth initialization or garment trajectory",
+  "base_commit": "d982d3af570e862fc8a5d059a32256eb6a45d1ce",
+  "free_vertex": 0,
+  "free_mass_kg": 0.01,
+  "predictor_m": [0.0, 1.0, 0.0],
+  "pinned_vertices": {"1": [0.0, 0.0, 0.0], "2": [1.0, 0.0, 0.0]},
+  "inverse_masses_per_kg": [100.0, 0.0, 0.0],
+  "h_seconds": 0.1,
+  "springs_in_fixed_order": [
+    {"a_vertex": 0, "b_vertex": 1, "target_m": 0.5, "stiffness_N_per_m": 0.5, "compliance_m_per_N": 2.0},
+    {"a_vertex": 0, "b_vertex": 2, "target_m": 0.0, "stiffness_N_per_m": 0.5, "compliance_m_per_N": 2.0}
+  ],
+  "endpoint_weights": [1.0, 0.0],
+  "initial_private_multipliers": [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]],
+  "sweeps": 32,
+  "stage_calls": 64,
+  "resets_between_sweeps": false,
+  "position_error_bound_m": 1e-8,
+  "independent_stationarity_bound_N": 1e-6,
+  "independent_individual_action_balance_bound_N": 1e-6,
+  "independent_oracle_arithmetic_bound_N": 1e-14,
+  "radial_domain_guard_m": 1e-6,
+  "all_stage_positions_multipliers_and_actions_finite": true,
+  "pins_exact_after_every_stage": true,
+  "gravity_material_bending_contact_closure_motion_or_time_integration": false,
+  "archived_positions_velocities_or_warm_start": false
+}

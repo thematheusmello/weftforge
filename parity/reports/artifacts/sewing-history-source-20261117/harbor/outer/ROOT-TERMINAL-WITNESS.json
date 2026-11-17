@@ -1,0 +1,147 @@
+{
+  "deadline": 1038756.488414041,
+  "errors": [],
+  "go_sha256": "785a178aee15b28581e23b3c601748e92ae8fc4cebd066ac26d94731a8ae23ea",
+  "native_or_reference_acceptance": false,
+  "numerical_hashes": {
+    "expected/approved-metadata.json": "8dfb77d6d4234b0997683e98a0bbd76105d2274aba0f6eb36dc90e671d0589ff",
+    "inputs/base.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+    "preflight-base/initialized-state.json": "dab78f774cd56342d7822eba55f3d7ada6612c90cfddf2b2c4cd425060138afc",
+    "preflight-base/rest-metadata.json": "90128ed174829cd118e1d638ccba0fa501003889e85b5d70d214b4884f14aec7",
+    "preflight-base/stage-000.obj": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+    "runs/base/analysis.json": "07b76bbf84498b4e854658ae62fae1e10e307ca45eb4f32740701fc9ba2c44d3",
+    "runs/base/completed-case.json": "8c61017ab27ee3b60553b955142b544282bc6c7724c29d391cf1787c5a659c97",
+    "runs/base/initialized-state.json": "2482770fee405c4f6a4fb94e77251f0056b41505b7678db1cd11790066e51ee9",
+    "runs/base/rest-metadata.json": "90128ed174829cd118e1d638ccba0fa501003889e85b5d70d214b4884f14aec7",
+    "runs/base/stage-000.obj": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+    "runs/base/stage-060.obj": "1f3d7c06a32c5819ff83fa405931a5cb116073db1fe535857e1819b9999affa1",
+    "runs/base/stage-180.obj": "1c2b37f734f42fbec373947ebfae3ffab09a544e979eae454c94e7892ca06847",
+    "runs/base/steps.jsonl": "62cc22ffb7513ee9f4e5cc5bc723b0c1f59c82e73b5180bcb2d37408940bace1",
+    "runs/base/trajectory.jsonl": "72937c93463afd9e5862003948a505d6ce089f2d3bbcb979d9e5d670dbc59f10",
+    "runtime/FINAL-NUMERICAL.json": "8eaf00390abfdb05ebc22bfef7cae9f99f9e4ac5ccb46fd75534b6f539c87a89",
+    "runtime/SESSION.json": "2cb732bc5bd2352d67f4fec8fc5463a5633626274b08395e01d7f8da7b45bfca",
+    "runtime/SUPERVISOR.json": "97e391813ba582b6e77b803a8c19e4d807f8fda91c8e88aae7db99cb642e27a7",
+    "runtime/analysis-stage.json": "a629f2d2fd4ad187e56fcda5e639bfe4fc6a3380943fefabed64ba77c0d7b02b",
+    "runtime/analysis-started.json": "1e00726259648de1d975791d5ad0e0ca0dcc608677af3cf2c28bb65c23514a5d",
+    "runtime/analysis-written.json": "12cadc4509007bdefc1c7bc58302dc454be6b3c8d163c6cd49eb8729c367d73b",
+    "runtime/analysis.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/analysis.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/finalization-stage.json": "50e7499db7f052fcb0321540b2db98079401a81d144fdf2cc92e89998403942d",
+    "runtime/finalization-started.json": "641660eb4a09154b45f2ac5717f5ab397903b8fd990559bfd852dfdc5dbb6844",
+    "runtime/finalization.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/finalization.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/finalized.json": "29af93706cb9d8e4d84bd73d6ebdd19dfdf21687f088790426cf95504c02dbe2",
+    "runtime/init-only-stage.json": "8158fa7de77fffcdba7ca481b4620bccbcc3c7705645cc8088970ae783d23b3c",
+    "runtime/init-only-started.json": "45029ea1e98dedc0520eb93be737abc9fa9dbe0f19d76ed13f575324b30d29e9",
+    "runtime/init-only.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/init-only.stdout": "38dde89a453487e736364cec15a6e47f005fcc06d8c52c1b9d715772322279d2",
+    "runtime/initialized-original-gate.json": "7a2c92422fc46e3f1de15ba05e1a83e7cd23ca3363e00bae0f7d2bb0f14f53f0",
+    "runtime/metadata-stage.json": "c8959e4544615bc8f10fae16a46905e12853ecc5238b8f21eea1e592d580373f",
+    "runtime/metadata-started.json": "98ee6622bb42acccd3169f4ca11fdeaa6bf977ebf0e3814e4e931f48b8221d21",
+    "runtime/metadata.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/metadata.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/producer-receipt.json": "f088b8f162309c16f511d2bc4ee222d11eab034cfac684dba6cdec462a5a5cfb",
+    "runtime/producer-stage.json": "c79898962253c4f855c29c52ba69680861b6ee959e792e2151b73027ca9d692c",
+    "runtime/producer-started.json": "4892b7e1b531065be182a63e6b33374d69858ba9a56c90bcd30e88468468f325",
+    "runtime/producer.stderr": "bb77a35231000b8a64cd3cdcc0f6bdc232b5cae612d77e39ce281579e81aeb92",
+    "runtime/producer.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "operational_candidate": true,
+  "owned_groups": [
+    {
+      "group_absent": true,
+      "pid": 86985,
+      "signal_sent": false
+    },
+    {
+      "group_absent": true,
+      "pid": 89185,
+      "signal_sent": false
+    },
+    {
+      "group_absent": true,
+      "pid": 71703,
+      "signal_sent": false
+    },
+    {
+      "group_absent": true,
+      "pid": 71732,
+      "signal_sent": false
+    },
+    {
+      "group_absent": true,
+      "pid": 71769,
+      "signal_sent": false
+    }
+  ],
+  "retry_or_continuation_allowed": false,
+  "source_commit": "40817073cd38e58a8438bb397d09a0ab9d95f9bb",
+  "stage": {
+    "argv": [
+      "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+      "-B",
+      "<ROOT>/.local/positive-target-sewing-component-20261117/.local/harbor-sewing-history-preparation-20261117/controller.py",
+      "--go",
+      "ROOT-GO.json",
+      "--go-sha256",
+      "785a178aee15b28581e23b3c601748e92ae8fc4cebd066ac26d94731a8ae23ea"
+    ],
+    "end_monotonic_seconds": 1038671.239460291,
+    "exit_code": 2,
+    "peak_rss_bytes": 38862848,
+    "pid": 71661,
+    "process_group": 71661,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [
+        {
+          "at_monotonic_seconds": 1038468.443659291,
+          "consecutive_failures": 1,
+          "kind": "TimeoutExpired",
+          "pid": 71661,
+          "timeout_seconds": 1.0
+        },
+        {
+          "at_monotonic_seconds": 1038489.254483458,
+          "consecutive_failures": 1,
+          "kind": "TimeoutExpired",
+          "pid": 71661,
+          "timeout_seconds": 1.0
+        },
+        {
+          "at_monotonic_seconds": 1038491.242019291,
+          "consecutive_failures": 2,
+          "kind": "TimeoutExpired",
+          "pid": 71661,
+          "timeout_seconds": 1.0
+        },
+        {
+          "at_monotonic_seconds": 1038511.410421458,
+          "consecutive_failures": 1,
+          "kind": "TimeoutExpired",
+          "pid": 71661,
+          "timeout_seconds": 1.0
+        }
+      ],
+      "failures": 4,
+      "max_consecutive_failures": 2,
+      "max_snapshot_gap_seconds": 14.60043437499553,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 4472,
+      "timeouts": 4
+    },
+    "sampled_peak_rss_bytes": 32980992,
+    "stop_reason": null,
+    "terminal_phase_checks": {
+      "deadline": 1038756.488414041,
+      "output_bytes": 18984192,
+      "output_cap_bytes": 268435456,
+      "reserve_bytes": 262144
+    }
+  },
+  "started": 1038336.488414041,
+  "status": "pending_external_post_persistence_clock_verdict",
+  "strict_quality_passed": false
+}

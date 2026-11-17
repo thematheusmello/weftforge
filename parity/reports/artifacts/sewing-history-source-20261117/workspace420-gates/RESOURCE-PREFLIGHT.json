@@ -1,0 +1,20 @@
+{
+  "actual_available_disk_bytes": 10327080960,
+  "at_utc": "2026-11-17T11:12:18.058474+00:00",
+  "available_memory_or_pressure_observation": {
+    "physical_memory": "hw.memsize: 51539607552",
+    "vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     1475.\nPages active:                                 670716.\nPages inactive:                               668125.\nPages speculative:                               208.\nPages throttled:                                   0.\nPages wired down:                             456744.\nPages purgeable:                                   0.\n\"Translation faults\":                    29842846347.\nPages copy-on-write:                      1351790487.\nPages zero filled:                       35968506969.\nPages reactivated:                        7821173091.\nPages purged:                             1733829952.\nFile-backed pages:                            463453.\nAnonymous pages:                              875596.\nPages stored in compressor:                  2450126.\nPages occupied by compressor:                1291382.\nDecompressions:                          10949230508.\nCompressions:                            11249307627.\nPageins:                                   437957459.\nPageouts:                                    1118559.\nSwapins:                                    30211582.\nSwapouts:                                   35748001.\n"
+  },
+  "cold_own_target": false,
+  "compiled_cache_copied": false,
+  "draft_only": false,
+  "observation_scope": "Fresh process-list, physical-memory/vm-stat and filesystem-available-space snapshot. No concurrent compiler/model/native job observed. Warm own target retained; no compiled cache copy. Snapshot only; no exclusive OS scheduling or continuous memory guarantee.",
+  "observed_matching_workloads": [],
+  "own_target": "<ROOT>/.local/positive-target-sewing-component-20261117/target",
+  "resource_window_must_be_confirmed_by_root_before_GO": false,
+  "root_resource_review_pending": false,
+  "stop_floor_bytes": 8000000000,
+  "target_existed_at_static_draft_read": true,
+  "target_was_symlink_at_static_draft_read": false,
+  "warm_own_target": true
+}

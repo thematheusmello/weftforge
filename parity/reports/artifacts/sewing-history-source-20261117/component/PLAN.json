@@ -1,0 +1,58 @@
+{
+  "experiment": "WF-20261117-POSITIVE-TARGET-SEWING-N32-001",
+  "status": "SOURCE_ONLY_FROZEN_ASSERTIONS_NOT_RUN",
+  "base_commit": "d982d3af570e862fc8a5d059a32256eb6a45d1ce",
+  "branch": "test/positive-target-sewing-component",
+  "owned_tracked_change": "crates/weftforge-sim/src/tests.rs",
+  "production_changes_authorized": false,
+  "production_changes": 0,
+  "source_only_scope": "one new unit test plus private fixture/oracle/plan/freeze; no old cases or protocol changes",
+  "test": "tests::positive_target_stitch_n32_matches_independent_coupled_radial_energy",
+  "execution_authorized": false,
+  "requires_before_any_execution": [
+    "Root explicitly confirms the pending d982 full180 case is CLOSED",
+    "Root reviews this exact frozen fixture, independent oracle, test assertions and source diff",
+    "Root issues a separate bounded component execution GO"
+  ],
+  "prospective_attempts": 1,
+  "prospective_invocation": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "test", "--locked", "--offline", "-p", "weftforge-sim", "--lib",
+    "tests::positive_target_stitch_n32_matches_independent_coupled_radial_energy",
+    "--", "--exact", "--nocapture"
+  ],
+  "prospective_environment": {
+    "PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+    "RUSTUP_TOOLCHAIN": "1.94.1",
+    "RUSTC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTDOC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/positive-target-sewing-component-20261117/target",
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "RUSTFLAGS": "",
+    "RUSTDOCFLAGS": "",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_ENCODED_RUSTDOCFLAGS": ""
+  },
+  "prospective_environment_guard": "Refuse foreign nonempty compiler wrappers/flags and unexpected toolchain overrides; do not inherit alternate target/cache paths. Shared registry downloads allowed; no target/binary copying.",
+  "prospective_caps": {"whole_command_seconds_including_compile": 120, "sampled_process_group_plus_controller_RSS_bytes": 1073741824, "retained_output_bytes": 8388608},
+  "resource_controller_prepared_or_executed": false,
+  "prospective_failure_policy": "Retain the first actual compile/test/resource result and terminal receipts. No retry, sweep, tolerance/oracle/iteration change, production repair, old-case continuation or regrade.",
+  "production_call_scope": [
+    "constraints::solve_stitch is pub(crate), called in production only by Cloth::step_cancellable's sewing loop",
+    "Cloth predicts positions, applies pins and advances each seam target once per substep; each target is fixed during all outer sweeps",
+    "Per-stitch Vec3 history starts at zero once per substep and persists across its sweeps",
+    "Positive targets use scalar lambda[0] with a current radial gradient; zero-target compliant stitches use vector history",
+    "The component uses the same direct stage calls, same fixed positive-then-zero order and valid vertex endpoints, without constructing Cloth"
+  ],
+  "safety_scope": "Valid convex vertex weights; positive compliance, h and free mass; pinned inverse masses zero; finite/radial-domain/pin assertions every stage. No material/bending/contact, cancellation, closure-speed scheduling, persistence or whole-Cloth rollback coverage is claimed.",
+  "results": null,
+  "Cargo_helper_test_model_benchmark_or_GUI_executions": 0,
+  "Cloth_initializations": 0,
+  "stage_executions": 0,
+  "old_cases_or_failed_screens_regraded": 0,
+  "garment_causality_or_physics_parity_acceptance": false
+}

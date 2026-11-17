@@ -1,0 +1,16 @@
+........F
+======================================================================
+FAIL: test_terminal_count_failure_returns_explicit_negative_after_cleanup (__main__.DirectoryVolumeSnapshot.test_terminal_count_failure_returns_explicit_negative_after_cleanup)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<ROOT>/.local/directory-volume-control-repair-20261117-draft/test_directory_volume_snapshot.py", line 167, in test_terminal_count_failure_returns_explicit_negative_after_cleanup
+    kill.assert_called_once_with(child.pid)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "<HOME>/.pyenv/versions/3.13.0/lib/python3.13/unittest/mock.py", line 988, in assert_called_once_with
+    raise AssertionError(msg)
+AssertionError: Expected 'kill_group' to be called once. Called 0 times.
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.007s
+
+FAILED (failures=1)

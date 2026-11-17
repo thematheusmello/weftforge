@@ -1,0 +1,48 @@
+{
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--lib",
+    "tests::positive_target_stitch_n32_matches_independent_coupled_radial_energy",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "attempts": 1,
+  "authority": "Root task: minimal production repair, then ONE same frozen GREEN command under120s/1GiB/8MiB; no source/criterion changes on failure.",
+  "caps": {
+    "retained_output_bytes": 8388608,
+    "sampled_process_group_plus_controller_RSS_bytes": 1073741824,
+    "whole_command_seconds_including_compile": 120
+  },
+  "environment": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_ENCODED_RUSTDOCFLAGS": "",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/positive-target-sewing-component-20261117/target",
+    "PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+    "RUSTC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTDOC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+    "RUSTDOCFLAGS": "",
+    "RUSTFLAGS": "",
+    "RUSTUP_TOOLCHAIN": "1.94.1"
+  },
+  "fixture_sha256": "859f478a24bdd227c29221b216f81896b5873a0ea82e2b6464f9cae9d9a9bd45",
+  "independent_and_root_source_review_remains_next_gate": true,
+  "note": "PLAN prospective caller name step_cancellable is inaccurate for current code; actual sole production caller is Cloth::step at lib.rs sewing loop. Frozen test/fixture semantics are correct; retain this correction without altering the frozen plan.",
+  "oracle_sha256": "e2d8ae2ff2cef036b84e7481bd3fd02b8f92fa7309d880e46f332adab47302af",
+  "previous_RED_result_sha256": "e27c6ee17df5b0c8d9d6b7b23f139acc61438c0c82f51dca74c618aca885ea8a",
+  "root_read_this_specific_implementation_claimed": false,
+  "source_commit": "03f4a2df883581dc5f34ddc361bc9327b71ba6b0",
+  "source_freeze_sha256": "bd6dd229d6bd59eeda629c6bbab9ad8ce8741352681ccf3cc53ba776a644e1e5",
+  "status": "PARENT_TASK_DELEGATED_ONE_FROZEN_GREEN_AUTHORIZED",
+  "sweeps": 32
+}

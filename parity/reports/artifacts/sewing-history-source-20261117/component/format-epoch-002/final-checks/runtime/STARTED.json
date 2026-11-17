@@ -1,0 +1,31 @@
+{
+  "controller_pid": 65882,
+  "deadline": 1033334.5858595,
+  "frozen_commands": [
+    [
+      "fmt",
+      [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ]
+    ],
+    [
+      "sim-clippy",
+      [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "clippy",
+        "-p",
+        "weftforge-sim",
+        "--all-targets",
+        "--locked",
+        "--offline",
+        "--",
+        "-D",
+        "warnings"
+      ]
+    ]
+  ],
+  "start_monotonic": 1033214.5858595
+}

@@ -1,0 +1,98 @@
+{
+  "execution": {
+    "AST_syntax_or_bytecode_checks": 0,
+    "model_init_steps_analysis_timing_GUI_network": 0,
+    "old_packet_source_targets_or_case_writes": 0,
+    "project_helper_imports": 0,
+    "synthetic_tests_run": 0,
+    "synthetic_tests_written": 9
+  },
+  "file_count_excluding_self": 12,
+  "files": {
+    "CONTROL-DELTA.patch": {
+      "bytes": 12175,
+      "mode": 420,
+      "sha256": "25fed07b3cd8d2e295fd9daa820ea44be70555c574660c88d0c4b81fee242c5f"
+    },
+    "DIAGNOSIS.md": {
+      "bytes": 6922,
+      "mode": 420,
+      "sha256": "870ae500f35a6bab88a5f48312d82e2e8ad1d1aed0921e4190a309ff94de7efc"
+    },
+    "PREPARATION.json": {
+      "bytes": 2833,
+      "mode": 420,
+      "sha256": "c9a69a4a721209263588801065d35d4756860ec8c3068ad98693035852934b39"
+    },
+    "README.md": {
+      "bytes": 1372,
+      "mode": 420,
+      "sha256": "5cffdc417da3acb7e577899cdf47626ec0745e3fb999b810ea5be3879403dc9d"
+    },
+    "outer/launch_and_record.py": {
+      "bytes": 3908,
+      "mode": 420,
+      "sha256": "6b679942ae6420bd9679d20b5c5a9a50d8fca94da18feae7bd845ca6a626f99e"
+    },
+    "outer/supervise.py": {
+      "bytes": 7116,
+      "mode": 420,
+      "sha256": "0d33f3986a2720f23887dfcc48c9830794526d3c3aa2f7075e5f37ab56bc37e7"
+    },
+    "packet/build_release.py": {
+      "bytes": 2717,
+      "mode": 420,
+      "sha256": "b662696a36107fc269f797c5cfe82de6ac00af5773c015cfa99bca996982c12f"
+    },
+    "packet/common.py": {
+      "bytes": 17185,
+      "mode": 420,
+      "sha256": "221c41b918ccbb606e01cc6297ca5184de9bb95ba6625e33da2591cb95e24a20"
+    },
+    "packet/controller.py": {
+      "bytes": 6492,
+      "mode": 420,
+      "sha256": "b54f882ad435ce755160d5a815387cdc012e396252f79e9a91d018f7ad57e515"
+    },
+    "packet/resources.py": {
+      "bytes": 12756,
+      "mode": 420,
+      "sha256": "ba4560b912abaf8e310f87dc33b334fddfc96bc9d41c74a046a46b2d1f815d12"
+    },
+    "packet/worker.py": {
+      "bytes": 7432,
+      "mode": 420,
+      "sha256": "8f5fd89dab9d3f1298c3722812918a4c52492d56dd78b11d6463603fc6be86ae"
+    },
+    "test_directory_volume_snapshot.py": {
+      "bytes": 7389,
+      "mode": 420,
+      "sha256": "bac4004c45dc338575e136d0ec6581fcb70c73951b1d2070a2859bec3d4d041f"
+    }
+  },
+  "future_required": "Root review and explicit synthetic-test authorization first; retain test failures. Then separately reviewed source/control binding in a fresh namespace and a new exact13-key GO after actual build/freeze/outer/launcher review. Never replay/reset/regrade the failed attempt.",
+  "original_failure": {
+    "classification": "OPERATIONAL_FAILURE_NO_COMPLETE_QUALITY_GRADE",
+    "external_elapsed_seconds_as_reported_by_root": 97.429757125,
+    "external_terminal_sha256": "18db810096027c9aed45674e22946da9f8e7d2142ef841c712977b0bffa70581",
+    "lookup_location": "Receipt lacks traceback; enumeration-lstat and later size-stat both have this race.",
+    "missing_filename": "runs/base/.stage-060.obj.44663-1.tmp",
+    "root_result_sha256": "bae03d55e29fef6f2f3025c06a29267322d9c9710e89a1c6236e17500ef3ebd9",
+    "root_terminal_witness_sha256": "1fb6719158041a15bfe342e67670de82d294311df735aa9b0617832b4353384a",
+    "source_commit": "d982d3af570e862fc8a5d059a32256eb6a45d1ce",
+    "unified_exit_code_as_reported_by_root": 1,
+    "unified_session_as_reported_by_root": 9435
+  },
+  "proposed_observation_policy": {
+    "conservative_failed_attempts": "Keep the maximum already-observed partial total if a later complete observation is smaller.",
+    "deadline": "Same absolute original deadline checked during walks, before retries and before success.",
+    "directory_scopes": "Recursive numerical roots, optional before creation; shallow OUT root as before.",
+    "other_errors": "Fail; never skip arbitrary errors or turn them into0 bytes.",
+    "retried_error_class_only": "FileNotFoundError",
+    "snapshot_attempts_max": 3,
+    "strict_artifact_enumeration": "Unchanged; no live-volume retry policy applied to source/artifact hash coverage.",
+    "temporary_entries": "Count every observed regular filename, including temporary names, via its single lstat size.",
+    "terminal_monitor_failure": "Explicit negative stop_reason/output_observation_error and unknown output_bytes after child cleanup."
+  },
+  "status": "SOURCE_ONLY_UNEXECUTED_CONTROL_PROPOSAL_NOT_INSTALLED_NO_NEW_MODEL_GO"
+}

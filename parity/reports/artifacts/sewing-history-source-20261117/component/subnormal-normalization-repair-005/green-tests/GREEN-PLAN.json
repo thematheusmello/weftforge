@@ -1,0 +1,47 @@
+{
+  "RSS_bytes": 1073741824,
+  "commands": [
+    [
+      "edge",
+      [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--lib",
+        "tests::positive_stitch_subnormal_anchor_and_fallback_use_unit_direction",
+        "--",
+        "--exact",
+        "--nocapture"
+      ]
+    ],
+    [
+      "N32",
+      [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--lib",
+        "tests::positive_target_stitch_n32_matches_independent_coupled_radial_energy",
+        "--",
+        "--exact",
+        "--nocapture"
+      ]
+    ]
+  ],
+  "controller_sha256": "f85c0a5183b7aba96c872bbccdc85311d6d81a3cece856db85d1c6baf93e5be7",
+  "new_production_normalization_change_justifies_one_new_N32": true,
+  "output_bytes": 8388608,
+  "resources_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+  "same_frozen_edge_and_N32_tests_byte_exact": true,
+  "source_commit": "4fef6e9b9f032f553e6f64e9953c7faaad42a1f0",
+  "source_freeze_sha256": "8f310a0ac5558c3ffc29697b695cc3e16d77397d5ae68a3b546ef8bd908a0934",
+  "status": "ROOT_AUTHORIZED_ONE_EDGE_GREEN_AND_ONE_N32_GREEN_NEW_NORMALIZATION_SOURCE",
+  "stop_first_failure_no_retry": true,
+  "whole_seconds": 120
+}

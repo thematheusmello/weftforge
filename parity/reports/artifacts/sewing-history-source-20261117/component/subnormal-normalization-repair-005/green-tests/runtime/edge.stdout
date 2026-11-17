@@ -1,0 +1,26 @@
+
+running 1 test
+subnormal_case=0 inverse_mass_per_kg=1 h_s=1 compliance_m_per_N=1 target_m=1
+initial_difference_m=[5e-324, 5e-324, 0.0]
+local_anchor_m=[5e-324, 5e-324, 0.0]
+x_m=[[0.35355339059327373, 0.35355339059327373, 0.0], [0.0, 0.0, 0.0]]
+history_kg_m=[0.35355339059327373, 0.35355339059327373, 0.0]
+expected_m=[0.35355339059327373, 0.35355339059327373, 0.0]
+radius_m=0.49999999999999994
+independent_force_N=[0.3535533905932738, 0.3535533905932738, 0.0]
+independent_stationarity_N=[-5.551115123125783e-17, -5.551115123125783e-17, 0.0]
+position_radius_force_errors=[0.0, 5.551115123125783e-17, 7.850462293418876e-17]
+subnormal_case=1 inverse_mass_per_kg=1 h_s=1 compliance_m_per_N=1 target_m=1
+initial_difference_m=[5e-324, 5e-324, 0.0]
+local_anchor_m=[0.0, 0.0, 0.0]
+x_m=[[0.35355339059327373, 0.35355339059327373, 0.0], [0.0, 0.0, 0.0]]
+history_kg_m=[0.35355339059327373, 0.35355339059327373, 0.0]
+expected_m=[0.35355339059327373, 0.35355339059327373, 0.0]
+radius_m=0.49999999999999994
+independent_force_N=[0.3535533905932738, 0.3535533905932738, 0.0]
+independent_stationarity_N=[-5.551115123125783e-17, -5.551115123125783e-17, 0.0]
+position_radius_force_errors=[0.0, 5.551115123125783e-17, 7.850462293418876e-17]
+test tests::positive_stitch_subnormal_anchor_and_fallback_use_unit_direction ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 71 filtered out; finished in 0.00s
+

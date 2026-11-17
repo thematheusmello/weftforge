@@ -1,0 +1,27 @@
+
+running 1 test
+positive_then_zero_N=32 mass_kg=0.01 h_s=0.1 compliance_m_per_N=2
+predictor_m=[0.0, 1.0, 0.0]
+x_m=[[0.35718661571406796, 0.5953110261901133, 0.0], [0.0, 0.0, 0.0], [1.0, 0.0, 0.0]]
+expected_m=[0.30590169943749473, 0.6118033988749895, 0.0]
+initial_radial_direction=[0,1,0]
+final_radial_direction=[0.5144957554275265, 0.8574929257125442, 0.0]
+lambda_private_kg_m=[[-0.0009712299561855415, 0.0, 0.0], [0.0032140669214296607, -0.0029765551309505673, 0.0]]
+current_history_force_N=[[-0.04996936900015236, -0.0832822816669206, -0.0], [0.321406692142966, -0.29765551309505667, 0.0]]
+independent_elastic_force_N=[[-0.04996936900015236, -0.0832822816669206, -0.0], [0.321406692142966, -0.29765551309505667, -0.0]]
+applied_action_N=[[0.03577992357110198, -0.10703346071482998, 0.0], [0.3214066921429659, -0.2976555130950566, 0.0]]
+action_error_N=[0.08897786063193712, 1.2412670766236366e-16]
+last_stage_update_m=[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+stationarity_N=[0.08574929257125424, -0.0237511790479093, 0.0]
+position_error_m=0.05387152303649836
+objective_J=0.34701166449237064
+expected_objective_J=0.34462075140626314
+test tests::positive_target_stitch_n32_matches_independent_coupled_radial_energy ... FAILED
+
+failures:
+
+failures:
+    tests::positive_target_stitch_n32_matches_independent_coupled_radial_energy
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 68 filtered out; finished in 0.00s
+

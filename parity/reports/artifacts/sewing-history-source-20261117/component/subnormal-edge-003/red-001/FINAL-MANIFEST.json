@@ -1,0 +1,107 @@
+{
+  "Cargo_parser_invocations": 1,
+  "all_owned_PIDs_absent": {
+    "70649": true,
+    "70776": true
+  },
+  "edge_unit_test_executions": 0,
+  "files": {
+    "BEFORE-51DC.json": {
+      "bytes": 14488,
+      "sha256": "bd44bb7090bbb27ef27249e9d247263f0cde23011603b44ee3b6c92272e72c48"
+    },
+    "EDGE-FIXTURE.json": {
+      "bytes": 843,
+      "sha256": "733f60e46f96bb457ad8ac28f58cf14db0a5d9d3d775cd20e3609a0cea3f77b6"
+    },
+    "EDGE-ORACLE.md": {
+      "bytes": 2617,
+      "sha256": "1e56fcd64ddbeb73e28aa0e876d3241d5e498160978c9517eee40802805424d8"
+    },
+    "EDGE-PLAN.json": {
+      "bytes": 1940,
+      "sha256": "fcfedc76cc34ddd38f69a3d2535fc81fbe33196dcec0fce4517a2290cebc5d42"
+    },
+    "EDGE-RED-GO.json": {
+      "bytes": 2026,
+      "sha256": "e9e2dd509f7496641ad409912b13ac01117330d4390a999bfbd7df924bf219ea"
+    },
+    "EDGE-RED-SOURCE-FREEZE.json": {
+      "bytes": 17128,
+      "sha256": "3067d5517d5146955d679e42afaaabbcca6be593ef54d6eef4305c4d8917a3b7"
+    },
+    "EDGE-SOURCE-PROOF.json": {
+      "bytes": 463,
+      "sha256": "e6f17058b607325d7cb0b712c7104c08e6c2507eb57bf9351d0f8debba4c1e01"
+    },
+    "EXECUTION-FREEZE.json": {
+      "bytes": 1043,
+      "sha256": "b2087435dbaa911820e1ecbc2098c20d49cba1ec51de97be48dfb7aa3a8afed3"
+    },
+    "red-001/CHILD-STARTED.json": {
+      "bytes": 1279,
+      "sha256": "53ebe9ec24d85952fe10f703f9549e704cd397635ccd5fbccc63c60076744059"
+    },
+    "red-001/COMMAND.json": {
+      "bytes": 2697,
+      "sha256": "e2d2bc87a6a601cb330359fbac2309f0acc8877a8805e3547c3013fa6e24b982"
+    },
+    "red-001/PERSISTENCE-CLOCK.json": {
+      "bytes": 309,
+      "sha256": "2b40644aaa9230eb3040722651ac857883002f1e8aea666576dbb238eb48c596"
+    },
+    "red-001/POST-GUARD.json": {
+      "bytes": 350,
+      "sha256": "a8ea4d18d2f3ca6297c0eb85695ef4859d5c37ca646d5b3af1f15ddb7e46f50a"
+    },
+    "red-001/PRE-GUARD.json": {
+      "bytes": 350,
+      "sha256": "a8ea4d18d2f3ca6297c0eb85695ef4859d5c37ca646d5b3af1f15ddb7e46f50a"
+    },
+    "red-001/RESULT.json": {
+      "bytes": 2078,
+      "sha256": "bc081bc8312c3c6dd28ecbbfc5f89d627b27a9c2e5e50f2e636c1d2764eb3b90"
+    },
+    "red-001/STARTED.json": {
+      "bytes": 129,
+      "sha256": "76700395ffadf93d3e61849b9935e6def5d92b2fbb7644ecb3b7ba4568416280"
+    },
+    "red-001/TERMINAL-WITNESS.json": {
+      "bytes": 524,
+      "sha256": "16c26f84cefa3211aef2d97f08e0bccaef8f8e4e2c984b788902e2c87adf99c9"
+    },
+    "red-001/stderr.txt": {
+      "bytes": 199,
+      "sha256": "70aaac3ce90e6c5c88a09b67d23378ef59652be53e444f19d24f1ac9f862706f"
+    },
+    "red-001/stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "resources.py": {
+      "bytes": 12679,
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781"
+    },
+    "run_edge_red.py": {
+      "bytes": 7781,
+      "sha256": "6bc365a106158dd2624e1dfa511ad0b36849624f430ddc8123fc7c5a9e5e23ad"
+    },
+    "source-before/crates/weftforge-sim/src/constraints.rs": {
+      "bytes": 21691,
+      "sha256": "f733e8be75c8092af5bd80f52d6addaa8adf94c8397e69d1bbbe6ae7114eac92"
+    },
+    "source-before/crates/weftforge-sim/src/tests.rs": {
+      "bytes": 97835,
+      "sha256": "dad231e2b2997a1ef8e3f8d2c27d2787350217566078f2fc9510576038908c46"
+    },
+    "source-before/docs/physics.md": {
+      "bytes": 50005,
+      "sha256": "8c42e1f5f54e5c7c1ef2703af4be16dd6933f0156081636087620e962afc25bf"
+    }
+  },
+  "no_numerical_result_or_repair": true,
+  "post_source88_and_inputs_exact": true,
+  "production_51dc_exact": true,
+  "source_commit": "c2e9d80352e6dab068bc28604d328f8bd1e43c6b",
+  "status": "CLOSED_OPERATIONAL_CARGO_PARSE_FAILURE_EDGE_TEST_UNEXECUTED"
+}

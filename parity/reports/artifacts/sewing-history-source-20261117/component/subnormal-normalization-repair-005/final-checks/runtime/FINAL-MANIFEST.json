@@ -1,0 +1,84 @@
+{
+  "files": {
+    "CHECKS-PLAN.json": {
+      "bytes": 1628,
+      "sha256": "d0d458d3d3cbcf58afa266e1d18ad097a2ca6652dae2d595c42ce6a9f7cdcbbf"
+    },
+    "run_checks.py": {
+      "bytes": 5552,
+      "sha256": "5b6665584b8dd5cd279df154040b16b8217abd805c6205fa38b9f1daff72f721"
+    },
+    "runtime/PERSISTENCE-CLOCK.json": {
+      "bytes": 161,
+      "sha256": "bedc4f7fabceec5a4dc0c416649b106192b78b9d2ce932f3f30ca656d98268cc"
+    },
+    "runtime/RESULT.json": {
+      "bytes": 3431,
+      "sha256": "d57468e741601754085f57205a73f3db2581c98881d8d9814f0f616863cc9337"
+    },
+    "runtime/STARTED.json": {
+      "bytes": 1129,
+      "sha256": "2b3f3b40c07a5109e9518a51cce825982ac4d0bb9ac97339d80a2e39646e25e6"
+    },
+    "runtime/TERMINAL-WITNESS.json": {
+      "bytes": 402,
+      "sha256": "07434f906277f5c8521d8fcd932e11db4ffa3058b29fa21d2dd8f41f8faa58ee"
+    },
+    "runtime/fmt-POST-GUARD.json": {
+      "bytes": 110,
+      "sha256": "b9fd2dac4127a69d0eca2ecd95df11c2d162543436a4c84855624d2bc6ac564d"
+    },
+    "runtime/fmt-PRE-GUARD.json": {
+      "bytes": 110,
+      "sha256": "b9fd2dac4127a69d0eca2ecd95df11c2d162543436a4c84855624d2bc6ac564d"
+    },
+    "runtime/fmt-RECEIPT.json": {
+      "bytes": 1275,
+      "sha256": "77b9ae9e39a9a335c3901b28661bda35852fc45d314a700e1ea5c42308088c76"
+    },
+    "runtime/fmt-STARTED.json": {
+      "bytes": 1033,
+      "sha256": "543792241cf8099fab8ed60336d70aba2a6e405698af462ebfa936920180cf61"
+    },
+    "runtime/fmt.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "runtime/fmt.stdout": {
+      "bytes": 589,
+      "sha256": "033d139411d1cd63d7bcddb7e44ba96655f410a6eb64be7fbc80282428256839"
+    },
+    "runtime/positive-POST-GUARD.json": {
+      "bytes": 110,
+      "sha256": "b9fd2dac4127a69d0eca2ecd95df11c2d162543436a4c84855624d2bc6ac564d"
+    },
+    "runtime/positive-PRE-GUARD.json": {
+      "bytes": 110,
+      "sha256": "b9fd2dac4127a69d0eca2ecd95df11c2d162543436a4c84855624d2bc6ac564d"
+    },
+    "runtime/positive-RECEIPT.json": {
+      "bytes": 1574,
+      "sha256": "4cfcb99b520bd13ba5623fa02bd24b662296ace3086247961d7daca0f688874e"
+    },
+    "runtime/positive-STARTED.json": {
+      "bytes": 1326,
+      "sha256": "50dda9e12fd7d79d1dfe386a2a254e364bd2c7590af8e185d982465cba69aa41"
+    },
+    "runtime/positive.stderr": {
+      "bytes": 198,
+      "sha256": "4c567099970dc836c764e96da7fb5a127c230c6272af864e2890a4a94bd6b8fe"
+    },
+    "runtime/positive.stdout": {
+      "bytes": 375,
+      "sha256": "103b80bf35265c1da19fa0299fd31e9769ed72d425b920ba120d368e5faaea74"
+    }
+  },
+  "owned_PIDs_absent": {
+    "76708": true,
+    "76885": true,
+    "76907": true
+  },
+  "post_source88_inputs_exact_every_stage": true,
+  "source_commit": "4fef6e9b9f032f553e6f64e9953c7faaad42a1f0",
+  "status": "CLOSED_POSITIVE_GREEN_FMT_LOGGER_WHITESPACE_ONLY_CLIPPY_NOT_STARTED"
+}

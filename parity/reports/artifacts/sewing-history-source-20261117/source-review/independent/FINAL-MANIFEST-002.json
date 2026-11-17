@@ -1,0 +1,35 @@
+{
+  "all_previous_records_preserved": true,
+  "author_confirmed_final_commit": true,
+  "current_receipt": "REVIEW-RECEIPT-003.json",
+  "current_report": "REVIEW-001.md",
+  "files": {
+    "FINAL-MANIFEST-001.json": {
+      "bytes": 863,
+      "sha256": "bed0d3f1ccd8166394be2fcfbd4b3791febda6cb253d21137f83c655aa867ddd"
+    },
+    "REVIEW-001.md": {
+      "bytes": 6586,
+      "sha256": "e61f2d04a383a2906b5c510bc9faf152d0850d0cb957d625c01837971244dbda"
+    },
+    "REVIEW-RECEIPT-001.json": {
+      "bytes": 12330,
+      "sha256": "ee147abb494a62032c77cedf1a573bc42d25ada592120f2071c1aa42cb568d8f"
+    },
+    "REVIEW-RECEIPT-002.json": {
+      "bytes": 12910,
+      "sha256": "3eb5eebb6644667f2f519104fde7b721fed76c1d2e9a26235ad7717f58e2129f"
+    },
+    "REVIEW-RECEIPT-003.json": {
+      "bytes": 13321,
+      "sha256": "ec09cb304ead8c2fd5493817c4ff25c8bc2cdd332a3e7f9afa98fef9af1062a9"
+    }
+  },
+  "finding": "PS-001 P2 static subnormal-anchor normalization bug; not executed",
+  "kind": "INDEPENDENT_STATIC_REVIEW_FINAL_MANIFEST_002",
+  "reviewed_commit": "51dc403a46337a112c9eabcca4834d04611d2d3d",
+  "reviewer_product_executions": 0,
+  "source_and_old_evidence_untouched": true,
+  "tree": "d82bd5771fdc5c63d4e70b5533b52fbf179b2904",
+  "verdict": "FIX_PS_001_BEFORE_GENERAL_ROBUSTNESS_PROMOTION"
+}

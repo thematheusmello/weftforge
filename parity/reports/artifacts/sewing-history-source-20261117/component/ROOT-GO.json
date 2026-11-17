@@ -1,0 +1,49 @@
+{
+  "status": "authorized_one_component_RED_only",
+  "experiment": "WF-20261117-POSITIVE-TARGET-SEWING-N32-001",
+  "root_read_exact_fixture_oracle_test_and_callers": true,
+  "plan_sha256": "42b3634e39d12cd0ab5d19d5cbf5781db3999e1d611c81d794e386e0d623a097",
+  "source_only_freeze_sha256": "d86c34a9c40816e514a76f8906a3db7b8c19eb4534ca5da82eda5f8ca5a45351",
+  "previous_d982_case_closed_manifest_sha256": "a2a3686cb2a08cdedf6c11806c6bfc79e32432fe1c789f82752bfd5f542da65e",
+  "previous_d982_case_failed_ungraded_owned_PIDs_absent": true,
+  "attempts": 1,
+  "sweeps": 32,
+  "production_edits_authorized": false,
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--lib",
+    "tests::positive_target_stitch_n32_matches_independent_coupled_radial_energy",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "environment": {
+    "PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+    "RUSTUP_TOOLCHAIN": "1.94.1",
+    "RUSTC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTDOC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/positive-target-sewing-component-20261117/target",
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "RUSTFLAGS": "",
+    "RUSTDOCFLAGS": "",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_ENCODED_RUSTDOCFLAGS": ""
+  },
+  "caps": {
+    "whole_command_seconds_including_compile": 120,
+    "sampled_process_group_plus_controller_RSS_bytes": 1073741824,
+    "retained_output_bytes": 8388608
+  },
+  "oracle_bounds_and_test_assertions_must_remain_exact": true,
+  "note": "PLAN prospective caller name step_cancellable is inaccurate for current code; actual sole production caller is Cloth::step at lib.rs sewing loop. Frozen test/fixture semantics are correct; retain this correction without altering the frozen plan.",
+  "at": "2026-11-17T09:53:36.439850+00:00"
+}

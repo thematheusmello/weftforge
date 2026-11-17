@@ -1,0 +1,62 @@
+{
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--lib",
+    "tests::positive_target_stitch_n32_matches_independent_coupled_radial_energy",
+    "tests::positive_stitch_subnormal_anchor_and_fallback_use_unit_direction",
+    "--exact",
+    "--nocapture"
+  ],
+  "caller_correction": "Actual sole production caller is Cloth::step. This is a fresh direct two-subcase arithmetic component; no garment or old-case state.",
+  "caps": {
+    "retained_output_bytes": 8388608,
+    "sampled_process_group_plus_controller_RSS_bytes": 1073741824,
+    "whole_command_seconds_including_compile": 120
+  },
+  "compiler_tools_hashed_not_invoked_for_probing": {
+    "cargo": {
+      "path": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "sha256": "532141271ce821135f63822c21fcd76c7972cbf69c19bc35e6ca8b00fcd5c40e"
+    },
+    "rustc": {
+      "path": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+      "sha256": "b69cbcffa5e990057035d53ccc8163e8392ce784f6abb114c19ceb61528ba9f6"
+    },
+    "rustdoc": {
+      "path": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+      "sha256": "63f095b26810d1f78a683edd1e10d8bbaea00f044e27cc189416f10f8080f13a"
+    }
+  },
+  "cwd": "<ROOT>/.local/positive-target-sewing-component-20261117",
+  "initial_target_exists": true,
+  "pinned_environment": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_ENCODED_RUSTDOCFLAGS": "",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/positive-target-sewing-component-20261117/target",
+    "HOME": "<HOME>",
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8",
+    "LOGNAME": "<ACCOUNT>",
+    "PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONOPTIMIZE": "0",
+    "RUSTC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTDOC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+    "RUSTDOCFLAGS": "",
+    "RUSTFLAGS": "",
+    "RUSTUP_TOOLCHAIN": "1.94.1",
+    "TMPDIR": "<TMPDIR>/",
+    "USER": "<ACCOUNT>"
+  },
+  "wrappers_and_foreign_flags_refused": true
+}

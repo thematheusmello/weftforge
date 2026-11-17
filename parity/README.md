@@ -40,6 +40,24 @@ with the working tree; changed inputs require a rerun or explicit stale status a
 a `freshness_reason`. An old baseline may remain in a stale report. A current
 report must match the registry's current baseline.
 
+An incomplete `implementation_only` report may retain a private tested `commit`
+through an explicit `public_source_equivalence` artifact descriptor, including in
+a public clone where that original object is unavailable.
+Its hash-bound proof must identify that tested revision, a public source-equivalent
+revision, all 88 original source hashes/modes, the actual source-gate freeze,
+result/final manifest and safe public integration receipt. Those records and the
+public Git tree must agree exactly; every reported source hash must belong to the
+original roster. When the tested object is available locally, its complete 88-input
+Git tree entries (paths, modes and blob IDs) must also match the public tree.
+Directory scope and current-source checks still apply. This is a
+source lookup bridge, not execution on the public revision. Generated evidence
+keeps the actual tested identity and labels public source links as source-equivalent.
+Reports without this explicit proof retain the original tested-commit checks.
+The bridge rejects reference qualifications and reference/full-contract/full-workflow
+promotion; it never substitutes public registry/reference metadata for tested
+reference qualification. Such comparisons still require their original tested
+metadata and the existing qualification checks.
+
 A feature marked current needs at least one current source-qualified run. A
 passing feature cannot hide any current failed scene, including by dropping its
 run reference. Historical stale failures do not block a new current pass. A stale

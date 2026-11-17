@@ -1,0 +1,220 @@
+{
+  "deadline": 1038757.226469541,
+  "experiment": "WF-20261117-SEWING-HISTORY-HARBOR-A8-001",
+  "final_numerical_receipt_sha256": "8eaf00390abfdb05ebc22bfef7cae9f99f9e4ac5ccb46fd75534b6f539c87a89",
+  "finalization_process_end_monotonic_seconds": 1038670.602156625,
+  "native_or_reference_acceptance": false,
+  "root_go_sha256": "785a178aee15b28581e23b3c601748e92ae8fc4cebd066ac26d94731a8ae23ea",
+  "source_commit": "40817073cd38e58a8438bb397d09a0ab9d95f9bb",
+  "stages": [
+    {
+      "argv": [
+        "<ROOT>/.local/positive-target-sewing-component-20261117/target/release/harbor-coupled-producer",
+        "prepare",
+        "inputs/base.weftforge",
+        "preflight-base"
+      ],
+      "end_monotonic_seconds": 1038338.698528083,
+      "exit_code": 0,
+      "name": "init-only",
+      "peak_rss_bytes": 8093696,
+      "pid": 71703,
+      "process_group": 71703,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.059007624979130924,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 14,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 8028160,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1038757.226469541,
+        "output_bytes": 916419,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    },
+    {
+      "argv": [
+        "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+        "-B",
+        "<ROOT>/.local/positive-target-sewing-component-20261117/.local/harbor-sewing-history-preparation-20261117/worker.py",
+        "metadata",
+        "--deadline",
+        "1038757.226469541"
+      ],
+      "end_monotonic_seconds": 1038339.50748825,
+      "exit_code": 0,
+      "name": "metadata",
+      "peak_rss_bytes": 36225024,
+      "pid": 71732,
+      "process_group": 71732,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.06513379199896008,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 14,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 35635200,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1038757.226469541,
+        "output_bytes": 1510006,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    },
+    {
+      "argv": [
+        "<ROOT>/.local/positive-target-sewing-component-20261117/target/release/harbor-coupled-producer",
+        "run",
+        "inputs/base.weftforge",
+        "runs/base",
+        "expected/approved-metadata.json"
+      ],
+      "end_monotonic_seconds": 1038628.707784625,
+      "exit_code": 0,
+      "name": "producer",
+      "peak_rss_bytes": 11304960,
+      "pid": 71769,
+      "process_group": 71769,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [
+          {
+            "at_monotonic_seconds": 1038468.443660791,
+            "consecutive_failures": 1,
+            "kind": "TimeoutExpired",
+            "pid": 71769,
+            "timeout_seconds": 1.0
+          },
+          {
+            "at_monotonic_seconds": 1038489.25449875,
+            "consecutive_failures": 1,
+            "kind": "TimeoutExpired",
+            "pid": 71769,
+            "timeout_seconds": 1.0
+          },
+          {
+            "at_monotonic_seconds": 1038491.242263458,
+            "consecutive_failures": 2,
+            "kind": "TimeoutExpired",
+            "pid": 71769,
+            "timeout_seconds": 1.0
+          },
+          {
+            "at_monotonic_seconds": 1038511.410548791,
+            "consecutive_failures": 1,
+            "kind": "TimeoutExpired",
+            "pid": 71769,
+            "timeout_seconds": 1.0
+          }
+        ],
+        "failures": 4,
+        "max_consecutive_failures": 2,
+        "max_snapshot_gap_seconds": 14.558370708022267,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 3693,
+        "timeouts": 4
+      },
+      "sampled_peak_rss_bytes": 11304960,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1038757.226469541,
+        "output_bytes": 17941848,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    },
+    {
+      "argv": [
+        "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+        "-B",
+        "<ROOT>/.local/positive-target-sewing-component-20261117/.local/harbor-sewing-history-preparation-20261117/worker.py",
+        "analyze",
+        "--deadline",
+        "1038757.226469541"
+      ],
+      "end_monotonic_seconds": 1038668.564189333,
+      "exit_code": 2,
+      "name": "analysis",
+      "peak_rss_bytes": 38862848,
+      "pid": 86985,
+      "process_group": 86985,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.17681279103271663,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 683,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 38862848,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1038757.226469541,
+        "output_bytes": 18947651,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    },
+    {
+      "argv": [
+        "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+        "-B",
+        "<ROOT>/.local/positive-target-sewing-component-20261117/.local/harbor-sewing-history-preparation-20261117/worker.py",
+        "finalize",
+        "--deadline",
+        "1038757.226469541"
+      ],
+      "end_monotonic_seconds": 1038670.602156625,
+      "exit_code": 0,
+      "name": "finalization",
+      "peak_rss_bytes": 36339712,
+      "pid": 89185,
+      "process_group": 89185,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.07674895797390491,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 34,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 36339712,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1038757.226469541,
+        "output_bytes": 18957029,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    }
+  ],
+  "started": 1038337.226469541,
+  "status": "pending_post_persistence_terminal_verdict",
+  "strict_quality_passed": false
+}

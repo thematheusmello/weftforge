@@ -1,0 +1,69 @@
+Diff in <ROOT>/.local/positive-target-sewing-component-20261117/crates/weftforge-sim/src/tests.rs:863:
+     assert_eq!(x[0], before[0]);
+     assert_eq!(x[2], before[2]);
+     let difference = sub(stitch.a.position(&x), stitch.b.position(&x));
+-    let force = mul(difference, -3. * (length(difference) - 0.75) / length(difference));
++    let force = mul(
++        difference,
++        -3. * (length(difference) - 0.75) / length(difference),
++    );
+     assert!(length(sub(mul(sub(x[1], before[1]), 16.), force)) <= 1e-14);
+     assert!(length(sub(mul(lambda, 3.), force)) <= 1e-14);
+ }
+Diff in <ROOT>/.local/positive-target-sewing-component-20261117/crates/weftforge-sim/src/tests.rs:909:
+         x = pinned;
+         lambda = [2., 3., 4.];
+         constraints::solve_stitch(
+-            Stitch { compliance, ..stitch },
++            Stitch {
++                compliance,
++                ..stitch
++            },
+             target,
+             &mut x,
+             &[0.; 2],
+Diff in <ROOT>/.local/positive-target-sewing-component-20261117/crates/weftforge-sim/src/tests.rs:922:
+     x = [[1., 0., 0.], [0.; 3]];
+     lambda = [0.; 3];
+     constraints::solve_stitch(
+-        Stitch { compliance: 1e-20, ..stitch },
++        Stitch {
++            compliance: 1e-20,
++            ..stitch
++        },
+         f64::MAX,
+         &mut x,
+         &[1e-21, 0.],
+Diff in <ROOT>/.local/positive-target-sewing-component-20261117/crates/weftforge-sim/src/tests.rs:953:
+     let norm = |v: Vec3| (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
+     for _ in 0..32 {
+         for i in 0..2 {
+-            assert!(norm(x[0]) > 1e-6, "fixture stays away from radial singularity");
++            assert!(
++                norm(x[0]) > 1e-6,
++                "fixture stays away from radial singularity"
++            );
+             let before = x[0];
+             constraints::solve_stitch(
+                 stitches[i],
+Diff in <ROOT>/.local/positive-target-sewing-component-20261117/crates/weftforge-sim/src/tests.rs:1001:
+     let forces = independent_forces(x[0]);
+     let expected_forces = independent_forces(expected);
+     let stationarity = std::array::from_fn(|axis| {
+-        mass * (x[0][axis] - predictor[axis]) / (h * h)
+-            - forces[0][axis]
+-            - forces[1][axis]
++        mass * (x[0][axis] - predictor[axis]) / (h * h) - forces[0][axis] - forces[1][axis]
+     });
+     let oracle_stationarity = std::array::from_fn(|axis| {
+         expected[axis] - predictor[axis] - expected_forces[0][axis] - expected_forces[1][axis]
+Diff in <ROOT>/.local/positive-target-sewing-component-20261117/crates/weftforge-sim/src/tests.rs:1010:
+     });
+     let action_error = std::array::from_fn::<_, 2, _>(|i| {
+-        norm(std::array::from_fn(|axis| applied_action[i][axis] - forces[i][axis]))
++        norm(std::array::from_fn(|axis| {
++            applied_action[i][axis] - forces[i][axis]
++        }))
+     });
+     let radius = norm(x[0]);
+     let history_force = lambda.map(|history| history.map(|value| value / (h * h)));

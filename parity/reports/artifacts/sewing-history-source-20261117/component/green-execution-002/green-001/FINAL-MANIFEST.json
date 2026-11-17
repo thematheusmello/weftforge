@@ -1,0 +1,94 @@
+{
+  "GREEN_GO_sha256": "f7995fd1f0d573f38270f5717259127c792dd868593794d2261802cc1d89fc1f",
+  "actual_GREEN_Cargo_invocations": 1,
+  "command_fsynced_seconds": 5.82103566697333,
+  "execution_freeze_sha256": "cf4372d9e3536f0c4c4454cdf181a147aebd483ed132e4e3829d4b0acca337db",
+  "external_terminal_witness_seconds": 63.47255295899231,
+  "files": {
+    "EXECUTION-FREEZE.json": {
+      "bytes": 1205,
+      "mode": "0o644",
+      "sha256": "cf4372d9e3536f0c4c4454cdf181a147aebd483ed132e4e3829d4b0acca337db"
+    },
+    "GREEN-GO.json": {
+      "bytes": 2404,
+      "mode": "0o644",
+      "sha256": "f7995fd1f0d573f38270f5717259127c792dd868593794d2261802cc1d89fc1f"
+    },
+    "GREEN-SOURCE-FREEZE.json": {
+      "bytes": 16878,
+      "mode": "0o644",
+      "sha256": "bd6dd229d6bd59eeda629c6bbab9ad8ce8741352681ccf3cc53ba776a644e1e5"
+    },
+    "green-001/CHILD-STARTED.json": {
+      "bytes": 1210,
+      "mode": "0o600",
+      "sha256": "dd45817c116f797250a4133f2c3e67ef507e9c2777638ea0f62eb568f58d84e9"
+    },
+    "green-001/COMMAND.json": {
+      "bytes": 2741,
+      "mode": "0o600",
+      "sha256": "349fea8c3e0657f6748269e78e5fafe7f473cbd67d956b986c736b0fbc8da756"
+    },
+    "green-001/PERSISTENCE-CLOCK.json": {
+      "bytes": 301,
+      "mode": "0o600",
+      "sha256": "f90c7ffbe4ce11a8cacbccf0c3c6759edd52f06f16ca2e4136c02eaaeaf0d16d"
+    },
+    "green-001/POST-GUARD.json": {
+      "bytes": 350,
+      "mode": "0o600",
+      "sha256": "56a38a6fe8e334707d2276eab88b30ed71088965acdb7376dfea76f7101aaf38"
+    },
+    "green-001/PRE-GUARD.json": {
+      "bytes": 350,
+      "mode": "0o600",
+      "sha256": "56a38a6fe8e334707d2276eab88b30ed71088965acdb7376dfea76f7101aaf38"
+    },
+    "green-001/RESULT.json": {
+      "bytes": 2111,
+      "mode": "0o600",
+      "sha256": "3a5acf5b87e1939d09fb44c8e6627258bff81cce28c90ff70cf011aa111bb0e2"
+    },
+    "green-001/STARTED.json": {
+      "bytes": 129,
+      "mode": "0o600",
+      "sha256": "efd2758899a5515cb245b0bfddf200b19d5778f0f511d51eda91c2518e014e49"
+    },
+    "green-001/TERMINAL-WITNESS.json": {
+      "bytes": 492,
+      "mode": "0o644",
+      "sha256": "47f75077dc0411ab047ed6ffaba32c1d5865ce852f7c110f8f577fa6799f6ac8"
+    },
+    "green-001/stderr.txt": {
+      "bytes": 316,
+      "mode": "0o644",
+      "sha256": "1f91b6a1b1e538372c44126a75afde75056678251ff52ec315aec12dc34d60eb"
+    },
+    "green-001/stdout.txt": {
+      "bytes": 1341,
+      "mode": "0o644",
+      "sha256": "79e56850733223b3ad96b4e20cd11b778851d5fcdba56ee6230b02d265a0bd2d"
+    },
+    "resources.py": {
+      "bytes": 12679,
+      "mode": "0o644",
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781"
+    },
+    "run_green.py": {
+      "bytes": 7599,
+      "mode": "0o644",
+      "sha256": "b999dbb3e39fe0a9b1111ea69788c33fc23f9186446828642c22e44929ad481f"
+    }
+  },
+  "owned_controller_and_Cargo_PIDs_absent": true,
+  "post_source88_test_fixture_oracle_GO_exact": true,
+  "resource_stop_reason": null,
+  "result_sha256": "3a5acf5b87e1939d09fb44c8e6627258bff81cce28c90ff70cf011aa111bb0e2",
+  "source_commit": "03f4a2df883581dc5f34ddc361bc9327b71ba6b0",
+  "source_freeze_sha256": "bd6dd229d6bd59eeda629c6bbab9ad8ce8741352681ccf3cc53ba776a644e1e5",
+  "status": "CLOSED_ONE_ACTUAL_GREEN_PASSED",
+  "test_summaries": [
+    "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 70 filtered out; finished in 0.00s"
+  ]
+}

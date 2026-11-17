@@ -1,0 +1,112 @@
+{
+  "files": {
+    "FREEZE.json": {
+      "bytes": 1833,
+      "sha256": "488a2a2df72b967c2ae70a94931a23b7d6e08f040d57ebab3866517f029493f2"
+    },
+    "run_checks.py": {
+      "bytes": 4338,
+      "sha256": "e0cc2cb8d094be82760236a30dd559445145888866be51b8fe2096695de3e3c5"
+    },
+    "runtime/PERSISTENCE-CLOCK.json": {
+      "bytes": 161,
+      "sha256": "5d575d066dd443b1d6eb08a7ab9a344755706d414fb717ac77041f434e1cf77b"
+    },
+    "runtime/RESULT.json": {
+      "bytes": 4950,
+      "sha256": "cc0bbb15c1ca4c74f5744a5ed50a2b9bb911534d6a6ec4fe3ee0811f47fe9414"
+    },
+    "runtime/STARTED.json": {
+      "bytes": 1399,
+      "sha256": "c56b6f12b0a7b5b1157c53829664076fbfe5dba2b1186411e26c05901b8aa5a2"
+    },
+    "runtime/TERMINAL-WITNESS.json": {
+      "bytes": 444,
+      "sha256": "9a33be99455e0cd2e066665483db9b6081fe9040337f1c68b5c1ea88f92a0ee2"
+    },
+    "runtime/fmt-POST-GUARD.json": {
+      "bytes": 110,
+      "sha256": "b5e6114a0447c43ef4d8822dfa72b4f7fcf429f47f2628e0ded878573bf37d3a"
+    },
+    "runtime/fmt-PRE-GUARD.json": {
+      "bytes": 110,
+      "sha256": "b5e6114a0447c43ef4d8822dfa72b4f7fcf429f47f2628e0ded878573bf37d3a"
+    },
+    "runtime/fmt-RECEIPT.json": {
+      "bytes": 1277,
+      "sha256": "a39a7dd1e2d9d0e7c37d6f89b2d7ec7468c4ddd4b6c4aafba4591c364f9264c5"
+    },
+    "runtime/fmt-STARTED.json": {
+      "bytes": 1033,
+      "sha256": "d2932472b3b4692d2042ea7856651bd378081e1910c0d9b2d089b15fdbb23071"
+    },
+    "runtime/fmt.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "runtime/fmt.stdout": {
+      "bytes": 3390,
+      "sha256": "4733aa04a22ba7047679b377cc000e1a5bf71638dbb542626476963f5e120f37"
+    },
+    "runtime/rollback-POST-GUARD.json": {
+      "bytes": 110,
+      "sha256": "b5e6114a0447c43ef4d8822dfa72b4f7fcf429f47f2628e0ded878573bf37d3a"
+    },
+    "runtime/rollback-PRE-GUARD.json": {
+      "bytes": 110,
+      "sha256": "b5e6114a0447c43ef4d8822dfa72b4f7fcf429f47f2628e0ded878573bf37d3a"
+    },
+    "runtime/rollback-RECEIPT.json": {
+      "bytes": 1451,
+      "sha256": "09abdf783d9cd3716a51ecbdd34538fd27ad3ee7b24b600d0037da64b69f1bf7"
+    },
+    "runtime/rollback-STARTED.json": {
+      "bytes": 1205,
+      "sha256": "fb1c74bb86157cb598e006c36572e09ce6ac418f0ebf97fa591dd6cc52f9ae28"
+    },
+    "runtime/rollback.stderr": {
+      "bytes": 146,
+      "sha256": "4a0f3ac444638789c061141307e0ac861df0a2570a28d7f2bacbd38485c2395f"
+    },
+    "runtime/rollback.stdout": {
+      "bytes": 196,
+      "sha256": "e687eab91b6959d64e1b62e5954ef0c4b22a9c5125b0ab562acad579afe38df8"
+    },
+    "runtime/stitches-POST-GUARD.json": {
+      "bytes": 110,
+      "sha256": "b5e6114a0447c43ef4d8822dfa72b4f7fcf429f47f2628e0ded878573bf37d3a"
+    },
+    "runtime/stitches-PRE-GUARD.json": {
+      "bytes": 110,
+      "sha256": "b5e6114a0447c43ef4d8822dfa72b4f7fcf429f47f2628e0ded878573bf37d3a"
+    },
+    "runtime/stitches-RECEIPT.json": {
+      "bytes": 1471,
+      "sha256": "67fed79ddbe207d982a5f9731d25eaaf3a809c5677a50dd73f622c045f0e95d8"
+    },
+    "runtime/stitches-STARTED.json": {
+      "bytes": 1223,
+      "sha256": "f05a4123e9f02acfbc4370d324652bd0b82932c3eb96901b6c69f9e5636c4241"
+    },
+    "runtime/stitches.stderr": {
+      "bytes": 146,
+      "sha256": "e9a823391d4f458e59d37dd55d0634a5fb018041f90f52726e12895f5f5be428"
+    },
+    "runtime/stitches.stdout": {
+      "bytes": 2288,
+      "sha256": "4025179935fe526f467121ef3a296c9069aa0555abcf350e0483d16e92212dd7"
+    }
+  },
+  "first_test_summary": "12stitch passed;1generalrollback passed;0N32 rerun",
+  "fmt_changes_applied": false,
+  "fmt_exit_code": 1,
+  "owned_PIDs_absent": {
+    "61550": true,
+    "61677": true,
+    "61687": true,
+    "61695": true
+  },
+  "source88_and_inputs_exact_after_every_executed_stage": true,
+  "source_commit": "03f4a2df883581dc5f34ddc361bc9327b71ba6b0",
+  "status": "CLOSED_TESTS_GREEN_FMT_LAYOUT_FAILURE_CLIPPY_NOT_STARTED"
+}

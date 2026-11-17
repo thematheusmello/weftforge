@@ -1,0 +1,25 @@
+{
+  "ROOT_GO_sha256": "6aec6f033a522a8d2015d9d6a092dc8dc0bece9fe01f99eac5a2b10cc9c8d7cb",
+  "RSS_bytes": 1073741824,
+  "SOURCE_ONLY_FREEZE_sha256": "d86c34a9c40816e514a76f8906a3db7b8c19eb4534ca5da82eda5f8ca5a45351",
+  "accepted_resources_origin": "<ROOT>/.local/bend-inspector-workspace-gates-20261117/resources.py",
+  "accepted_resources_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+  "added_control_files": {
+    "resources.py": {
+      "mode": "0o644",
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781"
+    },
+    "run_red.py": {
+      "mode": "0o644",
+      "sha256": "ba39aea895b64ece47961181108ae1a4f6054ac7d1ec34d5697ff5e096ae2175"
+    }
+  },
+  "at_utc": "2026-11-17T09:56:37.983301+00:00",
+  "attempts": 1,
+  "caller_correction_from_root_GO": "Actual sole production caller is Cloth::step, not PLAN step_cancellable; frozen plan preserved.",
+  "no_selftests_or_probe_commands": true,
+  "output_bytes": 8388608,
+  "previous_case_closed_manifest_sha256": "a2a3686cb2a08cdedf6c11806c6bfc79e32432fe1c789f82752bfd5f542da65e",
+  "status": "AUTHORIZED_ONE_FROZEN_RED_COMMAND_READY",
+  "whole_command_seconds": 120
+}

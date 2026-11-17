@@ -1,0 +1,76 @@
+{
+  "actual_edge_test_invocations": 1,
+  "files": {
+    "EDGE-PLAN.json": {
+      "bytes": 1932,
+      "sha256": "a3887013d8736708cd3ef9a675eb79539143b4597a194ae5d6e1479f18548a5b"
+    },
+    "EDGE-RED-GO.json": {
+      "bytes": 1963,
+      "sha256": "9e823d9c6fbfc56bf40fd12cdc9e9b65ea91eea26514ea79f20b5fdeb2ae16a7"
+    },
+    "EDGE-RED-SOURCE-FREEZE.json": {
+      "bytes": 17438,
+      "sha256": "471eee438e3ffd55b5c6212dd797903eb64e53e6a96825636c0cfff1465886e5"
+    },
+    "EXECUTION-FREEZE.json": {
+      "bytes": 1455,
+      "sha256": "3070f6f36c6dc423635793b7697776233d2f15c7bcaf0235b9fe4ce22980b091"
+    },
+    "red-001/CHILD-STARTED.json": {
+      "bytes": 1206,
+      "sha256": "e5edcb5545b84c7297faa116f716ec76832a263fdd9fada03b2ec789cbe870ca"
+    },
+    "red-001/COMMAND.json": {
+      "bytes": 2624,
+      "sha256": "e4ab6d8ba06197fc494e9a03b0ec5ddfdce0773c17708a6c4c23b7bc6b3a3676"
+    },
+    "red-001/PERSISTENCE-CLOCK.json": {
+      "bytes": 302,
+      "sha256": "68fe2058cfc7311d7af2f4c1af22ae1136c83dccf0980793bd7bd1b03abfb58f"
+    },
+    "red-001/POST-GUARD.json": {
+      "bytes": 350,
+      "sha256": "609aa6359dcb1c063fb8db7c8698416dd2e1ed715ee01118db572893300f7d4a"
+    },
+    "red-001/PRE-GUARD.json": {
+      "bytes": 350,
+      "sha256": "609aa6359dcb1c063fb8db7c8698416dd2e1ed715ee01118db572893300f7d4a"
+    },
+    "red-001/RESULT.json": {
+      "bytes": 2113,
+      "sha256": "131f8365af375af2b7317d2e869605bac2a56a6fb7fc2882bcf5c134eb4bc007"
+    },
+    "red-001/STARTED.json": {
+      "bytes": 129,
+      "sha256": "36605c437ac3530ac783e04b1f51bc9504986d32b760ba2cc913b6b51cf91a90"
+    },
+    "red-001/TERMINAL-WITNESS.json": {
+      "bytes": 382,
+      "sha256": "395d7d69da06a5569259b1fa746701d702cf065745ff280067ed530f0d41d961"
+    },
+    "red-001/stderr.txt": {
+      "bytes": 629,
+      "sha256": "4afb7bad016e9bddded752aa06514cc95db725bb527b23a5d8c269f1cdf62d35"
+    },
+    "red-001/stdout.txt": {
+      "bytes": 1389,
+      "sha256": "d5aba68a3eb8a581f1f03a93d845f4ed01493ef64734462e567338842b131f6c"
+    },
+    "resources.py": {
+      "bytes": 12679,
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781"
+    },
+    "run_edge_red.py": {
+      "bytes": 8158,
+      "sha256": "209c16e9056b7b3b88bc392d6ecc0cec1a28b9142caa57be9c3500b08587d436"
+    }
+  },
+  "old_N32_not_run": true,
+  "production51dc_unchanged": true,
+  "source_commit": "c2e9d80352e6dab068bc28604d328f8bd1e43c6b",
+  "status": "CLOSED_FIRST_ACTUAL_EDGE_RED_REPRODUCED",
+  "test_summaries": [
+    "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 71 filtered out; finished in 0.00s"
+  ]
+}

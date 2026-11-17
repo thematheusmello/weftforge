@@ -29,21 +29,99 @@ def local(path):
         raise ValueError(f'missing or nonpublic evidence path: {path}')
     return p
 
-def source_paths(report, current=False):
+def source_lookup_commit(report):
+    """A complete 88-input bridge preserves the tested identity of private runs."""
+    if 'public_source_equivalence' not in report:
+        return report['commit']
+
+    def require(condition, message):
+        if not condition:
+            raise ValueError(f"{report['id']}: public source equivalence {message}")
+
+    require(report['kind'] == 'implementation_only' and not any(report.get(key, False) for key in
+            ['complete_contract', 'reference_executed', 'reference_verified',
+             'single_identified_candidate_workflow', 'full_feature_accepted',
+             'full_garment_accepted', 'physics_accepted', 'roadmap_accepted']) and
+            'reference_qualification' not in report, 'cannot qualify reference or full workflow')
+
+    def artifact(descriptor, keys):
+        require(type(descriptor) is dict and set(descriptor) == keys, 'descriptor fields differ')
+        path, digest = descriptor['path'], descriptor['sha256']
+        public_path(path)
+        require(report['artifact_hashes'].get(path) == digest and
+                hashlib.sha256(local(path).read_bytes()).hexdigest() == digest,
+                'artifact hash differs')
+        return json.loads(local(path).read_text())
+
+    proof = artifact(report['public_source_equivalence'], {'path', 'sha256'})
+    public = proof['public_commit']
+    hashes = proof['source_hashes']
+    require(proof['kind'] == 'implementation_source_equivalence' and
+            proof['tested_commit'] == report['commit'] and
+            re.fullmatch(r'[0-9a-f]{40}', public) is not None and public != report['commit'] and
+            type(proof['source_count']) is int and proof['source_count'] == len(hashes) == 88 and
+            proof['source_modes'] == dict.fromkeys(hashes, '0644'), 'complete source roster differs')
+    require(set(report['source_hashes']) <= hashes.keys() and
+            all(hashes[path] == digest for path, digest in report['source_hashes'].items()),
+            'report source hashes differ from original inputs')
+    require(set(proof['anchors']) == {'source_gate_freeze', 'source_gate_result',
+            'source_gate_final_manifest', 'source_integration_receipt'}, 'evidence roster differs')
+    evidence = {name: artifact(value, {'path', 'sha256', 'original_sha256'})
+                for name, value in proof['anchors'].items()}
+    frozen, result = evidence['source_gate_freeze'], evidence['source_gate_result']
+    final, integration = evidence['source_gate_final_manifest'], evidence['source_integration_receipt']
+    require(frozen['commit'] == result['commit'] == final['commit'] == report['commit'] and
+            frozen['source88'] == result['source88'] == hashes and
+            all(frozen['input_modes'][path] == int(proof['source_modes'][path], 8)
+                for path in hashes) and
+            result['source_freeze_sha256'] == final['source_freeze_sha256'] ==
+                proof['anchors']['source_gate_freeze']['original_sha256'] and
+            final['result_sha256'] == proof['anchors']['source_gate_result']['original_sha256'] and
+            result['all4_stages_passed'] is True and final['all4_stages_passed'] is True and
+            integration['integration_commit'] == public and
+            integration['all88_origin_gate_public_hashes_exact'] is True and
+            set(integration['source88_mapping']) == hashes.keys() and
+            all(entry['source_gate_sha256'] == entry['public_integration_sha256'] == hashes[path]
+                for path, entry in integration['source88_mapping'].items()), 'frozen source evidence differs')
+    subprocess.run(['git', 'cat-file', '-e', public + '^{commit}'], cwd=ROOT, check=True,
+                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    tree = subprocess.check_output(['git', 'ls-tree', '-r', '-z', public, '--', *hashes], cwd=ROOT)
+    modes = {entry.split(b'\t', 1)[1].decode(): entry.split(b' ', 1)[0].decode()
+             for entry in tree.split(b'\0') if entry}
+    require(modes == dict.fromkeys(hashes, '100644'), 'public source paths or modes differ')
+    available = subprocess.run(['git', 'cat-file', '-e', report['commit'] + '^{commit}'], cwd=ROOT,
+                               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
+    if available:
+        tested_tree = subprocess.check_output(
+            ['git', 'ls-tree', '-r', '-z', report['commit'], '--', *hashes], cwd=ROOT)
+        require(tested_tree == tree, 'available tested tree differs from public inputs')
+    for path, digest in hashes.items():
+        public_path(path)
+        require(re.fullmatch(r'[0-9a-f]{64}', digest) is not None and
+                hashlib.sha256(subprocess.check_output(
+                    ['git', 'show', public + ':' + path], cwd=ROOT)).hexdigest() == digest,
+                'public tree differs from original inputs')
+    return public
+
+
+def source_paths(report, current=False, commit=None):
     """Directory scopes detect added/deleted inputs as well as changed files."""
     for path in [*report['source_hashes'], *report['source_scope']]:
         public_path(path)
     command = (['git', 'ls-files', '--cached', '--others', '--exclude-standard', '-z', '--'] if current
-               else ['git', 'ls-tree', '-r', '--name-only', '-z', report['commit'], '--'])
+               else ['git', 'ls-tree', '-r', '--name-only', '-z', commit or report['commit'], '--'])
     paths = subprocess.check_output(command + report['source_scope'], cwd=ROOT).decode().split('\0')
     return {path for path in paths if path and (not current or (ROOT / path).is_file())}
 
 def validate_sources(report):
+    commit = source_lookup_commit(report)
+    subprocess.run(['git', 'cat-file', '-e', commit + '^{commit}'], cwd=ROOT,
+                   check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     for path, digest in report['source_hashes'].items():
-        committed = subprocess.check_output(['git', 'show', report['commit'] + ':' + path], cwd=ROOT)
+        committed = subprocess.check_output(['git', 'show', commit + ':' + path], cwd=ROOT)
         if hashlib.sha256(committed).hexdigest() != digest:
             raise ValueError(f"{report['id']}: source does not match tested commit {path}")
-    scoped = source_paths(report)
+    scoped = source_paths(report, commit=commit)
     if not scoped or not scoped <= report['source_hashes'].keys():
         raise ValueError(f"{report['id']}: source scope lacks tested source identities")
     if any(not any(path == scope or path.startswith(scope + '/') for path in scoped)
@@ -189,8 +267,6 @@ def validate(data):
         if report['id'] in report_ids:
             raise ValueError(f"duplicate run ID: {report['id']}")
         report_ids.add(report['id'])
-        subprocess.run(['git', 'cat-file', '-e', report['commit'] + '^{commit}'], cwd=ROOT,
-                       check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         scoped = validate_sources(report)
         for artifact, digest in report['artifact_hashes'].items():
             if hashlib.sha256(local(artifact).read_bytes()).hexdigest() != digest:
@@ -320,13 +396,23 @@ def generate(data, reference):
     lines+=['','## Latest attributable runs','']
     run_rows = []
     for path, r in runs:
-        lines.append(f"- [{r['id']}]({BASE}/blob/main/parity/reports/{path.name}): {r['kind']}, {r['status']}, **{r['freshness']}**, commit `{r['commit']}`, {r['platform']}, {r['timestamp']}." + (f" {r['freshness_reason']}" if r['freshness'] == 'stale' else ''))
+        lookup = source_lookup_commit(r)
+        bridged = 'public_source_equivalence' in r
+        equivalent = (f" Source-equivalent public revision `{lookup}` (not executed); "
+                      f"[provenance]({BASE}/blob/main/{r['public_source_equivalence']['path']})."
+                      if bridged else '')
+        commit_label = 'tested commit' if bridged else 'commit'
+        lines.append(f"- [{r['id']}]({BASE}/blob/main/parity/reports/{path.name}): {r['kind']}, {r['status']}, **{r['freshness']}**, {commit_label} `{r['commit']}`, {r['platform']}, {r['timestamp']}." + equivalent + (f" {r['freshness_reason']}" if r['freshness'] == 'stale' else ''))
         sources = []
         for scope in r['source_scope']:
             view = 'tree' if any(source.startswith(scope + '/') for source in r['source_hashes']) else 'blob'
-            sources.append(f'<a href="{html.escape(BASE + "/" + view + "/" + r["commit"] + "/" + scope)}">{html.escape(scope)}</a>')
+            label = ('source-equivalent: ' if bridged else '') + scope
+            sources.append(f'<a href="{html.escape(BASE + "/" + view + "/" + lookup + "/" + scope)}">{html.escape(label)}</a>')
         reason = '<p>' + html.escape(r['freshness_reason']) + '</p>' if r['freshness'] == 'stale' else ''
-        run_rows.append(f'<li><a href="{html.escape(BASE + "/blob/main/parity/reports/" + path.name)}">{html.escape(r["id"])}</a>: {html.escape(r["kind"])}, <strong>{r["status"]} / {r["freshness"]}</strong>; tested commit <a href="{BASE}/commit/{r["commit"]}"><code>{r["commit"]}</code></a>; {html.escape(r["timestamp"])}; {html.escape(r["platform"])}; baseline {html.escape(r["reference_baseline"])}.{reason}<details><summary>Relevant source scope</summary>{" · ".join(sources)}</details></li>')
+        identity = (f'<code>{r["commit"]}</code>; source-equivalent public revision '
+                    f'<a href="{BASE}/commit/{lookup}"><code>{lookup}</code></a> (not executed)'
+                    if bridged else f'<a href="{BASE}/commit/{r["commit"]}"><code>{r["commit"]}</code></a>')
+        run_rows.append(f'<li><a href="{html.escape(BASE + "/blob/main/parity/reports/" + path.name)}">{html.escape(r["id"])}</a>: {html.escape(r["kind"])}, <strong>{r["status"]} / {r["freshness"]}</strong>; tested commit {identity}; {html.escape(r["timestamp"])}; {html.escape(r["platform"])}; baseline {html.escape(r["reference_baseline"])}.{reason}<details><summary>Relevant source scope</summary>{" · ".join(sources)}</details></li>')
     markdown='\n'.join(lines).rstrip()+'\n'
     dashboard='''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>WeftForge progress</title><style>body{font:16px system-ui;background:#111b24;color:#dbe9ec;margin:3rem auto;max-width:1250px;padding:0 1rem}a{color:#7dd9ba}h1{font-size:3rem;margin-bottom:.2em}.count{font-size:2rem;color:#7dd9ba}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:.7em;border-bottom:1px solid #33414c}input{padding:.8em;width:95%;background:#24313d;color:white;border:1px solid #667985;border-radius:6px}small{color:#abc}tr[hidden]{display:none}</style><h1>WeftForge</h1><p>Open garment design. Patterns, fabric, and freedom.</p>'''
     dashboard+=f'<p class="count">{sum(verified.values())} / {n} inventoried contracts verified against reference</p><p>{implementations["partial"]} partial implementations; {implementations["implemented"]} implemented. Discovery incomplete; full-product denominator unknown.</p><p>Baseline {html.escape(reference["baseline_id"])} revision {reference["baseline_revision"]}: {html.escape(reference["baseline_status"])}. Implementation-only tests never establish parity.</p><p><a href="{BASE}/blob/main/docs/progress.md">Evidence and gaps</a> · <a href="{BASE}/blob/main/ROADMAP.md">Roadmap</a> · <a href="{BASE}/issues">Issues</a> · <a href="{BASE}/actions">CI</a> · <a href="{BASE}/releases">Releases</a></p>'

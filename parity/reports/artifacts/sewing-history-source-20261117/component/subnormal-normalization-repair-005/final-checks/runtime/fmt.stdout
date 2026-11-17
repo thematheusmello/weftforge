@@ -1,0 +1,10 @@
+Diff in <ROOT>/.local/positive-target-sewing-component-20261117/crates/weftforge-sim/src/tests.rs:974:
+              x_m={x:?}\nhistory_kg_m={history:?}\nexpected_m={expected:?}\n\
+              radius_m={radius}\nindependent_force_N={force:?}\n\
+              independent_stationarity_N={residual:?}\nposition_radius_force_errors={:?}",
+-            anchors[i],
+-            errors[i]
++            anchors[i], errors[i]
+         );
+         assert_eq!(x[1], [0.; 3]);
+         assert!(x.into_iter().flatten().all(f64::is_finite));

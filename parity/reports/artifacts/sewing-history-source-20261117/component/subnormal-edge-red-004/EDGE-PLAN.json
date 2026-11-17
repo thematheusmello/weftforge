@@ -1,0 +1,46 @@
+{
+  "attempts": 1,
+  "caps": {
+    "retained_output_bytes": 8388608,
+    "sampled_process_group_plus_controller_RSS_bytes": 1073741824,
+    "whole_command_seconds_including_compile": 120
+  },
+  "expected_first_result": "unexecuted edge hypothesis; stop if not reproduced",
+  "experiment": "WF-20261117-SUBNORMAL-STITCH-DIRECTION-001",
+  "fixture_sha256": "733f60e46f96bb457ad8ac28f58cf14db0a5d9d3d775cd20e3609a0cea3f77b6",
+  "no_hidden_runs_or_selftests": true,
+  "old_N32_and_assertions_unchanged": true,
+  "oracle_sha256": "1e56fcd64ddbeb73e28aa0e876d3241d5e498160978c9517eee40802805424d8",
+  "prospective_environment": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_ENCODED_RUSTDOCFLAGS": "",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/positive-target-sewing-component-20261117/target",
+    "PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+    "RUSTC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTDOC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+    "RUSTDOCFLAGS": "",
+    "RUSTFLAGS": "",
+    "RUSTUP_TOOLCHAIN": "1.94.1"
+  },
+  "prospective_invocation": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--lib",
+    "tests::positive_stitch_subnormal_anchor_and_fallback_use_unit_direction",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "source_commit": "c2e9d80352e6dab068bc28604d328f8bd1e43c6b",
+  "stage_calls": 2,
+  "status": "CORRECT_DIRECT_LITERAL_FIRST_EDGE_TEST_UNEXECUTED"
+}

@@ -1,0 +1,52 @@
+{
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--lib",
+    "tests::positive_",
+    "--",
+    "--skip",
+    "tests::positive_target_stitch_n32_matches_independent_coupled_radial_energy",
+    "--skip",
+    "tests::positive_stitch_subnormal_anchor_and_fallback_use_unit_direction",
+    "--nocapture"
+  ],
+  "disk_observation": {
+    "last_available_bytes": null,
+    "max_snapshot_gap_seconds": 0.0,
+    "minimum_available_bytes": null,
+    "path": "<ROOT>/.local/positive-target-sewing-component-20261117",
+    "samples": 0,
+    "stop_below_available_bytes": null
+  },
+  "end_monotonic_seconds": 1034297.496516333,
+  "exit_code": 0,
+  "name": "positive",
+  "peak_rss_bytes": 78102528,
+  "pid": 76885,
+  "process_group": 76885,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.17950962507165968,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 9,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 101187584,
+  "stop_reason": null,
+  "terminal_phase_checks": {
+    "deadline": 1034416.247820541,
+    "output_bytes": 3138,
+    "output_cap_bytes": 8388608,
+    "reserve_bytes": 65536
+  }
+}

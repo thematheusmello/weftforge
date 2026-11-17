@@ -1,0 +1,41 @@
+{
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustfmt",
+    "--edition",
+    "2024",
+    "crates/weftforge-sim/src/tests.rs"
+  ],
+  "disk_observation": {
+    "last_available_bytes": null,
+    "max_snapshot_gap_seconds": 0.0,
+    "minimum_available_bytes": null,
+    "path": "<ROOT>/.local/positive-target-sewing-component-20261117",
+    "samples": 0,
+    "stop_below_available_bytes": null
+  },
+  "end_monotonic_seconds": 1033168.248163875,
+  "exit_code": 0,
+  "peak_rss_bytes": 34897920,
+  "pid": 65193,
+  "process_group": 65193,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.05347199994139373,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 4,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 50511872,
+  "stop_reason": null,
+  "terminal_phase_checks": {
+    "deadline": 1033288.037505916,
+    "output_bytes": 97690,
+    "output_cap_bytes": 8388608,
+    "reserve_bytes": 65536
+  }
+}

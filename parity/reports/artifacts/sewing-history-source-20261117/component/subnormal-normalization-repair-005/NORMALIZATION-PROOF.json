@@ -1,0 +1,13 @@
+{
+  "actual_edge_RED_manifest_sha256": "db242e9d921fb7cf93f820b36868b07a746f8886d20b3e62eb77bed57df5f65e",
+  "closure_sha256": "f60a5341a58b6148d3826474b6c3c6c7bc5693d82ac2e1ebef634229c2a68e93",
+  "entire_tests_file_byte_exact_from_actual_edge_RED": true,
+  "new_solver_iterations_persistent_state_settings_or_bounds": false,
+  "normalization_preconditions": "Calls occur only for finite nonzero anchor or finite nonzero fallback difference; scale finite>0; at least one scaled component has abs1, and scaled norm is in[1,sqrt3]",
+  "only_new_arithmetic": "scale=max(abs(component)); scaled=vector/scale; unit=scaled/hypot(scaled)",
+  "radius_compliance_target_denominator_all_guards_closed_and_hard_bytes_unchanged": true,
+  "remove_six_line_closure_and_restore_two_normalization_calls_recovers_every_old_constraints_byte": true,
+  "status": "SCALED_UNIT_DIRECTION_ONLY_SOURCE_READY",
+  "tests_sha256": "1f3694bf66b2ca95577d137c91bb1700e15159c3185a3ae1458620429bbcb796",
+  "zero_anchor_canonical_axis_and_all_pinned_noop_unchanged": true
+}

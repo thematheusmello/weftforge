@@ -1,0 +1,42 @@
+{
+  "all180_181_8x32_dt_closure_420s_256MiB_build120s1GiB8MiB_inputs_screens_exact": true,
+  "common_and_compiler_namespace_modules": [
+    "common.py",
+    "compiler_inputs.py"
+  ],
+  "consumer_physics_math_files_byte_exact": true,
+  "control_patch": {
+    "path": "evidence/CONTROL-DELTA.patch",
+    "sha256": "25fed07b3cd8d2e295fd9daa820ea44be70555c574660c88d0c4b81fee242c5f"
+  },
+  "new_binding_changes_only": [
+    "experiment/packet/candidate namespace",
+    "prospective strict420count in old four-stage/full88 validator",
+    "newsource408 static roster and pending source/gate metadata"
+  ],
+  "no_new_framework_or_executed_checks": true,
+  "original11_exact": {
+    "consumer/bindings.py": "ba8499944ee4d63b55fcc86de997b9823cf5a949fdb118491569c5dbfcd69a4f",
+    "consumer/capsule_geometry.py": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b",
+    "consumer/decimal_oracle.py": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d",
+    "consumer/evaluator.py": "bc981d2333b4e02fb95c8fa83bb2b2a48d8d0486ae65594bf9173e935513c91b",
+    "consumer/geometry_math.py": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40",
+    "consumer/metadata_adapter.py": "f7aea5b61bafda604cb9b2112f40c83285497300c41c4d02b1344339fe00386e",
+    "consumer/metrics.py": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+    "consumer/static_geometry.py": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34",
+    "producer/Cargo.lock": "6acc2df8d38cf70047cbe22ca2875a38a0fd204a63452edb2d42b4ce14c1ec89",
+    "producer/Cargo.toml": "bdbf9b113ba7bb05e968b25fbfc71a30317bfd66aa090fb809e2f551070ff5e8",
+    "producer/src/main.rs": "87b15646929d7ed76b03970fe84626176eb6cef72207f5f75a247ff649907a0b"
+  },
+  "sourceapproval_rootbinding_gate_preflight_build_hashes_pending": true,
+  "status": "DRAFT_ONLY_SOURCE_APPROVAL_AND_ALL_ACTUAL_GATE_BINDINGS_PENDING",
+  "tested_control_ready_sha256": "befa43a86da09f2f93ca42f1ca0174cdc862d878f86250779b0da9bd49b16b04",
+  "tested_volume_control_resources_exact": "ba4560b912abaf8e310f87dc33b334fddfc96bc9d41c74a046a46b2d1f815d12",
+  "unchanged_helpers4": {
+    "bind_source.py": "5b883da7b83e2a88918e9ecda3011dc1b7ef6fcfa34cd6870c178945a942a384",
+    "freeze_prep.py": "691cd98517a0ce43a8cd60c0a330c73b8c25fe53620040ccf81308353306688b",
+    "source_inputs.py": "0574f9247f06d01315de7c02d1970ffed71a827b22d15998144049b632aa137d",
+    "test_toolchain_env.py": "c48173c6c67146d41768f3788000094a720805f755089a249210dc05198faecd"
+  },
+  "worker_control_only_hook": "c.numerical_output_bytes = lambda: r.numerical_bytes(deadline=deadline)"
+}

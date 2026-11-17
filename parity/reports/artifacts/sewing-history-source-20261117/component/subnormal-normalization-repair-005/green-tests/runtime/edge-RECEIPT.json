@@ -1,0 +1,49 @@
+{
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--lib",
+    "tests::positive_stitch_subnormal_anchor_and_fallback_use_unit_direction",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "disk_observation": {
+    "last_available_bytes": null,
+    "max_snapshot_gap_seconds": 0.0,
+    "minimum_available_bytes": null,
+    "path": "<ROOT>/.local/positive-target-sewing-component-20261117",
+    "samples": 0,
+    "stop_below_available_bytes": null
+  },
+  "end_monotonic_seconds": 1034158.3263355,
+  "exit_code": 0,
+  "name": "edge",
+  "peak_rss_bytes": 348061696,
+  "pid": 76035,
+  "process_group": 76035,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.7667682500323281,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 90,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 407060480,
+  "stop_reason": null,
+  "terminal_phase_checks": {
+    "deadline": 1034264.610232541,
+    "output_bytes": 3927,
+    "output_cap_bytes": 8388608,
+    "reserve_bytes": 65536
+  }
+}

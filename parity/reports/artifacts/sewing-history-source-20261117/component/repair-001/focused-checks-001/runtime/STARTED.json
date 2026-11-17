@@ -1,0 +1,64 @@
+{
+  "controller_pid": 61550,
+  "deadline": 1033063.90927625,
+  "frozen_commands": [
+    [
+      "stitches",
+      [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--lib",
+        "stitch",
+        "--",
+        "--skip",
+        "tests::positive_target_stitch_n32_matches_independent_coupled_radial_energy",
+        "--nocapture"
+      ]
+    ],
+    [
+      "rollback",
+      [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--lib",
+        "tests::cancellation_and_failures_preserve_old_state_and_allow_recovery",
+        "--",
+        "--exact",
+        "--nocapture"
+      ]
+    ],
+    [
+      "fmt",
+      [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ]
+    ],
+    [
+      "sim-clippy",
+      [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "clippy",
+        "-p",
+        "weftforge-sim",
+        "--all-targets",
+        "--locked",
+        "--offline",
+        "--",
+        "-D",
+        "warnings"
+      ]
+    ]
+  ],
+  "start_monotonic": 1032943.90927625
+}

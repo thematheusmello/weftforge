@@ -126,6 +126,158 @@ class EvidenceHistoryTests(unittest.TestCase):
                                         {f['id']: f for f in self.data['features']},
                                         progress.read('parity/reference.json'))
 
+    def public_source_bridge(self, available_origin=None):
+        for index in range(84):
+            self.write(f'bridge-inputs/{index}.rs', f'original synthetic input {index}\n')
+        tested = 'a' * 40
+        if available_origin:
+            tested = self.commit()
+            if available_origin == 'mismatch':
+                self.write('src/feature.rs', 'public source differs from the available origin\n')
+            else:
+                self.write('public-metadata.txt', 'public metadata does not change source inputs\n')
+        public = self.commit()
+        report = self.report('BRIDGED', commit=public)
+        report['commit'] = tested
+        self.feature['verification_runs'][-1]['commit'] = report['commit']
+        hashes = report['source_hashes'] | {
+            f'bridge-inputs/{index}.rs': self.digest(f'bridge-inputs/{index}.rs')
+            for index in range(84)}
+
+        def artifact(name, value):
+            path = f'artifacts/bridge/{name}.json'
+            self.write(path, value)
+            digest = self.digest(path)
+            report['artifact_hashes'][path] = digest
+            return {'path': path, 'sha256': digest, 'original_sha256': digest}
+
+        frozen = artifact('freeze', {'commit': report['commit'], 'source88': hashes,
+                                    'input_modes': dict.fromkeys(hashes, 0o644)})
+        result = artifact('result', {'commit': report['commit'], 'source88': hashes,
+                                    'source_freeze_sha256': frozen['original_sha256'],
+                                    'all4_stages_passed': True})
+        final = artifact('final', {'commit': report['commit'], 'all4_stages_passed': True,
+                                  'source_freeze_sha256': frozen['original_sha256'],
+                                  'result_sha256': result['original_sha256']})
+        integration = artifact('integration', {'integration_commit': public,
+            'all88_origin_gate_public_hashes_exact': True,
+            'source88_mapping': {path: {'source_gate_sha256': digest,
+                                       'public_integration_sha256': digest}
+                                 for path, digest in hashes.items()}})
+        proof = {'kind': 'implementation_source_equivalence', 'tested_commit': report['commit'],
+                 'public_commit': public, 'source_count': 88, 'source_hashes': hashes,
+                 'source_modes': dict.fromkeys(hashes, '0644'),
+                 'anchors': {'source_gate_freeze': frozen, 'source_gate_result': result,
+                             'source_gate_final_manifest': final,
+                             'source_integration_receipt': integration}}
+        report['public_source_equivalence'] = {'path': 'artifacts/bridge/proof.json', 'sha256': ''}
+        self.store_public_source_bridge(report, proof)
+        return report, proof, public
+
+    def store_public_source_bridge(self, report, proof):
+        descriptor = report['public_source_equivalence']
+        self.write(descriptor['path'], proof)
+        descriptor['sha256'] = self.digest(descriptor['path'])
+        report['artifact_hashes'][descriptor['path']] = descriptor['sha256']
+        self.write('parity/reports/' + report['id'] + '.json', report)
+
+    def test_public_source_bridge_retains_tested_identity_without_private_git_object(self):
+        report, _, public = self.public_source_bridge()
+        reference = progress.validate(self.data)
+        generated = progress.generate(self.data, reference)
+        self.assertIn('commit `' + report['commit'] + '`', generated['docs/progress.md'])
+        self.assertIn('Source-equivalent public revision `' + public + '` (not executed)',
+                      generated['docs/progress.md'])
+        dashboard = generated['docs/dashboard/index.html']
+        self.assertIn('tested commit <code>' + report['commit'] + '</code>', dashboard)
+        self.assertNotIn('/commit/' + report['commit'], dashboard)
+        self.assertIn('/blob/' + public + '/tools/evaluator.py', dashboard)
+        self.assertIn('source-equivalent: tools/evaluator.py', dashboard)
+        self.assertFalse(self.parity())
+
+    def test_public_source_bridge_accepts_matching_available_origin(self):
+        report, _, public = self.public_source_bridge(available_origin='matching')
+        self.assertNotEqual(report['commit'], public)
+        progress.validate(self.data)
+        self.assertFalse(self.parity())
+
+    def test_public_source_bridge_rejects_available_origin_blob_mismatch(self):
+        report, _, _ = self.public_source_bridge(available_origin='mismatch')
+        with self.assertRaisesRegex(ValueError, 'available tested tree differs from public inputs'):
+            progress.validate(self.data)
+
+    def test_public_source_bridge_rejects_changed_hash_revision_and_public_bytes(self):
+        report, proof, _ = self.public_source_bridge()
+        original_report, original_proof = copy.deepcopy(report), copy.deepcopy(proof)
+        report['source_hashes']['src/feature.rs'] = '0' * 64
+        self.store_public_source_bridge(report, proof)
+        with self.assertRaisesRegex(ValueError, 'report source hashes differ'):
+            progress.validate(self.data)
+        report = copy.deepcopy(original_report)
+        proof['public_commit'] = self.initial_commit
+        self.store_public_source_bridge(report, proof)
+        with self.assertRaisesRegex(ValueError, 'frozen source evidence differs'):
+            progress.validate(self.data)
+        proof = copy.deepcopy(original_proof)
+        self.write('src/feature.rs', 'different public source bytes\n')
+        proof['public_commit'] = self.commit()
+        anchor = proof['anchors']['source_integration_receipt']
+        integration = progress.read(anchor['path'])
+        integration['integration_commit'] = proof['public_commit']
+        self.write(anchor['path'], integration)
+        anchor['sha256'] = anchor['original_sha256'] = self.digest(anchor['path'])
+        report['artifact_hashes'][anchor['path']] = anchor['sha256']
+        self.store_public_source_bridge(report, proof)
+        with self.assertRaisesRegex(ValueError, 'public tree differs from original inputs'):
+            progress.validate(self.data)
+
+    def test_public_source_bridge_rejects_missing_extra_roster_and_scope_paths(self):
+        report, proof, _ = self.public_source_bridge()
+        for change in ['missing', 'extra', 'mode']:
+            with self.subTest(change=change):
+                altered = copy.deepcopy(proof)
+                if change == 'missing':
+                    del altered['source_hashes']['bridge-inputs/0.rs']
+                elif change == 'extra':
+                    altered['source_hashes']['extra.rs'] = '0' * 64
+                else:
+                    altered['source_modes']['bridge-inputs/0.rs'] = '0755'
+                self.store_public_source_bridge(report, altered)
+                with self.assertRaisesRegex(ValueError, 'complete source roster differs'):
+                    progress.validate(self.data)
+        self.store_public_source_bridge(report, proof)
+        del report['source_hashes']['src/feature.rs']
+        self.store_public_source_bridge(report, proof)
+        with self.assertRaisesRegex(ValueError, 'source scope lacks tested source identities'):
+            progress.validate(self.data)
+        report['source_hashes']['src/feature.rs'] = proof['source_hashes']['src/feature.rs']
+        report['source_scope'].append('bridge-inputs')
+        self.store_public_source_bridge(report, proof)
+        with self.assertRaisesRegex(ValueError, 'source scope lacks tested source identities'):
+            progress.validate(self.data)
+        report['source_hashes']['../outside.rs'] = '0' * 64
+        self.store_public_source_bridge(report, proof)
+        with self.assertRaisesRegex(ValueError, 'report source hashes differ'):
+            progress.validate(self.data)
+
+    def test_public_source_bridge_rejects_unbound_artifact_and_acceptance_promotion(self):
+        report, proof, _ = self.public_source_bridge()
+        descriptor = report['public_source_equivalence']
+        descriptor['sha256'] = '0' * 64
+        self.write('parity/reports/BRIDGED.json', report)
+        with self.assertRaisesRegex(ValueError, 'artifact hash differs'):
+            progress.validate(self.data)
+        for key, value in [('kind', 'reference_comparison'), ('complete_contract', True),
+                           ('reference_executed', True), ('reference_verified', True),
+                           ('single_identified_candidate_workflow', True),
+                           ('full_garment_accepted', True), ('reference_qualification', {})]:
+            with self.subTest(promotion=key):
+                altered = copy.deepcopy(report)
+                altered[key] = value
+                self.store_public_source_bridge(altered, proof)
+                with self.assertRaisesRegex(ValueError, 'cannot qualify reference or full workflow'):
+                    progress.validate_sources(altered)
+
     def test_old_failed_source_remains_attributable_after_a_current_rerun(self):
         old = self.report('OLD-FAIL', status='failed', freshness='stale')
         self.write('src/feature.rs', 'independent source correction\n')
