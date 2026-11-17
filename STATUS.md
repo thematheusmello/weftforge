@@ -21,12 +21,15 @@ native output, SVG geometry and the preserved sentinel. This is keyboard/pointer
 workflow evidence; application-modal AXSetValue remains unverified. N004/N005's
 empty accessibility outcomes remain historical, unchanged.
 
-Clean `cargo xtask verify` on metadata revision `f9ade463` passed in 213.056
-seconds: registry/generated reports, source and discovery maps, 54 script tests,
-6 evaluator tests and actual CLI help. All 132 protected inputs stayed exact.
-That command rebuilt the CLI alone; the earlier independent CLI export evidence
-retains its original binary identity. The new native report and registry additions
-still require their own generated-output and clean metadata verification.
+Clean `cargo xtask verify` on metadata revision `1ff1b7bf` passed in 199.814
+seconds after the native evidence and generated progress were Git-tracked:
+registry/generated reports, source and discovery maps, 54 script tests,
+6 evaluator tests and actual CLI help. All 145 protected inputs stayed exact.
+[Retained tooling evidence](parity/reports/artifacts/notch-integration-verification-20261117/PROVENANCE.json)
+records that actual revision and its separate invocation. The prior clean check
+on `f9ade463` remains historical. The CLI-only rebuild/help is distinct from the
+earlier independent CLI export case, which retains its original binary identity.
+Source/garment tests were not replayed by this metadata check.
 
 The full coupled-bending garment case remains **strict quality failed**: all
 180 steps and 181 states completed, but strain failed at frames 28/29, with
@@ -51,8 +54,10 @@ shirt workflow and the complete six-gate delivery sequence in ROADMAP.md.
 
 GitHub Actions are disabled; their run count remains 54. Main remains
 `1fc1d71993cf193801e44982b757fca8abc5aba7` and the existing Pages site is unchanged.
-The native and reference test processes are closed. Feature discovery remains
-incomplete: 42 partial, 14 planned, zero fully implemented or reference verified
+The N006 and reference test processes are closed. A separate bounded native
+numeric-setter case is in progress (owned PID 61448, watchdog session 60599);
+no new garment run is active. Feature discovery remains incomplete: 42 partial,
+14 planned, zero fully implemented or reference verified
 among 56 inventoried broad contracts. No delivery gate is accepted.
 
 Earlier checkpoints and retained evidence follow.

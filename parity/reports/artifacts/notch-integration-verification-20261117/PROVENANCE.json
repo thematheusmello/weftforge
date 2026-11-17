@@ -1,0 +1,116 @@
+{
+  "actual_checked_commit": "1ff1b7bf406c3416415cd70a93c619f71190910f",
+  "actual_exit": 0,
+  "actual_runtime_source_commit": "8aa850975fa388c3c4bd206db74adf7171916451",
+  "all_outputs_will_be_Git_tracked_before_clean_registry_map_closure": true,
+  "argv": "[\"$HOME/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo\", \"xtask\", \"verify\"]",
+  "cap_seconds": 420,
+  "current_source_binaries": "Native c332 unchanged; CLI-only help/build is separate from the earlier0db CLI export case.",
+  "elapsed_seconds": 199.8140736669302,
+  "evaluator_unittest_count": 6,
+  "files": [
+    {
+      "bytes": 18518,
+      "original_sha256": "b443618049073ee5b883c12ab174958c8b0ac20d690c86e65088d024c0032710",
+      "path": "parity/reports/artifacts/notch-integration-verification-20261117/PLAN.json",
+      "prefix_replacements": {
+        "HOME_after_ROOT": 1,
+        "ROOT": 0
+      },
+      "sha256": "e5740f4ae8ed7bc9b533790f296938139e77969aac2817cca8825ae3a1698caf",
+      "transform": "exact ROOT prefix followed by HOME prefix; no other byte changes"
+    },
+    {
+      "bytes": 949,
+      "original_sha256": "ca1f3da9e4846a35b3cd0682784a95cec78dde994af667a4eac7848684ac56a8",
+      "path": "parity/reports/artifacts/notch-integration-verification-20261117/STARTED.json",
+      "prefix_replacements": {
+        "HOME_after_ROOT": 1,
+        "ROOT": 1
+      },
+      "sha256": "f5c06bd264d842bcfbb2e2862e207749967e8169d74065c2fd09b6c0a9c301af",
+      "transform": "exact ROOT prefix followed by HOME prefix; no other byte changes"
+    },
+    {
+      "bytes": 1439,
+      "original_sha256": "6d7c05b8a09dd9089d51e764a65a951f7211a83e26c397a76cb373f933401c73",
+      "path": "parity/reports/artifacts/notch-integration-verification-20261117/RESULT.json",
+      "prefix_replacements": {
+        "HOME_after_ROOT": 1,
+        "ROOT": 1
+      },
+      "sha256": "7417cdd19aeb5b9783262e7a962ba11f7db0c308c72da58f1141ca1b6dab28ff",
+      "transform": "exact ROOT prefix followed by HOME prefix; no other byte changes"
+    },
+    {
+      "bytes": 180,
+      "original_sha256": "156c34f76f89771b3bf38b440f5ecce958c590a53b0189fed8f87532380594cd",
+      "path": "parity/reports/artifacts/notch-integration-verification-20261117/TERMINAL.json",
+      "prefix_replacements": {
+        "HOME_after_ROOT": 0,
+        "ROOT": 0
+      },
+      "sha256": "156c34f76f89771b3bf38b440f5ecce958c590a53b0189fed8f87532380594cd",
+      "transform": "exact ROOT prefix followed by HOME prefix; no other byte changes"
+    },
+    {
+      "bytes": 2757,
+      "original_sha256": "43e8cd36978e5b660784230676119681afee92572108b390e7e154d1fc59a361",
+      "path": "parity/reports/artifacts/notch-integration-verification-20261117/stdout.log",
+      "prefix_replacements": {
+        "HOME_after_ROOT": 0,
+        "ROOT": 0
+      },
+      "sha256": "43e8cd36978e5b660784230676119681afee92572108b390e7e154d1fc59a361",
+      "transform": "exact ROOT prefix followed by HOME prefix; no other byte changes"
+    },
+    {
+      "bytes": 469,
+      "original_sha256": "5dc0a9b24cca52ce7d3525fbfcde1f28b08d668d924da84d43f25c54adf7a220",
+      "path": "parity/reports/artifacts/notch-integration-verification-20261117/stderr.log",
+      "prefix_replacements": {
+        "HOME_after_ROOT": 0,
+        "ROOT": 0
+      },
+      "sha256": "5dc0a9b24cca52ce7d3525fbfcde1f28b08d668d924da84d43f25c54adf7a220",
+      "transform": "exact ROOT prefix followed by HOME prefix; no other byte changes"
+    }
+  ],
+  "independent_root_review": {
+    "HEAD_and_checkout_clean": true,
+    "owned_controller_Cargo_PIDs_absent": [
+      38902,
+      39028
+    ],
+    "protected_input_hashes_exact": true,
+    "raw_unittest_summaries": [
+      [
+        "54",
+        "132.230"
+      ],
+      [
+        "6",
+        "0.004"
+      ]
+    ],
+    "utc_epoch": 1794946298.3188858
+  },
+  "kind": "implementation_tooling_verification_only",
+  "no_native_model_reference_or_performance_acceptance": true,
+  "prior_generated_update": {
+    "actual_head": "6d5654274f8e348b9caea5ef2a84787c43621a5e",
+    "cap_seconds": 120,
+    "elapsed_seconds": 52.625983875012025,
+    "outputs": [
+      "docs/progress.md",
+      "docs/dashboard/index.html"
+    ],
+    "protected_inputs_exact": 143,
+    "result_sha256": "fed5bfa155ab2f24a43a43bbdfe3d7ba769bf40649c9eda04f11fa6ca261b19f"
+  },
+  "protected_inputs_exact": 145,
+  "qualification": "The source tests, native workflow and this tooling command are distinct actual invocations. No complete feature, garment, reference or delivery-gate acceptance.",
+  "same_owned_target_only": true,
+  "script_unittest_count": 54,
+  "source446_gates_not_repeated": true
+}
