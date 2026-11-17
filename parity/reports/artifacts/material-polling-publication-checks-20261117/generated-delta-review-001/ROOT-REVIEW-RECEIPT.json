@@ -1,0 +1,149 @@
+{
+  "actual_final_volume_bytes": 645355,
+  "at": "2026-11-17T09:08:52.712883+00:00",
+  "caps": {
+    "RSS_bytes": 6442450944,
+    "disk_floor_bytes": 8000000000,
+    "retained_bytes": 16777216,
+    "seconds": 300
+  },
+  "controller_PID": 7501,
+  "controller_exit": 0,
+  "disk_available_at_external_final": 13336764416,
+  "elapsed_after_all_receipt_persistence_seconds": 59.89680149999913,
+  "external_terminal_sha256": "82d0666b4df9214888f49f7830da1ed5e0539cf88fbf35bdb1f2e57f2dd3c120",
+  "fully_pinned_env": {
+    "CARGO": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "CARGO_BUILD_JOBS": "2",
+    "CARGO_BUILD_RUSTC_WORKSPACE_WRAPPER": "",
+    "CARGO_BUILD_RUSTC_WRAPPER": "",
+    "CARGO_ENCODED_RUSTDOCFLAGS": "",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_HOME": "<HOME>/.cargo",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/material-polling-delivery-integration-20261117/target",
+    "PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONOPTIMIZE": "0",
+    "RUSTC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTC_WORKSPACE_WRAPPER": "",
+    "RUSTC_WRAPPER": "",
+    "RUSTDOC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+    "RUSTDOCFLAGS": "",
+    "RUSTFLAGS": "",
+    "RUSTUP_TOOLCHAIN": "1.94.1-aarch64-apple-darwin"
+  },
+  "future_clean_verify": "Root must first review/commit the2 generated outputs, then distinctly authorize clean156-input xtask. No such check/commit is performed here.",
+  "generated_delta": {
+    "all56_coarse_MD_columns_exact": true,
+    "counts": {
+      "Evidence freshness:": "Evidence freshness: current 5/56, stale 30/56, missing 21/56.",
+      "Implementation:": "Implementation: 0/56 implemented; 41/56 partial; 0/56 in progress; 15/56 planned.",
+      "Reference observation:": "Reference observation: observed 1/56, documentation_only 6/56, unobserved 49/56, blocked 0/56.",
+      "Verification states:": "Verification states: passed 0/56, failed 5/56, blocked 3/56, stale 0/56, not_run 48/56.",
+      "Verified reference parity:": "Verified reference parity: **0/56** inventoried contracts. Implementation-only checks do not count as reference parity."
+    },
+    "counts_byte_exact": true,
+    "displayed_run_labels": {
+      "WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001": "failed / stale",
+      "WF-20261117-GLOBAL-MATERIAL-SOURCE-001": "passed / stale",
+      "WF-20261117-MATERIAL-POLLING-HARBOR-A8-001": "failed / current",
+      "WF-20261117-MATERIAL-POLLING-SOURCE-001": "passed / current"
+    },
+    "exact_prior_html_recovered_by_removing_only_declared_delta": true,
+    "exact_prior_md_recovered_by_removing_only_declared_delta": true,
+    "html_failed_attention_gap_rows": 3,
+    "md_added_report_links": {
+      "WF-20261117-MATERIAL-POLLING-HARBOR-A8-001": 5,
+      "WF-20261117-MATERIAL-POLLING-SOURCE-001": 2
+    },
+    "md_affected_feature_gap_rows": 5,
+    "new_attributable_rows": {
+      "WF-20261117-MATERIAL-POLLING-HARBOR-A8-001": 1,
+      "WF-20261117-MATERIAL-POLLING-SOURCE-001": 1
+    },
+    "numstat": "1\t1\tdocs/dashboard/index.html\n14\t12\tdocs/progress.md\n",
+    "old2_global_rows": "Only current->stale plus exact existing freshness reasons; historical153/180 operational failure remains ungraded.",
+    "only_paths": [
+      "docs/progress.md",
+      "docs/dashboard/index.html"
+    ],
+    "outputs": {
+      "docs/dashboard/index.html": {
+        "bytes": 324635,
+        "mode": "0644",
+        "sha256": "b6611d8214cd7f37d43c03f646ff1c6195b9e95d42e00ae85689431357410c95"
+      },
+      "docs/progress.md": {
+        "bytes": 157387,
+        "mode": "0644",
+        "sha256": "7a93d08219d503ac06d106e2915aa0d89c2b2f787adcdb45892527ddbaf5e286"
+      }
+    },
+    "raw_diff_sha256": "4f2aa99ad08ac4515e65a2e1336466c4139b16039edd65af74033af8522391d1",
+    "strict_full181_failed29_and_final_no_override_qualification_intact": true
+  },
+  "generator_PID": 7506,
+  "generator_exit": 0,
+  "metadata_commit": "bbbedb37b9a08266ae6a18a8def852a9283adf96",
+  "metadata_tree": "19eed8387277d5a6f38e8318083c11e2942209a4",
+  "no_source412_or416_format_Rusttests_compile_model_evaluator_native_UI_network": true,
+  "no_whitespace_check_or_raw_artifact_edit": true,
+  "one_cycle_and_no_retry": true,
+  "outputs_unstaged_uncommitted": true,
+  "pure_caps_checks_sha256": "1d90a32badb6a88ad0eddb75e299b500ae39a17e1a015fd47de289802602b8ba",
+  "raw_generator_stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "raw_generator_stdout": {
+    "bytes": 69,
+    "path": "<ROOT>/.local/material-polling-delivery-root-review-20261117/generator-001/runtime/stdout.log",
+    "sha256": "5e56cf9d6e6f9bff5b9d6ff939685c7c957d21c10f2b0019b158fe96825b6236",
+    "text": "Registry valid: 56 inventoried contracts; generated reports updated.\n"
+  },
+  "review_chain": {
+    "ROOT_STATUS003": "bdf47e950dbf022cff26135bc13579b2dda3c0ce6e31d51aad57c79f781cedd0",
+    "independent_receipt": "1f4e0ede93e005e7247b049d16038c54e1f42f1837ab1fbc8ed6b1a23f0bcbb6",
+    "independent_review": "773981b4151f1bffa4e6294272a6fe2a8de35e24b83504fc100c87011df958bf"
+  },
+  "root_result_sha256": "f9995dee9239f70f4af42d0636df3ce02ec365c37e586dab167b9e574e38f2ab",
+  "session": 99287,
+  "source_guard": {
+    "HEAD_index_project_tools_controller_inputs_fixed": true,
+    "STATUS_root416_paragraph_exact_not_mixed_with9d_reports": true,
+    "all286_originals_hashes_bytes_modes_exact": true,
+    "all287_public_artifacts_hashes_bytes_modes_exact": true,
+    "immutable154": true,
+    "reports63_and_metadata3_exact": true,
+    "source88_exact_tested9d": true
+  },
+  "stage_resource_observations": {
+    "disk_observation": {
+      "last_available_bytes": 13338226688,
+      "max_snapshot_gap_seconds": 0.23566154204308987,
+      "minimum_available_bytes": 12877254656,
+      "path": "<ROOT>/.local/material-polling-delivery-integration-20261117",
+      "samples": 1017,
+      "stop_below_available_bytes": 8000000000
+    },
+    "exact_direct_child_wait4_peak_RSS_bytes": 84770816,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.2344880000455305,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 1014,
+      "timeouts": 0
+    },
+    "sampled_child_group_plus_supervisor_peak_RSS_bytes": 98041856
+  },
+  "status": "ONE_BOUNDED_GENERATOR_GREEN_OUTPUTS_UNCOMMITTED_AWAIT_ROOT_REVIEW"
+}

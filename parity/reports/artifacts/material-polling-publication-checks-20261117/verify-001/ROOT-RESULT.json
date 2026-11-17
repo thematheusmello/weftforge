@@ -1,0 +1,64 @@
+{
+  "candidate_success": true,
+  "deadline": 1030268.0567715,
+  "guards": {
+    "HEAD_fixed": true,
+    "all156_immutable_exact": true,
+    "all286_original_hashes_bytes_modes_exact": true,
+    "all287_public_hashes_bytes_modes_exact": true,
+    "checkout_clean_after": true,
+    "controller_sources_fixed": true,
+    "index_empty_fixed": true,
+    "no_working_paths_dirty": true,
+    "project_tool_inputs_fixed": true
+  },
+  "metadata_commit": "92ac19094aed5adbf38fca95f26fed834c3c46a2",
+  "mutable_output_after": {},
+  "mutable_output_before": {},
+  "no_retry_or_source412_416_model_workflow_UI_network_execution": true,
+  "raw_stderr_sha256": "68592c8ed518d09b1152ab9365c976f6af16577af7848d42855c53d6239b6bca",
+  "raw_stdout_sha256": "64553a46362f924de26a6421bc8f0e3af70f1d2b62fadf2dd76cce1a48b5e4b6",
+  "stage": {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "xtask",
+      "verify"
+    ],
+    "disk_observation": {
+      "last_available_bytes": 13515902976,
+      "max_snapshot_gap_seconds": 0.49366150004789233,
+      "minimum_available_bytes": 13502169088,
+      "path": "<ROOT>/.local/material-polling-delivery-integration-20261117",
+      "samples": 3962,
+      "stop_below_available_bytes": 8000000000
+    },
+    "end_monotonic_seconds": 1030207.088003583,
+    "exit_code": 0,
+    "peak_rss_bytes": 83722240,
+    "pid": 20721,
+    "process_group": 20721,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.4971893329638988,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 3959,
+      "timeouts": 0
+    },
+    "sampled_peak_rss_bytes": 537329664,
+    "stop_reason": null,
+    "terminal_phase_checks": {
+      "deadline": 1030268.0567715,
+      "output_bytes": 484334,
+      "output_cap_bytes": 16777216,
+      "reserve_bytes": 131072
+    }
+  },
+  "started": 1029968.0567715,
+  "status": "pending_final_post_persistence_clock_volume_verdict",
+  "xtask_exit_code": 0
+}

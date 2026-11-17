@@ -1,0 +1,85 @@
+{
+  "candidate_success": true,
+  "deadline": 1028872.727779041,
+  "generator_exit_code": 0,
+  "guards": {
+    "HEAD_fixed": true,
+    "all154_immutable_exact": true,
+    "all286_original_hashes_bytes_modes_exact": true,
+    "all287_public_hashes_bytes_modes_exact": true,
+    "controller_sources_fixed": true,
+    "index_empty_fixed": true,
+    "only2_allowed_outputs_dirty": true,
+    "project_tool_inputs_fixed": true
+  },
+  "metadata_commit": "bbbedb37b9a08266ae6a18a8def852a9283adf96",
+  "mutable_output_after": {
+    "docs/dashboard/index.html": {
+      "bytes": 324635,
+      "mode": "0644",
+      "sha256": "b6611d8214cd7f37d43c03f646ff1c6195b9e95d42e00ae85689431357410c95"
+    },
+    "docs/progress.md": {
+      "bytes": 157387,
+      "mode": "0644",
+      "sha256": "7a93d08219d503ac06d106e2915aa0d89c2b2f787adcdb45892527ddbaf5e286"
+    }
+  },
+  "mutable_output_before": {
+    "docs/dashboard/index.html": {
+      "bytes": 314064,
+      "mode": "0644",
+      "sha256": "3acb45c22f7231aeee098556028026e8fd62b070c6c54a87192e124f2d46cdab"
+    },
+    "docs/progress.md": {
+      "bytes": 148288,
+      "mode": "0644",
+      "sha256": "b588c9297d6585f15421cb71b6d9d1955328805f107294fb7638cf82cc846047"
+    }
+  },
+  "no_retry_or_source_Rust_model_UI_network_execution": true,
+  "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "raw_stdout_sha256": "5e56cf9d6e6f9bff5b9d6ff939685c7c957d21c10f2b0019b158fe96825b6236",
+  "stage": {
+    "argv": [
+      "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+      "-B",
+      "scripts/progress.py"
+    ],
+    "disk_observation": {
+      "last_available_bytes": 13338226688,
+      "max_snapshot_gap_seconds": 0.23566154204308987,
+      "minimum_available_bytes": 12877254656,
+      "path": "<ROOT>/.local/material-polling-delivery-integration-20261117",
+      "samples": 1017,
+      "stop_below_available_bytes": 8000000000
+    },
+    "end_monotonic_seconds": 1028632.41109975,
+    "exit_code": 0,
+    "peak_rss_bytes": 84770816,
+    "pid": 7506,
+    "process_group": 7506,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.2344880000455305,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 1014,
+      "timeouts": 0
+    },
+    "sampled_peak_rss_bytes": 98041856,
+    "stop_reason": null,
+    "terminal_phase_checks": {
+      "deadline": 1028872.727779041,
+      "output_bytes": 476838,
+      "output_cap_bytes": 16777216,
+      "reserve_bytes": 131072
+    }
+  },
+  "started": 1028572.727779041,
+  "status": "pending_final_post_persistence_clock_volume_verdict"
+}

@@ -1,0 +1,38 @@
+{
+  "actual_generator_PID": 7506,
+  "actual_generator_exit_code": 0,
+  "controller_PID": 7501,
+  "controller_exit_code": 0,
+  "controller_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "controller_stdout_sha256": "ee9e20793a1de14444c31769c0e2ecced549b2f47ff4aa798ee035a90958c2e8",
+  "controller_terminal": {
+    "ROOT_RESULT_sha256": "f9995dee9239f70f4af42d0636df3ce02ec365c37e586dab167b9e574e38f2ab",
+    "accepted": true,
+    "controller_PID": 7501,
+    "controller_exit_code": 0,
+    "deadline": 1028872.727779041,
+    "final_available_bytes": 13336768512,
+    "final_elapsed_after_all_receipt_persistence_seconds": 59.88917083397973,
+    "final_volume_before_clock_bytes": 642991,
+    "generator_PID": 7506,
+    "generator_exit_code": 0,
+    "guards": {
+      "HEAD_fixed": true,
+      "all154_immutable_exact": true,
+      "all286_original_hashes_bytes_modes_exact": true,
+      "all287_public_hashes_bytes_modes_exact": true,
+      "controller_sources_fixed": true,
+      "index_empty_fixed": true,
+      "only2_allowed_outputs_dirty": true,
+      "project_tool_inputs_fixed": true
+    },
+    "metadata_commit": "bbbedb37b9a08266ae6a18a8def852a9283adf96",
+    "started": 1028572.727779041,
+    "state": "generator_terminal"
+  },
+  "elapsed_before_external_receipt_persistence": 59.895995792001486,
+  "external_final_clock_verdict_pending": true,
+  "no_retry": true,
+  "observed_after_controller_exit_monotonic": 1028632.623753,
+  "observed_after_controller_exit_utc": "2026-11-17T09:05:17.599351+00:00"
+}

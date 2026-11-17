@@ -1,0 +1,25 @@
+{
+  "scope": "Exact eight raw-evidence paths excluded; all remaining new publication paths checked once",
+  "argv": [
+    "git",
+    "diff",
+    "--check",
+    "b5d6e4d25ff1607c511e26da8af6c2642800eec0",
+    "92ac19094aed5adbf38fca95f26fed834c3c46a2",
+    "--",
+    ".",
+    ":(exclude)parity/reports/artifacts/material-polling-source-20261117/component-comparison/producer/Cargo.lock",
+    ":(exclude)parity/reports/artifacts/material-polling-source-20261117/harbor/packet/SOURCE-ONLY-DELTA.patch",
+    ":(exclude)parity/reports/artifacts/material-polling-source-20261117/source-first-format/DIFF.patch",
+    ":(exclude)parity/reports/artifacts/material-polling-source-20261117/source-focused/DIFF.patch",
+    ":(exclude)parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/cancellation_tests.stdout",
+    ":(exclude)parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/material_tests.stdout",
+    ":(exclude)parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/membrane_tests.stdout",
+    ":(exclude)parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/workspace-tests.stdout"
+  ],
+  "exit_code": 0,
+  "original_full_check_remains_exit2": true,
+  "waiver_sha256": "1072827bb0e3d5f4a762e6441bd9e319ba4e7e2d77347a1b73b36d36033b4f66",
+  "raw_findings": 19,
+  "exact_paths": 8
+}
