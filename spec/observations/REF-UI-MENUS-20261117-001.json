@@ -1,0 +1,348 @@
+{
+  "schema_version": 1,
+  "case_id": "REF-UI-MENUS-20261117-001",
+  "product_build": "2026.1.237 (r58920)",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "baseline_revision": 1,
+  "baseline_status": "provisional_unfrozen",
+  "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "status": "menu_presence_reobserved_settings_partial_seal_deadline_missed",
+  "scope": "Fresh no-argument empty Untitled_MD.zprj; simulation control0. All17 top-level menus opened and their exposed descendants read. Settings > Preferences opened Graphic Options read-only; Welcome and Preferences closed. No construction, simulation, file, setting-value or other descendant command executed.",
+  "menu_reconciliation": {
+    "catalog_commit_reviewed": "0bd4936ff2e354469100b23ee31cfedb85667c06",
+    "catalog_sha256": "e9910b3fa78a2fbf59fe3ad3ba0e9545cfd609d9c0d010a753e0da4edb3fd996",
+    "method": "Parse literal native tree indentation; omit anonymous menu containers; separate disabled markers; trim label-edge whitespace; exclude eight private Recent locator leaves; exact-match full label tuples without aliases.",
+    "existing_menu_records": 593,
+    "public_paths_reobserved": 589,
+    "new_paths": 0,
+    "matching_ids": "All593 original menu IDs except the four explicit not_reobserved_here IDs.",
+    "sorted_matching_ids_canonical_json_sha256": "8bc84713a7a69d2ebbb01ded2fcec2d99b3479c04afc5283804aa53954e0b03e",
+    "not_reobserved_here": [
+      {
+        "catalog_id": "MDUI-A376C6210DDA",
+        "path": [
+          "Edit",
+          "Context Menu",
+          "3D Garment",
+          "Flat"
+        ],
+        "status": "not_reobserved_in_empty_document; retained_original_selected_seam_context"
+      },
+      {
+        "catalog_id": "MDUI-C698D7B5E4AC",
+        "path": [
+          "Edit",
+          "Context Menu",
+          "Display",
+          "Hide All 3D Patterns"
+        ],
+        "status": "not_reobserved_in_empty_document; retained_original_selected_seam_context"
+      },
+      {
+        "catalog_id": "MDUI-7132EF1C1807",
+        "path": [
+          "Edit",
+          "Context Menu",
+          "Display",
+          "Show 3D Pattern"
+        ],
+        "status": "not_reobserved_in_empty_document; retained_original_selected_seam_context"
+      },
+      {
+        "catalog_id": "MDUI-BDCB24B978FF",
+        "path": [
+          "Edit",
+          "Context Menu",
+          "Sewing",
+          "Apply Turned Sewing Line Type"
+        ],
+        "status": "not_reobserved_in_empty_document; retained_original_selected_seam_context"
+      }
+    ],
+    "marker_delta": {
+      "catalog_id": "MDUI-763B2E11DE10",
+      "path": [
+        "MarvelousDesigner",
+        "Show All"
+      ],
+      "original_disabled_marker": false,
+      "new_disabled_marker": true,
+      "private_record_key": "NATIVE-014.json",
+      "qualification": "Context-specific native application/window-lifecycle marker only. Earlier absence of a disabled marker did not independently prove enabled state. No invocation or regression inference."
+    },
+    "private_recent_locator_leaves_omitted": 8,
+    "evidence": [
+      {
+        "menu": "MarvelousDesigner",
+        "key": "NATIVE-014.json",
+        "retained_record_sha256": "1c5f54ba95a77f2560e82a6ad0ec8a9ac31b596ea6988794c4e2385d35746bc7"
+      },
+      {
+        "menu": "File",
+        "key": "NATIVE-016.json",
+        "retained_record_sha256": "a63b73186255302ed1e1b5ccaf6dec24d8f9d0b5e6ae411fbd38b27589b8a88e"
+      },
+      {
+        "menu": "Edit",
+        "key": "NATIVE-018.json",
+        "retained_record_sha256": "f187ae89f6352268d90a046d38e864c0286a2ce52da873361743d92721619d9b"
+      },
+      {
+        "menu": "3D Garment",
+        "key": "NATIVE-020.json",
+        "retained_record_sha256": "ddd5babd4f7535ba7360fbdbd4f7c93693384de0c0e8f7740c6f6e688aeeaad3"
+      },
+      {
+        "menu": "2D Pattern",
+        "key": "NATIVE-005.json",
+        "retained_record_sha256": "613f00f94a697ced3306f7967bdead32a36079b624fdd6ba0d523e250e76d91b"
+      },
+      {
+        "menu": "Sewing",
+        "key": "NATIVE-007.json",
+        "retained_record_sha256": "da69d4b035be5431b2d8719f23cc712538d93cdaf7d025702e834972ca5b30f0"
+      },
+      {
+        "menu": "Materials",
+        "key": "NATIVE-022.json",
+        "retained_record_sha256": "7dbffbd9f32c2d1b1a432065eeacd4e6dff0154df9f97c4b535a9bc0ffa54024"
+      },
+      {
+        "menu": "Avatar",
+        "key": "NATIVE-024.json",
+        "retained_record_sha256": "a714bba393002e2536590f664fae76056462fd18233a9056a53bea66c98abfbf"
+      },
+      {
+        "menu": "Retopology",
+        "key": "NATIVE-026.json",
+        "retained_record_sha256": "a1b4758fe8f6f79b9d0981a38ed0e3e6f95ebc8238d1e82b4834c1b793a3fb41"
+      },
+      {
+        "menu": "Animation",
+        "key": "NATIVE-028.json",
+        "retained_record_sha256": "b32fa250a9e5b0df86ebf7acfad68cfe673d605424eca6948a8c40c6d5db59d1"
+      },
+      {
+        "menu": "Render",
+        "key": "NATIVE-030.json",
+        "retained_record_sha256": "ccd9f40992944524ebfb57e01f38eb1f77e5334b2125aca12d3e9c227d9fd0da"
+      },
+      {
+        "menu": "CONNECT",
+        "key": "NATIVE-032.json",
+        "retained_record_sha256": "8fde691b6b61de9b69555ba9324181f79ab3530731a32c2c7114c5cd8e00137a"
+      },
+      {
+        "menu": "Plugins",
+        "key": "NATIVE-034.json",
+        "retained_record_sha256": "21d576d1cafbbca0deef1680ba762633da0c860e74ba58a77eda6482c23ee80d"
+      },
+      {
+        "menu": "Display",
+        "key": "NATIVE-036.json",
+        "retained_record_sha256": "f336c2e17683abff7334b492e1400e00963683938cc0431ffe46be8af0d3fb57"
+      },
+      {
+        "menu": "Settings",
+        "key": "NATIVE-009.json",
+        "retained_record_sha256": "6824162f9a6f17fcef158947c53ba43529c6f75b5f1bfada7ff82dbade168064"
+      },
+      {
+        "menu": "Window",
+        "key": "NATIVE-038.json",
+        "retained_record_sha256": "698f2fc564206184a394092aa84e86115355b6bd3cb457ea7c9fb10f4908ebce"
+      },
+      {
+        "menu": "Help",
+        "key": "NATIVE-040.json",
+        "retained_record_sha256": "f080b38eb136fb57535b1af9a4b6fb892fc8e19f3469faa52d61a44b43aebf87"
+      }
+    ],
+    "context_qualification": "Edit > Context Menu labels came from exposed descendants. No canvas right-click or selected-pattern/seam action was executed; the original selected-seam additions are preserved."
+  },
+  "graphics_reobserved": {
+    "page": "Graphic Options",
+    "antialiasing": "x4",
+    "antialiasing_visible_options": [
+      "Off",
+      "x2",
+      "x4",
+      "x8",
+      "x16"
+    ],
+    "normal_blending_method": "Alpha Blending",
+    "transparency_rendering_method": "Naive Ordered",
+    "maximum_image_resolution_pixels": [
+      4096,
+      4096
+    ],
+    "relation_to_catalog": "Same four configured values already recorded; no factory-default or editing/range/persistence qualification.",
+    "private_record_keys": [
+      "NATIVE-010.json",
+      "NATIVE-012.json"
+    ]
+  },
+  "displayed_shortcut_descriptions": {
+    "Simulate": "Space",
+    "Select/Move": "Q",
+    "Transform Pattern": "A",
+    "Edit Pattern": "Z",
+    "Polygon": "H",
+    "Internal Polygon/Line": "G",
+    "Edit Sewing": "B",
+    "Edit Texture (2D)": "T",
+    "Edit Topstitch": "J",
+    "qualification": "Displayed hints only; no shortcut pressed or investigator tool activation. Selected-tool behavior and effective bindings remain unverified.",
+    "private_record_key": "NATIVE-004-close-welcome.json"
+  },
+  "preference_navigation": {
+    "target": "User Interface category",
+    "result": "AXError.notImplemented",
+    "next_capture": "Graphic Options with the same four values; no accepted category change observed.",
+    "private_record_keys": [
+      "NATIVE-010.json",
+      "NATIVE-011.json",
+      "NATIVE-012.json"
+    ]
+  },
+  "remaining_contracts": [
+    "Current units and construction/file/simulation defaults were not reached in this run; prior configured-value observations remain historical and unchanged.",
+    "Checked language, numeric locale/regional parsing, effective keyboard bindings, full keyboard/high-DPI behavior and other preference-page contents remain unresolved. English UI/exposed language labels do not establish checked language.",
+    "PAT-007 owns names/notches/internal features; PAT-006 owns cuts/holes. This run adds no notch-specific selected-point/segment route, defaults, placement, edit, errors, history, persistence or export behavior. No notch absence is inferred.",
+    "Exposed pattern/sewing labels do not extend earlier bounded contracts: arbitrary curve/split/offset/cut input, ID/remapping rules, dart/pleat/clone relations, M:N/unequal-length continuous correspondence, mismatch/easing thresholds, tack/topstitch behavior and cancel/history/persistence/physical effects remain open.",
+    "Baseline/settings remain provisional, discovery incomplete and controlled complete-contract comparison not run.",
+    "Global settings-file equality and normal application network behavior were not measured."
+  ],
+  "inventory_changes": {
+    "new_ids": 0,
+    "menu_records_retained": 593,
+    "component_records_retained": 356,
+    "combined_records_retained": 949,
+    "bounded_packets_retained": 205,
+    "broad_features_retained": 56,
+    "catalog_map_packet_feature_registry_changes": false
+  },
+  "timing_and_cleanup": {
+    "prospective_seconds": 600,
+    "cleanup_reserve_seconds": 40,
+    "native_tool_calls": 41,
+    "native_input_attempts_including_one_error": 37,
+    "REA_observations": 2,
+    "cleanup_absence_elapsed_seconds": 582.53221566719,
+    "normal_termination_completed": true,
+    "owned_process_and_windows_absent": true,
+    "force_termination_API_called": false,
+    "metadata_seal_elapsed_seconds": 633.3315063749906,
+    "requested_600s_seal_deadline_met": false,
+    "metadata_seal_deadline_overrun_seconds": 33.33150637499057,
+    "qualification": "App/window cleanup met600s. Metadata sealing missed the requested600s sealing deadline; no GUI/process action followed cleanup. Full case-bound compliance is not claimed."
+  },
+  "tools": {
+    "native_UI_reported_version": "1001874",
+    "REA_cli_version": "6.9.0",
+    "REA_entrypoint_sha256": "57a41eeefdee8b5882b08537820004dbb1cf53929aa196b4d86471be7865b83d",
+    "Node_version": "26.12.1",
+    "Node_executable_sha256": "06eb3f5762c2b6890e99d03f931bf01d9b20fd341dec1a8c1ef5c1809e66102b",
+    "REA_evidence_id": "ev_febe84a37b78ef95913b7d3e48c8b2086a33c521e79a9eed8dae21ff873962df",
+    "REA_main_nodes": 98,
+    "REA_truncated": false,
+    "REA_gaps": []
+  },
+  "driver_limits": [
+    "Bundle selector ambiguity resolved using verified actual runtime bundle.",
+    "Native capture timed out during startup; another observation followed only after fresh inventory showed the main window newly onscreen.",
+    "Initial REA splash selection failed exact AX/CG geometry matching; later read-only observation used the fresh exact main window.",
+    "Preference-category navigation failed; no unsupported input fallback or setting-value edit."
+  ],
+  "evidence": [
+    {
+      "key": "PLAN.json",
+      "retained_record_sha256": "c20395493140ab9d7b97c5d5868a66869988854d0ec0c6f3b0d5e77129843ba3",
+      "retention": "Complete original private; no vendor pixels, payload, account text or private locators published."
+    },
+    {
+      "key": "LAUNCH.json",
+      "retained_record_sha256": "1e39d11c0b3184ea96bfa8521d6ef7810e51f98d3e692386dd9a1e7db990bb1e",
+      "retention": "Complete original private; no vendor pixels, payload, account text or private locators published."
+    },
+    {
+      "key": "RUNTIME-IDENTITY.json",
+      "retained_record_sha256": "db051108814c2c71279e5df5055821ac38ee305e40eb4eff229ac70796c29966",
+      "retention": "Complete original private; no vendor pixels, payload, account text or private locators published."
+    },
+    {
+      "key": "NATIVE-001-bundle-ambiguous.json",
+      "retained_record_sha256": "ca1f0a8715b57d101345bd18544039fd5b4c1f62e5b415fa7fe396330078aca1",
+      "retention": "Complete original private; no vendor pixels, payload, account text or private locators published."
+    },
+    {
+      "key": "NATIVE-002-actual-path-timeout.json",
+      "retained_record_sha256": "cfc1916f99982994ed61bfec601dcea9e0d8c1cc61ea57600ba09a6302cf98a1",
+      "retention": "Complete original private; no vendor pixels, payload, account text or private locators published."
+    },
+    {
+      "key": "NATIVE-003-welcome.json",
+      "retained_record_sha256": "b288ed661adfcd0bead0b6c475a5b34e681fa084d4d75b82906d7fe67fe55e17",
+      "retention": "Complete original private; no vendor pixels, payload, account text or private locators published."
+    },
+    {
+      "key": "NATIVE-004-close-welcome.json",
+      "retained_record_sha256": "606316089ba59c8ee51b8b3c31cc530925ebf3cc51624aea6b57b5d880eeac39",
+      "retention": "Complete original private; no vendor pixels, payload, account text or private locators published."
+    },
+    {
+      "key": "NATIVE-010.json",
+      "retained_record_sha256": "ee72a0b86b4441bce18a93a7b93ef307a5fecf46fe3e557aa02d7957f47c5099",
+      "retention": "Complete original private; no vendor pixels, payload, account text or private locators published."
+    },
+    {
+      "key": "NATIVE-011.json",
+      "retained_record_sha256": "c7c3acc3ea05ba1f663c339ceecf93d8b6f1f1d28cc64d370414b6454b3f9794",
+      "retention": "Complete original private; no vendor pixels, payload, account text or private locators published."
+    },
+    {
+      "key": "NATIVE-012.json",
+      "retained_record_sha256": "79e80983ff30e63d6efd71337f8a95ee38662f65ba1d650689a41d5b13bfc47e",
+      "retention": "Complete original private; no vendor pixels, payload, account text or private locators published."
+    },
+    {
+      "key": "REA-001-startup.json",
+      "retained_record_sha256": "7267d1860b2fd67429c92fc98d91de3f4aed5de6bb87e4946925dd20d25d8158",
+      "retention": "Complete original private; no vendor pixels, payload, account text or private locators published."
+    },
+    {
+      "key": "REA-002-main.json",
+      "retained_record_sha256": "8ac5f31cb55e6ddbfbf78dfa13189d4bf6a2959706301a72d4cb17bf13a3294b",
+      "retention": "Complete original private; no vendor pixels, payload, account text or private locators published."
+    },
+    {
+      "key": "CLEANUP-normal-request.json",
+      "retained_record_sha256": "06196006467cb92f399645c4c9cc0c0f548913222fb5e15c8efbaedf9a72328c",
+      "retention": "Complete original private; no vendor pixels, payload, account text or private locators published."
+    },
+    {
+      "key": "CLEANUP-force-aborted.json",
+      "retained_record_sha256": "23226a32fec29ab2a3d7a3d2722c1da64eb87d424a1375f13a017ee8dbfeb748",
+      "retention": "Complete original private; no vendor pixels, payload, account text or private locators published."
+    },
+    {
+      "key": "CLEANUP-final-inventory.json",
+      "retained_record_sha256": "4b224fcaaa942b1f61257115199d6d42c44df549ca987371322b2acdd8f98610",
+      "retention": "Complete original private; no vendor pixels, payload, account text or private locators published."
+    },
+    {
+      "key": "CLEANUP-final-result.json",
+      "retained_record_sha256": "4fa1108941c9994098fff2bea5f2975db3b0a936171022a89e0e71ecebb669b6",
+      "retention": "Complete original private; no vendor pixels, payload, account text or private locators published."
+    }
+  ],
+  "original_digests": {
+    "complete_private_raw_manifest_sha256": "ff27eeaab1ce7e7177fedd6acc27f152d5fb7aec9a9fdfd3b1393c098a5042b1",
+    "private_raw_seal_sha256": "d7d89303cf08c6e4dbcce258096a3f693aee81b05bb7db85190f8ac5d75faf6d",
+    "reviewed_private_behavior_contract_sha256": "5fb0082973290ff6cb3e3ae02bb47673411d0b014fc9d02007cb5dcedaece6bd"
+  },
+  "weftforge_comparison": "not_run",
+  "verified_parity_claimed": false,
+  "complete_broad_feature_contracts": 0,
+  "implementation_verification_freshness_or_parity_promotions": false
+}

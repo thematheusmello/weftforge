@@ -18,8 +18,17 @@ unsupported export and preserves the file. A fresh process reopens the saved
 project with editable notch identity/values; both processes close normally.
 Independent root checks cover all 94 retained manifest entries, 91 source inputs,
 native output, SVG geometry and the preserved sentinel. This is keyboard/pointer
-workflow evidence; application-modal AXSetValue remains unverified. N004/N005's
-empty accessibility outcomes remain historical, unchanged.
+workflow evidence; N006 did not exercise application-modal AXSetValue.
+N004/N005's empty accessibility outcomes remain historical, unchanged.
+
+A separate N007 case subsequently verifies five genuine native AXValue writes
+with changed raw readback, invalid-input refusal, stable-ID create/edit,
+Undo/Redo, native saving and editable fresh-process reopen. Root independently
+checks its 93 retained entries, 91 source inputs, actual before/after AX nodes,
+saved v6 data and normal process cleanup. That case sealed in 565.902 seconds
+within its 600-second bound; its raw evidence remains private pending a scoped
+publication selection. It does not regrade N006 or establish complete keyboard,
+high-DPI, screen-reader, feature or reference coverage.
 
 Clean `cargo xtask verify` on metadata revision `1ff1b7bf` passed in 199.814
 seconds after the native evidence and generated progress were Git-tracked:
@@ -54,9 +63,9 @@ shirt workflow and the complete six-gate delivery sequence in ROADMAP.md.
 
 GitHub Actions are disabled; their run count remains 54. Main remains
 `1fc1d71993cf193801e44982b757fca8abc5aba7` and the existing Pages site is unchanged.
-The N006 and reference test processes are closed. A separate bounded native
-numeric-setter case is in progress (owned PID 61448, watchdog session 60599);
-no new garment run is active. Feature discovery remains incomplete: 42 partial,
+The N006, N007 and reference test processes are closed; no new garment run is
+active. A separate UI worktree is improving contextual property grouping while
+the solver repair continues independently. Feature discovery remains incomplete: 42 partial,
 14 planned, zero fully implemented or reference verified
 among 56 inventoried broad contracts. No delivery gate is accepted.
 
