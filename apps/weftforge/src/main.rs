@@ -8680,7 +8680,7 @@ mod contextual_properties_tests {
         let ctx = egui::Context::default();
         ctx.enable_accesskit();
         studio_style(&ctx);
-        ctx.style_mut(|style| style.animation_time = 0.0);
+        ctx.all_styles_mut(|style| style.animation_time = 0.0);
         let mut app = Studio::empty();
         app.session_autosave = None;
         app.editor
@@ -9322,7 +9322,7 @@ mod contextual_properties_tests {
         let ctx = egui::Context::default();
         ctx.enable_accesskit();
         studio_style(&ctx);
-        ctx.style_mut(|style| style.animation_time = 0.0);
+        ctx.all_styles_mut(|style| style.animation_time = 0.0);
         let mut app = Studio::empty();
         app.session_autosave = None;
         let output = frame(&ctx, &mut app, 1000., vec![]);
