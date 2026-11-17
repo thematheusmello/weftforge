@@ -7478,9 +7478,8 @@ fn numeric_value<'a>(ui: &egui::Ui, value: &'a mut f64) -> egui::DragValue<'a> {
         {
             // DragValue clears its raw text before calling the formatter on refocus.
             input.restore(&ctx);
-            ctx.data_mut(|data| {
-                data.insert_temp(id.with("resumed-property-input"), ctx.cumulative_frame_nr())
-            });
+            let frame = ctx.cumulative_frame_nr();
+            ctx.data_mut(|data| data.insert_temp(id.with("resumed-property-input"), frame));
         }
         // egui reparses its edit buffer on blur even when the text was never changed.
         if ctx.memory(|memory| memory.has_focus(id)) {
