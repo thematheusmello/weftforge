@@ -1,4 +1,30 @@
-# WeftForge status — active development, 2026-11-16
+# WeftForge status — active development, 2026-11-17
+
+## Safe Rectangle publication checkpoint
+
+Clean metadata commit `87843ed51bf1d325bf11a2a7a39dd1150dc3f625` passed
+`cargo xtask verify` in 226.473 seconds: registry and generated progress, historical
+and current maps, 48 script tests, six evaluator tests and CLI help. All 150 inputs
+(88 source, 57 reports, five metadata) remained unchanged, and the checkout stayed
+clean. The actual tested source commit `7d19` is retained in ancestry. See the
+[verification receipt](parity/reports/artifacts/rectangle-publication-checks-20261117/SAFE-XTASK-RESULT-002.json)
+and [publication manifest](parity/reports/artifacts/rectangle-publication-checks-20261117/MANIFEST.json).
+
+Before the first push, privacy review found display-profile identifiers in nine
+screenshots. Public copies remove eight metadata bytes per image; encoded scans,
+color-characterization tags and all other bytes match the private originals.
+The [current index](parity/reports/artifacts/rectangle-gesture-20261116/PUBLICATION-CURRENT.json)
+records the correction. Original cases and outcomes remain exact. The native
+900-second case still failed its finalization limit; the separate file check
+passed. No whole garment, physics, full feature or reference acceptance follows.
+The [preview gallery](docs/studio-preview.md) shows the actual native creation
+and reopened editing captures with these limits.
+
+This receipt and status closure changes no checked source/report/map input.
+Local verification PID 32431/session 47796 is terminal exit 0. No owned native
+window or Cargo job remains in this checkout. Publishing targets a draft on
+PR #55 with Actions disabled and the existing Pages site preserved. The later
+material-group repair and its 407-test gates belong to a separate increment.
 
 ## Rectangle staged delivery checkpoint
 

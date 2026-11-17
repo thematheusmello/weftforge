@@ -1,0 +1,43 @@
+{
+  "at": "2026-11-16T23:33:20.717365+00:00",
+  "status": "ROOT_APPROVED_NINE_EXACT_PRESERVED_RAW_ARTIFACT_EXCLUSIONS",
+  "index_tree": "2f827df5a027b3ce6d16d6152942447f0c9ec14b",
+  "original_full_check_PID": 83104,
+  "original_full_exit": 2,
+  "exclude": [
+    "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/committed.patch",
+    "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/first-green.log",
+    "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/focused-revision2-endpoints.log",
+    "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/focused-revision2-rectangle.log",
+    "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate-endpoints.log",
+    "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate-position-snap.log",
+    "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate-rectangle.log",
+    "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate.patch",
+    "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/workspace-tests.log"
+  ],
+  "actual_bytes_confirmed": {
+    "single_space_patch_context": 2,
+    "blank_EOF": 7
+  },
+  "original_artifacts_unchanged": true,
+  "scoped_argv": [
+    "git",
+    "diff",
+    "--cached",
+    "--check",
+    "--",
+    ".",
+    ":(exclude)parity/reports/artifacts/rectangle-gesture-20261116/source-repair/committed.patch",
+    ":(exclude)parity/reports/artifacts/rectangle-gesture-20261116/source-repair/first-green.log",
+    ":(exclude)parity/reports/artifacts/rectangle-gesture-20261116/source-repair/focused-revision2-endpoints.log",
+    ":(exclude)parity/reports/artifacts/rectangle-gesture-20261116/source-repair/focused-revision2-rectangle.log",
+    ":(exclude)parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate-endpoints.log",
+    ":(exclude)parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate-position-snap.log",
+    ":(exclude)parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate-rectangle.log",
+    ":(exclude)parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate.patch",
+    ":(exclude)parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/workspace-tests.log"
+  ],
+  "scoped_exit": 0,
+  "stdout": "",
+  "stderr": ""
+}

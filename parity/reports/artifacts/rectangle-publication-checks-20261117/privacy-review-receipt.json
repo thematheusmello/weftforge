@@ -1,0 +1,232 @@
+{
+  "review": "Independent narrow Rectangle privacy-delta review",
+  "status": "NO_BLOCKER",
+  "at_utc": "2026-11-17T00:18:05.288679+00:00",
+  "open_findings": [],
+  "immutable_inputs": {
+    "HEAD": "ae8dd6ebe6da760501f507248a11b069a02cb453",
+    "prior_reviewed219_tree": "2f827df5a027b3ce6d16d6152942447f0c9ec14b",
+    "initial_safe_tree": "0c51b6037ad1d7394480e4024d6d37fe84c371ba",
+    "final_safe_tree": "0c51b6037ad1d7394480e4024d6d37fe84c371ba",
+    "total_staged_paths": 222,
+    "exact_delta_paths": 18,
+    "changed_public_inputs": {
+      "STATUS.md": {
+        "Git_blob": "db0e5417bbc668bfa55e653b4a71f1154f2a10d0",
+        "sha256": "616ff31914d85eaa438944c9dd204ae1b816f48436b547c996ae39b59fa7b2c2",
+        "bytes": 73918
+      },
+      "docs/progress.md": {
+        "Git_blob": "1e7f7e1215d2b57574a437289b44e2e5f497ef23",
+        "sha256": "70d783a7a57cf252689f9bcf4e3de4b516fbe167128313007f95bb2ce081e083",
+        "bytes": 129132
+      },
+      "docs/studio-preview.md": {
+        "Git_blob": "585b5f0d510265be3d1ec6c8386d31f82a09da0f",
+        "sha256": "0624972a31acc3dd63975280f3e50d2961eba06b18131dca43dd6b2817434e44",
+        "bytes": 33598
+      },
+      "parity/features.yaml": {
+        "Git_blob": "7ebe794a3cb655277189dd5de13a5d2258d18029",
+        "sha256": "6a8f2fea73f35be890d63b2c8504e18cccf4c701fc62e364e9040c9a1bdcce16",
+        "bytes": 8022894
+      },
+      "parity/reports/WF-20261116-RECTANGLE-FILE-SUPPLEMENT-001.json": {
+        "Git_blob": "7c821d44d722e6c2387cb2f7bfbe037f3a27201a",
+        "sha256": "b5dd94b7b1416631dff1a8b939bb0b6a66e598ab12cebe5a88e52beb3392a623",
+        "bytes": 33929
+      },
+      "parity/reports/WF-20261116-RECTANGLE-NATIVE-001.json": {
+        "Git_blob": "1c73850e6772b4cb52af0eff320e1a06140ee9f7",
+        "sha256": "9042647db284a35369303ebff07de159948d7cf108488868241aa79cfd0dc411",
+        "bytes": 32621
+      },
+      "parity/reports/WF-20261116-RECTANGLE-SOURCE-001.json": {
+        "Git_blob": "3ec924b212b7627b247c4e7c814c8f866f11f0dc",
+        "sha256": "a1b2a693de9e8ba0010726cc4a14dacde79540efa9d4cfa142e068304b9aa1c9",
+        "bytes": 16895
+      },
+      "parity/reports/artifacts/rectangle-gesture-20261116/JPEG-METADATA-REDACTION.json": {
+        "Git_blob": "9e208b05611d377db0b5b435e6472b8a82932ede",
+        "sha256": "86ba6854eaa26aa2212a637db9649f0bd3e1341b646f6e2ac5e00649ef6a4b67",
+        "bytes": 11632
+      },
+      "parity/reports/artifacts/rectangle-gesture-20261116/PUBLICATION-CURRENT.json": {
+        "Git_blob": "7a5b283cc833f46ad85aeabb0970cf5ea0c14f05",
+        "sha256": "e18287dc78546c250f2c68e3ac178ad929fcab399915e958f8981da8df6af3a3",
+        "bytes": 43184
+      },
+      "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0003-initial-empty-after-raise.jpg": {
+        "Git_blob": "94dfa3c8f66c3d2e9a5ec093fb3123d4e6fe9665",
+        "sha256": "b946f6d30e3b6b4fc20040ba9b8ef1dabc762fa091e5e4041f24534f8fd2c053",
+        "bytes": 158091
+      },
+      "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0007-after-one-Rectangle-drag.jpg": {
+        "Git_blob": "1706f5f40c7f7bc5189493dfc65c2c4cd0bc3f00",
+        "sha256": "db02b50dd03b7d5c992e3258a6c946dc8f2c46d16124b288206541f6bc7a8910",
+        "bytes": 186364
+      },
+      "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0011-after-one-Undo-R2.jpg": {
+        "Git_blob": "a471a5fcf49d8a761726b9282134ebfc09a7b1d9",
+        "sha256": "e988058ec29ee90ca3da2af666b73d6fcb52092d44f2952a765d214ec907086e",
+        "bytes": 159797
+      },
+      "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0015-after-one-Redo-R3.jpg": {
+        "Git_blob": "c76ae1b215cddd83200768ed45842de7da8829f6",
+        "sha256": "7dbd755dae076dde3e4f2d8d59150183e7511496033d45c31590c2b4f4fce320",
+        "bytes": 162006
+      },
+      "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0021-fresh-P2-reopened-R3.jpg": {
+        "Git_blob": "11394179dde913b91cae8de00e52b656eb81ad4b",
+        "sha256": "7e71e0e9c5a0f0dc5961e56bac4b63d88619d6ed57423f5a3c99738e8e6fa5d3",
+        "bytes": 164295
+      },
+      "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0026-boundary-picker-visual-context.jpg": {
+        "Git_blob": "7dd9ae7a493e84649933118013759e4b7b14a517",
+        "sha256": "0a0f25ea023f12a37b18652e06a64a3ea980c1e069f440ce8b328548e4d82025",
+        "bytes": 185015
+      },
+      "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0030-framed-reopened-P0-before-edit.jpg": {
+        "Git_blob": "9515525eb313bedd22bc86c95e215dc77653edc8",
+        "sha256": "3a52c3f1d58478797f06c9089fcf03f0a140204c515b6c0c2f59b619f6e9115d",
+        "bytes": 174166
+      },
+      "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0032-reopened-edit-R4.jpg": {
+        "Git_blob": "4a179612923ac59318178b5d2fcf4fe5777c4a95",
+        "sha256": "549d255b80ba85394ab944b48829ffc50c684c957c26c143055c901c622c4ac7",
+        "bytes": 175868
+      },
+      "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0034-reopened-edit-R4-saved.jpg": {
+        "Git_blob": "e3a6bcc12caf21dba1869b1d0b02397e97fa1362",
+        "sha256": "98861152050eaf7268123c7334bef13cb25b552f6d4e50a98b724cae915b53ca",
+        "bytes": 173813
+      }
+    },
+    "read_private_guard_proofs": {
+      ".local/rectangle-delivery-proposal-20261116/PRIVACY-AMENDMENT-001/STAGED-SAFE-CHECKPOINT.json": {
+        "sha256": "869a68edc5e0517f69a2010a4a40ce728d7da106c72cf6620c2a49b2dc844907",
+        "bytes": 4486
+      },
+      ".local/rectangle-delivery-proposal-20261116/PRIVACY-AMENDMENT-001/PRIVACY-DELTA-REVIEW.json": {
+        "sha256": "5d565db43a5d3e25699bd3a760394a366828c4bda855e9fe6170a53c7dcfa6b4",
+        "bytes": 3928
+      },
+      ".local/rectangle-delivery-proposal-20261116/PRIVACY-AMENDMENT-001/SAFE-INPUTS-150.json": {
+        "sha256": "25c85b3f89b4f0a378c822b9fca5d00ceda6182d1423ba79e1a0294636d26d28",
+        "bytes": 17990
+      },
+      ".local/rectangle-delivery-proposal-20261116/PRIVACY-AMENDMENT-001/ARTIFACT-GUARD-002.json": {
+        "sha256": "03b4b36ad447db46d86da496f913a4e247c60cd75c8b21de1dd8afb15721ce23",
+        "bytes": 65987
+      },
+      ".local/rectangle-delivery-proposal-20261116/PRIVACY-AMENDMENT-001/GENERATOR-002-STARTED.json": {
+        "sha256": "b020920966cda65c32d135a8b48174d77b8be591e1fb7f976a8c3d96f0ce6d37",
+        "bytes": 18155
+      },
+      ".local/rectangle-delivery-proposal-20261116/PRIVACY-AMENDMENT-001/GENERATOR-002-RESULT.json": {
+        "sha256": "b012664d72362d8dccc4bb33ff385ad7d42e60bf6b88ec15c13de7650cd0f507",
+        "bytes": 18230
+      },
+      ".local/rectangle-delivery-proposal-20261116/PRIVACY-AMENDMENT-001/GENERATOR-002-QUALIFICATION.json": {
+        "sha256": "40b3d00d0bb226c7fb9461ec2d577b83be24fd0a3e2da9a15971cd9ec53007cb",
+        "bytes": 723
+      },
+      ".local/rectangle-delivery-root-review-20261116/JPEG-IDENTIFIER-FINDING-001.json": {
+        "sha256": "2cf08b990aaf03f92d902a290af3bfc5571f0ff2a8abf7172bd65a918e54dede",
+        "bytes": 3434
+      },
+      ".local/rectangle-delivery-root-review-20261116/PRIVACY-CORRECTION-AND-PRIVATE-HISTORY-001.json": {
+        "sha256": "9262a534802162550882f276e4888e3e8bc47d73ddfe550cae275fe4843a0959",
+        "bytes": 740
+      }
+    }
+  },
+  "privacy_handling": "No private identifier bytes or values were printed or copied to this review. Only known profile hashes, zero/nonzero facts, offsets/metadata structure and safe public file hashes were used.",
+  "checks": {
+    "JPEG_byte_delta": {
+      "images": 9,
+      "ICC_profile_bytes_each": 3372,
+      "known_original_profile_sha256": "888b82c8c6dca8a09c3554fe9c039de82f7283daaef63324efae94907b1265b4",
+      "safe_profile_sha256": "a6e3f7665b794a386fcfc7e4167ed9ba75f148cd6236f6d6cd595f77e9923c00",
+      "each_exactly8_different_bytes_all_zero_inside_mmod": true,
+      "profile_ID_already_zero_and_unchanged": true,
+      "encoded_scans_and_all_non_declared_bytes_exact": true,
+      "all_other_ICC_tag_payloads_exact": true,
+      "raster_decoding_or_reencoding_performed": false,
+      "journal_original_superseded_current_and_scan_hashes_match_actual_Git_blobs": true
+    },
+    "publication_supersession": {
+      "historical_manifest_byte_exact": true,
+      "historical_manifest_sha256": "77bcc113cdbd8ea6998a6883fcc2bc8bf22ab91d8afdf30b9fca42ad449c18ec",
+      "journal_sha256": "86ba6854eaa26aa2212a637db9649f0bd3e1341b646f6e2ac5e00649ef6a4b67",
+      "current_index_sha256": "e18287dc78546c250f2c68e3ac178ad929fcab399915e958f8981da8df6af3a3",
+      "supersedes_exactly9_image_entries_and_whole_byte_wording": true,
+      "current_index_self_hash_omitted_and_bound_by_all3_reports": true,
+      "raw_original_case_hashes_preserved_as_original_not_current_public_derivatives": true,
+      "original_private209_unchanged": "Root/writer immutable guard retained; nine original image hashes independently match old Git blobs."
+    },
+    "artifact_maps": {
+      "current_union": 212,
+      "both_new_metadata_artifacts_in_all3_maps": true,
+      "nine_current_JPEG_hashes_match_actual_staged_bytes": true,
+      "other201_prior_artifacts_byte_exact": true,
+      "all212_map_values_and_nonexecutable_Git_modes_match_guard": true,
+      "all212_filesystem_modes": "0644",
+      "current_index_artifact_map_matches_union_except_self": true
+    },
+    "authority_and_outcomes": {
+      "all56_normative_coarse_and_freshness_fields_exact": true,
+      "all51_other_feature_records_exact": true,
+      "historical_run_prefixes_exact_from_ae8": true,
+      "only5_Rectangle_gap_suffixes_and13_current_run_artifact_maps_change": true,
+      "all13_run_mirrors_exact": true,
+      "three_new_report_only_changes": [
+        "artifact_hashes",
+        "publication_image_metadata",
+        "selected_manifest_qualification",
+        "current_public_index",
+        "public_image_qualification"
+      ],
+      "statuses_source_pass_native_fail_file_supplement_pass_unchanged": true,
+      "report_source_scopes_source_hashes_actual_and_current_pins_timestamps_and_negative_acceptance_limits_exact": true,
+      "all54_existing_reports_byte_exact": true,
+      "map385_and_dashboard_byte_exact": true,
+      "source88_exact_in_final_SAFE150_guard": true,
+      "no_checker_native_scientific_result_replay_or_regrade": true
+    },
+    "gallery_and_generated_docs": {
+      "only_two_added_image_links_to_corrected_native_images": true,
+      "gallery_addition_qualifies900s_native_failure_and_separate_file_only_pass": true,
+      "gallery_historical_body_byte_exact": true,
+      "generated_progress_exactly5_authorized_privacy_gap_line_changes": true,
+      "STATUS_explicit_historical_manifest_and_current_derivative_qualifications": true
+    },
+    "generator_guard": {
+      "PID": 12159,
+      "session": 50755,
+      "generator_exit": 0,
+      "seconds": 73.14317645796109,
+      "retained_wrapper_exit": 2,
+      "retained_before_after_immutable_inputs": 149,
+      "only_expected_changed_generated_output": "docs/progress.md",
+      "changed_gap_lines": 5,
+      "generator_amendment_invocation_count": 1,
+      "final_SAFE_INPUTS150_all150_hashes_match_staged_blobs": true,
+      "SAFE_INPUTS150_is_post_generation_snapshot_not_a_verification_run": true,
+      "wrapper_failure_and_qualification_not_hidden_or_claimed_full_pass": true
+    },
+    "private_history": {
+      "unsafe_commit": "d9951117ad35d4fe2c5afcd4ed3396ef6bdc5963",
+      "only_containing_ref": "refs/codex-private/rectangle-unredacted-d9951117-NEVER-PUSH",
+      "unsafe_commit_not_ancestor_of_current_HEAD": true,
+      "remote_branch_absence": "Root proof retained; no independent remote query performed.",
+      "no_ref_branch_reset_commit_or_remote_mutation_by_reviewer": true
+    }
+  },
+  "limits": [
+    "Narrow18-path delta review only. No Cargo, generator, checker, grading, native app, source edit, reference access, remote action or commit.",
+    "Raw native observations/results remain unchanged evidence; correcting display metadata cannot confer native lifecycle or garment/reference/physics acceptance.",
+    "Root owns safe commit, actual tested7d19 ancestry merge, exact whitespace handling and justified clean committed xtask verification."
+  ],
+  "verdict": "No concrete blocker for safe tree0c51b6037ad1d7394480e4024d6d37fe84c371ba; keep the unsafe commit/ref private and never push it."
+}
