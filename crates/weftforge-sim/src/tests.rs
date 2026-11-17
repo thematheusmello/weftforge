@@ -503,7 +503,7 @@ fn weighted_stitch_closes_unequal_samples_and_preserves_momentum() {
     };
     let mut x = vec![[0., 0., 0.], [1., 0., 0.], [2., 0.3, 0.], [3., 0.3, 0.]];
     let before = x.iter().copied().fold([0.; 3], add);
-    constraints::solve_stitch(stitch, 0., &mut x, &[1.; 4], 0.01, &mut [0.; 3]);
+    constraints::solve_hard_stitch(stitch, 0., &mut x, &[1.; 4], 0.01, &mut [0.; 3]);
     assert!(length(sub(stitch.a.position(&x), stitch.b.position(&x))) < 1e-12);
     assert!(length(sub(x.iter().copied().fold([0.; 3], add), before)) < 1e-12);
     // A repeated endpoint must be treated as one degree of freedom.
@@ -512,29 +512,40 @@ fn weighted_stitch_closes_unequal_samples_and_preserves_momentum() {
         b: WeightedPoint::vertex(2),
         compliance: 0.,
     };
-    constraints::solve_stitch(s, 0., &mut x, &[1.; 4], 0.01, &mut [0.; 3]);
+    constraints::solve_hard_stitch(s, 0., &mut x, &[1.; 4], 0.01, &mut [0.; 3]);
     assert!(length(sub(x[0], x[2])) < 1e-12);
 }
 
-// This read-only adapter keeps the frozen N32 observer identical for scalar RED and vector GREEN.
-trait ObservedStitchMultiplier: Copy + Default + std::fmt::Debug {
-    fn endpoint_vector(self, difference: Vec3) -> Vec3;
-    fn is_scalar(self) -> bool;
+// These adapters invoke the production block and independently report constitutive impulse.
+fn single_soft_stitch(
+    stitch: Stitch,
+    target: f64,
+    x: &mut [Vec3],
+    inverse_mass: &[f64],
+    h: f64,
+    correction: &mut [Vec3],
+) -> Result<(), SimulationError> {
+    constraints::solve_sewing(
+        &[stitch],
+        &[target],
+        x,
+        inverse_mass,
+        h,
+        correction,
+        &|| false,
+    )
 }
-impl ObservedStitchMultiplier for f64 {
-    fn endpoint_vector(self, difference: Vec3) -> Vec3 {
-        mul(difference, self / length(difference))
-    }
-    fn is_scalar(self) -> bool {
-        true
-    }
-}
-impl ObservedStitchMultiplier for Vec3 {
-    fn endpoint_vector(self, _: Vec3) -> Vec3 {
-        self
-    }
-    fn is_scalar(self) -> bool {
-        false
+
+fn soft_stitch_impulse(stitch: Stitch, target: f64, x: &[Vec3], h: f64) -> Vec3 {
+    let difference = sub(stitch.a.position(x), stitch.b.position(x));
+    if target == 0. {
+        mul(difference, -h * h / stitch.compliance)
+    } else {
+        let radius = length(difference);
+        mul(
+            difference,
+            -h * h * (radius - target) / (stitch.compliance * radius),
+        )
     }
 }
 
@@ -547,59 +558,49 @@ fn closed_elastic_stitch_n32_matches_independent_quadratic_and_individual_action
         b: WeightedPoint::vertex(anchor),
         compliance: 1.,
     });
-    let mut lambda = [Default::default(); 2];
-    let mut individual_action = [[0.; 3]; 2];
+    let mut correction = [[0.; 3]; 3];
     for _ in 0..32 {
-        for i in 0..2 {
-            let before = x[0];
-            constraints::solve_stitch(stitches[i], 0., &mut x, &[1., 0., 0.], 1., &mut lambda[i]);
-            individual_action[i] = add(individual_action[i], sub(x[0], before));
-        }
+        constraints::solve_sewing(
+            &stitches,
+            &[0.; 2],
+            &mut x,
+            &[1., 0., 0.],
+            1.,
+            &mut correction,
+            &|| false,
+        )
+        .unwrap();
     }
     let q = stitches.map(|s| sub(s.a.position(&x), s.b.position(&x)));
-    let lambda_vector = std::array::from_fn::<_, 2, _>(|i| lambda[i].endpoint_vector(q[i]));
-    let residual = std::array::from_fn::<_, 2, _>(|i| add(q[i], lambda_vector[i]));
-    let transport =
-        std::array::from_fn::<_, 2, _>(|i| length(sub(individual_action[i], lambda_vector[i])));
+    let impulses = stitches.map(|s| soft_stitch_impulse(s, 0., &x, 1.));
     let energy = (dot(q[0], q[0]) + dot(q[1], q[1])) / 2.;
     let objective = dot(x[0], x[0]) / 2. + energy;
-    // The gradient of Phi=3(x²+y²)/2-x-y+1 is independent of the multiplier ledger.
+    // The gradient of Phi=3(x²+y²)/2-x-y+1 is independent of stage history.
     let stationarity = add(x[0], add(q[0], q[1]));
     let u = 2_f64.powi(-64);
     let expected_x = [(1. - u) / 3., (1. + 2. * u) / 3., 0.];
-    let expected_lambda = [
+    let expected_impulses = [
         [(2. - 2. * u) / 3., (-1. + 4. * u) / 3., 0.],
         [(-1. + u) / 3., (2. - 2. * u) / 3., 0.],
     ];
-    let expected_residual = [[-u, 2. * u, 0.], [0.; 3]];
     let expected_energy = (5. - u + 5. * u * u) / 9.;
     let expected_objective = 2. / 3. + 5. * u * u / 6.;
+    let action = correction[0]; // m/h²=1 in this fixture.
     println!(
-        "fixed_operator_N=32 h_s=1 c_m_per_N=1 free_mass_kg=1\n\
-         x_m={x:?}\nlambda_private_kg_m={lambda:?}\nlambda_vector_kg_m={lambda_vector:?}\n\
-         residual_m={residual:?}\nindividual_action_N={individual_action:?}\n\
-         individual_transport_N={transport:?}\nenergy_J={energy:?}\n\
-         objective_J={objective:?}\nstationarity_N={stationarity:?}\n\
-         expected_x_m={expected_x:?}\nexpected_lambda_kg_m={expected_lambda:?}\n\
-         expected_residual_m={expected_residual:?}\nexpected_energy_J={expected_energy:?}\n\
-         expected_objective_J={expected_objective:?}"
+        "N=32 x_m={x:?} nodal_history_m={correction:?} impulses_N_s2={impulses:?} energy_J={energy} objective_J={objective} stationarity_N={stationarity:?}"
     );
-    if lambda[0].is_scalar() {
-        assert!(transport[0] > 0.01, "legacy stitch1 RED witness: N");
-    }
     assert_eq!(&x[1..], &anchors);
     assert!(length(sub(x[0], expected_x)) <= 1e-12, "position: m");
     for i in 0..2 {
         assert!(
-            length(sub(lambda_vector[i], expected_lambda[i])) <= 1e-12,
-            "stitch{i} multiplier: kg m"
+            length(sub(impulses[i], expected_impulses[i])) <= 1e-12,
+            "stitch{i} physical impulse: kg m"
         );
-        assert!(
-            length(sub(residual[i], expected_residual[i])) <= 1e-12,
-            "stitch{i} constitutive residual: m"
-        );
-        assert!(transport[i] <= 1e-12, "stitch{i} individual transport: N");
     }
+    assert!(
+        length(sub(action, add(impulses[0], impulses[1]))) <= 1e-12,
+        "total action: N"
+    );
     assert!((energy - expected_energy).abs() <= 1e-12, "energy: J");
     assert!(
         (objective - expected_objective).abs() <= 1e-12,
@@ -617,16 +618,18 @@ fn closed_elastic_stitch_preserves_isolated_energy_and_units() {
     };
     let predictor = [1., 2., 0.];
     let mut x = [predictor, [0.; 3]];
-    let mut lambda = [0.; 3];
-    constraints::solve_stitch(stitch, 0., &mut x, &[0.5, 0.], 0.5, &mut lambda);
-    assert_eq!(lambda, [-1., -2., 0.]);
+    let mut correction = [[0.; 3]; 2];
+    single_soft_stitch(stitch, 0., &mut x, &[0.5, 0.], 0.5, &mut correction).unwrap();
+    let impulse = soft_stitch_impulse(stitch, 0., &x, 0.5);
+    assert_eq!(impulse, [-1., -2., 0.]);
     assert_eq!(x, [[0.5, 1., 0.], [0.; 3]]);
     let q = sub(stitch.a.position(&x), stitch.b.position(&x));
     let force = [-4., -8., 0.];
     assert_eq!(mul(q, -1. / stitch.compliance), force);
-    assert_eq!(mul(lambda, 1. / 0.5_f64.powi(2)), force);
+    assert_eq!(mul(impulse, 1. / 0.5_f64.powi(2)), force);
     assert_eq!(mul(sub(x[0], predictor), 2. / 0.5_f64.powi(2)), force);
     assert_eq!(dot(q, q) / (2. * stitch.compliance), 5.);
+    assert_eq!(correction[0], sub(x[0], predictor));
 }
 
 #[test]
@@ -666,8 +669,9 @@ fn closed_elastic_stitch_two_free_masses_preserve_reactions_under_rigid_transfor
             let before = predictor.map(transform);
             let mut x = before;
             let initial_lambda = rotate(initial_lambda);
-            let mut lambda = initial_lambda;
-            constraints::solve_stitch(stitch, 0., &mut x, &[0.5, 0.25], 0.5, &mut lambda);
+            let mut correction = [mul(initial_lambda, 0.5), mul(initial_lambda, -0.25)];
+            single_soft_stitch(stitch, 0., &mut x, &[0.5, 0.25], 0.5, &mut correction).unwrap();
+            let lambda = soft_stitch_impulse(stitch, 0., &x, 0.5);
             for (actual, expected) in x.into_iter().zip(expected_x.map(transform)) {
                 assert!(length(sub(actual, expected)) <= 1e-12, "position: m");
             }
@@ -702,17 +706,13 @@ fn closed_elastic_stitch_merges_repeated_and_cross_side_vertices() {
         compliance: 1.,
     };
     let mut x = [[0.; 3], [1., 0., 0.]];
-    let mut lambda = [0.; 3];
-    constraints::solve_stitch(stitch, 0., &mut x, &[1., 0.], 1., &mut lambda);
-    assert!(length(sub(lambda, [12. / 25., 0., 0.])) <= 1e-14);
+    let mut correction = [[0.; 3]; 2];
+    single_soft_stitch(stitch, 0., &mut x, &[1., 0.], 1., &mut correction).unwrap();
+    let impulse = soft_stitch_impulse(stitch, 0., &x, 1.);
+    assert!(length(sub(impulse, [12. / 25., 0., 0.])) <= 1e-14);
     assert!(length(sub(x[0], [9. / 25., 0., 0.])) <= 1e-14);
     assert_eq!(x[1], [1., 0., 0.]);
-    assert!(
-        length(add(
-            sub(stitch.a.position(&x), stitch.b.position(&x)),
-            lambda
-        )) <= 1e-14
-    );
+    assert!(length(sub(correction[0], mul(impulse, 0.75))) <= 1e-14);
 }
 
 #[test]
@@ -741,9 +741,9 @@ fn closed_elastic_stitch_keeps_accepted_weights_and_endpoint_arithmetic() {
     assert!(length(q) > 0.001);
     let expected_lambda = q.map(|value| -value / (beta * beta + 1.));
     let expected_free = add(before[1], mul(expected_lambda, beta));
-    let mut lambda = [0.; 3];
-    constraints::solve_stitch(stitch, 0., &mut x, &[0., 1., 0.], 1., &mut lambda);
-    assert_eq!(lambda, expected_lambda);
+    let mut correction = [[0.; 3]; 3];
+    single_soft_stitch(stitch, 0., &mut x, &[0., 1., 0.], 1., &mut correction).unwrap();
+    assert_eq!(correction[1], sub(x[1], before[1]));
     assert_eq!(x, [before[0], expected_free, before[2]]);
     assert_eq!(stitch.a.weights, [0.25, beta]);
 }
@@ -756,16 +756,16 @@ fn closed_elastic_stitch_handles_zero_gap_pins_and_denominator_guard() {
         compliance: 1.,
     };
     let mut x = [[0.; 3]; 2];
-    let mut lambda = [0.; 3];
-    constraints::solve_stitch(stitch, 0., &mut x, &[1., 0.], 1., &mut lambda);
+    let mut correction = [[0.; 3]; 2];
+    single_soft_stitch(stitch, 0., &mut x, &[1., 0.], 1., &mut correction).unwrap();
     assert_eq!(x, [[0.; 3]; 2]);
-    assert_eq!(lambda, [0.; 3]);
+    assert_eq!(correction, [[0.; 3]; 2]);
     assert_eq!(dot(x[0], x[0]) / (2. * stitch.compliance), 0.);
-    lambda = [2., -4., 1.];
-    constraints::solve_stitch(stitch, 0., &mut x, &[1., 0.], 1., &mut lambda);
-    assert_eq!(lambda, [1., -2., 0.5]);
+    correction[0] = [2., -4., 1.];
+    single_soft_stitch(stitch, 0., &mut x, &[1., 0.], 1., &mut correction).unwrap();
+    assert_eq!(correction[0], [1., -2., 0.5]);
     assert_eq!(x, [[-1., 2., -0.5], [0.; 3]]);
-    assert_eq!(add(sub(x[0], x[1]), lambda), [0.; 3]);
+    assert_eq!(add(sub(x[0], x[1]), correction[0]), [0.; 3]);
 
     let stitch = Stitch {
         compliance: 0.125,
@@ -773,22 +773,23 @@ fn closed_elastic_stitch_handles_zero_gap_pins_and_denominator_guard() {
     };
     let pinned = [[1., 2., 3.], [0.; 3]];
     x = pinned;
-    lambda = [0.; 3];
-    constraints::solve_stitch(stitch, 0., &mut x, &[0.; 2], 0.5, &mut lambda);
+    correction = [[0.; 3]; 2];
+    single_soft_stitch(stitch, 0., &mut x, &[0.; 2], 0.5, &mut correction).unwrap();
     assert_eq!(x, pinned);
-    assert_eq!(lambda, [-2., -4., -6.]);
-    assert_eq!(mul(lambda, 4.), [-8., -16., -24.]);
+    assert_eq!(correction, [[0.; 3]; 2]);
+    let impulse = soft_stitch_impulse(stitch, 0., &x, 0.5);
+    assert_eq!(impulse, [-2., -4., -6.]);
+    assert_eq!(mul(impulse, 4.), [-8., -16., -24.]);
     assert_eq!(mul(sub(x[0], x[1]), -8.), [-8., -16., -24.]);
-
     for (compliance, dt) in [(1e-21, 1.), (1., 1e-200)] {
         let stitch = Stitch {
             compliance,
             ..stitch
         };
-        let before_lambda = lambda;
-        constraints::solve_stitch(stitch, 0., &mut x, &[0.; 2], dt, &mut lambda);
+        let before = correction;
+        single_soft_stitch(stitch, 0., &mut x, &[0.; 2], dt, &mut correction).unwrap();
         assert_eq!(x, pinned);
-        assert_eq!(lambda, before_lambda);
+        assert_eq!(correction, before);
     }
 }
 
@@ -802,8 +803,9 @@ fn positive_targets_and_hard_stitches_keep_radial_updates() {
         };
         let predictor = [3., 4., 0.];
         let mut x = [predictor, [0.; 3]];
-        let mut lambda = [0.; 3];
-        constraints::solve_stitch(stitch, target, &mut x, &[0.5, 0.], 0.5, &mut lambda);
+        let mut correction = [[0.; 3]; 2];
+        single_soft_stitch(stitch, target, &mut x, &[0.5, 0.], 0.5, &mut correction).unwrap();
+        let lambda = soft_stitch_impulse(stitch, target, &x, 0.5);
         // Mass 2 kg and h=.5 s give Phi=4|q-p|²+4(|q|-target)².
         let expected = predictor.map(|value| value * ((5. + target) / 10.));
         assert!(length(sub(x[0], expected)) <= 1e-14);
@@ -824,18 +826,18 @@ fn positive_targets_and_hard_stitches_keep_radial_updates() {
     };
     let mut x = [[3., 4., 0.], [0.; 3]];
     let mut lambda = [0.25, 7., -8.];
-    constraints::solve_stitch(hard, 0., &mut x, &[0.5, 0.], 0.5, &mut lambda);
+    constraints::solve_hard_stitch(hard, 0., &mut x, &[0.5, 0.], 0.5, &mut lambda);
     assert!(length(sub(x[0], [0.; 3])) <= 1e-14);
     assert_eq!(x[1], [0.; 3]);
     assert_eq!(lambda, [hard_expected, 7., -8.]);
     let pinned = [[1., 0., 0.], [0.; 3]];
     x = pinned;
     lambda = [2., 3., 4.];
-    constraints::solve_stitch(hard, 0., &mut x, &[0.; 2], 1., &mut lambda);
+    constraints::solve_hard_stitch(hard, 0., &mut x, &[0.; 2], 1., &mut lambda);
     assert_eq!(x, pinned);
     assert_eq!(lambda, [2., 3., 4.]);
     x = [[0.; 3]; 2];
-    constraints::solve_stitch(hard, 1., &mut x, &[1.; 2], 1., &mut lambda);
+    constraints::solve_hard_stitch(hard, 1., &mut x, &[1.; 2], 1., &mut lambda);
     assert_eq!(x, [[0.; 3]; 2]);
     assert_eq!(lambda, [2., 3., 4.]);
 }
@@ -855,8 +857,9 @@ fn positive_compliant_stitch_merges_shared_vertices_and_balances_physical_force(
     };
     let before = [[2., -1., 0.5], [3., 4., 0.], [0.; 3]];
     let mut x = before;
-    let mut lambda = [0.; 3];
-    constraints::solve_stitch(stitch, 0.75, &mut x, &[0.5, 0.25, 0.], 0.5, &mut lambda);
+    let mut correction = [[0.; 3]; 3];
+    single_soft_stitch(stitch, 0.75, &mut x, &[0.5, 0.25, 0.], 0.5, &mut correction).unwrap();
+    let lambda = soft_stitch_impulse(stitch, 0.75, &x, 0.5);
     // Phi=8|q-p|²+2(.75|q|-.75)² gives radius (80+2.25)/(16+2.25).
     let expected = [3. / 5., 4. / 5., 0.].map(|value| value * (329. / 73.));
     assert!(length(sub(x[1], expected)) <= 1e-14);
@@ -880,28 +883,32 @@ fn positive_compliant_stitch_handles_pins_zero_anchor_and_nonfinite_guards() {
     };
     let pinned = [[3., 4., 0.], [0.; 3]];
     let mut x = pinned;
-    let mut lambda = [2., 3., 4.];
-    constraints::solve_stitch(stitch, 1., &mut x, &[0.; 2], 0.5, &mut lambda);
+    let mut correction = [[0.; 3]; 2];
+    single_soft_stitch(stitch, 1., &mut x, &[0.; 2], 0.5, &mut correction).unwrap();
     assert_eq!(x, pinned);
-    assert!(length(sub(lambda, [-4.8, -6.4, 0.])) <= 1e-14);
-
+    assert!(
+        length(sub(
+            soft_stitch_impulse(stitch, 1., &x, 0.5),
+            [-4.8, -6.4, 0.]
+        )) <= 1e-14
+    );
+    assert_eq!(correction, [[0.; 3]; 2]);
     for (start, history, expected) in [
         ([0.; 3], [0.; 3], [0.5, 0., 0.]),
         ([0., 1., 0.], [0., 2., 0.], [0., 0.5, 0.]),
     ] {
         x = [start, [0.; 3]];
-        lambda = history;
-        constraints::solve_stitch(stitch, 1., &mut x, &[0.5, 0.], 0.5, &mut lambda);
+        correction = [mul(history, 0.5), [0.; 3]];
+        single_soft_stitch(stitch, 1., &mut x, &[0.5, 0.], 0.5, &mut correction).unwrap();
         assert_eq!(x, [expected, [0.; 3]]);
-        assert_eq!(lambda, mul(expected, 2.));
+        assert_eq!(correction[0], expected);
         assert_eq!(length(x[0]), 0.5);
     }
     x = [[0.; 3]; 2];
-    lambda = [1., -2., 3.];
-    constraints::solve_stitch(stitch, 1., &mut x, &[0.; 2], 0.5, &mut lambda);
+    correction = [[0.; 3]; 2];
+    single_soft_stitch(stitch, 1., &mut x, &[0.; 2], 0.5, &mut correction).unwrap();
     assert_eq!(x, [[0.; 3]; 2]);
-    assert_eq!(lambda, [1., -2., 3.]);
-
+    assert_eq!(correction, [[0.; 3]; 2]);
     for (target, compliance, dt) in [
         (f64::INFINITY, 0.125, 0.5),
         (f64::NAN, 0.125, 0.5),
@@ -910,8 +917,8 @@ fn positive_compliant_stitch_handles_pins_zero_anchor_and_nonfinite_guards() {
         (1., 1., 1e-200),
     ] {
         x = pinned;
-        lambda = [2., 3., 4.];
-        constraints::solve_stitch(
+        correction = [[0.; 3]; 2];
+        let result = single_soft_stitch(
             Stitch {
                 compliance,
                 ..stitch
@@ -920,26 +927,34 @@ fn positive_compliant_stitch_handles_pins_zero_anchor_and_nonfinite_guards() {
             &mut x,
             &[0.; 2],
             dt,
-            &mut lambda,
+            &mut correction,
         );
+        if !target.is_finite() || target < 0. {
+            assert!(matches!(result, Err(SimulationError::Unstable(_))));
+        } else {
+            result.unwrap();
+        }
         assert_eq!(x, pinned);
-        assert_eq!(lambda, [2., 3., 4.]);
+        assert_eq!(correction, [[0.; 3]; 2]);
     }
     x = [[1., 0., 0.], [0.; 3]];
-    lambda = [0.; 3];
-    constraints::solve_stitch(
-        Stitch {
-            compliance: 1e-20,
-            ..stitch
-        },
-        f64::MAX,
-        &mut x,
-        &[1e-21, 0.],
-        1.,
-        &mut lambda,
-    );
+    correction = [[0.; 3]; 2];
+    assert!(matches!(
+        single_soft_stitch(
+            Stitch {
+                compliance: 1e-20,
+                ..stitch
+            },
+            f64::MAX,
+            &mut x,
+            &[1e-21, 0.],
+            1.,
+            &mut correction
+        ),
+        Err(SimulationError::Unstable(_))
+    ));
     assert_eq!(x, [[1., 0., 0.], [0.; 3]]);
-    assert_eq!(lambda, [0.; 3]);
+    assert_eq!(correction, [[0.; 3]; 2]);
 }
 
 #[test]
@@ -958,8 +973,8 @@ fn positive_stitch_subnormal_anchor_and_fallback_use_unit_direction() {
     let mut errors = [[0.; 3]; 2];
     for i in 0..2 {
         let mut x = [current, [0.; 3]];
-        let mut history = histories[i];
-        constraints::solve_stitch(stitch, 1., &mut x, &[1., 0.], 1., &mut history);
+        let mut history = [histories[i], [0.; 3]];
+        single_soft_stitch(stitch, 1., &mut x, &[1., 0.], 1., &mut history).unwrap();
         let radius = norm(x[0]);
         let force = x[0].map(|value| (1. - radius) * value / radius);
         let residual = std::array::from_fn(|axis| x[0][axis] - anchors[i][axis] - force[axis]);
@@ -971,14 +986,14 @@ fn positive_stitch_subnormal_anchor_and_fallback_use_unit_direction() {
         println!(
             "subnormal_case={i} inverse_mass_per_kg=1 h_s=1 compliance_m_per_N=1 target_m=1\n\
              initial_difference_m={current:?}\nlocal_anchor_m={:?}\n\
-             x_m={x:?}\nhistory_kg_m={history:?}\nexpected_m={expected:?}\n\
+             x_m={x:?}\nhistory_displacement_m={history:?}\nexpected_m={expected:?}\n\
              radius_m={radius}\nindependent_force_N={force:?}\n\
              independent_stationarity_N={residual:?}\nposition_radius_force_errors={:?}",
             anchors[i], errors[i]
         );
         assert_eq!(x[1], [0.; 3]);
         assert!(x.into_iter().flatten().all(f64::is_finite));
-        assert!(history.into_iter().all(f64::is_finite));
+        assert!(history.into_iter().flatten().all(f64::is_finite));
     }
     for (i, [position, radius, force]) in errors.into_iter().enumerate() {
         assert!(position <= 1e-14, "edge{i} independent position: m");
@@ -1001,34 +1016,34 @@ fn positive_target_stitch_n32_matches_independent_coupled_radial_energy() {
         compliance: 2.,
     });
     let targets = [0.5, 0.];
-    let mut lambda = [[0.; 3]; 2];
-    let mut applied_action = [[0.; 3]; 2];
-    let mut last_update = [[0.; 3]; 2];
+    let mut history = [[0.; 3]; 3];
+    let mut applied_action = [0.; 3];
+    let mut last_update = [0.; 3];
     let norm = |v: Vec3| (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
     for _ in 0..32 {
-        for i in 0..2 {
-            assert!(
-                norm(x[0]) > 1e-6,
-                "fixture stays away from radial singularity"
-            );
-            let before = x[0];
-            constraints::solve_stitch(
-                stitches[i],
-                targets[i],
-                &mut x,
-                &inverse_mass,
-                h,
-                &mut lambda[i],
-            );
-            for (axis, &value) in before.iter().enumerate() {
-                last_update[i][axis] = x[0][axis] - value;
-                applied_action[i][axis] += mass * last_update[i][axis] / (h * h);
-            }
-            assert_eq!([x[1], x[2]], anchors, "pins: m");
-            assert!(x.into_iter().flatten().all(f64::is_finite));
-            assert!(lambda.into_iter().flatten().all(f64::is_finite));
-            assert!(applied_action.into_iter().flatten().all(f64::is_finite));
+        assert!(
+            norm(x[0]) > 1e-6,
+            "fixture stays away from radial singularity"
+        );
+        let before = x[0];
+        constraints::solve_sewing(
+            &stitches,
+            &targets,
+            &mut x,
+            &inverse_mass,
+            h,
+            &mut history,
+            &|| false,
+        )
+        .unwrap();
+        for (axis, &value) in before.iter().enumerate() {
+            last_update[axis] = x[0][axis] - value;
+            applied_action[axis] += mass * last_update[axis] / (h * h);
         }
+        assert_eq!([x[1], x[2]], anchors, "pins: m");
+        assert!(x.into_iter().flatten().all(f64::is_finite));
+        assert!(history.into_iter().flatten().all(f64::is_finite));
+        assert!(applied_action.into_iter().all(f64::is_finite));
     }
     // Direct differentiation of Phi=.5|q-p|²+.25(|q|-.5)²+.25|q-a|².
     let independent_forces = |q: Vec3| {
@@ -1065,18 +1080,18 @@ fn positive_target_stitch_n32_matches_independent_coupled_radial_energy() {
     });
     let action_error = std::array::from_fn::<_, 2, _>(|i| {
         norm(std::array::from_fn(|axis| {
-            applied_action[i][axis] - forces[i][axis]
+            expected_forces[i][axis] - forces[i][axis]
         }))
     });
     let radius = norm(x[0]);
-    let history_force = lambda.map(|history| history.map(|value| value / (h * h)));
+    let history_force = history[0].map(|value| mass * value / (h * h));
     let position_error = norm(std::array::from_fn(|axis| x[0][axis] - expected[axis]));
     let direction = x[0].map(|value| value / radius);
     println!(
         "positive_then_zero_N=32 mass_kg={mass} h_s={h} compliance_m_per_N=2\n\
          predictor_m={predictor:?}\nx_m={x:?}\nexpected_m={expected:?}\n\
          initial_radial_direction=[0,1,0]\nfinal_radial_direction={direction:?}\n\
-         lambda_private_kg_m={lambda:?}\ncurrent_history_force_N={history_force:?}\n\
+         nodal_history_m={history:?}\ncurrent_history_force_N={history_force:?}\n\
          independent_elastic_force_N={forces:?}\napplied_action_N={applied_action:?}\n\
          action_error_N={action_error:?}\nlast_stage_update_m={last_update:?}\n\
          stationarity_N={stationarity:?}\n\
@@ -1088,7 +1103,628 @@ fn positive_target_stitch_n32_matches_independent_coupled_radial_energy() {
     assert!(position_error <= 1e-8, "coupled radial position: m");
     assert!(norm(stationarity) <= 1e-6, "independent stationarity: N");
     for (i, error) in action_error.into_iter().enumerate() {
-        assert!(error <= 1e-6, "stitch{i} independent action balance: N");
+        assert!(error <= 1e-6, "stitch{i} independent physical force: N");
+    }
+    assert!(
+        norm(std::array::from_fn(|axis| applied_action[axis]
+            - forces[0][axis]
+            - forces[1][axis]))
+            <= 1e-6,
+        "total stage action: N"
+    );
+    assert!(
+        norm(std::array::from_fn(
+            |axis| history[0][axis] - (x[0][axis] - predictor[axis])
+        )) <= 1e-14,
+        "actual nodal history: m"
+    );
+}
+
+#[test]
+fn shared_stitch_n32_matches_independent_duplicate_row_cartesian_energy() {
+    let masses = [4.5714285714285506e-05_f64, 4.571428571428556e-05];
+    let h = 1. / 480.;
+    let compliance = 1e-8_f64;
+    let target = 0.01333333333333439;
+    let predictor: [Vec3; 2] = [[0., 0., 0.015], [0., 0., -0.015]];
+    let inverse_mass = masses.map(|mass| mass.recip());
+    let stitches = [Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(1),
+        compliance,
+    }; 2];
+    let mut x = predictor;
+    let norm = |v: Vec3| (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
+    let total_mass = masses[0] + masses[1];
+    let center = |q: [Vec3; 2]| -> Vec3 {
+        std::array::from_fn(|axis| (masses[0] * q[0][axis] + masses[1] * q[1][axis]) / total_mass)
+    };
+    let predictor_center = center(predictor);
+    // Production adapter: nodal displacement history once; both input energies retained.
+    let mut history = [[0.; 3]; 2];
+    for _ in 0..32 {
+        constraints::solve_sewing(
+            &stitches,
+            &[target; 2],
+            &mut x,
+            &inverse_mass,
+            h,
+            &mut history,
+            &|| false,
+        )
+        .unwrap();
+        assert!(x.into_iter().flatten().all(f64::is_finite));
+        assert!(history.into_iter().flatten().all(f64::is_finite));
+        let center_error = norm(std::array::from_fn(|axis| {
+            center(x)[axis] - predictor_center[axis]
+        }));
+        assert!(center_error <= 1e-14, "two-free-node center of mass: m");
+    }
+    // Independent Cartesian energy: both .5*k*(|q0-q1|-target)^2 terms count.
+    let stiffness = compliance.recip();
+    let reduced_mass = masses[0] * masses[1] / total_mass;
+    let inertia = reduced_mass / (h * h);
+    let initial_difference: Vec3 =
+        std::array::from_fn(|axis| predictor[0][axis] - predictor[1][axis]);
+    let initial_radius = norm(initial_difference);
+    let radius = (inertia * initial_radius + 2. * stiffness * target) / (inertia + 2. * stiffness);
+    let expected_difference = initial_difference.map(|value| value * radius / initial_radius);
+    let expected: [Vec3; 2] = [
+        std::array::from_fn(|axis| {
+            predictor_center[axis] + masses[1] / total_mass * expected_difference[axis]
+        }),
+        std::array::from_fn(|axis| {
+            predictor_center[axis] - masses[0] / total_mass * expected_difference[axis]
+        }),
+    ];
+    let independent_residual = |q: [Vec3; 2]| -> [Vec3; 2] {
+        let difference: Vec3 = std::array::from_fn(|axis| q[0][axis] - q[1][axis]);
+        let distance = norm(difference);
+        let elastic =
+            difference.map(|value| 2. * stiffness * (distance - target) * value / distance);
+        [
+            std::array::from_fn(|axis| {
+                masses[0] * (q[0][axis] - predictor[0][axis]) / (h * h) + elastic[axis]
+            }),
+            std::array::from_fn(|axis| {
+                masses[1] * (q[1][axis] - predictor[1][axis]) / (h * h) - elastic[axis]
+            }),
+        ]
+    };
+    let objective = |q: [Vec3; 2]| {
+        let inertial = (0..2)
+            .map(|i| {
+                masses[i]
+                    * (0..3)
+                        .map(|axis| (q[i][axis] - predictor[i][axis]).powi(2))
+                        .sum::<f64>()
+                    / (2. * h * h)
+            })
+            .sum::<f64>();
+        let difference = std::array::from_fn(|axis| q[0][axis] - q[1][axis]);
+        inertial + stiffness * (norm(difference) - target).powi(2)
+    };
+    let residuals = independent_residual(x);
+    let oracle_residuals = independent_residual(expected);
+    let position_error = (0..2)
+        .map(|i| norm(std::array::from_fn(|axis| x[i][axis] - expected[i][axis])))
+        .fold(0_f64, f64::max);
+    let force_error = residuals.map(norm).into_iter().fold(0_f64, f64::max);
+    let oracle_force_error = oracle_residuals.map(norm).into_iter().fold(0_f64, f64::max);
+    println!(
+        "duplicate_rows=2 sweeps=32 masses_kg={masses:?} h_s={h}\n\
+         compliance_m_per_N_each={compliance} target_m={target}\n\
+         predictors_m={predictor:?}\nx_m={x:?}\nexpected_m={expected:?}\n\
+         nodal_history_m={history:?}\ncenter_m={:?}\nexpected_center_m={predictor_center:?}\n\
+         independent_cartesian_residual_N={residuals:?}\n\
+         oracle_cartesian_residual_N={oracle_residuals:?}\n\
+         position_error_m={position_error}\nforce_error_N={force_error}\n\
+         objective_J={}\nexpected_objective_J={}",
+        center(x),
+        objective(x),
+        objective(expected)
+    );
+    assert!(oracle_force_error <= 1e-6, "independent oracle force: N");
+    assert!(position_error <= 1e-8, "shared-row Cartesian position: m");
+    assert!(
+        force_error <= 1e-6,
+        "shared-row full Cartesian stationarity: N"
+    );
+}
+
+#[test]
+fn shared_zero_target_sewing_matches_independent_weighted_spd_energy() {
+    let predictor = [
+        [0.2, -0.1, 0.3],
+        [-0.4, 0.2, 0.1],
+        [1., 0.5, -0.5],
+        [-0.5, 1., 0.25],
+    ];
+    let stitches = [
+        Stitch {
+            a: WeightedPoint {
+                vertices: [0, 0],
+                weights: [0.25, 0.75],
+            },
+            b: WeightedPoint {
+                vertices: [1, 2],
+                weights: [0.5, 0.5],
+            },
+            compliance: 0.25,
+        },
+        Stitch {
+            a: WeightedPoint {
+                vertices: [0, 1],
+                weights: [0.25, 0.75],
+            },
+            b: WeightedPoint::vertex(3),
+            compliance: 0.5,
+        },
+    ];
+    // For h=.5 and masses2/1, each Cartesian Hessian is this positive2x2 matrix.
+    let (a, b, c) = (12.125, -1.625, 6.125);
+    let determinant = a * c - b * b;
+    assert_eq!(determinant, 71.625);
+    let rhs0: Vec3 = std::array::from_fn(|axis| {
+        8. * predictor[0][axis] + 2. * predictor[2][axis] + 0.5 * predictor[3][axis]
+    });
+    let rhs1: Vec3 = std::array::from_fn(|axis| {
+        4. * predictor[1][axis] - predictor[2][axis] + 1.5 * predictor[3][axis]
+    });
+    let expected = [
+        std::array::from_fn(|axis| (c * rhs0[axis] - b * rhs1[axis]) / determinant),
+        std::array::from_fn(|axis| (a * rhs1[axis] - b * rhs0[axis]) / determinant),
+    ];
+    let mut x = predictor;
+    let mut correction = [[0.; 3]; 4];
+    for _ in 0..32 {
+        constraints::solve_sewing(
+            &stitches,
+            &[0.; 2],
+            &mut x,
+            &[0.5, 1., 0., 0.],
+            0.5,
+            &mut correction,
+            &|| false,
+        )
+        .unwrap();
+        assert_eq!([x[2], x[3]], [predictor[2], predictor[3]]);
+        assert_eq!([correction[2], correction[3]], [[0.; 3]; 2]);
+        assert!(x.into_iter().flatten().all(f64::is_finite));
+        assert!(correction.into_iter().flatten().all(f64::is_finite));
+    }
+    let r0: Vec3 =
+        std::array::from_fn(|axis| x[0][axis] - 0.5 * x[1][axis] - 0.5 * predictor[2][axis]);
+    let r1: Vec3 =
+        std::array::from_fn(|axis| 0.25 * x[0][axis] + 0.75 * x[1][axis] - predictor[3][axis]);
+    let forces = [
+        std::array::from_fn(|axis| {
+            8. * (x[0][axis] - predictor[0][axis]) + 4. * r0[axis] + 0.5 * r1[axis]
+        }),
+        std::array::from_fn(|axis| {
+            4. * (x[1][axis] - predictor[1][axis]) - 2. * r0[axis] + 1.5 * r1[axis]
+        }),
+    ];
+    for i in 0..2 {
+        assert!(
+            length(sub(x[i], expected[i])) <= 1e-12,
+            "weighted SPD position: m"
+        );
+        assert!(length(forces[i]) <= 1e-12, "independent Cartesian force: N");
+        assert!(
+            length(sub(correction[i], sub(x[i], predictor[i]))) <= 1e-14,
+            "actual nodal history: m"
+        );
+    }
+}
+
+#[test]
+fn shared_soft_sewing_cancellation_noop_and_invalid_inputs_are_atomic() {
+    use std::cell::Cell;
+    let predictor = [
+        [0.2, -0.1, 0.3],
+        [-0.4, 0.2, 0.1],
+        [1., 0.5, -0.5],
+        [-0.5, 1., 0.25],
+    ];
+    let stitches = [
+        Stitch {
+            a: WeightedPoint::vertex(0),
+            b: WeightedPoint {
+                vertices: [1, 2],
+                weights: [0.5, 0.5],
+            },
+            compliance: 0.25,
+        },
+        Stitch {
+            a: WeightedPoint {
+                vertices: [0, 1],
+                weights: [0.25, 0.75],
+            },
+            b: WeightedPoint::vertex(3),
+            compliance: 0.5,
+        },
+    ];
+    let total = Cell::new(0);
+    let mut accepted = predictor;
+    let mut accepted_history = [[0.; 3]; 4];
+    constraints::solve_sewing(
+        &stitches,
+        &[0.; 2],
+        &mut accepted,
+        &[0.5, 1., 0., 0.],
+        0.5,
+        &mut accepted_history,
+        &|| {
+            total.set(total.get() + 1);
+            false
+        },
+    )
+    .unwrap();
+    assert!(
+        total.get() >= 3,
+        "entry, internal bounded poll, and final pre-copy poll"
+    );
+    assert_ne!(accepted, predictor);
+    assert_ne!(accepted_history, [[0.; 3]; 4]);
+    assert_eq!([accepted[2], accepted[3]], [predictor[2], predictor[3]]);
+    for stop in 1..=total.get() {
+        let calls = Cell::new(0);
+        let mut x = predictor;
+        let mut history = [[0.; 3]; 4];
+        let result = constraints::solve_sewing(
+            &stitches,
+            &[0.; 2],
+            &mut x,
+            &[0.5, 1., 0., 0.],
+            0.5,
+            &mut history,
+            &|| {
+                calls.set(calls.get() + 1);
+                calls.get() == stop
+            },
+        );
+        assert_eq!(result, Err(SimulationError::Cancelled));
+        assert_eq!(calls.get(), stop);
+        assert_eq!(x, predictor);
+        assert_eq!(history, [[0.; 3]; 4]);
+    }
+    // Exercise every singleton callback, including the final pre-copy cancellation.
+    for target in [0., 0.5] {
+        let total = Cell::new(0);
+        let mut accepted = predictor;
+        let mut accepted_history = [[0.; 3]; 4];
+        constraints::solve_sewing(
+            &stitches[..1],
+            &[target],
+            &mut accepted,
+            &[0.5, 1., 0., 0.],
+            0.5,
+            &mut accepted_history,
+            &|| {
+                total.set(total.get() + 1);
+                false
+            },
+        )
+        .unwrap();
+        assert!(
+            total.get() >= 2,
+            "singleton entry and final successful pre-copy callback"
+        );
+        assert_ne!(accepted, predictor);
+        assert_ne!(accepted_history, [[0.; 3]; 4]);
+        assert_eq!([accepted[2], accepted[3]], [predictor[2], predictor[3]]);
+        assert_eq!([accepted_history[2], accepted_history[3]], [[0.; 3]; 2]);
+        assert!(accepted.into_iter().flatten().all(f64::is_finite));
+        assert!(accepted_history.into_iter().flatten().all(f64::is_finite));
+        for stop in 1..=total.get() {
+            let calls = Cell::new(0);
+            let mut x = predictor;
+            let mut history = [[0.; 3]; 4];
+            let result = constraints::solve_sewing(
+                &stitches[..1],
+                &[target],
+                &mut x,
+                &[0.5, 1., 0., 0.],
+                0.5,
+                &mut history,
+                &|| {
+                    calls.set(calls.get() + 1);
+                    calls.get() == stop
+                },
+            );
+            assert_eq!(result, Err(SimulationError::Cancelled));
+            assert_eq!(calls.get(), stop);
+            assert_eq!(x, predictor);
+            assert_eq!(history, [[0.; 3]; 4]);
+        }
+    }
+    let mut x = predictor;
+    let mut history = [[0.; 3]; 4];
+    constraints::solve_sewing(
+        &[],
+        &[],
+        &mut x,
+        &[0.5, 1., 0., 0.],
+        0.5,
+        &mut history,
+        &|| false,
+    )
+    .unwrap();
+    let hard = Stitch {
+        compliance: 0.,
+        ..stitches[0]
+    };
+    constraints::solve_sewing(
+        &[hard],
+        &[0.],
+        &mut x,
+        &[0.5, 1., 0., 0.],
+        0.5,
+        &mut history,
+        &|| false,
+    )
+    .unwrap();
+    constraints::solve_sewing(
+        &stitches,
+        &[0.; 2],
+        &mut x,
+        &[0.; 4],
+        0.5,
+        &mut history,
+        &|| false,
+    )
+    .unwrap();
+    assert_eq!(x, predictor);
+    assert_eq!(history, [[0.; 3]; 4]);
+    for dt in [0., f64::NAN, f64::INFINITY] {
+        assert!(matches!(
+            constraints::solve_sewing(
+                &stitches,
+                &[0.; 2],
+                &mut x,
+                &[0.5, 1., 0., 0.],
+                dt,
+                &mut history,
+                &|| false
+            ),
+            Err(SimulationError::Unstable(_))
+        ));
+        assert_eq!(x, predictor);
+        assert_eq!(history, [[0.; 3]; 4]);
+    }
+    assert!(matches!(
+        constraints::solve_sewing(
+            &stitches,
+            &[0.; 2],
+            &mut x,
+            &[-1., 1., 0., 0.],
+            0.5,
+            &mut history,
+            &|| false
+        ),
+        Err(SimulationError::Unstable(_))
+    ));
+    assert_eq!(x, predictor);
+    assert_eq!(history, [[0.; 3]; 4]);
+    history[0][0] = f64::NAN;
+    let bits_before = history.map(|v| v.map(f64::to_bits));
+    assert!(matches!(
+        constraints::solve_sewing(
+            &stitches,
+            &[0.; 2],
+            &mut x,
+            &[0.5, 1., 0., 0.],
+            0.5,
+            &mut history,
+            &|| false
+        ),
+        Err(SimulationError::Unstable(_))
+    ));
+    assert_eq!(x, predictor);
+    assert_eq!(history.map(|v| v.map(f64::to_bits)), bits_before);
+}
+
+#[test]
+fn shared_soft_sewing_whole_call_cancellation_preserves_every_field() {
+    use std::cell::Cell;
+    let mut input = square();
+    input.pins.push(Pin {
+        vertex: 2,
+        target: input.positions[2],
+    });
+    input.stitches = [1, 3]
+        .map(|vertex| Stitch {
+            a: WeightedPoint::vertex(0),
+            b: WeightedPoint::vertex(vertex),
+            compliance: 0.5,
+        })
+        .to_vec();
+    let original = Cloth::new(input.clone()).unwrap();
+    let previous = format!("{original:?}");
+    let settings = StepSettings {
+        dt: 0.02,
+        substeps: 2,
+        iterations: 2,
+        gravity: [0.; 3],
+        seam_closure_speed: 100.,
+    };
+    let total = Cell::new(0);
+    let mut accepted = original.clone();
+    accepted
+        .step(settings, || {
+            total.set(total.get() + 1);
+            false
+        })
+        .unwrap();
+    assert_eq!(accepted.positions[2], input.positions[2]);
+    assert!(accepted.diagnostics.finite);
+    for stop in 1..=total.get() {
+        let calls = Cell::new(0);
+        let mut cloth = original.clone();
+        assert_eq!(
+            cloth
+                .step(settings, || {
+                    calls.set(calls.get() + 1);
+                    calls.get() == stop
+                })
+                .unwrap_err(),
+            SimulationError::Cancelled
+        );
+        assert_eq!(calls.get(), stop);
+        assert_eq!(
+            format!("{cloth:?}"),
+            previous,
+            "all persistent fields at callback{stop}"
+        );
+    }
+    let accepted_before = format!("{accepted:?}");
+    let mut reset = accepted.clone();
+    reset.reset();
+    assert_eq!(
+        format!("{accepted:?}"),
+        accepted_before,
+        "independent clone"
+    );
+    assert_eq!(reset.positions, input.positions);
+    assert_eq!(reset.velocities, vec![[0.; 3]; input.positions.len()]);
+    assert_eq!(reset.simulation_time(), 0.);
+    assert_eq!(reset.seam_remaining, original.seam_remaining);
+}
+
+#[test]
+fn soft_sewing_dual_preserves_nonconstant_kernel_with_history_and_pins() {
+    let masses = [1., 4., 0.25, 1., 4., 0.25];
+    let h = 0.5_f64;
+    let compliance = 0.25;
+    // C_j=.5*A_j+.5*A_(j+1)-.25*B_j-.75*B_(j+1).
+    // Both the constant vector and this nonconstant vector are in ker(C).
+    let kernel = [0., 1., 2., -0.25, 0.75, 1.75];
+    let coefficients = [
+        [(0, 0.5), (1, 0.5), (3, -0.25), (4, -0.75)],
+        [(1, 0.5), (2, 0.5), (4, -0.25), (5, -0.75)],
+    ];
+    let stitches = [0, 1].map(|j| Stitch {
+        a: WeightedPoint {
+            vertices: [j, j + 1],
+            weights: [0.5, 0.5],
+        },
+        b: WeightedPoint {
+            vertices: [j + 3, j + 4],
+            weights: [0.25, 0.75],
+        },
+        compliance,
+    });
+    for pinned in [false, true] {
+        let mut inverse_mass = masses.map(|mass: f64| mass.recip());
+        if pinned {
+            inverse_mass[0] = 0.;
+        }
+        for offset in [0., 2_f64.powi(-10)] {
+            let expected: [Vec3; 6] = std::array::from_fn(|i| {
+                let v = 2_f64.powi(-10) * kernel[i];
+                let b = if i >= 3 { offset } else { 0. };
+                [0.125 + v + 2. * b, 0.25 + 0.5 * v - b, 0.5 - v + 3. * b]
+            });
+            // Manufacture z=q*+W*C^T*k*h²*C*q*. Its strictly convex energy has minimum q*.
+            // Offset0 also has an exactly zero dual RHS despite nonzero retained p.
+            let expected_difference = [-2. * offset, offset, -3. * offset];
+            let optimum_impulse = expected_difference.map(|v| -h * h * v / compliance);
+            let old_impulses = [
+                [1. / 64., -1. / 32., 1. / 128.],
+                [-1. / 64., 1. / 16., 1. / 64.],
+            ];
+            let mut optimum_history = [[0.; 3]; 6];
+            let mut history = [[0.; 3]; 6];
+            for (j, row) in coefficients.into_iter().enumerate() {
+                assert_eq!(row.into_iter().map(|(i, c)| c * kernel[i]).sum::<f64>(), 0.);
+                for (i, c) in row {
+                    optimum_history[i] = add(
+                        optimum_history[i],
+                        mul(optimum_impulse, inverse_mass[i] * c),
+                    );
+                    history[i] = add(history[i], mul(old_impulses[j], inverse_mass[i] * c));
+                }
+            }
+            assert_ne!(history, [[0.; 3]; 6]);
+            let anchor: [Vec3; 6] = std::array::from_fn(|i| sub(expected[i], optimum_history[i]));
+            let mut x: [Vec3; 6] = std::array::from_fn(|i| add(anchor[i], history[i]));
+            let initial = x;
+            let initial_history = history;
+            let independent_force = |q: [Vec3; 6]| {
+                let mut force = std::array::from_fn::<_, 6, _>(|i| {
+                    mul(sub(q[i], anchor[i]), masses[i] / (h * h))
+                });
+                for row in coefficients {
+                    let mut d = [0.; 3];
+                    for (i, c) in row {
+                        d = add(d, mul(q[i], c));
+                    }
+                    for (i, c) in row {
+                        force[i] = add(force[i], mul(d, c / compliance));
+                    }
+                }
+                force
+            };
+            let oracle_force = independent_force(expected);
+            for i in 0..6 {
+                if inverse_mass[i] > 0. {
+                    assert!(length(oracle_force[i]) <= 1e-12, "manufactured minimum: N");
+                }
+            }
+            let mut kernel_moment = [0.; 3];
+            for _ in 0..32 {
+                constraints::solve_sewing(
+                    &stitches,
+                    &[0.; 2],
+                    &mut x,
+                    &inverse_mass,
+                    h,
+                    &mut history,
+                    &|| false,
+                )
+                .unwrap();
+                kernel_moment = [0.; 3];
+                let mut total_action = [0.; 3];
+                for i in 0..6 {
+                    kernel_moment = add(kernel_moment, mul(history[i], masses[i] * kernel[i]));
+                    total_action = add(total_action, mul(history[i], masses[i]));
+                    assert!(
+                        length(sub(
+                            history[i],
+                            add(initial_history[i], sub(x[i], initial[i]))
+                        )) <= 1e-14,
+                        "actual nodal history: m"
+                    );
+                }
+                assert!(
+                    length(kernel_moment) <= 1e-12,
+                    "nonconstant-kernel physical action: kg m"
+                );
+                if !pinned {
+                    assert!(length(total_action) <= 1e-12, "total internal action: kg m");
+                }
+                if pinned {
+                    assert_eq!(x[0], initial[0]);
+                    assert_eq!(history[0], [0.; 3]);
+                }
+                assert!(x.into_iter().flatten().all(f64::is_finite));
+                assert!(history.into_iter().flatten().all(f64::is_finite));
+            }
+            let force = independent_force(x);
+            println!(
+                "dual_action_guard pinned={pinned} offset={offset} x_m={x:?} expected_m={expected:?} kernel_moment_kg_m={kernel_moment:?} force_N={force:?}"
+            );
+            for i in 0..6 {
+                assert!(
+                    length(sub(x[i], expected[i])) <= 1e-12,
+                    "manufactured position: m"
+                );
+                if inverse_mass[i] > 0. {
+                    assert!(length(force[i]) <= 1e-12, "independent force: N");
+                }
+            }
+        }
     }
 }
 

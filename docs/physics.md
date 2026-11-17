@@ -46,9 +46,9 @@ v* = exp(-damping*h) * (v + h*gravity)
 x* = x + h*v*
 ```
 
-The solver clears material/bending displacement histories and seam multipliers at
-each substep, then iterates membrane, bending, sewing, analytic contact, cloth
-contact and pins in that order. The scalar radial projection for hard sewing
+The solver clears material, bending and soft-sewing displacement histories and
+hard-seam multipliers at each substep, then iterates membrane, bending, sewing,
+analytic contact, cloth contact and pins in that order. The scalar radial projection for hard sewing
 uses zero compliance in the following formula:
 
 ```text
@@ -381,46 +381,141 @@ L_next = max(0, L_previous - seam_closure_speed*h)
 C_seam = length(weighted_a - weighted_b) - L_next
 ```
 
-For positive compliance c, each stitch retains a three-component weighted
-correction history H, reset once per substep. Let beta_i be its signed endpoint
-coefficient after combining repeated vertices, w_i the inverse mass, d its
-current endpoint difference, W=sum_i(w_i*beta_i²), a=c/h², and z=d-W*H.
-For W>0, minimizing nodal inertia at a proposed difference D gives the exact
-local objective (in h²-scaled energy units):
+For positive compliance c, all input soft stitches share one incremental-energy
+block and one actual displacement history `p_s` per node. This history resets
+once each substep and remains separate from the material/bending histories.
+Its anchor is `z=x-p_s`. The unchanged energy counts every input spring,
+including duplicate rows, and one nodal inertia term:
 
 ```text
-Phi(D) = |D-z|²/(2W) + (|D|-target)²/(2a)
-r = |z|
-H_new = (z/r)*(target-r)/(a+W)       # r > 0
-x_i += w_i*beta_i*(H_new-H)
-H = H_new
+h²*Phi_s(q) = sum_free_i |q_i-z_i|²/(2*w_i)
+             + h²*sum_soft_s (|weighted_a(q)-weighted_b(q)|-target_s)²/(2*c_s)
 ```
 
-The optimal D is parallel to z with radius (a*r+W*target)/(a+W).
-Retaining the full vector preserves the accumulated direction changes; a scalar
-multiplier against only the current direction does not retain that action.
-At target zero, the existing vector update `delta_H=(-d-a*H)/(a+W)` is
-algebraically identical and its arithmetic is unchanged. Hard stitches retain
-the scalar radial update above. No iterations, stiffnesses or stage order change.
+Here `w_i=1/m_i`; pins have zero inverse mass and remain fixed. Repeated endpoint
+indices merge signed coefficients for gradient scatter, without deleting,
+deduplicating or renormalizing any physical spring/weight. Target zero is the
+same vector energy, represented by three Cartesian residuals. Positive targets
+retain the radial energy. With merged coefficients beta, mass-normalized rows
+and residuals are:
 
-At exactly zero anchor and W>0, all directions minimize the radial objective:
-the update retains the current endpoint direction if defined, otherwise chooses
-world +X deterministically. An all-pinned zero gap is unchanged. All-pinned
-nonzero gaps retain their constitutive vector history without moving positions.
-Both unit-direction paths first divide by the largest absolute component before
-normalizing, so a rounded subnormal radius cannot produce a non-unit direction.
-The spring radius and all compliance, target and denominator guards are unchanged.
-Nonfinite or unrepresentable positive-target trial arithmetic leaves positions
-and history unchanged; all trial position updates are checked before committing.
+```text
+zero target: r_axis=(h/sqrt(c))*d_axis
+             J_axis,i=(h/sqrt(c))*sqrt(w_i)*beta_i*e_axis
+positive:    r=(h/sqrt(c))*(|d|-target)
+             J_i=(h/sqrt(c))*sqrt(w_i)*beta_i*unit(d)
+(I+J^T*J)u = -p_s/sqrt(W)-J^T*r
+Delta_x_i = sqrt(w_i)*u_i
+```
 
-The fresh two-spring N=32 component uses one .01 kg free node, h=.1 s and two
-.5 N/m springs, with positive target .5 m and zero target at different pinned
-anchors. Its independent radial-energy oracle fixes position/force bounds at
-1e-8 m / 1e-6 N. The scalar history reaches zero further updates while missing
-by .0538715230 m / .0889778606 N; these are component findings, not garment
-causality. The [closed soft stitch contract](../spec/features/SIM-001-closed-stitch-coordinates.md)
-continues to define the existing zero-target checks. Garment quality and
-reference parity remain unmeasured for this change.
+`p_s` is a displacement in metres, not a force or multiplier. Both inertia
+`p_s/sqrt(w)` and each scaled spring residual have units m*sqrt(kg), so this
+objective is h² times physical energy.
+
+Exactly one soft spring uses the analytic proximal path in production. This is
+a rank-one weighted difference, regardless of endpoint IDs or the number of
+hard rows. Eliminating nodal inertia gives the unchanged local objective
+`|D-d_z|²/(2*W)+(|D|-target)²/(2*alpha)`, with
+`d_z=weighted_a(z)-weighted_b(z)`, `W=sum(w_i*beta_i²)` and `alpha=c/h²`.
+For nonzero d_z its minimizing impulse is
+`H=unit(d_z)*(target-|d_z|)/(alpha+W)`; at target0 it is
+`H=-d_z/(alpha+W)`, preserving the original division/weighted-endpoint arithmetic.
+At zero anchor the current direction is retained if defined, otherwise+X.
+A private candidate starts at z and scatters `w_i*beta_i*H`; pins stay bit-exact.
+Finite trials must not increase the same complete inertial/spring energy.
+The actual nodal displacement is retained, not a reconstructed per-row multiplier.
+This preserves the isolated analytic guards without normal-solver rounding.
+Both duplicate inputs remain separate energies and therefore take the shared path.
+
+For two or more soft springs, the block solves the equivalent row-space
+Woodbury system. Here J is the physical scaled residual Jacobian,
+W is the inverse nodal mass (zero at pins), and p is the retained nodal history:
+
+```text
+(I + J*W*J^T) eta = J*p_free - r
+delta_free = -p_free + W*J^T*eta
+delta_pin = 0
+p_new = (1-alpha)*p + alpha*W*J^T*eta   # free nodes, exact arithmetic
+```
+
+The old history appears in both RHS and recovery. A zero dual RHS does not
+mean no movement: eta=0 still requires delta=-p. This distinction is tested
+with a nonzero old history and a zero-energy manufactured minimum.
+Each finite dual iterate produces an actual weighted row scatter. With
+balanced endpoint weights this retains equal/opposite internal actions;
+more generally it respects the actual coefficients rather than recentering COM
+or silently normalizing accepted weights. Floating position rounding remains.
+
+With B=J*sqrt(W), a=p_free/sqrt(W), the row diagonal is
+D_j=sqrt(1+sum_i |B_ji|^2), accumulated using hypot. Diagonal PCG solves
+D^-1*(I+B*B^T)*D^-1 with at most32 iterations and relative residual1e-12.
+The operator scatters B^T into nodal workspace then gathers B back to rows;
+every duplicate physical row remains present. The true primal gradient
+`a+B^T*r` dotted with the recovered mass-normalized direction controls descent.
+The unchanged full radial/vector objective controls Armijo1e-4 with at most16
+fractions. Only finite accepted trials copy x/p, retaining actual rounded delta.
+A zero/non-descent direction or exhausted search leaves the stage unchanged.
+The singleton, material and bending numerical paths are unchanged.
+
+This replaces finite diagonal-primal PCG for soft sewing: that approximation
+can move outside the weighted row-action space before convergence. In a frozen
+five-panel core integration test, first ground/capsule contact produces59.26%
+compression; subsequent sewing stages amplify the coupled state, reaching798.7%
+extension and the existing500% instability rejection. Temporary read hooks
+reproduce the exact failure and show non-roundoff sewing-history action drift,
+even though every sewing update decreases its own complete objective. This is
+an integration failure, not a new accepted garment case. The row-space repair
+addresses the demonstrated invariant gap; complete stability still needs the
+unchanged integration test and broader checks.
+
+In the shared block, positive zero-gap rows choose the nonzero weighted
+inertial-anchor direction, or world+X when that anchor is also zero. Nonzero current directions first divide
+components by their maximum absolute value before unit normalization, preserving
+subnormal45-degree directions. This deterministic choice supplies a trial at the
+radial cusp, not differentiability or a global-minimum guarantee. Non-finite
+current quantities abort atomically; non-finite trials are rejected. An exhausted
+search or non-descent direction leaves the stage unchanged. All-pinned or exact
+zero-RHS stages preserve positions and displacement history; pin reactions remain
+available from the physical spring energy without storing a fictitious pin history.
+
+The sewing slot now applies the coupled soft block, then the original hard
+projections in input order. This makes mixed hard/soft ordering explicit; it
+changes their finite-iteration interaction. All-hard order/arithmetic, hard scalar
+history and the subsequent analytic contact, cloth contact and pin stages are
+unchanged. No targets, closure speed, stiffness, time step, substeps or outer
+iteration limits change. No fully coupled sewing/contact equilibrium is claimed.
+
+For N vertices, S input stitches and R=3*S_zero+S_positive<=3*S soft rows,
+workspace is O(N+R), with one retained Vec3 history per node. One sweep performs
+at most32 matrix products and17 complete objective scans. Bounded internal
+checkpoint count is at most71*N+166*R+19*S+48 (at most71*N+517*S+48).
+The original cancellation callback is polled at entry, every64th checkpoint,
+and immediately before each successful return or x/p_s copy: at most63 skipped
+checkpoints and at most2+floor(bound/64) calls. Allocation/copying remain
+uninterruptible, so this is no wall-time latency guarantee. There is no Cancelled
+return after the accepted copy. Histories/workspaces remain local to each
+whole-Cloth transaction; cancellation/errors preserve all accepted persistent fields.
+
+The earlier local vector-history algorithm repaired rotating-direction local
+stationarity, and its .01kg, h=.1s positive+zero two-spring component keeps its
+independent1e-8m/1e-6N physical bounds. It did not resolve general stiff sharing.
+A fresh two-free-node/two-duplicate-row component at masses
+`4.5714285714285506e-5`/`4.571428571428556e-5 kg`, h=`1/480 s`, c=`1e-8 m/N`
+and positive target `0.01333333333333439 m` has a unique independent Cartesian
+minimum. At32 old local sweeps, compiled source `d8bcb3b7` passes position with
+`2.1942782660322457e-10 m` error but fails full force balance with
+`0.08777113262758984 N` residual. Both physical spring energies remain in the
+new block and the independent oracle/32/1e-8m/1e-6N/COM-finite checks stay fixed.
+The primal component passed the same fixed criteria, but its subsequent full
+source checks stopped at the separate integration failure above; remaining
+stages were not run. The dual candidate is unexecuted. A new independent guard
+uses a six-node/two-row weighted network with a nonconstant kernel vector,
+nonzero old row-scattered history, free/pinned partitions, and analytically
+manufactured strictly convex zero-target minima. It checks nonconstant-kernel
+action orthogonality rather than just COM, exact pins, finite/history transport,
+and1e-12 position/force bounds. A second configuration has exactly zero dual
+RHS but nonzero p. These are source/component facts, not a garment-spike causal
+verdict, garment acceptance or reference parity.
 
 This explicitly models assembly, separate from fabric stiffness. A zero target
 requests coincidence; finite compliance can leave a gap. The default speed is
