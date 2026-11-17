@@ -1,5 +1,23 @@
 # WeftForge status — active development, 2026-11-17
 
+## Clean publication verification checkpoint
+
+Clean metadata commit `bb8ae0d2b3db6e09c96c65f3ac5dddefc9695267` passed the fully pinned `cargo xtask verify`: session 28423 / PID 39198, terminal exit 0 in **223.09856833296362 s**. Registry/generated progress, historical/current maps, 48 script tests, six evaluator tests and actual CLI help passed. All **152 inputs** (88 source, 59 reports, five metadata) remained exact and the checkout stayed clean. See the [passing receipt](parity/reports/artifacts/material-group-publication-checks-20261117/XTASK-PINNED-RESULT-002.json), [raw log](parity/reports/artifacts/material-group-publication-checks-20261117/XTASK-PINNED-002.log) and [derivative manifest](parity/reports/artifacts/material-group-publication-checks-20261117/MANIFEST.json). This receipt/status-only closure awaits final root review and publication.
+
+The [first attempt](parity/reports/artifacts/material-group-publication-checks-20261117/XTASK-RESULT-001.json) remains failed: session 53727 / PID 12989, exit 1 in 226.15059099998325 s. Its 48+6 Python tests passed before CLI-help compilation encountered mixed rustc 1.100/1.94 crates. Root pinned RUSTUP_TOOLCHAIN, RUSTC, RUSTDOC, CARGO and PATH to 1.94 and used a fresh own nested target. No source, input or criterion changed and no cache/binary was copied. Both attempts kept all 152 inputs exact and clean. The worktree target now exists from verification and remains retained. No check is repeated for this closure.
+
+The [independent review](parity/reports/artifacts/material-group-publication-checks-20261117/independent-review/review-receipt.json) reports **NO BLOCKER** on checked tree `24a8752bf4ceb032274581d2d93c90c82cf2a623`. Root corrected only the active Markdown `solve_stitch` locator from 164 to 387 before committing. The [whitespace review](parity/reports/artifacts/material-group-publication-checks-20261117/ROOT-WHITESPACE-REVIEW.json) retains the original full-check failure: 31 findings on seven exact raw-artifact paths. The scoped check excluding only those preserved raw paths passed; no full whitespace pass or raw-byte repair is claimed.
+
+The tested paired solver remains `13fb43fe08c045f08a1b85007aff3c15388a1e24`, with 407 workspace Rust tests and all 88 source identities retained. Its [full Harbor case](parity/reports/WF-20261116-MATERIAL-GROUPS-HARBOR-A8-001.json) still **fails strict strain at frames 28–40**, peaking at 21.96202527055029% in frame 29. All 181 states were analyzed; operational completion at 251.83977058297023 s / 420 s does not override strict quality failure. Source407 gates are reused. Native, full-physics, reference, full-garment and roadmap acceptance remain open.
+
+All source, registry, reports, maps, progress/dashboard, README/ROADMAP and historical evidence inputs remain unchanged. This closure adds only QC derivatives and this leading status section. Actions and automated Pages deployments remain disabled; the existing static Pages site stays exact. No Cargo, generator, test, UI/native, model/evaluator, network or publication action occurs here.
+
+Next: root reviews and publishes this bounded checkpoint. The separate global solver correction still needs its own workspace and full-garment evidence.
+
+## Historical material-group delivery checkpoint
+
+Everything below preserves the preceding status body and its original current/pending/next wording. Its source/case identities and failures remain historical and exact; this closure adds no numerical or native result.
+
 ## Material-group source and failed Harbor checkpoint
 
 Current integration `8fe1c7b3018e807a61afffc3d0af77f5bbbe45d7` merges safe PR56 with exact reviewed `13fb43fe08c045f08a1b85007aff3c15388a1e24`. All88 source inputs match the actual407-gate freeze. The [bounded component/source report](parity/reports/WF-20261117-MATERIAL-GROUP-SOURCE-001.json) is **passed**: the independent two-face physical-energy counterexample changes from RED4.266274346685227e-7m/2.7341292831298387e-3N to first GREEN5.683890753411727e-18m/1.0747913121812962e-14N at fixed1e-8m/1e-6N bounds. First-GREEN source and later test/docs stabilization remain separately mapped, including the failed first Clippy attempt. Final60 sim tests and full407 workspace tests/fmt/strictClippy/native+CLI builds passed originally; no source or numerical gate is rerun here.
