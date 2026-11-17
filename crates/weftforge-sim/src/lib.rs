@@ -476,7 +476,7 @@ impl Cloth {
                 *remaining -= (settings.seam_closure_speed * dt).min(*remaining);
             }
             let mut material_corrections = vec![[0.; 3]; x.len()];
-            let mut bend_lambda = vec![0.; self.bends.len()];
+            let mut bend_corrections = vec![[[0.; 3]; 4]; self.bends.len()];
             let mut seam_lambda = vec![[0.; 3]; self.input.stitches.len()];
             for _ in 0..settings.iterations {
                 if cancelled() {
@@ -490,8 +490,8 @@ impl Cloth {
                     &mut material_corrections,
                     &cancelled,
                 )?;
-                for (b, lambda) in self.bends.iter().zip(&mut bend_lambda) {
-                    b.solve(&mut x, &self.inverse_masses, dt, lambda);
+                for (b, correction) in self.bends.iter().zip(&mut bend_corrections) {
+                    b.solve(&mut x, &self.inverse_masses, dt, correction, &cancelled)?;
                 }
                 for ((s, &remaining), lambda) in self
                     .input

@@ -3083,17 +3083,7 @@ impl Studio {
                 ui.add(egui::DragValue::new(&mut self.settings.iterations).range(1..=50));
                 ui.add(egui::DragValue::new(&mut self.settings.substeps).range(1..=16));
             });
-            if let Some(cloth)=&self.cloth {
-                let diagnostics=cloth.diagnostics();
-                ui.label(format!("Time {:.3} s\nAssembly remaining {:.4} m\nPeak material strain {:.2}%\nSeam gap {:.4} m\nContact error {:.4} m\nInitial intersections {}\nUncertain capsule pairs {}",cloth.simulation_time(),diagnostics.seam_assembly_remaining,100.*diagnostics.max_stretch_error,diagnostics.max_seam_error,diagnostics.max_contact_error,diagnostics.initial_intersections,diagnostics.capsule_surface_uncertain_pairs));
-                if let Some(peak)=diagnostics.peak_strain
-                    && let Some(mesh)=&self.mesh
-                    && let Some(piece)=weftforge_core::simulation::peak_strain_piece(&self.editor.project,mesh,diagnostics) {
-                    let axis=match peak.axis { MaterialAxis::Warp=>"Warp",MaterialAxis::Weft=>"Weft" };
-                    ui.label(format!("{} · {axis} {:+.2}%",piece.name,100.*peak.signed_strain))
-                        .on_hover_text("Material direction at the largest absolute strain. Positive means extension; negative means compression. This is not a principal-strain or shear bound.");
-                }
-            }
+            self.physical_mesh_properties(ui);
             });
             self.draft=Some(draft);
             if offset_outline { self.open_outline_offset(ui.ctx()); }
@@ -3171,6 +3161,60 @@ impl Studio {
             ui.ctx().data_mut(|data| {
                 data.remove::<((u64, Option<Id>, Option<Id>), egui::Id)>(focus_key)
             });
+        }
+    }
+    fn physical_mesh_properties(&self, ui: &mut egui::Ui) {
+        pane_heading(ui, "Physical mesh");
+        ui.small(format!(
+            "Whole garment · applied revision {}",
+            self.editor.project.revision
+        ));
+        let Some(mesh) = self
+            .mesh
+            .as_ref()
+            .filter(|mesh| mesh.doc_revision == self.editor.project.revision)
+        else {
+            ui.weak("Rest area unavailable · rest mesh is not current.");
+            ui.weak("Cloth total mass unavailable · rest mesh is not current.");
+            return;
+        };
+        let rest_area: f64 = mesh
+            .triangles
+            .iter()
+            .map(|triangle| {
+                let [a, b, c] = triangle.map(|vertex| mesh.uv[vertex]);
+                ((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])).abs() * 0.5
+            })
+            .sum();
+        ui.label(format!("Rest area (m²) {rest_area:.9}"));
+        let Some(cloth) = &self.cloth else {
+            ui.weak("Cloth total mass unavailable · cloth not initialized.");
+            return;
+        };
+        ui.label(format!(
+            "Cloth total mass (kg) {:.12}",
+            cloth.masses().iter().sum::<f64>()
+        ));
+        ui.small("Accepted cloth state for this revision.");
+        let diagnostics = cloth.diagnostics();
+        ui.label(format!("Time {:.3} s\nAssembly remaining {:.4} m\nPeak material strain {:.2}%\nSeam gap {:.4} m\nContact error {:.4} m\nInitial intersections {}\nUncertain capsule pairs {}",cloth.simulation_time(),diagnostics.seam_assembly_remaining,100.*diagnostics.max_stretch_error,diagnostics.max_seam_error,diagnostics.max_contact_error,diagnostics.initial_intersections,diagnostics.capsule_surface_uncertain_pairs));
+        if let Some(peak) = diagnostics.peak_strain
+            && let Some(piece) = weftforge_core::simulation::peak_strain_piece(
+                &self.editor.project,
+                mesh,
+                diagnostics,
+            )
+        {
+            let axis = match peak.axis {
+                MaterialAxis::Warp => "Warp",
+                MaterialAxis::Weft => "Weft",
+            };
+            ui.label(format!(
+                "{} · {axis} {:+.2}%",
+                piece.name,
+                100. * peak.signed_strain
+            ))
+            .on_hover_text("Material direction at the largest absolute strain. Positive means extension; negative means compression. This is not a principal-strain or shear bound.");
         }
     }
     fn to_screen(&self, p: [f64; 2], r: Rect) -> Pos2 {
@@ -7534,6 +7578,120 @@ mod native_idle_numeric_tests {
             app.editor.project.pieces[0].grain_angle.to_bits(),
             old_angle.to_bits()
         );
+    }
+}
+
+#[cfg(test)]
+mod physical_mesh_properties_tests {
+    use super::*;
+
+    fn text(app: &Studio) -> String {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let output = ctx.run_ui(
+            egui::RawInput {
+                screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(420., 800.))),
+                ..Default::default()
+            },
+            |ui| app.physical_mesh_properties(ui),
+        );
+        output
+            .platform_output
+            .accesskit_update
+            .unwrap()
+            .nodes
+            .iter()
+            .filter_map(|(_, node)| node.value().or(node.label()))
+            .collect::<Vec<_>>()
+            .join("\n")
+    }
+
+    #[test]
+    fn actual_pinned_mass_and_rest_area_follow_applied_revision() {
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Physical panel".into(),
+                origin: [0.; 2],
+                width: 0.4,
+                height: 0.6,
+            })
+            .unwrap();
+        let mesh = Mesh {
+            doc_revision: app.editor.project.revision,
+            positions: vec![[0., 2., 0.], [1.2, 2., 0.], [1.2, 2., 1.8], [0., 2., 1.8]],
+            uv: vec![[0., 0.], [0.4, 0.], [0.4, 0.6], [0., 0.6]],
+            triangles: vec![[0, 1, 2], [0, 3, 2]],
+            piece_ids: vec![app.editor.project.pieces[0].id; 4],
+            ..Default::default()
+        };
+        mesh.validate().unwrap();
+        let cloth = Cloth::new(weftforge_sim::ClothInput {
+            positions: mesh.positions.clone(),
+            material_uv: mesh.uv.clone(),
+            triangles: mesh.triangles.clone(),
+            triangle_materials: [0.25, 0.75]
+                .map(|areal_density| weftforge_sim::Material {
+                    areal_density,
+                    ..Default::default()
+                })
+                .to_vec(),
+            pins: mesh
+                .positions
+                .iter()
+                .enumerate()
+                .map(|(vertex, &target)| weftforge_sim::Pin { vertex, target })
+                .collect(),
+            ..Default::default()
+        })
+        .unwrap();
+        app.mesh = Some(Arc::new(mesh));
+        app.cloth = Some(Arc::new(cloth));
+        let labels = text(&app);
+        assert!(labels.contains("Whole garment · applied revision 1"));
+        assert!(labels.contains("Rest area (m²) 0.240000000"));
+        assert!(labels.contains("Cloth total mass (kg) 0.120000000000"));
+
+        app.selected = Some(app.editor.project.pieces[0].id);
+        let mut draft = InspectorDraft::new(&app.editor.project, app.selected, None);
+        draft.dimensions.as_mut().unwrap()[0] = 0.5;
+        draft.material.as_mut().unwrap().areal_density = 0.3;
+        app.draft = Some(draft);
+        assert!(app.commit_draft());
+        assert!(app.mesh.is_some() && app.cloth.is_some());
+        let labels = text(&app);
+        assert!(labels.contains("Whole garment · applied revision 2"));
+        assert!(labels.contains("Rest area unavailable · rest mesh is not current."));
+        assert!(labels.contains("Cloth total mass unavailable · rest mesh is not current."));
+        assert!(!labels.contains("Rest area (m²)"));
+        assert!(!labels.contains("Cloth total mass (kg)"));
+        assert!(!labels.contains("Time "));
+
+        let mesh = Arc::new(app.editor.project.mesh().unwrap());
+        let (sender, receiver) = mpsc::channel();
+        app.job = Some(Job {
+            id: 0,
+            revision: app.editor.project.revision,
+            kind: JobKind::Mesh,
+            batch: None,
+            completed_steps: Arc::new(AtomicU64::new(0)),
+            cancel: Arc::new(AtomicBool::new(false)),
+            receiver,
+        });
+        app.needs_mesh = false;
+        sender.send(Ok(JobOutput::Mesh(mesh.clone()))).ok().unwrap();
+        app.poll();
+        assert!(app.cloth.is_none());
+        let labels = text(&app);
+        assert!(labels.contains("Rest area (m²) 0.300000000"));
+        assert!(labels.contains("Cloth total mass unavailable · cloth not initialized."));
+        app.cloth = Some(Arc::new(
+            weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap(),
+        ));
+        assert!(text(&app).contains("Cloth total mass (kg) 0.090000000000"));
+        app.reset_simulation();
+        assert!(text(&app).contains("Cloth total mass unavailable · cloth not initialized."));
     }
 }
 

@@ -82,7 +82,7 @@ struct MaterialRow {
 }
 
 const MATERIAL_LINEAR_ITERATIONS: usize = 32;
-const MATERIAL_BACKTRACKING_STEPS: usize = 16;
+const ENERGY_BACKTRACKING_STEPS: usize = 16;
 
 fn material_cancellation(cancelled: &impl Fn() -> bool) -> impl Fn() -> bool + '_ {
     let remaining = Cell::new(63_u8);
@@ -269,7 +269,7 @@ pub(crate) fn solve_material(
     let mut trial_correction = correction.to_vec();
     let mut fraction = 1.;
     // shortcut: cap Armijo backtracking at 16; use a trust region if extreme compression stalls.
-    for _ in 0..MATERIAL_BACKTRACKING_STEPS {
+    for _ in 0..ENERGY_BACKTRACKING_STEPS {
         check_cancel(cancelled)?;
         for i in 0..x.len() {
             check_cancel(cancelled)?;
@@ -380,21 +380,92 @@ impl Bend {
     pub fn valid_scale(&self) -> bool {
         self.rest_angle.is_finite() && self.stiffness.is_finite() && self.stiffness > 0.
     }
-    pub fn solve(&self, x: &mut [Vec3], inverse_mass: &[f64], dt: f64, lambda: &mut f64) {
+    pub fn solve(
+        &self,
+        x: &mut [Vec3],
+        inverse_mass: &[f64],
+        dt: f64,
+        correction: &mut [Vec3; 4],
+        cancelled: &impl Fn() -> bool,
+    ) -> Result<(), SimulationError> {
+        check_cancel(cancelled)?;
         let Some((angle, gradient)) = dihedral(self.vertices, x) else {
-            return;
+            return Ok(());
         };
+        let unstable = || SimulationError::Unstable("non-finite bending energy solve".into());
         let difference = angle - self.rest_angle;
         let value = difference.sin().atan2(difference.cos());
-        project(
-            &self.vertices,
-            &gradient,
-            value,
-            self.stiffness.recip() / (dt * dt),
-            lambda,
-            x,
-            inverse_mass,
-        );
+        let scale = dt * self.stiffness.sqrt();
+        let root_weight = self.vertices.map(|v| inverse_mass[v].sqrt());
+        let inertia: [Vec3; 4] = std::array::from_fn(|i| {
+            if root_weight[i] > 0. {
+                mul(correction[i], root_weight[i].recip())
+            } else {
+                [0.; 3]
+            }
+        });
+        let row: [Vec3; 4] = std::array::from_fn(|i| mul(gradient[i], scale * root_weight[i]));
+        let residual = scale * value;
+        let denominator = 1. + row.into_iter().map(|g| dot(g, g)).sum::<f64>();
+        let multiplier = (row
+            .into_iter()
+            .zip(inertia)
+            .map(|(g, p)| dot(g, p))
+            .sum::<f64>()
+            - residual)
+            / denominator;
+        // Retain actual displacements: a rotating angle gradient cannot reconstruct inertia from lambda.
+        let direction: [Vec3; 4] =
+            std::array::from_fn(|i| sub(mul(row[i], multiplier), inertia[i]));
+        let slope = (0..4)
+            .map(|i| dot(add(inertia[i], mul(row[i], residual)), direction[i]))
+            .sum::<f64>();
+        let energy =
+            0.5 * (inertia.into_iter().map(|p| dot(p, p)).sum::<f64>() + residual * residual);
+        if !denominator.is_finite() || !slope.is_finite() || !energy.is_finite() {
+            return Err(unstable());
+        }
+        if slope >= 0. {
+            check_cancel(cancelled)?;
+            return Ok(());
+        }
+        let original = self.vertices.map(|v| x[v]);
+        let mut fraction = 1.;
+        // shortcut: 16 Armijo trials; a trust region is needed if a highly folded hinge stalls.
+        for _ in 0..ENERGY_BACKTRACKING_STEPS {
+            check_cancel(cancelled)?;
+            let trial: [Vec3; 4] = std::array::from_fn(|i| {
+                add(original[i], mul(direction[i], fraction * root_weight[i]))
+            });
+            let trial_correction: [Vec3; 4] =
+                std::array::from_fn(|i| add(correction[i], sub(trial[i], original[i])));
+            let Some((angle, _)) = dihedral([0, 1, 2, 3], &trial) else {
+                fraction *= 0.5;
+                continue;
+            };
+            let difference = angle - self.rest_angle;
+            let residual = scale * difference.sin().atan2(difference.cos());
+            let trial_energy = 0.5
+                * ((0..4)
+                    .filter(|&i| root_weight[i] > 0.)
+                    .map(|i| {
+                        let p = mul(trial_correction[i], root_weight[i].recip());
+                        dot(p, p)
+                    })
+                    .sum::<f64>()
+                    + residual * residual);
+            if trial_energy.is_finite() && trial_energy <= energy + 1e-4 * fraction * slope {
+                check_cancel(cancelled)?;
+                for i in 0..4 {
+                    x[self.vertices[i]] = trial[i];
+                }
+                *correction = trial_correction;
+                return Ok(());
+            }
+            fraction *= 0.5;
+        }
+        check_cancel(cancelled)?;
+        Ok(())
     }
 }
 
@@ -491,6 +562,70 @@ pub(crate) fn solve_stitch(
         *lambda = add(*lambda, delta);
         for (&v, weight) in vertices.iter().zip(coefficients) {
             x[v] = add(x[v], mul(delta, inverse_mass[v] * weight));
+        }
+        return;
+    }
+    if s.compliance > 0. {
+        let alpha = s.compliance / (dt * dt);
+        let weight = vertices
+            .iter()
+            .zip(coefficients)
+            .map(|(&v, coefficient)| inverse_mass[v] * (coefficient * coefficient))
+            .sum::<f64>();
+        let denominator = weight + alpha;
+        if !target_distance.is_finite()
+            || target_distance <= 0.
+            || weight < 0.
+            || denominator <= 1e-20
+            || !denominator.is_finite()
+        {
+            return;
+        }
+        let anchor = sub(difference, mul(*lambda, weight));
+        let radius = anchor[0].hypot(anchor[1]).hypot(anchor[2]);
+        if !radius.is_finite() {
+            return;
+        }
+        let unit_direction = |vector: Vec3| {
+            let scale = vector[0].abs().max(vector[1].abs()).max(vector[2].abs());
+            let scaled = vector.map(|value| value / scale);
+            let norm = scaled[0].hypot(scaled[1]).hypot(scaled[2]);
+            scaled.map(|value| value / norm)
+        };
+        let direction = if radius > 0. {
+            unit_direction(anchor)
+        } else {
+            if weight == 0. {
+                return;
+            }
+            let distance = difference[0].hypot(difference[1]).hypot(difference[2]);
+            if !distance.is_finite() {
+                return;
+            }
+            // At a zero anchor every direction minimizes the radial objective.
+            if distance > 0. {
+                unit_direction(difference)
+            } else {
+                [1., 0., 0.]
+            }
+        };
+        let next = mul(direction, (target_distance - radius) / denominator);
+        let delta = sub(next, *lambda);
+        let updates = std::array::from_fn::<_, 4, _>(|i| {
+            mul(delta, inverse_mass[vertices[i]] * coefficients[i])
+        });
+        if !finite(next)
+            || !finite(delta)
+            || vertices
+                .iter()
+                .zip(updates)
+                .any(|(&v, update)| !finite(update) || !finite(add(x[v], update)))
+        {
+            return;
+        }
+        *lambda = next;
+        for (&v, update) in vertices.iter().zip(updates) {
+            x[v] = add(x[v], update);
         }
         return;
     }

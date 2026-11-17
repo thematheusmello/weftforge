@@ -31,10 +31,10 @@ colliders and duplicate pins are rejected before a solver is returned.
 
 ## Integration and compliant constraints
 
-The engineering choice is a deterministic sequential CPU path. Bending and
-sewing retain the compliant local XPBD projection method from
+The engineering choice is a deterministic sequential CPU path. Compliant sewing,
+membrane and bending use the incremental-energy updates described below.
+Hard sewing retains the scalar projection from
 [Macklin, Müller and Chentanez, XPBD (2016)](https://matthias-research.github.io/pages/publications/XPBD.pdf).
-Membrane projection uses the coupled incremental-energy update described below.
 The small dependency surface and explicit physical energy coefficients make it
 suitable for repeatable checks and future accelerated-path comparisons. It is not
 a promise of time-step, mesh or iteration independence at finite convergence.
@@ -46,13 +46,13 @@ v* = exp(-damping*h) * (v + h*gravity)
 x* = x + h*v*
 ```
 
-The solver clears material correction history and bending/seam multipliers at
+The solver clears material/bending displacement histories and seam multipliers at
 each substep, then iterates membrane, bending, sewing, analytic contact, cloth
-contact and pins in that order. For a scalar bending or radial sewing energy
-E = k*C(x)^2/2, the constraint compliance is alpha = 1/k:
+contact and pins in that order. The scalar radial projection for hard sewing
+uses zero compliance in the following formula:
 
 ```text
-a = alpha / h²
+a = 0
 delta_lambda = (-C - a*lambda) / (sum_i(w_i*|gradient_i(C)|²) + a)
 x_i += w_i*gradient_i(C)*delta_lambda
 lambda += delta_lambda
@@ -128,9 +128,10 @@ Phi(q) = sum_free_i m_i*|q_i-z_i|²/(2*h²) + sum_triangles sum_a k_a*C_a(q)²/2
 ```
 
 Pinned coordinates stay fixed. There are no material pairs or separate group
-anchors. Bending, sewing, analytic contact, cloth contact and pins retain their
-previous equations and stage order. Each outer iteration makes one global
-Gauss–Newton material update before those stages. The garment acceptance settings
+anchors. Bending and compliant sewing use their separate incremental-energy
+updates below; analytic contact, cloth contact and pins retain their previous equations.
+Each outer iteration makes one global Gauss–Newton material update before those
+stages, in the same order. The garment acceptance settings
 remain dt=1/60 s, eight substeps and 32 outer iterations; the standalone DTO
 defaults above are unchanged.
 
@@ -217,8 +218,8 @@ global stage for 32 sweeps and checks the same predeclared 1e-8 m position and
 reference establishes a strict local minimum near the expected point, without
 global uniqueness. Obsolete pair/order guards are replaced with exact face-order
 and free/pinned-partition guards; the physical data and oracle stay unchanged.
-Material convergence at finite budgets, the remaining scalar bending/sewing
-updates, friction, and complete coupled-contact equilibrium remain separate
+Material convergence at finite budgets, the separate bending/sewing updates,
+friction, and complete coupled-contact equilibrium remain separate
 questions. Earlier garment results below retain their original source
 and algorithm attribution; this source change does not regrade them.
 
@@ -281,6 +282,54 @@ cannot provide a usable dihedral gradient and are skipped for that projection;
 reported strain/residuals and the numerical checks remain relevant. Zero D
 intentionally disables that material's bending energy, not collision.
 
+Each bend retains its actual displacement `p_b` at its four nodes, reset to zero
+every substep. Its anchor `z=x-p_b` stays fixed during that bend's update and
+follows displacements from other stages. The unchanged angular energy enters
+the local incremental objective:
+
+```text
+h²*Phi_b(q) = sum_free_i m_i*|q_i-z_i|²/2 + h²*k_b*C_b(q)²/2
+```
+
+Writing `a_i=p_b_i/sqrt(w_i)`, `g_i=h*sqrt(k_b*w_i)*gradient_i(C_b)` and
+`r=h*sqrt(k_b)*C_b`, its rank-one Gauss–Newton direction is:
+
+```text
+t = (sum_i dot(g_i,a_i) - r) / (1 + sum_i dot(g_i,g_i))
+d_i = sqrt(w_i)*(g_i*t-a_i)
+```
+
+Pinned nodes have zero `a_i`, `g_i` and displacement. A scalar multiplier cannot
+recover `p_b` when the dihedral gradient rotates; the previous update could
+therefore satisfy its scalar equation while retaining a spurious inertial force.
+The displacement term above preserves that nonlinear inertial relation. These
+are separate stage histories, not extra physical masses: at convergence each
+history contributes its stage's force to the displacement from the predictor.
+This does not establish convergence of the combined stages at finite iterations.
+
+The same local objective accepts an Armijo descent with coefficient `1e-4` and at
+most 16 fractions, starting at one and halving. Only an accepted finite trial
+changes the four positions and their history, using actual rounded displacement.
+Non-finite current quantities abort the whole-call transaction. Degenerate or
+non-finite trials are rejected; an exhausted search leaves that bend unchanged.
+Cancellation is checked on entry, at each trial and immediately before the
+accepted position/history copy. Histories remain local to the candidate substep,
+so cancellation or failure cannot publish partial state.
+
+An independent pinned-hinge check uses one free 0.01 kg node, a 0.1 s substep,
+0.5 N m bend coefficient and a predictor at radius 1 m and angle 1 radian.
+Eliminating radius gives `r=cos(theta-1)` and the strictly increasing equation
+`0.5*theta+0.5*sin(2*(theta-1))=0` on `[0,1]`. Its unique minimum supplies a
+64-bisection position oracle; direct polar energy derivatives supply force
+residuals without the production dihedral gradient. The fixed bounds are
+`1e-8 m` and `1e-6 N`. At 32 sweeps the old scalar history misses by
+0.1185816818 m / 0.1065595925 N; displacement history gives
+3.835502563e-9 m / 3.349162043e-9 N. Separate checks cover center-of-mass preservation,
+every direct cancellation callback, whole-call rollback and substep history reset.
+This proves a bounded component correction, not the cause of a garment transient,
+full garment quality, equilibrium, reference parity or measured-fabric behavior.
+The added four-node history and line search have no garment runtime measurement.
+
 ## Sewing, pins and construction correspondence
 
 A stitch constrains the distance between two convex weighted points. Each point
@@ -299,12 +348,46 @@ L_next = max(0, L_previous - seam_closure_speed*h)
 C_seam = length(weighted_a - weighted_b) - L_next
 ```
 
-At exactly zero target with positive compliance c, projection uses the vector
-constraint `weighted_a - weighted_b`, preserving energy `|C|²/(2c)` with a
-three-component multiplier. Positive targets and hard stitches retain the scalar
-radial update above. The [closed soft stitch contract](../spec/features/SIM-001-closed-stitch-coordinates.md)
-defines the bounded analytic checks; garment quality and reference parity remain
-unmeasured for this change.
+For positive compliance c, each stitch retains a three-component weighted
+correction history H, reset once per substep. Let beta_i be its signed endpoint
+coefficient after combining repeated vertices, w_i the inverse mass, d its
+current endpoint difference, W=sum_i(w_i*beta_i²), a=c/h², and z=d-W*H.
+For W>0, minimizing nodal inertia at a proposed difference D gives the exact
+local objective (in h²-scaled energy units):
+
+```text
+Phi(D) = |D-z|²/(2W) + (|D|-target)²/(2a)
+r = |z|
+H_new = (z/r)*(target-r)/(a+W)       # r > 0
+x_i += w_i*beta_i*(H_new-H)
+H = H_new
+```
+
+The optimal D is parallel to z with radius (a*r+W*target)/(a+W).
+Retaining the full vector preserves the accumulated direction changes; a scalar
+multiplier against only the current direction does not retain that action.
+At target zero, the existing vector update `delta_H=(-d-a*H)/(a+W)` is
+algebraically identical and its arithmetic is unchanged. Hard stitches retain
+the scalar radial update above. No iterations, stiffnesses or stage order change.
+
+At exactly zero anchor and W>0, all directions minimize the radial objective:
+the update retains the current endpoint direction if defined, otherwise chooses
+world +X deterministically. An all-pinned zero gap is unchanged. All-pinned
+nonzero gaps retain their constitutive vector history without moving positions.
+Both unit-direction paths first divide by the largest absolute component before
+normalizing, so a rounded subnormal radius cannot produce a non-unit direction.
+The spring radius and all compliance, target and denominator guards are unchanged.
+Nonfinite or unrepresentable positive-target trial arithmetic leaves positions
+and history unchanged; all trial position updates are checked before committing.
+
+The fresh two-spring N=32 component uses one .01 kg free node, h=.1 s and two
+.5 N/m springs, with positive target .5 m and zero target at different pinned
+anchors. Its independent radial-energy oracle fixes position/force bounds at
+1e-8 m / 1e-6 N. The scalar history reaches zero further updates while missing
+by .0538715230 m / .0889778606 N; these are component findings, not garment
+causality. The [closed soft stitch contract](../spec/features/SIM-001-closed-stitch-coordinates.md)
+continues to define the existing zero-target checks. Garment quality and
+reference parity remain unmeasured for this change.
 
 This explicitly models assembly, separate from fabric stiffness. A zero target
 requests coincidence; finite compliance can leave a gap. The default speed is
