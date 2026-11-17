@@ -1,0 +1,22 @@
+{
+  "case": "WF-20261117-NOTCH-CLI-INDEPENDENT-EXPORT-001",
+  "source": "8aa850975fa388c3c4bd206db74adf7171916451",
+  "binary_sha256": "0db1bcb65c5e1a7af78a9de2cafe28fa4d5c585b413e535bf2b0d5b70b6ee86e",
+  "scope": "Actual CLI create/edit/save/reload and independent stdlibJSON/XML physical marker check. No nativeUI/history/reference/simulation claim.",
+  "whole_seconds": 120,
+  "per_command_seconds": 15,
+  "outputs": "Own disposable case only",
+  "criteria": {
+    "format_version": 6,
+    "notch_t_initial": 0.25,
+    "notch_m_initial": 0.008,
+    "notch_t_edited": 0.75,
+    "notch_m_edited": 0.01,
+    "SVG_marker_mm": 10,
+    "SVG_length_error_mm": 1e-09,
+    "SVG_anchor_error_mm": 1e-09,
+    "invalid_document_and_output_preserved": true,
+    "DXF_refusal_preserves_existing_bytes": true,
+    "same_notch_id_after_fresh_process_edit": true
+  }
+}

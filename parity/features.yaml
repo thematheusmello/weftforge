@@ -8023,7 +8023,9 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json"
+      ],
       "scenarios": [],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
@@ -8041,17 +8043,61 @@
         "https://github.com/thematheusmello/weftforge/issues/2"
       ],
       "prs": [],
-      "implementation_status": "planned",
+      "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001",
+          "commit": "8aa850975fa388c3c4bd206db74adf7171916451",
+          "timestamp": "2026-11-17T16:49:05.603726Z",
+          "platform": "macOS27.2 aarch64; Rust1.94.1; actual source checks and separately bounded built-CLI/export observations.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/notch-text-bending-source-20261117/N004-BLOCKED-RECEIPT.json": "962ea9c27659fce85b57a4399b5dfebb497f1a8ad49ff370ed65750abdbaf289",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/PLAN.json": "feb57018132610ba15e0308b71daf4ace921751fa040fbb1cd671060968fb306",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/PROVENANCE.json": "51c285edce27c1dc360689543cfe3b2e6bdfe8911ca09a66d7d6d0e0ee3b4638",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/RESULT.json": "e557bbb82fa40522e34a158e0951e7983cbe2d186c78fc8f8f34a50547571fbb",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/ROOT-SOURCE-REVIEW.json": "240ca8b4379f859eac9ef15a90fc6e24eb4db342a6ab07b900a1a7e84512ae18",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/STARTED.json": "959a415a8218da7b123c27df27297b4d6ef9e62447974e2ff3e3fbdccb9ac8bd",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/TERMINAL.json": "17905e8b18708b60e6fc6e50fa1d40c2bb1a2dfab1a71b99fe0e03222cfbd8b6",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/PLAN.json": "30c89f7912cf9189b058629e830731c7006dd43e47c9f04766e3d2e80cc0497b",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/RESULT.json": "18d9acdbf280dcb7d19a4f2a7b392eae20d9e14a716165de75cae85e3943f7eb",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/RETAINED-OUTPUT-REVIEW.json": "cf4bad6f69eb55e723b2502261f73930e7990a5e7ca0994c1d0a2a1406b41ef7",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/add.json": "d92833b4e28ac0af20e7ab9c62b0f4943b3188b7a71fe5feb64ddeee99251c55",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/added.weftforge": "98dcbbe415d4bf058dd29a61f229d0010f2a65e980462f1cd6549fe415592e54",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/edit.json": "5b9dd1af595f2682a380479fe1d62652e02c5bc58471e45853b41f37badcbc90",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/edited.weftforge": "ff23a1f84dfcbf2a656fe01ba870d0b844324f3b6f85f5711371e8090dccd161",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/empty.weftforge": "aa46a14b28c0209991c9339c37ce96902cb695d92bf7a1c7a6ade898315b1a73",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/existing.dxf": "acf356c10d0ec7900fa3358bad31c6c5b83405e04bb044e6b934b6681a955e27",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/invalid-output.weftforge": "2406c1a87e257a401f3ac188a31b5ce2541a7bf3bb2432c589d5b2dc711136a1",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/invalid.json": "95475beded6a502451fdf96fc1df4aba5c95782cb72fd4a2cf87181728459246",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/patterns.svg": "51a4beadfcff4cc5f95758d5ae4f72a17e2fe4f5ab6ee1451d827cf81f7ce230",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/rectangle.weftforge": "b854b181862a4f171fbaf0ce1183d6a2e7b57e93351dcae4a1b18bcd809fa284",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/native-cli-build.stderr": "319bff8ac94ff0165c57fdcb8c3db38ff06530357e76e98d36a07ff75abc11e3",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/workspace-clippy.stderr": "90f6f8b8fd4575a76d7f7c5d482d05c5c60a45b6db2b9c1b7db0953b7079d398",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/workspace-tests.stderr": "f9b46f990c8a0f28e2663cb9279991322d290e7b379a827d0f7cd92dc32863c2",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/workspace-tests.stdout": "c8998e5ff78b55f3cf6259aa2d985bdd016d2e1197533b7fb20df4b925955826",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/stages/full-fmt-RESULT.json": "b5f7609675ca4cd54c7426bee05683a7518509ffb86ab46a42683365c19bc804",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/stages/native-cli-build-RESULT.json": "b6f9250047d6b69b10621c2e31718d5f84e026e0ce26177114c3975f1af0d8d2",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/stages/workspace-clippy-RESULT.json": "3a0cd31be8d9108dcbf6e2cf2ac17991778adb28224b5a3598210c361eac6711",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/stages/workspace-tests-RESULT.json": "7a9fd2184872fc18f5e1168657830aa586b46f3065f16e060d0d953e758d1789"
+          },
+          "path": "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json"
+        }
+      ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Integrated 8aa has bounded native string SetValue handling at nine existing sites with four actual-event regressions in actual 446/32 source checks. This is partial implementation only. Historical N004 on 06329 is BLOCKED before authoring, not an integrated native pass. High-DPI, full keyboard/focus/screen-reader/name-role-action coverage and reference interaction remain open."
       ],
       "contradictions": [],
       "blockers": [
-        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending.",
+        "A complete live native text-entry journey remains unverified after N004 exposed no AX authoring content. Native AX activation/interaction diagnosis and fresh current-source acceptance remain pending."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "PAT-001",
@@ -20749,7 +20795,8 @@
         "spec/features/PAT-006-internal-segments.md",
         "parity/reports/WF-20261115-INTERNAL-ANNOTATIONS-001.json",
         "parity/reports/artifacts/internal-annotations-20261115/README.md",
-        "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-METADATA-001.json"
+        "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-METADATA-001.json",
+        "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -20801,7 +20848,9 @@
         "crates/weftforge-core/src/persistence.rs",
         "crates/weftforge-core/tests/internal_lines.rs",
         "crates/weftforge-core/tests/migration.rs",
-        "apps/weftforge-cli/tests/mcp_stdio.rs"
+        "apps/weftforge-cli/tests/mcp_stdio.rs",
+        "crates/weftforge-core/src/offset.rs",
+        "crates/weftforge-core/tests/notches.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3"
@@ -20898,6 +20947,47 @@
             "parity/reports/artifacts/internal-annotations-20261115/native/A003/snapshots/A05-redo.weftforge": "45c15e1c8c17ada10b9ff4aff45de22564e09091c63462e61c588f57d28877fd"
           },
           "path": "parity/reports/WF-20261115-INTERNAL-ANNOTATIONS-001.json"
+        },
+        {
+          "id": "WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001",
+          "commit": "8aa850975fa388c3c4bd206db74adf7171916451",
+          "timestamp": "2026-11-17T16:49:05.603726Z",
+          "platform": "macOS27.2 aarch64; Rust1.94.1; actual source checks and separately bounded built-CLI/export observations.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/notch-text-bending-source-20261117/N004-BLOCKED-RECEIPT.json": "962ea9c27659fce85b57a4399b5dfebb497f1a8ad49ff370ed65750abdbaf289",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/PLAN.json": "feb57018132610ba15e0308b71daf4ace921751fa040fbb1cd671060968fb306",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/PROVENANCE.json": "51c285edce27c1dc360689543cfe3b2e6bdfe8911ca09a66d7d6d0e0ee3b4638",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/RESULT.json": "e557bbb82fa40522e34a158e0951e7983cbe2d186c78fc8f8f34a50547571fbb",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/ROOT-SOURCE-REVIEW.json": "240ca8b4379f859eac9ef15a90fc6e24eb4db342a6ab07b900a1a7e84512ae18",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/STARTED.json": "959a415a8218da7b123c27df27297b4d6ef9e62447974e2ff3e3fbdccb9ac8bd",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/TERMINAL.json": "17905e8b18708b60e6fc6e50fa1d40c2bb1a2dfab1a71b99fe0e03222cfbd8b6",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/PLAN.json": "30c89f7912cf9189b058629e830731c7006dd43e47c9f04766e3d2e80cc0497b",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/RESULT.json": "18d9acdbf280dcb7d19a4f2a7b392eae20d9e14a716165de75cae85e3943f7eb",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/RETAINED-OUTPUT-REVIEW.json": "cf4bad6f69eb55e723b2502261f73930e7990a5e7ca0994c1d0a2a1406b41ef7",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/add.json": "d92833b4e28ac0af20e7ab9c62b0f4943b3188b7a71fe5feb64ddeee99251c55",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/added.weftforge": "98dcbbe415d4bf058dd29a61f229d0010f2a65e980462f1cd6549fe415592e54",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/edit.json": "5b9dd1af595f2682a380479fe1d62652e02c5bc58471e45853b41f37badcbc90",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/edited.weftforge": "ff23a1f84dfcbf2a656fe01ba870d0b844324f3b6f85f5711371e8090dccd161",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/empty.weftforge": "aa46a14b28c0209991c9339c37ce96902cb695d92bf7a1c7a6ade898315b1a73",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/existing.dxf": "acf356c10d0ec7900fa3358bad31c6c5b83405e04bb044e6b934b6681a955e27",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/invalid-output.weftforge": "2406c1a87e257a401f3ac188a31b5ce2541a7bf3bb2432c589d5b2dc711136a1",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/invalid.json": "95475beded6a502451fdf96fc1df4aba5c95782cb72fd4a2cf87181728459246",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/patterns.svg": "51a4beadfcff4cc5f95758d5ae4f72a17e2fe4f5ab6ee1451d827cf81f7ce230",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/rectangle.weftforge": "b854b181862a4f171fbaf0ce1183d6a2e7b57e93351dcae4a1b18bcd809fa284",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/native-cli-build.stderr": "319bff8ac94ff0165c57fdcb8c3db38ff06530357e76e98d36a07ff75abc11e3",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/workspace-clippy.stderr": "90f6f8b8fd4575a76d7f7c5d482d05c5c60a45b6db2b9c1b7db0953b7079d398",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/workspace-tests.stderr": "f9b46f990c8a0f28e2663cb9279991322d290e7b379a827d0f7cd92dc32863c2",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/workspace-tests.stdout": "c8998e5ff78b55f3cf6259aa2d985bdd016d2e1197533b7fb20df4b925955826",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/stages/full-fmt-RESULT.json": "b5f7609675ca4cd54c7426bee05683a7518509ffb86ab46a42683365c19bc804",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/stages/native-cli-build-RESULT.json": "b6f9250047d6b69b10621c2e31718d5f84e026e0ce26177114c3975f1af0d8d2",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/stages/workspace-clippy-RESULT.json": "3a0cd31be8d9108dcbf6e2cf2ac17991778adb28224b5a3598210c361eac6711",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/stages/workspace-tests-RESULT.json": "7a9fd2184872fc18f5e1168657830aa586b46f3065f16e060d0d953e758d1789"
+          },
+          "path": "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -20905,16 +20995,18 @@
         "The candidate adds applied selected-boundary length and raw seam/group A/B plus signed B\u2212A feedback. Arbitrary interval query is available through CLI/MCP; persistent measurements, angles, perimeters and complete native/reference behavior remain unverified.",
         "A bounded reference canvas toggle labels unselected boundaries in literal mm with one fractional digit; Select All separately retains aggregate selected-line readouts. Our three-decimal selected-inspector readout is a different partial presentation. Exact arc/rounding/angle, general aggregation and complete measurement behavior remain unknown/unimplemented.",
         "Ad7 implements bounded straight editable internal annotations owned by a piece, two-point and precise endpoint authoring, shared-command history, applied lengths and strict v4 persistence. The approved PAT-006-internal-segments contract is engineering policy for this annotation subset; it does not establish cuts/holes or reference behavior. Internal cubics and shapes, names/notches, persistent measurements/constraints, internal sewing/folds and topological cuts remain open. The bounded headless/A003 engineering report is current; native B\u2013E and full annotation/reference contracts remain required outside its scope.",
-        "Ad7 passes the original 86-observation/434-pair headless scope and root-accepted native A003 only (142 operations + one summary; conservative 641.657843875 s upper bound). A observes empty launch, one straight annotation, invalid/modal/caret retention, one compound edit, history and six v4 saves. B\u2013E/full annotation remain outside this packet; no native New/Recover, process restart, full automation, cuts/holes, physics or reference completion. Coarse feature remains partial/not_run; old failures and stale reports keep their original outcomes."
+        "Ad7 passes the original 86-observation/434-pair headless scope and root-accepted native A003 only (142 operations + one summary; conservative 641.657843875 s upper bound). A observes empty launch, one straight annotation, invalid/modal/caret retention, one compound edit, history and six v4 saves. B\u2013E/full annotation remain outside this packet; no native New/Recover, process restart, full automation, cuts/holes, physics or reference completion. Coarse feature remains partial/not_run; old failures and stale reports keep their original outcomes.",
+        "Integrated 8aa adds bounded authored notches under PAT-007. The legacy filename spec/features/PAT-006-authored-notches.md does not assign notch acceptance to cut/hole PAT-006. Source 446 checks and separate real seven-call CLI/export checks cover stable ID 11, invalid t=2 retention, 0.25/8 mm to 0.75/10 mm native v6, an independently read 10 mm SVG marker and existing-sentinel DXF refusal. Historical N004 remains BLOCKED before native creation; CLI does not satisfy that journey. Shape/angle variants, full names/measurement/constraint behavior, high-DPI/keyboard and notch-reference behavior remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/PAT-007-authored-length-feedback.md": "4f79150ed28854b8a16760af07b1558808dcca2080bc1ee8e114d5b2682f851c",
-        "spec/features/PAT-006-internal-segments.md": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66"
+        "spec/features/PAT-006-internal-segments.md": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+        "spec/features/PAT-006-authored-notches.md": "568587bd7a5720432e9d031f81f14ca372412ca1d079999bf0906f9e12ea0da0"
       }
     },
     {
@@ -29540,7 +29632,8 @@
         "parity/reports/WF-20261117-GLOBAL-MATERIAL-SOURCE-001.json",
         "parity/reports/WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001.json",
         "parity/reports/WF-20261117-MATERIAL-POLLING-SOURCE-001.json",
-        "parity/reports/WF-20261117-MATERIAL-POLLING-HARBOR-A8-001.json"
+        "parity/reports/WF-20261117-MATERIAL-POLLING-HARBOR-A8-001.json",
+        "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -31655,6 +31748,47 @@
             "parity/reports/artifacts/sewing-history-source-20261117/source-integration/ROOT-INTEGRATION-001.json": "71b327404afe411016a113cec1cdc346e1130c74f85ac243c267a51e2c5962c9",
             "parity/reports/artifacts/sewing-history-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "170f2855866521eab75174c1efaccc499b4e8748dd989034e6c77a271b56d14d"
           }
+        },
+        {
+          "id": "WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001",
+          "commit": "8aa850975fa388c3c4bd206db74adf7171916451",
+          "timestamp": "2026-11-17T16:49:05.603726Z",
+          "platform": "macOS27.2 aarch64; Rust1.94.1; actual source checks and separately bounded built-CLI/export observations.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/notch-text-bending-source-20261117/N004-BLOCKED-RECEIPT.json": "962ea9c27659fce85b57a4399b5dfebb497f1a8ad49ff370ed65750abdbaf289",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/PLAN.json": "feb57018132610ba15e0308b71daf4ace921751fa040fbb1cd671060968fb306",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/PROVENANCE.json": "51c285edce27c1dc360689543cfe3b2e6bdfe8911ca09a66d7d6d0e0ee3b4638",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/RESULT.json": "e557bbb82fa40522e34a158e0951e7983cbe2d186c78fc8f8f34a50547571fbb",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/ROOT-SOURCE-REVIEW.json": "240ca8b4379f859eac9ef15a90fc6e24eb4db342a6ab07b900a1a7e84512ae18",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/STARTED.json": "959a415a8218da7b123c27df27297b4d6ef9e62447974e2ff3e3fbdccb9ac8bd",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/TERMINAL.json": "17905e8b18708b60e6fc6e50fa1d40c2bb1a2dfab1a71b99fe0e03222cfbd8b6",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/PLAN.json": "30c89f7912cf9189b058629e830731c7006dd43e47c9f04766e3d2e80cc0497b",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/RESULT.json": "18d9acdbf280dcb7d19a4f2a7b392eae20d9e14a716165de75cae85e3943f7eb",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/RETAINED-OUTPUT-REVIEW.json": "cf4bad6f69eb55e723b2502261f73930e7990a5e7ca0994c1d0a2a1406b41ef7",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/add.json": "d92833b4e28ac0af20e7ab9c62b0f4943b3188b7a71fe5feb64ddeee99251c55",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/added.weftforge": "98dcbbe415d4bf058dd29a61f229d0010f2a65e980462f1cd6549fe415592e54",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/edit.json": "5b9dd1af595f2682a380479fe1d62652e02c5bc58471e45853b41f37badcbc90",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/edited.weftforge": "ff23a1f84dfcbf2a656fe01ba870d0b844324f3b6f85f5711371e8090dccd161",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/empty.weftforge": "aa46a14b28c0209991c9339c37ce96902cb695d92bf7a1c7a6ade898315b1a73",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/existing.dxf": "acf356c10d0ec7900fa3358bad31c6c5b83405e04bb044e6b934b6681a955e27",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/invalid-output.weftforge": "2406c1a87e257a401f3ac188a31b5ce2541a7bf3bb2432c589d5b2dc711136a1",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/invalid.json": "95475beded6a502451fdf96fc1df4aba5c95782cb72fd4a2cf87181728459246",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/patterns.svg": "51a4beadfcff4cc5f95758d5ae4f72a17e2fe4f5ab6ee1451d827cf81f7ce230",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/rectangle.weftforge": "b854b181862a4f171fbaf0ce1183d6a2e7b57e93351dcae4a1b18bcd809fa284",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/native-cli-build.stderr": "319bff8ac94ff0165c57fdcb8c3db38ff06530357e76e98d36a07ff75abc11e3",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/workspace-clippy.stderr": "90f6f8b8fd4575a76d7f7c5d482d05c5c60a45b6db2b9c1b7db0953b7079d398",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/workspace-tests.stderr": "f9b46f990c8a0f28e2663cb9279991322d290e7b379a827d0f7cd92dc32863c2",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/workspace-tests.stdout": "c8998e5ff78b55f3cf6259aa2d985bdd016d2e1197533b7fb20df4b925955826",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/stages/full-fmt-RESULT.json": "b5f7609675ca4cd54c7426bee05683a7518509ffb86ab46a42683365c19bc804",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/stages/native-cli-build-RESULT.json": "b6f9250047d6b69b10621c2e31718d5f84e026e0ce26177114c3975f1af0d8d2",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/stages/workspace-clippy-RESULT.json": "3a0cd31be8d9108dcbf6e2cf2ac17991778adb28224b5a3598210c361eac6711",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/stages/workspace-tests-RESULT.json": "7a9fd2184872fc18f5e1168657830aa586b46f3065f16e060d0d953e758d1789"
+          },
+          "path": "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -31667,7 +31801,8 @@
         "At actual 96/integrated a9, an independently referenced small material patch changes RED to GREEN with coupled inertial/elastic material descent and cancellation rollback; this is component evidence only. The new unchanged Harbor A8 trajectory is operationally complete but fails strict strain at frames28\u201337. No accepted native/full/reference/garment/physics result follows.",
         "Actual13fb/integrated8fe material groups change the independent two-face component from RED4.266274346685227e-7m/2.7341292831298387e-3N to first GREEN5.683890753411727e-18m/1.0747913121812962e-14N at unchanged1e-8m/1e-6N bounds; source407 gates pass. One new full Harbor A8 case is operationally accepted251.83977058297023s/420s with all181 states independently analyzed, but STRICT QUALITY FAILED strain frames28..40, peak21.96202527055029percent at frame29/triangle214/piece2/weft. Final14.03608985percent does not override trajectory failure. Initial seam/target failures0..28 remain; all finite/contact/uncertainty screens pass and completed-fit seam from exactzero29 passes. V1 build-only monitor failure and V2 correction/build remain separate. Fresh producer receipts qualify inherited saved-state/new_garment_execution:false wording. No replay/regrade/native/reference/full-feature/physics/garment/roadmap acceptance.",
         "Actual52099/integrated97a1524 global material resolves the fixed eight-face stationarity component: original13fb RED0.0008125005684045307m/7.071746584708191N, retained first-candidate compile failure with zero tests, then annotation-only GREEN2.0770362583566576e-10m/1.2857517012326884e-7N at unchanged1e-8m/1e-6N bounds. Targeted62 sim tests and full409 workspace gates pass with exact full-fmt reuse. The one new full Harbor A8 case FAILED OPERATIONALLY at authoritative420.0070624999935s/420s with153/180 steps; no full181-state analysis or computed quality grade exists. Raw strict_quality_passed:false is only nonacceptance, not a computed strain/contact/finite/seam grade. Incomplete trajectory is preserved ungraded, no retry/continuation/regrade. Prior13fb strict strain failure28..40 remains historical. Full scopes/statuses/scenarios/dependencies and native/calibrated-physics/reference/full-garment/feature/roadmap gaps remain unchanged.",
-        "Actual9d4/integrated076 changes only material cancellation cadence: entry/every64sites/pre-success checks, unchanged numerical PCG32/Armijo16 and rollback. Actual four source gates412 pass; same-build six-pair32-boundary material outputs are bit-identical with5.476845906730992x component-only median ratio, not whole-garment speed. First fmt-only failure and external release disk stop remain; recovery002 uses own partial cache and retains the corrected cold-banner qualification. One new Harbor A8 run is operationally accepted298.4210457500303s/420s (external terminal observation398.1007409580052s),180frames/181 independent states, but STRICT STRAIN FAILED frame29/triangle618/piece31/warp at0.1558088708602663 >0.15. Final9.430147percent does not override failure. All181 finite/contact/uncertainty screens pass; seam<5mm after closure29 and exacttargets60/180 pass, while initial seam/target0..28 failures remain. Published52099 global153/180 failure remains ungraded/stale with exact originals; earlier paired strict failure remains historical. No retry/oldregrade/native/reference/calibrated-physics/full-feature/garment/roadmap acceptance; full scopes/statuses/scenarios/dependencies remain unchanged."
+        "Actual9d4/integrated076 changes only material cancellation cadence: entry/every64sites/pre-success checks, unchanged numerical PCG32/Armijo16 and rollback. Actual four source gates412 pass; same-build six-pair32-boundary material outputs are bit-identical with5.476845906730992x component-only median ratio, not whole-garment speed. First fmt-only failure and external release disk stop remain; recovery002 uses own partial cache and retains the corrected cold-banner qualification. One new Harbor A8 run is operationally accepted298.4210457500303s/420s (external terminal observation398.1007409580052s),180frames/181 independent states, but STRICT STRAIN FAILED frame29/triangle618/piece31/warp at0.1558088708602663 >0.15. Final9.430147percent does not override failure. All181 finite/contact/uncertainty screens pass; seam<5mm after closure29 and exacttargets60/180 pass, while initial seam/target0..28 failures remain. Published52099 global153/180 failure remains ungraded/stale with exact originals; earlier paired strict failure remains historical. No retry/oldregrade/native/reference/calibrated-physics/full-feature/garment/roadmap acceptance; full scopes/statuses/scenarios/dependencies remain unchanged.",
+        "Integrated 8aa passes actual 446/32 source checks, fmt, strict Clippy and native+CLI build on 91 exact inputs. Coupled-stage regressions are implementation-only. The complete 82cc 181-state Harbor strict failure remains historical; no new 8aa garment or numerical acceptance exists. Original failed outcomes and full native/calibration/reference/feature/garment/roadmap gaps remain unchanged."
       ],
       "contradictions": [],
       "blockers": [
@@ -32586,13 +32721,14 @@
         "The new actual 96 Harbor numerical case independently retains exact original physical rest, 654 vertices / 1172 triangles and 0.21322800000000003 kg total mass; only four declared empty v5 piece fields adapt serialization. One case is finite through 181 states, but its full strict trajectory fails strain. This is no fabric calibration or complete mesh/mass/reference acceptance.",
         "Actual13fb/integrated8fe material groups change the independent two-face component from RED4.266274346685227e-7m/2.7341292831298387e-3N to first GREEN5.683890753411727e-18m/1.0747913121812962e-14N at unchanged1e-8m/1e-6N bounds; source407 gates pass. One new full Harbor A8 case is operationally accepted251.83977058297023s/420s with all181 states independently analyzed, but STRICT QUALITY FAILED strain frames28..40, peak21.96202527055029percent at frame29/triangle214/piece2/weft. Final14.03608985percent does not override trajectory failure. Initial seam/target failures0..28 remain; all finite/contact/uncertainty screens pass and completed-fit seam from exactzero29 passes. V1 build-only monitor failure and V2 correction/build remain separate. Fresh producer receipts qualify inherited saved-state/new_garment_execution:false wording. No replay/regrade/native/reference/full-feature/physics/garment/roadmap acceptance.",
         "Actual52099/integrated97a1524 global material resolves the fixed eight-face stationarity component: original13fb RED0.0008125005684045307m/7.071746584708191N, retained first-candidate compile failure with zero tests, then annotation-only GREEN2.0770362583566576e-10m/1.2857517012326884e-7N at unchanged1e-8m/1e-6N bounds. Targeted62 sim tests and full409 workspace gates pass with exact full-fmt reuse. The one new full Harbor A8 case FAILED OPERATIONALLY at authoritative420.0070624999935s/420s with153/180 steps; no full181-state analysis or computed quality grade exists. Raw strict_quality_passed:false is only nonacceptance, not a computed strain/contact/finite/seam grade. Incomplete trajectory is preserved ungraded, no retry/continuation/regrade. Prior13fb strict strain failure28..40 remains historical. Full scopes/statuses/scenarios/dependencies and native/calibrated-physics/reference/full-garment/feature/roadmap gaps remain unchanged.",
-        "Actual9d4/integrated076 changes only material cancellation cadence: entry/every64sites/pre-success checks, unchanged numerical PCG32/Armijo16 and rollback. Actual four source gates412 pass; same-build six-pair32-boundary material outputs are bit-identical with5.476845906730992x component-only median ratio, not whole-garment speed. First fmt-only failure and external release disk stop remain; recovery002 uses own partial cache and retains the corrected cold-banner qualification. One new Harbor A8 run is operationally accepted298.4210457500303s/420s (external terminal observation398.1007409580052s),180frames/181 independent states, but STRICT STRAIN FAILED frame29/triangle618/piece31/warp at0.1558088708602663 >0.15. Final9.430147percent does not override failure. All181 finite/contact/uncertainty screens pass; seam<5mm after closure29 and exacttargets60/180 pass, while initial seam/target0..28 failures remain. Published52099 global153/180 failure remains ungraded/stale with exact originals; earlier paired strict failure remains historical. No retry/oldregrade/native/reference/calibrated-physics/full-feature/garment/roadmap acceptance; full scopes/statuses/scenarios/dependencies remain unchanged."
+        "Actual9d4/integrated076 changes only material cancellation cadence: entry/every64sites/pre-success checks, unchanged numerical PCG32/Armijo16 and rollback. Actual four source gates412 pass; same-build six-pair32-boundary material outputs are bit-identical with5.476845906730992x component-only median ratio, not whole-garment speed. First fmt-only failure and external release disk stop remain; recovery002 uses own partial cache and retains the corrected cold-banner qualification. One new Harbor A8 run is operationally accepted298.4210457500303s/420s (external terminal observation398.1007409580052s),180frames/181 independent states, but STRICT STRAIN FAILED frame29/triangle618/piece31/warp at0.1558088708602663 >0.15. Final9.430147percent does not override failure. All181 finite/contact/uncertainty screens pass; seam<5mm after closure29 and exacttargets60/180 pass, while initial seam/target0..28 failures remain. Published52099 global153/180 failure remains ungraded/stale with exact originals; earlier paired strict failure remains historical. No retry/oldregrade/native/reference/calibrated-physics/full-feature/garment/roadmap acceptance; full scopes/statuses/scenarios/dependencies remain unchanged.",
+        "The sole previously current sewing-history Harbor report is stale after 8aa changes its declared core/sim/physics scope. Original outcome/source/artifact hashes are unchanged; no current integrated garment case exists."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "SIM-003",
@@ -33927,13 +34063,14 @@
         "The new actual 96 Harbor case passes all 181 independent supported static contact and capsule uncertainty screens under original contact settings / 2 mm bound, but strict trajectory strain fails 28\u201337. No full physics, moving-avatar, CCD, edge-edge, native or reference acceptance follows.",
         "Actual13fb/integrated8fe material groups change the independent two-face component from RED4.266274346685227e-7m/2.7341292831298387e-3N to first GREEN5.683890753411727e-18m/1.0747913121812962e-14N at unchanged1e-8m/1e-6N bounds; source407 gates pass. One new full Harbor A8 case is operationally accepted251.83977058297023s/420s with all181 states independently analyzed, but STRICT QUALITY FAILED strain frames28..40, peak21.96202527055029percent at frame29/triangle214/piece2/weft. Final14.03608985percent does not override trajectory failure. Initial seam/target failures0..28 remain; all finite/contact/uncertainty screens pass and completed-fit seam from exactzero29 passes. V1 build-only monitor failure and V2 correction/build remain separate. Fresh producer receipts qualify inherited saved-state/new_garment_execution:false wording. No replay/regrade/native/reference/full-feature/physics/garment/roadmap acceptance.",
         "Actual52099/integrated97a1524 global material resolves the fixed eight-face stationarity component: original13fb RED0.0008125005684045307m/7.071746584708191N, retained first-candidate compile failure with zero tests, then annotation-only GREEN2.0770362583566576e-10m/1.2857517012326884e-7N at unchanged1e-8m/1e-6N bounds. Targeted62 sim tests and full409 workspace gates pass with exact full-fmt reuse. The one new full Harbor A8 case FAILED OPERATIONALLY at authoritative420.0070624999935s/420s with153/180 steps; no full181-state analysis or computed quality grade exists. Raw strict_quality_passed:false is only nonacceptance, not a computed strain/contact/finite/seam grade. Incomplete trajectory is preserved ungraded, no retry/continuation/regrade. Prior13fb strict strain failure28..40 remains historical. Full scopes/statuses/scenarios/dependencies and native/calibrated-physics/reference/full-garment/feature/roadmap gaps remain unchanged.",
-        "Actual9d4/integrated076 changes only material cancellation cadence: entry/every64sites/pre-success checks, unchanged numerical PCG32/Armijo16 and rollback. Actual four source gates412 pass; same-build six-pair32-boundary material outputs are bit-identical with5.476845906730992x component-only median ratio, not whole-garment speed. First fmt-only failure and external release disk stop remain; recovery002 uses own partial cache and retains the corrected cold-banner qualification. One new Harbor A8 run is operationally accepted298.4210457500303s/420s (external terminal observation398.1007409580052s),180frames/181 independent states, but STRICT STRAIN FAILED frame29/triangle618/piece31/warp at0.1558088708602663 >0.15. Final9.430147percent does not override failure. All181 finite/contact/uncertainty screens pass; seam<5mm after closure29 and exacttargets60/180 pass, while initial seam/target0..28 failures remain. Published52099 global153/180 failure remains ungraded/stale with exact originals; earlier paired strict failure remains historical. No retry/oldregrade/native/reference/calibrated-physics/full-feature/garment/roadmap acceptance; full scopes/statuses/scenarios/dependencies remain unchanged."
+        "Actual9d4/integrated076 changes only material cancellation cadence: entry/every64sites/pre-success checks, unchanged numerical PCG32/Armijo16 and rollback. Actual four source gates412 pass; same-build six-pair32-boundary material outputs are bit-identical with5.476845906730992x component-only median ratio, not whole-garment speed. First fmt-only failure and external release disk stop remain; recovery002 uses own partial cache and retains the corrected cold-banner qualification. One new Harbor A8 run is operationally accepted298.4210457500303s/420s (external terminal observation398.1007409580052s),180frames/181 independent states, but STRICT STRAIN FAILED frame29/triangle618/piece31/warp at0.1558088708602663 >0.15. Final9.430147percent does not override failure. All181 finite/contact/uncertainty screens pass; seam<5mm after closure29 and exacttargets60/180 pass, while initial seam/target0..28 failures remain. Published52099 global153/180 failure remains ungraded/stale with exact originals; earlier paired strict failure remains historical. No retry/oldregrade/native/reference/calibrated-physics/full-feature/garment/roadmap acceptance; full scopes/statuses/scenarios/dependencies remain unchanged.",
+        "The sole previously current sewing-history Harbor report is stale after 8aa changes its declared core/sim/physics scope. Original outcome/source/artifact hashes are unchanged; no current integrated garment case exists."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "SIM-004",
@@ -35037,13 +35174,14 @@
         "The new actual 96 Harbor case retains unchanged self/layer contact and passes its sampled supported static contact screens; strict strain fails. Sampled contact does not establish continuous/deforming complete collision coverage, full coupled equilibrium or accepted garment.",
         "Actual13fb/integrated8fe material groups change the independent two-face component from RED4.266274346685227e-7m/2.7341292831298387e-3N to first GREEN5.683890753411727e-18m/1.0747913121812962e-14N at unchanged1e-8m/1e-6N bounds; source407 gates pass. One new full Harbor A8 case is operationally accepted251.83977058297023s/420s with all181 states independently analyzed, but STRICT QUALITY FAILED strain frames28..40, peak21.96202527055029percent at frame29/triangle214/piece2/weft. Final14.03608985percent does not override trajectory failure. Initial seam/target failures0..28 remain; all finite/contact/uncertainty screens pass and completed-fit seam from exactzero29 passes. V1 build-only monitor failure and V2 correction/build remain separate. Fresh producer receipts qualify inherited saved-state/new_garment_execution:false wording. No replay/regrade/native/reference/full-feature/physics/garment/roadmap acceptance.",
         "Actual52099/integrated97a1524 global material resolves the fixed eight-face stationarity component: original13fb RED0.0008125005684045307m/7.071746584708191N, retained first-candidate compile failure with zero tests, then annotation-only GREEN2.0770362583566576e-10m/1.2857517012326884e-7N at unchanged1e-8m/1e-6N bounds. Targeted62 sim tests and full409 workspace gates pass with exact full-fmt reuse. The one new full Harbor A8 case FAILED OPERATIONALLY at authoritative420.0070624999935s/420s with153/180 steps; no full181-state analysis or computed quality grade exists. Raw strict_quality_passed:false is only nonacceptance, not a computed strain/contact/finite/seam grade. Incomplete trajectory is preserved ungraded, no retry/continuation/regrade. Prior13fb strict strain failure28..40 remains historical. Full scopes/statuses/scenarios/dependencies and native/calibrated-physics/reference/full-garment/feature/roadmap gaps remain unchanged.",
-        "Actual9d4/integrated076 changes only material cancellation cadence: entry/every64sites/pre-success checks, unchanged numerical PCG32/Armijo16 and rollback. Actual four source gates412 pass; same-build six-pair32-boundary material outputs are bit-identical with5.476845906730992x component-only median ratio, not whole-garment speed. First fmt-only failure and external release disk stop remain; recovery002 uses own partial cache and retains the corrected cold-banner qualification. One new Harbor A8 run is operationally accepted298.4210457500303s/420s (external terminal observation398.1007409580052s),180frames/181 independent states, but STRICT STRAIN FAILED frame29/triangle618/piece31/warp at0.1558088708602663 >0.15. Final9.430147percent does not override failure. All181 finite/contact/uncertainty screens pass; seam<5mm after closure29 and exacttargets60/180 pass, while initial seam/target0..28 failures remain. Published52099 global153/180 failure remains ungraded/stale with exact originals; earlier paired strict failure remains historical. No retry/oldregrade/native/reference/calibrated-physics/full-feature/garment/roadmap acceptance; full scopes/statuses/scenarios/dependencies remain unchanged."
+        "Actual9d4/integrated076 changes only material cancellation cadence: entry/every64sites/pre-success checks, unchanged numerical PCG32/Armijo16 and rollback. Actual four source gates412 pass; same-build six-pair32-boundary material outputs are bit-identical with5.476845906730992x component-only median ratio, not whole-garment speed. First fmt-only failure and external release disk stop remain; recovery002 uses own partial cache and retains the corrected cold-banner qualification. One new Harbor A8 run is operationally accepted298.4210457500303s/420s (external terminal observation398.1007409580052s),180frames/181 independent states, but STRICT STRAIN FAILED frame29/triangle618/piece31/warp at0.1558088708602663 >0.15. Final9.430147percent does not override failure. All181 finite/contact/uncertainty screens pass; seam<5mm after closure29 and exacttargets60/180 pass, while initial seam/target0..28 failures remain. Published52099 global153/180 failure remains ungraded/stale with exact originals; earlier paired strict failure remains historical. No retry/oldregrade/native/reference/calibrated-physics/full-feature/garment/roadmap acceptance; full scopes/statuses/scenarios/dependencies remain unchanged.",
+        "The sole previously current sewing-history Harbor report is stale after 8aa changes its declared core/sim/physics scope. Original outcome/source/artifact hashes are unchanged; no current integrated garment case exists."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "SIM-005",
@@ -35968,7 +36106,8 @@
         "parity/reports/WF-20261117-GLOBAL-MATERIAL-SOURCE-001.json",
         "parity/reports/WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001.json",
         "parity/reports/WF-20261117-MATERIAL-POLLING-SOURCE-001.json",
-        "parity/reports/WF-20261117-MATERIAL-POLLING-HARBOR-A8-001.json"
+        "parity/reports/WF-20261117-MATERIAL-POLLING-HARBOR-A8-001.json",
+        "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -37861,6 +38000,47 @@
             "parity/reports/artifacts/sewing-history-source-20261117/source-integration/ROOT-INTEGRATION-001.json": "71b327404afe411016a113cec1cdc346e1130c74f85ac243c267a51e2c5962c9",
             "parity/reports/artifacts/sewing-history-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "170f2855866521eab75174c1efaccc499b4e8748dd989034e6c77a271b56d14d"
           }
+        },
+        {
+          "id": "WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001",
+          "commit": "8aa850975fa388c3c4bd206db74adf7171916451",
+          "timestamp": "2026-11-17T16:49:05.603726Z",
+          "platform": "macOS27.2 aarch64; Rust1.94.1; actual source checks and separately bounded built-CLI/export observations.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/notch-text-bending-source-20261117/N004-BLOCKED-RECEIPT.json": "962ea9c27659fce85b57a4399b5dfebb497f1a8ad49ff370ed65750abdbaf289",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/PLAN.json": "feb57018132610ba15e0308b71daf4ace921751fa040fbb1cd671060968fb306",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/PROVENANCE.json": "51c285edce27c1dc360689543cfe3b2e6bdfe8911ca09a66d7d6d0e0ee3b4638",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/RESULT.json": "e557bbb82fa40522e34a158e0951e7983cbe2d186c78fc8f8f34a50547571fbb",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/ROOT-SOURCE-REVIEW.json": "240ca8b4379f859eac9ef15a90fc6e24eb4db342a6ab07b900a1a7e84512ae18",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/STARTED.json": "959a415a8218da7b123c27df27297b4d6ef9e62447974e2ff3e3fbdccb9ac8bd",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/TERMINAL.json": "17905e8b18708b60e6fc6e50fa1d40c2bb1a2dfab1a71b99fe0e03222cfbd8b6",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/PLAN.json": "30c89f7912cf9189b058629e830731c7006dd43e47c9f04766e3d2e80cc0497b",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/RESULT.json": "18d9acdbf280dcb7d19a4f2a7b392eae20d9e14a716165de75cae85e3943f7eb",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/RETAINED-OUTPUT-REVIEW.json": "cf4bad6f69eb55e723b2502261f73930e7990a5e7ca0994c1d0a2a1406b41ef7",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/add.json": "d92833b4e28ac0af20e7ab9c62b0f4943b3188b7a71fe5feb64ddeee99251c55",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/added.weftforge": "98dcbbe415d4bf058dd29a61f229d0010f2a65e980462f1cd6549fe415592e54",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/edit.json": "5b9dd1af595f2682a380479fe1d62652e02c5bc58471e45853b41f37badcbc90",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/edited.weftforge": "ff23a1f84dfcbf2a656fe01ba870d0b844324f3b6f85f5711371e8090dccd161",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/empty.weftforge": "aa46a14b28c0209991c9339c37ce96902cb695d92bf7a1c7a6ade898315b1a73",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/existing.dxf": "acf356c10d0ec7900fa3358bad31c6c5b83405e04bb044e6b934b6681a955e27",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/invalid-output.weftforge": "2406c1a87e257a401f3ac188a31b5ce2541a7bf3bb2432c589d5b2dc711136a1",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/invalid.json": "95475beded6a502451fdf96fc1df4aba5c95782cb72fd4a2cf87181728459246",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/patterns.svg": "51a4beadfcff4cc5f95758d5ae4f72a17e2fe4f5ab6ee1451d827cf81f7ce230",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/cli/rectangle.weftforge": "b854b181862a4f171fbaf0ce1183d6a2e7b57e93351dcae4a1b18bcd809fa284",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/native-cli-build.stderr": "319bff8ac94ff0165c57fdcb8c3db38ff06530357e76e98d36a07ff75abc11e3",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/workspace-clippy.stderr": "90f6f8b8fd4575a76d7f7c5d482d05c5c60a45b6db2b9c1b7db0953b7079d398",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/workspace-tests.stderr": "f9b46f990c8a0f28e2663cb9279991322d290e7b379a827d0f7cd92dc32863c2",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/logs/workspace-tests.stdout": "c8998e5ff78b55f3cf6259aa2d985bdd016d2e1197533b7fb20df4b925955826",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/stages/full-fmt-RESULT.json": "b5f7609675ca4cd54c7426bee05683a7518509ffb86ab46a42683365c19bc804",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/stages/native-cli-build-RESULT.json": "b6f9250047d6b69b10621c2e31718d5f84e026e0ce26177114c3975f1af0d8d2",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/stages/workspace-clippy-RESULT.json": "3a0cd31be8d9108dcbf6e2cf2ac17991778adb28224b5a3598210c361eac6711",
+            "parity/reports/artifacts/notch-text-bending-source-20261117/stages/workspace-tests-RESULT.json": "7a9fd2184872fc18f5e1168657830aa586b46f3065f16e060d0d953e758d1789"
+          },
+          "path": "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -37872,7 +38052,8 @@
         "Independent small-patch energy equilibrium is GREEN on the reviewed material method, while the one exact original 96 A8 Harbor trajectory fails strain 28\u201337 at unchanged dt/8substeps/32iterations/closure speed. No quality/default/material/count/tolerance change, sweep or calibration is accepted; final-frame pass does not override the strict trajectory failure.",
         "Actual13fb/integrated8fe material groups change the independent two-face component from RED4.266274346685227e-7m/2.7341292831298387e-3N to first GREEN5.683890753411727e-18m/1.0747913121812962e-14N at unchanged1e-8m/1e-6N bounds; source407 gates pass. One new full Harbor A8 case is operationally accepted251.83977058297023s/420s with all181 states independently analyzed, but STRICT QUALITY FAILED strain frames28..40, peak21.96202527055029percent at frame29/triangle214/piece2/weft. Final14.03608985percent does not override trajectory failure. Initial seam/target failures0..28 remain; all finite/contact/uncertainty screens pass and completed-fit seam from exactzero29 passes. V1 build-only monitor failure and V2 correction/build remain separate. Fresh producer receipts qualify inherited saved-state/new_garment_execution:false wording. No replay/regrade/native/reference/full-feature/physics/garment/roadmap acceptance.",
         "Actual52099/integrated97a1524 global material resolves the fixed eight-face stationarity component: original13fb RED0.0008125005684045307m/7.071746584708191N, retained first-candidate compile failure with zero tests, then annotation-only GREEN2.0770362583566576e-10m/1.2857517012326884e-7N at unchanged1e-8m/1e-6N bounds. Targeted62 sim tests and full409 workspace gates pass with exact full-fmt reuse. The one new full Harbor A8 case FAILED OPERATIONALLY at authoritative420.0070624999935s/420s with153/180 steps; no full181-state analysis or computed quality grade exists. Raw strict_quality_passed:false is only nonacceptance, not a computed strain/contact/finite/seam grade. Incomplete trajectory is preserved ungraded, no retry/continuation/regrade. Prior13fb strict strain failure28..40 remains historical. Full scopes/statuses/scenarios/dependencies and native/calibrated-physics/reference/full-garment/feature/roadmap gaps remain unchanged.",
-        "Actual9d4/integrated076 changes only material cancellation cadence: entry/every64sites/pre-success checks, unchanged numerical PCG32/Armijo16 and rollback. Actual four source gates412 pass; same-build six-pair32-boundary material outputs are bit-identical with5.476845906730992x component-only median ratio, not whole-garment speed. First fmt-only failure and external release disk stop remain; recovery002 uses own partial cache and retains the corrected cold-banner qualification. One new Harbor A8 run is operationally accepted298.4210457500303s/420s (external terminal observation398.1007409580052s),180frames/181 independent states, but STRICT STRAIN FAILED frame29/triangle618/piece31/warp at0.1558088708602663 >0.15. Final9.430147percent does not override failure. All181 finite/contact/uncertainty screens pass; seam<5mm after closure29 and exacttargets60/180 pass, while initial seam/target0..28 failures remain. Published52099 global153/180 failure remains ungraded/stale with exact originals; earlier paired strict failure remains historical. No retry/oldregrade/native/reference/calibrated-physics/full-feature/garment/roadmap acceptance; full scopes/statuses/scenarios/dependencies remain unchanged."
+        "Actual9d4/integrated076 changes only material cancellation cadence: entry/every64sites/pre-success checks, unchanged numerical PCG32/Armijo16 and rollback. Actual four source gates412 pass; same-build six-pair32-boundary material outputs are bit-identical with5.476845906730992x component-only median ratio, not whole-garment speed. First fmt-only failure and external release disk stop remain; recovery002 uses own partial cache and retains the corrected cold-banner qualification. One new Harbor A8 run is operationally accepted298.4210457500303s/420s (external terminal observation398.1007409580052s),180frames/181 independent states, but STRICT STRAIN FAILED frame29/triangle618/piece31/warp at0.1558088708602663 >0.15. Final9.430147percent does not override failure. All181 finite/contact/uncertainty screens pass; seam<5mm after closure29 and exacttargets60/180 pass, while initial seam/target0..28 failures remain. Published52099 global153/180 failure remains ungraded/stale with exact originals; earlier paired strict failure remains historical. No retry/oldregrade/native/reference/calibrated-physics/full-feature/garment/roadmap acceptance; full scopes/statuses/scenarios/dependencies remain unchanged.",
+        "Integrated 8aa passes actual 446/32 source checks, fmt, strict Clippy and native+CLI build on 91 exact inputs. Coupled-stage regressions are implementation-only. The complete 82cc 181-state Harbor strict failure remains historical; no new 8aa garment or numerical acceptance exists. Original failed outcomes and full native/calibration/reference/feature/garment/roadmap gaps remain unchanged."
       ],
       "contradictions": [],
       "blockers": [

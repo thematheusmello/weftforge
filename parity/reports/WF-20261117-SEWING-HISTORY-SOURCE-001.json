@@ -13,7 +13,7 @@
   "roadmap_accepted": false,
   "single_identified_candidate_workflow": false,
   "replayed_repaired_or_regraded": false,
-  "freshness": "current",
+  "freshness": "stale",
   "commit": "40817073cd38e58a8438bb397d09a0ab9d95f9bb",
   "current_source_commit": "d28fb129857e97424cccb1001d1ad7f8899bdb74",
   "public_source_equivalence": {
@@ -534,5 +534,6 @@
     "parity/reports/artifacts/sewing-history-source-20261117/history/WF-20261117-MATERIAL-POLLING-HARBOR-A8-001.original.json": "d22d72d386b261d4b61177f4bd8dca17a023de5cea390008d7d5bd248990d52e",
     "parity/reports/artifacts/sewing-history-source-20261117/source-integration/SOURCE-EQUIVALENCE-001.json": "79840dfcd44eef2f2bf8a9f62bf34bcbc295798f3724682a320cc9d446ccf301",
     "parity/reports/artifacts/sewing-history-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "170f2855866521eab75174c1efaccc499b4e8748dd989034e6c77a271b56d14d"
-  }
+  },
+  "freshness_reason": "Integrated source 8aa changes the original declared scope: crates/weftforge-core/src/document.rs, crates/weftforge-core/src/offset.rs, crates/weftforge-core/src/persistence.rs, crates/weftforge-sim/src/constraints.rs, crates/weftforge-sim/src/lib.rs, crates/weftforge-sim/src/tests.rs, docs/physics.md. Original tested commit, source/artifact hashes, status, measurements and outcomes remain unchanged. Exact original report bytes remain Git-tracked at 2a64b1753ad3deb6d2d74fd8cefe057a78ce0eb1; SHA-256 6805c1cd84cf59082c6da5662e03afaa0ebe87157defc6e19a4753c47ade6a34. No replay, repair or regrade."
 }

@@ -1,0 +1,119 @@
+{
+  "DXF_sentinel_retained": true,
+  "SVG_anchor_mm": [
+    180.0,
+    0.0
+  ],
+  "SVG_length_mm": 10.0,
+  "SVG_sha256": "51a4beadfcff4cc5f95758d5ae4f72a17e2fe4f5ab6ee1451d827cf81f7ce230",
+  "actual_calls": [
+    {
+      "argv": [
+        "new",
+        "<PRIVATE_CLI_CASE>/empty.weftforge"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "rectangle",
+        "<PRIVATE_CLI_CASE>/empty.weftforge",
+        "<PRIVATE_CLI_CASE>/rectangle.weftforge",
+        "Independent export panel",
+        "0",
+        "0",
+        "0.24",
+        "0.36"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "execute",
+        "<PRIVATE_CLI_CASE>/rectangle.weftforge",
+        "<PRIVATE_CLI_CASE>/invalid-output.weftforge",
+        "<PRIVATE_CLI_CASE>/invalid.json"
+      ],
+      "exit_code": 1,
+      "stderr": "weftforge-cli: Curve t must be in [0, 1]\n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "execute",
+        "<PRIVATE_CLI_CASE>/rectangle.weftforge",
+        "<PRIVATE_CLI_CASE>/added.weftforge",
+        "<PRIVATE_CLI_CASE>/add.json"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\"commands_applied\":1,\"revision\":2}\n"
+    },
+    {
+      "argv": [
+        "execute",
+        "<PRIVATE_CLI_CASE>/added.weftforge",
+        "<PRIVATE_CLI_CASE>/edited.weftforge",
+        "<PRIVATE_CLI_CASE>/edit.json"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\"commands_applied\":1,\"revision\":3}\n"
+    },
+    {
+      "argv": [
+        "export-svg",
+        "<PRIVATE_CLI_CASE>/edited.weftforge",
+        "<PRIVATE_CLI_CASE>/patterns.svg"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "export-dxf",
+        "<PRIVATE_CLI_CASE>/edited.weftforge",
+        "<PRIVATE_CLI_CASE>/existing.dxf"
+      ],
+      "exit_code": 1,
+      "stderr": "weftforge-cli: DXF v1 export does not support authored notches; save native or export SVG instead\n",
+      "stdout": ""
+    }
+  ],
+  "curve_id": 7,
+  "editable_revision": 3,
+  "elapsed_seconds": 0.41019249986857176,
+  "finished_utc": "2026-11-17T16:45:37.976290+00:00",
+  "native_UI_or_reference_or_garment_acceptance": false,
+  "notch_id": 11,
+  "owner_id": 2,
+  "plan": {
+    "binary_sha256": "0db1bcb65c5e1a7af78a9de2cafe28fa4d5c585b413e535bf2b0d5b70b6ee86e",
+    "case": "WF-20261117-NOTCH-CLI-INDEPENDENT-EXPORT-001",
+    "criteria": {
+      "DXF_refusal_preserves_existing_bytes": true,
+      "SVG_anchor_error_mm": 1e-09,
+      "SVG_length_error_mm": 1e-09,
+      "SVG_marker_mm": 10,
+      "format_version": 6,
+      "invalid_document_and_output_preserved": true,
+      "notch_m_edited": 0.01,
+      "notch_m_initial": 0.008,
+      "notch_t_edited": 0.75,
+      "notch_t_initial": 0.25,
+      "same_notch_id_after_fresh_process_edit": true
+    },
+    "outputs": "Own disposable case only",
+    "per_command_seconds": 15,
+    "scope": "Actual CLI create/edit/save/reload and independent stdlibJSON/XML physical marker check. No nativeUI/history/reference/simulation claim.",
+    "source": "8aa850975fa388c3c4bd206db74adf7171916451",
+    "whole_seconds": 120
+  },
+  "primary_sha256": "ff23a1f84dfcbf2a656fe01ba870d0b844324f3b6f85f5711371e8090dccd161",
+  "status": "PASS_BOUNDED_CLI_AND_INDEPENDENT_EXPORT"
+}

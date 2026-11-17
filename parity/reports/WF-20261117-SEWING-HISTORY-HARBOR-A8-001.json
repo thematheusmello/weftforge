@@ -13,7 +13,7 @@
   "roadmap_accepted": false,
   "single_identified_candidate_workflow": false,
   "replayed_repaired_or_regraded": false,
-  "freshness": "current",
+  "freshness": "stale",
   "commit": "40817073cd38e58a8438bb397d09a0ab9d95f9bb",
   "current_source_commit": "d28fb129857e97424cccb1001d1ad7f8899bdb74",
   "public_source_equivalence": {
@@ -610,5 +610,6 @@
     "parity/reports/artifacts/sewing-history-source-20261117/workspace420-gates/runtime/RESULT.json": "6ac421e599dfcc1bb6c6b8aac76df455f1db4120161ee3de148ad903beadae90",
     "parity/reports/artifacts/sewing-history-source-20261117/source-integration/ROOT-INTEGRATION-001.json": "71b327404afe411016a113cec1cdc346e1130c74f85ac243c267a51e2c5962c9",
     "parity/reports/artifacts/sewing-history-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "170f2855866521eab75174c1efaccc499b4e8748dd989034e6c77a271b56d14d"
-  }
+  },
+  "freshness_reason": "Integrated source 8aa changes the original declared scope: crates/weftforge-core/src/document.rs, crates/weftforge-core/src/offset.rs, crates/weftforge-core/src/persistence.rs, crates/weftforge-sim/src/constraints.rs, crates/weftforge-sim/src/lib.rs, crates/weftforge-sim/src/tests.rs, docs/physics.md. Original tested commit, source/artifact hashes, status, measurements and outcomes remain unchanged. Exact original report bytes remain Git-tracked at 2a64b1753ad3deb6d2d74fd8cefe057a78ce0eb1; SHA-256 88288be28ab68350b4803989890eedbbebde167f1fa17b962f77d0a75e84c3ca. No replay, repair or regrade."
 }

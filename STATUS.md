@@ -40,8 +40,10 @@ physical geometry change.
 
 GitHub Actions remain disabled. PR #60 is a draft; main and the existing Pages
 site are unchanged. No test application or owned simulation job is running.
-The feature inventory remains incomplete: 41 partial, 15 planned, 0 fully
-implemented or reference verified among the 56 inventoried contracts.
+The feature inventory remains incomplete: 42 partial, 14 planned, 0 fully
+implemented or reference verified among the 56 inventoried contracts. UI-006
+advances only to partial for the tested string-input support; high-DPI, full
+keyboard/screen-reader interaction and native workflow acceptance remain open.
 
 Earlier checkpoints and retained evidence follow.
 
