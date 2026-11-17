@@ -1,0 +1,21 @@
+{
+  "actual_limits": {
+    "free_disk_floor_bytes": 8000000000,
+    "output_bytes": 8388608,
+    "sampled_owned_RSS_bytes": 1073741824,
+    "whole_seconds": 120
+  },
+  "actual_result": "runtime/RESULT.json and raw Cargo summaries: core 1 passed/0 failed/0 ignored; sim 82 passed/0 failed/0 ignored.",
+  "authoritative_admission": "ROOT-GO.json binds exactly two conditional Cargo commands: one unchanged core regression then all sim lib tests only after its pass.",
+  "no_garment_or_physics_acceptance": true,
+  "old_plan_and_GO_unchanged": true,
+  "qualification": "These inherited descriptive fields were not execution selectors or result parsers. Actual literal argv, caps and hardcoded 1/82 summaries were bound and checked by run.py. This was two focused test commands with the same owned warm target, not full workspace tests or a four-gate result.",
+  "retained_at_utc": "2026-11-17T20:46:36.160605+00:00",
+  "scope": "Retrospective receipt wording qualification; no execution or source change. Frozen execution PLAN is retained unchanged.",
+  "stale_unused_plan_descriptors": [
+    "status text inherited from an older standard-source-gate adapter",
+    "expected_actual_workspace_passed=450",
+    "expected_actual_summary_count=32",
+    "target_cache_policy.desktop_dependencies_initially_cold=true"
+  ]
+}

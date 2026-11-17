@@ -1,0 +1,25 @@
+
+running 1 test
+test tests::shared_stitch_n32_matches_independent_duplicate_row_cartesian_energy ... duplicate_rows=2 sweeps=32 masses_kg=[4.5714285714285506e-5, 4.571428571428556e-5] h_s=0.0020833333333333333
+compliance_m_per_N_each=0.00000001 target_m=0.01333333333333439
+predictors_m=[[0.0, 0.0, 0.015], [0.0, 0.0, -0.015]]
+x_m=[[0.0, 0.0, 0.00666666666666793], [0.0, 0.0, -0.00666666666666794]]
+expected_m=[[0.0, 0.0, 0.006666666886095756], [0.0, 0.0, -0.006666666886095767]]
+histories_kg_m=[[-0.0, -0.0, -3.8095173896813085e-7], [-0.0, -0.0, -6.419841910591859e-13]]
+center_m=[0.0, 0.0, -8.685396431806824e-18]
+expected_center_m=[0.0, 0.0, -9.264422860593947e-18]
+independent_cartesian_residual_N=[[0.0, 0.0, -0.08777113262758984], [0.0, 0.0, 0.08777113262758984]]
+oracle_cartesian_residual_N=[[0.0, 0.0, -2.210547023206999e-11], [0.0, 0.0, 2.2105442476494375e-11]]
+position_error_m=0.00000000021942782660322457
+force_error_N=0.08777113262758984
+objective_J=0.0007314285714283456
+expected_objective_J=0.0007314285521689168
+FAILED
+
+failures:
+
+failures:
+    tests::shared_stitch_n32_matches_independent_duplicate_row_cartesian_energy
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 77 filtered out; finished in 0.00s
+

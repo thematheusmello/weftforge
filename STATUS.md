@@ -1,5 +1,63 @@
 # Current development integration — 17 November 2026
 
+The local `feat/dual-context-integration-20261117` source `1bf4cf1de46cffbad959c439610c1e6772266eff` combines
+balanced dual soft sewing with contextual Pattern, Fabric and Simulation property
+tabs, a persistent Scene panel and contextual creation/sewing groups in the
+PhotoCraft-inspired visual direction. It also retires suspended numeric caches
+when sewing rows move, reverse, disappear or are explicitly discarded.
+
+The stale-input bug was reproduced on `bd08d511`: one exact test failed after
+Down kept a discarded hidden edit and blocked the real sewing validation error.
+The first result remains unchanged. The shared fix passes eight focused guards
+on `cb291881`; the keyboard extension passes the same eight on `99734576`,
+including actual eligible Delete/Escape handling, an unrendered appended row,
+reused IDs and preservation of unrelated raw text, caret, pending commands,
+history and accepted mesh/cloth identities. The latest formatting/focused check
+sealed in 24.987 seconds within 180 seconds. These are headless implementation
+checks; full combined workspace validation and a current native build are pending.
+
+The independent full numerical case on actual `ef313fa8` completed all 180 steps
+and analyzed all 181 states in 323.212 seconds within 420 seconds. It is **strict
+quality failed**: frame 29 reaches **16.063338% warp strain**, exceeding the
+unchanged 15% limit. Finite-value, supported-contact and uncertainty screens pass;
+completed assembly targets are zero at frames 60/180. Final-frame 9.430740%
+strain does not override the trajectory failure. The original 50.9602% failure
+remains historical and is not a controlled causal comparison.
+
+[Source evidence](parity/reports/WF-20261117-COUPLED-SOFT-SEWING-SOURCE-001.json)
+retains the earlier core failure, actual 451-test pass on `526b9451`, exact
+private type-alias equivalence and current `ef313fa8` formatting, strict Clippy
+and native/CLI build checks. The
+[full numerical report](parity/reports/WF-20261117-DUAL-SEWING-HARBOR-A8-001.json)
+retains the complete failed case. Both reports are stale for their declared
+full source scope after the contextual UI change; no acceptance is transferred.
+The original 8aa source/N006 reports are archived exactly and change only
+freshness/reason. N006/N007 native evidence still belongs to 8aa/c332.
+
+The private N008 preview showed the three tabs in the native app but missed its
+180-second final-seal bound (193.534 seconds). It provides qualified visual
+observations only. All finished native/reference/test processes are closed.
+The root target still contains old 8aa binaries until the combined build runs.
+
+Next: run the pinned combined workspace sequence (459 tests across 32 summaries
+are expected, not yet an executed result), strict all-target Clippy and native/CLI
+builds; reconcile source-map/progress metadata, track all evidence and verify the
+clean checkout; then run current native authoring/save/export/reopen workflows.
+A separate read-only observer plan investigates the remaining closure-time strain
+pulse; no new diagnostic model execution is authorized. Continue every gate and
+acceptance journey in [ROADMAP.md](ROADMAP.md).
+
+GitHub Actions remain disabled and the run count remains 54. Main and the existing
+Pages site are unchanged. No new branch has been published, merged or deployed.
+The registry retains 42 partial and 14 planned groups, with zero fully implemented
+or reference-verified contracts and no accepted delivery gate. Discovery remains
+incomplete; 56 is not a final product denominator.
+
+Earlier published checkpoints and retained evidence follow. Their source, job,
+current/pending and next-step statements belong to those historical checkpoints.
+
+# Current development integration — 17 November 2026
+
 The `feat/notch-bend-integration` branch combines the notch/text-input and
 coupled-bending source on safe published PR #60. Actual combined source
 `8aa850975fa388c3c4bd206db74adf7171916451` passes 446 workspace tests across

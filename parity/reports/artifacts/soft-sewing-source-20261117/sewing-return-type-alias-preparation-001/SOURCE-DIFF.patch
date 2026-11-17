@@ -1,0 +1,22 @@
+diff --git a/crates/weftforge-sim/src/constraints.rs b/crates/weftforge-sim/src/constraints.rs
+index b914046e..6a0f1a1f 100644
+--- a/crates/weftforge-sim/src/constraints.rs
++++ b/crates/weftforge-sim/src/constraints.rs
+@@ -1017,6 +1017,8 @@ pub(crate) fn solve_sewing(
+     Ok(())
+ }
+ 
++type SoftSewingTrial = (Vec<Vec3>, Vec<Vec3>);
++
+ fn single_soft_trial(
+     stitch: Stitch,
+     target: f64,
+@@ -1025,7 +1027,7 @@ fn single_soft_trial(
+     dt: f64,
+     correction: &[Vec3],
+     cancelled: &impl Fn() -> bool,
+-) -> Result<Option<(Vec<Vec3>, Vec<Vec3>)>, SimulationError> {
++) -> Result<Option<SoftSewingTrial>, SimulationError> {
+     let unstable = || SimulationError::Unstable("non-finite global sewing solve".into());
+     let mut anchor = Vec::with_capacity(x.len());
+     let mut root_weight = Vec::with_capacity(x.len());

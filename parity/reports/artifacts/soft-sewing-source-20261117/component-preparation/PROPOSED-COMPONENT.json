@@ -1,0 +1,74 @@
+{
+  "analytic_after32_max_position_error_m": 2.1942782602963774e-10,
+  "analytic_after32_relative_radius_m": 0.01333333333333587,
+  "analytic_after32_summed_force_residual_N": 0.08777113274509969,
+  "analytic_convergence_claim_not_product_result": "For fixed positive direction the exact local row recurrence contracts at[k/(D+k)]\u00b2=.999999894674294 per sweep; after32 a target-close radius can still carry~.08777N summed physical force error. No Python projection emulation or Rust RED has run.",
+  "baseline_production_commit": "82cc77ee510264e7ab7059446f8d54864ea638a0",
+  "baseline_solve_stitch_body_sha256": "a4198604703f3713ef595d34fbfb18f9e5a21bac075a5e3de77bf65579d7050f",
+  "expected_baseline_failure": "Independent full Cartesian force residual exceeds1e-6N; position alone is expected to pass1e-8m and must not replace the force criterion. This is a prediction, not an executed product result.",
+  "fixed_compliance_m_per_N_each": 1e-08,
+  "fixed_fresh_predictors_m": [
+    [
+      0.0,
+      0.0,
+      0.015
+    ],
+    [
+      0.0,
+      0.0,
+      -0.015
+    ]
+  ],
+  "fixed_h_s": 0.0020833333333333333,
+  "fixed_history_initialization": "Two Vec3 zero histories once before all32 sweeps; row0 then identicalrow1 each sweep; no other stage/no fixture change",
+  "fixed_masses_kg": [
+    4.5714285714285506e-05,
+    4.571428571428556e-05
+  ],
+  "fixed_target_m": 0.01333333333333439,
+  "fresh_component": "Two free nodes, masses from immutable rest vertices45/111, fresh predictors[0,0,.015] and[0,0,-.015], no archived state, two identical vertex-to-vertex compliant rows in order, target equal scalar prescribed frame28 target, zero Vec3 histories once,32sweeps; no body/material/bending or fullCloth.",
+  "global_minimum_proof": "Eliminate COM. For each radius inertia uniquely aligns relative d with nonzero predictor d0. Remaining .5D(r-|d0|)\u00b2+k(r-t)\u00b2 has strictly positive second derivative D+2k and positive unique minimizer.",
+  "independent_force_oracle": "R0=m0(q0-p0)/h\u00b2+2k(|d|-t)*unit(d), R1=m1(q1-p1)/h\u00b2-2k(|d|-t)*unit(d); test full Cartesian max norm, not scalar-lambda residual.",
+  "independent_oracle": "COM C=(m0*p0+m1*p1)/(m0+m1); d*=unit(p0-p1)*(D*|p0-p1|+2*k*t)/(D+2*k), D=(m0*m1/(m0+m1))/h\u00b2; q0*=C+m1/(m0+m1)*d*, q1*=C-m0/(m0+m1)*d*.",
+  "limits": "This would establish a general fixed-budget two-row coupling defect if reproduced; it does not establish that duplicated seams caused the garment director inversion. Preserve both energy terms, source settings and old failures; no deduplication/tuning/fix authorized.",
+  "mechanism": "Shared stiff duplicate compliant radial rows can remain far from summed-energy stationarity after fixed32 cyclic local solves, even at correct target geometry. This is a coupling question separate from the repaired rotating-gradient local-energy defect.",
+  "oracle_COM_z_m": -9.264422860593947e-18,
+  "oracle_positions_m": [
+    [
+      0.0,
+      0.0,
+      0.006666666886095756
+    ],
+    [
+      0.0,
+      0.0,
+      -0.006666666886095767
+    ]
+  ],
+  "parameters": {
+    "D_reduced_N_per_m": 5.266285714285694,
+    "actual_pair_masses_kg": [
+      4.5714285714285506e-05,
+      4.571428571428556e-05
+    ],
+    "each_duplicate_radial_k_N_per_m": 100000000.0,
+    "fresh_analytic_predictor_relative_radius_m": 0.03,
+    "h_s": 0.0020833333333333333,
+    "independent_optimal_relative_radius_m": 0.013333333772191522,
+    "linear_cyclic_error_factor_per_sweep": 0.999999894674294,
+    "predicted_force_scale_if_end_radius_remains_at_target_N": 0.08777142857142266,
+    "reduced_mass_kg": 2.2857142857142767e-05,
+    "scope": "Closed-form arithmetic only, no synthetic product solve/emulation/test executed; proposed independent fresh two-row component, not a garment causal verdict.",
+    "target_m": 0.01333333333333439
+  },
+  "pending_combined_source_binding": "Root may compose UI+coupled source before authoring. Bind the actual solve_stitch body identity and preserve this fixture/oracle/32counts/assertions; no test or source candidate exists yet.",
+  "preferred_actual_case_observer_before_causal_repair": "A separately authorized fresh same-build control/observer prefix through29,8x32 unchanged; observe all8substep boundaries in frames27..29 and selected iterations1/8/16/32. Capture actual predictor, p_material/p_bend and end-stage gradients at45/46/175/111/112 and106/107/228, sewing27/28/29 anchors/directors/Vec3 histories/actual dx, and every applied contact/friction delta touching hot nodes. Complete persistent-physics boundary bitidentity, registered read-hook removal proof, same authored fresh start, archived correspondence separate, fixed output/wall/RSS caps. No prefix grade or archived warmstart.",
+  "prospective_fixed_bounds_for_root_review": {
+    "COM_and_finite": true,
+    "force_N": 1e-06,
+    "position_m": 1e-08,
+    "sweeps": 32
+  },
+  "status": "PROPOSAL_ONLY_NO_TEST_CODE_OR_EXECUTION_AUTHORITY",
+  "symmetry_limitation": "This sewing-only pair keeps the director fixed by axial symmetry and cannot reproduce the actual garment director reversal. The coupled material/bending/contact environment and missing histories remain a separate causal question; no global sewing rewrite or garment repair follows automatically."
+}

@@ -1,5 +1,17 @@
 # WeftForge current-source addendum
 
+## Dual sewing and contextual properties source overlay
+
+Current source `1bf4cf1de46cffbad959c439610c1e6772266eff` maps integrated dual soft sewing and fixed Pattern/Fabric/Simulation property tabs with persistent Scene and scoped numeric-input retirement. This static crosswalk executes no test, native workflow, numerical case or reference comparison and grants no acceptance.
+
+The exact preceding addendum remains at `130ab5a15bbd98d64fe27157a690e9de6e8104e1`, source `8aa850975fa388c3c4bd206db74adf7171916451`: JSON SHA-256 `10ca6ad080e586921421d5b0552ba256efa4d069c7500dccbe24d73d00860814`; Markdown SHA-256 `5aec17fc1b2b2571d1f5db80f3541ba78606ccecebb95ccd4515ff58161e845a`. All 418 preceding occurrences retain their identities/history: 214 receive hash/line re-pins and four retired literal occurrences have explicit replacements. 23 actual method/test/surface occurrences bring the total to 441. Current mapping keeps 39 engineering rechecks and 24 reviewed documents, with 25 source surfaces. Original 949 catalog IDs/205 packets/56 landmarks,37 Rust alternatives/36 schemas/nine MCP tools remain unchanged. Mapping counts are not completed features.
+
+`workspace-panels` maps independent property-tab scrolling, contextual groups, hidden raw/caret/draft retention, and explicit cache retirement before widget reuse/deferred actions. `simulate` maps every soft-row energy, shared nodal history, dual row-action Gauss-Newton and the singleton/hard-row distinction. Eight contextual and five added sewing regression definitions are source anchors; executed outcomes belong only to separately attributed reports. Existing full scopes, missing functionality, historical sources and every earlier group remain intact below.
+
+Earlier sections describe their original source checkpoints and counts.
+
+# WeftForge current-source addendum
+
 ## Integrated notch, native text and shared bending source overlay
 
 Current source `8aa850975fa388c3c4bd206db74adf7171916451` is an exact Git source binding. This static map performs no native, CLI, source-test, numerical or reference execution and confers no full-feature acceptance. Reports independently attribute their actual executions and blocked/failed limits.

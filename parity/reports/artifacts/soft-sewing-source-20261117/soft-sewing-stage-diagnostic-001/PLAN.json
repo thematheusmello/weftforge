@@ -1,0 +1,62 @@
+{
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-core",
+    "--test",
+    "sewing_groups",
+    "length_queries_are_read_only_validate_intervals_and_ignore_display_state",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "caps": {
+    "disk_floor_bytes": 8000000000,
+    "output_bytes": 8388608,
+    "rss_bytes": 1073741824,
+    "seconds": 120
+  },
+  "commit": "5f0630d733261e6432b7aa3ce3ac534b438f7088",
+  "environment": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_ENCODED_RUSTDOCFLAGS": "",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_DEV_INCREMENTAL": "false",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_PROFILE_TEST_INCREMENTAL": "false",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/shared-stitch-stationarity-20261117/target",
+    "CARGO_TERM_COLOR": "never",
+    "CFLAGS": "",
+    "CPPFLAGS": "",
+    "CXXFLAGS": "",
+    "LDFLAGS": "",
+    "PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONOPTIMIZE": "0",
+    "RUSTC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTC_BOOTSTRAP": "",
+    "RUSTC_WORKSPACE_WRAPPER": "",
+    "RUSTC_WRAPPER": "",
+    "RUSTDOC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+    "RUSTDOCFLAGS": "",
+    "RUSTFLAGS": "",
+    "RUSTFMT": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustfmt",
+    "RUSTUP_TOOLCHAIN": "1.94.1",
+    "RUST_TEST_THREADS": "1"
+  },
+  "no_retry": true,
+  "pristine_source": "1029d52e632cfa6f110adbb65c46bc55f7708b07",
+  "scope": "ONE selected exact failing core test; diagnostic-only, expected reproduction, never acceptance",
+  "source_change": "48 registered read-only insertion lines in sim/lib.rs; removal recovers pristine1029 exactly. No retained product options, test or solver formula/flow/settings changes.",
+  "test_file_unchanged": {
+    "bytes": 57392,
+    "mode": 420,
+    "sha256": "4f05df2a401f0e44aed2f728ca99186266019ea06bec6a0ede911c73e819c74c"
+  }
+}

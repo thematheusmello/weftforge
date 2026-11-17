@@ -1,0 +1,10 @@
+   Compiling weftforge v0.1.0 (<ROOT>/.local/contextual-properties-20261117/apps/weftforge)
+    Finished `test` profile [unoptimized] target(s) in 5.57s
+     Running unittests src/main.rs (target/debug/deps/weftforge-13c025c8f6d6aef9)
+
+thread 'contextual_properties_tests::explicit_sewing_row_invalidation_retires_hidden_input_before_same_frame_authoring' (84678678) panicked at apps/weftforge/src/main.rs:9474:13:
+assertion `left == right` failed: Down: stale raw blocked the real validation error
+  left: "Finish the hidden numeric property edit before applying changes."
+ right: "Sewing group coverage overlaps on the same curve"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+error: test failed, to rerun pass `-p weftforge --bin weftforge`

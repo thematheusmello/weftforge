@@ -1,0 +1,28 @@
+    Checking libm v0.2.16
+    Checking num-traits v0.2.19
+    Checking cfg-if v1.0.5
+    Checking libc v0.2.191
+    Checking zerocopy v0.8.63
+    Checking serde_core v1.0.229
+    Checking either v1.19.0
+    Checking itertools v0.14.0
+    Checking serde v1.0.229
+    Checking memchr v2.8.3
+    Checking zmij v1.0.23
+    Checking once_cell v1.21.4
+    Checking bitflags v2.13.2
+    Checking itoa v1.0.19
+    Checking serde_json v1.0.154
+    Checking quick-xml v0.41.0
+    Checking weftforge-sim v0.1.0 (<ROOT>/.local/shared-stitch-stationarity-20261117/crates/weftforge-sim)
+error: very complex type used. Consider factoring parts into `type` definitions
+    --> crates/weftforge-sim/src/constraints.rs:1028:6
+     |
+1028 | ) -> Result<Option<(Vec<Vec3>, Vec<Vec3>)>, SimulationError> {
+     |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.94.0/index.html#type_complexity
+     = note: `-D clippy::type-complexity` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::type_complexity)]`
+
+error: could not compile `weftforge-sim` (lib) due to 1 previous error

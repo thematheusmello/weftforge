@@ -24,7 +24,7 @@
   "roadmap_accepted": false,
   "single_identified_candidate_workflow": false,
   "new_garment_execution": false,
-  "freshness": "current",
+  "freshness": "stale",
   "source_hashes": {
     ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
     "Cargo.lock": "eb8a60650b473c79dda2e58a56f68b1abe9ca9a68c15115c9c8754c561732f3a",
@@ -244,5 +244,6 @@
     "No new integrated garment trajectory, convergence/calibration, complete printing/CAD roundtrip, full-feature/garment/physics/reference/roadmap acceptance.",
     "cargo xtask verify, registry/map and publication closure have not run at draft time; root must apply/track then verify from clean checkout.",
     "All original failures and source/artifact/result identities remain retained; no old garment result is carried forward as current8aa."
-  ]
+  ],
+  "freshness_reason": "The declared source/dependency scope changed in dual-sewing/contextual-properties integration182f242240065b8e90bcef2683232b8782cdce3a (sim constraints/lib/tests and native main.rs). Original8aa source446 pass and boundedN006 native pass remain historical; neither is transferred to the new combined source. The exact preceding report is archived under artifacts/dual-context-source-20261117/previous-reports."
 }

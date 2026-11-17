@@ -1,0 +1,108 @@
+{
+  "actual_UTC": "2026-11-17T19:45:06.001857+00:00",
+  "base_first_GREEN_source": "ff955cf2091677a9d9e4189bd25c090b7acba368",
+  "caps": {
+    "RSS_bytes": 1073741824,
+    "disk_floor_bytes": 8000000000,
+    "output_bytes": 8388608,
+    "whole_seconds": 120
+  },
+  "commands": [
+    {
+      "argv": [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-core",
+        "--test",
+        "sewing_groups",
+        "length_queries_are_read_only_validate_intervals_and_ignore_display_state",
+        "--",
+        "--exact",
+        "--nocapture"
+      ],
+      "name": "unchanged-failing-core-test",
+      "requires_actual_one_test": true
+    },
+    {
+      "argv": [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--lib"
+      ],
+      "expected_actual_passed": 82,
+      "expected_failed": 0,
+      "name": "sim-lib-tests-only-if-core-passed",
+      "only_after_stage1_exit0_and_valid_selected_summary": true
+    }
+  ],
+  "commit": "526b9451b41900200359afa8b00f0abb214132bc",
+  "concurrency": "Functional source checks may overlap functional/readonly or unrelated work; no global idle requirement or performance claim.",
+  "environment": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_ENCODED_RUSTDOCFLAGS": "",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_DEV_INCREMENTAL": "false",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_PROFILE_TEST_INCREMENTAL": "false",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/shared-stitch-stationarity-20261117/target",
+    "CARGO_TERM_COLOR": "never",
+    "CFLAGS": "",
+    "CPPFLAGS": "",
+    "CXXFLAGS": "",
+    "LDFLAGS": "",
+    "PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONOPTIMIZE": "0",
+    "RUSTC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTC_BOOTSTRAP": "",
+    "RUSTC_WORKSPACE_WRAPPER": "",
+    "RUSTC_WRAPPER": "",
+    "RUSTDOC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+    "RUSTDOCFLAGS": "",
+    "RUSTFLAGS": "",
+    "RUSTFMT": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustfmt",
+    "RUSTUP_TOOLCHAIN": "1.94.1",
+    "RUST_TEST_THREADS": "1"
+  },
+  "expected_actual_summary_count": 32,
+  "expected_actual_workspace_passed": 450,
+  "formatter_command_already_executed_once_before_freeze": true,
+  "full_gate_commands_executed": 0,
+  "no_selected_rerun_garment_GUI_xtask_generator_or_network": true,
+  "rejected_ambient_keys": [
+    "RUSTFLAGS",
+    "RUSTDOCFLAGS",
+    "CARGO_ENCODED_RUSTFLAGS",
+    "CARGO_ENCODED_RUSTDOCFLAGS",
+    "RUSTC_WRAPPER",
+    "RUSTC_WORKSPACE_WRAPPER",
+    "CARGO_BUILD_RUSTC_WRAPPER",
+    "CARGO_BUILD_RUSTC_WORKSPACE_WRAPPER",
+    "RUSTC_BOOTSTRAP",
+    "CFLAGS",
+    "CPPFLAGS",
+    "CXXFLAGS",
+    "LDFLAGS"
+  ],
+  "require_actual_raw_summaries_not_arithmetic_inference": true,
+  "root_GO_receipt_is_recorded_parent_authority_not_fabricated_root_authored_file": true,
+  "status": "ROOT_AUTHORIZED_ONE_STANDARD_SOURCE_GATE_SEQUENCE",
+  "stop_first_failure_no_retry_or_source_assertion_repair": true,
+  "target_cache_policy": {
+    "compiled_target_or_binary_copy": false,
+    "desktop_dependencies_initially_cold": true,
+    "path": "<ROOT>/.local/shared-stitch-stationarity-20261117/target",
+    "warm_own_SIM_cache": true
+  },
+  "wall_seconds": 120
+}

@@ -1,0 +1,353 @@
+{
+  "id": "WF-20261117-CONTEXTUAL-PROPERTIES-SOURCE-001",
+  "kind": "implementation_only",
+  "status": "passed",
+  "report_state": "Selected source evidence on actual997; stale for changed combined simulation dependency scope.",
+  "feature_ids": [
+    "UI-001",
+    "UI-002",
+    "UI-003",
+    "UI-004",
+    "UI-006"
+  ],
+  "commit": "997345769c0f0da333d0a693316baecf00fd0cd9",
+  "platform": "aarch64-apple-darwin; Rust1.94.1; egui0.35; one Cargo job; own isolated target",
+  "source_scope": [
+    "apps/weftforge/src/main.rs"
+  ],
+  "source_hashes": {
+    "apps/weftforge/src/main.rs": "b2a09cc00270d40c081d1abf256268cc4814cbb260a330bda1584ffe246e1051"
+  },
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "complete_contract": false,
+  "reference_executed": false,
+  "reference_verified": false,
+  "native_ui_verified": false,
+  "native_case_executed_here": false,
+  "physics_accepted": false,
+  "full_feature_accepted": false,
+  "full_garment_accepted": false,
+  "roadmap_accepted": false,
+  "single_identified_candidate_workflow": false,
+  "replayed_repaired_or_regraded": false,
+  "summary": "Compact Pattern/Fabric/Simulation property tabs with contextual Creation/Sewing groups retain real controls and typed authoring. Hidden numeric edits release keyboard focus while preserving raw text/caret/draft/history. Explicit reused-row invalidation and draft discard retire only owned numeric caches.",
+  "meaningful_guards": [
+    "All tabs and contextual groups reach real controls with keyboard tab navigation; visibility switches preserve model/history.",
+    "Valid, incomplete and nonfinite hidden input preserves raw text/caret/draft, suspends focus and restores only on explicit field refocus.",
+    "Coalesced Focus+Paste+Tab staging, genuine Enter blur and egui Up/Down modifier/clamp behavior preserve one-transaction semantics.",
+    "Failed New/load retain edits; accepted same-identity replacement retires previous document buffers.",
+    "Real Down/Direction/Remove with same-pass guarded authoring clears retired row metadata before deferred actions and uses fresh values for reused IDs.",
+    "Pointer and eligible native KeyDelete/KeyEscape draft discard preserve surviving rows, other side and unrelated document raw/caret/draft/history/accepted mesh/cloth Arcs, including append-before-redraw and exact final transaction/undo."
+  ],
+  "historical_source_cases": [
+    {
+      "case": "A",
+      "source": "89fb35cbc919000806b2e1ee62e9323748fcea23",
+      "main_sha256": "54eb395f89b8b41d128c030cc41b90c763caa5791a020932914684ee95263b6e",
+      "outcome_path": "parity/reports/artifacts/contextual-properties-source-20261117/case-A/OUTCOME.json",
+      "actual_commands": [
+        {
+          "name": "fmt-check",
+          "exit_code": 0,
+          "test_summaries": []
+        },
+        {
+          "name": "new-six-contextual-guards",
+          "exit_code": 101,
+          "test_summaries": []
+        }
+      ],
+      "first_failure": "new-six-contextual-guards",
+      "all_declared_commands_green": false,
+      "elapsed_seconds": 97.87594754202291
+    },
+    {
+      "case": "B",
+      "source": "1c1c5282b4d5bfeaddb183d5ea9e4447ca8e6396",
+      "main_sha256": "fc60b2d1908cb00d70c1dd87fde2d1027422d256dfac457dfc059b507fab23cc",
+      "outcome_path": "parity/reports/artifacts/contextual-properties-source-20261117/case-B/OUTCOME.json",
+      "actual_commands": [
+        {
+          "name": "fmt-check",
+          "exit_code": 0,
+          "test_summaries": []
+        },
+        {
+          "name": "new-six-contextual-guards",
+          "exit_code": 101,
+          "test_summaries": [
+            [
+              "FAILED",
+              "4",
+              "2",
+              "0"
+            ]
+          ]
+        }
+      ],
+      "first_failure": "new-six-contextual-guards",
+      "all_declared_commands_green": false,
+      "elapsed_seconds": 9.989195792004466
+    },
+    {
+      "case": "C",
+      "source": "3409887062719fc3cd0feefc8c2c6d0334e6c985",
+      "main_sha256": "7654a68a16024d8c0cdb2dcb6ed2368423606b086697f5fe2060e1e7e289b564",
+      "outcome_path": "parity/reports/artifacts/contextual-properties-source-20261117/case-C/OUTCOME.json",
+      "actual_commands": [
+        {
+          "name": "fmt-check",
+          "exit_code": 0,
+          "test_summaries": []
+        },
+        {
+          "name": "new-six-contextual-guards",
+          "exit_code": 0,
+          "test_summaries": [
+            [
+              "ok",
+              "6",
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "name": "all-native-UI-tests",
+          "exit_code": 101,
+          "test_summaries": [
+            [
+              "FAILED",
+              "160",
+              "6",
+              "0"
+            ]
+          ]
+        }
+      ],
+      "first_failure": "all-native-UI-tests",
+      "all_declared_commands_green": false,
+      "elapsed_seconds": 98.78867458319291
+    },
+    {
+      "case": "D",
+      "source": "351bf28b79d8cb0e7dc57ffe0d745b428f4b99f9",
+      "main_sha256": "96d0c8edf8dd30629310ebc875cff36dbdfcd4a5a1c187bc539d94427a897368",
+      "outcome_path": "parity/reports/artifacts/contextual-properties-source-20261117/case-D/OUTCOME.json",
+      "actual_commands": [
+        {
+          "name": "fmt-check",
+          "exit_code": 0,
+          "test_summaries": []
+        },
+        {
+          "name": "new-six-contextual-guards",
+          "exit_code": 0,
+          "test_summaries": [
+            [
+              "ok",
+              "6",
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "name": "all-native-UI-tests",
+          "exit_code": 0,
+          "test_summaries": [
+            [
+              "ok",
+              "166",
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "name": "native-alltarget-strict-clippy",
+          "exit_code": 101,
+          "test_summaries": []
+        }
+      ],
+      "first_failure": "native-alltarget-strict-clippy",
+      "all_declared_commands_green": false,
+      "elapsed_seconds": 146.05360675021075
+    },
+    {
+      "case": "E",
+      "source": "a66c90edc1158cd645ba3c3cee8d2b9bd0dde628",
+      "main_sha256": "fe1f0bfdb326b83e1d854db4f1d3cbe17f57eeedf187ad89d0ef87bab5094ed8",
+      "outcome_path": "parity/reports/artifacts/contextual-properties-source-20261117/case-E/OUTCOME.json",
+      "actual_commands": [
+        {
+          "name": "fmt-check",
+          "exit_code": 0,
+          "test_summaries": []
+        },
+        {
+          "name": "native-alltarget-strict-clippy",
+          "exit_code": 0,
+          "test_summaries": []
+        },
+        {
+          "name": "native-build",
+          "exit_code": 0,
+          "test_summaries": []
+        }
+      ],
+      "first_failure": null,
+      "all_declared_commands_green": true,
+      "elapsed_seconds": 8.058993292041123
+    }
+  ],
+  "row_cache_reproduction_and_successors": [
+    {
+      "case": "row-RED",
+      "source": "bd08d511ec50a4963fd71524a6c2d3c33548f0f9",
+      "main_sha256": "0af62f34252aef6768943e3febf87bafdc5ded56a27d707608b86b1aa83c4993",
+      "outcome_path": "parity/reports/artifacts/contextual-properties-source-20261117/row-RED/red-001/RESULT.json",
+      "postcase_path": "parity/reports/artifacts/contextual-properties-source-20261117/row-RED/ROOT-POSTCASE.json",
+      "test_summary": {
+        "failed": 1,
+        "ignored": 0,
+        "passed": 0,
+        "summaries": 1
+      },
+      "actual_case_seconds_through_persistence": 6.950122458161786,
+      "cap_seconds": 180,
+      "all_recorded_owned_groups_absent": true
+    },
+    {
+      "case": "row-GREEN-v2",
+      "source": "cb2918810b6ee71f475a7a34a6669d746b5a1dc7",
+      "main_sha256": "36bec48eb3fc356f2f234c57f823c731e8adfbd936c5866d1ce90a64d2258e2b",
+      "outcome_path": "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-v2/green-001/RESULT.json",
+      "postcase_path": "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-v2/ROOT-POSTCASE.json",
+      "test_summary": {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 8,
+        "summaries": 1
+      },
+      "actual_case_seconds_through_persistence": 23.30039666616358,
+      "cap_seconds": 180,
+      "all_recorded_owned_groups_absent": true
+    },
+    {
+      "case": "row-GREEN-keyboard",
+      "source": "997345769c0f0da333d0a693316baecf00fd0cd9",
+      "main_sha256": "b2a09cc00270d40c081d1abf256268cc4814cbb260a330bda1584ffe246e1051",
+      "outcome_path": "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-keyboard/green-001/RESULT.json",
+      "postcase_path": "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-keyboard/ROOT-POSTCASE.json",
+      "test_summary": {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 8,
+        "summaries": 1
+      },
+      "actual_case_seconds_through_persistence": 24.98734208312817,
+      "cap_seconds": 180,
+      "all_recorded_owned_groups_absent": true
+    }
+  ],
+  "source_identity_qualification": [
+    "Root verified all78original bytes/modes and exact ROOT/HOME derivatives and installed only these text records. Original private proposal is retained unchanged. All source identities/failures/limitations below remain authoritative; no execution or acceptance is created by copying.",
+    "All meaningful executed A-E failures and passing successors are selected as complete original logs/outcomes, never rewritten or regraded. Superseded unexecuted private source proposals are unselected; this is not a claim to publish all private preparation history.",
+    "166/166 native UI and 6/6 contextual actual passes belong only to source351. Sourcea66 has actual fmt/strict-package-Clippy/native-build passes and zero tests executed in its own case. Neither result is relabeled as current-source runtime.",
+    "CaseB original OUTCOME binaries_retained only records a mutable Cargo target locator/hash; that binary was overwritten by successor compilation and was not frozen. It is not available or selected. Later binary retention receipts remain text only; all executable/cache payloads are excluded.",
+    "CaseB original controller retains the earlier GO hash; SOURCE-BINDING and ACTUAL-ROOT-GO-BINDING explicitly bind the authorized two-line fixture API successor and later received exact successor GO. Those original fields remain unchanged.",
+    "The row-RED is an actual one-test failure after real Down action, not a compiler/control-discovery failure. Direction/Remove were not executed RED after first panic. V2 and keyboard GREEN independently execute eight contextual tests with the respective production/test identities.",
+    "Inherited row plan bounds_qualification prose mentions900s/cold/four commands; actual wall_seconds180, cold_target_expectedfalse, declared commands and terminal stage results govern these separate one/two-command cases. No cold-target, 900s or four-command claim is derived from that stale prose.",
+    "No native workflow, native visual acceptance, reference application execution, garment physics, parity contract, roadmap or full feature acceptance is asserted. N008 failed its180s bound and contributes zero workflow credit; no N008 artifacts or images are selected.",
+    "Root eventual combined459-test/workspace/strictClippy/native+CLI/xtask evidence is separate and is not inferred from these local UI source cases.",
+    "Only exact ROOT then HOME locator replacement and0644 public mode are proposed. Internal raw hashes/modes are preserved and mapped by the outer selection; no other text/data edit is allowed."
+  ],
+  "remaining_scope": "Integrated full-workspace source gates are root-owned and separate; native workflow/visual/reference/garment/parity acceptance remains unestablished by this source report.",
+  "selected_manifest": "parity/reports/artifacts/contextual-properties-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json",
+  "artifact_hashes": {
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-A/LAUNCH.json": "d085f81d8805c4153be6238ff8fdb8abe07b1d96834a9bbf86ff208f6f249072",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-A/OUTCOME.json": "b65f0853eb591f75560dd0d42abf1e56eab59552cf0edfb328c6b1083f96ca1f",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-A/COMMAND-RESULTS.json": "6903eecec93cf5b7e46929661bdb12079c2a5fa08e95c79b66e12917dede6e42",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-A/POST-CASE-CLEANUP.json": "c3a9e140c2719d9c5b4526e9d5b7f087ee10723202c83aca030fe576f2fde8be",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-A/01-fmt-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-A/02-new-six-contextual-guards.log": "05ca5a12ac4031da01db347cc1e0e7087b1e21b678680f5ace964165e82ab740",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-B/LAUNCH.json": "d261fe12f24db3ee930898e4e81f44ad786654f3e9997b30ba42aa6ccf8418b9",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-B/OUTCOME.json": "ce92f5e301ba0b72ffa8a7e41e7ffef55b9b3ae758562e76f1fdfbca1d65deb9",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-B/COMMAND-RESULTS.json": "556dd99050032dbeb67ba3f0f8a8f21f7b094ec1e29ec825198a5f57bfa38358",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-B/POST-CASE-CLEANUP.json": "96baa93a8fafcd6d030c42d7aafcf57567dce0e40c9d86067b16d21c19aa6f6b",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-B/01-fmt-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-B/02-new-six-contextual-guards.log": "8b0bc86324660ca9803aa550ed6eaf97652deeada66188b95c2381aa880b8601",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-B/SOURCE-BINDING.json": "8805d4a1ce39e3786dfec8a66cae6e6294b94b99fd77f23d543d065d784e0b37",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-B/ACTUAL-ROOT-GO-BINDING.json": "5d1a6f8549130735fd6d6ee12154250daf3529d840448a5a277ebe1539e45f58",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-C/LAUNCH.json": "91664211bc4e2665d88a7ff4b98f2c2e9a6f523c62740ccd0ae595f218b2fbe9",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-C/OUTCOME.json": "9c8601715beb9ccf92f98bfac31c3d9e694cfb8e5a1a11b88494adbd8b77671b",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-C/COMMAND-RESULTS.json": "9f17fb0d23fae606a90401ff6510f40906e2722a3917b08b1f0e834babd487ef",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-C/POST-CASE-CLEANUP.json": "6b3b587260c703b227f301ee1a708ec9e84e31422c226592f296c4293ba1a76d",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-C/01-fmt-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-C/02-new-six-contextual-guards.log": "def6181a05b22b1ab7592946bc95cfa7c4e2d9b18737686b933775fd8b0bec84",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-C/03-all-native-UI-tests.log": "1e87fd0a757206b8e2692edd365e4518ae76deabc92df702fc660b8f368ac3fb",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-C/BINARY-RETENTION.json": "a5b689dba34e4a5f582c2fda6f0c1ec240ee13670d8eb1686c0703e87bb791f0",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-D/LAUNCH.json": "4c8a7f53b8a481ea97aa601ffa3561868ab1e0fea1094a015fbc83175cb48afb",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-D/OUTCOME.json": "c4b788b584776eb2ccad5e78353bf077b62aebc23c722681136a040ee4a8f38f",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-D/COMMAND-RESULTS.json": "f1836d8f8f35cac861b048da097d9428a6656600ff085da9830322d1b2845162",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-D/POST-CASE-CLEANUP.json": "d11b5493046bc7a8c825553dc2d673c848b6cb7f630c6d654c958c7591247112",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-D/01-fmt-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-D/02-new-six-contextual-guards.log": "b7e09872191ab561aff525449414565034cdc9657510c73a50c8a36a0b2c7ac1",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-D/03-all-native-UI-tests.log": "4f8e96176f8ae7868862e4a24b2c5f2ba1d8ed62bbcb2f194cc73ca03902814d",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-D/04-native-alltarget-strict-clippy.log": "0ec177c83158e8973d0adc9ed7948c11799284d877cbe49cae30334b3a845d83",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-E/LAUNCH.json": "31ede2167d1bd30b70eaf20bf5743205cc1650861d2161f177139009c87911a0",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-E/OUTCOME.json": "2ec41b37070e4a9c4783ca8ad3fc0918e97a0c40d2ee2ef7a3f530018a420b7d",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-E/COMMAND-RESULTS.json": "dc3f28cb5a3e5cc93a5c63c322447956ce3cba9e1bb4162a33071d11bce9fd2c",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-E/POST-CASE-CLEANUP.json": "40ce5b78a9de98b2a28291e638bfdaad73ae90db72a5794deb36ba17d0288f79",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-E/01-fmt-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-E/02-native-alltarget-strict-clippy.log": "806deec8d17b4d21b65f2cf2aaa15af53db28b434f1da2c58905a3e01c22ddcf",
+    "parity/reports/artifacts/contextual-properties-source-20261117/case-E/03-native-build.log": "e236206fd87855c28d78e90d94ca3ed99cb6e93cccbf3a53fcffc0577d9f6f5e",
+    "parity/reports/artifacts/contextual-properties-source-20261117/reviews/root/TEST-API-FIX-REVIEW.json": "6328149dd7697229d73bad7b0afcbb9a866035814bd1ee4129600ad2b6709361",
+    "parity/reports/artifacts/contextual-properties-source-20261117/reviews/root/ORACLE-FIX-REVIEW.json": "742e755aadc8be27c824dcee107451a0a84fbae6ab6791439276341ded47d5db",
+    "parity/reports/artifacts/contextual-properties-source-20261117/reviews/root/LEGACY-ROUTE-REVIEW.json": "18059b5ef2e667622d90b4232b10f3c3c19a6dba6b72508157c70e5eaa1fd29e",
+    "parity/reports/artifacts/contextual-properties-source-20261117/reviews/root/LINT-FOLD-REVIEW.json": "85eb35f3d6056e8e6a75760ea1ae6333e8e0ffc93764c8122076432ed9109a6c",
+    "parity/reports/artifacts/contextual-properties-source-20261117/reviews/root/ROW-FIX-V2-STATIC.json": "40507eeb34b79838c27099bf151da5e29d4cd0a032c1a20cab83fc67533af6c0",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-RED/red-001.json": "3cc675f477fd9b3da274cabc1bd97f5262923e1cccd00670ec4d38df6228d3a2",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-RED/red-001/RESULT.json": "a7f3fb116e64b9610ced3ad457896d04a7b126f794c0c0d56e8b2ed956f91bf6",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-RED/red-001/TERMINAL.json": "bf71768c2dd53b46a07e3da5f7f6c71bda4cda4817fae372ba2576cb8bf86d64",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-RED/ROOT-POSTCASE.json": "765ac5a4099eea874b32efa0bd860677a11483c57d23479eca5c5034319fdaa6",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-RED/POSTCASE-MANIFEST.json": "c617b3963f041808fdde453aa6ecd21f00ff40436c9bcc86d1b59671cf567f5d",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-RED/red-001/row-cache-exact-red.stdout": "42b1953385ad45cea8e3eab5c89cec9e4a30d42f4cffb9b4a764ef9d7627e1f8",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-RED/red-001/row-cache-exact-red.stderr": "38468a94228258aa257e14359c13b74611fa960e6d60ad9136d495a435125d7f",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-RED/red-001/row-cache-exact-red-RESULT.json": "c03e5a9562b48b16d3a673ae867f7fc7621011a4803423fa17907a511ce72b97",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-v2/green-001.json": "9cb0530bb7632f318a5fef4294682589e235c149ba6d48ca0be8f7dce1a22821",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-v2/green-001/RESULT.json": "f4c4ddd2ed4147ec7e9e9c78e6c9210c52698bf29c66bfc5283d38c1512091b2",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-v2/green-001/TERMINAL.json": "cb986ba2f247f9504c2549a44c93bf59baf61974d396985bee48571655485455",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-v2/ROOT-POSTCASE.json": "c54319f40b471c51456211626dec73075aa497e2b67d4d5592aeaed5b1c6ff0e",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-v2/POSTCASE-MANIFEST.json": "d689b384776afe22cd35afec8007cde4d755d508a3e50080e15b7e5f0b2fe2fd",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-v2/green-001/contextual-eight-focused.stdout": "6737813ecfd1140a666201db527c46fed95ef1c2985de37d3a2214bf2c5a6007",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-v2/green-001/contextual-eight-focused.stderr": "6122110b370f9c73b391c714764b81e7bf0757eca48e0586e592f1f0c7aaef15",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-v2/green-001/contextual-eight-focused-RESULT.json": "1eb5a798b4e80806cefb9b6711e1857fcbd4df74d1bebe441d598d0df31abdb7",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-v2/green-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-v2/green-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-v2/green-001/full-fmt-RESULT.json": "9a910d55fe8575ad0f13dc1f30ca59407ef05d436067979e599115a6d31f1132",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-keyboard/green-001.json": "10039ba8a2720a8cf58018114d172d6711950342e9af67c87b4cdfad244e2ef2",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-keyboard/green-001/RESULT.json": "d3fdb2e562b2e9d74aab17d1568344c06b83764826b8bc4435c29e3d2a6d589d",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-keyboard/green-001/TERMINAL.json": "d5d94d980ba42555710a4818f48e8cd60883b06d8704cc46679d198232758506",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-keyboard/ROOT-POSTCASE.json": "a8b56180fa80453cc7dfa16d996b47a00467d5cff47f0970063aa3ff40a9c51f",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-keyboard/POSTCASE-MANIFEST.json": "a739b81557ee4839b7abaf6d04cd72b7f24d1dc63a9b07a873caf74bb0c9321d",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-keyboard/green-001/contextual-eight-focused.stdout": "a413ee909d6ed0b17541c2a75b3fa9f3f20e13d3b40131abddacf7a468103299",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-keyboard/green-001/contextual-eight-focused.stderr": "e642c875c5259e35d5ee61f35a4e9be739cc03aec1ec18c7632df38b67e2a673",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-keyboard/green-001/contextual-eight-focused-RESULT.json": "d5c3002e2bc0f02a75be4e0b31c5dc42dd601d96fb6d361ef3a6f30e884837a2",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-keyboard/green-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-keyboard/green-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/contextual-properties-source-20261117/row-GREEN-keyboard/green-001/full-fmt-RESULT.json": "0beda059a8dd0086e8d5afde7c5385f1d3d79d3512b7bb6b8686a5396322e0af",
+    "parity/reports/artifacts/contextual-properties-source-20261117/reviews/independent/RECEIPT-005.json": "34677457908b38b8b06c0fc674c9a61aef40cce470f3ad3786ca802d6afe93b1",
+    "parity/reports/artifacts/contextual-properties-source-20261117/reviews/independent/RUNTIME-NOTICE-005.json": "8cb016f1c45e706560809fabd6428c26261e89a90be67dd7fbe79965e9eede35",
+    "parity/reports/artifacts/contextual-properties-source-20261117/reviews/independent/LEGACY-ATTRIBUTION-006.json": "06e441cf48533a8e5ec8758cc8c416d07be473b24373d5e49c7a124c616fd110",
+    "parity/reports/artifacts/contextual-properties-source-20261117/reviews/independent/ROW-CACHE-RED-007/RECEIPT.json": "45ba24685aa158de8c1e931b138d302edf05dc910ad50872bcb3c597f69ea3c7",
+    "parity/reports/artifacts/contextual-properties-source-20261117/reviews/independent/ROW-CACHE-V2-008.json": "e841507a2a3300ac442caa1e561a0b4822b0469933a68bf039d9af4a5bcb2135",
+    "parity/reports/artifacts/contextual-properties-source-20261117/reviews/independent/ROW-CACHE-V3-009.json": "ea836847e12c3c94c4b49e909e66f27293aa8e667a9dc8d55abd7ddb80e0395f",
+    "parity/reports/artifacts/contextual-properties-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "bca2999676b220286f5b751beffc3306b00572ca502b28ebbe1259ce2b84074a"
+  },
+  "timestamp": "2026-11-17T22:57:52.188828Z",
+  "timestamp_qualification": "Report assembly time; each actual source case retains its original clocks and exact source identity.",
+  "freshness": "stale",
+  "freshness_reason": "Combined source1bf4cf1de46cffbad959c439610c1e6772266eff changes scoped sim constraints/lib/tests and physics documentation from the actual997 UI test source. Main.rs itself matches997, but full scoped evidence is not transferred. Actual combined workspace/native validation is separately required."
+}

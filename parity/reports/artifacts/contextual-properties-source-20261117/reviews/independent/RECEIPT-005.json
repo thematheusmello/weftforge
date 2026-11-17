@@ -1,0 +1,42 @@
+{
+  "base_commit": "0bd4936ff2e354469100b23ee31cfedb85667c06",
+  "cached_egui_0_35_sha256": {
+    "<HOME>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui-0.35.0/src/context.rs": "4ce16e3e6a19444051c994576d57b4a41ded2b5cf16fa739090c939fedc141db",
+    "<HOME>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui-0.35.0/src/input_state/mod.rs": "5be5328c48b09af50bc6cc9af8f5957092fd89f522b083436cd1fb9c8d6d7133",
+    "<HOME>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui-0.35.0/src/widgets/drag_value.rs": "4bee0618f79ad015359dd70f59a7445077d033fc958f5c5d2347e263a816a7d9"
+  },
+  "changed_tracked_paths": [
+    "apps/weftforge/src/main.rs"
+  ],
+  "current_static_blockers": [],
+  "finding_1": {
+    "original_status": "v3_must_fix_consumed_keyboard_step_restores_stale_raw",
+    "resolution": "v4_source_correction_and_actual_event_regression_present_not_executed_by_reviewer"
+  },
+  "history_preserved": {
+    "v3_blocked_receipt_sha256": "cca47d825f3a13b0c8c138f68aea1dae452b02bad0b3a56bc54cde4f2527d4ef",
+    "v3_blocked_review_sha256": "f6fb35d2c541829c013580410accefe76edca9be5014da862acb82d24a8e65d8",
+    "v4_observed_result": "fmt_pass_compiler_fail_zero_tests_later_commands_unstarted",
+    "v4_original_command_results_sha256": "d0ac381dc56d6dfca7f1fe62d6f5df6f38666964272353ecad59a16a3159cea7",
+    "v4_original_guard_log_sha256": "c400a7ae177066cba7329c3716a6620fff45e68e0e402cc15705998b6ed93256",
+    "v4_original_outcome_sha256": "b65f0853eb591f75560dd0d42abf1e56eab59552cf0edfb328c6b1083f96ca1f"
+  },
+  "inputs_sha256": {
+    ".local/contextual-properties-ready-source-v4-addendum.diff": "8365161a2fbf9c47a1c15f81542bcb17ab91a784e4d5bd5231c35a72ecda7c0c",
+    ".local/contextual-properties-ready-source-v5.diff": "8e188aa90f376bd46f84fb34243d7060bc2e0805d664c73824026c7c5be50358",
+    ".local/contextual-properties-test-api-fix.diff": "276ba21cc4a5bdfce7d922a767f43738ac7a80342a9170608932696e5804643c",
+    "apps/weftforge/src/main.rs": "fc60b2d1908cb00d70c1dd87fde2d1027422d256dfac457dfc059b507fab23cc"
+  },
+  "production_correction_commit": "89fb35cbc919000806b2e1ee62e9323748fcea23",
+  "report_path": ".local/contextual-properties-independent-static-review-20261117/REVIEW-005.md",
+  "report_sha256": "4a54b9716b129b8a4f2198ee3399b4593b56a9e91bdd2a23f8371e0a4af6fdb9",
+  "review_kind": "independent_read_only_static_ui_source_review",
+  "reviewed_utc": "2026-11-17T21:07:29.312645+00:00",
+  "reviewer_executed_repository_code": false,
+  "reviewer_mutated_source_or_old_evidence": false,
+  "runtime_acceptance": false,
+  "source_clean": true,
+  "source_commit": "1c1c5282b4d5bfeaddb183d5ea9e4447ca8e6396",
+  "v5_exact_delta": "two test-fixture ctx.style_mut to ctx.all_styles_mut calls only",
+  "verdict": "NO_STATIC_BLOCKER_TO_SEPARATELY_AUTHORIZED_BOUNDED_CHECKS"
+}

@@ -1,0 +1,125 @@
+[
+  {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "fmt",
+      "--all",
+      "--check"
+    ],
+    "exit_code": 0,
+    "green": true,
+    "index": 1,
+    "log": "01-fmt-check.log",
+    "log_bytes": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "name": "fmt-check",
+    "pgid": 89374,
+    "pid": 89374,
+    "root_go_sha256": "1c2bfbbee20e69de6affa71b943f74fdbdc5b02917e51fb9e2b160bff030a27b",
+    "source": "351bf28b79d8cb0e7dc57ffe0d745b428f4b99f9",
+    "stop_cause": null,
+    "test_summaries": [],
+    "utc_epoch_finished": 1794951216.662425,
+    "utc_epoch_started": 1794951215.900526
+  },
+  {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "-p",
+      "weftforge",
+      "--bin",
+      "weftforge",
+      "contextual_properties_tests",
+      "--",
+      "--nocapture"
+    ],
+    "exit_code": 0,
+    "green": true,
+    "index": 2,
+    "log": "02-new-six-contextual-guards.log",
+    "log_bytes": 1137,
+    "log_sha256": "e960ba5f3551f5e944e225d0f8165dc9a5c355d9961cf545cf3cf0f33a92bc2e",
+    "name": "new-six-contextual-guards",
+    "pgid": 89383,
+    "pid": 89383,
+    "root_go_sha256": "1c2bfbbee20e69de6affa71b943f74fdbdc5b02917e51fb9e2b160bff030a27b",
+    "source": "351bf28b79d8cb0e7dc57ffe0d745b428f4b99f9",
+    "stop_cause": null,
+    "test_summaries": [
+      [
+        "ok",
+        "6",
+        "0",
+        "0"
+      ]
+    ],
+    "utc_epoch_finished": 1794951237.9988081,
+    "utc_epoch_started": 1794951216.76179
+  },
+  {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "-p",
+      "weftforge",
+      "--bin",
+      "weftforge"
+    ],
+    "exit_code": 0,
+    "green": true,
+    "index": 3,
+    "log": "03-all-native-UI-tests.log",
+    "log_bytes": 17365,
+    "log_sha256": "4f8e96176f8ae7868862e4a24b2c5f2ba1d8ed62bbcb2f194cc73ca03902814d",
+    "name": "all-native-UI-tests",
+    "pgid": 90620,
+    "pid": 90620,
+    "root_go_sha256": "1c2bfbbee20e69de6affa71b943f74fdbdc5b02917e51fb9e2b160bff030a27b",
+    "source": "351bf28b79d8cb0e7dc57ffe0d745b428f4b99f9",
+    "stop_cause": null,
+    "test_summaries": [
+      [
+        "ok",
+        "166",
+        "0",
+        "0"
+      ]
+    ],
+    "utc_epoch_finished": 1794951316.561276,
+    "utc_epoch_started": 1794951238.097854
+  },
+  {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "clippy",
+      "--locked",
+      "--offline",
+      "-p",
+      "weftforge",
+      "--all-targets",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit_code": 101,
+    "green": false,
+    "index": 4,
+    "log": "04-native-alltarget-strict-clippy.log",
+    "log_bytes": 6800,
+    "log_sha256": "03852e4c337f83313e90fbe7d46cc3cbdbacadedd77b41f6b84b72d11a04be6f",
+    "name": "native-alltarget-strict-clippy",
+    "pgid": 93262,
+    "pid": 93262,
+    "root_go_sha256": "1c2bfbbee20e69de6affa71b943f74fdbdc5b02917e51fb9e2b160bff030a27b",
+    "source": "351bf28b79d8cb0e7dc57ffe0d745b428f4b99f9",
+    "stop_cause": null,
+    "test_summaries": [],
+    "utc_epoch_finished": 1794951361.58873,
+    "utc_epoch_started": 1794951316.666869
+  }
+]

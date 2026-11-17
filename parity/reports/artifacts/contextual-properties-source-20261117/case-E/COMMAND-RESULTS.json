@@ -1,0 +1,81 @@
+[
+  {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "fmt",
+      "--all",
+      "--check"
+    ],
+    "exit_code": 0,
+    "green": true,
+    "index": 1,
+    "log": "01-fmt-check.log",
+    "log_bytes": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "name": "fmt-check",
+    "pgid": 11263,
+    "pid": 11263,
+    "root_go_sha256": "5f1709c6b45fd7d898f1dca315f7c697bc3f5ff1d9418d2754094eaf716946a4",
+    "source": "a66c90edc1158cd645ba3c3cee8d2b9bd0dde628",
+    "stop_cause": null,
+    "test_summaries": [],
+    "utc_epoch_finished": 1794951793.522757,
+    "utc_epoch_started": 1794951792.775964
+  },
+  {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "clippy",
+      "--locked",
+      "--offline",
+      "-p",
+      "weftforge",
+      "--all-targets",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit_code": 0,
+    "green": true,
+    "index": 2,
+    "log": "02-native-alltarget-strict-clippy.log",
+    "log_bytes": 209,
+    "log_sha256": "6ae5aa75b4ff9d0e964b4f8ace6b210ac779fa0126e1e04db1b66b4a0bf02275",
+    "name": "native-alltarget-strict-clippy",
+    "pgid": 11397,
+    "pid": 11397,
+    "root_go_sha256": "5f1709c6b45fd7d898f1dca315f7c697bc3f5ff1d9418d2754094eaf716946a4",
+    "source": "a66c90edc1158cd645ba3c3cee8d2b9bd0dde628",
+    "stop_cause": null,
+    "test_summaries": [],
+    "utc_epoch_finished": 1794951797.42878,
+    "utc_epoch_started": 1794951793.6202948
+  },
+  {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "build",
+      "--locked",
+      "--offline",
+      "-p",
+      "weftforge",
+      "--bin",
+      "weftforge"
+    ],
+    "exit_code": 0,
+    "green": true,
+    "index": 3,
+    "log": "03-native-build.log",
+    "log_bytes": 209,
+    "log_sha256": "57f5f45f1d05de6888df2ed7739e4a6c3c59225cedd87608b9552d61f954d77b",
+    "name": "native-build",
+    "pgid": 11415,
+    "pid": 11415,
+    "root_go_sha256": "5f1709c6b45fd7d898f1dca315f7c697bc3f5ff1d9418d2754094eaf716946a4",
+    "source": "a66c90edc1158cd645ba3c3cee8d2b9bd0dde628",
+    "stop_cause": null,
+    "test_summaries": [],
+    "utc_epoch_finished": 1794951800.47431,
+    "utc_epoch_started": 1794951797.526597
+  }
+]

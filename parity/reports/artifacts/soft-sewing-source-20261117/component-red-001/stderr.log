@@ -1,0 +1,15 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.27
+   Compiling serde_core v1.0.229
+   Compiling syn v3.0.10
+   Compiling serde v1.0.229
+   Compiling serde_derive v1.0.229
+   Compiling weftforge-sim v0.1.0 (<ROOT>/.local/shared-stitch-stationarity-20261117/crates/weftforge-sim)
+    Finished `test` profile [unoptimized] target(s) in 11.07s
+     Running unittests src/lib.rs (target/debug/deps/weftforge_sim-56035589902b90cf)
+
+thread 'tests::shared_stitch_n32_matches_independent_duplicate_row_cartesian_energy' (82697860) panicked at crates/weftforge-sim/src/tests.rs:1206:5:
+shared-row full Cartesian stationarity: N
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+error: test failed, to rerun pass `-p weftforge-sim --lib`

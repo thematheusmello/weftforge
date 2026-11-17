@@ -1,0 +1,48 @@
+{
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge",
+    "--bin",
+    "weftforge",
+    "contextual_properties_tests::",
+    "--",
+    "--nocapture"
+  ],
+  "disk_observation": {
+    "last_available_bytes": 10901172224,
+    "max_snapshot_gap_seconds": 0.07573574990965426,
+    "minimum_available_bytes": 10886950912,
+    "path": "<ROOT>/.local/contextual-properties-20261117",
+    "samples": 430,
+    "stop_below_available_bytes": 8000000000
+  },
+  "end_monotonic_seconds": 1078082.348034916,
+  "exit_code": 0,
+  "peak_rss_bytes": 546897920,
+  "pid": 17224,
+  "process_group": 17224,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.07901612506248057,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 427,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 935985152,
+  "stop_reason": null,
+  "terminal_phase_checks": {
+    "deadline": 1078237.673688208,
+    "output_bytes": 5135,
+    "output_cap_bytes": 8388608,
+    "reserve_bytes": 262144
+  }
+}

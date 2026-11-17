@@ -1,0 +1,72 @@
+{
+  "all_old_hard_case_arithmetic_and_assertions_exact_except_called_function_name": true,
+  "all_pins_noop_accepted_weights_and_large_origin_endpoint_arithmetic_exact_guards_retained": true,
+  "material_and_bending_and_existing_Cloth_rollback_reset_tests_byte_exact": true,
+  "new_meaningful_guards": [
+    "weighted/repeated-index/noncollinear two-free/two-pin ZERO-target SPD energy with independent2x2 Cartesian oracle and1e-12m/1e-12N bounds",
+    "every actual public callback of a moving shared stage (entry, internal and pre-copy), plus empty/hard-only/all-pin/no-op/invalid finite atomicity",
+    "every actual callback of a fresh Cloth step with two sharing soft springs, all persistent Debug fields retained on cancellation; independent clone/reset behavior"
+  ],
+  "no_physical_bit_guard_relaxations_left": true,
+  "protected_duplicate": {
+    "fixture_oracle_all32_bounds_COM_finite_byte_exact_outside_actual_adapter_and_history_comment_units": true,
+    "new_adapter_sha256": "5dca79d1ce7be9c106eab725116cd9f2ab14832aeb9109ed128d504f9a53be74",
+    "new_function_sha256": "0f7fda231e391f0eef19511d0232ee403726b25dc9f38e7cd0cff40d2a61b715",
+    "old_adapter_sha256": "4336c3ec905349fa38ed6f5c6d3bfe03259458413e49be311d610005f65daa42",
+    "old_function_sha256": "d173fb9c77061675ca00b5e7509c9aad9ae6decc9e96936b725ec496dce04084"
+  },
+  "protected_positive_and_zero_noncollinear": {
+    "independent_energy_force_oracle_golden_position_stationarity_source_byte_exact": true,
+    "per_row_private_applied_update_ledger_replaced_by_each_independent_golden_force_plus_actual_total_nodal_action_same1e6_bound": true,
+    "position1e8_force1e6_oracle1e14_bounds_exact": true,
+    "protected_source_sha256": "d2e477d192bf25cfcf92841bff1601d5c1d5612c98c1f040c983f3e618da99e0"
+  },
+  "protected_subnormal": {
+    "both_predictors_original_epsilon_expected_position_radius_force1e14_pins_finite_exact_outside_adapter_history_shape_units": true,
+    "new_sha256": "65156a56a3ea1a6db172713b1bd65940537d8d273d6479e0e44755af47d64c24",
+    "old_sha256": "998b6250a5367f47298ee1b25d34e97bc05c7aa0657a0f9400414fc1f63b9710"
+  },
+  "qualifications": [
+    "No Rust command or product solve has run on candidate",
+    "All-old RED source/criteria/runtime remain sealed; source91 archive gives exact pre-edit bytes",
+    "Numerical convergence of arbitrary coupled graphs is not certified by source proofs"
+  ],
+  "retired_private_history_replacements": [
+    {
+      "new": "independent per-spring physical impulses at the same1e-12 bounds, actual total nodal action versus their sum at1e-12; same golden positions/energies/objective/stationarity",
+      "old": "per-row lambda constitutive/transport ledger",
+      "test": "closed_elastic_stitch_n32_matches_independent_quadratic_and_individual_actions"
+    },
+    {
+      "new": "same bit assertion on physical constitutive impulse; all exact physical position/force/energy guards restored",
+      "old": "private lambda bit assertion",
+      "test": "closed_elastic_stitch_preserves_isolated_energy_and_units"
+    },
+    {
+      "new": "old initial impulse mapped once to nodal displacement using inverse masses; physical constitutive impulse checked against same expected values and1e-12 position/action/energy/COM bounds",
+      "old": "scalar/vector row history input/output",
+      "test": "closed_elastic_stitch_two_free_masses_preserve_reactions_under_rigid_transforms"
+    },
+    {
+      "new": "actual nodal correction balanced against weighted physical impulse at same1e-14; same expected position/impulse",
+      "old": "row-history constitutive residual",
+      "test": "closed_elastic_stitch_merges_repeated_and_cross_side_vertices"
+    },
+    {
+      "new": "exact expected_free endpoint-coordinate assertion retained, exact original weights retained, actual rounded nodal displacement checked; private lambda is no longer stored",
+      "old": "private unrounded lambda bit assertion",
+      "test": "closed_elastic_stitch_keeps_accepted_weights_and_endpoint_arithmetic"
+    },
+    {
+      "new": "pin/nodal-displacement no-op exact, same physical reactions from energy exact; same zero-gap/nonzero-history rational results exact; finite denominator protections retained",
+      "old": "pin reaction stored in lambda, plus history guard",
+      "test": "closed_elastic_stitch_handles_zero_gap_pins_and_denominator_guard"
+    },
+    {
+      "new": "same physical positions/radius exact and impulses1e-14; actual nodal displacement rather than fictitious pin history, nonfinite errors atomically retain state",
+      "old": "private pin/zero-anchor lambda values",
+      "test": "positive_compliant_stitch_handles_pins_zero_anchor_and_nonfinite_guards"
+    }
+  ],
+  "source_only_no_execution": true
+}

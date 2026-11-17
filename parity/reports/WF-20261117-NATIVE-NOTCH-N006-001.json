@@ -70,7 +70,7 @@
     "FILE-001",
     "FILE-005"
   ],
-  "freshness": "current",
+  "freshness": "stale",
   "full_feature_accepted": false,
   "full_garment_accepted": false,
   "id": "WF-20261117-NATIVE-NOTCH-N006-001",
@@ -165,5 +165,6 @@
   "status": "passed",
   "summary": "One bounded native keyboard/pointer notch workflow on actual source 8aa and binary c332: empty UI rectangle and first boundary; raw t=2 / 8 mm refused without revision change; one notch #11 at 0.25 / 8 mm; edit to 0.75 / 10 mm; one Undo/Redo; native v6 Save and 10 mm SVG; confirmed Replace followed by application DXF refusal preserving the owned existing file; Quit and fresh same-binary Open with editable ID and rest preview; normal Quit. Application-modal AXSetValue remains unverified.",
   "timestamp": "2026-11-17T19:30:27.769751Z",
-  "whole_feature_verification_status": "not_run"
+  "whole_feature_verification_status": "not_run",
+  "freshness_reason": "The declared source/dependency scope changed in dual-sewing/contextual-properties integration182f242240065b8e90bcef2683232b8782cdce3a (sim constraints/lib/tests and native main.rs). Original8aa source446 pass and boundedN006 native pass remain historical; neither is transferred to the new combined source. The exact preceding report is archived under artifacts/dual-context-source-20261117/previous-reports."
 }
