@@ -1,0 +1,184 @@
+{
+  "actual_workspace_tests": {
+    "failed": 0,
+    "ignored": 0,
+    "passed": 412,
+    "summary_count": 31
+  },
+  "all4_stages_passed": true,
+  "at_utc": "2026-11-17T05:34:54.950906+00:00",
+  "built_binaries": {
+    "weftforge": {
+      "built_not_launched_by_this_controller": true,
+      "bytes": 62733448,
+      "mode": 493,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/target/debug/weftforge",
+      "sha256": "909cc39ad525b04d89b09c256f7adaa78bcbe5d85a6715fd7345293886f16616"
+    },
+    "weftforge-cli": {
+      "built_not_launched_by_this_controller": true,
+      "bytes": 10659600,
+      "mode": 493,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/target/debug/weftforge-cli",
+      "sha256": "c7af88584d2306f90bf6ada19c27336aa13ae537415e568242ec8ab137006184"
+    }
+  },
+  "candidate_tracked_status_clean": true,
+  "commit": "9d4b629c077f06c348f6615fe90df7bbeacedb24",
+  "file_count_excluding_self": 25,
+  "files": {
+    "FINDINGS.md": {
+      "bytes": 2470,
+      "mode": "0o644",
+      "sha256": "bf017acd44dfb90dc6623efb2646dfa5609212a3487d6d418eaaf90b4c68d7b6"
+    },
+    "FREEZE.json": {
+      "bytes": 38316,
+      "mode": "0o644",
+      "sha256": "b609c92ae88021e87dacbf1960b20e5020d0dcf00d733b0a1af4799535aac67c"
+    },
+    "TERMINAL-RECEIPT.json": {
+      "bytes": 6531,
+      "mode": "0o644",
+      "sha256": "dc9ff5ebc8ea1fe173f7fffe9c6b95a938dff9007f2bad9f2ee5523da52ca323"
+    },
+    "TEST-COMMAND-SCOPE.json": {
+      "bytes": 423,
+      "mode": "0o644",
+      "sha256": "c4ee7e98c26637a0aa7335817a27261cb3a1d46a3da1533dde420c7bf237cb9c"
+    },
+    "resources.py": {
+      "bytes": 10924,
+      "mode": "0o644",
+      "sha256": "f0af9e1665da6246a89e13e7fd947cbfbaef68cc19f6827ec32572c323be0240"
+    },
+    "run.py": {
+      "bytes": 7866,
+      "mode": "0o644",
+      "sha256": "4b4d2c29f8617b4c1b22fa3d745f2fa7683fd232092d93501a094ed8665ca255"
+    },
+    "runtime/RESULT.json": {
+      "bytes": 33939,
+      "mode": "0o600",
+      "sha256": "4994019f808f070e89863ae2fc3d07aff6930f4240de53cc44162b600d6e8691"
+    },
+    "runtime/STARTED.json": {
+      "bytes": 554,
+      "mode": "0o600",
+      "sha256": "2aa048ab9fd6bc31c16bf4c90600f4b84274576fb9860b75e9eb80ab76c7527e"
+    },
+    "runtime/TERMINAL.json": {
+      "bytes": 353,
+      "mode": "0o600",
+      "sha256": "7fdba53d590ebfd1b1b0a414c9d0f65dc6aec1094abf1cb5d375918b52eb2b61"
+    },
+    "runtime/full-fmt-RESULT.json": {
+      "bytes": 1327,
+      "mode": "0o600",
+      "sha256": "8f01319596e531a9a0d8bd301fd47aa9245fcd9db7128f5639f3e082242fca6e"
+    },
+    "runtime/full-fmt-STARTED.json": {
+      "bytes": 711,
+      "mode": "0o600",
+      "sha256": "5252806f0bb08e814e30ec5d6e953bae1070b55dad9fb4f3840f49ab57314a55"
+    },
+    "runtime/full-fmt.stderr": {
+      "bytes": 0,
+      "mode": "0o644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "runtime/full-fmt.stdout": {
+      "bytes": 0,
+      "mode": "0o644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "runtime/native-cli-debug-RESULT.json": {
+      "bytes": 1401,
+      "mode": "0o600",
+      "sha256": "da94eb6946593bb8734f1c391c705591b12fd8f95dd7a32448ccf4b2d9a78b3d"
+    },
+    "runtime/native-cli-debug-STARTED.json": {
+      "bytes": 776,
+      "mode": "0o600",
+      "sha256": "0360d720fefeb019fa8e6b64da7c7d3852652c6a8df455e733b11b08cb8d149b"
+    },
+    "runtime/native-cli-debug.stderr": {
+      "bytes": 402,
+      "mode": "0o644",
+      "sha256": "3a6a1c6523e5d90bb336e26598236d19c4390fb3b0f2b5e931b33ab7c9988c14"
+    },
+    "runtime/native-cli-debug.stdout": {
+      "bytes": 0,
+      "mode": "0o644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "runtime/workspace-clippy-RESULT.json": {
+      "bytes": 1425,
+      "mode": "0o600",
+      "sha256": "5ea908d5f29d2ccdca12b7bc6210c728850380b86f81990b6afa22b8b463b519"
+    },
+    "runtime/workspace-clippy-STARTED.json": {
+      "bytes": 795,
+      "mode": "0o600",
+      "sha256": "44fd47dc901df7cc5bdc460e5051bfbe8f59f257a8be28ea77af156da87904c0"
+    },
+    "runtime/workspace-clippy.stderr": {
+      "bytes": 6601,
+      "mode": "0o644",
+      "sha256": "7bd5cbdd8f48ef348cff65d5a0e53798e56a4529ca62ba8e0cf953e09e530351"
+    },
+    "runtime/workspace-clippy.stdout": {
+      "bytes": 0,
+      "mode": "0o644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "runtime/workspace-tests-RESULT.json": {
+      "bytes": 4769,
+      "mode": "0o600",
+      "sha256": "c9e576159eb15bb629b63de495cc7a6db38fe5d03315e017f36c284c47a9fab6"
+    },
+    "runtime/workspace-tests-STARTED.json": {
+      "bytes": 736,
+      "mode": "0o600",
+      "sha256": "dd1e64620ff8bbef22b197488fd42229a356d0f0fb8c1ce206e25d5903b8da28"
+    },
+    "runtime/workspace-tests.stderr": {
+      "bytes": 9076,
+      "mode": "0o644",
+      "sha256": "f479aa48f1b80c504735f907327a8660d548e805d2bac04d065490fd232e7372"
+    },
+    "runtime/workspace-tests.stdout": {
+      "bytes": 41615,
+      "mode": "0o644",
+      "sha256": "10ed75ba71610ccbac8213ff63492417869eea01798426ed84bf7d7c9bf82ca7"
+    }
+  },
+  "internal_terminal_path": "runtime/TERMINAL.json",
+  "internal_terminal_sha256": "7fdba53d590ebfd1b1b0a414c9d0f65dc6aec1094abf1cb5d375918b52eb2b61",
+  "outer_terminal_receipt_sha256": "dc9ff5ebc8ea1fe173f7fffe9c6b95a938dff9007f2bad9f2ee5523da52ca323",
+  "postclose_guards": {
+    "actual_tool_binaries_exact": 6,
+    "all_hashes_modes_exact": true,
+    "clean_exact_commit": true,
+    "compiled_binaries_exact": 2,
+    "configs_exact": true,
+    "metadata_frozen": 59,
+    "original8": 8,
+    "owned_PID_groups_absent": [
+      61038,
+      61043,
+      61064,
+      70912,
+      72963
+    ],
+    "source88": 88
+  },
+  "posthoc_receipts_outside_original_command_clock": "TERMINAL-RECEIPT/FINDINGS/this manifest are read/hash bindings after terminal; not repeated gates",
+  "result_path": "runtime/RESULT.json",
+  "result_sha256": "4994019f808f070e89863ae2fc3d07aff6930f4240de53cc44162b600d6e8691",
+  "scope": "Closed four functional workspace source gates; no garment/speed/reference acceptance",
+  "source88_metadata59_original8_exact_all_stages": true,
+  "source_changes_or_stage_retries": 0,
+  "source_freeze_sha256": "b609c92ae88021e87dacbf1960b20e5020d0dcf00d733b0a1af4799535aac67c",
+  "xtask_or_native_GUI_or_garment_or_benchmark_launches": 0
+}

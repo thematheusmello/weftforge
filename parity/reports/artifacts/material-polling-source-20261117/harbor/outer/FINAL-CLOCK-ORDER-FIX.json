@@ -1,0 +1,13 @@
+{
+  "corrected_supervisor_sha256": "b62b1d86c4b05a54bc37e9a20d49822ddab4374a9abddf67901913e4be35afbf",
+  "finding": "Final volume traversal previously followed its final sampled clock, permitting a late traversal to use a stale time. Blocked before any actual numerical GO/execution.",
+  "fix": "Compute final total_bytes after ROOT-RESULT persistence, then sample closed; use and record this exact final volume/time.",
+  "isolated_pure_predicate_boundary_checks": 4,
+  "numerical_execution": false,
+  "old_case_untouched": true,
+  "packet61_freeze_unchanged": true,
+  "prior_candidate_supervisor_sha256": "b34144b5ee7c85cac600ade25e184c49a54d7e0a2c30a48d0a92c009c9304831",
+  "recorded_utc": "2026-11-17T06:47:47.527180+00:00",
+  "selfcheck_harness_correction": "Initial isolated function check omitted b.CAP_BYTES namespace and raised NameError before assertions; corrected check supplies only a constant namespace. No helper/model executed. First patch attempt hit existing444 mode; byte-exact original was made writable before the actual tiny patch.",
+  "static_final_guard_order_asserted": true
+}

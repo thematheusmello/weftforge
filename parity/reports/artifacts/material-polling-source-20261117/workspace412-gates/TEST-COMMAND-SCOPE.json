@@ -1,0 +1,10 @@
+{
+  "matches": 0,
+  "paths": [
+    "apps/weftforge-cli/tests",
+    "crates/weftforge-core/tests"
+  ],
+  "pattern": "\"(benchmark|fit|simulate)\"",
+  "qualification": "Source tests can exercise small simulation fixtures and CLI authoring; no benchmark/fit/simulate command invocation found. Native app is built, not launched by this controller.",
+  "scope": "Static literal CLI command scan in CLI/core integration tests"
+}

@@ -1,0 +1,127 @@
+{
+  "at_utc": "2026-11-17T06:18:20.306292+00:00",
+  "build_launches": 1,
+  "clean_exact_commit": true,
+  "commit": "9d4b629c077f06c348f6615fe90df7bbeacedb24",
+  "file_count_excluding_self": 15,
+  "files": {
+    "DISK-GUARD-DELTA.json": {
+      "bytes": 2552,
+      "mode": "0o644",
+      "sha256": "26822bff7335aeea0815640d07acef7eb674c808078269c558a75212aa3fe405"
+    },
+    "FINDINGS.md": {
+      "bytes": 2579,
+      "mode": "0o644",
+      "sha256": "db1f3e1fc2c41f99a80887088a0bfdaa53784cda835bdbfa73e3b1c08019458f"
+    },
+    "FREEZE.json": {
+      "bytes": 41355,
+      "mode": "0o644",
+      "sha256": "1b86ed45b95977bbe5afb3070e4e3fbba3da6b14ccfdbd53361d885b2b9098ae"
+    },
+    "HOST-MEMORY.json": {
+      "bytes": 1710,
+      "mode": "0o644",
+      "sha256": "3a1c1d5fbae994d2536702669d54cb4a180b510a37b071c4e6d23b1bd83b946d"
+    },
+    "SYSTEM-STATE-CHANGE.json": {
+      "bytes": 1005,
+      "mode": "0o644",
+      "sha256": "0dc7a2a5660ffc8d471873bc61035c79cdc58c742c12416b9c67a09d9598ec96"
+    },
+    "TERMINAL-RECEIPT.json": {
+      "bytes": 3710,
+      "mode": "0o644",
+      "sha256": "e333d01ca87d8fffd6a6397cd2f20e111060bcdce8a138525c906d2da918dd5f"
+    },
+    "resources.py": {
+      "bytes": 12679,
+      "mode": "0o644",
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781"
+    },
+    "run.py": {
+      "bytes": 7296,
+      "mode": "0o644",
+      "sha256": "bdef3ac5c7d24aed81ca04f5d52714625c1d8931a75d2db7e2a1e1fe7e48ee8a"
+    },
+    "runtime/RESULT.json": {
+      "bytes": 22088,
+      "mode": "0o600",
+      "sha256": "b838051f45463c3be11ab7e689f279a6f8c61ec8d8ba3cfd5874aae242ad8b45"
+    },
+    "runtime/STARTED.json": {
+      "bytes": 664,
+      "mode": "0o600",
+      "sha256": "144e23e2cec92641c98f00aa280b2ce35d1d4516a23c4feccdbab00530d6255b"
+    },
+    "runtime/TERMINAL.json": {
+      "bytes": 309,
+      "mode": "0o600",
+      "sha256": "444c1777cbaaa5a87a3438796026ddda1348862dfb756196beb4f1604779b78d"
+    },
+    "runtime/release-build-RESULT.json": {
+      "bytes": 1763,
+      "mode": "0o600",
+      "sha256": "e389d5837569c359bbb3210017d3041e6df44a6ed8bb0d3d8dd996bc421e54fe"
+    },
+    "runtime/release-build-STARTED.json": {
+      "bytes": 1127,
+      "mode": "0o600",
+      "sha256": "4ffede7e0745c1d8874a6e808b1afe1d23830b8f4d06fc4c7f91cb24298d6bf1"
+    },
+    "runtime/release-build.stderr": {
+      "bytes": 375,
+      "mode": "0o644",
+      "sha256": "568c8bf0b96a88e968191d9dba43daaaf5f037d89022e5d4e2d1a56fa981db00"
+    },
+    "runtime/release-build.stdout": {
+      "bytes": 0,
+      "mode": "0o644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "initial_target_exists_partial_reuse": true,
+  "internal_terminal_sha256": "444c1777cbaaa5a87a3438796026ddda1348862dfb756196beb4f1604779b78d",
+  "namespace": "release-space-recovery-002",
+  "no_cross_WT_compiled_copy": true,
+  "original_stopped_case_unchanged": "c262fde9a12245291ae6bcf622fa4dcf19f2b3725ad457d926e0af9b1a505982",
+  "postclose_guards": {
+    "all_hashes_modes_exact": true,
+    "clean_exact_commit": true,
+    "metadata_frozen": 59,
+    "original8": 8,
+    "owned_PID_groups_absent": [
+      96420,
+      96423
+    ],
+    "release_binary_hashes_exact": 2,
+    "source88": 88,
+    "tools_configs_old_kernel_seals_and_binary_hashes_exact": true
+  },
+  "posthoc_scope": "Terminal receipt/FINDINGS/final manifest are new read/hash closure notes; frozen controller/inputs/runtime and original stopped packet unchanged",
+  "progress_banner_label_defect_explicit": true,
+  "release_binaries": {
+    "weftforge": {
+      "built_not_launched": true,
+      "bytes": 16001040,
+      "mode": 493,
+      "path": "<ROOT>/.local/material-polling-release-20261117/target/release/weftforge",
+      "sha256": "dd76e0862943f196f3d4534da80fd5fda8ac49fdca8b6c15b6bf54acbc89a6e2"
+    },
+    "weftforge-cli": {
+      "built_not_launched": true,
+      "bytes": 2697376,
+      "mode": 493,
+      "path": "<ROOT>/.local/material-polling-release-20261117/target/release/weftforge-cli",
+      "sha256": "4573cc0cf6f762147247e8d0002e749aebfd0e94fd7f1650582d3df0a34e74cf"
+    }
+  },
+  "release_build_passed": true,
+  "result_sha256": "b838051f45463c3be11ab7e689f279a6f8c61ec8d8ba3cfd5874aae242ad8b45",
+  "scope": "Closed successful distinct disk-space recovery release build; no runtime/physics acceptance",
+  "source88_metadata59_original8_exact": true,
+  "source_freeze_sha256": "1b86ed45b95977bbe5afb3070e4e3fbba3da6b14ccfdbd53361d885b2b9098ae",
+  "terminal_receipt_sha256": "e333d01ca87d8fffd6a6397cd2f20e111060bcdce8a138525c906d2da918dd5f",
+  "tests_models_GUI_bundles_benchmarks_source_edits_automatic_retry": 0
+}

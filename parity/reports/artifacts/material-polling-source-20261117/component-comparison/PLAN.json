@@ -1,0 +1,58 @@
+{
+  "at_utc": "2026-11-17T05:10:06.272720+00:00",
+  "caps": {
+    "retained_output_bytes": 8388608,
+    "sampled_aggregate_RSS_bytes": 1073741824,
+    "whole_build_plus_kernel_seconds": 120
+  },
+  "checks": "Every one of32 x/p boundaries bit-identical, finite and pins exact; same shared elapsed420 predicate, no timed callback counter",
+  "closure_limits": "RSS snapshots have recorded gaps; SDK/linker/shared libraries not fully frozen",
+  "control_material_calls": 192,
+  "fixture": {
+    "UV_formula": [
+      "u=-.36+.72*(i/30)",
+      "v=.96+.64*(j/20)"
+    ],
+    "fixed": "left column21 at exact rest positions; all other630 free",
+    "grid": [
+      31,
+      21
+    ],
+    "h": 0.0020833333333333333,
+    "mass": "Independent UV signed triangle area times.18 distributed equally, total.082944kg",
+    "material": {
+      "bend": 0.003,
+      "damping": 0.2,
+      "density": 0.18,
+      "friction": 0.4,
+      "grain_radians": 1.5707963267948966,
+      "shear": 100,
+      "thickness": 0.003,
+      "warp": 400,
+      "weft": 400
+    },
+    "predictor_free": [
+      "u+.06*s*t+.008*s*(1-s)*(2*t-1)",
+      "v+.04*s*s+.01*t*(1-t)",
+      "0"
+    ],
+    "sweeps_per_reset": 32,
+    "triangles": 1200,
+    "triangles_per_cell": "[a,b,d],[a,d,c], positive UV winding",
+    "vertices": 651
+  },
+  "fixture_proof_sha256": "97cc6aad68f499f763b7cf2fd6dddf237815a26b0c730c9400e36c081cc4f374",
+  "gate": "Root explicitly confirmed nativeAssemblyAccepted/job settled and authorized this one execution; no retry",
+  "measured_pairs": 5,
+  "namespace": "material-cancellation-comparison-20261117",
+  "new_commit": "9d4b629c077f06c348f6615fe90df7bbeacedb24",
+  "observed_material_calls": 192,
+  "old_commit": "52099b6f6b7aff43b3e9ada8bad4f830cb987134",
+  "order": "Even index old first, odd index new first, fixed before launch",
+  "profile": "Explicit standalone opt3/noLTO/codegen-units16/default-release-equivalent, not native thinLTO",
+  "reset": "Fresh predictor clone and zero p before each variant; no old trajectory/model state",
+  "scope": "One same-build material-only old/new comparison; no Cloth/body/seam/contact/garment/evaluator/native/UI execution",
+  "sweeps_per_variant": 32,
+  "target": "Own candidate target, existing debug test products permitted; no cross-WT cache/binary copying",
+  "warmups": 1
+}

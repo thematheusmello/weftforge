@@ -1,0 +1,255 @@
+{
+  "at_utc": "2026-11-17T05:03:57.426789+00:00",
+  "base_commit": "52099b6f6b7aff43b3e9ada8bad4f830cb987134",
+  "branch": "feat/material-cancellation-polling",
+  "candidate_commit": "9d4b629c077f06c348f6615fe90df7bbeacedb24",
+  "candidate_tracked_status_clean": true,
+  "changed_source_files": {
+    "crates/weftforge-sim/src/constraints.rs": "a98e065f8d3cb83bc01b7c0e11dad3241d82205163abd1d70e6c257437473637",
+    "crates/weftforge-sim/src/tests.rs": "5344f54f81c0aec65f8678c001bb8ebfb8bd3a720db880d3f7afa217726a37f5",
+    "docs/physics.md": "11d8e499ed76b4829073249f5872d31ecf5483b165bb27236580e2b013b01420"
+  },
+  "check_receipt_sha256": "58723b2e9b74d61c9214daedd54adf74d876e908b47034e7a4cdb6607001d7bf",
+  "checks": {
+    "cancellation_tests": {
+      "failed": 0,
+      "ignored": 0,
+      "names": [
+        "constraints::material_cancellation_tests::material_cancellation_polls_after_at_most_63_skipped_checkpoints",
+        "tests::cancellation_after_measurement_preserves_peak_strain",
+        "tests::cancellation_and_failures_preserve_old_state_and_allow_recovery",
+        "tests::capsule_projection_and_final_surface_analysis_cancellation_preserve_the_accepted_step",
+        "tests::closed_elastic_stitch_cancellation_and_failure_retain_whole_call_state",
+        "tests::global_material_zero_rhs_pins_and_cancellation_preserve_stage_state",
+        "tests::material_cancellation_at_every_cloth_callback_rolls_back_all_persistent_state",
+        "tests::material_cancellation_checks_entry_and_each_noop_return"
+      ],
+      "passed": 8
+    },
+    "material_tests": {
+      "failed": 0,
+      "ignored": 0,
+      "names": [
+        "constraints::material_cancellation_tests::material_cancellation_polls_after_at_most_63_skipped_checkpoints",
+        "tests::global_material_zero_rhs_pins_and_cancellation_preserve_stage_state",
+        "tests::grouped_mixed_grain_materials_reach_direct_energy_balance_with_pins",
+        "tests::malformed_external_geometry_material_and_constraints_are_rejected",
+        "tests::material_cancellation_at_every_cloth_callback_rolls_back_all_persistent_state",
+        "tests::material_cancellation_checks_entry_and_each_noop_return",
+        "tests::material_network_reaches_independent_incremental_energy_equilibrium",
+        "tests::material_stage_retains_each_input_face_once_in_order",
+        "tests::membrane_affine_strain_follows_material_axes_under_arrangement_and_winding",
+        "tests::shared_edge_material_reaches_independent_incremental_energy_equilibrium"
+      ],
+      "passed": 10
+    },
+    "membrane_tests": {
+      "failed": 0,
+      "ignored": 0,
+      "names": [
+        "tests::coupled_membrane_reaches_independent_incremental_energy_equilibrium",
+        "tests::membrane_affine_strain_follows_material_axes_under_arrangement_and_winding",
+        "tests::membrane_projection_matches_analytic_uniaxial_and_shear_updates"
+      ],
+      "passed": 3
+    }
+  },
+  "closure_limits": "SDK/linker/shared libraries not fully frozen; RSS snapshots have explicit gaps; no latency guarantee from checkpoint bound",
+  "eight_face_oracle": {
+    "bounds_unchanged": [
+      1e-08,
+      1e-06
+    ],
+    "force_residual_N": 1.2857517012326884e-07,
+    "position_error_m": 2.0770362583566576e-10,
+    "source_unchanged": true
+  },
+  "file_count_excluding_self": 31,
+  "files": {
+    "CARGO-CONFIG-INPUTS.json": {
+      "bytes": 1396,
+      "mode": "0o644",
+      "sha256": "b0e7a4fe70f5932ecaf7635385f7ff726e8c7a75b2567076a88118b2984ccc94"
+    },
+    "CHECK-RECEIPT.json": {
+      "bytes": 3722,
+      "mode": "0o644",
+      "sha256": "58723b2e9b74d61c9214daedd54adf74d876e908b47034e7a4cdb6607001d7bf"
+    },
+    "DESIGN.md": {
+      "bytes": 2834,
+      "mode": "0o644",
+      "sha256": "8d33bb0ff333a8c04755664cd8165a5e107833f2fd0440a073f8d64de981a183"
+    },
+    "DIFF.patch": {
+      "bytes": 10418,
+      "mode": "0o644",
+      "sha256": "8ae369c2af3b3c965f6de6e3b6c176857a25d5566216d5d86eb08d3ec31c5288"
+    },
+    "FINDINGS.md": {
+      "bytes": 4261,
+      "mode": "0o644",
+      "sha256": "25879c74c58bad6c436b63a1e78b9bd5bdea44f0fda0fcbd6c12f28a232639b7"
+    },
+    "FREEZE.json": {
+      "bytes": 33511,
+      "mode": "0o644",
+      "sha256": "69d4cd2607c13be368ad24ae0893e27142032e2076851a0bee963bd020f3b23c"
+    },
+    "LOCKED-DEPENDENCIES.json": {
+      "bytes": 30549,
+      "mode": "0o644",
+      "sha256": "b2c6ccbc8ebedcf3c359b3c22751991cfa30096e3e223a6260ee7b9a1aecbfcc"
+    },
+    "PREDECESSOR-FMT-FAILURE.json": {
+      "bytes": 937,
+      "mode": "0o644",
+      "sha256": "3bc5f344e33064eb0168f5ada97692a5fd90e86505fecdd0b16a2a635814ce03"
+    },
+    "PRESERVATION.json": {
+      "bytes": 1784,
+      "mode": "0o644",
+      "sha256": "1ef847b6d0b08cf4dec2c50a7350c9f91d61fcacb8132914ba2cabc44a358f27"
+    },
+    "REGISTERED-INSERTIONS.json": {
+      "bytes": 2458,
+      "mode": "0o644",
+      "sha256": "3e95f99940bbc3a7ea32ac185ed3ffa1853a8a7a26baedc40ec9794377d70a19"
+    },
+    "resources.py": {
+      "bytes": 10924,
+      "mode": "0o644",
+      "sha256": "f0af9e1665da6246a89e13e7fd947cbfbaef68cc19f6827ec32572c323be0240"
+    },
+    "run_checks.py": {
+      "bytes": 4728,
+      "mode": "0o644",
+      "sha256": "98025dd2c7393436a3efb04a202a8174c3fbf85c445963075e7b974f2a6cf933"
+    },
+    "runtime/RESULT.json": {
+      "bytes": 5276,
+      "mode": "0o600",
+      "sha256": "0d8bc90b8a33897247b2dd6a1e791165a220af3b6636c0283c9127e2bba8aa2d"
+    },
+    "runtime/STARTED.json": {
+      "bytes": 411,
+      "mode": "0o600",
+      "sha256": "69d3ce81b900375ea4a6e45fb0d65d995959c7360a9fd51aac234303d2cb8989"
+    },
+    "runtime/TERMINAL.json": {
+      "bytes": 394,
+      "mode": "0o600",
+      "sha256": "d89c05068bb434d89fa69b1bc940b2a42cc9610c07c4a92597b9f2c712f2a904"
+    },
+    "runtime/cancellation_tests-RESULT.json": {
+      "bytes": 1063,
+      "mode": "0o600",
+      "sha256": "5f148aafd00f76e6441f248aba40f67ba76ab8e932943d5eb09b5145a73e573b"
+    },
+    "runtime/cancellation_tests-STARTED.json": {
+      "bytes": 834,
+      "mode": "0o600",
+      "sha256": "031823d73e626c49d242305e77c95fa6411d79fc08095b488c335b1d386574ad"
+    },
+    "runtime/cancellation_tests.stderr": {
+      "bytes": 158,
+      "mode": "0o644",
+      "sha256": "bdc30a98a5173a9cbaa44fcf369f7543b161eecabc0e8223fa76f8469828b1b7"
+    },
+    "runtime/cancellation_tests.stdout": {
+      "bytes": 842,
+      "mode": "0o644",
+      "sha256": "9ba523441c96a664c44a3e11563ed3311eeb2f12bc6f78cbd97b1ea521f511e0"
+    },
+    "runtime/fmt-RESULT.json": {
+      "bytes": 938,
+      "mode": "0o600",
+      "sha256": "baabdb3e54d31f433a73daeee8c9e4fc26dcf7677350da5e871374420117829b"
+    },
+    "runtime/fmt-STARTED.json": {
+      "bytes": 711,
+      "mode": "0o600",
+      "sha256": "72234595533e8d08a9db789c062e13ac0716ad6bcfa86f5b1fa9012e7b3a88e3"
+    },
+    "runtime/fmt.stderr": {
+      "bytes": 0,
+      "mode": "0o644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "runtime/fmt.stdout": {
+      "bytes": 0,
+      "mode": "0o644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "runtime/material_tests-RESULT.json": {
+      "bytes": 1060,
+      "mode": "0o600",
+      "sha256": "2936157ecd67979a91870c2ba5c173a790d2ca8fd228e0d83cf273d9e020c6e8"
+    },
+    "runtime/material_tests-STARTED.json": {
+      "bytes": 830,
+      "mode": "0o600",
+      "sha256": "2882828ffae0e7877efd084833b4e37c19d76801edfb6f21d185f46dab27e0df"
+    },
+    "runtime/material_tests.stderr": {
+      "bytes": 543,
+      "mode": "0o644",
+      "sha256": "3b3294514a3e6531d05c53bd45059bcd073d85709e6ad0c3aea1b9cabad4414a"
+    },
+    "runtime/material_tests.stdout": {
+      "bytes": 1767,
+      "mode": "0o644",
+      "sha256": "e7f76f1503cdd6b5a686d0ee104c5a6c440b39ff0f3775637e7e0f8f54b78d68"
+    },
+    "runtime/membrane_tests-RESULT.json": {
+      "bytes": 1059,
+      "mode": "0o600",
+      "sha256": "c0a35b2c43397cee6fc0a75acedd09ac77f2294904620c0864a500af974e6d86"
+    },
+    "runtime/membrane_tests-STARTED.json": {
+      "bytes": 830,
+      "mode": "0o600",
+      "sha256": "5947dfc7ecff00c3e9a9aa1695043d96732427434313322501a6df7ade4768fa"
+    },
+    "runtime/membrane_tests.stderr": {
+      "bytes": 158,
+      "mode": "0o644",
+      "sha256": "09926d26009598e367200274a8a12084aaa1254b378f2174f6add7770b93e75f"
+    },
+    "runtime/membrane_tests.stdout": {
+      "bytes": 473,
+      "mode": "0o644",
+      "sha256": "aa4b01508bc13d8f5ae9c8cdfa317527c538b95c847f0970ecc345175727eba9"
+    }
+  },
+  "postclose_guards": {
+    "changed_tracked_paths": [
+      "crates/weftforge-sim/src/constraints.rs",
+      "crates/weftforge-sim/src/tests.rs",
+      "docs/physics.md"
+    ],
+    "closed_source_and_case_seals_unchanged": true,
+    "closed_tracked_source_clean": true,
+    "frozen_files_and_modes": 115,
+    "old_component_artifacts_hashes_modes_exact": 63,
+    "old_component_binary_hashes_exact": 2,
+    "owned_PID_groups_absent": [
+      44838,
+      44985,
+      45061,
+      46387,
+      46427
+    ],
+    "registered_polling_insertion_removal_exact": true,
+    "registry_files": 301,
+    "registry_packages": 7,
+    "tools": 4
+  },
+  "registered_insertion_proof_sha256": "3e95f99940bbc3a7ea32ac185ed3ffa1853a8a7a26baedc40ec9794377d70a19",
+  "retained_first_fmt_failure": ".local/material-cancellation-candidate-20261117/runtime/RESULT.json",
+  "scope": "Committed cancellation-only production candidate with focused checks; not integration/garment/performance acceptance",
+  "source_freeze_sha256": "69d4cd2607c13be368ad24ae0893e27142032e2076851a0bee963bd020f3b23c",
+  "tested_source_equals_committed_source": true,
+  "timing_benchmark_fullgarment_fullworkspace_Clippy_nativebuild_evaluator_GUI_launches": 0,
+  "unique_tests": 16
+}

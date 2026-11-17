@@ -1,0 +1,13 @@
+
+running 8 tests
+test constraints::material_cancellation_tests::material_cancellation_polls_after_at_most_63_skipped_checkpoints ... ok
+test tests::cancellation_after_measurement_preserves_peak_strain ... ok
+test tests::cancellation_and_failures_preserve_old_state_and_allow_recovery ... ok
+test tests::capsule_projection_and_final_surface_analysis_cancellation_preserve_the_accepted_step ... ok
+test tests::closed_elastic_stitch_cancellation_and_failure_retain_whole_call_state ... ok
+test tests::global_material_zero_rhs_pins_and_cancellation_preserve_stage_state ... ok
+test tests::material_cancellation_at_every_cloth_callback_rolls_back_all_persistent_state ... ok
+test tests::material_cancellation_checks_entry_and_each_noop_return ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 57 filtered out; finished in 0.30s
+

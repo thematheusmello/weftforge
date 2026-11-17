@@ -1,0 +1,165 @@
+{
+  "elapsed_before_result_persistence_seconds": 14.405987249920145,
+  "errors": [],
+  "no_garment_or_quality_or_fullcase_performance_acceptance": true,
+  "retained_output_bytes_before_result": 11677,
+  "source_format_correction_after_retained_first_failure": true,
+  "source_freeze_sha256": "69d4cd2607c13be368ad24ae0893e27142032e2076851a0bee963bd020f3b23c",
+  "stages": {
+    "cancellation_tests": {
+      "argv": [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--lib",
+        "cancellation",
+        "--",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "end_monotonic_seconds": 1013896.152114458,
+      "exit_code": 0,
+      "peak_rss_bytes": 78331904,
+      "pid": 46387,
+      "process_group": 46387,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.050380125059746206,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 11,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 105299968,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1014001.937613958,
+        "output_bytes": 8094,
+        "output_cap_bytes": 8388608,
+        "reserve_bytes": 131072
+      }
+    },
+    "fmt": {
+      "argv": [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "end_monotonic_seconds": 1013882.846222666,
+      "exit_code": 0,
+      "peak_rss_bytes": 63668224,
+      "pid": 44985,
+      "process_group": 44985,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.08541175001300871,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 16,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 93732864,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1014001.937613958,
+        "output_bytes": 1122,
+        "output_cap_bytes": 8388608,
+        "reserve_bytes": 131072
+      }
+    },
+    "material_tests": {
+      "argv": [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--lib",
+        "material",
+        "--",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "end_monotonic_seconds": 1013895.611321791,
+      "exit_code": 0,
+      "peak_rss_bytes": 458866688,
+      "pid": 45061,
+      "process_group": 45061,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.11780345893930644,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 253,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 505069568,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1014001.937613958,
+        "output_bytes": 5200,
+        "output_cap_bytes": 8388608,
+        "reserve_bytes": 131072
+      }
+    },
+    "membrane_tests": {
+      "argv": [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--lib",
+        "membrane",
+        "--",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "end_monotonic_seconds": 1013896.298575541,
+      "exit_code": 0,
+      "peak_rss_bytes": 78528512,
+      "pid": 46427,
+      "process_group": 46427,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.051375709008425474,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 3,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 114900992,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1014001.937613958,
+        "output_bytes": 10618,
+        "output_cap_bytes": 8388608,
+        "reserve_bytes": 131072
+      }
+    }
+  },
+  "status": "COMPLETE_FOCUSED_CANDIDATE_CHECKS",
+  "supervisor_exact_peak_RSS_bytes": 28114944
+}

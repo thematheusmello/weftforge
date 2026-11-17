@@ -1,0 +1,717 @@
+{
+  "all_original_case_payloads_retained": true,
+  "closure_is_post_run_bookkeeping_not_new_grade": true,
+  "file_count": 118,
+  "files": {
+    "SUMMARY.json": {
+      "bytes": 670,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-polling-full-case-closure-20261117/SUMMARY.json",
+      "sha256": "9935bf16b8690501f87af039498bcbc0b6f8072258c8d391a13f61de8c2901ba"
+    },
+    "outer/EXTERNAL-TERMINAL-OBSERVATION.json": {
+      "bytes": 1988,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-polling-full-case-root-20261117/EXTERNAL-TERMINAL-OBSERVATION.json",
+      "sha256": "0e17d51cdd6d074669ecb92edc41cb331ebeeccc3c079c128d0021f438a23b22"
+    },
+    "outer/FINAL-CLOCK-ORDER-FIX.json": {
+      "bytes": 1101,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-polling-full-case-root-20261117/FINAL-CLOCK-ORDER-FIX.json",
+      "sha256": "45112548a40da90b794d9b3ffaeec279367e45155692757bca62172191e3eedb"
+    },
+    "outer/OUTER-START.json": {
+      "bytes": 631,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-polling-full-case-root-20261117/OUTER-START.json",
+      "sha256": "d26240ef3400a333e2df8ecc8ff64e25502577f81b86eac07a8fa565ad5dcfe8"
+    },
+    "outer/PREPARATION.json": {
+      "bytes": 945,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-polling-full-case-root-20261117/PREPARATION.json",
+      "sha256": "784d051684c9e638ad3ea6e8573d1a9c974a2b50aa798f7f46a93e714ea3e171"
+    },
+    "outer/ROOT-AUTHORIZATION.json": {
+      "bytes": 1057,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-polling-full-case-root-20261117/ROOT-AUTHORIZATION.json",
+      "sha256": "d0ef808ed9d93d98a768815de65a4bc43d7937ad9f7517678a79ec0ffe49b6c9"
+    },
+    "outer/ROOT-RESULT.json": {
+      "bytes": 393,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-polling-full-case-root-20261117/ROOT-RESULT.json",
+      "sha256": "62292506cb6a84b325d799288e1a82d0e6deac73bce4a60557fc26b796a05681"
+    },
+    "outer/ROOT-STDERR.raw": {
+      "bytes": 0,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-polling-full-case-root-20261117/ROOT-STDERR.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "outer/ROOT-STDOUT.raw": {
+      "bytes": 602,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-polling-full-case-root-20261117/ROOT-STDOUT.raw",
+      "sha256": "1fa47aee7ece822aa0c616bfc8221f71fabc2c559c4b52016dd6bfe2ffad9f77"
+    },
+    "outer/ROOT-TERMINAL-WITNESS.json": {
+      "bytes": 6403,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-polling-full-case-root-20261117/ROOT-TERMINAL-WITNESS.json",
+      "sha256": "b3ba5bdcce2a18f8fa5f0165b94479efd42e3cc3a0679320c72365a4994db93c"
+    },
+    "outer/RUNNING.json": {
+      "bytes": 1026,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-polling-full-case-root-20261117/RUNNING.json",
+      "sha256": "3f2f637d974bece597d779a696ebb09fa85f5e0ccb2128725a9ba34acc1c689f"
+    },
+    "outer/controller.stderr": {
+      "bytes": 0,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-polling-full-case-root-20261117/controller.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "outer/controller.stdout": {
+      "bytes": 397,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-polling-full-case-root-20261117/controller.stdout",
+      "sha256": "4fa9d1f7566239b40dbc02b819c7bd95b040875a04976ce64f9389bfc16a19f5"
+    },
+    "outer/supervise.py": {
+      "bytes": 7055,
+      "mode": 292,
+      "path": "<ROOT>/.local/material-polling-full-case-root-20261117/supervise.py",
+      "sha256": "b62b1d86c4b05a54bc37e9a20d49822ddab4374a9abddf67901913e4be35afbf"
+    },
+    "packet/BUILD-GO.json": {
+      "bytes": 704,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/BUILD-GO.json",
+      "sha256": "fd2999f1fc59f55c469ac58e5fe5f77357ec0790f10febd59692a836cd7d4a6f"
+    },
+    "packet/BUILD-GO.template.json": {
+      "bytes": 719,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/BUILD-GO.template.json",
+      "sha256": "452a94dfd8b8d83654c1f03f55fe4cca1b63819d3469a099c757b89c0f92068f"
+    },
+    "packet/CANDIDATE.json": {
+      "bytes": 2981,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/CANDIDATE.json",
+      "sha256": "6555b091c43ffa0a6fe3c84f1dd643f377978a5be453e092d8d8731431e24bc2"
+    },
+    "packet/COMMANDS.md": {
+      "bytes": 567,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/COMMANDS.md",
+      "sha256": "8e5e5f4502f163e393ddfa1e9ea97b221be46043f1c57a899a363c9696ba1200"
+    },
+    "packet/DELTA.json": {
+      "bytes": 3221,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/DELTA.json",
+      "sha256": "df8b8330ce438d8fda7c6400f142a56021115ef852adbd1eaad669a04d7123b8"
+    },
+    "packet/DRAFT-FREEZE.json": {
+      "bytes": 8450,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/DRAFT-FREEZE.json",
+      "sha256": "406bcceb55da3d825d8a86f16972e70d319c2fd49ad7cf89e5a30731d1944c67"
+    },
+    "packet/DRAFT-ORIGIN.json": {
+      "bytes": 4796,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/DRAFT-ORIGIN.json",
+      "sha256": "77c0511a23e55ff4cc6d1d9c3a554c32eab9299e71f450f1271b6425c12f92b0"
+    },
+    "packet/FREEZE.json": {
+      "bytes": 8737,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/FREEZE.json",
+      "sha256": "5ad83bba74240553cee9d7b7e5d05ce82ee9e748e4b084f14ab9d02fdb9f823c"
+    },
+    "packet/HANDOFF.md": {
+      "bytes": 1201,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/HANDOFF.md",
+      "sha256": "0b0243990fedc3bff6e0606a9187f24b40d7eae22514a65159b3f980c5970ea6"
+    },
+    "packet/INSTALL-RECEIPT.json": {
+      "bytes": 8691,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/INSTALL-RECEIPT.json",
+      "sha256": "d0041c0875967007576d043c8d4c5cf028cee5149ffd84d4cd9c3132ad1b8c4a"
+    },
+    "packet/PRESERVATION.json": {
+      "bytes": 75482,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/PRESERVATION.json",
+      "sha256": "e66a8b37b3ff8ad1fdabc28c1bc14faa83027b61fa968c85ad29d8ecb9f7a113"
+    },
+    "packet/PROTOCOL-DRAFT.json": {
+      "bytes": 6681,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/PROTOCOL-DRAFT.json",
+      "sha256": "c87d0634aefb5f9878760f188d6cf43cbf882ea0e8e140f4ba5af1710f20401f"
+    },
+    "packet/PROTOCOL.json": {
+      "bytes": 8304,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/PROTOCOL.json",
+      "sha256": "5e4cf661bcb686e9d9e75275367ceb63590e40cd15a39b412872c43130b7b769"
+    },
+    "packet/REUSED-SOURCES.json": {
+      "bytes": 2153,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/REUSED-SOURCES.json",
+      "sha256": "eb2f82e024483ea1c006fa16aae3553cc3511a35ceddf0562567ea23d1ee7b67"
+    },
+    "packet/ROOT-GO.json": {
+      "bytes": 568,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/ROOT-GO.json",
+      "sha256": "7764a6160264daeb4ad4bf251e4d0d3d07bb32d25439cf3acbba8f99f259a19f"
+    },
+    "packet/ROOT-GO.template.json": {
+      "bytes": 584,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/ROOT-GO.template.json",
+      "sha256": "0a46dd7d6fd523fb469961322049a8f60acb85a32f99d66e36b4f7198043b0c7"
+    },
+    "packet/SOURCE-ONLY-DELTA.patch": {
+      "bytes": 10617,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/SOURCE-ONLY-DELTA.patch",
+      "sha256": "e1d1e5b9b330d3cc6f88bb2bb9be29a867bda0df78ccb39cf0c3e14dca1f31bf"
+    },
+    "packet/SOURCE-ONLY-SEAL.json": {
+      "bytes": 10625,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/SOURCE-ONLY-SEAL.json",
+      "sha256": "1e9bb57eb888c032b2c47259d435180fc0dca21460b3f1278135787b710fb9bc"
+    },
+    "packet/SOURCE-PREFLIGHT.json": {
+      "bytes": 88983,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/SOURCE-PREFLIGHT.json",
+      "sha256": "8ea119dd0ed22601e42309d72f196580473f9713ddb09991aa88b590224962be"
+    },
+    "packet/SOURCE.json": {
+      "bytes": 10466,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/SOURCE.json",
+      "sha256": "60ba933e7508f1bb0b642a5f0f9923a871e9ae3b6ac99bf1ed1cace21369f326"
+    },
+    "packet/bind_source.py": {
+      "bytes": 586,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/bind_source.py",
+      "sha256": "5b883da7b83e2a88918e9ecda3011dc1b7ef6fcfa34cd6870c178945a942a384"
+    },
+    "packet/build_release.py": {
+      "bytes": 2724,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/build_release.py",
+      "sha256": "019721222496afee79075815c825195fa0fac11a574997c635c52c5904c70949"
+    },
+    "packet/checks/BUILD-RECEIPT.json": {
+      "bytes": 85077,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/checks/BUILD-RECEIPT.json",
+      "sha256": "102da82b8d975d4ba08b18cf20a11cf1c097ca8db95c65734928b07051f97596"
+    },
+    "packet/checks/build/started.json": {
+      "bytes": 924,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/checks/build/started.json",
+      "sha256": "98e27fc2b47ced1e25fafc3990c0dade676b08df7dd9bf55c91bf6eb760cf865"
+    },
+    "packet/checks/build/stderr": {
+      "bytes": 1094,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/checks/build/stderr",
+      "sha256": "627d2b690cf08a27f011c73b2affba4a1da28bb484a827f5a8a9b4b18084a1d7"
+    },
+    "packet/checks/build/stdout": {
+      "bytes": 0,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/checks/build/stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "packet/checks/source-bind-001/RESULT.json": {
+      "bytes": 824,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/checks/source-bind-001/RESULT.json",
+      "sha256": "44b8b05bf623ee77d15c4b489ee191eb4bde71dd0a2a718aaacdd0c44e4d27b7"
+    },
+    "packet/checks/source-bind-001/STARTED.json": {
+      "bytes": 1252,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/checks/source-bind-001/STARTED.json",
+      "sha256": "5e878154f96042fd19d6ae194fbbf8876512c6ed44de63fe6e0ec8d53c17b902"
+    },
+    "packet/checks/source-bind-001/stderr.log": {
+      "bytes": 0,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/checks/source-bind-001/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "packet/checks/source-bind-001/stdout.log": {
+      "bytes": 244,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/checks/source-bind-001/stdout.log",
+      "sha256": "3c8044f7e76766864e3f5559a78320ff4608a9cc8daeb76ee56c4cb397d7ded6"
+    },
+    "packet/common.py": {
+      "bytes": 17156,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/common.py",
+      "sha256": "bcb62dfdd456dcb98756067fa873ecefb1d2953b88a48b9befc0a22fcd6d51cf"
+    },
+    "packet/compiler_inputs.py": {
+      "bytes": 2318,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/compiler_inputs.py",
+      "sha256": "b99a7ba77d12e13f6459ce6d03824d8e7dc2349e90d209f2481488e8b158c63f"
+    },
+    "packet/consumer/bindings.py": {
+      "bytes": 138,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/consumer/bindings.py",
+      "sha256": "ba8499944ee4d63b55fcc86de997b9823cf5a949fdb118491569c5dbfcd69a4f"
+    },
+    "packet/consumer/capsule_geometry.py": {
+      "bytes": 11717,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/consumer/capsule_geometry.py",
+      "sha256": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b"
+    },
+    "packet/consumer/decimal_oracle.py": {
+      "bytes": 2959,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/consumer/decimal_oracle.py",
+      "sha256": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d"
+    },
+    "packet/consumer/evaluator.py": {
+      "bytes": 33339,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/consumer/evaluator.py",
+      "sha256": "bc981d2333b4e02fb95c8fa83bb2b2a48d8d0486ae65594bf9173e935513c91b"
+    },
+    "packet/consumer/geometry_math.py": {
+      "bytes": 1443,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/consumer/geometry_math.py",
+      "sha256": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40"
+    },
+    "packet/consumer/metadata_adapter.py": {
+      "bytes": 2594,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/consumer/metadata_adapter.py",
+      "sha256": "f7aea5b61bafda604cb9b2112f40c83285497300c41c4d02b1344339fe00386e"
+    },
+    "packet/consumer/metrics.py": {
+      "bytes": 18354,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/consumer/metrics.py",
+      "sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610"
+    },
+    "packet/consumer/static_geometry.py": {
+      "bytes": 2388,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/consumer/static_geometry.py",
+      "sha256": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34"
+    },
+    "packet/controller.py": {
+      "bytes": 6465,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/controller.py",
+      "sha256": "353192e160e999a94cede0e2c8bca62e55c012da3e684004c1716a042988fd35"
+    },
+    "packet/evidence/COMPARISON-FINAL-MANIFEST.json": {
+      "bytes": 6980,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/evidence/COMPARISON-FINAL-MANIFEST.json",
+      "sha256": "820f5a5ca9c20317712c705325740834b00468b75ed24450822f3b111b76edc1"
+    },
+    "packet/evidence/COMPARISON-FINDINGS.md": {
+      "bytes": 2715,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/evidence/COMPARISON-FINDINGS.md",
+      "sha256": "6ae81e3b928f0df5cda115b9a7d630bf3786f1bc35d3c848d259ca074b4ca790"
+    },
+    "packet/evidence/COMPARISON-RECEIPT.json": {
+      "bytes": 2127,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/evidence/COMPARISON-RECEIPT.json",
+      "sha256": "3b8edc74241ab44ff6eeaafff7d5f0d1c93624b4732daadd49e9e659e2226ac1"
+    },
+    "packet/evidence/FOCUSED-CHECK-RECEIPT.json": {
+      "bytes": 3722,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/evidence/FOCUSED-CHECK-RECEIPT.json",
+      "sha256": "58723b2e9b74d61c9214daedd54adf74d876e908b47034e7a4cdb6607001d7bf"
+    },
+    "packet/evidence/FOCUSED-FINAL-MANIFEST.json": {
+      "bytes": 9779,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/evidence/FOCUSED-FINAL-MANIFEST.json",
+      "sha256": "91784599fc80139dd94f4053193adb2123560900c058864d98faea6ef1c03d1a"
+    },
+    "packet/evidence/FOCUSED-FINDINGS.md": {
+      "bytes": 4261,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/evidence/FOCUSED-FINDINGS.md",
+      "sha256": "25879c74c58bad6c436b63a1e78b9bd5bdea44f0fda0fcbd6c12f28a232639b7"
+    },
+    "packet/evidence/FULL-FMT-RESULT.json": {
+      "bytes": 1327,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/evidence/FULL-FMT-RESULT.json",
+      "sha256": "8f01319596e531a9a0d8bd301fd47aa9245fcd9db7128f5639f3e082242fca6e"
+    },
+    "packet/evidence/INDEPENDENT-SOURCE-REVIEW.json": {
+      "bytes": 5225,
+      "mode": 292,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/evidence/INDEPENDENT-SOURCE-REVIEW.json",
+      "sha256": "f246ebbc5459f61f9881430080a12448fd5f27a09f268415a8af08ab8e20c360"
+    },
+    "packet/evidence/INDEPENDENT-SOURCE-REVIEW.md": {
+      "bytes": 4535,
+      "mode": 292,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/evidence/INDEPENDENT-SOURCE-REVIEW.md",
+      "sha256": "7827baee5a48c58921e69eea81b2c437f3a6672e9adf76050444a50f98695595"
+    },
+    "packet/evidence/ORIGINAL8-GUARD.json": {
+      "bytes": 930,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/evidence/ORIGINAL8-GUARD.json",
+      "sha256": "d2395f6f50922ea764f9caba74ff3c65881fcb5d42f97a04deff0b276e4d1ca7"
+    },
+    "packet/evidence/ROOT-SOURCE-BINDING.json": {
+      "bytes": 11099,
+      "mode": 292,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/evidence/ROOT-SOURCE-BINDING.json",
+      "sha256": "c1a801edb6593a5a4121a687d0b5152fd06f3624593720dda6f87df9c86576e5"
+    },
+    "packet/evidence/WORKSPACE-GATE-START-FREEZE.json": {
+      "bytes": 38316,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/evidence/WORKSPACE-GATE-START-FREEZE.json",
+      "sha256": "b609c92ae88021e87dacbf1960b20e5020d0dcf00d733b0a1af4799535aac67c"
+    },
+    "packet/evidence/WORKSPACE-GATES-FINAL-MANIFEST.json": {
+      "bytes": 6574,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/evidence/WORKSPACE-GATES-FINAL-MANIFEST.json",
+      "sha256": "e883c9d3ef1914fb62836c317327840edc0768c861e834ff2afe8eaed886dd15"
+    },
+    "packet/evidence/WORKSPACE-GATES-RESULT.json": {
+      "bytes": 33939,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/evidence/WORKSPACE-GATES-RESULT.json",
+      "sha256": "4994019f808f070e89863ae2fc3d07aff6930f4240de53cc44162b600d6e8691"
+    },
+    "packet/expected/approved-metadata.json": {
+      "bytes": 590865,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/expected/approved-metadata.json",
+      "sha256": "8dfb77d6d4234b0997683e98a0bbd76105d2274aba0f6eb36dc90e671d0589ff"
+    },
+    "packet/freeze_prep.py": {
+      "bytes": 3821,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/freeze_prep.py",
+      "sha256": "691cd98517a0ce43a8cd60c0a330c73b8c25fe53620040ccf81308353306688b"
+    },
+    "packet/inputs/base.weftforge": {
+      "bytes": 11808,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/inputs/base.weftforge",
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7"
+    },
+    "packet/preflight-base/initialized-state.json": {
+      "bytes": 75440,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/preflight-base/initialized-state.json",
+      "sha256": "dab78f774cd56342d7822eba55f3d7ada6612c90cfddf2b2c4cd425060138afc"
+    },
+    "packet/preflight-base/rest-metadata.json": {
+      "bytes": 590840,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/preflight-base/rest-metadata.json",
+      "sha256": "90128ed174829cd118e1d638ccba0fa501003889e85b5d70d214b4884f14aec7"
+    },
+    "packet/preflight-base/stage-000.obj": {
+      "bytes": 154152,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/preflight-base/stage-000.obj",
+      "sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce"
+    },
+    "packet/producer/Cargo.lock": {
+      "bytes": 4086,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/producer/Cargo.lock",
+      "sha256": "6acc2df8d38cf70047cbe22ca2875a38a0fd204a63452edb2d42b4ce14c1ec89"
+    },
+    "packet/producer/Cargo.toml": {
+      "bytes": 297,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/producer/Cargo.toml",
+      "sha256": "bdbf9b113ba7bb05e968b25fbfc71a30317bfd66aa090fb809e2f551070ff5e8"
+    },
+    "packet/producer/src/main.rs": {
+      "bytes": 6969,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/producer/src/main.rs",
+      "sha256": "87b15646929d7ed76b03970fe84626176eb6cef72207f5f75a247ff649907a0b"
+    },
+    "packet/resources.py": {
+      "bytes": 10575,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/resources.py",
+      "sha256": "4df98ac4595d45a71059fb12ad5c66da7b4fdbf9c1dfe7a0b74144f17f606987"
+    },
+    "packet/runs/base/analysis.json": {
+      "bytes": 997398,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runs/base/analysis.json",
+      "sha256": "b1cdb20eeef60d2ff8171f763391c5ef9125ca206a1c8bd0ec09225c855bb3c1"
+    },
+    "packet/runs/base/completed-case.json": {
+      "bytes": 728,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runs/base/completed-case.json",
+      "sha256": "d1ca82994ae17dfaaf0ebebb933b32b9c467b7624416ff11dce784104757bdd0"
+    },
+    "packet/runs/base/initialized-state.json": {
+      "bytes": 75439,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runs/base/initialized-state.json",
+      "sha256": "2482770fee405c4f6a4fb94e77251f0056b41505b7678db1cd11790066e51ee9"
+    },
+    "packet/runs/base/rest-metadata.json": {
+      "bytes": 590840,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runs/base/rest-metadata.json",
+      "sha256": "90128ed174829cd118e1d638ccba0fa501003889e85b5d70d214b4884f14aec7"
+    },
+    "packet/runs/base/stage-000.obj": {
+      "bytes": 154152,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runs/base/stage-000.obj",
+      "sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce"
+    },
+    "packet/runs/base/stage-060.obj": {
+      "bytes": 154808,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runs/base/stage-060.obj",
+      "sha256": "8571049d663fab8bb368fed631f2e7c1ff79ddd6329462490135d64ca72a907f"
+    },
+    "packet/runs/base/stage-180.obj": {
+      "bytes": 154807,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runs/base/stage-180.obj",
+      "sha256": "ba986d95d0f1cb309fb24b25366f82706dab8001f6acf34ba0209646e5b38eaa"
+    },
+    "packet/runs/base/steps.jsonl": {
+      "bytes": 111647,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runs/base/steps.jsonl",
+      "sha256": "1755993f856cf411cc56f03ba2130b997f504e47664b68d8a420987bbc1af3f2"
+    },
+    "packet/runs/base/trajectory.jsonl": {
+      "bytes": 15444376,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runs/base/trajectory.jsonl",
+      "sha256": "7bdc1f8cc726e6b375963ab78ea735918c5019b91e45f0617f71639973f6704a"
+    },
+    "packet/runtime/FINAL-NUMERICAL.json": {
+      "bytes": 5571,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/FINAL-NUMERICAL.json",
+      "sha256": "752486de9f0f86b2d59b9f540db62e50a1db61f80e35c9b62426611b8bbb7c4d"
+    },
+    "packet/runtime/SESSION.json": {
+      "bytes": 83342,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/SESSION.json",
+      "sha256": "390ade2e42f4876e1e206674ce2367428a703dbf23994d61c9e49edfd97cf48b"
+    },
+    "packet/runtime/SUPERVISOR.json": {
+      "bytes": 6833,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/SUPERVISOR.json",
+      "sha256": "c3dc2494b7457fc9d3cac3c836d870de2ee3e2045e6d1aefe197dcf8cc9df660"
+    },
+    "packet/runtime/analysis-stage.json": {
+      "bytes": 1111,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/analysis-stage.json",
+      "sha256": "325b422a57430387e581445be6dd729ee6fff7f86ed17d096217f21432731f29"
+    },
+    "packet/runtime/analysis-started.json": {
+      "bytes": 877,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/analysis-started.json",
+      "sha256": "5be039068ccefafd419d87321e88f47d7647fe8657a39706f22f57cfd314ecd4"
+    },
+    "packet/runtime/analysis-written.json": {
+      "bytes": 226,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/analysis-written.json",
+      "sha256": "f71b70d55ef96d20d2b5c775662bb07a12d773815b136e1ef282d87f140ec4f5"
+    },
+    "packet/runtime/analysis.stderr": {
+      "bytes": 0,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/analysis.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "packet/runtime/analysis.stdout": {
+      "bytes": 0,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/analysis.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "packet/runtime/finalization-stage.json": {
+      "bytes": 1111,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/finalization-stage.json",
+      "sha256": "102f3b1b513a1bd18fb21775009aa448a5dc577b1df64eb7bb180392849d8b81"
+    },
+    "packet/runtime/finalization-started.json": {
+      "bytes": 878,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/finalization-started.json",
+      "sha256": "499b2258dcaa34287845804bd9fd066199fd824d470a5a9e368f968c79f727e6"
+    },
+    "packet/runtime/finalization.stderr": {
+      "bytes": 0,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/finalization.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "packet/runtime/finalization.stdout": {
+      "bytes": 0,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/finalization.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "packet/runtime/finalized.json": {
+      "bytes": 217,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/finalized.json",
+      "sha256": "0f2043aae1b897c7d8deedf97ae0403d4de20bab6d2fccba50deafc19a6ac0e5"
+    },
+    "packet/runtime/init-only-stage.json": {
+      "bytes": 1018,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/init-only-stage.json",
+      "sha256": "798981cba1ff186435c1cadd644c740084161ae696cd78d81616bd856e104e41"
+    },
+    "packet/runtime/init-only-started.json": {
+      "bytes": 789,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/init-only-started.json",
+      "sha256": "867d03f0ad58b8121483fd03374a8442dbe8f20abe99d37fa32a2437bac57c5c"
+    },
+    "packet/runtime/init-only.stderr": {
+      "bytes": 0,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/init-only.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "packet/runtime/init-only.stdout": {
+      "bytes": 41,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/init-only.stdout",
+      "sha256": "38dde89a453487e736364cec15a6e47f005fcc06d8c52c1b9d715772322279d2"
+    },
+    "packet/runtime/initialized-original-gate.json": {
+      "bytes": 821,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/initialized-original-gate.json",
+      "sha256": "57f54cf18712283403c533f9d68cd890d44467df0849877857aa4ed69a0b990c"
+    },
+    "packet/runtime/metadata-stage.json": {
+      "bytes": 1109,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/metadata-stage.json",
+      "sha256": "598c0f8deff2d34a981ff02e9fbf6a2ec97ea684af57b6eb1c9e977c53c9e9d4"
+    },
+    "packet/runtime/metadata-started.json": {
+      "bytes": 878,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/metadata-started.json",
+      "sha256": "d56e9b2492ae1e02a5c0188f731149c38ddf5172db469d0e24011268f17b70a1"
+    },
+    "packet/runtime/metadata.stderr": {
+      "bytes": 0,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/metadata.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "packet/runtime/metadata.stdout": {
+      "bytes": 0,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/metadata.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "packet/runtime/producer-receipt.json": {
+      "bytes": 2520,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/producer-receipt.json",
+      "sha256": "1c0135e4f2dc69284255b7883fd317791c7e4553e6aeab793aec0b79e310a235"
+    },
+    "packet/runtime/producer-stage.json": {
+      "bytes": 1052,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/producer-stage.json",
+      "sha256": "e4c932b87ca063908ee248a9e7086904b5d391e804699ef1b4f5f9f45f58f9af"
+    },
+    "packet/runtime/producer-started.json": {
+      "bytes": 819,
+      "mode": 384,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/producer-started.json",
+      "sha256": "37e379d1a36457a70e0e50bfdc539dc213fec24aa5261c08e6893d0cfea19c9a"
+    },
+    "packet/runtime/producer.stderr": {
+      "bytes": 1338,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/producer.stderr",
+      "sha256": "a329e5440ec1faa2bf68daa4907e9f450d1ad7da6fffd7e3eab6b2be2347fc62"
+    },
+    "packet/runtime/producer.stdout": {
+      "bytes": 0,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/runtime/producer.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "packet/source_inputs.py": {
+      "bytes": 7292,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/source_inputs.py",
+      "sha256": "0574f9247f06d01315de7c02d1970ffed71a827b22d15998144049b632aa137d"
+    },
+    "packet/test_toolchain_env.py": {
+      "bytes": 2316,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/test_toolchain_env.py",
+      "sha256": "c48173c6c67146d41768f3788000094a720805f755089a249210dc05198faecd"
+    },
+    "packet/worker.py": {
+      "bytes": 7339,
+      "mode": 420,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/worker.py",
+      "sha256": "bd2958bcb03d3c54ffb44b9fa5c29cbb80b52ff568011d9c6a0ca85ddd5e4eb2"
+    }
+  },
+  "source_commit": "9d4b629c077f06c348f6615fe90df7bbeacedb24",
+  "status": "COMPLETE_STRICT_QUALITY_FAILURE"
+}

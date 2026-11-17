@@ -1,0 +1,77 @@
+{
+  "actions": {
+    "UI_network_push": 0,
+    "build_test_verify_only_or_toolchain_invocations": 0,
+    "model_init_step_analysis": 0,
+    "packet_imports_or_helper_invocations": 0
+  },
+  "actual_binary": {
+    "path": "target/release/harbor-coupled-producer",
+    "sha256": "17d8d1e5b624b3edb68c6c7e0b9fb8b20f85ac3e3c38cb34b8e5ffd419b5c989",
+    "size_bytes": 1331760
+  },
+  "checks": {
+    "actual_authorized_build_receipt_caps_output_binary_bindings_exact": {
+      "elapsed_seconds": 26.710474958992563,
+      "peak_rss_bytes": 393379840,
+      "pid": 10435,
+      "retained_build_output_bytes": 2018
+    },
+    "actual_own_release_binary_sha_size_regular_executable_MachO64arm64": true,
+    "all19_code_paths_unchanged_since_source_review": true,
+    "candidate_clean_input_gold_and_closed_predecessor_closure_unchanged": true,
+    "exact13key_ROOT_GO_schema_no_actual_GO_or_numerical_attempt": [
+      "status",
+      "explicit_root_review_and_go",
+      "experiment",
+      "freeze_sha256",
+      "source_commit",
+      "cases",
+      "build_binding_sha256",
+      "init_only_initializations",
+      "actual_run_initializations",
+      "actual_dynamics_runs",
+      "init_only_step_calls",
+      "retries",
+      "continuations"
+    ],
+    "external_outer_two_namespace_delta_and_AST_only_no_import": true,
+    "final_freeze61_file_hashes62_total_and5_repository_bindings_exact": true,
+    "final_protocol_only_materializes_reviewed_bindings_argv_no_scope_delta": true,
+    "prior19_source_review_receipt_reused_without_rerun": true
+  },
+  "final_input_hashes": {
+    "FREEZE.json": "5ad83bba74240553cee9d7b7e5d05ce82ee9e748e4b084f14ab9d02fdb9f823c",
+    "PROTOCOL.json": "5e4cf661bcb686e9d9e75275367ceb63590e40cd15a39b412872c43130b7b769",
+    "SOURCE-ONLY-SEAL.json": "1e9bb57eb888c032b2c47259d435180fc0dca21460b3f1278135787b710fb9bc",
+    "SOURCE-PREFLIGHT.json": "8ea119dd0ed22601e42309d72f196580473f9713ddb09991aa88b590224962be",
+    "checks/BUILD-RECEIPT.json": "102da82b8d975d4ba08b18cf20a11cf1c097ca8db95c65734928b07051f97596"
+  },
+  "frozen_packet": ".local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117",
+  "must_fix": [
+    {
+      "concrete_case": {
+        "current_positive_verdict": true,
+        "deadline_seconds": 420.0,
+        "final_volume_guard_finished_seconds": 420.01,
+        "required_positive_verdict": false,
+        "sampled_closed_seconds": 419.99,
+        "volume_within_cap": true
+      },
+      "id": "R1",
+      "lines": [
+        103,
+        106
+      ],
+      "minimum_fix": "Compute final volume after ROOT-RESULT persistence, then sample closed; gate and record that measured volume and closed time.",
+      "path": ".local/material-polling-full-case-root-20261117/supervise.py",
+      "problem": "Final output-volume traversal occurs after the final monotonic timestamp; a guard that crosses the420s deadline can retain a positive terminal/exit verdict.",
+      "recheck": "Only the new external supervisor correction; final packet61 and binary stay unchanged."
+    }
+  ],
+  "prior19_source_review_receipt_sha256": "fb6ca4a3f41921664f772a502f1371a2ee6ca141fbadcdbaf31515f21e2e17fc",
+  "reviewed_at_utc": "2026-11-17T06:47:36.115082+00:00",
+  "reviewed_outer_sha256": "b34144b5ee7c85cac600ade25e184c49a54d7e0a2c30a48d0a92c009c9304831",
+  "scope": "One original Harbor base numerical case; strict quality remains unproven; no numerical authorization issued.",
+  "status": "NOT_READY_FOR_NUMERICAL_GO_FIX_R1"
+}

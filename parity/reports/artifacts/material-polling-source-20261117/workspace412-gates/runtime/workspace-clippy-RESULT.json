@@ -1,0 +1,50 @@
+{
+  "all_source88_metadata59_original8_exact": true,
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "clippy",
+    "--workspace",
+    "--all-targets",
+    "--locked",
+    "--offline",
+    "--",
+    "-D",
+    "warnings"
+  ],
+  "end_monotonic_seconds": 1015816.892233666,
+  "exit_code": 0,
+  "name": "workspace-clippy",
+  "peak_rss_bytes": 499351552,
+  "pid": 70912,
+  "post_guard": {
+    "all_source88_metadata59_original8_exact": true,
+    "clean_exact_commit": true,
+    "tools_configs_compiler_inventory_exact": true
+  },
+  "pre_guard": {
+    "all_source88_metadata59_original8_exact": true,
+    "clean_exact_commit": true,
+    "tools_configs_compiler_inventory_exact": true
+  },
+  "process_group": 70912,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.12688933301251382,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 1336,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 652460032,
+  "stop_reason": null,
+  "terminal_phase_checks": {
+    "deadline": 1016588.67987425,
+    "output_bytes": 66184,
+    "output_cap_bytes": 16777216,
+    "reserve_bytes": 262144
+  }
+}

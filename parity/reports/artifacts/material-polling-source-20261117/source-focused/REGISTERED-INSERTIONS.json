@@ -1,0 +1,42 @@
+{
+  "Armijo_cap": 16,
+  "PCG_cap": 32,
+  "PCG_residual": 1e-12,
+  "base_commit": "52099b6f6b7aff43b3e9ada8bad4f830cb987134",
+  "constraints_candidate_sha256": "a98e065f8d3cb83bc01b7c0e11dad3241d82205163abd1d70e6c257437473637",
+  "constraints_original_sha256": "975d043dba7b67a8546d854cec7c96577353c4111490579d18a97dc7542bbf11",
+  "eight_face_oracle_source_sha256": "6d696c240d4bc251cf4d98a929baf72c7a3ef6e21b6b78d460696c465fbc30f9",
+  "eight_face_oracle_unchanged": true,
+  "insertions": [
+    {
+      "occurrences": 1,
+      "text": "use std::cell::Cell;\n"
+    },
+    {
+      "occurrences": 1,
+      "text": "fn material_cancellation(cancelled: &impl Fn() -> bool) -> impl Fn() -> bool + '_ {\n    let remaining = Cell::new(63_u8);\n    move || {\n        let left = remaining.get();\n        if left == 0 {\n            remaining.set(63);\n            cancelled()\n        } else {\n            remaining.set(left - 1);\n            false\n        }\n    }\n}\n\n"
+    },
+    {
+      "occurrences": 1,
+      "text": "    check_cancel(cancelled)?;\n    let original_cancelled = cancelled;\n    let material_cancelled = material_cancellation(original_cancelled);\n    let cancelled = &material_cancelled;\n"
+    },
+    {
+      "occurrences": 2,
+      "text": "        check_cancel(original_cancelled)?;\n"
+    },
+    {
+      "occurrences": 1,
+      "text": "            check_cancel(original_cancelled)?;\n"
+    },
+    {
+      "occurrences": 1,
+      "text": "    check_cancel(original_cancelled)?;\n"
+    },
+    {
+      "occurrences": 1,
+      "text": "#[cfg(test)]\nmod material_cancellation_tests {\n    use super::*;\n\n    #[test]\n    fn material_cancellation_polls_after_at_most_63_skipped_checkpoints() {\n        let checkpoint = Cell::new(0);\n        let polls = Cell::new(0);\n        let previous = Cell::new(0);\n        let callback = || {\n            assert_eq!(checkpoint.get() - previous.get(), 64);\n            previous.set(checkpoint.get());\n            polls.set(polls.get() + 1);\n            false\n        };\n        let cancelled = material_cancellation(&callback);\n        for site in 1..=64 * 5 + 63 {\n            checkpoint.set(site);\n            assert!(!cancelled());\n        }\n        assert_eq!(polls.get(), 5);\n    }\n}\n\n"
+    }
+  ],
+  "removal_restores_exact_original_bytes": true,
+  "successful_exits": "All four directly check original callback; accepted branch checks before both x/p copies, then only Ok"
+}

@@ -1,0 +1,17 @@
+{
+  "disk_checks": "Before child launch, every monitor loop, and after terminal wait4 before acceptance. Any sample below floor stops negatively; gaps are recorded.",
+  "new_resources_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+  "no_extra_test_or_child_invocations": true,
+  "original_resources_sha256": "f0af9e1665da6246a89e13e7fd947cbfbaef68cc19f6827ec32572c323be0240",
+  "registered_insertions": [
+    "    disk_observation = {\"path\": str(cwd), \"stop_below_available_bytes\": disk_floor,\n                        \"samples\": 0, \"minimum_available_bytes\": None, \"last_available_bytes\": None,\n                        \"max_snapshot_gap_seconds\": 0.}\n    result[\"disk_observation\"] = disk_observation\n    last_disk_snapshot = None\n    class DiskSpaceLow(RuntimeError):\n        pass\n    def disk_below_floor():\n        nonlocal last_disk_snapshot\n        if disk_floor is None:\n            return False\n        status = os.statvfs(cwd)\n        available = int(status.f_bavail) * int(status.f_frsize)\n        now = time.monotonic()\n        if last_disk_snapshot is not None:\n            disk_observation[\"max_snapshot_gap_seconds\"] = max(now-last_disk_snapshot, disk_observation[\"max_snapshot_gap_seconds\"])\n        last_disk_snapshot = now\n        disk_observation[\"samples\"] += 1\n        disk_observation[\"last_available_bytes\"] = available\n        previous = disk_observation[\"minimum_available_bytes\"]\n        disk_observation[\"minimum_available_bytes\"] = available if previous is None else min(previous, available)\n        return available < disk_floor\n",
+    "        if disk_below_floor():\n            raise DiskSpaceLow()\n",
+    "                if disk_below_floor():\n                    result[\"stop_reason\"] = \"disk_space_below_floor\"\n                    break\n",
+    "    except DiskSpaceLow:\n        result[\"stop_reason\"] = \"disk_space_below_floor_before_launch\"\n",
+    "    try:\n        if disk_below_floor() and not result[\"stop_reason\"]:\n            result[\"stop_reason\"] = \"terminal_disk_space_below_floor\"\n    except OSError as error:\n        if not result[\"stop_reason\"]:\n            result[\"stop_reason\"] = f\"disk_observation_unavailable:{type(error).__name__}\"\n"
+  ],
+  "registered_removal_restores_exact_original_resources": true,
+  "signature_after": "on_start=None, child_env=None, disk_floor=None):",
+  "signature_before": "on_start=None, child_env=None):",
+  "terminal_wait4_RSS_wall_output_guards_unchanged": true
+}

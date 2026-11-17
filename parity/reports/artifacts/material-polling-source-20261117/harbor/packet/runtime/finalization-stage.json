@@ -1,0 +1,35 @@
+{
+  "argv": [
+    "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+    "-B",
+    "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/worker.py",
+    "finalize",
+    "--deadline",
+    "1021072.927959916"
+  ],
+  "end_monotonic_seconds": 1020949.610031125,
+  "exit_code": 0,
+  "peak_rss_bytes": 35487744,
+  "pid": 34803,
+  "process_group": 34803,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.06381449999753386,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 35,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 35487744,
+  "stop_reason": null,
+  "terminal_phase_checks": {
+    "deadline": 1021072.927959916,
+    "output_bytes": 19209907,
+    "output_cap_bytes": 268435456,
+    "reserve_bytes": 131072
+  }
+}

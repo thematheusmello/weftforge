@@ -1,0 +1,688 @@
+{
+  "packet_sealed_inputs": {
+    "BUILD-GO.template.json": "452a94dfd8b8d83654c1f03f55fe4cca1b63819d3469a099c757b89c0f92068f",
+    "CANDIDATE.json": "6555b091c43ffa0a6fe3c84f1dd643f377978a5be453e092d8d8731431e24bc2",
+    "COMMANDS.md": "8e5e5f4502f163e393ddfa1e9ea97b221be46043f1c57a899a363c9696ba1200",
+    "DELTA.json": "df8b8330ce438d8fda7c6400f142a56021115ef852adbd1eaad669a04d7123b8",
+    "DRAFT-FREEZE.json": "406bcceb55da3d825d8a86f16972e70d319c2fd49ad7cf89e5a30731d1944c67",
+    "DRAFT-ORIGIN.json": "77c0511a23e55ff4cc6d1d9c3a554c32eab9299e71f450f1271b6425c12f92b0",
+    "HANDOFF.md": "0b0243990fedc3bff6e0606a9187f24b40d7eae22514a65159b3f980c5970ea6",
+    "INSTALL-RECEIPT.json": "d0041c0875967007576d043c8d4c5cf028cee5149ffd84d4cd9c3132ad1b8c4a",
+    "PRESERVATION.json": "e66a8b37b3ff8ad1fdabc28c1bc14faa83027b61fa968c85ad29d8ecb9f7a113",
+    "PROTOCOL-DRAFT.json": "c87d0634aefb5f9878760f188d6cf43cbf882ea0e8e140f4ba5af1710f20401f",
+    "REUSED-SOURCES.json": "eb2f82e024483ea1c006fa16aae3553cc3511a35ceddf0562567ea23d1ee7b67",
+    "ROOT-GO.template.json": "0a46dd7d6fd523fb469961322049a8f60acb85a32f99d66e36b4f7198043b0c7",
+    "SOURCE-ONLY-DELTA.patch": "e1d1e5b9b330d3cc6f88bb2bb9be29a867bda0df78ccb39cf0c3e14dca1f31bf",
+    "SOURCE-PREFLIGHT.json": "8ea119dd0ed22601e42309d72f196580473f9713ddb09991aa88b590224962be",
+    "SOURCE.json": "60ba933e7508f1bb0b642a5f0f9923a871e9ae3b6ac99bf1ed1cace21369f326",
+    "bind_source.py": "5b883da7b83e2a88918e9ecda3011dc1b7ef6fcfa34cd6870c178945a942a384",
+    "build_release.py": "019721222496afee79075815c825195fa0fac11a574997c635c52c5904c70949",
+    "checks/source-bind-001/RESULT.json": "44b8b05bf623ee77d15c4b489ee191eb4bde71dd0a2a718aaacdd0c44e4d27b7",
+    "checks/source-bind-001/STARTED.json": "5e878154f96042fd19d6ae194fbbf8876512c6ed44de63fe6e0ec8d53c17b902",
+    "checks/source-bind-001/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "checks/source-bind-001/stdout.log": "3c8044f7e76766864e3f5559a78320ff4608a9cc8daeb76ee56c4cb397d7ded6",
+    "common.py": "bcb62dfdd456dcb98756067fa873ecefb1d2953b88a48b9befc0a22fcd6d51cf",
+    "compiler_inputs.py": "b99a7ba77d12e13f6459ce6d03824d8e7dc2349e90d209f2481488e8b158c63f",
+    "consumer/bindings.py": "ba8499944ee4d63b55fcc86de997b9823cf5a949fdb118491569c5dbfcd69a4f",
+    "consumer/capsule_geometry.py": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b",
+    "consumer/decimal_oracle.py": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d",
+    "consumer/evaluator.py": "bc981d2333b4e02fb95c8fa83bb2b2a48d8d0486ae65594bf9173e935513c91b",
+    "consumer/geometry_math.py": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40",
+    "consumer/metadata_adapter.py": "f7aea5b61bafda604cb9b2112f40c83285497300c41c4d02b1344339fe00386e",
+    "consumer/metrics.py": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+    "consumer/static_geometry.py": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34",
+    "controller.py": "353192e160e999a94cede0e2c8bca62e55c012da3e684004c1716a042988fd35",
+    "evidence/COMPARISON-FINAL-MANIFEST.json": "820f5a5ca9c20317712c705325740834b00468b75ed24450822f3b111b76edc1",
+    "evidence/COMPARISON-FINDINGS.md": "6ae81e3b928f0df5cda115b9a7d630bf3786f1bc35d3c848d259ca074b4ca790",
+    "evidence/COMPARISON-RECEIPT.json": "3b8edc74241ab44ff6eeaafff7d5f0d1c93624b4732daadd49e9e659e2226ac1",
+    "evidence/FOCUSED-CHECK-RECEIPT.json": "58723b2e9b74d61c9214daedd54adf74d876e908b47034e7a4cdb6607001d7bf",
+    "evidence/FOCUSED-FINAL-MANIFEST.json": "91784599fc80139dd94f4053193adb2123560900c058864d98faea6ef1c03d1a",
+    "evidence/FOCUSED-FINDINGS.md": "25879c74c58bad6c436b63a1e78b9bd5bdea44f0fda0fcbd6c12f28a232639b7",
+    "evidence/FULL-FMT-RESULT.json": "8f01319596e531a9a0d8bd301fd47aa9245fcd9db7128f5639f3e082242fca6e",
+    "evidence/INDEPENDENT-SOURCE-REVIEW.json": "f246ebbc5459f61f9881430080a12448fd5f27a09f268415a8af08ab8e20c360",
+    "evidence/INDEPENDENT-SOURCE-REVIEW.md": "7827baee5a48c58921e69eea81b2c437f3a6672e9adf76050444a50f98695595",
+    "evidence/ORIGINAL8-GUARD.json": "d2395f6f50922ea764f9caba74ff3c65881fcb5d42f97a04deff0b276e4d1ca7",
+    "evidence/ROOT-SOURCE-BINDING.json": "c1a801edb6593a5a4121a687d0b5152fd06f3624593720dda6f87df9c86576e5",
+    "evidence/WORKSPACE-GATE-START-FREEZE.json": "b609c92ae88021e87dacbf1960b20e5020d0dcf00d733b0a1af4799535aac67c",
+    "evidence/WORKSPACE-GATES-FINAL-MANIFEST.json": "e883c9d3ef1914fb62836c317327840edc0768c861e834ff2afe8eaed886dd15",
+    "evidence/WORKSPACE-GATES-RESULT.json": "4994019f808f070e89863ae2fc3d07aff6930f4240de53cc44162b600d6e8691",
+    "freeze_prep.py": "691cd98517a0ce43a8cd60c0a330c73b8c25fe53620040ccf81308353306688b",
+    "producer/Cargo.lock": "6acc2df8d38cf70047cbe22ca2875a38a0fd204a63452edb2d42b4ce14c1ec89",
+    "producer/Cargo.toml": "bdbf9b113ba7bb05e968b25fbfc71a30317bfd66aa090fb809e2f551070ff5e8",
+    "producer/src/main.rs": "87b15646929d7ed76b03970fe84626176eb6cef72207f5f75a247ff649907a0b",
+    "resources.py": "4df98ac4595d45a71059fb12ad5c66da7b4fdbf9c1dfe7a0b74144f17f606987",
+    "source_inputs.py": "0574f9247f06d01315de7c02d1970ffed71a827b22d15998144049b632aa137d",
+    "test_toolchain_env.py": "c48173c6c67146d41768f3788000094a720805f755089a249210dc05198faecd",
+    "worker.py": "bd2958bcb03d3c54ffb44b9fa5c29cbb80b52ff568011d9c6a0ca85ddd5e4eb2"
+  },
+  "protected_candidate": {
+    "<ROOT>/.local/material-cancellation-polling-20261117/.cargo/config.toml": {
+      "mode": "0644",
+      "sha256": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/Cargo.lock": {
+      "mode": "0644",
+      "sha256": "eb8a60650b473c79dda2e58a56f68b1abe9ca9a68c15115c9c8754c561732f3a"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/Cargo.toml": {
+      "mode": "0644",
+      "sha256": "032b32e80547618a72d39e42c0204611ff37908b8a6bf28615b3e592f79fa499"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/THIRD_PARTY.md": {
+      "mode": "0644",
+      "sha256": "86d65f258938c55ed36d3a621222ef5124e348f5519d01eab8f61db540a4876e"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge-cli/Cargo.toml": {
+      "mode": "0644",
+      "sha256": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge-cli/src/main.rs": {
+      "mode": "0644",
+      "sha256": "7049615180a793ad1557a2bbd3a27797b4b06aac060a2cb0620bd40436e64e0b"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge-cli/src/mcp.rs": {
+      "mode": "0644",
+      "sha256": "b0ac7f62a8f9f5e27236ebfc92b26791e9f7a84d67e7adcb663b43566dd34ef9"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge-cli/tests/curves.rs": {
+      "mode": "0644",
+      "sha256": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge-cli/tests/dxf_import.rs": {
+      "mode": "0644",
+      "sha256": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge-cli/tests/ellipse.rs": {
+      "mode": "0644",
+      "sha256": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge-cli/tests/grain.rs": {
+      "mode": "0644",
+      "sha256": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge-cli/tests/holes.rs": {
+      "mode": "0644",
+      "sha256": "c7e0656dcb756db3ced588e52c08c969a997b99661f85bbb8d5079a27421ad77"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge-cli/tests/mcp_stdio.rs": {
+      "mode": "0644",
+      "sha256": "8c20f4e7bfd7b0a2ef60538a43c662d4363288b66ba05abd1c5528b15fde3811"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge-cli/tests/svg_import.rs": {
+      "mode": "0644",
+      "sha256": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge/Cargo.toml": {
+      "mode": "0644",
+      "sha256": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge/assets/fonts/Inter-Regular.ttf": {
+      "mode": "0644",
+      "sha256": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge/assets/fonts/Inter-SemiBold.ttf": {
+      "mode": "0644",
+      "sha256": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf": {
+      "mode": "0644",
+      "sha256": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge/assets/fonts/OFL-Inter.txt": {
+      "mode": "0644",
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt": {
+      "mode": "0644",
+      "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge/assets/fonts/SOURCES.json": {
+      "mode": "0644",
+      "sha256": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/apps/weftforge/src/main.rs": {
+      "mode": "0644",
+      "sha256": "18ab3e365244209deed35f16aff86b5d9e7c0d1cf3e1e4440f2be2e16e22612f"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/Cargo.toml": {
+      "mode": "0644",
+      "sha256": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/src/document.rs": {
+      "mode": "0644",
+      "sha256": "642c5f18dc91850011622a82afd271a9b8122b6b1a5155818c0f196d3e30c5b9"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/src/geometry.rs": {
+      "mode": "0644",
+      "sha256": "3738282136928c459eaf524036c61e20d4c8b3cf2e04cd46ac812faf4f823c41"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/src/lib.rs": {
+      "mode": "0644",
+      "sha256": "8f1a57b619222ea11986bf68a424e277b31a26d8da5eccef7c6d31b913ce76f8"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/src/offset.rs": {
+      "mode": "0644",
+      "sha256": "761881af22d784d0354ac25e6cda98971cb459bf78fd1d635eee21dc3e758203"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/src/persistence.rs": {
+      "mode": "0644",
+      "sha256": "69e76f3c73567731a46bc234e9a28e89d6036cb069c0ad501b4dd4570e40d691"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/src/persistence/dxf.rs": {
+      "mode": "0644",
+      "sha256": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/src/persistence/dxf_import.rs": {
+      "mode": "0644",
+      "sha256": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/src/persistence/svg.rs": {
+      "mode": "0644",
+      "sha256": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/src/sewing.rs": {
+      "mode": "0644",
+      "sha256": "dc7cb6cab0a62c313698c155728409f8940319bb49ed51c5c2fbc88c88f21146"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/src/simulation.rs": {
+      "mode": "0644",
+      "sha256": "24e12aaf323f34abe745dc9c42c9823acbd6e2a1832d6827a5a6397112525707"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/cut_piece.rs": {
+      "mode": "0644",
+      "sha256": "7c5e12e7a4b6f0cec65199e795c8ad16889a0f0aa08247da2a2f94b567a59c86"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/dxf.rs": {
+      "mode": "0644",
+      "sha256": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/dxf_import.rs": {
+      "mode": "0644",
+      "sha256": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/ellipse.rs": {
+      "mode": "0644",
+      "sha256": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge": {
+      "mode": "0644",
+      "sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/fixtures/original-cut-l.weftforge": {
+      "mode": "0644",
+      "sha256": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge": {
+      "mode": "0644",
+      "sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf": {
+      "mode": "0644",
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/fixtures/original-editable-patterns.svg": {
+      "mode": "0644",
+      "sha256": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/grain.rs": {
+      "mode": "0644",
+      "sha256": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/hole_io.rs": {
+      "mode": "0644",
+      "sha256": "35e4b82cf53dc0b80218574e948d0b0fa09f7e8f4c1524e52b6a8650cd83ea98"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/holes.rs": {
+      "mode": "0644",
+      "sha256": "eaf21904ea94858632e6d11caddda63c0bf220845788633481c3bd114a355594"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/internal_lines.rs": {
+      "mode": "0644",
+      "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/joins.rs": {
+      "mode": "0644",
+      "sha256": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/migration.rs": {
+      "mode": "0644",
+      "sha256": "1f4b8aec8bfa9622c7c69b2b7ef2a9ec2c745340c5d56c5edab87d40d7f66418"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/outline_offset.rs": {
+      "mode": "0644",
+      "sha256": "9e5711fe91d8cb1b42818f7db241e94186110585cea8839eb312f01e6a0b3f69"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/pattern_transform.rs": {
+      "mode": "0644",
+      "sha256": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/seam_reversal.rs": {
+      "mode": "0644",
+      "sha256": "6a6590557bcdfd29d7a6d0b85de939ed542586e0c573180a1b035b8aaa114c5d"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/sewing_groups.rs": {
+      "mode": "0644",
+      "sha256": "a3e9ad0393b0039b7257193b5bcd0f54e7aafe5ab5566ae8459c1392a0ce6f41"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/shirt.rs": {
+      "mode": "0644",
+      "sha256": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/svg_import.rs": {
+      "mode": "0644",
+      "sha256": "57d693d8cc307bb711093140f0b1110cddfd2a5b68bce8e338d54a2deddd34ab"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-core/tests/workflow.rs": {
+      "mode": "0644",
+      "sha256": "05eba55a4ee1d2ea5c569dad68f6c4fdeb3e02a9bf09f0778dce00e4bbc3dea7"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-sim/Cargo.toml": {
+      "mode": "0644",
+      "sha256": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-sim/src/capsule.rs": {
+      "mode": "0644",
+      "sha256": "04634a93371e4e7f513401fa617075e28c1b4776023b158c3f6dc168d24371a0"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-sim/src/constraints.rs": {
+      "mode": "0644",
+      "sha256": "a98e065f8d3cb83bc01b7c0e11dad3241d82205163abd1d70e6c257437473637"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-sim/src/contact.rs": {
+      "mode": "0644",
+      "sha256": "20df8876462dcbf7d32761b0e061ab66def60e7f88a5eccbfb6e7839108c26c8"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-sim/src/lib.rs": {
+      "mode": "0644",
+      "sha256": "904f373d8e4f3b314b388731458f36a364c309badaed3175752da2c5f9d88d1f"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-sim/src/math.rs": {
+      "mode": "0644",
+      "sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-sim/src/strain.rs": {
+      "mode": "0644",
+      "sha256": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-sim/src/tests.rs": {
+      "mode": "0644",
+      "sha256": "5344f54f81c0aec65f8678c001bb8ebfb8bd3a720db880d3f7afa217726a37f5"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/docs/architecture.md": {
+      "mode": "0644",
+      "sha256": "c0c0a1e786f28ab7b3af7bc9dad51dfd0ab598e6c6a8fe6a2e7627d30a923dba"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/docs/automation.md": {
+      "mode": "0644",
+      "sha256": "04597a2ec92023e3ae76868863f3d3f69ac4834741ad6d5e1833191293a6bacb"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/docs/dashboard/index.html": {
+      "mode": "0644",
+      "sha256": "d8252df394244ce2c2a69dccb63f6d110a05218dd04466848d60bcf30074fc85"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/docs/dependencies.json": {
+      "mode": "0644",
+      "sha256": "31b44a3989e374510638df611ec403bfdd55bac31095bb9ce2ed66a685c07e2a"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/docs/file-formats.md": {
+      "mode": "0644",
+      "sha256": "1d61ad2278a74ebf5e236d4ec9d0f2441d6abbf05e22212d4ce33d214df69a50"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/docs/physics.md": {
+      "mode": "0644",
+      "sha256": "11d8e499ed76b4829073249f5872d31ecf5483b165bb27236580e2b013b01420"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/docs/progress.md": {
+      "mode": "0644",
+      "sha256": "45f888c09116c7fe22bad57ba2fbab6cefeeb6a76ad664e0fcf23d55bfc4d087"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/features.yaml": {
+      "mode": "0644",
+      "sha256": "12b174922406225c1c6521ce42e91ce2e20be4064db2b8c1e911328c84f0c5fa"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261113-GRAIN-AUTHORING-001.json": {
+      "mode": "0644",
+      "sha256": "fed3037c95b53a7acc6d0ea82cef7baa4fcd38f86c1c5d7529650f71d27e968d"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261113-GRAIN-FIT-001.json": {
+      "mode": "0644",
+      "sha256": "c48c038510ffcef4c66ebc3807498200f0b5428e7b4774f12abfe915725500ea"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261113-NATIVE-UI-001.json": {
+      "mode": "0644",
+      "sha256": "cfe45ef992e8158f36cdd926dae076a09ae2090c9a69c1e94de752530f915e5f"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261113-REGRESSION-001.json": {
+      "mode": "0644",
+      "sha256": "82ba21e79eb122a8bd36839350f948dc410974eb04e6fc33a6da6b901a6e304e"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261113-RELAXED-FIT-001.json": {
+      "mode": "0644",
+      "sha256": "e159950b7b299f6b7cd3efac0f408d27280adeec1510a185efa920febc3c6729"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json": {
+      "mode": "0644",
+      "sha256": "67aeb7b21a338d7a3bae27db4fb4be79e5c7f984c2b25107c225bba993203c36"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261113-TIGHT-FIT-001.json": {
+      "mode": "0644",
+      "sha256": "62551136a89d2be2e25adfba214ffc5416d1821e64d2573b005ad09c24ce1ac9"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261114-BATCH-CANCEL-001.json": {
+      "mode": "0644",
+      "sha256": "7371a4f9819707abd03ab9e09f91289a681114285d9dbfec039be1e3db1015dd"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261114-DXF-001.json": {
+      "mode": "0644",
+      "sha256": "737dfba57e2cbf1f4e3b126d604750c7d330682e0f230c28df7a0083c8fbe1fa"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261114-HARBOR-AUTHORING-001.json": {
+      "mode": "0644",
+      "sha256": "f969d10adc257ee1a1dd25975aa2699e8b0e3e1ac3c66c5fc2422adf37d3de46"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261114-HARBOR-PHYSICS-001.json": {
+      "mode": "0644",
+      "sha256": "fa356f84609c163d89de63c2b7220dec2e54ac390ff198ba215872a8784eb810"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261114-INTEGRATION-001.json": {
+      "mode": "0644",
+      "sha256": "d805e3dd0cceb973d338792344ef9b17ef964846d302101b157c7e76ac777abc"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261114-NATIVE-IEEE-001.json": {
+      "mode": "0644",
+      "sha256": "b53bebcabbd296a6957b134a8f89e25f5c8b92c5fa150e842646f13499c64da9"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261114-NATIVE-JOIN-001.json": {
+      "mode": "0644",
+      "sha256": "53f61a16544c9ca86738a1c64cb76bed3e885d8c08e3621cdcb07881dc9198dc"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261114-NATIVE-REVERSAL-001.json": {
+      "mode": "0644",
+      "sha256": "3e12c0e640e11ba3bfd10e936c57c08a539fdf35bde07858e5d23bb7d3e57596"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261114-NUMERIC-RECTANGLE-001.json": {
+      "mode": "0644",
+      "sha256": "0cbe0db04a798d3b8ec24948869d8ded69e580fdfa12acb836cc5fbec8d1cc9a"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261114-NUMERIC-RECTANGLE-002.json": {
+      "mode": "0644",
+      "sha256": "7b0749f35ce43d9132fd2896252ff3d0be1f9d6bec33cd7e544af9d3efd8b638"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261114-ORDERED-SEWING-001.json": {
+      "mode": "0644",
+      "sha256": "5238ffce6b161ed1c2b7e93da21e49b7d08b5ae04ff17cc0a4b032915c90a335"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261114-PHYSICS-BALANCE-001.json": {
+      "mode": "0644",
+      "sha256": "3e45c6dc6bbb7ac15e1c570beca33fe8781d0dc0ebf6e9cc50cfc2bfe7b5e942"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261114-PHYSICS-FULL-PATH-001.json": {
+      "mode": "0644",
+      "sha256": "24cbdb612c8c6e3c25651f73c6cc6673e6cbe271f717412d652c9170d9589023"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261114-PHYSICS-REFINEMENT-001.json": {
+      "mode": "0644",
+      "sha256": "682ab7d39b48248716b6328ab0f9a42bd1949f12ab0d8d5185fa1f48810e63e4"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261114-SEWN-CURVE-001.json": {
+      "mode": "0644",
+      "sha256": "99d3d40885d8bdeeac2c5dce515464e32d52d84f20764d79eb7e79085e3c8f64"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261114-STRAIN-ATTRIBUTION-001.json": {
+      "mode": "0644",
+      "sha256": "3faf67ef9656726f1afc3dd52c62155e251fc2793a28759983af68f4ad8e2728"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261115-AUTHORED-LENGTH-001.json": {
+      "mode": "0644",
+      "sha256": "ae1b563be0fae9225ab37c4fac8ad87810744d7c17fcc52e326d4e5ae0c2aef4"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261115-CAPSULE-GAP-001.json": {
+      "mode": "0644",
+      "sha256": "4d0752c013307c476d5bafaaf8bae9d3601d4d8c281244c3aa6d6255acc2b4e8"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261115-CAPSULE-SURFACE-001.json": {
+      "mode": "0644",
+      "sha256": "42ce4c9fdfd9e5603e7ba6c04eca6ca9379b758f0b5daedf29bc85f18a90fd0a"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261115-CLOSED-STITCH-HARBOR-001.json": {
+      "mode": "0644",
+      "sha256": "fd35aac7e0670760797cdf3940ecc9591c1d968d5240f0fd123f4f72464faa1c"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261115-DIAGNOSTIC-STATIC-001.json": {
+      "mode": "0644",
+      "sha256": "c927b1a937a61b89fd658004abb228e6ea8ba4989586aeafafaf1376f042c1fe"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261115-DXF-STUDIO-001.json": {
+      "mode": "0644",
+      "sha256": "f78da31ada152d8845a3c500109a2b2026901f657ba062668a5bd5ad707e9337"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261115-HARBOR-HALF-STEP-001.json": {
+      "mode": "0644",
+      "sha256": "f681a1a266e7f85edf2a601842cf255b07aef1d0375351bc1f3d50868a6f3521"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261115-INTERNAL-ANNOTATIONS-001.json": {
+      "mode": "0644",
+      "sha256": "7d8a66771ef9e9c57f92ed8142ce4a31319af13b34637d376fd08f9ea67561b2"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261115-NATIVE-HARBOR-FAILED-001.json": {
+      "mode": "0644",
+      "sha256": "b6d439696d109e045d184449f9fd1598a46eb941cdf04cece3388e40d6c286c1"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261115-NATIVE-STUDIO-001.json": {
+      "mode": "0644",
+      "sha256": "620b18e630cf3b446eea29f4ca0d0c21fa70f0b4b3a4f5e9d44e9a494c7a3cff"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261115-PATTERN-TRANSFORM-001.json": {
+      "mode": "0644",
+      "sha256": "6896812cb1972bc165e9f9c172045741fbb149e02b2e2c1566a72e926844129e"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261115-PHOTOCRAFT-STUDIO-001.json": {
+      "mode": "0644",
+      "sha256": "965ed615bc0a862246d316d81fb2ad7cbbf5dff7d5f166b5797e178ee1bfeaa9"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261115-PHYSICAL-LENGTH-SEWING-001.json": {
+      "mode": "0644",
+      "sha256": "ccb8dda27ac72a431721ffc4ac16fcba1562380d3f3456a94bdfbe75e89d7d95"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261115-STUDIO-PREVIEW-001.json": {
+      "mode": "0644",
+      "sha256": "3b71682396bbae17caed6124e7195873ccb3c6f9455ead02342b3414e60a670e"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261115-SVG-STUDIO-001.json": {
+      "mode": "0644",
+      "sha256": "12929c979d868d5d7877878636a39d840adb9dbcc803a062cbd6f06ff750dae1"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261116-COUPLED-HARBOR-A8-001.json": {
+      "mode": "0644",
+      "sha256": "c87a54d43a1094818084132d7d2ba9d5ab3a6c1b0e30e123c23b245a4e1db6b9"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261116-COUPLED-MATERIAL-SOURCE-001.json": {
+      "mode": "0644",
+      "sha256": "bfc0f4d6bc7b67386cd5e2d541dd52839056e29e10daf9e10d75beb157fc6d4f"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261116-CUT-AND-SEW-001.json": {
+      "mode": "0644",
+      "sha256": "c1af8fafa7c23c48c87c987cc20269692378b0de1ebc8ff67c747d9a5e473c27"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261116-ENDPOINT-EDIT-NATIVE-001.json": {
+      "mode": "0644",
+      "sha256": "368dfbf7ea8d431918707fe47ee87877a9bf32ba17edd84180999648774719e9"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261116-ENDPOINT-EDIT-SOURCE-001.json": {
+      "mode": "0644",
+      "sha256": "721fa2fa54d116d65d61850c82287623cd759cbe4f060e8de44eaf7165dec29e"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261116-HOLE-EXPORT-001.json": {
+      "mode": "0644",
+      "sha256": "5398f2021804639b4d347b7b45115cac5358b3a43fcacab8cbdfa2c54cf9ef68"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261116-MATERIAL-OUTLINE-OFFSET-001.json": {
+      "mode": "0644",
+      "sha256": "17b4e47fea132e2eca05eb0c4e8f5a69843044eff4c6253ee343972f1ac8bb7a"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261116-MATERIAL-OUTLINE-OFFSET-NATIVE-STOPS-001.json": {
+      "mode": "0644",
+      "sha256": "fc1b56fd2a70dc66d98ca91ab854fc65e13fc09998ea9dbb235966a158270ecd"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261116-OFFSET-NATIVE-CONTROLLER-STOPS-001.json": {
+      "mode": "0644",
+      "sha256": "e2d8f106c01313acf431bf06ea2b8781318bad71d4a12aa26ccd7b937481d46b"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261116-OFFSET-NATIVE-INPUT-003.json": {
+      "mode": "0644",
+      "sha256": "a9a4202e26a5a58df4bcd4e72a17f386fff5ce91c18e44726e2dade57ba567e1"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261116-OFFSET-WORK-CONTROL-001.json": {
+      "mode": "0644",
+      "sha256": "76b3faee8777b58ba4f8c0765ae5ec798a8b6b895fbf86a2096c88c150406d2a"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-NATIVE-STOPS-001.json": {
+      "mode": "0644",
+      "sha256": "87b8ab33e3c3f829cdead36285f2edc6b626d2809b074c265b2748533d1b0bf7"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-PREVIEW-001.json": {
+      "mode": "0644",
+      "sha256": "8b963263787872145a86fc83fe5c315a4d8426171327e60798ef816e72402122"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-SOURCE-001.json": {
+      "mode": "0644",
+      "sha256": "39adce8623a1679d345f62d9d94b1e97ba5ea3172c0d8bc689f42d7f41030d2e"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261116-STRAIGHT-CUT-001.json": {
+      "mode": "0644",
+      "sha256": "b23b8a3068819f59404c4c71bc04ddb5471ffe926b0501f8c12f1f2b2100ce85"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/WF-20261116-STRAIGHT-HOLE-001.json": {
+      "mode": "0644",
+      "sha256": "5ac8e863b9bc2039502c6e92d499227065dd52824067ddc2ec8169fabf4b6f1e"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/artifacts/closed-stitch-harbor-20261115/experiment/inputs/base.weftforge": {
+      "mode": "0644",
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/parity/reports/artifacts/closed-stitch-harbor-20261115/experiment/runs/base/rest-metadata.json": {
+      "mode": "0644",
+      "sha256": "d96697949c686fbf15f19b99b6d7551b35d3449b17157009aceb75649fbaeeb9"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/rust-toolchain.toml": {
+      "mode": "0644",
+      "sha256": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/features/APP-001-new-empty.md": {
+      "mode": "0644",
+      "sha256": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/features/PAT-004-native-transform-selection.md": {
+      "mode": "0644",
+      "sha256": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/features/PAT-004-piece-rigid-transform.md": {
+      "mode": "0644",
+      "sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/features/PAT-006-internal-segments.md": {
+      "mode": "0644",
+      "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/features/PAT-006-straight-cut.md": {
+      "mode": "0644",
+      "sha256": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/features/PAT-006-straight-hole.md": {
+      "mode": "0644",
+      "sha256": "634028923f25811aa364d85ce13947db242812d6523635c13ce5a715277b1d2f"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/features/PAT-009-material-outline-offset.md": {
+      "mode": "0644",
+      "sha256": "604d9cc5d12da398a90bd819b78eb7b9999a48a2f96c32e900780d4457b6dbc6"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/features/SEW-001-cut-and-sew.md": {
+      "mode": "0644",
+      "sha256": "9420f9a88ea184868aba5543f0d356181fcd8373dadfa4632376cc4a5a5f8941"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/features/SEW-002-physical-length.md": {
+      "mode": "0644",
+      "sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/features/fixtures/PAT-009-offset-originals.json": {
+      "mode": "0644",
+      "sha256": "6de6eefff1bc040363f1f2de335f5c4f70dc526dacd5224ba22e1c33e1820bec"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/features/fixtures/PAT-009-offset-reviewed-additions.json": {
+      "mode": "0644",
+      "sha256": "fc4b133cadada09a676266cea90c736a35342767552cb54a573460eea9f41991"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/inventory/README.md": {
+      "mode": "0644",
+      "sha256": "45c2aebd61d2c4ae23787d40b8c6fdaadd561a28e1fcb02029e30ec3491bf1f2"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/inventory/md-2026.1.237-components.json": {
+      "mode": "0644",
+      "sha256": "6d8bebdfd01202a50a387e4492afe3ace6fc6e9c3b58571fbb0528281addb38f"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/inventory/md-2026.1.237-components.txt": {
+      "mode": "0644",
+      "sha256": "566d682b6ee47269a1e8cfa39d37af0eed3d3994b45a66a7804c93260a70bc08"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/inventory/md-2026.1.237-main-menus.json": {
+      "mode": "0644",
+      "sha256": "e9910b3fa78a2fbf59fe3ad3ba0e9545cfd609d9c0d010a753e0da4edb3fd996"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/inventory/md-2026.1.237-main-menus.txt": {
+      "mode": "0644",
+      "sha256": "ec0a15f77823ebcb77f5712f9aa9fa48ef81eda24a8fc4c62d6b472b7fbacb04"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/inventory/verify_implementation_map.py": {
+      "mode": "0644",
+      "sha256": "5102ff2bf0774db1b6ef36006dea62ec98af9bf7577f98621f2ad1323425dbd5"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/inventory/weftforge-current-source-addendum.json": {
+      "mode": "0644",
+      "sha256": "db5a1a12cf8ec8783a708a52071201db9e0bfcbf4aa224f6e7f997043d5f8cf5"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/inventory/weftforge-current-source-addendum.md": {
+      "mode": "0644",
+      "sha256": "5c2bc4527ae4a4537c85e896aff40e6b2752a7a19615e2d69c69d934373fad2f"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/inventory/weftforge-implementation-map.json": {
+      "mode": "0644",
+      "sha256": "9323eb803af6d07d6178fd6e808fd61f87e5da71e3b07ab4b279b3141b11c8ec"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/spec/inventory/weftforge-implementation-map.md": {
+      "mode": "0644",
+      "sha256": "8b3809f6604c025a1ea3043e5851b93a4384e1486490fb98b7de00be4d28be21"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/vendor/earcutr/Cargo.toml": {
+      "mode": "0644",
+      "sha256": "906d72d033764b39570416ef92906a90d4c49e85b9c35ab0138cf7a0aafe9c76"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/vendor/earcutr/LICENSE": {
+      "mode": "0644",
+      "sha256": "ac0e50e523dd0ea36f077c373833f1ae6c7ad130ea5ac6ff23bfa8d3f402145f"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/vendor/earcutr/UPSTREAM.md": {
+      "mode": "0644",
+      "sha256": "e686aeaa8758581d2c0659b1ed5e87dce4fe6608a8605c29ba90459495818944"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/vendor/earcutr/src/legacy.rs": {
+      "mode": "0644",
+      "sha256": "fd5120ba533484556e7a6d1a460d28084ac1f4c90f3334c71ff6f67976b933c8"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/vendor/earcutr/src/lib.rs": {
+      "mode": "0644",
+      "sha256": "29992d5bd3d0717df6b4db9e60a3d280c276b67c3ddb87fa5de9173c1b3578d3"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/vendor/earcutr/src/tests.rs": {
+      "mode": "0644",
+      "sha256": "2e54cb4cceb9c073ae911a5909d2d9b430c6bf4ce53000332254233b21a544e9"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/xtask/Cargo.toml": {
+      "mode": "0644",
+      "sha256": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204"
+    },
+    "<ROOT>/.local/material-cancellation-polling-20261117/xtask/src/main.rs": {
+      "mode": "0644",
+      "sha256": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "kind": "implementation_only",
-  "freshness": "current",
+  "freshness": "stale",
   "commit": "52099b6f6b7aff43b3e9ada8bad4f830cb987134",
   "current_source_commit": "97a152468ca34fa7edae9e4680167ba02bdccbb7",
   "platform": "macOS local; Rust1.94.1/CPython3.13.0 from retained pinned compiler/child receipts; per-stage resources and snapshot limits remain qualified.",
@@ -356,5 +356,6 @@
     "parity/reports/artifacts/global-material-source-20261117/history/WF-20261117-MATERIAL-GROUP-SOURCE-001.original.json": "d2d2ddd98f1131cabbd5f5a28e0a12409632e523a4c10febdd198930c0214f33",
     "parity/reports/artifacts/global-material-source-20261117/history/WF-20261116-MATERIAL-GROUPS-HARBOR-A8-001.original.json": "2d433b1adfb94d436d12cc26bbbe2c45cafbeeb7da69c5e665efb2f61c57a1fd",
     "parity/reports/artifacts/global-material-source-20261117/SELECTED-PUBLIC-MANIFEST-002.json": "ca21f74b898756369c81256a4f3670ebd6c55617756eb4254cc6de2212fdc08a"
-  }
+  },
+  "freshness_reason": "Historical52099/integrated97a global-material result is stale at tested9d4/integrated076 because constraints.rs, tests.rs and docs/physics.md changed inside its declared31-file scope. Exact original archived at parity/reports/artifacts/material-polling-source-20261117/history/WF-20261117-GLOBAL-MATERIAL-SOURCE-001.original.json. Original status/results/scopes/identities/artifact maps remain unchanged, including the global153/180 operational failure and absent quality grade. The new complete181-state polling case is separate and fails strict strain atframe29; no old result is replayed/regraded or silently refreshed."
 }

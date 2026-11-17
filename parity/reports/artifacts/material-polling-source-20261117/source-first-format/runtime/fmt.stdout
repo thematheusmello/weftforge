@@ -1,0 +1,12 @@
+Diff in <ROOT>/.local/material-cancellation-polling-20261117/crates/weftforge-sim/src/tests.rs:2053:
+     let rest = cloth.positions().to_vec();
+     let mut strained = rest.clone();
+     strained.iter_mut().for_each(|p| p[0] *= 1.5);
+-    for (before, weights) in [(rest, cloth.inverse_masses.as_slice()), (strained, &[0.; 4])] {
++    for (before, weights) in [
++        (rest, cloth.inverse_masses.as_slice()),
++        (strained, &[0.; 4]),
++    ] {
+         let calls = std::cell::Cell::new(0);
+         let mut x = before.clone();
+         let mut p = vec![[0.; 3]; x.len()];
