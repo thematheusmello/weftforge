@@ -525,7 +525,15 @@ fn single_soft_stitch(
     h: f64,
     correction: &mut [Vec3],
 ) -> Result<(), SimulationError> {
-    constraints::solve_sewing(&[stitch], &[target], x, inverse_mass, h, correction, &|| false)
+    constraints::solve_sewing(
+        &[stitch],
+        &[target],
+        x,
+        inverse_mass,
+        h,
+        correction,
+        &|| false,
+    )
 }
 
 fn soft_stitch_impulse(stitch: Stitch, target: f64, x: &[Vec3], h: f64) -> Vec3 {
@@ -534,7 +542,10 @@ fn soft_stitch_impulse(stitch: Stitch, target: f64, x: &[Vec3], h: f64) -> Vec3 
         mul(difference, -h * h / stitch.compliance)
     } else {
         let radius = length(difference);
-        mul(difference, -h * h * (radius - target) / (stitch.compliance * radius))
+        mul(
+            difference,
+            -h * h * (radius - target) / (stitch.compliance * radius),
+        )
     }
 }
 
@@ -549,7 +560,16 @@ fn closed_elastic_stitch_n32_matches_independent_quadratic_and_individual_action
     });
     let mut correction = [[0.; 3]; 3];
     for _ in 0..32 {
-        constraints::solve_sewing(&stitches, &[0.; 2], &mut x, &[1., 0., 0.], 1., &mut correction, &|| false).unwrap();
+        constraints::solve_sewing(
+            &stitches,
+            &[0.; 2],
+            &mut x,
+            &[1., 0., 0.],
+            1.,
+            &mut correction,
+            &|| false,
+        )
+        .unwrap();
     }
     let q = stitches.map(|s| sub(s.a.position(&x), s.b.position(&x)));
     let impulses = stitches.map(|s| soft_stitch_impulse(s, 0., &x, 1.));
@@ -566,15 +586,26 @@ fn closed_elastic_stitch_n32_matches_independent_quadratic_and_individual_action
     let expected_energy = (5. - u + 5. * u * u) / 9.;
     let expected_objective = 2. / 3. + 5. * u * u / 6.;
     let action = correction[0]; // m/h²=1 in this fixture.
-    println!("N=32 x_m={x:?} nodal_history_m={correction:?} impulses_N_s2={impulses:?} energy_J={energy} objective_J={objective} stationarity_N={stationarity:?}");
+    println!(
+        "N=32 x_m={x:?} nodal_history_m={correction:?} impulses_N_s2={impulses:?} energy_J={energy} objective_J={objective} stationarity_N={stationarity:?}"
+    );
     assert_eq!(&x[1..], &anchors);
     assert!(length(sub(x[0], expected_x)) <= 1e-12, "position: m");
     for i in 0..2 {
-        assert!(length(sub(impulses[i], expected_impulses[i])) <= 1e-12, "stitch{i} physical impulse: kg m");
+        assert!(
+            length(sub(impulses[i], expected_impulses[i])) <= 1e-12,
+            "stitch{i} physical impulse: kg m"
+        );
     }
-    assert!(length(sub(action, add(impulses[0], impulses[1]))) <= 1e-12, "total action: N");
+    assert!(
+        length(sub(action, add(impulses[0], impulses[1]))) <= 1e-12,
+        "total action: N"
+    );
     assert!((energy - expected_energy).abs() <= 1e-12, "energy: J");
-    assert!((objective - expected_objective).abs() <= 1e-12, "incremental objective: J");
+    assert!(
+        (objective - expected_objective).abs() <= 1e-12,
+        "incremental objective: J"
+    );
     assert!(length(stationarity) <= 1e-12, "stationarity: N");
 }
 
@@ -664,8 +695,14 @@ fn closed_elastic_stitch_two_free_masses_preserve_reactions_under_rigid_transfor
 #[test]
 fn closed_elastic_stitch_merges_repeated_and_cross_side_vertices() {
     let stitch = Stitch {
-        a: WeightedPoint { vertices: [0, 0], weights: [0.25, 0.75] },
-        b: WeightedPoint { vertices: [0, 1], weights: [0.25, 0.75] },
+        a: WeightedPoint {
+            vertices: [0, 0],
+            weights: [0.25, 0.75],
+        },
+        b: WeightedPoint {
+            vertices: [0, 1],
+            weights: [0.25, 0.75],
+        },
         compliance: 1.,
     };
     let mut x = [[0.; 3], [1., 0., 0.]];
@@ -713,7 +750,11 @@ fn closed_elastic_stitch_keeps_accepted_weights_and_endpoint_arithmetic() {
 
 #[test]
 fn closed_elastic_stitch_handles_zero_gap_pins_and_denominator_guard() {
-    let stitch = Stitch { a: WeightedPoint::vertex(0), b: WeightedPoint::vertex(1), compliance: 1. };
+    let stitch = Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(1),
+        compliance: 1.,
+    };
     let mut x = [[0.; 3]; 2];
     let mut correction = [[0.; 3]; 2];
     single_soft_stitch(stitch, 0., &mut x, &[1., 0.], 1., &mut correction).unwrap();
@@ -726,7 +767,10 @@ fn closed_elastic_stitch_handles_zero_gap_pins_and_denominator_guard() {
     assert_eq!(x, [[-1., 2., -0.5], [0.; 3]]);
     assert_eq!(add(sub(x[0], x[1]), correction[0]), [0.; 3]);
 
-    let stitch = Stitch { compliance: 0.125, ..stitch };
+    let stitch = Stitch {
+        compliance: 0.125,
+        ..stitch
+    };
     let pinned = [[1., 2., 3.], [0.; 3]];
     x = pinned;
     correction = [[0.; 3]; 2];
@@ -738,7 +782,10 @@ fn closed_elastic_stitch_handles_zero_gap_pins_and_denominator_guard() {
     assert_eq!(mul(impulse, 4.), [-8., -16., -24.]);
     assert_eq!(mul(sub(x[0], x[1]), -8.), [-8., -16., -24.]);
     for (compliance, dt) in [(1e-21, 1.), (1., 1e-200)] {
-        let stitch = Stitch { compliance, ..stitch };
+        let stitch = Stitch {
+            compliance,
+            ..stitch
+        };
         let before = correction;
         single_soft_stitch(stitch, 0., &mut x, &[0.; 2], dt, &mut correction).unwrap();
         assert_eq!(x, pinned);
@@ -829,13 +876,22 @@ fn positive_compliant_stitch_merges_shared_vertices_and_balances_physical_force(
 
 #[test]
 fn positive_compliant_stitch_handles_pins_zero_anchor_and_nonfinite_guards() {
-    let stitch = Stitch { a: WeightedPoint::vertex(0), b: WeightedPoint::vertex(1), compliance: 0.125 };
+    let stitch = Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(1),
+        compliance: 0.125,
+    };
     let pinned = [[3., 4., 0.], [0.; 3]];
     let mut x = pinned;
     let mut correction = [[0.; 3]; 2];
     single_soft_stitch(stitch, 1., &mut x, &[0.; 2], 0.5, &mut correction).unwrap();
     assert_eq!(x, pinned);
-    assert!(length(sub(soft_stitch_impulse(stitch, 1., &x, 0.5), [-4.8, -6.4, 0.])) <= 1e-14);
+    assert!(
+        length(sub(
+            soft_stitch_impulse(stitch, 1., &x, 0.5),
+            [-4.8, -6.4, 0.]
+        )) <= 1e-14
+    );
     assert_eq!(correction, [[0.; 3]; 2]);
     for (start, history, expected) in [
         ([0.; 3], [0.; 3], [0.5, 0., 0.]),
@@ -862,7 +918,17 @@ fn positive_compliant_stitch_handles_pins_zero_anchor_and_nonfinite_guards() {
     ] {
         x = pinned;
         correction = [[0.; 3]; 2];
-        let result = single_soft_stitch(Stitch { compliance, ..stitch }, target, &mut x, &[0.; 2], dt, &mut correction);
+        let result = single_soft_stitch(
+            Stitch {
+                compliance,
+                ..stitch
+            },
+            target,
+            &mut x,
+            &[0.; 2],
+            dt,
+            &mut correction,
+        );
         if !target.is_finite() || target < 0. {
             assert!(matches!(result, Err(SimulationError::Unstable(_))));
         } else {
@@ -873,7 +939,20 @@ fn positive_compliant_stitch_handles_pins_zero_anchor_and_nonfinite_guards() {
     }
     x = [[1., 0., 0.], [0.; 3]];
     correction = [[0.; 3]; 2];
-    assert!(matches!(single_soft_stitch(Stitch { compliance: 1e-20, ..stitch }, f64::MAX, &mut x, &[1e-21, 0.], 1., &mut correction), Err(SimulationError::Unstable(_))));
+    assert!(matches!(
+        single_soft_stitch(
+            Stitch {
+                compliance: 1e-20,
+                ..stitch
+            },
+            f64::MAX,
+            &mut x,
+            &[1e-21, 0.],
+            1.,
+            &mut correction
+        ),
+        Err(SimulationError::Unstable(_))
+    ));
     assert_eq!(x, [[1., 0., 0.], [0.; 3]]);
     assert_eq!(correction, [[0.; 3]; 2]);
 }
@@ -942,9 +1021,21 @@ fn positive_target_stitch_n32_matches_independent_coupled_radial_energy() {
     let mut last_update = [0.; 3];
     let norm = |v: Vec3| (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
     for _ in 0..32 {
-        assert!(norm(x[0]) > 1e-6, "fixture stays away from radial singularity");
+        assert!(
+            norm(x[0]) > 1e-6,
+            "fixture stays away from radial singularity"
+        );
         let before = x[0];
-        constraints::solve_sewing(&stitches, &targets, &mut x, &inverse_mass, h, &mut history, &|| false).unwrap();
+        constraints::solve_sewing(
+            &stitches,
+            &targets,
+            &mut x,
+            &inverse_mass,
+            h,
+            &mut history,
+            &|| false,
+        )
+        .unwrap();
         for (axis, &value) in before.iter().enumerate() {
             last_update[axis] = x[0][axis] - value;
             applied_action[axis] += mass * last_update[axis] / (h * h);
@@ -1014,8 +1105,19 @@ fn positive_target_stitch_n32_matches_independent_coupled_radial_energy() {
     for (i, error) in action_error.into_iter().enumerate() {
         assert!(error <= 1e-6, "stitch{i} independent physical force: N");
     }
-    assert!(norm(std::array::from_fn(|axis| applied_action[axis] - forces[0][axis] - forces[1][axis])) <= 1e-6, "total stage action: N");
-    assert!(norm(std::array::from_fn(|axis| history[0][axis] - (x[0][axis] - predictor[axis]))) <= 1e-14, "actual nodal history: m");
+    assert!(
+        norm(std::array::from_fn(|axis| applied_action[axis]
+            - forces[0][axis]
+            - forces[1][axis]))
+            <= 1e-6,
+        "total stage action: N"
+    );
+    assert!(
+        norm(std::array::from_fn(
+            |axis| history[0][axis] - (x[0][axis] - predictor[axis])
+        )) <= 1e-14,
+        "actual nodal history: m"
+    );
 }
 
 #[test]
@@ -1026,21 +1128,16 @@ fn shared_stitch_n32_matches_independent_duplicate_row_cartesian_energy() {
     let target = 0.01333333333333439;
     let predictor: [Vec3; 2] = [[0., 0., 0.015], [0., 0., -0.015]];
     let inverse_mass = masses.map(|mass| mass.recip());
-    let stitches = [
-        Stitch {
-            a: WeightedPoint::vertex(0),
-            b: WeightedPoint::vertex(1),
-            compliance,
-        };
-        2
-    ];
+    let stitches = [Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(1),
+        compliance,
+    }; 2];
     let mut x = predictor;
     let norm = |v: Vec3| (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
     let total_mass = masses[0] + masses[1];
     let center = |q: [Vec3; 2]| -> Vec3 {
-        std::array::from_fn(|axis| {
-            (masses[0] * q[0][axis] + masses[1] * q[1][axis]) / total_mass
-        })
+        std::array::from_fn(|axis| (masses[0] * q[0][axis] + masses[1] * q[1][axis]) / total_mass)
     };
     let predictor_center = center(predictor);
     // Production adapter: nodal displacement history once; both input energies retained.
@@ -1054,7 +1151,8 @@ fn shared_stitch_n32_matches_independent_duplicate_row_cartesian_energy() {
             h,
             &mut history,
             &|| false,
-        ).unwrap();
+        )
+        .unwrap();
         assert!(x.into_iter().flatten().all(f64::is_finite));
         assert!(history.into_iter().flatten().all(f64::is_finite));
         let center_error = norm(std::array::from_fn(|axis| {
@@ -1069,8 +1167,7 @@ fn shared_stitch_n32_matches_independent_duplicate_row_cartesian_energy() {
     let initial_difference: Vec3 =
         std::array::from_fn(|axis| predictor[0][axis] - predictor[1][axis]);
     let initial_radius = norm(initial_difference);
-    let radius =
-        (inertia * initial_radius + 2. * stiffness * target) / (inertia + 2. * stiffness);
+    let radius = (inertia * initial_radius + 2. * stiffness * target) / (inertia + 2. * stiffness);
     let expected_difference = initial_difference.map(|value| value * radius / initial_radius);
     let expected: [Vec3; 2] = [
         std::array::from_fn(|axis| {
@@ -1083,7 +1180,8 @@ fn shared_stitch_n32_matches_independent_duplicate_row_cartesian_energy() {
     let independent_residual = |q: [Vec3; 2]| -> [Vec3; 2] {
         let difference: Vec3 = std::array::from_fn(|axis| q[0][axis] - q[1][axis]);
         let distance = norm(difference);
-        let elastic = difference.map(|value| 2. * stiffness * (distance - target) * value / distance);
+        let elastic =
+            difference.map(|value| 2. * stiffness * (distance - target) * value / distance);
         [
             std::array::from_fn(|axis| {
                 masses[0] * (q[0][axis] - predictor[0][axis]) / (h * h) + elastic[axis]
@@ -1128,20 +1226,37 @@ fn shared_stitch_n32_matches_independent_duplicate_row_cartesian_energy() {
     );
     assert!(oracle_force_error <= 1e-6, "independent oracle force: N");
     assert!(position_error <= 1e-8, "shared-row Cartesian position: m");
-    assert!(force_error <= 1e-6, "shared-row full Cartesian stationarity: N");
+    assert!(
+        force_error <= 1e-6,
+        "shared-row full Cartesian stationarity: N"
+    );
 }
 
 #[test]
 fn shared_zero_target_sewing_matches_independent_weighted_spd_energy() {
-    let predictor = [[0.2, -0.1, 0.3], [-0.4, 0.2, 0.1], [1., 0.5, -0.5], [-0.5, 1., 0.25]];
+    let predictor = [
+        [0.2, -0.1, 0.3],
+        [-0.4, 0.2, 0.1],
+        [1., 0.5, -0.5],
+        [-0.5, 1., 0.25],
+    ];
     let stitches = [
         Stitch {
-            a: WeightedPoint { vertices: [0, 0], weights: [0.25, 0.75] },
-            b: WeightedPoint { vertices: [1, 2], weights: [0.5, 0.5] },
+            a: WeightedPoint {
+                vertices: [0, 0],
+                weights: [0.25, 0.75],
+            },
+            b: WeightedPoint {
+                vertices: [1, 2],
+                weights: [0.5, 0.5],
+            },
             compliance: 0.25,
         },
         Stitch {
-            a: WeightedPoint { vertices: [0, 1], weights: [0.25, 0.75] },
+            a: WeightedPoint {
+                vertices: [0, 1],
+                weights: [0.25, 0.75],
+            },
             b: WeightedPoint::vertex(3),
             compliance: 0.5,
         },
@@ -1150,8 +1265,12 @@ fn shared_zero_target_sewing_matches_independent_weighted_spd_energy() {
     let (a, b, c) = (12.125, -1.625, 6.125);
     let determinant = a * c - b * b;
     assert_eq!(determinant, 71.625);
-    let rhs0: Vec3 = std::array::from_fn(|axis| 8. * predictor[0][axis] + 2. * predictor[2][axis] + 0.5 * predictor[3][axis]);
-    let rhs1: Vec3 = std::array::from_fn(|axis| 4. * predictor[1][axis] - predictor[2][axis] + 1.5 * predictor[3][axis]);
+    let rhs0: Vec3 = std::array::from_fn(|axis| {
+        8. * predictor[0][axis] + 2. * predictor[2][axis] + 0.5 * predictor[3][axis]
+    });
+    let rhs1: Vec3 = std::array::from_fn(|axis| {
+        4. * predictor[1][axis] - predictor[2][axis] + 1.5 * predictor[3][axis]
+    });
     let expected = [
         std::array::from_fn(|axis| (c * rhs0[axis] - b * rhs1[axis]) / determinant),
         std::array::from_fn(|axis| (a * rhs1[axis] - b * rhs0[axis]) / determinant),
@@ -1159,41 +1278,93 @@ fn shared_zero_target_sewing_matches_independent_weighted_spd_energy() {
     let mut x = predictor;
     let mut correction = [[0.; 3]; 4];
     for _ in 0..32 {
-        constraints::solve_sewing(&stitches, &[0.; 2], &mut x, &[0.5, 1., 0., 0.], 0.5, &mut correction, &|| false).unwrap();
+        constraints::solve_sewing(
+            &stitches,
+            &[0.; 2],
+            &mut x,
+            &[0.5, 1., 0., 0.],
+            0.5,
+            &mut correction,
+            &|| false,
+        )
+        .unwrap();
         assert_eq!([x[2], x[3]], [predictor[2], predictor[3]]);
         assert_eq!([correction[2], correction[3]], [[0.; 3]; 2]);
         assert!(x.into_iter().flatten().all(f64::is_finite));
         assert!(correction.into_iter().flatten().all(f64::is_finite));
     }
-    let r0: Vec3 = std::array::from_fn(|axis| x[0][axis] - 0.5 * x[1][axis] - 0.5 * predictor[2][axis]);
-    let r1: Vec3 = std::array::from_fn(|axis| 0.25 * x[0][axis] + 0.75 * x[1][axis] - predictor[3][axis]);
+    let r0: Vec3 =
+        std::array::from_fn(|axis| x[0][axis] - 0.5 * x[1][axis] - 0.5 * predictor[2][axis]);
+    let r1: Vec3 =
+        std::array::from_fn(|axis| 0.25 * x[0][axis] + 0.75 * x[1][axis] - predictor[3][axis]);
     let forces = [
-        std::array::from_fn(|axis| 8. * (x[0][axis] - predictor[0][axis]) + 4. * r0[axis] + 0.5 * r1[axis]),
-        std::array::from_fn(|axis| 4. * (x[1][axis] - predictor[1][axis]) - 2. * r0[axis] + 1.5 * r1[axis]),
+        std::array::from_fn(|axis| {
+            8. * (x[0][axis] - predictor[0][axis]) + 4. * r0[axis] + 0.5 * r1[axis]
+        }),
+        std::array::from_fn(|axis| {
+            4. * (x[1][axis] - predictor[1][axis]) - 2. * r0[axis] + 1.5 * r1[axis]
+        }),
     ];
     for i in 0..2 {
-        assert!(length(sub(x[i], expected[i])) <= 1e-12, "weighted SPD position: m");
+        assert!(
+            length(sub(x[i], expected[i])) <= 1e-12,
+            "weighted SPD position: m"
+        );
         assert!(length(forces[i]) <= 1e-12, "independent Cartesian force: N");
-        assert!(length(sub(correction[i], sub(x[i], predictor[i]))) <= 1e-14, "actual nodal history: m");
+        assert!(
+            length(sub(correction[i], sub(x[i], predictor[i]))) <= 1e-14,
+            "actual nodal history: m"
+        );
     }
 }
 
 #[test]
 fn shared_soft_sewing_cancellation_noop_and_invalid_inputs_are_atomic() {
     use std::cell::Cell;
-    let predictor = [[0.2, -0.1, 0.3], [-0.4, 0.2, 0.1], [1., 0.5, -0.5], [-0.5, 1., 0.25]];
+    let predictor = [
+        [0.2, -0.1, 0.3],
+        [-0.4, 0.2, 0.1],
+        [1., 0.5, -0.5],
+        [-0.5, 1., 0.25],
+    ];
     let stitches = [
-        Stitch { a: WeightedPoint::vertex(0), b: WeightedPoint { vertices: [1, 2], weights: [0.5, 0.5] }, compliance: 0.25 },
-        Stitch { a: WeightedPoint { vertices: [0, 1], weights: [0.25, 0.75] }, b: WeightedPoint::vertex(3), compliance: 0.5 },
+        Stitch {
+            a: WeightedPoint::vertex(0),
+            b: WeightedPoint {
+                vertices: [1, 2],
+                weights: [0.5, 0.5],
+            },
+            compliance: 0.25,
+        },
+        Stitch {
+            a: WeightedPoint {
+                vertices: [0, 1],
+                weights: [0.25, 0.75],
+            },
+            b: WeightedPoint::vertex(3),
+            compliance: 0.5,
+        },
     ];
     let total = Cell::new(0);
     let mut accepted = predictor;
     let mut accepted_history = [[0.; 3]; 4];
-    constraints::solve_sewing(&stitches, &[0.; 2], &mut accepted, &[0.5, 1., 0., 0.], 0.5, &mut accepted_history, &|| {
-        total.set(total.get() + 1);
-        false
-    }).unwrap();
-    assert!(total.get() >= 3, "entry, internal bounded poll, and final pre-copy poll");
+    constraints::solve_sewing(
+        &stitches,
+        &[0.; 2],
+        &mut accepted,
+        &[0.5, 1., 0., 0.],
+        0.5,
+        &mut accepted_history,
+        &|| {
+            total.set(total.get() + 1);
+            false
+        },
+    )
+    .unwrap();
+    assert!(
+        total.get() >= 3,
+        "entry, internal bounded poll, and final pre-copy poll"
+    );
     assert_ne!(accepted, predictor);
     assert_ne!(accepted_history, [[0.; 3]; 4]);
     assert_eq!([accepted[2], accepted[3]], [predictor[2], predictor[3]]);
@@ -1201,10 +1372,18 @@ fn shared_soft_sewing_cancellation_noop_and_invalid_inputs_are_atomic() {
         let calls = Cell::new(0);
         let mut x = predictor;
         let mut history = [[0.; 3]; 4];
-        let result = constraints::solve_sewing(&stitches, &[0.; 2], &mut x, &[0.5, 1., 0., 0.], 0.5, &mut history, &|| {
-            calls.set(calls.get() + 1);
-            calls.get() == stop
-        });
+        let result = constraints::solve_sewing(
+            &stitches,
+            &[0.; 2],
+            &mut x,
+            &[0.5, 1., 0., 0.],
+            0.5,
+            &mut history,
+            &|| {
+                calls.set(calls.get() + 1);
+                calls.get() == stop
+            },
+        );
         assert_eq!(result, Err(SimulationError::Cancelled));
         assert_eq!(calls.get(), stop);
         assert_eq!(x, predictor);
@@ -1215,11 +1394,23 @@ fn shared_soft_sewing_cancellation_noop_and_invalid_inputs_are_atomic() {
         let total = Cell::new(0);
         let mut accepted = predictor;
         let mut accepted_history = [[0.; 3]; 4];
-        constraints::solve_sewing(&stitches[..1], &[target], &mut accepted, &[0.5, 1., 0., 0.], 0.5, &mut accepted_history, &|| {
-            total.set(total.get() + 1);
-            false
-        }).unwrap();
-        assert!(total.get() >= 2, "singleton entry and final successful pre-copy callback");
+        constraints::solve_sewing(
+            &stitches[..1],
+            &[target],
+            &mut accepted,
+            &[0.5, 1., 0., 0.],
+            0.5,
+            &mut accepted_history,
+            &|| {
+                total.set(total.get() + 1);
+                false
+            },
+        )
+        .unwrap();
+        assert!(
+            total.get() >= 2,
+            "singleton entry and final successful pre-copy callback"
+        );
         assert_ne!(accepted, predictor);
         assert_ne!(accepted_history, [[0.; 3]; 4]);
         assert_eq!([accepted[2], accepted[3]], [predictor[2], predictor[3]]);
@@ -1230,10 +1421,18 @@ fn shared_soft_sewing_cancellation_noop_and_invalid_inputs_are_atomic() {
             let calls = Cell::new(0);
             let mut x = predictor;
             let mut history = [[0.; 3]; 4];
-            let result = constraints::solve_sewing(&stitches[..1], &[target], &mut x, &[0.5, 1., 0., 0.], 0.5, &mut history, &|| {
-                calls.set(calls.get() + 1);
-                calls.get() == stop
-            });
+            let result = constraints::solve_sewing(
+                &stitches[..1],
+                &[target],
+                &mut x,
+                &[0.5, 1., 0., 0.],
+                0.5,
+                &mut history,
+                &|| {
+                    calls.set(calls.get() + 1);
+                    calls.get() == stop
+                },
+            );
             assert_eq!(result, Err(SimulationError::Cancelled));
             assert_eq!(calls.get(), stop);
             assert_eq!(x, predictor);
@@ -1242,23 +1441,86 @@ fn shared_soft_sewing_cancellation_noop_and_invalid_inputs_are_atomic() {
     }
     let mut x = predictor;
     let mut history = [[0.; 3]; 4];
-    constraints::solve_sewing(&[], &[], &mut x, &[0.5, 1., 0., 0.], 0.5, &mut history, &|| false).unwrap();
-    let hard = Stitch { compliance: 0., ..stitches[0] };
-    constraints::solve_sewing(&[hard], &[0.], &mut x, &[0.5, 1., 0., 0.], 0.5, &mut history, &|| false).unwrap();
-    constraints::solve_sewing(&stitches, &[0.; 2], &mut x, &[0.; 4], 0.5, &mut history, &|| false).unwrap();
+    constraints::solve_sewing(
+        &[],
+        &[],
+        &mut x,
+        &[0.5, 1., 0., 0.],
+        0.5,
+        &mut history,
+        &|| false,
+    )
+    .unwrap();
+    let hard = Stitch {
+        compliance: 0.,
+        ..stitches[0]
+    };
+    constraints::solve_sewing(
+        &[hard],
+        &[0.],
+        &mut x,
+        &[0.5, 1., 0., 0.],
+        0.5,
+        &mut history,
+        &|| false,
+    )
+    .unwrap();
+    constraints::solve_sewing(
+        &stitches,
+        &[0.; 2],
+        &mut x,
+        &[0.; 4],
+        0.5,
+        &mut history,
+        &|| false,
+    )
+    .unwrap();
     assert_eq!(x, predictor);
     assert_eq!(history, [[0.; 3]; 4]);
     for dt in [0., f64::NAN, f64::INFINITY] {
-        assert!(matches!(constraints::solve_sewing(&stitches, &[0.; 2], &mut x, &[0.5, 1., 0., 0.], dt, &mut history, &|| false), Err(SimulationError::Unstable(_))));
+        assert!(matches!(
+            constraints::solve_sewing(
+                &stitches,
+                &[0.; 2],
+                &mut x,
+                &[0.5, 1., 0., 0.],
+                dt,
+                &mut history,
+                &|| false
+            ),
+            Err(SimulationError::Unstable(_))
+        ));
         assert_eq!(x, predictor);
         assert_eq!(history, [[0.; 3]; 4]);
     }
-    assert!(matches!(constraints::solve_sewing(&stitches, &[0.; 2], &mut x, &[-1., 1., 0., 0.], 0.5, &mut history, &|| false), Err(SimulationError::Unstable(_))));
+    assert!(matches!(
+        constraints::solve_sewing(
+            &stitches,
+            &[0.; 2],
+            &mut x,
+            &[-1., 1., 0., 0.],
+            0.5,
+            &mut history,
+            &|| false
+        ),
+        Err(SimulationError::Unstable(_))
+    ));
     assert_eq!(x, predictor);
     assert_eq!(history, [[0.; 3]; 4]);
     history[0][0] = f64::NAN;
     let bits_before = history.map(|v| v.map(f64::to_bits));
-    assert!(matches!(constraints::solve_sewing(&stitches, &[0.; 2], &mut x, &[0.5, 1., 0., 0.], 0.5, &mut history, &|| false), Err(SimulationError::Unstable(_))));
+    assert!(matches!(
+        constraints::solve_sewing(
+            &stitches,
+            &[0.; 2],
+            &mut x,
+            &[0.5, 1., 0., 0.],
+            0.5,
+            &mut history,
+            &|| false
+        ),
+        Err(SimulationError::Unstable(_))
+    ));
     assert_eq!(x, predictor);
     assert_eq!(history.map(|v| v.map(f64::to_bits)), bits_before);
 }
@@ -1267,27 +1529,63 @@ fn shared_soft_sewing_cancellation_noop_and_invalid_inputs_are_atomic() {
 fn shared_soft_sewing_whole_call_cancellation_preserves_every_field() {
     use std::cell::Cell;
     let mut input = square();
-    input.pins.push(Pin { vertex: 2, target: input.positions[2] });
-    input.stitches = [1, 3].map(|vertex| Stitch { a: WeightedPoint::vertex(0), b: WeightedPoint::vertex(vertex), compliance: 0.5 }).to_vec();
+    input.pins.push(Pin {
+        vertex: 2,
+        target: input.positions[2],
+    });
+    input.stitches = [1, 3]
+        .map(|vertex| Stitch {
+            a: WeightedPoint::vertex(0),
+            b: WeightedPoint::vertex(vertex),
+            compliance: 0.5,
+        })
+        .to_vec();
     let original = Cloth::new(input.clone()).unwrap();
     let previous = format!("{original:?}");
-    let settings = StepSettings { dt: 0.02, substeps: 2, iterations: 2, gravity: [0.; 3], seam_closure_speed: 100. };
+    let settings = StepSettings {
+        dt: 0.02,
+        substeps: 2,
+        iterations: 2,
+        gravity: [0.; 3],
+        seam_closure_speed: 100.,
+    };
     let total = Cell::new(0);
     let mut accepted = original.clone();
-    accepted.step(settings, || { total.set(total.get() + 1); false }).unwrap();
+    accepted
+        .step(settings, || {
+            total.set(total.get() + 1);
+            false
+        })
+        .unwrap();
     assert_eq!(accepted.positions[2], input.positions[2]);
     assert!(accepted.diagnostics.finite);
     for stop in 1..=total.get() {
         let calls = Cell::new(0);
         let mut cloth = original.clone();
-        assert_eq!(cloth.step(settings, || { calls.set(calls.get() + 1); calls.get() == stop }).unwrap_err(), SimulationError::Cancelled);
+        assert_eq!(
+            cloth
+                .step(settings, || {
+                    calls.set(calls.get() + 1);
+                    calls.get() == stop
+                })
+                .unwrap_err(),
+            SimulationError::Cancelled
+        );
         assert_eq!(calls.get(), stop);
-        assert_eq!(format!("{cloth:?}"), previous, "all persistent fields at callback{stop}");
+        assert_eq!(
+            format!("{cloth:?}"),
+            previous,
+            "all persistent fields at callback{stop}"
+        );
     }
     let accepted_before = format!("{accepted:?}");
     let mut reset = accepted.clone();
     reset.reset();
-    assert_eq!(format!("{accepted:?}"), accepted_before, "independent clone");
+    assert_eq!(
+        format!("{accepted:?}"),
+        accepted_before,
+        "independent clone"
+    );
     assert_eq!(reset.positions, input.positions);
     assert_eq!(reset.velocities, vec![[0.; 3]; input.positions.len()]);
     assert_eq!(reset.simulation_time(), 0.);

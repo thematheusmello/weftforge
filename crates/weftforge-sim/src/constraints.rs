@@ -464,9 +464,15 @@ pub(crate) fn solve_bending(
         diagonal,
         failure: "non-finite global bending solve",
     }
-    .update(x, correction, cancelled, original_cancelled, |rows, x, correction, root_weight| {
-        bending_energy(bends, rows, x, correction, root_weight, dt, cancelled)
-    })
+    .update(
+        x,
+        correction,
+        cancelled,
+        original_cancelled,
+        |rows, x, correction, root_weight| {
+            bending_energy(bends, rows, x, correction, root_weight, dt, cancelled)
+        },
+    )
 }
 
 struct CoupledBlock {
@@ -484,7 +490,12 @@ impl CoupledBlock {
         original_cancelled: &impl Fn() -> bool,
         evaluate: impl Fn(&[CoupledRow], &[Vec3], &[Vec3], &[f64]) -> Result<f64, SimulationError>,
     ) -> Result<(), SimulationError> {
-        let Self { mut rows, root_weight, diagonal, failure } = self;
+        let Self {
+            mut rows,
+            root_weight,
+            diagonal,
+            failure,
+        } = self;
         let unstable = || SimulationError::Unstable(failure.into());
         let energy = evaluate(&rows, x, correction, &root_weight)?;
         if !energy.is_finite() {
@@ -539,8 +550,9 @@ impl CoupledBlock {
             check_cancel(cancelled)?;
             for i in 0..x.len() {
                 check_cancel(cancelled)?;
-                product[i] =
-                    std::array::from_fn(|axis| search[i][axis] / diagonal[i][axis] / diagonal[i][axis]);
+                product[i] = std::array::from_fn(|axis| {
+                    search[i][axis] / diagonal[i][axis] / diagonal[i][axis]
+                });
             }
             for row in &rows {
                 check_cancel(cancelled)?;
@@ -679,8 +691,11 @@ pub(crate) fn solve_sewing(
     let bounded_cancelled = material_cancellation(original_cancelled);
     let cancelled = &bounded_cancelled;
     let unstable = || SimulationError::Unstable("non-finite global sewing solve".into());
-    if !dt.is_finite() || dt <= 0. || stitches.len() != targets.len()
-        || x.len() != inverse_mass.len() || x.len() != correction.len()
+    if !dt.is_finite()
+        || dt <= 0.
+        || stitches.len() != targets.len()
+        || x.len() != inverse_mass.len()
+        || x.len() != correction.len()
     {
         return Err(unstable());
     }
@@ -688,8 +703,10 @@ pub(crate) fn solve_sewing(
     let mut single_soft = 0;
     for (index, (stitch, &target)) in stitches.iter().zip(targets).enumerate() {
         check_cancel(cancelled)?;
-        if !stitch.compliance.is_finite() || stitch.compliance < 0.
-            || !target.is_finite() || target < 0.
+        if !stitch.compliance.is_finite()
+            || stitch.compliance < 0.
+            || !target.is_finite()
+            || target < 0.
         {
             return Err(unstable());
         }
@@ -704,7 +721,13 @@ pub(crate) fn solve_sewing(
     }
     if soft_count == 1 {
         let trial = single_soft_trial(
-            stitches[single_soft], targets[single_soft], x, inverse_mass, dt, correction, cancelled,
+            stitches[single_soft],
+            targets[single_soft],
+            x,
+            inverse_mass,
+            dt,
+            correction,
+            cancelled,
         )?;
         check_cancel(original_cancelled)?;
         if let Some((trial, trial_correction)) = trial {
@@ -749,8 +772,14 @@ pub(crate) fn solve_sewing(
             } else {
                 let anchor = |point: crate::WeightedPoint| {
                     add(
-                        mul(sub(x[point.vertices[0]], correction[point.vertices[0]]), point.weights[0]),
-                        mul(sub(x[point.vertices[1]], correction[point.vertices[1]]), point.weights[1]),
+                        mul(
+                            sub(x[point.vertices[0]], correction[point.vertices[0]]),
+                            point.weights[0],
+                        ),
+                        mul(
+                            sub(x[point.vertices[1]], correction[point.vertices[1]]),
+                            point.weights[1],
+                        ),
                     )
                 };
                 let anchor_difference = sub(anchor(stitch.a), anchor(stitch.b));
@@ -769,9 +798,14 @@ pub(crate) fn solve_sewing(
             check_cancel(cancelled)?;
             let value = scale * values[mode];
             let gradient = std::array::from_fn(|i| {
-                mul(directions[mode], scale * root_weight[vertices[i]] * coefficients[i])
+                mul(
+                    directions[mode],
+                    scale * root_weight[vertices[i]] * coefficients[i],
+                )
             });
-            if !scale.is_finite() || scale <= 0. || !value.is_finite()
+            if !scale.is_finite()
+                || scale <= 0.
+                || !value.is_finite()
                 || !gradient.into_iter().all(finite)
             {
                 return Err(unstable());
@@ -784,7 +818,12 @@ pub(crate) fn solve_sewing(
                     }
                 }
             }
-            rows.push(CoupledRow { source: index, vertices, gradient, value });
+            rows.push(CoupledRow {
+                source: index,
+                vertices,
+                gradient,
+                value,
+            });
         }
     }
     CoupledBlock {
@@ -793,9 +832,15 @@ pub(crate) fn solve_sewing(
         diagonal,
         failure: "non-finite global sewing solve",
     }
-    .update(x, correction, cancelled, original_cancelled, |_, x, correction, root_weight| {
-        sewing_energy(stitches, targets, x, correction, root_weight, dt, cancelled)
-    })
+    .update(
+        x,
+        correction,
+        cancelled,
+        original_cancelled,
+        |_, x, correction, root_weight| {
+            sewing_energy(stitches, targets, x, correction, root_weight, dt, cancelled)
+        },
+    )
 }
 
 fn single_soft_trial(
@@ -816,7 +861,11 @@ fn single_soft_trial(
         if !root.is_finite() || !finite(x[i]) || !finite(correction[i]) {
             return Err(unstable());
         }
-        let z = if inverse_mass[i] > 0. { sub(x[i], correction[i]) } else { x[i] };
+        let z = if inverse_mass[i] > 0. {
+            sub(x[i], correction[i])
+        } else {
+            x[i]
+        };
         if !finite(z) {
             return Err(unstable());
         }
@@ -824,13 +873,14 @@ fn single_soft_trial(
         root_weight.push(root);
     }
     let (vertices, coefficients) = stitch_coefficients(stitch);
-    if vertices.into_iter().any(|v| v >= x.len())
-        || !coefficients.into_iter().all(f64::is_finite)
-    {
+    if vertices.into_iter().any(|v| v >= x.len()) || !coefficients.into_iter().all(f64::is_finite) {
         return Err(unstable());
     }
-    let weight = vertices.iter().zip(coefficients)
-        .map(|(&v, coefficient)| inverse_mass[v] * (coefficient * coefficient)).sum::<f64>();
+    let weight = vertices
+        .iter()
+        .zip(coefficients)
+        .map(|(&v, coefficient)| inverse_mass[v] * (coefficient * coefficient))
+        .sum::<f64>();
     let alpha = stitch.compliance / (dt * dt);
     let denominator = weight + alpha;
     // Retain the local finite/denominator guard; no unrepresentable update commits.
@@ -863,14 +913,25 @@ fn single_soft_trial(
     if !finite(impulse) {
         return Err(unstable());
     }
-    let energy = sewing_energy(&[stitch], &[target], x, correction, &root_weight, dt, cancelled)?;
+    let energy = sewing_energy(
+        &[stitch],
+        &[target],
+        x,
+        correction,
+        &root_weight,
+        dt,
+        cancelled,
+    )?;
     if !energy.is_finite() {
         return Err(unstable());
     }
     let mut trial = anchor;
     for (vertex, coefficient) in vertices.into_iter().zip(coefficients) {
         if inverse_mass[vertex] > 0. && coefficient != 0. {
-            trial[vertex] = add(trial[vertex], mul(impulse, inverse_mass[vertex] * coefficient));
+            trial[vertex] = add(
+                trial[vertex],
+                mul(impulse, inverse_mass[vertex] * coefficient),
+            );
         }
     }
     let mut trial_correction = Vec::with_capacity(x.len());
@@ -886,7 +947,15 @@ fn single_soft_trial(
         }
         trial_correction.push(p);
     }
-    let trial_energy = sewing_energy(&[stitch], &[target], &trial, &trial_correction, &root_weight, dt, cancelled)?;
+    let trial_energy = sewing_energy(
+        &[stitch],
+        &[target],
+        &trial,
+        &trial_correction,
+        &root_weight,
+        dt,
+        cancelled,
+    )?;
     if !trial_energy.is_finite() {
         return Err(unstable());
     }
@@ -932,8 +1001,18 @@ fn sewing_energy(
 }
 
 fn stitch_coefficients(stitch: Stitch) -> ([usize; 4], [f64; 4]) {
-    let vertices = [stitch.a.vertices[0], stitch.a.vertices[1], stitch.b.vertices[0], stitch.b.vertices[1]];
-    let mut coefficients = [stitch.a.weights[0], stitch.a.weights[1], -stitch.b.weights[0], -stitch.b.weights[1]];
+    let vertices = [
+        stitch.a.vertices[0],
+        stitch.a.vertices[1],
+        stitch.b.vertices[0],
+        stitch.b.vertices[1],
+    ];
+    let mut coefficients = [
+        stitch.a.weights[0],
+        stitch.a.weights[1],
+        -stitch.b.weights[0],
+        -stitch.b.weights[1],
+    ];
     for i in 0..4 {
         for j in 0..i {
             if vertices[i] == vertices[j] {
