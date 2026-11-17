@@ -1,4 +1,5 @@
 use crate::{Material, SimulationError, Stitch, Vec3, check_cancel, math::*};
+use std::cell::Cell;
 
 #[derive(Clone, Debug)]
 pub(crate) struct Membrane {
@@ -83,6 +84,20 @@ struct MaterialRow {
 const MATERIAL_LINEAR_ITERATIONS: usize = 32;
 const MATERIAL_BACKTRACKING_STEPS: usize = 16;
 
+fn material_cancellation(cancelled: &impl Fn() -> bool) -> impl Fn() -> bool + '_ {
+    let remaining = Cell::new(63_u8);
+    move || {
+        let left = remaining.get();
+        if left == 0 {
+            remaining.set(63);
+            cancelled()
+        } else {
+            remaining.set(left - 1);
+            false
+        }
+    }
+}
+
 pub(crate) fn solve_material(
     membrane: &[Membrane],
     x: &mut [Vec3],
@@ -91,6 +106,10 @@ pub(crate) fn solve_material(
     correction: &mut [Vec3],
     cancelled: &impl Fn() -> bool,
 ) -> Result<(), SimulationError> {
+    check_cancel(cancelled)?;
+    let original_cancelled = cancelled;
+    let material_cancelled = material_cancellation(original_cancelled);
+    let cancelled = &material_cancelled;
     let unstable = || SimulationError::Unstable("non-finite global material solve".into());
     let mut root_weight = Vec::with_capacity(x.len());
     let mut diagonal: Vec<Vec3> = vec![[1.; 3]; x.len()];
@@ -166,6 +185,7 @@ pub(crate) fn solve_material(
         }
     }
     if rhs_scale == 0. {
+        check_cancel(original_cancelled)?;
         return Ok(());
     }
     for value in &mut rhs {
@@ -233,6 +253,7 @@ pub(crate) fn solve_material(
         return Err(unstable());
     }
     if slope >= 0. {
+        check_cancel(original_cancelled)?;
         return Ok(());
     }
     for i in 0..x.len() {
@@ -266,13 +287,39 @@ pub(crate) fn solve_material(
             cancelled,
         )?;
         if trial_energy.is_finite() && trial_energy <= energy + 1e-4 * fraction * slope {
+            check_cancel(original_cancelled)?;
             x.copy_from_slice(&trial);
             correction.copy_from_slice(&trial_correction);
             return Ok(());
         }
         fraction *= 0.5;
     }
+    check_cancel(original_cancelled)?;
     Ok(())
+}
+
+#[cfg(test)]
+mod material_cancellation_tests {
+    use super::*;
+
+    #[test]
+    fn material_cancellation_polls_after_at_most_63_skipped_checkpoints() {
+        let checkpoint = Cell::new(0);
+        let polls = Cell::new(0);
+        let previous = Cell::new(0);
+        let callback = || {
+            assert_eq!(checkpoint.get() - previous.get(), 64);
+            previous.set(checkpoint.get());
+            polls.set(polls.get() + 1);
+            false
+        };
+        let cancelled = material_cancellation(&callback);
+        for site in 1..=64 * 5 + 63 {
+            checkpoint.set(site);
+            assert!(!cancelled());
+        }
+        assert_eq!(polls.get(), 5);
+    }
 }
 
 fn material_dot(
