@@ -44,8 +44,11 @@ scopes after integration; the new combined source report is current.
 
 The source crosswalk maps 441 occurrences, preserving all preceding identities,
 949 catalog IDs, 205 packets and 56 historical landmarks. Its separate read-only
-check passed in 14.892 seconds. Generated progress and clean `cargo xtask verify`
-are the next metadata checks; neither is claimed complete yet.
+check passed in 14.892 seconds. Progress generation returned zero on clean `4ffb20e3` and changed only the two
+expected reports. Its 60.9998-second case failed the 8 MiB evidence-volume cap
+with a 10,527,765-byte ledger; all source/original/public hash guards passed.
+That failure remains unchanged. The existing generated files now require the
+separate clean `cargo xtask verify` check; the generator is not being replayed.
 
 N006/N007 native workflow evidence still belongs to 8aa/c332. The private N008
 preview showed the three tabs but missed its 180-second final-seal bound
