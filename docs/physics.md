@@ -345,11 +345,23 @@ On coupled-stage commit `9643ad0a430380f85b7c42f915c5ead3352c98b8`, the one
 filtered component check passes with position error `5.360130369343619e-22 m`
 and independent Cartesian force residual `1.6534083130403943e-18 N`.
 The reference-force norm is `2.710505431213761e-20 N`; pins and finiteness
-pass after each of the unchanged 32 sweeps. Four additional source checks cover
-shared history/pins/cancellation, no-op/invalid-input atomicity, active-trial
-degeneration and whole-call rollback; they remain unexecuted at this checkpoint.
-This bounded component result establishes neither garment causality nor garment
-quality, reference parity, measured-fabric behavior or a runtime budget result.
+pass after each of the unchanged 32 sweeps. The subsequent `82cc77ee` workspace
+check passed 425 tests, including the four guards for shared history/pins and
+cancellation, no-op/invalid-input atomicity, active-trial degeneration and
+whole-call rollback. Formatting, strict Clippy and native/CLI builds also passed.
+These results describe that separate source checkpoint; the integrated notch/v6
+source still requires its own checks.
+
+A fresh full original-shirt run on `82cc77ee` completed 180 steps and independently
+analyzed all 181 saved states in 358.903 seconds within its predeclared 420-second
+bound. At dt=1/60 s, eight substeps, 32 iterations and 1 m/s sewing closure, the
+unchanged 15% strain screen fails at frames 28 and 29. The peak is 50.9601855%
+warp extension at frame 28; the final maximum is 9.43082%. All finite-value,
+supported-contact and uncertainty screens pass; seam error passes after exact
+closure at frame 29. The final frame does not override trajectory failure.
+This is a failed implementation-only garment result, not measured-fabric,
+reference, complete-feature or garment-workflow acceptance. Earlier failed and
+incomplete runs retain their original source attribution and grades.
 
 ## Sewing, pins and construction correspondence
 

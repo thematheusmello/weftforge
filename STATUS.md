@@ -2,8 +2,9 @@
 
 The `feat/notch-bend-integration` branch combines the source from tested native
 notch/text-input commit `06329f2a` with the four coupled-bending files from
-`82cc77ee`, on the safe published PR #60 head `2a64b175`. All 91 source inputs
-match those exact origins. No dependency, vendor or toolchain changes are added.
+`82cc77ee`, on the safe published PR #60 head `2a64b175`. The runtime and test sources
+match those exact origins; documentation reconciles their separate results.
+No dependency, vendor or toolchain changes are added.
 This combined source has not yet run its integration checks.
 
 The separate UI source passed 441 workspace tests, formatting, strict Clippy and
