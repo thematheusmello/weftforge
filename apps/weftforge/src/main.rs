@@ -9162,12 +9162,15 @@ mod contextual_properties_tests {
             density + 0.2
         );
         assert!(app.editor.undo());
-        assert_eq!(app.editor.project, before);
+        assert_eq!(app.editor.project.revision, before.revision + 2);
+        let mut expected = before.clone();
+        expected.revision = before.revision + 2;
+        assert_eq!(app.editor.project, expected);
     }
 
     #[test]
     fn refocus_and_paste_in_one_frame_uses_the_retained_input_without_overwriting_the_new_edit() {
-        for blur in [false, true] {
+        for next_key in [None, Some(egui::Key::Tab), Some(egui::Key::Enter)] {
             let (ctx, mut app) = fixture();
             let output = frame(&ctx, &mut app, 1000., vec![]);
             let width = numeric(&output, 0.4);
@@ -9196,14 +9199,27 @@ mod contextual_properties_tests {
                 action(width, Action::Focus, None),
                 egui::Event::Paste("2".into()),
             ];
-            if blur {
-                events.push(key(egui::Key::Tab, egui::Modifiers::NONE));
+            if let Some(next_key) = next_key {
+                events.push(key(next_key, egui::Modifiers::NONE));
             }
             frame(&ctx, &mut app, 1000., events);
+            if next_key == Some(egui::Key::Enter) {
+                assert!(
+                    !ctx.memory(|memory| memory.has_focus(focused)),
+                    "Enter must actually blur the resumed editor"
+                );
+            } else {
+                assert_eq!(
+                    numeric_focus(&ctx),
+                    Some(focused),
+                    "AccessKit focus resets same-frame Tab navigation"
+                );
+            }
             for _ in 0..3 {
                 frame(&ctx, &mut app, 1000., vec![]);
             }
-            if blur {
+            if next_key == Some(egui::Key::Enter) {
+                assert!(!ctx.memory(|memory| memory.has_focus(focused)));
                 assert_eq!(app.editor.project.revision, before.revision + 1);
                 assert!(
                     (app.editor
@@ -9229,8 +9245,12 @@ mod contextual_properties_tests {
                     Some("1e-")
                 );
                 assert!(app.editor.undo());
-                assert_eq!(app.editor.project, before);
+                assert_eq!(app.editor.project.revision, before.revision + 2);
+                let mut expected = before.clone();
+                expected.revision = before.revision + 2;
+                assert_eq!(app.editor.project, expected);
             } else {
+                assert_eq!(numeric_focus(&ctx), Some(focused));
                 assert_eq!(
                     ctx.data_mut(|data| data.get_temp::<String>(focused))
                         .as_deref(),
