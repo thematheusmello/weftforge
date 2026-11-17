@@ -1,0 +1,46 @@
+{
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "clippy",
+    "--workspace",
+    "--all-targets",
+    "--locked",
+    "--offline",
+    "--",
+    "-D",
+    "warnings"
+  ],
+  "disk_observation": {
+    "last_available_bytes": 12536815616,
+    "max_snapshot_gap_seconds": 0.17575479112565517,
+    "minimum_available_bytes": 9425641472,
+    "path": "<ROOT>/.local/notch-bend-integration-20261117",
+    "samples": 261,
+    "stop_below_available_bytes": 8000000000
+  },
+  "end_monotonic_seconds": 1079060.348454875,
+  "exit_code": 0,
+  "peak_rss_bytes": 405176320,
+  "pid": 40956,
+  "process_group": 40956,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.1744337088894099,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 258,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 562331648,
+  "stop_reason": null,
+  "terminal_phase_checks": {
+    "deadline": 1079624.313395208,
+    "output_bytes": 56181,
+    "output_cap_bytes": 8388608,
+    "reserve_bytes": 262144
+  }
+}

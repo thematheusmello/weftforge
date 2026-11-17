@@ -21,18 +21,17 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
 
 1. Finish the native UI and interaction foundation in the PhotoCraft-inspired
    visual direction: consistent panels/tools/dialogs, linked selection, precise
-   input, focus, history and responsive job feedback. Complete actual authoring,
-   save/export and fresh-process reopen checks on the current integrated build.
-   A bounded native notch workflow now passes through the supported control
-   route, including history, save, export and fresh-process editable reopen.
-   Application-modal accessibility setters and the complete garment workflow
-   remain unverified.
-2. Close the first garment path. Correct shared soft-sewing stationarity while
-   preserving physical energy, constraints and declared tolerances; distinguish
-   the corner closure burst from the contact-supported collar transient. Then
-   independently approve the unchanged original physical rest under v6 metadata
-   and run a fresh complete garment test. The historical 181-state case still
-   fails strain at frames 28/29, with 50.9602% peak against the 15% limit.
+   input, focus, history and responsive job feedback. The new contextual tabs and
+   input-retirement paths have current source checks. Execute authoring,
+   save/export and fresh-process reopen on the new integrated native build.
+   Earlier 8aa notch workflow and genuine modal accessibility-setter observations
+   remain historical; they are not transferred to the changed source.
+2. Close the first garment path. Shared soft sewing now retains every energy in
+   one balanced nodal history and has integrated source checks. The fresh original
+   rest gate and complete 181-state case on ef313 ran with unchanged inputs and
+   limits: only frame 29 fails strain at 16.063338% against 15%. Preserve the older
+   50.9602% failure and investigate the remaining closure-time pulse using the
+   separately reviewed fixed-input observer. Keep all physical criteria unchanged.
 3. Complete the real empty-document shirt workflow through the UI: create pieces,
    sew, arrange, simulate, change dimension/material, save, quit, reopen, edit and
    export. Independently verify output and compare the recorded reference case.
@@ -47,13 +46,12 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    Keep GitHub Actions disabled throughout development. Re-enable it only after
    the complete project is finished, as the user requested.
 
-The latest integrated source passes 446 tests, formatting, strict Clippy and
-native/CLI builds. Separate actual CLI and native checks confirm editable notch
-identity, native v6, a 10 mm SVG marker and DXF refusal without replacement.
-The separate coupled-sewing candidate passes its focused stationarity test but
-fails an existing workspace integration test; it has not been integrated.
-These checks leave the native garment workflow, full feature contracts and
-release gates open.
+The latest actual combined source passes 459 tests, formatting, strict Clippy
+and native/CLI builds across two separately bound invocations. The first build's
+verification-stream failure remains visible; only that unfinished build was run
+again. The current native binary still needs its actual garment workflow.
+Earlier CLI/native notch results retain their 8aa source identity. All full
+feature contracts and release gates remain open.
 
 ## Before and throughout every gate
 

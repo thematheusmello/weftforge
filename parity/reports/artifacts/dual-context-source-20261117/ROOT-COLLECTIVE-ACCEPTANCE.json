@@ -1,0 +1,36 @@
+{
+  "recorded_utc": "2026-11-17T23:20:18.828615Z",
+  "actual_source": "12ecdc13ba47a20d77bf52d1757815e39f0ea380",
+  "source_checks_completed_across_two_invocations": true,
+  "not_one_all_four_success_or_clock_claim": true,
+  "completed_initial_commands": [
+    "cargo fmt --all --check",
+    "cargo test --workspace --locked --offline",
+    "cargo clippy --workspace --all-targets --locked --offline -- -D warnings"
+  ],
+  "actual_workspace_summary": {
+    "failed": 0,
+    "ignored": 0,
+    "passed": 459,
+    "summaries": 32
+  },
+  "first_build_monitor_failure_preserved": "monitor_error:BrokenPipeError:[Errno 32] Broken pipe",
+  "separate_build_only_command": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "build",
+    "-p",
+    "weftforge",
+    "-p",
+    "weftforge-cli",
+    "--locked",
+    "--offline"
+  ],
+  "separate_build_seconds_through_persistence": 4.179138457868248,
+  "separate_build_cap_seconds": 180,
+  "no_passed_test_or_lint_repeated": true,
+  "all91_source_hashes_verified": true,
+  "native_sha256": "08e682166be52aadb915d3560a16bef2569893737f182f4980600bebfe2db4a9",
+  "CLI_sha256": "1626b5af3a0b460b993e34271f4613dbc40eedb30f3786b56e0972f7519cf4be",
+  "no_native_UI_CLI_operation_garment_reference_or_fullfeature_acceptance": true,
+  "no_xtask_or_generated_progress_result_yet": true
+}

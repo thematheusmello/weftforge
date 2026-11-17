@@ -1,60 +1,71 @@
 # Current development integration — 17 November 2026
 
-The local `feat/dual-context-integration-20261117` source `1bf4cf1de46cffbad959c439610c1e6772266eff` combines
-balanced dual soft sewing with contextual Pattern, Fabric and Simulation property
-tabs, a persistent Scene panel and contextual creation/sewing groups in the
-PhotoCraft-inspired visual direction. It also retires suspended numeric caches
-when sewing rows move, reverse, disappear or are explicitly discarded.
+The `feat/dual-context-integration-20261117` branch combines dual soft sewing
+with contextual Pattern, Fabric and Simulation tabs, independent scrolling,
+Scene and contextual creation/sewing groups in the PhotoCraft-inspired direction.
+A shared cache fix retires discarded sewing-row input before reused controls or
+an authoring action can consume it, while preserving unrelated edits.
 
-The stale-input bug was reproduced on `bd08d511`: one exact test failed after
-Down kept a discarded hidden edit and blocked the real sewing validation error.
-The first result remains unchanged. The shared fix passes eight focused guards
-on `cb291881`; the keyboard extension passes the same eight on `99734576`,
-including actual eligible Delete/Escape handling, an unrendered appended row,
-reused IDs and preservation of unrelated raw text, caret, pending commands,
-history and accepted mesh/cloth identities. The latest formatting/focused check
-sealed in 24.987 seconds within 180 seconds. These are headless implementation
-checks; full combined workspace validation and a current native build are pending.
+Actual combined source `12ecdc13ba47a20d77bf52d1757815e39f0ea380` passes
+**459 workspace tests across 32 summaries, zero failed/ignored**, formatting,
+strict all-target Clippy and native/CLI builds. These results belong to two
+separately bound invocations. The first sequence completed the tests/lint, then
+its build was killed after a verification output stream broke. That failure and
+its original false combined-result flag remain intact. A distinct build-only
+invocation passed in **4.179 seconds / 180 seconds** on unchanged source;
+no passed tests or lint checks were repeated. No single all-four-success clock
+is claimed. See the [combined source report](parity/reports/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.json).
 
-The independent full numerical case on actual `ef313fa8` completed all 180 steps
-and analyzed all 181 states in 323.212 seconds within 420 seconds. It is **strict
-quality failed**: frame 29 reaches **16.063338% warp strain**, exceeding the
-unchanged 15% limit. Finite-value, supported-contact and uncertainty screens pass;
-completed assembly targets are zero at frames 60/180. Final-frame 9.430740%
-strain does not override the trajectory failure. The original 50.9602% failure
-remains historical and is not a controlled causal comparison.
+The newly built native binary is
+`08e682166be52aadb915d3560a16bef2569893737f182f4980600bebfe2db4a9`;
+the separately built CLI is
+`1626b5af3a0b460b993e34271f4613dbc40eedb30f3786b56e0972f7519cf4be`.
+They have not been used for a native or CLI workflow in this checkpoint. Immutable
+same-worktree copies retain both identities; no Cargo target was copied.
 
-[Source evidence](parity/reports/WF-20261117-COUPLED-SOFT-SEWING-SOURCE-001.json)
-retains the earlier core failure, actual 451-test pass on `526b9451`, exact
-private type-alias equivalence and current `ef313fa8` formatting, strict Clippy
-and native/CLI build checks. The
-[full numerical report](parity/reports/WF-20261117-DUAL-SEWING-HARBOR-A8-001.json)
-retains the complete failed case. Both reports are stale for their declared
-full source scope after the contextual UI change; no acceptance is transferred.
-The original 8aa source/N006 reports are archived exactly and change only
-freshness/reason. N006/N007 native evidence still belongs to 8aa/c332.
+The numeric-cache regression has an actual first Down failure on `bd08d511` and
+passing eight-guard successors on `cb291881` and `99734576`. The latest check
+includes actual App keyboard Delete/Escape, an appended row before redraw,
+reused IDs and exact preservation of other raw text/caret, pending commands,
+history and accepted mesh/cloth identities. Its 24.987-second check is separate
+from the full workspace result. All original prototype compile, discovery and
+lint failures remain attributed to their own sources. The earlier 166-test pass
+belongs to `351bf28b`; it is never relabeled as an execution on `a66c90ed`.
 
-The private N008 preview showed the three tabs in the native app but missed its
-180-second final-seal bound (193.534 seconds). It provides qualified visual
-observations only. All finished native/reference/test processes are closed.
-The root target still contains old 8aa binaries until the combined build runs.
+The independent full garment case on actual `ef313fa8` remains **strict quality
+failed**. It completed 180 steps and analyzed all 181 states in 323.212 seconds
+within 420 seconds, but frame 29 reaches **16.063338% warp strain**, exceeding
+the unchanged 15% limit. Finite-value, supported-contact and uncertainty screens
+pass; assembly targets are zero at frames 60/180. Final-frame 9.430740% does
+not override the trajectory failure. The historical 50.9602% failure remains
+unchanged. See the [full numerical report](parity/reports/WF-20261117-DUAL-SEWING-HARBOR-A8-001.json).
+The ef313/UI997 source reports are stale for their declared full dependency
+scopes after integration; the new combined source report is current.
 
-Next: run the pinned combined workspace sequence (459 tests across 32 summaries
-are expected, not yet an executed result), strict all-target Clippy and native/CLI
-builds; reconcile source-map/progress metadata, track all evidence and verify the
-clean checkout; then run current native authoring/save/export/reopen workflows.
-A separate read-only observer plan investigates the remaining closure-time strain
-pulse; no new diagnostic model execution is authorized. Continue every gate and
-acceptance journey in [ROADMAP.md](ROADMAP.md).
+The source crosswalk maps 441 occurrences, preserving all preceding identities,
+949 catalog IDs, 205 packets and 56 historical landmarks. Its separate read-only
+check passed in 14.892 seconds. Generated progress and clean `cargo xtask verify`
+are the next metadata checks; neither is claimed complete yet.
 
-GitHub Actions remain disabled and the run count remains 54. Main and the existing
-Pages site are unchanged. No new branch has been published, merged or deployed.
-The registry retains 42 partial and 14 planned groups, with zero fully implemented
-or reference-verified contracts and no accepted delivery gate. Discovery remains
-incomplete; 56 is not a final product denominator.
+N006/N007 native workflow evidence still belongs to 8aa/c332. The private N008
+preview showed the three tabs but missed its 180-second final-seal bound
+(193.534 seconds), so it provides no workflow acceptance. Finished owned test,
+preview and reference processes are closed. A current-v6 empty-project shirt
+route is being prepared against the new binary; no new native app is running.
+A separate fixed-input observer is under source review for the remaining strain
+pulse; no diagnostic build/model execution is authorized yet.
 
-Earlier published checkpoints and retained evidence follow. Their source, job,
-current/pending and next-step statements belong to those historical checkpoints.
+Next: finish the generated progress and clean verification, publish only the
+reviewed safe draft checkpoint, and execute current native authoring, sewing,
+simulation, save/restart/edit/export with independent output checks. Continue
+all six gates and ten acceptance journeys in [ROADMAP.md](ROADMAP.md).
+GitHub Actions remain disabled with 54 runs. Main and existing Pages are unchanged;
+no new branch has been pushed, merged or deployed. The registry remains 42 partial,
+14 planned, zero fully implemented/reference verified, with no accepted delivery
+gate. Discovery remains incomplete; 56 is not the final product denominator.
+
+Earlier published checkpoints and retained evidence follow. Their current/pending,
+source, job and next-step statements belong to those historical checkpoints.
 
 # Current development integration — 17 November 2026
 
