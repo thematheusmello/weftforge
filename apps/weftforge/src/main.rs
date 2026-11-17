@@ -737,6 +737,7 @@ struct OrderedSewingDraft {
     a: Vec<CurveInterval>,
     b: Vec<CurveInterval>,
     selecting_b: bool,
+    numeric_fields: [Vec<egui::Id>; 2],
 }
 
 struct SewingGroupEdit {
@@ -1208,7 +1209,26 @@ impl Studio {
         succeeded
     }
 
+    fn reconcile_suspended_properties(&mut self, ctx: &egui::Context) {
+        self.suspended_properties.retain(|(_, input)| {
+            let Some(id) = input.focus else {
+                return false;
+            };
+            if input.text.is_none() {
+                clear_numeric_input(ctx, id);
+                return false;
+            }
+            ctx.data_mut(|data| {
+                data.get_temp::<RetainedInspectorInput>(id.with("suspended-property-input"))
+            })
+            .is_some()
+        });
+    }
+
     fn reset_gestures(&mut self) {
+        for fields in &self.sewing_draft.numeric_fields {
+            discard_suspended_inputs(&mut self.suspended_properties, fields);
+        }
         self.cancel_outline_offset_job();
         self.outline_offset = None;
         self.polygon.clear();
@@ -1283,6 +1303,17 @@ impl Studio {
 
     fn delete_sewing_span(&mut self) {
         let draft = &mut self.sewing_draft;
+        let (side, count) = if draft.selecting_b && !draft.b.is_empty() {
+            (1, draft.b.len())
+        } else {
+            (0, draft.a.len())
+        };
+        // An appended last span may not have rendered start/end IDs yet.
+        if let Some(row) = count.checked_sub(1)
+            && let Some(fields) = draft.numeric_fields[side].chunks_exact(2).nth(row)
+        {
+            discard_suspended_inputs(&mut self.suspended_properties, fields);
+        }
         if draft.selecting_b {
             if draft.b.pop().is_none() {
                 draft.selecting_b = false;
@@ -2053,8 +2084,7 @@ impl Studio {
         }
         // Restored values must not inherit the focused field's old edit text.
         if let Some(id) = ctx.memory(|memory| memory.focused()) {
-            ctx.data_mut(|data| data.remove::<String>(id));
-            ctx.memory_mut(|memory| memory.surrender_focus(id));
+            clear_numeric_fields(ctx, &[id]);
         }
         if if redo {
             self.editor.redo()
@@ -2789,16 +2819,14 @@ impl Studio {
         }
     }
     fn inspector(&mut self, ui: &mut egui::Ui) {
+        self.reconcile_suspended_properties(ui.ctx());
         self.suspended_properties.retain(|(curve, input)| {
             let current = input.text.is_some()
                 && input.revision == self.editor.project.revision
                 && input.selected == self.selected
                 && *curve == self.selected_curve;
             if !current && let Some(id) = input.focus {
-                ui.ctx().data_mut(|data| {
-                    data.remove::<String>(id);
-                    data.remove::<RetainedInspectorInput>(id.with("suspended-property-input"));
-                });
+                clear_numeric_input(ui.ctx(), id);
             }
             current
         });
@@ -3298,13 +3326,13 @@ impl Studio {
                     ui.small("Click boundaries in traversal order; next span uses the A/B interval above and B direction setting. Enter confirms a side; Delete removes the latest span; Escape cancels.");
                     let selecting_b=draft.selecting_b;
                     let b_range=if self.reversed { [self.intervals[1][1],self.intervals[1][0]] } else { self.intervals[1] };
-                    sewing_span_controls(ui,&self.editor.project,"A",&mut draft.a,self.selected_curve,(!selecting_b).then_some(self.intervals[0]));
-                    sewing_span_controls(ui,&self.editor.project,"B",&mut draft.b,self.selected_curve,selecting_b.then_some(b_range));
+                    draft.numeric_fields[0]=sewing_span_controls(ui,&self.editor.project,"A",&mut draft.a,self.selected_curve,(!selecting_b).then_some(self.intervals[0]));
+                    draft.numeric_fields[1]=sewing_span_controls(ui,&self.editor.project,"B",&mut draft.b,self.selected_curve,selecting_b.then_some(b_range));
                     ui.horizontal(|ui| {
                         confirm_side=ui.button(if selecting_b { "Create sewing group (Enter)" } else { "Confirm A (Enter)" }).clicked();
                         if ui.small_button("Delete last").clicked() { self.delete_sewing_span(); }
                     });
-                    if ui.small_button("Cancel sewing (Escape)").clicked() { self.sewing_draft=OrderedSewingDraft::default(); }
+                    if ui.small_button("Cancel sewing (Escape)").clicked() { for fields in &self.sewing_draft.numeric_fields { discard_suspended_inputs(&mut self.suspended_properties,fields); } self.sewing_draft=OrderedSewingDraft::default(); }
                 }
                 let mesh=self.mesh.as_ref().filter(|mesh|mesh.doc_revision==self.editor.project.revision);
                 let mesh_error=self.last_job.as_ref()
@@ -3368,6 +3396,7 @@ impl Studio {
             });
             }
             self.draft=Some(draft);
+            self.reconcile_suspended_properties(ui.ctx());
             if offset_outline { self.open_outline_offset(ui.ctx()); }
             if create_hole { self.open_hole(ui.ctx()); }
             if create_internal { self.open_internal_line(ui.ctx(),None); }
@@ -3394,6 +3423,7 @@ impl Studio {
         #[cfg(test)]
         ui.ctx().data_mut(|data|data.insert_temp(egui::Id::new("authored-length-scroll"),(_scroll.id,_scroll.content_size,_scroll.inner_rect,_scroll.state.offset)));
         });
+        self.reconcile_suspended_properties(ui.ctx());
         self.suspended_properties.retain(|(_, input)| {
             let Some(id) = input.focus else {
                 return false;
@@ -3456,7 +3486,7 @@ impl Studio {
             && let Some(id) = action_focus
         {
             // egui replays committed text on next-frame blur; rebuilt f64 bounds may differ.
-            ui.ctx().data_mut(|data| data.remove::<String>(id));
+            clear_numeric_input(ui.ctx(), id);
         }
         if let Some((_, _, _, _, focused)) = ui
             .ctx()
@@ -7274,9 +7304,26 @@ fn sewing_span_controls(
     })
     .inner
 }
+fn discard_suspended_inputs(
+    inputs: &mut [(Option<Id>, RetainedInspectorInput)],
+    fields: &[egui::Id],
+) {
+    for (_, input) in inputs {
+        if input.focus.is_some_and(|id| fields.contains(&id)) {
+            input.text = None;
+        }
+    }
+}
+fn clear_numeric_input(ctx: &egui::Context, id: egui::Id) {
+    ctx.data_mut(|data| {
+        data.remove::<String>(id);
+        data.remove::<RetainedInspectorInput>(id.with("suspended-property-input"));
+        data.remove::<(u64, bool)>(id.with("resumed-property-input"));
+    });
+}
 fn clear_numeric_fields(ctx: &egui::Context, fields: &[egui::Id]) {
     for &id in fields {
-        ctx.data_mut(|data| data.remove::<String>(id));
+        clear_numeric_input(ctx, id);
         ctx.memory_mut(|memory| memory.surrender_focus(id));
     }
 }
@@ -7291,8 +7338,7 @@ fn finish_numeric_action(ctx: &egui::Context, focused: Option<egui::Id>, succeed
     if succeeded {
         for id in focused.into_iter().chain(current) {
             // Numeric caches must not replay values from before the action.
-            ctx.data_mut(|data| data.remove::<String>(id));
-            ctx.memory_mut(|memory| memory.surrender_focus(id));
+            clear_numeric_fields(ctx, &[id]);
         }
     } else if let Some(id) = current.or(focused) {
         ctx.memory_mut(|memory| memory.request_focus(id));
@@ -9415,30 +9461,73 @@ mod contextual_properties_tests {
         for operation in ["Down", "Direction", "Remove span"] {
             let (ctx, mut app) = fixture();
             let mesh = Arc::new(app.editor.project.mesh().unwrap());
-            let cloth = Arc::new(weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap());
+            let cloth = Arc::new(
+                weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap(),
+            );
             app.mesh = Some(mesh.clone());
             app.cloth = Some(cloth.clone());
             click(&ctx, &mut app, "M:N sewing");
             let output = frame(&ctx, &mut app, 1000., vec![]);
             let width = numeric(&output, 0.4);
-            frame(&ctx, &mut app, 1000., vec![action(width, Action::Focus, None)]);
+            frame(
+                &ctx,
+                &mut app,
+                1000.,
+                vec![action(width, Action::Focus, None)],
+            );
             frame(&ctx, &mut app, 1000., vec![]);
-            frame(&ctx, &mut app, 1000., vec![key(egui::Key::A, egui::Modifiers::COMMAND), egui::Event::Text("0.4500".into())]);
+            frame(
+                &ctx,
+                &mut app,
+                1000.,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text("0.4500".into()),
+                ],
+            );
             let width_focus = numeric_focus(&ctx).unwrap();
-            let width_caret = egui::TextEdit::load_state(&ctx, width_focus).unwrap().cursor.char_range();
+            let width_caret = egui::TextEdit::load_state(&ctx, width_focus)
+                .unwrap()
+                .cursor
+                .char_range();
             click(&ctx, &mut app, "Fabric");
             click(&ctx, &mut app, "Pattern");
             app.sewing_draft.a = vec![
-                CurveInterval { curve: 7, t0: 0.125, t1: 0.875 },
-                CurveInterval { curve: 8, t0: 0.25, t1: 0.75 },
+                CurveInterval {
+                    curve: 7,
+                    t0: 0.125,
+                    t1: 0.875,
+                },
+                CurveInterval {
+                    curve: 8,
+                    t0: 0.25,
+                    t1: 0.75,
+                },
             ];
-            app.sewing_draft.b = vec![CurveInterval { curve: 8, t0: 0.375, t1: 0.625 }];
+            app.sewing_draft.b = vec![CurveInterval {
+                curve: 8,
+                t0: 0.375,
+                t1: 0.625,
+            }];
             app.sewing_draft.selecting_b = true;
             let output = frame(&ctx, &mut app, 1000., vec![]);
             let row = numeric(&output, 0.125);
-            frame(&ctx, &mut app, 1000., vec![action(row, Action::Focus, None)]);
+            frame(
+                &ctx,
+                &mut app,
+                1000.,
+                vec![action(row, Action::Focus, None)],
+            );
             frame(&ctx, &mut app, 1000., vec![]);
-            frame(&ctx, &mut app, 1000., vec![key(egui::Key::A, egui::Modifiers::COMMAND), egui::Event::Text("1e-".into())]);
+            frame(
+                &ctx,
+                &mut app,
+                1000.,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text("1e-".into()),
+                ],
+            );
             click(&ctx, &mut app, "Fabric");
             let output = click(&ctx, &mut app, "Pattern");
             assert!(numeric_focus(&ctx).is_none());
@@ -9453,25 +9542,43 @@ mod contextual_properties_tests {
                     let interval = &mut expected_a[0];
                     std::mem::swap(&mut interval.t0, &mut interval.t1);
                 }
-                "Remove span" => { expected_a.remove(0); }
+                "Remove span" => {
+                    expected_a.remove(0);
+                }
                 _ => unreachable!(),
             }
             let before_b = app.sewing_draft.b.clone();
-            frame(&ctx, &mut app, 1000., vec![
-                action(button(&output, operation), Action::Click, None),
-                action(button(&output, "Create sewing group (Enter)"), Action::Click, None),
-            ]);
+            frame(
+                &ctx,
+                &mut app,
+                1000.,
+                vec![
+                    action(button(&output, operation), Action::Click, None),
+                    action(
+                        button(&output, "Create sewing group (Enter)"),
+                        Action::Click,
+                        None,
+                    ),
+                ],
+            );
             assert_eq!(app.sewing_draft.a, expected_a);
             assert_eq!(app.sewing_draft.b, before_b);
             let mut expected = Editor::new(before.clone()).unwrap();
             let mut commands = pending.clone();
             commands.push(Command::AddSewingGroup {
                 name: format!("Sewing group {}", before.sewing_groups.len() + 1),
-                a: expected_a.clone(), b: before_b,
+                a: expected_a.clone(),
+                b: before_b,
                 correspondence: vec![[0., 0.], [1., 1.]],
             });
-            let expected_error = expected.execute(Command::Transaction(commands)).unwrap_err().to_string();
-            assert_eq!(app.message, expected_error, "{operation}: stale raw blocked the real validation error");
+            let expected_error = expected
+                .execute(Command::Transaction(commands))
+                .unwrap_err()
+                .to_string();
+            assert_eq!(
+                app.message, expected_error,
+                "{operation}: stale raw blocked the real validation error"
+            );
             assert_eq!(format!("{:?}", app.editor), history);
             assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
             assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
@@ -9479,15 +9586,43 @@ mod contextual_properties_tests {
             let output = frame(&ctx, &mut app, 1000., vec![]);
             let current = numeric(&output, expected_a[0].t0);
             assert_eq!(current, row, "the row ID is deliberately reused");
-            frame(&ctx, &mut app, 1000., vec![action(current, Action::Focus, None)]);
-            for _ in 0..3 { frame(&ctx, &mut app, 1000., vec![]); }
+            frame(
+                &ctx,
+                &mut app,
+                1000.,
+                vec![action(current, Action::Focus, None)],
+            );
+            for _ in 0..3 {
+                frame(&ctx, &mut app, 1000., vec![]);
+            }
             let row_focus = numeric_focus(&ctx).unwrap();
-            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(row_focus)).as_deref(), Some(expected_a[0].t0.to_string().as_str()));
-            frame(&ctx, &mut app, 1000., vec![action(width, Action::Focus, None)]);
-            for _ in 0..3 { frame(&ctx, &mut app, 1000., vec![]); }
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(row_focus))
+                    .as_deref(),
+                Some(expected_a[0].t0.to_string().as_str())
+            );
+            frame(
+                &ctx,
+                &mut app,
+                1000.,
+                vec![action(width, Action::Focus, None)],
+            );
+            for _ in 0..3 {
+                frame(&ctx, &mut app, 1000., vec![]);
+            }
             assert_eq!(numeric_focus(&ctx), Some(width_focus));
-            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(width_focus)).as_deref(), Some("0.4500"));
-            assert_eq!(egui::TextEdit::load_state(&ctx, width_focus).unwrap().cursor.char_range(), width_caret);
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(width_focus))
+                    .as_deref(),
+                Some("0.4500")
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, width_focus)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                width_caret
+            );
             assert_eq!(format!("{:?}", app.editor), history);
             assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
             assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
@@ -9495,6 +9630,276 @@ mod contextual_properties_tests {
         }
     }
 
+    #[test]
+    fn sewing_draft_discard_preserves_surviving_rows_and_unrelated_input() {
+        fn enter(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            value: f64,
+            raw: &str,
+        ) -> (NodeId, egui::Id) {
+            let output = frame(ctx, app, 1000., vec![]);
+            let node = numeric(&output, value);
+            frame(ctx, app, 1000., vec![action(node, Action::Focus, None)]);
+            frame(ctx, app, 1000., vec![]);
+            frame(
+                ctx,
+                app,
+                1000.,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text(raw.into()),
+                ],
+            );
+            (node, numeric_focus(ctx).unwrap())
+        }
+        fn pointer_button(ctx: &egui::Context, app: &mut Studio, label: &str) {
+            frame(ctx, app, 2200., vec![]);
+            let output = frame(ctx, app, 2200., vec![]);
+            let node = button(&output, label);
+            let bounds = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(id, _)| *id == node)
+                .unwrap()
+                .1
+                .bounds()
+                .unwrap();
+            let pos = Pos2::new(
+                ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                ((bounds.y0 + bounds.y1) * 0.5) as f32,
+            );
+            let (_, _, clip, _) = ctx
+                .data_mut(|data| {
+                    data.get_temp::<(egui::Id, Vec2, Rect, Vec2)>(egui::Id::new(
+                        "authored-length-scroll",
+                    ))
+                })
+                .unwrap();
+            assert!(
+                clip.contains(pos),
+                "{label} must really be pointer-reachable"
+            );
+            for pressed in [true, false] {
+                frame(
+                    ctx,
+                    app,
+                    2200.,
+                    vec![
+                        egui::Event::PointerMoved(pos),
+                        egui::Event::PointerButton {
+                            pos,
+                            button: egui::PointerButton::Primary,
+                            pressed,
+                            modifiers: egui::Modifiers::NONE,
+                        },
+                    ],
+                );
+            }
+        }
+        let (ctx, mut app) = fixture();
+        let mesh = Arc::new(app.editor.project.mesh().unwrap());
+        let cloth =
+            Arc::new(weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap());
+        app.mesh = Some(mesh.clone());
+        app.cloth = Some(cloth.clone());
+        click(&ctx, &mut app, "M:N sewing");
+        let (width, width_focus) = enter(&ctx, &mut app, 0.4, "0.4500");
+        let width_caret = egui::TextEdit::load_state(&ctx, width_focus)
+            .unwrap()
+            .cursor
+            .char_range();
+        click(&ctx, &mut app, "Fabric");
+        click(&ctx, &mut app, "Pattern");
+        app.sewing_draft.a = vec![CurveInterval {
+            curve: 7,
+            t0: 0.125,
+            t1: 0.875,
+        }];
+        app.sewing_draft.b = vec![
+            CurveInterval {
+                curve: 8,
+                t0: 0.375,
+                t1: 0.625,
+            },
+            CurveInterval {
+                curve: 9,
+                t0: 0.5,
+                t1: 0.875,
+            },
+        ];
+        app.sewing_draft.selecting_b = true;
+        let (a, a_focus) = enter(&ctx, &mut app, 0.125, "0.1250");
+        let a_caret = egui::TextEdit::load_state(&ctx, a_focus)
+            .unwrap()
+            .cursor
+            .char_range();
+        click(&ctx, &mut app, "Fabric");
+        click(&ctx, &mut app, "Pattern");
+        let (b, b_focus) = enter(&ctx, &mut app, 0.375, "0.3750");
+        let b_caret = egui::TextEdit::load_state(&ctx, b_focus)
+            .unwrap()
+            .cursor
+            .char_range();
+        click(&ctx, &mut app, "Fabric");
+        click(&ctx, &mut app, "Pattern");
+        let (retired, _) = enter(&ctx, &mut app, 0.5, "1e-");
+        click(&ctx, &mut app, "Fabric");
+        click(&ctx, &mut app, "Pattern");
+        let before = app.editor.project.clone();
+        let history = format!("{:?}", app.editor);
+        let pending = app.draft.as_ref().unwrap().commands(&before);
+        let a_before = app.sewing_draft.a.clone();
+        let surviving_b = app.sewing_draft.b[0];
+        let staged = |app: &Studio| {
+            assert_eq!(format!("{:?}", app.editor), history);
+            assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+            assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+        };
+        pointer_button(&ctx, &mut app, "Delete last");
+        assert_eq!(app.sewing_draft.a, a_before);
+        assert_eq!(app.sewing_draft.b, vec![surviving_b]);
+        staged(&app);
+        let output = frame(&ctx, &mut app, 1000., vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![
+                action(button(&output, "Add boundary to B"), Action::Click, None),
+                action(button(&output, "Delete last"), Action::Click, None),
+            ],
+        );
+        assert_eq!(
+            app.sewing_draft.b,
+            vec![surviving_b],
+            "an unrendered append is the only retired row"
+        );
+        staged(&app);
+        for (node, focus, raw, caret) in [
+            (a, a_focus, "0.1250", a_caret),
+            (b, b_focus, "0.3750", b_caret),
+        ] {
+            frame(
+                &ctx,
+                &mut app,
+                1000.,
+                vec![action(node, Action::Focus, None)],
+            );
+            for _ in 0..3 {
+                frame(&ctx, &mut app, 1000., vec![]);
+            }
+            assert_eq!(numeric_focus(&ctx), Some(focus));
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(focus))
+                    .as_deref(),
+                Some(raw)
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, focus)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            staged(&app);
+        }
+        let output = click(&ctx, &mut app, "Add boundary to B");
+        let expected_new_value = app.sewing_draft.b[1].t0;
+        let reused = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(id, node)| *id == retired && node.numeric_value().is_some())
+            .unwrap();
+        assert_eq!(reused.1.numeric_value(), Some(expected_new_value));
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![action(reused.0, Action::Focus, None)],
+        );
+        for _ in 0..3 {
+            frame(&ctx, &mut app, 1000., vec![]);
+        }
+        let new_focus = numeric_focus(&ctx).unwrap();
+        let expected_text = expected_new_value.to_string();
+        assert_eq!(
+            ctx.data_mut(|data| data.get_temp::<String>(new_focus))
+                .as_deref(),
+            Some(expected_text.as_str())
+        );
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("1e-".into()),
+            ],
+        );
+        click(&ctx, &mut app, "Fabric");
+        click(&ctx, &mut app, "Pattern");
+        pointer_button(&ctx, &mut app, "Cancel sewing (Escape)");
+        assert!(app.sewing_draft.a.is_empty() && app.sewing_draft.b.is_empty());
+        staged(&app);
+        let output = frame(&ctx, &mut app, 1000., vec![]);
+        let current_width = numeric(&output, 0.45);
+        assert_eq!(current_width, width);
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![action(current_width, Action::Focus, None)],
+        );
+        for _ in 0..3 {
+            frame(&ctx, &mut app, 1000., vec![]);
+        }
+        assert_eq!(numeric_focus(&ctx), Some(width_focus));
+        assert_eq!(
+            ctx.data_mut(|data| data.get_temp::<String>(width_focus))
+                .as_deref(),
+            Some("0.4500")
+        );
+        assert_eq!(
+            egui::TextEdit::load_state(&ctx, width_focus)
+                .unwrap()
+                .cursor
+                .char_range(),
+            width_caret
+        );
+        staged(&app);
+        let output = click(&ctx, &mut app, "Create pattern");
+        let mut expected = Editor::new(before.clone()).unwrap();
+        let mut commands = pending.clone();
+        commands.push(Command::AddEllipse {
+            name: app.name.clone(),
+            origin: app.coordinate,
+            width: app.size[0],
+            height: app.size[1],
+        });
+        expected.execute(Command::Transaction(commands)).unwrap();
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![action(button(&output, "Add ellipse"), Action::Click, None)],
+        );
+        assert_eq!(app.editor.project, expected.project);
+        assert_eq!(app.editor.project.revision, before.revision + 1);
+        assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+        assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+        assert!(app.editor.undo() && expected.undo());
+        assert_eq!(app.editor.project, expected.project);
+    }
 }
 
 #[cfg(test)]
