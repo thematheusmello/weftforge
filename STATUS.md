@@ -5,11 +5,18 @@ notch/text-input commit `06329f2a` with the four coupled-bending files from
 `82cc77ee`, on the safe published PR #60 head `2a64b175`. The runtime and test sources
 match those exact origins; documentation reconciles their separate results.
 No dependency, vendor or toolchain changes are added.
-This combined source has not yet run its integration checks.
+Actual combined source `8aa850975fa388c3c4bd206db74adf7171916451` now passes
+446 workspace tests across 32 summaries (zero failed or ignored), formatting,
+strict Clippy and native/CLI builds. All four commands exited zero in one
+496.191-second sequence within its predeclared 900-second bound. The target was
+cold and belongs to this worktree; no compiled target was copied. Source hashes,
+modes, raw test summaries, binary identities and process cleanup were independently
+checked. The desktop binary is SHA-256 `c3327b3f9b7b6ed300787e4d113fa9f095969628416748155e3b79452f5e056f`.
+It has not yet been launched. Clean registry/xtask verification follows publication
+metadata reconciliation; no combined native or garment acceptance follows.
 
-The separate UI source passed 441 workspace tests, formatting, strict Clippy and
-native/CLI builds. The separate coupled-bending source passed 425 tests and the
-same build/lint checks. These are separate results, not a combined test total.
+Earlier separate UI (441 tests) and coupled-bending (425 tests) results remain
+historical. The 446 total above is from the actual combined workspace invocation.
 
 The full coupled-bending garment run completed all 180 steps and independently
 analyzed 181 states. It still fails the unchanged strain screen at frames 28 and
@@ -22,8 +29,10 @@ accessibility tree exposed only window chrome. A supported window action failed;
 no notch authoring, save, export or reopen step ran. The exact owned process and
 windows were closed. Source tests do not establish this native workflow.
 
-Next: resolve native accessibility activation, run the combined source checks,
-then repeat the complete native notch workflow on a new recorded case. Diagnose
+Next: run the distinct read-only accessibility bootstrap diagnostic and reconcile
+registry/evidence, then perform the complete native notch workflow on a new
+recorded case. A frozen test-only two-row sewing regression is ready to check
+shared stiff-row stationarity against an independent energy oracle. Diagnose
 closure from the retained states before changing the solver or running another
 full garment test. Native v6 adds empty notch metadata; a future physical rest
 comparison must explicitly distinguish that empty authoring metadata from any
