@@ -477,7 +477,8 @@ impl Cloth {
             }
             let mut material_corrections = vec![[0.; 3]; x.len()];
             let mut bend_corrections = vec![[0.; 3]; x.len()];
-            let mut seam_lambda = vec![[0.; 3]; self.input.stitches.len()];
+            let mut sewing_corrections = vec![[0.; 3]; x.len()];
+            let mut hard_seam_lambda = vec![[0.; 3]; self.input.stitches.len()];
             for _ in 0..settings.iterations {
                 if cancelled() {
                     return Err(SimulationError::Cancelled);
@@ -498,21 +499,32 @@ impl Cloth {
                     &mut bend_corrections,
                     &cancelled,
                 )?;
+                constraints::solve_sewing(
+                    &self.input.stitches,
+                    &seam_remaining,
+                    &mut x,
+                    &self.inverse_masses,
+                    dt,
+                    &mut sewing_corrections,
+                    &cancelled,
+                )?;
                 for ((s, &remaining), lambda) in self
                     .input
                     .stitches
                     .iter()
                     .zip(&seam_remaining)
-                    .zip(&mut seam_lambda)
+                    .zip(&mut hard_seam_lambda)
                 {
-                    constraints::solve_stitch(
-                        *s,
-                        remaining,
-                        &mut x,
-                        &self.inverse_masses,
-                        dt,
-                        lambda,
-                    );
+                    if s.compliance == 0. {
+                        constraints::solve_hard_stitch(
+                            *s,
+                            remaining,
+                            &mut x,
+                            &self.inverse_masses,
+                            dt,
+                            lambda,
+                        );
+                    }
                 }
                 contacts += self.project_colliders(&mut x, &previous, &cancelled)?;
                 contacts += self.project_cloth(&mut x, &previous, &cancelled)?;
