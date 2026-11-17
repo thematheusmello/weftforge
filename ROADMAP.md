@@ -23,8 +23,10 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    visual direction: consistent panels/tools/dialogs, linked selection, precise
    input, focus, history and responsive job feedback. Complete actual authoring,
    save/export and fresh-process reopen checks on the current integrated build.
-   The latest native accessibility bootstrap remained empty; a separate supported
-   native-control route is available for investigation, not yet a workflow pass.
+   A bounded native notch workflow now passes through the supported control
+   route, including history, save, export and fresh-process editable reopen.
+   Application-modal accessibility setters and the complete garment workflow
+   remain unverified.
 2. Close the first garment path. Correct shared soft-sewing stationarity while
    preserving physical energy, constraints and declared tolerances; distinguish
    the corner closure burst from the contact-supported collar transient. Then
@@ -46,9 +48,12 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    the complete project is finished, as the user requested.
 
 The latest integrated source passes 446 tests, formatting, strict Clippy and
-native/CLI builds. A separate actual CLI check confirms editable notch identity,
-native v6, a 10 mm SVG marker and DXF refusal without replacement. These checks
-leave the native garment workflow, full feature contracts and release gates open.
+native/CLI builds. Separate actual CLI and native checks confirm editable notch
+identity, native v6, a 10 mm SVG marker and DXF refusal without replacement.
+The separate coupled-sewing candidate passes its focused stationarity test but
+fails an existing workspace integration test; it has not been integrated.
+These checks leave the native garment workflow, full feature contracts and
+release gates open.
 
 ## Before and throughout every gate
 

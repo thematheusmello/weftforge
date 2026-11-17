@@ -59,7 +59,9 @@ folds and internal sewing remain future work. See the
 exact curve parameter. Numeric creation, editing and removal share the document
 history; supported split/join edits retain the attachment. Native projects and
 SVG retain markers. DXF refuses notched projects to prevent losing annotations.
-Other notch shapes and the complete native workflow remain in development.
+The bounded native check covers creation/editing, Undo/Redo, save, fresh-process
+editable reopen, SVG scale and protected DXF refusal. Other notch shapes remain
+in development.
 
 **Cut piece** divides an eligible straight pattern into two independent editable
 pieces. Pick two boundaries or enter their exact curve parameters, review the

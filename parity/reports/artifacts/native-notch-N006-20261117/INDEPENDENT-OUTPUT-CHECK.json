@@ -1,0 +1,35 @@
+{
+  "artifacts": {
+    "existing.dxf": {
+      "bytes": 75,
+      "sha256": "f6fe814b1871fe7b931985fd3c8d4daed80d6719a476d84bdbc89f3b1e5d0d40"
+    },
+    "garment.svg": {
+      "bytes": 864,
+      "sha256": "f98be661186002e4fd55abe964e30db6c36a9d4918db761731c311ffa254588c"
+    },
+    "garment.weftforge": {
+      "bytes": 3377,
+      "sha256": "9306ed73343b85108771d7bfa1f7489764ecddc00f8eb1c5d90f79d743ddea00"
+    }
+  },
+  "checks": {
+    "exactly_one_piece_notch": true,
+    "format_v6": true,
+    "identity": true,
+    "one_svg_notch": true,
+    "sentinel_unchanged": true,
+    "svg_10mm": true,
+    "values": true
+  },
+  "method": "independent Python standard-library JSON/XML parse and Euclidean SVG-line measurement; no application modules/CLI/evaluator",
+  "native_notch": {
+    "curve": 7,
+    "id": 11,
+    "length": 0.01,
+    "t": 0.75
+  },
+  "passed": true,
+  "svg_length_mm": 9.999999999999886,
+  "utc_epoch": 1794943507.890214
+}

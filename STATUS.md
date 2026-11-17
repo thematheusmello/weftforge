@@ -1,58 +1,59 @@
 # Current development integration — 17 November 2026
 
-The `feat/notch-bend-integration` branch combines the source from tested native
-notch/text-input commit `06329f2a` with the four coupled-bending files from
-`82cc77ee`, on the safe published PR #60 head `2a64b175`. The runtime and test sources
-match those exact origins; documentation reconciles their separate results.
-No dependency, vendor or toolchain changes are added.
-Actual combined source `8aa850975fa388c3c4bd206db74adf7171916451` now passes
-446 workspace tests across 32 summaries (zero failed or ignored), formatting,
-strict Clippy and native/CLI builds. All four commands exited zero in one
-496.191-second sequence within its predeclared 900-second bound. The target was
-cold and belongs to this worktree; no compiled target was copied. Source hashes,
-modes, raw test summaries, binary identities and process cleanup were independently
-checked. The desktop binary is SHA-256 `c3327b3f9b7b6ed300787e4d113fa9f095969628416748155e3b79452f5e056f`.
-It has not yet been launched. Clean registry/xtask verification follows publication
-metadata reconciliation; no combined native or garment acceptance follows.
+The `feat/notch-bend-integration` branch combines the notch/text-input and
+coupled-bending source on safe published PR #60. Actual combined source
+`8aa850975fa388c3c4bd206db74adf7171916451` passes 446 workspace tests across
+32 summaries, formatting, strict Clippy and native/CLI builds. All four commands
+exited zero in 496.191 seconds within the declared 900-second bound. Source
+hashes/modes, test summaries, binary identities and cleanup were independently
+checked. No dependency or toolchain changes are added.
 
-Earlier separate UI (441 tests) and coupled-bending (425 tests) results remain
-historical. The 446 total above is from the actual combined workspace invocation.
+The actual desktop binary `c3327b3f9b7b6ed300787e4d113fa9f095969628416748155e3b79452f5e056f`
+now passes the [bounded native notch workflow](parity/reports/WF-20261117-NATIVE-NOTCH-N006-001.json).
+From an empty UI document, it creates a rectangle, refuses invalid raw notch
+input without changing the revision, creates and edits the same notch #11,
+performs one Undo/Redo, saves native v6 and exports a 10 mm SVG marker. After
+confirming replacement of an owned DXF sentinel, the application refuses the
+unsupported export and preserves the file. A fresh process reopens the saved
+project with editable notch identity/values; both processes close normally.
+Independent root checks cover all 94 retained manifest entries, 91 source inputs,
+native output, SVG geometry and the preserved sentinel. This is keyboard/pointer
+workflow evidence; application-modal AXSetValue remains unverified. N004/N005's
+empty accessibility outcomes remain historical, unchanged.
 
-The full coupled-bending garment run completed all 180 steps and independently
-analyzed 181 states. It still fails the unchanged strain screen at frames 28 and
-29: peak 50.9602% exceeds the 15% limit. Finite-value and supported-contact screens
-passed. The remaining closure spike is under investigation; no garment or
-reference acceptance is claimed.
+Clean `cargo xtask verify` on metadata revision `f9ade463` passed in 213.056
+seconds: registry/generated reports, source and discovery maps, 54 script tests,
+6 evaluator tests and actual CLI help. All 132 protected inputs stayed exact.
+That command rebuilt the CLI alone; the earlier independent CLI export evidence
+retains its original binary identity. The new native report and registry additions
+still require their own generated-output and clean metadata verification.
 
-Native check N004 launched the new UI build into an empty document, but the
-accessibility tree exposed only window chrome. A supported window action failed;
-no notch authoring, save, export or reopen step ran. The exact owned process and
-windows were closed. Source tests do not establish this native workflow.
+The full coupled-bending garment case remains **strict quality failed**: all
+180 steps and 181 states completed, but strain failed at frames 28/29, with
+50.9602% peak against the unchanged 15% limit. Finite-value and supported-contact
+screens passed. No garment or reference acceptance follows.
 
-The distinct read-only N005 bootstrap completed: count and unconditional full
-children-value reads all succeeded but returned zero children. The app was closed
-in 18.221 seconds; no authoring action ran. A separately available native-control
-tool successfully listed applications; its own-app interaction is still untested.
+A separate coupled soft-sewing candidate fixes the independent duplicate-stitch
+stationarity case: its original 0.0877711 N residual becomes 2.21057e-11 N under
+the unchanged 1e-6 N criterion. Its first full workspace sequence on `1029d52e`
+then **failed** an existing core sewing-group test: one simulation step exceeded
+the 500% instability guard with 798.7% material-axis extension. The partial run
+recorded 348 passed, 1 failed, zero ignored across 25 summaries. Formatting
+passed; Clippy and native/CLI build were not run after the failure. The candidate
+is not integrated, and no new garment run has started. Original tests and limits
+remain unchanged while the solver interaction is diagnosed.
 
-The fresh duplicate-sewing regression produced a genuine test failure at the
-fixed Cartesian force criterion: 0.0877711 N exceeds 1e-6 N after 32 sweeps,
-although position error is only 2.1943e-10 m. A coupled soft-sewing candidate is
-being authored separately; no candidate test or new garment run has been approved.
-This does not prove the cause of either garment failure.
+Next: verify and publish the bounded native evidence; repair the coupled-sewing
+integration failure, then repeat the affected source checks. Before a new full
+garment case, independently approve the unchanged original physical rest with
+only the explicit empty v6 notch metadata extension. Continue the empty-document
+shirt workflow and the complete six-gate delivery sequence in ROADMAP.md.
 
-Next: finish local registry/generated/xtask verification and the complete current
-native notch workflow using the supported control route. Review the sewing
-candidate against unchanged independent physical criteria before testing it.
-Native v6 adds empty notch metadata; a future physical rest comparison must
-explicitly distinguish that metadata from any physical geometry change. See the
-updated ROADMAP for the complete delivery sequence and all six open gates.
-
-GitHub Actions remain disabled. PR #60 is a draft; main and the existing Pages
-site are unchanged. No test application or owned simulation job is running.
-The feature inventory remains incomplete: 42 partial, 14 planned, 0 fully
-implemented or reference verified among the 56 inventoried contracts. UI-006
-advances only to partial for the tested string-input support; high-DPI, full
-keyboard/screen-reader interaction and native workflow acceptance remain open.
+GitHub Actions are disabled; their run count remains 54. Main remains
+`1fc1d71993cf193801e44982b757fca8abc5aba7` and the existing Pages site is unchanged.
+The native and reference test processes are closed. Feature discovery remains
+incomplete: 42 partial, 14 planned, zero fully implemented or reference verified
+among 56 inventoried broad contracts. No delivery gate is accepted.
 
 Earlier checkpoints and retained evidence follow.
 
