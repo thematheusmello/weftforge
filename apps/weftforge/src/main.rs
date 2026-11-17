@@ -13182,7 +13182,12 @@ mod tests {
                 let original_x = before.curve(selected).unwrap().controls.unwrap()[0][0];
                 let draft = InspectorDraft::new(&before, app.selected, app.selected_curve);
                 app.draft = Some(draft);
-                let output = frame(&ctx, &mut app, vec![]);
+                let hidden_resolution = !success && !coalesced;
+                let mut output = frame(&ctx, &mut app, vec![]);
+                if hidden_resolution {
+                    frame(&ctx, &mut app, vec![inspector_click(&output, "Simulation")]);
+                    output = frame(&ctx, &mut app, vec![]);
+                }
                 let numeric = output
                     .platform_output
                     .accesskit_update
@@ -13267,6 +13272,19 @@ mod tests {
                 );
                 assert_eq!(app.editor.project, before);
                 let pending = app.draft.as_ref().unwrap().commands(&before);
+                let navigation_history = format!("{:?}", app.editor);
+                let output = if hidden_resolution {
+                    frame(&ctx, &mut app, vec![inspector_click(&output, "Pattern")]);
+                    let output = frame(&ctx, &mut app, vec![]);
+                    assert!(numeric_focus(&ctx).is_none());
+                    assert_eq!(app.editor.project, before);
+                    assert!(app.editor.can_redo());
+                    assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+                    assert_eq!(format!("{:?}", app.editor), navigation_history);
+                    output
+                } else {
+                    output
+                };
                 let (join, pos) = button(&output, "Join with next boundary");
                 if pointer {
                     for pressed in [true, false] {
@@ -13358,6 +13376,31 @@ mod tests {
                         pending,
                         "pointer={pointer}"
                     );
+                    if hidden_resolution {
+                        let navigation = frame(&ctx, &mut app, vec![]);
+                        frame(
+                            &ctx,
+                            &mut app,
+                            vec![inspector_click(&navigation, "Simulation")],
+                        );
+                        let output = frame(&ctx, &mut app, vec![]);
+                        let current_numeric = output
+                            .platform_output
+                            .accesskit_update
+                            .as_ref()
+                            .unwrap()
+                            .nodes
+                            .iter()
+                            .find(|(_, node)| node.numeric_value() == Some(0.08))
+                            .unwrap()
+                            .0;
+                        assert_eq!(current_numeric, numeric);
+                        frame(&ctx, &mut app, vec![action(current_numeric, Action::Focus)]);
+                        frame(&ctx, &mut app, vec![]);
+                        assert_eq!(app.editor.project, before);
+                        assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+                        assert_eq!(format!("{:?}", app.editor), navigation_history);
+                    }
                     if let Some((_, id)) = current_field {
                         assert_eq!(
                             ctx.data_mut(|data| data.get_temp::<String>(id)),
@@ -20290,6 +20333,12 @@ mod cut_piece_tests {
             app.editor.project.save(&path).unwrap();
             app.path = Some(path.clone());
             let primary = fs::read(&path).unwrap();
+            let navigation = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![inspector_click(&navigation, "Create pattern")],
+            );
             let output = frame(&ctx, &mut app, vec![]);
             let undo = button(&output, "Undo");
             let backdrop = position(&output, undo);
@@ -20863,6 +20912,12 @@ mod notch_tests {
     #[test]
     fn native_text_set_value_does_not_blur_or_commit_unrelated_numeric_input() {
         let (ctx, mut app) = fixture();
+        let navigation = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![inspector_click(&navigation, "Create pattern")],
+        );
         let property = focus_property(&ctx, &mut app, "0.4700");
         let before = format!("{:?}", app.editor);
         let caret = egui::TextEdit::load_state(&ctx, property)
@@ -21040,6 +21095,12 @@ mod notch_tests {
     #[test]
     fn notch_modal_shields_shortcuts_and_background_accessibility_and_stale_edits_refuse() {
         let (ctx, mut app) = fixture();
+        let navigation = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![inspector_click(&navigation, "Create pattern")],
+        );
         let output = frame(&ctx, &mut app, vec![]);
         let numeric = output
             .platform_output
@@ -21594,6 +21655,12 @@ mod internal_line_tests {
         let ctx = egui::Context::default();
         ctx.enable_accesskit();
         let mut app = fixture(true);
+        let navigation = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![inspector_click(&navigation, "Create pattern")],
+        );
         focus_property(&ctx, &mut app, "0.47");
         let output = frame(&ctx, &mut app, vec![]);
         let background =
@@ -23094,6 +23161,12 @@ mod outline_offset_tests {
     fn outline_offset_invalid_width_keeps_raw_text_caret_and_blocks_modal_background_actions() {
         for cancel in ["button", "escape", "backdrop"] {
             let (ctx, mut app) = fixture();
+            let navigation = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![inspector_click(&navigation, "Create pattern")],
+            );
             let output = frame(&ctx, &mut app, vec![]);
             let backdrop = position(&output, button(&output, "Undo"));
             let background =
