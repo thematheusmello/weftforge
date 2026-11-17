@@ -1,0 +1,411 @@
+{
+  "status": "PASS",
+  "actual_case_files_checked": false,
+  "seed_sha256": "5b0449d038beb04e0ae94c79e53c78d715da8e5b5dda0f82fbf472d042aaa7db",
+  "synthetic_history_sha256": "84a0022f97f378bdd34cdb22f4e0f84d8ef2e1da6b3f39ccb7f22be5f1972273",
+  "count": 68,
+  "checks": [
+    {
+      "case": "synthetic translated rectangle/full history",
+      "expected": "accept",
+      "result": "accept"
+    },
+    {
+      "case": "strict JSON roundtrip",
+      "expected": "accept",
+      "result": "accept"
+    },
+    {
+      "case": "independent alternate authored origin",
+      "expected": "accept",
+      "result": "accept"
+    },
+    {
+      "case": "duplicate top key",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "duplicate JSON key: a"
+    },
+    {
+      "case": "duplicate nested key",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "duplicate JSON key: x"
+    },
+    {
+      "case": "NaN",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "non-JSON numeric constant: NaN"
+    },
+    {
+      "case": "Infinity",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "non-JSON numeric constant: Infinity"
+    },
+    {
+      "case": "negative Infinity",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "non-JSON numeric constant: -Infinity"
+    },
+    {
+      "case": "f64 overflow",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "nonfinite/overflow f64"
+    },
+    {
+      "case": "integer overflow",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "integer out of native range"
+    },
+    {
+      "case": "invalid UTF-8",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "invalid UTF-8/native JSON: 'utf-8' codec can't decode byte 0xff in position 1: invalid start byte"
+    },
+    {
+      "case": "trailing JSON",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "invalid UTF-8/native JSON: Extra data: line 1 column 3 (char 2)"
+    },
+    {
+      "case": "unpaired Unicode surrogate",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "unpaired Unicode surrogate"
+    },
+    {
+      "case": "overdeep JSON",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "JSON nesting exceeds 64"
+    },
+    {
+      "case": "byte cap before parsing",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "file exceeds size cap"
+    },
+    {
+      "case": "extra envelope field",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "document: field set changed"
+    },
+    {
+      "case": "wrong version",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "document.version: value changed"
+    },
+    {
+      "case": "extra project field",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "document.project: field set changed"
+    },
+    {
+      "case": "material changed",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "document.project.materials[0].areal_density: f64 bits changed"
+    },
+    {
+      "case": "f64 changed to integer",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "document.project.materials[0].warp_stiffness: numeric/value type changed"
+    },
+    {
+      "case": "resolution changed",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "document.project.resolution: f64 bits changed"
+    },
+    {
+      "case": "wrong created revision",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "revision: value changed"
+    },
+    {
+      "case": "wrong allocator",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "next_id: value changed"
+    },
+    {
+      "case": "point extra field",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "point: wrong fields/type"
+    },
+    {
+      "case": "boolean point id",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "point.id: numeric/value type changed"
+    },
+    {
+      "case": "floating point id",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "point.id: numeric/value type changed"
+    },
+    {
+      "case": "integer coordinate",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "point.position: expected finite f64 coordinates"
+    },
+    {
+      "case": "width wrong",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "ordered axis-aligned rectangle: outside absolute SI tolerance"
+    },
+    {
+      "case": "geometry outside absolute tolerance",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "10 mm lattice: outside absolute SI tolerance"
+    },
+    {
+      "case": "height wrong",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "ordered axis-aligned rectangle: outside absolute SI tolerance"
+    },
+    {
+      "case": "nonfinite coordinate",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "point.position: expected finite f64 coordinates"
+    },
+    {
+      "case": "open loop",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "curves[3].end: value changed"
+    },
+    {
+      "case": "curved edge",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "curves[0].controls: numeric/value type changed"
+    },
+    {
+      "case": "curve extra field",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "curves[0]: field set changed"
+    },
+    {
+      "case": "wrong piece name",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "piece.name: value changed"
+    },
+    {
+      "case": "piece extra field",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "piece: wrong fields/type"
+    },
+    {
+      "case": "wrong boundary",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "piece.boundary[2]: value changed"
+    },
+    {
+      "case": "extra hole",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "piece.holes: list length changed"
+    },
+    {
+      "case": "internal curve",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "piece.internal_curves: list length changed"
+    },
+    {
+      "case": "wrong material",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "piece.material: value changed"
+    },
+    {
+      "case": "wrong grain",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "piece.grain_angle: f64 bits changed"
+    },
+    {
+      "case": "placement extra field",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "placement: wrong fields/type"
+    },
+    {
+      "case": "short placement",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "placement.translation: wrong vector length/type"
+    },
+    {
+      "case": "integer placement",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "placement.rotation: expected finite f64 coordinates"
+    },
+    {
+      "case": "undo allocator reset",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "undo.project.next_id: value changed"
+    },
+    {
+      "case": "undo geometry remains",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "undo.project.points: list length changed"
+    },
+    {
+      "case": "undo wrong revision",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "undo.project.revision: value changed"
+    },
+    {
+      "case": "redo hidden placement change",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "redo.project.pieces[0].placement.rotation[1]: f64 bits changed"
+    },
+    {
+      "case": "redo signed-zero bit change",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "redo.project.pieces[0].grain_angle: f64 bits changed"
+    },
+    {
+      "case": "redo numeric type change",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "redo.project.points[0].id: numeric/value type changed"
+    },
+    {
+      "case": "edit no movement",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "only P0.x decreases 10 mm: outside absolute SI tolerance"
+    },
+    {
+      "case": "edit wrong direction",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "only P0.x decreases 10 mm: outside absolute SI tolerance"
+    },
+    {
+      "case": "edit wrong distance",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "only P0.x decreases 10 mm: outside absolute SI tolerance"
+    },
+    {
+      "case": "edit other point changed",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "reopened-edit.project.points[1].position[1]: f64 bits changed"
+    },
+    {
+      "case": "edit placement changed",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "reopened-edit.project.pieces[0].placement.translation[1]: f64 bits changed"
+    },
+    {
+      "case": "edit material changed",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "reopened-edit.project.materials[0].friction: f64 bits changed"
+    },
+    {
+      "case": "edit wrong revision",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "reopened-edit.project.revision: value changed"
+    },
+    {
+      "case": "correct dimensions at nonlattice origin",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "10 mm lattice: outside absolute SI tolerance"
+    },
+    {
+      "case": "clockwise/reordered geometry",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "ordered axis-aligned rectangle: outside absolute SI tolerance"
+    },
+    {
+      "case": "analytic rectangle area",
+      "expected": "accept",
+      "result": "accept"
+    },
+    {
+      "case": "analytic trapezoid area",
+      "expected": "accept",
+      "result": "accept"
+    },
+    {
+      "case": "regular file read",
+      "expected": "accept",
+      "result": "accept"
+    },
+    {
+      "case": "file symlink refusal",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "symlink refused: .local/rectangle-file-checker-20261116/.synthetic-br7nuznn/link.json"
+    },
+    {
+      "case": "parent symlink refusal",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "symlink refused: .local/rectangle-file-checker-20261116/.synthetic-br7nuznn/linked-directory/regular.json"
+    },
+    {
+      "case": "directory refusal",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "not a regular file: .local/rectangle-file-checker-20261116/.synthetic-br7nuznn"
+    },
+    {
+      "case": "on-disk byte cap",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "file exceeds size cap: .local/rectangle-file-checker-20261116/.synthetic-br7nuznn/regular.json"
+    },
+    {
+      "case": "parent traversal refusal",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "unsafe path"
+    },
+    {
+      "case": "absolute path refusal",
+      "expected": "reject",
+      "result": "reject",
+      "reason": "unsafe path"
+    }
+  ]
+}

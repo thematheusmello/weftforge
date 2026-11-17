@@ -1,0 +1,21 @@
+{
+  "case": "review-candidate-endpoints",
+  "command": [
+    "cargo",
+    "test",
+    "-p",
+    "weftforge",
+    "point_drag_release_tests",
+    "--",
+    "--nocapture"
+  ],
+  "source_sha256": "18ab3e365244209deed35f16aff86b5d9e7c0d1cf3e1e4440f2be2e16e22612f",
+  "environment": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/rectangle-gesture-repair-20261116/target"
+  },
+  "started_utc": "2026-11-16T21:23:01Z",
+  "exit_code": 0,
+  "ended_utc": "2026-11-16T21:23:02Z",
+  "log_sha256": "e2fdd4345e4d3bc7e385875feba724dabf85ebe0297522762c3acddd3e271d13"
+}

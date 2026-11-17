@@ -1,5 +1,31 @@
 # Native studio preview
 
+## Rectangle creation and reopened corner edit (7d19 / ae8)
+
+These are actual native captures from tested source
+`7d19f86a006601133d457aee42cca3b115b994aa`, whose 88 source inputs match current
+`ae8dd6ebe6da760501f507248a11b069a02cb453`. One Rectangle drag creates an
+editable **400 × 600 mm** piece. One Undo returns to empty; Redo restores the
+same construction. Native saves and an explicit fresh-process restart reopen
+that saved piece, followed by one **10 mm** corner edit and another save.
+
+![One native drag creates the 400 by 600 mm editable Rectangle](../parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0007-after-one-Rectangle-drag.jpg)
+
+![The reopened piece is saved after one 10 mm corner edit](../parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0034-reopened-edit-R4-saved.jpg)
+
+The separate, independently frozen saved-file check passed once. The original
+native case missed its **900 s whole-case finalization cap**, closing at
+1008.46 s, and remains failed. These observations and the file-only pass do not
+establish whole-native-workflow, garment, physics, full-feature or reference
+acceptance. See the [native report](../parity/reports/WF-20261116-RECTANGLE-NATIVE-001.json)
+and [separate file supplement](../parity/reports/WF-20261116-RECTANGLE-FILE-SUPPLEMENT-001.json).
+
+Public copies zero only eight ICC display identifier bytes per image. Encoded
+scans, color-characterization tags and all other bytes remain exact; no raster
+editing or re-encoding occurred. The [metadata journal](../parity/reports/artifacts/rectangle-gesture-20261116/JPEG-METADATA-REDACTION.json)
+and [current publication index](../parity/reports/artifacts/rectangle-gesture-20261116/PUBLICATION-CURRENT.json)
+distinguish them from the unchanged private originals and historical selection.
+
 ## Cut & Sew and reopened seam removal (5898)
 
 These are actual native UI captures from source

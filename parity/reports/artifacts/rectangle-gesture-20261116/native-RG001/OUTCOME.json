@@ -1,0 +1,43 @@
+{
+  "status": "INCOMPLETE_FINALIZATION_DEADLINE_EXCEEDED",
+  "at": "2026-11-16T22:42:32.574732+00:00",
+  "elapsed_through_this_closure_seconds": 1008.460155082983,
+  "whole_case_cap_seconds": 900,
+  "whole_case_bounded_acceptance": false,
+  "reason": "Native phases ended at 560.473 s and process/source guards at 649.865 s, but independent file check and final closure were not complete within the frozen 900 s whole-case cap. No native action is replayed and no original criterion is changed.",
+  "native_observed": {
+    "create_400_by_600_mm_rectangle": true,
+    "undo_to_empty_and_redo": true,
+    "native_atomic_saves": true,
+    "explicit_close_reopen": true,
+    "reopened_point_edit_10_mm_and_save": true,
+    "final_revision": 4,
+    "simulated": false
+  },
+  "phase2": {
+    "at": "2026-11-16T22:35:04.531Z",
+    "elapsed": 560.473,
+    "phase": 2,
+    "calls": 35,
+    "observations": 18,
+    "images": 9,
+    "semantic_actions": 19,
+    "quit_call_error": null,
+    "no_post_Quit_app_query": true,
+    "native_observed": "ExplicitP2reopenedR3;selectedpiece2/curve7;P0#3changed[-.27,1.03]to[-.28,1.03]byonepointerdrag;R4saved;no Simulation"
+  },
+  "earlier_cleanup_guard_sha256": "671b58363af4eccc813fb06ef619ae880bc445dffcbf677259b56c9992b57fc5",
+  "closure_owned_processes_absent": true,
+  "file_checker_executions_within_original_case": 0,
+  "outputs_sha256": {
+    ".local/native-rectangle-20261116/RG001/snapshots/created.weftforge": "ade00e7b2b5cf1ce050dbcaaea310419f5945aea95a99c7f2255ea4ee96f8132",
+    ".local/native-rectangle-20261116/RG001/snapshots/undo.weftforge": "d59ca698bf4e6ec3b33848166e4f81a890fa46a650edc3580134b285ef7874cb",
+    ".local/native-rectangle-20261116/RG001/snapshots/redo.weftforge": "3a1055029c3a013a31ea5d558f5de8cfe2194eb3d6de05399fe9fa831c30cfb3",
+    ".local/native-rectangle-20261116/RG001/snapshots/reopened-edit.weftforge": "cb6243e904bd9d39b5f9426f1b63c69d412dc8c8af50f42d66a114feaa2d16a0",
+    ".local/native-rectangle-20261116/RG001/work/rectangle.weftforge": "cb6243e904bd9d39b5f9426f1b63c69d412dc8c8af50f42d66a114feaa2d16a0"
+  },
+  "reference_parity_verified": false,
+  "full_feature_verified": false,
+  "full_garment_verified": false,
+  "next": "One separate bounded file-only supplemental check can analyze unchanged saved snapshots; it cannot qualify this original whole-case timing."
+}

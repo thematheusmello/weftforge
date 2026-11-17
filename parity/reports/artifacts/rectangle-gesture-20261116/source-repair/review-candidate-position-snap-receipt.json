@@ -1,0 +1,21 @@
+{
+  "case": "review-candidate-position-snap",
+  "command": [
+    "cargo",
+    "test",
+    "-p",
+    "weftforge",
+    "position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule",
+    "--",
+    "--nocapture"
+  ],
+  "source_sha256": "18ab3e365244209deed35f16aff86b5d9e7c0d1cf3e1e4440f2be2e16e22612f",
+  "environment": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/rectangle-gesture-repair-20261116/target"
+  },
+  "started_utc": "2026-11-16T21:23:02Z",
+  "exit_code": 0,
+  "ended_utc": "2026-11-16T21:23:03Z",
+  "log_sha256": "56d0ce87906f7aea895232e820cef0b642c5dc02bf6e3c4f37c04024a2f2c5d2"
+}

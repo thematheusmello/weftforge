@@ -1,0 +1,396 @@
+{
+  "status": "passed",
+  "head": "7d19f86a006601133d457aee42cca3b115b994aa",
+  "receipts": [
+    {
+      "stage": "fmt",
+      "argv": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "cwd": "<ROOT>/.local/rectangle-gesture-repair-20261116",
+      "environment": {
+        "CARGO_BUILD_JOBS": "1",
+        "CARGO_TARGET_DIR": "<ROOT>/.local/rectangle-gesture-repair-20261116/target",
+        "RUSTFLAGS": null,
+        "CARGO_ENCODED_RUSTFLAGS": null,
+        "CARGO_INCREMENTAL": null,
+        "RUSTUP_TOOLCHAIN": null,
+        "RUSTC": null,
+        "RUSTC_WRAPPER": null,
+        "RUSTC_WORKSPACE_WRAPPER": null,
+        "CARGO_HOME": null
+      },
+      "pid": 90136,
+      "started_at_utc": "2026-11-16T21:33:41.125899+00:00",
+      "status": "terminal",
+      "before_sha256": "e26fe231b70b2e09e8a007b9c80c3b83562bdeb6fbb4046af69406b8f2dccc76",
+      "exit_code": 0,
+      "finished_at_utc": "2026-11-16T21:33:41.867942+00:00",
+      "command_seconds": 0.7420151670230553,
+      "source88_unchanged": true,
+      "metadata57_unchanged": true,
+      "original8_unchanged": true,
+      "full56_unchanged": true,
+      "whole_registry_unchanged": true,
+      "git_status_after": "",
+      "head_after": "7d19f86a006601133d457aee42cca3b115b994aa",
+      "after_sha256": "99b830f4434eef7d10f6be9e60fc06bc128479909c5cf08d3afe1711a0452f6e",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "disk_after": {
+        "target_allocated_bytes": 1622065152,
+        "filesystem_free_bytes": 11607650304,
+        "filesystem_free_gib": 10.810466766357422
+      },
+      "target_growth_bytes": 0
+    },
+    {
+      "stage": "workspace-tests",
+      "argv": [
+        "cargo",
+        "test",
+        "--workspace"
+      ],
+      "cwd": "<ROOT>/.local/rectangle-gesture-repair-20261116",
+      "environment": {
+        "CARGO_BUILD_JOBS": "1",
+        "CARGO_TARGET_DIR": "<ROOT>/.local/rectangle-gesture-repair-20261116/target",
+        "RUSTFLAGS": null,
+        "CARGO_ENCODED_RUSTFLAGS": null,
+        "CARGO_INCREMENTAL": null,
+        "RUSTUP_TOOLCHAIN": null,
+        "RUSTC": null,
+        "RUSTC_WRAPPER": null,
+        "RUSTC_WORKSPACE_WRAPPER": null,
+        "CARGO_HOME": null
+      },
+      "pid": 6651,
+      "started_at_utc": "2026-11-16T21:44:04.960347+00:00",
+      "status": "terminal",
+      "before_sha256": "30e8e4098b86701fbb3ab7f9036763490aea3ce62505dd0d3a8c10954027f99f",
+      "exit_code": 0,
+      "finished_at_utc": "2026-11-16T21:47:44.769776+00:00",
+      "command_seconds": 219.8074486249825,
+      "source88_unchanged": true,
+      "metadata57_unchanged": true,
+      "original8_unchanged": true,
+      "full56_unchanged": true,
+      "whole_registry_unchanged": true,
+      "git_status_after": "",
+      "head_after": "7d19f86a006601133d457aee42cca3b115b994aa",
+      "after_sha256": "fbb5bc031aededcfcc083caf497adfc3c1247a962d66b4ebb2db398503b59531",
+      "log_sha256": "d388b237beba5e4d82fa6d753086936f029a26e6e17a55dc87d5fa8965f08471",
+      "disk_after": {
+        "target_allocated_bytes": 2644557824,
+        "filesystem_free_bytes": 11781656576,
+        "filesystem_free_gib": 10.972522735595703
+      },
+      "target_growth_bytes": 1022492672
+    },
+    {
+      "stage": "workspace-clippy",
+      "argv": [
+        "cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "cwd": "<ROOT>/.local/rectangle-gesture-repair-20261116",
+      "environment": {
+        "CARGO_BUILD_JOBS": "1",
+        "CARGO_TARGET_DIR": "<ROOT>/.local/rectangle-gesture-repair-20261116/target",
+        "RUSTFLAGS": null,
+        "CARGO_ENCODED_RUSTFLAGS": null,
+        "CARGO_INCREMENTAL": null,
+        "RUSTUP_TOOLCHAIN": null,
+        "RUSTC": null,
+        "RUSTC_WRAPPER": null,
+        "RUSTC_WORKSPACE_WRAPPER": null,
+        "CARGO_HOME": null
+      },
+      "pid": 8986,
+      "started_at_utc": "2026-11-16T21:47:45.350182+00:00",
+      "status": "terminal",
+      "before_sha256": "efc0a35c47bf75f0d5fb579d59e4851306b9ef7f512267839b2224029af332ee",
+      "exit_code": 0,
+      "finished_at_utc": "2026-11-16T21:48:50.724206+00:00",
+      "command_seconds": 65.37353816698305,
+      "source88_unchanged": true,
+      "metadata57_unchanged": true,
+      "original8_unchanged": true,
+      "full56_unchanged": true,
+      "whole_registry_unchanged": true,
+      "git_status_after": "",
+      "head_after": "7d19f86a006601133d457aee42cca3b115b994aa",
+      "after_sha256": "78ef4950dc56645cae16e129959acbad7bf0666cce2fc198bcf84b0a2623f591",
+      "log_sha256": "a146cef1c1ebe60f630af424e79d1fee43056d947b30c4cc30b10ada5f2fc0a6",
+      "disk_after": {
+        "target_allocated_bytes": 3006234624,
+        "filesystem_free_bytes": 11410288640,
+        "filesystem_free_gib": 10.626659393310547
+      },
+      "target_growth_bytes": 1384169472
+    },
+    {
+      "stage": "native-cli-debug-build",
+      "argv": [
+        "cargo",
+        "build",
+        "-p",
+        "weftforge",
+        "-p",
+        "weftforge-cli"
+      ],
+      "cwd": "<ROOT>/.local/rectangle-gesture-repair-20261116",
+      "environment": {
+        "CARGO_BUILD_JOBS": "1",
+        "CARGO_TARGET_DIR": "<ROOT>/.local/rectangle-gesture-repair-20261116/target",
+        "RUSTFLAGS": null,
+        "CARGO_ENCODED_RUSTFLAGS": null,
+        "CARGO_INCREMENTAL": null,
+        "RUSTUP_TOOLCHAIN": null,
+        "RUSTC": null,
+        "RUSTC_WRAPPER": null,
+        "RUSTC_WORKSPACE_WRAPPER": null,
+        "CARGO_HOME": null
+      },
+      "pid": 9404,
+      "started_at_utc": "2026-11-16T21:48:51.231151+00:00",
+      "status": "terminal",
+      "before_sha256": "362270eafe1f59d4843e8dae1199f04299d050c5d84d1c7374849c3e77998b12",
+      "exit_code": 0,
+      "finished_at_utc": "2026-11-16T21:48:55.831834+00:00",
+      "command_seconds": 4.60062562499661,
+      "source88_unchanged": true,
+      "metadata57_unchanged": true,
+      "original8_unchanged": true,
+      "full56_unchanged": true,
+      "whole_registry_unchanged": true,
+      "git_status_after": "",
+      "head_after": "7d19f86a006601133d457aee42cca3b115b994aa",
+      "after_sha256": "baa1c969f6aea49a0fd6eaef817ca0f5bf0e5f74c0d526adff073e1c833fc603",
+      "log_sha256": "11aaa2fe5c1bfd9b9a2378ef10f16817c91a28b88e79faa85af8999532e23862",
+      "disk_after": {
+        "target_allocated_bytes": 3191648256,
+        "filesystem_free_bytes": 11286884352,
+        "filesystem_free_gib": 10.511730194091797
+      },
+      "target_growth_bytes": 1569583104
+    }
+  ],
+  "elapsed_seconds": 291.3872449590126,
+  "test_summary_rows": [
+    {
+      "status": "ok",
+      "passed": 151,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 3,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 18,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 29,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 14,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 4,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 6,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 4,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 3,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 5,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 12,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 10,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 7,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 11,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 14,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 8,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 2,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 20,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 8,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 10,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 57,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "status": "ok",
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0
+    }
+  ],
+  "actual_test_passed_total": 404,
+  "actual_test_failed_total": 0,
+  "actual_test_ignored_total": 0,
+  "source88_metadata57_original8_full56_unchanged": true,
+  "native_and_cli_debug_binaries": {
+    "weftforge": {
+      "sha256": "a748d4b7b02541c70555ffa45162aaf3059734084d516ef82c941a8b213fa04c",
+      "size_bytes": 62737176,
+      "launched_by_build_stage": false
+    },
+    "weftforge-cli": {
+      "sha256": "3ed3b291913076dedbb6981a24af404529f333ba7ca462cdb3f05a97c343e258",
+      "size_bytes": 10624880,
+      "launched_by_build_stage": false
+    }
+  },
+  "native_gui_launched": false,
+  "cli_exercised_by_workspace_integration_tests": true,
+  "xtask_or_registry_map_validation_run": false,
+  "historical_garment_or_reference_case_run": false,
+  "scope": "Integrated implementation checks only; six new Rectangle tests plus two existing tests made the earlier eight-test Rectangle filter. Not native/reference/full-feature acceptance or public delivery."
+}

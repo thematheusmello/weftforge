@@ -1,0 +1,47 @@
+{
+  "stage": "workspace-clippy",
+  "argv": [
+    "cargo",
+    "clippy",
+    "--workspace",
+    "--all-targets",
+    "--",
+    "-D",
+    "warnings"
+  ],
+  "cwd": "<ROOT>/.local/rectangle-gesture-repair-20261116",
+  "environment": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/rectangle-gesture-repair-20261116/target",
+    "RUSTFLAGS": null,
+    "CARGO_ENCODED_RUSTFLAGS": null,
+    "CARGO_INCREMENTAL": null,
+    "RUSTUP_TOOLCHAIN": null,
+    "RUSTC": null,
+    "RUSTC_WRAPPER": null,
+    "RUSTC_WORKSPACE_WRAPPER": null,
+    "CARGO_HOME": null
+  },
+  "pid": 8986,
+  "started_at_utc": "2026-11-16T21:47:45.350182+00:00",
+  "status": "terminal",
+  "before_sha256": "efc0a35c47bf75f0d5fb579d59e4851306b9ef7f512267839b2224029af332ee",
+  "exit_code": 0,
+  "finished_at_utc": "2026-11-16T21:48:50.724206+00:00",
+  "command_seconds": 65.37353816698305,
+  "source88_unchanged": true,
+  "metadata57_unchanged": true,
+  "original8_unchanged": true,
+  "full56_unchanged": true,
+  "whole_registry_unchanged": true,
+  "git_status_after": "",
+  "head_after": "7d19f86a006601133d457aee42cca3b115b994aa",
+  "after_sha256": "78ef4950dc56645cae16e129959acbad7bf0666cce2fc198bcf84b0a2623f591",
+  "log_sha256": "a146cef1c1ebe60f630af424e79d1fee43056d947b30c4cc30b10ada5f2fc0a6",
+  "disk_after": {
+    "target_allocated_bytes": 3006234624,
+    "filesystem_free_bytes": 11410288640,
+    "filesystem_free_gib": 10.626659393310547
+  },
+  "target_growth_bytes": 1384169472
+}

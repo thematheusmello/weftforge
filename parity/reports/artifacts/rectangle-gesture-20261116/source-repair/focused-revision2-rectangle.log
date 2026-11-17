@@ -1,0 +1,16 @@
+   Compiling weftforge v0.1.0 (<ROOT>/.local/rectangle-gesture-repair-20261116/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.63s
+     Running unittests src/main.rs (target/debug/deps/weftforge-5704a18cf508861a)
+
+running 8 tests
+test rectangle_drag_tests::rectangle_canvas_drag_coalesced_uses_original_press_and_final_release ... ok
+test rectangle_drag_tests::rectangle_canvas_drag_multiframe_uses_original_press_and_final_release ... ok
+test tests::numeric_rectangle_click_commits_once_and_cancel_or_errors_preserve_drafts_and_history ... ok
+test rectangle_drag_tests::rectangle_canvas_drag_captures_snap_and_alt_at_the_press ... ok
+test tests::rectangle_modal_blocks_background_accesskit_actions_and_preserves_staged_edits ... ok
+test rectangle_drag_tests::rectangle_canvas_drag_interruptions_do_not_rearm_after_release ... ok
+test rectangle_drag_tests::rectangle_canvas_drag_commits_pending_properties_once_or_preserves_rejected_input ... ok
+test rectangle_drag_tests::rectangle_canvas_drag_respects_blocking_ownership_and_ambiguous_input ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 143 filtered out; finished in 1.13s
+
