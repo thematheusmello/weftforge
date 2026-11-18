@@ -1,0 +1,78 @@
+{
+  "source_commit": "6078c2af423b150a9f7b0bcaf21abb6e2e954b56",
+  "binary_sha256": "d3e36bea3467b8d3771fb01a7e901e7e73e60f208889f4ff7202bc5957bb0140",
+  "initial_authoring_source": "59501451cd36f3ec51aba3560090090c94881427",
+  "initial_authoring_binary_sha256": "360c3d3d509a379b4833ad5795b363fbbd153c7605c6af7e953d639bbae6fb54",
+  "initial_authoring": "The first two original polygons were made in an empty native workspace. This continuation opened a copy of the recovered editable document from that earlier session.",
+  "project_states": {
+    "recovered": {
+      "revision": 6,
+      "file": "recovered.weftforge",
+      "sha256": "7180decdc632bc2c0a5c2caa0bdbfca01b78a0caced5016a850d10e2bf8cab34"
+    },
+    "arranged-and-sewn": {
+      "revision": 16,
+      "file": "arranged-and-sewn.weftforge",
+      "sha256": "3c1c65061d1dab686d5d7c9dd54062c54006a2a779b2c38bc4793d6a25cc16ec"
+    },
+    "resized": {
+      "revision": 17,
+      "file": "resized.weftforge",
+      "sha256": "d77977b982290b3b01056d19e5664a1aa8111b40f4f556c2f99f70e9f6a86b87"
+    },
+    "undo": {
+      "revision": 18,
+      "file": "undo.weftforge",
+      "sha256": "972be11ddb06d5beb3abb0b401fe0be15b398d202d3ecf57f81c3104540f049e"
+    },
+    "redo": {
+      "revision": 19,
+      "file": "redo.weftforge",
+      "sha256": "7cb8cbd41f4880cf35b46f68a99ca56fd25c1d406ed2e15e7ce57bbdfb84a321"
+    },
+    "restored": {
+      "revision": 20,
+      "file": "restored.weftforge",
+      "sha256": "604107601b530013624a622f318f11c35a5a67a7db37bdff347635370d6c7402"
+    }
+  },
+  "placement_and_seam_readback": {
+    "revision": 16,
+    "vertices": 28,
+    "seams": 8,
+    "saved_project_sha256": "3c1c65061d1dab686d5d7c9dd54062c54006a2a779b2c38bc4793d6a25cc16ec",
+    "matching_pairs": [
+      1,
+      2,
+      4,
+      5,
+      9,
+      10,
+      12,
+      13
+    ],
+    "matching_placement_grain_and_resolution": true,
+    "material_differences": {}
+  },
+  "resize_readback": {
+    "revision": 17,
+    "sha256": "d77977b982290b3b01056d19e5664a1aa8111b40f4f556c2f99f70e9f6a86b87",
+    "front_width_metres_before_after": [
+      1.3199999999999998,
+      1.3199999999999998
+    ],
+    "front_height_metres": 0.6799999999999999,
+    "maximum_front_x_rounding_metres": 1.1102230246251565e-16,
+    "maximum_vertical_formula_error_metres": 2.220446049250313e-16,
+    "seams_curves_back_points_and_all_other_fields_exact": true
+  },
+  "native_observations": [
+    "Reopened the recovered revision 6 with two pieces and 654 rest vertices.",
+    "Committed the front depth and warp angle by pasting the full values into the numeric fields and pressing Return. Save confirmed revision 8.",
+    "Used Sew edges with Reverse paired edge off for the eight matching boundary pairs. The native save confirmed revision 16 and eight seams. The studio quit normally.",
+    "A new native process opened the saved revision 16 and rebuilt the rest mesh.",
+    "The height edit committed revision 17 at 0.680 m. Undo and Redo saved revisions 18 and 19. A final Undo and Save restored the original construction at revision 20.",
+    "Saved SVG, DXF, OBJ and the 1640 \u00d7 1000 workspace PNG through the native file dialogs. The studio still displayed revision 20 and Rest arrangement, then quit normally."
+  ],
+  "scope": "Native authoring, save, reopen, relationship-preserving resize and history, and independent rest-arrangement exports. Simulation and reference comparisons remain open."
+}
