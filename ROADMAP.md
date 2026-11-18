@@ -225,6 +225,9 @@ compatibility requirements remain visible rather than silently discarded.
   missing/changed assets, atomic saves, autosave and explicit recovery.
 - [ ] Inject an interrupted save on disposable original data, verify the prior
   valid project survives, and test unsupported versions without silent replacement.
+  The core interruption test and the native invalid-open and explicit
+  recovery paths now have Apple Silicon evidence.
+  [Harbor recovery case](parity/reports/WF-20261118-HARBOR-NATIVE-RECOVERY-001.json).
 - [ ] Package actual applications/CLI, original sample projects, screenshots,
   installation/development/user documentation, licenses, asset/dependency notices,
   and reproducible release artifacts/checksums.
