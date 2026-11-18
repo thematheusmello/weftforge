@@ -17,6 +17,9 @@ use weftforge_core::{
 };
 use weftforge_sim::{Cloth, MaterialAxis, SimulationError, StepSettings};
 
+mod capture;
+use capture::{RenderedFrame, WorkspaceCapture};
+
 #[derive(Clone, Copy, PartialEq)]
 enum Tool {
     Select,
@@ -1023,6 +1026,7 @@ struct Studio {
     autosave: Instant,
     session_autosave: Option<PathBuf>,
     autosave_job: Option<AutosaveJob>,
+    workspace_capture: WorkspaceCapture,
     show_recovery: bool,
     recovery_files: Vec<PathBuf>,
     dirty: bool,
@@ -1036,6 +1040,11 @@ impl Studio {
         cc.egui_ctx
             .send_viewport_cmd(egui::ViewportCommand::SetTheme(egui::SystemTheme::Dark));
         let mut app = Self::empty();
+        app.workspace_capture = WorkspaceCapture::new(
+            cc.wgpu_render_state
+                .as_ref()
+                .map(|state| state.target_format),
+        );
         if let Some(path) = std::env::args_os().nth(1) {
             app.open(PathBuf::from(path));
         }
@@ -1111,6 +1120,7 @@ impl Studio {
             autosave: Instant::now(),
             session_autosave,
             autosave_job: None,
+            workspace_capture: WorkspaceCapture::default(),
             show_recovery: false,
             recovery_files: Vec::new(),
             dirty: false,
@@ -1358,6 +1368,28 @@ impl Studio {
         }
         clicked
     }
+    fn workspace_png_button(&self, ui: &mut egui::Ui) -> bool {
+        let focused = self.inspector_focus(ui.ctx());
+        let response = ui
+            .add_enabled(
+                !self.workspace_capture.busy(),
+                egui::Button::new("Save workspace PNG…"),
+            )
+            .on_hover_text("Save the rendered workspace at its native pixel size.");
+        let clicked = response.clicked();
+        self.retain_inspector_input(&response, false);
+        if response.is_pointer_button_down_on() || clicked {
+            finish_numeric_action(ui.ctx(), focused, false);
+            let frame = ui.ctx().cumulative_frame_nr();
+            ui.ctx().data_mut(|data| {
+                data.insert_temp(
+                    egui::Id::new("workspace-png-request"),
+                    (frame, clicked, focused),
+                )
+            });
+        }
+        clicked
+    }
     fn import_button(&self, ui: &mut egui::Ui, format: PatternFormat, label: &str) -> bool {
         let focused = self.inspector_focus(ui.ctx());
         let response = ui.button(label);
@@ -1573,6 +1605,7 @@ impl Studio {
         }
     }
     fn reset_simulation(&mut self) {
+        self.workspace_capture.cancel();
         if self
             .job
             .as_ref()
@@ -2192,6 +2225,7 @@ impl Studio {
             .or_else(|| self.session_autosave.clone())
     }
     fn retain_on_exit(&mut self) -> Result<Option<PathBuf>, String> {
+        self.workspace_capture.shutdown();
         self.cancel();
         self.outline_offset = None;
         if !self.discard_on_exit && !self.commit_draft() {
@@ -2430,6 +2464,9 @@ impl Studio {
                     ui.close();
                 }
                 if self.export_button(ui, ExportFormat::Dxf, "Export DXF") {
+                    ui.close();
+                }
+                if self.workspace_png_button(ui) {
                     ui.close();
                 }
             });
@@ -3029,6 +3066,14 @@ impl Studio {
                 .data_mut(|data| {
                     data.get_temp::<(u64, Option<ExportFormat>, Option<egui::Id>)>(egui::Id::new(
                         "export-request",
+                    ))
+                })
+                .is_some_and(|(frame, _, _)| frame == ui.ctx().cumulative_frame_nr())
+            || ui
+                .ctx()
+                .data_mut(|data| {
+                    data.get_temp::<(u64, bool, Option<egui::Id>)>(egui::Id::new(
+                        "workspace-png-request",
                     ))
                 })
                 .is_some_and(|(frame, _, _)| frame == ui.ctx().cumulative_frame_nr());
@@ -6592,6 +6637,17 @@ impl eframe::App for Studio {
         let ctx = ui.ctx().clone();
         self.poll();
         self.poll_autosave();
+        if ctx.input(|input| input.key_pressed(egui::Key::Escape))
+            && self.workspace_capture.cancel()
+        {
+            self.message = "Workspace PNG cancelled; previous file retained.".into();
+        }
+        if let Some(message) = self
+            .workspace_capture
+            .receive(&ctx, self.editor.project.revision)
+        {
+            self.message = message;
+        }
         self.discard_stale_transform();
         self.discard_stale_free_sewing();
         self.discard_stale_notch();
@@ -6865,6 +6921,7 @@ impl eframe::App for Studio {
                         "Export OBJ",
                         "Export SVG",
                         "Export DXF",
+                        "Save workspace PNG…",
                         "Undo",
                         "Redo",
                         "Reset simulation",
@@ -6891,6 +6948,7 @@ impl eframe::App for Studio {
                             "Export OBJ" => self.export_button(ui, ExportFormat::Obj, label),
                             "Export SVG" => self.export_button(ui, ExportFormat::Svg, label),
                             "Export DXF" => self.export_button(ui, ExportFormat::Dxf, label),
+                            "Save workspace PNG…" => self.workspace_png_button(ui),
                             "Add hole…" => self.add_hole_button(ui).clicked(),
                             "Offset outline…" => self.outline_offset_button(ui).clicked(),
                             _ => ui.button(label).clicked(),
@@ -6906,6 +6964,7 @@ impl eframe::App for Studio {
                                     self.show_recovery = true;
                                 }
                                 "Export OBJ" | "Export SVG" | "Export DXF" => {}
+                                "Save workspace PNG…" => {}
                                 "Undo" => self.history(&ctx, false),
                                 "Redo" => self.history(&ctx, true),
                                 "Reset simulation" => {
@@ -6982,6 +7041,42 @@ impl eframe::App for Studio {
             self.new_empty(&ctx, focused);
         }
         self.restore_cancelled_inspector_input(&ctx);
+        if let Some((_, true, focused)) = ctx
+            .data_mut(|data| {
+                data.remove_temp::<(u64, bool, Option<egui::Id>)>(egui::Id::new(
+                    "workspace-png-request",
+                ))
+            })
+            .filter(|(frame, _, _)| *frame == ctx.cumulative_frame_nr())
+        {
+            let path = choose_workspace_png_path(&ctx);
+            finish_numeric_action(&ctx, focused, false);
+            self.message = match path {
+                Some(path) => match self.workspace_capture.start(
+                    &ctx,
+                    self.editor.project.revision,
+                    self.path.as_deref(),
+                    path,
+                ) {
+                    Ok(()) => "Capturing workspace PNG… Escape cancels.".into(),
+                    Err(error) => error,
+                },
+                None => "Workspace PNG cancelled; pending edits retained.".into(),
+            };
+        }
+        if ctx.input(|input| input.viewport().close_requested()) {
+            self.workspace_capture.cancel();
+        }
+        if let Some(message) = self.workspace_capture.finish_frame(
+            &ctx,
+            RenderedFrame {
+                number: ctx.cumulative_frame_nr(),
+                revision: self.editor.project.revision,
+            },
+            self.path.as_deref(),
+        ) {
+            self.message = message;
+        }
     }
 }
 fn pane_heading(ui: &mut egui::Ui, title: &str) -> egui::Response {
@@ -7698,7 +7793,7 @@ fn export_path_guard(project: Option<&Path>, output: &Path) -> Result<(), String
         .extension()
         .is_some_and(|extension| extension.eq_ignore_ascii_case("weftforge"))
     {
-        return Err("Choose an OBJ, SVG or DXF output; project files are preserved.".into());
+        return Err("Choose an OBJ, SVG, DXF or PNG output; project files are preserved.".into());
     }
     let Some(project) = project else {
         return Ok(());
@@ -7758,6 +7853,18 @@ fn choose_export_path(_ctx: &egui::Context, format: ExportFormat) -> Option<Path
     rfd::FileDialog::new()
         .add_filter(ext, &[ext])
         .set_file_name(format!("garment.{ext}"))
+        .save_file()
+}
+fn choose_workspace_png_path(_ctx: &egui::Context) -> Option<PathBuf> {
+    #[cfg(test)]
+    if let Some(path) = _ctx.data_mut(|data| {
+        data.remove_temp::<Option<PathBuf>>(egui::Id::new("test-workspace-png-destination"))
+    }) {
+        return path;
+    }
+    rfd::FileDialog::new()
+        .add_filter("PNG image", &["png"])
+        .set_file_name("workspace.png")
         .save_file()
 }
 fn segment_distance(p: Pos2, a: Pos2, b: Pos2) -> f32 {

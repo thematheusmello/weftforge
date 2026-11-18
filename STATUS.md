@@ -1,3 +1,43 @@
+# Workspace PNG integration — 18 November 2026
+
+The reviewed source increment adds **Save workspace PNG…** to File and command
+search. It uses actual renderer pixels, a single staging worker and a validated
+UI-side atomic commit. Pending authoring remains untouched. Shutdown stops
+waiting for a worker result, and Escape cancels capture through popups/modals
+without consuming their normal event. The original shutdown review finding is
+preserved; its source resolution is reviewed. Pixel, lifecycle, input-retention
+and file-preservation tests are prepared. Formatting, workspace tests, strict
+Clippy, builds, clean metadata verification and actual native capture remain
+pending. See the [bounded capture contract](spec/features/MAT-003-workspace-capture.md).
+
+The fresh G `e30a71a5` all-181-state numerical case completed operationally in
+**379.697 seconds / 420**, with its exact final external tool verdict retained.
+Strict quality remains **failed**: 153 strain-failing frames, 28 through 180;
+peak **19.770147%** at frame 29/front triangle 6, final **15.721208%** at back
+triangle 654. The peak is lower than D's 20.243551%, while final strain is higher
+than D's 15.349281%. Finite states, supported contact, uncertainty, zero recovery
+and closed-target seams pass. Original physical inputs, settings and thresholds
+are unchanged. Initial open arrangements are not completed-fit failures.
+
+An earlier external admission stopped on an incorrect parent PATH before GO
+validation, the numerical clock/controller or any model initialization. Its
+original failure remains frozen. A separate source/environment check and
+reviewed admission supplied the exact bound child and ambient environment for
+the first actual numerical run. A premature wrapper invocation during an
+admission deferral is also retained separately. Neither failure is a garment
+result, and no prior numerical result or clock gap is repaired or regraded.
+
+Current G optimized native/CLI builds passed in 63.854 seconds; source binding
+passed in 2.563 seconds and its standalone producer build in 23.183 seconds.
+All owned process groups are absent. These executions belong to G and do not
+transfer to the new PNG source. Public runtime evidence/maps and local checks
+must be reconciled before the next atomic checkpoint is pushed. The actual G
+strain failure is under separate saved-state diagnosis; no fitting improvement,
+full feature, native journey, reference parity or delivery gate is accepted.
+GitHub Actions remain disabled. The full end-to-end goal stays active.
+
+The earlier source/runtime checkpoints below retain their original identities.
+
 # Capsule contact integration — 18 November 2026
 
 The reviewed capsule-contact correction is integrated. Current vertices and

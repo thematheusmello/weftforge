@@ -630,6 +630,29 @@ fn read_bounded(path: &Path) -> Result<Vec<u8>> {
     Ok(bytes)
 }
 
+/// A prepared byte export which preserves its destination until explicitly committed.
+/// Dropping it removes the temporary file. Native project files remain protected.
+pub struct StagedExport {
+    target: PathBuf,
+    staged: StagedFile,
+}
+
+impl StagedExport {
+    pub fn write(target: impl AsRef<Path>, bytes: &[u8]) -> Result<Self> {
+        let target = target.as_ref();
+        export_path_guard(target)?;
+        Ok(Self {
+            target: target.to_path_buf(),
+            staged: StagedFile::write(target, bytes)?,
+        })
+    }
+
+    pub fn commit(self) -> Result<()> {
+        export_path_guard(&self.target)?;
+        self.staged.replace(&self.target)
+    }
+}
+
 struct StagedFile {
     path: PathBuf,
 }
@@ -788,6 +811,7 @@ mod tests {
             "project.obj",
             "project.svg",
             "project.dxf",
+            "project.png",
             "unusual.native",
         ] {
             let path = directory.join(name);
@@ -795,6 +819,7 @@ mod tests {
             assert!(editor.project.export_svg(&path).is_err(), "{name}");
             assert!(editor.project.export_dxf(&path).is_err(), "{name}");
             assert!(mesh.export_obj(&path).is_err(), "{name}");
+            assert!(StagedExport::write(&path, b"image").is_err(), "{name}");
             assert_eq!(fs::read(&path).unwrap(), native);
         }
         let protected = directory.join("ordinary.WeFtFoRgE");
@@ -811,12 +836,14 @@ mod tests {
         assert!(editor.project.export_svg(&hardlink).is_err());
         assert!(editor.project.export_dxf(&hardlink).is_err());
         assert!(mesh.export_obj(&hardlink).is_err());
+        assert!(StagedExport::write(&hardlink, b"image").is_err());
         assert_eq!(fs::read(&hardlink).unwrap(), native);
         let folder = directory.join("folder.svg");
         fs::create_dir(&folder).unwrap();
         assert!(editor.project.export_svg(&folder).is_err());
         assert!(editor.project.export_dxf(&folder).is_err());
         assert!(mesh.export_obj(&folder).is_err());
+        assert!(StagedExport::write(&folder, b"image").is_err());
         assert!(folder.is_dir());
         #[cfg(unix)]
         for (target, alias) in [
@@ -829,6 +856,7 @@ mod tests {
             assert!(editor.project.export_svg(&path).is_err());
             assert!(editor.project.export_dxf(&path).is_err());
             assert!(mesh.export_obj(&path).is_err());
+            assert!(StagedExport::write(&path, b"image").is_err());
             assert_eq!(fs::read(&path).unwrap(), previous);
             assert!(
                 fs::symlink_metadata(&path)
@@ -844,6 +872,7 @@ mod tests {
             assert!(editor.project.export_svg(&broken).is_err());
             assert!(editor.project.export_dxf(&broken).is_err());
             assert!(mesh.export_obj(&broken).is_err());
+            assert!(StagedExport::write(&broken, b"image").is_err());
             assert!(
                 fs::symlink_metadata(&broken)
                     .unwrap()
@@ -867,6 +896,46 @@ mod tests {
                 .unwrap()
                 .starts_with("# WeftForge OBJ")
         );
+        fs::remove_dir_all(directory).unwrap();
+    }
+
+    #[test]
+    fn staged_exports_keep_the_old_file_until_commit_and_clean_up_rejected_writes() {
+        let directory = std::env::temp_dir().join(format!(
+            "weftforge-staged-export-{}-{}",
+            std::process::id(),
+            TEMP_ID.fetch_add(1, Ordering::Relaxed)
+        ));
+        fs::create_dir(&directory).unwrap();
+        let path = directory.join("workspace.png");
+        fs::write(&path, b"previous image").unwrap();
+        let staged = StagedExport::write(&path, b"new image").unwrap();
+        assert_eq!(fs::read(&path).unwrap(), b"previous image");
+        let temporary = staged.staged.path.clone();
+        drop(staged);
+        assert!(!temporary.exists());
+        assert_eq!(fs::read(&path).unwrap(), b"previous image");
+
+        let staged = StagedExport::write(&path, b"new image").unwrap();
+        fs::remove_file(&staged.staged.path).unwrap();
+        assert!(staged.commit().is_err());
+        assert_eq!(fs::read(&path).unwrap(), b"previous image");
+
+        let staged = StagedExport::write(&path, b"new image").unwrap();
+        fs::write(&path, Project::default().to_json().unwrap()).unwrap();
+        let native = fs::read(&path).unwrap();
+        let temporary = staged.staged.path.clone();
+        assert!(staged.commit().is_err());
+        assert_eq!(fs::read(&path).unwrap(), native);
+        assert!(!temporary.exists());
+
+        fs::write(&path, b"previous image").unwrap();
+        StagedExport::write(&path, b"new image")
+            .unwrap()
+            .commit()
+            .unwrap();
+        assert_eq!(fs::read(&path).unwrap(), b"new image");
+        assert_eq!(fs::read_dir(&directory).unwrap().count(), 1);
         fs::remove_dir_all(directory).unwrap();
     }
 
