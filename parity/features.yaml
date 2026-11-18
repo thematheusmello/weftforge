@@ -26,7 +26,8 @@
         "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-NATIVE-STOPS-001.original.json",
         "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-PREVIEW-001.original.json",
         "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-SOURCE-001.original.json",
-        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json",
+        "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -2614,6 +2615,61 @@
             "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935"
           },
           "path": "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001",
+          "commit": "f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f",
+          "timestamp": "2026-11-18T05:40:13.235422Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/EXTERNAL-TERMINAL.json": "7b1f85e02eccca5f9a256897ea7baeccc384e0299185392bc23000a65683a23c",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/LAUNCH.json": "f4723263ef8b19ed19271b7f09b01406f6f4013c85acacd396c53dc2befd3cfa",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "3491c85c1bbc289b67ecc36eec8be1d8d8a513f7e7224651cf0c163b34194c1d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/ROOT-GO.json": "d624cd347c5f119ed980ffe820c48c2b9cab32eb0c8269778e678ba15d273451",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stdout": "fd4247aac3b5e1f403a94dc41ac7b300dafd1c696351d14686b0b8249bb8cd3e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/RESULT.json": "3175d751c560e8dfeb6b2d84dab809c959bda54120e3f4b45e40e82923995811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/STARTED.json": "a3a5eca823d5ab450d415d5077dac3e7b45d802fb2ba06beba97a634e626012d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/TERMINAL.json": "9c7cad8ee4842a7d199039b3801f6015b7af8533a723cbf4c538a07ad1e7d3f9",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001.json": "5062e63380de4deac77bb8eef6a32ca4f2db45422c476516340a35ed6bae1d75",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/EXTERNAL-TERMINAL.json": "5e50ff3e7f291e517a7e33d07b9f3b7f99a9a42eb7dd5cd5b226455504d334c3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/LAUNCH.json": "344c06f4e727cca6f9b5138d92f6c2bfc2e0721ab8f2ba881885b7be6fb40d40",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "0b8f661b79f9fd42d7354571360b020fa19cce91340f91346de54cb62036e924",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/ROOT-GO.json": "f9b5c95a7351ab1a421cd8deba764b815144b428aeb21bb81dd79bb84a808450",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stdout": "2bd8eb8d7d747a33e4cb79ac3eef38e7b5372eb2bf29d8ae6ad9eac352b116ac",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/RESULT.json": "ef2cd34449cd0fc01b688b917ed6113cef577a8b17de97219be155fd734c4b50",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/STARTED.json": "6ce68b70d094a87b6d6a3986663064c66fb0af6ef6ee68580297ccdde9a7025e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/TERMINAL.json": "f8bfcc7161def3b425808cf885cc53ae92d9b6c53b9ebd8363dc558c3671a04b",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-RESULT.json": "f0f5c8059d245113067d81457a7b2553392bef28007d276d90ba702e2c159281",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-STARTED.json": "16792f0fd70914619d04074bbebdcea549751accd79f21fbe4ebb66d57d02cf3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-RESULT.json": "36389ece19aaea1e62eeeb2a8faeadd58bd8804a6834f713521a18528f5cd329",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-STARTED.json": "8be97bbe77f1697219589b4388bd6a1e7374754e0ab8646c1ce61802208911c8",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stderr": "abf1e915526b6cc8c93c443e5d47e170a3528213944fb39b5065518db4c7a69d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-RESULT.json": "6f96edde45d2f9a6a62d0b1b94378853c2596eb31d2000527f968761e03e5113",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-STARTED.json": "5a0818f005bed9443813c2635b5b0811dc4917641513658a345ed76649d90f48",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stderr": "c36013a9357a14a576cbb2c0d5bb18e96d0ff323e2e9426b860ca5fe8237f1a0",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-RESULT.json": "7f491ba297ee8e019e537a78e2a2b43f459595ebb9dcb9a6a42edfafa560f811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-STARTED.json": "8476b3ed8dabd549a1b8b7a8dcc5c6d0af0bf1e86e117364ac5cb4a701c8083f",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stderr": "57becd812498ebb78e13fa39c63536c7fd273cbf03c6f2d414efac9372bc75a7",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stdout": "1d5d80153fc252e371ec42ce125c6c78a34400a032803a346733fda1a363fd64",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001.json": "f8587b6dc4c673e161072afc4665513c858e025f7c6f1184360dedfa07cc1ab1",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "d3a0f6481bd78b9b554a055427dbd74f836f812042e6b2849019eaa99ef5ee53",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/post-case/ROOT-CLOSURE.json": "f27d1504c036c3c2b375cdd3462d37ddb732de6ca3fa19a95fb1d3ef11960599",
+            "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935",
+            "parity/reports/artifacts/contact-recovery-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "8f483daa0c59d69b61c665c60bf7038e9d33055f97b785477b4978fbcc8f9571"
+          },
+          "path": "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -2633,7 +2689,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b"
       }
@@ -2655,7 +2711,8 @@
         "parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-PREVIEW-001.json",
         "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-PREVIEW-001.original.json",
         "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-SOURCE-001.original.json",
-        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json",
+        "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -3208,6 +3265,61 @@
             "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935"
           },
           "path": "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001",
+          "commit": "f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f",
+          "timestamp": "2026-11-18T05:40:13.235422Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/EXTERNAL-TERMINAL.json": "7b1f85e02eccca5f9a256897ea7baeccc384e0299185392bc23000a65683a23c",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/LAUNCH.json": "f4723263ef8b19ed19271b7f09b01406f6f4013c85acacd396c53dc2befd3cfa",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "3491c85c1bbc289b67ecc36eec8be1d8d8a513f7e7224651cf0c163b34194c1d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/ROOT-GO.json": "d624cd347c5f119ed980ffe820c48c2b9cab32eb0c8269778e678ba15d273451",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stdout": "fd4247aac3b5e1f403a94dc41ac7b300dafd1c696351d14686b0b8249bb8cd3e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/RESULT.json": "3175d751c560e8dfeb6b2d84dab809c959bda54120e3f4b45e40e82923995811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/STARTED.json": "a3a5eca823d5ab450d415d5077dac3e7b45d802fb2ba06beba97a634e626012d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/TERMINAL.json": "9c7cad8ee4842a7d199039b3801f6015b7af8533a723cbf4c538a07ad1e7d3f9",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001.json": "5062e63380de4deac77bb8eef6a32ca4f2db45422c476516340a35ed6bae1d75",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/EXTERNAL-TERMINAL.json": "5e50ff3e7f291e517a7e33d07b9f3b7f99a9a42eb7dd5cd5b226455504d334c3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/LAUNCH.json": "344c06f4e727cca6f9b5138d92f6c2bfc2e0721ab8f2ba881885b7be6fb40d40",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "0b8f661b79f9fd42d7354571360b020fa19cce91340f91346de54cb62036e924",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/ROOT-GO.json": "f9b5c95a7351ab1a421cd8deba764b815144b428aeb21bb81dd79bb84a808450",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stdout": "2bd8eb8d7d747a33e4cb79ac3eef38e7b5372eb2bf29d8ae6ad9eac352b116ac",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/RESULT.json": "ef2cd34449cd0fc01b688b917ed6113cef577a8b17de97219be155fd734c4b50",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/STARTED.json": "6ce68b70d094a87b6d6a3986663064c66fb0af6ef6ee68580297ccdde9a7025e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/TERMINAL.json": "f8bfcc7161def3b425808cf885cc53ae92d9b6c53b9ebd8363dc558c3671a04b",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-RESULT.json": "f0f5c8059d245113067d81457a7b2553392bef28007d276d90ba702e2c159281",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-STARTED.json": "16792f0fd70914619d04074bbebdcea549751accd79f21fbe4ebb66d57d02cf3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-RESULT.json": "36389ece19aaea1e62eeeb2a8faeadd58bd8804a6834f713521a18528f5cd329",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-STARTED.json": "8be97bbe77f1697219589b4388bd6a1e7374754e0ab8646c1ce61802208911c8",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stderr": "abf1e915526b6cc8c93c443e5d47e170a3528213944fb39b5065518db4c7a69d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-RESULT.json": "6f96edde45d2f9a6a62d0b1b94378853c2596eb31d2000527f968761e03e5113",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-STARTED.json": "5a0818f005bed9443813c2635b5b0811dc4917641513658a345ed76649d90f48",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stderr": "c36013a9357a14a576cbb2c0d5bb18e96d0ff323e2e9426b860ca5fe8237f1a0",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-RESULT.json": "7f491ba297ee8e019e537a78e2a2b43f459595ebb9dcb9a6a42edfafa560f811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-STARTED.json": "8476b3ed8dabd549a1b8b7a8dcc5c6d0af0bf1e86e117364ac5cb4a701c8083f",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stderr": "57becd812498ebb78e13fa39c63536c7fd273cbf03c6f2d414efac9372bc75a7",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stdout": "1d5d80153fc252e371ec42ce125c6c78a34400a032803a346733fda1a363fd64",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001.json": "f8587b6dc4c673e161072afc4665513c858e025f7c6f1184360dedfa07cc1ab1",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "d3a0f6481bd78b9b554a055427dbd74f836f812042e6b2849019eaa99ef5ee53",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/post-case/ROOT-CLOSURE.json": "f27d1504c036c3c2b375cdd3462d37ddb732de6ca3fa19a95fb1d3ef11960599",
+            "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935",
+            "parity/reports/artifacts/contact-recovery-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "8f483daa0c59d69b61c665c60bf7038e9d33055f97b785477b4978fbcc8f9571"
+          },
+          "path": "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -3223,7 +3335,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "UI-003",
@@ -3237,7 +3349,8 @@
       ],
       "reference_observation_status": "unobserved",
       "evidence_ids": [
-        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json",
+        "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -3644,6 +3757,61 @@
             "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935"
           },
           "path": "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001",
+          "commit": "f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f",
+          "timestamp": "2026-11-18T05:40:13.235422Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/EXTERNAL-TERMINAL.json": "7b1f85e02eccca5f9a256897ea7baeccc384e0299185392bc23000a65683a23c",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/LAUNCH.json": "f4723263ef8b19ed19271b7f09b01406f6f4013c85acacd396c53dc2befd3cfa",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "3491c85c1bbc289b67ecc36eec8be1d8d8a513f7e7224651cf0c163b34194c1d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/ROOT-GO.json": "d624cd347c5f119ed980ffe820c48c2b9cab32eb0c8269778e678ba15d273451",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stdout": "fd4247aac3b5e1f403a94dc41ac7b300dafd1c696351d14686b0b8249bb8cd3e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/RESULT.json": "3175d751c560e8dfeb6b2d84dab809c959bda54120e3f4b45e40e82923995811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/STARTED.json": "a3a5eca823d5ab450d415d5077dac3e7b45d802fb2ba06beba97a634e626012d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/TERMINAL.json": "9c7cad8ee4842a7d199039b3801f6015b7af8533a723cbf4c538a07ad1e7d3f9",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001.json": "5062e63380de4deac77bb8eef6a32ca4f2db45422c476516340a35ed6bae1d75",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/EXTERNAL-TERMINAL.json": "5e50ff3e7f291e517a7e33d07b9f3b7f99a9a42eb7dd5cd5b226455504d334c3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/LAUNCH.json": "344c06f4e727cca6f9b5138d92f6c2bfc2e0721ab8f2ba881885b7be6fb40d40",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "0b8f661b79f9fd42d7354571360b020fa19cce91340f91346de54cb62036e924",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/ROOT-GO.json": "f9b5c95a7351ab1a421cd8deba764b815144b428aeb21bb81dd79bb84a808450",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stdout": "2bd8eb8d7d747a33e4cb79ac3eef38e7b5372eb2bf29d8ae6ad9eac352b116ac",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/RESULT.json": "ef2cd34449cd0fc01b688b917ed6113cef577a8b17de97219be155fd734c4b50",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/STARTED.json": "6ce68b70d094a87b6d6a3986663064c66fb0af6ef6ee68580297ccdde9a7025e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/TERMINAL.json": "f8bfcc7161def3b425808cf885cc53ae92d9b6c53b9ebd8363dc558c3671a04b",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-RESULT.json": "f0f5c8059d245113067d81457a7b2553392bef28007d276d90ba702e2c159281",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-STARTED.json": "16792f0fd70914619d04074bbebdcea549751accd79f21fbe4ebb66d57d02cf3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-RESULT.json": "36389ece19aaea1e62eeeb2a8faeadd58bd8804a6834f713521a18528f5cd329",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-STARTED.json": "8be97bbe77f1697219589b4388bd6a1e7374754e0ab8646c1ce61802208911c8",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stderr": "abf1e915526b6cc8c93c443e5d47e170a3528213944fb39b5065518db4c7a69d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-RESULT.json": "6f96edde45d2f9a6a62d0b1b94378853c2596eb31d2000527f968761e03e5113",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-STARTED.json": "5a0818f005bed9443813c2635b5b0811dc4917641513658a345ed76649d90f48",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stderr": "c36013a9357a14a576cbb2c0d5bb18e96d0ff323e2e9426b860ca5fe8237f1a0",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-RESULT.json": "7f491ba297ee8e019e537a78e2a2b43f459595ebb9dcb9a6a42edfafa560f811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-STARTED.json": "8476b3ed8dabd549a1b8b7a8dcc5c6d0af0bf1e86e117364ac5cb4a701c8083f",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stderr": "57becd812498ebb78e13fa39c63536c7fd273cbf03c6f2d414efac9372bc75a7",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stdout": "1d5d80153fc252e371ec42ce125c6c78a34400a032803a346733fda1a363fd64",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001.json": "f8587b6dc4c673e161072afc4665513c858e025f7c6f1184360dedfa07cc1ab1",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "d3a0f6481bd78b9b554a055427dbd74f836f812042e6b2849019eaa99ef5ee53",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/post-case/ROOT-CLOSURE.json": "f27d1504c036c3c2b375cdd3462d37ddb732de6ca3fa19a95fb1d3ef11960599",
+            "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935",
+            "parity/reports/artifacts/contact-recovery-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "8f483daa0c59d69b61c665c60bf7038e9d33055f97b785477b4978fbcc8f9571"
+          },
+          "path": "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -3657,7 +3825,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/UI-003-original-position-snapping.md": "0d19a5cfa9886757390b735137171a2c9c88beb2f7f5fe8d8eb47c475d948ce7"
       }
@@ -3692,7 +3860,8 @@
         "parity/reports/WF-20261116-RECTANGLE-FILE-SUPPLEMENT-001.json",
         "parity/reports/artifacts/rectangle-gesture-20261116/SELECTED-PUBLIC-MANIFEST-001.json",
         "parity/reports/WF-20261117-NATIVE-NOTCH-N006-001.json",
-        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json",
+        "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -8296,6 +8465,61 @@
             "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935"
           },
           "path": "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001",
+          "commit": "f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f",
+          "timestamp": "2026-11-18T05:40:13.235422Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/EXTERNAL-TERMINAL.json": "7b1f85e02eccca5f9a256897ea7baeccc384e0299185392bc23000a65683a23c",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/LAUNCH.json": "f4723263ef8b19ed19271b7f09b01406f6f4013c85acacd396c53dc2befd3cfa",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "3491c85c1bbc289b67ecc36eec8be1d8d8a513f7e7224651cf0c163b34194c1d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/ROOT-GO.json": "d624cd347c5f119ed980ffe820c48c2b9cab32eb0c8269778e678ba15d273451",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stdout": "fd4247aac3b5e1f403a94dc41ac7b300dafd1c696351d14686b0b8249bb8cd3e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/RESULT.json": "3175d751c560e8dfeb6b2d84dab809c959bda54120e3f4b45e40e82923995811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/STARTED.json": "a3a5eca823d5ab450d415d5077dac3e7b45d802fb2ba06beba97a634e626012d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/TERMINAL.json": "9c7cad8ee4842a7d199039b3801f6015b7af8533a723cbf4c538a07ad1e7d3f9",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001.json": "5062e63380de4deac77bb8eef6a32ca4f2db45422c476516340a35ed6bae1d75",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/EXTERNAL-TERMINAL.json": "5e50ff3e7f291e517a7e33d07b9f3b7f99a9a42eb7dd5cd5b226455504d334c3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/LAUNCH.json": "344c06f4e727cca6f9b5138d92f6c2bfc2e0721ab8f2ba881885b7be6fb40d40",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "0b8f661b79f9fd42d7354571360b020fa19cce91340f91346de54cb62036e924",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/ROOT-GO.json": "f9b5c95a7351ab1a421cd8deba764b815144b428aeb21bb81dd79bb84a808450",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stdout": "2bd8eb8d7d747a33e4cb79ac3eef38e7b5372eb2bf29d8ae6ad9eac352b116ac",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/RESULT.json": "ef2cd34449cd0fc01b688b917ed6113cef577a8b17de97219be155fd734c4b50",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/STARTED.json": "6ce68b70d094a87b6d6a3986663064c66fb0af6ef6ee68580297ccdde9a7025e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/TERMINAL.json": "f8bfcc7161def3b425808cf885cc53ae92d9b6c53b9ebd8363dc558c3671a04b",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-RESULT.json": "f0f5c8059d245113067d81457a7b2553392bef28007d276d90ba702e2c159281",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-STARTED.json": "16792f0fd70914619d04074bbebdcea549751accd79f21fbe4ebb66d57d02cf3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-RESULT.json": "36389ece19aaea1e62eeeb2a8faeadd58bd8804a6834f713521a18528f5cd329",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-STARTED.json": "8be97bbe77f1697219589b4388bd6a1e7374754e0ab8646c1ce61802208911c8",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stderr": "abf1e915526b6cc8c93c443e5d47e170a3528213944fb39b5065518db4c7a69d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-RESULT.json": "6f96edde45d2f9a6a62d0b1b94378853c2596eb31d2000527f968761e03e5113",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-STARTED.json": "5a0818f005bed9443813c2635b5b0811dc4917641513658a345ed76649d90f48",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stderr": "c36013a9357a14a576cbb2c0d5bb18e96d0ff323e2e9426b860ca5fe8237f1a0",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-RESULT.json": "7f491ba297ee8e019e537a78e2a2b43f459595ebb9dcb9a6a42edfafa560f811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-STARTED.json": "8476b3ed8dabd549a1b8b7a8dcc5c6d0af0bf1e86e117364ac5cb4a701c8083f",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stderr": "57becd812498ebb78e13fa39c63536c7fd273cbf03c6f2d414efac9372bc75a7",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stdout": "1d5d80153fc252e371ec42ce125c6c78a34400a032803a346733fda1a363fd64",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001.json": "f8587b6dc4c673e161072afc4665513c858e025f7c6f1184360dedfa07cc1ab1",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "d3a0f6481bd78b9b554a055427dbd74f836f812042e6b2849019eaa99ef5ee53",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/post-case/ROOT-CLOSURE.json": "f27d1504c036c3c2b375cdd3462d37ddb732de6ca3fa19a95fb1d3ef11960599",
+            "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935",
+            "parity/reports/artifacts/contact-recovery-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "8f483daa0c59d69b61c665c60bf7038e9d33055f97b785477b4978fbcc8f9571"
+          },
+          "path": "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -8318,7 +8542,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/PAT-004-piece-rigid-transform.md": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
         "spec/features/PAT-004-native-transform-selection.md": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
@@ -8869,7 +9093,8 @@
       "reference_observation_status": "unobserved",
       "evidence_ids": [
         "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json",
-        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json",
+        "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
       ],
       "scenarios": [],
       "comparison_criteria": {
@@ -9133,6 +9358,61 @@
             "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935"
           },
           "path": "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001",
+          "commit": "f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f",
+          "timestamp": "2026-11-18T05:40:13.235422Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/EXTERNAL-TERMINAL.json": "7b1f85e02eccca5f9a256897ea7baeccc384e0299185392bc23000a65683a23c",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/LAUNCH.json": "f4723263ef8b19ed19271b7f09b01406f6f4013c85acacd396c53dc2befd3cfa",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "3491c85c1bbc289b67ecc36eec8be1d8d8a513f7e7224651cf0c163b34194c1d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/ROOT-GO.json": "d624cd347c5f119ed980ffe820c48c2b9cab32eb0c8269778e678ba15d273451",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stdout": "fd4247aac3b5e1f403a94dc41ac7b300dafd1c696351d14686b0b8249bb8cd3e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/RESULT.json": "3175d751c560e8dfeb6b2d84dab809c959bda54120e3f4b45e40e82923995811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/STARTED.json": "a3a5eca823d5ab450d415d5077dac3e7b45d802fb2ba06beba97a634e626012d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/TERMINAL.json": "9c7cad8ee4842a7d199039b3801f6015b7af8533a723cbf4c538a07ad1e7d3f9",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001.json": "5062e63380de4deac77bb8eef6a32ca4f2db45422c476516340a35ed6bae1d75",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/EXTERNAL-TERMINAL.json": "5e50ff3e7f291e517a7e33d07b9f3b7f99a9a42eb7dd5cd5b226455504d334c3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/LAUNCH.json": "344c06f4e727cca6f9b5138d92f6c2bfc2e0721ab8f2ba881885b7be6fb40d40",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "0b8f661b79f9fd42d7354571360b020fa19cce91340f91346de54cb62036e924",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/ROOT-GO.json": "f9b5c95a7351ab1a421cd8deba764b815144b428aeb21bb81dd79bb84a808450",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stdout": "2bd8eb8d7d747a33e4cb79ac3eef38e7b5372eb2bf29d8ae6ad9eac352b116ac",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/RESULT.json": "ef2cd34449cd0fc01b688b917ed6113cef577a8b17de97219be155fd734c4b50",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/STARTED.json": "6ce68b70d094a87b6d6a3986663064c66fb0af6ef6ee68580297ccdde9a7025e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/TERMINAL.json": "f8bfcc7161def3b425808cf885cc53ae92d9b6c53b9ebd8363dc558c3671a04b",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-RESULT.json": "f0f5c8059d245113067d81457a7b2553392bef28007d276d90ba702e2c159281",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-STARTED.json": "16792f0fd70914619d04074bbebdcea549751accd79f21fbe4ebb66d57d02cf3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-RESULT.json": "36389ece19aaea1e62eeeb2a8faeadd58bd8804a6834f713521a18528f5cd329",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-STARTED.json": "8be97bbe77f1697219589b4388bd6a1e7374754e0ab8646c1ce61802208911c8",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stderr": "abf1e915526b6cc8c93c443e5d47e170a3528213944fb39b5065518db4c7a69d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-RESULT.json": "6f96edde45d2f9a6a62d0b1b94378853c2596eb31d2000527f968761e03e5113",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-STARTED.json": "5a0818f005bed9443813c2635b5b0811dc4917641513658a345ed76649d90f48",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stderr": "c36013a9357a14a576cbb2c0d5bb18e96d0ff323e2e9426b860ca5fe8237f1a0",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-RESULT.json": "7f491ba297ee8e019e537a78e2a2b43f459595ebb9dcb9a6a42edfafa560f811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-STARTED.json": "8476b3ed8dabd549a1b8b7a8dcc5c6d0af0bf1e86e117364ac5cb4a701c8083f",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stderr": "57becd812498ebb78e13fa39c63536c7fd273cbf03c6f2d414efac9372bc75a7",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stdout": "1d5d80153fc252e371ec42ce125c6c78a34400a032803a346733fda1a363fd64",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001.json": "f8587b6dc4c673e161072afc4665513c858e025f7c6f1184360dedfa07cc1ab1",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "d3a0f6481bd78b9b554a055427dbd74f836f812042e6b2849019eaa99ef5ee53",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/post-case/ROOT-CLOSURE.json": "f27d1504c036c3c2b375cdd3462d37ddb732de6ca3fa19a95fb1d3ef11960599",
+            "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935",
+            "parity/reports/artifacts/contact-recovery-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "8f483daa0c59d69b61c665c60bf7038e9d33055f97b785477b4978fbcc8f9571"
+          },
+          "path": "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -9147,7 +9427,7 @@
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending.",
         "A complete live native text-entry journey remains unverified after N004 exposed no AX authoring content. Native AX activation/interaction diagnosis and fresh current-source acceptance remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "PAT-001",
@@ -21848,7 +22128,8 @@
         "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-METADATA-001.json",
         "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json",
         "parity/reports/WF-20261117-NATIVE-NOTCH-N006-001.json",
-        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json",
+        "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -22172,6 +22453,61 @@
             "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935"
           },
           "path": "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001",
+          "commit": "f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f",
+          "timestamp": "2026-11-18T05:40:13.235422Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/EXTERNAL-TERMINAL.json": "7b1f85e02eccca5f9a256897ea7baeccc384e0299185392bc23000a65683a23c",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/LAUNCH.json": "f4723263ef8b19ed19271b7f09b01406f6f4013c85acacd396c53dc2befd3cfa",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "3491c85c1bbc289b67ecc36eec8be1d8d8a513f7e7224651cf0c163b34194c1d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/ROOT-GO.json": "d624cd347c5f119ed980ffe820c48c2b9cab32eb0c8269778e678ba15d273451",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stdout": "fd4247aac3b5e1f403a94dc41ac7b300dafd1c696351d14686b0b8249bb8cd3e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/RESULT.json": "3175d751c560e8dfeb6b2d84dab809c959bda54120e3f4b45e40e82923995811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/STARTED.json": "a3a5eca823d5ab450d415d5077dac3e7b45d802fb2ba06beba97a634e626012d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/TERMINAL.json": "9c7cad8ee4842a7d199039b3801f6015b7af8533a723cbf4c538a07ad1e7d3f9",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001.json": "5062e63380de4deac77bb8eef6a32ca4f2db45422c476516340a35ed6bae1d75",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/EXTERNAL-TERMINAL.json": "5e50ff3e7f291e517a7e33d07b9f3b7f99a9a42eb7dd5cd5b226455504d334c3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/LAUNCH.json": "344c06f4e727cca6f9b5138d92f6c2bfc2e0721ab8f2ba881885b7be6fb40d40",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "0b8f661b79f9fd42d7354571360b020fa19cce91340f91346de54cb62036e924",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/ROOT-GO.json": "f9b5c95a7351ab1a421cd8deba764b815144b428aeb21bb81dd79bb84a808450",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stdout": "2bd8eb8d7d747a33e4cb79ac3eef38e7b5372eb2bf29d8ae6ad9eac352b116ac",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/RESULT.json": "ef2cd34449cd0fc01b688b917ed6113cef577a8b17de97219be155fd734c4b50",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/STARTED.json": "6ce68b70d094a87b6d6a3986663064c66fb0af6ef6ee68580297ccdde9a7025e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/TERMINAL.json": "f8bfcc7161def3b425808cf885cc53ae92d9b6c53b9ebd8363dc558c3671a04b",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-RESULT.json": "f0f5c8059d245113067d81457a7b2553392bef28007d276d90ba702e2c159281",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-STARTED.json": "16792f0fd70914619d04074bbebdcea549751accd79f21fbe4ebb66d57d02cf3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-RESULT.json": "36389ece19aaea1e62eeeb2a8faeadd58bd8804a6834f713521a18528f5cd329",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-STARTED.json": "8be97bbe77f1697219589b4388bd6a1e7374754e0ab8646c1ce61802208911c8",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stderr": "abf1e915526b6cc8c93c443e5d47e170a3528213944fb39b5065518db4c7a69d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-RESULT.json": "6f96edde45d2f9a6a62d0b1b94378853c2596eb31d2000527f968761e03e5113",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-STARTED.json": "5a0818f005bed9443813c2635b5b0811dc4917641513658a345ed76649d90f48",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stderr": "c36013a9357a14a576cbb2c0d5bb18e96d0ff323e2e9426b860ca5fe8237f1a0",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-RESULT.json": "7f491ba297ee8e019e537a78e2a2b43f459595ebb9dcb9a6a42edfafa560f811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-STARTED.json": "8476b3ed8dabd549a1b8b7a8dcc5c6d0af0bf1e86e117364ac5cb4a701c8083f",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stderr": "57becd812498ebb78e13fa39c63536c7fd273cbf03c6f2d414efac9372bc75a7",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stdout": "1d5d80153fc252e371ec42ce125c6c78a34400a032803a346733fda1a363fd64",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001.json": "f8587b6dc4c673e161072afc4665513c858e025f7c6f1184360dedfa07cc1ab1",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "d3a0f6481bd78b9b554a055427dbd74f836f812042e6b2849019eaa99ef5ee53",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/post-case/ROOT-CLOSURE.json": "f27d1504c036c3c2b375cdd3462d37ddb732de6ca3fa19a95fb1d3ef11960599",
+            "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935",
+            "parity/reports/artifacts/contact-recovery-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "8f483daa0c59d69b61c665c60bf7038e9d33055f97b785477b4978fbcc8f9571"
+          },
+          "path": "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -22188,7 +22524,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/PAT-007-authored-length-feedback.md": "4f79150ed28854b8a16760af07b1558808dcca2080bc1ee8e114d5b2682f851c",
         "spec/features/PAT-006-internal-segments.md": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
@@ -30820,7 +31156,8 @@
         "parity/reports/WF-20261117-MATERIAL-POLLING-SOURCE-001.json",
         "parity/reports/WF-20261117-MATERIAL-POLLING-HARBOR-A8-001.json",
         "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json",
-        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json",
+        "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -33225,6 +33562,61 @@
             "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935"
           },
           "path": "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001",
+          "commit": "f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f",
+          "timestamp": "2026-11-18T05:40:13.235422Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/EXTERNAL-TERMINAL.json": "7b1f85e02eccca5f9a256897ea7baeccc384e0299185392bc23000a65683a23c",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/LAUNCH.json": "f4723263ef8b19ed19271b7f09b01406f6f4013c85acacd396c53dc2befd3cfa",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "3491c85c1bbc289b67ecc36eec8be1d8d8a513f7e7224651cf0c163b34194c1d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/ROOT-GO.json": "d624cd347c5f119ed980ffe820c48c2b9cab32eb0c8269778e678ba15d273451",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stdout": "fd4247aac3b5e1f403a94dc41ac7b300dafd1c696351d14686b0b8249bb8cd3e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/RESULT.json": "3175d751c560e8dfeb6b2d84dab809c959bda54120e3f4b45e40e82923995811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/STARTED.json": "a3a5eca823d5ab450d415d5077dac3e7b45d802fb2ba06beba97a634e626012d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/TERMINAL.json": "9c7cad8ee4842a7d199039b3801f6015b7af8533a723cbf4c538a07ad1e7d3f9",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001.json": "5062e63380de4deac77bb8eef6a32ca4f2db45422c476516340a35ed6bae1d75",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/EXTERNAL-TERMINAL.json": "5e50ff3e7f291e517a7e33d07b9f3b7f99a9a42eb7dd5cd5b226455504d334c3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/LAUNCH.json": "344c06f4e727cca6f9b5138d92f6c2bfc2e0721ab8f2ba881885b7be6fb40d40",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "0b8f661b79f9fd42d7354571360b020fa19cce91340f91346de54cb62036e924",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/ROOT-GO.json": "f9b5c95a7351ab1a421cd8deba764b815144b428aeb21bb81dd79bb84a808450",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stdout": "2bd8eb8d7d747a33e4cb79ac3eef38e7b5372eb2bf29d8ae6ad9eac352b116ac",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/RESULT.json": "ef2cd34449cd0fc01b688b917ed6113cef577a8b17de97219be155fd734c4b50",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/STARTED.json": "6ce68b70d094a87b6d6a3986663064c66fb0af6ef6ee68580297ccdde9a7025e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/TERMINAL.json": "f8bfcc7161def3b425808cf885cc53ae92d9b6c53b9ebd8363dc558c3671a04b",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-RESULT.json": "f0f5c8059d245113067d81457a7b2553392bef28007d276d90ba702e2c159281",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-STARTED.json": "16792f0fd70914619d04074bbebdcea549751accd79f21fbe4ebb66d57d02cf3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-RESULT.json": "36389ece19aaea1e62eeeb2a8faeadd58bd8804a6834f713521a18528f5cd329",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-STARTED.json": "8be97bbe77f1697219589b4388bd6a1e7374754e0ab8646c1ce61802208911c8",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stderr": "abf1e915526b6cc8c93c443e5d47e170a3528213944fb39b5065518db4c7a69d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-RESULT.json": "6f96edde45d2f9a6a62d0b1b94378853c2596eb31d2000527f968761e03e5113",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-STARTED.json": "5a0818f005bed9443813c2635b5b0811dc4917641513658a345ed76649d90f48",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stderr": "c36013a9357a14a576cbb2c0d5bb18e96d0ff323e2e9426b860ca5fe8237f1a0",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-RESULT.json": "7f491ba297ee8e019e537a78e2a2b43f459595ebb9dcb9a6a42edfafa560f811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-STARTED.json": "8476b3ed8dabd549a1b8b7a8dcc5c6d0af0bf1e86e117364ac5cb4a701c8083f",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stderr": "57becd812498ebb78e13fa39c63536c7fd273cbf03c6f2d414efac9372bc75a7",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stdout": "1d5d80153fc252e371ec42ce125c6c78a34400a032803a346733fda1a363fd64",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001.json": "f8587b6dc4c673e161072afc4665513c858e025f7c6f1184360dedfa07cc1ab1",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "d3a0f6481bd78b9b554a055427dbd74f836f812042e6b2849019eaa99ef5ee53",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/post-case/ROOT-CLOSURE.json": "f27d1504c036c3c2b375cdd3462d37ddb732de6ca3fa19a95fb1d3ef11960599",
+            "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935",
+            "parity/reports/artifacts/contact-recovery-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "8f483daa0c59d69b61c665c60bf7038e9d33055f97b785477b4978fbcc8f9571"
+          },
+          "path": "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -33247,7 +33639,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/SIM-001-closed-stitch-coordinates.md": "06a6b17fbac6831f92552b733df919265f2dd11940172a6e80f0bb4549ae9d8b"
       }
@@ -34189,7 +34581,8 @@
         "parity/reports/artifacts/material-source-20261116/SELECTED-PUBLIC-MANIFEST-001.json",
         "parity/reports/WF-20261116-MATERIAL-GROUPS-HARBOR-A8-001.json",
         "parity/reports/WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001.json",
-        "parity/reports/WF-20261117-MATERIAL-POLLING-HARBOR-A8-001.json"
+        "parity/reports/WF-20261117-MATERIAL-POLLING-HARBOR-A8-001.json",
+        "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -35491,6 +35884,61 @@
             "parity/reports/artifacts/sewing-history-source-20261117/source-integration/ROOT-INTEGRATION-001.json": "71b327404afe411016a113cec1cdc346e1130c74f85ac243c267a51e2c5962c9",
             "parity/reports/artifacts/sewing-history-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "170f2855866521eab75174c1efaccc499b4e8748dd989034e6c77a271b56d14d"
           }
+        },
+        {
+          "id": "WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001",
+          "commit": "f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f",
+          "timestamp": "2026-11-18T05:40:13.235422Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/EXTERNAL-TERMINAL.json": "7b1f85e02eccca5f9a256897ea7baeccc384e0299185392bc23000a65683a23c",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/LAUNCH.json": "f4723263ef8b19ed19271b7f09b01406f6f4013c85acacd396c53dc2befd3cfa",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "3491c85c1bbc289b67ecc36eec8be1d8d8a513f7e7224651cf0c163b34194c1d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/ROOT-GO.json": "d624cd347c5f119ed980ffe820c48c2b9cab32eb0c8269778e678ba15d273451",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stdout": "fd4247aac3b5e1f403a94dc41ac7b300dafd1c696351d14686b0b8249bb8cd3e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/RESULT.json": "3175d751c560e8dfeb6b2d84dab809c959bda54120e3f4b45e40e82923995811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/STARTED.json": "a3a5eca823d5ab450d415d5077dac3e7b45d802fb2ba06beba97a634e626012d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/TERMINAL.json": "9c7cad8ee4842a7d199039b3801f6015b7af8533a723cbf4c538a07ad1e7d3f9",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001.json": "5062e63380de4deac77bb8eef6a32ca4f2db45422c476516340a35ed6bae1d75",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/EXTERNAL-TERMINAL.json": "5e50ff3e7f291e517a7e33d07b9f3b7f99a9a42eb7dd5cd5b226455504d334c3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/LAUNCH.json": "344c06f4e727cca6f9b5138d92f6c2bfc2e0721ab8f2ba881885b7be6fb40d40",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "0b8f661b79f9fd42d7354571360b020fa19cce91340f91346de54cb62036e924",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/ROOT-GO.json": "f9b5c95a7351ab1a421cd8deba764b815144b428aeb21bb81dd79bb84a808450",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stdout": "2bd8eb8d7d747a33e4cb79ac3eef38e7b5372eb2bf29d8ae6ad9eac352b116ac",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/RESULT.json": "ef2cd34449cd0fc01b688b917ed6113cef577a8b17de97219be155fd734c4b50",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/STARTED.json": "6ce68b70d094a87b6d6a3986663064c66fb0af6ef6ee68580297ccdde9a7025e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/TERMINAL.json": "f8bfcc7161def3b425808cf885cc53ae92d9b6c53b9ebd8363dc558c3671a04b",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-RESULT.json": "f0f5c8059d245113067d81457a7b2553392bef28007d276d90ba702e2c159281",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-STARTED.json": "16792f0fd70914619d04074bbebdcea549751accd79f21fbe4ebb66d57d02cf3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-RESULT.json": "36389ece19aaea1e62eeeb2a8faeadd58bd8804a6834f713521a18528f5cd329",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-STARTED.json": "8be97bbe77f1697219589b4388bd6a1e7374754e0ab8646c1ce61802208911c8",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stderr": "abf1e915526b6cc8c93c443e5d47e170a3528213944fb39b5065518db4c7a69d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-RESULT.json": "6f96edde45d2f9a6a62d0b1b94378853c2596eb31d2000527f968761e03e5113",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-STARTED.json": "5a0818f005bed9443813c2635b5b0811dc4917641513658a345ed76649d90f48",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stderr": "c36013a9357a14a576cbb2c0d5bb18e96d0ff323e2e9426b860ca5fe8237f1a0",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-RESULT.json": "7f491ba297ee8e019e537a78e2a2b43f459595ebb9dcb9a6a42edfafa560f811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-STARTED.json": "8476b3ed8dabd549a1b8b7a8dcc5c6d0af0bf1e86e117364ac5cb4a701c8083f",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stderr": "57becd812498ebb78e13fa39c63536c7fd273cbf03c6f2d414efac9372bc75a7",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stdout": "1d5d80153fc252e371ec42ce125c6c78a34400a032803a346733fda1a363fd64",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001.json": "f8587b6dc4c673e161072afc4665513c858e025f7c6f1184360dedfa07cc1ab1",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "d3a0f6481bd78b9b554a055427dbd74f836f812042e6b2849019eaa99ef5ee53",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/post-case/ROOT-CLOSURE.json": "f27d1504c036c3c2b375cdd3462d37ddb732de6ca3fa19a95fb1d3ef11960599",
+            "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935",
+            "parity/reports/artifacts/contact-recovery-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "8f483daa0c59d69b61c665c60bf7038e9d33055f97b785477b4978fbcc8f9571"
+          },
+          "path": "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -35509,7 +35957,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "SIM-004",
@@ -35527,7 +35975,8 @@
         "parity/reports/artifacts/material-source-20261116/SELECTED-PUBLIC-MANIFEST-001.json",
         "parity/reports/WF-20261116-MATERIAL-GROUPS-HARBOR-A8-001.json",
         "parity/reports/WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001.json",
-        "parity/reports/WF-20261117-MATERIAL-POLLING-HARBOR-A8-001.json"
+        "parity/reports/WF-20261117-MATERIAL-POLLING-HARBOR-A8-001.json",
+        "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -36604,6 +37053,61 @@
             "parity/reports/artifacts/sewing-history-source-20261117/source-integration/ROOT-INTEGRATION-001.json": "71b327404afe411016a113cec1cdc346e1130c74f85ac243c267a51e2c5962c9",
             "parity/reports/artifacts/sewing-history-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "170f2855866521eab75174c1efaccc499b4e8748dd989034e6c77a271b56d14d"
           }
+        },
+        {
+          "id": "WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001",
+          "commit": "f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f",
+          "timestamp": "2026-11-18T05:40:13.235422Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/EXTERNAL-TERMINAL.json": "7b1f85e02eccca5f9a256897ea7baeccc384e0299185392bc23000a65683a23c",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/LAUNCH.json": "f4723263ef8b19ed19271b7f09b01406f6f4013c85acacd396c53dc2befd3cfa",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "3491c85c1bbc289b67ecc36eec8be1d8d8a513f7e7224651cf0c163b34194c1d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/ROOT-GO.json": "d624cd347c5f119ed980ffe820c48c2b9cab32eb0c8269778e678ba15d273451",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stdout": "fd4247aac3b5e1f403a94dc41ac7b300dafd1c696351d14686b0b8249bb8cd3e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/RESULT.json": "3175d751c560e8dfeb6b2d84dab809c959bda54120e3f4b45e40e82923995811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/STARTED.json": "a3a5eca823d5ab450d415d5077dac3e7b45d802fb2ba06beba97a634e626012d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/TERMINAL.json": "9c7cad8ee4842a7d199039b3801f6015b7af8533a723cbf4c538a07ad1e7d3f9",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001.json": "5062e63380de4deac77bb8eef6a32ca4f2db45422c476516340a35ed6bae1d75",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/EXTERNAL-TERMINAL.json": "5e50ff3e7f291e517a7e33d07b9f3b7f99a9a42eb7dd5cd5b226455504d334c3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/LAUNCH.json": "344c06f4e727cca6f9b5138d92f6c2bfc2e0721ab8f2ba881885b7be6fb40d40",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "0b8f661b79f9fd42d7354571360b020fa19cce91340f91346de54cb62036e924",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/ROOT-GO.json": "f9b5c95a7351ab1a421cd8deba764b815144b428aeb21bb81dd79bb84a808450",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stdout": "2bd8eb8d7d747a33e4cb79ac3eef38e7b5372eb2bf29d8ae6ad9eac352b116ac",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/RESULT.json": "ef2cd34449cd0fc01b688b917ed6113cef577a8b17de97219be155fd734c4b50",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/STARTED.json": "6ce68b70d094a87b6d6a3986663064c66fb0af6ef6ee68580297ccdde9a7025e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/TERMINAL.json": "f8bfcc7161def3b425808cf885cc53ae92d9b6c53b9ebd8363dc558c3671a04b",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-RESULT.json": "f0f5c8059d245113067d81457a7b2553392bef28007d276d90ba702e2c159281",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-STARTED.json": "16792f0fd70914619d04074bbebdcea549751accd79f21fbe4ebb66d57d02cf3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-RESULT.json": "36389ece19aaea1e62eeeb2a8faeadd58bd8804a6834f713521a18528f5cd329",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-STARTED.json": "8be97bbe77f1697219589b4388bd6a1e7374754e0ab8646c1ce61802208911c8",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stderr": "abf1e915526b6cc8c93c443e5d47e170a3528213944fb39b5065518db4c7a69d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-RESULT.json": "6f96edde45d2f9a6a62d0b1b94378853c2596eb31d2000527f968761e03e5113",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-STARTED.json": "5a0818f005bed9443813c2635b5b0811dc4917641513658a345ed76649d90f48",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stderr": "c36013a9357a14a576cbb2c0d5bb18e96d0ff323e2e9426b860ca5fe8237f1a0",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-RESULT.json": "7f491ba297ee8e019e537a78e2a2b43f459595ebb9dcb9a6a42edfafa560f811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-STARTED.json": "8476b3ed8dabd549a1b8b7a8dcc5c6d0af0bf1e86e117364ac5cb4a701c8083f",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stderr": "57becd812498ebb78e13fa39c63536c7fd273cbf03c6f2d414efac9372bc75a7",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stdout": "1d5d80153fc252e371ec42ce125c6c78a34400a032803a346733fda1a363fd64",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001.json": "f8587b6dc4c673e161072afc4665513c858e025f7c6f1184360dedfa07cc1ab1",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "d3a0f6481bd78b9b554a055427dbd74f836f812042e6b2849019eaa99ef5ee53",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/post-case/ROOT-CLOSURE.json": "f27d1504c036c3c2b375cdd3462d37ddb732de6ca3fa19a95fb1d3ef11960599",
+            "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935",
+            "parity/reports/artifacts/contact-recovery-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "8f483daa0c59d69b61c665c60bf7038e9d33055f97b785477b4978fbcc8f9571"
+          },
+          "path": "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -36620,7 +37124,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "SIM-005",
@@ -36639,7 +37143,8 @@
         "parity/scenarios/SIM-CLOSED-STITCH-HARBOR-001.json",
         "parity/reports/WF-20261115-CLOSED-STITCH-HARBOR-001.json",
         "parity/reports/WF-20261116-COUPLED-HARBOR-A8-001.json",
-        "parity/reports/WF-20261116-MATERIAL-GROUPS-HARBOR-A8-001.json"
+        "parity/reports/WF-20261116-MATERIAL-GROUPS-HARBOR-A8-001.json",
+        "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -37503,6 +38008,61 @@
             "parity/scenarios/SIM-CLOSED-STITCH-HARBOR-001.json": "156dc6800a6d54603d49898bec288dfe98f1cf43e282897ca9ee15f55eb0fc4b"
           },
           "path": "parity/reports/WF-20261115-CLOSED-STITCH-HARBOR-001.json"
+        },
+        {
+          "id": "WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001",
+          "commit": "f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f",
+          "timestamp": "2026-11-18T05:40:13.235422Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/EXTERNAL-TERMINAL.json": "7b1f85e02eccca5f9a256897ea7baeccc384e0299185392bc23000a65683a23c",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/LAUNCH.json": "f4723263ef8b19ed19271b7f09b01406f6f4013c85acacd396c53dc2befd3cfa",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "3491c85c1bbc289b67ecc36eec8be1d8d8a513f7e7224651cf0c163b34194c1d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/ROOT-GO.json": "d624cd347c5f119ed980ffe820c48c2b9cab32eb0c8269778e678ba15d273451",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stdout": "fd4247aac3b5e1f403a94dc41ac7b300dafd1c696351d14686b0b8249bb8cd3e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/RESULT.json": "3175d751c560e8dfeb6b2d84dab809c959bda54120e3f4b45e40e82923995811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/STARTED.json": "a3a5eca823d5ab450d415d5077dac3e7b45d802fb2ba06beba97a634e626012d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/TERMINAL.json": "9c7cad8ee4842a7d199039b3801f6015b7af8533a723cbf4c538a07ad1e7d3f9",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001.json": "5062e63380de4deac77bb8eef6a32ca4f2db45422c476516340a35ed6bae1d75",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/EXTERNAL-TERMINAL.json": "5e50ff3e7f291e517a7e33d07b9f3b7f99a9a42eb7dd5cd5b226455504d334c3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/LAUNCH.json": "344c06f4e727cca6f9b5138d92f6c2bfc2e0721ab8f2ba881885b7be6fb40d40",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "0b8f661b79f9fd42d7354571360b020fa19cce91340f91346de54cb62036e924",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/ROOT-GO.json": "f9b5c95a7351ab1a421cd8deba764b815144b428aeb21bb81dd79bb84a808450",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stdout": "2bd8eb8d7d747a33e4cb79ac3eef38e7b5372eb2bf29d8ae6ad9eac352b116ac",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/RESULT.json": "ef2cd34449cd0fc01b688b917ed6113cef577a8b17de97219be155fd734c4b50",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/STARTED.json": "6ce68b70d094a87b6d6a3986663064c66fb0af6ef6ee68580297ccdde9a7025e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/TERMINAL.json": "f8bfcc7161def3b425808cf885cc53ae92d9b6c53b9ebd8363dc558c3671a04b",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-RESULT.json": "f0f5c8059d245113067d81457a7b2553392bef28007d276d90ba702e2c159281",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-STARTED.json": "16792f0fd70914619d04074bbebdcea549751accd79f21fbe4ebb66d57d02cf3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-RESULT.json": "36389ece19aaea1e62eeeb2a8faeadd58bd8804a6834f713521a18528f5cd329",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-STARTED.json": "8be97bbe77f1697219589b4388bd6a1e7374754e0ab8646c1ce61802208911c8",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stderr": "abf1e915526b6cc8c93c443e5d47e170a3528213944fb39b5065518db4c7a69d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-RESULT.json": "6f96edde45d2f9a6a62d0b1b94378853c2596eb31d2000527f968761e03e5113",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-STARTED.json": "5a0818f005bed9443813c2635b5b0811dc4917641513658a345ed76649d90f48",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stderr": "c36013a9357a14a576cbb2c0d5bb18e96d0ff323e2e9426b860ca5fe8237f1a0",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-RESULT.json": "7f491ba297ee8e019e537a78e2a2b43f459595ebb9dcb9a6a42edfafa560f811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-STARTED.json": "8476b3ed8dabd549a1b8b7a8dcc5c6d0af0bf1e86e117364ac5cb4a701c8083f",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stderr": "57becd812498ebb78e13fa39c63536c7fd273cbf03c6f2d414efac9372bc75a7",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stdout": "1d5d80153fc252e371ec42ce125c6c78a34400a032803a346733fda1a363fd64",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001.json": "f8587b6dc4c673e161072afc4665513c858e025f7c6f1184360dedfa07cc1ab1",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "d3a0f6481bd78b9b554a055427dbd74f836f812042e6b2849019eaa99ef5ee53",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/post-case/ROOT-CLOSURE.json": "f27d1504c036c3c2b375cdd3462d37ddb732de6ca3fa19a95fb1d3ef11960599",
+            "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935",
+            "parity/reports/artifacts/contact-recovery-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "8f483daa0c59d69b61c665c60bf7038e9d33055f97b785477b4978fbcc8f9571"
+          },
+          "path": "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -37520,7 +38080,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "SIM-006",
@@ -37547,7 +38107,8 @@
         "parity/reports/WF-20261117-MATERIAL-POLLING-SOURCE-001.json",
         "parity/reports/WF-20261117-MATERIAL-POLLING-HARBOR-A8-001.json",
         "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json",
-        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json",
+        "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -39654,6 +40215,61 @@
             "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935"
           },
           "path": "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001",
+          "commit": "f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f",
+          "timestamp": "2026-11-18T05:40:13.235422Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/EXTERNAL-TERMINAL.json": "7b1f85e02eccca5f9a256897ea7baeccc384e0299185392bc23000a65683a23c",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/LAUNCH.json": "f4723263ef8b19ed19271b7f09b01406f6f4013c85acacd396c53dc2befd3cfa",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "3491c85c1bbc289b67ecc36eec8be1d8d8a513f7e7224651cf0c163b34194c1d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/ROOT-GO.json": "d624cd347c5f119ed980ffe820c48c2b9cab32eb0c8269778e678ba15d273451",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stdout": "fd4247aac3b5e1f403a94dc41ac7b300dafd1c696351d14686b0b8249bb8cd3e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/RESULT.json": "3175d751c560e8dfeb6b2d84dab809c959bda54120e3f4b45e40e82923995811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/STARTED.json": "a3a5eca823d5ab450d415d5077dac3e7b45d802fb2ba06beba97a634e626012d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/TERMINAL.json": "9c7cad8ee4842a7d199039b3801f6015b7af8533a723cbf4c538a07ad1e7d3f9",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001.json": "5062e63380de4deac77bb8eef6a32ca4f2db45422c476516340a35ed6bae1d75",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/EXTERNAL-TERMINAL.json": "5e50ff3e7f291e517a7e33d07b9f3b7f99a9a42eb7dd5cd5b226455504d334c3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/LAUNCH.json": "344c06f4e727cca6f9b5138d92f6c2bfc2e0721ab8f2ba881885b7be6fb40d40",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "0b8f661b79f9fd42d7354571360b020fa19cce91340f91346de54cb62036e924",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/ROOT-GO.json": "f9b5c95a7351ab1a421cd8deba764b815144b428aeb21bb81dd79bb84a808450",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stdout": "2bd8eb8d7d747a33e4cb79ac3eef38e7b5372eb2bf29d8ae6ad9eac352b116ac",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/RESULT.json": "ef2cd34449cd0fc01b688b917ed6113cef577a8b17de97219be155fd734c4b50",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/STARTED.json": "6ce68b70d094a87b6d6a3986663064c66fb0af6ef6ee68580297ccdde9a7025e",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/TERMINAL.json": "f8bfcc7161def3b425808cf885cc53ae92d9b6c53b9ebd8363dc558c3671a04b",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-RESULT.json": "f0f5c8059d245113067d81457a7b2553392bef28007d276d90ba702e2c159281",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-STARTED.json": "16792f0fd70914619d04074bbebdcea549751accd79f21fbe4ebb66d57d02cf3",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-RESULT.json": "36389ece19aaea1e62eeeb2a8faeadd58bd8804a6834f713521a18528f5cd329",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-STARTED.json": "8be97bbe77f1697219589b4388bd6a1e7374754e0ab8646c1ce61802208911c8",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stderr": "abf1e915526b6cc8c93c443e5d47e170a3528213944fb39b5065518db4c7a69d",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-RESULT.json": "6f96edde45d2f9a6a62d0b1b94378853c2596eb31d2000527f968761e03e5113",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-STARTED.json": "5a0818f005bed9443813c2635b5b0811dc4917641513658a345ed76649d90f48",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stderr": "c36013a9357a14a576cbb2c0d5bb18e96d0ff323e2e9426b860ca5fe8237f1a0",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-RESULT.json": "7f491ba297ee8e019e537a78e2a2b43f459595ebb9dcb9a6a42edfafa560f811",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-STARTED.json": "8476b3ed8dabd549a1b8b7a8dcc5c6d0af0bf1e86e117364ac5cb4a701c8083f",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stderr": "57becd812498ebb78e13fa39c63536c7fd273cbf03c6f2d414efac9372bc75a7",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stdout": "1d5d80153fc252e371ec42ce125c6c78a34400a032803a346733fda1a363fd64",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001.json": "f8587b6dc4c673e161072afc4665513c858e025f7c6f1184360dedfa07cc1ab1",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/launch.py": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "d3a0f6481bd78b9b554a055427dbd74f836f812042e6b2849019eaa99ef5ee53",
+            "parity/reports/artifacts/contact-recovery-source-20261118/case-002/post-case/ROOT-CLOSURE.json": "f27d1504c036c3c2b375cdd3462d37ddb732de6ca3fa19a95fb1d3ef11960599",
+            "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935",
+            "parity/reports/artifacts/contact-recovery-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "8f483daa0c59d69b61c665c60bf7038e9d33055f97b785477b4978fbcc8f9571"
+          },
+          "path": "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -39675,7 +40291,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "SIM-007",

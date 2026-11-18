@@ -1,5 +1,19 @@
 # WeftForge current-source addendum
 
+## Contact actions, initial-repair diagnostics and whole-step quality source overlay
+
+Current source `f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f` maps bounded contact action replacement, frozen first-substep initial-overlap repair and cumulative diagnostic attribution. Existing `simulate`, `workspace-statistics` and `fit-maps` rows append current source descriptions while retaining their complete missing scope. This static preparation executes no source test, numerical case, native workflow or reference comparison and grants no acceptance.
+
+The exact preceding addendum remains at `12ecdc13ba47a20d77bf52d1757815e39f0ea380`, source `1bf4cf1de46cffbad959c439610c1e6772266eff`: JSON SHA-256 `b8bf938613c7b3954ee380dd423031540253024ba975e6eb304277ff4daee1af`; Markdown SHA-256 `3b253d2dc260595595bcde3f5f459cf00fea783e9480681ec590f54281e91274`. All **441 preceding occurrence identities and their full nested history** remain: **239 hash/line re-pins and 202 exact occurrences**, with no literal retirements or new anchors. Current mapping keeps **39 rechecks / 25 surfaces / 24 reviewed documents**. Original **949 catalog IDs / 205 packets / 56 historical landmarks** and **37 Rust alternatives / 36 schemas / nine MCP tools** remain unchanged. Mapping counts are not completed features.
+
+Ordinary contact replaces retained nodal actions and capsule pairs keep separate material-point supports; finite iterations do not prove nonlinear convergence. Initial repair is a separately attributed kinematic placement correction, includes velocity effects and cannot qualify a fit. The native Initial overlap corrections label and CLI counter expose actual repair projections since construction/reset. Missing legacy fields decode as zero without establishing historical nonuse.
+
+CLI fit quality covers state zero and every accepted whole-step boundary, with unchanged strict strain/contact/uncertainty limits plus a zero repair count and finite nonnegative target. The seam-gap bound applies only at exactly zero target, which is mandatory in the final state. Quality failure retains the requested 180-step protocol unless the solver errors; failed output stays preserved. Substep-internal quality, whole-garment convergence/calibration, native behavior and reference parity remain open. Earlier final-state-only pass records are neither rerun nor regraded.
+
+Earlier sections retain their original source checkpoints, counts, scopes and qualifications.
+
+# WeftForge current-source addendum
+
 ## Dual sewing and contextual properties source overlay
 
 Current source `1bf4cf1de46cffbad959c439610c1e6772266eff` maps integrated dual soft sewing and fixed Pattern/Fabric/Simulation property tabs with persistent Scene and scoped numeric-input retirement. This static crosswalk executes no test, native workflow, numerical case or reference comparison and grants no acceptance.

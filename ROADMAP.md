@@ -13,7 +13,7 @@ Complete garment fitting, distribution and end-to-end acceptance remain in
 progress. See [current status](STATUS.md) for tested builds, known failures and
 remaining work.
 
-## Current execution order — 17 November 2026
+## Current execution order — 18 November 2026
 
 The registry currently contains 56 broad contracts: 42 partial and 14 planned.
 None is fully implemented or reference verified, and no delivery gate is accepted.
@@ -21,17 +21,21 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
 
 1. Finish the native UI and interaction foundation in the PhotoCraft-inspired
    visual direction: consistent panels/tools/dialogs, linked selection, precise
-   input, focus, history and responsive job feedback. The new contextual tabs and
-   input-retirement paths have current source checks. Execute authoring,
+   input, focus, history and responsive job feedback. Contextual tabs, input
+   retirement and aligned constructor metre labels have source checks. Execute authoring,
    save/export and fresh-process reopen on the new integrated native build.
    Earlier 8aa notch workflow and genuine modal accessibility-setter observations
    remain historical; they are not transferred to the changed source.
-2. Close the first garment path. Shared soft sewing now retains every energy in
-   one balanced nodal history and has integrated source checks. The fresh original
-   rest gate and complete 181-state case on ef313 ran with unchanged inputs and
-   limits: only frame 29 fails strain at 16.063338% against 15%. Preserve the older
-   50.9602% failure and investigate the remaining closure-time pulse using the
-   separately reviewed fixed-input observer. Keep all physical criteria unchanged.
+2. Close the first garment path. Shared soft sewing retains every energy in one
+   balanced nodal history. Contact now replaces its own nodal actions and exposes
+   separately attributed initial-repair projections; fitting requires zero repair
+   at initial and every accepted whole-step state. Combined source checks pass,
+   but no new full garment case has run. The original rest gate and complete
+   181-state case on ef313 retain unchanged inputs and limits: only frame 29
+   fails strain at 16.063338% against 15%. Preserve that and the older 50.9602%
+   failure. Run the exact-current all-181-state successor with unchanged physical
+   criteria after clean metadata/xtask and optimized builds. Moving-triangle
+   single-feature nonlinear contact and broader calibration remain open.
 3. Complete the real empty-document shirt workflow through the UI: create pieces,
    sew, arrange, simulate, change dimension/material, save, quit, reopen, edit and
    export. Independently verify output and compare the recorded reference case.
@@ -46,10 +50,12 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    Keep GitHub Actions disabled throughout development. Re-enable it only after
    the complete project is finished, as the user requested.
 
-The latest actual combined source passes 459 tests, formatting, strict Clippy
-and native/CLI builds across two separately bound invocations. The first build's
-verification-stream failure remains visible; only that unfinished build was run
-again. The current native binary still needs its actual garment workflow.
+Actual combined source `f30c588d` passes 472 tests across 32 summaries, formatting,
+strict Clippy and native/CLI builds in 381.554 seconds within 900. Its earlier
+preflight STATUS-hash failure started no Cargo command and remains preserved.
+Selected evidence, maps and generated progress are being finalized before clean
+`cargo xtask verify`; no garment or native acceptance follows from these tests.
+The current native binary still needs its actual garment workflow.
 Earlier CLI/native notch results retain their 8aa source identity. All full
 feature contracts and release gates remain open.
 

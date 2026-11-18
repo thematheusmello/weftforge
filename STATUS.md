@@ -1,29 +1,48 @@
 # Contact recovery integration — 18 November 2026
 
-The end-to-end delivery goal remains active. The constructor evidence checkpoint
-is local commit `90e9558c`; the latest published draft remains PR #62 at `3e1f9ef8`.
-No garment, reference, complete feature or delivery gate is accepted.
+The end-to-end delivery goal remains active. Local source commit `f30c588d`
+integrates the reviewed contact recovery and all diagnostic adapters; the latest
+published draft remains PR #62 at `3e1f9ef8`. No garment, reference, complete
+feature or delivery gate is accepted.
 
-The reviewed simulator successor is now integrated as source, together with CLI
-and native diagnostic adapters. Ordinary contacts replace their own displacement
-history; capsule surface pairs retain fixed material-point supports. Frozen
-initially intersecting nonlinear pairs use a separately attributed first-substep
-kinematic repair. Its persistent projection counter appears in native/CLI
-reports. The CLI now checks initial and every accepted whole-step state, retains
-transient failures and requires zero repairs, with the original 15% strain,
-5 mm closed-seam and 2 mm contact limits. A shared recorder/test protects state
-counting and first-failure attribution. No authoring commands or MCP file-tool
-schemas change. Physics and automation documentation describe the policy and
-its limits.
+Actual clean `f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f` passes formatting,
+**472 workspace tests across 32 summaries, zero failed/ignored**, strict
+all-target Clippy and native/CLI debug builds in **381.554 seconds / 900**.
+All source91 hashes/modes remain exact and owned process groups are absent.
+The first attempt failed preflight on the previous STATUS hash, before any
+Cargo command; its original failure is preserved. The accepted invocation has
+external terminal `5e50ff3e7f291e517a7e33d07b9f3b7f99a9a42eb7dd5cd5b226455504d334c3`;
+separate post-case closure is `86ab30790efa715a3ed69763ee00ee62e43afb0cf74743f76d15b4ac5e4813d9`.
+These executions belong to `f30c588d`, not a later metadata commit.
+See the [source report](parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json).
 
-The isolated simulator's 94-test result remains attributed to its actual source;
-it is not transferred to this combined checkout. The constructor's 459-test
-report is retained and stale for its full dependency scope; its exact original
-report is archived. Combined formatting, expected 472 tests across 32 summaries,
-strict Clippy and native/CLI builds are pending on a fresh clean source commit.
-Generated progress will be refreshed after the new source evidence is retained;
-clean registry/map/xtask closure is required before publication. No check is
-claimed from untracked local files.
+The actual built native identity is
+`d93f90127b02fc4ee3049738946cb2466a0a2c00c4a287eebf3f1664088e7e74`;
+the CLI is `26949051c4a60d43042c99229d1b98d458a3369f6a7adfeaae4f286551fb6131`.
+Both are retained as immutable copies inside their original checkout, outside
+Cargo inputs. Their standalone binaries have not been launched. The workspace
+checks execute their normal implementation tests, including 94 simulator tests
+and the shared CLI quality-state recorder test.
+
+Ordinary contacts now replace their own displacement history; capsule surface
+pairs retain fixed material-point supports. Frozen initially intersecting
+nonlinear pairs use separately attributed first-substep kinematic repair. Its
+persistent projection counter appears in native/CLI reports. CLI fitting checks
+the initial and every accepted whole-step state, retains transient failures and
+requires zero repair projections, with the original 15% strain, 5 mm closed-seam
+and 2 mm contact limits. No authoring command or MCP file-tool schema changes.
+Physics and automation documentation describe the policy and its limits.
+
+The constructor's 459-test report remains stale for its full dependency scope,
+with exact original bytes archived. The new source overlay retains 441 occurrence
+identities, 949 catalog IDs, 205 packets and 56 historical landmarks; 239 source
+hashes/lines are repinned and 202 remain exact. A private map-preparation failure
+on an absent optional metadata key is preserved; its successor completed all
+preservation assertions. This preparation is not a map-check pass. Public source
+curation and registry freshness are installed. Progress generation passed in
+60.450 seconds / 120, changing only the two established generated documents;
+all 13 frozen inputs and the index remained exact and owned groups are absent.
+Clean registry/map/xtask verification is required before publication and numerical GO.
 
 Moving-triangle single-feature nonlinear contact can still stall. Initial repair
 contributes to velocity and supplies no normal-dynamics or calibration proof.
@@ -32,14 +51,15 @@ against 15%; no new garment execution or improvement is claimed. Its successor
 must check all 181 states, including a present zero recovery counter, with the
 original inputs, physics and quality thresholds.
 
-Next: finish combined local checks, build exact-current optimized binaries, run
-the unchanged full numerical case, and execute native creation/sewing/simulation/
-edit/save/quit/reopen/export with independent output inspection. The bounded
-constructor preview controller is being corrected before a fresh observed case;
-older preview failures remain unchanged. No Cargo, native or standalone model
-job is currently running. GitHub Actions are disabled at repository level and
-both workflows are disabled manually. Main and existing Pages remain unchanged.
-All 56 inventoried groups remain partial/planned; discovery, all six gates, ten
+Next: finish the tracked evidence/metadata checkpoint and clean local
+`cargo xtask verify`, then build exact-current optimized native/CLI/producer
+binaries, run the unchanged full numerical case, and execute native creation/
+sewing/simulation/edit/save/quit/reopen/export with independent output inspection.
+The constructor preview controller is being corrected before a fresh observation;
+older failures remain unchanged. No Cargo, native or standalone model job is
+running. GitHub Actions remain disabled at repository level and both workflows
+are disabled manually. Main and existing Pages remain unchanged. All 56
+inventoried groups remain partial/planned; discovery, all six gates, ten
 acceptance journeys and macOS/Windows/Linux completion remain open.
 
 The prior checkpoint below retains its own source and timing attribution.

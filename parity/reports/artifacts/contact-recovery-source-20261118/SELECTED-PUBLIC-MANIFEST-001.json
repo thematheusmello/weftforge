@@ -1,0 +1,653 @@
+{
+  "schema_version": 1,
+  "kind": "selected_public_derivative_manifest",
+  "actual_source": "f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f",
+  "copied_at_utc": "2026-11-18T05:40:13.235422Z",
+  "selected_original_count": 45,
+  "artifact_count_including_manifest": 46,
+  "selected_public_bytes": 450118,
+  "selected_public_bytes_qualification": "Sum of the 45 selected derivatives, excluding this manifest and the new report.",
+  "transform_order": [
+    "CASE_001_LOCATOR",
+    "CASE_002_LOCATOR",
+    "IMMUTABLE_DEBUG_BINARY_DIRECTORY",
+    "WORKTREE_LOCATOR",
+    "WORKTREE_CONTAINER",
+    "REPOSITORY_ROOT",
+    "WORKSPACE_PARENT",
+    "WORKSPACE_CONTAINER",
+    "WORKSPACE_BASE",
+    "CARGO_HOME_LOCATOR",
+    "RUSTUP_HOME_LOCATOR",
+    "HOME_LOCATOR",
+    "HOME_PARENT_LOCATOR",
+    "HOMEBREW_PREFIX_LOCATOR"
+  ],
+  "transform_definitions": {
+    "CASE_001_LOCATOR": "Exact original case_001_locator prefix replaced with <CASE-001>; private locator bytes remain in private originals only.",
+    "CASE_002_LOCATOR": "Exact original case_002_locator prefix replaced with <CASE-002>; private locator bytes remain in private originals only.",
+    "IMMUTABLE_DEBUG_BINARY_DIRECTORY": "Exact original immutable_debug_binary_directory prefix replaced with <IMMUTABLE_DEBUG_BINARIES>; private locator bytes remain in private originals only.",
+    "WORKTREE_LOCATOR": "Exact original worktree_locator prefix replaced with <WORKTREE>; private locator bytes remain in private originals only.",
+    "WORKTREE_CONTAINER": "Exact original worktree_container prefix replaced with <WORKTREE_CONTAINER>; private locator bytes remain in private originals only.",
+    "REPOSITORY_ROOT": "Exact original repository_root prefix replaced with <REPOSITORY_ROOT>; private locator bytes remain in private originals only.",
+    "WORKSPACE_PARENT": "Exact original workspace_parent prefix replaced with <WORKSPACE_PARENT>; private locator bytes remain in private originals only.",
+    "WORKSPACE_CONTAINER": "Exact original workspace_container prefix replaced with <WORKSPACE_CONTAINER>; private locator bytes remain in private originals only.",
+    "WORKSPACE_BASE": "Exact original workspace_base prefix replaced with <WORKSPACE_BASE>; private locator bytes remain in private originals only.",
+    "CARGO_HOME_LOCATOR": "Exact original cargo_home_locator prefix replaced with <CARGO_HOME>; private locator bytes remain in private originals only.",
+    "RUSTUP_HOME_LOCATOR": "Exact original rustup_home_locator prefix replaced with <RUSTUP_HOME>; private locator bytes remain in private originals only.",
+    "HOME_LOCATOR": "Exact original home_locator prefix replaced with <HOME>; private locator bytes remain in private originals only.",
+    "HOME_PARENT_LOCATOR": "Exact original home_parent_locator prefix replaced with <HOME_PARENT>; private locator bytes remain in private originals only.",
+    "HOMEBREW_PREFIX_LOCATOR": "Exact original homebrew_prefix_locator prefix replaced with <HOMEBREW_PREFIX>; private locator bytes remain in private originals only."
+  },
+  "replacement_totals": {
+    "CASE_001_LOCATOR": 2,
+    "CASE_002_LOCATOR": 1,
+    "IMMUTABLE_DEBUG_BINARY_DIRECTORY": 2,
+    "WORKTREE_LOCATOR": 38,
+    "WORKTREE_CONTAINER": 4,
+    "REPOSITORY_ROOT": 4,
+    "WORKSPACE_PARENT": 4,
+    "WORKSPACE_CONTAINER": 4,
+    "WORKSPACE_BASE": 4,
+    "CARGO_HOME_LOCATOR": 1644,
+    "RUSTUP_HOME_LOCATOR": 44,
+    "HOME_LOCATOR": 8,
+    "HOME_PARENT_LOCATOR": 4,
+    "HOMEBREW_PREFIX_LOCATOR": 4
+  },
+  "byte_preservation": "Only the exact ordered locator substitutions listed here and public mode 0644 were applied. No JSON reserialization, whitespace normalization, counter/clock/exit edits or inner-hash replacement. Original SHA-256/bytes identify unchanged private inputs; public SHA-256/bytes identify derivatives. Symbolic locators are provenance labels, not public files or runnable configuration.",
+  "failures_retained": "Case 001 preserves the stale STATUS config-binding failure, exit1, accepted=false, all_source91_exact=false, no stages and zero commands. The latter exactness flag reflects incomplete preflight validation, not a new observation of source drift. Case 002 is the separate complete four-command invocation on actual unchanged C.",
+  "post_case_qualification": "Both closures are separate post-case preservation observations. Process absence, clean-source/index and same-worktree immutable binary identities do not extend or regrade either original case clock, retained-byte observation or outcome.",
+  "acceptance_limits": "Implementation-only source fmt/test/strict Clippy/debug-build evidence. No separate declared CLI case, native window/workflow, standalone numerical garment, calibrated physics, reference, complete feature, full garment, roadmap or all-delivery-gates acceptance. Final registry/map/generated-progress/clean xtask verification remains separate ROOT work.",
+  "publication_gate": "ROOT must review and make every listed public_path and this manifest Git-tracked, then run registry/map checks from a clean checkout before publication. Ignored local files are not delivery.",
+  "omitted_originals": [],
+  "excluded": "Executable binaries and compiled targets/caches/bytecode, pixels, proprietary assets, credentials and actual private/account filesystem locators. Only binary identity descriptors are selected; retained binaries were neither opened nor copied by curation.",
+  "files": [
+    {
+      "private_source_id": "case-001/EXTERNAL-TERMINAL.json",
+      "original_sha256": "f4bdb924044131df00b6db8e7ee98c150cb9e3fe998a395bf45e3086fc4e5931",
+      "original_bytes": 904,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/EXTERNAL-TERMINAL.json",
+      "public_sha256": "7b1f85e02eccca5f9a256897ea7baeccc384e0299185392bc23000a65683a23c",
+      "public_bytes": 812,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-001/LAUNCH.json",
+      "original_sha256": "f4723263ef8b19ed19271b7f09b01406f6f4013c85acacd396c53dc2befd3cfa",
+      "original_bytes": 416,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/LAUNCH.json",
+      "public_sha256": "f4723263ef8b19ed19271b7f09b01406f6f4013c85acacd396c53dc2befd3cfa",
+      "public_bytes": 416,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-001/POST-TERMINAL-CLOCK.json",
+      "original_sha256": "3491c85c1bbc289b67ecc36eec8be1d8d8a513f7e7224651cf0c163b34194c1d",
+      "original_bytes": 577,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/POST-TERMINAL-CLOCK.json",
+      "public_sha256": "3491c85c1bbc289b67ecc36eec8be1d8d8a513f7e7224651cf0c163b34194c1d",
+      "public_bytes": 577,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-001/ROOT-GO.json",
+      "original_sha256": "78761e8e1ece584fe5c9e0eb1368d4b9608c57632f4ce5b8cf080d349a408516",
+      "original_bytes": 1402,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/ROOT-GO.json",
+      "public_sha256": "d624cd347c5f119ed980ffe820c48c2b9cab32eb0c8269778e678ba15d273451",
+      "public_bytes": 1267,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 1,
+        "RUSTUP_HOME_LOCATOR": 3,
+        "HOME_LOCATOR": 1,
+        "HOMEBREW_PREFIX_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-001/controller.stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-001/controller.stdout",
+      "original_sha256": "c6997ff44c4fbff4755e5d9350af81836cabec5acc038d02a97369b193ce3e73",
+      "original_bytes": 437,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stdout",
+      "public_sha256": "fd4247aac3b5e1f403a94dc41ac7b300dafd1c696351d14686b0b8249bb8cd3e",
+      "public_bytes": 345,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-001/full-001/RESULT.json",
+      "original_sha256": "b0e6173e275a2939b11057fbc5634b7b9e19bf5fa7e374d13769d6e4fe9fe13d",
+      "original_bytes": 16729,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/RESULT.json",
+      "public_sha256": "3175d751c560e8dfeb6b2d84dab809c959bda54120e3f4b45e40e82923995811",
+      "public_bytes": 16637,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-001/full-001/STARTED.json",
+      "original_sha256": "a3a5eca823d5ab450d415d5077dac3e7b45d802fb2ba06beba97a634e626012d",
+      "original_bytes": 262,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/STARTED.json",
+      "public_sha256": "a3a5eca823d5ab450d415d5077dac3e7b45d802fb2ba06beba97a634e626012d",
+      "public_bytes": 262,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-001/full-001/TERMINAL.json",
+      "original_sha256": "9c7cad8ee4842a7d199039b3801f6015b7af8533a723cbf4c538a07ad1e7d3f9",
+      "original_bytes": 160,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/TERMINAL.json",
+      "public_sha256": "9c7cad8ee4842a7d199039b3801f6015b7af8533a723cbf4c538a07ad1e7d3f9",
+      "public_bytes": 160,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-001/full-001.json",
+      "original_sha256": "5804fbb91241af977bf3696c2113235878737bd7eb8354d45d34f249235a63c9",
+      "original_bytes": 134927,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001.json",
+      "public_sha256": "5062e63380de4deac77bb8eef6a32ca4f2db45422c476516340a35ed6bae1d75",
+      "public_bytes": 124135,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 5,
+        "WORKTREE_CONTAINER": 2,
+        "REPOSITORY_ROOT": 2,
+        "WORKSPACE_PARENT": 2,
+        "WORKSPACE_CONTAINER": 2,
+        "WORKSPACE_BASE": 2,
+        "CARGO_HOME_LOCATOR": 822,
+        "RUSTUP_HOME_LOCATOR": 13,
+        "HOME_LOCATOR": 2,
+        "HOME_PARENT_LOCATOR": 2,
+        "HOMEBREW_PREFIX_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-001/launch.py",
+      "original_sha256": "52980f410c5bea62eb7dff36cfa194bba92f3ed763e3949e8b32239e02b09fd0",
+      "original_bytes": 3672,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/launch.py",
+      "public_sha256": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+      "public_bytes": 3661,
+      "public_mode": "0644",
+      "replacements": {
+        "HOME_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-001/resources.py",
+      "original_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "original_bytes": 12679,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/resources.py",
+      "public_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "public_bytes": 12679,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-001/runfull.py",
+      "original_sha256": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+      "original_bytes": 7864,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/runfull.py",
+      "public_sha256": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+      "public_bytes": 7864,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-002/EXTERNAL-TERMINAL.json",
+      "original_sha256": "5e50ff3e7f291e517a7e33d07b9f3b7f99a9a42eb7dd5cd5b226455504d334c3",
+      "original_bytes": 748,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/EXTERNAL-TERMINAL.json",
+      "public_sha256": "5e50ff3e7f291e517a7e33d07b9f3b7f99a9a42eb7dd5cd5b226455504d334c3",
+      "public_bytes": 748,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-002/LAUNCH.json",
+      "original_sha256": "344c06f4e727cca6f9b5138d92f6c2bfc2e0721ab8f2ba881885b7be6fb40d40",
+      "original_bytes": 416,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/LAUNCH.json",
+      "public_sha256": "344c06f4e727cca6f9b5138d92f6c2bfc2e0721ab8f2ba881885b7be6fb40d40",
+      "public_bytes": 416,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-002/POST-TERMINAL-CLOCK.json",
+      "original_sha256": "0b8f661b79f9fd42d7354571360b020fa19cce91340f91346de54cb62036e924",
+      "original_bytes": 575,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/POST-TERMINAL-CLOCK.json",
+      "public_sha256": "0b8f661b79f9fd42d7354571360b020fa19cce91340f91346de54cb62036e924",
+      "public_bytes": 575,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-002/ROOT-GO.json",
+      "original_sha256": "eac453cffcdc81097f06e85aa898b82095f9b276f451f9e32caae0f043837cfb",
+      "original_bytes": 1402,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/ROOT-GO.json",
+      "public_sha256": "f9b5c95a7351ab1a421cd8deba764b815144b428aeb21bb81dd79bb84a808450",
+      "public_bytes": 1267,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 1,
+        "RUSTUP_HOME_LOCATOR": 3,
+        "HOME_LOCATOR": 1,
+        "HOMEBREW_PREFIX_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-002/controller.stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-002/controller.stdout",
+      "original_sha256": "2bd8eb8d7d747a33e4cb79ac3eef38e7b5372eb2bf29d8ae6ad9eac352b116ac",
+      "original_bytes": 640,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stdout",
+      "public_sha256": "2bd8eb8d7d747a33e4cb79ac3eef38e7b5372eb2bf29d8ae6ad9eac352b116ac",
+      "public_bytes": 640,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-002/full-001/RESULT.json",
+      "original_sha256": "8c53e31cc71f71a233cfaeae2e80d950aff7f2f584b098d9f432507d779993f9",
+      "original_bytes": 23348,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/RESULT.json",
+      "public_sha256": "ef2cd34449cd0fc01b688b917ed6113cef577a8b17de97219be155fd734c4b50",
+      "public_bytes": 22748,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 6,
+        "RUSTUP_HOME_LOCATOR": 4
+      }
+    },
+    {
+      "private_source_id": "case-002/full-001/STARTED.json",
+      "original_sha256": "6ce68b70d094a87b6d6a3986663064c66fb0af6ef6ee68580297ccdde9a7025e",
+      "original_bytes": 268,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/STARTED.json",
+      "public_sha256": "6ce68b70d094a87b6d6a3986663064c66fb0af6ef6ee68580297ccdde9a7025e",
+      "public_bytes": 268,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-002/full-001/TERMINAL.json",
+      "original_sha256": "f8bfcc7161def3b425808cf885cc53ae92d9b6c53b9ebd8363dc558c3671a04b",
+      "original_bytes": 160,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/TERMINAL.json",
+      "public_sha256": "f8bfcc7161def3b425808cf885cc53ae92d9b6c53b9ebd8363dc558c3671a04b",
+      "public_bytes": 160,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-002/full-001/full-fmt-RESULT.json",
+      "original_sha256": "1d084a4ec4855f2430bb34023d364694ad8b7085186f69bd549605a8bc93b63f",
+      "original_bytes": 1282,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-RESULT.json",
+      "public_sha256": "f0f5c8059d245113067d81457a7b2553392bef28007d276d90ba702e2c159281",
+      "public_bytes": 1178,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 1,
+        "RUSTUP_HOME_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-002/full-001/full-fmt-STARTED.json",
+      "original_sha256": "bacc9b06ca08c6820721e46c72be4747ed14370d2c3d33df10bebf28e4cdb2d6",
+      "original_bytes": 1041,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-STARTED.json",
+      "public_sha256": "16792f0fd70914619d04074bbebdcea549751accd79f21fbe4ebb66d57d02cf3",
+      "public_bytes": 937,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 1,
+        "RUSTUP_HOME_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-002/full-001/full-fmt.stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-002/full-001/full-fmt.stdout",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-002/full-001/native-cli-build-RESULT.json",
+      "original_sha256": "79ba7dc08fa6bb28b5c33400529744bea5b729ec6f8533b64c3c4de31c6ceb6d",
+      "original_bytes": 1353,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-RESULT.json",
+      "public_sha256": "36389ece19aaea1e62eeeb2a8faeadd58bd8804a6834f713521a18528f5cd329",
+      "public_bytes": 1249,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 1,
+        "RUSTUP_HOME_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-002/full-001/native-cli-build-STARTED.json",
+      "original_sha256": "c957f1a8470b71f839efb34b93a7f0bf07b9c744019da47d90b466fb28775d38",
+      "original_bytes": 1106,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-STARTED.json",
+      "public_sha256": "8be97bbe77f1697219589b4388bd6a1e7374754e0ab8646c1ce61802208911c8",
+      "public_bytes": 1002,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 1,
+        "RUSTUP_HOME_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-002/full-001/native-cli-build.stderr",
+      "original_sha256": "1516c1cc2fc1902b9f06d4af4be6a8ccdd472b6277ade30aa1c5251bddfa154a",
+      "original_bytes": 210,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stderr",
+      "public_sha256": "abf1e915526b6cc8c93c443e5d47e170a3528213944fb39b5065518db4c7a69d",
+      "public_bytes": 118,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-002/full-001/native-cli-build.stdout",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-002/full-001/workspace-clippy-RESULT.json",
+      "original_sha256": "7a30fb889545bf5c43afe5a6569252dd7567677f0a91dbd0b4b37aaa9f897bbc",
+      "original_bytes": 1373,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-RESULT.json",
+      "public_sha256": "6f96edde45d2f9a6a62d0b1b94378853c2596eb31d2000527f968761e03e5113",
+      "public_bytes": 1269,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 1,
+        "RUSTUP_HOME_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-002/full-001/workspace-clippy-STARTED.json",
+      "original_sha256": "696e8fdf1989a501765af1bdbba2342b9c10a893c3b475018cedbcb258829955",
+      "original_bytes": 1125,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-STARTED.json",
+      "public_sha256": "5a0818f005bed9443813c2635b5b0811dc4917641513658a345ed76649d90f48",
+      "public_bytes": 1021,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 1,
+        "RUSTUP_HOME_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-002/full-001/workspace-clippy.stderr",
+      "original_sha256": "d36fa4a82d2a26794b2b6ace528728a15d1b592d702d0bc7a7a8d60394e07c81",
+      "original_bytes": 691,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stderr",
+      "public_sha256": "c36013a9357a14a576cbb2c0d5bb18e96d0ff323e2e9426b860ca5fe8237f1a0",
+      "public_bytes": 323,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 4
+      }
+    },
+    {
+      "private_source_id": "case-002/full-001/workspace-clippy.stdout",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-002/full-001/workspace-tests-RESULT.json",
+      "original_sha256": "9bf1e4aba731d030d04671cbfb4f3c2eabcd38d0a3d47d2cf7c01c964476a22a",
+      "original_bytes": 1316,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-RESULT.json",
+      "public_sha256": "7f491ba297ee8e019e537a78e2a2b43f459595ebb9dcb9a6a42edfafa560f811",
+      "public_bytes": 1212,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 1,
+        "RUSTUP_HOME_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-002/full-001/workspace-tests-STARTED.json",
+      "original_sha256": "54f3b91631b6cf3edac0f95131a660bbb3b60684de95f32374ca1f56543f5d67",
+      "original_bytes": 1066,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-STARTED.json",
+      "public_sha256": "8476b3ed8dabd549a1b8b7a8dcc5c6d0af0bf1e86e117364ac5cb4a701c8083f",
+      "public_bytes": 962,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 1,
+        "RUSTUP_HOME_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-002/full-001/workspace-tests.stderr",
+      "original_sha256": "54657628d74fefb0c8aba3536297fefea8ceac2fe5ebc19948e27598f466d0a7",
+      "original_bytes": 3115,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stderr",
+      "public_sha256": "57becd812498ebb78e13fa39c63536c7fd273cbf03c6f2d414efac9372bc75a7",
+      "public_bytes": 2747,
+      "public_mode": "0644",
+      "replacements": {
+        "WORKTREE_LOCATOR": 4
+      }
+    },
+    {
+      "private_source_id": "case-002/full-001/workspace-tests.stdout",
+      "original_sha256": "1d5d80153fc252e371ec42ce125c6c78a34400a032803a346733fda1a363fd64",
+      "original_bytes": 47536,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stdout",
+      "public_sha256": "1d5d80153fc252e371ec42ce125c6c78a34400a032803a346733fda1a363fd64",
+      "public_bytes": 47536,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-002/full-001.json",
+      "original_sha256": "9d2f0f10a3bc1f48cf65e85059e84bf5652c26480a2f4d45d123c3b7a8680032",
+      "original_bytes": 135448,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001.json",
+      "public_sha256": "f8587b6dc4c673e161072afc4665513c858e025f7c6f1184360dedfa07cc1ab1",
+      "public_bytes": 124513,
+      "public_mode": "0644",
+      "replacements": {
+        "CASE_001_LOCATOR": 1,
+        "WORKTREE_LOCATOR": 5,
+        "WORKTREE_CONTAINER": 2,
+        "REPOSITORY_ROOT": 2,
+        "WORKSPACE_PARENT": 2,
+        "WORKSPACE_CONTAINER": 2,
+        "WORKSPACE_BASE": 2,
+        "CARGO_HOME_LOCATOR": 822,
+        "RUSTUP_HOME_LOCATOR": 13,
+        "HOME_LOCATOR": 2,
+        "HOME_PARENT_LOCATOR": 2,
+        "HOMEBREW_PREFIX_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-002/launch.py",
+      "original_sha256": "52980f410c5bea62eb7dff36cfa194bba92f3ed763e3949e8b32239e02b09fd0",
+      "original_bytes": 3672,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/launch.py",
+      "public_sha256": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+      "public_bytes": 3661,
+      "public_mode": "0644",
+      "replacements": {
+        "HOME_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-002/resources.py",
+      "original_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "original_bytes": 12679,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py",
+      "public_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "public_bytes": 12679,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-002/runfull.py",
+      "original_sha256": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+      "original_bytes": 7864,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/runfull.py",
+      "public_sha256": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+      "public_bytes": 7864,
+      "public_mode": "0644",
+      "replacements": {}
+    },
+    {
+      "private_source_id": "case-001/post-case/ROOT-CLOSURE.json",
+      "original_sha256": "d44763c206b6eec73668afe1d0b5877166b3ffd10554e8e0d5f7625972ac674d",
+      "original_bytes": 578,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/post-case/ROOT-CLOSURE.json",
+      "public_sha256": "d3a0f6481bd78b9b554a055427dbd74f836f812042e6b2849019eaa99ef5ee53",
+      "public_bytes": 435,
+      "public_mode": "0644",
+      "replacements": {
+        "CASE_001_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "case-002/post-case/ROOT-CLOSURE.json",
+      "original_sha256": "86ab30790efa715a3ed69763ee00ee62e43afb0cf74743f76d15b4ac5e4813d9",
+      "original_bytes": 18126,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/post-case/ROOT-CLOSURE.json",
+      "public_sha256": "f27d1504c036c3c2b375cdd3462d37ddb732de6ca3fa19a95fb1d3ef11960599",
+      "public_bytes": 17731,
+      "public_mode": "0644",
+      "replacements": {
+        "CASE_002_LOCATOR": 1,
+        "IMMUTABLE_DEBUG_BINARY_DIRECTORY": 2
+      }
+    },
+    {
+      "private_source_id": "history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json",
+      "original_sha256": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935",
+      "original_bytes": 28044,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json",
+      "public_sha256": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935",
+      "public_bytes": 28044,
+      "public_mode": "0644",
+      "replacements": {}
+    }
+  ],
+  "authentic_whitespace_exceptions": [
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stdout",
+      "sha256": "1d5d80153fc252e371ec42ce125c6c78a34400a032803a346733fda1a363fd64",
+      "line": 632,
+      "qualification": "New blank line at EOF from original Cargo output; exact raw/public bytes retained, not normalized."
+    }
+  ]
+}
