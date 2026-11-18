@@ -1,0 +1,75 @@
+{
+  "source_commit": "6078c2af423b150a9f7b0bcaf21abb6e2e954b56",
+  "workspace_test_summaries": 32,
+  "workspace_test_totals": {
+    "passed": 488,
+    "failed": 0,
+    "ignored": 0
+  },
+  "regression_results": [
+    "test contextual_properties_tests::polygon_close_pointer_press_and_enter_keep_rejected_creation_atomic ... ok",
+    "test contextual_properties_tests::polygon_close_rejection_retains_front_draft_back_points_and_derived_state ... ok"
+  ],
+  "checks": [
+    {
+      "name": "full-fmt",
+      "exit": 0,
+      "seconds": 0.9405704161617905,
+      "command": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "private_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "workspace-tests",
+      "exit": 0,
+      "seconds": 328.66531895892695,
+      "command": [
+        "cargo",
+        "test",
+        "--workspace",
+        "--locked",
+        "--offline"
+      ],
+      "private_log_sha256": "932c12f7701fa1f3f9e22543d061f8e13be17a825e4c79b6dc4a14bbb8e6793d"
+    },
+    {
+      "name": "workspace-clippy",
+      "exit": 0,
+      "seconds": 3.7254368748981506,
+      "command": [
+        "cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--locked",
+        "--offline",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "private_log_sha256": "17567173ac98906b50e91952b16e06a3975b885bce9f052c80b70b1dd03225c7"
+    },
+    {
+      "name": "native-cli-build",
+      "exit": 0,
+      "seconds": 5.4371444999706,
+      "command": [
+        "cargo",
+        "build",
+        "-p",
+        "weftforge",
+        "-p",
+        "weftforge-cli",
+        "--locked",
+        "--offline"
+      ],
+      "private_log_sha256": "88760d53f23399daf5a89c6f84ad7d92bd209bded48758581271b5bdcf086b4e"
+    }
+  ],
+  "elapsed_seconds": 338.769638458034,
+  "scope": "Source checks and headless egui input tests on macOS Apple Silicon with Rust 1.94.1. The native and CLI builds were produced."
+}

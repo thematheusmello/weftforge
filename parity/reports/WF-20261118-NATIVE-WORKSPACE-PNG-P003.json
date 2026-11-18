@@ -139,7 +139,7 @@
   "complete_contract": false,
   "reference_executed": false,
   "reference_verified": false,
-  "freshness": "current",
+  "freshness": "stale",
   "artifact_hashes": {
     "parity/reports/artifacts/native-workspace-png-P003-20261118/independent-png.json": "de45f13c2047eacf7ef78648b832c90abbbdf9409ba065e855ecd78e6faed948",
     "parity/reports/artifacts/native-workspace-png-P003-20261118/native-case.json": "a6c01c9ba9d011b2e06aa5386c254f6e3c836c483cb7d95376f67d66111ccc43",
@@ -163,5 +163,6 @@
     "One File-menu save on Apple Silicon. Command search, high-DPI changes, other backends and full feature/reference acceptance remain open.",
     "The YAML feature grades stay partial and not-run at the full-contract level.",
     "The prior P001/P002 harness stops are preserved. Both stopped before a PNG request."
-  ]
+  ],
+  "freshness_reason": "The polygon-close transaction changed the studio source. This report retains the outcome on its original tested build."
 }

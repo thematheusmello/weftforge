@@ -1,3 +1,25 @@
+# Polygon close transaction — 18 November 2026
+
+Closing a polygon now commits pending inspector edits and the new piece in one
+transaction. A rejected close preserves the staged vertices, inspector input,
+undo history and preview. A successful close selects the new piece and puts both
+edits in one Undo step. The tests cover the button press and release and Return.
+
+Source `6078c2af` passed formatting, 488 workspace tests, strict all-target
+Clippy and the studio and CLI builds on Apple Silicon. [Source check report](parity/reports/WF-20261118-POLYGON-CLOSE-SOURCE-001.json).
+The verified workspace screenshot landed in [PR #63](https://github.com/thematheusmello/weftforge/pull/63).
+Its native File-menu observation belongs to the earlier `59501451` build.
+
+The studio reopened the two UI-authored Harbor panels. The macOS input driver
+lost access during the Front depth edit, so that session closed with the saved
+panels intact and no seams added. The next native case starts from those panels
+and checks placement, sewing, editable save, reopen and export.
+
+The complete Harbor run still exceeds the 15% strain limit. A private diagnostic
+hit its event recorder limit. Review of the complete early windows is in progress
+before the next solver change. The six delivery gates remain open. GitHub Actions
+and automated Pages deployment are disabled.
+
 # Native workspace capture — 18 November 2026
 
 **File → Save workspace PNG… passed on Apple Silicon.** The `59501451` native
