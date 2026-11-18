@@ -38,6 +38,10 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    The four Fabric numeric fields expose individual names and SI units in the
    native macOS accessibility tree.
    [Fabric accessibility case](parity/reports/WF-20261118-FABRIC-ACCESSIBLE-NAMES-001.json).
+   Command search has a named, auto-focused query and keyboard execution. The
+   native macOS check reopened the Harbor document and exported its workspace
+   preview using the palette.
+   [Native search case](parity/reports/artifacts/command-search-native-20261118/NATIVE-OBSERVATION.json).
    Earlier 8aa notch workflow and genuine modal accessibility-setter observations
    remain historical; they are not transferred to the changed source.
 2. Close the first garment path. Shared soft sewing retains every energy in one
