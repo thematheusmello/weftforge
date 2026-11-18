@@ -1,3 +1,42 @@
+# Main landing — 18 November 2026
+
+The checked 95-commit development stack is landed in **main** through
+[PR #62](https://github.com/thematheusmello/weftforge/pull/62), merge
+`0b2c5eb994177e0c2835537e66031c73cba28fc7`. Its tree is exactly checked head
+`6872e7c3`; every head from PRs #50, #51, #53 and #55–62 is included. PR #50
+closed as merged automatically, and the nine other covered stack entries were
+closed with their delivery location recorded. No open PR remained after this
+landing. Historical branch references remain available for existing evidence
+links; the unmatched historical precursor remains preserved for separate review.
+
+Actual source `59501451` retains its formatting, **486 workspace tests / 32
+summaries, zero failed/ignored**, strict Clippy and native/CLI build pass. The
+102 simulator tests are included within 486. Actual clean `6872e7c3` metadata
+verification passed in **312.499 seconds / 360**, including registry/maps,
+generated reports, 54 script tests, six evaluator tests and CLI help. Source93
+is identical in the landing tree. These executions keep their original commit
+identities; this status-only update claims no new source execution.
+
+The full garment case remains failed at **19.770147% peak / 15.721208% final
+strain**, with 153 frames above the unchanged 15% screen. Actual native PNG
+saving/backend verification and the complete empty-project garment journey
+remain open. Newer controller observations await public selection and provide
+no acceptance; the private history diagnostic is prepared and source-reviewed
+but has not compiled or run. No private diagnostic code is included in main.
+
+Next: finish the actual native capture/creation/save/reopen/export journeys,
+compile the separately reviewed diagnostic when admitted, investigate the
+preserved strain failure and continue the full ROADMAP. Land each finished,
+checked increment promptly in main through a small PR; close covered work as
+it lands instead of accumulating a draft stack. All 56 full feature groups,
+reference parity, six gates and platform releases remain unaccepted. The
+end-to-end goal stays active. No owned Cargo, model or native job is running.
+
+GitHub Actions and both workflows remain disabled: 54 historical runs, none
+active at the post-merge check. The existing hosted Pages site is preserved;
+no deployment or release was performed. The earlier checkpoints below retain
+their original identities, pending actions and outcomes as historical records.
+
 # Workspace PNG integration — 18 November 2026
 
 The reviewed source increment adds **Save workspace PNG…** to File and command
