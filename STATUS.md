@@ -1,3 +1,22 @@
+# Native project recovery — 18 November 2026
+
+The optimized Apple Silicon studio kept Harbor revision 20 open after a
+malformed project and a project from an unsupported future version. Recover
+copy opened revision 19 as an untitled editable document with all eight seams.
+Save as wrote a byte-identical copy of the backup. The four input files stayed
+exact and the studio quit normally.
+
+A separate engine test injected an interruption before atomic replacement and
+confirmed that the prior project survived. Missing external asset recovery and
+other platforms still need their own cases.
+[Native recovery and engine check](parity/reports/WF-20261118-HARBOR-NATIVE-RECOVERY-001.json).
+
+The native fit failure is recorded in [PR #66](https://github.com/thematheusmello/weftforge/pull/66).
+The direct contact experiment reduced the sewing residual but missed the
+normal and friction bounds. Continue with a solver that explicitly handles
+the active, sticking and slipping contacts on the saved six-node case.
+Gate 1 remains open. GitHub Actions and automated Pages deployments stay disabled.
+
 # Native Harbor fit — 18 November 2026
 
 The optimized Apple Silicon studio completed 60 assembly steps and 120 drape

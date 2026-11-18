@@ -1,0 +1,22 @@
+{
+  "scope": "Engine failure injection before atomic replacement",
+  "source_commit": "6078c2af423b150a9f7b0bcaf21abb6e2e954b56",
+  "source_inputs_verified": 93,
+  "checkout": "62bbff5a6176db3b032d48f46e6311b54107b476",
+  "cargo_args": [
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-core",
+    "--lib",
+    "persistence::tests::interrupted_save_and_invalid_inputs_preserve_the_previous_document",
+    "--",
+    "--exact"
+  ],
+  "exit_code": 0,
+  "seconds": 11.331431374885142,
+  "tests_passed": 1,
+  "tests_failed": 0,
+  "output_sha256": "2d7cdc03cf6f803353a403f8851aedacf98ba1823f71644b20523689b22753e0"
+}
