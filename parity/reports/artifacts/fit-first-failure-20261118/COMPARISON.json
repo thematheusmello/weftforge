@@ -1,0 +1,49 @@
+{
+  "kind": "implementation_only",
+  "scope": "First failing whole-step diagnostics returned by fit-benchmark",
+  "platform": "macOS Apple Silicon",
+  "fixture": "fixtures/original-shirt.weftforge",
+  "fixture_sha256": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
+  "baseline_cli_source_commit": "38c0389165e90ff21cb4f4943fe993eeb4a32d7f",
+  "baseline_cli_binary_sha256": "457f56d23e702c8dc00f5c4b777fef744753a4b97d733ba99884687cdfb99797",
+  "candidate_cli_source_sha256": "e0e3cfde7ffbf065dda8e7eea380843ef27b738b7220b472b25e58c4d99e88fc",
+  "candidate_cli_binary_sha256": "1422538325b996c5d990b09d56513ea98ea1632029b375d6765f931c365b30b8",
+  "command": "weftforge-cli fit-benchmark fixtures/original-shirt.weftforge",
+  "quality_states_checked": 181,
+  "both_verdicts": "failed",
+  "both_exit_codes": 1,
+  "preexisting_non_timing_fields_match": true,
+  "timing_fields_excluded": [
+    "wall_seconds",
+    "step_seconds",
+    "simulated_seconds_per_wall_second",
+    "median_step_seconds",
+    "p95_step_seconds"
+  ],
+  "first_quality_failure": {
+    "diagnostics": {
+      "capsule_surface_uncertain_pairs": 0,
+      "contacts": 196895,
+      "finite": true,
+      "initial_contact_recovery_projections": 0,
+      "initial_intersections": 0,
+      "kinetic_energy": 0.010248170095668776,
+      "max_contact_error": 1.1803391279374686e-06,
+      "max_seam_error": 0.07410894680921051,
+      "max_stretch_error": 0.17587719858620443,
+      "peak_strain": {
+        "axis": "weft",
+        "signed_strain": 0.17587719858620443,
+        "triangle": 7
+      },
+      "seam_assembly_remaining": 0.07333333333333429,
+      "simulation_time": 0.36666666666666664,
+      "step_seconds": 0.180228417
+    },
+    "peak_strain_piece": {
+      "id": 2,
+      "name": "Shirt front"
+    },
+    "state": 22
+  }
+}
