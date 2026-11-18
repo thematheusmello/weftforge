@@ -1,0 +1,33 @@
+{
+  "Cloth_initializations": 0,
+  "Cloth_steps": 0,
+  "available_disk_bytes": 13800165376,
+  "binary": null,
+  "error": "FileNotFoundError: [Errno 2] No such file or directory: '<NUMERICAL_PACKET>/checks/build'",
+  "helper_returned_success": false,
+  "inner_aggregate_sampled_peak_rss_bytes": null,
+  "original_build_receipt_sha256": null,
+  "qualification": "Original frozen build_release.main executes in this same process; standard periodic SIGALRM samples disk and bounds whole120s including its preflight. Its proven monitor accounts Cargo group plus this supervisor RSS. No source/target/executable copied.",
+  "retained_build_text_bytes": 11901,
+  "root_disk_samples": [
+    [
+      1107752.407788041,
+      13800865792
+    ],
+    [
+      1107752.518443708,
+      13800865792
+    ],
+    [
+      1107752.6091105,
+      13800849408
+    ],
+    [
+      1107752.709172166,
+      13800165376
+    ]
+  ],
+  "root_exact_peak_rss_bytes": 29835264,
+  "source_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+  "whole_root_started_before_helper_preflight": true
+}

@@ -1,3 +1,43 @@
+# Current runtime checkpoint — 18 November 2026
+
+The current full 181-state garment case on `a70c0df0` is **failed**.
+Strain exceeds 15% in 153 frames, 28 through 180: the peak is 20.24355055%
+at frame 29, front neckline triangle 6; final strain is 15.34928093%.
+Both are worse than the earlier 16.06333827% peak and 9.43073967% final.
+All states are finite and pass the supported contact, uncertainty and present
+integer zero-initial-recovery screens. Closed-target seams pass; initial open
+arrangements are not completed-fit failures. Original inputs, settings and
+physical thresholds are unchanged. See the [failed full-case report](parity/reports/WF-20261118-CONTACT-RECOVERY-HARBOR-A8-001.json).
+
+The raw root witness records operational completion at 353.193 seconds within
+420 seconds, with outer exit 2. The outer external witness still marks its final
+clock verdict pending. A separate post-case record reports 353.245 seconds;
+there is no retained independently sealed final external-clock verdict, and
+that later record does not repair the missing proof or change the failed grade.
+All owned process groups are absent; no model job is running.
+
+Clean D `cargo xtask verify` passed in 264.142 seconds within 360, including
+registry/maps/generated progress, 54 script tests, six evaluator tests and CLI
+help. A separate optimized native/CLI build passed in 53.293 seconds within
+900. Actual formatting, 472 workspace tests and strict Clippy remain the
+separate `f30c588d` source execution; all 91 source inputs are unchanged on D.
+See the [D tooling/build report](parity/reports/WF-20261118-CONTACT-RECOVERY-D-TOOLING-001.json).
+These source/build results provide no native workflow or garment acceptance.
+
+Next: finish the fresh native constructor observation; review and integrate the
+capsule-contact correction; run all integrated local checks and the unchanged
+full numerical case. Then complete empty-document native creation, sewing,
+simulation, edits, save/quit/reopen and independently checked export. The new
+tracked evidence and metadata still require clean registry/map verification
+before draft publication. No Cargo or native job is running at this checkpoint.
+GitHub Actions remain disabled at repository and workflow levels; there are
+54 historical runs and none active. Main and existing Pages remain unchanged.
+All 56 broad groups remain partial/planned (42 partial, 14 planned), with
+discovery, six gates, ten acceptance journeys and three platform targets open.
+
+The earlier checkpoints below retain their original source and timing; their
+then-pending runtime actions are historical.
+
 # Contact recovery integration — 18 November 2026
 
 The end-to-end delivery goal remains active. Local source commit `f30c588d`

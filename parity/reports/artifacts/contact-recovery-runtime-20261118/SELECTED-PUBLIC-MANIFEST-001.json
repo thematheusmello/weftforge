@@ -1,0 +1,2822 @@
+{
+  "schema_version": 1,
+  "kind": "selected_public_derivative_manifest",
+  "selection_is_proposal_only": true,
+  "actual_source": "a70c0df0606463f5efbe4fa7518c91819c595546",
+  "actual_workspace_source_QA_execution_commit": "f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f",
+  "source91_C_D_exact": true,
+  "copied_at_utc": "2026-11-18T08:22:08.540582Z",
+  "selected_original_count": 147,
+  "new_public_file_count_including_manifest_and_two_reports": 150,
+  "selected_original_bytes": 20225753,
+  "selected_public_bytes_excluding_manifest_and_reports": 20185522,
+  "selected_numerical_records": 41,
+  "all181_trajectory_included": true,
+  "transform_order": [
+    "NUMERICAL_PACKET_LOCATOR",
+    "NUMERICAL_ROOT_LOCATOR",
+    "NUMERICAL_POSTCASE_LOCATOR",
+    "PREPARATION_V2_LOCATOR",
+    "INDEPENDENT_REVIEW_LOCATOR",
+    "CLEAN_XTASK_LOCATOR",
+    "OPTIMIZED_BUILD_LOCATOR",
+    "WORKTREE_LOCATOR",
+    "WORKTREE_CONTAINER",
+    "REPOSITORY_ROOT",
+    "WORKSPACE_PARENT",
+    "WORKSPACE_CONTAINER",
+    "WORKSPACE_BASE",
+    "CARGO_HOME_LOCATOR",
+    "RUSTUP_HOME_LOCATOR",
+    "PYENV_HOME_LOCATOR",
+    "HOME_LOCATOR",
+    "HOME_PARENT_LOCATOR",
+    "TMPDIR_LOCATOR",
+    "HOMEBREW_PREFIX_LOCATOR"
+  ],
+  "transform_definitions": {
+    "NUMERICAL_PACKET_LOCATOR": "Exact original numerical_packet_locator prefix replaced with <NUMERICAL_PACKET>; private locator bytes remain in frozen originals only.",
+    "NUMERICAL_ROOT_LOCATOR": "Exact original numerical_root_locator prefix replaced with <NUMERICAL_ROOT>; private locator bytes remain in frozen originals only.",
+    "NUMERICAL_POSTCASE_LOCATOR": "Exact original numerical_postcase_locator prefix replaced with <NUMERICAL_POSTCASE>; private locator bytes remain in frozen originals only.",
+    "PREPARATION_V2_LOCATOR": "Exact original preparation_v2_locator prefix replaced with <PREPARATION_V2>; private locator bytes remain in frozen originals only.",
+    "INDEPENDENT_REVIEW_LOCATOR": "Exact original independent_review_locator prefix replaced with <INDEPENDENT_REVIEW>; private locator bytes remain in frozen originals only.",
+    "CLEAN_XTASK_LOCATOR": "Exact original clean_xtask_locator prefix replaced with <CLEAN_XTASK>; private locator bytes remain in frozen originals only.",
+    "OPTIMIZED_BUILD_LOCATOR": "Exact original optimized_build_locator prefix replaced with <OPTIMIZED_BUILD>; private locator bytes remain in frozen originals only.",
+    "WORKTREE_LOCATOR": "Exact original worktree_locator prefix replaced with <WORKTREE>; private locator bytes remain in frozen originals only.",
+    "WORKTREE_CONTAINER": "Exact original worktree_container prefix replaced with <WORKTREE_CONTAINER>; private locator bytes remain in frozen originals only.",
+    "REPOSITORY_ROOT": "Exact original repository_root prefix replaced with <REPOSITORY_ROOT>; private locator bytes remain in frozen originals only.",
+    "WORKSPACE_PARENT": "Exact original workspace_parent prefix replaced with <WORKSPACE_PARENT>; private locator bytes remain in frozen originals only.",
+    "WORKSPACE_CONTAINER": "Exact original workspace_container prefix replaced with <WORKSPACE_CONTAINER>; private locator bytes remain in frozen originals only.",
+    "WORKSPACE_BASE": "Exact original workspace_base prefix replaced with <WORKSPACE_BASE>; private locator bytes remain in frozen originals only.",
+    "CARGO_HOME_LOCATOR": "Exact original cargo_home_locator prefix replaced with <CARGO_HOME>; private locator bytes remain in frozen originals only.",
+    "RUSTUP_HOME_LOCATOR": "Exact original rustup_home_locator prefix replaced with <RUSTUP_HOME>; private locator bytes remain in frozen originals only.",
+    "PYENV_HOME_LOCATOR": "Exact original pyenv_home_locator prefix replaced with <PYENV_HOME>; private locator bytes remain in frozen originals only.",
+    "HOME_LOCATOR": "Exact original home_locator prefix replaced with <HOME>; private locator bytes remain in frozen originals only.",
+    "HOME_PARENT_LOCATOR": "Exact original home_parent_locator prefix replaced with <HOME_PARENT>; private locator bytes remain in frozen originals only.",
+    "TMPDIR_LOCATOR": "Exact original tmpdir_locator prefix replaced with <TMPDIR>/; private locator bytes remain in frozen originals only.",
+    "HOMEBREW_PREFIX_LOCATOR": "Exact original homebrew_prefix_locator prefix replaced with <HOMEBREW_PREFIX>; private locator bytes remain in frozen originals only."
+  },
+  "replacement_totals": {
+    "NUMERICAL_PACKET_LOCATOR": 33,
+    "NUMERICAL_ROOT_LOCATOR": 0,
+    "NUMERICAL_POSTCASE_LOCATOR": 0,
+    "PREPARATION_V2_LOCATOR": 2,
+    "INDEPENDENT_REVIEW_LOCATOR": 0,
+    "CLEAN_XTASK_LOCATOR": 0,
+    "OPTIMIZED_BUILD_LOCATOR": 0,
+    "WORKTREE_LOCATOR": 129,
+    "WORKTREE_CONTAINER": 14,
+    "REPOSITORY_ROOT": 10,
+    "WORKSPACE_PARENT": 10,
+    "WORKSPACE_CONTAINER": 10,
+    "WORKSPACE_BASE": 10,
+    "CARGO_HOME_LOCATOR": 1705,
+    "RUSTUP_HOME_LOCATOR": 81,
+    "PYENV_HOME_LOCATOR": 44,
+    "HOME_LOCATOR": 7,
+    "HOME_PARENT_LOCATOR": 10,
+    "TMPDIR_LOCATOR": 1,
+    "HOMEBREW_PREFIX_LOCATOR": 17
+  },
+  "byte_preservation": "Only listed exact ordered locator-prefix substitutions and public mode 0644. All inner 64-hex sequences, JSON scalar number/boolean/null tokens and typed values, Python number/boolean/null tokens, line count, line endings, EOF state and whitespace remain exact. No JSON reserialization, outcome/clock/counter/exit edits, inner-hash replacements, evaluator invocation or regrade. JSONL validation is streamed per line.",
+  "numeric_preservation_scope": "Opaque locator characters inside strings may be shortened only by the exact listed prefixes; all numerical outcomes and source numeric literals remain unchanged. Inner hashes still identify raw originals, not locator-shortened derivatives.",
+  "failures_retained": "Producer build 001 failed on missing checks/build before Cargo; zero initialization/steps. Separate build 002 succeeded. Numerical outer exit2 is operational completion with strict quality FAILED on 153 strain frames28..180, not acceptance and not 181 strain failures. Initial open0..28 target/seam rows are not completed-fit failure.",
+  "separate_operational_passes": "Actual clean D xtask and optimized native+CLI builds each have their own accepted invocation. Actual 472-test/fmt/Clippy/debug source sequence belongs to C; source91 are exactly unchanged on D, with no execution transfer.",
+  "post_case_qualification": "Closures are separate post-case preservation observations. They do not extend any frozen timing/byte observation or change original outcomes, and do not certify a new native/reference workflow.",
+  "publication_gate": "PROPOSAL ONLY. ROOT must review, track every proposed file, and run registry/map checks from a clean checkout before publication. Local ignored output is not delivery.",
+  "acceptance_limits": "No standalone CLI quality/native/reference/calibrated physics/complete feature/full-garment/roadmap acceptance. All56 inventoried contracts remain partial/planned (42 partial,14 planned); all6 gates,10 journeys and3 platform release targets remain open; no old case is regraded.",
+  "excluded": "Compiled targets, executable binaries, bytecode and caches, pixels, proprietary artifacts, credentials and private filesystem locators. Retained-binary descriptors are identities only; curation neither opens nor copies retained executable bytes.",
+  "omitted_originals": [
+    {
+      "private_source_id": "root/RUNNING.json",
+      "sha256": "8038e305a976de26f9e527ba929d0f0ce671d2daedb89785be6fc3de4fe47404",
+      "bytes": 1025,
+      "mode": "0600",
+      "reason": "Stale prospective/running state; actual admission, plan, terminal and closure selected."
+    },
+    {
+      "private_source_id": "root/source-bind-001/HANDOFF-SOURCE-BIND.md",
+      "sha256": "b41e5c28ab6d32bffded1a5dbedec023ec06c26bee56b2ecf9298f6fbb35b794",
+      "bytes": 4146,
+      "mode": "0644",
+      "reason": "Prospective or historical preparation/review note; actual executed protocol, freeze, approvals, source bind and resulting closures selected."
+    },
+    {
+      "private_source_id": "root/source-bind-001/INSTALL-AND-DATA-REVIEW.json",
+      "sha256": "f8dfa77d5560b9056e4cfd07c3a7ab78ba700f7191f3e81ced44c90265ca06a6",
+      "bytes": 1264,
+      "mode": "0644",
+      "reason": "Prospective or historical preparation/review note; actual executed protocol, freeze, approvals, source bind and resulting closures selected."
+    },
+    {
+      "private_source_id": "root/source-bind-001/MECHANICAL-REVIEW.json",
+      "sha256": "bf4b902c86956cceebd0b02a90dcaf714d53074d2d326250f109fb2c8cefcf94",
+      "bytes": 452,
+      "mode": "0644",
+      "reason": "Prospective or historical preparation/review note; actual executed protocol, freeze, approvals, source bind and resulting closures selected."
+    },
+    {
+      "private_source_id": "root/source-bind-001/NEXT-BUILD-REQUIREMENTS.json",
+      "sha256": "a78d18c04aeb99dcbd1a86792df33569b0491668d53edbf373aa120108ff6bfd",
+      "bytes": 5480,
+      "mode": "0644",
+      "reason": "Prospective or historical preparation/review note; actual executed protocol, freeze, approvals, source bind and resulting closures selected."
+    },
+    {
+      "private_source_id": "root/source-bind-001/PREBIND-CACHE-CLEANUP.json",
+      "sha256": "fa71f0b99cd32ec196a9b6b03364cf4854432d659b7e68ae6ac171d7fc3f4912",
+      "bytes": 349,
+      "mode": "0644",
+      "reason": "Prospective or historical preparation/review note; actual executed protocol, freeze, approvals, source bind and resulting closures selected."
+    },
+    {
+      "private_source_id": "producer-build-001/BUDGET-SELFCHECK.json",
+      "sha256": "a353c6e2d817f32cceb3688322a28f589af8856e502d00dd9cef049b584bbd40",
+      "bytes": 365,
+      "mode": "0644",
+      "reason": "Synthetic budget self-check omitted; actual declared plan and runtime result selected."
+    },
+    {
+      "private_source_id": "producer-build-001/PENDING.json",
+      "sha256": "9678d52549bda5c610480eb00ec480587d8d1adcb1991bab086782539981d6cf",
+      "bytes": 253,
+      "mode": "0644",
+      "reason": "Stale prospective/running state; actual admission, plan, terminal and closure selected."
+    },
+    {
+      "private_source_id": "producer-build-001/owner.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0600",
+      "reason": "Setup-failure stdout/stderr or later replacement program; original failure result, terminal, plan, start, closure and initial program selected."
+    },
+    {
+      "private_source_id": "producer-build-001/owner.stdout",
+      "sha256": "a5798511832a43fbf5304eac6bd1c849dca12423cd55f87ead95a74abe47bee9",
+      "bytes": 451,
+      "mode": "0600",
+      "reason": "Setup-failure stdout/stderr or later replacement program; original failure result, terminal, plan, start, closure and initial program selected."
+    },
+    {
+      "private_source_id": "producer-build-001/run.py",
+      "sha256": "5e9bfe1e77c78060b5758646888c03a6a99dbdf40418b88c23c1334d0255b754",
+      "bytes": 4409,
+      "mode": "0644",
+      "reason": "Setup-failure stdout/stderr or later replacement program; original failure result, terminal, plan, start, closure and initial program selected."
+    },
+    {
+      "private_source_id": "producer-build-002/BUDGET-SELFCHECK.json",
+      "sha256": "a353c6e2d817f32cceb3688322a28f589af8856e502d00dd9cef049b584bbd40",
+      "bytes": 365,
+      "mode": "0644",
+      "reason": "Synthetic budget self-check omitted; actual declared plan and runtime result selected."
+    },
+    {
+      "private_source_id": "clean-xtask/PENDING.json",
+      "sha256": "5455c3157a6d7252b0c847dded13d175817b90a9f16f55360e1d44bb1f0c7f17",
+      "bytes": 780,
+      "mode": "0644",
+      "reason": "Stale prospective/running state; actual admission, plan, terminal and closure selected."
+    },
+    {
+      "private_source_id": "clean-xtask/resources.py",
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "bytes": 12679,
+      "mode": "0644",
+      "reason": "Byte-exact tooling helper reused at parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py"
+    },
+    {
+      "private_source_id": "optimized-build/PENDING.json",
+      "sha256": "0e48e77f503516497377faf62c6708193f86cd2a7381b139e419c4f5947d8ab6",
+      "bytes": 773,
+      "mode": "0644",
+      "reason": "Stale prospective/running state; actual admission, plan, terminal and closure selected."
+    },
+    {
+      "private_source_id": "optimized-build/resources.py",
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "bytes": 12679,
+      "mode": "0644",
+      "reason": "Byte-exact tooling helper reused at parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py"
+    },
+    {
+      "private_source_id": "preparation/DELTA.json",
+      "sha256": "6ed80799dd4c0c0ca98774349e3df18031a19d0dfd3eb04d3ba85c908c6c389c",
+      "bytes": 486,
+      "mode": "0644",
+      "reason": "Prospective or historical preparation/review note; actual executed protocol, freeze, approvals, source bind and resulting closures selected."
+    },
+    {
+      "private_source_id": "preparation/DRAFT-ORIGIN.json",
+      "sha256": "af5696a479f568f72b0d7c00abdfe1dbaad9f4d00f9af246a04870868b941f87",
+      "bytes": 615,
+      "mode": "0644",
+      "reason": "Prospective or historical preparation/review note; actual executed protocol, freeze, approvals, source bind and resulting closures selected."
+    },
+    {
+      "private_source_id": "preparation/PRESERVATION.json",
+      "sha256": "d3ae42352e5a041af490b79ece0534ee7b5223c03c514fee2e4ddbaa51333fb6",
+      "bytes": 397,
+      "mode": "0644",
+      "reason": "Prospective or historical preparation/review note; actual executed protocol, freeze, approvals, source bind and resulting closures selected."
+    },
+    {
+      "private_source_id": "preparation/PROTOCOL-DRAFT.json",
+      "sha256": "074d013f734b8b4e7779b0bae5f57f6c2329605e517f4f64346b58e84e5939d8",
+      "bytes": 6975,
+      "mode": "0644",
+      "reason": "Prospective or historical preparation/review note; actual executed protocol, freeze, approvals, source bind and resulting closures selected."
+    },
+    {
+      "private_source_id": "preparation/__pycache__/resources.cpython-313.pyc",
+      "sha256": "8ffec27adcd994b70f491d6ae66ac011dda95e793391e47cf09718f500a8ecfa",
+      "bytes": 18333,
+      "mode": "0644",
+      "reason": "Bytecode is excluded; source resources.py is separately reused and no bytecode bytes copied."
+    },
+    {
+      "private_source_id": "preparation/bind_source.py",
+      "sha256": "5b883da7b83e2a88918e9ecda3011dc1b7ef6fcfa34cd6870c178945a942a384",
+      "bytes": 586,
+      "mode": "0644",
+      "reason": "Byte-exact dependency reused at parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/bind_source.py"
+    },
+    {
+      "private_source_id": "preparation/consumer/capsule_geometry.py",
+      "sha256": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b",
+      "bytes": 11717,
+      "mode": "0644",
+      "reason": "Byte-exact dependency reused at parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/capsule_geometry.py"
+    },
+    {
+      "private_source_id": "preparation/consumer/decimal_oracle.py",
+      "sha256": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d",
+      "bytes": 2959,
+      "mode": "0644",
+      "reason": "Byte-exact dependency reused at parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/decimal_oracle.py"
+    },
+    {
+      "private_source_id": "preparation/consumer/geometry_math.py",
+      "sha256": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40",
+      "bytes": 1443,
+      "mode": "0644",
+      "reason": "Byte-exact dependency reused at parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/geometry_math.py"
+    },
+    {
+      "private_source_id": "preparation/consumer/metrics.py",
+      "sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+      "bytes": 18354,
+      "mode": "0644",
+      "reason": "Byte-exact dependency reused at parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/metrics.py"
+    },
+    {
+      "private_source_id": "preparation/consumer/static_geometry.py",
+      "sha256": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34",
+      "bytes": 2388,
+      "mode": "0644",
+      "reason": "Byte-exact dependency reused at parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/static_geometry.py"
+    },
+    {
+      "private_source_id": "preparation/controller.py",
+      "sha256": "b54f882ad435ce755160d5a815387cdc012e396252f79e9a91d018f7ad57e515",
+      "bytes": 6492,
+      "mode": "0644",
+      "reason": "Byte-exact dependency reused at parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/controller.py"
+    },
+    {
+      "private_source_id": "preparation/original-fixtures/base.weftforge",
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "bytes": 11808,
+      "mode": "0644",
+      "reason": "Byte-exact dependency reused at parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/inputs/base.weftforge"
+    },
+    {
+      "private_source_id": "preparation/original-fixtures/rest-metadata.json",
+      "sha256": "d96697949c686fbf15f19b99b6d7551b35d3449b17157009aceb75649fbaeeb9",
+      "bytes": 590736,
+      "mode": "0644",
+      "reason": "Byte-exact dependency reused at parity/reports/artifacts/harbor-workflow-20261114/headless-attempt/runs/base/rest-metadata.json"
+    },
+    {
+      "private_source_id": "preparation/outer/launch_and_record.py",
+      "sha256": "5b36aeecd1251e024dc1e38bfd1eaab973e343fdb3243ccd1a420abac3c4fc96",
+      "bytes": 4055,
+      "mode": "0644",
+      "reason": "Byte-exact duplicate of selected root/launch_and_record.py"
+    },
+    {
+      "private_source_id": "preparation/outer/supervise.py",
+      "sha256": "fec24c8c819a026098813adab63e3ed13b442d64d4ba34b520908f342db4308d",
+      "bytes": 7247,
+      "mode": "0644",
+      "reason": "Byte-exact duplicate of selected root/supervise.py"
+    },
+    {
+      "private_source_id": "preparation/resources.py",
+      "sha256": "ba4560b912abaf8e310f87dc33b334fddfc96bc9d41c74a046a46b2d1f815d12",
+      "bytes": 12756,
+      "mode": "0644",
+      "reason": "Byte-exact dependency reused at parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/resources.py"
+    },
+    {
+      "private_source_id": "preparation/test_toolchain_env.py",
+      "sha256": "c48173c6c67146d41768f3788000094a720805f755089a249210dc05198faecd",
+      "bytes": 2316,
+      "mode": "0644",
+      "reason": "Byte-exact dependency reused at parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/test_toolchain_env.py"
+    }
+  ],
+  "excluded_history_roots": [
+    {
+      "locator": "<PREPARATION_V2>",
+      "reason": "Historical preparation/synthetic inputs omitted; exact executed candidate freeze and independent review snapshots selected under preparation/evidence."
+    },
+    {
+      "locator": "<INDEPENDENT_REVIEW>",
+      "reason": "Duplicate review directory omitted; all three exact review files are selected from the frozen packet."
+    }
+  ],
+  "reused_git_tracked_dependencies": [
+    {
+      "path": "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json",
+      "sha256": "d7c4eabd0c83814726257e1ac061c57c136782c3031333f6d01b058b15b57fc1",
+      "bytes": 28183,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/EXTERNAL-TERMINAL.json",
+      "sha256": "7b1f85e02eccca5f9a256897ea7baeccc384e0299185392bc23000a65683a23c",
+      "bytes": 812,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/LAUNCH.json",
+      "sha256": "f4723263ef8b19ed19271b7f09b01406f6f4013c85acacd396c53dc2befd3cfa",
+      "bytes": 416,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/POST-TERMINAL-CLOCK.json",
+      "sha256": "3491c85c1bbc289b67ecc36eec8be1d8d8a513f7e7224651cf0c163b34194c1d",
+      "bytes": 577,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/ROOT-GO.json",
+      "sha256": "d624cd347c5f119ed980ffe820c48c2b9cab32eb0c8269778e678ba15d273451",
+      "bytes": 1267,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stdout",
+      "sha256": "fd4247aac3b5e1f403a94dc41ac7b300dafd1c696351d14686b0b8249bb8cd3e",
+      "bytes": 345,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/RESULT.json",
+      "sha256": "3175d751c560e8dfeb6b2d84dab809c959bda54120e3f4b45e40e82923995811",
+      "bytes": 16637,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/STARTED.json",
+      "sha256": "a3a5eca823d5ab450d415d5077dac3e7b45d802fb2ba06beba97a634e626012d",
+      "bytes": 262,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/TERMINAL.json",
+      "sha256": "9c7cad8ee4842a7d199039b3801f6015b7af8533a723cbf4c538a07ad1e7d3f9",
+      "bytes": 160,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001.json",
+      "sha256": "5062e63380de4deac77bb8eef6a32ca4f2db45422c476516340a35ed6bae1d75",
+      "bytes": 124135,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/launch.py",
+      "sha256": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+      "bytes": 3661,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/resources.py",
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "bytes": 12679,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/runfull.py",
+      "sha256": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+      "bytes": 7864,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/EXTERNAL-TERMINAL.json",
+      "sha256": "5e50ff3e7f291e517a7e33d07b9f3b7f99a9a42eb7dd5cd5b226455504d334c3",
+      "bytes": 748,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/LAUNCH.json",
+      "sha256": "344c06f4e727cca6f9b5138d92f6c2bfc2e0721ab8f2ba881885b7be6fb40d40",
+      "bytes": 416,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/POST-TERMINAL-CLOCK.json",
+      "sha256": "0b8f661b79f9fd42d7354571360b020fa19cce91340f91346de54cb62036e924",
+      "bytes": 575,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/ROOT-GO.json",
+      "sha256": "f9b5c95a7351ab1a421cd8deba764b815144b428aeb21bb81dd79bb84a808450",
+      "bytes": 1267,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stdout",
+      "sha256": "2bd8eb8d7d747a33e4cb79ac3eef38e7b5372eb2bf29d8ae6ad9eac352b116ac",
+      "bytes": 640,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/RESULT.json",
+      "sha256": "ef2cd34449cd0fc01b688b917ed6113cef577a8b17de97219be155fd734c4b50",
+      "bytes": 22748,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/STARTED.json",
+      "sha256": "6ce68b70d094a87b6d6a3986663064c66fb0af6ef6ee68580297ccdde9a7025e",
+      "bytes": 268,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/TERMINAL.json",
+      "sha256": "f8bfcc7161def3b425808cf885cc53ae92d9b6c53b9ebd8363dc558c3671a04b",
+      "bytes": 160,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-RESULT.json",
+      "sha256": "f0f5c8059d245113067d81457a7b2553392bef28007d276d90ba702e2c159281",
+      "bytes": 1178,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-STARTED.json",
+      "sha256": "16792f0fd70914619d04074bbebdcea549751accd79f21fbe4ebb66d57d02cf3",
+      "bytes": 937,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-RESULT.json",
+      "sha256": "36389ece19aaea1e62eeeb2a8faeadd58bd8804a6834f713521a18528f5cd329",
+      "bytes": 1249,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-STARTED.json",
+      "sha256": "8be97bbe77f1697219589b4388bd6a1e7374754e0ab8646c1ce61802208911c8",
+      "bytes": 1002,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stderr",
+      "sha256": "abf1e915526b6cc8c93c443e5d47e170a3528213944fb39b5065518db4c7a69d",
+      "bytes": 118,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-RESULT.json",
+      "sha256": "6f96edde45d2f9a6a62d0b1b94378853c2596eb31d2000527f968761e03e5113",
+      "bytes": 1269,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-STARTED.json",
+      "sha256": "5a0818f005bed9443813c2635b5b0811dc4917641513658a345ed76649d90f48",
+      "bytes": 1021,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stderr",
+      "sha256": "c36013a9357a14a576cbb2c0d5bb18e96d0ff323e2e9426b860ca5fe8237f1a0",
+      "bytes": 323,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-RESULT.json",
+      "sha256": "7f491ba297ee8e019e537a78e2a2b43f459595ebb9dcb9a6a42edfafa560f811",
+      "bytes": 1212,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-STARTED.json",
+      "sha256": "8476b3ed8dabd549a1b8b7a8dcc5c6d0af0bf1e86e117364ac5cb4a701c8083f",
+      "bytes": 962,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stderr",
+      "sha256": "57becd812498ebb78e13fa39c63536c7fd273cbf03c6f2d414efac9372bc75a7",
+      "bytes": 2747,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stdout",
+      "sha256": "1d5d80153fc252e371ec42ce125c6c78a34400a032803a346733fda1a363fd64",
+      "bytes": 47536,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001.json",
+      "sha256": "f8587b6dc4c673e161072afc4665513c858e025f7c6f1184360dedfa07cc1ab1",
+      "bytes": 124513,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/launch.py",
+      "sha256": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+      "bytes": 3661,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py",
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "bytes": 12679,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/runfull.py",
+      "sha256": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+      "bytes": 7864,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/post-case/ROOT-CLOSURE.json",
+      "sha256": "d3a0f6481bd78b9b554a055427dbd74f836f812042e6b2849019eaa99ef5ee53",
+      "bytes": 435,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/post-case/ROOT-CLOSURE.json",
+      "sha256": "f27d1504c036c3c2b375cdd3462d37ddb732de6ca3fa19a95fb1d3ef11960599",
+      "bytes": 17731,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json",
+      "sha256": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935",
+      "bytes": 28044,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json",
+      "sha256": "8f483daa0c59d69b61c665c60bf7038e9d33055f97b785477b4978fbcc8f9571",
+      "bytes": 31190,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Existing actual C source execution evidence; preserved and Git-tracked on D, without transfer of execution."
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/bind_source.py",
+      "sha256": "5b883da7b83e2a88918e9ecda3011dc1b7ef6fcfa34cd6870c178945a942a384",
+      "bytes": 586,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Byte-exact current packet dependency reused without copying historical execution.",
+      "current_packet_dependency": "bind_source.py",
+      "current_original_sha256": "5b883da7b83e2a88918e9ecda3011dc1b7ef6fcfa34cd6870c178945a942a384"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/controller.py",
+      "sha256": "b54f882ad435ce755160d5a815387cdc012e396252f79e9a91d018f7ad57e515",
+      "bytes": 6492,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Byte-exact current packet dependency reused without copying historical execution.",
+      "current_packet_dependency": "controller.py",
+      "current_original_sha256": "b54f882ad435ce755160d5a815387cdc012e396252f79e9a91d018f7ad57e515"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/resources.py",
+      "sha256": "ba4560b912abaf8e310f87dc33b334fddfc96bc9d41c74a046a46b2d1f815d12",
+      "bytes": 12756,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Byte-exact current packet dependency reused without copying historical execution.",
+      "current_packet_dependency": "resources.py",
+      "current_original_sha256": "ba4560b912abaf8e310f87dc33b334fddfc96bc9d41c74a046a46b2d1f815d12"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/test_toolchain_env.py",
+      "sha256": "c48173c6c67146d41768f3788000094a720805f755089a249210dc05198faecd",
+      "bytes": 2316,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Byte-exact current packet dependency reused without copying historical execution.",
+      "current_packet_dependency": "test_toolchain_env.py",
+      "current_original_sha256": "c48173c6c67146d41768f3788000094a720805f755089a249210dc05198faecd"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/capsule_geometry.py",
+      "sha256": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b",
+      "bytes": 11717,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Byte-exact current packet dependency reused without copying historical execution.",
+      "current_packet_dependency": "consumer/capsule_geometry.py",
+      "current_original_sha256": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/decimal_oracle.py",
+      "sha256": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d",
+      "bytes": 2959,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Byte-exact current packet dependency reused without copying historical execution.",
+      "current_packet_dependency": "consumer/decimal_oracle.py",
+      "current_original_sha256": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/geometry_math.py",
+      "sha256": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40",
+      "bytes": 1443,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Byte-exact current packet dependency reused without copying historical execution.",
+      "current_packet_dependency": "consumer/geometry_math.py",
+      "current_original_sha256": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/metrics.py",
+      "sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+      "bytes": 18354,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Byte-exact current packet dependency reused without copying historical execution.",
+      "current_packet_dependency": "consumer/metrics.py",
+      "current_original_sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/static_geometry.py",
+      "sha256": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34",
+      "bytes": 2388,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Byte-exact current packet dependency reused without copying historical execution.",
+      "current_packet_dependency": "consumer/static_geometry.py",
+      "current_original_sha256": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/inputs/base.weftforge",
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "bytes": 11808,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Byte-exact current packet dependency reused without copying historical execution.",
+      "current_packet_dependency": "original-fixtures/base.weftforge",
+      "current_original_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7"
+    },
+    {
+      "path": "parity/reports/artifacts/harbor-workflow-20261114/headless-attempt/runs/base/rest-metadata.json",
+      "sha256": "d96697949c686fbf15f19b99b6d7551b35d3449b17157009aceb75649fbaeeb9",
+      "bytes": 590736,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Byte-exact current packet dependency reused without copying historical execution.",
+      "current_packet_dependency": "original-fixtures/rest-metadata.json",
+      "current_original_sha256": "d96697949c686fbf15f19b99b6d7551b35d3449b17157009aceb75649fbaeeb9"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py",
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "bytes": 12679,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Both D tooling supervisors use this byte-exact already tracked C resources helper."
+    },
+    {
+      "path": "parity/reports/WF-20261117-DUAL-SEWING-HARBOR-A8-001.json",
+      "sha256": "25d89da938d20b56019eeed59fb7af09cc33ec939718f65c4da069e295e1ab93",
+      "bytes": 28400,
+      "mode": "0644",
+      "tracked_in_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+      "reason": "Immutable prior FAILED numerical report for an explicitly noncausal comparison."
+    }
+  ],
+  "files": [
+    {
+      "private_source_id": "numerical/expected/approved-metadata.json",
+      "original_sha256": "d86699042712c4b80d6a4b56135d04b049366f72dc1520387f5214e09077e865",
+      "original_bytes": 590911,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/expected/approved-metadata.json",
+      "public_sha256": "d86699042712c4b80d6a4b56135d04b049366f72dc1520387f5214e09077e865",
+      "public_bytes": 590911,
+      "public_mode": "0644",
+      "line_count": 30881,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/inputs/base.weftforge",
+      "original_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "original_bytes": 11808,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/inputs/base.weftforge",
+      "public_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "public_bytes": 11808,
+      "public_mode": "0644",
+      "line_count": 743,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/preflight-base/initialized-state.json",
+      "original_sha256": "e5ea2c236493518c0a6a9b0dcefed94e44dfa73e1ffab501fce8aac8b78ee63d",
+      "original_bytes": 75487,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/preflight-base/initialized-state.json",
+      "public_sha256": "e5ea2c236493518c0a6a9b0dcefed94e44dfa73e1ffab501fce8aac8b78ee63d",
+      "public_bytes": 75487,
+      "public_mode": "0644",
+      "line_count": 6568,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/preflight-base/rest-metadata.json",
+      "original_sha256": "c0e7333933d3539a2e1ce5c195ff8d86d0a9562c5809dbd84a8295d5c0592e2c",
+      "original_bytes": 590886,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/preflight-base/rest-metadata.json",
+      "public_sha256": "c0e7333933d3539a2e1ce5c195ff8d86d0a9562c5809dbd84a8295d5c0592e2c",
+      "public_bytes": 590886,
+      "public_mode": "0644",
+      "line_count": 30881,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/preflight-base/stage-000.obj",
+      "original_sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+      "original_bytes": 154152,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/preflight-base/stage-000.obj",
+      "public_sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+      "public_bytes": 154152,
+      "public_mode": "0644",
+      "line_count": 3137,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runs/base/analysis.json",
+      "original_sha256": "4074bda0f201f37d692caa329604848e82299978d7ec4ed579cab9cc2858bcc0",
+      "original_bytes": 1047919,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runs/base/analysis.json",
+      "public_sha256": "4074bda0f201f37d692caa329604848e82299978d7ec4ed579cab9cc2858bcc0",
+      "public_bytes": 1047919,
+      "public_mode": "0644",
+      "line_count": 27280,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runs/base/completed-case.json",
+      "original_sha256": "6140d482a8be611c23435fb647ad6ebcca2abdbf47877bd06e2522b618c3aa43",
+      "original_bytes": 776,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runs/base/completed-case.json",
+      "public_sha256": "6140d482a8be611c23435fb647ad6ebcca2abdbf47877bd06e2522b618c3aa43",
+      "public_bytes": 776,
+      "public_mode": "0644",
+      "line_count": 26,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runs/base/initialized-state.json",
+      "original_sha256": "926593b6a00a210416a305709a28ff0a821c3d4bda1e7a7e64a739a671bb2c77",
+      "original_bytes": 75486,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runs/base/initialized-state.json",
+      "public_sha256": "926593b6a00a210416a305709a28ff0a821c3d4bda1e7a7e64a739a671bb2c77",
+      "public_bytes": 75486,
+      "public_mode": "0644",
+      "line_count": 6568,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runs/base/rest-metadata.json",
+      "original_sha256": "c0e7333933d3539a2e1ce5c195ff8d86d0a9562c5809dbd84a8295d5c0592e2c",
+      "original_bytes": 590886,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runs/base/rest-metadata.json",
+      "public_sha256": "c0e7333933d3539a2e1ce5c195ff8d86d0a9562c5809dbd84a8295d5c0592e2c",
+      "public_bytes": 590886,
+      "public_mode": "0644",
+      "line_count": 30881,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runs/base/stage-000.obj",
+      "original_sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+      "original_bytes": 154152,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runs/base/stage-000.obj",
+      "public_sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+      "public_bytes": 154152,
+      "public_mode": "0644",
+      "line_count": 3137,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runs/base/stage-060.obj",
+      "original_sha256": "61a30e117c7f5aa8ca9211dd62ab1ac1d7c8f7918f24d5bb712b003d210781ab",
+      "original_bytes": 154804,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runs/base/stage-060.obj",
+      "public_sha256": "61a30e117c7f5aa8ca9211dd62ab1ac1d7c8f7918f24d5bb712b003d210781ab",
+      "public_bytes": 154804,
+      "public_mode": "0644",
+      "line_count": 3137,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runs/base/stage-180.obj",
+      "original_sha256": "f2e9036421da00f00e81ae46f758296023d3f99cea843e6118e49e24b9d64530",
+      "original_bytes": 154798,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runs/base/stage-180.obj",
+      "public_sha256": "f2e9036421da00f00e81ae46f758296023d3f99cea843e6118e49e24b9d64530",
+      "public_bytes": 154798,
+      "public_mode": "0644",
+      "line_count": 3137,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runs/base/steps.jsonl",
+      "original_sha256": "e44fbbb565fea98db34c33acbc5f81b200cb4e9b3f970fbaed2f90c99415ea8d",
+      "original_bytes": 119057,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runs/base/steps.jsonl",
+      "public_sha256": "e44fbbb565fea98db34c33acbc5f81b200cb4e9b3f970fbaed2f90c99415ea8d",
+      "public_bytes": 119057,
+      "public_mode": "0644",
+      "line_count": 180,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runs/base/trajectory.jsonl",
+      "original_sha256": "b193d5bc23d82c6722f87704d061f01161db88ac4e0c71eda4df1bf704099bf7",
+      "original_bytes": 15435425,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runs/base/trajectory.jsonl",
+      "public_sha256": "b193d5bc23d82c6722f87704d061f01161db88ac4e0c71eda4df1bf704099bf7",
+      "public_bytes": 15435425,
+      "public_mode": "0644",
+      "line_count": 181,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runtime/FINAL-NUMERICAL.json",
+      "original_sha256": "27c893edd64533ea5d132aee780f14c643d8ac4949d378f6ed58a56a8863aabe",
+      "original_bytes": 7231,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/FINAL-NUMERICAL.json",
+      "public_sha256": "27c893edd64533ea5d132aee780f14c643d8ac4949d378f6ed58a56a8863aabe",
+      "public_bytes": 7231,
+      "public_mode": "0644",
+      "line_count": 281,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runtime/SESSION.json",
+      "original_sha256": "b91e5415b345abd2a0dab58640ac62c00662ddb8f3fac44e63c1142aa105c3ad",
+      "original_bytes": 83894,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/SESSION.json",
+      "public_sha256": "c13266b0077f8cde3f34db692349dedab0b80c2a7c65f47229f9449177ce670b",
+      "public_bytes": 82744,
+      "public_mode": "0644",
+      "line_count": 969,
+      "replacements": {
+        "WORKTREE_LOCATOR": 4,
+        "RUSTUP_HOME_LOCATOR": 8,
+        "NUMERICAL_PACKET_LOCATOR": 1,
+        "HOME_PARENT_LOCATOR": 2,
+        "CARGO_HOME_LOCATOR": 20,
+        "WORKSPACE_BASE": 2,
+        "WORKSPACE_CONTAINER": 2,
+        "WORKSPACE_PARENT": 2,
+        "REPOSITORY_ROOT": 2,
+        "WORKTREE_CONTAINER": 2,
+        "PYENV_HOME_LOCATOR": 2,
+        "HOMEBREW_PREFIX_LOCATOR": 2
+      }
+    },
+    {
+      "private_source_id": "numerical/runtime/SUPERVISOR.json",
+      "original_sha256": "132a0934c48150c8f76411e6d2fb1bcef07f2f656b3045bb379b773e443b0704",
+      "original_bytes": 6799,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/SUPERVISOR.json",
+      "public_sha256": "60bcb2483a0a23040230c8e00fa0983dcffbe0fd04949931b9b7dd513fff1429",
+      "public_bytes": 6171,
+      "public_mode": "0644",
+      "line_count": 191,
+      "replacements": {
+        "WORKTREE_LOCATOR": 2,
+        "PYENV_HOME_LOCATOR": 3,
+        "NUMERICAL_PACKET_LOCATOR": 3
+      }
+    },
+    {
+      "private_source_id": "numerical/runtime/analysis-stage.json",
+      "original_sha256": "2bd82fd6c7212f8060dd91b69e11a78bb7c3eaf46d2c169ec5aec7efa58b3462",
+      "original_bytes": 1104,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/analysis-stage.json",
+      "public_sha256": "5a69613a471a3443fb372d73b30d7f19e9c320ed20c6f1dc875a249cd845e0c5",
+      "public_bytes": 956,
+      "public_mode": "0644",
+      "line_count": 35,
+      "replacements": {
+        "PYENV_HOME_LOCATOR": 1,
+        "NUMERICAL_PACKET_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "numerical/runtime/analysis-started.json",
+      "original_sha256": "179eacbcf162ef3678f81f0389b509b1b2c22fa69c76086a7f44c5a460776178",
+      "original_bytes": 870,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/analysis-started.json",
+      "public_sha256": "a62bf9032f0a7c6109fa5fe7e212e51c25dd68ed8d2f410f3b2df51431eb3d1f",
+      "public_bytes": 722,
+      "public_mode": "0644",
+      "line_count": 28,
+      "replacements": {
+        "PYENV_HOME_LOCATOR": 1,
+        "NUMERICAL_PACKET_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "numerical/runtime/analysis-written.json",
+      "original_sha256": "2a77e7d36f2689ea8c4ce292fd7fed6934ab92c7f05df75d3fb70ef8dbfb25b2",
+      "original_bytes": 227,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/analysis-written.json",
+      "public_sha256": "2a77e7d36f2689ea8c4ce292fd7fed6934ab92c7f05df75d3fb70ef8dbfb25b2",
+      "public_bytes": 227,
+      "public_mode": "0644",
+      "line_count": 6,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runtime/analysis.stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/analysis.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runtime/analysis.stdout",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/analysis.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runtime/finalization-stage.json",
+      "original_sha256": "cc63d4b62113841432dc854b2a9f207845178e09eb014e11cffd557efd18a6ce",
+      "original_bytes": 1103,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/finalization-stage.json",
+      "public_sha256": "8982c6d2ba5b330f02920294b4f684f70bbccd2e01f91d7d8a4b8b345a53420f",
+      "public_bytes": 955,
+      "public_mode": "0644",
+      "line_count": 35,
+      "replacements": {
+        "PYENV_HOME_LOCATOR": 1,
+        "NUMERICAL_PACKET_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "numerical/runtime/finalization-started.json",
+      "original_sha256": "0e6058aac9323990444f878bdb201e73df85304c478400ddfcc2955644a43731",
+      "original_bytes": 871,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/finalization-started.json",
+      "public_sha256": "8eecc4313e41076ce9c02a96b5db288d61312896eb457ead77bf5148ed7c9f19",
+      "public_bytes": 723,
+      "public_mode": "0644",
+      "line_count": 28,
+      "replacements": {
+        "PYENV_HOME_LOCATOR": 1,
+        "NUMERICAL_PACKET_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "numerical/runtime/finalization.stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/finalization.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runtime/finalization.stdout",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/finalization.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runtime/finalized.json",
+      "original_sha256": "50ac190120951500cc4bbb462637880004e0090c8d09a5d00e12f3eab5306351",
+      "original_bytes": 213,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/finalized.json",
+      "public_sha256": "50ac190120951500cc4bbb462637880004e0090c8d09a5d00e12f3eab5306351",
+      "public_bytes": 213,
+      "public_mode": "0644",
+      "line_count": 5,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runtime/init-only-stage.json",
+      "original_sha256": "c61de7abfa631bfee75f44cf14d81a7a68d32d41c235da47275c3b5e450d3dd6",
+      "original_bytes": 1011,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/init-only-stage.json",
+      "public_sha256": "8b037b9fe2eed958c14d433e250e9dacbc215f64472deca5f54cd359c7099bf6",
+      "public_bytes": 919,
+      "public_mode": "0644",
+      "line_count": 33,
+      "replacements": {
+        "WORKTREE_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "numerical/runtime/init-only-started.json",
+      "original_sha256": "4c8ec9121cc0a323937ae273d1a83eef28ce9de9d45088c7766c49c7ce9bb362",
+      "original_bytes": 782,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/init-only-started.json",
+      "public_sha256": "321216ca736e59401b15385dcccee2745ded8d27782934c6ec0abf63cd0ceec8",
+      "public_bytes": 690,
+      "public_mode": "0644",
+      "line_count": 26,
+      "replacements": {
+        "WORKTREE_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "numerical/runtime/init-only.stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/init-only.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runtime/init-only.stdout",
+      "original_sha256": "38dde89a453487e736364cec15a6e47f005fcc06d8c52c1b9d715772322279d2",
+      "original_bytes": 41,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/init-only.stdout",
+      "public_sha256": "38dde89a453487e736364cec15a6e47f005fcc06d8c52c1b9d715772322279d2",
+      "public_bytes": 41,
+      "public_mode": "0644",
+      "line_count": 1,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runtime/initialized-original-gate.json",
+      "original_sha256": "6859400b4b4213a61189a5bcc124e7343dfd40041114975ee6b34d166ba24406",
+      "original_bytes": 833,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/initialized-original-gate.json",
+      "public_sha256": "6859400b4b4213a61189a5bcc124e7343dfd40041114975ee6b34d166ba24406",
+      "public_bytes": 833,
+      "public_mode": "0644",
+      "line_count": 18,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runtime/metadata-stage.json",
+      "original_sha256": "fc64e6f30d5dd9183a6ca9b62b2ec5f111c20f9ec6a6f013d38e766b18752bcf",
+      "original_bytes": 1103,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/metadata-stage.json",
+      "public_sha256": "96492a75f583e9da1886f3031866a58e445abd2e9957e18a50fbf7b543956f5d",
+      "public_bytes": 955,
+      "public_mode": "0644",
+      "line_count": 35,
+      "replacements": {
+        "PYENV_HOME_LOCATOR": 1,
+        "NUMERICAL_PACKET_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "numerical/runtime/metadata-started.json",
+      "original_sha256": "0c15d9b97bc4df30f12b67cd712472509ceba60b6a0bc47cc838491d390335bf",
+      "original_bytes": 871,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/metadata-started.json",
+      "public_sha256": "5e43197ad3571b21fefeb19fad4de77126253d30056e0a43dbc8f41aa61ee533",
+      "public_bytes": 723,
+      "public_mode": "0644",
+      "line_count": 28,
+      "replacements": {
+        "PYENV_HOME_LOCATOR": 1,
+        "NUMERICAL_PACKET_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "numerical/runtime/metadata.stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/metadata.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runtime/metadata.stdout",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/metadata.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runtime/producer-receipt.json",
+      "original_sha256": "2ca3ea66d6bdb0ee4099d0140fca0afecbca638d55bfb0f04c784851fab735e8",
+      "original_bytes": 2515,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/producer-receipt.json",
+      "public_sha256": "d8525a50e105b7acbab5bd5b87b32bc9da158245884d0daa27e2cf02b64344e6",
+      "public_bytes": 2423,
+      "public_mode": "0644",
+      "line_count": 55,
+      "replacements": {
+        "WORKTREE_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "numerical/runtime/producer-stage.json",
+      "original_sha256": "8edae6c939dc9ffa0b850facb823d6ddcb122c0a467019a5d64632f14ec71095",
+      "original_bytes": 1047,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/producer-stage.json",
+      "public_sha256": "fd496f87209457b4d23b521a0b7c1e4406d5fb57b135bf2e898cda61e6243b7b",
+      "public_bytes": 955,
+      "public_mode": "0644",
+      "line_count": 34,
+      "replacements": {
+        "WORKTREE_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "numerical/runtime/producer-started.json",
+      "original_sha256": "e6a54936b7e4c7f17d0c971a0c531139dbd1490460d0d1dc27c31c1f06c5d7ad",
+      "original_bytes": 812,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/producer-started.json",
+      "public_sha256": "48ddcd453707d57f5d5384cf35f761cbabab3b1e9ad8f7ab6d6b5f3fe472d221",
+      "public_bytes": 720,
+      "public_mode": "0644",
+      "line_count": 27,
+      "replacements": {
+        "WORKTREE_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "numerical/runtime/producer.stderr",
+      "original_sha256": "ba78698eaea279caa2a63cc4000fb8b9995083ddb84fd317ed89576a0899cd2c",
+      "original_bytes": 1271,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/producer.stderr",
+      "public_sha256": "ba78698eaea279caa2a63cc4000fb8b9995083ddb84fd317ed89576a0899cd2c",
+      "public_bytes": 1271,
+      "public_mode": "0644",
+      "line_count": 12,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "numerical/runtime/producer.stdout",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/producer.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/CANDIDATE.json",
+      "original_sha256": "1d17d25cf685c7c0c9525dde0af9e95a59ef55f35ba7dc1fc7609f0b49ed0a84",
+      "original_bytes": 5525,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/CANDIDATE.json",
+      "public_sha256": "033ccd76706b934f70a835fe5c1a810dd67318f950f3ce15c05dd8745e7e216f",
+      "public_bytes": 5401,
+      "public_mode": "0644",
+      "line_count": 50,
+      "replacements": {
+        "RUSTUP_HOME_LOCATOR": 2,
+        "PYENV_HOME_LOCATOR": 1,
+        "HOMEBREW_PREFIX_LOCATOR": 1,
+        "WORKTREE_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "preparation/FREEZE.json",
+      "original_sha256": "17344b25a92a116f69400e489fa15395254f472e4feeb9a96c37f28a7a715f9a",
+      "original_bytes": 7447,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/FREEZE.json",
+      "public_sha256": "74f242424affbdf7de73e5f04fc0ea01f16d879c058d3e40028ea74f4773492c",
+      "public_bytes": 7435,
+      "public_mode": "0644",
+      "line_count": 112,
+      "replacements": {
+        "PYENV_HOME_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "preparation/PROTOCOL.json",
+      "original_sha256": "1d870c8506f4a26a6d5c3b57b40df42a3f7bee7b676ff8e4cb751321f8b9a5b6",
+      "original_bytes": 8782,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/PROTOCOL.json",
+      "public_sha256": "46b2521b7237da4bc37f99a414d15ca0f81c02e9b9445e63037aba2ee10655ba",
+      "public_bytes": 7808,
+      "public_mode": "0644",
+      "line_count": 174,
+      "replacements": {
+        "PYENV_HOME_LOCATOR": 5,
+        "NUMERICAL_PACKET_LOCATOR": 5,
+        "WORKTREE_LOCATOR": 2,
+        "WORKTREE_CONTAINER": 1
+      }
+    },
+    {
+      "private_source_id": "preparation/REUSED-SOURCES.json",
+      "original_sha256": "55dcb91b800527d2589db0d6a7fb3d6b8f55a1bc84fb642ece7b9b9846568bf8",
+      "original_bytes": 5265,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/REUSED-SOURCES.json",
+      "public_sha256": "55dcb91b800527d2589db0d6a7fb3d6b8f55a1bc84fb642ece7b9b9846568bf8",
+      "public_bytes": 5265,
+      "public_mode": "0644",
+      "line_count": 73,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/ROOT-BUILD-GO-002.json",
+      "original_sha256": "881cd93b0d643221a65a3e7f8f1a086644ec93dcf8fc6ab8fa605353c979d89f",
+      "original_bytes": 724,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/ROOT-BUILD-GO-002.json",
+      "public_sha256": "881cd93b0d643221a65a3e7f8f1a086644ec93dcf8fc6ab8fa605353c979d89f",
+      "public_bytes": 724,
+      "public_mode": "0644",
+      "line_count": 15,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/ROOT-BUILD-GO.json",
+      "original_sha256": "881cd93b0d643221a65a3e7f8f1a086644ec93dcf8fc6ab8fa605353c979d89f",
+      "original_bytes": 724,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/ROOT-BUILD-GO.json",
+      "public_sha256": "881cd93b0d643221a65a3e7f8f1a086644ec93dcf8fc6ab8fa605353c979d89f",
+      "public_bytes": 724,
+      "public_mode": "0644",
+      "line_count": 15,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/ROOT-GO.json",
+      "original_sha256": "cb9b4626af06c3719316b529f2a45afeb5e0a49c98aed1eb53c3699b0560c563",
+      "original_bytes": 568,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/ROOT-GO.json",
+      "public_sha256": "cb9b4626af06c3719316b529f2a45afeb5e0a49c98aed1eb53c3699b0560c563",
+      "public_bytes": 568,
+      "public_mode": "0644",
+      "line_count": 17,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/SOURCE-PREFLIGHT.json",
+      "original_sha256": "d6640efe58349ce828a136a0a06d3e99d40af13f94b26ac59eb619abdbe21bd6",
+      "original_bytes": 89137,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/SOURCE-PREFLIGHT.json",
+      "public_sha256": "52e2c3b59df946cf5d396ee626bb6d8e7c97a23ab7ea726ea294132abd2e82f1",
+      "public_bytes": 87975,
+      "public_mode": "0644",
+      "line_count": 1051,
+      "replacements": {
+        "WORKTREE_LOCATOR": 4,
+        "RUSTUP_HOME_LOCATOR": 8,
+        "NUMERICAL_PACKET_LOCATOR": 1,
+        "HOME_PARENT_LOCATOR": 2,
+        "CARGO_HOME_LOCATOR": 20,
+        "WORKSPACE_BASE": 2,
+        "WORKSPACE_CONTAINER": 2,
+        "WORKSPACE_PARENT": 2,
+        "REPOSITORY_ROOT": 2,
+        "WORKTREE_CONTAINER": 2,
+        "PYENV_HOME_LOCATOR": 3,
+        "HOMEBREW_PREFIX_LOCATOR": 2
+      }
+    },
+    {
+      "private_source_id": "preparation/SOURCE.json",
+      "original_sha256": "31cc6a4e799b4a174b6a798999053653175c0099ff5bc08dc6df6fd75d7cc33a",
+      "original_bytes": 10922,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/SOURCE.json",
+      "public_sha256": "31cc6a4e799b4a174b6a798999053653175c0099ff5bc08dc6df6fd75d7cc33a",
+      "public_bytes": 10922,
+      "public_mode": "0644",
+      "line_count": 102,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/build_release.py",
+      "original_sha256": "58f2ce8edb0c7e54ae319029b0ac493949f6a5f673d9f2048864d843a4221c21",
+      "original_bytes": 2757,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/build_release.py",
+      "public_sha256": "58f2ce8edb0c7e54ae319029b0ac493949f6a5f673d9f2048864d843a4221c21",
+      "public_bytes": 2757,
+      "public_mode": "0644",
+      "line_count": 32,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/checks/BUILD-RECEIPT.json",
+      "original_sha256": "2929d710747028ae6445c89e71ee20ff3c1c676f43f269691b912bd57ef5f734",
+      "original_bytes": 85644,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/checks/BUILD-RECEIPT.json",
+      "public_sha256": "732fec73e859dc63ad6f52af7baf490fc0bfa9c144ac3fd1d8fc6959b5c1a387",
+      "public_bytes": 84346,
+      "public_mode": "0644",
+      "line_count": 1014,
+      "replacements": {
+        "WORKTREE_LOCATOR": 4,
+        "RUSTUP_HOME_LOCATOR": 9,
+        "NUMERICAL_PACKET_LOCATOR": 2,
+        "HOME_PARENT_LOCATOR": 2,
+        "CARGO_HOME_LOCATOR": 20,
+        "WORKSPACE_BASE": 2,
+        "WORKSPACE_CONTAINER": 2,
+        "WORKSPACE_PARENT": 2,
+        "REPOSITORY_ROOT": 2,
+        "WORKTREE_CONTAINER": 2,
+        "PYENV_HOME_LOCATOR": 2,
+        "HOMEBREW_PREFIX_LOCATOR": 2
+      }
+    },
+    {
+      "private_source_id": "preparation/checks/build/started.json",
+      "original_sha256": "e200d165187468b791eb660b0a963c41b16690df16cc00c1857e057d6bf7a257",
+      "original_bytes": 917,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/checks/build/started.json",
+      "public_sha256": "0c124a85a85e08dea18c06384633f46e9163da66e93e2e8afe4f2ba8e1397f94",
+      "public_bytes": 769,
+      "public_mode": "0644",
+      "line_count": 29,
+      "replacements": {
+        "RUSTUP_HOME_LOCATOR": 1,
+        "NUMERICAL_PACKET_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "preparation/checks/build/stderr",
+      "original_sha256": "5c52f96a54d4a7b534d3704c92c6400bc4b1f7f777ee244f016aea4ba8bf370c",
+      "original_bytes": 924,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/checks/build/stderr",
+      "public_sha256": "07a533c547e8d3513673d182db777f1499c2a9c405b242affd406e5989f4c0b5",
+      "public_bytes": 512,
+      "public_mode": "0644",
+      "line_count": 11,
+      "replacements": {
+        "WORKTREE_LOCATOR": 3,
+        "NUMERICAL_PACKET_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "preparation/checks/build/stdout",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/checks/build/stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/common.py",
+      "original_sha256": "7340636140c6724e748bce818edc25c17c472dc65585f78e2fc94ef94aa2255f",
+      "original_bytes": 18479,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/common.py",
+      "public_sha256": "7340636140c6724e748bce818edc25c17c472dc65585f78e2fc94ef94aa2255f",
+      "public_bytes": 18479,
+      "public_mode": "0644",
+      "line_count": 283,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/compiler_inputs.py",
+      "original_sha256": "591969648b8528f468c927b9f58d28013965340d070e1c0da0b7216b230662ec",
+      "original_bytes": 4121,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/compiler_inputs.py",
+      "public_sha256": "591969648b8528f468c927b9f58d28013965340d070e1c0da0b7216b230662ec",
+      "public_bytes": 4121,
+      "public_mode": "0644",
+      "line_count": 95,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/consumer/bindings.py",
+      "original_sha256": "3f91b9a9d779d4c7f2f974fbac428aef63aa730488366f915b782baba0b7501c",
+      "original_bytes": 104,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/consumer/bindings.py",
+      "public_sha256": "3f91b9a9d779d4c7f2f974fbac428aef63aa730488366f915b782baba0b7501c",
+      "public_bytes": 104,
+      "public_mode": "0644",
+      "line_count": 2,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/consumer/evaluator.py",
+      "original_sha256": "b31c094e1683015a422c3c510eda30a8d3973c57004db0622284ba797e5ad46e",
+      "original_bytes": 34199,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/consumer/evaluator.py",
+      "public_sha256": "b31c094e1683015a422c3c510eda30a8d3973c57004db0622284ba797e5ad46e",
+      "public_bytes": 34199,
+      "public_mode": "0644",
+      "line_count": 514,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/consumer/metadata_adapter.py",
+      "original_sha256": "9fb460bc0e17d2facb670fc016510ce8c560b9cdc17dfae57a457808beac6bf2",
+      "original_bytes": 2607,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/consumer/metadata_adapter.py",
+      "public_sha256": "9fb460bc0e17d2facb670fc016510ce8c560b9cdc17dfae57a457808beac6bf2",
+      "public_bytes": 2607,
+      "public_mode": "0644",
+      "line_count": 41,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/evidence/CURRENT-SOURCE-PREREQUISITES.json",
+      "original_sha256": "497d68bb7d31c78f66188d1088f340e5443b5b862a304b024a26a3fa10124aab",
+      "original_bytes": 34954,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/evidence/CURRENT-SOURCE-PREREQUISITES.json",
+      "public_sha256": "497d68bb7d31c78f66188d1088f340e5443b5b862a304b024a26a3fa10124aab",
+      "public_bytes": 34954,
+      "public_mode": "0644",
+      "line_count": 357,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/evidence/HARNESS-V2-CANDIDATE-FREEZE.json",
+      "original_sha256": "82662f530ffbb1252b143c08c3b0a978484874290c8781f346ec32820667ce97",
+      "original_bytes": 43612,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/evidence/HARNESS-V2-CANDIDATE-FREEZE.json",
+      "public_sha256": "87dab2a1a79de8724139c01baa69ba528c8a219c9512873b8166d923b7e5d4b7",
+      "public_bytes": 43514,
+      "public_mode": "0644",
+      "line_count": 1100,
+      "replacements": {
+        "PREPARATION_V2_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "preparation/evidence/HARNESS-V2-INDEPENDENT-REVIEW-FREEZE.json",
+      "original_sha256": "c7c5dd92b47ab9f38b943036dde9fec5b8c4d04298abc1b5db075ec49f7d8bbf",
+      "original_bytes": 1425,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/evidence/HARNESS-V2-INDEPENDENT-REVIEW-FREEZE.json",
+      "public_sha256": "c7c5dd92b47ab9f38b943036dde9fec5b8c4d04298abc1b5db075ec49f7d8bbf",
+      "public_bytes": 1425,
+      "public_mode": "0644",
+      "line_count": 34,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/evidence/HARNESS-V2-INDEPENDENT-REVIEW-RECEIPT.json",
+      "original_sha256": "d176d197f838be5aa541c4ec83fa1828e9cdff790b3263bfc2e8c1dd2fac29b4",
+      "original_bytes": 61762,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/evidence/HARNESS-V2-INDEPENDENT-REVIEW-RECEIPT.json",
+      "public_sha256": "3129b409b2b06567d041e2c142aa23779caa605441206a45a9577d3a28805ae8",
+      "public_bytes": 61664,
+      "public_mode": "0644",
+      "line_count": 426,
+      "replacements": {
+        "PREPARATION_V2_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "preparation/evidence/HARNESS-V2-INDEPENDENT-REVIEW.md",
+      "original_sha256": "d128ff9c4ade4747700cf0ea687431649f4b815a743f81eb4deef69f2417de76",
+      "original_bytes": 5006,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/evidence/HARNESS-V2-INDEPENDENT-REVIEW.md",
+      "public_sha256": "d128ff9c4ade4747700cf0ea687431649f4b815a743f81eb4deef69f2417de76",
+      "public_bytes": 5006,
+      "public_mode": "0644",
+      "line_count": 77,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/evidence/INDEPENDENT-PRODUCTION-REVIEW-002.json",
+      "original_sha256": "bf6ce118802e3a46e1ea32ce9f7d39361995aa338d8f7e4d6f986c1e1604b726",
+      "original_bytes": 4683,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/evidence/INDEPENDENT-PRODUCTION-REVIEW-002.json",
+      "public_sha256": "bf6ce118802e3a46e1ea32ce9f7d39361995aa338d8f7e4d6f986c1e1604b726",
+      "public_bytes": 4683,
+      "public_mode": "0644",
+      "line_count": 88,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/evidence/ROOT-SOURCE-REVIEW.json",
+      "original_sha256": "2807420dbf0e5204271009449a30f5aa41b58737a16f9044dab85b56685d0923",
+      "original_bytes": 12128,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/evidence/ROOT-SOURCE-REVIEW.json",
+      "public_sha256": "2807420dbf0e5204271009449a30f5aa41b58737a16f9044dab85b56685d0923",
+      "public_bytes": 12128,
+      "public_mode": "0644",
+      "line_count": 126,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/freeze_prep.py",
+      "original_sha256": "9dc959a700045a20be1a79764f62868add00a553720daf549f6a656181c91793",
+      "original_bytes": 3841,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/freeze_prep.py",
+      "public_sha256": "9dc959a700045a20be1a79764f62868add00a553720daf549f6a656181c91793",
+      "public_bytes": 3841,
+      "public_mode": "0644",
+      "line_count": 36,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/producer/Cargo.lock",
+      "original_sha256": "6acc2df8d38cf70047cbe22ca2875a38a0fd204a63452edb2d42b4ce14c1ec89",
+      "original_bytes": 4086,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/producer/Cargo.lock",
+      "public_sha256": "6acc2df8d38cf70047cbe22ca2875a38a0fd204a63452edb2d42b4ce14c1ec89",
+      "public_bytes": 4086,
+      "public_mode": "0644",
+      "line_count": 173,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/producer/Cargo.toml",
+      "original_sha256": "bdbf9b113ba7bb05e968b25fbfc71a30317bfd66aa090fb809e2f551070ff5e8",
+      "original_bytes": 297,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/producer/Cargo.toml",
+      "public_sha256": "bdbf9b113ba7bb05e968b25fbfc71a30317bfd66aa090fb809e2f551070ff5e8",
+      "public_bytes": 297,
+      "public_mode": "0644",
+      "line_count": 11,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/producer/src/main.rs",
+      "original_sha256": "b0aa37d10c88764ac1d21d97616a358cfac20d7bf9d43fc1cc7c318b63e44912",
+      "original_bytes": 7014,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/producer/src/main.rs",
+      "public_sha256": "b0aa37d10c88764ac1d21d97616a358cfac20d7bf9d43fc1cc7c318b63e44912",
+      "public_bytes": 7014,
+      "public_mode": "0644",
+      "line_count": 146,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/provenance/ORIGINAL-COPIES.json",
+      "original_sha256": "7854f0843a22be46e78b9269da0e4c188f7f82dbd76f6e57468e8e6204eecc84",
+      "original_bytes": 4188,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/provenance/ORIGINAL-COPIES.json",
+      "public_sha256": "eb4ad52d6cfd8400c14941d303d41cb438850c031f0b9a18dfed4ac65f3c7bb8",
+      "public_bytes": 4138,
+      "public_mode": "0644",
+      "line_count": 130,
+      "replacements": {
+        "WORKTREE_CONTAINER": 1
+      }
+    },
+    {
+      "private_source_id": "preparation/source_inputs.py",
+      "original_sha256": "a1ad24ccb7d3dbb9a0bf854219f9244c2735b01d52af1cfc62360295453b4cca",
+      "original_bytes": 7282,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/source_inputs.py",
+      "public_sha256": "a1ad24ccb7d3dbb9a0bf854219f9244c2735b01d52af1cfc62360295453b4cca",
+      "public_bytes": 7282,
+      "public_mode": "0644",
+      "line_count": 79,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "preparation/worker.py",
+      "original_sha256": "df0c37af4c2d20f9078e6caf82bcaf25d31bfdddfd8beebb358eddf6da515c87",
+      "original_bytes": 7595,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/worker.py",
+      "public_sha256": "df0c37af4c2d20f9078e6caf82bcaf25d31bfdddfd8beebb358eddf6da515c87",
+      "public_bytes": 7595,
+      "public_mode": "0644",
+      "line_count": 111,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "root/EXTERNAL-START.json",
+      "original_sha256": "6640fde5cc08b50c84b072f4891b346aa8c077bf42f15035a4d0eab403c4a025",
+      "original_bytes": 161,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/EXTERNAL-START.json",
+      "public_sha256": "6640fde5cc08b50c84b072f4891b346aa8c077bf42f15035a4d0eab403c4a025",
+      "public_bytes": 161,
+      "public_mode": "0644",
+      "line_count": 1,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "root/EXTERNAL-TERMINAL.json",
+      "original_sha256": "ef2504007e46970f54dd42d88cbe97b66a4317da2519a55f60ced1a862e3d033",
+      "original_bytes": 1102,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/EXTERNAL-TERMINAL.json",
+      "public_sha256": "ef2504007e46970f54dd42d88cbe97b66a4317da2519a55f60ced1a862e3d033",
+      "public_bytes": 1102,
+      "public_mode": "0644",
+      "line_count": 23,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "root/OUTER-START.json",
+      "original_sha256": "88ca575c2b02a12275635ee4f4ba6074b6825cca53fb71cad4bc87e105e61bfd",
+      "original_bytes": 630,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/OUTER-START.json",
+      "public_sha256": "849c6dd0f268f505029d023f2fc65e2a98c3bdd7e18824335c8d176c601a9528",
+      "public_bytes": 482,
+      "public_mode": "0644",
+      "line_count": 15,
+      "replacements": {
+        "PYENV_HOME_LOCATOR": 1,
+        "NUMERICAL_PACKET_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "root/ROOT-ADMISSION.json",
+      "original_sha256": "0be6331c389fdeb024f2c984dd543d9a8ea81c8812a022c5015ed71d9f606334",
+      "original_bytes": 1655,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/ROOT-ADMISSION.json",
+      "public_sha256": "63d591efbc2090b1e25c0934305a3cd47cf2d736c8d6695f1d2eb68ec47e8e3b",
+      "public_bytes": 1469,
+      "public_mode": "0644",
+      "line_count": 26,
+      "replacements": {
+        "NUMERICAL_PACKET_LOCATOR": 1,
+        "WORKTREE_CONTAINER": 1
+      }
+    },
+    {
+      "private_source_id": "root/ROOT-RESULT.json",
+      "original_sha256": "a0b639baaddfa7846c24c5ba7a107ca9e68b69cec45b4d2b24354d075bb1d435",
+      "original_bytes": 393,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/ROOT-RESULT.json",
+      "public_sha256": "a0b639baaddfa7846c24c5ba7a107ca9e68b69cec45b4d2b24354d075bb1d435",
+      "public_bytes": 393,
+      "public_mode": "0644",
+      "line_count": 10,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "root/ROOT-TERMINAL-WITNESS.json",
+      "original_sha256": "82311785a10509f272079ca233f0483d4ab0a5b8be9d43d8c4efbdf3bb9274be",
+      "original_bytes": 6406,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/ROOT-TERMINAL-WITNESS.json",
+      "public_sha256": "31c07d9bf244686584390fa4bc1a42a27f204932ba7c5ff66bafa2571255f90f",
+      "public_bytes": 6258,
+      "public_mode": "0644",
+      "line_count": 118,
+      "replacements": {
+        "PYENV_HOME_LOCATOR": 1,
+        "NUMERICAL_PACKET_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "root/controller.stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/controller.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "root/controller.stdout",
+      "original_sha256": "f72eeeb6ffd2f0e0b5fe410003e4be05d6b076c496ff2cc7bf7dd626e2580f64",
+      "original_bytes": 400,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/controller.stdout",
+      "public_sha256": "f72eeeb6ffd2f0e0b5fe410003e4be05d6b076c496ff2cc7bf7dd626e2580f64",
+      "public_bytes": 400,
+      "public_mode": "0644",
+      "line_count": 1,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "root/launch_and_record.py",
+      "original_sha256": "5b36aeecd1251e024dc1e38bfd1eaab973e343fdb3243ccd1a420abac3c4fc96",
+      "original_bytes": 4055,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/launch_and_record.py",
+      "public_sha256": "5b36aeecd1251e024dc1e38bfd1eaab973e343fdb3243ccd1a420abac3c4fc96",
+      "public_bytes": 4055,
+      "public_mode": "0644",
+      "line_count": 50,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "root/outer.stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/outer.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "root/outer.stdout",
+      "original_sha256": "d8327cd65d99ce5d78994a79b745d62202cdf1546145c3ce2ba01b98ee396b56",
+      "original_bytes": 603,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/outer.stdout",
+      "public_sha256": "d8327cd65d99ce5d78994a79b745d62202cdf1546145c3ce2ba01b98ee396b56",
+      "public_bytes": 603,
+      "public_mode": "0644",
+      "line_count": 1,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "root/source-bind-001/EXTERNAL-WITNESS.json",
+      "original_sha256": "6b5472e0db3c4df81cca7d0693538b089acb35c4f6cc2b3aafede28ce3cf206f",
+      "original_bytes": 484,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/source-bind-001/EXTERNAL-WITNESS.json",
+      "public_sha256": "6b5472e0db3c4df81cca7d0693538b089acb35c4f6cc2b3aafede28ce3cf206f",
+      "public_bytes": 484,
+      "public_mode": "0644",
+      "line_count": 10,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "root/source-bind-001/INVOCATION-PLAN.json",
+      "original_sha256": "ac7acfce173c171bbb687c9ab770ff851e7af6b382967058d2324245658fbc64",
+      "original_bytes": 2171,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/source-bind-001/INVOCATION-PLAN.json",
+      "public_sha256": "87a1508a2b11e26dd4c49c35b8260e0963f8a04e08355149e38acd7eb5d97eb2",
+      "public_bytes": 1703,
+      "public_mode": "0644",
+      "line_count": 46,
+      "replacements": {
+        "PYENV_HOME_LOCATOR": 2,
+        "NUMERICAL_PACKET_LOCATOR": 1,
+        "WORKTREE_LOCATOR": 3,
+        "RUSTUP_HOME_LOCATOR": 3,
+        "HOMEBREW_PREFIX_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "root/source-bind-001/POST-BIND-CLOSURE.json",
+      "original_sha256": "322931bd5f85382ff5ddc509e4e738dbd24f0568bf0b86b3b7f377c47e99267e",
+      "original_bytes": 1553,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/source-bind-001/POST-BIND-CLOSURE.json",
+      "public_sha256": "322931bd5f85382ff5ddc509e4e738dbd24f0568bf0b86b3b7f377c47e99267e",
+      "public_bytes": 1553,
+      "public_mode": "0644",
+      "line_count": 37,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "root/source-bind-001/RESULT.json",
+      "original_sha256": "acff1922bd2b26ee2c786a2ebf98e2cbe9c494eff7f06b875ad905ffc46e93d1",
+      "original_bytes": 3150,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/source-bind-001/RESULT.json",
+      "public_sha256": "c356999429be87c8ac92a23fae3a1265a7d87f635bde2d6f680ebf0d561e17fb",
+      "public_bytes": 2718,
+      "public_mode": "0644",
+      "line_count": 78,
+      "replacements": {
+        "PYENV_HOME_LOCATOR": 3,
+        "NUMERICAL_PACKET_LOCATOR": 2,
+        "WORKTREE_LOCATOR": 1,
+        "RUSTUP_HOME_LOCATOR": 3,
+        "HOMEBREW_PREFIX_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "root/source-bind-001/SOURCE-BIND-OBSERVATION-MANIFEST.json",
+      "original_sha256": "43813af86b042e5bf5b85afa5eeb00ec6fb1526330ef785f2f5082ce980aa4f9",
+      "original_bytes": 2399,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/source-bind-001/SOURCE-BIND-OBSERVATION-MANIFEST.json",
+      "public_sha256": "43813af86b042e5bf5b85afa5eeb00ec6fb1526330ef785f2f5082ce980aa4f9",
+      "public_bytes": 2399,
+      "public_mode": "0644",
+      "line_count": 75,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "root/source-bind-001/SOURCE-BIND-RECEIPT.json",
+      "original_sha256": "4b7f12f1af55e581b0f0f39d134c013715a8459ba3bb2f632af1a500b9e6000c",
+      "original_bytes": 3135,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/source-bind-001/SOURCE-BIND-RECEIPT.json",
+      "public_sha256": "2864c98fba9f98ed200dea6afbcd48bd107d423911027e3a67da922dbb0b699d",
+      "public_bytes": 2851,
+      "public_mode": "0644",
+      "line_count": 63,
+      "replacements": {
+        "PYENV_HOME_LOCATOR": 1,
+        "NUMERICAL_PACKET_LOCATOR": 2
+      }
+    },
+    {
+      "private_source_id": "root/source-bind-001/STARTED.json",
+      "original_sha256": "e5ffded6e5a3c51713e407dd8933933503862c084e8b3bb0c6bc2d75643ef058",
+      "original_bytes": 992,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/source-bind-001/STARTED.json",
+      "public_sha256": "5f62fbb4d7c1226f035b4e90fcec70096996ef051e0eeec3654f66f0087e9292",
+      "public_bytes": 844,
+      "public_mode": "0644",
+      "line_count": 29,
+      "replacements": {
+        "PYENV_HOME_LOCATOR": 1,
+        "NUMERICAL_PACKET_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "root/source-bind-001/observe_source_bind.py",
+      "original_sha256": "887217280ae7f76dd2b6ea12204e3551ac86c63959ef0977871893cba5da4813",
+      "original_bytes": 2872,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/source-bind-001/observe_source_bind.py",
+      "public_sha256": "887217280ae7f76dd2b6ea12204e3551ac86c63959ef0977871893cba5da4813",
+      "public_bytes": 2872,
+      "public_mode": "0644",
+      "line_count": 38,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "root/source-bind-001/stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/source-bind-001/stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "root/source-bind-001/stdout",
+      "original_sha256": "935f87e27d9b80aa5ae68ba3b5c60d7070c94250b0e05d5979ca065fe0ffd77d",
+      "original_bytes": 244,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/source-bind-001/stdout",
+      "public_sha256": "935f87e27d9b80aa5ae68ba3b5c60d7070c94250b0e05d5979ca065fe0ffd77d",
+      "public_bytes": 244,
+      "public_mode": "0644",
+      "line_count": 1,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "root/supervise.py",
+      "original_sha256": "fec24c8c819a026098813adab63e3ed13b442d64d4ba34b520908f342db4308d",
+      "original_bytes": 7247,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/root/supervise.py",
+      "public_sha256": "fec24c8c819a026098813adab63e3ed13b442d64d4ba34b520908f342db4308d",
+      "public_bytes": 7247,
+      "public_mode": "0644",
+      "line_count": 116,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "post-case/NUMERICAL-FREEZE.json",
+      "original_sha256": "4f296255d49687e8020c048754abfda895034e8ea425bcfaa054bc3a80fe51a9",
+      "original_bytes": 6422,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/post-case/NUMERICAL-FREEZE.json",
+      "public_sha256": "4f296255d49687e8020c048754abfda895034e8ea425bcfaa054bc3a80fe51a9",
+      "public_bytes": 6422,
+      "public_mode": "0644",
+      "line_count": 207,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "post-case/ROOT-OUTCOME.json",
+      "original_sha256": "f2c2a6666551f99eb6570297d980b252efe299bc4684a1d5612cb51691fc35bd",
+      "original_bytes": 3614,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/post-case/ROOT-OUTCOME.json",
+      "public_sha256": "f2c2a6666551f99eb6570297d980b252efe299bc4684a1d5612cb51691fc35bd",
+      "public_bytes": 3614,
+      "public_mode": "0644",
+      "line_count": 219,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "producer-build-001/PLAN.json",
+      "original_sha256": "8b0cb0e3a5461be41ab3a1739478b2ad989f1cba2d34df50e107d6d92e3a0e74",
+      "original_bytes": 2589,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/producer-build-001/PLAN.json",
+      "public_sha256": "278f31fb3894153136c228d193d019ce73aa05ea5ecbee2fded121eda9ab41c0",
+      "public_bytes": 2205,
+      "public_mode": "0644",
+      "line_count": 47,
+      "replacements": {
+        "RUSTUP_HOME_LOCATOR": 4,
+        "PYENV_HOME_LOCATOR": 2,
+        "HOMEBREW_PREFIX_LOCATOR": 2,
+        "NUMERICAL_PACKET_LOCATOR": 1,
+        "WORKTREE_LOCATOR": 2
+      }
+    },
+    {
+      "private_source_id": "producer-build-001/POSTCASE.json",
+      "original_sha256": "658a4565da591a526c41adaeaf578bd139c86b1ba5542557cf00d68ef49114ae",
+      "original_bytes": 457,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/producer-build-001/POSTCASE.json",
+      "public_sha256": "658a4565da591a526c41adaeaf578bd139c86b1ba5542557cf00d68ef49114ae",
+      "public_bytes": 457,
+      "public_mode": "0644",
+      "line_count": 11,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "producer-build-001/RESULT.json",
+      "original_sha256": "1e89df03abe699fab4ed28d9fb0f5ac293a8a2ddfcb5a162cd819bd1460b3d28",
+      "original_bytes": 1199,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/producer-build-001/RESULT.json",
+      "public_sha256": "52d9e68d8f1b788562fca233f82382ad8d60ce65f2ca1671f4422da65cd507a2",
+      "public_bytes": 1063,
+      "public_mode": "0644",
+      "line_count": 33,
+      "replacements": {
+        "NUMERICAL_PACKET_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "producer-build-001/STARTED.json",
+      "original_sha256": "170715ab84e68463fb99cc5ab0216a62963d148b62de2489b6dd5db309b90461",
+      "original_bytes": 196,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/producer-build-001/STARTED.json",
+      "public_sha256": "170715ab84e68463fb99cc5ab0216a62963d148b62de2489b6dd5db309b90461",
+      "public_bytes": 196,
+      "public_mode": "0644",
+      "line_count": 7,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "producer-build-001/TERMINAL.json",
+      "original_sha256": "7a8506bdd23fc797b9599952390fe766e5727a31f9b3e2ded91072a416e134b4",
+      "original_bytes": 368,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/producer-build-001/TERMINAL.json",
+      "public_sha256": "a4f6a9cda3d952d2ef6892910abe31dbe8c6a3198ae2cb4e44ce94b8a0890f4a",
+      "public_bytes": 232,
+      "public_mode": "0644",
+      "line_count": 5,
+      "replacements": {
+        "NUMERICAL_PACKET_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "producer-build-001/run-initial-unarmed.py",
+      "original_sha256": "c491deb485197ebc2b8a11c4b7b1f38ad3c28a3b3177ef7e2360e3098e285c85",
+      "original_bytes": 4089,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/producer-build-001/run-initial-unarmed.py",
+      "public_sha256": "c491deb485197ebc2b8a11c4b7b1f38ad3c28a3b3177ef7e2360e3098e285c85",
+      "public_bytes": 4089,
+      "public_mode": "0644",
+      "line_count": 50,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "producer-build-002/PLAN.json",
+      "original_sha256": "76e6b8ceb6b8e2d418141127c4b2b39cb8a22134d062dac93e49a293afd6db07",
+      "original_bytes": 2935,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/producer-build-002/PLAN.json",
+      "public_sha256": "39799167010421bcdd375480eb714fc1bd7505f3372a6ed98ce1eabb7d62f714",
+      "public_bytes": 2501,
+      "public_mode": "0644",
+      "line_count": 53,
+      "replacements": {
+        "RUSTUP_HOME_LOCATOR": 4,
+        "PYENV_HOME_LOCATOR": 2,
+        "HOMEBREW_PREFIX_LOCATOR": 2,
+        "NUMERICAL_PACKET_LOCATOR": 1,
+        "WORKTREE_LOCATOR": 2,
+        "WORKTREE_CONTAINER": 1
+      }
+    },
+    {
+      "private_source_id": "producer-build-002/POSTCASE.json",
+      "original_sha256": "5fcffa9059993d858d110a71d142bcb8fc12640739268c292ec393c3f46d5903",
+      "original_bytes": 1203,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/producer-build-002/POSTCASE.json",
+      "public_sha256": "575b111a1c4f1db17720232ba21ac3c4531934db20f079789c57e384f2f07253",
+      "public_bytes": 1111,
+      "public_mode": "0644",
+      "line_count": 22,
+      "replacements": {
+        "WORKTREE_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "producer-build-002/RESULT.json",
+      "original_sha256": "0bf4d16fc23507b36b867af516c82a832bde510690504f67dc5fad22f7a06062",
+      "original_bytes": 15919,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/producer-build-002/RESULT.json",
+      "public_sha256": "0bf4d16fc23507b36b867af516c82a832bde510690504f67dc5fad22f7a06062",
+      "public_bytes": 15919,
+      "public_mode": "0644",
+      "line_count": 1093,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "producer-build-002/STARTED.json",
+      "original_sha256": "f95460b97b963074f31bc45676f8412406fa6f5343045146edf21e993d8b183b",
+      "original_bytes": 196,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/producer-build-002/STARTED.json",
+      "public_sha256": "f95460b97b963074f31bc45676f8412406fa6f5343045146edf21e993d8b183b",
+      "public_bytes": 196,
+      "public_mode": "0644",
+      "line_count": 7,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "producer-build-002/TERMINAL.json",
+      "original_sha256": "3576519869c7f11751d4169035e3ca3699da43acb98ed163f0b3063430f5c4d8",
+      "original_bytes": 144,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/producer-build-002/TERMINAL.json",
+      "public_sha256": "3576519869c7f11751d4169035e3ca3699da43acb98ed163f0b3063430f5c4d8",
+      "public_bytes": 144,
+      "public_mode": "0644",
+      "line_count": 5,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "producer-build-002/owner.stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/producer-build-002/owner.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "producer-build-002/owner.stdout",
+      "original_sha256": "c688cbb15c25feca56778b6f714deb6fdde0ccb90fc4b15f4054aabffa243f1c",
+      "original_bytes": 521,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/producer-build-002/owner.stdout",
+      "public_sha256": "c688cbb15c25feca56778b6f714deb6fdde0ccb90fc4b15f4054aabffa243f1c",
+      "public_bytes": 521,
+      "public_mode": "0644",
+      "line_count": 2,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "producer-build-002/run.py",
+      "original_sha256": "5e9bfe1e77c78060b5758646888c03a6a99dbdf40418b88c23c1334d0255b754",
+      "original_bytes": 4409,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/producer-build-002/run.py",
+      "public_sha256": "5e9bfe1e77c78060b5758646888c03a6a99dbdf40418b88c23c1334d0255b754",
+      "public_bytes": 4409,
+      "public_mode": "0644",
+      "line_count": 57,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "clean-xtask/EXTERNAL-TERMINAL.json",
+      "original_sha256": "7d538449abffafd6592e4e9a99431d180ceca476919cdfcbecbacfa838ab08d5",
+      "original_bytes": 750,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/EXTERNAL-TERMINAL.json",
+      "public_sha256": "7d538449abffafd6592e4e9a99431d180ceca476919cdfcbecbacfa838ab08d5",
+      "public_bytes": 750,
+      "public_mode": "0644",
+      "line_count": 18,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "clean-xtask/LAUNCH.json",
+      "original_sha256": "ab422516c9bf5544ed6ac515503f3ee13e866b6b527cee6fb791fd851d640505",
+      "original_bytes": 416,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/LAUNCH.json",
+      "public_sha256": "ab422516c9bf5544ed6ac515503f3ee13e866b6b527cee6fb791fd851d640505",
+      "public_bytes": 416,
+      "public_mode": "0644",
+      "line_count": 14,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "clean-xtask/POST-TERMINAL-CLOCK.json",
+      "original_sha256": "11ad69f2db3a5d8bc60c5606be4ba8ade19f4298cfc4edfdbe6bb8b091b123ca",
+      "original_bytes": 575,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/POST-TERMINAL-CLOCK.json",
+      "public_sha256": "11ad69f2db3a5d8bc60c5606be4ba8ade19f4298cfc4edfdbe6bb8b091b123ca",
+      "public_bytes": 575,
+      "public_mode": "0644",
+      "line_count": 12,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "clean-xtask/ROOT-GO.json",
+      "original_sha256": "dd9d9c1bd598c713b7e4cbf86d643a5c82dd066a974c5a1242ad454aee02b981",
+      "original_bytes": 1404,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/ROOT-GO.json",
+      "public_sha256": "31e8fbafe0c2d2eb8eff1d8dd81188c11c7d0490b53abefbf094e8b20558e0c9",
+      "public_bytes": 1268,
+      "public_mode": "0644",
+      "line_count": 34,
+      "replacements": {
+        "WORKTREE_LOCATOR": 1,
+        "RUSTUP_HOME_LOCATOR": 3,
+        "PYENV_HOME_LOCATOR": 1,
+        "HOMEBREW_PREFIX_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "clean-xtask/controller.stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/controller.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "clean-xtask/controller.stdout",
+      "original_sha256": "13ed4110a57267949b63bd49e04cdc59367a87a9175a8096c5e293afbccdd674",
+      "original_bytes": 388,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/controller.stdout",
+      "public_sha256": "13ed4110a57267949b63bd49e04cdc59367a87a9175a8096c5e293afbccdd674",
+      "public_bytes": 388,
+      "public_mode": "0644",
+      "line_count": 2,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "clean-xtask/launch.py",
+      "original_sha256": "9822de99739f36ef803ee9f7b0b9eaa41203a7a5d11dc63b43707316e181a97d",
+      "original_bytes": 3676,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/launch.py",
+      "public_sha256": "988a207184db66fb64277921909abce1559fcdb58065f3f452b1877815d45939",
+      "public_bytes": 3664,
+      "public_mode": "0644",
+      "line_count": 40,
+      "replacements": {
+        "PYENV_HOME_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "clean-xtask/runfull.py",
+      "original_sha256": "5d12cd06407c8e610bcbb544680a02a183533b74812f94ec0bbf01c79e5de133",
+      "original_bytes": 8005,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/runfull.py",
+      "public_sha256": "5d12cd06407c8e610bcbb544680a02a183533b74812f94ec0bbf01c79e5de133",
+      "public_bytes": 8005,
+      "public_mode": "0644",
+      "line_count": 140,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "clean-xtask/verify-001/RESULT.json",
+      "original_sha256": "ec77c63871c0f21c63a90ec4130e714c23c4ee42bae083aef70a0090f263634a",
+      "original_bytes": 18879,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/verify-001/RESULT.json",
+      "public_sha256": "641a41b5ece7d743683122ced4770aa1597c88d68b902f7181c5e800b3709ce1",
+      "public_bytes": 18591,
+      "public_mode": "0644",
+      "line_count": 530,
+      "replacements": {
+        "WORKTREE_LOCATOR": 3,
+        "RUSTUP_HOME_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "clean-xtask/verify-001/STARTED.json",
+      "original_sha256": "4b07a4e62c6aae81b26458f1e4aa98f399b88ba1e43cd5dff579d7abe5d0fe47",
+      "original_bytes": 270,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/verify-001/STARTED.json",
+      "public_sha256": "4b07a4e62c6aae81b26458f1e4aa98f399b88ba1e43cd5dff579d7abe5d0fe47",
+      "public_bytes": 270,
+      "public_mode": "0644",
+      "line_count": 9,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "clean-xtask/verify-001/TERMINAL.json",
+      "original_sha256": "9f5d9132d58c8d3e5562219f31bd1f05136465fbb1e69156173cf8453b83e921",
+      "original_bytes": 160,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/verify-001/TERMINAL.json",
+      "public_sha256": "9f5d9132d58c8d3e5562219f31bd1f05136465fbb1e69156173cf8453b83e921",
+      "public_bytes": 160,
+      "public_mode": "0644",
+      "line_count": 5,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "clean-xtask/verify-001/cargo-xtask-verify-RESULT.json",
+      "original_sha256": "052c58b490c3f3bd6c864d29b8e1441894fb9956c5792cdc80885e826f02c827",
+      "original_bytes": 1280,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/verify-001/cargo-xtask-verify-RESULT.json",
+      "public_sha256": "fb20a809fb3829541917964fe2c2f1939459c9c74f5e1ea0646c89b6fd8fa314",
+      "public_bytes": 1176,
+      "public_mode": "0644",
+      "line_count": 40,
+      "replacements": {
+        "RUSTUP_HOME_LOCATOR": 1,
+        "WORKTREE_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "clean-xtask/verify-001/cargo-xtask-verify-STARTED.json",
+      "original_sha256": "bd885fcca4701aff1d19201063aba51a29f1f3e9686092c3b9bef8554a65b7f1",
+      "original_bytes": 1031,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/verify-001/cargo-xtask-verify-STARTED.json",
+      "public_sha256": "50251360cb62ff26b7f71b0206d8f2dbc862fe55273247473d4784052f367e6b",
+      "public_bytes": 927,
+      "public_mode": "0644",
+      "line_count": 33,
+      "replacements": {
+        "RUSTUP_HOME_LOCATOR": 1,
+        "WORKTREE_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "clean-xtask/verify-001/cargo-xtask-verify.stderr",
+      "original_sha256": "9762c1566621356562a87c027f57b12ec4dcdae0c8ca80738c382955afaf2c87",
+      "original_bytes": 1475,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/verify-001/cargo-xtask-verify.stderr",
+      "public_sha256": "9345edf724c1124e687c4155ab885206a4bd83e4d9d6ad7c7673a606afa35786",
+      "public_bytes": 1015,
+      "public_mode": "0644",
+      "line_count": 27,
+      "replacements": {
+        "WORKTREE_LOCATOR": 5
+      }
+    },
+    {
+      "private_source_id": "clean-xtask/verify-001/cargo-xtask-verify.stdout",
+      "original_sha256": "929afcb2f9fe39f1cf434544ade7b2d41f134c2d44285ffd90148a10071d775c",
+      "original_bytes": 2757,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/verify-001/cargo-xtask-verify.stdout",
+      "public_sha256": "929afcb2f9fe39f1cf434544ade7b2d41f134c2d44285ffd90148a10071d775c",
+      "public_bytes": 2757,
+      "public_mode": "0644",
+      "line_count": 36,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "clean-xtask/verify-001.json",
+      "original_sha256": "5e76c20174e1a12b7376d8cfbf900b5861165c2338e822360651f0a6b254404a",
+      "original_bytes": 134273,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/verify-001.json",
+      "public_sha256": "57657295d9704dabca00f0125d67873fa1d7f2dd34d4af0d0a635b765cedd653",
+      "public_bytes": 123423,
+      "public_mode": "0644",
+      "line_count": 1427,
+      "replacements": {
+        "CARGO_HOME_LOCATOR": 822,
+        "WORKTREE_LOCATOR": 6,
+        "RUSTUP_HOME_LOCATOR": 10,
+        "PYENV_HOME_LOCATOR": 2,
+        "HOMEBREW_PREFIX_LOCATOR": 1,
+        "HOME_PARENT_LOCATOR": 2,
+        "WORKSPACE_BASE": 2,
+        "WORKSPACE_CONTAINER": 2,
+        "WORKSPACE_PARENT": 2,
+        "REPOSITORY_ROOT": 2,
+        "WORKTREE_CONTAINER": 2
+      }
+    },
+    {
+      "private_source_id": "clean-xtask/post-case/ROOT-CLOSURE.json",
+      "original_sha256": "19d061acee1ee6a73b3f3caccf17614a59f7b922955e45824de88a9916b86e84",
+      "original_bytes": 22403,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/post-case/ROOT-CLOSURE.json",
+      "public_sha256": "fe64accf7dbf4f13901e32b82a75a605d955f56d107b1a327d5815b28a943fef",
+      "public_bytes": 22311,
+      "public_mode": "0644",
+      "line_count": 220,
+      "replacements": {
+        "WORKTREE_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "optimized-build/EXTERNAL-TERMINAL.json",
+      "original_sha256": "1c8f56b1db888633a5f1ba2b21f0e123fb2ed4420e151a541c79c83f6af11d6f",
+      "original_bytes": 746,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/EXTERNAL-TERMINAL.json",
+      "public_sha256": "1c8f56b1db888633a5f1ba2b21f0e123fb2ed4420e151a541c79c83f6af11d6f",
+      "public_bytes": 746,
+      "public_mode": "0644",
+      "line_count": 18,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "optimized-build/LAUNCH.json",
+      "original_sha256": "1dd26b4975b5111ef833a7ed4a084b9dcb630a6d0e231070002c9ed2c124b81a",
+      "original_bytes": 414,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/LAUNCH.json",
+      "public_sha256": "1dd26b4975b5111ef833a7ed4a084b9dcb630a6d0e231070002c9ed2c124b81a",
+      "public_bytes": 414,
+      "public_mode": "0644",
+      "line_count": 14,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "optimized-build/POST-TERMINAL-CLOCK.json",
+      "original_sha256": "b8579a143fcee994824c75dadc17c99cff659b41c8269d94014c6b5921e44b02",
+      "original_bytes": 575,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/POST-TERMINAL-CLOCK.json",
+      "public_sha256": "b8579a143fcee994824c75dadc17c99cff659b41c8269d94014c6b5921e44b02",
+      "public_bytes": 575,
+      "public_mode": "0644",
+      "line_count": 12,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "optimized-build/ROOT-GO.json",
+      "original_sha256": "1541275411b9297e655a7b26b93a145104700373b9b0e407fa6b5e1a65a6b23a",
+      "original_bytes": 913,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/ROOT-GO.json",
+      "public_sha256": "1274e4a1f46f7453cb2cca1a73175384aa5513ffc6fc621df9b916259217972f",
+      "public_bytes": 893,
+      "public_mode": "0644",
+      "line_count": 13,
+      "replacements": {
+        "RUSTUP_HOME_LOCATOR": 1,
+        "PYENV_HOME_LOCATOR": 1,
+        "HOMEBREW_PREFIX_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "optimized-build/build-001/PROFILE-BINDING.json",
+      "original_sha256": "18afcda55a517ce8500d9b19e37cee9e309b11838d11975e1d23b393d37a82d2",
+      "original_bytes": 6471,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001/PROFILE-BINDING.json",
+      "public_sha256": "077df5bd176d079645bc67ba1daa58778fbc98b9b8e9509e13d95a98f06a7e76",
+      "public_bytes": 4469,
+      "public_mode": "0644",
+      "line_count": 29,
+      "replacements": {
+        "WORKTREE_LOCATOR": 21,
+        "RUSTUP_HOME_LOCATOR": 4,
+        "HOME_LOCATOR": 2
+      }
+    },
+    {
+      "private_source_id": "optimized-build/build-001/RESULT.json",
+      "original_sha256": "86b1556856de40b3893f3f96af768de070a42ecf4a82b6e270c466f6ba2bdd65",
+      "original_bytes": 18827,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001/RESULT.json",
+      "public_sha256": "435e0c090680427e8b7569a65cc60ee965c5e96befc394f609e480110c2eac6e",
+      "public_bytes": 18539,
+      "public_mode": "0644",
+      "line_count": 533,
+      "replacements": {
+        "WORKTREE_LOCATOR": 3,
+        "RUSTUP_HOME_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "optimized-build/build-001/STARTED.json",
+      "original_sha256": "9ec7f98400a11d91a56a8b2f91ed45a8af2602bde5fc053b73940814b5281dcd",
+      "original_bytes": 269,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001/STARTED.json",
+      "public_sha256": "9ec7f98400a11d91a56a8b2f91ed45a8af2602bde5fc053b73940814b5281dcd",
+      "public_bytes": 269,
+      "public_mode": "0644",
+      "line_count": 9,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "optimized-build/build-001/TERMINAL.json",
+      "original_sha256": "f3869f3bccb137afd3249e56550c07e8420f4015dabf15f9692c8d22fc4bec1d",
+      "original_bytes": 160,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001/TERMINAL.json",
+      "public_sha256": "f3869f3bccb137afd3249e56550c07e8420f4015dabf15f9692c8d22fc4bec1d",
+      "public_bytes": 160,
+      "public_mode": "0644",
+      "line_count": 5,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "optimized-build/build-001/native-cli-release-build-RESULT.json",
+      "original_sha256": "fb59e750711561b09bd24f9b6cfc76134a2daaf71ba2d590f78fca776e08f86e",
+      "original_bytes": 1384,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001/native-cli-release-build-RESULT.json",
+      "public_sha256": "d32d3cb65bd2fa01aa5f16ff34ba963344c0ee0df14786e9bdeb7fdc375b019d",
+      "public_bytes": 1280,
+      "public_mode": "0644",
+      "line_count": 47,
+      "replacements": {
+        "RUSTUP_HOME_LOCATOR": 1,
+        "WORKTREE_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "optimized-build/build-001/native-cli-release-build-STARTED.json",
+      "original_sha256": "f6e861c0e2fffc5f7a5c73170843eb4c78e71f7436f4de5f27c047bcadbfd983",
+      "original_bytes": 1136,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001/native-cli-release-build-STARTED.json",
+      "public_sha256": "4332d1496a475fda8c2df7a5d093ea518472b00ff099f3e463f63c513acdc0b6",
+      "public_bytes": 1032,
+      "public_mode": "0644",
+      "line_count": 40,
+      "replacements": {
+        "RUSTUP_HOME_LOCATOR": 1,
+        "WORKTREE_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "optimized-build/build-001/native-cli-release-build.stderr",
+      "original_sha256": "813b0d012f075d00fa58bb2212766f0bbe408cc1bf2da1f4fb58f8e83fb22630",
+      "original_bytes": 16915,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001/native-cli-release-build.stderr",
+      "public_sha256": "5bc25ded8fbceda9ca5a097553ca4d17088ac1773bf0fa11995c6432779dc8d8",
+      "public_bytes": 12819,
+      "public_mode": "0644",
+      "line_count": 192,
+      "replacements": {
+        "WORKTREE_LOCATOR": 43,
+        "RUSTUP_HOME_LOCATOR": 8,
+        "HOME_LOCATOR": 4
+      }
+    },
+    {
+      "private_source_id": "optimized-build/build-001/native-cli-release-build.stdout",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001/native-cli-release-build.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "optimized-build/build-001.json",
+      "original_sha256": "4d9643555275b5284de971e4438692c898d79780e9d5f27abf83b44c91425e95",
+      "original_bytes": 135588,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001.json",
+      "public_sha256": "33db9bf67bba1fbc1494aa4ee442a0c39c6bf503f4c916effefe84c12cdfb68e",
+      "public_bytes": 124711,
+      "public_mode": "0644",
+      "line_count": 1459,
+      "replacements": {
+        "CARGO_HOME_LOCATOR": 823,
+        "WORKTREE_LOCATOR": 6,
+        "HOME_LOCATOR": 1,
+        "RUSTUP_HOME_LOCATOR": 7,
+        "PYENV_HOME_LOCATOR": 2,
+        "HOMEBREW_PREFIX_LOCATOR": 1,
+        "TMPDIR_LOCATOR": 1,
+        "HOME_PARENT_LOCATOR": 2,
+        "WORKSPACE_BASE": 2,
+        "WORKSPACE_CONTAINER": 2,
+        "WORKSPACE_PARENT": 2,
+        "REPOSITORY_ROOT": 2,
+        "WORKTREE_CONTAINER": 2
+      }
+    },
+    {
+      "private_source_id": "optimized-build/controller.stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/controller.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "optimized-build/controller.stdout",
+      "original_sha256": "009c3de93adc1efad64acbd92257cb8990c9af8810b4b3d8c980c36c57a36bc4",
+      "original_bytes": 391,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/controller.stdout",
+      "public_sha256": "009c3de93adc1efad64acbd92257cb8990c9af8810b4b3d8c980c36c57a36bc4",
+      "public_bytes": 391,
+      "public_mode": "0644",
+      "line_count": 2,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "optimized-build/launch_release.py",
+      "original_sha256": "64f48ccc1ac2f07fa1a42ad223529094841391b7984a4f6d6a3c14ffed370aaf",
+      "original_bytes": 3674,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/launch_release.py",
+      "public_sha256": "5e22d3e0e9249f5d94bf62c56225ef271ad1e6f5545c2301d8ca7ba45822bb96",
+      "public_bytes": 3662,
+      "public_mode": "0644",
+      "line_count": 40,
+      "replacements": {
+        "PYENV_HOME_LOCATOR": 1
+      }
+    },
+    {
+      "private_source_id": "optimized-build/runfull.py",
+      "original_sha256": "8dba2961df2e2435b120cfb7021d2795010ad0d8a09bc31f07d9862c60d1f35a",
+      "original_bytes": 8959,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/runfull.py",
+      "public_sha256": "8dba2961df2e2435b120cfb7021d2795010ad0d8a09bc31f07d9862c60d1f35a",
+      "public_bytes": 8959,
+      "public_mode": "0644",
+      "line_count": 149,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "optimized-build/post-case/ROOT-CLOSURE.json",
+      "original_sha256": "68a4026dd97db1730e45166964bd742d6909a8135a47f9e95a16d0d59a931d03",
+      "original_bytes": 1812,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/post-case/ROOT-CLOSURE.json",
+      "public_sha256": "0f7a8c9305731d09da0e50615fae3342d9db99fb48943390988bbcc4070eb34e",
+      "public_bytes": 1628,
+      "public_mode": "0644",
+      "line_count": 37,
+      "replacements": {
+        "WORKTREE_LOCATOR": 2
+      }
+    }
+  ],
+  "authentic_whitespace_exceptions": []
+}

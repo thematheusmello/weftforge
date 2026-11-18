@@ -29,13 +29,15 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
 2. Close the first garment path. Shared soft sewing retains every energy in one
    balanced nodal history. Contact now replaces its own nodal actions and exposes
    separately attributed initial-repair projections; fitting requires zero repair
-   at initial and every accepted whole-step state. Combined source checks pass,
-   but no new full garment case has run. The original rest gate and complete
-   181-state case on ef313 retain unchanged inputs and limits: only frame 29
-   fails strain at 16.063338% against 15%. Preserve that and the older 50.9602%
-   failure. Run the exact-current all-181-state successor with unchanged physical
-   criteria after clean metadata/xtask and optimized builds. Moving-triangle
-   single-feature nonlinear contact and broader calibration remain open.
+   at initial and every accepted whole-step state. The new complete 181-state
+   case on a70c0df0 fails strain in 153 frames, 28 through 180: peak 20.243551%
+   and final 15.349281%, worse than the prior ef313 result. Supported contact,
+   finite states, uncertainty and zero recovery pass. Its raw final external
+   clock verdict remains unsealed; the separate post-case timing does not repair
+   that proof. Preserve these results, the earlier 16.063338% and 50.9602%
+   failures, and all original inputs/settings/criteria. Review and integrate the
+   capsule-contact correction, run the integrated checks, then execute a fresh
+   unchanged full case. Moving-triangle nonlinear contact and calibration remain open.
 3. Complete the real empty-document shirt workflow through the UI: create pieces,
    sew, arrange, simulate, change dimension/material, save, quit, reopen, edit and
    export. Independently verify output and compare the recorded reference case.
@@ -53,9 +55,11 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
 Actual combined source `f30c588d` passes 472 tests across 32 summaries, formatting,
 strict Clippy and native/CLI builds in 381.554 seconds within 900. Its earlier
 preflight STATUS-hash failure started no Cargo command and remains preserved.
-Selected evidence, maps and generated progress are being finalized before clean
-`cargo xtask verify`; no garment or native acceptance follows from these tests.
-The current native binary still needs its actual garment workflow.
+Clean a70c0df0 `cargo xtask verify` then passed in 264.142 seconds within 360;
+its separate optimized native/CLI build passed in 53.293 seconds within 900.
+The new runtime evidence and metadata require their own clean registry/map check
+before publication. No garment or native acceptance follows from source checks;
+the current native binary still needs its actual complete garment workflow.
 Earlier CLI/native notch results retain their 8aa source identity. All full
 feature contracts and release gates remain open.
 
