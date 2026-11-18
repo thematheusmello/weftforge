@@ -29,7 +29,7 @@
   "roadmap_accepted": false,
   "new_garment_execution": false,
   "all_delivery_gates_passed": false,
-  "freshness": "current",
+  "freshness": "stale",
   "source_hashes": {
     ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
     "Cargo.lock": "eb8a60650b473c79dda2e58a56f68b1abe9ca9a68c15115c9c8754c561732f3a",
@@ -203,7 +203,8 @@
     "parity/reports/artifacts/constructor-form-source-20261118/case-002/runfull.py": "2131da0c1b85281813f3e6be68a038db6628f6e92881bbdb42c25087d9a65335",
     "parity/reports/artifacts/constructor-form-source-20261118/case-002-post-case/ROOT-POSTCASE.json": "84a7264db021d2cd27cc486f62277b8813f3f15245d001495fc54338e7f5cb58",
     "parity/reports/artifacts/constructor-form-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "7e1959d6007090b1366c290aed7120083ba792b6f4af174751ef2ba3329e303c",
-    "parity/reports/artifacts/constructor-form-source-20261118/history/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.original.json": "3e80bc52a9f48f711dedd8c329440eadc8db5e471a9e454810c1baa0c2281194"
+    "parity/reports/artifacts/constructor-form-source-20261118/history/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.original.json": "3e80bc52a9f48f711dedd8c329440eadc8db5e471a9e454810c1baa0c2281194",
+    "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935"
   },
   "summary": "Actual f614 constructor form source passes fmt, 459 workspace tests in 32 summaries with zero failed/ignored, strict workspace all-target Clippy and native+CLI debug builds across two separately bound invocations. Case 001 stopped during workspace tests at the disk floor; its failure and partial 59 ok test lines remain unchanged. Case 002 completes only the three unfinished checks, carrying the already passed same-source fmt result. This is source-check/build evidence only.",
   "actual_workspace_test_summary": {
@@ -310,5 +311,11 @@
     "qualification": "Exact archive of the existing public report before ROOT marks its live copy stale for changed constructor source; original status, freshness-at-capture, source and outcomes remain unchanged. It supplies no current constructor execution credit."
   },
   "actual_built_binaries_qualification": "The retained built_not_launched flags describe the standalone native+CLI debug build stage only. CLI/MCP integration tests spawned CLI commands under workspace tests. No separate declared CLI, native or garment workflow case was executed.",
-  "cli_case_executed_qualification": "False denotes no separate declared CLI workflow case; CLI/MCP commands ran within workspace integration tests."
+  "cli_case_executed_qualification": "False denotes no separate declared CLI workflow case; CLI/MCP commands ran within workspace integration tests.",
+  "freshness_reason": "The declared full source scope changes in the contact-recovery integration: simulator contact/state/tests, CLI trajectory quality, native recovery diagnostics and physics/automation documentation. Original f614 source, 459-test outcome, disk-floor failure and separate successful invocation remain unchanged; the exact pre-staleness public report is archived in contact-recovery-source-20261118/history.",
+  "pre_staleness_report_archive": {
+    "path": "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json",
+    "sha256": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935",
+    "qualification": "Exact original current-source report bytes; archival does not regrade or transfer its execution."
+  }
 }

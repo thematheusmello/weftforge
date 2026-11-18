@@ -1,3 +1,49 @@
+# Contact recovery integration — 18 November 2026
+
+The end-to-end delivery goal remains active. The constructor evidence checkpoint
+is local commit `90e9558c`; the latest published draft remains PR #62 at `3e1f9ef8`.
+No garment, reference, complete feature or delivery gate is accepted.
+
+The reviewed simulator successor is now integrated as source, together with CLI
+and native diagnostic adapters. Ordinary contacts replace their own displacement
+history; capsule surface pairs retain fixed material-point supports. Frozen
+initially intersecting nonlinear pairs use a separately attributed first-substep
+kinematic repair. Its persistent projection counter appears in native/CLI
+reports. The CLI now checks initial and every accepted whole-step state, retains
+transient failures and requires zero repairs, with the original 15% strain,
+5 mm closed-seam and 2 mm contact limits. A shared recorder/test protects state
+counting and first-failure attribution. No authoring commands or MCP file-tool
+schemas change. Physics and automation documentation describe the policy and
+its limits.
+
+The isolated simulator's 94-test result remains attributed to its actual source;
+it is not transferred to this combined checkout. The constructor's 459-test
+report is retained and stale for its full dependency scope; its exact original
+report is archived. Combined formatting, expected 472 tests across 32 summaries,
+strict Clippy and native/CLI builds are pending on a fresh clean source commit.
+Generated progress will be refreshed after the new source evidence is retained;
+clean registry/map/xtask closure is required before publication. No check is
+claimed from untracked local files.
+
+Moving-triangle single-feature nonlinear contact can still stall. Initial repair
+contributes to velocity and supplies no normal-dynamics or calibration proof.
+The original 181-state Harbor case remains failed at frame 29, 16.063338% strain
+against 15%; no new garment execution or improvement is claimed. Its successor
+must check all 181 states, including a present zero recovery counter, with the
+original inputs, physics and quality thresholds.
+
+Next: finish combined local checks, build exact-current optimized binaries, run
+the unchanged full numerical case, and execute native creation/sewing/simulation/
+edit/save/quit/reopen/export with independent output inspection. The bounded
+constructor preview controller is being corrected before a fresh observed case;
+older preview failures remain unchanged. No Cargo, native or standalone model
+job is currently running. GitHub Actions are disabled at repository level and
+both workflows are disabled manually. Main and existing Pages remain unchanged.
+All 56 inventoried groups remain partial/planned; discovery, all six gates, ten
+acceptance journeys and macOS/Windows/Linux completion remain open.
+
+The prior checkpoint below retains its own source and timing attribution.
+
 # Current development checkpoint — 18 November 2026
 
 The latest published checkpoint remains [draft PR #62](https://github.com/thematheusmello/weftforge/pull/62),

@@ -35,6 +35,10 @@ fn area_mass_rest_and_reset_are_si_consistent() {
     });
     assert_eq!(cloth.diagnostics().peak_strain, rest_peak);
     assert_eq!(Diagnostics::default().peak_strain, None);
+    assert_eq!(
+        Diagnostics::default().initial_contact_recovery_projections,
+        0
+    );
     assert!((cloth.masses().iter().sum::<f64>() - 0.2).abs() < 1e-14);
     let rest = cloth.positions().to_vec();
     for _ in 0..20 {
@@ -2629,7 +2633,9 @@ fn swept_layer_crossing_is_resolved_and_ground_friction_resists_slide() {
         p[1] = 1.1;
     }
     let mut cloth = Cloth::new(input).unwrap();
-    cloth
+    assert_eq!(cloth.diagnostics().initial_intersections, 0);
+    assert_eq!(cloth.diagnostics().initial_contact_recovery_projections, 0);
+    let crossing = cloth
         .step(
             StepSettings {
                 dt: 0.02,
@@ -2641,6 +2647,7 @@ fn swept_layer_crossing_is_resolved_and_ground_friction_resists_slide() {
             || false,
         )
         .unwrap();
+    assert_eq!(crossing.initial_contact_recovery_projections, 0);
     assert!(cloth.positions()[4..].iter().all(|p| p[1] >= 1.02 - 1e-6));
     let slide = |friction| {
         let mut input = square();
@@ -2669,6 +2676,82 @@ fn swept_layer_crossing_is_resolved_and_ground_friction_resists_slide() {
     let rough = slide(0.5);
     assert!(frictionless > 0.07);
     assert!(rough.abs() < 1e-8, "rough slide={rough}");
+}
+
+#[test]
+fn transient_ground_contact_releases_at_independent_material_sewing_minimum() {
+    let positions = [[0., 1., 0.], [0., 3., 0.], [1., 3., 0.], [0., -4., 0.]];
+    let thickness = 1. / 64.;
+    let material = Material {
+        areal_density: 6.,
+        warp_stiffness: 1.,
+        weft_stiffness: 10. / 3.,
+        shear_stiffness: 1.,
+        bending_stiffness: 0.,
+        grain_angle: 0.,
+        damping: 0.,
+        friction: 0.,
+        collision_thickness: thickness,
+    };
+    let mut cloth = Cloth::new(ClothInput {
+        positions: positions.to_vec(),
+        material_uv: vec![[0., 0.], [0., 1.], [1., 1.], [0., -6.]],
+        triangles: vec![[0, 1, 2], [3, 1, 2]],
+        triangle_materials: vec![material; 2],
+        stitches: vec![Stitch {
+            a: WeightedPoint::vertex(0),
+            b: WeightedPoint::vertex(3),
+            compliance: 1.,
+        }],
+        pins: (1..4)
+            .map(|vertex| Pin {
+                vertex,
+                target: positions[vertex],
+            })
+            .collect(),
+        colliders: vec![Collider::Ground { height: -thickness }],
+    })
+    .unwrap();
+    assert_eq!(cloth.masses()[0], 1.);
+    assert!(cloth.diagnostics().initial_intersections > 0);
+    let diagnostics = cloth
+        .step(
+            StepSettings {
+                dt: 1.,
+                substeps: 1,
+                iterations: 128,
+                gravity: [0.; 3],
+                seam_closure_speed: 5.,
+            },
+            || false,
+        )
+        .unwrap();
+    let q = cloth.positions()[0];
+    let position_error = q[0].hypot(q[1] - 1.).hypot(q[2]);
+    // Direct differentiation of the independent SI energy; its unique minimum is [0,1,0].
+    let force = 2. * q[1] + 3. + (5. / 6.) * (q[1] - 3.) * ((q[1] - 3.).powi(2) - 1.);
+    println!(
+        "CONTACT_RELEASE_ORACLE {{\"q_m\":{q:?},\"position_error_m\":{position_error:.17e},\"independent_force_N\":{force:.17e},\"contacts\":{},\"pinned_ground_conflict_m\":{}}}",
+        diagnostics.contacts, diagnostics.max_contact_error
+    );
+    for (vertex, &position) in positions.iter().enumerate().skip(1) {
+        assert_eq!(cloth.positions()[vertex], position);
+    }
+    assert_eq!(diagnostics.seam_assembly_remaining, 0.);
+    assert_eq!(diagnostics.initial_contact_recovery_projections, 0);
+    assert!(
+        diagnostics.contacts > 0,
+        "transient ground contact was active"
+    );
+    assert!(q[1] > 0., "free-node ground contact is inactive");
+    assert!(
+        position_error <= 1e-7,
+        "independent unique minimum position: m; error={position_error}"
+    );
+    assert!(
+        force.abs() <= 1e-6,
+        "independent energy stationarity: N; residual={force}"
+    );
 }
 
 #[test]
@@ -2765,6 +2848,7 @@ fn finite_diagnostics_do_not_claim_satisfied_contact() {
     let result = cloth.step(settings(), || false).unwrap();
     assert!(result.finite);
     assert_eq!(result.initial_intersections, 4);
+    assert_eq!(result.initial_contact_recovery_projections, 0);
     assert!(result.max_contact_error > 1.);
     assert_eq!(result.contacts, 0);
 }
@@ -3019,6 +3103,118 @@ fn edge_capsule_input() -> ClothInput {
 }
 
 #[test]
+fn initial_recovery_is_transactional_first_substep_only_and_rearmed_by_reset() {
+    use std::cell::Cell;
+    let mut input = edge_capsule_input();
+    input.positions[2][0] = -0.;
+    input.pins.push(Pin {
+        vertex: 2,
+        target: input.positions[2],
+    });
+    let initial = Cloth::new(input).unwrap();
+    let initial_state = format!("{initial:?}");
+    assert_eq!(initial.diagnostics().initial_intersections, 1);
+    assert_eq!(
+        initial.diagnostics().initial_contact_recovery_projections,
+        0
+    );
+    let single = StepSettings {
+        iterations: 1,
+        ..settings()
+    };
+    let mut first = initial.clone();
+    let first_diagnostics = first.step(single, || false).unwrap();
+    assert!(first_diagnostics.initial_contact_recovery_projections > 0);
+    assert!((first.positions()[0][2] - 0.25).abs() <= 1e-14);
+    assert!((first.velocities()[0][2] - 15.).abs() <= 1e-12);
+    assert!(first_diagnostics.kinetic_energy > 0.);
+    let provenance = format!("{:?}", first.initial_recovery_provenance);
+    let mut second = first.clone();
+    let second_diagnostics = second.step(single, || false).unwrap();
+    assert!(second_diagnostics.contacts > 0);
+    assert_eq!(
+        second_diagnostics.initial_contact_recovery_projections,
+        first_diagnostics.initial_contact_recovery_projections
+    );
+    assert_eq!(
+        format!("{:?}", second.initial_recovery_provenance),
+        provenance
+    );
+
+    let combined_settings = StepSettings {
+        dt: 2. * single.dt,
+        substeps: 2,
+        ..single
+    };
+    let total = Cell::new(0);
+    let mut combined = initial.clone();
+    let combined_diagnostics = combined
+        .step(combined_settings, || {
+            total.set(total.get() + 1);
+            false
+        })
+        .unwrap();
+    assert_eq!(combined.positions(), second.positions());
+    assert_eq!(combined.velocities(), second.velocities());
+    assert_eq!(combined.simulation_time(), second.simulation_time());
+    assert_eq!(
+        combined_diagnostics.initial_contact_recovery_projections,
+        first_diagnostics.initial_contact_recovery_projections
+    );
+    assert_eq!(
+        format!("{:?}", combined.initial_recovery_provenance),
+        provenance
+    );
+    assert_eq!(
+        format!("{:?}", combined.input),
+        format!("{:?}", initial.input)
+    );
+    assert_eq!(
+        combined.positions()[2].map(f64::to_bits),
+        initial.positions()[2].map(f64::to_bits)
+    );
+    assert_eq!(combined.velocities()[2], [0.; 3]);
+
+    for stop_at in 1..=total.get() {
+        let mut cancelled = initial.clone();
+        let calls = Cell::new(0);
+        assert_eq!(
+            cancelled
+                .step(combined_settings, || {
+                    calls.set(calls.get() + 1);
+                    calls.get() == stop_at
+                })
+                .unwrap_err(),
+            SimulationError::Cancelled
+        );
+        assert_eq!(calls.get(), stop_at);
+        assert_eq!(format!("{cancelled:?}"), initial_state);
+    }
+    let mut overflow = initial.clone();
+    overflow.initial_recovery_provenance.projections = usize::MAX;
+    let before_failure = format!("{overflow:?}");
+    assert!(matches!(
+        overflow.step(single, || false),
+        Err(SimulationError::Unstable(_))
+    ));
+    assert_eq!(format!("{overflow:?}"), before_failure);
+
+    combined.reset();
+    assert_eq!(format!("{combined:?}"), initial_state);
+    let rearmed = combined.step(single, || false).unwrap();
+    assert_eq!(combined.positions(), first.positions());
+    assert_eq!(combined.velocities(), first.velocities());
+    assert_eq!(
+        rearmed.initial_contact_recovery_projections,
+        first_diagnostics.initial_contact_recovery_projections
+    );
+    assert_eq!(
+        format!("{:?}", combined.initial_recovery_provenance),
+        provenance
+    );
+}
+
+#[test]
 fn capsule_surface_projection_uses_barycentric_inverse_masses_and_existing_friction() {
     let input = edge_capsule_input();
     for &p in &input.positions {
@@ -3032,7 +3228,12 @@ fn capsule_surface_projection_uses_barycentric_inverse_masses_and_existing_frict
         let previous: Vec<_> = x.iter().map(|&p| sub(p, [0.1, 0., 0.])).collect();
         assert_eq!(
             cloth
-                .project_colliders(&mut x, &previous, &|| false)
+                .project_colliders(
+                    &mut x,
+                    &previous,
+                    &mut contact::ContactState::default(),
+                    &|| false,
+                )
                 .unwrap(),
             1
         );
@@ -3064,9 +3265,11 @@ fn capsule_surface_fixed_nodes_report_conflict_and_reset_restores_full_occupancy
     let result = cloth.step(settings(), || false).unwrap();
     assert!(result.finite);
     assert_eq!(result.contacts, 0);
+    assert_eq!(result.initial_contact_recovery_projections, 0);
     assert!((result.max_contact_error - 0.15).abs() < 1e-14);
     assert_eq!(cloth.positions(), rest);
     cloth.reset();
+    assert_eq!(cloth.diagnostics().initial_contact_recovery_projections, 0);
     assert_eq!(cloth.diagnostics().initial_intersections, 1);
     assert!((cloth.diagnostics().max_contact_error - 0.15).abs() < 1e-14);
     assert_eq!(cloth.diagnostics().capsule_surface_uncertain_pairs, 0);
@@ -3222,19 +3425,29 @@ fn capsule_projection_and_final_surface_analysis_cancellation_preserve_the_accep
     let previous = accepted.input.positions.clone();
     let mut candidate = previous.clone();
     accepted
-        .project_colliders(&mut candidate, &previous, &|| {
-            collider_calls.set(collider_calls.get() + 1);
-            false
-        })
+        .project_colliders(
+            &mut candidate,
+            &previous,
+            &mut contact::ContactState::default(),
+            &|| {
+                collider_calls.set(collider_calls.get() + 1);
+                false
+            },
+        )
         .unwrap();
     assert_ne!(candidate, previous);
     let calls = Cell::new(0);
     let mut partial = previous.clone();
     assert!(matches!(
-        accepted.project_colliders(&mut partial, &previous, &|| {
-            calls.set(calls.get() + 1);
-            calls.get() == collider_calls.get()
-        }),
+        accepted.project_colliders(
+            &mut partial,
+            &previous,
+            &mut contact::ContactState::default(),
+            &|| {
+                calls.set(calls.get() + 1);
+                calls.get() == collider_calls.get()
+            }
+        ),
         Err(SimulationError::Cancelled)
     ));
     assert_ne!(partial, previous);

@@ -14,6 +14,9 @@ mod mcp;
 type Result<T> = std::result::Result<T, Box<dyn Error>>;
 const MAX_COMMANDS: usize = 1024;
 const MAX_COMMAND_BYTES: u64 = 1024 * 1024;
+const FIT_MAX_STRETCH_ERROR: f64 = 0.15;
+const FIT_MAX_SEAM_ERROR: f64 = 0.005;
+const FIT_MAX_CONTACT_ERROR: f64 = 0.002;
 
 #[derive(Clone, Copy, Deserialize, Serialize)]
 #[serde(
@@ -463,13 +466,26 @@ fn distinct(input: &str, output: &str) -> Result<()> {
     }
 }
 
-fn fit_quality(d: &Diagnostics) -> bool {
+fn fit_state_quality(d: &Diagnostics) -> bool {
     d.finite
-        && d.seam_assembly_remaining == 0.
-        && d.max_stretch_error < 0.15
-        && d.max_seam_error < 0.005
-        && d.max_contact_error < 0.002
+        && d.seam_assembly_remaining.is_finite()
+        && d.seam_assembly_remaining >= 0.
+        && d.max_stretch_error < FIT_MAX_STRETCH_ERROR
+        && (d.seam_assembly_remaining > 0. || d.max_seam_error < FIT_MAX_SEAM_ERROR)
+        && d.max_contact_error < FIT_MAX_CONTACT_ERROR
         && d.capsule_surface_uncertain_pairs == 0
+        && d.initial_contact_recovery_projections == 0
+}
+
+fn fit_quality(d: &Diagnostics) -> bool {
+    fit_state_quality(d) && d.seam_assembly_remaining == 0.
+}
+
+fn record_fit_state(d: &Diagnostics, checked: &mut usize, first_failure: &mut Option<usize>) {
+    if !fit_state_quality(d) {
+        first_failure.get_or_insert(*checked);
+    }
+    *checked += 1;
 }
 
 fn fit(project: &Project) -> Result<(Mesh, serde_json::Value, bool)> {
@@ -479,6 +495,13 @@ fn fit(project: &Project) -> Result<(Mesh, serde_json::Value, bool)> {
     let mut phases = Vec::new();
     let mut failure = None;
     let mut timings = Vec::new();
+    let mut quality_states_checked = 0;
+    let mut first_quality_failure_state = None;
+    record_fit_state(
+        cloth.diagnostics(),
+        &mut quality_states_checked,
+        &mut first_quality_failure_state,
+    );
     for (name, steps, gravity) in [("assembly", 60, [0.; 3]), ("drape", 120, [0., -9.81, 0.])] {
         let settings = StepSettings {
             dt: 1. / 60.,
@@ -492,6 +515,11 @@ fn fit(project: &Project) -> Result<(Mesh, serde_json::Value, bool)> {
         for _ in 0..steps {
             match cloth.step(settings, || false) {
                 Ok(d) => {
+                    record_fit_state(
+                        &d,
+                        &mut quality_states_checked,
+                        &mut first_quality_failure_state,
+                    );
                     timings.push(d.step_seconds);
                     completed += 1;
                 }
@@ -512,7 +540,11 @@ fn fit(project: &Project) -> Result<(Mesh, serde_json::Value, bool)> {
         }
     }
     let seconds = start.elapsed().as_secs_f64();
-    let passed = failure.is_none() && fit_quality(cloth.diagnostics());
+    let final_quality = fit_quality(cloth.diagnostics());
+    if !final_quality {
+        first_quality_failure_state.get_or_insert(quality_states_checked - 1);
+    }
+    let passed = failure.is_none() && first_quality_failure_state.is_none() && final_quality;
     timings.sort_by(f64::total_cmp);
     let median = timings.get(timings.len() / 2).copied();
     let p95 = timings
@@ -521,7 +553,18 @@ fn fit(project: &Project) -> Result<(Mesh, serde_json::Value, bool)> {
     let report = serde_json::json!({
         "kind":"implementation_only","protocol":"explicit-zero-gravity-assembly-then-drape-v1",
         "status":if passed {"passed"} else {"failed"},"solver_error":failure,
-        "criteria":{"finite":true,"seam_assembly_remaining_m":0.,"max_stretch_error_below":0.15,"max_seam_gap_below_m":0.005,"max_contact_penetration_below_m":0.002,"capsule_surface_uncertain_pairs":0},
+        "criteria":{
+            "scope":"initial and every successfully completed whole-step state",
+            "state_index_origin":"0 = initial state; n = n successfully completed steps",
+            "finite":true,"seam_assembly_remaining_finite_and_nonnegative":true,
+            "seam_assembly_remaining_m":0.,"seam_assembly_remaining_scope":"final state",
+            "max_stretch_error_below":FIT_MAX_STRETCH_ERROR,
+            "max_seam_gap_below_m":FIT_MAX_SEAM_ERROR,
+            "max_seam_gap_scope":"only states with seam_assembly_remaining exactly zero",
+            "max_contact_penetration_below_m":FIT_MAX_CONTACT_ERROR,
+            "capsule_surface_uncertain_pairs":0,"initial_contact_recovery_projections":0
+        },
+        "quality_states_checked":quality_states_checked,"first_quality_failure_state":first_quality_failure_state,
         "platform":std::env::consts::OS,"architecture":std::env::consts::ARCH,
         "vertices":mesh.positions.len(),"triangles":mesh.triangles.len(),"phases":phases,
         "wall_seconds":seconds,"simulated_seconds":cloth.simulation_time(),"simulated_seconds_per_wall_second":cloth.simulation_time()/seconds,
@@ -597,9 +640,11 @@ mod tests {
             "max_seam_error":0.001,"seam_assembly_remaining":0.0,"max_contact_error":0.0,
             "kinetic_energy":0.002,"contacts":12,"initial_intersections":0,"finite":true
         });
-        let diagnostics: Diagnostics = serde_json::from_value(old.clone()).unwrap();
+        let mut diagnostics: Diagnostics = serde_json::from_value(old.clone()).unwrap();
         assert!(diagnostics.peak_strain.is_none());
         assert_eq!(diagnostics.capsule_surface_uncertain_pairs, 0);
+        assert_eq!(diagnostics.initial_contact_recovery_projections, 0);
+        diagnostics.initial_contact_recovery_projections = 3;
         let mut new = serde_json::to_value(diagnostics).unwrap();
         assert_eq!(
             new.as_object_mut().unwrap().remove("peak_strain"),
@@ -610,6 +655,12 @@ mod tests {
                 .unwrap()
                 .remove("capsule_surface_uncertain_pairs"),
             Some(serde_json::json!(0))
+        );
+        assert_eq!(
+            new.as_object_mut()
+                .unwrap()
+                .remove("initial_contact_recovery_projections"),
+            Some(serde_json::json!(3))
         );
         assert_eq!(new, old);
     }
@@ -635,9 +686,69 @@ mod tests {
         d.capsule_surface_uncertain_pairs = 1;
         assert!(!fit_quality(&d));
         d.capsule_surface_uncertain_pairs = 0;
+        d.initial_contact_recovery_projections = 1;
+        assert!(!fit_quality(&d));
+        d.initial_contact_recovery_projections = 0;
         assert!(fit_quality(&d));
         d.finite = false;
         assert!(!fit_quality(&d));
+    }
+    #[test]
+    fn fit_state_quality_rejects_transient_failure_before_valid_final_state() {
+        let closed = Diagnostics {
+            finite: true,
+            ..Default::default()
+        };
+        let open = Diagnostics {
+            seam_assembly_remaining: 0.1,
+            max_seam_error: 0.1,
+            ..closed.clone()
+        };
+        assert!(fit_state_quality(&open));
+        assert!(!fit_quality(&open));
+        let mut checked = 0;
+        let mut first_failure = None;
+        for state in [&open, &closed] {
+            record_fit_state(state, &mut checked, &mut first_failure);
+        }
+        assert_eq!(checked, 2);
+        assert_eq!(first_failure, None);
+        for failure in [
+            Diagnostics {
+                max_stretch_error: 0.15,
+                ..open.clone()
+            },
+            Diagnostics {
+                max_contact_error: 0.002,
+                ..open.clone()
+            },
+            Diagnostics {
+                initial_contact_recovery_projections: 1,
+                ..open.clone()
+            },
+            Diagnostics {
+                seam_assembly_remaining: -0.1,
+                ..open.clone()
+            },
+            Diagnostics {
+                seam_assembly_remaining: f64::NAN,
+                ..open.clone()
+            },
+            Diagnostics {
+                seam_assembly_remaining: f64::INFINITY,
+                ..open.clone()
+            },
+        ] {
+            let states = [open.clone(), failure, closed.clone()];
+            assert!(fit_quality(states.last().unwrap()));
+            let mut checked = 0;
+            let mut first_failure = None;
+            for state in &states {
+                record_fit_state(state, &mut checked, &mut first_failure);
+            }
+            assert_eq!(checked, 3);
+            assert_eq!(first_failure, Some(1));
+        }
     }
     #[test]
     fn shirt_is_editable_and_interval_sewn() {

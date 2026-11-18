@@ -3566,7 +3566,7 @@ impl Studio {
         ));
         ui.small("Accepted cloth state for this revision.");
         let diagnostics = cloth.diagnostics();
-        ui.label(format!("Time {:.3} s\nAssembly remaining {:.4} m\nPeak material strain {:.2}%\nSeam gap {:.4} m\nContact error {:.4} m\nInitial intersections {}\nUncertain capsule pairs {}",cloth.simulation_time(),diagnostics.seam_assembly_remaining,100.*diagnostics.max_stretch_error,diagnostics.max_seam_error,diagnostics.max_contact_error,diagnostics.initial_intersections,diagnostics.capsule_surface_uncertain_pairs));
+        ui.label(format!("Time {:.3} s\nAssembly remaining {:.4} m\nPeak material strain {:.2}%\nSeam gap {:.4} m\nContact error {:.4} m\nInitial intersections {}\nInitial overlap corrections {}\nUncertain capsule pairs {}",cloth.simulation_time(),diagnostics.seam_assembly_remaining,100.*diagnostics.max_stretch_error,diagnostics.max_seam_error,diagnostics.max_contact_error,diagnostics.initial_intersections,diagnostics.initial_contact_recovery_projections,diagnostics.capsule_surface_uncertain_pairs)).on_hover_text("Counts applied correction projections, including repeated visits. Initial placement repairs are kinematic and contribute to velocity. Simulation reset clears the count.");
         if let Some(peak) = diagnostics.peak_strain
             && let Some(piece) = weftforge_core::simulation::peak_strain_piece(
                 &self.editor.project,

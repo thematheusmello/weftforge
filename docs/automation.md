@@ -10,13 +10,32 @@ report `diagnostics.peak_strain`: current zero-based solver triangle, `warp` or
 `weft`, and signed dimensionless length strain. `peak_strain_piece` resolves the
 current editable pattern's `id` and `name`; it is null when attribution cannot
 be resolved. Fitting reports include this at each phase and in the final result.
-The existing strain, seam and penetration limits remain unchanged. Contact error
-now includes static triangle/capsule occupancy. The additive
+The strain, seam and penetration limits remain unchanged. Contact error
+includes static triangle/capsule occupancy. The additive
 `diagnostics.capsule_surface_uncertain_pairs` counts pairs using conservative
 uncertain-geometry bounds; legacy diagnostic JSON defaults it to zero.
 `fit` and `fit-benchmark` also require this count to be zero, so uncertain
-geometry cannot produce a successful fit verdict. The native inspector displays
-the count. These are CLI reports; the MCP file tools below do not run simulation
+geometry cannot produce a successful fit verdict. The additive
+`diagnostics.initial_contact_recovery_projections` counts initial-placement repair
+projections that actually moved nodes, including repeated visits. It persists
+through accepted steps until simulation reset; failed or cancelled steps preserve
+the prior count. Repair motion contributes to velocity and does not certify
+physical convergence. Legacy JSON defaults an absent field to zero for decoding;
+this does not establish historical zero-repair evidence.
+
+`fit` and `fit-benchmark` check the initial state and every successfully completed
+whole-step state: finite diagnostics, finite nonnegative assembly target, strain
+below 0.15, contact error below 0.002 m, zero uncertain pairs and zero repair
+projections. When the assembly target is exactly zero, seam error must be below
+0.005 m; the final assembly target must be zero. The report's
+`quality_states_checked` includes the initial state and
+`first_quality_failure_state` is its zero-based first failing index, or null.
+Reports state this scope in `criteria`. A transient quality failure remains a
+failure even after a valid final frame, but does not truncate the 60 assembly
+and 120 drape steps. A solver error ends the protocol. `fit` preserves any prior
+output on failure. Internal substep states are not independently certified.
+
+The native inspector displays both counts. These are CLI reports; the MCP file tools below do not run simulation
 jobs and their authoring schemas are unchanged.
 
 Build with `cargo build --release -p weftforge-cli`. A client that launches MCP

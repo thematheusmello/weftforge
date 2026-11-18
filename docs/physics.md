@@ -1,7 +1,7 @@
 # CPU cloth model
 
-This is an independently authored CPU solver, not a calibrated reconstruction of
-Marvelous Designer. All checks below are implementation-only. No reference drape,
+This is WeftForge's independently authored CPU solver. All checks below are
+implementation-only. No reference drape,
 contact, numerical tolerance or complete garment workflow has been compared yet.
 
 ## State and units
@@ -46,8 +46,8 @@ v* = exp(-damping*h) * (v + h*gravity)
 x* = x + h*v*
 ```
 
-The solver clears material, bending and soft-sewing displacement histories and
-hard-seam multipliers at each substep, then iterates membrane, bending, sewing,
+The solver clears material, bending, soft-sewing and ordinary contact displacement
+histories and hard-seam multipliers at each substep, then iterates membrane, bending, sewing,
 analytic contact, cloth contact and pins in that order. The scalar radial projection for hard sewing
 uses zero compliance in the following formula:
 
@@ -58,7 +58,10 @@ x_i += w_i*gradient_i(C)*delta_lambda
 lambda += delta_lambda
 ```
 
-The new velocity is the solved displacement divided by h. Damping is exponential
+The first substep can also apply the separately attributed initial-overlap repairs
+described below. These repairs use the existing iteration budget. The new velocity
+is the entire solved displacement divided by h, including any initial repair.
+Damping is exponential
 velocity damping in s^-1, rather than a frame-dependent interpolation. Its
 operator splitting introduces a finite-step error in forced trajectories. The
 zero-damping gravity test has the expected symplectic Euler error. There is no
@@ -129,7 +132,7 @@ Phi(q) = sum_free_i m_i*|q_i-z_i|²/(2*h²) + sum_triangles sum_a k_a*C_a(q)²/2
 
 Pinned coordinates stay fixed. There are no material pairs or separate group
 anchors. Bending and compliant sewing use their separate incremental-energy
-updates below; analytic contact, cloth contact and pins retain their previous equations.
+updates below; contact uses its own displacement histories and pins remain exact.
 Each outer iteration makes one global Gauss–Newton material update before those
 stages, in the same order. The garment acceptance settings
 remain dt=1/60 s, eight substeps and 32 outer iterations; the standalone DTO
@@ -481,8 +484,8 @@ available from the physical spring energy without storing a fictitious pin histo
 The sewing slot now applies the coupled soft block, then the original hard
 projections in input order. This makes mixed hard/soft ordering explicit; it
 changes their finite-iteration interaction. All-hard order/arithmetic, hard scalar
-history and the subsequent analytic contact, cloth contact and pin stages are
-unchanged. No targets, closure speed, stiffness, time step, substeps or outer
+history remain unchanged; the subsequent contact treatment is described below.
+No targets, closure speed, stiffness, time step, substeps or outer
 iteration limits change. No fully coupled sewing/contact equilibrium is claimed.
 
 For N vertices, S input stitches and R=3*S_zero+S_positive<=3*S soft rows,
@@ -555,11 +558,32 @@ linear fallback can still be expensive. This optimization adds no collision law,
 contact toggle or continuous-collision completeness. See
 [SIM-004](../spec/features/SIM-004-contact-candidates.md).
 
-Particle/triangle closest points include face, edge and vertex regions. Penetration
-below the summed thickness creates an inverse-mass-weighted unilateral position
-projection on the particle and the three triangle nodes. Relative tangential
-displacement is limited by a Coulomb-style friction correction, bounded by mu
-times the normal correction. This transfers motion between layers. Mesh one-ring
+Ordinary contact retains each support's actual nodal displacement p for the current
+substep. At a support visit its anchor is z_i=x_i-p_i for free nodes; pinned
+coordinates stay fixed. Geometry is queried at that anchor. For unit normal n,
+signed allowed gap c(z), coefficients a_i and inverse masses w_i:
+
+```text
+D = sum_i w_i*a_i²
+lambda = max(0, -c(z)/D)
+t = tangential_part(sum_i a_i*(z_i-previous_i))
+tau = min(mu*lambda, |t|/D)
+q_i = z_i + w_i*a_i*(lambda*n - tau*t/|t|)
+p_i = q_i-z_i
+```
+
+The tangential term is zero at negligible |t|; an immovable support applies no
+motion and keeps its reported conflict. This replaces the support's old action
+rather than accumulating a positive-only correction. A separated anchor releases
+both normal and friction action; exactly zero actions are removed. The multiplier
+has units kg m, not momentum or force. A force interpretation additionally depends
+on the substep's h² scaling and model. Previously active particle/triangle pairs
+are revisited even when their current bounds leave the hierarchy query. Unusable
+active geometry returns an error and preserves the last accepted whole-step state.
+
+Particle/triangle closest points include face, edge and vertex regions. Their
+coefficients are [1, -beta_0, -beta_1, -beta_2], transferring motion between layers.
+Mesh one-ring
 neighbors and directly stitched endpoint neighborhoods are excluded because
 contact between adjacent elements would oppose their shared surface or seam.
 
@@ -567,9 +591,12 @@ An additional linearized swept face test preserves the previous side when a
 particle endpoint has crossed a triangle interior. This is **not full continuous
 collision detection**: deforming triangle trajectories, tangential crossings and
 edge/edge intersections can be missed. Very thin, fast or initially entangled
-scenes can interpenetrate. Initial intersections are counted where this contact
-model detects them and are retained in diagnostics; the constructor permits such
-arrangements so contact can attempt recovery. An undetected edge/edge crossing
+scenes can interpenetrate. The ordinary particle/triangle path uses one closest
+feature per pair and can stall at an infeasible fixed point even for an isolated
+moving triangle. Its action bookkeeping does not establish nonlinear convergence;
+a controlled nonlinear contact block remains open. Initial intersections are
+counted where this model detects them; the constructor permits such arrangements
+and freezes the recovery eligibility described below. An undetected edge/edge crossing
 cannot be interpreted as an intersection-free scene.
 
 Ground is an exact horizontal offset plane: a linear triangle's minimum Y is at
@@ -582,15 +609,16 @@ capsule radius plus the maximum existing incident vertex physical offset on the
 triangle. This conservative material-boundary policy agrees with a uniform
 offset; rendered thickness does not enter contact.
 
-For a closest triangle point with barycentric weights beta and node inverse
-masses w, the normal correction uses denominator sum(w_i beta_i²) and moves
-each node by w_i beta_i times depth/denominator. A zero denominator leaves a
-reported conflict. Tangential motion at that same barycentric point uses the
-existing Coulomb-style correction and its barycentrically interpolated physical
-friction coefficient. A surface pair already separated by vertex projections
-gets no additional normal or friction correction. Features are recomputed at
-each pair projection and solver iteration. The capsule phase currently scans
-all triangle/capsule pairs without a broad phase.
+Ordinary triangle/capsule contact keeps a family of fixed material points beta
+per pair. Each owns three nodal actions and uses a_i=beta_i in the update above,
+with barycentrically interpolated physical friction. Each pass revisits retained
+supports in insertion order and then discovers at most one new current closest
+point, or revisits its exact existing beta. Zero-action supports are removed.
+Thus I passes retain O(I) supports and make O(I²) support visits per pair in the
+worst case. This avoids discarding another material point's action when the closest
+feature changes, but does not prove whole-triangle feasibility or global equilibrium
+at a finite iteration count. The capsule phase scans all triangle/capsule pairs
+without a broad phase.
 
 Skinny faces (cross-product magnitude at most 1e-7 times the longest squared
 edge length) use a conservative lower distance bound: closed-boundary distance
@@ -637,6 +665,32 @@ surface coverage, self edge/edge contact and continuous collision remain open.
 An exact zero residual in a small fixture does not establish production
 collision robustness.
 
+### Initial-overlap repair
+
+Construction and reset freeze the specific nonexcluded particle/triangle and
+triangle/capsule pairs whose supported static depth exceeds 1e-8 m, using the
+same completed analysis as `initial_intersections`. Eligibility is per pair;
+ground and vertex/collider contacts remain ordinary balanced contacts. New pairs
+created by later motion are not eligible.
+
+Only the first substep at simulated time zero uses the former positive-only
+geometric normal/friction correction for those eligible nonlinear pairs. It adds
+no passes or iterations. This is a kinematic initial-placement repair, not an
+equilibrium reaction: cumulative actual nodal motion is attributed separately and
+ordinary balanced contact does not retract it. Later substeps use ordinary contact.
+The usual velocity update includes repair motion, so it can inject kinetic energy.
+Pins stay exact, and immovable or uncertain conflicts remain visible.
+
+`initial_contact_recovery_projections` counts repair projections that actually
+moved nodes, including repeated visits, since construction/reset. It is zero
+initially, persists through later accepted calls, and reset clears and rearms it.
+Cancellation or failure preserves both its prior value and the recovery phase,
+positions, velocities and provenance. Legacy diagnostic JSON defaults the absent
+field to zero for decoding compatibility; absence does not prove that an older
+execution used no initial repair. Fitting requires a present zero count at the
+initial state and every accepted whole-step boundary; repairs cannot qualify a
+garment quality pass.
+
 ## Failure, cancellation and recovery
 
 `Cloth::new_cancellable` builds a complete candidate or returns `Cancelled`;
@@ -659,7 +713,8 @@ A step builds candidate positions/velocities locally. Cancellation is checked at
 substeps, iterations, hierarchy work, bounded intervals in vertex/capsule surface
 work, every 32 particles of the cloth contact loop, and inside final contact
 analysis. Poll counts are implementation details. A failed or
-cancelled call preserves positions, velocities, time and diagnostics from the
+cancelled call preserves positions, velocities, time, diagnostics and initial
+recovery provenance from the
 last successful call. The caller receives the explicit error. Non-finite state or
 derived diagnostics, displacement above 100 m in one substep, or material-axis
 extension above 500% rejects the complete call as unstable. These are runaway
@@ -781,10 +836,20 @@ cargo run --release -p weftforge-cli -- fit-benchmark fixtures/original-shirt.we
 
 `fit-benchmark` prints JSON containing the declared settings, per-phase timings,
 requested/completed step counts, actual diagnostics and fixed quality criteria.
-A quality failure still prints the report and exits nonzero. `fit` uses the same
+A quality failure still prints the report and exits nonzero. Quality now covers
+the initial state and every successfully completed whole-step boundary: finite
+diagnostics, finite nonnegative assembly target, strain below 15%, penetration
+below 2 mm, zero uncertain capsule pairs and zero initial-repair projections.
+States with an exactly zero assembly target also require seam gap below 5 mm;
+the final target must be zero. `quality_states_checked` includes the initial
+state, and `first_quality_failure_state` identifies the first failed boundary
+(zero is initial). A quality failure does not truncate the 180-step protocol;
+a solver error stops it. Substep-internal quality is not certified. `fit` uses the same
 protocol and writes the actual simulated OBJ only after the criteria pass; failed
 quality preserves any prior output. Neither command claims reference parity.
 
+The following historical runs used final-state CLI quality checks. They have not
+been rerun or regraded against the trajectory and initial-repair requirements.
 Observed release results on Apple M3 Max, 48 GiB RAM, macOS 27.2 arm64,
 Rust 1.94.1, 2026-11-13:
 

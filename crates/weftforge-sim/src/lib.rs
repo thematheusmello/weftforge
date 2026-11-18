@@ -175,6 +175,10 @@ pub struct Diagnostics {
     /// Number of contacts projected during this call, including repeated iterations.
     pub contacts: usize,
     pub initial_intersections: usize,
+    /// Cumulative kinematic initial-overlap projections that moved nodes since construction/reset.
+    /// Their displacement contributes to the usual velocity update; use does not certify contact success.
+    #[serde(default)]
+    pub initial_contact_recovery_projections: usize,
     pub finite: bool,
 }
 
@@ -211,6 +215,8 @@ pub struct Cloth {
     bends: Vec<Bend>,
     excluded: Vec<BTreeSet<usize>>,
     seam_remaining: Vec<f64>,
+    initial_recovery_eligibility: contact::InitialRecoveryEligibility,
+    initial_recovery_provenance: contact::RecoveryProvenance,
     diagnostics: Diagnostics,
 }
 
@@ -359,14 +365,19 @@ impl Cloth {
             bends,
             excluded,
             seam_remaining,
+            initial_recovery_eligibility: contact::InitialRecoveryEligibility::default(),
+            initial_recovery_provenance: contact::RecoveryProvenance::default(),
             input,
             diagnostics: Diagnostics {
                 finite: true,
                 ..Default::default()
             },
         };
-        let contact_error = cloth.contact_errors_cancellable(&cloth.positions, &cancelled)?;
+        let mut contact_error =
+            cloth.initial_contact_errors_cancellable(&cloth.positions, &cancelled)?;
         let intersections = contact_error.intersections;
+        cloth.initial_recovery_eligibility =
+            std::mem::take(&mut contact_error.recovery_eligibility);
         cloth.diagnostics = cloth.measure_errors_with_contact_cancellable(
             &cloth.positions,
             &cloth.velocities,
@@ -420,14 +431,18 @@ impl Cloth {
             finite: true,
             ..Default::default()
         };
-        let contact_error = self.contact_errors(&self.positions);
+        self.initial_recovery_provenance = contact::RecoveryProvenance::default();
+        let mut contact_error = self
+            .initial_contact_errors_cancellable(&self.positions, &|| false)
+            .expect("A non-cancelling callback cannot interrupt reset contact analysis");
+        self.initial_recovery_eligibility = std::mem::take(&mut contact_error.recovery_eligibility);
         self.diagnostics.initial_intersections = contact_error.intersections;
         self.diagnostics =
             self.measure_errors_with_contact(&self.positions, &self.velocities, contact_error);
     }
 
     /// Transactional whole-call stepping: cancellation, invalid settings and numerical failures
-    /// retain the previous positions, velocities, time and diagnostics.
+    /// retain the previous positions, velocities, time, diagnostics and recovery provenance.
     pub fn step(
         &mut self,
         settings: StepSettings,
@@ -457,10 +472,19 @@ impl Cloth {
         let mut seam_remaining = self.seam_remaining.clone();
         let dt = settings.dt / f64::from(settings.substeps);
         let mut contacts = 0;
-        for _ in 0..settings.substeps {
+        let mut recovery_provenance = None;
+        for substep in 0..settings.substeps {
             if cancelled() {
                 return Err(SimulationError::Cancelled);
             }
+            let mut contact_history = if self.diagnostics.simulation_time == 0. && substep == 0 {
+                contact::ContactState::with_initial_recovery(
+                    &self.initial_recovery_eligibility,
+                    self.initial_recovery_provenance.clone(),
+                )
+            } else {
+                contact::ContactState::default()
+            };
             let previous = x.clone();
             for i in 0..x.len() {
                 if self.inverse_masses[i] > 0. {
@@ -526,12 +550,17 @@ impl Cloth {
                         );
                     }
                 }
-                contacts += self.project_colliders(&mut x, &previous, &cancelled)?;
-                contacts += self.project_cloth(&mut x, &previous, &cancelled)?;
+                contacts +=
+                    self.project_colliders(&mut x, &previous, &mut contact_history, &cancelled)?;
+                contacts +=
+                    self.project_cloth(&mut x, &previous, &mut contact_history, &cancelled)?;
                 self.apply_pins(&mut x);
                 if !x.iter().copied().all(finite) {
                     return Err(SimulationError::Unstable("non-finite position".into()));
                 }
+            }
+            if let Some(provenance) = contact_history.into_recovery_provenance() {
+                recovery_provenance = Some(provenance);
             }
             for i in 0..x.len() {
                 velocities[i] = if self.inverse_masses[i] > 0. {
@@ -551,6 +580,9 @@ impl Cloth {
         }
         let contact_error = self.contact_errors_cancellable(&x, &cancelled)?;
         let mut diagnostics = self.measure_errors_with_contact(&x, &velocities, contact_error);
+        if let Some(provenance) = &recovery_provenance {
+            diagnostics.initial_contact_recovery_projections = provenance.projections;
+        }
         if !diagnostics.finite || diagnostics.max_stretch_error > 5. {
             return Err(SimulationError::Unstable(format!(
                 "finite={}, material-axis extension={:.1}% (limit 500%), seam gap={:.6}m, contact penetration={:.6}m",
@@ -570,6 +602,9 @@ impl Cloth {
         self.positions = x;
         self.velocities = velocities;
         self.seam_remaining = seam_remaining;
+        if let Some(provenance) = recovery_provenance {
+            self.initial_recovery_provenance = provenance;
+        }
         self.diagnostics = diagnostics;
         Ok(self.diagnostics.clone())
     }

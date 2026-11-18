@@ -2,12 +2,303 @@ use crate::{
     CANCELLATION_CHECK_INTERVAL, Cloth, Collider, SimulationError, Vec3, capsule, check_cancel,
     math::*,
 };
+use std::collections::{BTreeMap, BTreeSet};
+
+#[derive(Clone, Debug, Default)]
+pub(crate) struct InitialRecoveryEligibility {
+    triangle_capsules: BTreeSet<(usize, usize)>,
+    cloth: BTreeSet<(usize, usize)>,
+}
+
+#[derive(Clone, Debug, Default)]
+pub(crate) struct RecoveryProvenance {
+    // Kinematic displacement is attribution only; balanced contact never retracts it.
+    triangle_capsules: BTreeMap<(usize, usize), [Vec3; 3]>,
+    cloth: BTreeMap<(usize, usize), [Vec3; 4]>,
+    pub projections: usize,
+}
+
+struct InitialRecoveryPhase {
+    eligibility: InitialRecoveryEligibility,
+    provenance: RecoveryProvenance,
+}
+
+#[derive(Default)]
+pub(crate) struct ContactState {
+    vertex_colliders: BTreeMap<(usize, usize), [Vec3; 1]>,
+    triangle_capsules: BTreeMap<(usize, usize), Vec<CapsuleSupport>>,
+    cloth: BTreeMap<(usize, usize), [Vec3; 4]>,
+    recovery: Option<InitialRecoveryPhase>,
+}
+
+impl ContactState {
+    pub(crate) fn with_initial_recovery(
+        eligibility: &InitialRecoveryEligibility,
+        provenance: RecoveryProvenance,
+    ) -> Self {
+        if eligibility.triangle_capsules.is_empty() && eligibility.cloth.is_empty() {
+            return Self::default();
+        }
+        Self {
+            recovery: Some(InitialRecoveryPhase {
+                eligibility: eligibility.clone(),
+                provenance,
+            }),
+            ..Self::default()
+        }
+    }
+
+    pub(crate) fn into_recovery_provenance(self) -> Option<RecoveryProvenance> {
+        self.recovery.map(|phase| phase.provenance)
+    }
+}
+
+struct CapsuleSupport {
+    // This material point keeps its own action when another closest point appears.
+    bary: Vec3,
+    action: [Vec3; 3],
+}
+
+fn contact_anchor<const N: usize>(
+    vertices: [usize; N],
+    x: &[Vec3],
+    inverse_mass: &[f64],
+    old: [Vec3; N],
+) -> Result<[Vec3; N], SimulationError> {
+    let unstable = || SimulationError::Unstable("unusable contact action or geometry".into());
+    let mut anchor = [[0.; 3]; N];
+    for j in 0..N {
+        let v = vertices[j];
+        let weight = inverse_mass[v];
+        if !weight.is_finite()
+            || weight < 0.
+            || !finite(x[v])
+            || !finite(old[j])
+            || (weight == 0. && old[j] != [0.; 3])
+        {
+            return Err(unstable());
+        }
+        anchor[j] = if weight > 0. { sub(x[v], old[j]) } else { x[v] };
+        if !finite(anchor[j]) {
+            return Err(unstable());
+        }
+    }
+    Ok(anchor)
+}
+
+struct Contact<const N: usize> {
+    vertices: [usize; N],
+    coefficients: [f64; N],
+    normal: Vec3,
+    // Signed gap at the queried stencil; nonnegative means allowed separation.
+    gap: f64,
+    friction: f64,
+    minimum_denominator: f64,
+}
+
+impl<const N: usize> Contact<N> {
+    fn recover(
+        self,
+        x: &mut [Vec3],
+        previous: &[Vec3],
+        inverse_mass: &[f64],
+        provenance: &mut BTreeMap<(usize, usize), [Vec3; N]>,
+        projections: &mut usize,
+        key: (usize, usize),
+    ) -> Result<usize, SimulationError> {
+        let unstable = || SimulationError::Unstable("unusable initial contact recovery".into());
+        if !self.gap.is_finite()
+            || !finite(self.normal)
+            || !self.friction.is_finite()
+            || self.friction < 0.
+            || !self.coefficients.into_iter().all(f64::is_finite)
+        {
+            return Err(unstable());
+        }
+        if self.gap >= 0. {
+            return Ok(0);
+        }
+        let before = contact_anchor(self.vertices, x, inverse_mass, [[0.; 3]; N])?;
+        let mut denominator = 0.;
+        for (j, &v) in self.vertices.iter().enumerate() {
+            if !finite(previous[v]) {
+                return Err(unstable());
+            }
+            denominator += inverse_mass[v] * self.coefficients[j].powi(2);
+        }
+        if !denominator.is_finite() {
+            return Err(unstable());
+        }
+        if denominator <= self.minimum_denominator {
+            return Ok(0);
+        }
+        let multiplier = -self.gap / denominator;
+        if !multiplier.is_finite() {
+            return Err(unstable());
+        }
+        let mut trial = before;
+        for (j, &v) in self.vertices.iter().enumerate() {
+            if inverse_mass[v] > 0. {
+                trial[j] = add(
+                    trial[j],
+                    mul(
+                        self.normal,
+                        inverse_mass[v] * self.coefficients[j] * multiplier,
+                    ),
+                );
+            }
+        }
+        let mut relative = [0.; 3];
+        for (j, &v) in self.vertices.iter().enumerate() {
+            relative = add(
+                relative,
+                mul(sub(trial[j], previous[v]), self.coefficients[j]),
+            );
+        }
+        let tangent = sub(relative, mul(self.normal, dot(relative, self.normal)));
+        let distance = length(tangent);
+        if !distance.is_finite() {
+            return Err(unstable());
+        }
+        if distance > 1e-14 {
+            let amount = (self.friction * multiplier).min(distance / denominator);
+            let direction = mul(tangent, distance.recip());
+            for (j, &v) in self.vertices.iter().enumerate() {
+                if inverse_mass[v] > 0. {
+                    trial[j] = sub(
+                        trial[j],
+                        mul(direction, inverse_mass[v] * self.coefficients[j] * amount),
+                    );
+                }
+            }
+        }
+        let mut cumulative = provenance.get(&key).copied().unwrap_or([[0.; 3]; N]);
+        for j in 0..N {
+            cumulative[j] = add(cumulative[j], sub(trial[j], before[j]));
+            if !finite(trial[j]) || !finite(cumulative[j]) {
+                return Err(unstable());
+            }
+        }
+        if trial != before {
+            let count = projections.checked_add(1).ok_or_else(|| {
+                SimulationError::Unstable("initial contact recovery counter overflow".into())
+            })?;
+            provenance.insert(key, cumulative);
+            *projections = count;
+        }
+        for (v, value) in self.vertices.into_iter().zip(trial) {
+            x[v] = value;
+        }
+        Ok(1)
+    }
+
+    fn project(
+        self,
+        x: &mut [Vec3],
+        previous: &[Vec3],
+        inverse_mass: &[f64],
+        history: &mut BTreeMap<(usize, usize), [Vec3; N]>,
+        key: (usize, usize),
+    ) -> Result<usize, SimulationError> {
+        let mut action = history.get(&key).copied().unwrap_or([[0.; 3]; N]);
+        let active = self.replace(x, previous, inverse_mass, &mut action)?;
+        if action == [[0.; 3]; N] {
+            history.remove(&key);
+        } else {
+            history.insert(key, action);
+        }
+        Ok(active)
+    }
+
+    fn replace(
+        self,
+        x: &mut [Vec3],
+        previous: &[Vec3],
+        inverse_mass: &[f64],
+        owned_action: &mut [Vec3; N],
+    ) -> Result<usize, SimulationError> {
+        let unstable = || SimulationError::Unstable("unusable contact action or geometry".into());
+        let old = *owned_action;
+        let anchor = contact_anchor(self.vertices, x, inverse_mass, old)?;
+        let mut denominator = 0.;
+        if !self.gap.is_finite()
+            || !finite(self.normal)
+            || !self.friction.is_finite()
+            || self.friction < 0.
+            || !self.coefficients.into_iter().all(f64::is_finite)
+        {
+            return Err(unstable());
+        }
+        for j in 0..N {
+            let v = self.vertices[j];
+            let weight = inverse_mass[v];
+            if !finite(previous[v]) {
+                return Err(unstable());
+            }
+            denominator += weight * self.coefficients[j].powi(2);
+        }
+        if !denominator.is_finite() {
+            return Err(unstable());
+        }
+        let mut impulse = [0.; 3];
+        let mut active = 0;
+        if denominator > self.minimum_denominator {
+            let normal_length = length(self.normal);
+            if !normal_length.is_finite() || normal_length == 0. {
+                return Err(unstable());
+            }
+            let normal = mul(self.normal, normal_length.recip());
+            let multiplier = -self.gap / denominator;
+            if !multiplier.is_finite() {
+                return Err(unstable());
+            }
+            let multiplier = multiplier.max(0.);
+            impulse = mul(normal, multiplier);
+            let mut relative = [0.; 3];
+            for (j, &v) in self.vertices.iter().enumerate() {
+                relative = add(
+                    relative,
+                    mul(sub(anchor[j], previous[v]), self.coefficients[j]),
+                );
+            }
+            let tangent = sub(relative, mul(normal, dot(relative, normal)));
+            let distance = length(tangent);
+            if !distance.is_finite() {
+                return Err(unstable());
+            }
+            if distance > 1e-14 {
+                let amount = (self.friction * multiplier).min(distance / denominator);
+                impulse = sub(impulse, mul(tangent, amount / distance));
+            }
+            active = usize::from(multiplier > 0.);
+        }
+        // Replace the old support action; a changed normal or barycentric point cannot retain it.
+        let mut trial = anchor;
+        let mut action = [[0.; 3]; N];
+        for j in 0..N {
+            let weight = inverse_mass[self.vertices[j]];
+            if weight > 0. {
+                trial[j] = add(anchor[j], mul(impulse, weight * self.coefficients[j]));
+                action[j] = sub(trial[j], anchor[j]);
+            }
+            if !finite(trial[j]) || !finite(action[j]) {
+                return Err(unstable());
+            }
+        }
+        for (v, value) in self.vertices.into_iter().zip(trial) {
+            x[v] = value;
+        }
+        *owned_action = action;
+        Ok(active)
+    }
+}
 
 #[derive(Default)]
 pub(crate) struct ContactErrors {
     pub maximum: f64,
     pub intersections: usize,
     pub uncertain_capsule_pairs: usize,
+    pub recovery_eligibility: InitialRecoveryEligibility,
 }
 
 impl Cloth {
@@ -15,6 +306,7 @@ impl Cloth {
         &self,
         x: &mut [Vec3],
         previous: &[Vec3],
+        history: &mut ContactState,
         cancelled: &impl Fn() -> bool,
     ) -> Result<usize, SimulationError> {
         let mut contacts = 0;
@@ -29,18 +321,38 @@ impl Cloth {
                 if ci % CANCELLATION_CHECK_INTERVAL == 0 {
                     check_cancel(cancelled)?;
                 }
-                if let Some((normal, depth)) = collider_contact(collider, x[i], self.thickness[i]) {
-                    x[i] = add(x[i], mul(normal, depth));
-                    let displacement = sub(x[i], previous[i]);
-                    let tangent = sub(displacement, mul(normal, dot(displacement, normal)));
-                    let distance = length(tangent);
-                    if distance > 1e-14 {
-                        x[i] = sub(
-                            x[i],
-                            mul(tangent, (self.friction[i] * depth / distance).min(1.)),
-                        );
+                let key = (i, ci);
+                let anchor = contact_anchor(
+                    [i],
+                    x,
+                    &self.inverse_masses,
+                    history
+                        .vertex_colliders
+                        .get(&key)
+                        .copied()
+                        .unwrap_or([[0.; 3]]),
+                )?;
+                if let Some((normal, gap)) = collider_feature(
+                    collider,
+                    anchor[0],
+                    self.thickness[i],
+                    history.vertex_colliders.contains_key(&key),
+                ) {
+                    contacts += Contact {
+                        vertices: [i],
+                        coefficients: [1.],
+                        normal,
+                        gap,
+                        friction: self.friction[i],
+                        minimum_denominator: 0.,
                     }
-                    contacts += 1;
+                    .project(
+                        x,
+                        previous,
+                        &self.inverse_masses,
+                        &mut history.vertex_colliders,
+                        key,
+                    )?;
                 }
             }
         }
@@ -59,56 +371,159 @@ impl Cloth {
                 let Collider::Capsule { a, b, radius } = collider else {
                     continue;
                 };
+                let key = (ti, ci);
+                if let Some(phase) = history.recovery.as_mut()
+                    && phase.eligibility.triangle_capsules.contains(&key)
+                {
+                    let feature = capsule::closest(tri.map(|i| x[i]), a, b);
+                    let depth = radius + thickness - feature.distance;
+                    if depth <= 0. {
+                        continue;
+                    }
+                    contacts += Contact {
+                        vertices: tri,
+                        coefficients: feature.bary,
+                        normal: capsule::normal(
+                            feature,
+                            tri.map(|i| x[i]),
+                            tri.map(|i| previous[i]),
+                            a,
+                            b,
+                        ),
+                        gap: -depth,
+                        friction: (0..3)
+                            .map(|j| self.friction[tri[j]] * feature.bary[j])
+                            .sum(),
+                        minimum_denominator: 0.,
+                    }
+                    .recover(
+                        x,
+                        previous,
+                        &self.inverse_masses,
+                        &mut phase.provenance.triangle_capsules,
+                        &mut phase.provenance.projections,
+                        key,
+                    )?;
+                    continue;
+                }
+                if let Some(supports) = history.triangle_capsules.get_mut(&key) {
+                    for support in supports.iter_mut() {
+                        check_cancel(cancelled)?;
+                        contacts += self.project_capsule_support(
+                            tri,
+                            (a, b, radius),
+                            thickness,
+                            support,
+                            x,
+                            previous,
+                        )?;
+                    }
+                    supports.retain(|support| support.action != [[0.; 3]; 3]);
+                }
                 let feature = capsule::closest(tri.map(|i| x[i]), a, b);
                 let depth = radius + thickness - feature.distance;
-                if depth <= 0. {
-                    continue;
+                if !depth.is_finite()
+                    || !feature.axis_fraction.is_finite()
+                    || !feature.bary.into_iter().all(f64::is_finite)
+                {
+                    return Err(SimulationError::Unstable(
+                        "unusable capsule support discovery".into(),
+                    ));
                 }
-                let weights = tri.map(|i| self.inverse_masses[i]);
-                let denominator = (0..3)
-                    .map(|j| weights[j] * feature.bary[j].powi(2))
-                    .sum::<f64>();
-                if denominator == 0. {
-                    continue;
-                }
-                let normal =
-                    capsule::normal(feature, tri.map(|i| x[i]), tri.map(|i| previous[i]), a, b);
-                let impulse = depth / denominator;
-                for j in 0..3 {
-                    x[tri[j]] = add(
-                        x[tri[j]],
-                        mul(normal, weights[j] * feature.bary[j] * impulse),
-                    );
-                }
-                let displacement = sub(
-                    bary_point(x, tri, feature.bary),
-                    bary_point(previous, tri, feature.bary),
-                );
-                let tangent = sub(displacement, mul(normal, dot(displacement, normal)));
-                let distance = length(tangent);
-                if distance > 1e-14 {
-                    let friction = (0..3)
-                        .map(|j| self.friction[tri[j]] * feature.bary[j])
-                        .sum::<f64>();
-                    let amount = (friction * impulse).min(distance / denominator);
-                    let direction = mul(tangent, distance.recip());
-                    for j in 0..3 {
-                        x[tri[j]] = sub(
-                            x[tri[j]],
-                            mul(direction, weights[j] * feature.bary[j] * amount),
-                        );
+                if depth > 0. {
+                    let supports = history.triangle_capsules.entry(key).or_default();
+                    let mut existing = None;
+                    for (index, support) in supports.iter().enumerate() {
+                        check_cancel(cancelled)?;
+                        if support.bary == feature.bary {
+                            existing = Some(index);
+                            break;
+                        }
                     }
+                    check_cancel(cancelled)?;
+                    if let Some(index) = existing {
+                        contacts += self.project_capsule_support(
+                            tri,
+                            (a, b, radius),
+                            thickness,
+                            &mut supports[index],
+                            x,
+                            previous,
+                        )?;
+                    } else {
+                        // shortcut: one discovery per pass bounds storage; revisit if manifold residuals stall.
+                        let mut support = CapsuleSupport {
+                            bary: feature.bary,
+                            action: [[0.; 3]; 3],
+                        };
+                        contacts += self.project_capsule_support(
+                            tri,
+                            (a, b, radius),
+                            thickness,
+                            &mut support,
+                            x,
+                            previous,
+                        )?;
+                        supports.push(support);
+                    }
+                    supports.retain(|support| support.action != [[0.; 3]; 3]);
                 }
-                contacts += 1;
+                if history
+                    .triangle_capsules
+                    .get(&key)
+                    .is_some_and(Vec::is_empty)
+                {
+                    history.triangle_capsules.remove(&key);
+                }
             }
         }
         Ok(contacts)
+    }
+
+    fn project_capsule_support(
+        &self,
+        vertices: [usize; 3],
+        capsule: (Vec3, Vec3, f64),
+        thickness: f64,
+        support: &mut CapsuleSupport,
+        x: &mut [Vec3],
+        previous: &[Vec3],
+    ) -> Result<usize, SimulationError> {
+        let unstable = || SimulationError::Unstable("unusable fixed capsule support".into());
+        if !support.bary.into_iter().all(f64::is_finite) {
+            return Err(unstable());
+        }
+        let anchor = contact_anchor(vertices, x, &self.inverse_masses, support.action)?;
+        let point = bary_point(&anchor, [0, 1, 2], support.bary);
+        if !finite(point) {
+            return Err(unstable());
+        }
+        let (a, b, radius) = capsule;
+        let mut feature = capsule::closest([point; 3], a, b);
+        if !feature.distance.is_finite() || !feature.axis_fraction.is_finite() || feature.uncertain
+        {
+            return Err(unstable());
+        }
+        feature.bary = support.bary;
+        let normal = capsule::normal(feature, anchor, vertices.map(|i| previous[i]), a, b);
+        Contact {
+            vertices,
+            coefficients: support.bary,
+            normal,
+            gap: -(radius + thickness - feature.distance),
+            friction: (0..3)
+                .map(|j| self.friction[vertices[j]] * support.bary[j])
+                .sum(),
+            minimum_denominator: 0.,
+        }
+        .replace(x, previous, &self.inverse_masses, &mut support.action)
     }
 
     pub(crate) fn project_cloth(
         &self,
         x: &mut [Vec3],
         previous: &[Vec3],
+        history: &mut ContactState,
         cancelled: &impl Fn() -> bool,
     ) -> Result<usize, SimulationError> {
         let max_thickness = self.thickness.iter().copied().fold(0., f64::max);
@@ -133,7 +548,12 @@ impl Cloth {
                 }
                 Ok(())
             })?;
+            for (&(_, i), _) in history.cloth.range((v, 0)..=(v, usize::MAX)) {
+                check_cancel(cancelled)?;
+                candidates.push(i);
+            }
             candidates.sort_unstable();
+            candidates.dedup();
             let (mut next, mut candidate, mut linear) = (0, 0, false);
             while next < self.input.triangles.len() {
                 let i = if linear {
@@ -147,8 +567,10 @@ impl Cloth {
                 };
                 next = i + 1;
                 let tri = self.input.triangles[i];
+                let key = (v, i);
+                let had_action = history.cloth.contains_key(&key);
                 if tri.iter().any(|i| self.excluded[v].contains(i))
-                    || !overlaps(&bounds[i], x[v], previous[v])
+                    || (!had_action && !overlaps(&bounds[i], x[v], previous[v]))
                 {
                     continue;
                 }
@@ -157,48 +579,71 @@ impl Cloth {
                         .map(|i| self.thickness[i])
                         .into_iter()
                         .fold(0., f64::max);
-                let Some((normal, bary, depth)) = cloth_contact(v, tri, x, previous, gap, true)
+                let vertices = [v, tri[0], tri[1], tri[2]];
+                if let Some(phase) = history.recovery.as_mut()
+                    && phase.eligibility.cloth.contains(&key)
+                {
+                    let Some((normal, bary, depth)) = cloth_contact(v, tri, x, previous, gap, true)
+                    else {
+                        continue;
+                    };
+                    let before = x[v];
+                    contacts += Contact {
+                        vertices,
+                        coefficients: [1., -bary[0], -bary[1], -bary[2]],
+                        normal,
+                        gap: -depth,
+                        friction: (self.friction[v]
+                            + tri.map(|i| self.friction[i]).into_iter().sum::<f64>() / 3.)
+                            * 0.5,
+                        minimum_denominator: 1e-20,
+                    }
+                    .recover(
+                        x,
+                        previous,
+                        &self.inverse_masses,
+                        &mut phase.provenance.cloth,
+                        &mut phase.provenance.projections,
+                        key,
+                    )?;
+                    linear |= x[v] != before;
+                    continue;
+                }
+                let anchor = contact_anchor(
+                    vertices,
+                    x,
+                    &self.inverse_masses,
+                    history.cloth.get(&key).copied().unwrap_or([[0.; 3]; 4]),
+                )?;
+                // shortcut: one feature can stall on a moving triangle; use a converged nonlinear block for stronger clearance guarantees.
+                let Some((normal, bary, gap)) =
+                    cloth_feature(anchor, vertices.map(|i| previous[i]), gap, true, had_action)
                 else {
+                    if had_action {
+                        return Err(SimulationError::Unstable(
+                            "active cloth contact lost its geometric feature".into(),
+                        ));
+                    }
                     continue;
                 };
-                let weights = [
-                    self.inverse_masses[v],
-                    self.inverse_masses[tri[0]],
-                    self.inverse_masses[tri[1]],
-                    self.inverse_masses[tri[2]],
-                ];
-                let denominator = weights[0]
-                    + weights[1] * bary[0] * bary[0]
-                    + weights[2] * bary[1] * bary[1]
-                    + weights[3] * bary[2] * bary[2];
-                if denominator <= 1e-20 {
-                    continue;
-                }
                 let before = x[v];
-                let impulse = depth / denominator;
-                x[v] = add(x[v], mul(normal, weights[0] * impulse));
-                for j in 0..3 {
-                    x[tri[j]] = sub(x[tri[j]], mul(normal, weights[j + 1] * bary[j] * impulse));
-                }
-                let relative = sub(
-                    sub(x[v], previous[v]),
-                    sub(bary_point(x, tri, bary), bary_point(previous, tri, bary)),
-                );
-                let tangent = sub(relative, mul(normal, dot(relative, normal)));
-                let tangent_length = length(tangent);
-                if tangent_length > 1e-14 {
-                    let friction = (self.friction[v]
+                contacts += Contact {
+                    vertices,
+                    coefficients: [1., -bary[0], -bary[1], -bary[2]],
+                    normal,
+                    gap,
+                    friction: (self.friction[v]
                         + tri.map(|i| self.friction[i]).into_iter().sum::<f64>() / 3.)
-                        * 0.5;
-                    let amount = (friction * impulse).min(tangent_length / denominator);
-                    let direction = mul(tangent, tangent_length.recip());
-                    x[v] = sub(x[v], mul(direction, weights[0] * amount));
-                    for j in 0..3 {
-                        x[tri[j]] =
-                            add(x[tri[j]], mul(direction, weights[j + 1] * bary[j] * amount));
-                    }
+                        * 0.5,
+                    minimum_denominator: 1e-20,
                 }
-                contacts += 1;
+                .project(
+                    x,
+                    previous,
+                    &self.inverse_masses,
+                    &mut history.cloth,
+                    key,
+                )?;
                 // shortcut: moving queries finish the old scan; revisit if dense contact dominates.
                 // Later bounds may become reachable, and projection order must remain unchanged.
                 linear |= x[v] != before;
@@ -207,14 +652,15 @@ impl Cloth {
         Ok(contacts)
     }
 
+    #[cfg(test)]
     pub(crate) fn contact_errors(&self, x: &[Vec3]) -> ContactErrors {
-        self.analyze_contacts(x, &|| false, true)
+        self.analyze_contacts(x, &|| false, true, false)
             .expect("A non-cancelling callback cannot interrupt contact analysis")
     }
 
     #[cfg(test)]
     pub(crate) fn exhaustive_contact_errors(&self, x: &[Vec3]) -> ContactErrors {
-        self.analyze_contacts(x, &|| false, false).unwrap()
+        self.analyze_contacts(x, &|| false, false, false).unwrap()
     }
 
     pub(crate) fn contact_errors_cancellable(
@@ -222,7 +668,15 @@ impl Cloth {
         x: &[Vec3],
         cancelled: &impl Fn() -> bool,
     ) -> Result<ContactErrors, SimulationError> {
-        self.analyze_contacts(x, cancelled, true)
+        self.analyze_contacts(x, cancelled, true, false)
+    }
+
+    pub(crate) fn initial_contact_errors_cancellable(
+        &self,
+        x: &[Vec3],
+        cancelled: &impl Fn() -> bool,
+    ) -> Result<ContactErrors, SimulationError> {
+        self.analyze_contacts(x, cancelled, true, true)
     }
 
     fn analyze_contacts(
@@ -230,6 +684,7 @@ impl Cloth {
         x: &[Vec3],
         cancelled: &impl Fn() -> bool,
         indexed: bool,
+        collect_recovery: bool,
     ) -> Result<ContactErrors, SimulationError> {
         let mut max_thickness = 0_f64;
         for &thickness in &self.thickness {
@@ -250,6 +705,7 @@ impl Cloth {
         };
         let mut maximum = 0_f64;
         let mut count = 0;
+        let mut recovery_eligibility = InitialRecoveryEligibility::default();
         for v in 0..x.len() {
             check_cancel(cancelled)?;
             for &collider in &self.input.colliders {
@@ -278,6 +734,9 @@ impl Cloth {
                     maximum = maximum.max(depth);
                     if depth > 1e-8 {
                         count += 1;
+                        if collect_recovery {
+                            recovery_eligibility.cloth.insert((v, i));
+                        }
                     }
                 }
                 Ok(())
@@ -292,13 +751,13 @@ impl Cloth {
             }
         }
         let mut uncertain_capsule_pairs = 0;
-        for &tri in &self.input.triangles {
+        for (ti, &tri) in self.input.triangles.iter().enumerate() {
             check_cancel(cancelled)?;
             let thickness = tri
                 .map(|i| self.thickness[i])
                 .into_iter()
                 .fold(0., f64::max);
-            for &collider in &self.input.colliders {
+            for (ci, &collider) in self.input.colliders.iter().enumerate() {
                 check_cancel(cancelled)?;
                 let Collider::Capsule { a, b, radius } = collider else {
                     continue;
@@ -309,6 +768,9 @@ impl Cloth {
                 maximum = maximum.max(depth);
                 if depth > 1e-8 {
                     count += 1;
+                    if collect_recovery {
+                        recovery_eligibility.triangle_capsules.insert((ti, ci));
+                    }
                 }
             }
         }
@@ -316,6 +778,7 @@ impl Cloth {
             maximum,
             intersections: count,
             uncertain_capsule_pairs,
+            recovery_eligibility,
         })
     }
 }
@@ -498,20 +961,38 @@ fn cloth_contact(
     gap: f64,
     swept: bool,
 ) -> Option<(Vec3, Vec3, f64)> {
-    let [a, b, c] = tri.map(|i| x[i]);
-    let (point, bary) = closest_triangle(x[v], a, b, c);
-    let delta = sub(x[v], point);
+    let vertices = [v, tri[0], tri[1], tri[2]];
+    cloth_feature(
+        vertices.map(|i| x[i]),
+        vertices.map(|i| previous[i]),
+        gap,
+        swept,
+        false,
+    )
+    .map(|(normal, bary, gap)| (normal, bary, -gap))
+}
+
+fn cloth_feature(
+    x: [Vec3; 4],
+    previous: [Vec3; 4],
+    gap: f64,
+    swept: bool,
+    include_separated: bool,
+) -> Option<(Vec3, Vec3, f64)> {
+    let [vertex, a, b, c] = x;
+    let (point, bary) = closest_triangle(vertex, a, b, c);
+    let delta = sub(vertex, point);
     let distance = length(delta);
     let face_normal = unit(cross(sub(b, a), sub(c, a)));
     if length(face_normal) < 0.5 {
         return None;
     }
     let old_normal = unit(cross(
-        sub(previous[tri[1]], previous[tri[0]]),
-        sub(previous[tri[2]], previous[tri[0]]),
+        sub(previous[2], previous[1]),
+        sub(previous[3], previous[1]),
     ));
     let old_side = dot(
-        sub(previous[v], bary_point(previous, tri, bary)),
+        sub(previous[0], bary_point(&previous, [1, 2, 3], bary)),
         old_normal,
     );
     let side = dot(delta, face_normal);
@@ -520,9 +1001,9 @@ fn cloth_contact(
     let crossed = swept && old_side * side < -1e-18 && (distance - side.abs()).abs() < 1e-8;
     if crossed {
         let normal = mul(face_normal, if old_side >= 0. { 1. } else { -1. });
-        return Some((normal, bary, gap - dot(delta, normal)));
+        return Some((normal, bary, -(gap - dot(delta, normal))));
     }
-    if distance >= gap {
+    if distance >= gap && !include_separated {
         return None;
     }
     let normal = if distance > 1e-12 {
@@ -530,14 +1011,23 @@ fn cloth_contact(
     } else {
         mul(face_normal, if old_side < 0. { -1. } else { 1. })
     };
-    Some((normal, bary, gap - distance))
+    Some((normal, bary, -(gap - distance)))
 }
 
 pub(crate) fn collider_contact(collider: Collider, p: Vec3, thickness: f64) -> Option<(Vec3, f64)> {
+    collider_feature(collider, p, thickness, false).map(|(normal, gap)| (normal, -gap))
+}
+
+fn collider_feature(
+    collider: Collider,
+    p: Vec3,
+    thickness: f64,
+    include_separated: bool,
+) -> Option<(Vec3, f64)> {
     match collider {
         Collider::Ground { height } => {
             let depth = height + thickness - p[1];
-            (depth > 0.).then_some(([0., 1., 0.], depth))
+            (depth > 0. || include_separated).then_some(([0., 1., 0.], -depth))
         }
         Collider::Capsule { a, b, radius } => {
             let edge = sub(b, a);
@@ -550,7 +1040,7 @@ pub(crate) fn collider_contact(collider: Collider, p: Vec3, thickness: f64) -> O
             let delta = sub(p, add(a, mul(edge, t)));
             let distance = length(delta);
             let depth = radius + thickness - distance;
-            if depth <= 0. {
+            if depth <= 0. && !include_separated {
                 return None;
             }
             let normal = if distance > 1e-12 {
@@ -568,13 +1058,13 @@ pub(crate) fn collider_contact(collider: Collider, p: Vec3, thickness: f64) -> O
                     [1., 0., 0.]
                 }
             };
-            Some((normal, depth))
+            Some((normal, -depth))
         }
         Collider::Torso { center, radii } => {
             let d = sub(p, center);
             let r = radii.map(|r| r + thickness);
             let q = (0..3).map(|i| (d[i] / r[i]).powi(2)).sum::<f64>().sqrt();
-            if q >= 1. {
+            if q >= 1. && !include_separated {
                 return None;
             }
             // shortcut: radial inflated-ellipsoid contact approximates a constant offset, replace with exact signed distance for calibrated avatars.
@@ -585,7 +1075,14 @@ pub(crate) fn collider_contact(collider: Collider, p: Vec3, thickness: f64) -> O
             };
             let correction = sub(target, d);
             let depth = length(correction);
-            Some((unit(correction), depth))
+            let direction = if q >= 1. { d } else { correction };
+            let norm = direction[0].hypot(direction[1]).hypot(direction[2]);
+            let normal = if norm > 0. {
+                direction.map(|component| component / norm)
+            } else {
+                [0.; 3]
+            };
+            Some((normal, if q >= 1. { depth } else { -depth }))
         }
     }
 }
@@ -632,13 +1129,612 @@ mod tests {
     }
 
     #[test]
+    fn initial_recovery_eligibility_is_pair_specific_and_frozen_before_motion() {
+        let input = planes_input(1.);
+        let positions = input.positions.clone();
+        let cloth = Cloth::new(input).unwrap();
+        assert_eq!(cloth.diagnostics().initial_intersections, 1);
+        assert!(cloth.initial_recovery_eligibility.cloth.contains(&(0, 1)));
+        assert!(!cloth.initial_recovery_eligibility.cloth.contains(&(0, 2)));
+        let mut balanced = ContactState::default();
+        let mut x = positions.clone();
+        cloth
+            .project_cloth(&mut x, &positions, &mut balanced, &|| false)
+            .unwrap();
+        assert!(balanced.cloth.contains_key(&(0, 1)));
+        assert!(balanced.recovery.is_none());
+
+        let mut phase = ContactState::with_initial_recovery(
+            &cloth.initial_recovery_eligibility,
+            RecoveryProvenance::default(),
+        );
+        let mut x = positions.clone();
+        x[0][1] = 0.999;
+        cloth
+            .project_cloth(&mut x, &positions, &mut phase, &|| false)
+            .unwrap();
+        assert!(
+            phase.cloth.contains_key(&(0, 2)),
+            "new collision remains balanced"
+        );
+        assert_eq!(phase.recovery.as_ref().unwrap().provenance.projections, 0);
+        assert!(phase.recovery.as_ref().unwrap().provenance.cloth.is_empty());
+
+        let mut phase = ContactState::with_initial_recovery(
+            &cloth.initial_recovery_eligibility,
+            RecoveryProvenance::default(),
+        );
+        let mut x = positions.clone();
+        cloth
+            .project_cloth(&mut x, &positions, &mut phase, &|| false)
+            .unwrap();
+        let recovery = phase.recovery.as_ref().unwrap();
+        assert_eq!(recovery.provenance.projections, 1);
+        assert!(length(sub(recovery.provenance.cloth[&(0, 1)][0], [0., 0.002, 0.])) <= 1e-14);
+        assert!(phase.cloth.is_empty());
+
+        let mut tiny = planes_input(1.);
+        tiny.positions[0][1] = 0.006 - 2_f64.powi(-30);
+        let tiny = Cloth::new(tiny).unwrap();
+        assert!(tiny.diagnostics().max_contact_error > 0.);
+        assert_eq!(tiny.diagnostics().initial_intersections, 0);
+        assert!(tiny.initial_recovery_eligibility.cloth.is_empty());
+
+        let mut clear = planes_input(1.);
+        clear.positions[0][1] = 1.1;
+        let clear = Cloth::new(clear).unwrap();
+        assert_eq!(clear.diagnostics().initial_intersections, 0);
+        let mut phase = ContactState::with_initial_recovery(
+            &clear.initial_recovery_eligibility,
+            RecoveryProvenance::default(),
+        );
+        let mut x = clear.positions.clone();
+        x[0][1] = 0.9;
+        clear
+            .project_cloth(&mut x, &clear.positions, &mut phase, &|| false)
+            .unwrap();
+        assert!(phase.recovery.is_none());
+        assert!(phase.cloth.contains_key(&(0, 2)));
+        assert!((x[0][1] - 1.006).abs() <= 1e-14);
+        assert_eq!(clear.diagnostics().initial_contact_recovery_projections, 0);
+    }
+
+    #[test]
+    fn initial_capsule_recovery_owns_only_frozen_pairs_and_keeps_displacement_provenance() {
+        let positions = vec![[-1., 0., 0.125], [1., 0., 0.125], [0., 2., 0.125]];
+        let input = ClothInput {
+            positions: positions.clone(),
+            material_uv: positions.iter().map(|p| [p[0], p[1]]).collect(),
+            triangles: vec![[0, 1, 2]],
+            triangle_materials: vec![Material {
+                friction: 0.,
+                collision_thickness: 0.0625,
+                ..Default::default()
+            }],
+            colliders: [0., 1.]
+                .map(|z| Collider::Capsule {
+                    a: [0., -1., z],
+                    b: [0., 1., z],
+                    radius: 0.1875,
+                })
+                .to_vec(),
+            ..Default::default()
+        };
+        let mut cloth = Cloth::new(input).unwrap();
+        cloth.inverse_masses = vec![1., 3., 1.];
+        assert_eq!(cloth.diagnostics().initial_intersections, 1);
+        assert_eq!(
+            cloth.initial_recovery_eligibility.triangle_capsules,
+            BTreeSet::from([(0, 0)])
+        );
+
+        let mut phase = ContactState::with_initial_recovery(
+            &cloth.initial_recovery_eligibility,
+            RecoveryProvenance::default(),
+        );
+        let mut x: Vec<_> = positions.iter().map(|&p| add(p, [0., 0., 1.])).collect();
+        cloth
+            .project_colliders(&mut x, &positions, &mut phase, &|| false)
+            .unwrap();
+        assert!(phase.triangle_capsules.contains_key(&(0, 1)));
+        assert_eq!(phase.recovery.as_ref().unwrap().provenance.projections, 0);
+
+        let mut phase = ContactState::with_initial_recovery(
+            &cloth.initial_recovery_eligibility,
+            RecoveryProvenance::default(),
+        );
+        let mut x = positions.clone();
+        cloth
+            .project_colliders(&mut x, &positions, &mut phase, &|| false)
+            .unwrap();
+        assert!(phase.triangle_capsules.is_empty());
+        let recovery = &phase.recovery.as_ref().unwrap().provenance;
+        assert_eq!(recovery.projections, 1);
+        for (j, expected_z) in [0.1875, 0.3125, 0.125].into_iter().enumerate() {
+            assert_eq!(x[j][2], expected_z);
+            assert_eq!(
+                recovery.triangle_capsules[&(0, 0)][j],
+                sub(x[j], positions[j])
+            );
+        }
+        let retained = format!("{recovery:?}");
+        let translated: Vec<_> = x.iter().map(|&p| add(p, [0., 0., 2.])).collect();
+        x.clone_from(&translated);
+        cloth
+            .project_colliders(&mut x, &positions, &mut phase, &|| false)
+            .unwrap();
+        assert_eq!(x, translated);
+        assert_eq!(
+            format!("{:?}", phase.recovery.as_ref().unwrap().provenance),
+            retained
+        );
+        assert!(phase.triangle_capsules.is_empty());
+        assert!(phase.vertex_colliders.is_empty());
+    }
+
+    #[test]
+    fn recovery_provenance_accumulates_actual_normal_and_friction_motion_atomically() {
+        let initial = [[0.; 3], [0.; 3], [2., -0., 3.]];
+        let previous = initial.map(|p| sub(p, [0.125, 0., 0.]));
+        let weights = [1., 3., 0.];
+        let contact = |normal, gap, friction| Contact {
+            vertices: [0, 1, 2],
+            coefficients: [0.5, 0.5, 0.],
+            normal,
+            gap,
+            friction,
+            minimum_denominator: 0.,
+        };
+        let mut x = initial;
+        let mut provenance = BTreeMap::new();
+        let mut projections = 0;
+        contact([0., 0., 1.], -0.125, 0.5)
+            .recover(
+                &mut x,
+                &previous,
+                &weights,
+                &mut provenance,
+                &mut projections,
+                (0, 0),
+            )
+            .unwrap();
+        assert_eq!(projections, 1);
+        assert_eq!(
+            provenance[&(0, 0)],
+            [[-0.03125, 0., 0.0625], [-0.09375, 0., 0.1875], [0.; 3]]
+        );
+        contact([0., 1., 0.], -0.25, 0.)
+            .recover(
+                &mut x,
+                &previous,
+                &weights,
+                &mut provenance,
+                &mut projections,
+                (0, 0),
+            )
+            .unwrap();
+        assert_eq!(projections, 2);
+        for j in 0..3 {
+            assert_eq!(provenance[&(0, 0)][j], sub(x[j], initial[j]));
+        }
+        assert_eq!(x[2].map(f64::to_bits), initial[2].map(f64::to_bits));
+        let before = x;
+        let retained = provenance.clone();
+        contact([0., 1., 0.], 1., 0.)
+            .recover(
+                &mut x,
+                &previous,
+                &weights,
+                &mut provenance,
+                &mut projections,
+                (0, 0),
+            )
+            .unwrap();
+        assert_eq!(x, before);
+        assert_eq!(provenance, retained);
+        assert_eq!(projections, 2);
+
+        let mut projections = usize::MAX;
+        assert!(matches!(
+            contact([0., 1., 0.], -0.25, 0.).recover(
+                &mut x,
+                &previous,
+                &weights,
+                &mut provenance,
+                &mut projections,
+                (0, 0)
+            ),
+            Err(SimulationError::Unstable(_))
+        ));
+        assert_eq!(x, before);
+        assert_eq!(provenance, retained);
+        assert_eq!(projections, usize::MAX);
+        contact([0., 1., 0.], -f64::MIN_POSITIVE, 0.)
+            .recover(
+                &mut x,
+                &previous,
+                &weights,
+                &mut provenance,
+                &mut projections,
+                (0, 0),
+            )
+            .unwrap();
+        assert_eq!(x, before);
+        assert_eq!(provenance, retained);
+        assert_eq!(projections, usize::MAX);
+        assert_eq!(
+            contact([0., 1., 0.], -0.25, 0.)
+                .recover(
+                    &mut x,
+                    &previous,
+                    &[0.; 3],
+                    &mut provenance,
+                    &mut projections,
+                    (0, 1)
+                )
+                .unwrap(),
+            0
+        );
+        assert_eq!(x[2].map(f64::to_bits), initial[2].map(f64::to_bits));
+        assert_eq!(provenance, retained);
+        assert_eq!(projections, usize::MAX);
+    }
+
+    #[test]
+    fn contact_action_replaces_inactive_and_rotating_normal_history() {
+        for (current_gap, anchor_gap, old, expected) in [
+            (-0.25, -0.25, [0.; 3], [0., 0.25, 0.]),
+            (0.25, 0.25, [0.; 3], [0.; 3]),
+            (0.75, 0.25, [0., 0.5, 0.], [0.; 3]),
+            (0.25, -0.25, [0., 0.5, 0.], [0., 0.25, 0.]),
+            (-0.125, -0.125, [0.25, 0., 0.], [0., 0.125, 0.]),
+        ] {
+            let mut x = [[0., current_gap, 0.]];
+            let previous = x;
+            let anchor = sub(x[0], old);
+            let mut history = BTreeMap::from([((0, 0), [old])]);
+            Contact {
+                vertices: [0],
+                coefficients: [1.],
+                normal: [0., 1., 0.],
+                gap: anchor_gap,
+                friction: 0.,
+                minimum_denominator: 0.,
+            }
+            .project(&mut x, &previous, &[2.], &mut history, (0, 0))
+            .unwrap();
+            assert!(length(sub(x[0], add(anchor, expected))) <= 1e-14);
+            assert_eq!(
+                history.get(&(0, 0)).copied().unwrap_or([[0.; 3]]),
+                [expected]
+            );
+            assert_eq!(history.is_empty(), expected == [0.; 3]);
+        }
+        let mut x = [[1., 2., 3.]];
+        let before = x;
+        let mut history = BTreeMap::from([((0, 0), [[0.25, 0., 0.]])]);
+        let old = history.clone();
+        assert!(matches!(
+            Contact {
+                vertices: [0],
+                coefficients: [1.],
+                normal: [f64::NAN, 1., 0.],
+                gap: -0.25,
+                friction: 0.,
+                minimum_denominator: 0.,
+            }
+            .project(&mut x, &before, &[2.], &mut history, (0, 0)),
+            Err(SimulationError::Unstable(_))
+        ));
+        assert_eq!(x, before);
+        assert_eq!(history, old);
+    }
+
+    #[test]
+    fn contact_action_replaces_barycentric_support_with_nonzero_pinned_weight() {
+        let mut x = [[0., 0.1, 0.], [0., 0.3, 0.], [-0., 0., -0.]];
+        let previous = x;
+        let pin_bits = x[2].map(f64::to_bits);
+        let old = [[0., 0.1, 0.], [0., 0.3, 0.], [0.; 3]];
+        let anchor = std::array::from_fn::<_, 3, _>(|j| sub(x[j], old[j]));
+        let mut history = BTreeMap::from([((0, 0), old)]);
+        Contact {
+            vertices: [0, 1, 2],
+            coefficients: [0.25, 0.5, 0.25],
+            normal: [0., 1., 0.],
+            gap: -0.075,
+            friction: 0.,
+            minimum_denominator: 0.,
+        }
+        .project(&mut x, &previous, &[1., 3., 0.], &mut history, (0, 0))
+        .unwrap();
+        // D=13/16 kg^-1 and lambda=6/65 kg m, including the immovable support.
+        for (j, expected) in [3. / 130., 9. / 65., 0.].into_iter().enumerate() {
+            assert!((history[&(0, 0)][j][1] - expected).abs() <= 1e-14);
+            assert!((x[j][1] - anchor[j][1] - expected).abs() <= 1e-14);
+        }
+        assert_eq!(x[2].map(f64::to_bits), pin_bits);
+        assert_eq!(
+            Contact {
+                vertices: [0, 1, 2],
+                coefficients: [0., 0., 1.],
+                normal: [0., 1., 0.],
+                gap: -0.1,
+                friction: 0.5,
+                minimum_denominator: 0.,
+            }
+            .project(&mut x, &previous, &[1., 3., 0.], &mut history, (0, 0))
+            .unwrap(),
+            0
+        );
+        assert!(history.is_empty());
+        assert_eq!([x[0], x[1]], [anchor[0], anchor[1]]);
+        assert_eq!(x[2].map(f64::to_bits), pin_bits);
+        let all_pin_bits = x.map(|point| point.map(f64::to_bits));
+        Contact {
+            vertices: [0, 1, 2],
+            coefficients: [0.25, 0.5, 0.25],
+            normal: [0., 1., 0.],
+            gap: -0.1,
+            friction: 0.5,
+            minimum_denominator: 0.,
+        }
+        .project(&mut x, &previous, &[0.; 3], &mut history, (0, 0))
+        .unwrap();
+        assert_eq!(x.map(|point| point.map(f64::to_bits)), all_pin_bits);
+        assert!(history.is_empty());
+    }
+
+    #[test]
+    fn contact_friction_sticks_slides_and_releases_with_normal_action() {
+        for (tangent, expected) in [(0.1, -0.1), (0.4, -0.125)] {
+            let mut x = [[tangent, -0.25, 0.]];
+            let previous = [[0., -0.25, 0.]];
+            let mut history = BTreeMap::new();
+            Contact {
+                vertices: [0],
+                coefficients: [1.],
+                normal: [0., 1., 0.],
+                gap: -0.25,
+                friction: 0.5,
+                minimum_denominator: 0.,
+            }
+            .project(&mut x, &previous, &[2.], &mut history, (0, 0))
+            .unwrap();
+            assert!(length(sub(history[&(0, 0)][0], [expected, 0.25, 0.])) <= 1e-14);
+            assert!((x[0][0] - tangent - expected).abs() <= 1e-14);
+        }
+        let mut x = [[-0.1, 0.75, 0.]];
+        let mut history = BTreeMap::from([((0, 0), [[-0.1, 0.5, 0.]])]);
+        Contact {
+            vertices: [0],
+            coefficients: [1.],
+            normal: [0., 1., 0.],
+            gap: 0.25,
+            friction: 0.5,
+            minimum_denominator: 0.,
+        }
+        .project(&mut x, &[[0.; 3]], &[2.], &mut history, (0, 0))
+        .unwrap();
+        assert_eq!(x, [[0., 0.25, 0.]]);
+        assert!(history.is_empty());
+    }
+
+    #[test]
+    fn shallow_torso_contact_keeps_unit_normals_across_scales_and_at_boundary() {
+        for radius in [2_f64.powi(-20), 1., 2_f64.powi(20)] {
+            let thickness = radius / 64.;
+            let collider = Collider::Torso {
+                center: [0.; 3],
+                radii: [radius - thickness; 3],
+            };
+            let inside = radius * (1. - 2_f64.powi(-48));
+            let positions = vec![
+                [inside, 0., 0.],
+                [radius + 1., 0., 0.],
+                [radius + 1., 1., 0.],
+            ];
+            let cloth = Cloth::new(ClothInput {
+                positions: positions.clone(),
+                material_uv: vec![[0., 0.], [1., 0.], [0., 1.]],
+                triangles: vec![[0, 1, 2]],
+                triangle_materials: vec![Material {
+                    friction: 0.,
+                    collision_thickness: thickness,
+                    ..Default::default()
+                }],
+                colliders: vec![collider],
+                ..Default::default()
+            })
+            .unwrap();
+            let (normal, depth) = collider_contact(collider, positions[0], thickness).unwrap();
+            assert_eq!(normal, [1., 0., 0.]);
+            assert!(depth > 0.);
+            let mut x = positions.clone();
+            let mut history = ContactState::default();
+            for _ in 0..2 {
+                assert_eq!(
+                    cloth
+                        .project_colliders(&mut x, &positions, &mut history, &|| false)
+                        .unwrap(),
+                    1
+                );
+                assert_eq!(x[0], [radius, 0., 0.]);
+                assert!(collider_contact(collider, x[0], thickness).is_none());
+            }
+        }
+    }
+
+    #[test]
+    fn capsule_supports_resolve_distinct_material_points_and_release_after_translation() {
+        let positions = vec![[-1., 0., 0.125], [1., 0., 0.125], [0., 2., 0.125]];
+        let (a, b) = ([0., -1., 0.], [0., 1., 0.]);
+        let mut cloth = Cloth::new(ClothInput {
+            positions: positions.clone(),
+            material_uv: positions.iter().map(|p| [p[0], p[1]]).collect(),
+            triangles: vec![[0, 1, 2]],
+            triangle_materials: vec![Material {
+                friction: 0.,
+                collision_thickness: 0.0625,
+                ..Default::default()
+            }],
+            colliders: vec![Collider::Capsule {
+                a,
+                b,
+                radius: 0.1875,
+            }],
+            ..Default::default()
+        })
+        .unwrap();
+        cloth.inverse_masses = vec![1., 3., 1.];
+        let mut x = positions.clone();
+        let mut repeat = positions.clone();
+        let mut history = ContactState::default();
+        let mut repeat_history = ContactState::default();
+        for visit in 0..30 {
+            cloth
+                .project_colliders(&mut x, &positions, &mut history, &|| false)
+                .unwrap();
+            cloth
+                .project_colliders(&mut repeat, &positions, &mut repeat_history, &|| false)
+                .unwrap();
+            for (&point, &repeated) in x.iter().zip(&repeat) {
+                assert_eq!(point.map(f64::to_bits), repeated.map(f64::to_bits));
+            }
+            assert!(x.iter().copied().all(finite));
+            if visit == 0 {
+                for (p, expected_z) in x.iter().zip([0.1875, 0.3125, 0.125]) {
+                    assert!((p[2] - expected_z).abs() <= 1e-14);
+                }
+                assert_eq!(history.triangle_capsules[&(0, 0)].len(), 1);
+                assert_eq!(history.triangle_capsules[&(0, 0)][0].bary, [0.5, 0.5, 0.]);
+                let missed = bary_point(&x, [0, 1, 2], [0.25, 0.25, 0.5]);
+                assert_eq!(missed, [0., 1., 0.1875]);
+                assert_eq!(0.25 - missed[2], 0.0625);
+            }
+            if visit == 1 {
+                assert!(history.triangle_capsules[&(0, 0)].len() > 1);
+                assert_ne!(x[2], positions[2]);
+            }
+        }
+        // Full-triangle clearance catches material points missed by the first edge projection.
+        let full = capsule::closest([x[0], x[1], x[2]], a, b);
+        assert!(full.distance >= 0.25 - 1e-6);
+        assert!(cloth.contact_errors(&x).maximum <= 1e-6);
+        let sample = bary_point(&x, [0, 1, 2], [0.25, 0.25, 0.5]);
+        let axis_y = sample[1].clamp(-1., 1.);
+        assert!(sample[0].hypot(sample[1] - axis_y).hypot(sample[2]) >= 0.25 - 1e-6);
+
+        for point in &mut x {
+            point[2] += 1.;
+        }
+        cloth
+            .project_colliders(&mut x, &positions, &mut history, &|| false)
+            .unwrap();
+        assert!(history.triangle_capsules.is_empty());
+        assert!(history.vertex_colliders.is_empty());
+        for (actual, original) in x.iter().zip(&positions) {
+            assert!(length(sub(*actual, add(*original, [0., 0., 1.]))) <= 1e-14);
+        }
+    }
+
+    #[test]
+    fn cloth_contact_queries_retracted_point_before_releasing_a_finite_face() {
+        let mut input = planes_input(10.);
+        for point in &mut input.positions {
+            point[1] += 1.;
+        }
+        for material in &mut input.triangle_materials {
+            material.collision_thickness = 0.01;
+        }
+        for pin in &mut input.pins {
+            pin.target = input.positions[pin.vertex];
+        }
+        let positions = input.positions.clone();
+        let cloth = Cloth::new(input).unwrap();
+        let mut previous = positions.clone();
+        previous[0] = [1., 1.1, 0.];
+        let mut x = positions.clone();
+        x[0] = [1.125, 0.75, -0.125];
+        let old = [[0.375, 0.25, -0.25], [0.; 3], [0.; 3], [0.; 3]];
+        let vertices = [0, 3, 4, 5];
+        let (_, _, current_gap) = cloth_feature(
+            vertices.map(|i| x[i]),
+            vertices.map(|i| previous[i]),
+            0.02,
+            true,
+            true,
+        )
+        .unwrap();
+        assert!(current_gap > 0., "current point is outside the finite face");
+        assert_eq!(sub(x[0], old[0]), [0.75, 0.5, 0.125]);
+        let mut history = ContactState::default();
+        history.cloth.insert((0, 1), old);
+        assert_eq!(
+            cloth
+                .project_cloth(&mut x, &previous, &mut history, &|| false)
+                .unwrap(),
+            1
+        );
+        assert!(length(sub(x[0], [0.75, 1.02, 0.125])) <= 1e-14);
+        assert!(length(sub(history.cloth[&(0, 1)][0], [0., 0.52, 0.])) <= 1e-14);
+        for i in 1..x.len() {
+            assert_eq!(x[i].map(f64::to_bits), positions[i].map(f64::to_bits));
+        }
+    }
+
+    #[test]
+    fn old_cloth_actions_release_outside_bounds_and_reject_lost_features() {
+        let input = planes_input(0.0116);
+        let positions = input.positions.clone();
+        let cloth = Cloth::new(input).unwrap();
+        let mut previous = positions.clone();
+        previous[0] = [3., positions[0][1], 3.];
+        let mut x = positions.clone();
+        let mut history = ContactState::default();
+        assert_eq!(
+            cloth
+                .project_cloth(&mut x, &previous, &mut history, &|| false)
+                .unwrap(),
+            2
+        );
+        assert_eq!(history.cloth.len(), 2);
+        x[0] = [3., 0.5, 3.];
+        assert_eq!(
+            cloth
+                .project_cloth(&mut x, &previous, &mut history, &|| false)
+                .unwrap(),
+            0
+        );
+        assert!((x[0][1] - 0.4984).abs() <= 1e-14);
+        assert!(history.cloth.is_empty());
+        assert_eq!(&x[1..], &positions[1..]);
+
+        let mut x = positions;
+        cloth
+            .project_cloth(&mut x, &previous, &mut history, &|| false)
+            .unwrap();
+        x[3..6].copy_from_slice(&[[0., 0., 0.], [0.5, 0., 0.], [1., 0., 0.]]);
+        let before = x.clone();
+        let old = history.cloth.clone();
+        assert!(matches!(
+            cloth.project_cloth(&mut x, &previous, &mut history, &|| false),
+            Err(SimulationError::Unstable(_))
+        ));
+        assert_eq!(x, before);
+        assert_eq!(history.cloth, old);
+    }
+
+    #[test]
     fn moving_contact_query_reaches_a_later_plane() {
         let input = planes_input(0.0116);
         let positions = input.positions.clone();
         let cloth = Cloth::new(input).unwrap();
         let mut x = positions.clone();
         assert_eq!(
-            cloth.project_cloth(&mut x, &positions, &|| false).unwrap(),
+            cloth
+                .project_cloth(&mut x, &positions, &mut ContactState::default(), &|| false)
+                .unwrap(),
             2
         );
         assert!((x[0][1] - 0.0056).abs() < 1e-14);
@@ -694,7 +1790,9 @@ mod tests {
         let cloth = Cloth::new(input).unwrap();
         let mut x = positions.clone();
         assert_eq!(
-            cloth.project_cloth(&mut x, &positions, &|| false).unwrap(),
+            cloth
+                .project_cloth(&mut x, &positions, &mut ContactState::default(), &|| false)
+                .unwrap(),
             2
         );
         assert!((x[0][1] - 0.003).abs() < 1e-14);
