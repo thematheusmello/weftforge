@@ -1,3 +1,16 @@
+# Apple Silicon packaging — 18 November 2026
+
+The package command uses the studio and CLI executables reported by its Cargo
+build. With a separate Cargo target directory and stale files at the default
+location, the packaged executables and the macOS bundle matched the selected
+Apple Silicon binaries byte for byte. The packaged studio opened the native
+workspace and closed normally. The packaged CLI created and inspected an
+editable two-piece sample and retained the project bytes during inspection.
+[Apple Silicon package check](parity/reports/artifacts/apple-silicon-package-20261118/SMOKE.json).
+
+Windows and Linux launch checks and distribution signing remain open. GitHub
+Actions and automated Pages deployments remain disabled.
+
 # Native simulated OBJ — 18 November 2026
 
 The Apple Silicon studio exported the revision 23 Harbor garment before and
