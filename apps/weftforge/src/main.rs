@@ -3241,8 +3241,19 @@ impl Studio {
             // Explicit scopes keep auto-ID edit buffers stable as dynamic rows appear.
             ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("creation")),|ui| {
             ui.label("Pattern name"); native_text_edit(ui,&mut self.name,None,usize::MAX,|edit|edit);
-            ui.horizontal(|ui| { ui.label("W / H m"); for value in &mut self.size { ui.add(numeric_value(ui,value).speed(0.01).range(0.01..=5.0)); } });
-            ui.horizontal(|ui| { ui.label("X / Y m"); for value in &mut self.coordinate { ui.add(numeric_value(ui,value).speed(0.01)); } });
+            egui::Grid::new("creation-fields").num_columns(2).min_col_width(96.0).show(ui, |ui| {
+                ui.spacing_mut().interact_size.x = 96.0;
+                for (label, value) in ["Width m", "Height m"].into_iter().zip(&mut self.size) {
+                    let label = ui.label(label);
+                    ui.add(numeric_value(ui, value).speed(0.01).range(0.01..=5.0)).labelled_by(label.id);
+                    ui.end_row();
+                }
+                for (label, value) in ["Position X m", "Position Y m"].into_iter().zip(&mut self.coordinate) {
+                    let label = ui.label(label);
+                    ui.add(numeric_value(ui, value).speed(0.01)).labelled_by(label.id);
+                    ui.end_row();
+                }
+            });
             ui.horizontal(|ui| {
                 if ui.button("Add rectangle").clicked() { acting=true; add_rectangle=true; }
                 if ui.button("Add ellipse").clicked() { acting=true; add_ellipse=true; }

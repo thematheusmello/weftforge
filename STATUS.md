@@ -1,4 +1,58 @@
-# Current development integration — 18 November 2026
+# Current development checkpoint — 18 November 2026
+
+The latest published checkpoint is [draft PR #62](https://github.com/thematheusmello/weftforge/pull/62),
+head `3e1f9ef8`, stacked on draft #61. Its clean registry/map closure passed in
+69.478 seconds. Newer work below is local and awaiting reviewed public evidence;
+no garment, reference, full feature or delivery gate is accepted.
+
+The constructor now has aligned Width, Height and Position X/Y fields, explicit
+metres and accessibility label associations. Numeric helpers, ranges, field order
+and authoring paths remain unchanged. All 168 native-package tests pass on the
+isolated candidate, with existing test definitions unchanged. Its integrated
+optimized native build passed in 312.116 seconds / 900 with executable
+`fbf91108fa828597a6c16fac476970b4844c24234b303a5a1dae7a27c5fd4592`.
+This build contains the published solver. Full integrated checks and constructor
+appearance observation remain pending.
+
+Preview P001 observed the loaded original Harbor sample, then failed its control
+time allowance before Frame all or opening the constructor. The two state-call
+lifecycles totalled 2.141 seconds; preparation/operator gaps consumed the allowance.
+The watchdog closed the owned process, without normal-Quit credit, and final
+sealing exceeded 300 seconds. The original failure remains failed; all owned
+processes are absent. A shorter continuous sequence with protected cleanup is
+being prepared. No constructor alignment or product-defect claim comes from P001.
+Earlier N009/N010 input/controller failures also remain unchanged.
+
+A separate solver prototype passes the independent equilibrium oracle at
+Y approximately 1 metre, with force residual -9.77e-15 N. An ungraded diagnostic
+on the previous solver completed in 88.891 seconds / 180, with 31 control/observer
+states bit-identical in persistent physics. It identified contact-history and
+changing-support issues; elastic coupling remains another unresolved concern.
+The original full 181-state garment case still fails at 16.063338% strain against
+15%. No garment improvement is claimed from these smaller checks.
+
+The first contact-repair package failed with 85 passed and two failures. A reviewed
+successor queries geometry after retracting its owned action and retains separate
+capsule material-point supports. It passes all eight new regressions and the old
+fast-crossing case, but its full package still fails: 88 passed, two existing
+failures, zero ignored. Capsule penetration is 0.0093352567 m; the fixed-layer
+residual is 2.9023345e-6 m. Both exceed unchanged 1e-6 m limits. That source is
+isolated and not integrated. Moving-triangle self-contact also has a documented
+nonlinear fixed-point limitation. Stronger whole-triangle projection is under
+independent mathematical review; no thresholds or iteration budgets were weakened.
+
+Next: complete the UI-only integrated formatting, workspace tests, strict Clippy,
+metadata/xtask checks and controlled appearance observation; continue the isolated
+contact repair until its unchanged package passes, then integrate and run the full
+garment case and native empty-project authoring/save/reopen/export workflow.
+No native, solver or Cargo job is currently running. Rebuildable compiled debug
+inputs are cold; release dependencies belong to this worktree. GitHub Actions
+remain disabled; main and existing Pages stay unchanged. All six gates and ten
+acceptance journeys remain open, with 42 partial and 14 planned broad groups.
+
+The published checkpoint below retains its original source and timing attribution.
+
+# Development integration checkpoint — 18 November 2026
 
 The `feat/dual-context-integration-20261117` branch combines dual soft sewing
 with contextual Pattern, Fabric and Simulation tabs, independent scrolling,
