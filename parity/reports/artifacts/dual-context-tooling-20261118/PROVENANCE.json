@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "kind": "selected_tooling_evidence_provenance",
+  "curated_at_utc": "2026-11-18T00:15:09.499279+00:00",
+  "curation_metadata_HEAD": "317565b6e270aacaba8b6cc26e5305d2148ddaeb",
+  "selection_scope": "Partial public selection of 30 small original text/code records from two distinct completed tooling cases. Six full guard ledgers remain private; no claim that every original or protected input is published.",
+  "actual_source_identity": {
+    "generator_metadata_commit": "4ffb20e3aa9ebf715db833f279381c77245a47dc",
+    "clean_xtask_metadata_commit": "317565b6e270aacaba8b6cc26e5305d2148ddaeb",
+    "separate_workspace_source_checks_commit": "12ecdc13ba47a20d77bf52d1757815e39f0ea380",
+    "static_map_source_commit": "1bf4cf1de46cffbad959c439610c1e6772266eff",
+    "qualification": "Original 459 workspace tests, fmt, strict Clippy and separate native/CLI build belong to the earlier source report. These tooling cases do not repeat or relabel those executions."
+  },
+  "generator": {
+    "metadata_commit": "4ffb20e3aa9ebf715db833f279381c77245a47dc",
+    "bounded_case_accepted": false,
+    "classification": "GENERATOR_EXIT_ZERO_BOUNDED_CASE_FAILED_LEDGER_VOLUME",
+    "generator_exit_code": 0,
+    "controller_exit_code": 1,
+    "seconds_through_final_persistence": 60.999782666098326,
+    "time_cap_seconds": 120,
+    "retained_bytes": 10527765,
+    "retained_cap_bytes": 8388608,
+    "guards_recorded_exact": {
+      "immutable": 186,
+      "selected_originals": 237,
+      "historical_public_artifacts": 13866
+    },
+    "generated_outputs_committed_later_in": "317565b6e270aacaba8b6cc26e5305d2148ddaeb",
+    "no_retry_or_regrade": true,
+    "authoritative_terminal": "generator-001/controller.stdout",
+    "postcase": "generator-001/closure/ROOT-POSTCASE.json",
+    "qualification": "Time was within 120 seconds, but complete retained volume exceeded 8 MiB. Original ROOT-RESULT candidate_success=true and pending status are preserved; final controller accepted=false governs. Child exit zero and usable generated files do not make the bounded generator case pass."
+  },
+  "clean_verification": {
+    "actual_clean_metadata_commit": "317565b6e270aacaba8b6cc26e5305d2148ddaeb",
+    "bounded_case_accepted": true,
+    "xtask_exit_code": 0,
+    "controller_exit_code": 0,
+    "seconds_through_final_persistence": 222.8850488748867,
+    "time_cap_seconds": 360,
+    "retained_bytes_before_final_clock": 568742,
+    "retained_cap_bytes": 16777216,
+    "script_tests": 54,
+    "evaluator_tests": 6,
+    "guards_recorded_exact": {
+      "immutable": 188,
+      "supporting_tool_inputs": 8,
+      "selected_originals": 237,
+      "publication_increment_public_artifacts": 242
+    },
+    "original_controller_and_Cargo_PIDs_groups_absent": [
+      42270,
+      42273
+    ],
+    "authoritative_terminal": "clean-verify-001/controller.stdout",
+    "postcase": "clean-verify-001/closure/ROOT-POSTCASE.json",
+    "original_postcase_sha256": "8b4855f05b13cefbd3a5d38727017953fd536732f5fd2320e6d5660d627f45bf",
+    "original_closure_manifest_sha256": "7fe9df50b5e8b6b913e3a0f94e32161e25b60edef71e5e6915a1a6eedccdf790",
+    "qualification": "This separate clean xtask case checks registry/generated reports, source/discovery maps, script/evaluator tests and actual CLI --help. It does not retry/regrade the generator case or execute the 459 workspace tests, a native UI, numerical garment, or reference workflow. The post-case closure records cleanup separately from the original clock."
+  },
+  "binary_identity_qualification": {
+    "native": {
+      "sha256": "08e682166be52aadb915d3560a16bef2569893737f182f4980600bebfe2db4a9",
+      "native_launched": false,
+      "payload_selected": false
+    },
+    "mutable_CLI_after_xtask": {
+      "sha256": "532288b895e439fcd223a20430e6d74d775e0d5121cd082ea8e1972ca0769ee5",
+      "bytes": 9299232,
+      "help_executed": true,
+      "payload_selected": false
+    },
+    "earlier_build_only_CLI": {
+      "sha256": "1626b5af3a0b460b993e34271f4613dbc40eedb30f3786b56e0972f7519cf4be",
+      "qualification": "Earlier separate build-only identity, not the mutable CLI rebuilt and used for --help in the clean xtask case.",
+      "payload_selected": false
+    }
+  },
+  "selection": {
+    "selected_original_count": 30,
+    "selected_original_bytes": 74428,
+    "selected_public_derivative_bytes": 73458,
+    "omitted_private_full_ledgers": 6,
+    "omitted_ledger_descriptors": "OMITTED-LEDGER-DESCRIPTORS.json",
+    "selected_manifest": "SELECTED-PUBLIC-MANIFEST-001.json",
+    "ROOT_HOME_replacement_totals": {
+      "ROOT": 12,
+      "HOME": 26
+    },
+    "original_receipt_hashes_and_modes_preserved": true,
+    "new_controller_or_generic_harness_created": false
+  },
+  "reader_guide": [
+    "Read each controller.stdout final JSON line for the original terminal verdict; ROOT-RESULT.json deliberately remains the earlier pending/candidate receipt.",
+    "ROOT-GO, LAUNCH, RUN-ONCE, runtime/STARTED, STAGE, raw stdout/stderr, controller sources and postcase records are selected as full locator-only derivatives.",
+    "Original inner hashes and closure manifests bind private raw originals. The outer selected manifest maps those originals to public derivatives. Six absent full-ledger payloads are explicitly described as unselected; neither this packet nor its compact descriptors claim a complete public replay.",
+    "Copied .py files are retained controller evidence with placeholder locators, not a new runnable harness or execution during curation."
+  ],
+  "acceptance_limits": {
+    "native_workflow_accepted": false,
+    "full_garment_quality_accepted": false,
+    "calibrated_physics_accepted": false,
+    "reference_parity_accepted": false,
+    "full_feature_or_roadmap_accepted": false,
+    "qualification": "This packet retains tooling outcomes only. All existing garment failures and native/reference/full-contract gaps remain open. Source and implementation-only tests do not establish reference parity."
+  },
+  "curation_execution": "File reads, exact locator derivatives, compact descriptors and metadata only. No Cargo, tests, generator, map check, model, GUI, network, commit, publication, workflow re-run or root STATUS/progress/registry edit performed."
+}

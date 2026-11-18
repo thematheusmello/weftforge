@@ -1,0 +1,41 @@
+{
+  "argv": [
+    "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+    "-B",
+    "scripts/progress.py"
+  ],
+  "controller_PID": 7595,
+  "deadline": 1080901.56702275,
+  "disk_observation": {
+    "last_available_bytes": 10483163136,
+    "max_snapshot_gap_seconds": 0.0,
+    "minimum_available_bytes": 10483163136,
+    "path": "<ROOT>/.local/notch-bend-integration-20261117",
+    "samples": 1,
+    "stop_below_available_bytes": 8000000000
+  },
+  "exit_code": null,
+  "peak_rss_bytes": null,
+  "pid": 7608,
+  "pinned_env": {
+    "PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONOPTIMIZE": "0"
+  },
+  "process_group": 7608,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.0,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 0,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 0,
+  "started": 1080781.56702275,
+  "stop_reason": null
+}

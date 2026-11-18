@@ -1,0 +1,40 @@
+{
+  "argv": [
+    "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+    "-B",
+    "scripts/progress.py"
+  ],
+  "disk_observation": {
+    "last_available_bytes": 10478264320,
+    "max_snapshot_gap_seconds": 0.07686808402650058,
+    "minimum_available_bytes": 10478264320,
+    "path": "<ROOT>/.local/notch-bend-integration-20261117",
+    "samples": 1225,
+    "stop_below_available_bytes": 8000000000
+  },
+  "end_monotonic_seconds": 1080840.721469833,
+  "exit_code": 0,
+  "peak_rss_bytes": 149012480,
+  "pid": 7608,
+  "process_group": 7608,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.0743711250834167,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 1222,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 211304448,
+  "stop_reason": null,
+  "terminal_phase_checks": {
+    "deadline": 1080901.56702275,
+    "output_bytes": 7047054,
+    "output_cap_bytes": 8388608,
+    "reserve_bytes": 262144
+  }
+}

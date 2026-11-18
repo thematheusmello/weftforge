@@ -1,0 +1,65 @@
+{
+  "candidate_success": true,
+  "deadline": 1082621.795447291,
+  "guards": {
+    "HEAD_fixed": true,
+    "all188_immutable_hashes_bytes_modes_exact": true,
+    "all237_original_hashes_bytes_modes_exact": true,
+    "all242_public_hashes_bytes_modes_exact": true,
+    "all8_supporting_tools_hashes_bytes_modes_exact": true,
+    "checkout_clean_after": true,
+    "controller_sources_fixed": true,
+    "index_empty_fixed": true,
+    "no_working_paths_dirty": true,
+    "project_tool_inputs_fixed": true
+  },
+  "metadata_commit": "317565b6e270aacaba8b6cc26e5305d2148ddaeb",
+  "mutable_output_after": {},
+  "mutable_output_before": {},
+  "no_retry_or_source459_model_workflow_UI_network_execution": true,
+  "raw_stderr_sha256": "1ee9983c985a2c5e48bd6164086398e248447431d37a345e109b04190729cb9e",
+  "raw_stdout_sha256": "04705db644cca52d93bfa1322f109c3e7acf5a1be302cc60ea2cedf7ac003c1f",
+  "stage": {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "xtask",
+      "verify"
+    ],
+    "disk_observation": {
+      "last_available_bytes": 11012403200,
+      "max_snapshot_gap_seconds": 0.27464183303527534,
+      "minimum_available_bytes": 10172706816,
+      "path": "<ROOT>/.local/notch-bend-integration-20261117",
+      "samples": 4532,
+      "stop_below_available_bytes": 8000000000
+    },
+    "end_monotonic_seconds": 1082484.281529125,
+    "exit_code": 0,
+    "peak_rss_bytes": 157515776,
+    "pid": 42273,
+    "process_group": 42273,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.27768991608172655,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 4529,
+      "timeouts": 0
+    },
+    "sampled_peak_rss_bytes": 446644224,
+    "stop_reason": null,
+    "terminal_phase_checks": {
+      "deadline": 1082621.795447291,
+      "output_bytes": 410444,
+      "output_cap_bytes": 16777216,
+      "reserve_bytes": 262144
+    }
+  },
+  "started": 1082261.795447291,
+  "status": "pending_final_post_persistence_clock_volume_verdict",
+  "xtask_exit_code": 0
+}

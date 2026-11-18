@@ -1,0 +1,24 @@
+{
+  "status": "authorized_one_metadata_generator",
+  "one_cycle_only": true,
+  "metadata_commit": "4ffb20e3aa9ebf715db833f279381c77245a47dc",
+  "freeze_path": "FREEZE.json",
+  "freeze_sha256": "85eb4fc9ee661bb41f26957d608f49612d7514675b6cb1c03bdbf051a6595a47",
+  "argv": [
+    "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+    "-B",
+    "scripts/progress.py"
+  ],
+  "caps": {
+    "seconds": 120,
+    "RSS_bytes": 1073741824,
+    "retained_bytes": 8388608,
+    "disk_floor_bytes": 8000000000
+  },
+  "pinned_env": {
+    "PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin",
+    "PYTHONOPTIMIZE": "0",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "root_review": "Bothindependentreviewfindingsclosedin4ff plusDELTA001 andfrozenidentity; exactoldgeneratorlogic reused, literalcountlabelsupdatedonly; onegeneration, notRust/model/nativechecks."
+}

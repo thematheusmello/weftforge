@@ -1,4 +1,4 @@
-# Current development integration — 17 November 2026
+# Current development integration — 18 November 2026
 
 The `feat/dual-context-integration-20261117` branch combines dual soft sewing
 with contextual Pattern, Fabric and Simulation tabs, independent scrolling,
@@ -20,8 +20,11 @@ The newly built native binary is
 `08e682166be52aadb915d3560a16bef2569893737f182f4980600bebfe2db4a9`;
 the separately built CLI is
 `1626b5af3a0b460b993e34271f4613dbc40eedb30f3786b56e0972f7519cf4be`.
-They have not been used for a native or CLI workflow in this checkpoint. Immutable
-same-worktree copies retain both identities; no Cargo target was copied.
+The native binary has not yet run the current shirt workflow. Immutable
+same-worktree copies retain both build-only identities; no Cargo target was
+copied. The later clean verification rebuilt and ran CLI help with post-run
+identity `532288b895e439fcd223a20430e6d74d775e0d5121cd082ea8e1972ca0769ee5`;
+that execution is separate from the earlier CLI build.
 
 The numeric-cache regression has an actual first Down failure on `bd08d511` and
 passing eight-guard successors on `cb291881` and `99734576`. The latest check
@@ -47,19 +50,28 @@ The source crosswalk maps 441 occurrences, preserving all preceding identities,
 check passed in 14.892 seconds. Progress generation returned zero on clean `4ffb20e3` and changed only the two
 expected reports. Its 60.9998-second case failed the 8 MiB evidence-volume cap
 with a 10,527,765-byte ledger; all source/original/public hash guards passed.
-That failure remains unchanged. The existing generated files now require the
-separate clean `cargo xtask verify` check; the generator is not being replayed.
+That failure remains unchanged. A separate clean `cargo xtask verify` on
+`317565b6e270aacaba8b6cc26e5305d2148ddaeb` passed in **222.885 seconds / 360**:
+registry, generated reports, maps, 54 script tests, 6 evaluator tests and CLI help.
+All 188 immutable inputs, 8 supporting tools, 237 originals and 242 public
+increment artifacts remained exact. HEAD/index stayed clean; owned controller
+42270 and Cargo 42273 and their process groups are absent. The source tests and
+generator were not replayed, and the generator volume failure is not regraded.
+The [tooling packet](parity/reports/artifacts/dual-context-tooling-20261118/PROVENANCE.json)
+retains both outcomes, with explicit descriptors for the six omitted full ledgers.
 
 N006/N007 native workflow evidence still belongs to 8aa/c332. The private N008
 preview showed the three tabs but missed its 180-second final-seal bound
 (193.534 seconds), so it provides no workflow acceptance. Finished owned test,
 preview and reference processes are closed. A current-v6 empty-project shirt
-route is being prepared against the new binary; no new native app is running.
-A separate fixed-input observer is under source review for the remaining strain
-pulse; no diagnostic build/model execution is authorized yet.
+route is prepared against the new binary. Its private independent consumer passed
+29 synthetic checks; actual native outputs and UI execution remain pending
+clock/control preparation. No new native app is running. The separate fixed-input
+observer passed independent source/math review and its one private build-only
+attempt; numerical execution and diagnostic evidence publication remain pending.
 
-Next: finish the generated progress and clean verification, publish only the
-reviewed safe draft checkpoint, and execute current native authoring, sewing,
+Next: retain the compact tooling evidence and final clean registry/map closure,
+publish only the reviewed safe draft checkpoint, and execute current native authoring, sewing,
 simulation, save/restart/edit/export with independent output checks. Continue
 all six gates and ten acceptance journeys in [ROADMAP.md](ROADMAP.md).
 GitHub Actions remain disabled with 54 runs. Main and existing Pages are unchanged;

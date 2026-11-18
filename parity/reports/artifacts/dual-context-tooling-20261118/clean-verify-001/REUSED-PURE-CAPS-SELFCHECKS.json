@@ -1,0 +1,24 @@
+{
+  "checks": [
+    {
+      "at_limit_rejected": true,
+      "name": "time"
+    },
+    {
+      "at_limit_accepted": true,
+      "name": "volume",
+      "over_limit_rejected": true
+    },
+    {
+      "at_limit_accepted": true,
+      "name": "RSS",
+      "over_limit_rejected": true
+    },
+    {
+      "at_floor_accepted": true,
+      "below_floor_rejected": true,
+      "name": "disk"
+    }
+  ],
+  "product_source_model_or_Rust_execution": false
+}

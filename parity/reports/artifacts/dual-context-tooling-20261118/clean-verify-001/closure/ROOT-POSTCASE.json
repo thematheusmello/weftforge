@@ -1,0 +1,33 @@
+{
+  "ROOT_RESULT_sha256": "520305d11269ff151795b3f85bfd6594b25e2e13c84736df8c1ae5c1ded86b0e",
+  "actual_case_seconds_through_persisted_terminal": 222.8850488748867,
+  "actual_clean_metadata_commit": "317565b6e270aacaba8b6cc26e5305d2148ddaeb",
+  "actual_xtask_exit": 0,
+  "all_recorded_owned_PIDs_and_process_groups_absent": [
+    42270,
+    42273
+  ],
+  "cap_seconds": 360,
+  "checkout_clean_after": true,
+  "mutable_target_binaries_post_xtask": {
+    "weftforge": {
+      "bytes": 51575584,
+      "mode": "0755",
+      "sha256": "08e682166be52aadb915d3560a16bef2569893737f182f4980600bebfe2db4a9"
+    },
+    "weftforge-cli": {
+      "bytes": 9299232,
+      "mode": "0755",
+      "sha256": "532288b895e439fcd223a20430e6d74d775e0d5121cd082ea8e1972ca0769ee5"
+    }
+  },
+  "postverified_exact_counts": {
+    "immutable188": 188,
+    "public_artifacts": 242,
+    "selected_originals": 237,
+    "supporting_tool_inputs": 8
+  },
+  "qualification": "Post-case closure is outside and does not regrade the original clock. CLI help ran on the mutable CLI rebuilt by xtask; its post-run identity is separate from the earlier build-only CLI. No native launch, full source-test, garment or physical rerun.",
+  "recorded_utc": "2026-11-18T00:11:34.966922+00:00",
+  "terminal_sha256": "addd03b0e5596846443895987312894babdb4008a72d3d0ee2f6c664e6e0143d"
+}
