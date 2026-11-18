@@ -1,5 +1,18 @@
 # WeftForge current-source addendum
 
+## Fabric accessibility names
+
+Source `9a3b70b752868ece9340dc80fe5228e12a52aea1` associates the four Fabric stepper fields with their
+visible labels and physical units. The contextual property surface now lists
+those numeric controls. The map retains all 457 source occurrences and
+repins the 212 occurrences in the desktop source.
+
+The previous addendum is recorded at `7e56a324c5a2b4c731d019caedc752caf08e7310`, mapped to source
+`e5f043ef4f60a19f93b73e419d5584152de19ca9`. Its JSON SHA-256 is `73e9e01d1fc5e957322922570dcd077d4146adbcef0f2a4cf188347a6bc66a22`.
+Its Markdown SHA-256 is `dd3aebc8fafd66438482ae19d5d5798d65aad93e6c8409096279483886cb0442`. The original text follows.
+
+# WeftForge current-source addendum
+
 ## Independent soft-stitch solve
 
 Source `e5f043ef4f60a19f93b73e419d5584152de19ca9` uses the exact radial solve for a soft stitch whose movable

@@ -3249,10 +3249,10 @@ impl Studio {
                     pane_heading(ui,"Fabric");
                     let count=self.editor.project.pieces.iter().filter(|piece|piece.material==material.id).count();
                     ui.label(format!("Shared fabric · {count} pieces")); ui.small("Changes affect every assigned piece. Uncalibrated approximation.");
-                    ui.label("Mass/area kg/m²"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.areal_density).speed(0.01).range(0.001..=100.0).clamp_existing_to_range(false)));
-                    ui.label("Warp stiffness N/m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.warp_stiffness).speed(10.0).range(0.0..=1.0e8).clamp_existing_to_range(false)));
-                    ui.label("Weft stiffness N/m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.weft_stiffness).speed(10.0).range(0.0..=1.0e8).clamp_existing_to_range(false)));
-                    ui.label("Bend N·m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.bending_stiffness).speed(0.00001).range(0.0..=1.0e8).clamp_existing_to_range(false)));
+                    let label=ui.label("Mass/area kg/m²"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.areal_density).speed(0.01).range(0.001..=100.0).clamp_existing_to_range(false)).labelled_by(label.id));
+                    let label=ui.label("Warp stiffness N/m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.warp_stiffness).speed(10.0).range(0.0..=1.0e8).clamp_existing_to_range(false)).labelled_by(label.id));
+                    let label=ui.label("Weft stiffness N/m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.weft_stiffness).speed(10.0).range(0.0..=1.0e8).clamp_existing_to_range(false)).labelled_by(label.id));
+                    let label=ui.label("Bend N·m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.bending_stiffness).speed(0.00001).range(0.0..=1.0e8).clamp_existing_to_range(false)).labelled_by(label.id));
                     // RGB conversion can round unchanged values while drawing the widget.
                     let mut color=material.color;
                     if ui.color_edit_button_rgb(&mut color).changed() { material.color=color; draft.color_pending=true; }
@@ -9110,7 +9110,12 @@ mod contextual_properties_tests {
             ("Pattern", vec!["Warp angle radians", "Delete selected"]),
             (
                 "Fabric",
-                vec!["Mass/area kg/m²", "Warp stiffness N/m", "Bend N·m"],
+                vec![
+                    "Mass/area kg/m²",
+                    "Warp stiffness N/m",
+                    "Weft stiffness N/m",
+                    "Bend N·m",
+                ],
             ),
             (
                 "Simulation",
@@ -9128,8 +9133,32 @@ mod contextual_properties_tests {
                 .as_ref()
                 .unwrap()
                 .nodes;
-            for label in labels.into_iter().chain(["Scene", "Context panel · #2"]) {
+            for label in labels
+                .iter()
+                .copied()
+                .chain(["Scene", "Context panel · #2"])
+            {
                 assert!(nodes.iter().any(|(_, node)| node.label() == Some(label) || node.value() == Some(label)), "missing {label}");
+            }
+            if tab == "Fabric" {
+                for (label, value) in labels.iter().zip([0.18, 400., 400., 0.003]) {
+                    let label_id = nodes
+                        .iter()
+                        .find(|(_, node)| {
+                            node.label() == Some(*label) || node.value() == Some(*label)
+                        })
+                        .unwrap()
+                        .0;
+                    let mut fields = nodes.iter().filter(|(_, node)| {
+                        node.numeric_value().is_some()
+                            && node.labelled_by() == std::slice::from_ref(&label_id)
+                    });
+                    let (_, field) = fields
+                        .next()
+                        .unwrap_or_else(|| panic!("missing Fabric field {label}"));
+                    assert!(fields.next().is_none(), "ambiguous Fabric field {label}");
+                    assert_eq!(field.numeric_value(), Some(value), "Fabric field {label}");
+                }
             }
             for label in ["Pattern", "Fabric", "Simulation"] {
                 let id = button(&output, label);

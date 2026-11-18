@@ -1,0 +1,42 @@
+{
+  "confirmed_utc": "2026-11-18T21:34:26.935862Z",
+  "platform": "macOS Apple Silicon, optimized native desktop",
+  "source_base": "7e56a324c5a2b4c731d019caedc752caf08e7310",
+  "main_rs_sha256": "fe45a6c61a4f574a7b942f777ea67a0b38d4df0050fa3dbfb47fe2eaada095e7",
+  "native_binary_sha256": "b04f0d05aa6b6fd558748330f27202b4031c8cbe7d4f8ac79de82ca7f5321720",
+  "fixture_sha256": "604107601b530013624a622f318f11c35a5a67a7db37bdff347635370d6c7402",
+  "native_observation": {
+    "revision": 20,
+    "pieces": 2,
+    "seams": 8,
+    "vertices": 654,
+    "rest_arrangement": true,
+    "selected_piece": "Harbor front",
+    "visible_fabric_scope": "Shared fabric · 2 pieces",
+    "controls": [
+      {
+        "role": "stepper",
+        "name": "Mass/area kg/m²",
+        "observed_value": "0.18"
+      },
+      {
+        "role": "stepper",
+        "name": "Warp stiffness N/m",
+        "observed_value": "400"
+      },
+      {
+        "role": "stepper",
+        "name": "Weft stiffness N/m",
+        "observed_value": "400"
+      },
+      {
+        "role": "stepper",
+        "name": "Bend N·m",
+        "observed_value": "0.00300"
+      }
+    ]
+  },
+  "fixture_unchanged": true,
+  "test_app_absent_after_quit": true,
+  "scope": "Native accessibility tree names and values for four Fabric fields."
+}
