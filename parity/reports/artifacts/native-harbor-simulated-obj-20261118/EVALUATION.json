@@ -1,0 +1,130 @@
+{
+  "status": "PASS_one_native_simulated_OBJ_path_only",
+  "input_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+  "native_document_revision_observed_before_and_after": 23,
+  "revision_embedded_in_OBJ": false,
+  "revision_attribution": "Unchanged versioned editable project and retained native AX observations; OBJ has no revision field.",
+  "source_project_unchanged": true,
+  "rest_obj_sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+  "simulated_obj_sha256": "4215795bfc9dc802e1394cb0e5ddd555279e924dce4419d05ac22ac1270ce283",
+  "rest": {
+    "vertices": 654,
+    "uv": 654,
+    "normals": 654,
+    "triangles": 1172,
+    "groups": [
+      "piece_2",
+      "piece_31"
+    ],
+    "max_normal_squared_unit_error": 0.0,
+    "minimum_triangle_area_m2": 0.0002536363636363647,
+    "minimum_normal_winding_cosine": 1.0,
+    "bounds_m": [
+      [
+        -0.6599999999999999,
+        0.6599999999999999
+      ],
+      [
+        0.96,
+        1.6
+      ],
+      [
+        -0.24,
+        0.24
+      ]
+    ],
+    "finite_data_and_positive_valid_indices": true
+  },
+  "simulated": {
+    "vertices": 654,
+    "uv": 654,
+    "normals": 654,
+    "triangles": 1172,
+    "groups": [
+      "piece_2",
+      "piece_31"
+    ],
+    "max_normal_squared_unit_error": 4.440892098500626e-16,
+    "minimum_triangle_area_m2": 0.0002536482105864405,
+    "minimum_normal_winding_cosine": 0.998798927732938,
+    "bounds_m": [
+      [
+        -0.6599289215380885,
+        0.6599289215377362
+      ],
+      [
+        0.9583066407102907,
+        1.598207265630669
+      ],
+      [
+        -0.2406343245423319,
+        0.24063432454236547
+      ]
+    ],
+    "finite_data_and_positive_valid_indices": true
+  },
+  "topology_uvs_and_piece_groups_exactly_preserved": true,
+  "rest_axis_and_metre_placement_max_error_m": 6.938893903907228e-18,
+  "changed_vertex_count": 654,
+  "max_displacement_m": 0.004551448795031002,
+  "rms_displacement_m": 0.0023680309058643,
+  "changed_normal_count": 654,
+  "position_samples_m": [
+    {
+      "vertex_zero_based": 0,
+      "rest": [
+        -0.3600000000000001,
+        0.96,
+        0.24
+      ],
+      "simulated": [
+        -0.35990426054303437,
+        0.9583208699521529,
+        0.23583333333289835
+      ]
+    },
+    {
+      "vertex_zero_based": 42,
+      "rest": [
+        -0.12,
+        1.6,
+        0.24
+      ],
+      "simulated": [
+        -0.11999828953317467,
+        1.5981997613335694,
+        0.23583334875340511
+      ]
+    },
+    {
+      "vertex_zero_based": 108,
+      "rest": [
+        -0.12,
+        1.6,
+        -0.24
+      ],
+      "simulated": [
+        -0.11999829348674915,
+        1.5981997669449066,
+        -0.2358333179191677
+      ]
+    },
+    {
+      "vertex_zero_based": 653,
+      "rest": [
+        -0.21977272727272723,
+        1.3175000000000001,
+        -0.24
+      ],
+      "simulated": [
+        -0.21977387084060357,
+        1.3158127559876058,
+        -0.24010351580047942
+      ]
+    }
+  ],
+  "parser_uses_production_code": false,
+  "repository_verifier_note": "scripts/check_exports.py provided the standard OBJ checks; its fixed original-shirt bounds and required SVG are inapplicable to this Harbor pair, so this independent small parser uses the actual authored placements.",
+  "full_garment_fit_or_reference_or_gate_acceptance": false,
+  "elapsed_seconds": 0.02585733402520418
+}

@@ -1,0 +1,54 @@
+{
+  "observation_method": "Native CUA accessibility state, with one screenshot used to reach the rest Export OBJ menu item beyond the AX child limit.",
+  "owned_app_bundle_id": "org.weftforge.evidence.simulated-obj-20261118",
+  "owned_pid": 44634,
+  "input_was_private_copy": true,
+  "actions": [
+    "Open File menu, Open, select inputs/Harbor.weftforge through the native file chooser.",
+    "File menu, Export OBJ, native Save dialog: artifacts/rest.obj.",
+    "Click Step exactly once; no Play, Assemble or Drape action.",
+    "Collapse the nonauthoring Sewing section so the File popup fits the AX tree.",
+    "File menu, Export OBJ, native Save dialog: artifacts/simulated.obj.",
+    "Quit the owned app with Command-Q; confirm its absence from the CUA app inventory."
+  ],
+  "selected_exact_AX_lines": [
+    {
+      "stage": "opened_rest_revision23",
+      "lines": [
+        "\t\t18 text (settable) rev 23  ·  2 pieces  ·  8 seams  ·  0 groups  ·  654 vertices",
+        "\t\t19 text (settable) Rest mesh rebuilt from editable construction.",
+        "\t\t28 text (settable) Rest arrangement"
+      ]
+    },
+    {
+      "stage": "rest_export_complete",
+      "lines": [
+        "\t\t18 text (settable) rev 23  ·  2 pieces  ·  8 seams  ·  0 groups  ·  654 vertices",
+        "\t\t19 text (settable) Exported OBJ cloth surface in metres; internal lines and authored notches stay in .weftforge.",
+        "\t\t28 text (settable) Rest arrangement"
+      ]
+    },
+    {
+      "stage": "one_manual_step_complete",
+      "lines": [
+        "\t\t18 text (settable) rev 23  ·  2 pieces  ·  8 seams  ·  0 groups  ·  654 vertices",
+        "\t\t19 text (settable) Manual step complete · 0.017 s · 140.6 ms/step · assembly remaining 0.4717 m",
+        "\t\t28 text (settable) Manual step"
+      ]
+    },
+    {
+      "stage": "simulated_export_complete",
+      "lines": [
+        "\t\t18 text (settable) rev 23  ·  2 pieces  ·  8 seams  ·  0 groups  ·  654 vertices",
+        "\t\t19 text (settable) Exported OBJ cloth surface in metres; internal lines and authored notches stay in .weftforge.",
+        "\t\t28 text (settable) Manual step"
+      ]
+    }
+  ],
+  "native_document_revision_unchanged": 23,
+  "manual_step_count": 1,
+  "displayed_simulation_time_s": 0.017,
+  "displayed_step_ms": 140.6,
+  "displayed_assembly_remaining_m": 0.4717,
+  "scope": "Exact bounded native interchange case; no full garment fit, full Gate 1, reference parity or cross-platform acceptance."
+}
