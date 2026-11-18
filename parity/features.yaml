@@ -102,6 +102,15 @@
           },
           "initial_conditions": "Same original revision137fixture, sourcebe8, readonly fresh owned process; no authoring or simulation.",
           "expected_outcomes": "Exact three-decimalmm curve/seam/group values and signed B\u2212A with applied revision137/draft qualifier, within300s/24pairs; source/binary/fixture unchanged."
+        },
+        {
+          "id": "UI-WORKSPACE-PNG-001",
+          "path": "parity/scenarios/UI-WORKSPACE-PNG-001.json",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7"
+          },
+          "initial_conditions": "Actual native macOS app, read-only original Harbor sample, paused in its rest arrangement. Choose a fresh owned PNG file destination.",
+          "expected_outcomes": "A decodable RGBA8 PNG of the native client, with sRGB as its only ancillary chunk. Its dimensions match the actual app confirmation. Editable project bytes, visible revision and rest state stay unchanged. The native child exits normally."
         }
       ],
       "comparison_criteria": {
@@ -3668,6 +3677,49 @@
             "parity/reports/artifacts/workspace-png-integrated-source-20261118/ROOT-INSTALLATION-REVIEW-001.json": "e762c3197a401f6ca79eb35b7345de22ffbc5bf650fd5763c377ca879481e738"
           },
           "path": "parity/reports/WF-20261118-WORKSPACE-PNG-INTEGRATED-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-NATIVE-WORKSPACE-PNG-P003",
+          "commit": "59501451cd36f3ec51aba3560090090c94881427",
+          "timestamp": "2026-11-18T14:00:06Z",
+          "platform": "macOS 27.2 (26B123) arm64, native H debug executable",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-workspace-png-P003-20261118/independent-png.json": "de45f13c2047eacf7ef78648b832c90abbbdf9409ba065e855ecd78e6faed948",
+            "parity/reports/artifacts/native-workspace-png-P003-20261118/native-case.json": "a6c01c9ba9d011b2e06aa5386c254f6e3c836c483cb7d95376f67d66111ccc43",
+            "parity/reports/artifacts/native-workspace-png-P003-20261118/prior-harness-stops.json": "37682789ac38eacd2573d4cb23fd0b1c5c77ac0314cf033da823e89b101c19b1",
+            "parity/reports/artifacts/native-workspace-png-P003-20261118/workspace.png": "ef260de933bff248358a09da055c00833c877ca9f3f44a7f0e61706417272712"
+          },
+          "path": "parity/reports/WF-20261118-NATIVE-WORKSPACE-PNG-P003.json"
+        },
+        {
+          "id": "WF-20261118-WORKSPACE-PNG-I-TOOLING-001",
+          "commit": "6872e7c3c1a922cec17c3f5752e81db71f4637ce",
+          "timestamp": "2026-11-18T12:51:58.282202Z",
+          "platform": "macOS Apple Silicon; pinned Rust1.94.1/Python3.13; own warm integration target; offline metadata verification.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/EXTERNAL-TERMINAL.json": "70bf8f8b5151eedcf2bff403cf8e90507d0fd462e03a66809d08814be3ed0ae0",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/LAUNCH.json": "5c25a8744ac5b48f63d24c7ed8ee455e4cf3f5a5a5794781d70152db644b7c5e",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/ORIGINAL-EXEC-TERMINAL.json": "e6d9d3177803126a3a2af021c0f90ac9876b15cd791ba0be5839c8c0fcaf7366",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/POST-TERMINAL-CLOCK.json": "e44227210629f515b07bc2a667a5086ab9e44341214637acff263e590a81f961",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/ROOT-GO.json": "8a9ee900ca737cc4962782d39ae3e99608146343a9878475931a2ca97a7d686c",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/controller.stdout": "89f563515de0e3192d965db8f6be3a6290afbeb3a6ffa0697381085d62857211",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/launch.py": "185e2ff3702f4829baac426b5d57ca4cd529ad95d20473deece3f9e9332a9b5a",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/runfull.py": "906c7011fe5ec51704fe05a5948485e11b5533e9f89110ca1ba9fa467dfa33e2",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/verify-001/RESULT.json": "db7d4f483f34f63f9d5aca20fe3e402ce254ae8dbe7cc7797355fbc704e74ef4",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/verify-001/STARTED.json": "c0628c517ec482c6019f0fde295f9fa8cd9276d8eebcce6651abf1841222ea82",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/verify-001/TERMINAL.json": "f9d0b8925f825e31ab1ee246c300a153e7188c00eab895b5d63f81d1304d4d98",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/verify-001/cargo-xtask-verify-RESULT.json": "a24883b28f7cdbc1254c405d68f448255b889281012815cb2fc53d747866c903",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/verify-001/cargo-xtask-verify-STARTED.json": "769a507bf4dde9a923a2cd90830194be06a2c038dd7251e4520622ceb40181d2",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/verify-001/cargo-xtask-verify.stderr": "43e60c94f496020ce400d34049b09b5c183915b8f62d6efa90785c6f5e6d9358",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/verify-001/cargo-xtask-verify.stdout": "349e2d5ec56d823d72514e7a931f58b4850d5b00db0bca10f73131e7a6d92664",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/verify-001.json": "a81ee60ec366b67f5ac464b970531b102dbfa50b66a7fc74e57a67120d3782a1",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/post-case/ROOT-CLOSURE.json": "eac299363565f7460a2f9acf3f78f9ea791e2267943cb5c0b8347b7fe70ccf54",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/SOURCE-ATTRIBUTION.json": "c4f798bcfce113b6a8020d30c3d1c30704fccc6c3a5afb3d109d19cd84129bf1",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "0ddc4a54fe6d5fa056ea050f5de2648660934ce29fa8429b5177ce029afa8e84"
+          },
+          "path": "parity/reports/WF-20261118-WORKSPACE-PNG-I-TOOLING-001.json"
         }
       ],
       "known_gaps": [
@@ -3682,7 +3734,8 @@
         "Contextual property tabs/input retirement have separately attributed source-only guards through actual997: original166pass belongs351; a66 ownsfmt/Clippy/nativebuild but zerotests. RealDown cacheRED then eightfocusedpointer/keyboardGREEN are retained. Fullsource scope is stale after combinedSIMchange; N008over-bound preview adds no workflowcredit. Native/reference/highDPI/fullcontract coverage remainsopen.",
         "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This was the source checkpoint at publication; its declared full scope is now stale after the constructor change, with original outcomes unchanged. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen.",
         "At actual f6144bce, the constructor retains numeric helpers/ranges/field order and shared authoring paths while aligning Width/Height/Position X/Y metre labels and accessibility associations. Source checks pass 459/32, formatting, strict Clippy and native/CLI builds across two separately bound invocations; the first disk-floor stop and 59 partial ok lines remain failed/incomplete. Native constructor appearance, full workflow, contact quality, reference, full feature and platform acceptance remain open. The isolated failed contact-recovery prototype is not part of this source.",
-        "Actual a70c0df0 clean xtask and optimized native/CLI builds passed as separate D invocations. The 472-test source sequence belongs to f30c588d; unchanged source91 are explicit equivalence only. Native workflow and full feature/reference acceptance remain pending; runtime numerical quality is separately failed."
+        "Actual a70c0df0 clean xtask and optimized native/CLI builds passed as separate D invocations. The 472-test source sequence belongs to f30c588d; unchanged source91 are explicit equivalence only. Native workflow and full feature/reference acceptance remain pending; runtime numerical quality is separately failed.",
+        "Native File-menu PNG P003 saved and independently decoded 1640 \u00d7 1000 on the H renderer. The visible document revision, rest state and project bytes were unchanged. Previous P001/P002 harness stops remain recorded. Full workspace, lighting, other backends, cross-platform and reference acceptance are still open."
       ],
       "contradictions": [],
       "blockers": [
@@ -46769,7 +46822,17 @@
       "evidence_ids": [
         "parity/reports/WF-20261118-WORKSPACE-PNG-INTEGRATED-SOURCE-001.json"
       ],
-      "scenarios": [],
+      "scenarios": [
+        {
+          "id": "UI-WORKSPACE-PNG-001",
+          "path": "parity/scenarios/UI-WORKSPACE-PNG-001.json",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7"
+          },
+          "initial_conditions": "Actual native macOS app, read-only original Harbor sample, paused in its rest arrangement. Choose a fresh owned PNG file destination.",
+          "expected_outcomes": "A decodable RGBA8 PNG of the native client, with sRGB as its only ancillary chunk. Its dimensions match the actual app confirmation. Editable project bytes, visible revision and rest state stay unchanged. The native child exits normally."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -46843,16 +46906,60 @@
             "parity/reports/artifacts/workspace-png-integrated-source-20261118/ROOT-INSTALLATION-REVIEW-001.json": "e762c3197a401f6ca79eb35b7345de22ffbc5bf650fd5763c377ca879481e738"
           },
           "path": "parity/reports/WF-20261118-WORKSPACE-PNG-INTEGRATED-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-NATIVE-WORKSPACE-PNG-P003",
+          "commit": "59501451cd36f3ec51aba3560090090c94881427",
+          "timestamp": "2026-11-18T14:00:06Z",
+          "platform": "macOS 27.2 (26B123) arm64, native H debug executable",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-workspace-png-P003-20261118/independent-png.json": "de45f13c2047eacf7ef78648b832c90abbbdf9409ba065e855ecd78e6faed948",
+            "parity/reports/artifacts/native-workspace-png-P003-20261118/native-case.json": "a6c01c9ba9d011b2e06aa5386c254f6e3c836c483cb7d95376f67d66111ccc43",
+            "parity/reports/artifacts/native-workspace-png-P003-20261118/prior-harness-stops.json": "37682789ac38eacd2573d4cb23fd0b1c5c77ac0314cf033da823e89b101c19b1",
+            "parity/reports/artifacts/native-workspace-png-P003-20261118/workspace.png": "ef260de933bff248358a09da055c00833c877ca9f3f44a7f0e61706417272712"
+          },
+          "path": "parity/reports/WF-20261118-NATIVE-WORKSPACE-PNG-P003.json"
+        },
+        {
+          "id": "WF-20261118-WORKSPACE-PNG-I-TOOLING-001",
+          "commit": "6872e7c3c1a922cec17c3f5752e81db71f4637ce",
+          "timestamp": "2026-11-18T12:51:58.282202Z",
+          "platform": "macOS Apple Silicon; pinned Rust1.94.1/Python3.13; own warm integration target; offline metadata verification.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/EXTERNAL-TERMINAL.json": "70bf8f8b5151eedcf2bff403cf8e90507d0fd462e03a66809d08814be3ed0ae0",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/LAUNCH.json": "5c25a8744ac5b48f63d24c7ed8ee455e4cf3f5a5a5794781d70152db644b7c5e",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/ORIGINAL-EXEC-TERMINAL.json": "e6d9d3177803126a3a2af021c0f90ac9876b15cd791ba0be5839c8c0fcaf7366",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/POST-TERMINAL-CLOCK.json": "e44227210629f515b07bc2a667a5086ab9e44341214637acff263e590a81f961",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/ROOT-GO.json": "8a9ee900ca737cc4962782d39ae3e99608146343a9878475931a2ca97a7d686c",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/controller.stdout": "89f563515de0e3192d965db8f6be3a6290afbeb3a6ffa0697381085d62857211",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/launch.py": "185e2ff3702f4829baac426b5d57ca4cd529ad95d20473deece3f9e9332a9b5a",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/runfull.py": "906c7011fe5ec51704fe05a5948485e11b5533e9f89110ca1ba9fa467dfa33e2",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/verify-001/RESULT.json": "db7d4f483f34f63f9d5aca20fe3e402ce254ae8dbe7cc7797355fbc704e74ef4",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/verify-001/STARTED.json": "c0628c517ec482c6019f0fde295f9fa8cd9276d8eebcce6651abf1841222ea82",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/verify-001/TERMINAL.json": "f9d0b8925f825e31ab1ee246c300a153e7188c00eab895b5d63f81d1304d4d98",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/verify-001/cargo-xtask-verify-RESULT.json": "a24883b28f7cdbc1254c405d68f448255b889281012815cb2fc53d747866c903",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/verify-001/cargo-xtask-verify-STARTED.json": "769a507bf4dde9a923a2cd90830194be06a2c038dd7251e4520622ceb40181d2",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/verify-001/cargo-xtask-verify.stderr": "43e60c94f496020ce400d34049b09b5c183915b8f62d6efa90785c6f5e6d9358",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/verify-001/cargo-xtask-verify.stdout": "349e2d5ec56d823d72514e7a931f58b4850d5b00db0bca10f73131e7a6d92664",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/clean-I/verify-001.json": "a81ee60ec366b67f5ac464b970531b102dbfa50b66a7fc74e57a67120d3782a1",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/post-case/ROOT-CLOSURE.json": "eac299363565f7460a2f9acf3f78f9ea791e2267943cb5c0b8347b7fe70ccf54",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/SOURCE-ATTRIBUTION.json": "c4f798bcfce113b6a8020d30c3d1c30704fccc6c3a5afb3d109d19cd84129bf1",
+            "parity/reports/artifacts/workspace-png-I-tooling-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "0ddc4a54fe6d5fa056ea050f5de2648660934ce29fa8429b5177ce029afa8e84"
+          },
+          "path": "parity/reports/WF-20261118-WORKSPACE-PNG-I-TOOLING-001.json"
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Native File-menu PNG P003 saved and independently decoded 1640 \u00d7 1000 on the H renderer. The visible document revision, rest state and project bytes were unchanged. Previous P001/P002 harness stops remain recorded. Full workspace, lighting, other backends, cross-platform and reference acceptance are still open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "ANIM-001",

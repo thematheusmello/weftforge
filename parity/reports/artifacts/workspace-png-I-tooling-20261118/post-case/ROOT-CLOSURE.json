@@ -1,0 +1,117 @@
+{
+  "CLI_help_executed": true,
+  "actual_metadata_commit": "6872e7c3c1a922cec17c3f5752e81db71f4637ce",
+  "actual_seconds": 312.4988638330251,
+  "all_source_and718_config_and3_controller_inputs_exact": true,
+  "cap_seconds": 360,
+  "evaluator_tests": 6,
+  "files": {
+    "EXTERNAL-TERMINAL.json": {
+      "bytes": 749,
+      "mode": 384,
+      "sha256": "70bf8f8b5151eedcf2bff403cf8e90507d0fd462e03a66809d08814be3ed0ae0"
+    },
+    "LAUNCH.json": {
+      "bytes": 468,
+      "mode": 384,
+      "sha256": "5c25a8744ac5b48f63d24c7ed8ee455e4cf3f5a5a5794781d70152db644b7c5e"
+    },
+    "ORIGINAL-EXEC-TERMINAL.json": {
+      "bytes": 685,
+      "mode": 420,
+      "sha256": "e6d9d3177803126a3a2af021c0f90ac9876b15cd791ba0be5839c8c0fcaf7366"
+    },
+    "POST-TERMINAL-CLOCK.json": {
+      "bytes": 575,
+      "mode": 384,
+      "sha256": "e44227210629f515b07bc2a667a5086ab9e44341214637acff263e590a81f961"
+    },
+    "PRE-ADMISSION-PROCESS-SNAPSHOT.txt": {
+      "bytes": 95245,
+      "mode": 420,
+      "sha256": "1453ed96e838ee6b8d86050c7d0f4e549b4641d3c9262745ddbf69d282efda80"
+    },
+    "ROOT-GO.json": {
+      "bytes": 1896,
+      "mode": 420,
+      "sha256": "ccd316d3018223e28e71a91d811044da76c85704fde6282150387cbef2182f41"
+    },
+    "controller.stderr": {
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "controller.stdout": {
+      "bytes": 387,
+      "mode": 420,
+      "sha256": "89f563515de0e3192d965db8f6be3a6290afbeb3a6ffa0697381085d62857211"
+    },
+    "launch.py": {
+      "bytes": 3724,
+      "mode": 420,
+      "sha256": "3a6379e09ae2f620008291f1687c91c03a4ad939bca1a66ae55add7fa110882a"
+    },
+    "resources.py": {
+      "bytes": 12679,
+      "mode": 420,
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781"
+    },
+    "runfull.py": {
+      "bytes": 9623,
+      "mode": 420,
+      "sha256": "906c7011fe5ec51704fe05a5948485e11b5533e9f89110ca1ba9fa467dfa33e2"
+    },
+    "verify-001.json": {
+      "bytes": 438408,
+      "mode": 420,
+      "sha256": "42843af91e25699a5ecba76a9a5c06cad358be7ba0632e5f9ccb1a7bf911f3b0"
+    },
+    "verify-001/RESULT.json": {
+      "bytes": 19612,
+      "mode": 384,
+      "sha256": "c27eb21203b395e4b3397cc60ec274cb12cfdb8cac66917ff1b344bd0f74fe8e"
+    },
+    "verify-001/STARTED.json": {
+      "bytes": 266,
+      "mode": 384,
+      "sha256": "c0628c517ec482c6019f0fde295f9fa8cd9276d8eebcce6651abf1841222ea82"
+    },
+    "verify-001/TERMINAL.json": {
+      "bytes": 160,
+      "mode": 384,
+      "sha256": "f9d0b8925f825e31ab1ee246c300a153e7188c00eab895b5d63f81d1304d4d98"
+    },
+    "verify-001/cargo-xtask-verify-RESULT.json": {
+      "bytes": 1277,
+      "mode": 384,
+      "sha256": "14b11fa8c34f1c29ef5a81fa56542993f348511dd8441bcd4f982414008ae974"
+    },
+    "verify-001/cargo-xtask-verify-STARTED.json": {
+      "bytes": 1031,
+      "mode": 384,
+      "sha256": "d26026ed6ef8d3a90ec5307f040fb12b4ba14f70a4563671f79a29b634d90572"
+    },
+    "verify-001/cargo-xtask-verify.stderr": {
+      "bytes": 789,
+      "mode": 420,
+      "sha256": "e187b2f2fff5b88ddc564bd8177fdc3332084134e1308a9b360f639a7248fc91"
+    },
+    "verify-001/cargo-xtask-verify.stdout": {
+      "bytes": 2757,
+      "mode": 420,
+      "sha256": "349e2d5ec56d823d72514e7a931f58b4850d5b00db0bca10f73131e7a6d92664"
+    }
+  },
+  "metadata_files": 231,
+  "no_native_model_reference_feature_or_gate_acceptance": true,
+  "outcome": "PASS actual clean I cargo xtask verify",
+  "owned_PIDs_and_groups_absent": [
+    44522,
+    44643,
+    44923
+  ],
+  "script_tests": 54,
+  "source_QA_commit": "59501451cd36f3ec51aba3560090090c94881427",
+  "source_count": 93,
+  "workspace486_not_repeated": true
+}

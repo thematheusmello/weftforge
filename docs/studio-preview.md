@@ -1,5 +1,15 @@
 # Native studio preview
 
+## Workspace PNG saved by WeftForge
+
+File → **Save workspace PNG…** saved this 1640 × 1000 image from the native
+renderer on Apple Silicon. An independent check decoded the original PNG and
+confirmed its dimensions and standard sRGB metadata. The Harbor sample stayed
+at revision 20 in its rest arrangement, with identical project bytes before
+and after capture. [Native run](../parity/reports/WF-20261118-NATIVE-WORKSPACE-PNG-P003.json).
+
+![Original workspace PNG saved by the app](../parity/reports/artifacts/native-workspace-png-P003-20261118/workspace.png)
+
 ## Rectangle creation and reopened corner edit (7d19 / ae8)
 
 These are actual native captures from tested source

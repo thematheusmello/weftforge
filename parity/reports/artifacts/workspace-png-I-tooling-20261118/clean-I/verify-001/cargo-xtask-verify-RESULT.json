@@ -1,0 +1,40 @@
+{
+  "argv": [
+    "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "xtask",
+    "verify"
+  ],
+  "disk_observation": {
+    "last_available_bytes": 11267297280,
+    "max_snapshot_gap_seconds": 0.33185137482360005,
+    "minimum_available_bytes": 10029948928,
+    "path": "<INTEGRATION_WORKTREE>",
+    "samples": 5899,
+    "stop_below_available_bytes": 8000000000
+  },
+  "end_monotonic_seconds": 1126915.883639833,
+  "exit_code": 0,
+  "peak_rss_bytes": 88014848,
+  "pid": 44923,
+  "process_group": 44923,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.3355202910024673,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 5896,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 447496192,
+  "stop_reason": null,
+  "terminal_phase_checks": {
+    "deadline": 1126972.4844725,
+    "output_bytes": 4843,
+    "output_cap_bytes": 8388608,
+    "reserve_bytes": 262144
+  }
+}
