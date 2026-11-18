@@ -7,7 +7,9 @@ The checked 95-commit development stack is landed in **main** through
 closed as merged automatically, and the nine other covered stack entries were
 closed with their delivery location recorded. No open PR remained after this
 landing. Historical branch references remain available for existing evidence
-links; the unmatched historical precursor remains preserved for separate review.
+links. The closed-stitch precursor `35afac60` is superseded by integrated sewing
+and retained only for frozen provenance: historical source checks require its
+Git object. It contains no additional feature work to land.
 
 Actual source `59501451` retains its formatting, **486 workspace tests / 32
 summaries, zero failed/ignored**, strict Clippy and native/CLI build pass. The
