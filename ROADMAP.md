@@ -62,9 +62,12 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    increment checks the active normal projection and friction on the saved
    six-node case before testing another full garment.
    [Independent soft-stitch fit](parity/reports/WF-20261118-HARBOR-ISOLATED-SEWING-FIT-001.json).
-3. Complete the native shirt workflow through simulation, material edits and
-   verified simulated-mesh export. Repeat the integrated empty-document journey
-   on one current build and compare the recorded reference case.
+3. A native Harbor Fabric edit passed Undo, Redo, editable save, fresh reopen
+   and an initial simulation step. Finish complete fit and verified
+   simulated-mesh export after a construction or fabric change. Repeat the
+   integrated empty-document journey on one current build and compare the
+   recorded reference case.
+   [Native Fabric case](parity/reports/WF-20261118-HARBOR-NATIVE-FABRIC-001.json).
 4. Work through Gates 2–4 below: professional editing/construction and fitting,
    fabric/contact robustness, avatars/animation/materials/rendering and output.
    Run reference discovery and comparison alongside implementation throughout.

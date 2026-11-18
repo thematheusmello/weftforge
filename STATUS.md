@@ -1,3 +1,21 @@
+# Native Fabric editing — 18 November 2026
+
+The current Apple Silicon studio changed Harbor's shared warp stiffness from
+400 to 520 N/m. Undo and Redo restored each value in a single action.
+The Save As copy reopened in a fresh process at revision 23. The back panel
+displayed 520 N/m and the reopened project completed one manual simulation step.
+Reset restored the rest arrangement. Both test windows closed.
+
+Independent readback verified that the saved file differed in revision and warp
+stiffness and retained both pieces and all eight seams. The native capture
+decoded as a 1640 × 1000 RGBA8 sRGB PNG.
+[Fabric case and artifacts](parity/reports/WF-20261118-HARBOR-NATIVE-FABRIC-001.json).
+
+Complete fit and simulated-mesh export for the shirt remain open. The next
+contact check captures sewing and contact history at the first failed substep
+with a positive seam target. GitHub Actions and automated Pages deployments
+stay disabled.
+
 # Independent soft stitches — 18 November 2026
 
 The solver now solves soft stitches analytically wherever their movable nodes
@@ -11,11 +29,8 @@ in 258.064 seconds. The first failed state was 28. The final strain was 15.65%,
 above the 15% limit. Final seam gap was 0.575 mm and supported penetration was
 0.0062 mm. [Source checks and failed fit](parity/reports/WF-20261118-HARBOR-ISOLATED-SEWING-FIT-001.json).
 
-A private six-node case satisfied the frozen planes and friction bounds with an
-active-set solver. Next, verify its normal projection in Rust, then test the
-friction treatment and contact discovery through the existing simulation entry
-point. Full native fit and Gate 1 remain open. GitHub Actions and automated
-Pages deployments stay disabled.
+The verified source and fit report landed in
+[PR #69](https://github.com/thematheusmello/weftforge/pull/69).
 
 # Native save and cancellation — 18 November 2026
 
