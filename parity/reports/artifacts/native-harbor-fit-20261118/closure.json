@@ -1,0 +1,85 @@
+{
+  "scope": "Native runtime completion and phase endpoints",
+  "launch": {
+    "pid": 55991,
+    "source_commit": "6078c2af423b150a9f7b0bcaf21abb6e2e954b56",
+    "binary_sha256": "766a1d06c0cba46f8134465c4ed4ffa8bfee146d894d4edeb56f20e17dd46846",
+    "input_sha256": "604107601b530013624a622f318f11c35a5a67a7db37bdff347635370d6c7402",
+    "started_epoch": 1795031433.843869,
+    "started_utc": "2026-11-18T19:50:33.863040+00:00",
+    "deadline_epoch": 1795031853.843869,
+    "settings": {
+      "assembly_steps": 60,
+      "drape_steps": 120,
+      "substeps": 8,
+      "iterations": 32,
+      "dt": 0.016666666666666666,
+      "closure_mps": 1
+    },
+    "scope": "Separate native assembly and drape workflow with endpoint readouts. The scenario requires independent whole-trajectory acceptance."
+  },
+  "process_terminal": {
+    "pid": 55991,
+    "exit_code": 0,
+    "seconds": 338.04419691697694,
+    "signals": [],
+    "input_unchanged": true
+  },
+  "observations": [
+    {
+      "event": "assembly_dispatched",
+      "epoch": 1795031478.342,
+      "native_message": "Queued Assembly (gravity off) \u00b7 60 steps \u00b7 gravity [0.0, 0.0, 0.0] m/s\u00b2",
+      "progress": "0/60",
+      "document_revision": 20
+    },
+    {
+      "event": "assembly_progress",
+      "epoch": 1795031539.553,
+      "progress": "34/60",
+      "document_revision": 20
+    },
+    {
+      "event": "assembly_complete",
+      "observed_epoch": 1795031592.347,
+      "simulated_seconds": 1.0,
+      "milliseconds_per_last_step": 1390.8,
+      "remaining_assembly_target_m_displayed": 0.0,
+      "peak_material_strain_percent_displayed": 15.71,
+      "seam_gap_m_displayed": 0.0005,
+      "contact_error_m_displayed": 0.0,
+      "initial_overlap_corrections": 0,
+      "uncertain_capsule_pairs": 0
+    },
+    {
+      "event": "drape_dispatched",
+      "epoch": 1795031592.347,
+      "native_message": "Queued Drape \u00b7 120 steps \u00b7 gravity [0.0, -9.81, 0.0] m/s\u00b2",
+      "progress": "0/120",
+      "document_revision": 20
+    },
+    {
+      "event": "drape_progress",
+      "epoch": 1795031668.869,
+      "progress": "54/120",
+      "document_revision": 20
+    },
+    {
+      "event": "drape_complete",
+      "observed_epoch": 1795031759.633,
+      "simulated_seconds": 3.0,
+      "milliseconds_per_last_step": 1209.6,
+      "remaining_assembly_target_m_displayed": 0.0,
+      "peak_material_strain_percent_displayed": 15.72,
+      "seam_gap_m_displayed": 0.0006,
+      "contact_error_m_displayed": 0.0,
+      "initial_overlap_corrections": 0,
+      "uncertain_capsule_pairs": 0
+    }
+  ],
+  "fit_verdict": "Failed strain limit at both recorded phase endpoints",
+  "independent_whole_trajectory_replay_in_this_native_case": false,
+  "deformed_mesh_exported": false,
+  "both_current_case_project_bytes_unchanged": true,
+  "owned_window_closed": true
+}

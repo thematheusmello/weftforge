@@ -51,7 +51,11 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    no broad improvement or old-clock repair. Original inputs/settings/criteria
    and earlier 16.063338%/50.9602% failures remain intact. Diagnose the actual
    edge-contact/sewing/material/history coupling before choosing another engine
-   change. Moving-triangle nonlinear contact and calibration remain open.
+   change. The optimized native studio completed the same assembly and drape
+   phases on the reopened UI-authored Harbor construction. It exceeded 15%
+   strain at both phase endpoints. Moving-triangle nonlinear contact and
+   calibration remain open.
+   [Native phase endpoints](parity/reports/WF-20261118-HARBOR-NATIVE-FIT-001.json).
 3. Complete the native shirt workflow through simulation, material edits and
    verified simulated-mesh export. Repeat the integrated empty-document journey
    on one current build and compare the recorded reference case.
