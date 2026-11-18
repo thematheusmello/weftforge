@@ -1,5 +1,21 @@
 # WeftForge current-source addendum
 
+## Independent soft-stitch solve
+
+Source `e5f043ef4f60a19f93b73e419d5584152de19ca9` uses the exact radial solve for a soft stitch whose movable
+nodes are independent. Shared rows use the coupled solver. The sewing stage
+commits the combined result together with its nodal history.
+
+The `simulate` group retains its scope. Thirty of 457 source occurrences get
+new hashes or line numbers, including the renamed analytic helper. The map
+retains all 25 reviewed contracts and the historical inventory.
+
+The previous addendum is recorded at `7b9a1028979656ef1654adbfddee043fd3ca427c`, mapped to source
+`6078c2af423b150a9f7b0bcaf21abb6e2e954b56`. Its JSON SHA-256 is `49d9866063d035de52362e5451a164afc2fa48d22ae5204f55896175dde6cc9c`.
+Its Markdown SHA-256 is `f0543d72aa46616ae4f07b4b2e3c96d0550a27acb74a8ffccb40fbce1fc70cb1`. The original text follows.
+
+# WeftForge current-source addendum
+
 ## Atomic polygon close source overlay
 
 Source `6078c2af423b150a9f7b0bcaf21abb6e2e954b56` combines pending inspector edits and polygon creation in the existing typed transaction. Rejected creation retains staged vertices, pending edits, history and derived state. Successful creation records one Undo entry and selects the new piece. The Close button retains inspector input between pointer press and release. Return uses the same transaction. The registry records the separate verification results.

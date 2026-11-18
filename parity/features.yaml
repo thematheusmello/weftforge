@@ -3772,7 +3772,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b"
       }
@@ -11105,7 +11105,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/PAT-004-piece-rigid-transform.md": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
         "spec/features/PAT-004-native-transform-selection.md": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
@@ -13482,7 +13482,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "PAT-002",
@@ -29417,7 +29417,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "SEW-002",
@@ -34668,6 +34668,22 @@
             "parity/reports/artifacts/native-harbor-fit-20261118/closure.json": "379c38c627d2c5f7127846ad8dcdedb6ddc6f4589dde71662542e56b314b5926"
           },
           "path": "parity/reports/WF-20261118-HARBOR-NATIVE-FIT-001.json"
+        },
+        {
+          "id": "WF-20261118-HARBOR-ISOLATED-SEWING-FIT-001",
+          "commit": "e5f043ef4f60a19f93b73e419d5584152de19ca9",
+          "timestamp": "2026-11-18T20:50:03.630943Z",
+          "platform": "macOS Apple Silicon, optimized CLI, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-workflow-20261118/restored.weftforge": "604107601b530013624a622f318f11c35a5a67a7db37bdff347635370d6c7402",
+            "parity/reports/artifacts/harbor-isolated-sewing-fit-20261118/source-checks.json": "d38876c0afce9523d01d90960ad10fc068c201f14d4c83a10791399a344bc04a",
+            "parity/reports/artifacts/harbor-isolated-sewing-fit-20261118/fit-benchmark.json": "a6a7eba43125cc7de0af34cd599be072cc9dbcfb0facbe47aee7a027861aa4da",
+            "parity/reports/artifacts/harbor-isolated-sewing-fit-20261118/fit-benchmark-start.json": "3d83cb940f9bfcfee8a7285f44666e77d8109c1bdd348c743a2762cee493ac56",
+            "parity/reports/artifacts/harbor-isolated-sewing-fit-20261118/fit-benchmark-terminal.json": "88e030cdcb3ed178828f8f6394fa62d8916a17eb4b0b234a8b3b76c70d9e2691",
+            "parity/reports/artifacts/harbor-isolated-sewing-fit-20261118/fit-benchmark.stderr": "1f07dfafffea171a563d76f57e1c7dc4cb68d50bce4bf83234481cb75f93790e",
+            "parity/reports/artifacts/harbor-isolated-sewing-fit-20261118/ORIGINAL-EXEC-TERMINAL.json": "43e682125309b200ed952bc03b74c170bf6a70914ca35ba1dee22e9bfe1e7273"
+          },
+          "path": "parity/reports/WF-20261118-HARBOR-ISOLATED-SEWING-FIT-001.json"
         }
       ],
       "known_gaps": [
@@ -38173,6 +38189,22 @@
             "parity/reports/artifacts/native-harbor-fit-20261118/closure.json": "379c38c627d2c5f7127846ad8dcdedb6ddc6f4589dde71662542e56b314b5926"
           },
           "path": "parity/reports/WF-20261118-HARBOR-NATIVE-FIT-001.json"
+        },
+        {
+          "id": "WF-20261118-HARBOR-ISOLATED-SEWING-FIT-001",
+          "commit": "e5f043ef4f60a19f93b73e419d5584152de19ca9",
+          "timestamp": "2026-11-18T20:50:03.630943Z",
+          "platform": "macOS Apple Silicon, optimized CLI, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-workflow-20261118/restored.weftforge": "604107601b530013624a622f318f11c35a5a67a7db37bdff347635370d6c7402",
+            "parity/reports/artifacts/harbor-isolated-sewing-fit-20261118/source-checks.json": "d38876c0afce9523d01d90960ad10fc068c201f14d4c83a10791399a344bc04a",
+            "parity/reports/artifacts/harbor-isolated-sewing-fit-20261118/fit-benchmark.json": "a6a7eba43125cc7de0af34cd599be072cc9dbcfb0facbe47aee7a027861aa4da",
+            "parity/reports/artifacts/harbor-isolated-sewing-fit-20261118/fit-benchmark-start.json": "3d83cb940f9bfcfee8a7285f44666e77d8109c1bdd348c743a2762cee493ac56",
+            "parity/reports/artifacts/harbor-isolated-sewing-fit-20261118/fit-benchmark-terminal.json": "88e030cdcb3ed178828f8f6394fa62d8916a17eb4b0b234a8b3b76c70d9e2691",
+            "parity/reports/artifacts/harbor-isolated-sewing-fit-20261118/fit-benchmark.stderr": "1f07dfafffea171a563d76f57e1c7dc4cb68d50bce4bf83234481cb75f93790e",
+            "parity/reports/artifacts/harbor-isolated-sewing-fit-20261118/ORIGINAL-EXEC-TERMINAL.json": "43e682125309b200ed952bc03b74c170bf6a70914ca35ba1dee22e9bfe1e7273"
+          },
+          "path": "parity/reports/WF-20261118-HARBOR-ISOLATED-SEWING-FIT-001.json"
         }
       ],
       "known_gaps": [
@@ -44112,7 +44144,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "SIM-006",
@@ -47143,7 +47175,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "ANIM-001",
@@ -49514,7 +49546,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FILE-002",
@@ -49776,7 +49808,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FILE-003",
@@ -50471,7 +50503,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FILE-004",
@@ -55552,7 +55584,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/FILE-005-dxf-pattern-export.md": "b0373181a6ae79c148aa154c0c2269956c2fed3587b5c6d0aef929108e11dd73",
         "spec/features/FILE-005-dxf-pattern-import.md": "06cff6f3d1a6d62fceeb93e94a2037f28136b69adfa5507b8a780e8864b0512b"

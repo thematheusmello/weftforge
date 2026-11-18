@@ -1,0 +1,145 @@
+{
+  "architecture": "aarch64",
+  "criteria": {
+    "capsule_surface_uncertain_pairs": 0,
+    "finite": true,
+    "initial_contact_recovery_projections": 0,
+    "max_contact_penetration_below_m": 0.002,
+    "max_seam_gap_below_m": 0.005,
+    "max_seam_gap_scope": "only states with seam_assembly_remaining exactly zero",
+    "max_stretch_error_below": 0.15,
+    "scope": "initial and every successfully completed whole-step state",
+    "seam_assembly_remaining_finite_and_nonnegative": true,
+    "seam_assembly_remaining_m": 0.0,
+    "seam_assembly_remaining_scope": "final state",
+    "state_index_origin": "0 = initial state; n = n successfully completed steps"
+  },
+  "diagnostics": {
+    "capsule_surface_uncertain_pairs": 0,
+    "contacts": 373017,
+    "finite": true,
+    "initial_contact_recovery_projections": 0,
+    "initial_intersections": 0,
+    "kinetic_energy": 5.715934810076e-6,
+    "max_contact_error": 6.18890963907659e-6,
+    "max_seam_error": 0.000575199423237406,
+    "max_stretch_error": 0.1565160490687023,
+    "peak_strain": {
+      "axis": "warp",
+      "signed_strain": 0.1565160490687023,
+      "triangle": 79
+    },
+    "seam_assembly_remaining": 0.0,
+    "simulation_time": 2.9999999999999942,
+    "step_seconds": 1.125755
+  },
+  "export_written": false,
+  "first_quality_failure_state": 28,
+  "kind": "implementation_only",
+  "limitations": [
+    "Original analytic avatar and uncalibrated fabrics",
+    "Finite fixture thresholds do not establish general garment quality or reference parity"
+  ],
+  "median_step_seconds": 1.175380958,
+  "memory_bytes": null,
+  "p95_step_seconds": 3.416354125,
+  "peak_strain_piece": {
+    "id": 2,
+    "name": "Harbor front"
+  },
+  "phases": [
+    {
+      "diagnostics": {
+        "capsule_surface_uncertain_pairs": 0,
+        "contacts": 365065,
+        "finite": true,
+        "initial_contact_recovery_projections": 0,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.0007300336422139343,
+        "max_contact_error": 7.1308978514400545e-6,
+        "max_seam_error": 0.0005914287721356541,
+        "max_stretch_error": 0.15711425797678924,
+        "peak_strain": {
+          "axis": "warp",
+          "signed_strain": 0.15711425797678924,
+          "triangle": 592
+        },
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.0000000000000013,
+        "step_seconds": 1.126704667
+      },
+      "name": "assembly",
+      "peak_strain_piece": {
+        "id": 31,
+        "name": "Harbor back"
+      },
+      "settings": {
+        "dt": 0.016666666666666666,
+        "gravity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "iterations": 32,
+        "seam_closure_speed": 1.0,
+        "substeps": 8
+      },
+      "simulated_seconds": 1.0,
+      "steps_completed": 60,
+      "steps_requested": 60,
+      "wall_seconds": 107.14086275
+    },
+    {
+      "diagnostics": {
+        "capsule_surface_uncertain_pairs": 0,
+        "contacts": 373017,
+        "finite": true,
+        "initial_contact_recovery_projections": 0,
+        "initial_intersections": 0,
+        "kinetic_energy": 5.715934810076e-6,
+        "max_contact_error": 6.18890963907659e-6,
+        "max_seam_error": 0.000575199423237406,
+        "max_stretch_error": 0.1565160490687023,
+        "peak_strain": {
+          "axis": "warp",
+          "signed_strain": 0.1565160490687023,
+          "triangle": 79
+        },
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.9999999999999942,
+        "step_seconds": 1.125755
+      },
+      "name": "drape",
+      "peak_strain_piece": {
+        "id": 2,
+        "name": "Harbor front"
+      },
+      "settings": {
+        "dt": 0.016666666666666666,
+        "gravity": [
+          0.0,
+          -9.81,
+          0.0
+        ],
+        "iterations": 32,
+        "seam_closure_speed": 1.0,
+        "substeps": 8
+      },
+      "simulated_seconds": 2.0,
+      "steps_completed": 120,
+      "steps_requested": 120,
+      "wall_seconds": 150.594301667
+    }
+  ],
+  "platform": "macos",
+  "protocol": "explicit-zero-gravity-assembly-then-drape-v1",
+  "quality_states_checked": 181,
+  "simulated_seconds": 2.9999999999999942,
+  "simulated_seconds_per_wall_second": 0.011639841895760257,
+  "solver_error": null,
+  "status": "failed",
+  "triangles": 1172,
+  "vertices": 654,
+  "viewport_frame_seconds": null,
+  "wall_seconds": 257.735459542
+}

@@ -700,8 +700,8 @@ pub(crate) fn solve_sewing(
         return Err(unstable());
     }
     let mut soft_count = 0;
-    let mut single_soft = 0;
-    for (index, (stitch, &target)) in stitches.iter().zip(targets).enumerate() {
+    let mut uses = Vec::new();
+    for (stitch, &target) in stitches.iter().zip(targets) {
         check_cancel(cancelled)?;
         if !stitch.compliance.is_finite()
             || stitch.compliance < 0.
@@ -711,31 +711,128 @@ pub(crate) fn solve_sewing(
             return Err(unstable());
         }
         if stitch.compliance > 0. {
+            if soft_count == 0 {
+                uses.resize(x.len(), 0_u8);
+            }
             soft_count += 1;
-            single_soft = index;
+            let (vertices, coefficients) = stitch_coefficients(*stitch);
+            for (vertex, coefficient) in vertices.into_iter().zip(coefficients) {
+                let Some(&weight) = inverse_mass.get(vertex) else {
+                    return Err(unstable());
+                };
+                if !coefficient.is_finite() {
+                    return Err(unstable());
+                }
+                if weight > 0. && coefficient != 0. {
+                    uses[vertex] = uses[vertex].saturating_add(1);
+                }
+            }
         }
     }
     if soft_count == 0 {
         check_cancel(original_cancelled)?;
         return Ok(());
     }
-    if soft_count == 1 {
-        let trial = single_soft_trial(
-            stitches[single_soft],
-            targets[single_soft],
+    let mut independent_stitches = Vec::new();
+    let mut independent_targets = Vec::new();
+    let mut shared_stitches = Vec::new();
+    let mut shared_targets = Vec::new();
+    let mut independent_nodes = vec![false; x.len()];
+    for (&stitch, &target) in stitches.iter().zip(targets) {
+        check_cancel(cancelled)?;
+        if stitch.compliance == 0. {
+            continue;
+        }
+        let (vertices, coefficients) = stitch_coefficients(stitch);
+        let movable = vertices
+            .into_iter()
+            .zip(coefficients)
+            .filter(|&(v, coefficient)| inverse_mass[v] > 0. && coefficient != 0.);
+        if movable.clone().any(|(v, _)| uses[v] > 1) {
+            shared_stitches.push(stitch);
+            shared_targets.push(target);
+        } else {
+            independent_stitches.push(stitch);
+            independent_targets.push(target);
+            for (v, _) in movable {
+                independent_nodes[v] = true;
+            }
+        }
+    }
+    if !independent_stitches.is_empty() {
+        let masked;
+        let independent_inverse_mass: &[f64] = if shared_stitches.is_empty() {
+            inverse_mass
+        } else {
+            masked = inverse_mass
+                .iter()
+                .zip(&independent_nodes)
+                .map(|(&mass, &independent)| if independent { mass } else { 0. })
+                .collect::<Vec<_>>();
+            &masked
+        };
+        let trial = independent_soft_trial(
+            &independent_stitches,
+            &independent_targets,
             x,
-            inverse_mass,
+            independent_inverse_mass,
             dt,
             correction,
             cancelled,
         )?;
-        check_cancel(original_cancelled)?;
-        if let Some((trial, trial_correction)) = trial {
+        if let Some((mut trial, mut trial_correction)) = trial {
+            if !shared_stitches.is_empty() {
+                // Each solve may retract only the sewing history on its own movable nodes.
+                let shared_inverse_mass = inverse_mass
+                    .iter()
+                    .zip(&independent_nodes)
+                    .map(|(&mass, &independent)| if independent { 0. } else { mass })
+                    .collect::<Vec<_>>();
+                solve_shared_sewing(
+                    &shared_stitches,
+                    &shared_targets,
+                    &mut trial,
+                    &shared_inverse_mass,
+                    dt,
+                    &mut trial_correction,
+                    original_cancelled,
+                )?;
+            }
+            check_cancel(original_cancelled)?;
             x.copy_from_slice(&trial);
             correction.copy_from_slice(&trial_correction);
+            return Ok(());
         }
-        return Ok(());
+        if soft_count == 1 {
+            check_cancel(original_cancelled)?;
+            return Ok(());
+        }
     }
+    solve_shared_sewing(
+        stitches,
+        targets,
+        x,
+        inverse_mass,
+        dt,
+        correction,
+        original_cancelled,
+    )
+}
+
+fn solve_shared_sewing(
+    stitches: &[Stitch],
+    targets: &[f64],
+    x: &mut [Vec3],
+    inverse_mass: &[f64],
+    dt: f64,
+    correction: &mut [Vec3],
+    cancelled: &impl Fn() -> bool,
+) -> Result<(), SimulationError> {
+    check_cancel(cancelled)?;
+    let original_cancelled = cancelled;
+    let bounded_cancelled = material_cancellation(original_cancelled);
+    let cancelled = &bounded_cancelled;
+    let unstable = || SimulationError::Unstable("non-finite global sewing solve".into());
     let mut root_weight = Vec::with_capacity(x.len());
     for i in 0..x.len() {
         check_cancel(cancelled)?;
@@ -1019,9 +1116,9 @@ pub(crate) fn solve_sewing(
 
 type SoftSewingTrial = (Vec<Vec3>, Vec<Vec3>);
 
-fn single_soft_trial(
-    stitch: Stitch,
-    target: f64,
+fn independent_soft_trial(
+    stitches: &[Stitch],
+    targets: &[f64],
     x: &[Vec3],
     inverse_mass: &[f64],
     dt: f64,
@@ -1048,50 +1145,60 @@ fn single_soft_trial(
         anchor.push(z);
         root_weight.push(root);
     }
-    let (vertices, coefficients) = stitch_coefficients(stitch);
-    if vertices.into_iter().any(|v| v >= x.len()) || !coefficients.into_iter().all(f64::is_finite) {
-        return Err(unstable());
-    }
-    let weight = vertices
-        .iter()
-        .zip(coefficients)
-        .map(|(&v, coefficient)| inverse_mass[v] * (coefficient * coefficient))
-        .sum::<f64>();
-    let alpha = stitch.compliance / (dt * dt);
-    let denominator = weight + alpha;
-    // Retain the local finite/denominator guard; no unrepresentable update commits.
-    if denominator <= 1e-20 || !denominator.is_finite() {
-        return Ok(None);
-    }
-    let difference = sub(stitch.a.position(&anchor), stitch.b.position(&anchor));
-    let impulse = if target == 0. {
-        difference.map(|value| -value / denominator)
-    } else {
-        let radius = difference[0].hypot(difference[1]).hypot(difference[2]);
-        if !radius.is_finite() {
-            return Err(unstable());
+    let mut trial = anchor.clone();
+    for (stitch, &target) in stitches.iter().zip(targets) {
+        check_cancel(cancelled)?;
+        if stitch.compliance == 0. {
+            continue;
         }
-        let direction = if radius > 0. {
-            stitch_unit_direction(difference)
+        let (vertices, coefficients) = stitch_coefficients(*stitch);
+        let weight = vertices
+            .iter()
+            .zip(coefficients)
+            .map(|(&v, coefficient)| inverse_mass[v] * (coefficient * coefficient))
+            .sum::<f64>();
+        let denominator = weight + stitch.compliance / (dt * dt);
+        if denominator <= 1e-20 || !denominator.is_finite() {
+            return Ok(None);
+        }
+        let difference = sub(stitch.a.position(&anchor), stitch.b.position(&anchor));
+        let impulse = if target == 0. {
+            difference.map(|value| -value / denominator)
         } else {
-            let current = sub(stitch.a.position(x), stitch.b.position(x));
-            if !finite(current) {
+            let radius = difference[0].hypot(difference[1]).hypot(difference[2]);
+            if !radius.is_finite() {
                 return Err(unstable());
             }
-            if current.into_iter().any(|value| value != 0.) {
-                stitch_unit_direction(current)
+            let direction = if radius > 0. {
+                stitch_unit_direction(difference)
             } else {
-                [1., 0., 0.]
-            }
+                let current = sub(stitch.a.position(x), stitch.b.position(x));
+                if !finite(current) {
+                    return Err(unstable());
+                }
+                if current.into_iter().any(|value| value != 0.) {
+                    stitch_unit_direction(current)
+                } else {
+                    [1., 0., 0.]
+                }
+            };
+            mul(direction, (target - radius) / denominator)
         };
-        mul(direction, (target - radius) / denominator)
-    };
-    if !finite(impulse) {
-        return Err(unstable());
+        if !finite(impulse) {
+            return Err(unstable());
+        }
+        for (vertex, coefficient) in vertices.into_iter().zip(coefficients) {
+            if inverse_mass[vertex] > 0. && coefficient != 0. {
+                trial[vertex] = add(
+                    anchor[vertex],
+                    mul(impulse, inverse_mass[vertex] * coefficient),
+                );
+            }
+        }
     }
     let energy = sewing_energy(
-        &[stitch],
-        &[target],
+        stitches,
+        targets,
         x,
         correction,
         &root_weight,
@@ -1100,15 +1207,6 @@ fn single_soft_trial(
     )?;
     if !energy.is_finite() {
         return Err(unstable());
-    }
-    let mut trial = anchor;
-    for (vertex, coefficient) in vertices.into_iter().zip(coefficients) {
-        if inverse_mass[vertex] > 0. && coefficient != 0. {
-            trial[vertex] = add(
-                trial[vertex],
-                mul(impulse, inverse_mass[vertex] * coefficient),
-            );
-        }
     }
     let mut trial_correction = Vec::with_capacity(x.len());
     for i in 0..x.len() {
@@ -1124,8 +1222,8 @@ fn single_soft_trial(
         trial_correction.push(p);
     }
     let trial_energy = sewing_energy(
-        &[stitch],
-        &[target],
+        stitches,
+        targets,
         &trial,
         &trial_correction,
         &root_weight,

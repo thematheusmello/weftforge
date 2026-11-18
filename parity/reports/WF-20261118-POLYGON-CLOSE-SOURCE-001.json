@@ -142,7 +142,8 @@
     "spec/features/fixtures/PAT-009-offset-originals.json",
     "spec/features/fixtures/PAT-009-offset-reviewed-additions.json"
   ],
-  "freshness": "current",
+  "freshness": "stale",
   "scope": "The inspector button and Return use the same polygon-close transaction. Rejected creation preserves staged vertices, numeric input, undo history and accepted derived state. A successful close groups the property edit and polygon creation into one undoable edit.",
-  "native_ui_verified": false
+  "native_ui_verified": false,
+  "freshness_reason": "The independent soft-stitch solve changed the scoped simulator source. The recorded result belongs to the earlier build."
 }
