@@ -1,0 +1,29 @@
+{
+  "recorded_at_utc": "2026-11-16T21:49:56.027426+00:00",
+  "native_gui_opened": false,
+  "native_or_preview_windows_to_close": 0,
+  "active_owned_jobs": 0,
+  "confirmed_terminal_sessions": [
+    69845,
+    53227
+  ],
+  "terminal_children": {
+    "fmt": {
+      "pid": 90136,
+      "exit_code": 0
+    },
+    "workspace-tests": {
+      "pid": 6651,
+      "exit_code": 0
+    },
+    "workspace-clippy": {
+      "pid": 8986,
+      "exit_code": 0
+    },
+    "native-cli-debug-build": {
+      "pid": 9404,
+      "exit_code": 0
+    }
+  },
+  "scope": "Post-case cleanup record only. Workspace integration tests exercised CLI; build stage launched neither native nor CLI binary. No historical producer/evaluator or failed physics case was replayed."
+}

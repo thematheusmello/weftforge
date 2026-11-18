@@ -1,0 +1,90 @@
+{
+  "actual_N32_GREEN_invocations": 1,
+  "actual_edge_GREEN_invocations": 1,
+  "all_owned_PIDs_absent": {
+    "75909": true,
+    "76035": true,
+    "76155": true
+  },
+  "all_source88_and_inputs_exact_after_each_stage": true,
+  "files": {
+    "GREEN-GO.json": {
+      "bytes": 1598,
+      "sha256": "637f1327b53e70330f5dacddf2207ca3c6f7f73bcd4844ead7dfd0e0483cbfa9"
+    },
+    "GREEN-PLAN.json": {
+      "bytes": 1452,
+      "sha256": "f0e4ebf46332d283d9d8e6be4539fe6c4abe143c31f34eda6696a729d0c13ec8"
+    },
+    "run_checks.py": {
+      "bytes": 5454,
+      "sha256": "f85c0a5183b7aba96c872bbccdc85311d6d81a3cece856db85d1c6baf93e5be7"
+    },
+    "runtime/N32-POST-GUARD.json": {
+      "bytes": 110,
+      "sha256": "b9fd2dac4127a69d0eca2ecd95df11c2d162543436a4c84855624d2bc6ac564d"
+    },
+    "runtime/N32-PRE-GUARD.json": {
+      "bytes": 110,
+      "sha256": "b9fd2dac4127a69d0eca2ecd95df11c2d162543436a4c84855624d2bc6ac564d"
+    },
+    "runtime/N32-RECEIPT.json": {
+      "bytes": 1450,
+      "sha256": "00ee1e05c0a0340acec51405aed9973c88f0323062412a86b8882eb4a08047d2"
+    },
+    "runtime/N32-STARTED.json": {
+      "bytes": 1210,
+      "sha256": "cdd1a42125a3f7d830e1c216ea47af2f632efd55a0fd8e55e6672cd4bbd24f81"
+    },
+    "runtime/N32.stderr": {
+      "bytes": 146,
+      "sha256": "237e643bebd53499314dc9a2888975b48c031df0b376ec8f3b5260ccbf39af8d"
+    },
+    "runtime/N32.stdout": {
+      "bytes": 1341,
+      "sha256": "13587e9e50b94321e6fc468c096ace6a1fae31e9072f4e7efb1f58cb3cd8fe67"
+    },
+    "runtime/PERSISTENCE-CLOCK.json": {
+      "bytes": 161,
+      "sha256": "ca7732ba4f5670270497895c1a7ebc26a2e135a38d16e479832e9f7f3c689c20"
+    },
+    "runtime/RESULT.json": {
+      "bytes": 3505,
+      "sha256": "f14f395ce899541f627dee15c2f6260819d6962fc1fdffdff5af2ec3b942e2d6"
+    },
+    "runtime/STARTED.json": {
+      "bytes": 893,
+      "sha256": "398faac8c005e61d099c861dd6a5e50c9d1b6afbb661b508703d47fa1f350b38"
+    },
+    "runtime/TERMINAL-WITNESS.json": {
+      "bytes": 356,
+      "sha256": "10a8ffd026bc91d42accbac6b37036747c0011de10b9701ac2e2bd492a9a2b14"
+    },
+    "runtime/edge-POST-GUARD.json": {
+      "bytes": 110,
+      "sha256": "b9fd2dac4127a69d0eca2ecd95df11c2d162543436a4c84855624d2bc6ac564d"
+    },
+    "runtime/edge-PRE-GUARD.json": {
+      "bytes": 110,
+      "sha256": "b9fd2dac4127a69d0eca2ecd95df11c2d162543436a4c84855624d2bc6ac564d"
+    },
+    "runtime/edge-RECEIPT.json": {
+      "bytes": 1449,
+      "sha256": "fa9730f02710d80a68025ebea81fd11cafcafcf4c8909390313a8342075525cc"
+    },
+    "runtime/edge-STARTED.json": {
+      "bytes": 1206,
+      "sha256": "6375604e70605cbebcb4991e66688f32824aa0addebf8b0e67c6c51cacb7c576"
+    },
+    "runtime/edge.stderr": {
+      "bytes": 317,
+      "sha256": "2e344e0eb41debe9553c1dee67171e7c1459a0f8d44ba4115b886b19c5ec9832"
+    },
+    "runtime/edge.stdout": {
+      "bytes": 1401,
+      "sha256": "511a6db79ea2f4407d2e2b6f803aa029c3bf3c45e191177813daf09df6aac797"
+    }
+  },
+  "source_commit": "4fef6e9b9f032f553e6f64e9953c7faaad42a1f0",
+  "status": "CLOSED_SCALED_NORMALIZATION_EDGE_AND_N32_GREEN"
+}

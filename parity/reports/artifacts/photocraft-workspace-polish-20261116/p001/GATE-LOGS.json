@@ -1,0 +1,59 @@
+{
+  "source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "source_main_sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd",
+  "logs": [
+    {
+      "path": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/cargo-fmt-all-check-final.log",
+      "command": "cargo fmt --all --check",
+      "exit_code": 0,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/cargo-test-app-final.log",
+      "command": "cargo test -p weftforge --bin weftforge",
+      "exit_code": 0,
+      "bytes": 14244,
+      "sha256": "21c80958f85841a7bd3948940ea72444c3df85967bb5212d9ca557727d1c89fb"
+    },
+    {
+      "path": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/cargo-clippy-app-all-targets-final.log",
+      "command": "cargo clippy -p weftforge --all-targets -- -D warnings",
+      "exit_code": 0,
+      "bytes": 6229,
+      "sha256": "21aa715ae8f87eb216f4b4dc7574277166b016f5730a0a1a9f3b304250900a53"
+    },
+    {
+      "path": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/cargo-build-native-final.log",
+      "command": "cargo build -p weftforge --bin weftforge",
+      "exit_code": 0,
+      "bytes": 227,
+      "sha256": "cb97adcb1ae25745bd33f46689ce6ac3b573b4bc63de0c0a4849ff6e7a0c1454"
+    },
+    {
+      "path": "gates/cargo-test-workspace.log",
+      "command": "cargo test --workspace",
+      "exit_code": 0,
+      "bytes": 42776,
+      "sha256": "bcf2e6b718da212eb22ab1b59a9040c6aa0c605c3812771cfe66c5236a9686a0"
+    },
+    {
+      "path": "gates/cargo-clippy-workspace-all-targets.log",
+      "command": "cargo clippy --workspace --all-targets -- -D warnings",
+      "exit_code": 0,
+      "bytes": 1092,
+      "sha256": "36643441c484657d53e5a99b6b17c2bb0bed66eda76334f6324415bb49fece69"
+    }
+  ],
+  "full_workspace_tests": {
+    "status": "passed",
+    "passed": 389,
+    "failed": 0,
+    "receipt": "gates/WORKSPACE-TEST-RECEIPT.json"
+  },
+  "strict_workspace_clippy": {
+    "status": "passed",
+    "receipt": "gates/WORKSPACE-CLIPPY-RECEIPT.json"
+  },
+  "xtask": "not run here; registry/metadata integration pending"
+}

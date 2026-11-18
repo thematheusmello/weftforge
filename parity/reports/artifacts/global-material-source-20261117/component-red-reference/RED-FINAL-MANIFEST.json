@@ -1,0 +1,182 @@
+{
+  "status": "ONE_PROSPECTIVE_RED_CLOSED_NO_IMPLEMENTATION",
+  "at_utc": "2026-11-17T02:28:04.276173+00:00",
+  "input_reference_freeze_sha256": "ad4d326900deda803a76e0f42686e46048abaf21f4589dac7e1aeefdb96e0c67",
+  "root_review_GO_sha256": "7d447506c1156741c1e5e5cd19e7ce1161dfdfc38bd7e33f7127622ae30793dc",
+  "base_commit": "13fb43fe08c045f08a1b85007aff3c15388a1e24",
+  "classification": "RED_PHYSICAL_ENERGY_STATIONARITY_FAILURE",
+  "numbers": {
+    "force_residual_N": 7.071746584708191,
+    "position_error_m": 0.0008125005684045307
+  },
+  "Cargo_exit_code": 101,
+  "actual_test_executions": 1,
+  "Cargo_invocations": 1,
+  "representation_mass_and_pair_order_guards_passed": true,
+  "post_failure_fixed_node_assertions_reached": false,
+  "source88_and_frozen_proofs_exact": true,
+  "tool_session": 63123,
+  "Cargo_PID": 23577,
+  "owned_process_group_absent": true,
+  "elapsed_through_final_guard_persistence_seconds_as_returned_by_helper": 13.371078500058502,
+  "resource_stop_reason": null,
+  "files": {
+    "FREEZE.json": {
+      "sha256": "ad4d326900deda803a76e0f42686e46048abaf21f4589dac7e1aeefdb96e0c67",
+      "bytes": 23447,
+      "mode": "0444"
+    },
+    "HANDOFF.md": {
+      "sha256": "23644a9c3d731df8e08955777181c2c4ecf1d6faa030fc0d04ecdb579a9e4720",
+      "bytes": 1135,
+      "mode": "0444"
+    },
+    "INPUT.json": {
+      "sha256": "fb2a80ebc94b8cef4269f5c906af64a821255c3f3b2e998eae07f34fc6c6a21e",
+      "bytes": 6327,
+      "mode": "0444"
+    },
+    "ORACLE-PROOF.md": {
+      "sha256": "1c6a4a2862361c97f77c64e6c4a72a2202fcd8ae00ae4adaa82c68d6a2426134",
+      "bytes": 3702,
+      "mode": "0444"
+    },
+    "ORACLE-SELFCHECKS.json": {
+      "sha256": "68ce57ffb393eba6a99df93745c4cee37f1809dba108c3f10d7e87755b4d60ba",
+      "bytes": 447,
+      "mode": "0444"
+    },
+    "PRE-REFERENCE-FREEZE.json": {
+      "sha256": "cb2e14df13e40161a4d3a2fc42584b7157c231bfa0a1ac465aa08a9e49d19b57",
+      "bytes": 2094,
+      "mode": "0444"
+    },
+    "PREPARATION-001-REFERENCE.json": {
+      "sha256": "4011823f4ed0622809fcb904ee7b3a40e978ae2da2805f04a57df04b241aab64",
+      "bytes": 11376,
+      "mode": "0444"
+    },
+    "PREPARATION-001-reference.log": {
+      "sha256": "4011823f4ed0622809fcb904ee7b3a40e978ae2da2805f04a57df04b241aab64",
+      "bytes": 11376,
+      "mode": "0444"
+    },
+    "PREPARATION-001-reference.py": {
+      "sha256": "8724c8b129b002c23d0f25235dab986b0e9048cdee530d9d5c0a55bee481f40a",
+      "bytes": 12356,
+      "mode": "0444"
+    },
+    "PREPARATION-001-reference.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0444"
+    },
+    "PREPARATION-NOTE.json": {
+      "sha256": "2186dacbce63824c169b48826244f23a7a390b08df0dc5bf16098967698848e0",
+      "bytes": 405,
+      "mode": "0444"
+    },
+    "PROPOSED-RED-COMMAND.json": {
+      "sha256": "e1e1c3cae9276f8e1d8c6058c7eafe4fafde622bd7739466596f98ab4bb504e3",
+      "bytes": 992,
+      "mode": "0444"
+    },
+    "PROPOSED-TEST.rs": {
+      "sha256": "ab917733c28eebd9a9ab813818b2f03945660b8c0bb9a67d9babdd4090342560",
+      "bytes": 6820,
+      "mode": "0444"
+    },
+    "RED/started.json": {
+      "sha256": "a50f26925d6c5f12ef17b6f69b3a45db088ba2c09c71e608e409be11bdede4b3",
+      "bytes": 864,
+      "mode": "0444"
+    },
+    "RED/stderr.log": {
+      "sha256": "7117542ec88d4fdf6d8491cb48a5d4c5eaa2e23d18d7607f11d9875b41625ed4",
+      "bytes": 893,
+      "mode": "0444"
+    },
+    "RED/stdout.log": {
+      "sha256": "cce80f44c8cefa8b269cc270550310ff8c96b215c1df533e9ebd83157822de00",
+      "bytes": 674,
+      "mode": "0444"
+    },
+    "RED-FINAL-GUARD.json": {
+      "sha256": "04e71209fe76021136ae931d4bf5ee1a6752599eb38cc5b71cd19bc18fafc8c4",
+      "bytes": 376,
+      "mode": "0444"
+    },
+    "RED-NOTE.md": {
+      "sha256": "381075a311082c6dae46fcb503819ddd8b8d9ff3453739159ff4bbceeeb75a77",
+      "bytes": 2353,
+      "mode": "0444"
+    },
+    "RED-RUNNER-FREEZE.json": {
+      "sha256": "8f78619ad2a218117d7a5d89fa7f93defeb8ff53796894001ecb84514fa80b64",
+      "bytes": 331,
+      "mode": "0444"
+    },
+    "RED-RUNNING.json": {
+      "sha256": "85dbb0a939d5edc6b49a0aa044264b5fde4aba46fb48ffd2ef9060cc9eac1a7f",
+      "bytes": 1687,
+      "mode": "0444"
+    },
+    "RED-SOURCE-BEFORE.json": {
+      "sha256": "5b453d1fb1c39972943486ccc7e36721030c59698797149a8027b30ced6de3e2",
+      "bytes": 14946,
+      "mode": "0444"
+    },
+    "RED-TERMINAL.json": {
+      "sha256": "6aa072efb107f39e6f01fde1acd6070cc3285352714eb4031fc4211cf9d89a3c",
+      "bytes": 17813,
+      "mode": "0444"
+    },
+    "REFERENCE.json": {
+      "sha256": "81e34a2c1d3f5b5992abd4bf7dafbb2bc809488f7956828546cb3d33a20d9d3b",
+      "bytes": 11755,
+      "mode": "0444"
+    },
+    "ROOT-INPUT-REFERENCE-REVIEW-GO.json": {
+      "sha256": "7d447506c1156741c1e5e5cd19e7ce1161dfdfc38bd7e33f7127622ae30793dc",
+      "bytes": 1273,
+      "mode": "0444"
+    },
+    "SOURCE-BEFORE.json": {
+      "sha256": "b4da8861c06d4168a1f152d70533a564efbcac0189d8f8a2d34e2b31a884e9b1",
+      "bytes": 20063,
+      "mode": "0444"
+    },
+    "red_resources.py": {
+      "sha256": "4df98ac4595d45a71059fb12ad5c66da7b4fdbf9c1dfe7a0b74144f17f606987",
+      "bytes": 10575,
+      "mode": "0444"
+    },
+    "reference.log": {
+      "sha256": "81e34a2c1d3f5b5992abd4bf7dafbb2bc809488f7956828546cb3d33a20d9d3b",
+      "bytes": 11755,
+      "mode": "0444"
+    },
+    "reference.py": {
+      "sha256": "968ecf606f589cbf058dc79da4161ef3fc92402bd91fc53cb00ac2b0e301816a",
+      "bytes": 12360,
+      "mode": "0444"
+    },
+    "reference.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0444"
+    },
+    "run_red.py": {
+      "sha256": "a0e74d3c788c2d2731cbaf67bd5cf7c03d6fb840d41230aa2de4b516bd1071ea",
+      "bytes": 7475,
+      "mode": "0444"
+    },
+    "test-only.patch": {
+      "sha256": "b72910edebcaec0e585f6e0579d64ffa15513281e4ff5a47a70635799b54d6ea",
+      "bytes": 7311,
+      "mode": "0444"
+    }
+  },
+  "further_execution_or_source_fix_performed": false,
+  "root_fresh_increment_required_for_next_implementation": true
+}

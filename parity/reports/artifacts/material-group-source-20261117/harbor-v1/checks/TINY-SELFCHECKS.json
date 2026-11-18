@@ -1,0 +1,32 @@
+{
+  "Cargo_invocations": 0,
+  "Python_AST": "passed",
+  "actual_evaluator_runs": 0,
+  "actual_model_initializations": 0,
+  "actual_steps": 0,
+  "exact_reused_producer_and_consumer_files": [
+    "producer/Cargo.toml",
+    "producer/Cargo.lock",
+    "producer/src/main.rs",
+    "consumer/bindings.py",
+    "consumer/capsule_geometry.py",
+    "consumer/decimal_oracle.py",
+    "consumer/evaluator.py",
+    "consumer/geometry_math.py",
+    "consumer/metadata_adapter.py",
+    "consumer/metrics.py",
+    "consumer/static_geometry.py"
+  ],
+  "fake_children_reaped": 3,
+  "old_qualification_reused_only_for_exact_sources": {
+    "path": ".local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/checks/SELF-CHECKS.json",
+    "scope": "Reuse only for exact unchanged producer/evaluator sources; does not qualify pending candidate engine/binary",
+    "sha256": "7ec097d9c29f7d4a0ec89af4bc60f1d89831993fa1da60d495a2cefc800cb3d1"
+  },
+  "optimization_guards": true,
+  "real_case_clock_started": false,
+  "reviewed_source_guard": true,
+  "source_commit": "13fb43fe08c045f08a1b85007aff3c15388a1e24",
+  "status": "passed_source_bound",
+  "terminal_phase_and_output_guards": true
+}

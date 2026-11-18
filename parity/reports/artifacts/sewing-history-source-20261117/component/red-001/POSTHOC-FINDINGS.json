@@ -1,0 +1,69 @@
+{
+  "actual_accumulated_stage_action_N": [
+    [
+      0.03577992357110198,
+      -0.10703346071482998,
+      0.0
+    ],
+    [
+      0.3214066921429659,
+      -0.2976555130950566,
+      0.0
+    ]
+  ],
+  "caller_name_correction": "Actual sole production caller is Cloth::step. The inaccurate prospective step_cancellable labels remain frozen and are corrected by ROOT-GO.",
+  "closed_action_error_N": 1.2412670766236366e-16,
+  "current_multiplier_history_force_N": [
+    [
+      -0.04996936900015236,
+      -0.0832822816669206,
+      -0.0
+    ],
+    [
+      0.321406692142966,
+      -0.29765551309505667,
+      0.0
+    ]
+  ],
+  "first_and_only_command": "successfully compiled; test failed at frozen position assertion",
+  "independent_BE_residual_N": [
+    0.08574929257125424,
+    -0.0237511790479093,
+    0.0
+  ],
+  "independent_BE_residual_norm_N": 0.088977860631937,
+  "independent_elastic_forces_N": [
+    [
+      -0.04996936900015236,
+      -0.0832822816669206,
+      -0.0
+    ],
+    [
+      0.321406692142966,
+      -0.29765551309505667,
+      -0.0
+    ]
+  ],
+  "interpretation": "At the retained 32-sweep no-update state, scalar radial history matches current radial constitutive force but not the actual accumulated vector action. The closed action is balanced. This demonstrates the hypothesized rotating-gradient history/stationarity defect for this component; it is not remaining stage motion.",
+  "last_stage_update_m": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "later_stationarity_and_action_assertions_reached": false,
+  "limits": "No garment causality, whole-Cloth behavior, reference parity or full physics acceptance. No second invocation, production repair, tolerance change or old-case regrade.",
+  "next_action": "Root review of the exact first result; any production repair requires a separate task and source freeze.",
+  "objective_J": 0.34701166449237064,
+  "oracle_arithmetic_assertion_passed_before_position_failure": true,
+  "oracle_objective_J": 0.34462075140626314,
+  "position_error_m": 0.05387152303649836,
+  "radial_action_error_N": 0.08897786063193712,
+  "status": "FRESH_COMPONENT_RED_NO_PRODUCTION_REPAIR"
+}

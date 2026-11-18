@@ -1,0 +1,3741 @@
+{
+  "schema_version": 1,
+  "kind": "selected_public_derivative_manifest",
+  "selection_is_proposal_only": true,
+  "actual_source": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+  "actual_workspace_source_QA_execution_commit": "c766f3fa48c03ac698da8b22cc3bf927ee71f195",
+  "source91_F_G_exact_at_immutable_commits": true,
+  "current_INT_source_HEAD_index_examined": false,
+  "selected_original_count": 176,
+  "selected_numerical_records": 41,
+  "selected_outer_records": 14,
+  "all181_trajectory_included": true,
+  "JSONL_lines_checked": 361,
+  "byte_preservation": {
+    "only_exact_ordered_prefix_substitution": true,
+    "order": "Specific original packet/case/closure/bind/build/review paths before INT worktree, root-local container, root/workspace, tool homes, home and approved temporary/system-prefix locators; sort overlapping prefixes longest first",
+    "preserve": [
+      "all64hex sequences",
+      "typed JSON numbers booleans null",
+      "lexical JSON scalar tokens",
+      "Python numeric boolean null tokens",
+      "JSONL181trajectory180steps",
+      "line count and endings",
+      "EOF state and whitespace",
+      "all original errors and outcomes"
+    ],
+    "prohibit": [
+      "JSON reserialization of selected originals",
+      "inner hash replacement",
+      "number normalization",
+      "error/flag deletion",
+      "selected-program execution",
+      "old-case regrade"
+    ],
+    "manifest": "Original and derivative hashes/bytes/modes, logical source IDs, exact replacement counts/order, omissions/reuse reasons, line counts and authentic whitespace exceptions; original inner hashes keep naming raw originals"
+  },
+  "privacy_and_content_policy": {
+    "UTF8_text_only": true,
+    "private_locators_credentials_proprietary_content_pixels_executable_or_cache_bytes": "reject",
+    "unrelated_foreign_project_details": "reject; omit entire nonessential record with explicit private omission identity/reason if exact locator-only transform cannot remove them",
+    "public_modes": "0644 regular files only; no symlinks",
+    "retained_executables": "Descriptors only; curator never opens or copies retained executable bytes"
+  },
+  "transform_order": [
+    {
+      "replacement": "<OPTIMIZED_G_BUILD_POST_CASE>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<NUMERICAL_PACKET>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<CLEAN_G_XTASK_POST_CASE>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<HISTORY_PRE_ADMISSION_WRAPPER_001>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<OPTIMIZED_G_BUILD>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<CLEAN_G_XTASK>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<NUMERICAL_POSTCASE>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<NUMERICAL_ROOT>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<HISTORY_PRECLOCK_PATH_CLOSURE001>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<PRODUCER_BUILD_POST_CASE>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<SOURCE_BIND_POST_CASE>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<HISTORY_PRECLOCK_PATH_OUTER001>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<PRODUCER_BUILD>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<SOURCE_BIND>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<HISTORY_PRECLOCK_CONTRACT_REVIEW>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<ROOT_PARENT_ENVIRONMENT_CHECK>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<CURATION_PREPARATION>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<WORKTREE>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<WORKTREE_CONTAINER>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<REPOSITORY_ROOT>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<WORKSPACE_PARENT>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<TMPDIR>/",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<WORKSPACE_CONTAINER>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<WORKSPACE_BASE>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<RUSTUP_HOME>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<CARGO_HOME>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<PYENV_HOME>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<HOME>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<HOMEBREW_PREFIX>",
+      "definition": "Exact approved private locator prefix."
+    },
+    {
+      "replacement": "<HOME_PARENT>",
+      "definition": "Exact approved private locator prefix."
+    }
+  ],
+  "files": [
+    {
+      "source_id": "history/WF-20261118-CAPSULE-SUPPORTING-PLANE-SOURCE-001.original.json",
+      "original": {
+        "sha256": "4e4eae9f3085b4450317fd3b94209cb3856bd2917991c68215a01fa3f42fe714",
+        "bytes": 36507,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/WF-20261118-CAPSULE-SUPPORTING-PLANE-SOURCE-001.original.json",
+      "public_sha256": "4e4eae9f3085b4450317fd3b94209cb3856bd2917991c68215a01fa3f42fe714",
+      "public_bytes": 36507,
+      "public_mode": "0644",
+      "line_count": 459,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/inputs/base.weftforge",
+      "original": {
+        "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+        "bytes": 11808,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/inputs/base.weftforge",
+      "public_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "public_bytes": 11808,
+      "public_mode": "0644",
+      "line_count": 743,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/expected/approved-metadata.json",
+      "original": {
+        "sha256": "d86699042712c4b80d6a4b56135d04b049366f72dc1520387f5214e09077e865",
+        "bytes": 590911,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/expected/approved-metadata.json",
+      "public_sha256": "d86699042712c4b80d6a4b56135d04b049366f72dc1520387f5214e09077e865",
+      "public_bytes": 590911,
+      "public_mode": "0644",
+      "line_count": 30881,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/preflight-base/initialized-state.json",
+      "original": {
+        "sha256": "e5ea2c236493518c0a6a9b0dcefed94e44dfa73e1ffab501fce8aac8b78ee63d",
+        "bytes": 75487,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/preflight-base/initialized-state.json",
+      "public_sha256": "e5ea2c236493518c0a6a9b0dcefed94e44dfa73e1ffab501fce8aac8b78ee63d",
+      "public_bytes": 75487,
+      "public_mode": "0644",
+      "line_count": 6568,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/preflight-base/rest-metadata.json",
+      "original": {
+        "sha256": "c0e7333933d3539a2e1ce5c195ff8d86d0a9562c5809dbd84a8295d5c0592e2c",
+        "bytes": 590886,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/preflight-base/rest-metadata.json",
+      "public_sha256": "c0e7333933d3539a2e1ce5c195ff8d86d0a9562c5809dbd84a8295d5c0592e2c",
+      "public_bytes": 590886,
+      "public_mode": "0644",
+      "line_count": 30881,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/preflight-base/stage-000.obj",
+      "original": {
+        "sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+        "bytes": 154152,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/preflight-base/stage-000.obj",
+      "public_sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+      "public_bytes": 154152,
+      "public_mode": "0644",
+      "line_count": 3137,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runs/base/analysis.json",
+      "original": {
+        "sha256": "ed4a7bc2e0ea67808260cd2790159a38f6593077cf6318b9614753e085f99e9b",
+        "bytes": 1048742,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runs/base/analysis.json",
+      "public_sha256": "ed4a7bc2e0ea67808260cd2790159a38f6593077cf6318b9614753e085f99e9b",
+      "public_bytes": 1048742,
+      "public_mode": "0644",
+      "line_count": 27280,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runs/base/completed-case.json",
+      "original": {
+        "sha256": "a37a19615ae91c073b727a61c413cadf6e75a4a7564e64fd2a41b0548366e0da",
+        "bytes": 782,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runs/base/completed-case.json",
+      "public_sha256": "a37a19615ae91c073b727a61c413cadf6e75a4a7564e64fd2a41b0548366e0da",
+      "public_bytes": 782,
+      "public_mode": "0644",
+      "line_count": 26,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runs/base/initialized-state.json",
+      "original": {
+        "sha256": "926593b6a00a210416a305709a28ff0a821c3d4bda1e7a7e64a739a671bb2c77",
+        "bytes": 75486,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runs/base/initialized-state.json",
+      "public_sha256": "926593b6a00a210416a305709a28ff0a821c3d4bda1e7a7e64a739a671bb2c77",
+      "public_bytes": 75486,
+      "public_mode": "0644",
+      "line_count": 6568,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runs/base/rest-metadata.json",
+      "original": {
+        "sha256": "c0e7333933d3539a2e1ce5c195ff8d86d0a9562c5809dbd84a8295d5c0592e2c",
+        "bytes": 590886,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runs/base/rest-metadata.json",
+      "public_sha256": "c0e7333933d3539a2e1ce5c195ff8d86d0a9562c5809dbd84a8295d5c0592e2c",
+      "public_bytes": 590886,
+      "public_mode": "0644",
+      "line_count": 30881,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runs/base/stage-000.obj",
+      "original": {
+        "sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+        "bytes": 154152,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runs/base/stage-000.obj",
+      "public_sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+      "public_bytes": 154152,
+      "public_mode": "0644",
+      "line_count": 3137,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runs/base/stage-060.obj",
+      "original": {
+        "sha256": "a4ed49fc338581b9c0c1763e93e76262cd8990dc1125c34f0403407567bac0ac",
+        "bytes": 154795,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runs/base/stage-060.obj",
+      "public_sha256": "a4ed49fc338581b9c0c1763e93e76262cd8990dc1125c34f0403407567bac0ac",
+      "public_bytes": 154795,
+      "public_mode": "0644",
+      "line_count": 3137,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runs/base/stage-180.obj",
+      "original": {
+        "sha256": "2655a22d74fd814b0116a3c046f0411f798a0e21b76fa332b0cf58a67bc77964",
+        "bytes": 154794,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runs/base/stage-180.obj",
+      "public_sha256": "2655a22d74fd814b0116a3c046f0411f798a0e21b76fa332b0cf58a67bc77964",
+      "public_bytes": 154794,
+      "public_mode": "0644",
+      "line_count": 3137,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runs/base/steps.jsonl",
+      "original": {
+        "sha256": "d4306aac5bf5ba4c41caf9b85b068b84193e2b4242feb3afe29c331934486d31",
+        "bytes": 119239,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runs/base/steps.jsonl",
+      "public_sha256": "d4306aac5bf5ba4c41caf9b85b068b84193e2b4242feb3afe29c331934486d31",
+      "public_bytes": 119239,
+      "public_mode": "0644",
+      "line_count": 180,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runs/base/trajectory.jsonl",
+      "original": {
+        "sha256": "cc13cfd6329ca6c152981cb952e9dd7179121e1164f55fc2c560549061ee232d",
+        "bytes": 15436736,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runs/base/trajectory.jsonl",
+      "public_sha256": "cc13cfd6329ca6c152981cb952e9dd7179121e1164f55fc2c560549061ee232d",
+      "public_bytes": 15436736,
+      "public_mode": "0644",
+      "line_count": 181,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runtime/FINAL-NUMERICAL.json",
+      "original": {
+        "sha256": "ea1240e80d2f80e59c99657aafce0126493e0e03e6ffc63382457ccb95ffc212",
+        "bytes": 7239,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/FINAL-NUMERICAL.json",
+      "public_sha256": "ea1240e80d2f80e59c99657aafce0126493e0e03e6ffc63382457ccb95ffc212",
+      "public_bytes": 7239,
+      "public_mode": "0644",
+      "line_count": 281,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runtime/SESSION.json",
+      "original": {
+        "sha256": "838f722b9d224a4bed1f83f65f7260d245edb63cde40a7c22fd015d56d94dbf9",
+        "bytes": 83926,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/SESSION.json",
+      "public_sha256": "af45f9e87b88b7738fd9f8f85222d1715deb3ec87f1f96395cc348584a857bfb",
+      "public_bytes": 82768,
+      "public_mode": "0644",
+      "line_count": 969,
+      "locator_replacements": {
+        "<WORKTREE>": 4,
+        "<RUSTUP_HOME>": 8,
+        "<NUMERICAL_PACKET>": 1,
+        "<HOME_PARENT>": 2,
+        "<CARGO_HOME>": 20,
+        "<WORKSPACE_BASE>": 2,
+        "<WORKSPACE_CONTAINER>": 2,
+        "<WORKSPACE_PARENT>": 2,
+        "<REPOSITORY_ROOT>": 2,
+        "<WORKTREE_CONTAINER>": 2,
+        "<PYENV_HOME>": 2,
+        "<HOMEBREW_PREFIX>": 2
+      }
+    },
+    {
+      "source_id": "numerical/runtime/SUPERVISOR.json",
+      "original": {
+        "sha256": "b7831ba3b8db8bb35fc1471db97621ec5a090ae9649a5cda221d94ba468446a2",
+        "bytes": 6831,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/SUPERVISOR.json",
+      "public_sha256": "28e3495401f28683e8731de2060685196013235d8647784b4fe69b2215563e2e",
+      "public_bytes": 6179,
+      "public_mode": "0644",
+      "line_count": 191,
+      "locator_replacements": {
+        "<WORKTREE>": 2,
+        "<PYENV_HOME>": 3,
+        "<NUMERICAL_PACKET>": 3
+      }
+    },
+    {
+      "source_id": "numerical/runtime/analysis-stage.json",
+      "original": {
+        "sha256": "eb0d4b154e49adde7f3c62763e8be245444b388c46b0c629fa0bbad2b2b47586",
+        "bytes": 1112,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/analysis-stage.json",
+      "public_sha256": "c545845b16af8ca632c316fb69f899361f9e467790f3489ba560ab9e9964c447",
+      "public_bytes": 956,
+      "public_mode": "0644",
+      "line_count": 35,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1,
+        "<NUMERICAL_PACKET>": 1
+      }
+    },
+    {
+      "source_id": "numerical/runtime/analysis-started.json",
+      "original": {
+        "sha256": "a6cb93eaa77b298f917e21324afccd477b92367a26ec9b958b199865c687a2d2",
+        "bytes": 878,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/analysis-started.json",
+      "public_sha256": "bc25917cd9c35498eb280b054fedfb4390bee50479c3cf944ff52395c4b22904",
+      "public_bytes": 722,
+      "public_mode": "0644",
+      "line_count": 28,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1,
+        "<NUMERICAL_PACKET>": 1
+      }
+    },
+    {
+      "source_id": "numerical/runtime/analysis-written.json",
+      "original": {
+        "sha256": "405cbe308f1fb34f2684e4a6debc41a5586c64958530cc07eac9f0135db9cad3",
+        "bytes": 227,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/analysis-written.json",
+      "public_sha256": "405cbe308f1fb34f2684e4a6debc41a5586c64958530cc07eac9f0135db9cad3",
+      "public_bytes": 227,
+      "public_mode": "0644",
+      "line_count": 6,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runtime/analysis.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/analysis.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runtime/analysis.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/analysis.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runtime/finalization-stage.json",
+      "original": {
+        "sha256": "80067823a7b2aa8734391f3419a406efe24e4fb0b8a561c718162c00d2265e38",
+        "bytes": 1112,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/finalization-stage.json",
+      "public_sha256": "7e7c03dad4a9dff40761204d55b6dcffd60293b156816529e92680da43787552",
+      "public_bytes": 956,
+      "public_mode": "0644",
+      "line_count": 35,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1,
+        "<NUMERICAL_PACKET>": 1
+      }
+    },
+    {
+      "source_id": "numerical/runtime/finalization-started.json",
+      "original": {
+        "sha256": "0a562010cdc7fadb08fbbef881112aa73805c3235f7b6ffb0756adf8a3809b4d",
+        "bytes": 879,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/finalization-started.json",
+      "public_sha256": "21444d9bcd0b0846ac916307df665e28e2c18a1475071e9d0933a4bf5a83630c",
+      "public_bytes": 723,
+      "public_mode": "0644",
+      "line_count": 28,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1,
+        "<NUMERICAL_PACKET>": 1
+      }
+    },
+    {
+      "source_id": "numerical/runtime/finalization.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/finalization.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runtime/finalization.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/finalization.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runtime/finalized.json",
+      "original": {
+        "sha256": "b431c7ae19d9823d4072794624fc0e44500e02e92073008833e862a81f7ca498",
+        "bytes": 217,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/finalized.json",
+      "public_sha256": "b431c7ae19d9823d4072794624fc0e44500e02e92073008833e862a81f7ca498",
+      "public_bytes": 217,
+      "public_mode": "0644",
+      "line_count": 5,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runtime/init-only-stage.json",
+      "original": {
+        "sha256": "cbd67de51f4eb6a67026b38424f1c49911861781325f811610816fb9f6370cf0",
+        "bytes": 1009,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/init-only-stage.json",
+      "public_sha256": "e60279b83793ac691eb9a53c17fa22ad9e8350a99ccbbfa528f1a8ae528ac654",
+      "public_bytes": 917,
+      "public_mode": "0644",
+      "line_count": 33,
+      "locator_replacements": {
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "numerical/runtime/init-only-started.json",
+      "original": {
+        "sha256": "363b40437e57ccee964d1d4dfa7b87a13217ea1d8a2a38f7fb46abc057c0cde1",
+        "bytes": 782,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/init-only-started.json",
+      "public_sha256": "e2c4b605a0b7797e3d1e11086f6551bef738bdb5d0f323af3789669214f248af",
+      "public_bytes": 690,
+      "public_mode": "0644",
+      "line_count": 26,
+      "locator_replacements": {
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "numerical/runtime/init-only.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/init-only.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runtime/init-only.stdout",
+      "original": {
+        "sha256": "38dde89a453487e736364cec15a6e47f005fcc06d8c52c1b9d715772322279d2",
+        "bytes": 41,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/init-only.stdout",
+      "public_sha256": "38dde89a453487e736364cec15a6e47f005fcc06d8c52c1b9d715772322279d2",
+      "public_bytes": 41,
+      "public_mode": "0644",
+      "line_count": 1,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runtime/initialized-original-gate.json",
+      "original": {
+        "sha256": "c886280e96ceb8884cc505d64601623ab6f536ed13bffff417e58973a05e1842",
+        "bytes": 833,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/initialized-original-gate.json",
+      "public_sha256": "c886280e96ceb8884cc505d64601623ab6f536ed13bffff417e58973a05e1842",
+      "public_bytes": 833,
+      "public_mode": "0644",
+      "line_count": 18,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runtime/metadata-stage.json",
+      "original": {
+        "sha256": "43e06d3402f80be1cad67b5c52814ebce7bcc35482bbdec0df2fec6d1f4932a5",
+        "bytes": 1111,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/metadata-stage.json",
+      "public_sha256": "2e70130b18cf0c3630d14092f12ad026d0497b315e7bdfe01dd4c6e81927cc43",
+      "public_bytes": 955,
+      "public_mode": "0644",
+      "line_count": 35,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1,
+        "<NUMERICAL_PACKET>": 1
+      }
+    },
+    {
+      "source_id": "numerical/runtime/metadata-started.json",
+      "original": {
+        "sha256": "639cdb4cf3c7b10324c751f772e15690e8204ee3a5e5de22591e9e7d8fd9b6c3",
+        "bytes": 879,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/metadata-started.json",
+      "public_sha256": "6d030410f8a5971e14131787610f41e8b39a62e91b32dbd521ffe099cfc69651",
+      "public_bytes": 723,
+      "public_mode": "0644",
+      "line_count": 28,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1,
+        "<NUMERICAL_PACKET>": 1
+      }
+    },
+    {
+      "source_id": "numerical/runtime/metadata.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/metadata.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runtime/metadata.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/metadata.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runtime/producer-receipt.json",
+      "original": {
+        "sha256": "c2dffceb3947e6a11b1f64d785a5aefa38e27630ed5ca43869772ff5eb74a182",
+        "bytes": 2515,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/producer-receipt.json",
+      "public_sha256": "24cf05bf7c93dec49a2b6085fb3bd2ea9980d779f6f8df176068434d0eb4d91d",
+      "public_bytes": 2423,
+      "public_mode": "0644",
+      "line_count": 55,
+      "locator_replacements": {
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "numerical/runtime/producer-stage.json",
+      "original": {
+        "sha256": "5cc07d5c611bd929c0cd9b1b9fff56e61d8a5da042587e6c074e1dd6fb2529d3",
+        "bytes": 1047,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/producer-stage.json",
+      "public_sha256": "1e12027a1e46aceeabd8e0db7e54329cf731ab8ca38129652c00ccea857b8a46",
+      "public_bytes": 955,
+      "public_mode": "0644",
+      "line_count": 34,
+      "locator_replacements": {
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "numerical/runtime/producer-started.json",
+      "original": {
+        "sha256": "5c528d177bd64a372df6efa760154c1bf19d1d2f1f5f68150125c6c25c04a1e7",
+        "bytes": 812,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/producer-started.json",
+      "public_sha256": "dab57b6d3763fbb98162567ee8277e0084e0f4063a592ada6978b02bcb556d06",
+      "public_bytes": 720,
+      "public_mode": "0644",
+      "line_count": 27,
+      "locator_replacements": {
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "numerical/runtime/producer.stderr",
+      "original": {
+        "sha256": "f3a7476ff5f7aa3ff7a20d6a428eaaa8e6650244ab58748b92faac4be86d9c7a",
+        "bytes": 1274,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/producer.stderr",
+      "public_sha256": "f3a7476ff5f7aa3ff7a20d6a428eaaa8e6650244ab58748b92faac4be86d9c7a",
+      "public_bytes": 1274,
+      "public_mode": "0644",
+      "line_count": 12,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "numerical/runtime/producer.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/numerical/runtime/producer.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "root/admission002/ROOT-RESULT.json",
+      "original": {
+        "sha256": "a72d02c71fa2cf07d240bcb3bcf025a2b090ee621d2d61670296392b01a6bc27",
+        "bytes": 393,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/admission002/ROOT-RESULT.json",
+      "public_sha256": "a72d02c71fa2cf07d240bcb3bcf025a2b090ee621d2d61670296392b01a6bc27",
+      "public_bytes": 393,
+      "public_mode": "0644",
+      "line_count": 10,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "root/admission002/EXTERNAL-TERMINAL.json",
+      "original": {
+        "sha256": "9c2441663a7ed12390b152e59c19c989dc972d1d43487afaf86902aff6f7d36b",
+        "bytes": 1101,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/admission002/EXTERNAL-TERMINAL.json",
+      "public_sha256": "9c2441663a7ed12390b152e59c19c989dc972d1d43487afaf86902aff6f7d36b",
+      "public_bytes": 1101,
+      "public_mode": "0644",
+      "line_count": 23,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "root/admission002/RUNNING.json",
+      "original": {
+        "sha256": "ba48efc85ef72e28405729f998556de373057fb8e77a3d387569f49cf323438e",
+        "bytes": 1033,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/admission002/RUNNING.json",
+      "public_sha256": "377e48d519d3b01422a7bfabe521492cd9cfdddcf44797b78903336f57efaf78",
+      "public_bytes": 877,
+      "public_mode": "0644",
+      "line_count": 32,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1,
+        "<NUMERICAL_PACKET>": 1
+      }
+    },
+    {
+      "source_id": "root/admission002/controller.stdout",
+      "original": {
+        "sha256": "251721e68be9a3f8ebc55f301fcd765acb69e5a96857f4e59a2a81d72e3a58a6",
+        "bytes": 399,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/admission002/controller.stdout",
+      "public_sha256": "251721e68be9a3f8ebc55f301fcd765acb69e5a96857f4e59a2a81d72e3a58a6",
+      "public_bytes": 399,
+      "public_mode": "0644",
+      "line_count": 1,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "root/admission002/exec_bound.py",
+      "original": {
+        "sha256": "faa9e186525c32d9e8ad1ee36873f8a3840d69defc105fdf2605525a59ed1ba8",
+        "bytes": 1579,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/admission002/exec_bound.py",
+      "public_sha256": "faa9e186525c32d9e8ad1ee36873f8a3840d69defc105fdf2605525a59ed1ba8",
+      "public_bytes": 1579,
+      "public_mode": "0644",
+      "line_count": 35,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "root/admission002/ROOT-TERMINAL-WITNESS.json",
+      "original": {
+        "sha256": "836d975a4a0136d93b98a15d3aad0abf6f514085fb4c61520ae731efa9a40524",
+        "bytes": 6410,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/admission002/ROOT-TERMINAL-WITNESS.json",
+      "public_sha256": "568957beb02806c2b1d7dc006602eda16b75fc22fb6aaf8d3632780ed47a04bd",
+      "public_bytes": 6254,
+      "public_mode": "0644",
+      "line_count": 118,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1,
+        "<NUMERICAL_PACKET>": 1
+      }
+    },
+    {
+      "source_id": "root/admission002/launch_and_record.py",
+      "original": {
+        "sha256": "5b36aeecd1251e024dc1e38bfd1eaab973e343fdb3243ccd1a420abac3c4fc96",
+        "bytes": 4055,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/admission002/launch_and_record.py",
+      "public_sha256": "5b36aeecd1251e024dc1e38bfd1eaab973e343fdb3243ccd1a420abac3c4fc96",
+      "public_bytes": 4055,
+      "public_mode": "0644",
+      "line_count": 50,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "root/admission002/ROOT-ADMISSION.json",
+      "original": {
+        "sha256": "7f6cf875423bb16e77957a99bb7e1fe09a89e5bf82e02096af32a785b2536647",
+        "bytes": 3840,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/admission002/ROOT-ADMISSION.json",
+      "public_sha256": "915e68406f6e0f0c346a56d3b4e6c09c6b9b361726417ecd6e6cbbfe9c23e6b4",
+      "public_bytes": 3229,
+      "public_mode": "0644",
+      "line_count": 49,
+      "locator_replacements": {
+        "<NUMERICAL_POSTCASE>": 1,
+        "<NUMERICAL_PACKET>": 1,
+        "<ROOT_PARENT_ENVIRONMENT_CHECK>": 1,
+        "<HISTORY_PRECLOCK_CONTRACT_REVIEW>": 1,
+        "<HISTORY_PRECLOCK_PATH_CLOSURE001>": 1,
+        "<PRODUCER_BUILD_POST_CASE>": 1
+      }
+    },
+    {
+      "source_id": "root/admission002/controller.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/admission002/controller.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "root/admission002/OUTER-START.json",
+      "original": {
+        "sha256": "7d6aa9433020a5150a104c1bb44bb6b5ee6553c7c50b66efd7dc479e5d7844e5",
+        "bytes": 638,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/admission002/OUTER-START.json",
+      "public_sha256": "ad0e50204251acd0287cfaed69a3ba26373205fd8d63179bd241e01e2407b98f",
+      "public_bytes": 482,
+      "public_mode": "0644",
+      "line_count": 15,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1,
+        "<NUMERICAL_PACKET>": 1
+      }
+    },
+    {
+      "source_id": "root/admission002/EXTERNAL-START.json",
+      "original": {
+        "sha256": "7b438cf05e978fc1f586642e4214e8efa5e1c660028061ca1013cec87c13424a",
+        "bytes": 161,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/admission002/EXTERNAL-START.json",
+      "public_sha256": "7b438cf05e978fc1f586642e4214e8efa5e1c660028061ca1013cec87c13424a",
+      "public_bytes": 161,
+      "public_mode": "0644",
+      "line_count": 1,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "root/admission002/outer.stdout",
+      "original": {
+        "sha256": "642591aa5a73b36a923d6f1349c77e5daf88a074e086d9acf69077e9c4cbf912",
+        "bytes": 602,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/admission002/outer.stdout",
+      "public_sha256": "642591aa5a73b36a923d6f1349c77e5daf88a074e086d9acf69077e9c4cbf912",
+      "public_bytes": 602,
+      "public_mode": "0644",
+      "line_count": 1,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "root/admission002/outer.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/admission002/outer.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "root/admission002/supervise.py",
+      "original": {
+        "sha256": "36cb23882581ebad03ab6c3e28efb774f9dc33865af6328731d84a9efb8657ce",
+        "bytes": 7255,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/admission002/supervise.py",
+      "public_sha256": "36cb23882581ebad03ab6c3e28efb774f9dc33865af6328731d84a9efb8657ce",
+      "public_bytes": 7255,
+      "public_mode": "0644",
+      "line_count": 116,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "post-case/ORIGINAL-EXEC-LAUNCH.json",
+      "original": {
+        "sha256": "2165a70ebb3f2223932838bdfb3fa5e7b41e30a155489c4081d12735882b8910",
+        "bytes": 131,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/post-case/ORIGINAL-EXEC-LAUNCH.json",
+      "public_sha256": "2165a70ebb3f2223932838bdfb3fa5e7b41e30a155489c4081d12735882b8910",
+      "public_bytes": 131,
+      "public_mode": "0644",
+      "line_count": 7,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "post-case/ORIGINAL-EXEC-TERMINAL.json",
+      "original": {
+        "sha256": "d11ea3cd3da2bfc5d450922e407f3d690e681dc04296340683aac3bdad7a2be1",
+        "bytes": 438,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/post-case/ORIGINAL-EXEC-TERMINAL.json",
+      "public_sha256": "d11ea3cd3da2bfc5d450922e407f3d690e681dc04296340683aac3bdad7a2be1",
+      "public_bytes": 438,
+      "public_mode": "0644",
+      "line_count": 7,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "post-case/PRE-ADMISSION-PROCESS-SNAPSHOT.json",
+      "original": {
+        "sha256": "2a3d4087cc6fea49de21f95d581e664704205fec45490be80611c180256cc2ab",
+        "bytes": 171,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/post-case/PRE-ADMISSION-PROCESS-SNAPSHOT.json",
+      "public_sha256": "2a3d4087cc6fea49de21f95d581e664704205fec45490be80611c180256cc2ab",
+      "public_bytes": 171,
+      "public_mode": "0644",
+      "line_count": 6,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "post-case/ROOT-OUTCOME.json",
+      "original": {
+        "sha256": "d32cf967e9879a0046fd9af9cbe6dec825fd5ab1f6b479bc4ca1fb0ce2d0125c",
+        "bytes": 2577,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/post-case/ROOT-OUTCOME.json",
+      "public_sha256": "d32cf967e9879a0046fd9af9cbe6dec825fd5ab1f6b479bc4ca1fb0ce2d0125c",
+      "public_bytes": 2577,
+      "public_mode": "0644",
+      "line_count": 77,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "post-case/NUMERICAL-FREEZE.json",
+      "original": {
+        "sha256": "f971355c4c115c92d504c282c7473fd77f7a4fed657f271d37bb2f3c4c5ed888",
+        "bytes": 9810,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/post-case/NUMERICAL-FREEZE.json",
+      "public_sha256": "f971355c4c115c92d504c282c7473fd77f7a4fed657f271d37bb2f3c4c5ed888",
+      "public_bytes": 9810,
+      "public_mode": "0644",
+      "line_count": 292,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "history/pre-admission-wrapper-001/ORIGINAL-EXEC-LAUNCH.json",
+      "original": {
+        "sha256": "4f79b7ee79a55366ffec78ea35c505e7d88c6ad1b54f7afaca684553267aed62",
+        "bytes": 1451,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/pre-admission-wrapper-001/ORIGINAL-EXEC-LAUNCH.json",
+      "public_sha256": "4f546d363f9b9050100084a103c87afea72ed3fb1e7de22eee9b4f72b053f9b2",
+      "public_bytes": 1189,
+      "public_mode": "0644",
+      "line_count": 7,
+      "locator_replacements": {
+        "<NUMERICAL_ROOT>": 2,
+        "<PYENV_HOME>": 3
+      }
+    },
+    {
+      "source_id": "history/pre-admission-wrapper-001/ORIGINAL-EXEC-TERMINAL.json",
+      "original": {
+        "sha256": "4f79b7ee79a55366ffec78ea35c505e7d88c6ad1b54f7afaca684553267aed62",
+        "bytes": 1451,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/pre-admission-wrapper-001/ORIGINAL-EXEC-TERMINAL.json",
+      "public_sha256": "4f546d363f9b9050100084a103c87afea72ed3fb1e7de22eee9b4f72b053f9b2",
+      "public_bytes": 1189,
+      "public_mode": "0644",
+      "line_count": 7,
+      "locator_replacements": {
+        "<NUMERICAL_ROOT>": 2,
+        "<PYENV_HOME>": 3
+      }
+    },
+    {
+      "source_id": "history/pre-admission-wrapper-001/OUTCOME.json",
+      "original": {
+        "sha256": "4be348274823976cb498b5f0ac80ecabd891d9736dfbfb6a79bf45895398f944",
+        "bytes": 572,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/pre-admission-wrapper-001/OUTCOME.json",
+      "public_sha256": "4be348274823976cb498b5f0ac80ecabd891d9736dfbfb6a79bf45895398f944",
+      "public_bytes": 572,
+      "public_mode": "0644",
+      "line_count": 9,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "history/preclock-PATH-outer001/launch_and_record.py",
+      "original": {
+        "sha256": "5b36aeecd1251e024dc1e38bfd1eaab973e343fdb3243ccd1a420abac3c4fc96",
+        "bytes": 4055,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/preclock-PATH-outer001/launch_and_record.py",
+      "public_sha256": "5b36aeecd1251e024dc1e38bfd1eaab973e343fdb3243ccd1a420abac3c4fc96",
+      "public_bytes": 4055,
+      "public_mode": "0644",
+      "line_count": 50,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "history/preclock-PATH-outer001/ROOT-ADMISSION.json",
+      "original": {
+        "sha256": "e17369173afec82a97375701d45d4c34e25be2a1b559dee0ef6f757aaec21779",
+        "bytes": 2449,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/preclock-PATH-outer001/ROOT-ADMISSION.json",
+      "public_sha256": "0db168f9be4d690fe40b713cb149d457af213d81628ac2e71618de1f062df4e0",
+      "public_bytes": 2110,
+      "public_mode": "0644",
+      "line_count": 30,
+      "locator_replacements": {
+        "<HISTORY_PRECLOCK_PATH_CLOSURE001>": 1,
+        "<NUMERICAL_PACKET>": 1,
+        "<PRODUCER_BUILD_POST_CASE>": 1
+      }
+    },
+    {
+      "source_id": "history/preclock-PATH-outer001/EXTERNAL-START.json",
+      "original": {
+        "sha256": "ae59254349d1b8d59a708443c95bc8430ad185df8449a470fbadf0f2552b41e4",
+        "bytes": 161,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/preclock-PATH-outer001/EXTERNAL-START.json",
+      "public_sha256": "ae59254349d1b8d59a708443c95bc8430ad185df8449a470fbadf0f2552b41e4",
+      "public_bytes": 161,
+      "public_mode": "0644",
+      "line_count": 1,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "history/preclock-PATH-outer001/outer.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/preclock-PATH-outer001/outer.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "history/preclock-PATH-outer001/outer.stderr",
+      "original": {
+        "sha256": "1852b856f22346531c8bac1c7590833b5a997908f86b281d64e919a36ff6499f",
+        "bytes": 1812,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/preclock-PATH-outer001/outer.stderr",
+      "public_sha256": "e9a9b44f09bb38c1fd60d6e190ee1d43b85a05a9bfcc7f32cbfa7d9788afd11c",
+      "public_bytes": 1050,
+      "public_mode": "0644",
+      "line_count": 18,
+      "locator_replacements": {
+        "<HISTORY_PRECLOCK_PATH_OUTER001>": 2,
+        "<NUMERICAL_PACKET>": 4
+      }
+    },
+    {
+      "source_id": "history/preclock-PATH-outer001/supervise.py",
+      "original": {
+        "sha256": "36cb23882581ebad03ab6c3e28efb774f9dc33865af6328731d84a9efb8657ce",
+        "bytes": 7255,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/preclock-PATH-outer001/supervise.py",
+      "public_sha256": "36cb23882581ebad03ab6c3e28efb774f9dc33865af6328731d84a9efb8657ce",
+      "public_bytes": 7255,
+      "public_mode": "0644",
+      "line_count": 116,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "history/preclock-PATH-closure001/ORIGINAL-EXEC-LAUNCH.json",
+      "original": {
+        "sha256": "aaea022c4582fb7c037c22ac11d099547008a6e0f6ac0f0024763c6073ce5bdd",
+        "bytes": 1344,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/preclock-PATH-closure001/ORIGINAL-EXEC-LAUNCH.json",
+      "public_sha256": "8509a7451c84299c243ebbf9c9cfa3f0a497274c099ddee64e45caffe4247170",
+      "public_bytes": 1122,
+      "public_mode": "0644",
+      "line_count": 7,
+      "locator_replacements": {
+        "<HISTORY_PRECLOCK_PATH_OUTER001>": 2,
+        "<PYENV_HOME>": 3
+      }
+    },
+    {
+      "source_id": "history/preclock-PATH-closure001/ORIGINAL-EXEC-TERMINAL.json",
+      "original": {
+        "sha256": "aaea022c4582fb7c037c22ac11d099547008a6e0f6ac0f0024763c6073ce5bdd",
+        "bytes": 1344,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/preclock-PATH-closure001/ORIGINAL-EXEC-TERMINAL.json",
+      "public_sha256": "8509a7451c84299c243ebbf9c9cfa3f0a497274c099ddee64e45caffe4247170",
+      "public_bytes": 1122,
+      "public_mode": "0644",
+      "line_count": 7,
+      "locator_replacements": {
+        "<HISTORY_PRECLOCK_PATH_OUTER001>": 2,
+        "<PYENV_HOME>": 3
+      }
+    },
+    {
+      "source_id": "history/preclock-PATH-closure001/PRE-ADMISSION-PROCESS-SNAPSHOT.json",
+      "original": {
+        "sha256": "0ae37cd7ef9def922ba76f02ce72ba8c4f692208fbaae7b3ef50fee57dd09459",
+        "bytes": 183,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/preclock-PATH-closure001/PRE-ADMISSION-PROCESS-SNAPSHOT.json",
+      "public_sha256": "0ae37cd7ef9def922ba76f02ce72ba8c4f692208fbaae7b3ef50fee57dd09459",
+      "public_bytes": 183,
+      "public_mode": "0644",
+      "line_count": 6,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "history/preclock-PATH-closure001/ROOT-OUTCOME.json",
+      "original": {
+        "sha256": "1f8b9fa6944c9225e544819b121696026a24d5c2ffe4909d4dfdf9c08b8f005e",
+        "bytes": 1174,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/preclock-PATH-closure001/ROOT-OUTCOME.json",
+      "public_sha256": "1f8b9fa6944c9225e544819b121696026a24d5c2ffe4909d4dfdf9c08b8f005e",
+      "public_bytes": 1174,
+      "public_mode": "0644",
+      "line_count": 24,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "history/preclock-PATH-closure001/CASE-FREEZE.json",
+      "original": {
+        "sha256": "acf3b6d8f687b654612aeac32ce37def5c430b948eb1e6f73023f5c4774b7b67",
+        "bytes": 1323,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/preclock-PATH-closure001/CASE-FREEZE.json",
+      "public_sha256": "0f3cc2409cccc51570828d7a50eef05373d61d3c0e1907bb507b9bbcbe29542e",
+      "public_bytes": 1230,
+      "public_mode": "0644",
+      "line_count": 37,
+      "locator_replacements": {
+        "<HISTORY_PRECLOCK_PATH_OUTER001>": 1
+      }
+    },
+    {
+      "source_id": "history/preclock-contract-review/REVIEW.md",
+      "original": {
+        "sha256": "72fa56f7d6511c7df0ad1a10432777c6d5a1b3043a69f4983f8199a51593aa4d",
+        "bytes": 3973,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/preclock-contract-review/REVIEW.md",
+      "public_sha256": "72fa56f7d6511c7df0ad1a10432777c6d5a1b3043a69f4983f8199a51593aa4d",
+      "public_bytes": 3973,
+      "public_mode": "0644",
+      "line_count": 17,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "history/preclock-contract-review/RECEIPT.json",
+      "original": {
+        "sha256": "3aa3b5770b3482884d5bd5b56774f1c473aa3ca55b4314e8ac6d0cba4753c896",
+        "bytes": 5108,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/preclock-contract-review/RECEIPT.json",
+      "public_sha256": "3aa3b5770b3482884d5bd5b56774f1c473aa3ca55b4314e8ac6d0cba4753c896",
+      "public_bytes": 5108,
+      "public_mode": "0644",
+      "line_count": 89,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "history/preclock-contract-review/FREEZE.json",
+      "original": {
+        "sha256": "a1f6bb36e60dbb45b600538b803ce8fa52f61bb4083e2cc8bbc3e683c472b584",
+        "bytes": 754,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/preclock-contract-review/FREEZE.json",
+      "public_sha256": "a1f6bb36e60dbb45b600538b803ce8fa52f61bb4083e2cc8bbc3e683c472b584",
+      "public_bytes": 754,
+      "public_mode": "0644",
+      "line_count": 18,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "root/parent-environment-check/RESULT.json",
+      "original": {
+        "sha256": "78eb04f9a7a32b02396da994b657637b587ac1008da5e20dd415af28a7cd1e2a",
+        "bytes": 595,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/parent-environment-check/RESULT.json",
+      "public_sha256": "78eb04f9a7a32b02396da994b657637b587ac1008da5e20dd415af28a7cd1e2a",
+      "public_bytes": 595,
+      "public_mode": "0644",
+      "line_count": 10,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "root/parent-environment-check/stdout",
+      "original": {
+        "sha256": "f222e573d11c0e185963e8b103bfb1577e17d5249509277b1ed3466fe7b8d2e6",
+        "bytes": 185,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/parent-environment-check/stdout",
+      "public_sha256": "f222e573d11c0e185963e8b103bfb1577e17d5249509277b1ed3466fe7b8d2e6",
+      "public_bytes": 185,
+      "public_mode": "0644",
+      "line_count": 1,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "root/parent-environment-check/stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/root/parent-environment-check/stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/CANDIDATE.json",
+      "original": {
+        "sha256": "a816439966a3a5efb322e0bdf23d601e2b227189932bc6482c1dcbc4fc582bb1",
+        "bytes": 5757,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/CANDIDATE.json",
+      "public_sha256": "29d1fd7b6d2d2cb51626ccc8d79f521adae36bfa029599ee9dfd5745e3b94018",
+      "public_bytes": 5633,
+      "public_mode": "0644",
+      "line_count": 50,
+      "locator_replacements": {
+        "<RUSTUP_HOME>": 2,
+        "<PYENV_HOME>": 1,
+        "<HOMEBREW_PREFIX>": 1,
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "preparation/DELTA.json",
+      "original": {
+        "sha256": "be5024a2d628ec8cd307abdd476c1b3c5daf68ac367fbd1c68d3ba6b98396589",
+        "bytes": 773,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/DELTA.json",
+      "public_sha256": "be5024a2d628ec8cd307abdd476c1b3c5daf68ac367fbd1c68d3ba6b98396589",
+      "public_bytes": 773,
+      "public_mode": "0644",
+      "line_count": 16,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/DRAFT-ORIGIN.json",
+      "original": {
+        "sha256": "a84a7dda87b14a4415ce042d9ab3f812d311f666953450ab35e31a6f8e979837",
+        "bytes": 1104,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/DRAFT-ORIGIN.json",
+      "public_sha256": "d5b965b89f9889ec32b8f5c1a5971691846e21ad9393ee62bf3ba98d52b5ee8c",
+      "public_bytes": 767,
+      "public_mode": "0644",
+      "line_count": 12,
+      "locator_replacements": {
+        "<WORKTREE_CONTAINER>": 2,
+        "<HISTORY_PRECLOCK_PATH_OUTER001>": 1,
+        "<NUMERICAL_PACKET>": 1
+      }
+    },
+    {
+      "source_id": "preparation/PRESERVATION.json",
+      "original": {
+        "sha256": "f31acf0db0bf705b6a1fa8110a2bb9db6ae45919058b0f903b9bc764cf799056",
+        "bytes": 817,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/PRESERVATION.json",
+      "public_sha256": "9b6ecb8df5b9bf7394561eeaf9414df1fafd92c57e9e97c617e42a3137760dbc",
+      "public_bytes": 767,
+      "public_mode": "0644",
+      "line_count": 12,
+      "locator_replacements": {
+        "<WORKTREE_CONTAINER>": 1
+      }
+    },
+    {
+      "source_id": "preparation/PROTOCOL-DRAFT.json",
+      "original": {
+        "sha256": "4f2d6acaee0de6a98c64c3817a4a91cdf0c2f682efe762069c9df4b45b61c9a4",
+        "bytes": 7129,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/PROTOCOL-DRAFT.json",
+      "public_sha256": "cbd9de25ef059871beb6ba7b3c55aeaaf9e37638a25f5ea4bb3b8b04556cb42b",
+      "public_bytes": 7036,
+      "public_mode": "0644",
+      "line_count": 156,
+      "locator_replacements": {
+        "<HISTORY_PRECLOCK_PATH_OUTER001>": 1
+      }
+    },
+    {
+      "source_id": "preparation/PROTOCOL.json",
+      "original": {
+        "sha256": "0ba9ae022541c8bf39552717b36c1457440c8b37fe49ae087dbba0313ba8449a",
+        "bytes": 8976,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/PROTOCOL.json",
+      "public_sha256": "9e17fbca863417b490f389ba6cab939c40a9466ab1ad8867525fb12233d6fd14",
+      "public_bytes": 7919,
+      "public_mode": "0644",
+      "line_count": 174,
+      "locator_replacements": {
+        "<PYENV_HOME>": 5,
+        "<NUMERICAL_PACKET>": 5,
+        "<WORKTREE>": 2,
+        "<HISTORY_PRECLOCK_PATH_OUTER001>": 1
+      }
+    },
+    {
+      "source_id": "preparation/REUSED-SOURCES.json",
+      "original": {
+        "sha256": "ef2e0393e2d441474818263cd2de0f5acbe1af972a3a73eb44ec678b16b7c107",
+        "bytes": 7587,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/REUSED-SOURCES.json",
+      "public_sha256": "ef2e0393e2d441474818263cd2de0f5acbe1af972a3a73eb44ec678b16b7c107",
+      "public_bytes": 7587,
+      "public_mode": "0644",
+      "line_count": 99,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/SOURCE-PREFLIGHT.json",
+      "original": {
+        "sha256": "9392e32bb6ecfeb3434b43b026550cc79c59d60f65794c99be08c460eeeae79d",
+        "bytes": 89212,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/SOURCE-PREFLIGHT.json",
+      "public_sha256": "7d3bfa7376c8ce24cccc3fa6a9a818b286f6321d05ece4683d7034ac79b41098",
+      "public_bytes": 88042,
+      "public_mode": "0644",
+      "line_count": 1051,
+      "locator_replacements": {
+        "<WORKTREE>": 4,
+        "<RUSTUP_HOME>": 8,
+        "<NUMERICAL_PACKET>": 1,
+        "<HOME_PARENT>": 2,
+        "<CARGO_HOME>": 20,
+        "<WORKSPACE_BASE>": 2,
+        "<WORKSPACE_CONTAINER>": 2,
+        "<WORKSPACE_PARENT>": 2,
+        "<REPOSITORY_ROOT>": 2,
+        "<WORKTREE_CONTAINER>": 2,
+        "<PYENV_HOME>": 3,
+        "<HOMEBREW_PREFIX>": 2
+      }
+    },
+    {
+      "source_id": "preparation/SOURCE.json",
+      "original": {
+        "sha256": "80b76c73a7d8cad6391c47549ea3e48e985f0a766ccba767795e6e17bd01c786",
+        "bytes": 10523,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/SOURCE.json",
+      "public_sha256": "80b76c73a7d8cad6391c47549ea3e48e985f0a766ccba767795e6e17bd01c786",
+      "public_bytes": 10523,
+      "public_mode": "0644",
+      "line_count": 100,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/checks/BUILD-RECEIPT.json",
+      "original": {
+        "sha256": "9a0cce06abb5d9ec3415b0e3a26d07f9fa2d316ff2fb1485e17c4922e586af40",
+        "bytes": 85677,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/checks/BUILD-RECEIPT.json",
+      "public_sha256": "a8e29ad2bed2c0bbbd64d613c97b62883f965785a81a4935ff814469a9b1b719",
+      "public_bytes": 84363,
+      "public_mode": "0644",
+      "line_count": 1014,
+      "locator_replacements": {
+        "<WORKTREE>": 4,
+        "<RUSTUP_HOME>": 9,
+        "<NUMERICAL_PACKET>": 2,
+        "<HOME_PARENT>": 2,
+        "<CARGO_HOME>": 20,
+        "<WORKSPACE_BASE>": 2,
+        "<WORKSPACE_CONTAINER>": 2,
+        "<WORKSPACE_PARENT>": 2,
+        "<REPOSITORY_ROOT>": 2,
+        "<WORKTREE_CONTAINER>": 2,
+        "<PYENV_HOME>": 2,
+        "<HOMEBREW_PREFIX>": 2
+      }
+    },
+    {
+      "source_id": "preparation/checks/ROOT-BUILD-GO.json",
+      "original": {
+        "sha256": "dd6363ef5095b720a422ac14bd0ec3eff13e21db0a216226f4a03b0391484bdd",
+        "bytes": 740,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/checks/ROOT-BUILD-GO.json",
+      "public_sha256": "dd6363ef5095b720a422ac14bd0ec3eff13e21db0a216226f4a03b0391484bdd",
+      "public_bytes": 740,
+      "public_mode": "0644",
+      "line_count": 15,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/checks/build/started.json",
+      "original": {
+        "sha256": "155c6230b2a593220e38ea6e2399951fd6d222c2ff3c2944acc5a33b6b476fdb",
+        "bytes": 921,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/checks/build/started.json",
+      "public_sha256": "c480d4361b942ede36e1134655e3d5aac6a3caf16621022a64825f752053a0c8",
+      "public_bytes": 765,
+      "public_mode": "0644",
+      "line_count": 29,
+      "locator_replacements": {
+        "<RUSTUP_HOME>": 1,
+        "<NUMERICAL_PACKET>": 1
+      }
+    },
+    {
+      "source_id": "preparation/checks/build/stderr",
+      "original": {
+        "sha256": "61abd8a69f8c96d09ab51b794ed835e024b6e01d796fdd87e8a55704c3675628",
+        "bytes": 603,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/checks/build/stderr",
+      "public_sha256": "c233fef75452b905bb98852947793be45978ddd62df616c439dc8a0e0ad68084",
+      "public_bytes": 275,
+      "public_mode": "0644",
+      "line_count": 4,
+      "locator_replacements": {
+        "<WORKTREE>": 2,
+        "<NUMERICAL_PACKET>": 1
+      }
+    },
+    {
+      "source_id": "preparation/checks/build/stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/checks/build/stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/common.py",
+      "original": {
+        "sha256": "f299265e6c6a97b1e4cd75423b9cd572d9c1c42dd1c31bd6448e0b3dbb3ab608",
+        "bytes": 18495,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/common.py",
+      "public_sha256": "f299265e6c6a97b1e4cd75423b9cd572d9c1c42dd1c31bd6448e0b3dbb3ab608",
+      "public_bytes": 18495,
+      "public_mode": "0644",
+      "line_count": 283,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/compiler_inputs.py",
+      "original": {
+        "sha256": "8b3ab8a02ec1411d83fe7dc35e88926ab921674b6f233fc39872403d053a110c",
+        "bytes": 4137,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/compiler_inputs.py",
+      "public_sha256": "8b3ab8a02ec1411d83fe7dc35e88926ab921674b6f233fc39872403d053a110c",
+      "public_bytes": 4137,
+      "public_mode": "0644",
+      "line_count": 95,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/consumer/metadata_adapter.py",
+      "original": {
+        "sha256": "b96974ea133bb7ec01d20d3ea985c6950be4d8e2156688d89cd54c5505a5c22e",
+        "bytes": 2623,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/consumer/metadata_adapter.py",
+      "public_sha256": "b96974ea133bb7ec01d20d3ea985c6950be4d8e2156688d89cd54c5505a5c22e",
+      "public_bytes": 2623,
+      "public_mode": "0644",
+      "line_count": 41,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/evidence/CURRENT-SOURCE-PREREQUISITES.json",
+      "original": {
+        "sha256": "7672c32199a527cf2101947c9d52de942b3caa00db7ddcde9ac78538dfc52e62",
+        "bytes": 34046,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/evidence/CURRENT-SOURCE-PREREQUISITES.json",
+      "public_sha256": "7672c32199a527cf2101947c9d52de942b3caa00db7ddcde9ac78538dfc52e62",
+      "public_bytes": 34046,
+      "public_mode": "0644",
+      "line_count": 339,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/evidence/HARNESS-CAPSULE-CANDIDATE-FREEZE.json",
+      "original": {
+        "sha256": "44699899258f958c892d2a470ade283d49986119b71082e398742c92c47ef0e3",
+        "bytes": 22785,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/evidence/HARNESS-CAPSULE-CANDIDATE-FREEZE.json",
+      "public_sha256": "44699899258f958c892d2a470ade283d49986119b71082e398742c92c47ef0e3",
+      "public_bytes": 22785,
+      "public_mode": "0644",
+      "line_count": 635,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/evidence/HARNESS-CAPSULE-INDEPENDENT-REVIEW-FREEZE.json",
+      "original": {
+        "sha256": "5417e9160c6bd9f75baab57ba303026331107844ac5a9af1d25a4062cc6e3f44",
+        "bytes": 1017,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/evidence/HARNESS-CAPSULE-INDEPENDENT-REVIEW-FREEZE.json",
+      "public_sha256": "5417e9160c6bd9f75baab57ba303026331107844ac5a9af1d25a4062cc6e3f44",
+      "public_bytes": 1017,
+      "public_mode": "0644",
+      "line_count": 26,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/evidence/HARNESS-CAPSULE-INDEPENDENT-REVIEW-RECEIPT.json",
+      "original": {
+        "sha256": "333c5010dd02d191e12e7b508a74bd4406f855aa43485ef322bbc9a88a4fea3d",
+        "bytes": 45784,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/evidence/HARNESS-CAPSULE-INDEPENDENT-REVIEW-RECEIPT.json",
+      "public_sha256": "333c5010dd02d191e12e7b508a74bd4406f855aa43485ef322bbc9a88a4fea3d",
+      "public_bytes": 45784,
+      "public_mode": "0644",
+      "line_count": 1285,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/evidence/HARNESS-CAPSULE-INDEPENDENT-REVIEW.md",
+      "original": {
+        "sha256": "666a5a00ca0d6f3723774f9c995ed709c82205c46b2832dbec0adc87598538ca",
+        "bytes": 5512,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/evidence/HARNESS-CAPSULE-INDEPENDENT-REVIEW.md",
+      "public_sha256": "666a5a00ca0d6f3723774f9c995ed709c82205c46b2832dbec0adc87598538ca",
+      "public_bytes": 5512,
+      "public_mode": "0644",
+      "line_count": 84,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/evidence/INDEPENDENT-PRODUCTION-REVIEW-002.md",
+      "original": {
+        "sha256": "dea35d3285566f8b226978618f767d06d043f1022bd77a51cb8ee301941a7f66",
+        "bytes": 3184,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/evidence/INDEPENDENT-PRODUCTION-REVIEW-002.md",
+      "public_sha256": "dea35d3285566f8b226978618f767d06d043f1022bd77a51cb8ee301941a7f66",
+      "public_bytes": 3184,
+      "public_mode": "0644",
+      "line_count": 55,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/evidence/ROOT-SOURCE-INSTALL-AUTHORIZATION.json",
+      "original": {
+        "sha256": "2299c1c4ce07d1534e45439838afc85498a5b11471388ae0b7ca5d7a433eaa69",
+        "bytes": 1712,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/evidence/ROOT-SOURCE-INSTALL-AUTHORIZATION.json",
+      "public_sha256": "2299c1c4ce07d1534e45439838afc85498a5b11471388ae0b7ca5d7a433eaa69",
+      "public_bytes": 1712,
+      "public_mode": "0644",
+      "line_count": 20,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/evidence/ROOT-SOURCE-REVIEW.json",
+      "original": {
+        "sha256": "0f27d7e4f13726f8d5f83643e3e6c79a3db396b639f7505dd9a61634a2862d33",
+        "bytes": 11776,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/evidence/ROOT-SOURCE-REVIEW.json",
+      "public_sha256": "0f27d7e4f13726f8d5f83643e3e6c79a3db396b639f7505dd9a61634a2862d33",
+      "public_bytes": 11776,
+      "public_mode": "0644",
+      "line_count": 124,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/provenance/ORIGINAL-COPIES.json",
+      "original": {
+        "sha256": "7854f0843a22be46e78b9269da0e4c188f7f82dbd76f6e57468e8e6204eecc84",
+        "bytes": 4188,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/provenance/ORIGINAL-COPIES.json",
+      "public_sha256": "eb4ad52d6cfd8400c14941d303d41cb438850c031f0b9a18dfed4ac65f3c7bb8",
+      "public_bytes": 4138,
+      "public_mode": "0644",
+      "line_count": 130,
+      "locator_replacements": {
+        "<WORKTREE_CONTAINER>": 1
+      }
+    },
+    {
+      "source_id": "preparation/resources.py",
+      "original": {
+        "sha256": "ba4560b912abaf8e310f87dc33b334fddfc96bc9d41c74a046a46b2d1f815d12",
+        "bytes": 12756,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/resources.py",
+      "public_sha256": "ba4560b912abaf8e310f87dc33b334fddfc96bc9d41c74a046a46b2d1f815d12",
+      "public_bytes": 12756,
+      "public_mode": "0644",
+      "line_count": 256,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/source_inputs.py",
+      "original": {
+        "sha256": "f52a32621c82a2e74b8b43d3bb418f38f1f1599c10357c04cef06a93f4f67910",
+        "bytes": 7298,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/source_inputs.py",
+      "public_sha256": "f52a32621c82a2e74b8b43d3bb418f38f1f1599c10357c04cef06a93f4f67910",
+      "public_bytes": 7298,
+      "public_mode": "0644",
+      "line_count": 79,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "preparation/FREEZE.json",
+      "original": {
+        "sha256": "0e076ffa7c111986c891dc7ddb21ab02ab69f9488fddd3402339c7e9a0d6cd93",
+        "bytes": 7561,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/FREEZE.json",
+      "public_sha256": "0e880863286fb785fc5f209e11709893131b8acb0c0accd4b5b8ce2beb592e16",
+      "public_bytes": 7549,
+      "public_mode": "0644",
+      "line_count": 112,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1
+      }
+    },
+    {
+      "source_id": "preparation/ROOT-GO.json",
+      "original": {
+        "sha256": "33f2f068aa6bfe8153be9ecf2152dfd44405b71463fa02aea5e9103381efa3a7",
+        "bytes": 576,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/preparation/ROOT-GO.json",
+      "public_sha256": "33f2f068aa6bfe8153be9ecf2152dfd44405b71463fa02aea5e9103381efa3a7",
+      "public_bytes": 576,
+      "public_mode": "0644",
+      "line_count": 17,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "source-bind/run.py",
+      "original": {
+        "sha256": "8b968381006d37ab88ca07211f354be2ebaab6aa35be457fdceefc050747abb1",
+        "bytes": 5620,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/run.py",
+      "public_sha256": "8b968381006d37ab88ca07211f354be2ebaab6aa35be457fdceefc050747abb1",
+      "public_bytes": 5620,
+      "public_mode": "0644",
+      "line_count": 68,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "source-bind/ROOT-APPROVAL.json",
+      "original": {
+        "sha256": "2299c1c4ce07d1534e45439838afc85498a5b11471388ae0b7ca5d7a433eaa69",
+        "bytes": 1712,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/ROOT-APPROVAL.json",
+      "public_sha256": "2299c1c4ce07d1534e45439838afc85498a5b11471388ae0b7ca5d7a433eaa69",
+      "public_bytes": 1712,
+      "public_mode": "0644",
+      "line_count": 20,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "source-bind/STARTED.json",
+      "original": {
+        "sha256": "c88f935581656e7b9ac32a4c05633469ac2ee32aba004297944a444a35871211",
+        "bytes": 441,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/STARTED.json",
+      "public_sha256": "c88f935581656e7b9ac32a4c05633469ac2ee32aba004297944a444a35871211",
+      "public_bytes": 441,
+      "public_mode": "0644",
+      "line_count": 10,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "source-bind/install.stdout",
+      "original": {
+        "sha256": "1f660835e97aa93f204ff01219a244459a681953466e9a9b673c3a6e9df49e24",
+        "bytes": 6441,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/install.stdout",
+      "public_sha256": "4ced0ca6b9fed7224341eb4ef81bfb9c974e8505a90085af3b141d0b8f35d8ac",
+      "public_bytes": 5913,
+      "public_mode": "0644",
+      "line_count": 1,
+      "locator_replacements": {
+        "<NUMERICAL_PACKET>": 2,
+        "<WORKTREE>": 2,
+        "<RUSTUP_HOME>": 3,
+        "<PYENV_HOME>": 2,
+        "<HOMEBREW_PREFIX>": 1
+      }
+    },
+    {
+      "source_id": "source-bind/install.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/install.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "source-bind/install-STARTED.json",
+      "original": {
+        "sha256": "efc441e839492a8b24d84aef446a3850edaa17af2bfaf1e3c7ffad282e9caf5a",
+        "bytes": 1402,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/install-STARTED.json",
+      "public_sha256": "c8c84e838ec749e2adbc367610267615f5d70fefa4c273d01aa67bbcfffc5473",
+      "public_bytes": 1137,
+      "public_mode": "0644",
+      "line_count": 37,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1,
+        "<WORKTREE_CONTAINER>": 1,
+        "<SOURCE_BIND>": 1,
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "source-bind/install-RESULT.json",
+      "original": {
+        "sha256": "bbfacb7f0afed02877732a3f53f08bee67fa05ad9a04ab2b8508af4c4bd774dc",
+        "bytes": 1650,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/install-RESULT.json",
+      "public_sha256": "c36a1f3ae3b25f808dd4e98f8562ff16d2f72efbdb51e66e455d229c5d77fb78",
+      "public_bytes": 1385,
+      "public_mode": "0644",
+      "line_count": 44,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1,
+        "<WORKTREE_CONTAINER>": 1,
+        "<SOURCE_BIND>": 1,
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "source-bind/bind.stdout",
+      "original": {
+        "sha256": "03f379261bf1864ee18fb133842191e24f1ff648824dee91a31f2dd067587bcf",
+        "bytes": 244,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/bind.stdout",
+      "public_sha256": "03f379261bf1864ee18fb133842191e24f1ff648824dee91a31f2dd067587bcf",
+      "public_bytes": 244,
+      "public_mode": "0644",
+      "line_count": 1,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "source-bind/bind.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/bind.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "source-bind/bind-STARTED.json",
+      "original": {
+        "sha256": "579448d71e231b845c8f22b710df4ffe51f62ab0915729c46b4012ebf0395baa",
+        "bytes": 1180,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/bind-STARTED.json",
+      "public_sha256": "51002b6c21ecb088bd9b0bc9758749b86343273db41ed12e3746cae659da2352",
+      "public_bytes": 932,
+      "public_mode": "0644",
+      "line_count": 33,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1,
+        "<NUMERICAL_PACKET>": 1,
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "source-bind/bind-RESULT.json",
+      "original": {
+        "sha256": "5fe7015e7a1880d6214a6006da6313f6ad6c5dcd4a70165eb143caac868f37db",
+        "bytes": 1425,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/bind-RESULT.json",
+      "public_sha256": "bd716da73e7105b4be3ecd9c6e8f8341929c58349e3c86f52e9ba4151e02f9e6",
+      "public_bytes": 1177,
+      "public_mode": "0644",
+      "line_count": 40,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1,
+        "<NUMERICAL_PACKET>": 1,
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "source-bind/RESULT.json",
+      "original": {
+        "sha256": "b35a973ce476a5c5a198be9a3860d1607d495ef14f0c58f0c6820cc03a615a70",
+        "bytes": 3770,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/RESULT.json",
+      "public_sha256": "99567246a875374f8b9a3f78103fd22eb4edf446de662bb357c96edf4352cd8e",
+      "public_bytes": 3257,
+      "public_mode": "0644",
+      "line_count": 95,
+      "locator_replacements": {
+        "<PYENV_HOME>": 2,
+        "<WORKTREE_CONTAINER>": 1,
+        "<SOURCE_BIND>": 1,
+        "<WORKTREE>": 2,
+        "<NUMERICAL_PACKET>": 1
+      }
+    },
+    {
+      "source_id": "source-bind/TERMINAL.json",
+      "original": {
+        "sha256": "1ee2230abab95899ada37a97c7756b4375ce043fa1fe012c9d1d455ff1287237",
+        "bytes": 136,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/TERMINAL.json",
+      "public_sha256": "1ee2230abab95899ada37a97c7756b4375ce043fa1fe012c9d1d455ff1287237",
+      "public_bytes": 136,
+      "public_mode": "0644",
+      "line_count": 4,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "source-bind/OPTIMIZED-BUILD-METADATA-BINDING.json",
+      "original": {
+        "sha256": "4fc608266a500dbb64c26e60caa131f3d12f5565441c81977a080bc208129c51",
+        "bytes": 539,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/OPTIMIZED-BUILD-METADATA-BINDING.json",
+      "public_sha256": "4fc608266a500dbb64c26e60caa131f3d12f5565441c81977a080bc208129c51",
+      "public_bytes": 539,
+      "public_mode": "0644",
+      "line_count": 6,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "source-bind/BUILD-GO-PREPARATION-001-ERROR.json",
+      "original": {
+        "sha256": "2eb71cd12eebd2a1f7c612332e9ca23d28d9bc92a8a5a06fa50a2a256c58168a",
+        "bytes": 326,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/BUILD-GO-PREPARATION-001-ERROR.json",
+      "public_sha256": "2eb71cd12eebd2a1f7c612332e9ca23d28d9bc92a8a5a06fa50a2a256c58168a",
+      "public_bytes": 326,
+      "public_mode": "0644",
+      "line_count": 7,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "source-bind/post-case/ORIGINAL-EXEC-TERMINAL.json",
+      "original": {
+        "sha256": "d325284069cee4ae603bd1bc21648990ac05474b7d9c8f930e7303f096122cb1",
+        "bytes": 408,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/post-case/ORIGINAL-EXEC-TERMINAL.json",
+      "public_sha256": "d325284069cee4ae603bd1bc21648990ac05474b7d9c8f930e7303f096122cb1",
+      "public_bytes": 408,
+      "public_mode": "0644",
+      "line_count": 7,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "source-bind/post-case/ROOT-CLOSURE.json",
+      "original": {
+        "sha256": "c6b468b287bc82283d00ecc27cf5f6b98eaa14c820ec8d2852caf8d13db73fc6",
+        "bytes": 1211,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/post-case/ROOT-CLOSURE.json",
+      "public_sha256": "c6b468b287bc82283d00ecc27cf5f6b98eaa14c820ec8d2852caf8d13db73fc6",
+      "public_bytes": 1211,
+      "public_mode": "0644",
+      "line_count": 29,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "source-bind/preparation/install_source.py",
+      "original": {
+        "sha256": "67d5176e4805c9a94e7c378147a2ca461ab7c047c736603ea25e6d59608dac26",
+        "bytes": 16030,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/preparation/install_source.py",
+      "public_sha256": "67d5176e4805c9a94e7c378147a2ca461ab7c047c736603ea25e6d59608dac26",
+      "public_bytes": 16030,
+      "public_mode": "0644",
+      "line_count": 161,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "source-bind/preparation/INSTALLATION.json",
+      "original": {
+        "sha256": "3f46eb56162b5988f49f0baf662e36c3b40924fd630982dba5c39873f561449f",
+        "bytes": 6809,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/source-bind/preparation/INSTALLATION.json",
+      "public_sha256": "bb19ec50761aa5f83ef8e02997c27fb920f8e9033e2e3972a0a0e353661f70af",
+      "public_bytes": 6281,
+      "public_mode": "0644",
+      "line_count": 101,
+      "locator_replacements": {
+        "<PYENV_HOME>": 2,
+        "<NUMERICAL_PACKET>": 2,
+        "<WORKTREE>": 2,
+        "<RUSTUP_HOME>": 3,
+        "<HOMEBREW_PREFIX>": 1
+      }
+    },
+    {
+      "source_id": "producer-build/run.py",
+      "original": {
+        "sha256": "b6c3ad38565b992e87aacb817f4663e7ed93754607a2753c5c9a35f235b178ed",
+        "bytes": 4969,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/producer-build/run.py",
+      "public_sha256": "b6c3ad38565b992e87aacb817f4663e7ed93754607a2753c5c9a35f235b178ed",
+      "public_bytes": 4969,
+      "public_mode": "0644",
+      "line_count": 76,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "producer-build/STARTED.json",
+      "original": {
+        "sha256": "00681653bd37b9307f1736323619f657e796e9f688c0821fd0ad1055d8fc99b1",
+        "bytes": 278,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/producer-build/STARTED.json",
+      "public_sha256": "00681653bd37b9307f1736323619f657e796e9f688c0821fd0ad1055d8fc99b1",
+      "public_bytes": 278,
+      "public_mode": "0644",
+      "line_count": 9,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "producer-build/CHILD-STARTED.json",
+      "original": {
+        "sha256": "4048a0b40f7239b8c2378e9ddcd0b6325cc2890fef7016c473282f127a16af07",
+        "bytes": 1314,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/producer-build/CHILD-STARTED.json",
+      "public_sha256": "d7dfee5db9402982068c3593b32e7e675d039fe5b3676028e77dfa7eafb84413",
+      "public_bytes": 1066,
+      "public_mode": "0644",
+      "line_count": 37,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1,
+        "<NUMERICAL_PACKET>": 1,
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "producer-build/RESULT.json",
+      "original": {
+        "sha256": "caeeb25d2548468a8d2783f956e1b051f8851ae5c5c16172c27b443b44054f55",
+        "bytes": 2171,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/producer-build/RESULT.json",
+      "public_sha256": "19055ca0c4a3c5f6d4123efc9487f4215853ce8b48a1837450ad07fa3c21dfce",
+      "public_bytes": 1923,
+      "public_mode": "0644",
+      "line_count": 63,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1,
+        "<NUMERICAL_PACKET>": 1,
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "producer-build/TERMINAL.json",
+      "original": {
+        "sha256": "f5a88adde1df2fe21342c6d596b840a671d65bb791aa633f3513f1843f9ea88e",
+        "bytes": 122,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/producer-build/TERMINAL.json",
+      "public_sha256": "f5a88adde1df2fe21342c6d596b840a671d65bb791aa633f3513f1843f9ea88e",
+      "public_bytes": 122,
+      "public_mode": "0644",
+      "line_count": 4,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "producer-build/stdout",
+      "original": {
+        "sha256": "86034e50914dc054583af1c36aaab8920e4bb4263e4fa85ace87f3c3ba8b9df0",
+        "bytes": 291,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/producer-build/stdout",
+      "public_sha256": "86034e50914dc054583af1c36aaab8920e4bb4263e4fa85ace87f3c3ba8b9df0",
+      "public_bytes": 291,
+      "public_mode": "0644",
+      "line_count": 1,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "producer-build/stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/producer-build/stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "producer-build/post-case/ORIGINAL-EXEC-TERMINAL.json",
+      "original": {
+        "sha256": "c65c540929e126e2a6992ee964034f6f9d7b1fe962edd05d5fefebfa993df2a4",
+        "bytes": 582,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/producer-build/post-case/ORIGINAL-EXEC-TERMINAL.json",
+      "public_sha256": "c65c540929e126e2a6992ee964034f6f9d7b1fe962edd05d5fefebfa993df2a4",
+      "public_bytes": 582,
+      "public_mode": "0644",
+      "line_count": 7,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "producer-build/post-case/ROOT-CLOSURE.json",
+      "original": {
+        "sha256": "d1755af57e4bbc72072fdc99d9c2bbd4e66bfcf3e3403b790faa3a432730d3bc",
+        "bytes": 1586,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/producer-build/post-case/ROOT-CLOSURE.json",
+      "public_sha256": "1e71b9f51a1c60b9cd42a4b06e349bbe7d0f56cfa2047999d0cc129752c79317",
+      "public_bytes": 1494,
+      "public_mode": "0644",
+      "line_count": 37,
+      "locator_replacements": {
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "clean-G-xtask/EXTERNAL-TERMINAL.json",
+      "original": {
+        "sha256": "52cac10cf9553db262669b632dd2e41ee5302e0b555b03def0a533601ebb87de",
+        "bytes": 750,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/EXTERNAL-TERMINAL.json",
+      "public_sha256": "52cac10cf9553db262669b632dd2e41ee5302e0b555b03def0a533601ebb87de",
+      "public_bytes": 750,
+      "public_mode": "0644",
+      "line_count": 18,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "clean-G-xtask/LAUNCH.json",
+      "original": {
+        "sha256": "7a2e29a6982e3f8b1dcae8f574518b5b94367ea73ff41c1e1de476109f42122e",
+        "bytes": 416,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/LAUNCH.json",
+      "public_sha256": "7a2e29a6982e3f8b1dcae8f574518b5b94367ea73ff41c1e1de476109f42122e",
+      "public_bytes": 416,
+      "public_mode": "0644",
+      "line_count": 14,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "clean-G-xtask/POST-TERMINAL-CLOCK.json",
+      "original": {
+        "sha256": "4c386becc0c238d62879662b73861d9e854e7ce29cd4474666bbcb8c35ccd6b4",
+        "bytes": 574,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/POST-TERMINAL-CLOCK.json",
+      "public_sha256": "4c386becc0c238d62879662b73861d9e854e7ce29cd4474666bbcb8c35ccd6b4",
+      "public_bytes": 574,
+      "public_mode": "0644",
+      "line_count": 12,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "clean-G-xtask/ROOT-GO.json",
+      "original": {
+        "sha256": "bca51b7ecea24d0b34d3a47e53df09763c57d5f18e980e651dad334cca1f5290",
+        "bytes": 1771,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/ROOT-GO.json",
+      "public_sha256": "b607dd2e043b4f9a3bc1fedc00cc9e44b0b5f828a0b8828743417e676a5a4523",
+      "public_bytes": 1635,
+      "public_mode": "0644",
+      "line_count": 36,
+      "locator_replacements": {
+        "<WORKTREE>": 1,
+        "<RUSTUP_HOME>": 3,
+        "<PYENV_HOME>": 1,
+        "<HOMEBREW_PREFIX>": 1
+      }
+    },
+    {
+      "source_id": "clean-G-xtask/controller.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/controller.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "clean-G-xtask/controller.stdout",
+      "original": {
+        "sha256": "97e46b4745dc4e4466a7cdf14feacdcca683fe3a301649313c30a25a9418b26f",
+        "bytes": 388,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/controller.stdout",
+      "public_sha256": "97e46b4745dc4e4466a7cdf14feacdcca683fe3a301649313c30a25a9418b26f",
+      "public_bytes": 388,
+      "public_mode": "0644",
+      "line_count": 2,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "clean-G-xtask/launch.py",
+      "original": {
+        "sha256": "9822de99739f36ef803ee9f7b0b9eaa41203a7a5d11dc63b43707316e181a97d",
+        "bytes": 3676,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/launch.py",
+      "public_sha256": "988a207184db66fb64277921909abce1559fcdb58065f3f452b1877815d45939",
+      "public_bytes": 3664,
+      "public_mode": "0644",
+      "line_count": 40,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1
+      }
+    },
+    {
+      "source_id": "clean-G-xtask/runfull.py",
+      "original": {
+        "sha256": "5d12cd06407c8e610bcbb544680a02a183533b74812f94ec0bbf01c79e5de133",
+        "bytes": 8005,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/runfull.py",
+      "public_sha256": "5d12cd06407c8e610bcbb544680a02a183533b74812f94ec0bbf01c79e5de133",
+      "public_bytes": 8005,
+      "public_mode": "0644",
+      "line_count": 140,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "clean-G-xtask/verify-001/RESULT.json",
+      "original": {
+        "sha256": "a5528cbf73ba5ef8a9c451cd73c3e441b2c33080a9503bb38910227bc694b26d",
+        "bytes": 18874,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/verify-001/RESULT.json",
+      "public_sha256": "f4673e11946c400ff277094b3d2bb0585be6b5ad9196b5a7e460cec83b922651",
+      "public_bytes": 18586,
+      "public_mode": "0644",
+      "line_count": 530,
+      "locator_replacements": {
+        "<WORKTREE>": 3,
+        "<RUSTUP_HOME>": 1
+      }
+    },
+    {
+      "source_id": "clean-G-xtask/verify-001/STARTED.json",
+      "original": {
+        "sha256": "61a2f37f13d23e3381c35536c7d8c035c60e0c2ce9d8d0ad998c7088513e9110",
+        "bytes": 264,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/verify-001/STARTED.json",
+      "public_sha256": "61a2f37f13d23e3381c35536c7d8c035c60e0c2ce9d8d0ad998c7088513e9110",
+      "public_bytes": 264,
+      "public_mode": "0644",
+      "line_count": 9,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "clean-G-xtask/verify-001/TERMINAL.json",
+      "original": {
+        "sha256": "240bec2ab18372f8aee8619029cb189d458e7c6b4e6d3d7ad423ca4915532ab8",
+        "bytes": 160,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/verify-001/TERMINAL.json",
+      "public_sha256": "240bec2ab18372f8aee8619029cb189d458e7c6b4e6d3d7ad423ca4915532ab8",
+      "public_bytes": 160,
+      "public_mode": "0644",
+      "line_count": 5,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "clean-G-xtask/verify-001/cargo-xtask-verify-RESULT.json",
+      "original": {
+        "sha256": "e91ea1e3317b15c9f7e751531d3dda543013868090dfed0b7bd54e98b8b264e5",
+        "bytes": 1275,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/verify-001/cargo-xtask-verify-RESULT.json",
+      "public_sha256": "6f51204c09db930931b06ea69ccf160fc1f3ea6e6b3980adcf7d86e93f378eb9",
+      "public_bytes": 1171,
+      "public_mode": "0644",
+      "line_count": 40,
+      "locator_replacements": {
+        "<RUSTUP_HOME>": 1,
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "clean-G-xtask/verify-001/cargo-xtask-verify-STARTED.json",
+      "original": {
+        "sha256": "19e26e967a6d230819a30c35016762c85080ac0b4bb1681593194ac5bc90e1b1",
+        "bytes": 1031,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/verify-001/cargo-xtask-verify-STARTED.json",
+      "public_sha256": "b0e0ae3228265ee3852e5c965d9b1a9604d11b5add42cc2e65181cda949617b3",
+      "public_bytes": 927,
+      "public_mode": "0644",
+      "line_count": 33,
+      "locator_replacements": {
+        "<RUSTUP_HOME>": 1,
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "clean-G-xtask/verify-001/cargo-xtask-verify.stderr",
+      "original": {
+        "sha256": "51ddc16a37c7ea9f149feb5dbd7dbfa82cf51507178b894842960c18afec6420",
+        "bytes": 949,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/verify-001/cargo-xtask-verify.stderr",
+      "public_sha256": "9006fb43374b66a80b66e2d2880d00271134e710379203a84c8d33b1947dee4a",
+      "public_bytes": 673,
+      "public_mode": "0644",
+      "line_count": 17,
+      "locator_replacements": {
+        "<WORKTREE>": 3
+      }
+    },
+    {
+      "source_id": "clean-G-xtask/verify-001/cargo-xtask-verify.stdout",
+      "original": {
+        "sha256": "0df279016072971dfb53e9d434675ff02c65a00608c958750ffc62c013c59623",
+        "bytes": 2757,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/verify-001/cargo-xtask-verify.stdout",
+      "public_sha256": "0df279016072971dfb53e9d434675ff02c65a00608c958750ffc62c013c59623",
+      "public_bytes": 2757,
+      "public_mode": "0644",
+      "line_count": 36,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "clean-G-xtask/verify-001.json",
+      "original": {
+        "sha256": "2d5d2e0b382dc06a9b8fa3604f862c38b1f137018ca41add327edc88f74d625c",
+        "bytes": 253850,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/verify-001.json",
+      "public_sha256": "8d32bfbd8117ca08bf238375991154df803fd2762d6d7213a96b19498784710b",
+      "public_bytes": 200772,
+      "public_mode": "0644",
+      "line_count": 1898,
+      "locator_replacements": {
+        "<CARGO_HOME>": 822,
+        "<WORKTREE>": 465,
+        "<RUSTUP_HOME>": 10,
+        "<PYENV_HOME>": 2,
+        "<HOMEBREW_PREFIX>": 1,
+        "<HOME_PARENT>": 2,
+        "<WORKSPACE_BASE>": 2,
+        "<WORKSPACE_CONTAINER>": 2,
+        "<WORKSPACE_PARENT>": 2,
+        "<REPOSITORY_ROOT>": 2,
+        "<WORKTREE_CONTAINER>": 2
+      }
+    },
+    {
+      "source_id": "clean-G-xtask/post-case/ORIGINAL-EXEC-TERMINAL.json",
+      "original": {
+        "sha256": "73215738aaf39a226bbff1773ab608aaa13735104e4f5fd5048db3aae8847211",
+        "bytes": 705,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/post-case/ORIGINAL-EXEC-TERMINAL.json",
+      "public_sha256": "73215738aaf39a226bbff1773ab608aaa13735104e4f5fd5048db3aae8847211",
+      "public_bytes": 705,
+      "public_mode": "0644",
+      "line_count": 7,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "clean-G-xtask/post-case/ROOT-CLOSURE.json",
+      "original": {
+        "sha256": "4c63d7668546c5efca86312ebbc724fafd83674a6f61304dce35e58a9103d64c",
+        "bytes": 3070,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/clean-G-xtask/post-case/ROOT-CLOSURE.json",
+      "public_sha256": "9c85a4e191bd1630f4eaaf294cf7386e3b32fe2d533cffed9b490980c27efea3",
+      "public_bytes": 2702,
+      "public_mode": "0644",
+      "line_count": 56,
+      "locator_replacements": {
+        "<WORKTREE>": 4
+      }
+    },
+    {
+      "source_id": "optimized-G-build/EXTERNAL-TERMINAL.json",
+      "original": {
+        "sha256": "3118c64781ca76399f5df0744cb90df154aafaea3093fbed79ba8002bdf41d15",
+        "bytes": 749,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/EXTERNAL-TERMINAL.json",
+      "public_sha256": "3118c64781ca76399f5df0744cb90df154aafaea3093fbed79ba8002bdf41d15",
+      "public_bytes": 749,
+      "public_mode": "0644",
+      "line_count": 18,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "optimized-G-build/LAUNCH.json",
+      "original": {
+        "sha256": "dc50ca74aee18c4a8b915417757f2e9ac38bc6ac0858d2442edbbd7834cf7705",
+        "bytes": 416,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/LAUNCH.json",
+      "public_sha256": "dc50ca74aee18c4a8b915417757f2e9ac38bc6ac0858d2442edbbd7834cf7705",
+      "public_bytes": 416,
+      "public_mode": "0644",
+      "line_count": 14,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "optimized-G-build/POST-TERMINAL-CLOCK.json",
+      "original": {
+        "sha256": "86bb668e6345f5e335ec576ce6cda724abec7f88d90b444346572445851213fa",
+        "bytes": 575,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/POST-TERMINAL-CLOCK.json",
+      "public_sha256": "86bb668e6345f5e335ec576ce6cda724abec7f88d90b444346572445851213fa",
+      "public_bytes": 575,
+      "public_mode": "0644",
+      "line_count": 12,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "optimized-G-build/ROOT-GO.json",
+      "original": {
+        "sha256": "e3f9c44138f80f76b3bfd57e06c1527ea1cdb54f570e65735dd93113bdb706c0",
+        "bytes": 1971,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/ROOT-GO.json",
+      "public_sha256": "e8bca1e3deaf5d09b019951d09fd729efff813a8d3f8b936b0e65cc5bb690412",
+      "public_bytes": 1772,
+      "public_mode": "0644",
+      "line_count": 43,
+      "locator_replacements": {
+        "<CARGO_HOME>": 1,
+        "<WORKTREE>": 1,
+        "<HOME>": 1,
+        "<RUSTUP_HOME>": 3,
+        "<PYENV_HOME>": 1,
+        "<HOMEBREW_PREFIX>": 1,
+        "<TMPDIR>/": 1
+      }
+    },
+    {
+      "source_id": "optimized-G-build/build-001/PROFILE-BINDING.json",
+      "original": {
+        "sha256": "4222ca20d9d3ae86f993505c63fb3f9f90ded55495823f38dd27705effcd0f93",
+        "bytes": 6471,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/build-001/PROFILE-BINDING.json",
+      "public_sha256": "0851c8235abe4f76b1da05bf12ba0d43d143dd6d060e2033c48953a6f7534474",
+      "public_bytes": 4469,
+      "public_mode": "0644",
+      "line_count": 29,
+      "locator_replacements": {
+        "<WORKTREE>": 21,
+        "<RUSTUP_HOME>": 4,
+        "<HOME>": 2
+      }
+    },
+    {
+      "source_id": "optimized-G-build/build-001/RESULT.json",
+      "original": {
+        "sha256": "e3bb49f219af11aa8334eeb40901bf5ae77b8991a61186684ed9e4a60e54b215",
+        "bytes": 18826,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/build-001/RESULT.json",
+      "public_sha256": "093a830378310a88a2b5ab141e9d17da552105d60797ddd3ca7b38bff29a549c",
+      "public_bytes": 18538,
+      "public_mode": "0644",
+      "line_count": 533,
+      "locator_replacements": {
+        "<WORKTREE>": 3,
+        "<RUSTUP_HOME>": 1
+      }
+    },
+    {
+      "source_id": "optimized-G-build/build-001/STARTED.json",
+      "original": {
+        "sha256": "a996bb384da170e5296e34a9dac9eca284448e5a60408f2abb863849fdae6f99",
+        "bytes": 269,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/build-001/STARTED.json",
+      "public_sha256": "a996bb384da170e5296e34a9dac9eca284448e5a60408f2abb863849fdae6f99",
+      "public_bytes": 269,
+      "public_mode": "0644",
+      "line_count": 9,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "optimized-G-build/build-001/TERMINAL.json",
+      "original": {
+        "sha256": "492224037673a3681f2e1134187294288d325578fc503a35574346079fe21a5f",
+        "bytes": 160,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/build-001/TERMINAL.json",
+      "public_sha256": "492224037673a3681f2e1134187294288d325578fc503a35574346079fe21a5f",
+      "public_bytes": 160,
+      "public_mode": "0644",
+      "line_count": 5,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "optimized-G-build/build-001/native-cli-release-build-RESULT.json",
+      "original": {
+        "sha256": "bb84cbedb7c848c26b43d833e172dd732336c9ce699d115de424a57293a88749",
+        "bytes": 1383,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/build-001/native-cli-release-build-RESULT.json",
+      "public_sha256": "e201466d82ce7305e63b0f802411ffcb07418f7b03f3e887bd8bcc66a2fe3e1a",
+      "public_bytes": 1279,
+      "public_mode": "0644",
+      "line_count": 47,
+      "locator_replacements": {
+        "<RUSTUP_HOME>": 1,
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "optimized-G-build/build-001/native-cli-release-build-STARTED.json",
+      "original": {
+        "sha256": "bf2844f97aaab6e769e407acc6b89211fbbbc5e929a212a2adfcc6a7ed021574",
+        "bytes": 1136,
+        "mode": 384
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/build-001/native-cli-release-build-STARTED.json",
+      "public_sha256": "4599470de41b2bc5f6f1a231b8c47a64bc57e45a8c1a49c281cca4f87a9324d5",
+      "public_bytes": 1032,
+      "public_mode": "0644",
+      "line_count": 40,
+      "locator_replacements": {
+        "<RUSTUP_HOME>": 1,
+        "<WORKTREE>": 1
+      }
+    },
+    {
+      "source_id": "optimized-G-build/build-001/native-cli-release-build.stderr",
+      "original": {
+        "sha256": "14b766248c00398cc7ea2b5f3df7d38c55be0174f084335149542c2947f1b58e",
+        "bytes": 17125,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/build-001/native-cli-release-build.stderr",
+      "public_sha256": "19b5ec255e6f0bd82a49d22d3594c4f35ccfeeeefdc7707d7852f9e749e95f2a",
+      "public_bytes": 12937,
+      "public_mode": "0644",
+      "line_count": 193,
+      "locator_replacements": {
+        "<WORKTREE>": 44,
+        "<RUSTUP_HOME>": 8,
+        "<HOME>": 4
+      }
+    },
+    {
+      "source_id": "optimized-G-build/build-001/native-cli-release-build.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/build-001/native-cli-release-build.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "optimized-G-build/build-001.json",
+      "original": {
+        "sha256": "c820f568c994d12ca0b1020cd313664152fc51062e63e9d7986a8fc722cb30d7",
+        "bytes": 135923,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/build-001.json",
+      "public_sha256": "6fa49930503e5854f65f7979ff3eb4c607e74b57a50ac406b86e334781883863",
+      "public_bytes": 124954,
+      "public_mode": "0644",
+      "line_count": 1461,
+      "locator_replacements": {
+        "<CARGO_HOME>": 823,
+        "<WORKTREE>": 7,
+        "<HOME>": 1,
+        "<RUSTUP_HOME>": 7,
+        "<PYENV_HOME>": 2,
+        "<HOMEBREW_PREFIX>": 1,
+        "<TMPDIR>/": 1,
+        "<HOME_PARENT>": 2,
+        "<WORKSPACE_BASE>": 2,
+        "<WORKSPACE_CONTAINER>": 2,
+        "<WORKSPACE_PARENT>": 2,
+        "<REPOSITORY_ROOT>": 2,
+        "<WORKTREE_CONTAINER>": 2
+      }
+    },
+    {
+      "source_id": "optimized-G-build/controller.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/controller.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "optimized-G-build/controller.stdout",
+      "original": {
+        "sha256": "4f9a653c3cd96ca6920091583fe239ca409d195df5ebab7c59a7e409896dddf6",
+        "bytes": 392,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/controller.stdout",
+      "public_sha256": "4f9a653c3cd96ca6920091583fe239ca409d195df5ebab7c59a7e409896dddf6",
+      "public_bytes": 392,
+      "public_mode": "0644",
+      "line_count": 2,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "optimized-G-build/launch_release.py",
+      "original": {
+        "sha256": "64f48ccc1ac2f07fa1a42ad223529094841391b7984a4f6d6a3c14ffed370aaf",
+        "bytes": 3674,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/launch_release.py",
+      "public_sha256": "5e22d3e0e9249f5d94bf62c56225ef271ad1e6f5545c2301d8ca7ba45822bb96",
+      "public_bytes": 3662,
+      "public_mode": "0644",
+      "line_count": 40,
+      "locator_replacements": {
+        "<PYENV_HOME>": 1
+      }
+    },
+    {
+      "source_id": "optimized-G-build/runfull.py",
+      "original": {
+        "sha256": "8dba2961df2e2435b120cfb7021d2795010ad0d8a09bc31f07d9862c60d1f35a",
+        "bytes": 8959,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/runfull.py",
+      "public_sha256": "8dba2961df2e2435b120cfb7021d2795010ad0d8a09bc31f07d9862c60d1f35a",
+      "public_bytes": 8959,
+      "public_mode": "0644",
+      "line_count": 149,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "optimized-G-build/post-case/ORIGINAL-EXEC-TERMINAL.json",
+      "original": {
+        "sha256": "855b3c3c68e77ea6cc71c6253a43bcdf2bc7af64e0ab238c3c77e173dde1de8d",
+        "bytes": 706,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/post-case/ORIGINAL-EXEC-TERMINAL.json",
+      "public_sha256": "855b3c3c68e77ea6cc71c6253a43bcdf2bc7af64e0ab238c3c77e173dde1de8d",
+      "public_bytes": 706,
+      "public_mode": "0644",
+      "line_count": 7,
+      "locator_replacements": {}
+    },
+    {
+      "source_id": "optimized-G-build/post-case/ROOT-CLOSURE.json",
+      "original": {
+        "sha256": "69e0b10a1465c7f4d58146597413a40b2fdb9ce502169b510a0c9771ef86a315",
+        "bytes": 3262,
+        "mode": 420
+      },
+      "public_path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/optimized-G-build/post-case/ROOT-CLOSURE.json",
+      "public_sha256": "d4f643816aa066774aad67bead651e288d0db49385a55cef0b0afe056732fe59",
+      "public_bytes": 2894,
+      "public_mode": "0644",
+      "line_count": 56,
+      "locator_replacements": {
+        "<WORKTREE>": 4
+      }
+    }
+  ],
+  "omitted_or_aliased_originals": [
+    {
+      "id": "preparation/bind_source.py",
+      "sha256": "5b883da7b83e2a88918e9ecda3011dc1b7ef6fcfa34cd6870c178945a942a384",
+      "bytes": 586,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/bind_source.py"
+    },
+    {
+      "id": "preparation/build_release.py",
+      "sha256": "58f2ce8edb0c7e54ae319029b0ac493949f6a5f673d9f2048864d843a4221c21",
+      "bytes": 2757,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/build_release.py"
+    },
+    {
+      "id": "preparation/consumer/bindings.py",
+      "sha256": "3f91b9a9d779d4c7f2f974fbac428aef63aa730488366f915b782baba0b7501c",
+      "bytes": 104,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/consumer/bindings.py"
+    },
+    {
+      "id": "preparation/consumer/capsule_geometry.py",
+      "sha256": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b",
+      "bytes": 11717,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/capsule_geometry.py"
+    },
+    {
+      "id": "preparation/consumer/decimal_oracle.py",
+      "sha256": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d",
+      "bytes": 2959,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/decimal_oracle.py"
+    },
+    {
+      "id": "preparation/consumer/evaluator.py",
+      "sha256": "b31c094e1683015a422c3c510eda30a8d3973c57004db0622284ba797e5ad46e",
+      "bytes": 34199,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/consumer/evaluator.py"
+    },
+    {
+      "id": "preparation/consumer/geometry_math.py",
+      "sha256": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40",
+      "bytes": 1443,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/geometry_math.py"
+    },
+    {
+      "id": "preparation/consumer/metrics.py",
+      "sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+      "bytes": 18354,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/metrics.py"
+    },
+    {
+      "id": "preparation/consumer/static_geometry.py",
+      "sha256": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34",
+      "bytes": 2388,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/static_geometry.py"
+    },
+    {
+      "id": "preparation/controller.py",
+      "sha256": "b54f882ad435ce755160d5a815387cdc012e396252f79e9a91d018f7ad57e515",
+      "bytes": 6492,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/controller.py"
+    },
+    {
+      "id": "preparation/freeze_prep.py",
+      "sha256": "9dc959a700045a20be1a79764f62868add00a553720daf549f6a656181c91793",
+      "bytes": 3841,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/freeze_prep.py"
+    },
+    {
+      "id": "preparation/original-fixtures/base.weftforge",
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "bytes": 11808,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/inputs/base.weftforge"
+    },
+    {
+      "id": "preparation/original-fixtures/rest-metadata.json",
+      "sha256": "d96697949c686fbf15f19b99b6d7551b35d3449b17157009aceb75649fbaeeb9",
+      "bytes": 590736,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/harbor-workflow-20261114/headless-attempt/runs/base/rest-metadata.json"
+    },
+    {
+      "id": "preparation/outer/launch_and_record.py",
+      "sha256": "5b36aeecd1251e024dc1e38bfd1eaab973e343fdb3243ccd1a420abac3c4fc96",
+      "bytes": 4055,
+      "mode": 420,
+      "alias_of": "root/admission002/launch_and_record.py"
+    },
+    {
+      "id": "preparation/outer/supervise.py",
+      "sha256": "36cb23882581ebad03ab6c3e28efb774f9dc33865af6328731d84a9efb8657ce",
+      "bytes": 7255,
+      "mode": 420,
+      "alias_of": "root/admission002/supervise.py"
+    },
+    {
+      "id": "preparation/producer/Cargo.lock",
+      "sha256": "6acc2df8d38cf70047cbe22ca2875a38a0fd204a63452edb2d42b4ce14c1ec89",
+      "bytes": 4086,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/producer/Cargo.lock"
+    },
+    {
+      "id": "preparation/producer/Cargo.toml",
+      "sha256": "bdbf9b113ba7bb05e968b25fbfc71a30317bfd66aa090fb809e2f551070ff5e8",
+      "bytes": 297,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/producer/Cargo.toml"
+    },
+    {
+      "id": "preparation/producer/src/main.rs",
+      "sha256": "b0aa37d10c88764ac1d21d97616a358cfac20d7bf9d43fc1cc7c318b63e44912",
+      "bytes": 7014,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/producer/src/main.rs"
+    },
+    {
+      "id": "preparation/test_toolchain_env.py",
+      "sha256": "c48173c6c67146d41768f3788000094a720805f755089a249210dc05198faecd",
+      "bytes": 2316,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/test_toolchain_env.py"
+    },
+    {
+      "id": "preparation/worker.py",
+      "sha256": "df0c37af4c2d20f9078e6caf82bcaf25d31bfdddfd8beebb358eddf6da515c87",
+      "bytes": 7595,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/worker.py"
+    },
+    {
+      "id": "clean-G-xtask/resources.py",
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "bytes": 12679,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/resources.py"
+    },
+    {
+      "id": "optimized-G-build/resources.py",
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "bytes": 12679,
+      "mode": 420,
+      "reuse": "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/resources.py"
+    }
+  ],
+  "reused_Git_G_dependencies": {
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/EXTERNAL-TERMINAL.json": {
+      "sha256": "85eabc8781bd7718d534f7c14c24bb85b064abae6e4ece643081781cfbae5e19",
+      "bytes": 746,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/LAUNCH.json": {
+      "sha256": "3d2223c2c6c1d5018206a93ec8cb957e6ac78223ab7f8cb0a9acd7c4b307b20c",
+      "bytes": 414,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/POST-TERMINAL-CLOCK.json": {
+      "sha256": "c8cb5c5d85e89be36c8ebf3e6444babb8a03362f3cb2185e756d61113b4d21d6",
+      "bytes": 575,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/PRIOR-ARTIFACTS.json": {
+      "sha256": "54373b451cf5545c9b072c1bb0cb2a3aa243e954aedffa5b5e6fec4fccdc2bb2",
+      "bytes": 9618,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/PROPOSAL.json": {
+      "sha256": "c47d3c1735f48051d9fbdfb2c3446739ca40a43c57ac770ef9b34c9163960e05",
+      "bytes": 10186,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/ROOT-GO.json": {
+      "sha256": "5927f4bac13aa16ccdd6ebb734f07cc6c963e98e91981ca951825616d09b93f9",
+      "bytes": 1278,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/controller.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/controller.stdout": {
+      "sha256": "1090934bbe3b06327a58bf9ba8e8081cf4a9dab8501c5b577444364fd5371d37",
+      "bytes": 640,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/RESULT.json": {
+      "sha256": "80eaf730567496d264e94680f226ebb2ce748f4f307e1dd4303bb9a72f9c2f0d",
+      "bytes": 22832,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/STARTED.json": {
+      "sha256": "f65e3a0042bfa5ded1acb368bd57460e3c80c22ff533d2ade6514d2e0634e614",
+      "bytes": 268,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/TERMINAL.json": {
+      "sha256": "89904b5c7cbc592af777d0ea0a28d3f25b21e203310fc5df0d5232f35aef8c0b",
+      "bytes": 160,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/full-fmt-RESULT.json": {
+      "sha256": "f3b035c431bde7cbd716a68d2626aff64c2c13fea8b57981968fc1ebc70b4163",
+      "bytes": 1195,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/full-fmt-STARTED.json": {
+      "sha256": "6a604e913ced50635186ee0baa0278739e629c20219ae4b5e70eb5b392c59078",
+      "bytes": 951,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/full-fmt.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/full-fmt.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/native-cli-build-RESULT.json": {
+      "sha256": "87ebc1ca7d9cb6c075ac4d22d64b4c6918f4b76fd561a893df71832eefd154a1",
+      "bytes": 1263,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/native-cli-build-STARTED.json": {
+      "sha256": "f0d40442f8c4733f6a3571c3e709954b96551eecf9a722f71e5e53cba51d9fa3",
+      "bytes": 1016,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/native-cli-build.stderr": {
+      "sha256": "8164aa1f17655ccaeb041965af4d7cb50f986c0dcc62150b053da9fda42bba3d",
+      "bytes": 130,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/native-cli-build.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/workspace-clippy-RESULT.json": {
+      "sha256": "44c6ab06a6cdb19254d73aaa7fff0491e2de01f531be7e7bffa62110ce99356b",
+      "bytes": 1284,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/workspace-clippy-STARTED.json": {
+      "sha256": "56bf544bcb82894bea754d919a149331ea4e555c89214f7886a470b14350fed9",
+      "bytes": 1035,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/workspace-clippy.stderr": {
+      "sha256": "96074cf149ff75f9d02df4f72cb5498cc1b26cc6d8a015c2ba4c7f312c1d0a5a",
+      "bytes": 371,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/workspace-clippy.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/workspace-tests-RESULT.json": {
+      "sha256": "b7fd0e41f1f7ab2dd38ba65fc068896d8a13ad82ab94237ff8d34ad104f61c63",
+      "bytes": 1226,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/workspace-tests-STARTED.json": {
+      "sha256": "4b7cc4a382c2ca5a4706814d9e22198a9bec8946fc5d37756ef7fafe263f6e65",
+      "bytes": 976,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/workspace-tests.stderr": {
+      "sha256": "54448c9f2a38b3e760219c6563c401f00b003bdef240d79d3a8d7622cf3efbd1",
+      "bytes": 2795,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001/workspace-tests.stdout": {
+      "sha256": "8801230761eb35c18f98616071f6a653661d03620a6fb3d766afc9c69d842e87",
+      "bytes": 48318,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/full-001.json": {
+      "sha256": "5367e890e21face3fda2331bcf2bbcd0404448558b29087c56200419aeeb1375",
+      "bytes": 124555,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/launch.py": {
+      "sha256": "2e98d59e2e3b1a0e028095a1a1519c41dd210c1af97f53ac4e81cc455ad0489b",
+      "bytes": 3660,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/prepare.py": {
+      "sha256": "81bcaafd66d18a0bd1475ee33067337cedd444d27c626547d634fc79b172fe81",
+      "bytes": 6808,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/resources.py": {
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "bytes": 12679,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact actual F/G tooling resources helper."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/runfull.py": {
+      "sha256": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+      "bytes": 7864,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/post-case/ARTIFACTS.json": {
+      "sha256": "36adfbbfa86dd361311aa3d10498d5ba51211784b13026e842936b1bf07ed5d7",
+      "bytes": 4376,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/post-case/CLOSURE.json": {
+      "sha256": "b738dcaa32ba72b68468d101083028bedf6390f26f92d9d6e2ceb92c9769bad2",
+      "bytes": 1650,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/full-F/post-case/ROOT-BINARY-RETENTION.json": {
+      "sha256": "5e02ad5680683d2f167eb89e4ba7cf3b7d441a1908bc32a1d8bd365524d10889",
+      "bytes": 1803,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/baseline001/independent-final-analysis.json": {
+      "sha256": "9c847f108c7290baf6ce382ae40b46765864315024aa3ea9158734d70049e7e9",
+      "bytes": 866,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/baseline001/post-case-cleanup.json": {
+      "sha256": "dbe71c346402cc888a5da8ea1ee58f7ff98091405c1cb2a63a2093600efaa384",
+      "bytes": 168,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/baseline001/receipt.json": {
+      "sha256": "573093978af01bf103150ec8595c09b1ec2d4a338ff32d7fa2ff5c28c2fc9cdd",
+      "bytes": 1992,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/baseline001/source-contact.rs": {
+      "sha256": "fee6b80e51b98fc0dfaa6ade8c449b9a8747e3ce4d172ab5c944ea8b88b2bd18",
+      "bytes": 81126,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/baseline001/source-freeze.json": {
+      "sha256": "e55f54f1be986b93927b49f90f92f4232f2d5d3f5674930821f639e2357f8961",
+      "bytes": 262,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/baseline001/started.json": {
+      "sha256": "d64401e70f5c6bebac574a131090f765fd938ea742b9ef066cb57ff0df808fa2",
+      "bytes": 856,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/baseline001/stderr": {
+      "sha256": "90de81c2b3b9fb5fd276d81fa9253f9562b81979f91b279591d0b9f94f4e0646",
+      "bytes": 454,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/baseline001/stdout": {
+      "sha256": "c02b2553cfc0d1bad90a0671399e158ede4bf294d3e48eb08414175128ba585f",
+      "bytes": 24497,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/baseline001/test-only.patch": {
+      "sha256": "b3da1bcdbfd5b1094808c231b222fe78b79bc7399cdc758e3397a356adb1a32f",
+      "bytes": 8563,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate001/candidate.patch": {
+      "sha256": "638f8eb12306c288fc6e4f1f0448671d3af990308782f041b711cb47ab89af79",
+      "bytes": 28492,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate001/post-case-cleanup.json": {
+      "sha256": "712ac6127d816e849e94293cf8c3a8fd3ed7a33e0200ef4e39fd19d8db2e34ca",
+      "bytes": 234,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate001/receipt.json": {
+      "sha256": "efb656b01e5d1e5501227b446ca46e6c90eeaca53a95d951230d6a6c1cc3f5d8",
+      "bytes": 2213,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate001/sim-package/receipt.json": {
+      "sha256": "83cc5ec3d01ad3fb31a2d1309a0ea3496afe38bb7b2c183881248fbeaa183a77",
+      "bytes": 1077,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate001/sim-package/started.json": {
+      "sha256": "bb54130370a9e50411459a7918e21b4fe95f8550a82bfd15bd746533ba06e830",
+      "bytes": 728,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate001/sim-package/stderr": {
+      "sha256": "c4819b3eda05b1f68982864132a56f913d811bc9e7a296485a939e9b7e8d1c53",
+      "bytes": 409,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate001/sim-package/stdout": {
+      "sha256": "185fa359c1b03125e35c7d0781d604372b3458c575898ee0987cd63b4c18043c",
+      "bytes": 42041,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate001/source-capsule.rs": {
+      "sha256": "904b16cd228126726f4dac5dc072c45148d7b78d5a08b13092aa3f518926e3da",
+      "bytes": 22087,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate001/source-contact.rs": {
+      "sha256": "f8019c9d5ad9e63e02bce8b7e67c11fe1881162aa14a460da8ca5c1dc76775b4",
+      "bytes": 93244,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate002/candidate.patch": {
+      "sha256": "b0983a836903f63320c208d3e5164bcd83b354249cb57076016d73d861c6947d",
+      "bytes": 31862,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate002/post-case-cleanup.json": {
+      "sha256": "c30a48f405015a370e73ccbb053f76e2178b611eba3a80cce50fdd7ebc1c7b62",
+      "bytes": 251,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate002/receipt.json": {
+      "sha256": "736ff63667093b063a5cbc77ea6f56578420967330ba5e2fdd822f19aba55c0d",
+      "bytes": 2212,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate002/sim-package/receipt.json": {
+      "sha256": "40a1bbb3511634784a02fbfce776d260f401283295f09ea8372d4335ffe36acf",
+      "bytes": 1077,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate002/sim-package/started.json": {
+      "sha256": "29c3cb4da7e287e30252bb959d2a309b727389dc934b5b60fa5f52b0ab097b62",
+      "bytes": 728,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate002/sim-package/stderr": {
+      "sha256": "aa11df07a80f2a6c26996f4594bf1e388d59a3b97269a1ba2d54fd28af532e06",
+      "bytes": 409,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate002/sim-package/stdout": {
+      "sha256": "ae1eda7c218d0f646ae70f9b4085de33ae9ae4abda62159042da621e0804db91",
+      "bytes": 42241,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate002/source-capsule.rs": {
+      "sha256": "ac833840d7568fd2deda6731325d4c33f29e1935df386bfeec7d1f206dd4e322",
+      "bytes": 22986,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/candidate002/source-contact.rs": {
+      "sha256": "89d3d5f31dc2d6cb7ce5e207c070bb774aeb90ed36df50b9d0acb34fd2a8cac4",
+      "bytes": 95276,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/protocol/run_regression.py": {
+      "sha256": "16bb143fc33a07d83b928c47d4f01bc12f7c3d6b3bc753b148563c38ae641319",
+      "bytes": 3303,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/protocol/run_candidate.py": {
+      "sha256": "748d69b2a83cf8308c352fa9d5b358847589fbbe4dface631ac44bd558244e65",
+      "bytes": 3730,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/protocol/run_candidate002.py": {
+      "sha256": "cf8c120bd5308d5de47146e842783fd434a263c42884971817171012e99c5762",
+      "bytes": 3730,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/numeric002/numeric-only.patch": {
+      "sha256": "4d94e3c520e2e1890515b4c86b047c2dc40da4df40c1f966b490013e601007fa",
+      "bytes": 4939,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/numeric002/prior-artifacts.json": {
+      "sha256": "78d79406852d34d9b5352f6d4832f6f7ac5e107aa34adb3ec7428f05df57f681",
+      "bytes": 2082,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/component/protocol/resources.py": {
+      "sha256": "ba4560b912abaf8e310f87dc33b334fddfc96bc9d41c74a046a46b2d1f815d12",
+      "bytes": 12756,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/reviews/mathematical/REVIEW.md": {
+      "sha256": "dacc297368154cb5e16c7cb5038e854817b8854df701ddd335ceb5380d955f8e",
+      "bytes": 10816,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/reviews/source/REVIEW-001.md": {
+      "sha256": "7c80cb2e96cb427754af79bd85c4854434925cd1d9bd0c63bbd9d41a835c3251",
+      "bytes": 9573,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/reviews/source/REVIEW-002.md": {
+      "sha256": "dea35d3285566f8b226978618f767d06d043f1022bd77a51cb8ee301941a7f66",
+      "bytes": 3184,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/history/WF-20261118-CONTACT-RECOVERY-D-TOOLING-001.original.json": {
+      "sha256": "b64239045f60bcadd54c27538c8c54a08c253a6dce29de486bdac16afbbe4486",
+      "bytes": 33899,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/history/WF-20261118-CONTACT-RECOVERY-HARBOR-A8-001.original.json": {
+      "sha256": "ac234f1eefe0fa21226d87fd6d924d517742f1193e1ffccd5f2c727d4a0aa80e",
+      "bytes": 53957,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/history/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.original.json": {
+      "sha256": "d7c4eabd0c83814726257e1ac061c57c136782c3031333f6d01b058b15b57fc1",
+      "bytes": 28183,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": {
+      "sha256": "6b73e4fa4fd31a25b4e5dee81936254b0cc3da1a35dd03cc415abda76f229414",
+      "bytes": 72914,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/ORACLE.md": {
+      "sha256": "4ec35d165eb4f2dfbecf2df6c2a703ea58f7980491f053ff1ef19294233f9dbf",
+      "bytes": 4396,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runs/base/analysis.json": {
+      "sha256": "4074bda0f201f37d692caa329604848e82299978d7ec4ed579cab9cc2858bcc0",
+      "bytes": 1047919,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runs/base/trajectory.jsonl": {
+      "sha256": "b193d5bc23d82c6722f87704d061f01161db88ac4e0c71eda4df1bf704099bf7",
+      "bytes": 15435425,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/contact-recovery-runtime-20261118/numerical/runtime/FINAL-NUMERICAL.json": {
+      "sha256": "27c893edd64533ea5d132aee780f14c643d8ac4949d378f6ed58a56a8863aabe",
+      "bytes": 7231,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/ROOT-INSTALLATION-REVIEW-001.json": {
+      "sha256": "8de74cc0d607d017ce44000a2b5950d6b82b90f5c1b1f30954bd0d7e88d595ab",
+      "bytes": 8426,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Existing immutable F/history dependency; no execution transfer or old state copying."
+    },
+    "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/bind_source.py": {
+      "sha256": "5b883da7b83e2a88918e9ecda3011dc1b7ef6fcfa34cd6870c178945a942a384",
+      "bytes": 586,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/build_release.py": {
+      "sha256": "58f2ce8edb0c7e54ae319029b0ac493949f6a5f673d9f2048864d843a4221c21",
+      "bytes": 2757,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/consumer/bindings.py": {
+      "sha256": "3f91b9a9d779d4c7f2f974fbac428aef63aa730488366f915b782baba0b7501c",
+      "bytes": 104,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/capsule_geometry.py": {
+      "sha256": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b",
+      "bytes": 11717,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/decimal_oracle.py": {
+      "sha256": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d",
+      "bytes": 2959,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/consumer/evaluator.py": {
+      "sha256": "b31c094e1683015a422c3c510eda30a8d3973c57004db0622284ba797e5ad46e",
+      "bytes": 34199,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/geometry_math.py": {
+      "sha256": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40",
+      "bytes": 1443,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/metrics.py": {
+      "sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+      "bytes": 18354,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/static_geometry.py": {
+      "sha256": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34",
+      "bytes": 2388,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/controller.py": {
+      "sha256": "b54f882ad435ce755160d5a815387cdc012e396252f79e9a91d018f7ad57e515",
+      "bytes": 6492,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/freeze_prep.py": {
+      "sha256": "9dc959a700045a20be1a79764f62868add00a553720daf549f6a656181c91793",
+      "bytes": 3841,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/inputs/base.weftforge": {
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "bytes": 11808,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/harbor-workflow-20261114/headless-attempt/runs/base/rest-metadata.json": {
+      "sha256": "d96697949c686fbf15f19b99b6d7551b35d3449b17157009aceb75649fbaeeb9",
+      "bytes": 590736,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/producer/Cargo.lock": {
+      "sha256": "6acc2df8d38cf70047cbe22ca2875a38a0fd204a63452edb2d42b4ce14c1ec89",
+      "bytes": 4086,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/producer/Cargo.toml": {
+      "sha256": "bdbf9b113ba7bb05e968b25fbfc71a30317bfd66aa090fb809e2f551070ff5e8",
+      "bytes": 297,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/producer/src/main.rs": {
+      "sha256": "b0aa37d10c88764ac1d21d97616a358cfac20d7bf9d43fc1cc7c318b63e44912",
+      "bytes": 7014,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/test_toolchain_env.py": {
+      "sha256": "c48173c6c67146d41768f3788000094a720805f755089a249210dc05198faecd",
+      "bytes": 2316,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    },
+    "parity/reports/artifacts/contact-recovery-runtime-20261118/preparation/worker.py": {
+      "sha256": "df0c37af4c2d20f9078e6caf82bcaf25d31bfdddfd8beebb358eddf6da515c87",
+      "bytes": 7595,
+      "mode": "100644",
+      "tracked_in_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+      "reason": "Byte-exact current packet dependency; no historical execution transfer."
+    }
+  },
+  "authentic_whitespace_exceptions": [],
+  "history_archive": {
+    "path": "parity/reports/artifacts/capsule-supporting-plane-runtime-20261118/history/WF-20261118-CAPSULE-SUPPORTING-PLANE-SOURCE-001.original.json",
+    "sha256": "4e4eae9f3085b4450317fd3b94209cb3856bd2917991c68215a01fa3f42fe714",
+    "Git_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621"
+  },
+  "final_external_clock_qualification": "Current G final admission is the exact original raw tool stdout. Raw external pending flag unchanged; old D unsealed clock not repaired.",
+  "publication": "Proposal only; ROOT review, tracking and later clean registry/map checks required. No delivery acceptance."
+}

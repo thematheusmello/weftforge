@@ -1,0 +1,30 @@
+{
+  "recorded_utc": "2026-11-17T23:07:51.160879+00:00",
+  "source": "12ecdc13ba47a20d77bf52d1757815e39f0ea380",
+  "original_unified_session": 42874,
+  "session_now_unknown_not_restarted": true,
+  "actual_three_completed_checks": [
+    "fmt",
+    "workspace459tests32summaries0failed0ignored",
+    "strictworkspacealltargetClippy"
+  ],
+  "four_check_sequence_passed": false,
+  "build_failed_due_to_monitor_error_not_source_compile_error": true,
+  "build_exit": -9,
+  "build_stop_reason": "monitor_error:BrokenPipeError:[Errno 32] Broken pipe",
+  "original_RESULT_all_source91_exact_false_retained": "Original runner ties this flag to no stage errors; independent postcheck now verifies all91byte/mode identities. Original file stays exact.",
+  "all91_postverified_exact": true,
+  "head_index_worktree_clean": true,
+  "all_recorded_owned_processes_and_groups_absent": [
+    30992,
+    31118,
+    31142,
+    40956,
+    47595
+  ],
+  "result_sha256": "69a2dedfed8b53dbe1edc1726771b343110f881e9fc2ba4798ee357e6165e2f9",
+  "terminal_sha256": "d3e84e7f65e7a1a84c8f94e61aa23e1411b233caf3191b09bd8b9f4538274c98",
+  "source_after_final_stage_seconds": 336.23003637511283,
+  "clock_qualification": "No final stdout was retained by the disconnected tool; no successful all4 whole-case clock claim is made. Completed stage times and terminal receipts remain actual.",
+  "next": "One separate build-only invocation with stdout/stderr bound to owned files; do not repeat passed459/fmt/Clippy."
+}

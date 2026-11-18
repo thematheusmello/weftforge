@@ -1,0 +1,85 @@
+{
+  "actual_binary_before_after": {
+    "bytes": 1331776,
+    "mode": "0755",
+    "sha256": "3c194a4fbecf34de932ab8af0cd846aaf8e9d57264f600f3207d4bf2b1ede551"
+  },
+  "at_utc": "2026-11-17T03:57:16.638523+00:00",
+  "authority": "No build/execution approval or new grade; root owns distinct GO and authoritative final external terminal evidence.",
+  "build_binding_preflight_exact": true,
+  "build_receipt_sha256": "ba0b7651757b02a55f543c504f7fe4c2d1c424dc94c5e8683cd5a8eaf94734f0",
+  "execution_by_reviewer": {
+    "Cargo": 0,
+    "UI": 0,
+    "constructors": 0,
+    "dynamics": 0,
+    "evaluators": 0,
+    "network": 0,
+    "packet_or_product_programs": 0,
+    "selfchecks": 0,
+    "tests": 0
+  },
+  "final_prepared52_hashes_modes_before_after_exact": true,
+  "final_prepared52_map_sha256": "519fdc9b5d83fb719ffd95c610428d76019114400759e84747ad6aae1c356bc0",
+  "final_prepared_file_count": 52,
+  "findings": [],
+  "inputs": {
+    ".local/global-material-full-case-root-20261117/SUPERVISOR-PREPARATION.json": {
+      "bytes": 880,
+      "mode": "0644",
+      "sha256": "0b9347afc6ab3fae86bb6a84d53fae7a077588edd389ca9bc8338905fe2ea877"
+    },
+    ".local/global-material-full-case-root-20261117/supervise.py": {
+      "bytes": 6951,
+      "mode": "0644",
+      "sha256": "5e54e1ca6eb3c1cfe0cba226631ee8f2ae1183f5cd1420d2d6300e855b1d3860"
+    },
+    ".local/global-material-repair-20261117/.local/harbor-global-material-preparation-20261117/FREEZE.json": {
+      "bytes": 7770,
+      "mode": "0600",
+      "sha256": "ade54b582fc99df87e3e72d4fdd8084aa72e666c14d8f347e59c84906e7979ce"
+    },
+    ".local/harbor-global-material-protocol-review-20261117/REVIEW-RECEIPT.json": {
+      "bytes": 8450,
+      "mode": "0444",
+      "sha256": "35750d906b1ed21282889533bce126b02ddcded9b2b95f84f813ea105df7b287"
+    },
+    ".local/harbor-global-material-protocol-review-20261117/REVIEW.md": {
+      "bytes": 4775,
+      "mode": "0444",
+      "sha256": "b6d3b6d970b1cb0fe2783e1662996975151c6913d83e9a5a78819c1c20097b1f"
+    },
+    ".local/material-group-full-case-root-20261117-v2/supervise.py": {
+      "bytes": 6822,
+      "mode": "0644",
+      "sha256": "67a376f7a15559a29b68b582821beb6105d5c6872de4e7885dfbfaae29a428c7"
+    }
+  },
+  "limitations": [
+    "Read-only source/hash/receipt review; no executable provenance beyond bound build/actual hash and declared compiler closure.",
+    "Same-child RSS observation retains explicit snapshot gaps for descendants.",
+    "SDK/linker/sysroot/shared-library closure is not certified."
+  ],
+  "numerical_GO_and_directories_absent_before_after": true,
+  "outer_exact_allowed_delta_only": true,
+  "outer_five_acceptance_assertions_AST_unchanged": true,
+  "protocol_changed_fields": [
+    "argv",
+    "build_binding_sha256",
+    "producer_binary",
+    "python",
+    "status"
+  ],
+  "report": {
+    "bytes": 3766,
+    "mode": "0644",
+    "sha256": "2844efdae96e79b0535cdf0de80be51f90790b1a96afbc85fc108817dcf1df51"
+  },
+  "repository_binding_count": 5,
+  "repository_bindings_before_after_exact": true,
+  "source88_before_after_exact": true,
+  "source_checkout_clean_before_after": true,
+  "source_commit_before_after": "52099b6f6b7aff43b3e9ada8bad4f830cb987134",
+  "source_only45_hashes_modes_exact": true,
+  "status": "NO_BLOCKER_FOUND_FINAL_BUILD_FREEZE_AND_OUTER_SOURCE_REVIEW"
+}

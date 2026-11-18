@@ -7,7 +7,7 @@
   "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
   "kind": "implementation_only",
   "status": "passed",
-  "freshness": "current",
+  "freshness": "stale",
   "feature_ids": [
     "PAT-006",
     "FILE-005"
@@ -3208,5 +3208,6 @@
   "remaining_gaps": [
     "No current947 empty-project H1 creation or native CutAndSew workflow transfer.",
     "No hole SVG re-import/roundtrip, multiple/curved/nested holes, general CAD/apparel interchange, print margins/tiling, native simulation/particle mass, full feature, reference behavior or roadmap-gate acceptance."
-  ]
+  ],
+  "freshness_reason": "Material-outline offset changes shared authoring, geometry, validation, meshing, solver preparation and native/CLI surfaces. The original current947 H3 result is retained in history/WF-20261116-HOLE-EXPORT-001.original.json under the material-outline-offset evidence collection; no closed native case or saved grade is rerun or reclassified."
 }

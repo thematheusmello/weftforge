@@ -1,0 +1,29 @@
+{
+  "actual_binary_rustc_invocations": {
+    "weftforge": "     Running `CARGO=<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo CARGO_BIN_NAME=weftforge CARGO_CRATE_NAME=weftforge CARGO_MANIFEST_DIR=<WORKTREE>/apps/weftforge CARGO_MANIFEST_PATH=<WORKTREE>/apps/weftforge/Cargo.toml CARGO_PKG_AUTHORS='' CARGO_PKG_DESCRIPTION='' CARGO_PKG_HOMEPAGE='' CARGO_PKG_LICENSE='MIT OR Apache-2.0' CARGO_PKG_LICENSE_FILE='' CARGO_PKG_NAME=weftforge CARGO_PKG_README='' CARGO_PKG_REPOSITORY='https://github.com/thematheusmello/weftforge' CARGO_PKG_RUST_VERSION=1.94 CARGO_PKG_VERSION=0.1.0 CARGO_PKG_VERSION_MAJOR=0 CARGO_PKG_VERSION_MINOR=1 CARGO_PKG_VERSION_PATCH=0 CARGO_PKG_VERSION_PRE='' CARGO_PRIMARY_PACKAGE=1 DYLD_FALLBACK_LIBRARY_PATH='<WORKTREE>/target/release/deps:<HOME>/lib:/usr/local/lib:/usr/lib' <RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc --crate-name weftforge --edition=2024 apps/weftforge/src/main.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type bin --emit=dep-info,link -C opt-level=3 -C embed-bitcode=no --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values())' -C metadata=9fb1e4e54367e0a1 -C extra-filename=-8071e355418dac6f --out-dir <WORKTREE>/target/release/deps -C strip=debuginfo -L dependency=<WORKTREE>/target/release/deps --extern eframe=<WORKTREE>/target/release/deps/libeframe-584bd4a4a80dcf6d.rlib --extern rfd=<WORKTREE>/target/release/deps/librfd-3f8f947f9895022b.rlib --extern serde_json=<WORKTREE>/target/release/deps/libserde_json-42ab6d8da20ebd2e.rlib --extern weftforge_core=<WORKTREE>/target/release/deps/libweftforge_core-c721c85a42662514.rlib --extern weftforge_sim=<WORKTREE>/target/release/deps/libweftforge_sim-f7189a458db1ac56.rlib`",
+    "weftforge-cli": "     Running `CARGO=<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo CARGO_BIN_NAME=weftforge-cli CARGO_CRATE_NAME=weftforge_cli CARGO_MANIFEST_DIR=<WORKTREE>/apps/weftforge-cli CARGO_MANIFEST_PATH=<WORKTREE>/apps/weftforge-cli/Cargo.toml CARGO_PKG_AUTHORS='' CARGO_PKG_DESCRIPTION='' CARGO_PKG_HOMEPAGE='' CARGO_PKG_LICENSE='MIT OR Apache-2.0' CARGO_PKG_LICENSE_FILE='' CARGO_PKG_NAME=weftforge-cli CARGO_PKG_README='' CARGO_PKG_REPOSITORY='https://github.com/thematheusmello/weftforge' CARGO_PKG_RUST_VERSION=1.94 CARGO_PKG_VERSION=0.1.0 CARGO_PKG_VERSION_MAJOR=0 CARGO_PKG_VERSION_MINOR=1 CARGO_PKG_VERSION_PATCH=0 CARGO_PKG_VERSION_PRE='' CARGO_PRIMARY_PACKAGE=1 DYLD_FALLBACK_LIBRARY_PATH='<WORKTREE>/target/release/deps:<HOME>/lib:/usr/local/lib:/usr/lib' <RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc --crate-name weftforge_cli --edition=2024 apps/weftforge-cli/src/main.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type bin --emit=dep-info,link -C opt-level=3 -C embed-bitcode=no --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values())' -C metadata=67902c7e3e246afe -C extra-filename=-0a693209c84b4c85 --out-dir <WORKTREE>/target/release/deps -C strip=debuginfo -L dependency=<WORKTREE>/target/release/deps --extern serde=<WORKTREE>/target/release/deps/libserde-f462fa2a0a7cbcf5.rlib --extern serde_json=<WORKTREE>/target/release/deps/libserde_json-42ab6d8da20ebd2e.rlib --extern weftforge_core=<WORKTREE>/target/release/deps/libweftforge_core-c721c85a42662514.rlib --extern weftforge_sim=<WORKTREE>/target/release/deps/libweftforge_sim-f7189a458db1ac56.rlib`"
+  },
+  "actual_release_completion": [
+    "Finished `release` profile [optimized] target(s) in 47.47s"
+  ],
+  "binary_not_launched": true,
+  "fingerprints": [
+    {
+      "bytes": 658,
+      "path": "<WORKTREE>/target/release/.fingerprint/weftforge-8071e355418dac6f/bin-weftforge.json",
+      "sha256": "55c0dd30f4c5c45a09051dd0944e472dd94b1f1458481fce823e744586efbcd7"
+    },
+    {
+      "bytes": 608,
+      "path": "<WORKTREE>/target/release/.fingerprint/weftforge-cli-0a693209c84b4c85/bin-weftforge-cli.json",
+      "sha256": "c7e3d3dc97f7453f410632df061569ad5b6d47e069663b3cc3d52100767494e7"
+    }
+  ],
+  "source_profile": {
+    "actual_codegen_binding": "Verbose stderr must retain actual native AND CLI Rust bin invocations with opt-level3 and optimized release completion; actual fingerprints retained. LTO explicitlyfalse; no unspecified codegen-unit number inferred.",
+    "explicit_environment_LTO": "false",
+    "other_release_profile_overrides": {},
+    "profile": "release",
+    "source_Cargo_toml_lto": "thin"
+  }
+}

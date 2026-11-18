@@ -1,0 +1,52 @@
+{
+  "case": "POINT-RELEASE-D001",
+  "status": "CLOSED_NATIVE_POINT_DRAG_NO_COMMIT",
+  "source_commit": "4d8c2c381f7df1995720e3677b9b26df6ee063cf",
+  "native_sha256": "3cac4e20fa13b4b9d4305ac2fb97375a64266e1860524244d018fab24a7742f2",
+  "plan_sha256": "8dc161a5cf7fcbe40768e1db7b653844940aafa3b3e2452a3a2f35a21172ac3a",
+  "actual_scope": "Fresh process opened exact seeded R5; piece2 and boundary7 selected, FrameAll, Select/edit and10mm snap observed; one screenshot-derived10mm left drag returned with unchangedR5/P0. Authoring stopped immediately.",
+  "native_drag_expected": {
+    "revision": 6,
+    "point3_m": [
+      -0.02,
+      -0.01
+    ],
+    "area_m2": 0.2635
+  },
+  "native_drag_observed": {
+    "revision": 5,
+    "point3_display_m": [
+      -0.01,
+      -0.01
+    ],
+    "rest_length_display_mm": 420.0
+  },
+  "work_file_byte_identical_to_seed": true,
+  "seed_sha256": "ba14733d505c8f9ee0bc71b0d38c7a3236c31ba25e9640ae6dd77d4124040077",
+  "authoring_after_failure": 0,
+  "drag_retries": 0,
+  "numeric_substitutes": 0,
+  "saved_edited_undo_redo_final_files": 0,
+  "second_process_launched": false,
+  "elapsed_launch_to_quit_return_seconds": 150.052609,
+  "within_elapsed_budget": true,
+  "counts": {
+    "utc": "2026-11-16T18:27:32.629Z",
+    "calls": 21,
+    "semantic_actions_including_launch_and_quit": 8,
+    "physical_input_API_calls": 7,
+    "observations_including_bind_and_postquit_error": 14,
+    "images": 4,
+    "local_controller_failures": 0,
+    "summary_required_next": true
+  },
+  "source87_unchanged": true,
+  "native_target_and_owned_bundle_unchanged": true,
+  "owned_pid_absent": true,
+  "complete_contract": false,
+  "reference_executed": false,
+  "reference_verified": false,
+  "physics_verified": false,
+  "full_feature_accepted": false,
+  "known_limit": "No native event trace; compressed event cadence, driver delivery and handler cause remain unresolved. This result does not invalidate independently reproduced source release-position regressions or repair/regrade older E001."
+}

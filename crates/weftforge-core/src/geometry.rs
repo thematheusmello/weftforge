@@ -6,6 +6,7 @@ use std::collections::{BTreeMap, BTreeSet};
 pub const MAX_MESH_VERTICES: usize = 100_000;
 pub const MAX_MESH_TRIANGLES: usize = 200_000;
 const MAX_BOUNDARY_SAMPLES: usize = 20_000;
+const MAX_PENDING_GEOMETRY_TASKS: usize = 65_536;
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct BoundarySample {
@@ -54,6 +55,9 @@ pub struct Mesh {
 
 impl Mesh {
     pub fn validate(&self) -> Result<()> {
+        self.validate_context(None)
+    }
+    pub(crate) fn validate_context(&self, work: Option<&crate::offset::Work<'_>>) -> Result<()> {
         let n = self.positions.len();
         ensure(
             n <= MAX_MESH_VERTICES && self.triangles.len() <= MAX_MESH_TRIANGLES,
@@ -63,16 +67,16 @@ impl Mesh {
             self.uv.len() == n && self.piece_ids.len() == n,
             "Mesh attribute counts differ",
         )?;
-        ensure(
-            self.positions
-                .iter()
-                .flatten()
-                .chain(self.uv.iter().flatten())
-                .all(|v| v.is_finite()),
-            "Mesh contains non-finite coordinates",
-        )?;
+        for (position, uv) in self.positions.iter().zip(&self.uv) {
+            charge(work)?;
+            ensure(
+                position.iter().chain(uv).all(|v| v.is_finite()),
+                "Mesh contains non-finite coordinates",
+            )?;
+        }
         let mut used = vec![false; n];
         for triangle in &self.triangles {
+            charge(work)?;
             ensure(
                 triangle.iter().all(|&v| v < n),
                 "Triangle index is out of range",
@@ -99,11 +103,12 @@ impl Mesh {
                 used[vertex] = true;
             }
         }
-        ensure(
-            used.into_iter().all(|v| v),
-            "Mesh has vertices with no incident face",
-        )?;
+        for used in used {
+            charge(work)?;
+            ensure(used, "Mesh has vertices with no incident face")?;
+        }
         for sample in &self.boundary {
+            charge(work)?;
             ensure(
                 sample.vertex < n
                     && self.piece_ids[sample.vertex] == sample.piece
@@ -113,6 +118,7 @@ impl Mesh {
             )?;
         }
         for stitch in &self.stitches {
+            charge(work)?;
             for endpoint in [stitch.a, stitch.b] {
                 ensure(
                     endpoint.vertices.iter().all(|&v| v < n)
@@ -122,22 +128,34 @@ impl Mesh {
                 )?;
             }
         }
+        let mut portion_count = 0;
+        for group in &self.sewing_groups {
+            charge(work)?;
+            portion_count += group.portions.len();
+        }
         ensure(
             self.sewing_groups.len() <= crate::MAX_OBJECTS
                 && (self.sewing_groups.is_empty()
                     || self.stitches.len() <= crate::MAX_SEWING_STITCHES)
-                && self
-                    .sewing_groups
-                    .iter()
-                    .map(|group| group.portions.len())
-                    .sum::<usize>()
-                    <= crate::MAX_SEWING_PORTIONS,
+                && portion_count <= crate::MAX_SEWING_PORTIONS,
             "Sewing preview resource limit exceeded",
         )?;
-        let curves: BTreeSet<_> = self.boundary.iter().map(|sample| sample.curve).collect();
-        let stitched: BTreeSet<_> = self.stitches.iter().map(|stitch| stitch.seam).collect();
+        if self.sewing_groups.is_empty() {
+            return Ok(());
+        }
+        let mut curves = BTreeSet::new();
+        for sample in &self.boundary {
+            charge(work)?;
+            curves.insert(sample.curve);
+        }
+        let mut stitched = BTreeSet::new();
+        for stitch in &self.stitches {
+            charge(work)?;
+            stitched.insert(stitch.seam);
+        }
         let mut group_ids = BTreeSet::new();
         for group in &self.sewing_groups {
+            charge(work)?;
             ensure(
                 group.id != 0
                     && group_ids.insert(group.id)
@@ -150,6 +168,7 @@ impl Mesh {
                 "Invalid sewing group preview",
             )?;
             for portion in &group.portions {
+                charge(work)?;
                 for interval in [portion.a, portion.b] {
                     ensure(
                         curves.contains(&interval.curve)
@@ -200,15 +219,29 @@ impl Project {
     }
 
     pub fn mesh_cancellable(&self, cancelled: impl Fn() -> bool) -> Result<Mesh> {
-        check_cancel(&cancelled)?;
-        self.validate()?;
-        check_cancel(&cancelled)?;
+        self.mesh_context(&cancelled, None)
+    }
+    pub(crate) fn mesh_for_offset(&self, work: &crate::offset::Work<'_>) -> Result<Mesh> {
+        self.mesh_context(&|| false, Some(work))
+    }
+    fn mesh_context(
+        &self,
+        cancelled: &dyn Fn() -> bool,
+        work: Option<&crate::offset::Work<'_>>,
+    ) -> Result<Mesh> {
+        check_budget(cancelled, work)?;
+        if let Some(work) = work {
+            self.validate_for_offset(work)?;
+        } else {
+            self.validate()?;
+        }
+        check_budget(cancelled, work)?;
         let mut mesh = Mesh {
             doc_revision: self.revision,
             ..Mesh::default()
         };
         for piece in &self.pieces {
-            check_cancel(&cancelled)?;
+            check_budget(cancelled, work)?;
             let start = mesh.positions.len();
             let mut vertex_for_point = BTreeMap::new();
             let mut holes = Vec::new();
@@ -217,17 +250,19 @@ impl Project {
                     holes.push(mesh.positions.len() - start);
                 }
                 for id in boundary {
-                    check_cancel(&cancelled)?;
+                    check_budget(cancelled, work)?;
                     let curve = self
                         .curve(*id)
                         .ok_or_else(|| Error("Missing boundary curve".into()))?;
-                    let samples = sample_curve(self, curve, self.resolution)?;
+                    let samples =
+                        sample_curve_context(self, curve, self.resolution, cancelled, work)?;
                     ensure(
                         mesh.positions.len() - start + samples.len() - 1 <= MAX_BOUNDARY_SAMPLES,
                         "Piece boundary sample limit exceeded",
                     )?;
                     vertex_for_point.insert(curve.start, mesh.positions.len());
                     for &(t, point) in samples.iter().take(samples.len() - 1) {
+                        check_budget(cancelled, work)?;
                         let vertex = mesh.positions.len();
                         mesh.positions.push(piece.placement.transform(point));
                         mesh.uv.push(point);
@@ -246,7 +281,7 @@ impl Project {
                 "Mesh vertex limit exceeded",
             )?;
             for id in piece.boundary_loops().flatten() {
-                check_cancel(&cancelled)?;
+                check_budget(cancelled, work)?;
                 let curve = self
                     .curve(*id)
                     .ok_or_else(|| Error("Missing boundary curve".into()))?;
@@ -257,15 +292,19 @@ impl Project {
                     vertex: vertex_for_point[&curve.end],
                 });
             }
-            let flat: Vec<f64> = mesh.uv[start..].iter().flatten().copied().collect();
-            let indices = earcutr::earcut(&flat, &holes, 2)
-                .map_err(|error| Error(format!("Triangulation failed: {error}")))?;
+            let mut flat = Vec::with_capacity(2 * (mesh.uv.len() - start));
+            for uv in &mesh.uv[start..] {
+                check_budget(cancelled, work)?;
+                flat.extend(*uv);
+            }
+            let indices = triangulate(&flat, &holes, cancelled, work)?;
             ensure(
                 indices.len() >= 3 && indices.len() % 3 == 0,
                 "Triangulation produced no valid faces",
             )?;
             let triangle_start = mesh.triangles.len();
             for triangle in indices.chunks_exact(3) {
+                check_budget(cancelled, work)?;
                 let mut triangle = [
                     start + triangle[0],
                     start + triangle[1],
@@ -286,16 +325,22 @@ impl Project {
                 }
                 mesh.triangles.push(triangle);
             }
-            include_collinear_vertices(&mut mesh, start, triangle_start)?;
+            include_collinear_vertices(&mut mesh, start, triangle_start, cancelled, work)?;
         }
-        refine(self, &mut mesh, &cancelled)?;
+        refine(self, &mut mesh, cancelled, work)?;
         for seam in &self.seams {
-            check_cancel(&cancelled)?;
-            append_stitches(&mesh.boundary, seam, &mut mesh.stitches)?;
+            check_budget(cancelled, work)?;
+            append_stitches(&mesh.boundary, seam, &mut mesh.stitches, || {
+                check_budget(cancelled, work)
+            })?;
         }
-        self.append_sewing_groups(&mut mesh, &cancelled)?;
-        check_cancel(&cancelled)?;
-        mesh.validate()?;
+        self.append_sewing_groups(&mut mesh, cancelled, work)?;
+        check_budget(cancelled, work)?;
+        mesh.validate_context(work)?;
+        check_budget(cancelled, work)?;
+        if let Some(work) = work {
+            work.check()?;
+        }
         Ok(mesh)
     }
 
@@ -312,19 +357,82 @@ impl Project {
 }
 
 // Interior flips improve membrane conditioning without moving authored boundary samples.
-fn check_cancel(cancelled: &impl Fn() -> bool) -> Result<()> {
+fn charge(work: Option<&crate::offset::Work<'_>>) -> Result<()> {
+    work.map_or(Ok(()), |work| work.step())
+}
+
+type SweepEdge = (f64, f64, f64, f64, usize);
+
+fn sweep_edges(
+    polygon: &[[f64; 2]],
+    work: Option<&crate::offset::Work<'_>>,
+) -> Result<Vec<SweepEdge>> {
+    let mut edges = Vec::with_capacity(polygon.len());
+    for i in 0..polygon.len() {
+        charge(work)?;
+        let (a, b) = (polygon[i], polygon[(i + 1) % polygon.len()]);
+        edges.push((
+            a[0].min(b[0]),
+            a[0].max(b[0]),
+            a[1].min(b[1]),
+            a[1].max(b[1]),
+            i,
+        ));
+    }
+    earcutr::sort_by_with_control(&mut edges, |a, b| a.0.total_cmp(&b.0), || charge(work))?;
+    Ok(edges)
+}
+fn check_budget(
+    cancelled: &dyn Fn() -> bool,
+    work: Option<&crate::offset::Work<'_>>,
+) -> Result<()> {
+    charge(work)?;
+    check_cancel(cancelled)
+}
+
+fn check_cancel(cancelled: &(impl Fn() -> bool + ?Sized)) -> Result<()> {
     ensure(
         !cancelled(),
         "Meshing cancelled; previous construction retained",
     )
 }
 
-fn improve_triangle_quality(mesh: &mut Mesh, cancelled: &impl Fn() -> bool) -> Result<()> {
+pub(crate) fn triangulate(
+    flat: &[f64],
+    holes: &[usize],
+    cancelled: &dyn Fn() -> bool,
+    work: Option<&crate::offset::Work<'_>>,
+) -> Result<Vec<usize>> {
+    check_cancel(cancelled)?;
+    if let Some(work) = work {
+        work.check()?;
+    }
+    let indices = earcutr::earcut_with_control(flat, holes, 2, || check_budget(cancelled, work))
+        .map_err(|error| match error {
+            earcutr::ControlledError::Control(error) => error,
+            earcutr::ControlledError::Triangulation(error) => {
+                Error(format!("Triangulation failed: {error}"))
+            }
+        })?;
+    check_cancel(cancelled)?;
+    if let Some(work) = work {
+        work.check()?;
+    }
+    Ok(indices)
+}
+
+fn improve_triangle_quality(
+    mesh: &mut Mesh,
+    cancelled: &dyn Fn() -> bool,
+    work: Option<&crate::offset::Work<'_>>,
+) -> Result<()> {
     for _ in 0..24 {
-        check_cancel(cancelled)?;
+        check_budget(cancelled, work)?;
         let mut edges: BTreeMap<(usize, usize), Vec<(usize, usize)>> = BTreeMap::new();
         for (index, triangle) in mesh.triangles.iter().enumerate() {
+            check_budget(cancelled, work)?;
             for i in 0..3 {
+                check_budget(cancelled, work)?;
                 let (a, b, opposite) = (triangle[i], triangle[(i + 1) % 3], triangle[(i + 2) % 3]);
                 edges
                     .entry((a.min(b), a.max(b)))
@@ -334,7 +442,7 @@ fn improve_triangle_quality(mesh: &mut Mesh, cancelled: &impl Fn() -> bool) -> R
         }
         let mut touched = BTreeSet::new();
         for ((a, b), adjacent) in edges {
-            check_cancel(cancelled)?;
+            check_budget(cancelled, work)?;
             let [(first, c), (second, d)] = adjacent.as_slice() else {
                 continue;
             };
@@ -378,10 +486,12 @@ fn improve_triangle_quality(mesh: &mut Mesh, cancelled: &impl Fn() -> bool) -> R
     Ok(())
 }
 
-pub(crate) fn sample_curve(
+fn sample_curve_context(
     project: &Project,
     curve: &Curve,
     spacing: f64,
+    cancelled: &dyn Fn() -> bool,
+    work: Option<&crate::offset::Work<'_>>,
 ) -> Result<Vec<(f64, [f64; 2])>> {
     let a = project
         .point(curve.start)
@@ -393,7 +503,7 @@ pub(crate) fn sample_curve(
         .position;
     let mut samples = vec![(0.0, a)];
     if let Some([c, d]) = curve.controls {
-        flatten_cubic([a, c, d, b], [0.0, 1.0], spacing, 0, &mut samples)?;
+        return crate::offset::sample_cubic_certified([a, c, d, b], spacing, cancelled, work);
     } else {
         let steps = (distance(a, b) / spacing).ceil().max(1.0) as usize;
         ensure(
@@ -401,6 +511,7 @@ pub(crate) fn sample_curve(
             "Curve tessellation sample limit exceeded",
         )?;
         for step in 1..=steps {
+            check_budget(cancelled, work)?;
             let t = step as f64 / steps as f64;
             samples.push((t, [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]));
         }
@@ -408,62 +519,29 @@ pub(crate) fn sample_curve(
     Ok(samples)
 }
 
-fn flatten_cubic(
-    p: [[f64; 2]; 4],
-    range: [f64; 2],
-    spacing: f64,
-    depth: u32,
-    samples: &mut Vec<(f64, [f64; 2])>,
-) -> Result<()> {
-    ensure(
-        samples.len() < MAX_BOUNDARY_SAMPLES,
-        "Cubic tessellation sample limit exceeded",
-    )?;
-    let flatness =
-        point_segment_distance(p[1], p[0], p[3]).max(point_segment_distance(p[2], p[0], p[3]));
-    if distance(p[0], p[3]) <= spacing && flatness <= spacing * 0.01 {
-        samples.push((range[1], p[3]));
-        return Ok(());
-    }
-    ensure(
-        depth < 20,
-        "Cubic could not be tessellated within supported tolerance",
-    )?;
-    let ab = midpoint(p[0], p[1]);
-    let bc = midpoint(p[1], p[2]);
-    let cd = midpoint(p[2], p[3]);
-    let abc = midpoint(ab, bc);
-    let bcd = midpoint(bc, cd);
-    let center = midpoint(abc, bcd);
-    let middle = (range[0] + range[1]) * 0.5;
-    flatten_cubic(
-        [p[0], ab, abc, center],
-        [range[0], middle],
-        spacing,
-        depth + 1,
-        samples,
-    )?;
-    flatten_cubic(
-        [center, bcd, cd, p[3]],
-        [middle, range[1]],
-        spacing,
-        depth + 1,
-        samples,
-    )
-}
-
 const INTERNAL_CLEARANCE: f64 = 1.0e-6;
 const INTERNAL_FLATNESS: f64 = 1.0e-7;
 const MAX_CONTAINMENT_WORK: usize = 1_000_000;
 
-pub(crate) struct ContainmentWork(usize);
+pub(crate) struct ContainmentWork<'a>(usize, Option<&'a crate::offset::Work<'a>>);
 
-impl ContainmentWork {
+impl<'a> ContainmentWork<'a> {
     pub(crate) fn new() -> Self {
-        Self(MAX_CONTAINMENT_WORK)
+        Self(MAX_CONTAINMENT_WORK, None)
+    }
+
+    pub(crate) fn for_offset(work: &'a crate::offset::Work<'a>) -> Self {
+        Self(MAX_CONTAINMENT_WORK, Some(work))
+    }
+    pub(crate) fn request_work(&self) -> Option<&'a crate::offset::Work<'a>> {
+        self.1
+    }
+    pub(crate) fn charge_request(&self) -> Result<()> {
+        self.1.map_or(Ok(()), |work| work.step())
     }
 
     fn step(&mut self) -> Result<()> {
+        self.charge_request()?;
         ensure(self.0 > 0, "Internal containment work budget exhausted")?;
         self.0 -= 1;
         Ok(())
@@ -479,26 +557,25 @@ pub(crate) fn validate_internal_segments(
         return Ok(());
     };
     let mut validate = || -> Result<()> {
-        let scale = piece
-            .boundary
-            .iter()
-            .chain(&piece.internal_curves)
-            .map(|id| project.curve(*id).unwrap())
-            .flat_map(|curve| {
-                [
-                    project.point(curve.start).unwrap().position,
-                    project.point(curve.end).unwrap().position,
-                ]
-                .into_iter()
-                .chain(curve.controls.into_iter().flatten())
-            })
-            .flatten()
-            .map(f64::abs)
-            .fold(1.0, f64::max);
+        let mut scale = 1_f64;
+        for id in piece.boundary.iter().chain(&piece.internal_curves) {
+            work.charge_request()?;
+            let curve = project.curve(*id).unwrap();
+            for point in [
+                project.point(curve.start).unwrap().position,
+                project.point(curve.end).unwrap().position,
+            ]
+            .into_iter()
+            .chain(curve.controls.into_iter().flatten())
+            {
+                scale = point.into_iter().map(f64::abs).fold(scale, f64::max);
+            }
+        }
         let reserve = (256.0 * f64::EPSILON * scale).next_up();
         let clearance = (INTERNAL_CLEARANCE + INTERNAL_FLATNESS + reserve).next_up();
         let mut polygon = Vec::new();
         for id in &piece.boundary {
+            work.charge_request()?;
             let curve = project.curve(*id).unwrap();
             let a = project.point(curve.start).unwrap().position;
             let b = project.point(curve.end).unwrap().position;
@@ -519,20 +596,7 @@ pub(crate) fn validate_internal_segments(
         polygon.pop(); // The ordered boundary repeats its first endpoint.
         let n = polygon.len();
         let tube = (2.0 * (INTERNAL_FLATNESS + reserve)).next_up();
-        let mut edges: Vec<_> = (0..n)
-            .map(|i| {
-                let a = polygon[i];
-                let b = polygon[(i + 1) % n];
-                (
-                    a[0].min(b[0]),
-                    a[0].max(b[0]),
-                    a[1].min(b[1]),
-                    a[1].max(b[1]),
-                    i,
-                )
-            })
-            .collect();
-        edges.sort_by(|a, b| a.0.total_cmp(&b.0));
+        let edges = sweep_edges(&polygon, work.request_work())?;
         for (position, edge) in edges.iter().enumerate() {
             work.step()?;
             let i = edge.4;
@@ -571,6 +635,7 @@ pub(crate) fn validate_internal_segments(
             }
         }
         for id in &piece.internal_curves {
+            work.charge_request()?;
             let curve = project.curve(*id).unwrap();
             let a = project.point(curve.start).unwrap().position;
             let b = project.point(curve.end).unwrap().position;
@@ -611,11 +676,19 @@ fn internal_segment_inside(
     Ok(winding != 0)
 }
 
-fn straight_polygon(project: &Project, piece: &Piece) -> Result<Vec<[f64; 2]>> {
-    straight_loop(project, &piece.boundary)
+fn straight_polygon(
+    project: &Project,
+    piece: &Piece,
+    work: Option<&crate::offset::Work<'_>>,
+) -> Result<Vec<[f64; 2]>> {
+    straight_loop(project, &piece.boundary, work)
 }
 
-fn straight_loop(project: &Project, boundary: &[Id]) -> Result<Vec<[f64; 2]>> {
+fn straight_loop(
+    project: &Project,
+    boundary: &[Id],
+    work: Option<&crate::offset::Work<'_>>,
+) -> Result<Vec<[f64; 2]>> {
     ensure(
         boundary.len() >= 3,
         "Straight contour needs at least three edges",
@@ -624,6 +697,7 @@ fn straight_loop(project: &Project, boundary: &[Id]) -> Result<Vec<[f64; 2]>> {
     let mut curves = BTreeSet::new();
     let mut polygon = Vec::with_capacity(boundary.len());
     for (index, id) in boundary.iter().enumerate() {
+        charge(work)?;
         let curve = project
             .curve(*id)
             .ok_or_else(|| Error("Missing straight boundary curve".into()))?;
@@ -653,7 +727,7 @@ pub(crate) fn prepare_hole(
     vertices: &mut [[f64; 2]],
     work: &mut ContainmentWork,
 ) -> Result<()> {
-    let outer = straight_polygon(project, piece)?;
+    let outer = straight_polygon(project, piece, work.request_work())?;
     let (outer_area, hole_area) = validate_hole_domain(project, piece, &outer, vertices, work)?;
     if outer_area.signum() == hole_area.signum() {
         vertices[1..].reverse();
@@ -666,8 +740,8 @@ pub(crate) fn validate_holed_piece(
     piece: &Piece,
     work: &mut ContainmentWork,
 ) -> Result<()> {
-    let outer = straight_polygon(project, piece)?;
-    let hole = straight_loop(project, &piece.holes[0].boundary)?;
+    let outer = straight_polygon(project, piece, work.request_work())?;
+    let hole = straight_loop(project, &piece.holes[0].boundary, work.request_work())?;
     let (outer_area, hole_area) = validate_hole_domain(project, piece, &outer, &hole, work)?;
     ensure(
         outer_area.signum() != hole_area.signum(),
@@ -688,18 +762,18 @@ fn validate_hole_domain(
             "A holed piece needs 3 to 4096 straight edges in each loop",
         )?;
         for vertex in polygon {
+            work.charge_request()?;
             crate::document::validate_coordinates(vertex)?;
         }
     }
-    let mut scale = outer
-        .iter()
-        .chain(hole)
-        .flatten()
-        .copied()
-        .map(f64::abs)
-        .fold(1.0, f64::max);
+    let mut scale = 1_f64;
+    for point in outer.iter().chain(hole) {
+        work.charge_request()?;
+        scale = point.iter().copied().map(f64::abs).fold(scale, f64::max);
+    }
     let mut annotations = Vec::new();
     for id in &piece.internal_curves {
+        work.charge_request()?;
         let curve = project
             .curve(*id)
             .ok_or_else(|| Error("Missing hole owner annotation".into()))?;
@@ -762,26 +836,16 @@ fn validate_straight_loop(
 ) -> Result<f64> {
     let n = polygon.len();
     // Relative coordinates retain small areas under large authoring translations.
-    let area2: f64 = (1..n - 1)
-        .map(|i| cross(polygon[0], polygon[i], polygon[i + 1]))
-        .sum();
+    let mut area2 = 0.;
+    for i in 1..n - 1 {
+        work.charge_request()?;
+        area2 += cross(polygon[0], polygon[i], polygon[i + 1]);
+    }
     ensure(
         area2.abs() > 1.0e-10,
         "Pattern loop has zero or near-zero area",
     )?;
-    let mut edges: Vec<_> = (0..n)
-        .map(|i| {
-            let (a, b) = (polygon[i], polygon[(i + 1) % n]);
-            (
-                a[0].min(b[0]),
-                a[0].max(b[0]),
-                a[1].min(b[1]),
-                a[1].max(b[1]),
-                i,
-            )
-        })
-        .collect();
-    edges.sort_by(|a, b| a.0.total_cmp(&b.0));
+    let edges = sweep_edges(polygon, work.request_work())?;
     for (position, edge) in edges.iter().enumerate() {
         work.step()?;
         let i = edge.4;
@@ -871,7 +935,7 @@ pub(crate) fn validate_straight_cut(
             "Cut t must be strictly inside the curve",
         )?;
     }
-    let polygon = straight_polygon(project, piece)?;
+    let polygon = straight_polygon(project, piece, work.request_work())?;
     let mut scale = polygon
         .iter()
         .flatten()
@@ -994,8 +1058,8 @@ pub(crate) fn partition_cut_annotations(
     work: &mut ContainmentWork,
 ) -> Result<(Vec<Id>, Vec<Id>)> {
     let polygons = [
-        straight_polygon(project, retained)?,
-        straight_polygon(project, child)?,
+        straight_polygon(project, retained, work.request_work())?,
+        straight_polygon(project, child, work.request_work())?,
     ];
     let clearance = (INTERNAL_CLEARANCE + INTERNAL_FLATNESS + reserve).next_up();
     let (mut kept, mut moved) = (Vec::new(), Vec::new());
@@ -1072,15 +1136,27 @@ fn segment_distance(a: [f64; 2], b: [f64; 2], c: [f64; 2], d: [f64; 2]) -> f64 {
     }
 }
 
-pub(crate) fn validate_contour(project: &Project, piece: &Piece) -> Result<()> {
+pub(crate) fn validate_contour_with_work(
+    project: &Project,
+    piece: &Piece,
+    work: &mut ContainmentWork<'_>,
+) -> Result<()> {
     // shortcut: cubic intersections use bounded polyline tolerance; use exact curve predicates before precision CAD editing.
     let mut polygon = Vec::new();
     for id in &piece.boundary {
+        work.charge_request()?;
         let curve = project
             .curve(*id)
             .ok_or_else(|| Error("Missing boundary curve".into()))?;
-        let samples = sample_curve(project, curve, project.resolution.min(0.02))?;
+        let samples = sample_curve_context(
+            project,
+            curve,
+            project.resolution.min(0.02),
+            &|| false,
+            work.request_work(),
+        )?;
         for pair in samples.windows(2) {
+            work.charge_request()?;
             ensure(
                 distance(pair[0].1, pair[1].1) > 1.0e-9,
                 "Boundary has a degenerate edge",
@@ -1100,27 +1176,18 @@ pub(crate) fn validate_contour(project: &Project, piece: &Piece) -> Result<()> {
         )?;
     }
     let n = polygon.len();
-    let area2: f64 = (0..n)
-        .map(|i| polygon[i][0] * polygon[(i + 1) % n][1] - polygon[(i + 1) % n][0] * polygon[i][1])
-        .sum();
+    let mut area2 = 0.;
+    for i in 0..n {
+        work.charge_request()?;
+        area2 += polygon[i][0] * polygon[(i + 1) % n][1] - polygon[(i + 1) % n][0] * polygon[i][1];
+    }
     ensure(area2.abs() > 1.0e-10, "Pattern has zero or near-zero area")?;
     // Bounding-box sweep avoids testing every pair on ordinary refined contours.
-    let mut edges: Vec<_> = (0..n)
-        .map(|i| {
-            let a = polygon[i];
-            let b = polygon[(i + 1) % n];
-            (
-                a[0].min(b[0]),
-                a[0].max(b[0]),
-                a[1].min(b[1]),
-                a[1].max(b[1]),
-                i,
-            )
-        })
-        .collect();
-    edges.sort_by(|a, b| a.0.total_cmp(&b.0));
+    let edges = sweep_edges(&polygon, work.request_work())?;
     for (position, edge) in edges.iter().enumerate() {
+        work.charge_request()?;
         for other in edges.iter().skip(position + 1) {
+            work.charge_request()?;
             if other.0 > edge.1 + 1.0e-12 {
                 break;
             }
@@ -1145,24 +1212,36 @@ pub(crate) fn validate_contour(project: &Project, piece: &Piece) -> Result<()> {
     Ok(())
 }
 
-fn include_collinear_vertices(mesh: &mut Mesh, start: usize, triangle_start: usize) -> Result<()> {
-    let mut used: BTreeSet<usize> = mesh.triangles[triangle_start..]
-        .iter()
-        .flatten()
-        .copied()
-        .collect();
-    let mut edges: BTreeSet<_> = mesh.triangles[triangle_start..]
-        .iter()
-        .flat_map(|triangle| (0..3).map(|i| edge_key(triangle[i], triangle[(i + 1) % 3])))
-        .collect();
+fn include_collinear_vertices(
+    mesh: &mut Mesh,
+    start: usize,
+    triangle_start: usize,
+    cancelled: &dyn Fn() -> bool,
+    work: Option<&crate::offset::Work<'_>>,
+) -> Result<()> {
+    let mut used = BTreeSet::new();
+    let mut edges = BTreeSet::new();
+    for triangle in &mesh.triangles[triangle_start..] {
+        check_budget(cancelled, work)?;
+        used.extend(triangle);
+        edges.extend((0..3).map(|i| edge_key(triangle[i], triangle[(i + 1) % 3])));
+    }
     let mut samples = BTreeMap::<Id, Vec<BoundarySample>>::new();
-    for &sample in mesh.boundary.iter().filter(|sample| sample.vertex >= start) {
-        samples.entry(sample.curve).or_default().push(sample);
+    for &sample in &mesh.boundary {
+        check_budget(cancelled, work)?;
+        if sample.vertex >= start {
+            samples.entry(sample.curve).or_default().push(sample);
+        }
     }
     let mut neighbors = BTreeMap::<usize, BTreeSet<usize>>::new();
     for samples in samples.values_mut() {
-        samples.sort_by(|a, b| a.t.total_cmp(&b.t));
+        earcutr::sort_by_with_control(
+            samples,
+            |a, b| a.t.total_cmp(&b.t),
+            || check_budget(cancelled, work),
+        )?;
         for pair in samples.windows(2) {
+            check_budget(cancelled, work)?;
             neighbors
                 .entry(pair[0].vertex)
                 .or_default()
@@ -1174,6 +1253,7 @@ fn include_collinear_vertices(mesh: &mut Mesh, start: usize, triangle_start: usi
         }
     }
     for vertex in start..mesh.positions.len() {
+        check_budget(cancelled, work)?;
         if used.contains(&vertex)
             && neighbors[&vertex]
                 .iter()
@@ -1185,7 +1265,9 @@ fn include_collinear_vertices(mesh: &mut Mesh, start: usize, triangle_start: usi
         let mut found = None;
         'triangles: for (index, triangle) in mesh.triangles.iter().enumerate().skip(triangle_start)
         {
+            check_budget(cancelled, work)?;
             for edge in 0..3 {
+                check_budget(cancelled, work)?;
                 let (a, b) = (triangle[edge], triangle[(edge + 1) % 3]);
                 if point_segment_distance(point, mesh.uv[a], mesh.uv[b]) < 1.0e-10
                     && distance(point, mesh.uv[a]) > 1.0e-9
@@ -1199,6 +1281,7 @@ fn include_collinear_vertices(mesh: &mut Mesh, start: usize, triangle_start: usi
         if let Some((_, a, b, _)) = found {
             // A hole bridge can use a collinear vertex while omitting it from its contour edge.
             for index in triangle_start..mesh.triangles.len() {
+                check_budget(cancelled, work)?;
                 let triangle = mesh.triangles[index];
                 if let Some(edge) = (0..3).find(|&edge| {
                     edge_key(triangle[edge], triangle[(edge + 1) % 3]) == edge_key(a, b)
@@ -1225,28 +1308,35 @@ fn include_collinear_vertices(mesh: &mut Mesh, start: usize, triangle_start: usi
             "Triangulation lost a boundary vertex",
         )?;
     }
-    ensure(
-        neighbors.iter().all(|(&vertex, others)| {
-            others
-                .iter()
-                .all(|&other| edges.contains(&edge_key(vertex, other)))
-        }),
-        "Triangulation lost an authored boundary edge",
-    )?;
+    for (&vertex, others) in &neighbors {
+        for &other in others {
+            check_budget(cancelled, work)?;
+            ensure(
+                edges.contains(&edge_key(vertex, other)),
+                "Triangulation lost an authored boundary edge",
+            )?;
+        }
+    }
     Ok(())
 }
 
-fn refine(project: &Project, mesh: &mut Mesh, cancelled: &impl Fn() -> bool) -> Result<()> {
+fn refine(
+    project: &Project,
+    mesh: &mut Mesh,
+    cancelled: &dyn Fn() -> bool,
+    work: Option<&crate::offset::Work<'_>>,
+) -> Result<()> {
     for _ in 0..20 {
-        check_cancel(cancelled)?;
+        check_budget(cancelled, work)?;
         // Remove slivers before subdivision multiplies their long edges.
-        improve_triangle_quality(mesh, cancelled)?;
+        improve_triangle_quality(mesh, cancelled, work)?;
         let mut split = BTreeMap::new();
         for &[a, b, c] in &mesh.triangles {
-            check_cancel(cancelled)?;
+            check_budget(cancelled, work)?;
             for [a, b] in [[a, b], [b, c], [c, a]] {
+                check_budget(cancelled, work)?;
                 if distance(mesh.uv[a], mesh.uv[b]) > project.resolution * 1.4 {
-                    split.entry(edge_key(a, b)).or_insert(0);
+                    enqueue_refinement_edge(&mut split, edge_key(a, b), mesh.piece_ids[a], work)?;
                 }
             }
         }
@@ -1260,15 +1350,22 @@ fn refine(project: &Project, mesh: &mut Mesh, cancelled: &impl Fn() -> bool) -> 
         let mut boundary_edges = BTreeMap::new();
         let mut samples: BTreeMap<Id, Vec<BoundarySample>> = BTreeMap::new();
         for &sample in &mesh.boundary {
+            check_budget(cancelled, work)?;
             samples.entry(sample.curve).or_default().push(sample);
         }
         for list in samples.values_mut() {
-            list.sort_by(|a, b| a.t.total_cmp(&b.t));
+            earcutr::sort_by_with_control(
+                list,
+                |a, b| a.t.total_cmp(&b.t),
+                || check_budget(cancelled, work),
+            )?;
             for pair in list.windows(2) {
+                check_budget(cancelled, work)?;
                 boundary_edges.insert(edge_key(pair[0].vertex, pair[1].vertex), (pair[0], pair[1]));
             }
         }
         for (&(a, b), vertex) in &mut split {
+            check_budget(cancelled, work)?;
             *vertex = mesh.positions.len();
             let piece = mesh.piece_ids[a];
             let uv = if let Some((a, b)) = boundary_edges.get(&(a, b)) {
@@ -1296,7 +1393,7 @@ fn refine(project: &Project, mesh: &mut Mesh, cancelled: &impl Fn() -> bool) -> 
         }
         let mut triangles = Vec::with_capacity(mesh.triangles.len() * 2);
         for &[a, b, c] in &mesh.triangles {
-            check_cancel(cancelled)?;
+            check_budget(cancelled, work)?;
             let ab = split.get(&edge_key(a, b)).copied();
             let bc = split.get(&edge_key(b, c)).copied();
             let ca = split.get(&edge_key(c, a)).copied();
@@ -1322,79 +1419,135 @@ fn refine(project: &Project, mesh: &mut Mesh, cancelled: &impl Fn() -> bool) -> 
     Err(Error("Refinement did not converge within 20 levels".into()))
 }
 
+fn enqueue_refinement_edge(
+    split: &mut BTreeMap<(usize, usize), usize>,
+    edge: (usize, usize),
+    piece: Id,
+    work: Option<&crate::offset::Work<'_>>,
+) -> Result<()> {
+    charge(work)?;
+    if work.is_some() && split.len() >= MAX_PENDING_GEOMETRY_TASKS && !split.contains_key(&edge) {
+        return Err(Error(format!(
+            "OffsetPendingTaskBudgetExceeded: piece {piece} refinement edge {edge:?} exceeds 65536 pending geometry tasks"
+        )));
+    }
+    split.entry(edge).or_insert(0);
+    Ok(())
+}
+
 fn append_stitches(
     boundary: &[BoundarySample],
     seam: &Seam,
     stitches: &mut Vec<Stitch>,
+    mut check: impl FnMut() -> Result<()>,
 ) -> Result<()> {
-    let mut a: Vec<_> = boundary
-        .iter()
-        .copied()
-        .filter(|sample| sample.curve == seam.a.curve)
-        .collect();
-    let mut b: Vec<_> = boundary
-        .iter()
-        .copied()
-        .filter(|sample| sample.curve == seam.b.curve)
-        .collect();
-    a.sort_by(|a, b| a.t.total_cmp(&b.t));
-    b.sort_by(|a, b| a.t.total_cmp(&b.t));
+    let (mut a, mut b) = (Vec::new(), Vec::new());
+    for &sample in boundary {
+        check()?;
+        if sample.curve == seam.a.curve {
+            a.push(sample);
+        }
+        if sample.curve == seam.b.curve {
+            b.push(sample);
+        }
+    }
+    earcutr::sort_by_with_control(&mut a, |a, b| a.t.total_cmp(&b.t), &mut check)?;
+    earcutr::sort_by_with_control(&mut b, |a, b| a.t.total_cmp(&b.t), &mut check)?;
     ensure(a.len() >= 2 && b.len() >= 2, "Seam has no mesh boundary")?;
-    let mut fractions: Vec<f64> = seam.correspondence.iter().map(|pair| pair[0]).collect();
+    let mut fractions = Vec::new();
+    for pair in &seam.correspondence {
+        check()?;
+        fractions.push(pair[0]);
+    }
     for sample in &a {
+        check()?;
         let fraction = (sample.t - seam.a.t0) / (seam.a.t1 - seam.a.t0);
         if (0.0..=1.0).contains(&fraction) {
             fractions.push(fraction);
         }
     }
     for sample in &b {
+        check()?;
         let fraction = (sample.t - seam.b.t0) / (seam.b.t1 - seam.b.t0);
         if (0.0..=1.0).contains(&fraction) {
-            fractions.push(correspondence(&seam.correspondence, fraction, 1));
+            fractions.push(correspondence_with_control(
+                &seam.correspondence,
+                fraction,
+                1,
+                &mut check,
+            )?);
         }
     }
-    fractions.sort_by(f64::total_cmp);
-    fractions.dedup_by(|a, b| (*a - *b).abs() < 1.0e-10);
+    earcutr::sort_by_with_control(&mut fractions, f64::total_cmp, &mut check)?;
+    let mut retained = 0;
+    for i in 0..fractions.len() {
+        check()?;
+        let duplicate = retained > 0 && (fractions[i] - fractions[retained - 1]).abs() < 1.0e-10;
+        if !duplicate {
+            fractions[retained] = fractions[i];
+            retained += 1;
+        }
+    }
+    fractions.truncate(retained);
     for fraction in fractions {
-        let paired = correspondence(&seam.correspondence, fraction, 0);
+        check()?;
+        let paired = correspondence_with_control(&seam.correspondence, fraction, 0, &mut check)?;
         stitches.push(Stitch {
             seam: seam.id,
-            a: weighted_sample(&a, seam.a, fraction)?,
-            b: weighted_sample(&b, seam.b, paired)?,
+            a: weighted_sample(&a, seam.a, fraction, &mut check)?,
+            b: weighted_sample(&b, seam.b, paired, &mut check)?,
         });
     }
     Ok(())
 }
 
-pub(crate) fn correspondence(pairs: &[[f64; 2]], fraction: f64, source: usize) -> f64 {
+pub(crate) fn correspondence_with_control(
+    pairs: &[[f64; 2]],
+    fraction: f64,
+    source: usize,
+    mut check: impl FnMut() -> Result<()>,
+) -> Result<f64> {
     for pair in pairs.windows(2) {
+        check()?;
         if fraction <= pair[1][source] {
             let t = (fraction - pair[0][source]) / (pair[1][source] - pair[0][source]);
-            return pair[0][1 - source] + (pair[1][1 - source] - pair[0][1 - source]) * t;
+            return Ok(pair[0][1 - source] + (pair[1][1 - source] - pair[0][1 - source]) * t);
         }
     }
-    1.0
+    Ok(1.0)
 }
 
 fn weighted_sample(
     samples: &[BoundarySample],
     interval: CurveInterval,
     fraction: f64,
+    check: &mut dyn FnMut() -> Result<()>,
 ) -> Result<WeightedVertex> {
     let t = interval.parameter(fraction).clamp(0.0, 1.0);
-    weighted_at_t(samples, t, 1.0e-10)
+    weighted_at_t(samples, t, 1.0e-10, check)
 }
 
+#[cfg(test)]
 pub(crate) fn weighted_sample_at_t(samples: &[BoundarySample], t: f64) -> Result<WeightedVertex> {
-    weighted_at_t(samples, t, 0.)
+    weighted_sample_at_t_with_control(samples, t, || Ok(()))
+}
+
+pub(crate) fn weighted_sample_at_t_with_control(
+    samples: &[BoundarySample],
+    t: f64,
+    mut check: impl FnMut() -> Result<()>,
+) -> Result<WeightedVertex> {
+    weighted_at_t(samples, t, 0., &mut check)
 }
 
 fn weighted_at_t(
     samples: &[BoundarySample],
     t: f64,
     snap_tolerance: f64,
+    check: &mut dyn FnMut() -> Result<()>,
 ) -> Result<WeightedVertex> {
     for sample in samples {
+        check()?;
         if sample.t == t || (sample.t - t).abs() < snap_tolerance {
             return Ok(WeightedVertex {
                 vertices: [sample.vertex; 2],
@@ -1403,6 +1556,7 @@ fn weighted_at_t(
         }
     }
     for pair in samples.windows(2) {
+        check()?;
         if pair[0].t <= t && t <= pair[1].t {
             return Ok(WeightedVertex {
                 vertices: [pair[0].vertex, pair[1].vertex],
@@ -1455,6 +1609,222 @@ fn segments_intersect(a: [f64; 2], b: [f64; 2], c: [f64; 2], d: [f64; 2]) -> boo
 #[cfg(test)]
 mod quality_tests {
     use super::*;
+
+    #[test]
+    fn refinement_refuses_new_pending_tasks_before_enqueue_without_changing_ordinary_mesh_policy() {
+        let mut split: BTreeMap<_, _> = (0..MAX_PENDING_GEOMETRY_TASKS)
+            .map(|i| ((i, i + 1), 0))
+            .collect();
+        let work = crate::offset::Work::new(&|| false);
+        enqueue_refinement_edge(&mut split, (7, 8), 42, Some(&work)).unwrap();
+        let edge = (MAX_PENDING_GEOMETRY_TASKS, MAX_PENDING_GEOMETRY_TASKS + 1);
+        let error = enqueue_refinement_edge(&mut split, edge, 42, Some(&work)).unwrap_err();
+        assert!(
+            error
+                .to_string()
+                .starts_with("OffsetPendingTaskBudgetExceeded: piece 42")
+        );
+        assert_eq!(split.len(), MAX_PENDING_GEOMETRY_TASKS);
+        assert!(!split.contains_key(&edge));
+        enqueue_refinement_edge(&mut split, edge, 42, None).unwrap();
+        assert_eq!(split.len(), MAX_PENDING_GEOMETRY_TASKS + 1);
+        let mut empty = BTreeMap::new();
+        let cancelled = crate::offset::Work::new(&|| true);
+        assert!(
+            enqueue_refinement_edge(&mut empty, (0, 1), 42, Some(&cancelled))
+                .unwrap_err()
+                .to_string()
+                .starts_with("OffsetCancelled")
+        );
+        assert!(empty.is_empty());
+    }
+
+    #[test]
+    fn seam_candidate_scans_cancel_and_preserve_independent_correspondence() {
+        let samples: Vec<_> = (0..1024)
+            .map(|i| BoundarySample {
+                piece: 1,
+                curve: 10,
+                t: i as f64 / 1023.,
+                vertex: i,
+            })
+            .collect();
+        let mut calls = 0;
+        let error = weighted_sample_at_t_with_control(&samples, 0.9999, || {
+            calls += 1;
+            if calls == 513 {
+                Err(Error("Stopped weighted candidate".into()))
+            } else {
+                Ok(())
+            }
+        })
+        .unwrap_err();
+        assert_eq!(calls, 513);
+        assert_eq!(error.0, "Stopped weighted candidate");
+        let pairs: Vec<_> = (0..1024).map(|i| [i as f64 / 1023.; 2]).collect();
+        let mut calls = 0;
+        let error = correspondence_with_control(&pairs, 0.9999, 0, || {
+            calls += 1;
+            if calls == 513 {
+                Err(Error("Stopped correspondence candidate".into()))
+            } else {
+                Ok(())
+            }
+        })
+        .unwrap_err();
+        assert_eq!(calls, 513);
+        assert_eq!(error.0, "Stopped correspondence candidate");
+
+        let mut boundary = Vec::new();
+        let mut positions = Vec::new();
+        for (curve, times) in [(10, vec![0., 0.25, 0.5, 0.75, 1.]), (20, vec![0., 0.5, 1.])] {
+            for t in times {
+                boundary.push(BoundarySample {
+                    piece: 1,
+                    curve,
+                    t,
+                    vertex: positions.len(),
+                });
+                positions.push([t, 0., 0.]);
+            }
+        }
+        let seam = Seam {
+            id: 30,
+            name: "Original controlled nonlinear seam".into(),
+            a: CurveInterval::full(10),
+            b: CurveInterval::full(20),
+            correspondence: vec![[0., 0.], [0.5, 0.25], [1., 1.]],
+        };
+        let mut stitches = Vec::new();
+        append_stitches(&boundary, &seam, &mut stitches, || Ok(())).unwrap();
+        let expected = [
+            (0., 0.),
+            (0.25, 0.125),
+            (0.5, 0.25),
+            (2. / 3., 0.5),
+            (0.75, 0.625),
+            (1., 1.),
+        ];
+        assert_eq!(stitches.len(), expected.len());
+        for (stitch, (a, b)) in stitches.iter().zip(expected) {
+            assert!((stitch.a.position(&positions)[0] - a).abs() < 1e-12);
+            assert!((stitch.b.position(&positions)[0] - b).abs() < 1e-12);
+        }
+    }
+
+    #[test]
+    fn controlled_triangulation_preserves_upstream_identity_area_and_hole_topology() {
+        let mut curved = vec![0., 0., 0.4, 0.];
+        for i in 1..=40 {
+            let t = i as f64 / 40.;
+            curved.extend([0.4 + 0.3 * t * (1. - t), 0.6 * t]);
+        }
+        curved.extend([0., 0.6]);
+        // Index order comes from unmodified ISC earcutr 0.5.0, solely for regression identity.
+        // Areas and Euler/boundary checks are independent geometric expectations.
+        let fixtures = [
+            (
+                vec![0., 0., 4., 0., 4., 1., 1., 1., 1., 4., 0., 4.],
+                vec![],
+                vec![4, 5, 0, 0, 1, 2, 3, 4, 0, 0, 2, 3],
+                7.,
+                1e-12,
+            ),
+            (
+                vec![
+                    0., 0., 4., 0., 4., 4., 0., 4., 0.5, 0.5, 0.5, 1.5, 1.5, 1.5, 1.5, 0.5, 0.5,
+                    2.5, 0.5, 3.5, 1.5, 3.5, 1.5, 2.5,
+                ],
+                vec![4, 8],
+                vec![
+                    0, 8, 9, 0, 4, 5, 7, 4, 0, 3, 0, 9, 8, 0, 5, 7, 0, 1, 2, 3, 9, 11, 8, 5, 6, 7,
+                    1, 2, 9, 10, 11, 5, 6, 6, 1, 2, 2, 10, 11, 11, 6, 2,
+                ],
+                14.,
+                1e-12,
+            ),
+            (
+                curved,
+                vec![],
+                vec![
+                    41, 42, 0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 8, 8, 9, 10, 10, 11, 12, 12, 13,
+                    14, 14, 15, 16, 16, 17, 18, 18, 19, 20, 20, 21, 22, 22, 23, 24, 24, 25, 26, 26,
+                    27, 28, 28, 29, 30, 30, 31, 32, 32, 33, 34, 34, 35, 36, 36, 37, 38, 38, 39, 40,
+                    40, 41, 0, 0, 2, 4, 4, 6, 8, 8, 10, 12, 12, 14, 16, 16, 18, 20, 20, 22, 24, 24,
+                    26, 28, 28, 30, 32, 32, 34, 36, 36, 38, 40, 40, 0, 4, 4, 8, 12, 12, 16, 20, 20,
+                    24, 28, 28, 32, 36, 36, 40, 4, 4, 12, 20, 20, 28, 36, 36, 4, 20,
+                ],
+                0.27,
+                2e-5,
+            ),
+        ];
+        for (flat, holes, expected, area, tolerance) in fixtures {
+            let triangles = triangulate(&flat, &holes, &|| false, None).unwrap();
+            assert_eq!(triangles, expected);
+            let mut edges = BTreeMap::<_, (usize, i32)>::new();
+            let mut actual_area = 0.;
+            for triangle in triangles.chunks_exact(3) {
+                let [a, b, c] =
+                    std::array::from_fn(|i| [flat[2 * triangle[i]], flat[2 * triangle[i] + 1]]);
+                let area2 = cross(a, b, c);
+                assert!(area2 > 0.);
+                actual_area += area2 * 0.5;
+                for i in 0..3 {
+                    let (a, b) = (triangle[i], triangle[(i + 1) % 3]);
+                    let (count, direction) = edges.entry(edge_key(a, b)).or_default();
+                    *count += 1;
+                    *direction += if a < b { 1 } else { -1 };
+                }
+            }
+            assert!((actual_area - area).abs() < tolerance);
+            assert!(edges.values().all(|&(n, d)| n == 1 || (n == 2 && d == 0)));
+            let vertices = flat.len() / 2;
+            assert_eq!(
+                vertices + triangles.len() / 3 + holes.len(),
+                edges.len() + 1
+            );
+            let mut rings = vec![0];
+            rings.extend(&holes);
+            rings.push(vertices);
+            let expected_boundary: BTreeSet<_> = rings
+                .windows(2)
+                .flat_map(|ring| {
+                    (ring[0]..ring[1])
+                        .map(|i| edge_key(i, if i + 1 == ring[1] { ring[0] } else { i + 1 }))
+                })
+                .collect();
+            assert_eq!(
+                edges
+                    .into_iter()
+                    .filter_map(|(edge, (n, _))| (n == 1).then_some(edge))
+                    .collect::<BTreeSet<_>>(),
+                expected_boundary
+            );
+        }
+    }
+
+    #[test]
+    fn mesh_triangulation_adapter_cancels_internal_work_without_an_offset_counter() {
+        let flat: Vec<_> = (0..192)
+            .flat_map(|i| {
+                let t = std::f64::consts::TAU * i as f64 / 192.;
+                [t.cos(), t.sin()]
+            })
+            .collect();
+        let polls = std::cell::Cell::new(0);
+        let error = triangulate(
+            &flat,
+            &[],
+            &|| {
+                polls.set(polls.get() + 1);
+                polls.get() == 513
+            },
+            None,
+        )
+        .unwrap_err();
+        assert_eq!(polls.get(), 513);
+        assert!(error.to_string().contains("Meshing cancelled"));
+    }
 
     #[test]
     fn fine_curved_panels_preserve_area_topology_and_sewing_within_mesh_limits() {
@@ -1607,7 +1977,7 @@ mod quality_tests {
                 .sum::<f64>()
         };
         let before = area(&mesh);
-        improve_triangle_quality(&mut mesh, &|| false).unwrap();
+        improve_triangle_quality(&mut mesh, &|| false, None).unwrap();
         assert_eq!(mesh.uv, boundary);
         assert!((area(&mesh) - before).abs() < 1e-12);
         assert!(
@@ -1616,7 +1986,7 @@ mod quality_tests {
                 .all(|t| t.contains(&1) && t.contains(&3))
         );
         let stable = mesh.triangles.clone();
-        improve_triangle_quality(&mut mesh, &|| false).unwrap();
+        improve_triangle_quality(&mut mesh, &|| false, None).unwrap();
         assert_eq!(mesh.triangles, stable);
     }
 }

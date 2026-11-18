@@ -1,0 +1,43 @@
+{
+  "Cloth_steps": 0,
+  "at": "2026-11-17T01:01:37.417464+00:00",
+  "binary": {
+    "path": "target/release/harbor-coupled-producer",
+    "sha256": "133d5cd2c11255270902238c1d5dfca2fc80eae221eb7414b0fdca3233f4c8b1",
+    "size_bytes": 1350528
+  },
+  "build_binding_sha256": "b35c301476e23c92b376698b8a99fa38fb845ceb26fd3ba46b2eb2207a4b28f9",
+  "build_receipt_sha256": "4157d027ff858b7e4f5255b62f60481d0ebf136ec8e98a9ec0eca0609ecb659f",
+  "model_initializations": 0,
+  "numerical_GO_not_created": true,
+  "root_read_build_receipt_binary_hash_controller_common_worker_resources_freeze_logic": true,
+  "root_whole_build_elapsed_seconds": 32.40519454202149,
+  "source_commit": "13fb43fe08c045f08a1b85007aff3c15388a1e24",
+  "source_preflight_sha256": "76b46c72fdda9a1ece636a29e52bf48fb5325f6c3565d2e2aacb3a1490711927",
+  "stage_summary": {
+    "exit_code": 0,
+    "peak_rss_bytes": 393445376,
+    "pid": 50498,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.07910266693215817,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 631,
+      "timeouts": 0
+    },
+    "sampled_peak_rss_bytes": 387842048,
+    "stop_reason": null,
+    "terminal_phase_checks": {
+      "deadline": 999077.7393645,
+      "output_bytes": 2079,
+      "output_cap_bytes": 8388608,
+      "reserve_bytes": 131072
+    }
+  },
+  "status": "root_build_review_accepted_for_source_binary_freeze_only"
+}

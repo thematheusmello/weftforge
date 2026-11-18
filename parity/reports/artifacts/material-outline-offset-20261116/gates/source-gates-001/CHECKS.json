@@ -1,0 +1,71 @@
+{
+  "schema": "weftforge.offset-integrated-source-gates.v1",
+  "scope": "Integrated source gates on released uncommitted source; no native/reference/whole-first-phase acceptance. Final clean registry/map xtask gate follows runtime commit and metadata integration.",
+  "base_commit": "1fc1d71993cf193801e44982b757fca8abc5aba7",
+  "source_inputs": 79,
+  "source_unchanged_before_after": true,
+  "source_input_receipt_sha256": "d5dfbd11e33a441e541115100d4d8ae93159667ec1466b796ca41f2906f2fce8",
+  "math_review_sha256": "e50d8112148261713b71b784c4d95bf3c15fa822c71e454541c60c0f9bf5a110",
+  "commands": [
+    {
+      "name": "fmt",
+      "argv": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:11:05.315873+00:00",
+      "finished_utc": "2026-11-16T11:11:06.027968+00:00",
+      "elapsed_seconds": 0.7119339579949155
+    },
+    {
+      "name": "test",
+      "argv": [
+        "cargo",
+        "test",
+        "--workspace"
+      ],
+      "exit_code": 101,
+      "started_utc": "2026-11-16T11:11:06.028043+00:00",
+      "finished_utc": "2026-11-16T11:12:24.322824+00:00",
+      "elapsed_seconds": 78.29435183294117
+    }
+  ],
+  "all_passed": false,
+  "Rust_passed_total": 138,
+  "Rust_test_result_groups": 7,
+  "binaries": {
+    "weftforge-cli": {
+      "sha256": "132500cb74412ec94ffd4015db9502681deb9a8a9346b8486b9d22e9e4b70155",
+      "bytes": 11098576
+    }
+  },
+  "target": "[WORKSPACE]/target-material-outline-offset",
+  "cargo_build_jobs": 1,
+  "logs": {
+    "test.stdout": {
+      "sha256": "b0728e4b591a87d4841a747a09e2be870f1dd29b942a2698dfa36ac0a1b0a8ec",
+      "bytes": 16834
+    },
+    "fmt.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "fmt.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "SOURCE-INPUTS.json": {
+      "sha256": "d5dfbd11e33a441e541115100d4d8ae93159667ec1466b796ca41f2906f2fce8",
+      "bytes": 9819
+    },
+    "test.stderr": {
+      "sha256": "e680202408b80dc990e1498fce64bb61d441586a09b41213dbb1cd175cf3aec0",
+      "bytes": 1953
+    }
+  },
+  "earcut_internal_polling_and_work_bound": "UNMET; controlled work only",
+  "xtask_and_clean_tracking_gate": "pending"
+}

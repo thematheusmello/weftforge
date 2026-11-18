@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "<ROOT>/.local/global-material-repair-20261117/target/release/harbor-coupled-producer",
+    "prepare",
+    "inputs/base.weftforge",
+    "preflight-base"
+  ],
+  "end_monotonic_seconds": 1010216.203337041,
+  "exit_code": 0,
+  "peak_rss_bytes": 8011776,
+  "pid": 89688,
+  "process_group": 89688,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.05263654107693583,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 18,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 7962624,
+  "stop_reason": null,
+  "terminal_phase_checks": {
+    "deadline": 1010634.749378333,
+    "output_bytes": 921750,
+    "output_cap_bytes": 268435456,
+    "reserve_bytes": 131072
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "attempt_id": "OFFSET-R1-005",
+  "kind": "Selected public derivative of a separate closed controller stop",
+  "frozen_status": "CLOSED_CONTROLLER_LOCAL_STATE_ERROR_BEFORE_ADD",
+  "runtime_source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "source87_sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+  "native_sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+  "actual_scope": "Clean initial/New Empty0/0; OFFSET-R1 and constructor W0.40/H0.60/X0.00/Y0.00 entered and retained as draft fields. Local r5DraftAX reference failed before rootRecordCall or any app API in that failing tool call. No Add occurred.",
+  "retained_images": [
+    {
+      "path": "observations/0004-raised-clean.jpg",
+      "sha256": "59cb64d2a6a4482f57c4f0374cfdbe911859086d703e2e0acb2d0a6a7ddd5671",
+      "bytes": 159572,
+      "unedited": true,
+      "role": "Raised clean own studio"
+    },
+    {
+      "path": "observations/0010-new-empty.jpg",
+      "sha256": "0bda6a619be289630b64952cf14e246f44493af9a2e888ae844edb04c389b865",
+      "bytes": 159742,
+      "unedited": true,
+      "role": "Clean state after New Empty"
+    },
+    {
+      "path": "observations/0038-stopped-before-Add.jpg",
+      "sha256": "efef8b69520b1947d328412b588261166859ff1dea9c199330a5528c9894c089",
+      "bytes": 160768,
+      "unedited": true,
+      "role": "Stopped draft values before Add, still revision0/0pieces"
+    }
+  ],
+  "raw_AX_qualification": {
+    "retained_original": 13,
+    "selected_standalone_files": 7,
+    "selected_AX_paths": [
+      "observations/0003-raised-ax.txt",
+      "observations/0009-new-empty-ax.txt",
+      "observations/0014-name-immediate-ax.txt",
+      "observations/0016-name-after-Tab-ax.txt",
+      "observations/0036-origin-V-after-Tab-ax.txt",
+      "observations/0037-stopped-before-Add-ax.txt",
+      "observations/0039-pre-cleanup-ax.txt"
+    ],
+    "full_original_returned_event_ledger_included": true,
+    "ledger_retains_all_original_AX_result_strings": true,
+    "no_reconstructed_AX": true
+  },
+  "frozen_counts": {
+    "semantic_before_stop": 10,
+    "physical_inputs_before_cleanup": 23,
+    "physical_inputs_including_Quit_cleanup": 24,
+    "paired_app_API_calls": 41,
+    "final_post_Quit_AX_error_additional": 1,
+    "actual_app_API_calls_including_final_error": 42,
+    "observations_including_automatic_getApp_and_cleanup": 18,
+    "retained_standalone_AX": 13,
+    "retained_images": 3,
+    "unrecorded_local_failure_tool_call_additional": 1
+  },
+  "failure_record_qualification": {
+    "message": "r5DraftAX is not defined",
+    "app_input_attempted_in_failing_call": false,
+    "paired_record_for_failed_tool_call": false,
+    "exact_failure_UTC_recorded": false,
+    "bounded_interval": {
+      "after_last_success": "2026-11-16T17:03:25.585Z",
+      "before_stop_record": "2026-11-16T17:06:18.659Z"
+    },
+    "interval_anchors": [
+      "trace/0036-after.json",
+      "trace/0037-before.json"
+    ],
+    "failed_tool_call_receives_no_invented_trace_number": true,
+    "final_post_Quit_App_quit_error": "One additional actual app API error beyond the41 paired calls; recorded by frozen outcome/cleanup rather than a separate paired raw error trace.",
+    "selected_trace_gaps": "Only existing controller-stop/cleanup pairs0036\u20130040 are selected here. Other existing pairs are omitted by file selection; the local failing call had no original pair at all."
+  },
+  "controller_storage_qualification": "R005 retained three actual screenshots through cross-realm-safe storage. That observed storage success does not repair R004 missing image or clear/regrade its stop. R005 then stopped at a separate local-variable reference.",
+  "cleanup": {
+    "owned_pid": 76165,
+    "route": "Recorded macOS super+q on own clean window; final CUA App quit error, immediate summary-only next tool, independent PID absence",
+    "SIGTERM_needed": false,
+    "independent_absence_recorded": true,
+    "elapsed_seconds": 566.2302804999053,
+    "new_check_during_derivative_preparation": false
+  },
+  "privacy_omission": "Only observations/process-1-launch.json /raw_ps is omitted because it contains a redundant truncated personal executable locator; complete normalized executable/full_argv fields remain.",
+  "limits": [
+    "Both cases are closed controller stops with zero Add, authored/saved/exported outputs and formal-grader invocations.",
+    "Constructor draft values do not establish created geometry, density, rest mesh, actual Cloth mass or offset results.",
+    "No product bug, source fix, reference, physics, full-feature, full-contract, inventory or roadmap acceptance is inferred.",
+    "All older outcomes remain frozen; no replay, repair or regrade.",
+    "Full protocols and targets remain intact; this is a selected evidence derivative, not a changed contract or grader.",
+    "Existing independent process-cleanup receipts are retained; no new process or UI check was performed during preparation.",
+    "Private staging is not tracked public delivery."
+  ]
+}

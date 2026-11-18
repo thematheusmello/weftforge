@@ -1,0 +1,44 @@
+{
+  "absolute_plan_path": "<ROOT>/.local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-normalization-repair-005/green-tests/GREEN-PLAN.json",
+  "commands": [
+    [
+      "edge",
+      [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--lib",
+        "tests::positive_stitch_subnormal_anchor_and_fallback_use_unit_direction",
+        "--",
+        "--exact",
+        "--nocapture"
+      ]
+    ],
+    [
+      "N32",
+      [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--lib",
+        "tests::positive_target_stitch_n32_matches_independent_coupled_radial_energy",
+        "--",
+        "--exact",
+        "--nocapture"
+      ]
+    ]
+  ],
+  "independent_review_before_broader_gates_required": true,
+  "plan_sha256": "f0e4ebf46332d283d9d8e6be4539fe6c4abe143c31f34eda6696a729d0c13ec8",
+  "prior_edge_RED_manifest_sha256": "db242e9d921fb7cf93f820b36868b07a746f8886d20b3e62eb77bed57df5f65e",
+  "root_read_this_normalization_implementation_claimed": false,
+  "source_commit": "4fef6e9b9f032f553e6f64e9953c7faaad42a1f0",
+  "source_freeze_sha256": "8f310a0ac5558c3ffc29697b695cc3e16d77397d5ae68a3b546ef8bd908a0934",
+  "status": "ROOT_TASK_CONDITIONAL_AUTHORITY_EDGE_RED_REPRODUCED_NOW_EDGE_AND_N32_GREEN"
+}

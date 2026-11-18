@@ -1,0 +1,186 @@
+{
+  "review": "Independent material-group solver algebra/caller/invariant review",
+  "status": "NO_BLOCKER",
+  "at_utc": "2026-11-16T23:52:41.212766+00:00",
+  "HEAD": "ae8dd6ebe6da760501f507248a11b069a02cb453",
+  "branch": "feat/coupled-edge-regression",
+  "worktree": ".local/coupled-edge-regression-20261116",
+  "open_findings": [],
+  "initial_observed_hashes": {
+    "crates/weftforge-sim/src/constraints.rs": {
+      "sha256": "7b07c9750569bd1962d7986b41fc5a00da9b1e319dfb90aa6ab50167e9f35596"
+    },
+    "crates/weftforge-sim/src/lib.rs": {
+      "sha256": "22c50515e20f6fa4fd6d95ee122ea0c140964722e18e0e71ececbeb5c7d1608b"
+    },
+    "crates/weftforge-sim/src/tests.rs": {
+      "sha256": "72d04821f2f9bde25ec531bef8d5429151b3971bbf65c938ea473eae8d43ecaf"
+    },
+    "docs/physics.md": {
+      "sha256": "b4ef9c0124e8c29d87969baacc45d0b00908d1c4b0caa20a2c0baca764e64e28"
+    }
+  },
+  "author_stabilized_reviewed_inputs": {
+    "crates/weftforge-sim/src/constraints.rs": {
+      "sha256": "7b07c9750569bd1962d7986b41fc5a00da9b1e319dfb90aa6ab50167e9f35596",
+      "bytes": 14990,
+      "mode": "0644"
+    },
+    "crates/weftforge-sim/src/lib.rs": {
+      "sha256": "22c50515e20f6fa4fd6d95ee122ea0c140964722e18e0e71ececbeb5c7d1608b",
+      "bytes": 37401,
+      "mode": "0644"
+    },
+    "crates/weftforge-sim/src/tests.rs": {
+      "sha256": "0cca724fac864630a69dbb50e651d906d273b3830795bea114f464da426fe330",
+      "bytes": 73825,
+      "mode": "0644"
+    },
+    "docs/physics.md": {
+      "sha256": "b4ef9c0124e8c29d87969baacc45d0b00908d1c4b0caa20a2c0baca764e64e28",
+      "bytes": 43266,
+      "mode": "0644"
+    }
+  },
+  "retained_proof_inputs": {
+    ".local/edge-proof/FREEZE.json": {
+      "sha256": "e2104078f7b99ffc6664eeba230f52490d85ae18da139a042a6104875cd37d76",
+      "bytes": 3519,
+      "mode": "0644"
+    },
+    ".local/edge-proof/REFERENCE.json": {
+      "sha256": "7fb99a51d2991a9bcaab7907973220ba4dbd1f4e15771998c9f43c49f25c0519",
+      "bytes": 8152,
+      "mode": "0644"
+    },
+    ".local/edge-proof/ORACLE-PROOF.md": {
+      "sha256": "0ec00e583e9d2f7d0997335b7817849283523a54b617fcf0f0f2ed7ffd001fed",
+      "bytes": 3640,
+      "mode": "0644"
+    },
+    ".local/edge-proof/RED-TERMINAL.json": {
+      "sha256": "c4710d826cc17451a8ca5a029b8fefafae77fd46e5d777dc27d6fc98eeba614a",
+      "bytes": 2125,
+      "mode": "0644"
+    },
+    ".local/edge-proof/reference.py": {
+      "sha256": "ec796082364b332b56aef9e0adb823c20a4464f348e06764548df8a7289db51b",
+      "bytes": 9303,
+      "mode": "0644"
+    },
+    ".local/edge-proof/test-only.patch": {
+      "sha256": "cf46c27efa9e0f307c911274fdf3ed68b3e83996e04028702e68988a8a3929e9",
+      "bytes": 4652,
+      "mode": "0644"
+    },
+    ".local/edge-candidate-proof-20261116/CANDIDATE-1-INPUTS.json": {
+      "sha256": "63a93ca5c273540686fca02dd8aefe8d7381b2d08316ab49922ec5bc6d9ae663",
+      "bytes": 3543,
+      "mode": "0644"
+    },
+    ".local/edge-candidate-proof-20261116/CANDIDATE-1-TERMINAL.json": {
+      "sha256": "311c1f4144f02a85e4c9ef9040e7786d4de0fa6323da9dbc6b40c847786a85f6",
+      "bytes": 628,
+      "mode": "0644"
+    },
+    ".local/edge-candidate-proof-20261116/candidate-1.log": {
+      "sha256": "0822884453bc93ba18bcbd9342e46d6026a43821d1bd120ba34cdebb4c3056a3",
+      "bytes": 845,
+      "mode": "0644"
+    },
+    ".local/edge-candidate-proof-20261116/candidate-1-constraints.rs": {
+      "sha256": "7b07c9750569bd1962d7986b41fc5a00da9b1e319dfb90aa6ab50167e9f35596",
+      "bytes": 14990,
+      "mode": "0644"
+    },
+    ".local/edge-candidate-proof-20261116/candidate-1-lib.rs": {
+      "sha256": "97b4dfb8967b9af1d8649afdaff542622527293ce4da6742c6ec903f29bf490c",
+      "bytes": 37156,
+      "mode": "0644"
+    }
+  },
+  "source_scope_changes_during_review": [
+    {
+      "path": "crates/weftforge-sim/src/tests.rs",
+      "before_sha256": "72d04821f2f9bde25ec531bef8d5429151b3971bbf65c938ea473eae8d43ecaf",
+      "after_sha256": "0cca724fac864630a69dbb50e651d906d273b3830795bea114f464da426fe330",
+      "change": "Only frozen oracle gradient accumulation indexing\u2192iter_mut/enumerate; exact in-memory reversal recreates the initial SHA256. Arithmetic, reference, geometry, timestep/iterations and thresholds unchanged.",
+      "production_change": false
+    }
+  ],
+  "algebra": {
+    "objective": "Phi(q)=0.5*(q-z)^T M(q-z)/h^2 + 0.5*sum_r k_r C_r(q)^2; p=x-z, k=original area-scaled triangle stiffness.",
+    "linearization": "Minimizing h^2 times the Gauss-Newton local objective gives (M+h^2 J^T K J)d= -M p-h^2 J^T K C. Woodbury gives (J W J^T+diag(1/(k h^2)))eta=J p-C, then d=-p+W J^T eta. Candidate signs and h scaling agree.",
+    "units": "C dimensionless; J m^-1; k J; W kg^-1; A (kg*m^2)^-1; eta kg*m^2; d and p m. The Armijo objective/slope have units kg*m^2=h^2*J.",
+    "row_embedding": "Pair rows i=0..5 select membrane i/3 and material axis i%3. Per-face gradients are embedded into the four union-node columns via validated unique local indices; absent node columns remain zero. Each face retains its own stiffness/grain/area.",
+    "mass_and_pins": "Global physical lumped node mass is included once per union node inside a block. Pinned W=0 nodes start with p=0 and retain zero direction; no pin mass is duplicated as a free coordinate. Outer apply_pins preserves exact targets.",
+    "factor_and_search": "Positive validated stiffness adds a positive diagonal to J W J^T. Scaled Cholesky refuses nonpositive/nonfinite pivots or nonfinite solutions before any mutation. Only a finite accepted Armijo trial writes x and p; exhausted search is unchanged. p retains actual rounded trial-minus-previous displacement."
+  },
+  "caller_and_state_checks": {
+    "partition": "All shared edges are ordered deterministically by computed positive UV edge length bits, then ascending edge IDs. Greedy pairing uses only unassigned faces; partner symmetry and min-face group emission cover every triangle once, with singleton leftovers.",
+    "validated_pair_precondition": "Triangles have distinct valid vertices and duplicate faces are rejected; >2 incident faces per edge refuses. Two distinct faces sharing the selected edge therefore have exactly four union vertices, satisfying the private pair-constructor expectations.",
+    "cache_lifetime": "Group/union-node mapping is constructor-built from immutable ClothInput topology. Cloth fields remain private; new_cancellable publishes only a completed state; Clone includes the new field; reset restores positions/velocities with unchanged topology and needs no mapping rebuild. No new serialized/public/CLI/MCP input is introduced.",
+    "transaction": "Correction histories are local vectors reset per substep. Step mutates candidate x/velocities/seam history only; cancellation, numerical failure and diagnostic failure return before final assignment to accepted fields. Material group cache is immutable during stepping.",
+    "cancellation": "New edge candidates/partner iteration/group material solves poll the existing callback. The per-block kernel is bounded to at most six rows/four nodes and16 line-search trials. This preserves cooperative cancellation and core offset work propagation; no hard wall-latency claim.",
+    "other_algorithms": "Bend construction/order, sewing loop, collision projection, pin application, velocity reconstruction, settings/material/defaults and validation/public boundary remain unchanged.",
+    "complexity": "Construction adds O(E log E) ordering and O(T) mappings; each projection has a fixed3- or6-row solve. No nested all-face pairing search or data-dependent unbounded local iteration was added. The six-row factor can cost more than two three-row factors; docs disclose no speed/large-mesh benchmark.",
+    "callers_read": [
+      "weftforge-sim Cloth constructor/reset/step/validation",
+      "all MaterialGroup/Membrane call sites from rg",
+      "weftforge-core shared create_cloth_context and cancellation/work adapter",
+      "new singleton/pair coverage/tie test",
+      "mixed grain/material direct-energy/pin test",
+      "constructor pairing abort and whole-call cancellation coverage"
+    ]
+  },
+  "evidence_attribution": {
+    "first_GREEN_constraints_exact_current": true,
+    "first_GREEN_lib_production_prefix_exact_current": true,
+    "lib_after_first_GREEN_delta": "Only cfg(test) constructor initialization polling count and pairing-candidate cancellation assertion.",
+    "frozen_RED_regression_exact_final_except_equivalent_iteration_syntax": true,
+    "frozen_limits": {
+      "position_m": 1e-08,
+      "force_N": 1e-06
+    },
+    "retained_single_RED": {
+      "position_error_m": 4.266e-07,
+      "force_residual_N": 0.002734
+    },
+    "retained_first_GREEN": {
+      "position_error_m": 5.683890753411727e-18,
+      "force_residual_N": 1.0747913121812962e-14
+    },
+    "author_stabilized_notification": "Author reports fmt PID5022 exit0, strict sim all-target Clippy PID5080 exit0, full sim PID5084 exit0/60 unit tests/0 doc tests after retaining earlier test-only Clippy failure; this independent review did not execute or separately certify those gates.",
+    "no_case_index_or_default_count_tolerance_retuning_found": true,
+    "no_full_garment_reference_or_global_coupled_convergence_accepted": true
+  },
+  "limits": [
+    "Read-only source review. No Cargo, tests, producer, evaluator, UI, remote or commit was run by this reviewer.",
+    "Frozen oracle/proof/test/RED/GREEN records were read for independence and fixed limits, not executed or regraded; root already owns their numerical validation.",
+    "Pairing is a local coupling heuristic. Inter-group/bending/sewing/contact residuals, full garment behavior, performance and calibrated/reference acceptance remain outside this review."
+  ],
+  "verdict": "No concrete source correction requested for the author-stabilized hashes above; root owns broader integration/gates/new garment acceptance.",
+  "final_hash_guard": {
+    "crates/weftforge-sim/src/constraints.rs": {
+      "sha256": "7b07c9750569bd1962d7986b41fc5a00da9b1e319dfb90aa6ab50167e9f35596",
+      "bytes": 14990,
+      "mode": "0644"
+    },
+    "crates/weftforge-sim/src/lib.rs": {
+      "sha256": "22c50515e20f6fa4fd6d95ee122ea0c140964722e18e0e71ececbeb5c7d1608b",
+      "bytes": 37401,
+      "mode": "0644"
+    },
+    "crates/weftforge-sim/src/tests.rs": {
+      "sha256": "0cca724fac864630a69dbb50e651d906d273b3830795bea114f464da426fe330",
+      "bytes": 73825,
+      "mode": "0644"
+    },
+    "docs/physics.md": {
+      "sha256": "b4ef9c0124e8c29d87969baacc45d0b00908d1c4b0caa20a2c0baca764e64e28",
+      "bytes": 43266,
+      "mode": "0644"
+    }
+  },
+  "reviewed_stabilized_files_unchanged_before_after": true
+}

@@ -1,0 +1,40 @@
+{
+  "recorded_utc": "2026-11-17T23:12:57.365825+00:00",
+  "source": "12ecdc13ba47a20d77bf52d1757815e39f0ea380",
+  "actual_build_Cargo_exit": 0,
+  "actual_tests_executed_here": 0,
+  "protocol_complete_under_caps": true,
+  "actual_case_seconds_through_persisted_terminal": 4.179138457868248,
+  "case_cap_seconds": 180,
+  "terminal_sha256": "7643ec9ab02909401a05c06d071c5dc770a6c70ce99a29077981592a3eaa2431",
+  "all91_postverified_exact": true,
+  "all_recorded_controller_Cargo_PIDs_groups_absent": [
+    50579,
+    50584
+  ],
+  "source_head_index_clean": true,
+  "actual_binaries": {
+    "weftforge": {
+      "built_not_launched": true,
+      "bytes": 51575584,
+      "mode": 493,
+      "path": "<ROOT>/.local/notch-bend-integration-20261117/target/debug/weftforge",
+      "sha256": "08e682166be52aadb915d3560a16bef2569893737f182f4980600bebfe2db4a9",
+      "frozen_artifact": ".local/dual-context-native-build-20261117/binaries/weftforge-08e682166be52aadb915d3560a16bef2569893737f182f4980600bebfe2db4a9",
+      "artifact_only_never_Cargo_cache_input": true,
+      "retained_after_original_case_not_a_timing_regrade": true
+    },
+    "weftforge-cli": {
+      "built_not_launched": true,
+      "bytes": 9297952,
+      "mode": 493,
+      "path": "<ROOT>/.local/notch-bend-integration-20261117/target/debug/weftforge-cli",
+      "sha256": "1626b5af3a0b460b993e34271f4613dbc40eedb30f3786b56e0972f7519cf4be",
+      "frozen_artifact": ".local/dual-context-native-build-20261117/binaries/weftforge-cli-1626b5af3a0b460b993e34271f4613dbc40eedb30f3786b56e0972f7519cf4be",
+      "artifact_only_never_Cargo_cache_input": true,
+      "retained_after_original_case_not_a_timing_regrade": true
+    }
+  },
+  "separate_invocation_qualification": "Actual459/32tests/fmt/strictClippy belongs earlierfull001; its build monitorfailure remains unchanged. These same-source passes plus distinctbuild-only success complete source checks across twoinvocations, never one all4-success/clock claim.",
+  "native_UI_CLI_garment_reference_execution": false
+}

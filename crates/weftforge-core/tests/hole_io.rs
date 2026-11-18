@@ -49,7 +49,7 @@ fn strict_v5_retains_hole_identity_and_rejects_incomplete_or_ambiguous_ownership
     let editor = annulus();
     let bytes = editor.project.to_json().unwrap();
     let document: Value = serde_json::from_slice(&bytes).unwrap();
-    assert_eq!(document["version"], 5);
+    assert_eq!(document["version"], weftforge_core::FORMAT_VERSION);
     assert_eq!(
         document["project"]["pieces"][0]["holes"],
         json!([{"id":11,"boundary":[16,17,18,19]}])

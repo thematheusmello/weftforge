@@ -1,0 +1,55 @@
+[
+  {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "fmt",
+      "--all",
+      "--check"
+    ],
+    "exit_code": 0,
+    "green": true,
+    "index": 1,
+    "log": "01-fmt-check.log",
+    "log_bytes": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "name": "fmt-check",
+    "pgid": 48573,
+    "pid": 48573,
+    "root_go_sha256": "df00e4e0de36b735aa58da8ade040a294167fc1bf3bef9d01899e5eea6a1c2f7",
+    "source": "89fb35cbc919000806b2e1ee62e9323748fcea23",
+    "stop_cause": null,
+    "test_summaries": [],
+    "utc_epoch_finished": 1794949183.044855,
+    "utc_epoch_started": 1794949182.315522
+  },
+  {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "-p",
+      "weftforge",
+      "--bin",
+      "weftforge",
+      "contextual_properties_tests",
+      "--",
+      "--nocapture"
+    ],
+    "exit_code": 101,
+    "green": false,
+    "index": 2,
+    "log": "02-new-six-contextual-guards.log",
+    "log_bytes": 7744,
+    "log_sha256": "c400a7ae177066cba7329c3716a6620fff45e68e0e402cc15705998b6ed93256",
+    "name": "new-six-contextual-guards",
+    "pgid": 48582,
+    "pid": 48582,
+    "root_go_sha256": "df00e4e0de36b735aa58da8ade040a294167fc1bf3bef9d01899e5eea6a1c2f7",
+    "source": "89fb35cbc919000806b2e1ee62e9323748fcea23",
+    "stop_cause": null,
+    "test_summaries": [],
+    "utc_epoch_finished": 1794949279.742651,
+    "utc_epoch_started": 1794949183.1369631
+  }
+]

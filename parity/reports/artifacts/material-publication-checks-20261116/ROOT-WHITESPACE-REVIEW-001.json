@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-16T22:46:32.694843+00:00",
+  "status": "APPROVED_EXACT_FIVE_PRESERVED_ARTIFACT_EXCLUSIONS",
+  "preserved_original_bytes": true,
+  "exclude": [
+    "parity/reports/artifacts/material-source-20261116/combined-gates/workspace-tests.log",
+    "parity/reports/artifacts/material-source-20261116/component/final-sim-tests.log",
+    "parity/reports/artifacts/material-source-20261116/component/green-focused.log",
+    "parity/reports/artifacts/material-source-20261116/component/review-sim-tests.log",
+    "parity/reports/artifacts/material-source-20261116/component/implementation.patch"
+  ],
+  "full_check_original_exit": 2,
+  "scoped_check_argv": [
+    "git",
+    "diff",
+    "--cached",
+    "--check",
+    "--",
+    ".",
+    ":(exclude)parity/reports/artifacts/material-source-20261116/combined-gates/workspace-tests.log",
+    ":(exclude)parity/reports/artifacts/material-source-20261116/component/final-sim-tests.log",
+    ":(exclude)parity/reports/artifacts/material-source-20261116/component/green-focused.log",
+    ":(exclude)parity/reports/artifacts/material-source-20261116/component/review-sim-tests.log",
+    ":(exclude)parity/reports/artifacts/material-source-20261116/component/implementation.patch"
+  ],
+  "scoped_check_exit": 0,
+  "scoped_stdout": "",
+  "scoped_stderr": "",
+  "index_tree_unchanged": true
+}

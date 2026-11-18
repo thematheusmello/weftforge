@@ -1,0 +1,23 @@
+{
+  "GREEN_GO_sha256": "f7995fd1f0d573f38270f5717259127c792dd868593794d2261802cc1d89fc1f",
+  "accepted_resources_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+  "added_control_files": {
+    "resources.py": {
+      "mode": "0o644",
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781"
+    },
+    "run_green.py": {
+      "mode": "0o644",
+      "sha256": "8d69463dd4f89b81501176e1d86eb6090712003c05748084847388e4d889b04c"
+    }
+  },
+  "attempts": 1,
+  "caps": {
+    "retained_output_bytes": 8388608,
+    "sampled_process_group_plus_controller_RSS_bytes": 1073741824,
+    "whole_command_seconds_including_compile": 120
+  },
+  "controller_reuse": "Same RED single-command controller with namespace/source/GO/private-input-parent/preserved-RED/own-partial-target bindings only; no monitor alteration.",
+  "source_freeze_sha256": "bd6dd229d6bd59eeda629c6bbab9ad8ce8741352681ccf3cc53ba776a644e1e5",
+  "status": "ONE_GREEN_READY"
+}

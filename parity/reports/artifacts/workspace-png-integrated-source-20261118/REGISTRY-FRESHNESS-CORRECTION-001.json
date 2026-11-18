@@ -1,0 +1,26 @@
+{
+  "corrected_feature_ids": [
+    "UI-002",
+    "UI-003",
+    "UI-004",
+    "UI-006",
+    "PAT-007",
+    "SIM-001",
+    "SIM-003",
+    "SIM-004",
+    "SIM-005",
+    "SIM-006"
+  ],
+  "correction": "Change ten feature freshness fields from current to stale after F/G full-source reports became stale. No report outcome is changed and no source, native, garment or reference execution is inferred. The next generation is a new case on corrected metadata.",
+  "delivery_acceptance": false,
+  "failed_generator_plan_sha256": "1cf40fae1843e323b602ba091ff18f0f61b1cd1ecfbf91f260a3659abbe463ee",
+  "implementation_verification_and_reference_observation_unchanged": true,
+  "original_error": "progress validation failed: UI-002: current evidence requires a current source-qualified run",
+  "original_generator_closure_sha256": "c19b24ec9ffa87e4b9470bdd846a93fbdc1bf46b17f0122e1eead7b37a1937f2",
+  "original_generator_result_sha256": "6675c4c6c4b4f23fc586d8cdf77f12517af733b3f2ddf6932a7d905ba7372a19",
+  "original_generator_tool_terminal_sha256": "27e5eb12e3a557bd0533effe57cfbadff8cf189c05c2a03db043975b52f68266",
+  "original_outcome": "failed",
+  "registry_sha256": "37e7cf0ee8b5e5c4db7b5be7744b7bffe97aa78cf2c1a1a1c9315cc82aeb2968",
+  "reviewed_by": "ROOT",
+  "source_head": "59501451cd36f3ec51aba3560090090c94881427"
+}

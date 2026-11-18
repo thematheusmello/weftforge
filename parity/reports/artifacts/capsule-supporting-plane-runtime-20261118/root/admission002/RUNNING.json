@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+    "-B",
+    "<NUMERICAL_PACKET>/controller.py",
+    "--go",
+    "ROOT-GO.json",
+    "--go-sha256",
+    "33f2f068aa6bfe8153be9ecf2152dfd44405b71463fa02aea5e9103381efa3a7"
+  ],
+  "deadline": 1121439.108345708,
+  "exit_code": null,
+  "peak_rss_bytes": null,
+  "pid": 47178,
+  "process_group": 47178,
+  "root_pid": 47098,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.0,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 0,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 0,
+  "started": 1121019.108345708,
+  "stop_reason": null
+}

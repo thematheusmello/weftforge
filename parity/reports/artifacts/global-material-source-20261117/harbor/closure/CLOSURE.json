@@ -1,0 +1,28 @@
+{
+  "RSS_qualification": "Outer controller wait4 exact; numerical producer stage interrupted before its own terminal/wait4 receipt, so no exact whole-run producer RSS acceptance. Recorded snapshots and partial outputs retained.",
+  "all_owned_processes_absent": true,
+  "analysis_file_present": false,
+  "authoritative_terminal_elapsed_after_all_persistence_seconds": 420.0070624999935,
+  "classification": "FAILED_OPERATIONAL_WHOLE_CASE_WALL_CAP",
+  "completed_steps_of180": 153,
+  "continuations": 0,
+  "late_closure": "Post-case preservation/diagnosis only; cannot create a successful420s grade.",
+  "prefix_or_final_frame_not_graded": true,
+  "retries": 0,
+  "root_result_sha256": "05c39d3aee1f7b24769baa0fcab5c9a49bb874e3925e57532121b48a423b9c03",
+  "root_witness_sha256": "ed7e74371d54e9f172da955174901a1dc635096aeaef848c94a5dfccc0d2cb22",
+  "session_id": 86284,
+  "session_terminal_exit_code": 1,
+  "source_commit": "52099b6f6b7aff43b3e9ada8bad4f830cb987134",
+  "source_postcheck": {
+    "model_or_evaluator_execution": false,
+    "producer_binary": {
+      "path": "target/release/harbor-coupled-producer",
+      "sha256": "3c194a4fbecf34de932ab8af0cd846aaf8e9d57264f600f3207d4bf2b1ede551",
+      "size_bytes": 1331776
+    },
+    "source88_metadata59_original8_and_final_freeze_unchanged": true,
+    "source_commit": "52099b6f6b7aff43b3e9ada8bad4f830cb987134"
+  },
+  "strict_quality_grade": "NOT_EVALUATED_INCOMPLETE_TRAJECTORY"
+}

@@ -1,0 +1,118 @@
+{
+  "deadline": 1021072.289885,
+  "errors": [],
+  "go_sha256": "7764a6160264daeb4ad4bf251e4d0d3d07bb32d25439cf3acbba8f99f259a19f",
+  "native_or_reference_acceptance": false,
+  "numerical_hashes": {
+    "expected/approved-metadata.json": "8dfb77d6d4234b0997683e98a0bbd76105d2274aba0f6eb36dc90e671d0589ff",
+    "inputs/base.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+    "preflight-base/initialized-state.json": "dab78f774cd56342d7822eba55f3d7ada6612c90cfddf2b2c4cd425060138afc",
+    "preflight-base/rest-metadata.json": "90128ed174829cd118e1d638ccba0fa501003889e85b5d70d214b4884f14aec7",
+    "preflight-base/stage-000.obj": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+    "runs/base/analysis.json": "b1cdb20eeef60d2ff8171f763391c5ef9125ca206a1c8bd0ec09225c855bb3c1",
+    "runs/base/completed-case.json": "d1ca82994ae17dfaaf0ebebb933b32b9c467b7624416ff11dce784104757bdd0",
+    "runs/base/initialized-state.json": "2482770fee405c4f6a4fb94e77251f0056b41505b7678db1cd11790066e51ee9",
+    "runs/base/rest-metadata.json": "90128ed174829cd118e1d638ccba0fa501003889e85b5d70d214b4884f14aec7",
+    "runs/base/stage-000.obj": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+    "runs/base/stage-060.obj": "8571049d663fab8bb368fed631f2e7c1ff79ddd6329462490135d64ca72a907f",
+    "runs/base/stage-180.obj": "ba986d95d0f1cb309fb24b25366f82706dab8001f6acf34ba0209646e5b38eaa",
+    "runs/base/steps.jsonl": "1755993f856cf411cc56f03ba2130b997f504e47664b68d8a420987bbc1af3f2",
+    "runs/base/trajectory.jsonl": "7bdc1f8cc726e6b375963ab78ea735918c5019b91e45f0617f71639973f6704a",
+    "runtime/FINAL-NUMERICAL.json": "752486de9f0f86b2d59b9f540db62e50a1db61f80e35c9b62426611b8bbb7c4d",
+    "runtime/SESSION.json": "390ade2e42f4876e1e206674ce2367428a703dbf23994d61c9e49edfd97cf48b",
+    "runtime/SUPERVISOR.json": "c3dc2494b7457fc9d3cac3c836d870de2ee3e2045e6d1aefe197dcf8cc9df660",
+    "runtime/analysis-stage.json": "325b422a57430387e581445be6dd729ee6fff7f86ed17d096217f21432731f29",
+    "runtime/analysis-started.json": "5be039068ccefafd419d87321e88f47d7647fe8657a39706f22f57cfd314ecd4",
+    "runtime/analysis-written.json": "f71b70d55ef96d20d2b5c775662bb07a12d773815b136e1ef282d87f140ec4f5",
+    "runtime/analysis.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/analysis.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/finalization-stage.json": "102f3b1b513a1bd18fb21775009aa448a5dc577b1df64eb7bb180392849d8b81",
+    "runtime/finalization-started.json": "499b2258dcaa34287845804bd9fd066199fd824d470a5a9e368f968c79f727e6",
+    "runtime/finalization.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/finalization.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/finalized.json": "0f2043aae1b897c7d8deedf97ae0403d4de20bab6d2fccba50deafc19a6ac0e5",
+    "runtime/init-only-stage.json": "798981cba1ff186435c1cadd644c740084161ae696cd78d81616bd856e104e41",
+    "runtime/init-only-started.json": "867d03f0ad58b8121483fd03374a8442dbe8f20abe99d37fa32a2437bac57c5c",
+    "runtime/init-only.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/init-only.stdout": "38dde89a453487e736364cec15a6e47f005fcc06d8c52c1b9d715772322279d2",
+    "runtime/initialized-original-gate.json": "57f54cf18712283403c533f9d68cd890d44467df0849877857aa4ed69a0b990c",
+    "runtime/metadata-stage.json": "598c0f8deff2d34a981ff02e9fbf6a2ec97ea684af57b6eb1c9e977c53c9e9d4",
+    "runtime/metadata-started.json": "d56e9b2492ae1e02a5c0188f731149c38ddf5172db469d0e24011268f17b70a1",
+    "runtime/metadata.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/metadata.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/producer-receipt.json": "1c0135e4f2dc69284255b7883fd317791c7e4553e6aeab793aec0b79e310a235",
+    "runtime/producer-stage.json": "e4c932b87ca063908ee248a9e7086904b5d391e804699ef1b4f5f9f45f58f9af",
+    "runtime/producer-started.json": "37e379d1a36457a70e0e50bfdc539dc213fec24aa5261c08e6893d0cfea19c9a",
+    "runtime/producer.stderr": "a329e5440ec1faa2bf68daa4907e9f450d1ad7da6fffd7e3eab6b2be2347fc62",
+    "runtime/producer.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "operational_candidate": true,
+  "owned_groups": [
+    {
+      "group_absent": true,
+      "pid": 32881,
+      "signal_sent": false
+    },
+    {
+      "group_absent": true,
+      "pid": 34803,
+      "signal_sent": false
+    },
+    {
+      "group_absent": true,
+      "pid": 21562,
+      "signal_sent": false
+    },
+    {
+      "group_absent": true,
+      "pid": 21590,
+      "signal_sent": false
+    },
+    {
+      "group_absent": true,
+      "pid": 21626,
+      "signal_sent": false
+    }
+  ],
+  "retry_or_continuation_allowed": false,
+  "source_commit": "9d4b629c077f06c348f6615fe90df7bbeacedb24",
+  "stage": {
+    "argv": [
+      "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+      "-B",
+      "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/controller.py",
+      "--go",
+      "ROOT-GO.json",
+      "--go-sha256",
+      "7764a6160264daeb4ad4bf251e4d0d3d07bb32d25439cf3acbba8f99f259a19f"
+    ],
+    "end_monotonic_seconds": 1020950.240361375,
+    "exit_code": 2,
+    "peak_rss_bytes": 38895616,
+    "pid": 21379,
+    "process_group": 21379,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.3187932919245213,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 5250,
+      "timeouts": 0
+    },
+    "sampled_peak_rss_bytes": 32587776,
+    "stop_reason": null,
+    "terminal_phase_checks": {
+      "deadline": 1021072.289885,
+      "output_bytes": 19230063,
+      "output_cap_bytes": 268435456,
+      "reserve_bytes": 262144
+    }
+  },
+  "started": 1020652.289885,
+  "status": "pending_external_post_persistence_clock_verdict",
+  "strict_quality_passed": false
+}

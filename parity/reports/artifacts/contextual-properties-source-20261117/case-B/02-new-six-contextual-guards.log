@@ -1,0 +1,32 @@
+   Compiling weftforge v0.1.0 (<ROOT>/.local/contextual-properties-20261117/apps/weftforge)
+    Finished `test` profile [unoptimized] target(s) in 5.52s
+     Running unittests src/main.rs (target/debug/deps/weftforge-13c025c8f6d6aef9)
+
+running 6 tests
+test contextual_properties_tests::collapsing_the_edited_context_preserves_input_without_holding_hidden_focus ... ok
+test contextual_properties_tests::refocus_and_paste_in_one_frame_uses_the_retained_input_without_overwriting_the_new_edit ... 
+thread 'contextual_properties_tests::refocus_and_paste_in_one_frame_uses_the_retained_input_without_overwriting_the_new_edit' (84202838) panicked at apps/weftforge/src/main.rs:9207:17:
+assertion `left == right` failed
+  left: 3
+ right: 4
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+FAILED
+test contextual_properties_tests::refused_new_empty_and_failed_load_keep_hidden_input_but_accepted_same_identity_load_drops_it ... ok
+test contextual_properties_tests::tab_switches_suspend_numeric_focus_and_restore_raw_text_caret_and_draft_on_refocus ... ok
+test contextual_properties_tests::tabs_and_contextual_groups_reach_real_controls_without_authoring ... ok
+test contextual_properties_tests::unfinished_hidden_input_refuses_other_commits_then_joins_one_valid_transaction ... 
+thread 'contextual_properties_tests::unfinished_hidden_input_refuses_other_commits_then_joins_one_valid_transaction' (84202874) panicked at apps/weftforge/src/main.rs:9165:9:
+assertion `left == right` failed
+  left: Project { revision: 5, points: [Point { id: 3, position: [0.0, 0.0] }, Point { id: 4, position: [0.4, 0.0] }, Point { id: 5, position: [0.4, 0.6] }, Point { id: 6, position: [0.0, 0.6] }], curves: [Curve { id: 7, start: 3, end: 4, controls: None }, Curve { id: 8, start: 4, end: 5, controls: None }, Curve { id: 9, start: 5, end: 6, controls: None }, Curve { id: 10, start: 6, end: 3, controls: None }], pieces: [Piece { id: 2, name: "Context panel", boundary: [7, 8, 9, 10], holes: [], internal_curves: [], notches: [], placement: Placement { translation: [0.0, 0.0, 0.0], rotation: [0.0, 0.0, 0.0] }, material: 1, grain_angle: 0.0 }], materials: [Material { id: 1, name: "Cotton approximation (uncalibrated)", areal_density: 0.18, warp_stiffness: 400.0, weft_stiffness: 400.0, shear_stiffness: 100.0, bending_stiffness: 0.003, damping: 0.2, friction: 0.4, collision_thickness: 0.003, color: [0.22, 0.55, 0.76] }], seams: [], sewing_groups: [], mannequin: Mannequin { capsules: [Capsule { a: [0.0, 0.9, 0.0], b: [0.0, 1.4, 0.0], radius: 0.18 }, Capsule { a: [0.0, 1.53, 0.0], b: [0.0, 1.65, 0.0], radius: 0.105 }, Capsule { a: [-0.22, 1.4, 0.0], b: [-0.55, 1.22, 0.0], radius: 0.065 }, Capsule { a: [0.22, 1.4, 0.0], b: [0.55, 1.22, 0.0], radius: 0.065 }, Capsule { a: [-0.09, 0.88, 0.0], b: [-0.09, 0.18, 0.0], radius: 0.085 }, Capsule { a: [0.09, 0.88, 0.0], b: [0.09, 0.18, 0.0], radius: 0.085 }] }, resolution: 0.07, next_id: 11 }
+ right: Project { revision: 3, points: [Point { id: 3, position: [0.0, 0.0] }, Point { id: 4, position: [0.4, 0.0] }, Point { id: 5, position: [0.4, 0.6] }, Point { id: 6, position: [0.0, 0.6] }], curves: [Curve { id: 7, start: 3, end: 4, controls: None }, Curve { id: 8, start: 4, end: 5, controls: None }, Curve { id: 9, start: 5, end: 6, controls: None }, Curve { id: 10, start: 6, end: 3, controls: None }], pieces: [Piece { id: 2, name: "Context panel", boundary: [7, 8, 9, 10], holes: [], internal_curves: [], notches: [], placement: Placement { translation: [0.0, 0.0, 0.0], rotation: [0.0, 0.0, 0.0] }, material: 1, grain_angle: 0.0 }], materials: [Material { id: 1, name: "Cotton approximation (uncalibrated)", areal_density: 0.18, warp_stiffness: 400.0, weft_stiffness: 400.0, shear_stiffness: 100.0, bending_stiffness: 0.003, damping: 0.2, friction: 0.4, collision_thickness: 0.003, color: [0.22, 0.55, 0.76] }], seams: [], sewing_groups: [], mannequin: Mannequin { capsules: [Capsule { a: [0.0, 0.9, 0.0], b: [0.0, 1.4, 0.0], radius: 0.18 }, Capsule { a: [0.0, 1.53, 0.0], b: [0.0, 1.65, 0.0], radius: 0.105 }, Capsule { a: [-0.22, 1.4, 0.0], b: [-0.55, 1.22, 0.0], radius: 0.065 }, Capsule { a: [0.22, 1.4, 0.0], b: [0.55, 1.22, 0.0], radius: 0.065 }, Capsule { a: [-0.09, 0.88, 0.0], b: [-0.09, 0.18, 0.0], radius: 0.085 }, Capsule { a: [0.09, 0.88, 0.0], b: [0.09, 0.18, 0.0], radius: 0.085 }] }, resolution: 0.07, next_id: 11 }
+FAILED
+
+failures:
+
+failures:
+    contextual_properties_tests::refocus_and_paste_in_one_frame_uses_the_retained_input_without_overwriting_the_new_edit
+    contextual_properties_tests::unfinished_hidden_input_refuses_other_commits_then_joins_one_valid_transaction
+
+test result: FAILED. 4 passed; 2 failed; 0 ignored; 0 measured; 160 filtered out; finished in 2.82s
+
+error: test failed, to rerun pass `-p weftforge --bin weftforge`

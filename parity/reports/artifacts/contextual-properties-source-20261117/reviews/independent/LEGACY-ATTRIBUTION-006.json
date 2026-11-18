@@ -1,0 +1,52 @@
+{
+  "actual_all_native_tests": {
+    "failed": 6,
+    "ignored": 0,
+    "passed": 160
+  },
+  "actual_targeted_tests": {
+    "failed": 0,
+    "ignored": 0,
+    "passed": 6
+  },
+  "attribution": [
+    {
+      "cause": "Create pattern body intentionally defaults closed for existing-piece Select fixtures",
+      "count": 4,
+      "observed_failure": "Add rectangle missing before modal",
+      "path": "modal_shield_tests"
+    },
+    {
+      "cause": "same closed Creation body",
+      "count": 1,
+      "observed_failure": "expected one rendered Pattern name TextInput, found zero before SetValue",
+      "path": "native_text_set_value_does_not_blur_or_commit_unrelated_numeric_input"
+    },
+    {
+      "cause": "resolution moved to Simulation while fixture remains on Pattern",
+      "count": 1,
+      "observed_failure": "resolution node lookup None before Join in failed noncoalesced branches",
+      "path": "join_focus_keeps_failed_drafts_and_clears_successful_control_text_before_tab"
+    }
+  ],
+  "case": ".local/contextual-properties-20261117/.local/contextual-properties-validation-20261117c",
+  "case_inputs_sha256": {
+    "02-new-six-contextual-guards.log": "7b53493ed8465447eb8998f6358597ff397a5df956074f0f1a90aa03720a1c4a",
+    "03-all-native-UI-tests.log": "1e87fd0a757206b8e2692edd365e4518ae76deabc92df702fc660b8f368ac3fb",
+    "COMMAND-RESULTS.json": "868430166d70dda3ab642a7a8b58c6ae7c3d4da91401f08cc190da51b390d8eb",
+    "OUTCOME.json": "34bb638dcdc8bcb86882d00cadf543701474c4622b5fe7f329c64e8e231a6e17"
+  },
+  "downstream_behavior_accepted": false,
+  "fixture_change_or_retry_authorized_by_receipt": false,
+  "kind": "independent_read_only_static_legacy_ui_failure_attribution",
+  "later_commands": "clippy_build_unstarted",
+  "main_sha256": "7654a68a16024d8c0cdb2dcb6ed2368423606b086697f5fe2060e1e7e289b564",
+  "prior_production_review_commit": "1c1c5282b4d5bfeaddb183d5ea9e4447ca8e6396",
+  "production_failure_demonstrated_by_these_six": false,
+  "report_path": ".local/contextual-properties-independent-static-review-20261117/LEGACY-ATTRIBUTION-006.md",
+  "report_sha256": "8508c206cf6fb2d0cdc5cbf5dd46c8444ca755c8149717ea2cbcb538c014d4cd",
+  "reviewer_edited_source_or_old_cases": false,
+  "reviewer_executed_runtime": false,
+  "source_commit": "3409887062719fc3cd0feefc8c2c6d0334e6c985",
+  "utc": "2026-11-17T21:23:03.364803+00:00"
+}

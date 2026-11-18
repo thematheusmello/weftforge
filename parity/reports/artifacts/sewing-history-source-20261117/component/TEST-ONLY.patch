@@ -1,0 +1,116 @@
+diff --git a/crates/weftforge-sim/src/tests.rs b/crates/weftforge-sim/src/tests.rs
+index f51484ae..0cdf3717 100644
+--- a/crates/weftforge-sim/src/tests.rs
++++ b/crates/weftforge-sim/src/tests.rs
+@@ -833,6 +833,111 @@ fn positive_targets_and_hard_stitches_keep_radial_updates() {
+     assert_eq!(lambda, [2., 3., 4.]);
+ }
+ 
++#[test]
++fn positive_target_stitch_n32_matches_independent_coupled_radial_energy() {
++    let mass = 0.01_f64;
++    let h = 0.1_f64;
++    let predictor = [0., 1., 0.];
++    let anchors = [[0.; 3], [1., 0., 0.]];
++    let mut x = [predictor, anchors[0], anchors[1]];
++    let inverse_mass = [mass.recip(), 0., 0.];
++    let stitches = [1, 2].map(|anchor| Stitch {
++        a: WeightedPoint::vertex(0),
++        b: WeightedPoint::vertex(anchor),
++        compliance: 2.,
++    });
++    let targets = [0.5, 0.];
++    let mut lambda = [[0.; 3]; 2];
++    let mut applied_action = [[0.; 3]; 2];
++    let mut last_update = [[0.; 3]; 2];
++    let norm = |v: Vec3| (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
++    for _ in 0..32 {
++        for i in 0..2 {
++            assert!(norm(x[0]) > 1e-6, "fixture stays away from radial singularity");
++            let before = x[0];
++            constraints::solve_stitch(
++                stitches[i],
++                targets[i],
++                &mut x,
++                &inverse_mass,
++                h,
++                &mut lambda[i],
++            );
++            for (axis, &value) in before.iter().enumerate() {
++                last_update[i][axis] = x[0][axis] - value;
++                applied_action[i][axis] += mass * last_update[i][axis] / (h * h);
++            }
++            assert_eq!([x[1], x[2]], anchors, "pins: m");
++            assert!(x.into_iter().flatten().all(f64::is_finite));
++            assert!(lambda.into_iter().flatten().all(f64::is_finite));
++            assert!(applied_action.into_iter().flatten().all(f64::is_finite));
++        }
++    }
++    // Direct differentiation of Phi=.5|q-p|²+.25(|q|-.5)²+.25|q-a|².
++    let independent_forces = |q: Vec3| {
++        let radius = norm(q);
++        [
++            q.map(|value| -0.5 * (radius - 0.5) * value / radius),
++            std::array::from_fn(|axis| -0.5 * (q[axis] - anchors[1][axis])),
++        ]
++    };
++    let objective = |q: Vec3| {
++        let predictor_distance_squared = (0..3)
++            .map(|axis| (q[axis] - predictor[axis]).powi(2))
++            .sum::<f64>();
++        let anchor_distance_squared = (0..3)
++            .map(|axis| (q[axis] - anchors[1][axis]).powi(2))
++            .sum::<f64>();
++        0.5 * predictor_distance_squared
++            + 0.25 * (norm(q) - 0.5).powi(2)
++            + 0.25 * anchor_distance_squared
++    };
++    let root_five = 5_f64.sqrt();
++    let expected = [
++        0.25 + 1. / (8. * root_five),
++        0.5 + 1. / (4. * root_five),
++        0.,
++    ];
++    let forces = independent_forces(x[0]);
++    let expected_forces = independent_forces(expected);
++    let stationarity = std::array::from_fn(|axis| {
++        mass * (x[0][axis] - predictor[axis]) / (h * h)
++            - forces[0][axis]
++            - forces[1][axis]
++    });
++    let oracle_stationarity = std::array::from_fn(|axis| {
++        expected[axis] - predictor[axis] - expected_forces[0][axis] - expected_forces[1][axis]
++    });
++    let action_error = std::array::from_fn::<_, 2, _>(|i| {
++        norm(std::array::from_fn(|axis| applied_action[i][axis] - forces[i][axis]))
++    });
++    let radius = norm(x[0]);
++    let history_force = [
++        x[0].map(|value| lambda[0][0] * value / (radius * h * h)),
++        lambda[1].map(|value| value / (h * h)),
++    ];
++    let position_error = norm(std::array::from_fn(|axis| x[0][axis] - expected[axis]));
++    let direction = x[0].map(|value| value / radius);
++    println!(
++        "positive_then_zero_N=32 mass_kg={mass} h_s={h} compliance_m_per_N=2\n\
++         predictor_m={predictor:?}\nx_m={x:?}\nexpected_m={expected:?}\n\
++         initial_radial_direction=[0,1,0]\nfinal_radial_direction={direction:?}\n\
++         lambda_private_kg_m={lambda:?}\ncurrent_history_force_N={history_force:?}\n\
++         independent_elastic_force_N={forces:?}\napplied_action_N={applied_action:?}\n\
++         action_error_N={action_error:?}\nlast_stage_update_m={last_update:?}\n\
++         stationarity_N={stationarity:?}\n\
++         position_error_m={position_error}\nobjective_J={}\nexpected_objective_J={}",
++        objective(x[0]),
++        objective(expected)
++    );
++    assert!(norm(oracle_stationarity) <= 1e-14, "independent oracle: N");
++    assert!(position_error <= 1e-8, "coupled radial position: m");
++    assert!(norm(stationarity) <= 1e-6, "independent stationarity: N");
++    for (i, error) in action_error.into_iter().enumerate() {
++        assert!(error <= 1e-6, "stitch{i} independent action balance: N");
++    }
++}
++
+ #[test]
+ fn elastic_stitch_substeps_reset_multipliers_when_target_reaches_zero() {
+     let mut input = square();

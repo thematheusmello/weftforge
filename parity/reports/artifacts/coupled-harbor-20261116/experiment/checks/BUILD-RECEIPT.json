@@ -1,0 +1,53 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "cargo",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/producer/Cargo.toml"
+      ],
+      "pid": 63903,
+      "exit_code": 0,
+      "seconds": 0.2557804170064628,
+      "cwd": "ROOT/.local/cloth-material-integration-20261116",
+      "CARGO_BUILD_JOBS": "1",
+      "CARGO_TARGET_DIR": "ROOT/.local/cloth-material-integration-20261116/target",
+      "log_sha256": "8ab22325f0fdc7d7bc97ac77e731c5f237be9a3bba5e698c3a214105f766b8ea"
+    },
+    {
+      "argv": [
+        "cargo",
+        "build",
+        "--release",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "ROOT/.local/cloth-material-integration-20261116/.local/next-harbor-preparation-20261116/producer/Cargo.toml"
+      ],
+      "pid": 64009,
+      "exit_code": 0,
+      "seconds": 29.867835958022624,
+      "cwd": "ROOT/.local/cloth-material-integration-20261116",
+      "CARGO_BUILD_JOBS": "1",
+      "CARGO_TARGET_DIR": "ROOT/.local/cloth-material-integration-20261116/target",
+      "log_sha256": "7a678563ea6d346cb940f6f76b8fa53344ec640c8c3091fb997cd5357ee7ee8d"
+    }
+  ],
+  "source88_unchanged": true,
+  "readonly_unchanged": true,
+  "producer_sources": {
+    "producer/Cargo.toml": "bdbf9b113ba7bb05e968b25fbfc71a30317bfd66aa090fb809e2f551070ff5e8",
+    "producer/src/main.rs": "9d03c1922d99b6bfa4fbb158b436d8067b2772ce206c99e8736f44292f99f2db"
+  },
+  "private_lock_sha256": "6acc2df8d38cf70047cbe22ca2875a38a0fd204a63452edb2d42b4ce14c1ec89",
+  "binary": {
+    "path": "target/release/harbor-coupled-producer",
+    "sha256": "bd7fb2a3333f3734bf1726f264766fb7e90ae6b530c80e6c03c05ce5c60eecec",
+    "size_bytes": 1330880
+  },
+  "binary_copied": false,
+  "producer_launched": false,
+  "Harbor_initialized_or_stepped": false
+}

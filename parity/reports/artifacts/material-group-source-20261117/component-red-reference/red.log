@@ -1,0 +1,27 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.27
+   Compiling quote v1.0.47
+   Compiling serde_core v1.0.229
+   Compiling syn v3.0.10
+   Compiling serde v1.0.229
+   Compiling serde_derive v1.0.229
+   Compiling weftforge-sim v0.1.0 (<ROOT>/.local/coupled-edge-regression-20261116/crates/weftforge-sim)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 12.01s
+     Running unittests src/lib.rs (target/debug/deps/weftforge_sim-40f8b89cc1ad501d)
+
+running 1 test
+shared-edge positions=[[8.78663273616807e-18, -0.00400012560747117, 0.0], [9.066299007269424e-18, 0.004000125607471172, 0.0]] reference=[[6.729906241347043e-23, -0.004000552234905839, 0.0], [-6.729906241347043e-23, 0.004000552234905839, 0.0]] position_error=4.2662743466887615e-7m stationarity=2.734129283129987e-3N
+
+thread 'tests::shared_edge_material_reaches_independent_incremental_energy_equilibrium' (75666339) panicked at crates/weftforge-sim/src/tests.rs:363:5:
+assertion failed: position_error < 1e-8 && stationarity < 1e-6
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test tests::shared_edge_material_reaches_independent_incremental_energy_equilibrium ... FAILED
+
+failures:
+
+failures:
+    tests::shared_edge_material_reaches_independent_incremental_energy_equilibrium
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 57 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p weftforge-sim --lib`

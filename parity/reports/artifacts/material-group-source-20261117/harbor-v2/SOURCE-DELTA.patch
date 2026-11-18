@@ -1,0 +1,312 @@
+--- v1/common.py
++++ v2/common.py
+@@ -31,7 +31,7 @@
+     r.require(_candidate.get("status") == "root_reviewed_candidate" and _candidate.get("root_confirms_green_source_and_review") is True and REPO is not None and
+               isinstance(SOURCE, str) and len(SOURCE) == 40 and all(q in "0123456789abcdef" for q in SOURCE),
+               "Reviewed candidate source is pending; no build/freeze/initialization/dynamics authorized")
+-    r.require(ROOT == REPO / ".local/harbor-material-groups-preparation-20261116",
++    r.require(ROOT == REPO / ".local/harbor-material-groups-preparation-20261116-v2",
+               "Install the source-only packet in the reviewed candidate checkout before final preparation")
+     r.require(c.same(read(ROOT / "CANDIDATE.json"), _candidate), "Candidate binding changed")
+     for path_key, sha_key in [("source_manifest", "source_manifest_sha256"),
+--- v1/compiler_inputs.py
++++ v2/compiler_inputs.py
+@@ -4,7 +4,7 @@
+ from pathlib import Path
+ import tomllib
+ 
+-LOCAL_ROOTS=('crates/weftforge-core','crates/weftforge-sim','vendor/earcutr','.local/harbor-material-groups-preparation-20261116/producer')
++LOCAL_ROOTS=('crates/weftforge-core','crates/weftforge-sim','vendor/earcutr','.local/harbor-material-groups-preparation-20261116-v2/producer')
+ 
+ 
+ def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+@@ -28,7 +28,7 @@
+ 
+ 
+ def dependency_inventory(wt,cargo_home):
+-    lock=tomllib.loads((Path(wt)/'.local/harbor-material-groups-preparation-20261116/producer/Cargo.lock').read_text());result=[]
++    lock=tomllib.loads((Path(wt)/'.local/harbor-material-groups-preparation-20261116-v2/producer/Cargo.lock').read_text());result=[]
+     for package in lock['package']:
+         if 'source' not in package:continue
+         if package['source']!='registry+https://github.com/rust-lang/crates.io-index':raise ValueError('unexpected dependency source')
+--- v1/resources.py
++++ v2/resources.py
+@@ -1,4 +1,4 @@
+-"""Unchanged resource/path helpers extracted from the retained Harbor controller."""
++"""Retained Harbor guards, with bounded same-child RSS observation recovery."""
+ import hashlib
+ import json
+ import os
+@@ -99,7 +99,14 @@
+     """Own wait4 for this child; do not mix Popen poll/wait with exact rusage."""
+     child, usage, wait_status = None, None, None
+     result = {"argv": [str(value) for value in argv], "pid": None, "process_group": None,
+-              "exit_code": None, "peak_rss_bytes": None, "sampled_peak_rss_bytes": 0, "stop_reason": None}
++              "exit_code": None, "peak_rss_bytes": None, "sampled_peak_rss_bytes": 0, "stop_reason": None,
++              "rss_observation": {"snapshot_timeout_max_seconds": 1., "consecutive_failure_limit": 3,
++                                  "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
++                                  "successful_snapshots": 0, "failures": 0, "timeouts": 0,
++                                  "max_consecutive_failures": 0, "max_snapshot_gap_seconds": 0.,
++                                  "failure_events": [], "omitted_failure_events": 0}}
++    observation = result["rss_observation"]
++    consecutive_failures, last_snapshot = 0, None
+     try:
+         deadline_check(deadline)
+         require(count_bytes() + pending_copy_bytes() + reserve < output_cap, "Numerical output stop budget reached before launch")
+@@ -109,6 +116,7 @@
+             child = subprocess.Popen(argv, cwd=cwd, env=dict(child_env or os.environ, PYTHONDONTWRITEBYTECODE="1", PYTHONOPTIMIZE="0"),
+                                      stdout=out, stderr=err, start_new_session=True)
+             result.update(pid=child.pid, process_group=child.pid)
++            last_snapshot = time.monotonic()
+             if on_start is not None:
+                 on_start(dict(result))
+             while True:
+@@ -123,19 +131,49 @@
+                 if result["stop_reason"]:
+                     break
+                 if rss_cap is not None:
+-                    remaining = max(.001, min(.25, deadline - time.monotonic()))
+-                    sample = subprocess.run(["/bin/ps", "-axo", "pid=,pgid=,rss="],
+-                                            capture_output=True, text=True, timeout=remaining, check=False)
+-                    group = [int(parts[2])*1024 for line in sample.stdout.splitlines()
+-                             if len(parts := line.split()) == 3 and int(parts[1]) == child.pid]
+-                    if sample.returncode or not group:
++                    remaining = min(1., deadline - time.monotonic())
++                    if remaining <= 0:
++                        result["stop_reason"] = "whole_case_wall_cap"
++                        break
++                    try:
++                        sample = subprocess.run(["/bin/ps", "-axo", "pid=,pgid=,rss="],
++                                                capture_output=True, text=True, timeout=remaining, check=False)
++                        group = [int(parts[2])*1024 for line in sample.stdout.splitlines()
++                                 if len(parts := line.split()) == 3 and int(parts[1]) == child.pid]
++                        require(sample.returncode == 0 and bool(group), "RSS snapshot unavailable")
++                        sampled = max(group)
++                        require(sampled >= 0, "Invalid sampled RSS")
++                    except (subprocess.TimeoutExpired, OSError, ValueError) as error:
++                        consecutive_failures += 1
++                        observation["failures"] += 1
++                        observation["timeouts"] += int(isinstance(error, subprocess.TimeoutExpired))
++                        observation["max_consecutive_failures"] = max(consecutive_failures, observation["max_consecutive_failures"])
++                        event = {"pid": child.pid, "kind": type(error).__name__, "at_monotonic_seconds": time.monotonic(),
++                                 "timeout_seconds": remaining, "consecutive_failures": consecutive_failures}
++                        if len(observation["failure_events"]) < 16:
++                            observation["failure_events"].append(event)
++                        else:
++                            observation["omitted_failure_events"] += 1
++                        # An observation timeout says nothing about the child's termination.
+                         pid, status, observed = os.wait4(child.pid, os.WNOHANG)
+                         if pid:
+                             wait_status, usage = status, observed
+                             break
+-                        raise ValueError("Sampled producer RSS unavailable while child is live")
+-                    sampled = max(group)
+-                    require(sampled >= 0, "Invalid sampled RSS")
++                        if time.monotonic() >= deadline:
++                            result["stop_reason"] = "whole_case_wall_cap"
++                        elif count_bytes() + pending_copy_bytes() + reserve >= output_cap:
++                            result["stop_reason"] = "numerical_output_cap_stop_budget"
++                        elif consecutive_failures >= 3:
++                            result["stop_reason"] = "rss_observation_unavailable"
++                        if result["stop_reason"]:
++                            break
++                        time.sleep(min(.02, max(0., deadline - time.monotonic())))
++                        continue
++                    observed_at = time.monotonic()
++                    observation["max_snapshot_gap_seconds"] = max(observed_at - last_snapshot, observation["max_snapshot_gap_seconds"])
++                    last_snapshot = observed_at
++                    consecutive_failures = 0
++                    observation["successful_snapshots"] += 1
+                     result["sampled_peak_rss_bytes"] = max(sampled, result["sampled_peak_rss_bytes"])
+                     if sampled > rss_cap:
+                         result["stop_reason"] = "sampled_producer_rss_cap"
+@@ -154,6 +192,8 @@
+                 result["stop_reason"] = "exact_producer_peak_rss_cap"
+     final_bytes = count_bytes() + pending_copy_bytes()
+     result["end_monotonic_seconds"] = time.monotonic()
++    if rss_cap is not None and last_snapshot is not None:
++        observation["max_snapshot_gap_seconds"] = max(result["end_monotonic_seconds"] - last_snapshot, observation["max_snapshot_gap_seconds"])
+     result["terminal_phase_checks"] = {"deadline": deadline, "output_bytes": final_bytes,
+                                        "reserve_bytes": reserve, "output_cap_bytes": output_cap}
+     if result["end_monotonic_seconds"] >= deadline and not result["stop_reason"]:
+--- v1/source_inputs.py
++++ v2/source_inputs.py
+@@ -47,7 +47,7 @@
+     binding["dependency_sources"]=dependency_inventory(REPO,cargo_home)
+     binding["cargo_config_inputs"]=cargo_config_inventory(REPO,cargo_home)
+     digest=hashlib.sha256(r.encoded(binding)).hexdigest()
+-    paths=code_paths()+["producer/Cargo.toml","producer/Cargo.lock","CANDIDATE.json","REUSED-SOURCES.json","PROTOCOL-DRAFT.json","SOURCE.json","DRAFT-ORIGIN.json"]
++    paths=code_paths()+["producer/Cargo.toml","producer/Cargo.lock","CANDIDATE.json","REUSED-SOURCES.json","PROTOCOL-DRAFT.json","SOURCE.json","DRAFT-ORIGIN.json","V1-PRESERVED.json","PREVIOUS-ROOT-PRESERVED.json","MONITOR-DELTA.json"]
+     paths += [str(p.relative_to(ROOT)) for p in sorted((ROOT/"evidence").glob("*.json"))]
+     preflight={"status":"reviewed_source_bound_no_build","bound_at_utc":datetime.now(timezone.utc).isoformat(),"source_commit":b.SOURCE,"candidate_binding_sha256":r.sha(ROOT/"CANDIDATE.json"),"python":b.environment(),"code_paths":code_paths(),"files":{name:r.sha(ROOT/name) for name in paths},"original_input_rest":READONLY,"build_binding":binding,"build_binding_sha256":digest,"source_review_sha256":b._candidate["source_review_sha256"],"green_checks_sha256":b._candidate["green_checks_sha256"],"workspace_gate_status_at_binding":b._candidate["workspace_gates_status_at_binding"],"build_authorized":False,"own_target_preexisting":(REPO/b.OWN_TARGET).exists(),"same_checkout_target_reuse_allowed":True,"compiled_target_cross_copy":False,"Cloth_initializations":0,"Cloth_steps":0,"Cargo_invocations":0}
+     b.validate_environment(preflight["python"])
+--- v1/tiny_selfcheck.py
++++ v2/tiny_selfcheck.py
+@@ -1,4 +1,4 @@
+-"""Only changed runner guards/static source checks; never invokes a model or evaluator."""
++"""Tiny fake-child/mock-ps checks only; no Cargo, model or actual evaluator."""
+ import ast
+ import json
+ import os
+@@ -6,6 +6,7 @@
+ import subprocess
+ import sys
+ import time
++from types import SimpleNamespace
+ from unittest.mock import patch
+ 
+ import common as b
+@@ -13,33 +14,125 @@
+ 
+ 
+ def main():
+-    reused=b.read(ROOT/"REUSED-SOURCES.json");same=[]
+-    for name,digest in reused["original_files"].items():
+-        if name.startswith(("consumer/","producer/")):
+-            r.require(r.sha(ROOT/name)==digest,"Changed numerical evaluator/producer: "+name);same.append(name)
+-    for file in [*ROOT.glob('*.py'),*(ROOT/'consumer').glob('*.py')]:ast.parse(file.read_text(),filename=str(file))
+-    if b.SOURCE is None:
+-        try:b.require_source()
+-        except ValueError as error:r.require('pending' in str(error),'wrong pending-source refusal')
+-        else:raise ValueError('pending source unexpectedly accepted')
+-    else:b.require_source()
+-    out=ROOT/'checks/tiny';out.mkdir();real_wait4=os.wait4;results=[]
+-    def child(name,code,seconds,cap,wait):
+-        directory=out/name;directory.mkdir()
+-        with patch.object(r.os,'wait4',wait):
+-            result=r.monitor([sys.executable,'-B','-c',code],ROOT,directory/'stdout',directory/'stderr',time.monotonic()+seconds,lambda:sum(p.stat().st_size for p in r.files_below(directory)),rss_cap=268435456,output_cap=cap,reserve=2*r.RECEIPT_RESERVE)
+-        b.persist(directory/'receipt.json',result);r.require(result['exit_code']==0 and result['peak_rss_bytes'] is not None,'fake child not normally reaped');results.append(result);return result
+-    normal=child('normal',"print('fake normal')",5,1048576,real_wait4);r.require(normal['stop_reason'] is None,'normal fake child failed')
+-    def late(pid,options):time.sleep(.08);return real_wait4(pid,0)
+-    late_result=child('late_terminal',"print('fake completed child')",.05,1048576,late);r.require(late_result['stop_reason']=='terminal_phase_wall_cap','terminal deadline accepted')
+-    def completed(pid,options):return real_wait4(pid,0)
+-    overflow=child('terminal_output',"print('x'*4096)",5,2*r.RECEIPT_RESERVE+1024,completed);r.require(overflow['stop_reason']=='terminal_phase_output_cap','terminal volume accepted')
+-    for script,args in [('controller.py',['--go','missing','--go-sha256','0'*64]),('bind_source.py',[])]:
+-        result=subprocess.run([sys.executable,'-B',str(ROOT/script),*args],env=dict(os.environ,PYTHONOPTIMIZE='1',PYTHONDONTWRITEBYTECODE='1'),capture_output=True,text=True,timeout=5)
+-        r.require(result.returncode!=0 and 'Python optimization guard' in result.stderr,'optimized launch not explicitly rejected')
+-    r.require(not any((ROOT/n).exists() for n in r.OUTPUT_DIRECTORIES) and not (ROOT/'SOURCE-PREFLIGHT.json').exists() and not (ROOT/'FREEZE.json').exists(),'source-only guard created actual case')
+-    report={'status':'passed_source_bound' if b.SOURCE else 'passed_source_pending','source_commit':b.SOURCE,'exact_reused_producer_and_consumer_files':same,'Python_AST':'passed','reviewed_source_guard':True,'terminal_phase_and_output_guards':True,'optimization_guards':True,'fake_children_reaped':len(results),'actual_model_initializations':0,'actual_steps':0,'actual_evaluator_runs':0,'Cargo_invocations':0,'real_case_clock_started':False,'old_qualification_reused_only_for_exact_sources':reused['original_qualification']}
+-    b.persist(ROOT/'checks/TINY-SELFCHECKS.json',report);print(json.dumps(report,indent=2))
++    reused = b.read(ROOT / "REUSED-SOURCES.json")
++    same = []
++    for name, digest in reused["original_files"].items():
++        if name.startswith(("consumer/", "producer/")):
++            r.require(r.sha(ROOT / name) == digest, "Changed producer/evaluator: " + name)
++            same.append(name)
++    for file in [*ROOT.glob("*.py"), *(ROOT / "consumer").glob("*.py")]:
++        ast.parse(file.read_text(), filename=str(file))
++    b.require_source()
++    out = ROOT / "checks/tiny"
++    out.mkdir()
++    real_wait4, real_popen = os.wait4, subprocess.Popen
++    results = []
++
++    def child(name, code, *, observe, seconds=3., cap=1048576, rss=268435456, wait=real_wait4):
++        directory = out / name
++        directory.mkdir()
++        launches, starts = [], []
++        def launch(*args, **kwargs):
++            process = real_popen(*args, **kwargs)
++            launches.append(process.pid)
++            return process
++        def started(value):
++            starts.append(value["pid"])
++        def ps(*args, **kwargs):
++            return observe(launches[0], *args, **kwargs)
++        with patch.object(r.os, "wait4", wait), patch.object(r.subprocess, "Popen", launch), patch.object(r.subprocess, "run", ps):
++            result = r.monitor([sys.executable, "-B", "-c", code], ROOT,
++                directory / "stdout", directory / "stderr", time.monotonic() + seconds,
++                lambda: sum(p.stat().st_size for p in r.files_below(directory)),
++                rss_cap=rss, output_cap=cap, reserve=2 * r.RECEIPT_RESERVE, on_start=started)
++        b.persist(directory / "receipt.json", result)
++        r.require(launches == starts == [result["pid"]], "Fake child was restarted or PID changed")
++        r.require(result["peak_rss_bytes"] is not None, "Missing exact direct-child wait4 RSS")
++        try:
++            real_wait4(result["pid"], os.WNOHANG)
++        except ChildProcessError:
++            pass
++        else:
++            raise ValueError("Fake child was not reaped")
++        results.append({"name": name, **result})
++        return result
++
++    def good(pid, *args, **kwargs):
++        r.require(0 < kwargs["timeout"] <= 1., "Unbounded ps timeout")
++        return SimpleNamespace(returncode=0, stdout=f"{pid} {pid} 1024\n")
++    calls = 0
++    def transient(pid, *args, **kwargs):
++        nonlocal calls
++        calls += 1
++        if calls == 1:
++            raise subprocess.TimeoutExpired(args[0], kwargs["timeout"])
++        return good(pid, *args, **kwargs)
++    result = child("transient_same_pid", "import time;time.sleep(.12);print('fake completed')", observe=transient)
++    r.require(result["exit_code"] == 0 and result["stop_reason"] is None and result["rss_observation"]["timeouts"] == 1 and result["rss_observation"]["successful_snapshots"] > 0, "Transient timeout killed/restarted/failed the child")
++
++    saved_terminal = None
++    def terminal_wait(pid, options):
++        nonlocal saved_terminal
++        if saved_terminal is not None:
++            value, saved_terminal = saved_terminal, None
++            return value
++        return (0, 0, None)
++    def ends_during_timeout(pid, *args, **kwargs):
++        nonlocal saved_terminal
++        # Real wait4 supplies the exact fake-child receipt; the mock delivers it on re-poll.
++        saved_terminal = real_wait4(pid, 0)
++        raise subprocess.TimeoutExpired(args[0], kwargs["timeout"])
++    result = child("terminal_during_timeout", "print('fake terminal')", observe=ends_during_timeout, wait=terminal_wait)
++    r.require(result["exit_code"] == 0 and result["stop_reason"] is None and result["rss_observation"]["timeouts"] == 1, "Child terminating during ps timeout was not accepted normally")
++
++    def unavailable(pid, *args, **kwargs):
++        raise subprocess.TimeoutExpired(args[0], kwargs["timeout"])
++    result = child("three_unavailable", "import time;time.sleep(3)", observe=unavailable)
++    r.require(result["exit_code"] == -9 and result["stop_reason"] == "rss_observation_unavailable" and result["rss_observation"]["failures"] == 3, "Repeated unavailable observations were accepted")
++
++    def slow_timeout(pid, *args, **kwargs):
++        time.sleep(kwargs["timeout"] + .01)
++        raise subprocess.TimeoutExpired(args[0], kwargs["timeout"])
++    result = child("wall_during_timeout", "import time;time.sleep(3)", observe=slow_timeout, seconds=.08)
++    r.require(result["stop_reason"] == "whole_case_wall_cap", "Observation recovery relaxed the wall guard")
++    def large(pid, *args, **kwargs):
++        return SimpleNamespace(returncode=0, stdout=f"{pid} {pid} 262145\n")
++    result = child("sampled_rss_cap", "import time;time.sleep(3)", observe=large)
++    r.require(result["stop_reason"] == "sampled_producer_rss_cap", "RSS guard relaxed")
++
++    def completed(pid, options):
++        return real_wait4(pid, 0)
++    result = child("terminal_output", "print('x'*4096)", observe=good,
++                   cap=2 * r.RECEIPT_RESERVE + 1024, wait=completed)
++    r.require(result["exit_code"] == 0 and result["stop_reason"] == "terminal_phase_output_cap", "Terminal output accepted")
++    def late(pid, options):
++        time.sleep(.08)
++        return real_wait4(pid, 0)
++    result = child("late_terminal", "print('fake completed child')", observe=good, seconds=.05, wait=late)
++    r.require(result["exit_code"] == 0 and result["stop_reason"] == "terminal_phase_wall_cap", "Terminal deadline accepted")
++    result = child("exact_direct_child_rss", "print('fake terminal')", observe=good, rss=1, wait=completed)
++    r.require(result["exit_code"] == 0 and result["stop_reason"] == "exact_producer_peak_rss_cap", "Exact terminal wait4 RSS guard relaxed")
++
++    for script, args in [("controller.py", ["--go", "missing", "--go-sha256", "0"*64]), ("bind_source.py", [])]:
++        result = subprocess.run([sys.executable, "-B", str(ROOT / script), *args],
++            env=dict(os.environ, PYTHONOPTIMIZE="1", PYTHONDONTWRITEBYTECODE="1"),
++            capture_output=True, text=True, timeout=5)
++        r.require(result.returncode != 0 and "Python optimization guard" in result.stderr, "Optimized launch not explicitly rejected")
++    r.require(not any((ROOT / n).exists() for n in r.OUTPUT_DIRECTORIES)
++              and not (ROOT / "SOURCE-PREFLIGHT.json").exists() and not (ROOT / "FREEZE.json").exists(),
++              "Source-only check created an actual case")
++    report = {"status": "passed_source_bound_fake_children_only", "source_commit": b.SOURCE,
++        "exact_reused_producer_and_consumer_files": same, "Python_AST": "passed",
++        "reviewed_source_guard": True, "same_pid_observation_recovery": True,
++        "terminal_during_timeout_normally_reaped": True, "three_observation_failures_stop_negatively": True,
++        "wall_sampled_and_exact_RSS_terminal_output_guards": True, "optimization_guards": True,
++        "fake_children_reaped": len(results), "fake_child_results": results,
++        "actual_model_initializations": 0, "actual_steps": 0, "actual_evaluator_runs": 0,
++        "Cargo_invocations": 0, "real_case_clock_started": False,
++        "old_qualification_reused_only_for_exact_sources": reused["original_qualification"]}
++    b.persist(ROOT / "checks/TINY-SELFCHECKS.json", report)
++    print(json.dumps({key: value for key, value in report.items() if key != "fake_child_results"}, indent=2))
+ 
+ 
+-if __name__=='__main__':main()
++if __name__ == "__main__":
++    main()

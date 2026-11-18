@@ -1,0 +1,27 @@
+{
+  "attempt_id": "OFFSET-R1-004",
+  "kind": "post-case owned cleanup, separate from frozen failure/AX evidence",
+  "observed_utc": "2026-11-16T16:43:43.795920+00:00",
+  "owned_pid": 68629,
+  "expected_executable": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/bundle/WeftForge.app/Contents/MacOS/weftforge",
+  "before": {
+    "returncode": 0,
+    "full_argv": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/bundle/WeftForge.app/Contents/MacOS/weftforge",
+    "actual_executable": "${ROOT}/.local/native-material-outline-offset-20261116/OFFSET-R1-004/bundle/WeftForge.app/Contents/MacOS/weftforge",
+    "stderr": ""
+  },
+  "last_CUA_observation": "Fresh full AX showed clean rev0/0pieces and no exposed close control; no native window dismissal claimed.",
+  "very_next_tool_after_final_CUA_observation": "CUA completion_summary only, exactly once",
+  "termination_signal": "SIGTERM",
+  "other_processes_targeted": false,
+  "after": {
+    "returncode": 1,
+    "full_argv": "",
+    "actual_executable": "",
+    "stderr": ""
+  },
+  "remaining_exact_owned_processes": [],
+  "owned_pid_absent": true,
+  "completed_utc": "2026-11-16T16:43:43.934184+00:00",
+  "seconds_launch_to_independent_absence": 196.640885
+}

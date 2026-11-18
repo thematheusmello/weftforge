@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--lib",
+    "tests::shared_edge_material_reaches_independent_incremental_energy_equilibrium",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "pid": 89003,
+  "status": "terminal",
+  "started_at": "2026-11-16T23:37:34.530804+00:00",
+  "inputs_sha256": "63a93ca5c273540686fca02dd8aefe8d7381b2d08316ab49922ec5bc6d9ae663",
+  "exit_code": 0,
+  "seconds": 5.9702455420047045,
+  "raw_log_sha256": "0822884453bc93ba18bcbd9342e46d6026a43821d1bd120ba34cdebb4c3056a3",
+  "all_original_RED_and_candidate_inputs_unchanged": true
+}

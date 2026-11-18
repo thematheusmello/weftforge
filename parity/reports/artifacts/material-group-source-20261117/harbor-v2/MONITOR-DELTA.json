@@ -1,0 +1,23 @@
+{
+  "at_utc": "2026-11-17T00:42:20.871042+00:00",
+  "cross_checkout_compiled_copy": false,
+  "new_build_GO_required": true,
+  "new_execution_GO_required": true,
+  "own_target": "target",
+  "preparation_version": 2,
+  "preserved_numerical_sources": 11,
+  "prior_build_receipt_sha256": "cc57802351b4e13eaf5be307ef8fbd5b1204b1c26d401840be16d6ef19f7803d",
+  "prior_failure_classification": "Operational monitor bug: .25s ps observation timeout killed live Cargo; not a demonstrated product/source compile error or physical-case failure. No model ran.",
+  "runtime_changes": [
+    "resources.monitor: same-child wait4 re-poll and bounded ps observation retry; snapshot timeout<=1s and remaining deadline; negative stop after3 consecutive unavailable snapshots; record failures/gaps",
+    "namespace/compiler-input binding literals for distinct v2 packet only"
+  ],
+  "settings_screens_counts_caps_changed": false,
+  "source_commit": "13fb43fe08c045f08a1b85007aff3c15388a1e24",
+  "source_math_order_changes": false,
+  "tiny_checks": "checks/TINY-SELFCHECKS.json",
+  "v2_Cargo_invocations": 0,
+  "v2_Cloth_initializations": 0,
+  "v2_Cloth_steps": 0,
+  "v2_actual_evaluator_runs": 0
+}

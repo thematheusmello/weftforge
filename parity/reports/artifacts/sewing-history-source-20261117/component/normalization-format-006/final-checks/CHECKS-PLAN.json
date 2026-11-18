@@ -1,0 +1,38 @@
+{
+  "RSS_bytes": 1073741824,
+  "commands": [
+    [
+      "fmt",
+      [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ]
+    ],
+    [
+      "sim-clippy",
+      [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "clippy",
+        "-p",
+        "weftforge-sim",
+        "--all-targets",
+        "--locked",
+        "--offline",
+        "--",
+        "-D",
+        "warnings"
+      ]
+    ]
+  ],
+  "controller_sha256": "93265ee5898d55f9c427578aedb7f7d756002f9ce1afc3868bd269d28ef04385",
+  "numerical_tests_repeated": 0,
+  "output_bytes": 8388608,
+  "resources_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+  "source_commit": "40817073cd38e58a8438bb397d09a0ab9d95f9bb",
+  "source_freeze_sha256": "11d37183a30b10b80c810bb2265e110d1b240f1c2f914c3b0ed2a5a34c8ae37a",
+  "status": "FMT_AND_FIRST_NORMALIZATION_SIM_CLIPPY_AFTER_LOGGER_WHITESPACE_ONLY",
+  "stop_first_failure_no_retry": true,
+  "whole_seconds": 120
+}

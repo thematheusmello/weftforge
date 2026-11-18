@@ -1,0 +1,46 @@
+{
+  "kind": "clean committed UI publication check",
+  "checked_commit": "195c609c3ce459045c02c30e9b08ac4491e513c9",
+  "command": [
+    "cargo",
+    "xtask",
+    "verify"
+  ],
+  "exit_code": 0,
+  "passed": true,
+  "session_id": 53753,
+  "seconds": 183.92664408299606,
+  "source_inputs": 87,
+  "reports": 49,
+  "qualifying_metadata": 5,
+  "all_checked_inputs_unchanged": true,
+  "files": [
+    {
+      "path": "CHECKS.json",
+      "original_sha256": "57ad108caccf0ae50286760bdb13cbdaeb702083e72c9885a8d0553638491514",
+      "public_sha256": "57ad108caccf0ae50286760bdb13cbdaeb702083e72c9885a8d0553638491514",
+      "original_bytes": 17666,
+      "public_bytes": 17666,
+      "transformation": "Literal ROOT/HOME locator normalization only; source identities, timestamps, outcomes, native raw EOF and test counts unchanged."
+    },
+    {
+      "path": "verify.stdout",
+      "original_sha256": "f55ec6edfb5f72ff7d57ffc8b6c8c7aceeec4470c7fc1ffb88090f43a4fb6e10",
+      "public_sha256": "f55ec6edfb5f72ff7d57ffc8b6c8c7aceeec4470c7fc1ffb88090f43a4fb6e10",
+      "original_bytes": 2712,
+      "public_bytes": 2712,
+      "transformation": "Literal ROOT/HOME locator normalization only; source identities, timestamps, outcomes, native raw EOF and test counts unchanged."
+    },
+    {
+      "path": "verify.stderr",
+      "original_sha256": "261a819d34e0d01f573d9cc6576f823172e31139f5e12b4b3a4ad819d0bde660",
+      "public_sha256": "e863806d678f02059473586a17abff2cf899d30f964e5232c057a0bfaf50b88d",
+      "original_bytes": 1807,
+      "public_bytes": 1527,
+      "transformation": "Literal ROOT/HOME locator normalization only; source identities, timestamps, outcomes, native raw EOF and test counts unchanged."
+    }
+  ],
+  "native_execution": false,
+  "reference_execution": false,
+  "native_physics_or_parity_acceptance": false
+}

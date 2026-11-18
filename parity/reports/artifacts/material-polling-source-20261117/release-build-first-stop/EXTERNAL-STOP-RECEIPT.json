@@ -1,0 +1,40 @@
+{
+  "Cargo_PID_and_group": 81016,
+  "actual_wait4_exit_code": -15,
+  "at_utc": "2026-11-17T05:52:05.573916+00:00",
+  "branch": "build/material-polling-release",
+  "candidate_tracked_status_clean": true,
+  "classification": "External real disk-resource protection stop; no compiler failure, physics failure or process-observation timeout established",
+  "commit": "9d4b629c077f06c348f6615fe90df7bbeacedb24",
+  "completed_release_binary_set": {},
+  "controller_PID": 81013,
+  "controller_exit_code": 1,
+  "controller_result_sha256": "fad756f2e6039fd3a7fe8b914afdd54cba6e70a005c119afd799bab2748ecca6",
+  "controller_terminal_sha256": "7877c61f9c42ad7a400e3251fae67a73e3ef0a41f9e010ca0e7791b00c7a1eff",
+  "direct_child_exact_wait4_peak_RSS_bytes": 653262848,
+  "elapsed_after_all_persistence_seconds": 188.6107582920231,
+  "external_disk_measurement_provenance": "Root notification; not a measurement made by this controller",
+  "external_stop_authority": "Root reported Data volume100% /1,653,055,488B available and deliberately signaled only owned Cargo group81016 for disk-resource protection",
+  "monitor_stop_reason": null,
+  "observation_failures": 0,
+  "observation_timeouts": 0,
+  "owned_PID_groups_absent": [
+    81013,
+    81016
+  ],
+  "release_build_completed": false,
+  "release_executable_file_existence": {
+    "weftforge": false,
+    "weftforge-cli": false
+  },
+  "retained_command_output_bytes": 30249,
+  "retries_or_cleanup_actions": 0,
+  "sampled_aggregate_peak_RSS_bytes": 701513728,
+  "scope": "Negative build closure only; no retry, cleanup or execution",
+  "signal": "SIGTERM",
+  "source88_metadata59_original8_pre_post_and_now_exact": true,
+  "source_freeze_sha256": "3d653d270afeb9d7a4e770dd75266645ad388ecb7638305f90b802918b98a6ea",
+  "source_profile_dependency_changes": 0,
+  "tests_models_native_GUI_bundles_or_benchmarks": 0,
+  "unified_exec_session": 96784
+}

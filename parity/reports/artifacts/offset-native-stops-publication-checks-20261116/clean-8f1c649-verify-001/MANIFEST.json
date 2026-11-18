@@ -1,0 +1,58 @@
+{
+  "kind": "Selected clean-checkpoint CLI verification logs, no native/reference/workflow acceptance",
+  "source_checkpoint": "8f1c64916d21f562f489ecd4555011b9aaa46bf4",
+  "session": 49585,
+  "cargo_pid": 48516,
+  "exit_code": 0,
+  "source_inputs": 87,
+  "reports": 50,
+  "metadata_inputs": 5,
+  "inputs_unchanged": true,
+  "files": [
+    {
+      "public_file": "CHECKS.json",
+      "original_file": "${ROOT}/.local/offset-native-stops-metadata-review-20261116/clean-8f1c649-verify-001/CHECKS.json",
+      "original_sha256": "1e49a9653789b11fb444ad6f2cdfbfc8bbc51075797db72212ebea95dd7eeef6",
+      "original_bytes": 569,
+      "public_sha256": "1e49a9653789b11fb444ad6f2cdfbfc8bbc51075797db72212ebea95dd7eeef6",
+      "public_bytes": 569,
+      "transforms": []
+    },
+    {
+      "public_file": "INPUTS.before.json",
+      "original_file": "${ROOT}/.local/offset-native-stops-metadata-review-20261116/clean-8f1c649-verify-001/INPUTS.before.json",
+      "original_sha256": "3a00aab36cc4b79e52443b5d36aa7d3b6ded7975f7f74c4729de8798f3f4c406",
+      "original_bytes": 16454,
+      "public_sha256": "3a00aab36cc4b79e52443b5d36aa7d3b6ded7975f7f74c4729de8798f3f4c406",
+      "public_bytes": 16454,
+      "transforms": []
+    },
+    {
+      "public_file": "INPUTS.after.json",
+      "original_file": "${ROOT}/.local/offset-native-stops-metadata-review-20261116/clean-8f1c649-verify-001/INPUTS.after.json",
+      "original_sha256": "3a00aab36cc4b79e52443b5d36aa7d3b6ded7975f7f74c4729de8798f3f4c406",
+      "original_bytes": 16454,
+      "public_sha256": "3a00aab36cc4b79e52443b5d36aa7d3b6ded7975f7f74c4729de8798f3f4c406",
+      "public_bytes": 16454,
+      "transforms": []
+    },
+    {
+      "public_file": "cargo-xtask-verify.log",
+      "original_file": "${ROOT}/.local/offset-native-stops-metadata-review-20261116/clean-8f1c649-verify-001/cargo-xtask-verify.log",
+      "original_sha256": "f47daa12bba3a1dfb6b9409646009a13f17ba6ae3d4979ba82dec1e9e9c5721f",
+      "original_bytes": 4535,
+      "public_sha256": "8b8458a1067183aef0402a713010f4a9d5bee2e5aaa32912ab7f6f30d2072557",
+      "public_bytes": 4255,
+      "transforms": [
+        {
+          "operation": "literal_locator_replacement",
+          "locator": "ROOT",
+          "original_locator_utf8_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "${ROOT}",
+          "occurrences": 5
+        }
+      ]
+    }
+  ],
+  "manifest_self_excluded": true
+}

@@ -25,36 +25,61 @@ pub fn create_cloth_cancellable(
     mesh: &Mesh,
     cancelled: impl Fn() -> bool,
 ) -> Result<Cloth> {
+    create_cloth_context(project, mesh, cancelled, None)
+}
+
+pub(crate) fn create_cloth_for_offset(
+    project: &Project,
+    mesh: &Mesh,
+    work: &crate::offset::Work<'_>,
+) -> Result<Cloth> {
+    create_cloth_context(project, mesh, || false, Some(work))
+}
+
+fn create_cloth_context(
+    project: &Project,
+    mesh: &Mesh,
+    cancelled: impl Fn() -> bool,
+    work: Option<&crate::offset::Work<'_>>,
+) -> Result<Cloth> {
     let check = || {
+        if let Some(work) = work {
+            work.step()?;
+        }
         crate::ensure(
             !cancelled(),
             "Simulation initialization cancelled; previous state retained",
         )
     };
     check()?;
-    project.validate()?;
+    if let Some(work) = work {
+        project.validate_for_offset(work)?;
+    } else {
+        project.validate()?;
+    }
     check()?;
-    mesh.validate()?;
+    mesh.validate_context(work)?;
     check()?;
     crate::ensure(
         mesh.doc_revision == project.revision,
         "Rest mesh belongs to an obsolete document revision",
     )?;
     crate::ensure(
-        mesh.sewing_groups
-            .iter()
-            .map(|group| group.id)
-            .eq(project.sewing_groups.iter().map(|group| group.id)),
+        mesh.sewing_groups.len() == project.sewing_groups.len(),
         "Rest mesh sewing previews belong to different construction",
     )?;
+    for (preview, group) in mesh.sewing_groups.iter().zip(&project.sewing_groups) {
+        check()?;
+        crate::ensure(
+            preview.id == group.id,
+            "Rest mesh sewing previews belong to different construction",
+        )?;
+    }
     let triangle_materials = mesh
         .triangles
         .iter()
-        .enumerate()
-        .map(|(i, triangle)| {
-            if i % 256 == 0 {
-                check()?;
-            }
+        .map(|triangle| {
+            check()?;
             let piece = project
                 .piece(mesh.piece_ids[triangle[0]])
                 .ok_or_else(|| crate::Error("Rest mesh references an unknown piece".into()))?;
@@ -81,11 +106,8 @@ pub fn create_cloth_cancellable(
     let stitches = mesh
         .stitches
         .iter()
-        .enumerate()
-        .map(|(i, stitch)| {
-            if i % 256 == 0 {
-                check()?;
-            }
+        .map(|stitch| {
+            check()?;
             Ok(Stitch {
                 a: weighted(&stitch.a),
                 b: weighted(&stitch.b),
@@ -94,10 +116,8 @@ pub fn create_cloth_cancellable(
         })
         .collect::<Result<_>>()?;
     let mut colliders = vec![Collider::Ground { height: 0.0 }];
-    for (i, capsule) in project.mannequin.capsules.iter().enumerate() {
-        if i % 256 == 0 {
-            check()?;
-        }
+    for capsule in &project.mannequin.capsules {
+        check()?;
         colliders.push(Collider::Capsule {
             a: capsule.a,
             b: capsule.b,
@@ -105,7 +125,8 @@ pub fn create_cloth_cancellable(
         });
     }
     check()?;
-    Cloth::new_cancellable(
+    let failure = std::cell::RefCell::new(None);
+    let result = Cloth::new_cancellable(
         ClothInput {
             positions: mesh.positions.clone(),
             triangles: mesh.triangles.clone(),
@@ -115,9 +136,22 @@ pub fn create_cloth_cancellable(
             pins: vec![],
             colliders,
         },
-        cancelled,
+        || {
+            if let Some(work) = work
+                && let Err(error) = work.check().and_then(|()| work.step())
+            {
+                *failure.borrow_mut() = Some(error);
+                return true;
+            }
+            cancelled()
+        },
     )
-    .map_err(|error| crate::Error(error.to_string()))
+    .map_err(|error| crate::Error(error.to_string()));
+    if let Some(error) = failure.into_inner() {
+        Err(error)
+    } else {
+        result
+    }
 }
 
 #[cfg(test)]

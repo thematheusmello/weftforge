@@ -1,0 +1,191 @@
+{
+  "deadline": 1076101.310882708,
+  "experiment": "WF-20261117-DUAL-SEWING-HARBOR-A8-001",
+  "final_numerical_receipt_sha256": "df0183751d648e3c6fbfb5a15e65fe9c1410d1b03fc9a3e6f7dbab9a20fa699e",
+  "finalization_process_end_monotonic_seconds": 1076003.58746675,
+  "native_or_reference_acceptance": false,
+  "root_go_sha256": "5e6c365482bccb198dc6b0ca6b6cfcabfbcf0e4c9d097db16f097757004b900f",
+  "source_commit": "ef313fa869647c708a163853301ebc1d70a1d0b2",
+  "stages": [
+    {
+      "argv": [
+        "<ROOT>/.local/shared-stitch-stationarity-20261117/target/release/harbor-coupled-producer",
+        "prepare",
+        "inputs/base.weftforge",
+        "preflight-base"
+      ],
+      "end_monotonic_seconds": 1075682.218206625,
+      "exit_code": 0,
+      "name": "init-only",
+      "peak_rss_bytes": 8323072,
+      "pid": 53859,
+      "process_group": 53859,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.058671207865700126,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 12,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 8257536,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1076101.310882708,
+        "output_bytes": 916655,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    },
+    {
+      "argv": [
+        "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+        "-B",
+        "<ROOT>/.local/shared-stitch-stationarity-20261117/.local/harbor-dual-sewing-preparation-20261117/worker.py",
+        "metadata",
+        "--deadline",
+        "1076101.310882708"
+      ],
+      "end_monotonic_seconds": 1075682.602431958,
+      "exit_code": 0,
+      "name": "metadata",
+      "peak_rss_bytes": 36536320,
+      "pid": 53885,
+      "process_group": 53885,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.056904416996985674,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 7,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 33128448,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1076101.310882708,
+        "output_bytes": 1510285,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    },
+    {
+      "argv": [
+        "<ROOT>/.local/shared-stitch-stationarity-20261117/target/release/harbor-coupled-producer",
+        "run",
+        "inputs/base.weftforge",
+        "runs/base",
+        "expected/approved-metadata.json"
+      ],
+      "end_monotonic_seconds": 1075964.060176416,
+      "exit_code": 0,
+      "name": "producer",
+      "peak_rss_bytes": 11337728,
+      "pid": 53909,
+      "process_group": 53909,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.15164133301004767,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 5229,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 11337728,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1076101.310882708,
+        "output_bytes": 18198110,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    },
+    {
+      "argv": [
+        "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+        "-B",
+        "<ROOT>/.local/shared-stitch-stationarity-20261117/.local/harbor-dual-sewing-preparation-20261117/worker.py",
+        "analyze",
+        "--deadline",
+        "1076101.310882708"
+      ],
+      "end_monotonic_seconds": 1076002.609414666,
+      "exit_code": 2,
+      "name": "analysis",
+      "peak_rss_bytes": 37896192,
+      "pid": 69035,
+      "process_group": 69035,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.1258668750524521,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 701,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 37896192,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1076101.310882708,
+        "output_bytes": 19203636,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    },
+    {
+      "argv": [
+        "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+        "-B",
+        "<ROOT>/.local/shared-stitch-stationarity-20261117/.local/harbor-dual-sewing-preparation-20261117/worker.py",
+        "finalize",
+        "--deadline",
+        "1076101.310882708"
+      ],
+      "end_monotonic_seconds": 1076003.58746675,
+      "exit_code": 0,
+      "name": "finalization",
+      "peak_rss_bytes": 34816000,
+      "pid": 70798,
+      "process_group": 70798,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.057602375047281384,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 18,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 34816000,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1076101.310882708,
+        "output_bytes": 19211391,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    }
+  ],
+  "started": 1075681.310882708,
+  "status": "pending_post_persistence_terminal_verdict",
+  "strict_quality_passed": false
+}

@@ -1,0 +1,56 @@
+{
+  "accepted": true,
+  "head": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+  "observed_utc": "2026-11-18T10:08:36.922459+00:00",
+  "original_session": 85864,
+  "original_tool_terminal_exit": 0,
+  "original_tool_receipt_retention": "Copied exactly from the fully visible untruncated original tool result; not cached within the returning functions cell. Parsed stdout matches persisted original clock.",
+  "clock": {
+    "accepted": true,
+    "actual_seconds_through_persisted_external_terminal": 63.85380329214968,
+    "available_bytes": 11850895360,
+    "case_cap_seconds": 900,
+    "controller_exit_code": 0,
+    "external_terminal_sha256": "3118c64781ca76399f5df0744cb90df154aafaea3093fbed79ba8002bdf41d15",
+    "launcher_timeout": false,
+    "qualification": "Clock sampled after external terminal and controller stdio fsync. This witness preserves that completed-case observation and is not a new command or timing regrade.",
+    "retained_bytes_at_terminal": 210133,
+    "retained_cap_bytes": 8388608
+  },
+  "plan_sha256": "c820f568c994d12ca0b1020cd313664152fc51062e63e9d7986a8fc722cb30d7",
+  "result_sha256": "e3bb49f219af11aa8334eeb40901bf5ae77b8991a61186684ed9e4a60e54b215",
+  "terminal_sha256": "492224037673a3681f2e1134187294288d325578fc503a35574346079fe21a5f",
+  "external_terminal_sha256": "3118c64781ca76399f5df0744cb90df154aafaea3093fbed79ba8002bdf41d15",
+  "post_terminal_clock_sha256": "86bb668e6345f5e335ec576ce6cda724abec7f88d90b444346572445851213fa",
+  "profile_binding_sha256": "4222ca20d9d3ae86f993505c63fb3f9f90ded55495823f38dd27705effcd0f93",
+  "source91_and20_configs_exact": true,
+  "HEAD_index_tracked_clean": true,
+  "all_owned_ids_absent": [
+    91487,
+    91610,
+    91640
+  ],
+  "same_original_worktree_immutable_binaries": {
+    "weftforge": {
+      "built_not_launched": true,
+      "bytes": 15949024,
+      "mode": 493,
+      "path": "<WORKTREE>/target/release/weftforge",
+      "sha256": "22a63e0eaa5330aa5b55df86349d0aea52fa5e587f9bf06a9375702cf4b38f33",
+      "immutable_path": "<WORKTREE>/.local/capsule-supporting-plane-release-binaries-20261118/weftforge-22a63e0eaa5330aa5b55df86349d0aea52fa5e587f9bf06a9375702cf4b38f33",
+      "not_Cargo_input": true,
+      "same_original_worktree": true
+    },
+    "weftforge-cli": {
+      "built_not_launched": true,
+      "bytes": 3036128,
+      "mode": 493,
+      "path": "<WORKTREE>/target/release/weftforge-cli",
+      "sha256": "94f79719781ed2d16a5a466ed83e2b7c955f378f8ec5fa90c750ee5c82365ac4",
+      "immutable_path": "<WORKTREE>/.local/capsule-supporting-plane-release-binaries-20261118/weftforge-cli-94f79719781ed2d16a5a466ed83e2b7c955f378f8ec5fa90c750ee5c82365ac4",
+      "not_Cargo_input": true,
+      "same_original_worktree": true
+    }
+  },
+  "qualification": "Separate post-case preservation. Actual optimized build on G; no native/CLI workflow, garment, reference, full feature or gate acceptance."
+}

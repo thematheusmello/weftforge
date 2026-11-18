@@ -1,0 +1,49 @@
+{
+  "all_source88_metadata59_original8_exact": true,
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "build",
+    "-p",
+    "weftforge",
+    "-p",
+    "weftforge-cli",
+    "--locked",
+    "--offline"
+  ],
+  "end_monotonic_seconds": 1015835.71265,
+  "exit_code": 0,
+  "name": "native-cli-debug",
+  "peak_rss_bytes": 608894976,
+  "pid": 72963,
+  "post_guard": {
+    "all_source88_metadata59_original8_exact": true,
+    "clean_exact_commit": true,
+    "tools_configs_compiler_inventory_exact": true
+  },
+  "pre_guard": {
+    "all_source88_metadata59_original8_exact": true,
+    "clean_exact_commit": true,
+    "tools_configs_compiler_inventory_exact": true
+  },
+  "process_group": 72963,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.28774779103696346,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 311,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 899792896,
+  "stop_reason": null,
+  "terminal_phase_checks": {
+    "deadline": 1016588.67987425,
+    "output_bytes": 68787,
+    "output_cap_bytes": 16777216,
+    "reserve_bytes": 262144
+  }
+}

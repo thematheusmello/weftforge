@@ -1,0 +1,45 @@
+{
+  "actual_Cargo_exit": 101,
+  "actual_controller_exit": 0,
+  "actual_product_command_count": 1,
+  "actual_source_commit": "d8bcb3b7fa6c185e715603ef7bf84128b3110c24",
+  "actual_unified_exec_session": 45954,
+  "compilation_succeeded": true,
+  "controller_label_limitation": "RESULT classification COMPILATION_OR_OPERATIONAL_FAILURE is a parser false-negative: --nocapture inserted printed metrics between the test-name prefix and standalone FAILED. The unchanged raw stdout final summary and stderr assertion identify a genuine one-test RED. No source/helper/receipt repair or repeat was performed.",
+  "failing_assertion": "shared-row full Cartesian stationarity: N",
+  "limits": "Independent shared-row stationarity RED only; fixed director, no Cloth/garment/contact stage or frame28/collar causality, no product candidate, no parity or full-garment claim.",
+  "operational_evidence": {
+    "Cargo_exact_wait4_peak_bytes": 392200192,
+    "RSS_observation_gaps_qualified": true,
+    "RSS_sampled_aggregate_peak_bytes": 435339264,
+    "no_monitor_stop": true,
+    "terminal_output_bytes": 81578,
+    "whole_through_terminal_s": 11.85897708288394,
+    "within120": true
+  },
+  "original_RESULT_sha256": "d72f9c9e649decbd84bde0380a60be826d7f63571e64fe0adc9c37a9a5be0629",
+  "original_TERMINAL_sha256": "6267a986d91fa65e540af2440c532eb6e350f625cf1ca0e34aaa146dde62a899",
+  "original_stderr_sha256": "f49189591827930e72c90408b255975eba5c66e0262fe127e52beba742a0e981",
+  "original_stdout_sha256": "8188781952c99128d93e297b91f258ec626c16ab5555ef916a669b3210f7dd7c",
+  "passed_before_failure": "All32 finite/history/COM checks, independent oracle selfcheck, then Cartesian position bound passed; force bound failed.",
+  "printed_metrics_only_no_recomputation": {
+    "center_m": "[0.0, 0.0, -8.685396431806824e-18]",
+    "expected_center_m": "[0.0, 0.0, -9.264422860593947e-18]",
+    "expected_m": "[[0.0, 0.0, 0.006666666886095756], [0.0, 0.0, -0.006666666886095767]]",
+    "expected_objective_J": "0.0007314285521689168",
+    "force_error_N": "0.08777113262758984",
+    "independent_cartesian_residual_N": "[[0.0, 0.0, -0.08777113262758984], [0.0, 0.0, 0.08777113262758984]]",
+    "objective_J": "0.0007314285714283456",
+    "oracle_cartesian_residual_N": "[[0.0, 0.0, -2.210547023206999e-11], [0.0, 0.0, 2.2105442476494375e-11]]",
+    "position_error_m": "0.00000000021942782660322457",
+    "x_m": "[[0.0, 0.0, 0.00666666666666793], [0.0, 0.0, -0.00666666666666794]]"
+  },
+  "raw_test_summary": {
+    "failed": 1,
+    "filtered_out": 77,
+    "ignored": 0,
+    "measured": 0,
+    "passed": 0
+  },
+  "status": "RAW_SELECTED_TEST_RED_RECOGNIZED_NO_RERUN_OR_NEW_TEST"
+}

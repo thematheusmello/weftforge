@@ -1,0 +1,188 @@
+--- sealed-failed-attempt/packet/resources.py
++++ source-only-control-draft/packet/resources.py
+@@ -71,11 +71,55 @@
+     deadline_check(deadline)
+     return digest.hexdigest()
+ 
++def directory_bytes(directories, *, shallow=(), deadline=None):
++    """Retry only disappearing entries; count temporary files and retain observed partial peaks."""
++    directories, shallow = tuple(map(Path, directories)), tuple(map(Path, shallow))
++    peak = 0
++    for attempt in range(3):
++        total = 0
++
++        def scan(directory, recursive, optional=False):
++            nonlocal total
++            deadline_check(deadline)
++            try:
++                entry = directory.lstat()
++            except FileNotFoundError:
++                if optional:
++                    return
++                raise
++            require(not stat.S_ISLNK(entry.st_mode), f"Symlink volume directory: {directory.name}")
++            require(stat.S_ISDIR(entry.st_mode), f"Not a volume directory: {directory.name}")
++            for path in sorted(directory.iterdir()):
++                deadline_check(deadline)
++                entry = path.lstat()
++                require(not stat.S_ISLNK(entry.st_mode), f"Symlink volume entry: {path.name}")
++                if stat.S_ISDIR(entry.st_mode):
++                    if recursive:
++                        scan(path, True)
++                else:
++                    require(stat.S_ISREG(entry.st_mode), f"Nonregular volume entry: {path.name}")
++                    total += entry.st_size
++
++        try:
++            for directory in directories:
++                scan(directory, True, True)
++            for directory in shallow:
++                scan(directory, False)
++        except FileNotFoundError as error:
++            peak = max(peak, total)
++            deadline_check(deadline)
++            if attempt == 2:
++                raise FileNotFoundError(f"Directory volume unavailable after 3 snapshot attempts: {error}") from error
++        else:
++            deadline_check(deadline)
++            return max(peak, total)
++
++
+ def numerical_files(root=ROOT):
+     return [path for name in OUTPUT_DIRECTORIES for path in files_below(Path(root) / name)]
+ 
+-def numerical_bytes(root=ROOT):
+-    return sum(path.stat().st_size for path in numerical_files(root))
++def numerical_bytes(root=ROOT, deadline=None):
++    return directory_bytes((Path(root) / name for name in OUTPUT_DIRECTORIES), deadline=deadline)
+ 
+ def encoded(value):
+     return (json.dumps(value, indent=2, sort_keys=True, allow_nan=False) + "\n").encode()
+@@ -190,7 +234,13 @@
+             result.update(exit_code=child.returncode, peak_rss_bytes=int(usage.ru_maxrss))
+             if rss_cap is not None and result["peak_rss_bytes"] > rss_cap and not result["stop_reason"]:
+                 result["stop_reason"] = "exact_producer_peak_rss_cap"
+-    final_bytes = count_bytes() + pending_copy_bytes()
++    try:
++        final_bytes = count_bytes() + pending_copy_bytes()
++    except BaseException as error:
++        final_bytes = None
++        result["output_observation_error"] = f"{type(error).__name__}:{error}"
++        if not result["stop_reason"]:
++            result["stop_reason"] = "terminal_output_observation_unavailable"
+     result["end_monotonic_seconds"] = time.monotonic()
+     if rss_cap is not None and last_snapshot is not None:
+         observation["max_snapshot_gap_seconds"] = max(result["end_monotonic_seconds"] - last_snapshot, observation["max_snapshot_gap_seconds"])
+@@ -198,7 +248,7 @@
+                                        "reserve_bytes": reserve, "output_cap_bytes": output_cap}
+     if result["end_monotonic_seconds"] >= deadline and not result["stop_reason"]:
+         result["stop_reason"] = "terminal_phase_wall_cap"
+-    if final_bytes + reserve >= output_cap and not result["stop_reason"]:
++    if final_bytes is not None and final_bytes + reserve >= output_cap and not result["stop_reason"]:
+         result["stop_reason"] = "terminal_phase_output_cap"
+     return result
+ 
+--- sealed-failed-attempt/packet/common.py
++++ source-only-control-draft/packet/common.py
+@@ -225,7 +225,7 @@
+     """The positive terminal verdict is sampled only after the receipt is fsynced and hashed."""
+     r.require(len(r.encoded(receipt)) <= r.RECEIPT_RESERVE, "Supervisor receipt exceeds reserved size")
+     digest = persist(ROOT / "runtime/SUPERVISOR.json", receipt, deadline)
+-    volume = r.numerical_bytes()
++    volume = r.numerical_bytes(deadline=deadline)
+     closed = time.monotonic()
+     r.require(closed < deadline and volume <= CAP_BYTES, "Cap exceeded after final receipt persistence/guards")
+     return {"status": "complete", "operational_complete": True,
+--- sealed-failed-attempt/packet/controller.py
++++ source-only-control-draft/packet/controller.py
+@@ -41,7 +41,7 @@
+         def stage(name, argv):
+             r.deadline_check(deadline)
+             result = r.monitor(argv, ROOT, ROOT / f"runtime/{name}.stdout", ROOT / f"runtime/{name}.stderr",
+-                               deadline, r.numerical_bytes, rss_cap=b.CAP_BYTES,
++                               deadline, lambda: r.numerical_bytes(deadline=deadline), rss_cap=b.CAP_BYTES,
+                                reserve=2*r.RECEIPT_RESERVE,
+                                on_start=lambda handle: b.persist(ROOT / f"runtime/{name}-started.json", handle, deadline))
+             stages.append({"name": name, **result})
+--- sealed-failed-attempt/packet/worker.py
++++ source-only-control-draft/packet/worker.py
+@@ -42,6 +42,7 @@
+     c.REPO, c.EXPERIMENT = REPO, ROOT
+     c.REVISIONS = {"base": 20}
+     c.OUTPUT_DIRECTORIES = r.OUTPUT_DIRECTORIES
++    c.numerical_output_bytes = lambda: r.numerical_bytes(deadline=deadline)
+     c.check_metadata = check_current_metadata
+     result = c.analyze_saved("base", ROOT / "runs/base", deadline=deadline)
+     result.update(source_commit=b.SOURCE, experiment=b.EXPERIMENT,
+@@ -75,7 +76,7 @@
+     r.require(type(analysis["strict_delivery_passed"]) is bool and (stage["exit_code"] == 0) is analysis["strict_delivery_passed"], "Quality flag and analysis exit disagree")
+     b.verify_session(deadline)
+     outputs = {str(path.relative_to(ROOT)): r.sha(path, deadline) for path in r.numerical_files()}
+-    r.require(r.numerical_bytes() + 2*r.RECEIPT_RESERVE < b.CAP_BYTES, "Final receipt reserve unavailable")
++    r.require(r.numerical_bytes(deadline=deadline) + 2*r.RECEIPT_RESERVE < b.CAP_BYTES, "Final receipt reserve unavailable")
+     final = {"experiment": b.EXPERIMENT, "source_commit": b.SOURCE,
+              "status": "complete" if analysis["strict_delivery_passed"] else "complete_quality_failed",
+              "strict_quality_passed": analysis["strict_delivery_passed"],
+--- sealed-failed-attempt/packet/build_release.py
++++ source-only-control-draft/packet/build_release.py
+@@ -18,7 +18,7 @@
+     r.require(b.c.same(authorization,expected),"Separate exact build-only root GO and closed workspace gates missing")
+     target=r.no_links(REPO/b.OWN_TARGET,REPO)
+     out=ROOT/"checks/build";out.mkdir();started=time.monotonic();deadline=started+120.
+-    result=r.monitor(preflight["build_binding"]["argv"],REPO,out/"stdout",out/"stderr",deadline,lambda:sum(p.stat().st_size for p in r.files_below(out)),rss_cap=1073741824,output_cap=8388608,reserve=2*r.RECEIPT_RESERVE,child_env=clean_child_env(preflight["build_binding"]),on_start=lambda handle:b.persist(out/"started.json",handle,deadline))
++    result=r.monitor(preflight["build_binding"]["argv"],REPO,out/"stdout",out/"stderr",deadline,lambda:r.directory_bytes([out],deadline=deadline),rss_cap=1073741824,output_cap=8388608,reserve=2*r.RECEIPT_RESERVE,child_env=clean_child_env(preflight["build_binding"]),on_start=lambda handle:b.persist(out/"started.json",handle,deadline))
+     receipt={"source_commit":b.SOURCE,"source_preflight_sha256":r.sha(ROOT/"SOURCE-PREFLIGHT.json"),"build_binding_sha256":preflight["build_binding_sha256"],"build_binding":preflight["build_binding"],"full_workspace_gates_passed":True,"workspace_gate_receipt":workspace_receipt,"build_GO_sha256":args.go_sha256,"stage":result,"Cloth_initializations":0,"Cloth_steps":0,"binary_copied":False,"same_checkout_existing_target_allowed":True}
+     if result["stop_reason"] is None and result["exit_code"]==0:
+         verify_preflight();binary=target/"release/harbor-coupled-producer"
+--- sealed-failed-attempt/outer/supervise.py
++++ source-only-control-draft/outer/supervise.py
+@@ -29,8 +29,8 @@
+     return b.persist(OUT / name, value)
+ 
+ 
+-def total_bytes():
+-    return r.numerical_bytes() + sum(p.stat().st_size for p in OUT.iterdir() if p.is_file())
++def total_bytes(deadline=None):
++    return r.directory_bytes((PACKET / name for name in r.OUTPUT_DIRECTORIES), shallow=(OUT,), deadline=deadline)
+ 
+ 
+ def main():
+@@ -47,7 +47,7 @@
+     save("OUTER-START.json", {"started": started, "deadline": deadline, "go_sha256": go_sha,
+                              "supervisor_sha256": r.sha(Path(__file__)), "argv": argv})
+     stage = r.monitor(argv, PACKET, OUT / "controller.stdout", OUT / "controller.stderr", deadline,
+-                      total_bytes, rss_cap=b.CAP_BYTES, reserve=4*r.RECEIPT_RESERVE, child_env=child_env,
++                      lambda: total_bytes(deadline), rss_cap=b.CAP_BYTES, reserve=4*r.RECEIPT_RESERVE, child_env=child_env,
+                       on_start=lambda h: save("RUNNING.json", {"root_pid": os.getpid(), "started": started, "deadline": deadline, **h}))
+     errors, cleanup = [], []
+     for path in sorted((PACKET / "runtime").glob("*-started.json")):
+@@ -94,14 +94,14 @@
+                "numerical_hashes": hashes, "go_sha256": go_sha, "native_or_reference_acceptance": False,
+                "retry_or_continuation_allowed": False}
+     witness_sha = save("ROOT-TERMINAL-WITNESS.json", witness)
+-    volume = total_bytes()
++    volume = total_bytes(deadline)
+     closed = time.monotonic()
+     result = {"root_operational_accepted": accepted(stage["exit_code"], stage["stop_reason"], candidate, closed, deadline, volume),
+               "strict_quality_passed": quality, "elapsed_through_persisted_root_witness_seconds": closed-started,
+               "witness_sha256": witness_sha, "root_controller_peak_rss_bytes": stage["peak_rss_bytes"],
+               "total_counted_bytes": volume, "errors": errors, "source_commit": b.SOURCE}
+     result_sha = save("ROOT-RESULT.json", result)
+-    volume = total_bytes()
++    volume = total_bytes(deadline)
+     closed = time.monotonic()
+     result["root_operational_accepted"] = result["root_operational_accepted"] and closed < deadline and volume <= b.CAP_BYTES
+     result.update(root_result_sha256=result_sha, total_counted_bytes_after_root_result_persistence=volume,
+--- sealed-failed-attempt/outer/launch_and_record.py
++++ source-only-control-draft/outer/launch_and_record.py
+@@ -37,7 +37,9 @@
+     record.update(outer_exit_code=code,outer_terminal=terminal,outer_stdout_sha256=hashlib.sha256((OUT/"outer.stdout").read_bytes()).hexdigest(),outer_stderr_sha256=hashlib.sha256((OUT/"outer.stderr").read_bytes()).hexdigest(),external_final_clock_verdict_pending=True)
+     with (OUT/"EXTERNAL-TERMINAL.json").open("x") as stream:json.dump(record,stream,indent=2);stream.write("\n");stream.flush();os.fsync(stream.fileno())
+     witness_sha=hashlib.sha256((OUT/"EXTERNAL-TERMINAL.json").read_bytes()).hexdigest()
+-    volume=sum(p.stat().st_size for p in OUT.iterdir() if p.is_file())+sum(p.stat().st_size for name in ["inputs","expected","preflight-base","runs","runtime"] for p in (packet/name).rglob("*") if p.is_file())
++    sys.path.insert(0,str(packet))
++    import resources as r
++    volume=r.directory_bytes((packet/name for name in r.OUTPUT_DIRECTORIES),shallow=(OUT,),deadline=start["deadline"])
+     closed=time.monotonic()
+     result={"external_operational_accepted":admitted(code,terminal,closed,start["deadline"],volume),"strict_quality_passed":terminal["strict_quality_passed"],"outer_exit_code":code,"elapsed_after_external_witness_persistence_seconds":closed-start["started"],"total_counted_bytes":volume,"external_witness_sha256":witness_sha}
+     print(json.dumps(result),flush=True)

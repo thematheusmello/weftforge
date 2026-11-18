@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--lib",
+    "tests::material_network_reaches_independent_incremental_energy_equilibrium",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "one_job": true,
+  "locked_offline": true,
+  "own_initially_absent_target": true,
+  "empty_RUSTFLAGS_and_ENCODED": true
+}

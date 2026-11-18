@@ -1,0 +1,44 @@
+{
+  "kind": "independent-native-rectangle-file-checker",
+  "state": "FROZEN_BEFORE_NATIVE_GO",
+  "frozen_utc": "2026-11-16T22:10:43.592014+00:00",
+  "artifacts": {
+    ".local/rectangle-file-checker-20261116/checker.py": {
+      "sha256": "f5fc1d1985578affcde122288ec3973d6118f83c332c11e1a078a0873842259c",
+      "bytes": 24175,
+      "mode": "0444"
+    },
+    ".local/rectangle-file-checker-20261116/targets.json": {
+      "sha256": "402abadb803a9c580d3723c89e9aae71476e6336f9613c6392599cc843bef7bc",
+      "bytes": 2408,
+      "mode": "0444"
+    },
+    ".local/rectangle-file-checker-20261116/seed-expected.json": {
+      "sha256": "5b0449d038beb04e0ae94c79e53c78d715da8e5b5dda0f82fbf472d042aaa7db",
+      "bytes": 1977,
+      "mode": "0444"
+    },
+    ".local/rectangle-file-checker-20261116/selfcheck-receipt.json": {
+      "sha256": "ce446e6f95b8f02bcdd8398ff1eb78b35f4e5c30c29de75e27ec25380d7253fb",
+      "bytes": 11235,
+      "mode": "0444"
+    },
+    ".local/rectangle-file-checker-20261116/README.txt": {
+      "sha256": "20177e3940bbc1921e04882f8cc6e4ea07727e9eef4f30d4d228211d27b9134e",
+      "bytes": 2300,
+      "mode": "0444"
+    }
+  },
+  "original_seed": {
+    "path": ".local/native-rectangle-20261116/RG001/input/empty.weftforge",
+    "sha256": "5b0449d038beb04e0ae94c79e53c78d715da8e5b5dda0f82fbf472d042aaa7db",
+    "bytes": 1977,
+    "mode": "0644"
+  },
+  "selfcheck_count": 68,
+  "actual_case_execution_count": 0,
+  "native_output_status": "Parent reported all snapshots absent before checker freeze; checker has not inspected work/output stages.",
+  "preparation_note": "An initial pre-freeze synthetic self-check exposed Python accepting deeper JSON than anticipated; added a fixed 64-level boundary and all 68 synthetic checks now pass. No actual case check has run.",
+  "execution_rule": "Exactly one actual check after explicit parent GO and all five output hashes; no repair, rerun or regrade.",
+  "limits": "File-only; no UI, gesture, lifecycle, native reopen, reference, physics, 3D surface, or full garment acceptance."
+}

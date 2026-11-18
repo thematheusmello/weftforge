@@ -1,0 +1,9 @@
+{
+  "status": "PRE_ADMISSION_WRAPPER_REFUSAL_MISSING_ADMISSION",
+  "cause": "Root advanced to wrapper after heavy-process admission guard returned failure; dependent launch was not gated on that exit.",
+  "external_launcher_or_outer_started": false,
+  "numerical_controller_or_clock_started": false,
+  "model_initializations": 0,
+  "simulation_steps": 0,
+  "resolution": "Root checks successful terminal admission preparation before invoking wrapper. Admission002 remains unused. Original raw tool results preserved unchanged under this separate pre-admission history."
+}

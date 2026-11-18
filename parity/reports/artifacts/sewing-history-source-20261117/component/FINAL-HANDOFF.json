@@ -1,0 +1,37 @@
+{
+  "GREEN_result": {
+    "closed_action_error_N": 5.551115123125783e-17,
+    "command_seconds_through_result_fsync": 5.82103566697333,
+    "final_manifest_sha256": "159701ddbe271b40addc36ed0aecfa0519202a5c42c6f59a64a8bdb5c2fde210",
+    "position_error_m": 1.2412670766236366e-16,
+    "radial_action_error_N": 1.1188630228279524e-16,
+    "stationarity_norm_N": 1.6653345369377348e-16
+  },
+  "RED_result": ".05387152303649836m position / .088977860631937N stationarity; final stage updates zero",
+  "active_owned_jobs": [],
+  "at_utc": "2026-11-17T10:24:28.879375+00:00",
+  "changed_files": {
+    "crates/weftforge-sim/src/constraints.rs": "f733e8be75c8092af5bd80f52d6addaa8adf94c8397e69d1bbbe6ae7114eac92",
+    "crates/weftforge-sim/src/tests.rs": "dad231e2b2997a1ef8e3f8d2c27d2787350217566078f2fc9510576038908c46",
+    "docs/physics.md": "8c42e1f5f54e5c7c1ef2703af4be16dd6933f0156081636087620e962afc25bf"
+  },
+  "final_checks_manifest_sha256": "c432283403081660611346e5f53fbc31ed8449b35b884e3ed14e3fee9875e6c5",
+  "final_source88_freeze_sha256": "99257524ddbef2d8284cf3b93095585c5c5b8b9795a7a02dc2f5cb2d16215d81",
+  "first_sim_only_strict_Clippy": "passed; no earlier Clippy invocation",
+  "first_zero_Cargo_controller_failure_preserved": "b76cb5943c42f44d4cde503f6b45b714951e73268393b6988a2bf64285b783a1",
+  "focused_tests": "12 stitch tests +1 exact existing general rollback passed; N32GREEN skipped",
+  "format_proof_sha256": "828f6c6817911797f4b0cec826a13bdfb5736654019cf713fcb7793519a6b9dd",
+  "formatting_history": "03f4actualfmt layout failure retained; root authorized exactfmt output, production bytes unchanged; new51dcfmt passed",
+  "known_pending_independent_review_finding": "Subnormal finite anchor(MIN_SUBNORMAL,MIN_SUBNORMAL,0), history0,W=a=1,target1: dividing raw components by rounded subnormal hypot can yield nonunit direction. Reviewer suggests max-abs scaling before normalization, including zero-anchor fallback. Static finding only; no probe or repair authorized/run in this epoch.",
+  "no_further_execution_or_source_edits": true,
+  "old_case_regrade_or_state_import": false,
+  "original_fixture_sha256": "859f478a24bdd227c29221b216f81896b5873a0ea82e2b6464f9cae9d9a9bd45",
+  "original_oracle_sha256": "e2d8ae2ff2cef036b84e7481bd3fd02b8f92fa7309d880e46f332adab47302af",
+  "physical_derivation": "Exact local radial-energy minimizer with retained Vec3 weighted correction; existing closed/hard branches byte-exact",
+  "source_commit": "51dc403a46337a112c9eabcca4834d04611d2d3d",
+  "source_proof_sha256": "ace8fb29083854e9aa1f449df13294cd040e3d014cb53111b61e16aabe2977fd",
+  "source_scope": "Exactly constraints.rs/tests.rs/docs/physics.md; no lib/API/schema/dependency/settings/iteration changes",
+  "status": "FOCUSED_CHECKS_GREEN_STATIC_SUBNORMAL_NORMALIZATION_FINDING_PENDING_ROOT",
+  "tracked_source_clean": true,
+  "whole_workspace_Harbor_native_reference_or_global_physics_acceptance": false
+}

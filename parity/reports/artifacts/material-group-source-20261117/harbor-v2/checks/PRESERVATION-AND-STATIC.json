@@ -1,0 +1,52 @@
+{
+  "at_utc": "2026-11-17T00:43:55.579950+00:00",
+  "build_binding_sha256": "b35c301476e23c92b376698b8a99fa38fb845ceb26fd3ba46b2eb2207a4b28f9",
+  "changed_private_Python_files": [
+    "common.py",
+    "compiler_inputs.py",
+    "resources.py",
+    "source_inputs.py",
+    "tiny_selfcheck.py"
+  ],
+  "exact_producer_consumer11": [
+    "producer/Cargo.toml",
+    "producer/Cargo.lock",
+    "producer/src/main.rs",
+    "consumer/bindings.py",
+    "consumer/capsule_geometry.py",
+    "consumer/decimal_oracle.py",
+    "consumer/evaluator.py",
+    "consumer/geometry_math.py",
+    "consumer/metadata_adapter.py",
+    "consumer/metrics.py",
+    "consumer/static_geometry.py"
+  ],
+  "final_Python_AST": "passed",
+  "full_caps_unchanged": {
+    "build_output_bytes": 8388608,
+    "build_sampled_process_rss_bytes": 1073741824,
+    "build_seconds": 120,
+    "numerical_child_and_output_bytes": 268435456,
+    "whole_numerical_seconds": 420
+  },
+  "owned_active_jobs": [],
+  "protected": {
+    "PREVIOUS-ROOT-PRESERVED.json": {
+      "files": 44,
+      "manifest_sha256": "947b4637f873c677fc7c21009d3d8a50d7973e4147b0b66b0b8f2ec54ebc2985",
+      "sha256_and_modes_unchanged": true
+    },
+    "V1-PRESERVED.json": {
+      "files": 53,
+      "manifest_sha256": "0bf4c5dc7c0b1b47ab75f8f51ee695644769aa3588bd64cbf60859b1accb326c",
+      "sha256_and_modes_unchanged": true
+    }
+  },
+  "source_commit": "13fb43fe08c045f08a1b85007aff3c15388a1e24",
+  "source_preflight_sha256": "76b46c72fdda9a1ece636a29e52bf48fb5325f6c3565d2e2aacb3a1490711927",
+  "v1_file_roster_unchanged": true,
+  "v2_actual_Cargo_invocations": 0,
+  "v2_actual_Cloth_initializations": 0,
+  "v2_actual_Cloth_steps": 0,
+  "v2_actual_evaluator_runs": 0
+}

@@ -1,0 +1,2605 @@
+{
+  "at_utc": "2026-11-16T21:33:41.887416+00:00",
+  "head": "7d19f86a006601133d457aee42cca3b115b994aa",
+  "git_status_porcelain": "",
+  "source88": {
+    ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "Cargo.lock": "eb8a60650b473c79dda2e58a56f68b1abe9ca9a68c15115c9c8754c561732f3a",
+    "Cargo.toml": "032b32e80547618a72d39e42c0204611ff37908b8a6bf28615b3e592f79fa499",
+    "THIRD_PARTY.md": "86d65f258938c55ed36d3a621222ef5124e348f5519d01eab8f61db540a4876e",
+    "apps/weftforge-cli/Cargo.toml": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+    "apps/weftforge-cli/src/main.rs": "7049615180a793ad1557a2bbd3a27797b4b06aac060a2cb0620bd40436e64e0b",
+    "apps/weftforge-cli/src/mcp.rs": "b0ac7f62a8f9f5e27236ebfc92b26791e9f7a84d67e7adcb663b43566dd34ef9",
+    "apps/weftforge-cli/tests/curves.rs": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+    "apps/weftforge-cli/tests/dxf_import.rs": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d",
+    "apps/weftforge-cli/tests/ellipse.rs": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b",
+    "apps/weftforge-cli/tests/grain.rs": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+    "apps/weftforge-cli/tests/holes.rs": "c7e0656dcb756db3ced588e52c08c969a997b99661f85bbb8d5079a27421ad77",
+    "apps/weftforge-cli/tests/mcp_stdio.rs": "8c20f4e7bfd7b0a2ef60538a43c662d4363288b66ba05abd1c5528b15fde3811",
+    "apps/weftforge-cli/tests/svg_import.rs": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af",
+    "apps/weftforge/Cargo.toml": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+    "apps/weftforge/assets/fonts/Inter-Regular.ttf": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82",
+    "apps/weftforge/assets/fonts/Inter-SemiBold.ttf": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3",
+    "apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1",
+    "apps/weftforge/assets/fonts/OFL-Inter.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+    "apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+    "apps/weftforge/assets/fonts/SOURCES.json": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c",
+    "apps/weftforge/src/main.rs": "18ab3e365244209deed35f16aff86b5d9e7c0d1cf3e1e4440f2be2e16e22612f",
+    "crates/weftforge-core/Cargo.toml": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+    "crates/weftforge-core/src/document.rs": "642c5f18dc91850011622a82afd271a9b8122b6b1a5155818c0f196d3e30c5b9",
+    "crates/weftforge-core/src/geometry.rs": "3738282136928c459eaf524036c61e20d4c8b3cf2e04cd46ac812faf4f823c41",
+    "crates/weftforge-core/src/lib.rs": "8f1a57b619222ea11986bf68a424e277b31a26d8da5eccef7c6d31b913ce76f8",
+    "crates/weftforge-core/src/offset.rs": "761881af22d784d0354ac25e6cda98971cb459bf78fd1d635eee21dc3e758203",
+    "crates/weftforge-core/src/persistence.rs": "69e76f3c73567731a46bc234e9a28e89d6036cb069c0ad501b4dd4570e40d691",
+    "crates/weftforge-core/src/persistence/dxf.rs": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338",
+    "crates/weftforge-core/src/persistence/dxf_import.rs": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+    "crates/weftforge-core/src/persistence/svg.rs": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7",
+    "crates/weftforge-core/src/sewing.rs": "dc7cb6cab0a62c313698c155728409f8940319bb49ed51c5c2fbc88c88f21146",
+    "crates/weftforge-core/src/simulation.rs": "24e12aaf323f34abe745dc9c42c9823acbd6e2a1832d6827a5a6397112525707",
+    "crates/weftforge-core/tests/cut_piece.rs": "7c5e12e7a4b6f0cec65199e795c8ad16889a0f0aa08247da2a2f94b567a59c86",
+    "crates/weftforge-core/tests/dxf.rs": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+    "crates/weftforge-core/tests/dxf_import.rs": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b",
+    "crates/weftforge-core/tests/ellipse.rs": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78",
+    "crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+    "crates/weftforge-core/tests/fixtures/original-cut-l.weftforge": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d",
+    "crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+    "crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+    "crates/weftforge-core/tests/fixtures/original-editable-patterns.svg": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+    "crates/weftforge-core/tests/grain.rs": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+    "crates/weftforge-core/tests/hole_io.rs": "35e4b82cf53dc0b80218574e948d0b0fa09f7e8f4c1524e52b6a8650cd83ea98",
+    "crates/weftforge-core/tests/holes.rs": "eaf21904ea94858632e6d11caddda63c0bf220845788633481c3bd114a355594",
+    "crates/weftforge-core/tests/internal_lines.rs": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786",
+    "crates/weftforge-core/tests/joins.rs": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10",
+    "crates/weftforge-core/tests/migration.rs": "1f4b8aec8bfa9622c7c69b2b7ef2a9ec2c745340c5d56c5edab87d40d7f66418",
+    "crates/weftforge-core/tests/outline_offset.rs": "9e5711fe91d8cb1b42818f7db241e94186110585cea8839eb312f01e6a0b3f69",
+    "crates/weftforge-core/tests/pattern_transform.rs": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31",
+    "crates/weftforge-core/tests/seam_reversal.rs": "6a6590557bcdfd29d7a6d0b85de939ed542586e0c573180a1b035b8aaa114c5d",
+    "crates/weftforge-core/tests/sewing_groups.rs": "a3e9ad0393b0039b7257193b5bcd0f54e7aafe5ab5566ae8459c1392a0ce6f41",
+    "crates/weftforge-core/tests/shirt.rs": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+    "crates/weftforge-core/tests/svg_import.rs": "57d693d8cc307bb711093140f0b1110cddfd2a5b68bce8e338d54a2deddd34ab",
+    "crates/weftforge-core/tests/workflow.rs": "05eba55a4ee1d2ea5c569dad68f6c4fdeb3e02a9bf09f0778dce00e4bbc3dea7",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/capsule.rs": "04634a93371e4e7f513401fa617075e28c1b4776023b158c3f6dc168d24371a0",
+    "crates/weftforge-sim/src/constraints.rs": "ee5b7fba70aae91a7ed36fa668e11b34d36793b825ce101ea891c8cf8eaed2bf",
+    "crates/weftforge-sim/src/contact.rs": "20df8876462dcbf7d32761b0e061ab66def60e7f88a5eccbfb6e7839108c26c8",
+    "crates/weftforge-sim/src/lib.rs": "e4a6e5fd7123ba00f694a1e5549109a200a2b9f7ee47d84b0c5605d6cb697378",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/strain.rs": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+    "crates/weftforge-sim/src/tests.rs": "84cacf0cab2afe525b10f758497eabde30fc91df0888fe41efaa1d877bcafaba",
+    "docs/architecture.md": "c0c0a1e786f28ab7b3af7bc9dad51dfd0ab598e6c6a8fe6a2e7627d30a923dba",
+    "docs/automation.md": "04597a2ec92023e3ae76868863f3d3f69ac4834741ad6d5e1833191293a6bacb",
+    "docs/dependencies.json": "31b44a3989e374510638df611ec403bfdd55bac31095bb9ce2ed66a685c07e2a",
+    "docs/file-formats.md": "1d61ad2278a74ebf5e236d4ec9d0f2441d6abbf05e22212d4ce33d214df69a50",
+    "docs/physics.md": "d95c8c6087bf8e90a89e077e02134724192e92a757e15940d3ccf525d56d9fff",
+    "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+    "spec/features/APP-001-new-empty.md": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+    "spec/features/PAT-004-native-transform-selection.md": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
+    "spec/features/PAT-004-piece-rigid-transform.md": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+    "spec/features/PAT-006-internal-segments.md": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+    "spec/features/PAT-006-straight-cut.md": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c",
+    "spec/features/PAT-006-straight-hole.md": "634028923f25811aa364d85ce13947db242812d6523635c13ce5a715277b1d2f",
+    "spec/features/PAT-009-material-outline-offset.md": "604d9cc5d12da398a90bd819b78eb7b9999a48a2f96c32e900780d4457b6dbc6",
+    "spec/features/SEW-001-cut-and-sew.md": "9420f9a88ea184868aba5543f0d356181fcd8373dadfa4632376cc4a5a5f8941",
+    "spec/features/SEW-002-physical-length.md": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+    "spec/features/fixtures/PAT-009-offset-originals.json": "6de6eefff1bc040363f1f2de335f5c4f70dc526dacd5224ba22e1c33e1820bec",
+    "spec/features/fixtures/PAT-009-offset-reviewed-additions.json": "fc4b133cadada09a676266cea90c736a35342767552cb54a573460eea9f41991",
+    "vendor/earcutr/Cargo.toml": "906d72d033764b39570416ef92906a90d4c49e85b9c35ab0138cf7a0aafe9c76",
+    "vendor/earcutr/LICENSE": "ac0e50e523dd0ea36f077c373833f1ae6c7ad130ea5ac6ff23bfa8d3f402145f",
+    "vendor/earcutr/UPSTREAM.md": "e686aeaa8758581d2c0659b1ed5e87dce4fe6608a8605c29ba90459495818944",
+    "vendor/earcutr/src/legacy.rs": "fd5120ba533484556e7a6d1a460d28084ac1f4c90f3334c71ff6f67976b933c8",
+    "vendor/earcutr/src/lib.rs": "29992d5bd3d0717df6b4db9e60a3d280c276b67c3ddb87fa5de9173c1b3578d3",
+    "vendor/earcutr/src/tests.rs": "2e54cb4cceb9c073ae911a5909d2d9b430c6bf4ce53000332254233b21a544e9",
+    "xtask/Cargo.toml": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+    "xtask/src/main.rs": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709"
+  },
+  "metadata52plus5": {
+    "docs/dashboard/index.html": "ac73704f5df6ccff284eb044b9a95a2960d732af0fb24293b7981331cf4fc274",
+    "docs/progress.md": "8ba2865ae67b3deb7f2739c297fe9c17ed026b8209d933ce6abcdaea325e2596",
+    "parity/features.yaml": "43d6dfd29207bb1e5acc6115608844a57060cc2f748189facf6eb5e1b366d279",
+    "parity/reports/WF-20261113-GRAIN-AUTHORING-001.json": "fed3037c95b53a7acc6d0ea82cef7baa4fcd38f86c1c5d7529650f71d27e968d",
+    "parity/reports/WF-20261113-GRAIN-FIT-001.json": "c48c038510ffcef4c66ebc3807498200f0b5428e7b4774f12abfe915725500ea",
+    "parity/reports/WF-20261113-NATIVE-UI-001.json": "cfe45ef992e8158f36cdd926dae076a09ae2090c9a69c1e94de752530f915e5f",
+    "parity/reports/WF-20261113-REGRESSION-001.json": "82ba21e79eb122a8bd36839350f948dc410974eb04e6fc33a6da6b901a6e304e",
+    "parity/reports/WF-20261113-RELAXED-FIT-001.json": "e159950b7b299f6b7cd3efac0f408d27280adeec1510a185efa920febc3c6729",
+    "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json": "67aeb7b21a338d7a3bae27db4fb4be79e5c7f984c2b25107c225bba993203c36",
+    "parity/reports/WF-20261113-TIGHT-FIT-001.json": "62551136a89d2be2e25adfba214ffc5416d1821e64d2573b005ad09c24ce1ac9",
+    "parity/reports/WF-20261114-BATCH-CANCEL-001.json": "7371a4f9819707abd03ab9e09f91289a681114285d9dbfec039be1e3db1015dd",
+    "parity/reports/WF-20261114-DXF-001.json": "737dfba57e2cbf1f4e3b126d604750c7d330682e0f230c28df7a0083c8fbe1fa",
+    "parity/reports/WF-20261114-HARBOR-AUTHORING-001.json": "f969d10adc257ee1a1dd25975aa2699e8b0e3e1ac3c66c5fc2422adf37d3de46",
+    "parity/reports/WF-20261114-HARBOR-PHYSICS-001.json": "fa356f84609c163d89de63c2b7220dec2e54ac390ff198ba215872a8784eb810",
+    "parity/reports/WF-20261114-INTEGRATION-001.json": "d805e3dd0cceb973d338792344ef9b17ef964846d302101b157c7e76ac777abc",
+    "parity/reports/WF-20261114-NATIVE-IEEE-001.json": "b53bebcabbd296a6957b134a8f89e25f5c8b92c5fa150e842646f13499c64da9",
+    "parity/reports/WF-20261114-NATIVE-JOIN-001.json": "53f61a16544c9ca86738a1c64cb76bed3e885d8c08e3621cdcb07881dc9198dc",
+    "parity/reports/WF-20261114-NATIVE-REVERSAL-001.json": "3e12c0e640e11ba3bfd10e936c57c08a539fdf35bde07858e5d23bb7d3e57596",
+    "parity/reports/WF-20261114-NUMERIC-RECTANGLE-001.json": "0cbe0db04a798d3b8ec24948869d8ded69e580fdfa12acb836cc5fbec8d1cc9a",
+    "parity/reports/WF-20261114-NUMERIC-RECTANGLE-002.json": "7b0749f35ce43d9132fd2896252ff3d0be1f9d6bec33cd7e544af9d3efd8b638",
+    "parity/reports/WF-20261114-ORDERED-SEWING-001.json": "5238ffce6b161ed1c2b7e93da21e49b7d08b5ae04ff17cc0a4b032915c90a335",
+    "parity/reports/WF-20261114-PHYSICS-BALANCE-001.json": "3e45c6dc6bbb7ac15e1c570beca33fe8781d0dc0ebf6e9cc50cfc2bfe7b5e942",
+    "parity/reports/WF-20261114-PHYSICS-FULL-PATH-001.json": "24cbdb612c8c6e3c25651f73c6cc6673e6cbe271f717412d652c9170d9589023",
+    "parity/reports/WF-20261114-PHYSICS-REFINEMENT-001.json": "682ab7d39b48248716b6328ab0f9a42bd1949f12ab0d8d5185fa1f48810e63e4",
+    "parity/reports/WF-20261114-SEWN-CURVE-001.json": "99d3d40885d8bdeeac2c5dce515464e32d52d84f20764d79eb7e79085e3c8f64",
+    "parity/reports/WF-20261114-STRAIN-ATTRIBUTION-001.json": "3faf67ef9656726f1afc3dd52c62155e251fc2793a28759983af68f4ad8e2728",
+    "parity/reports/WF-20261115-AUTHORED-LENGTH-001.json": "ae1b563be0fae9225ab37c4fac8ad87810744d7c17fcc52e326d4e5ae0c2aef4",
+    "parity/reports/WF-20261115-CAPSULE-GAP-001.json": "4d0752c013307c476d5bafaaf8bae9d3601d4d8c281244c3aa6d6255acc2b4e8",
+    "parity/reports/WF-20261115-CAPSULE-SURFACE-001.json": "42ce4c9fdfd9e5603e7ba6c04eca6ca9379b758f0b5daedf29bc85f18a90fd0a",
+    "parity/reports/WF-20261115-CLOSED-STITCH-HARBOR-001.json": "fd35aac7e0670760797cdf3940ecc9591c1d968d5240f0fd123f4f72464faa1c",
+    "parity/reports/WF-20261115-DIAGNOSTIC-STATIC-001.json": "c927b1a937a61b89fd658004abb228e6ea8ba4989586aeafafaf1376f042c1fe",
+    "parity/reports/WF-20261115-DXF-STUDIO-001.json": "f78da31ada152d8845a3c500109a2b2026901f657ba062668a5bd5ad707e9337",
+    "parity/reports/WF-20261115-HARBOR-HALF-STEP-001.json": "f681a1a266e7f85edf2a601842cf255b07aef1d0375351bc1f3d50868a6f3521",
+    "parity/reports/WF-20261115-INTERNAL-ANNOTATIONS-001.json": "7d8a66771ef9e9c57f92ed8142ce4a31319af13b34637d376fd08f9ea67561b2",
+    "parity/reports/WF-20261115-NATIVE-HARBOR-FAILED-001.json": "b6d439696d109e045d184449f9fd1598a46eb941cdf04cece3388e40d6c286c1",
+    "parity/reports/WF-20261115-NATIVE-STUDIO-001.json": "620b18e630cf3b446eea29f4ca0d0c21fa70f0b4b3a4f5e9d44e9a494c7a3cff",
+    "parity/reports/WF-20261115-PATTERN-TRANSFORM-001.json": "6896812cb1972bc165e9f9c172045741fbb149e02b2e2c1566a72e926844129e",
+    "parity/reports/WF-20261115-PHOTOCRAFT-STUDIO-001.json": "965ed615bc0a862246d316d81fb2ad7cbbf5dff7d5f166b5797e178ee1bfeaa9",
+    "parity/reports/WF-20261115-PHYSICAL-LENGTH-SEWING-001.json": "ccb8dda27ac72a431721ffc4ac16fcba1562380d3f3456a94bdfbe75e89d7d95",
+    "parity/reports/WF-20261115-STUDIO-PREVIEW-001.json": "3b71682396bbae17caed6124e7195873ccb3c6f9455ead02342b3414e60a670e",
+    "parity/reports/WF-20261115-SVG-STUDIO-001.json": "12929c979d868d5d7877878636a39d840adb9dbcc803a062cbd6f06ff750dae1",
+    "parity/reports/WF-20261116-CUT-AND-SEW-001.json": "c1af8fafa7c23c48c87c987cc20269692378b0de1ebc8ff67c747d9a5e473c27",
+    "parity/reports/WF-20261116-ENDPOINT-EDIT-NATIVE-001.json": "21f072df998aaee00b4f243c2ba8e7d8e54775fdf2102b5c7175a091995e5525",
+    "parity/reports/WF-20261116-ENDPOINT-EDIT-SOURCE-001.json": "25bd45e3262936bb256a38bd960ed95782dcfee9b796038b7fd99d163fc9327b",
+    "parity/reports/WF-20261116-HOLE-EXPORT-001.json": "5398f2021804639b4d347b7b45115cac5358b3a43fcacab8cbdfa2c54cf9ef68",
+    "parity/reports/WF-20261116-MATERIAL-OUTLINE-OFFSET-001.json": "17b4e47fea132e2eca05eb0c4e8f5a69843044eff4c6253ee343972f1ac8bb7a",
+    "parity/reports/WF-20261116-MATERIAL-OUTLINE-OFFSET-NATIVE-STOPS-001.json": "fc1b56fd2a70dc66d98ca91ab854fc65e13fc09998ea9dbb235966a158270ecd",
+    "parity/reports/WF-20261116-OFFSET-NATIVE-CONTROLLER-STOPS-001.json": "e2d8f106c01313acf431bf06ea2b8781318bad71d4a12aa26ccd7b937481d46b",
+    "parity/reports/WF-20261116-OFFSET-NATIVE-INPUT-003.json": "a9a4202e26a5a58df4bcd4e72a17f386fff5ce91c18e44726e2dade57ba567e1",
+    "parity/reports/WF-20261116-OFFSET-WORK-CONTROL-001.json": "76b3faee8777b58ba4f8c0765ae5ec798a8b6b895fbf86a2096c88c150406d2a",
+    "parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-NATIVE-STOPS-001.json": "87b8ab33e3c3f829cdead36285f2edc6b626d2809b074c265b2748533d1b0bf7",
+    "parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-PREVIEW-001.json": "8b963263787872145a86fc83fe5c315a4d8426171327e60798ef816e72402122",
+    "parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-SOURCE-001.json": "39adce8623a1679d345f62d9d94b1e97ba5ea3172c0d8bc689f42d7f41030d2e",
+    "parity/reports/WF-20261116-STRAIGHT-CUT-001.json": "b23b8a3068819f59404c4c71bc04ddb5471ffe926b0501f8c12f1f2b2100ce85",
+    "parity/reports/WF-20261116-STRAIGHT-HOLE-001.json": "5ac8e863b9bc2039502c6e92d499227065dd52824067ddc2ec8169fabf4b6f1e",
+    "spec/inventory/weftforge-current-source-addendum.json": "5bc48301d84a43abee3c9a4a6b34de871bfbab0b2ef5b15177ba4e77b950a059",
+    "spec/inventory/weftforge-current-source-addendum.md": "fc3878f8be8fac7fc92e2d833029b4cc061e18dea78b84d5fb11d31984259ed4"
+  },
+  "original8": {
+    "spec/inventory/README.md": "45c2aebd61d2c4ae23787d40b8c6fdaadd561a28e1fcb02029e30ec3491bf1f2",
+    "spec/inventory/md-2026.1.237-components.json": "6d8bebdfd01202a50a387e4492afe3ace6fc6e9c3b58571fbb0528281addb38f",
+    "spec/inventory/md-2026.1.237-components.txt": "566d682b6ee47269a1e8cfa39d37af0eed3d3994b45a66a7804c93260a70bc08",
+    "spec/inventory/md-2026.1.237-main-menus.json": "e9910b3fa78a2fbf59fe3ad3ba0e9545cfd609d9c0d010a753e0da4edb3fd996",
+    "spec/inventory/md-2026.1.237-main-menus.txt": "ec0a15f77823ebcb77f5712f9aa9fa48ef81eda24a8fc4c62d6b472b7fbacb04",
+    "spec/inventory/verify_implementation_map.py": "5102ff2bf0774db1b6ef36006dea62ec98af9bf7577f98621f2ad1323425dbd5",
+    "spec/inventory/weftforge-implementation-map.json": "9323eb803af6d07d6178fd6e808fd61f87e5da71e3b07ab4b279b3141b11c8ec",
+    "spec/inventory/weftforge-implementation-map.md": "8b3809f6604c025a1ea3043e5851b93a4384e1486490fb98b7de00be4d28be21"
+  },
+  "full56_protected_fields": [
+    "id",
+    "required_reference_behavior",
+    "scenarios",
+    "comparison_criteria",
+    "dependencies",
+    "implementation_status",
+    "verification_status",
+    "reference_observation_status"
+  ],
+  "full56_protected_scopes": [
+    {
+      "id": "UI-001",
+      "required_reference_behavior": "Connect patterns, hierarchy, tools, properties, material, simulation and timeline.",
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-001",
+          "path": "parity/scenarios/UI-SHIRT-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Empty default native document; original two-panel shirt dimensions in fixture are design targets only.",
+          "expected_outcomes": "Editable geometry/relationships persist, garment responds, independent output scale passes; no pregenerated garment may replace UI creation."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-HARBOR-001",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
+          "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
+          "path": "parity/scenarios/UI-HARBOR-001.json"
+        },
+        {
+          "id": "UI-STUDIO-PREVIEW-001",
+          "path": "parity/scenarios/UI-STUDIO-PREVIEW-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/studio-preview-20261114/documents/Harbor.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "parity/reports/artifacts/studio-preview-20261114/documents/Ellipse-study.weftforge": "75db2598c8360575e08a50a2e76f0b72f4e578ac33e8b2122a7c8fbb8984bbdf",
+            "parity/reports/artifacts/studio-preview-20261114/documents/Ordered-sewing.weftforge": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2"
+          },
+          "initial_conditions": "Actual native macOS app with original sample projects; final build reopens the ellipse and loads sewing/Harbor examples. Ellipse was created and saved on prior55b, whose shared core command is unchanged. This is not empty-project garment acceptance.",
+          "expected_outcomes": "Four unedited1640x1032 screenshots bound to the actual native binary; editable sample construction retained; no reference, full-contact or complete-workflow claim."
+        },
+        {
+          "id": "FILE-DXF-STUDIO-001",
+          "fixture_hashes": {
+            "parity/reports/artifacts/dxf-studio-20261115/evaluator/original-editable-patterns.dxf": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+            "parity/reports/artifacts/dxf-studio-20261115/evaluator/baseline.weftforge": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+          },
+          "initial_conditions": "Untouched baseline revision1/allocator11 and original R2000 drawing on one identified bound source/binary pair. Opening creates no Undo history. Dedicated native and headless successor cases require separate prospective bindings; prior failed cases remain unchanged.",
+          "expected_outcomes": "Unchanged native geometry/history/export and adapter criteria must be met within the frozen tolerances. Every full native action criterion requires runtime observation. A scoped component pass does not establish explicit printing disclosure, an unexercised old Redo branch or zero background persistence. Source-qualified observations and gaps are separate.",
+          "path": "parity/scenarios/FILE-DXF-STUDIO-001.json"
+        },
+        {
+          "id": "UI-NATIVE-STUDIO-001",
+          "path": "parity/scenarios/UI-NATIVE-STUDIO-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/harbor-workflow-20261114/native-authoring/harbor-final-restored.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7"
+          },
+          "initial_conditions": "Fresh owned no-argument nativeEmpty revision0; nativeXfocus/selection/raw/value barriers mandatory before typing. Separate visualpreview may load the alreadypublicoriginalHarbor readonly.",
+          "expected_outcomes": "Only after every frozen focus/raw/value/samepixel barrier succeeds may the two named nativeoutputs be saved and independently graded to the fixedgeometry/tolerances. A missing observation or mismatch stops; previouscases never receive later credit."
+        },
+        {
+          "id": "NATIVE-LENGTH-READOUTS-20261115-002",
+          "path": "parity/reports/artifacts/authored-length-20261115/native-002/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/authored-length-20261115/independent/fixture.weftforge": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d"
+          },
+          "initial_conditions": "Same original revision137fixture, sourcebe8, readonly fresh owned process; no authoring or simulation.",
+          "expected_outcomes": "Exact three-decimalmm curve/seam/group values and signed B\u2212A with applied revision137/draft qualifier, within300s/24pairs; source/binary/fixture unchanged."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-001",
+        "FIT-001"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "UI-002",
+      "required_reference_behavior": "Synchronize piece and subobject selection across views.",
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "UI-001"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "UI-003",
+      "required_reference_behavior": "Match observed keyboard shortcuts, context tools and numeric input.",
+      "scenarios": [
+        {
+          "id": "UI-NATIVE-STUDIO-001",
+          "path": "parity/scenarios/UI-NATIVE-STUDIO-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/harbor-workflow-20261114/native-authoring/harbor-final-restored.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7"
+          },
+          "initial_conditions": "Fresh owned no-argument nativeEmpty revision0; nativeXfocus/selection/raw/value barriers mandatory before typing. Separate visualpreview may load the alreadypublicoriginalHarbor readonly.",
+          "expected_outcomes": "Only after every frozen focus/raw/value/samepixel barrier succeeds may the two named nativeoutputs be saved and independently graded to the fixedgeometry/tolerances. A missing observation or mismatch stops; previouscases never receive later credit."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "UI-004",
+      "required_reference_behavior": "Undo and redo a complete authoring gesture atomically; exclude navigation and simulation frames.",
+      "scenarios": [
+        {
+          "id": "EDIT-RELATION-001",
+          "path": "parity/scenarios/EDIT-RELATION-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original cubic sewn garment, default CPU settings; capture construction IDs.",
+          "expected_outcomes": "Supported relationships preserved or explicitly rejected/invalidation reported; one gesture one undo; no silent ID retargeting."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        },
+        {
+          "id": "SEW-ORDERED-001",
+          "path": "parity/scenarios/SEW-ORDERED-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/asymmetric-coarse.weftforge": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/collinear-coarse.weftforge": "6202e2b1b6b66b631b0e119955cb25cc038423c7a2c4ef37292d4d8125b6fbd8",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/collinear-fine.weftforge": "e686082e62e34a1dda3c642329e814e899350fba44e9590309dfc9132fb543ce",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/empty-groups-v3.weftforge": "0210b721df1f61b28ba79ca0ce23bbb1df529ae7eccd6c82edd0cdba966f34af",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-duplicate-group-id.weftforge": "6a5d89b421c1b870191fd047508015dfc29eb08ae7e4c8cba9b6a3b77d56ed9f",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-duplicate-json-field.weftforge": "2d8d954a747dc1465471bbda0c7e4e6a6aed761fa41ae3d26c0b99e82defb9a7",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-empty-side.weftforge": "8d55bc7725e0688e099dca1071388e7c54ee716458da0e2186d89fc4ae788dd0",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-future-version.weftforge": "7bcf3fe2af3bbb8698488650af05d108a5bf3012a4c4d5831c1e214a98cca339",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-missing-v3-groups.weftforge": "239053c86d0524e12c9cb84ee0d853f827859aa0d639cccac47ea6d4e58b9c9b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-nonmonotone-map.weftforge": "1921c9c77865a253938f0ac8a0d80d5ef8f850c859ec2e04c8bf4a8068959ab6",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-overlap-across-sides.weftforge": "da51d850d92b41ff01c6d3a2850a94fd0e380b0c5cf06d7c4d19758cabe5fcc2",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-overlap-within-side.weftforge": "eff386dcc6ffc730a031bcf6124a852ddf04f7eadb35dd1b2607cfbaa00e7a1c",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-oversized-side.weftforge": "cbdd7e426f9e182cdeb838df6d3f193425933e5d2f245acccb08759048a34420",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-total-interval-bound.weftforge": "052847b2be650df1307b552058126d10d665dae615dc6021b622da91489af3f5",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-unknown-curve.weftforge": "1f88aaf8dd57da712708cc04599c8aede8a6d97b91c0c7bb2438ed3c499247c0",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-unknown-group-field.weftforge": "cea0f8c587ef3e68c07e10f28dd9ed796d21243ddbfe4b43bf8e94c358d298db",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-zero-span.weftforge": "7f4df4f7ab0c0febaad1b0db1bbcf28197a393485dfcfa874b29bee7d2735d4a",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/legacy-v1-f64.weftforge": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/legacy-v2-f64.weftforge": "b352064873c2674ef0e12d8d354329c06bbd1e3b09934440c48f29b8f046867b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-identity-coarse.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-identity-fine.weftforge": "1ebcc4b98c03f84e610ce476541c1f84d9185a71b81118900854fdc2e0d2a918",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-nonlinear-coarse.weftforge": "b238147b5df80db8ef053ff4ad2239f97c8c3cb890034c98d5cf930bbd16aafe",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-nonlinear-fine.weftforge": "2fc79b502d929233ea3d23d31fac4a284327b2290d983d02f3bba5d5b658ecc9",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/native-supplement/input-no-groups-v3.weftforge": "676f9c37b798b80ef902d7864ffc2ad414c96c870a1eb7287b027ae34ece9b0b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/input-split-join-v3.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/input-dependent-removal-v3.weftforge": "e4a4acf83ba909002855a82fdacf265069651c792b56eb39ac0499ae68882fbf",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/invalid-overlap-group.json": "78c5ec621f8fe88956e3991b88e48f215702f310813ae2074c0d1c9cc1f84ebc"
+          },
+          "initial_conditions": "Original independent v3 ordered2:3, nonuniform/asymmetric cubic, coarse/fine and legacyv1/v2 inputs. Frozen declaration precedes implementation/output inspection. Native case starts from original no-group v3 revision73/next1001, rest arrangement/paused.",
+          "expected_outcomes": "Exact authoring fields/order/IDs/f64 bits; legacy appearance colors retainf32 semantics. New groups use cumulative authored arc length with1e-8m budget; both one-sided disconnected endpoints remain; all actual weighted stitches own their source curve. Existing mesh caps and resolution are unchanged. One accepted gesture/edit is one history step; allocator never rewinds; failed overlap retains Redo; save/reopen retains all supported construction."
+        },
+        {
+          "id": "UI-HARBOR-001",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
+          "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
+          "path": "parity/scenarios/UI-HARBOR-001.json"
+        },
+        {
+          "id": "UI-PATTERN-TRANSFORM-001",
+          "path": "parity/reports/artifacts/pattern-transform-20261115/native-transform-plan-v2-20261115/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/pattern-transform-20261115/native-A4/A4-readonly-input.weftforge": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+            "parity/reports/artifacts/pattern-transform-20261115/native-B/B-readonly-input.weftforge": "7dd536522487e752bbb6e855d753423596f12344b61c22aeefcf8686517c07d5"
+          },
+          "initial_conditions": "Frozen original analytic R37 input and separate B based on A4 native Redo R40; actual DD source/native 216 identity. A4 cap 130 pairs/900 s; B cap 60 pairs/600 s. Simulation off.",
+          "expected_outcomes": "Unchanged frozen numerical/history/save/reopen criteria and observed native barriers. Root accepted bounded A4; B stopped after one documented drag at R40 instead of R41, with no rotation or Save and missing-output grade failure. No full plan or reference credit."
+        },
+        {
+          "id": "NATIVE-PHYSICAL-SEWING-002",
+          "path": "parity/reports/artifacts/physical-length-sewing-20261115/native-plan-v3-case002/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/physical-length-sewing-20261115/native/002/physical-readonly-input.weftforge": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+            "parity/reports/artifacts/physical-length-sewing-20261115/native-plan-v3-case002/EXPECTED.json": "589a9400a916e9340d04ae77b332ea25d3a0abc6b06dee9b8ac9868ac80506ec"
+          },
+          "initial_conditions": "Prospectively frozen v3 tooling plan; original analytic R41/next20/2panels, no group and simulation off, sourceB657/native69af. Math/grader unchanged from prior plan; caps220total/1200s.",
+          "expected_outcomes": "Bounded invalid-text/caret/A-only/pair/history/four-save/NewR0/no-op UndoRedo/same-process reopen/quit checks and unchanged 1e-8m saved grade. Root accepted002; failed001 and entry/Cancel-only calibration remain separate. No full coarse sewing/New/garment/reference acceptance."
+        },
+        {
+          "id": "NATIVE-INTERNAL-ANNOTATIONS-A003",
+          "path": "parity/reports/artifacts/internal-annotations-20261115/native-protocol/v2-prospective-only/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/internal-annotations-20261115/native-protocol/v2-prospective-only/EXPECTATIONS.json": "4cf6cc79c0da2045e9ffeaedbe8732711ed957c54bceeb5b425848c5079702e2"
+          },
+          "initial_conditions": "Original fresh empty native launch; ad7/source65/nativea733, no preauthored launch input. Prospective v2 A protocol; B\u2013E outside report coverage.",
+          "expected_outcomes": "Bounded unit-square/straight-line/refusal/modal/caret/one compound edit/history/six native v4 saves/quit. Root accepted A003 only; caps175+1/1200 and one frozen saved grade. No New/Recover/restart/full automation/reference credit."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "APP-001"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "UI-005",
+      "required_reference_behavior": "Navigate, save and edit during expensive operations, cancel promptly, reject obsolete results.",
+      "scenarios": [
+        {
+          "id": "PERFORMANCE-001",
+          "path": "parity/scenarios/PERFORMANCE-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Document CPU/GPU/RAM/OS, original representative multi-piece and layered fixtures.",
+          "expected_outcomes": "Mesh sizes and settings attributable; no frame-rate proxy for real-time cloth; no unknown metric represented as measured."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-HARBOR-001",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
+          "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
+          "path": "parity/scenarios/UI-HARBOR-001.json"
+        },
+        {
+          "id": "UI-NATIVE-STUDIO-001",
+          "path": "parity/scenarios/UI-NATIVE-STUDIO-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/harbor-workflow-20261114/native-authoring/harbor-final-restored.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7"
+          },
+          "initial_conditions": "Fresh owned no-argument nativeEmpty revision0; nativeXfocus/selection/raw/value barriers mandatory before typing. Separate visualpreview may load the alreadypublicoriginalHarbor readonly.",
+          "expected_outcomes": "Only after every frozen focus/raw/value/samepixel barrier succeeds may the two named nativeoutputs be saved and independently graded to the fixedgeometry/tolerances. A missing observation or mismatch stops; previouscases never receive later credit."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "UI-006",
+      "required_reference_behavior": "Accessible names, keyboard access, readable high-DPI controls and interaction parity.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "PAT-001",
+      "required_reference_behavior": "Preserve stable points, named pieces and exact line dimensions.",
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-001",
+          "path": "parity/scenarios/UI-SHIRT-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Empty default native document; original two-panel shirt dimensions in fixture are design targets only.",
+          "expected_outcomes": "Editable geometry/relationships persist, garment responds, independent output scale passes; no pregenerated garment may replace UI creation."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        },
+        {
+          "id": "UI-HARBOR-001",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
+          "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
+          "path": "parity/scenarios/UI-HARBOR-001.json"
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "PAT-002",
+      "required_reference_behavior": "Edit authored curves and control points without flattening construction.",
+      "scenarios": [
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-001"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "PAT-003",
+      "required_reference_behavior": "Match creation gestures, defaults and numeric dimension dialogs.",
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        },
+        {
+          "id": "UI-STUDIO-PREVIEW-001",
+          "path": "parity/scenarios/UI-STUDIO-PREVIEW-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/studio-preview-20261114/documents/Harbor.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "parity/reports/artifacts/studio-preview-20261114/documents/Ellipse-study.weftforge": "75db2598c8360575e08a50a2e76f0b72f4e578ac33e8b2122a7c8fbb8984bbdf",
+            "parity/reports/artifacts/studio-preview-20261114/documents/Ordered-sewing.weftforge": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2"
+          },
+          "initial_conditions": "Actual native macOS app with original sample projects; final build reopens the ellipse and loads sewing/Harbor examples. Ellipse was created and saved on prior55b, whose shared core command is unchanged. This is not empty-project garment acceptance.",
+          "expected_outcomes": "Four unedited1640x1032 screenshots bound to the actual native binary; editable sample construction retained; no reference, full-contact or complete-workflow claim."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "documentation_only"
+    },
+    {
+      "id": "PAT-004",
+      "required_reference_behavior": "Move, rotate, scale and mirror patterns with numeric precision.",
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-PATTERN-TRANSFORM-001",
+          "path": "parity/reports/artifacts/pattern-transform-20261115/native-transform-plan-v2-20261115/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/pattern-transform-20261115/native-A4/A4-readonly-input.weftforge": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+            "parity/reports/artifacts/pattern-transform-20261115/native-B/B-readonly-input.weftforge": "7dd536522487e752bbb6e855d753423596f12344b61c22aeefcf8686517c07d5"
+          },
+          "initial_conditions": "Frozen original analytic R37 input and separate B based on A4 native Redo R40; actual DD source/native 216 identity. A4 cap 130 pairs/900 s; B cap 60 pairs/600 s. Simulation off.",
+          "expected_outcomes": "Unchanged frozen numerical/history/save/reopen criteria and observed native barriers. Root accepted bounded A4; B stopped after one documented drag at R40 instead of R41, with no rotation or Save and missing-output grade failure. No full plan or reference credit."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_status": "partial",
+      "verification_status": "failed",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "PAT-005",
+      "required_reference_behavior": "Preserve relationships or provide explicit invalidation on split/join.",
+      "scenarios": [
+        {
+          "id": "EDIT-RELATION-001",
+          "path": "parity/scenarios/EDIT-RELATION-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original cubic sewn garment, default CPU settings; capture construction IDs.",
+          "expected_outcomes": "Supported relationships preserved or explicitly rejected/invalidation reported; one gesture one undo; no silent ID retargeting."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        },
+        {
+          "id": "SEW-ORDERED-001",
+          "path": "parity/scenarios/SEW-ORDERED-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/asymmetric-coarse.weftforge": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/collinear-coarse.weftforge": "6202e2b1b6b66b631b0e119955cb25cc038423c7a2c4ef37292d4d8125b6fbd8",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/collinear-fine.weftforge": "e686082e62e34a1dda3c642329e814e899350fba44e9590309dfc9132fb543ce",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/empty-groups-v3.weftforge": "0210b721df1f61b28ba79ca0ce23bbb1df529ae7eccd6c82edd0cdba966f34af",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-duplicate-group-id.weftforge": "6a5d89b421c1b870191fd047508015dfc29eb08ae7e4c8cba9b6a3b77d56ed9f",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-duplicate-json-field.weftforge": "2d8d954a747dc1465471bbda0c7e4e6a6aed761fa41ae3d26c0b99e82defb9a7",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-empty-side.weftforge": "8d55bc7725e0688e099dca1071388e7c54ee716458da0e2186d89fc4ae788dd0",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-future-version.weftforge": "7bcf3fe2af3bbb8698488650af05d108a5bf3012a4c4d5831c1e214a98cca339",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-missing-v3-groups.weftforge": "239053c86d0524e12c9cb84ee0d853f827859aa0d639cccac47ea6d4e58b9c9b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-nonmonotone-map.weftforge": "1921c9c77865a253938f0ac8a0d80d5ef8f850c859ec2e04c8bf4a8068959ab6",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-overlap-across-sides.weftforge": "da51d850d92b41ff01c6d3a2850a94fd0e380b0c5cf06d7c4d19758cabe5fcc2",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-overlap-within-side.weftforge": "eff386dcc6ffc730a031bcf6124a852ddf04f7eadb35dd1b2607cfbaa00e7a1c",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-oversized-side.weftforge": "cbdd7e426f9e182cdeb838df6d3f193425933e5d2f245acccb08759048a34420",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-total-interval-bound.weftforge": "052847b2be650df1307b552058126d10d665dae615dc6021b622da91489af3f5",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-unknown-curve.weftforge": "1f88aaf8dd57da712708cc04599c8aede8a6d97b91c0c7bb2438ed3c499247c0",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-unknown-group-field.weftforge": "cea0f8c587ef3e68c07e10f28dd9ed796d21243ddbfe4b43bf8e94c358d298db",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-zero-span.weftforge": "7f4df4f7ab0c0febaad1b0db1bbcf28197a393485dfcfa874b29bee7d2735d4a",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/legacy-v1-f64.weftforge": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/legacy-v2-f64.weftforge": "b352064873c2674ef0e12d8d354329c06bbd1e3b09934440c48f29b8f046867b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-identity-coarse.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-identity-fine.weftforge": "1ebcc4b98c03f84e610ce476541c1f84d9185a71b81118900854fdc2e0d2a918",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-nonlinear-coarse.weftforge": "b238147b5df80db8ef053ff4ad2239f97c8c3cb890034c98d5cf930bbd16aafe",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-nonlinear-fine.weftforge": "2fc79b502d929233ea3d23d31fac4a284327b2290d983d02f3bba5d5b658ecc9",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/native-supplement/input-no-groups-v3.weftforge": "676f9c37b798b80ef902d7864ffc2ad414c96c870a1eb7287b027ae34ece9b0b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/input-split-join-v3.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/input-dependent-removal-v3.weftforge": "e4a4acf83ba909002855a82fdacf265069651c792b56eb39ac0499ae68882fbf",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/invalid-overlap-group.json": "78c5ec621f8fe88956e3991b88e48f215702f310813ae2074c0d1c9cc1f84ebc"
+          },
+          "initial_conditions": "Original independent v3 ordered2:3, nonuniform/asymmetric cubic, coarse/fine and legacyv1/v2 inputs. Frozen declaration precedes implementation/output inspection. Native case starts from original no-group v3 revision73/next1001, rest arrangement/paused.",
+          "expected_outcomes": "Exact authoring fields/order/IDs/f64 bits; legacy appearance colors retainf32 semantics. New groups use cumulative authored arc length with1e-8m budget; both one-sided disconnected endpoints remain; all actual weighted stitches own their source curve. Existing mesh caps and resolution are unchanged. One accepted gesture/edit is one history step; allocator never rewinds; failed overlap retains Redo; save/reopen retains all supported construction."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-002",
+        "SEW-001"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "PAT-006",
+      "required_reference_behavior": "Author, validate and retain internal holes and cutting operations.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-002"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "PAT-007",
+      "required_reference_behavior": "Names, notches, internal lines, measurements and constraints remain editable.",
+      "scenarios": [
+        {
+          "id": "NATIVE-LENGTH-READOUTS-20261115-002",
+          "path": "parity/reports/artifacts/authored-length-20261115/native-002/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/authored-length-20261115/independent/fixture.weftforge": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d"
+          },
+          "initial_conditions": "Same original revision137fixture, sourcebe8, readonly fresh owned process; no authoring or simulation.",
+          "expected_outcomes": "Exact three-decimalmm curve/seam/group values and signed B\u2212A with applied revision137/draft qualifier, within300s/24pairs; source/binary/fixture unchanged."
+        },
+        {
+          "id": "WF-LENGTH-ANALYTIC-001",
+          "path": "parity/reports/artifacts/authored-length-20261115/independent/criteria.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/authored-length-20261115/independent/fixture.weftforge": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d"
+          },
+          "initial_conditions": "Original native-v3 revision137; two pieces, one legacy seam and one ordered group; no simulation. Frozen independent analytic primitive and tolerances before execution.",
+          "expected_outcomes": "1e-8m lengths,2e-8m independent B\u2212A; exact SI/revision/query echo and CLI/MCP structured/text equality; strict errors and unchanged primary/recovery/unrelated bytes."
+        },
+        {
+          "id": "NATIVE-INTERNAL-ANNOTATIONS-A003",
+          "path": "parity/reports/artifacts/internal-annotations-20261115/native-protocol/v2-prospective-only/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/internal-annotations-20261115/native-protocol/v2-prospective-only/EXPECTATIONS.json": "4cf6cc79c0da2045e9ffeaedbe8732711ed957c54bceeb5b425848c5079702e2"
+          },
+          "initial_conditions": "Original fresh empty native launch; ad7/source65/nativea733, no preauthored launch input. Prospective v2 A protocol; B\u2013E outside report coverage.",
+          "expected_outcomes": "Bounded unit-square/straight-line/refusal/modal/caret/one compound edit/history/six native v4 saves/quit. Root accepted A003 only; caps175+1/1200 and one frozen saved grade. No New/Recover/restart/full automation/reference credit."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-002"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "observed"
+    },
+    {
+      "id": "PAT-008",
+      "required_reference_behavior": "Author material grain, use anisotropic physical response and retain it on edit.",
+      "scenarios": [
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "PAT-009",
+      "required_reference_behavior": "Editable curve offsets and seam allowances with measured scale.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-002"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "blocked",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "PAT-010",
+      "required_reference_behavior": "Construct darts, pleats and linked mirrored edits with relationships.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-002",
+        "SEW-001"
+      ],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "PAT-011",
+      "required_reference_behavior": "Refine valid concave curved patterns with boundary-to-curve correspondence.",
+      "scenarios": [
+        {
+          "id": "SEW-CUBIC-001",
+          "path": "parity/scenarios/SEW-CUBIC-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original curved pieces and unequal lengths in core workflow regression, fixed authored cubic controls.",
+          "expected_outcomes": "Stable authored curve IDs and correspondence preserved; orientation and deliberate easing measurable independently."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-001"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "documentation_only"
+    },
+    {
+      "id": "SEW-001",
+      "required_reference_behavior": "Oriented authored-curve intervals with explicit correspondence independent of vertices.",
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-001",
+          "path": "parity/scenarios/UI-SHIRT-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Empty default native document; original two-panel shirt dimensions in fixture are design targets only.",
+          "expected_outcomes": "Editable geometry/relationships persist, garment responds, independent output scale passes; no pregenerated garment may replace UI creation."
+        },
+        {
+          "id": "SEW-CUBIC-001",
+          "path": "parity/scenarios/SEW-CUBIC-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original curved pieces and unequal lengths in core workflow regression, fixed authored cubic controls.",
+          "expected_outcomes": "Stable authored curve IDs and correspondence preserved; orientation and deliberate easing measurable independently."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        },
+        {
+          "id": "SEW-ORDERED-001",
+          "path": "parity/scenarios/SEW-ORDERED-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/asymmetric-coarse.weftforge": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/collinear-coarse.weftforge": "6202e2b1b6b66b631b0e119955cb25cc038423c7a2c4ef37292d4d8125b6fbd8",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/collinear-fine.weftforge": "e686082e62e34a1dda3c642329e814e899350fba44e9590309dfc9132fb543ce",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/empty-groups-v3.weftforge": "0210b721df1f61b28ba79ca0ce23bbb1df529ae7eccd6c82edd0cdba966f34af",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-duplicate-group-id.weftforge": "6a5d89b421c1b870191fd047508015dfc29eb08ae7e4c8cba9b6a3b77d56ed9f",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-duplicate-json-field.weftforge": "2d8d954a747dc1465471bbda0c7e4e6a6aed761fa41ae3d26c0b99e82defb9a7",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-empty-side.weftforge": "8d55bc7725e0688e099dca1071388e7c54ee716458da0e2186d89fc4ae788dd0",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-future-version.weftforge": "7bcf3fe2af3bbb8698488650af05d108a5bf3012a4c4d5831c1e214a98cca339",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-missing-v3-groups.weftforge": "239053c86d0524e12c9cb84ee0d853f827859aa0d639cccac47ea6d4e58b9c9b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-nonmonotone-map.weftforge": "1921c9c77865a253938f0ac8a0d80d5ef8f850c859ec2e04c8bf4a8068959ab6",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-overlap-across-sides.weftforge": "da51d850d92b41ff01c6d3a2850a94fd0e380b0c5cf06d7c4d19758cabe5fcc2",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-overlap-within-side.weftforge": "eff386dcc6ffc730a031bcf6124a852ddf04f7eadb35dd1b2607cfbaa00e7a1c",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-oversized-side.weftforge": "cbdd7e426f9e182cdeb838df6d3f193425933e5d2f245acccb08759048a34420",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-total-interval-bound.weftforge": "052847b2be650df1307b552058126d10d665dae615dc6021b622da91489af3f5",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-unknown-curve.weftforge": "1f88aaf8dd57da712708cc04599c8aede8a6d97b91c0c7bb2438ed3c499247c0",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-unknown-group-field.weftforge": "cea0f8c587ef3e68c07e10f28dd9ed796d21243ddbfe4b43bf8e94c358d298db",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-zero-span.weftforge": "7f4df4f7ab0c0febaad1b0db1bbcf28197a393485dfcfa874b29bee7d2735d4a",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/legacy-v1-f64.weftforge": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/legacy-v2-f64.weftforge": "b352064873c2674ef0e12d8d354329c06bbd1e3b09934440c48f29b8f046867b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-identity-coarse.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-identity-fine.weftforge": "1ebcc4b98c03f84e610ce476541c1f84d9185a71b81118900854fdc2e0d2a918",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-nonlinear-coarse.weftforge": "b238147b5df80db8ef053ff4ad2239f97c8c3cb890034c98d5cf930bbd16aafe",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-nonlinear-fine.weftforge": "2fc79b502d929233ea3d23d31fac4a284327b2290d983d02f3bba5d5b658ecc9",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/native-supplement/input-no-groups-v3.weftforge": "676f9c37b798b80ef902d7864ffc2ad414c96c870a1eb7287b027ae34ece9b0b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/input-split-join-v3.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/input-dependent-removal-v3.weftforge": "e4a4acf83ba909002855a82fdacf265069651c792b56eb39ac0499ae68882fbf",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/invalid-overlap-group.json": "78c5ec621f8fe88956e3991b88e48f215702f310813ae2074c0d1c9cc1f84ebc"
+          },
+          "initial_conditions": "Original independent v3 ordered2:3, nonuniform/asymmetric cubic, coarse/fine and legacyv1/v2 inputs. Frozen declaration precedes implementation/output inspection. Native case starts from original no-group v3 revision73/next1001, rest arrangement/paused.",
+          "expected_outcomes": "Exact authoring fields/order/IDs/f64 bits; legacy appearance colors retainf32 semantics. New groups use cumulative authored arc length with1e-8m budget; both one-sided disconnected endpoints remain; all actual weighted stitches own their source curve. Existing mesh caps and resolution are unchanged. One accepted gesture/edit is one history step; allocator never rewinds; failed overlap retains Redo; save/reopen retains all supported construction."
+        },
+        {
+          "id": "UI-HARBOR-001",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
+          "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
+          "path": "parity/scenarios/UI-HARBOR-001.json"
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-002",
+        "PAT-011"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "documentation_only"
+    },
+    {
+      "id": "SEW-002",
+      "required_reference_behavior": "Free sewing, partial boundaries, ordered chains and internal relationships.",
+      "scenarios": [
+        {
+          "id": "SEW-ORDERED-001",
+          "path": "parity/scenarios/SEW-ORDERED-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/asymmetric-coarse.weftforge": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/collinear-coarse.weftforge": "6202e2b1b6b66b631b0e119955cb25cc038423c7a2c4ef37292d4d8125b6fbd8",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/collinear-fine.weftforge": "e686082e62e34a1dda3c642329e814e899350fba44e9590309dfc9132fb543ce",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/empty-groups-v3.weftforge": "0210b721df1f61b28ba79ca0ce23bbb1df529ae7eccd6c82edd0cdba966f34af",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-duplicate-group-id.weftforge": "6a5d89b421c1b870191fd047508015dfc29eb08ae7e4c8cba9b6a3b77d56ed9f",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-duplicate-json-field.weftforge": "2d8d954a747dc1465471bbda0c7e4e6a6aed761fa41ae3d26c0b99e82defb9a7",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-empty-side.weftforge": "8d55bc7725e0688e099dca1071388e7c54ee716458da0e2186d89fc4ae788dd0",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-future-version.weftforge": "7bcf3fe2af3bbb8698488650af05d108a5bf3012a4c4d5831c1e214a98cca339",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-missing-v3-groups.weftforge": "239053c86d0524e12c9cb84ee0d853f827859aa0d639cccac47ea6d4e58b9c9b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-nonmonotone-map.weftforge": "1921c9c77865a253938f0ac8a0d80d5ef8f850c859ec2e04c8bf4a8068959ab6",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-overlap-across-sides.weftforge": "da51d850d92b41ff01c6d3a2850a94fd0e380b0c5cf06d7c4d19758cabe5fcc2",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-overlap-within-side.weftforge": "eff386dcc6ffc730a031bcf6124a852ddf04f7eadb35dd1b2607cfbaa00e7a1c",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-oversized-side.weftforge": "cbdd7e426f9e182cdeb838df6d3f193425933e5d2f245acccb08759048a34420",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-total-interval-bound.weftforge": "052847b2be650df1307b552058126d10d665dae615dc6021b622da91489af3f5",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-unknown-curve.weftforge": "1f88aaf8dd57da712708cc04599c8aede8a6d97b91c0c7bb2438ed3c499247c0",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-unknown-group-field.weftforge": "cea0f8c587ef3e68c07e10f28dd9ed796d21243ddbfe4b43bf8e94c358d298db",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-zero-span.weftforge": "7f4df4f7ab0c0febaad1b0db1bbcf28197a393485dfcfa874b29bee7d2735d4a",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/legacy-v1-f64.weftforge": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/legacy-v2-f64.weftforge": "b352064873c2674ef0e12d8d354329c06bbd1e3b09934440c48f29b8f046867b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-identity-coarse.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-identity-fine.weftforge": "1ebcc4b98c03f84e610ce476541c1f84d9185a71b81118900854fdc2e0d2a918",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-nonlinear-coarse.weftforge": "b238147b5df80db8ef053ff4ad2239f97c8c3cb890034c98d5cf930bbd16aafe",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-nonlinear-fine.weftforge": "2fc79b502d929233ea3d23d31fac4a284327b2290d983d02f3bba5d5b658ecc9",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/native-supplement/input-no-groups-v3.weftforge": "676f9c37b798b80ef902d7864ffc2ad414c96c870a1eb7287b027ae34ece9b0b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/input-split-join-v3.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/input-dependent-removal-v3.weftforge": "e4a4acf83ba909002855a82fdacf265069651c792b56eb39ac0499ae68882fbf",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/invalid-overlap-group.json": "78c5ec621f8fe88956e3991b88e48f215702f310813ae2074c0d1c9cc1f84ebc"
+          },
+          "initial_conditions": "Original independent v3 ordered2:3, nonuniform/asymmetric cubic, coarse/fine and legacyv1/v2 inputs. Frozen declaration precedes implementation/output inspection. Native case starts from original no-group v3 revision73/next1001, rest arrangement/paused.",
+          "expected_outcomes": "Exact authoring fields/order/IDs/f64 bits; legacy appearance colors retainf32 semantics. New groups use cumulative authored arc length with1e-8m budget; both one-sided disconnected endpoints remain; all actual weighted stitches own their source curve. Existing mesh caps and resolution are unchanged. One accepted gesture/edit is one history step; allocator never rewinds; failed overlap retains Redo; save/reopen retains all supported construction."
+        },
+        {
+          "id": "NATIVE-PHYSICAL-SEWING-002",
+          "path": "parity/reports/artifacts/physical-length-sewing-20261115/native-plan-v3-case002/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/physical-length-sewing-20261115/native/002/physical-readonly-input.weftforge": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+            "parity/reports/artifacts/physical-length-sewing-20261115/native-plan-v3-case002/EXPECTED.json": "589a9400a916e9340d04ae77b332ea25d3a0abc6b06dee9b8ac9868ac80506ec"
+          },
+          "initial_conditions": "Prospectively frozen v3 tooling plan; original analytic R41/next20/2panels, no group and simulation off, sourceB657/native69af. Math/grader unchanged from prior plan; caps220total/1200s.",
+          "expected_outcomes": "Bounded invalid-text/caret/A-only/pair/history/four-save/NewR0/no-op UndoRedo/same-process reopen/quit checks and unchanged 1e-8m saved grade. Root accepted002; failed001 and entry/Cancel-only calibration remain separate. No full coarse sewing/New/garment/reference acceptance."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SEW-001",
+        "PAT-007"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "documentation_only"
+    },
+    {
+      "id": "SEW-003",
+      "required_reference_behavior": "Curved unequal-length seams with deliberate, editable easing.",
+      "scenarios": [
+        {
+          "id": "SEW-CUBIC-001",
+          "path": "parity/scenarios/SEW-CUBIC-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original curved pieces and unequal lengths in core workflow regression, fixed authored cubic controls.",
+          "expected_outcomes": "Stable authored curve IDs and correspondence preserved; orientation and deliberate easing measurable independently."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        },
+        {
+          "id": "SEW-ORDERED-001",
+          "path": "parity/scenarios/SEW-ORDERED-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/asymmetric-coarse.weftforge": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/collinear-coarse.weftforge": "6202e2b1b6b66b631b0e119955cb25cc038423c7a2c4ef37292d4d8125b6fbd8",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/collinear-fine.weftforge": "e686082e62e34a1dda3c642329e814e899350fba44e9590309dfc9132fb543ce",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/empty-groups-v3.weftforge": "0210b721df1f61b28ba79ca0ce23bbb1df529ae7eccd6c82edd0cdba966f34af",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-duplicate-group-id.weftforge": "6a5d89b421c1b870191fd047508015dfc29eb08ae7e4c8cba9b6a3b77d56ed9f",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-duplicate-json-field.weftforge": "2d8d954a747dc1465471bbda0c7e4e6a6aed761fa41ae3d26c0b99e82defb9a7",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-empty-side.weftforge": "8d55bc7725e0688e099dca1071388e7c54ee716458da0e2186d89fc4ae788dd0",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-future-version.weftforge": "7bcf3fe2af3bbb8698488650af05d108a5bf3012a4c4d5831c1e214a98cca339",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-missing-v3-groups.weftforge": "239053c86d0524e12c9cb84ee0d853f827859aa0d639cccac47ea6d4e58b9c9b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-nonmonotone-map.weftforge": "1921c9c77865a253938f0ac8a0d80d5ef8f850c859ec2e04c8bf4a8068959ab6",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-overlap-across-sides.weftforge": "da51d850d92b41ff01c6d3a2850a94fd0e380b0c5cf06d7c4d19758cabe5fcc2",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-overlap-within-side.weftforge": "eff386dcc6ffc730a031bcf6124a852ddf04f7eadb35dd1b2607cfbaa00e7a1c",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-oversized-side.weftforge": "cbdd7e426f9e182cdeb838df6d3f193425933e5d2f245acccb08759048a34420",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-total-interval-bound.weftforge": "052847b2be650df1307b552058126d10d665dae615dc6021b622da91489af3f5",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-unknown-curve.weftforge": "1f88aaf8dd57da712708cc04599c8aede8a6d97b91c0c7bb2438ed3c499247c0",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-unknown-group-field.weftforge": "cea0f8c587ef3e68c07e10f28dd9ed796d21243ddbfe4b43bf8e94c358d298db",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-zero-span.weftforge": "7f4df4f7ab0c0febaad1b0db1bbcf28197a393485dfcfa874b29bee7d2735d4a",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/legacy-v1-f64.weftforge": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/legacy-v2-f64.weftforge": "b352064873c2674ef0e12d8d354329c06bbd1e3b09934440c48f29b8f046867b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-identity-coarse.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-identity-fine.weftforge": "1ebcc4b98c03f84e610ce476541c1f84d9185a71b81118900854fdc2e0d2a918",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-nonlinear-coarse.weftforge": "b238147b5df80db8ef053ff4ad2239f97c8c3cb890034c98d5cf930bbd16aafe",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-nonlinear-fine.weftforge": "2fc79b502d929233ea3d23d31fac4a284327b2290d983d02f3bba5d5b658ecc9",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/native-supplement/input-no-groups-v3.weftforge": "676f9c37b798b80ef902d7864ffc2ad414c96c870a1eb7287b027ae34ece9b0b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/input-split-join-v3.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/input-dependent-removal-v3.weftforge": "e4a4acf83ba909002855a82fdacf265069651c792b56eb39ac0499ae68882fbf",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/invalid-overlap-group.json": "78c5ec621f8fe88956e3991b88e48f215702f310813ae2074c0d1c9cc1f84ebc"
+          },
+          "initial_conditions": "Original independent v3 ordered2:3, nonuniform/asymmetric cubic, coarse/fine and legacyv1/v2 inputs. Frozen declaration precedes implementation/output inspection. Native case starts from original no-group v3 revision73/next1001, rest arrangement/paused.",
+          "expected_outcomes": "Exact authoring fields/order/IDs/f64 bits; legacy appearance colors retainf32 semantics. New groups use cumulative authored arc length with1e-8m budget; both one-sided disconnected endpoints remain; all actual weighted stitches own their source curve. Existing mesh caps and resolution are unchanged. One accepted gesture/edit is one history step; allocator never rewinds; failed overlap retains Redo; save/reopen retains all supported construction."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SEW-001"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "SEW-004",
+      "required_reference_behavior": "Show direction, length mismatch and errors before simulation; edit and remove.",
+      "scenarios": [
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        },
+        {
+          "id": "SEW-ORDERED-001",
+          "path": "parity/scenarios/SEW-ORDERED-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/asymmetric-coarse.weftforge": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/collinear-coarse.weftforge": "6202e2b1b6b66b631b0e119955cb25cc038423c7a2c4ef37292d4d8125b6fbd8",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/collinear-fine.weftforge": "e686082e62e34a1dda3c642329e814e899350fba44e9590309dfc9132fb543ce",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/empty-groups-v3.weftforge": "0210b721df1f61b28ba79ca0ce23bbb1df529ae7eccd6c82edd0cdba966f34af",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-duplicate-group-id.weftforge": "6a5d89b421c1b870191fd047508015dfc29eb08ae7e4c8cba9b6a3b77d56ed9f",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-duplicate-json-field.weftforge": "2d8d954a747dc1465471bbda0c7e4e6a6aed761fa41ae3d26c0b99e82defb9a7",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-empty-side.weftforge": "8d55bc7725e0688e099dca1071388e7c54ee716458da0e2186d89fc4ae788dd0",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-future-version.weftforge": "7bcf3fe2af3bbb8698488650af05d108a5bf3012a4c4d5831c1e214a98cca339",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-missing-v3-groups.weftforge": "239053c86d0524e12c9cb84ee0d853f827859aa0d639cccac47ea6d4e58b9c9b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-nonmonotone-map.weftforge": "1921c9c77865a253938f0ac8a0d80d5ef8f850c859ec2e04c8bf4a8068959ab6",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-overlap-across-sides.weftforge": "da51d850d92b41ff01c6d3a2850a94fd0e380b0c5cf06d7c4d19758cabe5fcc2",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-overlap-within-side.weftforge": "eff386dcc6ffc730a031bcf6124a852ddf04f7eadb35dd1b2607cfbaa00e7a1c",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-oversized-side.weftforge": "cbdd7e426f9e182cdeb838df6d3f193425933e5d2f245acccb08759048a34420",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-total-interval-bound.weftforge": "052847b2be650df1307b552058126d10d665dae615dc6021b622da91489af3f5",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-unknown-curve.weftforge": "1f88aaf8dd57da712708cc04599c8aede8a6d97b91c0c7bb2438ed3c499247c0",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-unknown-group-field.weftforge": "cea0f8c587ef3e68c07e10f28dd9ed796d21243ddbfe4b43bf8e94c358d298db",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-zero-span.weftforge": "7f4df4f7ab0c0febaad1b0db1bbcf28197a393485dfcfa874b29bee7d2735d4a",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/legacy-v1-f64.weftforge": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/legacy-v2-f64.weftforge": "b352064873c2674ef0e12d8d354329c06bbd1e3b09934440c48f29b8f046867b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-identity-coarse.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-identity-fine.weftforge": "1ebcc4b98c03f84e610ce476541c1f84d9185a71b81118900854fdc2e0d2a918",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-nonlinear-coarse.weftforge": "b238147b5df80db8ef053ff4ad2239f97c8c3cb890034c98d5cf930bbd16aafe",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-nonlinear-fine.weftforge": "2fc79b502d929233ea3d23d31fac4a284327b2290d983d02f3bba5d5b658ecc9",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/native-supplement/input-no-groups-v3.weftforge": "676f9c37b798b80ef902d7864ffc2ad414c96c870a1eb7287b027ae34ece9b0b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/input-split-join-v3.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/input-dependent-removal-v3.weftforge": "e4a4acf83ba909002855a82fdacf265069651c792b56eb39ac0499ae68882fbf",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/invalid-overlap-group.json": "78c5ec621f8fe88956e3991b88e48f215702f310813ae2074c0d1c9cc1f84ebc"
+          },
+          "initial_conditions": "Original independent v3 ordered2:3, nonuniform/asymmetric cubic, coarse/fine and legacyv1/v2 inputs. Frozen declaration precedes implementation/output inspection. Native case starts from original no-group v3 revision73/next1001, rest arrangement/paused.",
+          "expected_outcomes": "Exact authoring fields/order/IDs/f64 bits; legacy appearance colors retainf32 semantics. New groups use cumulative authored arc length with1e-8m budget; both one-sided disconnected endpoints remain; all actual weighted stitches own their source curve. Existing mesh caps and resolution are unchanged. One accepted gesture/edit is one history step; allocator never rewinds; failed overlap retains Redo; save/reopen retains all supported construction."
+        },
+        {
+          "id": "NATIVE-LENGTH-READOUTS-20261115-002",
+          "path": "parity/reports/artifacts/authored-length-20261115/native-002/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/authored-length-20261115/independent/fixture.weftforge": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d"
+          },
+          "initial_conditions": "Same original revision137fixture, sourcebe8, readonly fresh owned process; no authoring or simulation.",
+          "expected_outcomes": "Exact three-decimalmm curve/seam/group values and signed B\u2212A with applied revision137/draft qualifier, within300s/24pairs; source/binary/fixture unchanged."
+        },
+        {
+          "id": "WF-LENGTH-ANALYTIC-001",
+          "path": "parity/reports/artifacts/authored-length-20261115/independent/criteria.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/authored-length-20261115/independent/fixture.weftforge": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d"
+          },
+          "initial_conditions": "Original native-v3 revision137; two pieces, one legacy seam and one ordered group; no simulation. Frozen independent analytic primitive and tolerances before execution.",
+          "expected_outcomes": "1e-8m lengths,2e-8m independent B\u2212A; exact SI/revision/query echo and CLI/MCP structured/text equality; strict errors and unchanged primary/recovery/unrelated bytes."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SEW-001"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "documentation_only"
+    },
+    {
+      "id": "SEW-005",
+      "required_reference_behavior": "Folds, elastic, buttons, buttonholes, zippers and trims: separate physics, authoring and visuals.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SEW-001",
+        "SIM-001"
+      ],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "SEW-006",
+      "required_reference_behavior": "Distinguish physical seams, visible topstitching and optional export welding.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SEW-001",
+        "FILE-003"
+      ],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "FIT-001",
+      "required_reference_behavior": "Validated original or redistributable avatar paths, scale/axes, translate/rotate and arrangement aids.",
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-HARBOR-001",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
+          "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
+          "path": "parity/scenarios/UI-HARBOR-001.json"
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "FILE-003"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "FIT-002",
+      "required_reference_behavior": "Interactive cloth grab, authored pins, temporary constraints, outfits and layer controls.",
+      "scenarios": [
+        {
+          "id": "CONTACT-LAYER-001",
+          "path": "parity/scenarios/CONTACT-LAYER-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original shirt+jacket around analytic avatar and ground; tolerances declared before execution.",
+          "expected_outcomes": "Inner layer responds physically; record penetration, seam and strain residuals, no disabled self-contact."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "FIT-001",
+        "SIM-003"
+      ],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "FIT-003",
+      "required_reference_behavior": "Pattern, seam, material and avatar edits regenerate the actual simulated garment with explicit invalidation.",
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-001",
+          "path": "parity/scenarios/UI-SHIRT-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Empty default native document; original two-panel shirt dimensions in fixture are design targets only.",
+          "expected_outcomes": "Editable geometry/relationships persist, garment responds, independent output scale passes; no pregenerated garment may replace UI creation."
+        },
+        {
+          "id": "EDIT-RELATION-001",
+          "path": "parity/scenarios/EDIT-RELATION-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original cubic sewn garment, default CPU settings; capture construction IDs.",
+          "expected_outcomes": "Supported relationships preserved or explicitly rejected/invalidation reported; one gesture one undo; no silent ID retargeting."
+        },
+        {
+          "id": "FIT-DIMENSION-001",
+          "path": "parity/scenarios/FIT-DIMENSION-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original editable shirt before and after drape, authored dimensions measured.",
+          "expected_outcomes": "Actual rest/simulated garment changes correspond; controls and sewing remain editable."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        },
+        {
+          "id": "SIM-BALANCE-001",
+          "fixture_hashes": {
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7"
+          },
+          "initial_conditions": "Unchanged original grain-shirt construction, fresh arranged state and zero velocities; 8 substeps/32 iterations, dt1/60s, closure1m/s; ground/self/avatar contact enabled. Two separately preregistered diagnostic branches retain the same cloth inputs.",
+          "expected_outcomes": "Retain original 15percent-strain/5mm-seam/2mm-supported-contact/finite/closed-assembly quality screen and every trajectory/failure. Compare an exact shared assembly prefix and fixed zero-G continuation. Mannequin omission is a counterfactual with quality null, never a replacement acceptance scene. Full force equilibrium/convergence require separate evidence.",
+          "path": "parity/scenarios/SIM-BALANCE-001.json"
+        },
+        {
+          "id": "UI-HARBOR-001",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
+          "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
+          "path": "parity/scenarios/UI-HARBOR-001.json"
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-001",
+        "SEW-001",
+        "SIM-001"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "failed",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "FIT-004",
+      "required_reference_behavior": "Inventory and implement advanced avatar pattern drawing and shape-preserving edits.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "FIT-001",
+        "PAT-002"
+      ],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "SIM-001",
+      "required_reference_behavior": "Repeatable CPU numerical cloth with gravity, stretch, shear, bending and damping.",
+      "scenarios": [
+        {
+          "id": "SIM-BALANCE-001",
+          "fixture_hashes": {
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7"
+          },
+          "initial_conditions": "Unchanged original grain-shirt construction, fresh arranged state and zero velocities; 8 substeps/32 iterations, dt1/60s, closure1m/s; ground/self/avatar contact enabled. Two separately preregistered diagnostic branches retain the same cloth inputs.",
+          "expected_outcomes": "Retain original 15percent-strain/5mm-seam/2mm-supported-contact/finite/closed-assembly quality screen and every trajectory/failure. Compare an exact shared assembly prefix and fixed zero-G continuation. Mannequin omission is a counterfactual with quality null, never a replacement acceptance scene. Full force equilibrium/convergence require separate evidence.",
+          "path": "parity/scenarios/SIM-BALANCE-001.json"
+        },
+        {
+          "id": "UI-HARBOR-001",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
+          "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
+          "path": "parity/scenarios/UI-HARBOR-001.json"
+        },
+        {
+          "id": "SIM-CLOSED-STITCH-HARBOR-001",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Original Harbor base revision20 then height revision17, unchanged authoring/arrangement/materials/mesh/capsules/ground/self-contact, no pins or ellipsoids, fresh zero velocities. One prospectively authorized attempt per case on one exact identified source; no retry, tuning, third case, reset or continuation.",
+          "expected_outcomes": "Pass only when the complete fixed saved-state protocol satisfies every declared physical, completed-fit, diagnostic, attribution, capture and resource criterion. Initial open arrangement seams are excluded only from completed-fit seam/target criteria; transient strain/contact failures remain failures. Observations belong in source-qualified reports, never in these prospective criteria.",
+          "path": "parity/scenarios/SIM-CLOSED-STITCH-HARBOR-001.json"
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-011",
+        "SIM-002"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "failed",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "SIM-002",
+      "required_reference_behavior": "Mass/area, friction, collision thickness and grain-dependent properties in documented units.",
+      "scenarios": [
+        {
+          "id": "FABRIC-REFINE-001",
+          "path": "parity/scenarios/FABRIC-REFINE-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original garment, two physical parameter sets; same appearance and conditions.",
+          "expected_outcomes": "Independent analytic extension/contact tolerances; investigate any mesh-dependent material behavior."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "SIM-003",
+      "required_reference_behavior": "Physical collision against avatar and ground, initial-intersection diagnostics and recovery.",
+      "scenarios": [
+        {
+          "id": "SIM-CAPSULE-GAP-001",
+          "path": "parity/scenarios/SIM-CAPSULE-GAP-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/capsule-gap-20261115/A.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "parity/reports/artifacts/capsule-gap-20261115/B-180.obj": "d7c1988ae80f3a1db0a74d79e56dd3646856f991ced19889f9475de08fb41b5b",
+            "parity/reports/artifacts/capsule-gap-20261115/A-180.obj": "667b774590c8acaed2a5bd9f2ea8f68b2908ac5833f25b20d216757ad644de2b",
+            "parity/reports/artifacts/capsule-gap-20261115/B.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Unchanged saved3aa Harbor A/B frame180 OBJ exports and native project inputs; no simulation executed by this static probe.",
+          "expected_outcomes": "Reproduce A9.009700546mm and B10.672413745mm penetration witnesses within1e-10m; both fail2mm. No exhaustive maximum or dynamics claim."
+        },
+        {
+          "id": "SIM-CAPSULE-SURFACE-001",
+          "fixture_hashes": {
+            "parity/reports/artifacts/capsule-surface-20261115/experiment/inputs/base.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "parity/reports/artifacts/capsule-surface-20261115/experiment/inputs/height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5",
+            "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/base/rest-metadata.json": "d96697949c686fbf15f19b99b6d7551b35d3449b17157009aceb75649fbaeeb9",
+            "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/base/trajectory.jsonl": "1c56fd1ac2e343a096b08fc301c5bacfefbe99e7148433f871ece8036a58af21",
+            "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/base/steps.jsonl": "261dfd2e0401f58864857031a4952c29cc197ddac5f6495a2829c0ae534c2c08",
+            "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/base/stage-000.obj": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+            "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/base/stage-060.obj": "5eb10a6d24cb09bcb3456ce63a190f03a5898b083ca96b3a826b00e91490ba7e",
+            "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/base/stage-180.obj": "7fafe0e104f3919babf50a7730b3aa3746e5dab260a09a48d39826b64b34789b",
+            "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/height/rest-metadata.json": "d7032bd7e87338e19138647a859a0c447c105868c5f5dfec1b4fa48037cbe4ac",
+            "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/height/trajectory.jsonl": "a31ff1401a0e678fe4d367eacda5d3624ac834a693e12caa8b91b7129e02a437",
+            "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/height/steps.jsonl": "390bcd770a47374c9c51f6acd049ab7355e3738a0b22268033cb089e1f1db085",
+            "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/height/stage-000.obj": "095f0e7e7e25459b9a547f36515d53cfc36accd00cac3886cd00ee356f24e93b",
+            "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/height/stage-060.obj": "4f2ea84eb3f302239e81a050dead7d8f3a1896ffcc3a4513d1ff369845d50810",
+            "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/height/stage-180.obj": "27131d009e157879c8df5d4dcf8858d8209890a6265e68893e584221946c33e7"
+          },
+          "initial_conditions": "Two closed headless cases on exact077source and original Harbor base revision20 / height revision17; oneattempt each,60zeroG assembly+120gravity frames,dt1/60,8substeps/32iterations,1m/s closure. No new dynamics during public replay.",
+          "expected_outcomes": "Both strict results remain failed. Static capsule/supported contact below2mm passes all181saved states in eachcase. Base strain fails28..37,peak19.90919497559327%at31,with33exactattributionfailures; height physical/completed-fit screenspass butexactattributionfails6/10/18. Openarrangement0..28 isnotcompletedfit. No fullgarmentgate/referenceparity.",
+          "path": "parity/scenarios/SIM-CAPSULE-SURFACE-001.json"
+        },
+        {
+          "id": "SIM-CLOSED-STITCH-HARBOR-001",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Original Harbor base revision20 then height revision17, unchanged authoring/arrangement/materials/mesh/capsules/ground/self-contact, no pins or ellipsoids, fresh zero velocities. One prospectively authorized attempt per case on one exact identified source; no retry, tuning, third case, reset or continuation.",
+          "expected_outcomes": "Pass only when the complete fixed saved-state protocol satisfies every declared physical, completed-fit, diagnostic, attribution, capture and resource criterion. Initial open arrangement seams are excluded only from completed-fit seam/target criteria; transient strain/contact failures remain failures. Observations belong in source-qualified reports, never in these prospective criteria.",
+          "path": "parity/scenarios/SIM-CLOSED-STITCH-HARBOR-001.json"
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SIM-001",
+        "FIT-001"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "failed",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "SIM-004",
+      "required_reference_behavior": "Cloth self-contact and garment layers exchange contact response within declared tolerances.",
+      "scenarios": [
+        {
+          "id": "CONTACT-LAYER-001",
+          "path": "parity/scenarios/CONTACT-LAYER-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original shirt+jacket around analytic avatar and ground; tolerances declared before execution.",
+          "expected_outcomes": "Inner layer responds physically; record penetration, seam and strain residuals, no disabled self-contact."
+        },
+        {
+          "id": "UI-HARBOR-001",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
+          "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
+          "path": "parity/scenarios/UI-HARBOR-001.json"
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SIM-003"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "SIM-005",
+      "required_reference_behavior": "Play, pause, reset, step, resimulate, cancel, quality controls and finite/instability diagnostics.",
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "SIM-BALANCE-001",
+          "fixture_hashes": {
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7"
+          },
+          "initial_conditions": "Unchanged original grain-shirt construction, fresh arranged state and zero velocities; 8 substeps/32 iterations, dt1/60s, closure1m/s; ground/self/avatar contact enabled. Two separately preregistered diagnostic branches retain the same cloth inputs.",
+          "expected_outcomes": "Retain original 15percent-strain/5mm-seam/2mm-supported-contact/finite/closed-assembly quality screen and every trajectory/failure. Compare an exact shared assembly prefix and fixed zero-G continuation. Mannequin omission is a counterfactual with quality null, never a replacement acceptance scene. Full force equilibrium/convergence require separate evidence.",
+          "path": "parity/scenarios/SIM-BALANCE-001.json"
+        },
+        {
+          "id": "SIM-STRAIN-ATTRIBUTION-001",
+          "fixture_hashes": {
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7"
+          },
+          "initial_conditions": "Unchanged original v2 shirt copied to disposable inputs; source6c455 and frozen standard package. Exact original8substeps/32iterations,dt1/60s,closure1m/s,60zeroG+120gravityframes; all contacts retained. Native/CLI use the shared engine. Independent original-state expected peaks were frozen before new candidate output.",
+          "expected_outcomes": "Keep original geometry,positions,velocities and all prior diagnostics exactly,except step timing; identify signed material strain/triangle/axis and current authored piece within1e-12 arithmetic tolerance with exact nonzero indices. Native labels and decimal OBJ exports agree; CLI preserves original failed quality and prior export. Old diagnostics JSON remains readable. No reference parity or original garment-quality acceptance.",
+          "path": "parity/scenarios/SIM-STRAIN-ATTRIBUTION-001.json"
+        },
+        {
+          "id": "UI-HARBOR-001",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
+          "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
+          "path": "parity/scenarios/UI-HARBOR-001.json"
+        },
+        {
+          "id": "SIM-CLOSED-STITCH-HARBOR-001",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Original Harbor base revision20 then height revision17, unchanged authoring/arrangement/materials/mesh/capsules/ground/self-contact, no pins or ellipsoids, fresh zero velocities. One prospectively authorized attempt per case on one exact identified source; no retry, tuning, third case, reset or continuation.",
+          "expected_outcomes": "Pass only when the complete fixed saved-state protocol satisfies every declared physical, completed-fit, diagnostic, attribution, capture and resource criterion. Initial open arrangement seams are excluded only from completed-fit seam/target criteria; transient strain/contact failures remain failures. Observations belong in source-qualified reports, never in these prospective criteria.",
+          "path": "parity/scenarios/SIM-CLOSED-STITCH-HARBOR-001.json"
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SIM-001"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "SIM-006",
+      "required_reference_behavior": "Independent analytic cases, mesh/timestep refinement, contrasting fabrics and measured tolerances.",
+      "scenarios": [
+        {
+          "id": "FABRIC-REFINE-001",
+          "path": "parity/scenarios/FABRIC-REFINE-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original garment, two physical parameter sets; same appearance and conditions.",
+          "expected_outcomes": "Independent analytic extension/contact tolerances; investigate any mesh-dependent material behavior."
+        },
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        },
+        {
+          "id": "SIM-BALANCE-001",
+          "fixture_hashes": {
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7"
+          },
+          "initial_conditions": "Unchanged original grain-shirt construction, fresh arranged state and zero velocities; 8 substeps/32 iterations, dt1/60s, closure1m/s; ground/self/avatar contact enabled. Two separately preregistered diagnostic branches retain the same cloth inputs.",
+          "expected_outcomes": "Retain original 15percent-strain/5mm-seam/2mm-supported-contact/finite/closed-assembly quality screen and every trajectory/failure. Compare an exact shared assembly prefix and fixed zero-G continuation. Mannequin omission is a counterfactual with quality null, never a replacement acceptance scene. Full force equilibrium/convergence require separate evidence.",
+          "path": "parity/scenarios/SIM-BALANCE-001.json"
+        },
+        {
+          "id": "HARBOR-A16X32-DIAGNOSTIC-001",
+          "path": "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/path-redacted/preparation002-closed/PROTOCOL.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/preparation002-closed/inputs/base.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7"
+          },
+          "initial_conditions": "One A16\u00d732 attempt against retained A8\u00d732 control; exact physical rest/masses/inputs, currentad7 core and pinned unchanged driver; corrected freeze/GO,420s cap.",
+          "expected_outcomes": "Complete181-state/180-step analysis with unchanged15%/5mm/2mm/finite/uncertainty screens. Quality FAILED at29\u201330; both path-sensitivity triggers true. No convergence, sufficient fix, new defaults or native/reference credit."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SIM-001",
+        "SIM-004"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "failed",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "SIM-007",
+      "required_reference_behavior": "Measured GPU acceleration with explicit comparison against CPU reference and supported hardware.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SIM-006"
+      ],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "MAT-001",
+      "required_reference_behavior": "Assign physical materials by piece or region; approximate versus measured presets labeled.",
+      "scenarios": [
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SIM-002"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "MAT-002",
+      "required_reference_behavior": "UV texture transforms and PBR maps separate from physical parameters.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "MAT-001"
+      ],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "MAT-003",
+      "required_reference_behavior": "Shadows, wireframe, scene capture, UV and deformation/contact diagnostics.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "MAT-002"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "ANIM-001",
+      "required_reference_behavior": "Validated skeletons, skeletal or supported deforming animation, scale, axes and collision inspection.",
+      "scenarios": [
+        {
+          "id": "ANIMATION-CACHE-001",
+          "path": "parity/scenarios/ANIMATION-CACHE-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original redistributable animated avatar, explicit seconds/frame range and validated collision mesh.",
+          "expected_outcomes": "Changed input cannot reuse old simulation; temporal contact and scale correct; unsupported path stays unverified."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "FILE-004"
+      ],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "ANIM-002",
+      "required_reference_behavior": "Frame ranges, caches, scrubbing and playback; invalidate changed inputs.",
+      "scenarios": [
+        {
+          "id": "ANIMATION-CACHE-001",
+          "path": "parity/scenarios/ANIMATION-CACHE-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original redistributable animated avatar, explicit seconds/frame range and validated collision mesh.",
+          "expected_outcomes": "Changed input cannot reuse old simulation; temporal contact and scale correct; unsupported path stays unverified."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "ANIM-001",
+        "SIM-005"
+      ],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "ANIM-003",
+      "required_reference_behavior": "Mesh density, UVs, normals, thickness, seams and retopology workflows.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-011",
+        "FILE-003"
+      ],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "FILE-001",
+      "required_reference_behavior": "Versioned portable .weftforge retains all supported construction, materials, avatars and settings.",
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-001",
+          "path": "parity/scenarios/UI-SHIRT-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Empty default native document; original two-panel shirt dimensions in fixture are design targets only.",
+          "expected_outcomes": "Editable geometry/relationships persist, garment responds, independent output scale passes; no pregenerated garment may replace UI creation."
+        },
+        {
+          "id": "RECOVERY-001",
+          "path": "parity/scenarios/RECOVERY-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Nontrivial authored project with valid previous file; isolated test destination.",
+          "expected_outcomes": "Last valid data survives; errors keep current project; no silent replacement or data loss."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        },
+        {
+          "id": "SEW-ORDERED-001",
+          "path": "parity/scenarios/SEW-ORDERED-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/asymmetric-coarse.weftforge": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/collinear-coarse.weftforge": "6202e2b1b6b66b631b0e119955cb25cc038423c7a2c4ef37292d4d8125b6fbd8",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/collinear-fine.weftforge": "e686082e62e34a1dda3c642329e814e899350fba44e9590309dfc9132fb543ce",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/empty-groups-v3.weftforge": "0210b721df1f61b28ba79ca0ce23bbb1df529ae7eccd6c82edd0cdba966f34af",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-duplicate-group-id.weftforge": "6a5d89b421c1b870191fd047508015dfc29eb08ae7e4c8cba9b6a3b77d56ed9f",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-duplicate-json-field.weftforge": "2d8d954a747dc1465471bbda0c7e4e6a6aed761fa41ae3d26c0b99e82defb9a7",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-empty-side.weftforge": "8d55bc7725e0688e099dca1071388e7c54ee716458da0e2186d89fc4ae788dd0",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-future-version.weftforge": "7bcf3fe2af3bbb8698488650af05d108a5bf3012a4c4d5831c1e214a98cca339",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-missing-v3-groups.weftforge": "239053c86d0524e12c9cb84ee0d853f827859aa0d639cccac47ea6d4e58b9c9b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-nonmonotone-map.weftforge": "1921c9c77865a253938f0ac8a0d80d5ef8f850c859ec2e04c8bf4a8068959ab6",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-overlap-across-sides.weftforge": "da51d850d92b41ff01c6d3a2850a94fd0e380b0c5cf06d7c4d19758cabe5fcc2",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-overlap-within-side.weftforge": "eff386dcc6ffc730a031bcf6124a852ddf04f7eadb35dd1b2607cfbaa00e7a1c",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-oversized-side.weftforge": "cbdd7e426f9e182cdeb838df6d3f193425933e5d2f245acccb08759048a34420",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-total-interval-bound.weftforge": "052847b2be650df1307b552058126d10d665dae615dc6021b622da91489af3f5",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-unknown-curve.weftforge": "1f88aaf8dd57da712708cc04599c8aede8a6d97b91c0c7bb2438ed3c499247c0",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-unknown-group-field.weftforge": "cea0f8c587ef3e68c07e10f28dd9ed796d21243ddbfe4b43bf8e94c358d298db",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-zero-span.weftforge": "7f4df4f7ab0c0febaad1b0db1bbcf28197a393485dfcfa874b29bee7d2735d4a",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/legacy-v1-f64.weftforge": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/legacy-v2-f64.weftforge": "b352064873c2674ef0e12d8d354329c06bbd1e3b09934440c48f29b8f046867b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-identity-coarse.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-identity-fine.weftforge": "1ebcc4b98c03f84e610ce476541c1f84d9185a71b81118900854fdc2e0d2a918",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-nonlinear-coarse.weftforge": "b238147b5df80db8ef053ff4ad2239f97c8c3cb890034c98d5cf930bbd16aafe",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-nonlinear-fine.weftforge": "2fc79b502d929233ea3d23d31fac4a284327b2290d983d02f3bba5d5b658ecc9",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/native-supplement/input-no-groups-v3.weftforge": "676f9c37b798b80ef902d7864ffc2ad414c96c870a1eb7287b027ae34ece9b0b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/input-split-join-v3.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/input-dependent-removal-v3.weftforge": "e4a4acf83ba909002855a82fdacf265069651c792b56eb39ac0499ae68882fbf",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/invalid-overlap-group.json": "78c5ec621f8fe88956e3991b88e48f215702f310813ae2074c0d1c9cc1f84ebc"
+          },
+          "initial_conditions": "Original independent v3 ordered2:3, nonuniform/asymmetric cubic, coarse/fine and legacyv1/v2 inputs. Frozen declaration precedes implementation/output inspection. Native case starts from original no-group v3 revision73/next1001, rest arrangement/paused.",
+          "expected_outcomes": "Exact authoring fields/order/IDs/f64 bits; legacy appearance colors retainf32 semantics. New groups use cumulative authored arc length with1e-8m budget; both one-sided disconnected endpoints remain; all actual weighted stitches own their source curve. Existing mesh caps and resolution are unchanged. One accepted gesture/edit is one history step; allocator never rewinds; failed overlap retains Redo; save/reopen retains all supported construction."
+        },
+        {
+          "id": "UI-HARBOR-001",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
+          "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
+          "path": "parity/scenarios/UI-HARBOR-001.json"
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-001",
+        "SEW-001",
+        "MAT-001"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "documentation_only"
+    },
+    {
+      "id": "FILE-002",
+      "required_reference_behavior": "Interrupted save, autosave/recovery, bounded load, missing assets, malformed and unsupported-version errors.",
+      "scenarios": [
+        {
+          "id": "RECOVERY-001",
+          "path": "parity/scenarios/RECOVERY-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Nontrivial authored project with valid previous file; isolated test destination.",
+          "expected_outcomes": "Last valid data survives; errors keep current project; no silent replacement or data loss."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "FILE-001"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "FILE-003",
+      "required_reference_behavior": "Validated avatar/mesh OBJ import/export with scale, axes, UVs, normals, groups and materials.",
+      "scenarios": [
+        {
+          "id": "EXPORT-INDEPENDENT-001",
+          "path": "parity/scenarios/EXPORT-INDEPENDENT-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original shirt with expected x\u00b10.53,y1.02..1.56,z\u00b10.22m; distinct destinations.",
+          "expected_outcomes": "Physical scale, axes, UVs, unit normals, groups and closed physical pattern paths; material/animation attributes remain unsupported."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        },
+        {
+          "id": "UI-HARBOR-001",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
+          "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
+          "path": "parity/scenarios/UI-HARBOR-001.json"
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-011"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "FILE-004",
+      "required_reference_behavior": "Validated static/animated avatar and mesh paths with explicit capability matrix.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "FILE-003"
+      ],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "FILE-005",
+      "required_reference_behavior": "Editable pattern SVG and documented DXF subset; verifiable physical-size printing.",
+      "scenarios": [
+        {
+          "id": "EXPORT-INDEPENDENT-001",
+          "path": "parity/scenarios/EXPORT-INDEPENDENT-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original shirt with expected x\u00b10.53,y1.02..1.56,z\u00b10.22m; distinct destinations.",
+          "expected_outcomes": "Physical scale, axes, UVs, unit normals, groups and closed physical pattern paths; material/animation attributes remain unsupported."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        },
+        {
+          "id": "FILE-DXF-STUDIO-001",
+          "fixture_hashes": {
+            "parity/reports/artifacts/dxf-studio-20261115/evaluator/original-editable-patterns.dxf": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+            "parity/reports/artifacts/dxf-studio-20261115/evaluator/baseline.weftforge": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+          },
+          "initial_conditions": "Untouched baseline revision1/allocator11 and original R2000 drawing on one identified bound source/binary pair. Opening creates no Undo history. Dedicated native and headless successor cases require separate prospective bindings; prior failed cases remain unchanged.",
+          "expected_outcomes": "Unchanged native geometry/history/export and adapter criteria must be met within the frozen tolerances. Every full native action criterion requires runtime observation. A scoped component pass does not establish explicit printing disclosure, an unexercised old Redo branch or zero background persistence. Source-qualified observations and gaps are separate.",
+          "path": "parity/scenarios/FILE-DXF-STUDIO-001.json"
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-002"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "FILE-006",
+      "required_reference_behavior": "Research and test actual native editable-project decoding and preservation separately from mesh interchange.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "FILE-007",
+      "required_reference_behavior": "Inventory and validate supported animated/cache production formats independently.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "ANIM-002"
+      ],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "APP-001",
+      "required_reference_behavior": "Typed validated commands shared by GUI, CLI and local MCP automation.",
+      "scenarios": [
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        },
+        {
+          "id": "SEW-ORDERED-001",
+          "path": "parity/scenarios/SEW-ORDERED-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/asymmetric-coarse.weftforge": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/collinear-coarse.weftforge": "6202e2b1b6b66b631b0e119955cb25cc038423c7a2c4ef37292d4d8125b6fbd8",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/collinear-fine.weftforge": "e686082e62e34a1dda3c642329e814e899350fba44e9590309dfc9132fb543ce",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/empty-groups-v3.weftforge": "0210b721df1f61b28ba79ca0ce23bbb1df529ae7eccd6c82edd0cdba966f34af",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-duplicate-group-id.weftforge": "6a5d89b421c1b870191fd047508015dfc29eb08ae7e4c8cba9b6a3b77d56ed9f",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-duplicate-json-field.weftforge": "2d8d954a747dc1465471bbda0c7e4e6a6aed761fa41ae3d26c0b99e82defb9a7",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-empty-side.weftforge": "8d55bc7725e0688e099dca1071388e7c54ee716458da0e2186d89fc4ae788dd0",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-future-version.weftforge": "7bcf3fe2af3bbb8698488650af05d108a5bf3012a4c4d5831c1e214a98cca339",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-missing-v3-groups.weftforge": "239053c86d0524e12c9cb84ee0d853f827859aa0d639cccac47ea6d4e58b9c9b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-nonmonotone-map.weftforge": "1921c9c77865a253938f0ac8a0d80d5ef8f850c859ec2e04c8bf4a8068959ab6",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-overlap-across-sides.weftforge": "da51d850d92b41ff01c6d3a2850a94fd0e380b0c5cf06d7c4d19758cabe5fcc2",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-overlap-within-side.weftforge": "eff386dcc6ffc730a031bcf6124a852ddf04f7eadb35dd1b2607cfbaa00e7a1c",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-oversized-side.weftforge": "cbdd7e426f9e182cdeb838df6d3f193425933e5d2f245acccb08759048a34420",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-total-interval-bound.weftforge": "052847b2be650df1307b552058126d10d665dae615dc6021b622da91489af3f5",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-unknown-curve.weftforge": "1f88aaf8dd57da712708cc04599c8aede8a6d97b91c0c7bb2438ed3c499247c0",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-unknown-group-field.weftforge": "cea0f8c587ef3e68c07e10f28dd9ed796d21243ddbfe4b43bf8e94c358d298db",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/invalid-zero-span.weftforge": "7f4df4f7ab0c0febaad1b0db1bbcf28197a393485dfcfa874b29bee7d2735d4a",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/legacy-v1-f64.weftforge": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/legacy-v2-f64.weftforge": "b352064873c2674ef0e12d8d354329c06bbd1e3b09934440c48f29b8f046867b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-identity-coarse.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-identity-fine.weftforge": "1ebcc4b98c03f84e610ce476541c1f84d9185a71b81118900854fdc2e0d2a918",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-nonlinear-coarse.weftforge": "b238147b5df80db8ef053ff4ad2239f97c8c3cb890034c98d5cf930bbd16aafe",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/fixtures/line-nonlinear-fine.weftforge": "2fc79b502d929233ea3d23d31fac4a284327b2290d983d02f3bba5d5b658ecc9",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/native-supplement/input-no-groups-v3.weftforge": "676f9c37b798b80ef902d7864ffc2ad414c96c870a1eb7287b027ae34ece9b0b",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/input-split-join-v3.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/input-dependent-removal-v3.weftforge": "e4a4acf83ba909002855a82fdacf265069651c792b56eb39ac0499ae68882fbf",
+            "parity/reports/artifacts/ordered-sewing-20261114/headless/oracle/operations-supplement/invalid-overlap-group.json": "78c5ec621f8fe88956e3991b88e48f215702f310813ae2074c0d1c9cc1f84ebc"
+          },
+          "initial_conditions": "Original independent v3 ordered2:3, nonuniform/asymmetric cubic, coarse/fine and legacyv1/v2 inputs. Frozen declaration precedes implementation/output inspection. Native case starts from original no-group v3 revision73/next1001, rest arrangement/paused.",
+          "expected_outcomes": "Exact authoring fields/order/IDs/f64 bits; legacy appearance colors retainf32 semantics. New groups use cumulative authored arc length with1e-8m budget; both one-sided disconnected endpoints remain; all actual weighted stitches own their source curve. Existing mesh caps and resolution are unchanged. One accepted gesture/edit is one history step; allocator never rewinds; failed overlap retains Redo; save/reopen retains all supported construction."
+        },
+        {
+          "id": "SIM-STRAIN-ATTRIBUTION-001",
+          "fixture_hashes": {
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7"
+          },
+          "initial_conditions": "Unchanged original v2 shirt copied to disposable inputs; source6c455 and frozen standard package. Exact original8substeps/32iterations,dt1/60s,closure1m/s,60zeroG+120gravityframes; all contacts retained. Native/CLI use the shared engine. Independent original-state expected peaks were frozen before new candidate output.",
+          "expected_outcomes": "Keep original geometry,positions,velocities and all prior diagnostics exactly,except step timing; identify signed material strain/triangle/axis and current authored piece within1e-12 arithmetic tolerance with exact nonzero indices. Native labels and decimal OBJ exports agree; CLI preserves original failed quality and prior export. Old diagnostics JSON remains readable. No reference parity or original garment-quality acceptance.",
+          "path": "parity/scenarios/SIM-STRAIN-ATTRIBUTION-001.json"
+        },
+        {
+          "id": "UI-HARBOR-001",
+          "fixture_hashes": {
+            "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
+          "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
+          "path": "parity/scenarios/UI-HARBOR-001.json"
+        },
+        {
+          "id": "FILE-DXF-STUDIO-001",
+          "fixture_hashes": {
+            "parity/reports/artifacts/dxf-studio-20261115/evaluator/original-editable-patterns.dxf": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+            "parity/reports/artifacts/dxf-studio-20261115/evaluator/baseline.weftforge": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+          },
+          "initial_conditions": "Untouched baseline revision1/allocator11 and original R2000 drawing on one identified bound source/binary pair. Opening creates no Undo history. Dedicated native and headless successor cases require separate prospective bindings; prior failed cases remain unchanged.",
+          "expected_outcomes": "Unchanged native geometry/history/export and adapter criteria must be met within the frozen tolerances. Every full native action criterion requires runtime observation. A scoped component pass does not establish explicit printing disclosure, an unexercised old Redo branch or zero background persistence. Source-qualified observations and gaps are separate.",
+          "path": "parity/scenarios/FILE-DXF-STUDIO-001.json"
+        },
+        {
+          "id": "UI-PATTERN-TRANSFORM-001",
+          "path": "parity/reports/artifacts/pattern-transform-20261115/native-transform-plan-v2-20261115/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/pattern-transform-20261115/native-A4/A4-readonly-input.weftforge": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+            "parity/reports/artifacts/pattern-transform-20261115/native-B/B-readonly-input.weftforge": "7dd536522487e752bbb6e855d753423596f12344b61c22aeefcf8686517c07d5"
+          },
+          "initial_conditions": "Frozen original analytic R37 input and separate B based on A4 native Redo R40; actual DD source/native 216 identity. A4 cap 130 pairs/900 s; B cap 60 pairs/600 s. Simulation off.",
+          "expected_outcomes": "Unchanged frozen numerical/history/save/reopen criteria and observed native barriers. Root accepted bounded A4; B stopped after one documented drag at R40 instead of R41, with no rotation or Save and missing-output grade failure. No full plan or reference credit."
+        },
+        {
+          "id": "NATIVE-PHYSICAL-SEWING-002",
+          "path": "parity/reports/artifacts/physical-length-sewing-20261115/native-plan-v3-case002/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/physical-length-sewing-20261115/native/002/physical-readonly-input.weftforge": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+            "parity/reports/artifacts/physical-length-sewing-20261115/native-plan-v3-case002/EXPECTED.json": "589a9400a916e9340d04ae77b332ea25d3a0abc6b06dee9b8ac9868ac80506ec"
+          },
+          "initial_conditions": "Prospectively frozen v3 tooling plan; original analytic R41/next20/2panels, no group and simulation off, sourceB657/native69af. Math/grader unchanged from prior plan; caps220total/1200s.",
+          "expected_outcomes": "Bounded invalid-text/caret/A-only/pair/history/four-save/NewR0/no-op UndoRedo/same-process reopen/quit checks and unchanged 1e-8m saved grade. Root accepted002; failed001 and entry/Cancel-only calibration remain separate. No full coarse sewing/New/garment/reference acceptance."
+        },
+        {
+          "id": "NATIVE-INTERNAL-ANNOTATIONS-A003",
+          "path": "parity/reports/artifacts/internal-annotations-20261115/native-protocol/v2-prospective-only/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/internal-annotations-20261115/native-protocol/v2-prospective-only/EXPECTATIONS.json": "4cf6cc79c0da2045e9ffeaedbe8732711ed957c54bceeb5b425848c5079702e2"
+          },
+          "initial_conditions": "Original fresh empty native launch; ad7/source65/nativea733, no preauthored launch input. Prospective v2 A protocol; B\u2013E outside report coverage.",
+          "expected_outcomes": "Bounded unit-square/straight-line/refusal/modal/caret/one compound edit/history/six native v4 saves/quit. Root accepted A003 only; caps175+1/1200 and one frozen saved grade. No New/Recover/restart/full automation/reference credit."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "APP-002",
+      "required_reference_behavior": "Native macOS Apple Silicon, Windows and Linux builds, launch checks and redistributable prereleases.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "APP-003"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "APP-003",
+      "required_reference_behavior": "Offline creation/simulation/save/export, license/asset audit and native dependency notices.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "APP-004",
+      "required_reference_behavior": "Save, navigate, cancel and recover during expensive operations without blocking UI.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "UI-005",
+        "FILE-002"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "APP-005",
+      "required_reference_behavior": "Public repository, issues, PRs, CI, samples, screenshots, releases and generated attributable progress.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "REF-003"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "PERF-001",
+      "required_reference_behavior": "Documented hardware, multi-piece/layer mesh, solver step throughput, viewport time, memory and save/cancel timing.",
+      "scenarios": [
+        {
+          "id": "PERFORMANCE-001",
+          "path": "parity/scenarios/PERFORMANCE-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Document CPU/GPU/RAM/OS, original representative multi-piece and layered fixtures.",
+          "expected_outcomes": "Mesh sizes and settings attributable; no frame-rate proxy for real-time cloth; no unknown metric represented as measured."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SIM-004",
+        "APP-004"
+      ],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "REF-001",
+      "required_reference_behavior": "Official installed version/build/hash, OS/architecture/preferences/units/locale/graphics/date.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_status": "partial",
+      "verification_status": "blocked",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "REF-002",
+      "required_reference_behavior": "Audit all menus, contextual tools, dialogs, shortcuts, defaults/ranges/errors/file handling/workflows, including local substitutes for hosted creation.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_status": "partial",
+      "verification_status": "blocked",
+      "reference_observation_status": "unobserved"
+    },
+    {
+      "id": "REF-003",
+      "required_reference_behavior": "Independent original fixtures, scenarios and evaluators, complete contract evidence, stale propagation and public discrepancy reports.",
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "REF-001",
+        "REF-002"
+      ],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "reference_observation_status": "unobserved"
+    }
+  ],
+  "full56_sha256": "c5547bc020d12ea7b5e8d73eade3838950cd1111153455d37d9978a3d979833a",
+  "registry_whole_bytes_sha256": "43d6dfd29207bb1e5acc6115608844a57060cc2f748189facf6eb5e1b366d279",
+  "disk": {
+    "target_allocated_bytes": 1622065152,
+    "filesystem_free_bytes": 11607650304,
+    "filesystem_free_gib": 10.810466766357422
+  }
+}

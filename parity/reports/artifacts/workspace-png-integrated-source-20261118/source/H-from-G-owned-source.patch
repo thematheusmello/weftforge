@@ -1,0 +1,1393 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index 2d763db3fdc1ce19a22d2dff921974d8cb0e78cb..0fa01b7983ba407bcc0c281d4a0274923709f771 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -3502,6 +3502,7 @@ name = "weftforge"
+ version = "0.1.0"
+ dependencies = [
+  "eframe",
++ "png",
+  "rfd",
+  "serde_json",
+  "weftforge-core",
+diff --git a/apps/weftforge/Cargo.toml b/apps/weftforge/Cargo.toml
+index 43b51866b5b042821a54f9574bdbd1c74ef89dd0..06d193b16212defda073b8d89a9d0961e578d822 100644
+--- a/apps/weftforge/Cargo.toml
++++ b/apps/weftforge/Cargo.toml
+@@ -10,5 +10,6 @@ repository.workspace = true
+ weftforge-core = { path = "../../crates/weftforge-core" }
+ weftforge-sim = { path = "../../crates/weftforge-sim" }
+ eframe.workspace = true
++png = "=0.18.1"
+ rfd.workspace = true
+ serde_json.workspace = true
+diff --git a/apps/weftforge/src/capture.rs b/apps/weftforge/src/capture.rs
+new file mode 100644
+index 0000000000000000000000000000000000000000..23f9e8d35ed06c1beb44dba5f1045fdc8dde47e9
+--- /dev/null
++++ b/apps/weftforge/src/capture.rs
+@@ -0,0 +1,952 @@
++use eframe::{egui, wgpu};
++use std::{
++    path::{Path, PathBuf},
++    sync::{Arc, mpsc},
++    time::{Duration, Instant},
++};
++use weftforge_core::StagedExport;
++
++const MAX_SIDE: usize = 16_384;
++const MAX_PIXELS: usize = 16_777_216;
++const MAX_PNG_BYTES: usize = 80 * 1024 * 1024;
++const READBACK_TIMEOUT: Duration = Duration::from_secs(10);
++
++#[derive(Clone, Copy)]
++pub(super) struct RenderedFrame {
++    pub number: u64,
++    pub revision: u64,
++}
++
++struct Request {
++    token: egui::UserData,
++    path: PathBuf,
++    revision: u64,
++    requested_frame: u64,
++    captured: Option<(RenderedFrame, [usize; 2])>,
++    deadline: Instant,
++}
++
++enum State {
++    Waiting(Request),
++    Saving {
++        request: Request,
++        receiver: mpsc::Receiver<Result<StagedExport, String>>,
++        cancelled: bool,
++    },
++}
++
++#[derive(Default)]
++pub(super) struct WorkspaceCapture {
++    supported: bool,
++    state: Option<State>,
++}
++
++impl WorkspaceCapture {
++    pub fn new(format: Option<wgpu::TextureFormat>) -> Self {
++        Self {
++            supported: matches!(
++                format,
++                Some(wgpu::TextureFormat::Rgba8Unorm | wgpu::TextureFormat::Bgra8Unorm)
++            ),
++            state: None,
++        }
++    }
++
++    pub fn busy(&self) -> bool {
++        self.state.is_some()
++    }
++
++    pub fn start(
++        &mut self,
++        ctx: &egui::Context,
++        revision: u64,
++        project: Option<&Path>,
++        path: PathBuf,
++    ) -> Result<(), String> {
++        if self.busy() {
++            return Err("Wait for the current workspace PNG save to finish.".into());
++        }
++        if !self.supported || ctx.viewport_id() != egui::ViewportId::ROOT {
++            return Err("Workspace capture is unavailable on this renderer.".into());
++        }
++        if !path
++            .extension()
++            .is_some_and(|extension| extension.eq_ignore_ascii_case("png"))
++        {
++            return Err("Choose a .png destination for the workspace image.".into());
++        }
++        super::export_path_guard(project, &path)?;
++        viewport_dimensions(ctx)?;
++        let token = egui::UserData::new(());
++        self.state = Some(State::Waiting(Request {
++            token: token.clone(),
++            path,
++            revision,
++            requested_frame: ctx.cumulative_frame_nr(),
++            captured: None,
++            deadline: Instant::now() + READBACK_TIMEOUT,
++        }));
++        ctx.send_viewport_cmd(egui::ViewportCommand::Screenshot(token));
++        ctx.request_repaint();
++        Ok(())
++    }
++
++    pub fn cancel(&mut self) -> bool {
++        match &mut self.state {
++            Some(State::Waiting(_)) => {
++                self.state = None;
++                true
++            }
++            Some(State::Saving { cancelled, .. }) => {
++                let active = !*cancelled;
++                *cancelled = true;
++                active
++            }
++            None => false,
++        }
++    }
++
++    pub fn receive(&mut self, ctx: &egui::Context, revision: u64) -> Option<String> {
++        let Some(State::Waiting(request)) = &self.state else {
++            return None;
++        };
++        if request.revision != revision || Instant::now() >= request.deadline {
++            return None;
++        }
++        let mut image = None;
++        ctx.input_mut(|input| {
++            input.events.retain(|event| {
++                if let egui::Event::Screenshot {
++                    viewport_id,
++                    user_data,
++                    image: pixels,
++                } = event
++                    && *viewport_id == egui::ViewportId::ROOT
++                    && *user_data == request.token
++                {
++                    image = Some(Arc::clone(pixels));
++                    false
++                } else {
++                    true
++                }
++            });
++        });
++        let image = image?;
++        let Some(State::Waiting(request)) = self.state.take() else {
++            unreachable!("only a pending capture can receive pixels");
++        };
++        let Some((_, size)) = request.captured else {
++            return Some("Workspace capture failed: no matching rendered frame.".into());
++        };
++        if let Err(error) = image_dimensions(&image) {
++            return Some(error);
++        }
++        if image.size != size {
++            return Some("Workspace capture discarded: the window size changed.".into());
++        }
++        let path = request.path.clone();
++        let ctx = ctx.clone();
++        let (sender, receiver) = mpsc::channel();
++        if let Err(error) = std::thread::Builder::new().spawn(move || {
++            let result = encode_png(&image)
++                .and_then(|bytes| StagedExport::write(path, &bytes).map_err(|e| e.to_string()));
++            let _ = sender.send(result);
++            ctx.request_repaint();
++        }) {
++            return Some(format!("Workspace PNG worker could not start: {error}"));
++        }
++        self.state = Some(State::Saving {
++            request,
++            receiver,
++            cancelled: false,
++        });
++        Some("Saving workspace PNG… Escape cancels.".into())
++    }
++
++    // Commit after this pass's authoring, cancellation and document lifecycle actions.
++    pub fn finish_frame(
++        &mut self,
++        ctx: &egui::Context,
++        frame: RenderedFrame,
++        project: Option<&Path>,
++    ) -> Option<String> {
++        let state = self.state.take()?;
++        let message = match state {
++            State::Waiting(mut request) => {
++                if request.revision != frame.revision {
++                    Some("Workspace capture discarded: the document changed.".into())
++                } else if Instant::now() >= request.deadline {
++                    Some("Workspace capture timed out; previous file retained.".into())
++                } else {
++                    // eframe 0.35 applies Screenshot after painting the request frame.
++                    if frame.number == request.requested_frame + 1 {
++                        match viewport_dimensions(ctx) {
++                            Ok(size) => request.captured = Some((frame, size)),
++                            Err(error) => return Some(error),
++                        }
++                    }
++                    self.state = Some(State::Waiting(request));
++                    None
++                }
++            }
++            State::Saving {
++                request,
++                receiver,
++                cancelled,
++            } => {
++                let obsolete = request.revision != frame.revision;
++                match receiver.try_recv() {
++                    Ok(Err(error)) => Some(format!(
++                        "Workspace PNG save failed; previous file retained: {error}"
++                    )),
++                    Ok(Ok(staged)) => {
++                        if obsolete || cancelled {
++                            drop(staged);
++                            Some(if obsolete {
++                                "Workspace PNG discarded: the document changed; previous file retained."
++                                    .into()
++                            } else {
++                                "Workspace PNG cancelled; previous file retained.".into()
++                            })
++                        } else {
++                            let result = super::export_path_guard(project, &request.path)
++                                .and_then(|()| staged.commit().map_err(|e| e.to_string()));
++                            Some(match result {
++                                Ok(()) => {
++                                    let (_, [width, height]) =
++                                        request.captured.expect("admitted rendered frame");
++                                    format!("Saved workspace PNG · {width} × {height} px.")
++                                }
++                                Err(error) => format!(
++                                    "Workspace PNG save failed; previous file retained: {error}"
++                                ),
++                            })
++                        }
++                    }
++                    Err(mpsc::TryRecvError::Disconnected) => {
++                        Some("Workspace PNG worker stopped; previous file retained.".into())
++                    }
++                    Err(mpsc::TryRecvError::Empty) => {
++                        self.state = Some(State::Saving {
++                            request,
++                            receiver,
++                            cancelled: cancelled || obsolete,
++                        });
++                        None
++                    }
++                }
++            }
++        };
++        if self.busy() {
++            ctx.request_repaint_after(Duration::from_millis(20));
++        }
++        message
++    }
++
++    pub fn shutdown(&mut self) {
++        // The worker never commits; a late send fails and drops its staged file.
++        self.state = None;
++    }
++}
++
++fn dimensions(size: [usize; 2]) -> Result<(), String> {
++    if size.contains(&0)
++        || size.iter().any(|side| *side > MAX_SIDE)
++        || size[0]
++            .checked_mul(size[1])
++            .is_none_or(|pixels| pixels > MAX_PIXELS)
++    {
++        Err("Workspace PNG requires nonzero dimensions up to 16,384 px per side and 16,777,216 pixels total.".into())
++    } else {
++        Ok(())
++    }
++}
++
++fn viewport_dimensions(ctx: &egui::Context) -> Result<[usize; 2], String> {
++    let scale = ctx.pixels_per_point();
++    let size = ctx.viewport_rect().size() * scale;
++    if !scale.is_finite()
++        || scale <= 0.0
++        || !size.x.is_finite()
++        || !size.y.is_finite()
++        || size.x <= 0.0
++        || size.y <= 0.0
++        || size.x > MAX_SIDE as f32
++        || size.y > MAX_SIDE as f32
++    {
++        return Err("Workspace PNG requires a valid, bounded visible viewport.".into());
++    }
++    let size = [size.x.round() as usize, size.y.round() as usize];
++    dimensions(size)?;
++    Ok(size)
++}
++
++fn image_dimensions(image: &egui::ColorImage) -> Result<(), String> {
++    dimensions(image.size)?;
++    if image.pixels.len() != image.size[0] * image.size[1] {
++        return Err("Workspace capture returned an incomplete image.".into());
++    }
++    Ok(())
++}
++
++fn encode_png(image: &egui::ColorImage) -> Result<Vec<u8>, String> {
++    image_dimensions(image)?;
++    let mut rgba = Vec::new();
++    rgba.try_reserve_exact(image.pixels.len() * 4)
++        .map_err(|e| e.to_string())?;
++    for pixel in &image.pixels {
++        rgba.extend_from_slice(&pixel.to_srgba_unmultiplied());
++    }
++    let [width, height] = image
++        .size
++        .map(|side| u32::try_from(side).expect("bounded size"));
++    let mut bytes = Vec::new();
++    {
++        let mut encoder = png::Encoder::new(&mut bytes, width, height);
++        encoder.set_color(png::ColorType::Rgba);
++        encoder.set_depth(png::BitDepth::Eight);
++        encoder.set_source_srgb(png::SrgbRenderingIntent::Perceptual);
++        let mut writer = encoder.write_header().map_err(|e| e.to_string())?;
++        writer.write_image_data(&rgba).map_err(|e| e.to_string())?;
++        writer.finish().map_err(|e| e.to_string())?;
++    }
++    if bytes.len() > MAX_PNG_BYTES {
++        return Err("Workspace PNG exceeds the 80 MiB output limit.".into());
++    }
++    Ok(bytes)
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    use std::{
++        fs,
++        io::Cursor,
++        time::{SystemTime, UNIX_EPOCH},
++    };
++
++    struct Directory(PathBuf);
++    impl Directory {
++        fn new() -> Self {
++            let path = std::env::temp_dir().join(format!(
++                "weftforge-workspace-png-{}-{}",
++                std::process::id(),
++                SystemTime::now()
++                    .duration_since(UNIX_EPOCH)
++                    .unwrap()
++                    .as_nanos()
++            ));
++            fs::create_dir(&path).unwrap();
++            Self(path)
++        }
++    }
++    impl Drop for Directory {
++        fn drop(&mut self) {
++            fs::remove_dir_all(&self.0).unwrap();
++        }
++    }
++
++    fn image() -> egui::ColorImage {
++        egui::ColorImage::new(
++            [2, 2],
++            vec![
++                egui::Color32::RED,
++                egui::Color32::GREEN,
++                egui::Color32::BLUE,
++                egui::Color32::from_rgba_premultiplied(16, 32, 48, 128),
++            ],
++        )
++    }
++
++    #[test]
++    fn png_retains_native_pixels_orientation_alpha_and_only_standard_srgb_metadata() {
++        let bytes = encode_png(&image()).unwrap();
++        let mut reader = png::Decoder::new(Cursor::new(&bytes)).read_info().unwrap();
++        assert_eq!(
++            reader.info().srgb,
++            Some(png::SrgbRenderingIntent::Perceptual)
++        );
++        let mut pixels = vec![0; reader.output_buffer_size().unwrap()];
++        let output = reader.next_frame(&mut pixels).unwrap();
++        assert_eq!((output.width, output.height), (2, 2));
++        assert_eq!(output.color_type, png::ColorType::Rgba);
++        assert_eq!(output.bit_depth, png::BitDepth::Eight);
++        assert_eq!(
++            pixels,
++            [
++                255, 0, 0, 255, 0, 255, 0, 255, 0, 0, 255, 255, 32, 64, 96, 128
++            ]
++        );
++        assert_eq!(&bytes[..8], b"\x89PNG\r\n\x1a\n");
++        let mut position = 8;
++        let mut chunks = Vec::new();
++        while position < bytes.len() {
++            let length =
++                u32::from_be_bytes(bytes[position..position + 4].try_into().unwrap()) as usize;
++            let kind = &bytes[position + 4..position + 8];
++            assert!(matches!(kind, b"IHDR" | b"sRGB" | b"IDAT" | b"IEND"));
++            if kind == b"sRGB" {
++                assert_eq!(&bytes[position + 8..position + 8 + length], &[0]);
++            }
++            chunks.push(kind);
++            position += length + 12;
++        }
++        assert_eq!(position, bytes.len());
++        assert_eq!(chunks.first().copied(), Some(b"IHDR".as_slice()));
++        assert_eq!(chunks.last().copied(), Some(b"IEND".as_slice()));
++        assert_eq!(chunks.iter().filter(|kind| **kind == b"sRGB").count(), 1);
++        for size in [
++            [0, 2],
++            [MAX_SIDE + 1, 1],
++            [MAX_SIDE, MAX_SIDE],
++            [usize::MAX, 2],
++        ] {
++            assert!(dimensions(size).is_err());
++        }
++        let mut malformed = image();
++        let _ = malformed.pixels.pop();
++        assert!(encode_png(&malformed).is_err());
++        let ctx = egui::Context::default();
++        let mut raw = input(vec![]);
++        raw.viewports
++            .entry(egui::ViewportId::ROOT)
++            .or_default()
++            .native_pixels_per_point = Some(2.0);
++        let _ = ctx.run_ui(raw, |_| {
++            assert_eq!(viewport_dimensions(&ctx).unwrap(), [4, 4]);
++        });
++    }
++
++    fn stamp(ctx: &egui::Context, revision: u64) -> RenderedFrame {
++        RenderedFrame {
++            number: ctx.cumulative_frame_nr(),
++            revision,
++        }
++    }
++
++    fn input(events: Vec<egui::Event>) -> egui::RawInput {
++        egui::RawInput {
++            screen_rect: Some(egui::Rect::from_min_size(
++                egui::Pos2::ZERO,
++                egui::Vec2::splat(2.0),
++            )),
++            events,
++            ..Default::default()
++        }
++    }
++
++    fn advance(
++        ctx: &egui::Context,
++        capture: &mut WorkspaceCapture,
++        revision: u64,
++        events: Vec<egui::Event>,
++    ) -> Option<String> {
++        let mut message = None;
++        let _ = ctx.run_ui(input(events), |_| {
++            message = capture.receive(ctx, revision);
++            message = capture
++                .finish_frame(ctx, stamp(ctx, revision), None)
++                .or(message.take());
++        });
++        message
++    }
++
++    #[test]
++    fn capture_admission_and_late_commit_guards_preserve_the_previous_file() {
++        for case in [
++            "success",
++            "wrong-token",
++            "wrong-viewport",
++            "timeout",
++            "cancel",
++            "stale",
++            "resize",
++            "malformed",
++            "oversized",
++            "late-cancel",
++            "late-stale",
++            "late-native",
++            "worker-error",
++            "shutdown",
++        ] {
++            let directory = Directory::new();
++            let path = directory.0.join("workspace.png");
++            let mut previous = b"previous image".to_vec();
++            fs::write(&path, &previous).unwrap();
++            let ctx = egui::Context::default();
++            let mut capture = WorkspaceCapture::new(Some(wgpu::TextureFormat::Bgra8Unorm));
++            let _ = ctx.run_ui(input(vec![]), |_| {
++                assert!(
++                    WorkspaceCapture::default()
++                        .start(&ctx, 7, None, path.clone())
++                        .is_err()
++                );
++                assert!(
++                    capture
++                        .start(&ctx, 7, None, path.with_extension("weftforge"))
++                        .is_err()
++                );
++                capture.start(&ctx, 7, None, path.clone()).unwrap();
++                assert!(capture.start(&ctx, 7, None, path.clone()).is_err());
++                let _ = capture.finish_frame(&ctx, stamp(&ctx, 7), None);
++            });
++            let _ = advance(&ctx, &mut capture, 7, vec![]);
++            let Some(State::Waiting(request)) = &capture.state else {
++                panic!("pending {case}");
++            };
++            let token = request.token.clone();
++            assert_eq!(
++                request.captured.unwrap().0.number,
++                request.requested_frame + 1
++            );
++            assert_eq!(request.captured.unwrap().0.revision, 7);
++            let mut revision = 7;
++            let mut event_image = image();
++            match case {
++                "cancel" => {
++                    capture.cancel();
++                }
++                "stale" | "late-stale" => revision += 1,
++                "timeout" => {
++                    if let Some(State::Waiting(request)) = &mut capture.state {
++                        request.deadline = Instant::now() - Duration::from_millis(1);
++                    }
++                }
++                "resize" => event_image.size = [1, 4],
++                "malformed" => {
++                    event_image.pixels.pop();
++                }
++                "oversized" => event_image.size = [MAX_SIDE + 1, 1],
++                _ => {}
++            }
++            let events = if matches!(
++                case,
++                "late-cancel" | "late-stale" | "late-native" | "worker-error" | "shutdown"
++            ) {
++                let Some(State::Waiting(request)) = capture.state.take() else {
++                    unreachable!()
++                };
++                let (sender, receiver) = mpsc::channel();
++                sender
++                    .send(if case == "worker-error" {
++                        Err("injected encoding failure".into())
++                    } else {
++                        Ok(StagedExport::write(&path, b"prepared image").unwrap())
++                    })
++                    .ok()
++                    .unwrap();
++                capture.state = Some(State::Saving {
++                    request,
++                    receiver,
++                    cancelled: false,
++                });
++                if matches!(case, "late-cancel" | "worker-error") {
++                    capture.cancel();
++                }
++                if case == "late-native" {
++                    previous = weftforge_core::Project::default().to_json().unwrap();
++                    fs::write(&path, &previous).unwrap();
++                }
++                if case == "shutdown" {
++                    capture.shutdown();
++                }
++                vec![]
++            } else {
++                vec![egui::Event::Screenshot {
++                    viewport_id: if case == "wrong-viewport" {
++                        egui::ViewportId::from_hash_of("other")
++                    } else {
++                        egui::ViewportId::ROOT
++                    },
++                    user_data: if case == "wrong-token" {
++                        egui::UserData::new(())
++                    } else {
++                        token
++                    },
++                    image: Arc::new(event_image),
++                }]
++            };
++            let mut message = advance(&ctx, &mut capture, revision, events);
++            if matches!(case, "wrong-token" | "wrong-viewport") {
++                assert!(capture.busy());
++                capture.cancel();
++            }
++            let deadline = Instant::now() + Duration::from_secs(5);
++            while capture.busy() {
++                assert!(Instant::now() < deadline, "worker did not retire: {case}");
++                std::thread::yield_now();
++                message = advance(&ctx, &mut capture, revision, vec![]).or(message);
++            }
++            if case == "success" {
++                assert_eq!(fs::read(&path).unwrap(), encode_png(&image()).unwrap());
++                assert_eq!(message.unwrap(), "Saved workspace PNG · 2 × 2 px.");
++            } else {
++                assert_eq!(fs::read(&path).unwrap(), previous, "{case}");
++                if case == "worker-error" {
++                    assert!(message.unwrap().contains("injected encoding failure"));
++                }
++            }
++            assert_eq!(fs::read_dir(&directory.0).unwrap().count(), 1, "{case}");
++        }
++    }
++
++    #[test]
++    fn shutdown_releases_a_live_worker_without_waiting_and_drops_its_late_result() {
++        let directory = Directory::new();
++        let path = directory.0.join("workspace.png");
++        fs::write(&path, b"previous image").unwrap();
++        let ctx = egui::Context::default();
++        let mut capture = WorkspaceCapture::new(Some(wgpu::TextureFormat::Rgba8Unorm));
++        let _ = ctx.run_ui(input(vec![]), |_| {
++            capture.start(&ctx, 7, None, path.clone()).unwrap();
++            let _ = capture.finish_frame(&ctx, stamp(&ctx, 7), None);
++        });
++        let _ = advance(&ctx, &mut capture, 7, vec![]);
++        let Some(State::Waiting(request)) = capture.state.take() else {
++            unreachable!()
++        };
++        let (sender, receiver) = mpsc::channel();
++        capture.state = Some(State::Saving {
++            request,
++            receiver,
++            cancelled: false,
++        });
++        assert!(capture.cancel());
++        assert!(capture.busy());
++        assert!(capture.start(&ctx, 7, None, path.clone()).is_err());
++
++        let (finished, completion) = mpsc::channel();
++        let exit = std::thread::spawn(move || {
++            capture.shutdown();
++            assert!(!capture.busy());
++            finished.send(()).unwrap();
++        });
++        if completion.recv_timeout(Duration::from_secs(1)).is_err() {
++            // Release a regressed blocking shutdown before reporting its failure.
++            drop(sender);
++            exit.join().unwrap();
++            panic!("shutdown waited for a live worker without a result");
++        }
++        exit.join().unwrap();
++        assert_eq!(fs::read(&path).unwrap(), b"previous image");
++
++        let staged = StagedExport::write(&path, b"late image").unwrap();
++        assert_eq!(fs::read_dir(&directory.0).unwrap().count(), 2);
++        let late = sender.send(Ok(staged));
++        assert!(late.is_err());
++        drop(late);
++        assert_eq!(fs::read(&path).unwrap(), b"previous image");
++        assert_eq!(fs::read_dir(&directory.0).unwrap().count(), 1);
++    }
++
++    #[test]
++    fn file_and_palette_capture_routes_retain_pending_text_history_and_accepted_display() {
++        use super::super::{
++            Studio,
++            native_idle_numeric_tests::{action, button, frame},
++            pattern_transform_tests::key,
++            studio_style,
++        };
++        use egui::accesskit::Action;
++        use weftforge_core::Command;
++
++        let directory = Directory::new();
++        let path = directory.0.join("workspace.png");
++        for search in [false, true] {
++            for pointer in [false, true] {
++                for cancel in [false, true] {
++                    fs::write(&path, b"previous image").unwrap();
++                    let ctx = egui::Context::default();
++                    ctx.enable_accesskit();
++                    studio_style(&ctx);
++                    let mut app = Studio::empty();
++                    app.session_autosave = None;
++                    app.workspace_capture =
++                        WorkspaceCapture::new(Some(wgpu::TextureFormat::Rgba8Unorm));
++                    app.editor
++                        .execute(Command::AddRectangle {
++                            name: "Capture panel".into(),
++                            origin: [0., 0.],
++                            width: 0.4,
++                            height: 0.6,
++                        })
++                        .unwrap();
++                    app.editor
++                        .execute(Command::SetResolution { metres: 0.08 })
++                        .unwrap();
++                    assert!(app.editor.undo());
++                    app.selected = Some(app.editor.project.pieces[0].id);
++                    let mesh = Arc::new(app.editor.project.mesh().unwrap());
++                    let cloth = Arc::new(
++                        weftforge_core::simulation::create_cloth(&app.editor.project, &mesh)
++                            .unwrap(),
++                    );
++                    app.mesh = Some(Arc::clone(&mesh));
++                    app.cloth = Some(Arc::clone(&cloth));
++                    let before = app.editor.clone();
++                    let output = frame(&ctx, &mut app, 1800., vec![]);
++                    let numeric = output
++                        .platform_output
++                        .accesskit_update
++                        .as_ref()
++                        .unwrap()
++                        .nodes
++                        .iter()
++                        .find(|(_, node)| node.numeric_value() == Some(0.4))
++                        .unwrap()
++                        .0;
++                    frame(
++                        &ctx,
++                        &mut app,
++                        1800.,
++                        vec![action(numeric, Action::Focus, None)],
++                    );
++                    frame(&ctx, &mut app, 1800., vec![]);
++                    let output = frame(
++                        &ctx,
++                        &mut app,
++                        1800.,
++                        vec![
++                            key(egui::Key::A, egui::Modifiers::COMMAND),
++                            egui::Event::Text("1e-".into()),
++                        ],
++                    );
++                    let focused = ctx.memory(|memory| memory.focused()).unwrap();
++                    let caret = egui::TextEdit::load_state(&ctx, focused)
++                        .unwrap()
++                        .cursor
++                        .char_range();
++                    app.draft.as_mut().unwrap().resolution = 0.08;
++                    let pending = app.draft.as_ref().unwrap().commands(&before.project);
++                    let output = if search {
++                        app.query = "Save workspace PNG".into();
++                        frame(
++                            &ctx,
++                            &mut app,
++                            1800.,
++                            vec![key(egui::Key::K, egui::Modifiers::COMMAND)],
++                        );
++                        frame(&ctx, &mut app, 1800., vec![])
++                    } else {
++                        frame(
++                            &ctx,
++                            &mut app,
++                            1800.,
++                            vec![action(button(&output, "File"), Action::Click, None)],
++                        );
++                        frame(&ctx, &mut app, 1800., vec![])
++                    };
++                    let target = button(&output, "Save workspace PNG…");
++                    ctx.data_mut(|data| {
++                        data.insert_temp(
++                            egui::Id::new("test-workspace-png-destination"),
++                            (!cancel).then(|| path.clone()),
++                        )
++                    });
++                    if pointer {
++                        let bounds = output
++                            .platform_output
++                            .accesskit_update
++                            .as_ref()
++                            .unwrap()
++                            .nodes
++                            .iter()
++                            .find(|(id, _)| *id == target)
++                            .unwrap()
++                            .1
++                            .bounds()
++                            .unwrap();
++                        let pos = egui::pos2(
++                            ((bounds.x0 + bounds.x1) * 0.5) as f32,
++                            ((bounds.y0 + bounds.y1) * 0.5) as f32,
++                        );
++                        for pressed in [true, false] {
++                            frame(
++                                &ctx,
++                                &mut app,
++                                1800.,
++                                vec![
++                                    egui::Event::PointerMoved(pos),
++                                    egui::Event::PointerButton {
++                                        pos,
++                                        button: egui::PointerButton::Primary,
++                                        pressed,
++                                        modifiers: egui::Modifiers::NONE,
++                                    },
++                                ],
++                            );
++                            assert_eq!(app.editor.project, before.project);
++                        }
++                    } else {
++                        frame(
++                            &ctx,
++                            &mut app,
++                            1800.,
++                            vec![action(target, Action::Click, None)],
++                        );
++                    }
++                    assert_eq!(app.workspace_capture.busy(), !cancel);
++                    frame(&ctx, &mut app, 1800., vec![]);
++                    app.workspace_capture.cancel();
++                    for _ in 0..3 {
++                        frame(&ctx, &mut app, 1800., vec![]);
++                    }
++                    assert!(!app.workspace_capture.busy());
++                    assert_eq!(app.editor.project, before.project);
++                    assert!(
++                        !app.dirty
++                            && !app.needs_mesh
++                            && app.job.is_none()
++                            && !app.playing
++                            && app.pending_batch.is_none()
++                    );
++                    assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
++                    assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
++                    assert_eq!(
++                        app.draft.as_ref().unwrap().commands(&before.project),
++                        pending
++                    );
++                    assert_eq!(ctx.memory(|memory| memory.focused()), Some(focused));
++                    assert_eq!(
++                        ctx.data_mut(|data| data.get_temp::<String>(focused)),
++                        Some("1e-".into())
++                    );
++                    assert_eq!(
++                        egui::TextEdit::load_state(&ctx, focused)
++                            .unwrap()
++                            .cursor
++                            .char_range(),
++                        caret
++                    );
++                    for redo in [false, true] {
++                        let mut actual = app.editor.clone();
++                        let mut expected = before.clone();
++                        loop {
++                            let actual_changed = if redo { actual.redo() } else { actual.undo() };
++                            let expected_changed = if redo {
++                                expected.redo()
++                            } else {
++                                expected.undo()
++                            };
++                            assert_eq!(actual_changed, expected_changed);
++                            assert_eq!(actual.project, expected.project);
++                            if !actual_changed {
++                                break;
++                            }
++                        }
++                    }
++                    assert_eq!(fs::read(&path).unwrap(), b"previous image");
++                }
++            }
++        }
++
++        for overlay in ["popup", "modal"] {
++            let ctx = egui::Context::default();
++            ctx.enable_accesskit();
++            studio_style(&ctx);
++            let mut app = Studio::empty();
++            app.session_autosave = None;
++            app.workspace_capture = WorkspaceCapture::new(Some(wgpu::TextureFormat::Rgba8Unorm));
++            let before = app.editor.project.clone();
++            let output = frame(&ctx, &mut app, 1800., vec![]);
++            app.workspace_capture
++                .start(&ctx, before.revision, None, path.clone())
++                .unwrap();
++            let Some(State::Waiting(mut request)) = app.workspace_capture.state.take() else {
++                unreachable!()
++            };
++            request.captured = Some((stamp(&ctx, before.revision), [1640, 1800]));
++            let (sender, receiver) = mpsc::channel();
++            app.workspace_capture.state = Some(State::Saving {
++                request,
++                receiver,
++                cancelled: false,
++            });
++            if overlay == "popup" {
++                frame(
++                    &ctx,
++                    &mut app,
++                    1800.,
++                    vec![action(button(&output, "File"), Action::Click, None)],
++                );
++                frame(&ctx, &mut app, 1800., vec![]);
++                assert!(egui::Popup::is_any_open(&ctx));
++            } else {
++                app.rectangle = Some(super::super::RectangleDraft {
++                    origin: [0.; 2],
++                    dimensions_mm: ["400".into(), "600".into()],
++                    error: None,
++                });
++                frame(&ctx, &mut app, 1800., vec![]);
++                assert!(app.rectangle.is_some());
++            }
++            frame(
++                &ctx,
++                &mut app,
++                1800.,
++                vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
++            );
++            assert!(
++                matches!(
++                    app.workspace_capture.state,
++                    Some(State::Saving {
++                        cancelled: true,
++                        ..
++                    })
++                ),
++                "{overlay}"
++            );
++            assert!(app.workspace_capture.busy());
++            assert!(!egui::Popup::is_any_open(&ctx));
++            assert!(app.rectangle.is_none());
++            assert_eq!(app.editor.project, before);
++            assert!(!app.dirty);
++            sender
++                .send(Ok(StagedExport::write(&path, b"cancelled image").unwrap()))
++                .ok()
++                .unwrap();
++            frame(&ctx, &mut app, 1800., vec![]);
++            assert!(!app.workspace_capture.busy());
++            assert_eq!(fs::read(&path).unwrap(), b"previous image");
++            assert_eq!(fs::read_dir(&directory.0).unwrap().count(), 1);
++        }
++    }
++
++    #[test]
++    fn successful_same_revision_document_lifecycle_and_reset_invalidate_capture() {
++        use super::super::Studio;
++        let directory = Directory::new();
++        let source = directory.0.join("source.weftforge");
++        weftforge_core::Project::default().save(&source).unwrap();
++        let path = directory.0.join("workspace.png");
++        for case in ["new", "load", "failed-load", "reset", "exit"] {
++            let ctx = egui::Context::default();
++            let mut app = Studio::empty();
++            app.session_autosave = None;
++            app.workspace_capture = WorkspaceCapture::new(Some(wgpu::TextureFormat::Rgba8Unorm));
++            let revision = app.editor.project.revision;
++            let _ = ctx.run_ui(input(vec![]), |_| {
++                app.workspace_capture
++                    .start(&ctx, revision, None, path.clone())
++                    .unwrap();
++            });
++            match case {
++                "new" => app.new_empty(&ctx, None),
++                "load" => app.load_document(source.clone(), false),
++                "failed-load" => app.load_document(directory.0.join("missing.weftforge"), false),
++                "reset" => app.reset_simulation(),
++                "exit" => {
++                    app.retain_on_exit().unwrap();
++                }
++                _ => unreachable!(),
++            }
++            assert_eq!(app.editor.project.revision, revision);
++            assert_eq!(
++                app.workspace_capture.busy(),
++                case == "failed-load",
++                "{case}"
++            );
++        }
++        assert!(!path.exists());
++    }
++}
+diff --git a/apps/weftforge/src/main.rs b/apps/weftforge/src/main.rs
+index f0ffbb46094fa0f2994cc83f8b89e8258cf8b997..087e7f5b3aee454676dc6500295d126f3f8ea9aa 100644
+--- a/apps/weftforge/src/main.rs
++++ b/apps/weftforge/src/main.rs
+@@ -17,6 +17,9 @@ use weftforge_core::{
+ };
+ use weftforge_sim::{Cloth, MaterialAxis, SimulationError, StepSettings};
+ 
++mod capture;
++use capture::{RenderedFrame, WorkspaceCapture};
++
+ #[derive(Clone, Copy, PartialEq)]
+ enum Tool {
+     Select,
+@@ -1023,6 +1026,7 @@ struct Studio {
+     autosave: Instant,
+     session_autosave: Option<PathBuf>,
+     autosave_job: Option<AutosaveJob>,
++    workspace_capture: WorkspaceCapture,
+     show_recovery: bool,
+     recovery_files: Vec<PathBuf>,
+     dirty: bool,
+@@ -1036,6 +1040,11 @@ impl Studio {
+         cc.egui_ctx
+             .send_viewport_cmd(egui::ViewportCommand::SetTheme(egui::SystemTheme::Dark));
+         let mut app = Self::empty();
++        app.workspace_capture = WorkspaceCapture::new(
++            cc.wgpu_render_state
++                .as_ref()
++                .map(|state| state.target_format),
++        );
+         if let Some(path) = std::env::args_os().nth(1) {
+             app.open(PathBuf::from(path));
+         }
+@@ -1111,6 +1120,7 @@ impl Studio {
+             autosave: Instant::now(),
+             session_autosave,
+             autosave_job: None,
++            workspace_capture: WorkspaceCapture::default(),
+             show_recovery: false,
+             recovery_files: Vec::new(),
+             dirty: false,
+@@ -1358,6 +1368,28 @@ impl Studio {
+         }
+         clicked
+     }
++    fn workspace_png_button(&self, ui: &mut egui::Ui) -> bool {
++        let focused = self.inspector_focus(ui.ctx());
++        let response = ui
++            .add_enabled(
++                !self.workspace_capture.busy(),
++                egui::Button::new("Save workspace PNG…"),
++            )
++            .on_hover_text("Save the rendered workspace at its native pixel size.");
++        let clicked = response.clicked();
++        self.retain_inspector_input(&response, false);
++        if response.is_pointer_button_down_on() || clicked {
++            finish_numeric_action(ui.ctx(), focused, false);
++            let frame = ui.ctx().cumulative_frame_nr();
++            ui.ctx().data_mut(|data| {
++                data.insert_temp(
++                    egui::Id::new("workspace-png-request"),
++                    (frame, clicked, focused),
++                )
++            });
++        }
++        clicked
++    }
+     fn import_button(&self, ui: &mut egui::Ui, format: PatternFormat, label: &str) -> bool {
+         let focused = self.inspector_focus(ui.ctx());
+         let response = ui.button(label);
+@@ -1573,6 +1605,7 @@ impl Studio {
+         }
+     }
+     fn reset_simulation(&mut self) {
++        self.workspace_capture.cancel();
+         if self
+             .job
+             .as_ref()
+@@ -2192,6 +2225,7 @@ impl Studio {
+             .or_else(|| self.session_autosave.clone())
+     }
+     fn retain_on_exit(&mut self) -> Result<Option<PathBuf>, String> {
++        self.workspace_capture.shutdown();
+         self.cancel();
+         self.outline_offset = None;
+         if !self.discard_on_exit && !self.commit_draft() {
+@@ -2432,6 +2466,9 @@ impl Studio {
+                 if self.export_button(ui, ExportFormat::Dxf, "Export DXF") {
+                     ui.close();
+                 }
++                if self.workspace_png_button(ui) {
++                    ui.close();
++                }
+             });
+             self.retain_inspector_input(&response, menu.is_some());
+             let (response, menu) = egui::menu::MenuButton::new("Create 2D").ui(ui, |ui| {
+@@ -3031,6 +3068,14 @@ impl Studio {
+                         "export-request",
+                     ))
+                 })
++                .is_some_and(|(frame, _, _)| frame == ui.ctx().cumulative_frame_nr())
++            || ui
++                .ctx()
++                .data_mut(|data| {
++                    data.get_temp::<(u64, bool, Option<egui::Id>)>(egui::Id::new(
++                        "workspace-png-request",
++                    ))
++                })
+                 .is_some_and(|(frame, _, _)| frame == ui.ctx().cumulative_frame_nr());
+         let focus_key = egui::Id::new("inspector-input-focus");
+         let action_focus = self.inspector_focus(ui.ctx());
+@@ -6592,6 +6637,17 @@ impl eframe::App for Studio {
+         let ctx = ui.ctx().clone();
+         self.poll();
+         self.poll_autosave();
++        if ctx.input(|input| input.key_pressed(egui::Key::Escape))
++            && self.workspace_capture.cancel()
++        {
++            self.message = "Workspace PNG cancelled; previous file retained.".into();
++        }
++        if let Some(message) = self
++            .workspace_capture
++            .receive(&ctx, self.editor.project.revision)
++        {
++            self.message = message;
++        }
+         self.discard_stale_transform();
+         self.discard_stale_free_sewing();
+         self.discard_stale_notch();
+@@ -6865,6 +6921,7 @@ impl eframe::App for Studio {
+                         "Export OBJ",
+                         "Export SVG",
+                         "Export DXF",
++                        "Save workspace PNG…",
+                         "Undo",
+                         "Redo",
+                         "Reset simulation",
+@@ -6891,6 +6948,7 @@ impl eframe::App for Studio {
+                             "Export OBJ" => self.export_button(ui, ExportFormat::Obj, label),
+                             "Export SVG" => self.export_button(ui, ExportFormat::Svg, label),
+                             "Export DXF" => self.export_button(ui, ExportFormat::Dxf, label),
++                            "Save workspace PNG…" => self.workspace_png_button(ui),
+                             "Add hole…" => self.add_hole_button(ui).clicked(),
+                             "Offset outline…" => self.outline_offset_button(ui).clicked(),
+                             _ => ui.button(label).clicked(),
+@@ -6906,6 +6964,7 @@ impl eframe::App for Studio {
+                                     self.show_recovery = true;
+                                 }
+                                 "Export OBJ" | "Export SVG" | "Export DXF" => {}
++                                "Save workspace PNG…" => {}
+                                 "Undo" => self.history(&ctx, false),
+                                 "Redo" => self.history(&ctx, true),
+                                 "Reset simulation" => {
+@@ -6982,6 +7041,42 @@ impl eframe::App for Studio {
+             self.new_empty(&ctx, focused);
+         }
+         self.restore_cancelled_inspector_input(&ctx);
++        if let Some((_, true, focused)) = ctx
++            .data_mut(|data| {
++                data.remove_temp::<(u64, bool, Option<egui::Id>)>(egui::Id::new(
++                    "workspace-png-request",
++                ))
++            })
++            .filter(|(frame, _, _)| *frame == ctx.cumulative_frame_nr())
++        {
++            let path = choose_workspace_png_path(&ctx);
++            finish_numeric_action(&ctx, focused, false);
++            self.message = match path {
++                Some(path) => match self.workspace_capture.start(
++                    &ctx,
++                    self.editor.project.revision,
++                    self.path.as_deref(),
++                    path,
++                ) {
++                    Ok(()) => "Capturing workspace PNG… Escape cancels.".into(),
++                    Err(error) => error,
++                },
++                None => "Workspace PNG cancelled; pending edits retained.".into(),
++            };
++        }
++        if ctx.input(|input| input.viewport().close_requested()) {
++            self.workspace_capture.cancel();
++        }
++        if let Some(message) = self.workspace_capture.finish_frame(
++            &ctx,
++            RenderedFrame {
++                number: ctx.cumulative_frame_nr(),
++                revision: self.editor.project.revision,
++            },
++            self.path.as_deref(),
++        ) {
++            self.message = message;
++        }
+     }
+ }
+ fn pane_heading(ui: &mut egui::Ui, title: &str) -> egui::Response {
+@@ -7698,7 +7793,7 @@ fn export_path_guard(project: Option<&Path>, output: &Path) -> Result<(), String
+         .extension()
+         .is_some_and(|extension| extension.eq_ignore_ascii_case("weftforge"))
+     {
+-        return Err("Choose an OBJ, SVG or DXF output; project files are preserved.".into());
++        return Err("Choose an OBJ, SVG, DXF or PNG output; project files are preserved.".into());
+     }
+     let Some(project) = project else {
+         return Ok(());
+@@ -7760,6 +7855,18 @@ fn choose_export_path(_ctx: &egui::Context, format: ExportFormat) -> Option<Path
+         .set_file_name(format!("garment.{ext}"))
+         .save_file()
+ }
++fn choose_workspace_png_path(_ctx: &egui::Context) -> Option<PathBuf> {
++    #[cfg(test)]
++    if let Some(path) = _ctx.data_mut(|data| {
++        data.remove_temp::<Option<PathBuf>>(egui::Id::new("test-workspace-png-destination"))
++    }) {
++        return path;
++    }
++    rfd::FileDialog::new()
++        .add_filter("PNG image", &["png"])
++        .set_file_name("workspace.png")
++        .save_file()
++}
+ fn segment_distance(p: Pos2, a: Pos2, b: Pos2) -> f32 {
+     let ab = b - a;
+     let t = ((p - a).dot(ab) / ab.length_sq().max(1e-9)).clamp(0., 1.);
+diff --git a/crates/weftforge-core/src/lib.rs b/crates/weftforge-core/src/lib.rs
+index 69464e357e62954183266aa311363e00a965dc24..62dd8a5f50c49914181ded3fb8aa831ec7a4e799 100644
+--- a/crates/weftforge-core/src/lib.rs
++++ b/crates/weftforge-core/src/lib.rs
+@@ -15,7 +15,7 @@ pub use geometry::*;
+ pub use offset::*;
+ pub use persistence::{
+     DXF_IMPORT_SCOPE, DxfPatternImport, FORMAT_VERSION, MAX_DXF_BYTES, MAX_SVG_BYTES,
+-    SVG_IMPORT_SCOPE, SvgPatternImport, recovery_path,
++    SVG_IMPORT_SCOPE, StagedExport, SvgPatternImport, recovery_path,
+ };
+ pub use sewing::*;
+ 
+diff --git a/crates/weftforge-core/src/persistence.rs b/crates/weftforge-core/src/persistence.rs
+index 51c9a615b71787953f0415a8a7c5e2e2f6e168bc..735cef0b6c08dee27b15277b9635045dfb4cd231 100644
+--- a/crates/weftforge-core/src/persistence.rs
++++ b/crates/weftforge-core/src/persistence.rs
+@@ -630,6 +630,29 @@ fn read_bounded(path: &Path) -> Result<Vec<u8>> {
+     Ok(bytes)
+ }
+ 
++/// A prepared byte export which preserves its destination until explicitly committed.
++/// Dropping it removes the temporary file. Native project files remain protected.
++pub struct StagedExport {
++    target: PathBuf,
++    staged: StagedFile,
++}
++
++impl StagedExport {
++    pub fn write(target: impl AsRef<Path>, bytes: &[u8]) -> Result<Self> {
++        let target = target.as_ref();
++        export_path_guard(target)?;
++        Ok(Self {
++            target: target.to_path_buf(),
++            staged: StagedFile::write(target, bytes)?,
++        })
++    }
++
++    pub fn commit(self) -> Result<()> {
++        export_path_guard(&self.target)?;
++        self.staged.replace(&self.target)
++    }
++}
++
+ struct StagedFile {
+     path: PathBuf,
+ }
+@@ -788,6 +811,7 @@ mod tests {
+             "project.obj",
+             "project.svg",
+             "project.dxf",
++            "project.png",
+             "unusual.native",
+         ] {
+             let path = directory.join(name);
+@@ -795,6 +819,7 @@ mod tests {
+             assert!(editor.project.export_svg(&path).is_err(), "{name}");
+             assert!(editor.project.export_dxf(&path).is_err(), "{name}");
+             assert!(mesh.export_obj(&path).is_err(), "{name}");
++            assert!(StagedExport::write(&path, b"image").is_err(), "{name}");
+             assert_eq!(fs::read(&path).unwrap(), native);
+         }
+         let protected = directory.join("ordinary.WeFtFoRgE");
+@@ -811,12 +836,14 @@ mod tests {
+         assert!(editor.project.export_svg(&hardlink).is_err());
+         assert!(editor.project.export_dxf(&hardlink).is_err());
+         assert!(mesh.export_obj(&hardlink).is_err());
++        assert!(StagedExport::write(&hardlink, b"image").is_err());
+         assert_eq!(fs::read(&hardlink).unwrap(), native);
+         let folder = directory.join("folder.svg");
+         fs::create_dir(&folder).unwrap();
+         assert!(editor.project.export_svg(&folder).is_err());
+         assert!(editor.project.export_dxf(&folder).is_err());
+         assert!(mesh.export_obj(&folder).is_err());
++        assert!(StagedExport::write(&folder, b"image").is_err());
+         assert!(folder.is_dir());
+         #[cfg(unix)]
+         for (target, alias) in [
+@@ -829,6 +856,7 @@ mod tests {
+             assert!(editor.project.export_svg(&path).is_err());
+             assert!(editor.project.export_dxf(&path).is_err());
+             assert!(mesh.export_obj(&path).is_err());
++            assert!(StagedExport::write(&path, b"image").is_err());
+             assert_eq!(fs::read(&path).unwrap(), previous);
+             assert!(
+                 fs::symlink_metadata(&path)
+@@ -844,6 +872,7 @@ mod tests {
+             assert!(editor.project.export_svg(&broken).is_err());
+             assert!(editor.project.export_dxf(&broken).is_err());
+             assert!(mesh.export_obj(&broken).is_err());
++            assert!(StagedExport::write(&broken, b"image").is_err());
+             assert!(
+                 fs::symlink_metadata(&broken)
+                     .unwrap()
+@@ -870,6 +899,46 @@ mod tests {
+         fs::remove_dir_all(directory).unwrap();
+     }
+ 
++    #[test]
++    fn staged_exports_keep_the_old_file_until_commit_and_clean_up_rejected_writes() {
++        let directory = std::env::temp_dir().join(format!(
++            "weftforge-staged-export-{}-{}",
++            std::process::id(),
++            TEMP_ID.fetch_add(1, Ordering::Relaxed)
++        ));
++        fs::create_dir(&directory).unwrap();
++        let path = directory.join("workspace.png");
++        fs::write(&path, b"previous image").unwrap();
++        let staged = StagedExport::write(&path, b"new image").unwrap();
++        assert_eq!(fs::read(&path).unwrap(), b"previous image");
++        let temporary = staged.staged.path.clone();
++        drop(staged);
++        assert!(!temporary.exists());
++        assert_eq!(fs::read(&path).unwrap(), b"previous image");
++
++        let staged = StagedExport::write(&path, b"new image").unwrap();
++        fs::remove_file(&staged.staged.path).unwrap();
++        assert!(staged.commit().is_err());
++        assert_eq!(fs::read(&path).unwrap(), b"previous image");
++
++        let staged = StagedExport::write(&path, b"new image").unwrap();
++        fs::write(&path, Project::default().to_json().unwrap()).unwrap();
++        let native = fs::read(&path).unwrap();
++        let temporary = staged.staged.path.clone();
++        assert!(staged.commit().is_err());
++        assert_eq!(fs::read(&path).unwrap(), native);
++        assert!(!temporary.exists());
++
++        fs::write(&path, b"previous image").unwrap();
++        StagedExport::write(&path, b"new image")
++            .unwrap()
++            .commit()
++            .unwrap();
++        assert_eq!(fs::read(&path).unwrap(), b"new image");
++        assert_eq!(fs::read_dir(&directory).unwrap().count(), 1);
++        fs::remove_dir_all(directory).unwrap();
++    }
++
+     #[test]
+     fn interrupted_save_and_invalid_inputs_preserve_the_previous_document() {
+         let path = std::env::temp_dir().join(format!(
+diff --git a/spec/features/MAT-003-workspace-capture.md b/spec/features/MAT-003-workspace-capture.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..a216def0244ada5386b650f97988a1930c989538
+--- /dev/null
++++ b/spec/features/MAT-003-workspace-capture.md
+@@ -0,0 +1,40 @@
++# Workspace PNG capture
++
++WeftForge implementation contract for a bounded scene-capture increment of
++MAT-003 and UI-001. Reference behavior and complete feature parity remain
++unverified. This captures the rendered application client, including its 2D/3D
++views and controls; it provides no garment-quality or rendering-calibration proof.
++
++- File and command search expose **Save workspace PNG…**. The native chooser
++  accepts a PNG destination. Cancel preserves pending inspector text, caret,
++  authoring state, history, document revision and the previous destination.
++- Capture is a view action. It does not commit unfinished authoring or use the
++  simulation job slot. Only one readback request or encoding/staging worker is
++  admitted at a time. Ordinary cancellation retains a worker until it retires.
++- The renderer supplies the next painted frame. A matching root-viewport token,
++  rendered-frame stamp and unchanged document revision are required. New/load/
++  recovery, Reset, Escape and shutdown invalidate capture; late results cannot
++  replace the destination. Escape remains available to existing modal handlers.
++- PNG contains the returned native-size RGBA8 pixels, with straight alpha and
++  a standard sRGB intent. No resizing, recreated controls, ICC/device profile,
++  EXIF, text, timestamp or pixel-density metadata is added. OS chrome, desktop,
++  cursor, dialogs and compositor color transformation are outside this capture.
++- Admit at most 16,384 pixels per side and 16,777,216 pixels total; verify the
++  returned pixel count and dimensions. Readback expires after ten seconds.
++  Encoded output is limited to 80 MiB. These checks bound admitted CPU encoding;
++  eframe can allocate GPU/readback pixels before event delivery, including after
++  a window resize. No driver or whole-process memory sandbox is claimed.
++- Encoding and file staging run in a worker. Only the UI's final validated pass
++  may atomically replace the destination. Existing native-project, alias,
++  symlink and nonregular-target guards remain in force. Failure, staleness and
++  cancellation preserve the old destination.
++- Shutdown does not wait for a worker-channel result. A late in-process result
++  is dropped without commit. Existing temporary-file cleanup is best effort;
++  filesystem calls may stall and process termination may leave a hidden partial
++  file. This adds no power-loss or hostile-filesystem guarantee.
++
++Verification requires the pixel/chunk/dimension oracle, request/cancel/stale/
++late-result lifecycle cases, native-file preservation, File/search input and
++modal Escape cases, then an actual native save with an independently decoded
++PNG and unchanged editable project. Implementation-only checks do not establish
++native runtime, complete MAT-003, accessibility/high-DPI or reference acceptance.

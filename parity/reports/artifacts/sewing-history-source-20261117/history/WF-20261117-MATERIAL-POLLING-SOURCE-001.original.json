@@ -1,0 +1,448 @@
+{
+  "kind": "implementation_only",
+  "freshness": "current",
+  "commit": "9d4b629c077f06c348f6615fe90df7bbeacedb24",
+  "current_source_commit": "07674f14190a24af0e1c28cb503e0dec0d8dd6a8",
+  "platform": "macOS local; pinned Rust1.94.1 and CPython3.13.0 in original source/compiler/child receipts; resource observations retain their stated sampling/closure limits.",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "complete_contract": false,
+  "reference_executed": false,
+  "reference_verified": false,
+  "native_ui_verified": false,
+  "native_case_executed": false,
+  "physics_accepted": false,
+  "full_feature_accepted": false,
+  "full_garment_accepted": false,
+  "roadmap_accepted": false,
+  "single_identified_candidate_workflow": false,
+  "replayed_repaired_or_regraded": false,
+  "source_scope": [
+    ".cargo/config.toml",
+    "Cargo.lock",
+    "Cargo.toml",
+    "THIRD_PARTY.md",
+    "rust-toolchain.toml",
+    "crates/weftforge-core/Cargo.toml",
+    "crates/weftforge-core/src",
+    "crates/weftforge-sim/Cargo.toml",
+    "crates/weftforge-sim/src",
+    "vendor/earcutr/Cargo.toml",
+    "vendor/earcutr/LICENSE",
+    "vendor/earcutr/UPSTREAM.md",
+    "vendor/earcutr/src",
+    "docs/physics.md"
+  ],
+  "source_hashes": {
+    ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "Cargo.lock": "eb8a60650b473c79dda2e58a56f68b1abe9ca9a68c15115c9c8754c561732f3a",
+    "Cargo.toml": "032b32e80547618a72d39e42c0204611ff37908b8a6bf28615b3e592f79fa499",
+    "THIRD_PARTY.md": "86d65f258938c55ed36d3a621222ef5124e348f5519d01eab8f61db540a4876e",
+    "crates/weftforge-core/Cargo.toml": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+    "crates/weftforge-core/src/document.rs": "642c5f18dc91850011622a82afd271a9b8122b6b1a5155818c0f196d3e30c5b9",
+    "crates/weftforge-core/src/geometry.rs": "3738282136928c459eaf524036c61e20d4c8b3cf2e04cd46ac812faf4f823c41",
+    "crates/weftforge-core/src/lib.rs": "8f1a57b619222ea11986bf68a424e277b31a26d8da5eccef7c6d31b913ce76f8",
+    "crates/weftforge-core/src/offset.rs": "761881af22d784d0354ac25e6cda98971cb459bf78fd1d635eee21dc3e758203",
+    "crates/weftforge-core/src/persistence.rs": "69e76f3c73567731a46bc234e9a28e89d6036cb069c0ad501b4dd4570e40d691",
+    "crates/weftforge-core/src/persistence/dxf.rs": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338",
+    "crates/weftforge-core/src/persistence/dxf_import.rs": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+    "crates/weftforge-core/src/persistence/svg.rs": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7",
+    "crates/weftforge-core/src/sewing.rs": "dc7cb6cab0a62c313698c155728409f8940319bb49ed51c5c2fbc88c88f21146",
+    "crates/weftforge-core/src/simulation.rs": "24e12aaf323f34abe745dc9c42c9823acbd6e2a1832d6827a5a6397112525707",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/capsule.rs": "04634a93371e4e7f513401fa617075e28c1b4776023b158c3f6dc168d24371a0",
+    "crates/weftforge-sim/src/constraints.rs": "a98e065f8d3cb83bc01b7c0e11dad3241d82205163abd1d70e6c257437473637",
+    "crates/weftforge-sim/src/contact.rs": "20df8876462dcbf7d32761b0e061ab66def60e7f88a5eccbfb6e7839108c26c8",
+    "crates/weftforge-sim/src/lib.rs": "904f373d8e4f3b314b388731458f36a364c309badaed3175752da2c5f9d88d1f",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/strain.rs": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+    "crates/weftforge-sim/src/tests.rs": "5344f54f81c0aec65f8678c001bb8ebfb8bd3a720db880d3f7afa217726a37f5",
+    "docs/physics.md": "11d8e499ed76b4829073249f5872d31ecf5483b165bb27236580e2b013b01420",
+    "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+    "vendor/earcutr/Cargo.toml": "906d72d033764b39570416ef92906a90d4c49e85b9c35ab0138cf7a0aafe9c76",
+    "vendor/earcutr/LICENSE": "ac0e50e523dd0ea36f077c373833f1ae6c7ad130ea5ac6ff23bfa8d3f402145f",
+    "vendor/earcutr/UPSTREAM.md": "e686aeaa8758581d2c0659b1ed5e87dce4fe6608a8605c29ba90459495818944",
+    "vendor/earcutr/src/legacy.rs": "fd5120ba533484556e7a6d1a460d28084ac1f4c90f3334c71ff6f67976b933c8",
+    "vendor/earcutr/src/lib.rs": "29992d5bd3d0717df6b4db9e60a3d280c276b67c3ddb87fa5de9173c1b3578d3",
+    "vendor/earcutr/src/tests.rs": "2e54cb4cceb9c073ae911a5909d2d9b430c6bf4ce53000332254233b21a544e9"
+  },
+  "selected_manifest": {
+    "path": "parity/reports/artifacts/material-polling-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json",
+    "sha256": "99aa353fd042e2c4c53048cd62dbec4d647fe964f0949b4f2bb0f1bbd577fbd4"
+  },
+  "source_identity_qualification": "All88 runtime/source inputs at integrated076 match actual tested9d4 and the original four-stage412 FREEZE. These reports bind the complete31-file physical/meshing feature/dependency closure; the full88 gate ledger is retained separately. Only affected old global reports change explicit freshness/reason after exact archival.",
+  "public_derivative_qualification": "286 selected own original text/code/log/OBJ/trajectory inputs plus the manifest form287 artifacts. Only970 ROOT/652 HOME exact locator substitutions and declared public0644 modes differ. Original internal hash/mode fields remain original; use the outer manifest for derivative mapping. Complete118-member case closure and its own manifest remain selected. No executable/cache/target/image/installer/account/OS-dialog or unfinished native evidence is included.",
+  "id": "WF-20261117-MATERIAL-POLLING-SOURCE-001",
+  "status": "passed",
+  "timestamp": "2026-11-17T05:34:54.950906Z",
+  "feature_ids": [
+    "SIM-001",
+    "SIM-006"
+  ],
+  "scope": "Original material cancellation cadence proof/focused checks, bounded same-build component comparison, actual four source gates412 and qualified release build evidence. No whole-garment speed, native, calibrated physics or reference acceptance.",
+  "source_change": {
+    "only_changed_runtime_source_files": [
+      "crates/weftforge-sim/src/constraints.rs",
+      "crates/weftforge-sim/src/tests.rs",
+      "docs/physics.md"
+    ],
+    "callback_cadence": "Original predicate at material entry, every64th existing material checkpoint and before every successful return. Shared8-bit countdown spans material helpers; at most63 skipped sites. Accepted branch checks before x/p copies; wholeCloth final precommit check remains.",
+    "preserved": "Registered addition/removal proof restores original numerical expressions/order, validation, global material energy/weights, pins, PCG relative1e-12/cap32, Armijo16, other-stage methods, APIs/settings/dependencies. Only callback cadence changes.",
+    "limit": "Checkpoint spacing is not a wall-time cancellation bound; allocations/copies remain uninterruptible. No convergence/equilibrium/garment/reference claim."
+  },
+  "retained_first_format_failure": {
+    "status": "FAILED_FOCUSED_CANDIDATE_CHECKS",
+    "fmt_PID": 40163,
+    "fmt_exit_code": 1,
+    "elapsed_before_result_persistence_seconds": 0.91035749996081,
+    "reason": "Formatting only: tuple-array line wrapping. No compile/test/numerical stage executed. Original snapshot, raw failed output and preparation error are retained; correction is a separate frozen generation."
+  },
+  "focused_source_checks": {
+    "controller_exit_code": 0,
+    "elapsed_after_all_persistence_seconds": 14.408200582955033,
+    "tests": {
+      "cancellation_tests": {
+        "failed": 0,
+        "ignored": 0,
+        "names": [
+          "constraints::material_cancellation_tests::material_cancellation_polls_after_at_most_63_skipped_checkpoints",
+          "tests::cancellation_after_measurement_preserves_peak_strain",
+          "tests::cancellation_and_failures_preserve_old_state_and_allow_recovery",
+          "tests::capsule_projection_and_final_surface_analysis_cancellation_preserve_the_accepted_step",
+          "tests::closed_elastic_stitch_cancellation_and_failure_retain_whole_call_state",
+          "tests::global_material_zero_rhs_pins_and_cancellation_preserve_stage_state",
+          "tests::material_cancellation_at_every_cloth_callback_rolls_back_all_persistent_state",
+          "tests::material_cancellation_checks_entry_and_each_noop_return"
+        ],
+        "passed": 8
+      },
+      "material_tests": {
+        "failed": 0,
+        "ignored": 0,
+        "names": [
+          "constraints::material_cancellation_tests::material_cancellation_polls_after_at_most_63_skipped_checkpoints",
+          "tests::global_material_zero_rhs_pins_and_cancellation_preserve_stage_state",
+          "tests::grouped_mixed_grain_materials_reach_direct_energy_balance_with_pins",
+          "tests::malformed_external_geometry_material_and_constraints_are_rejected",
+          "tests::material_cancellation_at_every_cloth_callback_rolls_back_all_persistent_state",
+          "tests::material_cancellation_checks_entry_and_each_noop_return",
+          "tests::material_network_reaches_independent_incremental_energy_equilibrium",
+          "tests::material_stage_retains_each_input_face_once_in_order",
+          "tests::membrane_affine_strain_follows_material_axes_under_arrangement_and_winding",
+          "tests::shared_edge_material_reaches_independent_incremental_energy_equilibrium"
+        ],
+        "passed": 10
+      },
+      "membrane_tests": {
+        "failed": 0,
+        "ignored": 0,
+        "names": [
+          "tests::coupled_membrane_reaches_independent_incremental_energy_equilibrium",
+          "tests::membrane_affine_strain_follows_material_axes_under_arrangement_and_winding",
+          "tests::membrane_projection_matches_analytic_uniaxial_and_shear_updates"
+        ],
+        "passed": 3
+      }
+    },
+    "unique_tests": 16,
+    "available_crate_tests": 65,
+    "eight_face_oracle": {
+      "bounds_unchanged": [
+        1e-08,
+        1e-06
+      ],
+      "force_residual_N": 1.2857517012326884e-07,
+      "position_error_m": 2.0770362583566576e-10,
+      "source_unchanged": true
+    },
+    "qualification": "10 material+8 cancellation+3 membrane executions,16 unique tests. Focused source roster is18/88, not full88 proof. Full workspace stages later bind all88. Existing eight-face direct energy/reference/FD/bounds remain exact; exhaustive direct/wholeCloth callback rollback and entry/no-op/spacing definitions retain accepted persistent state.",
+    "independent_source_review": {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/source-review/independent/REVIEW-RECEIPT.json",
+      "sha256": "dcdae3024c1f7cab4c4af6ed9f8a5d1686a7207567b4211905df0198f865c223"
+    }
+  },
+  "component_comparison": {
+    "receipt": {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/component-comparison/COMPARISON-RECEIPT.json",
+      "sha256": "3b8edc74241ab44ff6eeaafff7d5f0d1c93624b4732daadd49e9e659e2226ac1"
+    },
+    "warmups": 1,
+    "measured_pairs": 5,
+    "material_calls_per_variant": 192,
+    "all6pairs_every32_x_p_boundaries_bit_identical_with_pin_and_finite_assertions": true,
+    "old_control_median_ms": 226.077583,
+    "new_candidate_median_ms": 41.278792,
+    "old_over_new_ratio": 5.476845906730992,
+    "timed_predicate_has_no_counter": true,
+    "scope_limits": "Material-only planar grid with fixed uncancelled calls. RSS snapshots have gaps; SDK/linker/shared-library closure not fully frozen. Same-build speed is not fullgarment speed or physics acceptance.",
+    "no_wholegarment_speed_comparison_or_acceptance": true
+  },
+  "actual_workspace_source_gates": {
+    "result": {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/RESULT.json",
+      "sha256": "eac04f3bcf7c81da28e22982b46499a8b57c570564ec96e301f84887db9ba41f"
+    },
+    "final_manifest": {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/FINAL-MANIFEST.json",
+      "sha256": "3c05fcf3962776edbef1235f430d280fc4eb7c3772f07bb8624923dbe5ce105a"
+    },
+    "freeze": {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/FREEZE.json",
+      "sha256": "40ae68ccdac69a6fef589b786369479f3f6965d18c1b8db78570b7244e906cb6"
+    },
+    "status": "GREEN_FOUR_WORKSPACE_SOURCE_GATES",
+    "all4_stages_passed": true,
+    "stage_names": [
+      "full-fmt",
+      "workspace-tests",
+      "workspace-clippy",
+      "native-cli-debug"
+    ],
+    "actual_workspace_counts": {
+      "failed": 0,
+      "ignored": 0,
+      "passed": 412,
+      "summary_count": 31
+    },
+    "elapsed_before_final_persistence_seconds": 447.5219458329957,
+    "full_FMT": {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/full-fmt-RESULT.json",
+      "sha256": "81174483b280bfef5cb8f03982a5c845239d6f3b874f066595b7d666989ca551"
+    },
+    "all_source88_metadata59_original8_each_stage_exact": true,
+    "fmt_qualification": "This is an actual new full cargo fmt --all --check under all88 guards, not old409 reused-FMT evidence. Raw actual field/types/412counts and before/after source guards remain exact. No gate is rerun for this delivery."
+  },
+  "release_build_qualification": {
+    "original_external_disk_stop": {
+      "receipt": {
+        "path": "parity/reports/artifacts/material-polling-source-20261117/release-build-first-stop/EXTERNAL-STOP-RECEIPT.json",
+        "sha256": "466298a2c9735bdf1c67a8c339d205973a119d92f0cf0e090ef2a086bad78ad4"
+      },
+      "classification": "External real disk-resource protection stop; no compiler failure, physics failure or process-observation timeout established",
+      "controller_exit_code": 1,
+      "Cargo_wait4_exit_code": -15,
+      "elapsed_after_all_persistence_seconds": 188.6107582920231,
+      "release_build_completed": false,
+      "no_compiler_or_physics_failure_inferred": true
+    },
+    "separate_recovery002": {
+      "receipt": {
+        "path": "parity/reports/artifacts/material-polling-source-20261117/release-build-recovery-002/TERMINAL-RECEIPT.json",
+        "sha256": "d3b05f2234993771dcda72d802d61dac2780f69ed3a56cd7c9012c9bce158a9d"
+      },
+      "controller_exit_code": 0,
+      "Cargo_wait4_exit_code": 0,
+      "elapsed_after_all_persistence_seconds": 149.98046270909254,
+      "initial_target_exists_partial_reuse": true,
+      "progress_banner_label_defect": {
+        "authoritative_bindings": [
+          "FREEZE.json cold_own_target_before_build:false and initial_target_exists_partial_reuse:true",
+          "runtime/STARTED.json initial_target_exists_partial_reuse:true",
+          "Controller precondition requires target directory already exists"
+        ],
+        "correct_fact": "Own partial target existed and was explicitly reused under root recovery authority",
+        "handling": "Frozen code/banner retained unchanged; root informed immediately; no cold-target claim for this recovery",
+        "inherited_banner_field": "cold_own_target:true"
+      },
+      "release_binaries": {
+        "weftforge": {
+          "built_not_launched": true,
+          "bytes": 16001040,
+          "mode": 493,
+          "path": "<ROOT>/.local/material-polling-release-20261117/target/release/weftforge",
+          "sha256": "dd76e0862943f196f3d4534da80fd5fda8ac49fdca8b6c15b6bf54acbc89a6e2"
+        },
+        "weftforge-cli": {
+          "built_not_launched": true,
+          "bytes": 2697376,
+          "mode": 493,
+          "path": "<ROOT>/.local/material-polling-release-20261117/target/release/weftforge-cli",
+          "sha256": "4573cc0cf6f762147247e8d0002e749aebfd0e94fd7f1650582d3df0a34e74cf"
+        }
+      },
+      "qualification": "Own partial target reuse after explicit resource recovery; inherited cold_own_target:true banner is wrong and remains frozen with authoritative correction. No cross-worktree compiled copy or source/profile/dependency change. Build controller did not launch the app/CLI; separate unfinished native work is unselected."
+    }
+  },
+  "historical_report_freshness_transitions": [
+    {
+      "path": "parity/reports/WF-20261117-GLOBAL-MATERIAL-SOURCE-001.json",
+      "original_sha256": "71ed4828a03b3e75beb1c07dd1fe603dbf908ebcaf023dc9594f3a591b332f2c",
+      "exact_archive": {
+        "path": "parity/reports/artifacts/material-polling-source-20261117/history/WF-20261117-GLOBAL-MATERIAL-SOURCE-001.original.json",
+        "sha256": "71ed4828a03b3e75beb1c07dd1fe603dbf908ebcaf023dc9594f3a591b332f2c"
+      },
+      "only_changed_fields": [
+        "freshness",
+        "freshness_reason"
+      ],
+      "changed_scoped_source_files": [
+        "crates/weftforge-sim/src/constraints.rs",
+        "crates/weftforge-sim/src/tests.rs",
+        "docs/physics.md"
+      ]
+    },
+    {
+      "path": "parity/reports/WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001.json",
+      "original_sha256": "d8bf20ae31c10c667c10a8e9725e52cc8bfc9ecc9da80b5bd964c1bcf83fdf74",
+      "exact_archive": {
+        "path": "parity/reports/artifacts/material-polling-source-20261117/history/WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001.original.json",
+        "sha256": "d8bf20ae31c10c667c10a8e9725e52cc8bfc9ecc9da80b5bd964c1bcf83fdf74"
+      },
+      "only_changed_fields": [
+        "freshness",
+        "freshness_reason"
+      ],
+      "changed_scoped_source_files": [
+        "crates/weftforge-sim/src/constraints.rs",
+        "crates/weftforge-sim/src/tests.rs",
+        "docs/physics.md"
+      ]
+    }
+  ],
+  "later_full_case": "Separate complete181-state report WF-20261117-MATERIAL-POLLING-HARBOR-A8-001 is operationally accepted but FAILED strict strain atframe29. Component ratio does not establish whole-case speed or quality.",
+  "artifact_hashes": {
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/CARGO-CONFIG-INPUTS.json": "dcdd0d882f3676c9c812c5bbc2a92060472ad0e1bc230159296cb1115827fbec",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/DESIGN.md": "8d33bb0ff333a8c04755664cd8165a5e107833f2fd0440a073f8d64de981a183",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/DIFF.patch": "85f5920866300ec2e4ace694c990dffd80d0345f9b0b621a5d2ea42926190eee",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/FREEZE.json": "3293f8f77d9bc6d9ed8814ac34d31e43e7200bb7a3332675741810ca5765e85e",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/LOCKED-DEPENDENCIES.json": "5fe19a02ae7ad6c66cacdb0651f9af926078d2f553260398430074a2e4fdf845",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/PREPARATION-ERROR-001.json": "ad69aca5dd3ca517cbc24849afbf0d73bf0e6428f4e42ac8f985995a4ccccabb",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/PRESERVATION.json": "c26c9d4b3738b34f21d0f5eec079143980d5e3dc1d7f31ab05998465fcec2d11",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/REGISTERED-INSERTIONS.json": "3e95f99940bbc3a7ea32ac185ed3ffa1853a8a7a26baedc40ec9794377d70a19",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/first-frozen-source/crates/weftforge-sim/src/constraints.rs": "a98e065f8d3cb83bc01b7c0e11dad3241d82205163abd1d70e6c257437473637",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/first-frozen-source/crates/weftforge-sim/src/tests.rs": "b6794ee2eaa95145e81d3e1e4852aba951f351b829763d52a617663daab28294",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/first-frozen-source/docs/physics.md": "11d8e499ed76b4829073249f5872d31ecf5483b165bb27236580e2b013b01420",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/prepare.py": "c8a5f9f6d007ef0ccfc79a662df06801ecd363bbfa9851efdf3b748419f781fa",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/resources.py": "f0af9e1665da6246a89e13e7fd947cbfbaef68cc19f6827ec32572c323be0240",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/run_checks.py": "ea4280d12910454038b6ca6b2523654c71c5696741a78c0bc732232432acd8be",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/runtime/RESULT.json": "a922c9942006489b9d4f21c9cbe5bf1bc1fc8ce518915c0e7139e7949fdaa977",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/runtime/STARTED.json": "67e9e320c5a27e4d9553ab679c26119090f7bc9d714972402d15c5e1f30bf840",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/runtime/TERMINAL.json": "7e5aee8e631d141c108b8a625e23e6b4fc09505381deaff5f31af77b6c0924dd",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/runtime/fmt-RESULT.json": "b453d88f68c5a137213e9c6678a37e1b0a538332f725f5f4450355f3328f136b",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/runtime/fmt-STARTED.json": "9dc263bc89cabdcb0209548b8d73d2f5655f75113a0a104ab52d35178aa45bb4",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/runtime/fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-polling-source-20261117/source-first-format/runtime/fmt.stdout": "256cddc9b0aeccd9e61075301434aca20fb24543ce01dccad8ab6f968231f511",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/CARGO-CONFIG-INPUTS.json": "dcdd0d882f3676c9c812c5bbc2a92060472ad0e1bc230159296cb1115827fbec",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/CHECK-RECEIPT.json": "58723b2e9b74d61c9214daedd54adf74d876e908b47034e7a4cdb6607001d7bf",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/DESIGN.md": "8d33bb0ff333a8c04755664cd8165a5e107833f2fd0440a073f8d64de981a183",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/DIFF.patch": "8ae369c2af3b3c965f6de6e3b6c176857a25d5566216d5d86eb08d3ec31c5288",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/FINAL-MANIFEST.json": "91784599fc80139dd94f4053193adb2123560900c058864d98faea6ef1c03d1a",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/FINDINGS.md": "25879c74c58bad6c436b63a1e78b9bd5bdea44f0fda0fcbd6c12f28a232639b7",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/FREEZE.json": "f3ace95a39d1510928e4ae33881afdaf1b54b694b55bb6aebe34cd6a787f7a76",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/LOCKED-DEPENDENCIES.json": "5fe19a02ae7ad6c66cacdb0651f9af926078d2f553260398430074a2e4fdf845",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/PREDECESSOR-FMT-FAILURE.json": "3bc5f344e33064eb0168f5ada97692a5fd90e86505fecdd0b16a2a635814ce03",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/PRESERVATION.json": "c26c9d4b3738b34f21d0f5eec079143980d5e3dc1d7f31ab05998465fcec2d11",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/REGISTERED-INSERTIONS.json": "3e95f99940bbc3a7ea32ac185ed3ffa1853a8a7a26baedc40ec9794377d70a19",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/resources.py": "f0af9e1665da6246a89e13e7fd947cbfbaef68cc19f6827ec32572c323be0240",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/run_checks.py": "98025dd2c7393436a3efb04a202a8174c3fbf85c445963075e7b974f2a6cf933",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/RESULT.json": "0929825385f653be1eabdce6b5a52510565bc9934aebd400e4f6c61925f6e3d1",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/STARTED.json": "69d3ce81b900375ea4a6e45fb0d65d995959c7360a9fd51aac234303d2cb8989",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/TERMINAL.json": "d89c05068bb434d89fa69b1bc940b2a42cc9610c07c4a92597b9f2c712f2a904",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/cancellation_tests-RESULT.json": "5a31d69905f897e3fc046480f96aa7ba37423da09404474826caaac504d0eb4a",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/cancellation_tests-STARTED.json": "a5554f5363964f56472ebb042e056be87b40bb329dfb79aaf71bed2ad463a5f3",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/cancellation_tests.stderr": "bdc30a98a5173a9cbaa44fcf369f7543b161eecabc0e8223fa76f8469828b1b7",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/cancellation_tests.stdout": "9ba523441c96a664c44a3e11563ed3311eeb2f12bc6f78cbd97b1ea521f511e0",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/fmt-RESULT.json": "d2678c9b24825de898b45939a59028f1890f6c3a324f819bd50b7841dd2adde6",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/fmt-STARTED.json": "b86a1610c5da749b9bcb117997dab750d8fc0a34190880cb5267d3557ccdeb93",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/material_tests-RESULT.json": "81a68b9733433d6e97985a6c30dbfc88fe38e135aa8570cae05b71b8a442e058",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/material_tests-STARTED.json": "f68092ebdddddb76b014e4832d57ccd27fd2aa49276eb23e9c28c0a3f4f47841",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/material_tests.stderr": "df3148e44fc462c3dae937d09ad67f290c14f3b4464950dfc3e0a3a2034ecf08",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/material_tests.stdout": "e7f76f1503cdd6b5a686d0ee104c5a6c440b39ff0f3775637e7e0f8f54b78d68",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/membrane_tests-RESULT.json": "cb375c92112e438ac6a6c8c831c829ae9cefb7ebd8d22485f4a553efeb5ebc4c",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/membrane_tests-STARTED.json": "7f844912478a38f58fe4ce1818d1e2b590aa0cb3b77690c5cddbd0804e20189b",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/membrane_tests.stderr": "09926d26009598e367200274a8a12084aaa1254b378f2174f6add7770b93e75f",
+    "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/membrane_tests.stdout": "aa4b01508bc13d8f5ae9c8cdfa317527c538b95c847f0970ecc345175727eba9",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/CARGO-CONFIG-INPUTS.json": "92022d0283b7914b320563a7cf3bedbfbde9ae038467c796f0b70286d22d6a4d",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/COMPARISON-RECEIPT.json": "3b8edc74241ab44ff6eeaafff7d5f0d1c93624b4732daadd49e9e659e2226ac1",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/FINAL-MANIFEST.json": "820f5a5ca9c20317712c705325740834b00468b75ed24450822f3b111b76edc1",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/FINDINGS.md": "6ae81e3b928f0df5cda115b9a7d630bf3786f1bc35d3c848d259ca074b4ca790",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/FIXTURE-PROOF.json": "97cc6aad68f499f763b7cf2fd6dddf237815a26b0c730c9400e36c081cc4f374",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/FREEZE.json": "e605e5526aa76c3b99c34affcde9c0af0735600b1d03f513d73ee9b01a6f84e8",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/LOCKED-DEPENDENCIES.json": "5fe19a02ae7ad6c66cacdb0651f9af926078d2f553260398430074a2e4fdf845",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/PLAN.json": "98b3fe271aefb3dfd64b08e9c62f8517ce5231811c42b193cb8a08f824808098",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/PRESERVATION.json": "b2270fd09cc2e0cacae491e3431fc171c0930d110fdc7a4d51240ef457f778ee",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/PROFILE-ENV.json": "8f52b795267e56611e0d5a7d013391b0dbd6fda572fb17e909f86260f0cb17a7",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/README.md": "f328d5fd34233ecdad0507e1c25e026ceed2cd293f40bc492f77a363062f1bbe",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/new-material.rs": "b012476a54e91752d3f1dca2fbd3fd709a5cd5a741fbba6456d78f0e404f3231",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/old-material.rs": "069da15b32af181be1385f437bb821c65900b5203ee4da315b3e4330e852658e",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/probe.rs": "4d4b00a5f51da5375dba9d948889d09f62c91c9295402ae5cab8615aa673655a",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/producer/Cargo.lock": "ca8506497c030e60be500ef7d890b2ed26a83883a8802b097033014fbe459544",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/producer/Cargo.toml": "5bfe33b34dbc2945477644724c0bab0c5fef1594952671cfec4be759c6dc4dce",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/producer/src/main.rs": "7f5895da69d215ee99b1daf097dbd0c3e5a3409f4aba9c465b94999b3619c972",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/resources.py": "f0af9e1665da6246a89e13e7fd947cbfbaef68cc19f6827ec32572c323be0240",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/run.py": "cde2a04f2a829b1a72f6a592c820a01ee08e90e0b44922d23f9281e020d1de6e",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/runtime/RESULT.json": "5fd9b3ea351fb17d63798b1b2ae3bc8ac4d6288be38aad03cd52efd85d9d8702",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/runtime/STARTED.json": "fdc9181fb140e13b75e548f78f45f83b878ca46106acae9a11718f888ee2b07c",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/runtime/TERMINAL.json": "2e80a6734aaa945360195a44f17d5b8e5b64fcb031f16eb6c9dd8e50e86430b9",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/runtime/build-RESULT.json": "8353fd4f5a04430776f98b61aeda59f09a13f842726c9658c6427ea5066b9b43",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/runtime/build-STARTED.json": "897a31a526ca28a5c875a4b26d8878830f16a261244f688e330ecebc512b47a8",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/runtime/build.stderr": "ec9893f19a087a1ba905cdf3831a4bdbba43716704e8a76a17f89ad960ffe068",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/runtime/build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/runtime/kernel-RESULT.json": "b5ada811ecad518f9bc3093ad7b7ebe364c24bb6d93295b25fd94295425e9ec0",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/runtime/kernel-STARTED.json": "93d4ce457ac648ef0f9357ad853db79baffa497464a9a9c888eb59a41421ba32",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/runtime/kernel.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-polling-source-20261117/component-comparison/runtime/kernel.stdout": "d540ee4f41f93ffd89cf53e1936f63edc9da62ccba7ac4a35fa2059468c90962",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/FINAL-MANIFEST.json": "3c05fcf3962776edbef1235f430d280fc4eb7c3772f07bb8624923dbe5ce105a",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/FINDINGS.md": "bf017acd44dfb90dc6623efb2646dfa5609212a3487d6d418eaaf90b4c68d7b6",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/FREEZE.json": "40ae68ccdac69a6fef589b786369479f3f6965d18c1b8db78570b7244e906cb6",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/TERMINAL-RECEIPT.json": "582176ca05096c330a8db4d26b08e6252c7ff3bb5a6bd52585c7bbaa3ba5b58f",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/TEST-COMMAND-SCOPE.json": "c4ee7e98c26637a0aa7335817a27261cb3a1d46a3da1533dde420c7bf237cb9c",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/resources.py": "f0af9e1665da6246a89e13e7fd947cbfbaef68cc19f6827ec32572c323be0240",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/run.py": "4b4d2c29f8617b4c1b22fa3d745f2fa7683fd232092d93501a094ed8665ca255",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/RESULT.json": "eac04f3bcf7c81da28e22982b46499a8b57c570564ec96e301f84887db9ba41f",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/STARTED.json": "96ed6c4b9c2659fc57df5dc1bf71e44e68cdf313cfa1edc0444792f7416c61fa",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/TERMINAL.json": "7fdba53d590ebfd1b1b0a414c9d0f65dc6aec1094abf1cb5d375918b52eb2b61",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/full-fmt-RESULT.json": "81174483b280bfef5cb8f03982a5c845239d6f3b874f066595b7d666989ca551",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/full-fmt-STARTED.json": "f1c4e2cdddf04e8715ec53d633439afbcba59dc90863d340c5c28abe54dcdde6",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/native-cli-debug-RESULT.json": "3c578c08ed0105582df80ec3c4e0b2c591ae08b3ab7605e77bec39cc15f82261",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/native-cli-debug-STARTED.json": "c45167a32d100cdf82e5d813e6b3dba7eb6d712daf0549ed970d9918daefa726",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/native-cli-debug.stderr": "928c2ae56a578d94490a40c422ba66b9251d16c65bd325ca6bb3787194f2bd75",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/native-cli-debug.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/workspace-clippy-RESULT.json": "77befd026cbcd41a53103f608791c49ba9899a0df5baa9869aba0c0d4d0aeada",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/workspace-clippy-STARTED.json": "1764e7c2643e7c40591d9c1f9edb4d370592445f856699b214cf08b3985c8d3f",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/workspace-clippy.stderr": "68c29912e9af00a54307c81f53cc78edb7c48903f34370aee0fef4acc809fc6b",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/workspace-tests-RESULT.json": "c3d6a59b84ed977cfb0b56fa41f12517164b451ae45b9ca4dce47d765e25422c",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/workspace-tests-STARTED.json": "213fed57e82dc5470edc4462622d2294e3b31dec601a69358e63fe965adf1bcd",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/workspace-tests.stderr": "3421ee0c3e5e5bddb29a1f4662bc32b495df2f67cad1e2793a1eecdeb3171889",
+    "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/workspace-tests.stdout": "10ed75ba71610ccbac8213ff63492417869eea01798426ed84bf7d7c9bf82ca7",
+    "parity/reports/artifacts/material-polling-source-20261117/source-review/independent/REVIEW-RECEIPT.json": "dcdae3024c1f7cab4c4af6ed9f8a5d1686a7207567b4211905df0198f865c223",
+    "parity/reports/artifacts/material-polling-source-20261117/source-review/independent/REVIEW.md": "7827baee5a48c58921e69eea81b2c437f3a6672e9adf76050444a50f98695595",
+    "parity/reports/artifacts/material-polling-source-20261117/source-review/root/ROOT-SOURCE-BINDING.json": "c1a801edb6593a5a4121a687d0b5152fd06f3624593720dda6f87df9c86576e5",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-first-stop/EXTERNAL-STOP-RECEIPT.json": "466298a2c9735bdf1c67a8c339d205973a119d92f0cf0e090ef2a086bad78ad4",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-first-stop/FINAL-MANIFEST.json": "c262fde9a12245291ae6bcf622fa4dcf19f2b3725ad457d926e0af9b1a505982",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-first-stop/FINDINGS.md": "227fc89406594a4cd49dbb6c801cb5dce534ef89a8910ebff2e1f9eddf986ba5",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-first-stop/FREEZE.json": "37bdc3c99a306a3deb6993ab98ee8462ca0f2adc065587985f9cffce86a78a15",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-first-stop/resources.py": "f0af9e1665da6246a89e13e7fd947cbfbaef68cc19f6827ec32572c323be0240",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-first-stop/run.py": "767488fdb8181e331ca5ce865fb3d4afea3415ea403946a2b4184d2e16731260",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-first-stop/runtime/RESULT.json": "16e449fe2fc8982812ae3550217e4190526c42626f4e4c577bbac10812151e19",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-first-stop/runtime/STARTED.json": "f06a429d18db3a5c6544f4f6c022b52f514088c44b71c6b4b01cdde870bf654e",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-first-stop/runtime/TERMINAL.json": "7877c61f9c42ad7a400e3251fae67a73e3ef0a41f9e010ca0e7791b00c7a1eff",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-first-stop/runtime/release-build-RESULT.json": "ab6a59bbcaa13f21f98f28af8848241deea6f95b429d77028c7800d7c1a58c22",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-first-stop/runtime/release-build-STARTED.json": "c71a324abd518ef69673a8badede64387626a49ddfef1af61c9826707f742bf0",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-first-stop/runtime/release-build.stderr": "b3dec5ca27345c1bac3b4e55e049d40ded90838de8ef4fea79f3dc2f6ba5aab6",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-first-stop/runtime/release-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-recovery-002/DISK-GUARD-DELTA.json": "26822bff7335aeea0815640d07acef7eb674c808078269c558a75212aa3fe405",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-recovery-002/FINAL-MANIFEST.json": "2a816d2f2a97ab8910748fb3f220d3044407eff4b931c62e12a324ad538e2401",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-recovery-002/FINDINGS.md": "db1f3e1fc2c41f99a80887088a0bfdaa53784cda835bdbfa73e3b1c08019458f",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-recovery-002/FREEZE.json": "89384b98b14b12d349ba2362032a47432a364733f0c3c9e896e7a8db5989bee4",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-recovery-002/SYSTEM-STATE-CHANGE.json": "c55f9eeb8b824e65c14195d96ef468d164c6eaa86b876dac1e9e11e9dfdd52f4",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-recovery-002/TERMINAL-RECEIPT.json": "d3b05f2234993771dcda72d802d61dac2780f69ed3a56cd7c9012c9bce158a9d",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-recovery-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-recovery-002/run.py": "bdef3ac5c7d24aed81ca04f5d52714625c1d8931a75d2db7e2a1e1fe7e48ee8a",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-recovery-002/runtime/RESULT.json": "22f7d2bd0b0de4d971f076ebdd9b56846f78b584563ab3a6d72289a3c412df02",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-recovery-002/runtime/STARTED.json": "a9f12c4bbd4f9701c63c4dcc1ade6be243afc1ac4d313d93798de20cf8949f52",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-recovery-002/runtime/TERMINAL.json": "444c1777cbaaa5a87a3438796026ddda1348862dfb756196beb4f1604779b78d",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-recovery-002/runtime/release-build-RESULT.json": "a33e51fce14781c180707888e66f847205f843c8ec55218e550ecc0c2d4dcc8e",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-recovery-002/runtime/release-build-STARTED.json": "a89c7c0662e1040cc53b743bed31a82266b33c4e8e22b075a6df244b9347356b",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-recovery-002/runtime/release-build.stderr": "10a80df694b168334f8681eb121fa5bb40d7374a756939b9395ccb8b65bb944f",
+    "parity/reports/artifacts/material-polling-source-20261117/release-build-recovery-002/runtime/release-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-polling-source-20261117/source-integration/SOURCE-INTEGRATION-001.json": "a271b599d9783258b0a791b58e5066d8f534c465aa88e2c9b800a6bbbc167830",
+    "parity/reports/artifacts/material-polling-source-20261117/history/WF-20261117-GLOBAL-MATERIAL-SOURCE-001.original.json": "71ed4828a03b3e75beb1c07dd1fe603dbf908ebcaf023dc9594f3a591b332f2c",
+    "parity/reports/artifacts/material-polling-source-20261117/history/WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001.original.json": "d8bf20ae31c10c667c10a8e9725e52cc8bfc9ecc9da80b5bd964c1bcf83fdf74",
+    "parity/reports/artifacts/material-polling-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "99aa353fd042e2c4c53048cd62dbec4d647fe964f0949b4f2bb0f1bbd577fbd4"
+  }
+}

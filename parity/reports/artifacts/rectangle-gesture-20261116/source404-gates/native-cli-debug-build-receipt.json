@@ -1,0 +1,46 @@
+{
+  "stage": "native-cli-debug-build",
+  "argv": [
+    "cargo",
+    "build",
+    "-p",
+    "weftforge",
+    "-p",
+    "weftforge-cli"
+  ],
+  "cwd": "<ROOT>/.local/rectangle-gesture-repair-20261116",
+  "environment": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/rectangle-gesture-repair-20261116/target",
+    "RUSTFLAGS": null,
+    "CARGO_ENCODED_RUSTFLAGS": null,
+    "CARGO_INCREMENTAL": null,
+    "RUSTUP_TOOLCHAIN": null,
+    "RUSTC": null,
+    "RUSTC_WRAPPER": null,
+    "RUSTC_WORKSPACE_WRAPPER": null,
+    "CARGO_HOME": null
+  },
+  "pid": 9404,
+  "started_at_utc": "2026-11-16T21:48:51.231151+00:00",
+  "status": "terminal",
+  "before_sha256": "362270eafe1f59d4843e8dae1199f04299d050c5d84d1c7374849c3e77998b12",
+  "exit_code": 0,
+  "finished_at_utc": "2026-11-16T21:48:55.831834+00:00",
+  "command_seconds": 4.60062562499661,
+  "source88_unchanged": true,
+  "metadata57_unchanged": true,
+  "original8_unchanged": true,
+  "full56_unchanged": true,
+  "whole_registry_unchanged": true,
+  "git_status_after": "",
+  "head_after": "7d19f86a006601133d457aee42cca3b115b994aa",
+  "after_sha256": "baa1c969f6aea49a0fd6eaef817ca0f5bf0e5f74c0d526adff073e1c833fc603",
+  "log_sha256": "11aaa2fe5c1bfd9b9a2378ef10f16817c91a28b88e79faa85af8999532e23862",
+  "disk_after": {
+    "target_allocated_bytes": 3191648256,
+    "filesystem_free_bytes": 11286884352,
+    "filesystem_free_gib": 10.511730194091797
+  },
+  "target_growth_bytes": 1569583104
+}

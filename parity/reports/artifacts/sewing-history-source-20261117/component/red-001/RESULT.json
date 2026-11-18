@@ -1,0 +1,64 @@
+{
+  "Cargo_invocations": 1,
+  "Cloth_initializations": 0,
+  "attempt": 1,
+  "elapsed_seconds_before_receipt": 15.560518375015818,
+  "end_monotonic_before_receipt": 1031740.853937291,
+  "garment_or_old_case_runs_or_grades": 0,
+  "post_source88_test_fixture_oracle_GO_exact": true,
+  "production_edits": 0,
+  "raw_test_summaries": [
+    "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 68 filtered out; finished in 0.00s"
+  ],
+  "retained_output_bytes_before_receipt": 7142,
+  "stage": {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "-p",
+      "weftforge-sim",
+      "--lib",
+      "tests::positive_target_stitch_n32_matches_independent_coupled_radial_energy",
+      "--",
+      "--exact",
+      "--nocapture"
+    ],
+    "disk_observation": {
+      "last_available_bytes": null,
+      "max_snapshot_gap_seconds": 0.0,
+      "minimum_available_bytes": null,
+      "path": "<ROOT>/.local/positive-target-sewing-component-20261117",
+      "samples": 0,
+      "stop_below_available_bytes": null
+    },
+    "end_monotonic_seconds": 1031740.77340325,
+    "exit_code": 101,
+    "peak_rss_bytes": 352780288,
+    "pid": 52746,
+    "process_group": 52746,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.2814761250047013,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 190,
+      "timeouts": 0
+    },
+    "sampled_peak_rss_bytes": 379518976,
+    "stop_reason": null,
+    "terminal_phase_checks": {
+      "deadline": 1031845.293418916,
+      "output_bytes": 6746,
+      "output_cap_bytes": 8388608,
+      "reserve_bytes": 65536
+    }
+  },
+  "status": "COMPONENT_TEST_FAILED",
+  "test_assertion_failure_observed": true
+}

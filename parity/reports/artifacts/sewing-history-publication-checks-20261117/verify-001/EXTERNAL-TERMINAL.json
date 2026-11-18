@@ -1,0 +1,36 @@
+{
+  "controller_exit_code": 0,
+  "controller_PID": 92511,
+  "controller_reaped": true,
+  "actual_controller_stdout_final": {
+    "state": "xtask_terminal",
+    "accepted": true,
+    "xtask_exit_code": 0,
+    "controller_exit_code": 0,
+    "ROOT_RESULT_sha256": "326e2dea359ec0ed93c766cb40675c00185ca2934b4f1c4a0b57f7a7405f3694",
+    "started": 1046642.580932666,
+    "deadline": 1047002.580932666,
+    "final_elapsed_after_all_receipt_persistence_seconds": 310.2109483340755,
+    "final_volume_before_clock_bytes": 1030004,
+    "final_available_bytes": 12174880768,
+    "Cargo_PID": 92595,
+    "controller_PID": 92511,
+    "metadata_commit": "bf100c3310bf6acf53df18e07052780312372965",
+    "guards": {
+      "all176_immutable_hashes_bytes_modes_exact": true,
+      "all8_supporting_tools_hashes_bytes_modes_exact": true,
+      "all424_original_hashes_bytes_modes_exact": true,
+      "all425_public_hashes_bytes_modes_exact": true,
+      "HEAD_fixed": true,
+      "index_empty_fixed": true,
+      "no_working_paths_dirty": true,
+      "checkout_clean_after": true,
+      "project_tool_inputs_fixed": true,
+      "controller_sources_fixed": true
+    }
+  },
+  "raw_controller_stdout_sha256": "46214a68b068c461b0d25c7a3f635a3c572816534e369e1d5541fcdd3065ef3c",
+  "raw_controller_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "observed_elapsed_before_external_receipt_persistence_seconds": 310.2553667500615,
+  "concurrent_activity": "Root permits concurrent SOURCE425 checks on a different worktree under their own1GiB cap. No global-idle requirement; this is tooling verification, not a performance or garment threshold."
+}

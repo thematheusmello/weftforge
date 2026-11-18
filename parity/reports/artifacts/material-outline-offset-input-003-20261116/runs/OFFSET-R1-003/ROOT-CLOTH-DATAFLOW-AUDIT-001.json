@@ -1,0 +1,20 @@
+{
+  "at_utc": "2026-11-16T13:48:30.196510+00:00",
+  "status": "source_dataflow_reviewed_only",
+  "proposal_sha256": "f719bc3a23ec3d620ac8c49aa761deed58ea6320d6aa2e1353d13c4b636ffb1f",
+  "runtime_source": "4f80d064a60cbdba1358df9074beb74b803e1ee8",
+  "native_sha256": "c05bac974a4f8b40e2c5c46e4f857d5e00c270410f3a817f83439dbbb1f5d71e",
+  "audited_source_hashes": {
+    "crates/weftforge-core/src/offset.rs": "761881af22d784d0354ac25e6cda98971cb459bf78fd1d635eee21dc3e758203",
+    "crates/weftforge-core/src/document.rs": "642c5f18dc91850011622a82afd271a9b8122b6b1a5155818c0f196d3e30c5b9",
+    "crates/weftforge-core/src/simulation.rs": "24e12aaf323f34abe745dc9c42c9823acbd6e2a1832d6827a5a6397112525707",
+    "crates/weftforge-sim/src/lib.rs": "f69f2b18464ae980ada76d81fd86c46ee3dd575457b194be826fbd6cb1c2a546",
+    "apps/weftforge/src/main.rs": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+  },
+  "review": "Root inspected actual source: real source/candidate meshes and Cloth instances, summed Cloth::masses by piece, native before/after numeric rows, prepared commit and direct mesh/Cloth publication. Source review agrees with proposal.",
+  "native_UI_table_observed": false,
+  "live_debugger_object_identity_observed": false,
+  "physics_or_reference_accepted": false,
+  "case002_fixed": false,
+  "expected_values": "Frozen original analytic rectangle targets, never product outputs."
+}

@@ -1,0 +1,4493 @@
+{
+  "kind": "private-selected-input-publication-proposal",
+  "state": "AWAITING_EXACT_ROOT_APPROVAL_NO_PUBLIC_WRITES",
+  "private_directory": ".local/rectangle-delivery-proposal-20261116",
+  "public_artifact_base_proposed": "parity/reports/artifacts/rectangle-gesture-20261116",
+  "replacement_rule": {
+    "order": [
+      "root_to_ROOT",
+      "remaining_home_to_HOME"
+    ],
+    "root_literal": "<ROOT>",
+    "home_literal": "<HOME>",
+    "new_text_or_other_byte_changes_permitted": false,
+    "image_editing_permitted": false
+  },
+  "counts_by_group": {
+    "source-repair": 33,
+    "source404-gates": 25,
+    "source-review": 1,
+    "native-RG001": 136,
+    "file-checker": 8,
+    "file-supplement-FS001": 5,
+    "source-integration": 1
+  },
+  "selected_count": 209,
+  "selected_original_bytes": 5611338,
+  "expected_public_bytes": 5607291,
+  "replacement_totals": {
+    "root_to_ROOT": 71,
+    "remaining_home_to_HOME": 0
+  },
+  "selected": [
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/committed-main.rs",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/committed-main.rs",
+      "original": {
+        "sha256": "18ab3e365244209deed35f16aff86b5d9e7c0d1cf3e1e4440f2be2e16e22612f",
+        "bytes": 908222,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "18ab3e365244209deed35f16aff86b5d9e7c0d1cf3e1e4440f2be2e16e22612f",
+        "bytes": 908222,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/committed.patch",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/committed.patch",
+      "original": {
+        "sha256": "b570e0a5f7c6481d0bd8de745f8d52e0e168bf6e84955ba1b2bf5d725ecfa03a",
+        "bytes": 31181,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "b570e0a5f7c6481d0bd8de745f8d52e0e168bf6e84955ba1b2bf5d725ecfa03a",
+        "bytes": 31181,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/first-fix.patch",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/first-fix.patch",
+      "original": {
+        "sha256": "8a4640ad393a61a1b95b62dfba1ca0ccac2e307d29ce7d49e70e63f0631d53ef",
+        "bytes": 12199,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "8a4640ad393a61a1b95b62dfba1ca0ccac2e307d29ce7d49e70e63f0631d53ef",
+        "bytes": 12199,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/first-green-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/first-green-receipt.json",
+      "original": {
+        "sha256": "3cfb845e005448ff0383fcbf83f5b88134bc2cee6bff8e65926fa07352fc517b",
+        "bytes": 425,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "3cfb845e005448ff0383fcbf83f5b88134bc2cee6bff8e65926fa07352fc517b",
+        "bytes": 425,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/first-green.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/first-green.log",
+      "original": {
+        "sha256": "0c5c44b91ec711185314d9d2e28f79722728ed5cf05e49bf169c4c784b121272",
+        "bytes": 631,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "6459ff03593b2898d13fcddcbaeaab092633172f0ab97243c6b3906b3f89812e",
+        "bytes": 574,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 1,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/focused-guards-rectangle-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/focused-guards-rectangle-receipt.json",
+      "original": {
+        "sha256": "0521626e873073308a750691b8d6f27aad24e03ab7ef03b14f2860ad6342b5a6",
+        "bytes": 620,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "2cd5037fdda85291d20dd74bc7cdbca1bcc2cde27bef6a0abde23110b4b22df5",
+        "bytes": 563,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 1,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/focused-guards-rectangle.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/focused-guards-rectangle.log",
+      "original": {
+        "sha256": "3fbc33bef1de64776ab4ff4af8e7f201e152aea7544ce5c04cf656e712c591a7",
+        "bytes": 8858,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e1f5a07b177b8e81a17c9286d4f2c658f80a15ac8109604586c14de26f1ee81b",
+        "bytes": 8801,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 1,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/focused-revision2-endpoints-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/focused-revision2-endpoints-receipt.json",
+      "original": {
+        "sha256": "8868ee13479e94490da285777ca175e815f03e8ba27f8dd06d8c1feaac69ff91",
+        "bytes": 636,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "f216c36b5c7665d357a5288c89a7d55fb0e705907f0eebc69a3fc2cbfb5cda38",
+        "bytes": 579,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 1,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/focused-revision2-endpoints.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/focused-revision2-endpoints.log",
+      "original": {
+        "sha256": "abc882196e019c24ef9c06bbc4ad9f8e19713a6200cbd36d997be117d58c1ed1",
+        "bytes": 1131,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "abc882196e019c24ef9c06bbc4ad9f8e19713a6200cbd36d997be117d58c1ed1",
+        "bytes": 1131,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/focused-revision2-position-snap-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/focused-revision2-position-snap-receipt.json",
+      "original": {
+        "sha256": "d5d6227489211305ecbbeba68330adbaec1daff0ceaa3384c7fe2c7f4148b576",
+        "bytes": 693,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "9f934d3d191457d40a59c6d0b46e2646e20cd40f083ba6a9e70d34fadfdd3d99",
+        "bytes": 636,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 1,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/focused-revision2-position-snap.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/focused-revision2-position-snap.log",
+      "original": {
+        "sha256": "b6c76f537d000f6884ee81d5a755d76aa3a58a94f8ddc3a7d68684a35fa17a97",
+        "bytes": 840,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "b6c76f537d000f6884ee81d5a755d76aa3a58a94f8ddc3a7d68684a35fa17a97",
+        "bytes": 840,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/focused-revision2-rectangle-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/focused-revision2-rectangle-receipt.json",
+      "original": {
+        "sha256": "ca15f05bd7d1d76c2ebaf8c1d8e5cd999b2ee038e1ce8013900d74f7ee369d88",
+        "bytes": 621,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "a77eb830d2995074171c18e10c248445e671e8386202a8450c8ce44f98bc46b6",
+        "bytes": 564,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 1,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/focused-revision2-rectangle.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/focused-revision2-rectangle.log",
+      "original": {
+        "sha256": "e93366e525210afca3f616b0be4772233c13e34ca392f58e6f9cdac4fa9766dc",
+        "bytes": 1242,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "62f1182fc61464c222d8e56397f5bb9e0a31d2030956eac946c5a2dec6c0ea52",
+        "bytes": 1185,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 1,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/guard-candidate.patch",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/guard-candidate.patch",
+      "original": {
+        "sha256": "b71074fd3f08374aa960085f51a9f5f8009cc77e560af2930293096c0e3e7d4e",
+        "bytes": 29108,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "b71074fd3f08374aa960085f51a9f5f8009cc77e560af2930293096c0e3e7d4e",
+        "bytes": 29108,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/guard-review-note.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/guard-review-note.txt",
+      "original": {
+        "sha256": "a2527dea4c7315b67d90a971885f32e67fc4acdff694fdb7f1d2b34acbdd798b",
+        "bytes": 937,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "a2527dea4c7315b67d90a971885f32e67fc4acdff694fdb7f1d2b34acbdd798b",
+        "bytes": 937,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/handoff-manifest.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/handoff-manifest.json",
+      "original": {
+        "sha256": "f0a0e82d19964b31aac823c20340da5d2ca9b872e177ba7fc238a4082bb909e7",
+        "bytes": 6630,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "f0a0e82d19964b31aac823c20340da5d2ca9b872e177ba7fc238a4082bb909e7",
+        "bytes": 6630,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/original-production-main.rs",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/original-production-main.rs",
+      "original": {
+        "sha256": "3ddd1a624e7dd9af0c6228a12065782cc8dadef5bddb85f31d4958458f3adf21",
+        "bytes": 889046,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "3ddd1a624e7dd9af0c6228a12065782cc8dadef5bddb85f31d4958458f3adf21",
+        "bytes": 889046,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/original-red-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/original-red-receipt.json",
+      "original": {
+        "sha256": "c5c9365789156b4b1003796bf2c2a478fae09f12567b11265edf47421084f7a6",
+        "bytes": 867,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "bc264dcc78418d239ea90c648e4292704750a2e29bdcf77dd6def9e58e82a118",
+        "bytes": 810,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 1,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/original-red.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/original-red.log",
+      "original": {
+        "sha256": "0515c5dcf85fedcc0bf48ae4124b03c0d8252abfe986a8b4f9a7e227a12f374a",
+        "bytes": 7616,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "0604454d523c6ac03c8a8a79f9c433e5c1285a9b3558b116b83ea29979f445ed",
+        "bytes": 7388,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 4,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/original-regression.patch",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/original-regression.patch",
+      "original": {
+        "sha256": "803bfe0ab5c0ebd3eb1cf42b54ae8b4048ae54b0e6536d39d9fce4c8c9a9184c",
+        "bytes": 3802,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "803bfe0ab5c0ebd3eb1cf42b54ae8b4048ae54b0e6536d39d9fce4c8c9a9184c",
+        "bytes": 3802,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/post-case-cleanup-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/post-case-cleanup-receipt.json",
+      "original": {
+        "sha256": "d7b9ed42a67a081f972f9d7e4ba3edd4473870f720443e5ed895ba9d2454252a",
+        "bytes": 484,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "d7b9ed42a67a081f972f9d7e4ba3edd4473870f720443e5ed895ba9d2454252a",
+        "bytes": 484,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/review-candidate-diff-check-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate-diff-check-receipt.json",
+      "original": {
+        "sha256": "b2d5f7f9745de292b43aa687ec25535c811bd5b84c7d5c478d03f8fff4812cca",
+        "bytes": 561,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "aa2744f32456124a65168ff54f9e09a7d2e34a04b2ed16968a69b06e4d373176",
+        "bytes": 504,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 1,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/review-candidate-diff-check.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate-diff-check.log",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/review-candidate-endpoints-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate-endpoints-receipt.json",
+      "original": {
+        "sha256": "a4a275fd3566ccef567c5a6a63142425d0b5d96a4d7120dca19f7998bdde664f",
+        "bytes": 635,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "aea77d330ee283d698448fa85be94d20024735012e8daa2cca679bc0622694e8",
+        "bytes": 578,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 1,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/review-candidate-endpoints.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate-endpoints.log",
+      "original": {
+        "sha256": "e2fdd4345e4d3bc7e385875feba724dabf85ebe0297522762c3acddd3e271d13",
+        "bytes": 1131,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e2fdd4345e4d3bc7e385875feba724dabf85ebe0297522762c3acddd3e271d13",
+        "bytes": 1131,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/review-candidate-fmt-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate-fmt-receipt.json",
+      "original": {
+        "sha256": "f1580718fd969db80767870428f796f85a4776e818c2791420937865b0ecf7f3",
+        "bytes": 568,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "f5320cf1dc207a28ea0757e8fff0229db6f2cf37e9491ee4abe92923991fddcc",
+        "bytes": 511,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 1,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/review-candidate-fmt.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate-fmt.log",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/review-candidate-position-snap-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate-position-snap-receipt.json",
+      "original": {
+        "sha256": "89e0bcf1065d7c2a8d2f94df26b1f20c66ac735b356b63406f683f9078c2e801",
+        "bytes": 690,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "9cc82abb37616de906908a39ad750bba93f411d4fce2fcb3ad92b8951e8ce448",
+        "bytes": 633,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 1,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/review-candidate-position-snap.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate-position-snap.log",
+      "original": {
+        "sha256": "56d0ce87906f7aea895232e820cef0b642c5dc02bf6e3c4f37c04024a2f2c5d2",
+        "bytes": 364,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "56d0ce87906f7aea895232e820cef0b642c5dc02bf6e3c4f37c04024a2f2c5d2",
+        "bytes": 364,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/review-candidate-rectangle-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate-rectangle-receipt.json",
+      "original": {
+        "sha256": "a4316918f77ef152f98a41c38cadc5cb7b5452fb936d89d0a45f5e0a505a80a4",
+        "bytes": 620,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "f0703e575f64fd5c89d752e87bac36aa3a518e92b9eb791016020bc92b5fbba5",
+        "bytes": 563,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 1,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/review-candidate-rectangle.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate-rectangle.log",
+      "original": {
+        "sha256": "d96a0ccb7e0344db14755bdfdc0c38c91cd0f305b035c956df6262e82ebed858",
+        "bytes": 1242,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "af0ea38749eed9fa52873e69421ff392bee9900e46e93c51de42df759c4f86dc",
+        "bytes": 1185,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 1,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/review-candidate.patch",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/review-candidate.patch",
+      "original": {
+        "sha256": "b570e0a5f7c6481d0bd8de745f8d52e0e168bf6e84955ba1b2bf5d725ecfa03a",
+        "bytes": 31181,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "b570e0a5f7c6481d0bd8de745f8d52e0e168bf6e84955ba1b2bf5d725ecfa03a",
+        "bytes": 31181,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-repair",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/revision2.patch",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-repair/revision2.patch",
+      "original": {
+        "sha256": "0333c2c59fba71e353f8ed27c6ca97ae54e4db53b0dc6a3c308298b986c4aa03",
+        "bytes": 29891,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "0333c2c59fba71e353f8ed27c6ca97ae54e4db53b0dc6a3c308298b986c4aa03",
+        "bytes": 29891,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/CURRENT-JOB.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/CURRENT-JOB.json",
+      "original": {
+        "sha256": "dca1adf6a1c9879bbd105fbfc07c9e4d54fe90799b67238c86ad5c9c7e70d1d4",
+        "bytes": 1575,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "fac2446fc3077b6e40fade082a8393155fe00dfacc8ee3f70aa3229b93a6acea",
+        "bytes": 1461,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 2,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/ENVIRONMENT.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/ENVIRONMENT.json",
+      "original": {
+        "sha256": "b5d56c8de4d88bd9bc3ff4774a735b0d9f648ee22b55a8898af12e7f529e93bb",
+        "bytes": 1326,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "0a58fc495c081e5b758c2872239519fa1ba8ff335afa8722af3c7645c7e29415",
+        "bytes": 1212,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 2,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/FINAL-MANIFEST.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/FINAL-MANIFEST.json",
+      "original": {
+        "sha256": "6fab5e5996c015bbed5f73b6ba15159f39748718b9f9eaaeeac9b919e29b6c1b",
+        "bytes": 5200,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "6fab5e5996c015bbed5f73b6ba15159f39748718b9f9eaaeeac9b919e29b6c1b",
+        "bytes": 5200,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/INITIAL-FREEZE.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/INITIAL-FREEZE.json",
+      "original": {
+        "sha256": "420b0ccb2d14e796376ab8e5e5c321c317b444d74cfb82b2846f235e49618c94",
+        "bytes": 196870,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "420b0ccb2d14e796376ab8e5e5c321c317b444d74cfb82b2846f235e49618c94",
+        "bytes": 196870,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/POST-CASE-CLEANUP.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/POST-CASE-CLEANUP.json",
+      "original": {
+        "sha256": "af444524203cbc8eee7443325ca9b8459dcb75cad89a3d2c2e30ae1d56e02da3",
+        "bytes": 744,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "af444524203cbc8eee7443325ca9b8459dcb75cad89a3d2c2e30ae1d56e02da3",
+        "bytes": 744,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/RESOURCE-HOLD.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/RESOURCE-HOLD.json",
+      "original": {
+        "sha256": "aa624307b37f283f171f05ae802cee2cf03283fb3064acd457985b20563665f4",
+        "bytes": 1958,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "60c54fe3a2734c18fea2b2b642cc1c4a1d180feb52f94f9e79364098cf37e49c",
+        "bytes": 1844,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 2,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/RESULT.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/RESULT.json",
+      "original": {
+        "sha256": "78637890011be158e9a7eee9afa4c8b5669b4ee8c4f4eba806d9b8aab0fa8325",
+        "bytes": 10932,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "aa8e1e3fde4fdace677b3a7d0b9928e3baf750bd78114eb1f5b6919060bbca16",
+        "bytes": 10476,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 8,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/ROSTER-ORIGINS.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/ROSTER-ORIGINS.json",
+      "original": {
+        "sha256": "526c6e9ef559afdacdd4f45f4f5ba47e4d51e4804eb83d3383a251e0b0920538",
+        "bytes": 2550,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "9e06e1f64cc5dc792b26dd26aeefcc95a1f696148fe8fd3ca9b13f283acd6184",
+        "bytes": 2379,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 3,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/fmt-AFTER.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/fmt-AFTER.json",
+      "original": {
+        "sha256": "99b830f4434eef7d10f6be9e60fc06bc128479909c5cf08d3afe1711a0452f6e",
+        "bytes": 196870,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "99b830f4434eef7d10f6be9e60fc06bc128479909c5cf08d3afe1711a0452f6e",
+        "bytes": 196870,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/fmt-BEFORE.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/fmt-BEFORE.json",
+      "original": {
+        "sha256": "e26fe231b70b2e09e8a007b9c80c3b83562bdeb6fbb4046af69406b8f2dccc76",
+        "bytes": 196869,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e26fe231b70b2e09e8a007b9c80c3b83562bdeb6fbb4046af69406b8f2dccc76",
+        "bytes": 196869,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/fmt-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/fmt-receipt.json",
+      "original": {
+        "sha256": "10a73d7ede6ee62dbc22e4fd6acb45729d23f746f7ec7d935418c4f78141f782",
+        "bytes": 1518,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "c6f97489f4ff62d0875c45bd4f492749bda57495ecb9bcd42fa7977306f016cc",
+        "bytes": 1404,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 2,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/fmt.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/fmt.log",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/native-cli-debug-build-AFTER.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/native-cli-debug-build-AFTER.json",
+      "original": {
+        "sha256": "baa1c969f6aea49a0fd6eaef817ca0f5bf0e5f74c0d526adff073e1c833fc603",
+        "bytes": 196870,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "baa1c969f6aea49a0fd6eaef817ca0f5bf0e5f74c0d526adff073e1c833fc603",
+        "bytes": 196870,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/native-cli-debug-build-BEFORE.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/native-cli-debug-build-BEFORE.json",
+      "original": {
+        "sha256": "362270eafe1f59d4843e8dae1199f04299d050c5d84d1c7374849c3e77998b12",
+        "bytes": 196870,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "362270eafe1f59d4843e8dae1199f04299d050c5d84d1c7374849c3e77998b12",
+        "bytes": 196870,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/native-cli-debug-build-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/native-cli-debug-build-receipt.json",
+      "original": {
+        "sha256": "dca1adf6a1c9879bbd105fbfc07c9e4d54fe90799b67238c86ad5c9c7e70d1d4",
+        "bytes": 1575,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "fac2446fc3077b6e40fade082a8393155fe00dfacc8ee3f70aa3229b93a6acea",
+        "bytes": 1461,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 2,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/native-cli-debug-build.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/native-cli-debug-build.log",
+      "original": {
+        "sha256": "11aaa2fe5c1bfd9b9a2378ef10f16817c91a28b88e79faa85af8999532e23862",
+        "bytes": 224,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "267cc0760b42b1599460b848f095cbdc5c6a14b5b0949a6118aeb427723758b5",
+        "bytes": 167,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 1,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/run_gates.py",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/run_gates.py",
+      "original": {
+        "sha256": "501c4dfd68cd54c94e7c4e84bd0c7d922dd2b03f66ffca547a8abc8b1a1550ad",
+        "bytes": 12345,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "501c4dfd68cd54c94e7c4e84bd0c7d922dd2b03f66ffca547a8abc8b1a1550ad",
+        "bytes": 12345,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/workspace-clippy-AFTER.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/workspace-clippy-AFTER.json",
+      "original": {
+        "sha256": "78ef4950dc56645cae16e129959acbad7bf0666cce2fc198bcf84b0a2623f591",
+        "bytes": 196870,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "78ef4950dc56645cae16e129959acbad7bf0666cce2fc198bcf84b0a2623f591",
+        "bytes": 196870,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/workspace-clippy-BEFORE.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/workspace-clippy-BEFORE.json",
+      "original": {
+        "sha256": "efc0a35c47bf75f0d5fb579d59e4851306b9ef7f512267839b2224029af332ee",
+        "bytes": 196869,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "efc0a35c47bf75f0d5fb579d59e4851306b9ef7f512267839b2224029af332ee",
+        "bytes": 196869,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/workspace-clippy-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/workspace-clippy-receipt.json",
+      "original": {
+        "sha256": "5ffc6dd2e1d318f71fd9428db0dab21d9ccd0e33691c7b4a27a7e74a3160d7f0",
+        "bytes": 1589,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e0d4e741a88df3f2ebe4abf233a51f11c87b9fd80c40b374e280ef47cd660141",
+        "bytes": 1475,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 2,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/workspace-clippy.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/workspace-clippy.log",
+      "original": {
+        "sha256": "a146cef1c1ebe60f630af424e79d1fee43056d947b30c4cc30b10ada5f2fc0a6",
+        "bytes": 6571,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "faf151166edeefcb77f627e7f91653cd2dadd363f2c60139e4426d86e087ec56",
+        "bytes": 6229,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 6,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/workspace-tests-AFTER.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/workspace-tests-AFTER.json",
+      "original": {
+        "sha256": "fbb5bc031aededcfcc083caf497adfc3c1247a962d66b4ebb2db398503b59531",
+        "bytes": 196870,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "fbb5bc031aededcfcc083caf497adfc3c1247a962d66b4ebb2db398503b59531",
+        "bytes": 196870,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/workspace-tests-BEFORE.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/workspace-tests-BEFORE.json",
+      "original": {
+        "sha256": "30e8e4098b86701fbb3ab7f9036763490aea3ce62505dd0d3a8c10954027f99f",
+        "bytes": 196870,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "30e8e4098b86701fbb3ab7f9036763490aea3ce62505dd0d3a8c10954027f99f",
+        "bytes": 196870,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/workspace-tests-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/workspace-tests-receipt.json",
+      "original": {
+        "sha256": "164dcfcbf8042b7f9d5326e0c8ef49d889968188fbe8b204a07be84d805df072",
+        "bytes": 1529,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "7e0f676d575e367fa835e50f2ff0ae1177396973aa5b1071d2cf4b80c095e38f",
+        "bytes": 1415,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 2,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source404-gates",
+      "input": ".local/rectangle-gesture-repair-20261116/.local/combined-rectangle-cloth-gates-20261116/workspace-tests.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source404-gates/workspace-tests.log",
+      "original": {
+        "sha256": "d388b237beba5e4d82fa6d753086936f029a26e6e17a55dc87d5fa8965f08471",
+        "bytes": 44326,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "b60d2af36fa59f915c973f5c8c51914b8e981c0f43fc053ee6015ffe4552ce78",
+        "bytes": 44041,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 5,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-review",
+      "input": ".local/rectangle-combined-source-review-20261116/ROOT-REVIEW-001.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-review/ROOT-REVIEW-001.json",
+      "original": {
+        "sha256": "337bc4bf191a6eff6c911fc7772013a404a536ab681c393d3ca1e9b33db0072e",
+        "bytes": 10937,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "337bc4bf191a6eff6c911fc7772013a404a536ab681c393d3ca1e9b33db0072e",
+        "bytes": 10937,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/FILE-CHECKER-GO-001.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/FILE-CHECKER-GO-001.json",
+      "original": {
+        "sha256": "dd1d0cec4ab89e857d714e3b76b9ae75e6b68a3eabc1ba6845412223b643efe8",
+        "bytes": 1381,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "dd1d0cec4ab89e857d714e3b76b9ae75e6b68a3eabc1ba6845412223b643efe8",
+        "bytes": 1381,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/FINAL-MANIFEST.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/FINAL-MANIFEST.json",
+      "original": {
+        "sha256": "3cbddebd9d8cb4718488a283166ca34cb3d0d30175902ba5ce80974e3681f581",
+        "bytes": 25320,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "3cbddebd9d8cb4718488a283166ca34cb3d0d30175902ba5ce80974e3681f581",
+        "bytes": 25320,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/OUTCOME.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/OUTCOME.json",
+      "original": {
+        "sha256": "e4ea8e7daaf91d3a19cba5daf5ca660da542dc99043f0d61d6a2fbc1f039138c",
+        "bytes": 2349,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e4ea8e7daaf91d3a19cba5daf5ca660da542dc99043f0d61d6a2fbc1f039138c",
+        "bytes": 2349,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/OUTPUT-HASHES.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/OUTPUT-HASHES.json",
+      "original": {
+        "sha256": "bca6593b934a6d5b3255c6b10b6f24bc05df9345a4b48fa78a1527c51e6ee111",
+        "bytes": 700,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "bca6593b934a6d5b3255c6b10b6f24bc05df9345a4b48fa78a1527c51e6ee111",
+        "bytes": 700,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/PLAN.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/PLAN.json",
+      "original": {
+        "sha256": "9a30d36eded08d644f242c2e897ede14f64e4ebe4b521fe90d69b924cae5b52d",
+        "bytes": 17804,
+        "mode": "0444"
+      },
+      "expected_public": {
+        "sha256": "b5d80d539df0447f4b92e094e3667f76f2c099a69efa8303cbb889f5e0a66479",
+        "bytes": 17633,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 3,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/PREPARATION.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/PREPARATION.json",
+      "original": {
+        "sha256": "f38d7a718b3a4617ab7757433ab132b35f4c792330eaf99eb05322700b0e328d",
+        "bytes": 11571,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "4b650255b7093b1ad3f12f83a0f92dda12ae7ace7c048840f6c1915a5aae3afe",
+        "bytes": 11286,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 5,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/ROOT-GO-001.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/ROOT-GO-001.json",
+      "original": {
+        "sha256": "2a39edf67b044e518b49bee4004bc4c44f770d8ee0b3b54024d5680fdf33891a",
+        "bytes": 1146,
+        "mode": "0444"
+      },
+      "expected_public": {
+        "sha256": "2a39edf67b044e518b49bee4004bc4c44f770d8ee0b3b54024d5680fdf33891a",
+        "bytes": 1146,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/input/empty.weftforge",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/input/empty.weftforge",
+      "original": {
+        "sha256": "5b0449d038beb04e0ae94c79e53c78d715da8e5b5dda0f82fbf472d042aaa7db",
+        "bytes": 1977,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "5b0449d038beb04e0ae94c79e53c78d715da8e5b5dda0f82fbf472d042aaa7db",
+        "bytes": 1977,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0003-initial-empty-after-raise-ax.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0003-initial-empty-after-raise-ax.txt",
+      "original": {
+        "sha256": "38f68b269ae6fdf4b0e0f10d8da027b4a12954283708ad3d1173ebcf172b7890",
+        "bytes": 2581,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "38f68b269ae6fdf4b0e0f10d8da027b4a12954283708ad3d1173ebcf172b7890",
+        "bytes": 2581,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0003-initial-empty-after-raise.jpg",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0003-initial-empty-after-raise.jpg",
+      "original": {
+        "sha256": "ea9342985f178da78a57cf19b07682f009193875d52161604dd01d87944c5fff",
+        "bytes": 158091,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "ea9342985f178da78a57cf19b07682f009193875d52161604dd01d87944c5fff",
+        "bytes": 158091,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "unchanged original JPEG bytes",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0005-Rectangle-mode-before-drag-ax.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0005-Rectangle-mode-before-drag-ax.txt",
+      "original": {
+        "sha256": "7d8ccc106086edb65ddef6639e22ee1c9a0a3ac76813a396c8f25bf3ce178948",
+        "bytes": 2577,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "7d8ccc106086edb65ddef6639e22ee1c9a0a3ac76813a396c8f25bf3ce178948",
+        "bytes": 2577,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0007-after-one-Rectangle-drag-ax.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0007-after-one-Rectangle-drag-ax.txt",
+      "original": {
+        "sha256": "917cd1375b2e58ac6d74914e2e2a57036edb47acc2b4fa79fb6b99c686d61724",
+        "bytes": 3863,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "917cd1375b2e58ac6d74914e2e2a57036edb47acc2b4fa79fb6b99c686d61724",
+        "bytes": 3863,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0007-after-one-Rectangle-drag.jpg",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0007-after-one-Rectangle-drag.jpg",
+      "original": {
+        "sha256": "c1ba3ad14f38e7de24833a712b233d20addb266d85477f2932db3c6b4b38f8d1",
+        "bytes": 186364,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "c1ba3ad14f38e7de24833a712b233d20addb266d85477f2932db3c6b4b38f8d1",
+        "bytes": 186364,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "unchanged original JPEG bytes",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0009-created-R1-saved-ax.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0009-created-R1-saved-ax.txt",
+      "original": {
+        "sha256": "524dac2ef0884ea38ceb89e904d3c82ff5415a11defd24dadb44e44a446ff1d1",
+        "bytes": 3830,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "524dac2ef0884ea38ceb89e904d3c82ff5415a11defd24dadb44e44a446ff1d1",
+        "bytes": 3830,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0011-after-one-Undo-R2-ax.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0011-after-one-Undo-R2-ax.txt",
+      "original": {
+        "sha256": "a606156c550704672eb119a379eae7995c1f5c75f80f7eeb46a5cea99db75a68",
+        "bytes": 2649,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "a606156c550704672eb119a379eae7995c1f5c75f80f7eeb46a5cea99db75a68",
+        "bytes": 2649,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0011-after-one-Undo-R2.jpg",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0011-after-one-Undo-R2.jpg",
+      "original": {
+        "sha256": "e8ae3c102de86c780fd8c05ddc83a0c625e667a49054ec14039af5bb2e038782",
+        "bytes": 159797,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e8ae3c102de86c780fd8c05ddc83a0c625e667a49054ec14039af5bb2e038782",
+        "bytes": 159797,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "unchanged original JPEG bytes",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0013-Undo-R2-saved-ax.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0013-Undo-R2-saved-ax.txt",
+      "original": {
+        "sha256": "4f186bb6b3e86643098cd461c0cc75e0f5d229a7c6aea7e603d46690ed6a73bd",
+        "bytes": 2582,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "4f186bb6b3e86643098cd461c0cc75e0f5d229a7c6aea7e603d46690ed6a73bd",
+        "bytes": 2582,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0015-after-one-Redo-R3-ax.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0015-after-one-Redo-R3-ax.txt",
+      "original": {
+        "sha256": "75535bb600ef41f421e14c74c54009ec78704798c9a0a414a5d4c75c7a66a86e",
+        "bytes": 2658,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "75535bb600ef41f421e14c74c54009ec78704798c9a0a414a5d4c75c7a66a86e",
+        "bytes": 2658,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0015-after-one-Redo-R3.jpg",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0015-after-one-Redo-R3.jpg",
+      "original": {
+        "sha256": "6178b8fcf87c52b954e063911c9581ecb1b06be378c7f8c0de8263c642e76c0a",
+        "bytes": 162006,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "6178b8fcf87c52b954e063911c9581ecb1b06be378c7f8c0de8263c642e76c0a",
+        "bytes": 162006,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "unchanged original JPEG bytes",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0017-Redo-R3-saved-ax.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0017-Redo-R3-saved-ax.txt",
+      "original": {
+        "sha256": "2559a049e95f6edd6967a24046679dcaa8810d4ae5cb986edc953de1902d510c",
+        "bytes": 2580,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "2559a049e95f6edd6967a24046679dcaa8810d4ae5cb986edc953de1902d510c",
+        "bytes": 2580,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0021-fresh-P2-reopened-R3-ax.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0021-fresh-P2-reopened-R3-ax.txt",
+      "original": {
+        "sha256": "6d926dcd137a67ca54e7626670c636c69b0a1bfd628c6c7630222872d6ab576b",
+        "bytes": 2595,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "6d926dcd137a67ca54e7626670c636c69b0a1bfd628c6c7630222872d6ab576b",
+        "bytes": 2595,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0021-fresh-P2-reopened-R3.jpg",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0021-fresh-P2-reopened-R3.jpg",
+      "original": {
+        "sha256": "616fec119db39dab7b5c690ddbd111767d26322ee0f76bc69083c4403535c09d",
+        "bytes": 164295,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "616fec119db39dab7b5c690ddbd111767d26322ee0f76bc69083c4403535c09d",
+        "bytes": 164295,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "unchanged original JPEG bytes",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0023-reopened-piece-selected-ax.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0023-reopened-piece-selected-ax.txt",
+      "original": {
+        "sha256": "a66769a11323e7a247694ef089e0b3a872feaaa95c518cd861b016c24a7f728d",
+        "bytes": 3845,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "a66769a11323e7a247694ef089e0b3a872feaaa95c518cd861b016c24a7f728d",
+        "bytes": 3845,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0025-boundary-picker-open-ax.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0025-boundary-picker-open-ax.txt",
+      "original": {
+        "sha256": "70847dd431d2903753c0768766fe819d0b55ce6de87992fc9eb7280dc067f388",
+        "bytes": 3845,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "70847dd431d2903753c0768766fe819d0b55ce6de87992fc9eb7280dc067f388",
+        "bytes": 3845,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0026-boundary-picker-visual-context-ax.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0026-boundary-picker-visual-context-ax.txt",
+      "original": {
+        "sha256": "70847dd431d2903753c0768766fe819d0b55ce6de87992fc9eb7280dc067f388",
+        "bytes": 3845,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "70847dd431d2903753c0768766fe819d0b55ce6de87992fc9eb7280dc067f388",
+        "bytes": 3845,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0026-boundary-picker-visual-context.jpg",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0026-boundary-picker-visual-context.jpg",
+      "original": {
+        "sha256": "3658123f7fe575b0b79d436c20646fa4412a031dbffc44257de73068a5e31e40",
+        "bytes": 185015,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "3658123f7fe575b0b79d436c20646fa4412a031dbffc44257de73068a5e31e40",
+        "bytes": 185015,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "unchanged original JPEG bytes",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0028-boundary-7-selected-ax.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0028-boundary-7-selected-ax.txt",
+      "original": {
+        "sha256": "e90d8c8f4c8ed0fbcab72d4af28e8c1dd086b3e37172673866cfaf2b1941550d",
+        "bytes": 4085,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e90d8c8f4c8ed0fbcab72d4af28e8c1dd086b3e37172673866cfaf2b1941550d",
+        "bytes": 4085,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0030-framed-reopened-P0-before-edit-ax.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0030-framed-reopened-P0-before-edit-ax.txt",
+      "original": {
+        "sha256": "e90d8c8f4c8ed0fbcab72d4af28e8c1dd086b3e37172673866cfaf2b1941550d",
+        "bytes": 4085,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e90d8c8f4c8ed0fbcab72d4af28e8c1dd086b3e37172673866cfaf2b1941550d",
+        "bytes": 4085,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0030-framed-reopened-P0-before-edit.jpg",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0030-framed-reopened-P0-before-edit.jpg",
+      "original": {
+        "sha256": "4297081c5944b0b36bdced362b085ab236eff39a22f50917b8e64ee2c682cf7e",
+        "bytes": 174166,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "4297081c5944b0b36bdced362b085ab236eff39a22f50917b8e64ee2c682cf7e",
+        "bytes": 174166,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "unchanged original JPEG bytes",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0032-reopened-edit-R4-ax.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0032-reopened-edit-R4-ax.txt",
+      "original": {
+        "sha256": "2e58ca9d0956ba3b46ffb98b0927b1add7c8fda42c8ca192156dbfa6bae901f6",
+        "bytes": 4081,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "2e58ca9d0956ba3b46ffb98b0927b1add7c8fda42c8ca192156dbfa6bae901f6",
+        "bytes": 4081,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0032-reopened-edit-R4.jpg",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0032-reopened-edit-R4.jpg",
+      "original": {
+        "sha256": "eee4142451e5497f35445ad75a73156032d07299ad2c6daa6ddefc7ad85ec268",
+        "bytes": 175868,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "eee4142451e5497f35445ad75a73156032d07299ad2c6daa6ddefc7ad85ec268",
+        "bytes": 175868,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "unchanged original JPEG bytes",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0034-reopened-edit-R4-saved-ax.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0034-reopened-edit-R4-saved-ax.txt",
+      "original": {
+        "sha256": "7e88ff9735410b7dfb62f186410176722b555047d6dc3eb69ed4993a843c8bbc",
+        "bytes": 4074,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "7e88ff9735410b7dfb62f186410176722b555047d6dc3eb69ed4993a843c8bbc",
+        "bytes": 4074,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/observations/0034-reopened-edit-R4-saved.jpg",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/observations/0034-reopened-edit-R4-saved.jpg",
+      "original": {
+        "sha256": "6f085bd9439313cf5cb4ffb50d2823798547e0f6290ba96c6b49f8e1b29d6846",
+        "bytes": 173813,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "6f085bd9439313cf5cb4ffb50d2823798547e0f6290ba96c6b49f8e1b29d6846",
+        "bytes": 173813,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "unchanged original JPEG bytes",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/BOUNDARY-SELECTION-COORDINATES.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/BOUNDARY-SELECTION-COORDINATES.json",
+      "original": {
+        "sha256": "23dc2bb1973e0efa5a163c277b14bb32f1c972c1ae42873e3d592f7dade70fb6",
+        "bytes": 238,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "23dc2bb1973e0efa5a163c277b14bb32f1c972c1ae42873e3d592f7dade70fb6",
+        "bytes": 238,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/CASE-START.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/CASE-START.json",
+      "original": {
+        "sha256": "83ad2a387ab5e9b072d2a3b47b32c37a3a1f70cab03ca769c13810b90588f073",
+        "bytes": 421,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "83ad2a387ab5e9b072d2a3b47b32c37a3a1f70cab03ca769c13810b90588f073",
+        "bytes": 421,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/CLI-PREP.stderr",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/CLI-PREP.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/CLI-PREP.stdout",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/CLI-PREP.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/CREATION-DRAG-COORDINATES.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/CREATION-DRAG-COORDINATES.json",
+      "original": {
+        "sha256": "34c207f8048c2ec750cba732dc851bc9a35a6632acd9880e331c833fcd94bf09",
+        "bytes": 420,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "34c207f8048c2ec750cba732dc851bc9a35a6632acd9880e331c833fcd94bf09",
+        "bytes": 420,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/CUA-PHASE-1-END.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/CUA-PHASE-1-END.json",
+      "original": {
+        "sha256": "0d08464902346f0716ced4758aca91ffbbfc1d4b5f909961325745b6ce8fe522",
+        "bytes": 301,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "0d08464902346f0716ced4758aca91ffbbfc1d4b5f909961325745b6ce8fe522",
+        "bytes": 301,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/CUA-PHASE-2-END.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/CUA-PHASE-2-END.json",
+      "original": {
+        "sha256": "70f383603beea86541433a5e88510f95e4c78a4d6cd0ccc68ed5b0dec760130c",
+        "bytes": 355,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "70f383603beea86541433a5e88510f95e4c78a4d6cd0ccc68ed5b0dec760130c",
+        "bytes": 355,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/LAUNCH-1.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/LAUNCH-1.json",
+      "original": {
+        "sha256": "cc6dd3867ac8dd0f1e954b918aa4448991a7bbcaa0a34601e77b68cea5f8ab87",
+        "bytes": 946,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "5e02947d3b0bda09a69fec1945cd0aafa1b46d355096e428ed3960a397e884c2",
+        "bytes": 718,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 4,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/LAUNCH-2.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/LAUNCH-2.json",
+      "original": {
+        "sha256": "68df2efc2067846062748899514c99e4271f7c7ddf16187b26f489eba3ba8ee5",
+        "bytes": 953,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "837174e0d118d96102f166619e617c2773bcb4ddd4688022d322c438186562e8",
+        "bytes": 725,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 4,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/POST-CASE-CLEANUP-AND-SOURCE-GUARD.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/POST-CASE-CLEANUP-AND-SOURCE-GUARD.json",
+      "original": {
+        "sha256": "671b58363af4eccc813fb06ef619ae880bc445dffcbf677259b56c9992b57fc5",
+        "bytes": 872,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "671b58363af4eccc813fb06ef619ae880bc445dffcbf677259b56c9992b57fc5",
+        "bytes": 872,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/POST-PHASE-1-ABSENCE.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/POST-PHASE-1-ABSENCE.json",
+      "original": {
+        "sha256": "e8fe02397a53bc8492e6664f40f3682e1542f4a28df54a816f2673e253259d4d",
+        "bytes": 223,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e8fe02397a53bc8492e6664f40f3682e1542f4a28df54a816f2673e253259d4d",
+        "bytes": 223,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/RECORDER-CLOCK-QUALIFICATION-001.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/RECORDER-CLOCK-QUALIFICATION-001.json",
+      "original": {
+        "sha256": "65d967e18eb979143f197db43d3c7b2fa62a1a62f761729877204f1b09dbf18c",
+        "bytes": 223,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "65d967e18eb979143f197db43d3c7b2fa62a1a62f761729877204f1b09dbf18c",
+        "bytes": 223,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/RECORDER-CLOCK-QUALIFICATION-002.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/RECORDER-CLOCK-QUALIFICATION-002.json",
+      "original": {
+        "sha256": "540077fb0c668104645970cc31edce95561cdf16ecb2fca1659aa77f4397919f",
+        "bytes": 241,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "540077fb0c668104645970cc31edce95561cdf16ecb2fca1659aa77f4397919f",
+        "bytes": 241,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/RECORDER-ERROR-001.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/RECORDER-ERROR-001.json",
+      "original": {
+        "sha256": "72a5e018082c0385d940625e7e723a7ff8240b2ee9a2cf602f7dede6ae9f00be",
+        "bytes": 209,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "72a5e018082c0385d940625e7e723a7ff8240b2ee9a2cf602f7dede6ae9f00be",
+        "bytes": 209,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/RECORDER-ERROR-002.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/RECORDER-ERROR-002.json",
+      "original": {
+        "sha256": "121e6588ad7e1d7d455fe9e956b1196e62adb5ab83c785d5da9640d36fd9637c",
+        "bytes": 169,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "121e6588ad7e1d7d455fe9e956b1196e62adb5ab83c785d5da9640d36fd9637c",
+        "bytes": 169,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/RECORDER-ERROR-003.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/RECORDER-ERROR-003.json",
+      "original": {
+        "sha256": "b1e554a84a559771b6cce5e57fa26c93dfca569707cd2454ca7d599a3a610102",
+        "bytes": 190,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "b1e554a84a559771b6cce5e57fa26c93dfca569707cd2454ca7d599a3a610102",
+        "bytes": 190,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/REOPENED-POINT-DRAG-COORDINATES.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/REOPENED-POINT-DRAG-COORDINATES.json",
+      "original": {
+        "sha256": "5d8732ce1aefe5f2678815d5627459c1147d353cd6b499ad3b9194292c2c48d5",
+        "bytes": 412,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "5d8732ce1aefe5f2678815d5627459c1147d353cd6b499ad3b9194292c2c48d5",
+        "bytes": 412,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/native-1.stderr",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/native-1.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/native-1.stdout",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/native-1.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/native-2.stderr",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/native-2.stderr",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/process/native-2.stdout",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/process/native-2.stdout",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/snapshots/created-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/snapshots/created-receipt.json",
+      "original": {
+        "sha256": "afc9245aad507ea65137aece3d062d1c55430754b7ba0697335fbcb19be61733",
+        "bytes": 340,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "afc9245aad507ea65137aece3d062d1c55430754b7ba0697335fbcb19be61733",
+        "bytes": 340,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/snapshots/created.weftforge",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/snapshots/created.weftforge",
+      "original": {
+        "sha256": "ade00e7b2b5cf1ce050dbcaaea310419f5945aea95a99c7f2255ea4ee96f8132",
+        "bytes": 3229,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "ade00e7b2b5cf1ce050dbcaaea310419f5945aea95a99c7f2255ea4ee96f8132",
+        "bytes": 3229,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/snapshots/redo-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/snapshots/redo-receipt.json",
+      "original": {
+        "sha256": "76dadf71253c1e24372c56d16917bc2d877a59b79f510a5160e3f80bb8b91464",
+        "bytes": 228,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "76dadf71253c1e24372c56d16917bc2d877a59b79f510a5160e3f80bb8b91464",
+        "bytes": 228,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/snapshots/redo.weftforge",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/snapshots/redo.weftforge",
+      "original": {
+        "sha256": "3a1055029c3a013a31ea5d558f5de8cfe2194eb3d6de05399fe9fa831c30cfb3",
+        "bytes": 3229,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "3a1055029c3a013a31ea5d558f5de8cfe2194eb3d6de05399fe9fa831c30cfb3",
+        "bytes": 3229,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/snapshots/reopened-edit-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/snapshots/reopened-edit-receipt.json",
+      "original": {
+        "sha256": "56ba011089f95fb70d6d2d1a75a205bbffdae7b241c9b0d104e684367ab8d88d",
+        "bytes": 260,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "56ba011089f95fb70d6d2d1a75a205bbffdae7b241c9b0d104e684367ab8d88d",
+        "bytes": 260,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/snapshots/reopened-edit.weftforge",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/snapshots/reopened-edit.weftforge",
+      "original": {
+        "sha256": "cb6243e904bd9d39b5f9426f1b63c69d412dc8c8af50f42d66a114feaa2d16a0",
+        "bytes": 3229,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "cb6243e904bd9d39b5f9426f1b63c69d412dc8c8af50f42d66a114feaa2d16a0",
+        "bytes": 3229,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/snapshots/undo-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/snapshots/undo-receipt.json",
+      "original": {
+        "sha256": "54c5f33052daf0dade019d85aad9340a816556ee50749d006489a2a1257a4fb0",
+        "bytes": 229,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "54c5f33052daf0dade019d85aad9340a816556ee50749d006489a2a1257a4fb0",
+        "bytes": 229,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/snapshots/undo.weftforge",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/snapshots/undo.weftforge",
+      "original": {
+        "sha256": "d59ca698bf4e6ec3b33848166e4f81a890fa46a650edc3580134b285ef7874cb",
+        "bytes": 1978,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "d59ca698bf4e6ec3b33848166e4f81a890fa46a650edc3580134b285ef7874cb",
+        "bytes": 1978,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0001-bind-owned-P1-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0001-bind-owned-P1-after.json",
+      "original": {
+        "sha256": "bcc7740b6e67158e6b78a267e2dab613d110422e948fbe196292b4436054107f",
+        "bytes": 163,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "bcc7740b6e67158e6b78a267e2dab613d110422e948fbe196292b4436054107f",
+        "bytes": 163,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0001-bind-owned-P1-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0001-bind-owned-P1-before.json",
+      "original": {
+        "sha256": "6a913796b327fa939893f0d872f10d971bc50041979e91066e025879549cb350",
+        "bytes": 141,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "6a913796b327fa939893f0d872f10d971bc50041979e91066e025879549cb350",
+        "bytes": 141,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0002-raise-owned-P1-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0002-raise-owned-P1-after.json",
+      "original": {
+        "sha256": "b0397f960c9aeb886488d5f787cc9e1c0dbb7b2c68aab8e40721adffe17450fb",
+        "bytes": 167,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "b0397f960c9aeb886488d5f787cc9e1c0dbb7b2c68aab8e40721adffe17450fb",
+        "bytes": 167,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0002-raise-owned-P1-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0002-raise-owned-P1-before.json",
+      "original": {
+        "sha256": "83461d70cc70dc72126bed2db29959f48aa3a41a44cc1d1f10f765c22457dbd4",
+        "bytes": 142,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "83461d70cc70dc72126bed2db29959f48aa3a41a44cc1d1f10f765c22457dbd4",
+        "bytes": 142,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0003-initial-empty-after-raise-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0003-initial-empty-after-raise-after.json",
+      "original": {
+        "sha256": "7a8f2db803984511f910b4d04637195551be058c6e2001ffa1b0f686abf35d49",
+        "bytes": 175,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "7a8f2db803984511f910b4d04637195551be058c6e2001ffa1b0f686abf35d49",
+        "bytes": 175,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0003-initial-empty-after-raise-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0003-initial-empty-after-raise-before.json",
+      "original": {
+        "sha256": "a4f291342d6faca4e16b4b7a9fe0be7ae77037c813b5355c61133ba38b460423",
+        "bytes": 152,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "a4f291342d6faca4e16b4b7a9fe0be7ae77037c813b5355c61133ba38b460423",
+        "bytes": 152,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0004-select-Rectangle-tool-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0004-select-Rectangle-tool-after.json",
+      "original": {
+        "sha256": "03beaf9a5fec605c2c0ebaabf62226acedec3e8148549f1c4a4d25b844e2cf6b",
+        "bytes": 174,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "03beaf9a5fec605c2c0ebaabf62226acedec3e8148549f1c4a4d25b844e2cf6b",
+        "bytes": 174,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0004-select-Rectangle-tool-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0004-select-Rectangle-tool-before.json",
+      "original": {
+        "sha256": "dcdfb314f92163dbd8f654aa689db34319b28241a3d10ced3548f791af4748d4",
+        "bytes": 149,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "dcdfb314f92163dbd8f654aa689db34319b28241a3d10ced3548f791af4748d4",
+        "bytes": 149,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0005-Rectangle-mode-before-drag-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0005-Rectangle-mode-before-drag-after.json",
+      "original": {
+        "sha256": "95839bb6683117f855910312c46ccd8a46b2a419731711ef049d2f144b0b5236",
+        "bytes": 176,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "95839bb6683117f855910312c46ccd8a46b2a419731711ef049d2f144b0b5236",
+        "bytes": 176,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0005-Rectangle-mode-before-drag-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0005-Rectangle-mode-before-drag-before.json",
+      "original": {
+        "sha256": "e7e5996515b6a818f513cd6fc3b8197d9d97e59063a2aeeb48d210d776ac9ad1",
+        "bytes": 154,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e7e5996515b6a818f513cd6fc3b8197d9d97e59063a2aeeb48d210d776ac9ad1",
+        "bytes": 154,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0006-one-Rectangle-drag-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0006-one-Rectangle-drag-after.json",
+      "original": {
+        "sha256": "89200954ebe0d1727f02218249717c8c40018242af00b7a9a7eed41d17b335c1",
+        "bytes": 171,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "89200954ebe0d1727f02218249717c8c40018242af00b7a9a7eed41d17b335c1",
+        "bytes": 171,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0006-one-Rectangle-drag-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0006-one-Rectangle-drag-before.json",
+      "original": {
+        "sha256": "0f26ce39c15db3aa8bc3232f3f17ef7b3f7cb1b8364a506cfc7ee74e4abcbd25",
+        "bytes": 146,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "0f26ce39c15db3aa8bc3232f3f17ef7b3f7cb1b8364a506cfc7ee74e4abcbd25",
+        "bytes": 146,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0007-after-one-Rectangle-drag-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0007-after-one-Rectangle-drag-after.json",
+      "original": {
+        "sha256": "46553bc9b550ff67ca7bba1448b411e2d7ca4dd87a469d809d0328f0bd87fa6a",
+        "bytes": 174,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "46553bc9b550ff67ca7bba1448b411e2d7ca4dd87a469d809d0328f0bd87fa6a",
+        "bytes": 174,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0007-after-one-Rectangle-drag-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0007-after-one-Rectangle-drag-before.json",
+      "original": {
+        "sha256": "950e0a8137f8a3d05761f79e35260aa4c54270ae1e65dd64f57e1c34a9eb028b",
+        "bytes": 152,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "950e0a8137f8a3d05761f79e35260aa4c54270ae1e65dd64f57e1c34a9eb028b",
+        "bytes": 152,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0008-save-created-R1-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0008-save-created-R1-after.json",
+      "original": {
+        "sha256": "e73831445090015cec4f22a699d83beef71b1c946f5bdd3478491ad8f8335b5d",
+        "bytes": 168,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e73831445090015cec4f22a699d83beef71b1c946f5bdd3478491ad8f8335b5d",
+        "bytes": 168,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0008-save-created-R1-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0008-save-created-R1-before.json",
+      "original": {
+        "sha256": "c874b45e87fa19181f7acd25691f3d1d9e07cfdb8b3125b09b7884e59cdf5d49",
+        "bytes": 143,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "c874b45e87fa19181f7acd25691f3d1d9e07cfdb8b3125b09b7884e59cdf5d49",
+        "bytes": 143,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0009-created-R1-saved-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0009-created-R1-saved-after.json",
+      "original": {
+        "sha256": "7bb7e3fd95ec67e1bc389c21ac50450e827e2d5a1cc9b53422907c26350d8e2a",
+        "bytes": 166,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "7bb7e3fd95ec67e1bc389c21ac50450e827e2d5a1cc9b53422907c26350d8e2a",
+        "bytes": 166,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0009-created-R1-saved-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0009-created-R1-saved-before.json",
+      "original": {
+        "sha256": "d22b70b08332f6b18e7e50c96276b99eda57e81ed8827e5a5a6d093d6599071d",
+        "bytes": 144,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "d22b70b08332f6b18e7e50c96276b99eda57e81ed8827e5a5a6d093d6599071d",
+        "bytes": 144,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0010-one-native-Undo-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0010-one-native-Undo-after.json",
+      "original": {
+        "sha256": "c13aa60cd7108d14c1f3da94146c84ce147319b87656a4b91ee958b7b5d8c206",
+        "bytes": 169,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "c13aa60cd7108d14c1f3da94146c84ce147319b87656a4b91ee958b7b5d8c206",
+        "bytes": 169,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0010-one-native-Undo-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0010-one-native-Undo-before.json",
+      "original": {
+        "sha256": "2d8f4b5d1fe0eb2ceb117f9de9666a61e16fe54e56deda7de5292bfb5b8ab927",
+        "bytes": 144,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "2d8f4b5d1fe0eb2ceb117f9de9666a61e16fe54e56deda7de5292bfb5b8ab927",
+        "bytes": 144,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0011-after-one-Undo-R2-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0011-after-one-Undo-R2-after.json",
+      "original": {
+        "sha256": "02ddf3569b1e326cd33a5774e3cc6600d997803af58f3ac4929ec303e69f493b",
+        "bytes": 168,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "02ddf3569b1e326cd33a5774e3cc6600d997803af58f3ac4929ec303e69f493b",
+        "bytes": 168,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0011-after-one-Undo-R2-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0011-after-one-Undo-R2-before.json",
+      "original": {
+        "sha256": "a22fb3654417def38f997c1699e4fd8aa372b20e24f952e35d7deaaa064b7b88",
+        "bytes": 146,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "a22fb3654417def38f997c1699e4fd8aa372b20e24f952e35d7deaaa064b7b88",
+        "bytes": 146,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0012-save-Undo-R2-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0012-save-Undo-R2-after.json",
+      "original": {
+        "sha256": "0847f39dfc38fa84c586411a4b121f12f52683e7a86b5c937c3e83990e9675e9",
+        "bytes": 166,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "0847f39dfc38fa84c586411a4b121f12f52683e7a86b5c937c3e83990e9675e9",
+        "bytes": 166,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0012-save-Undo-R2-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0012-save-Undo-R2-before.json",
+      "original": {
+        "sha256": "bce74da1956cc30c4b9734b59882f3ab9de6c059baf5a250f0436ff115796cee",
+        "bytes": 141,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "bce74da1956cc30c4b9734b59882f3ab9de6c059baf5a250f0436ff115796cee",
+        "bytes": 141,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0013-Undo-R2-saved-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0013-Undo-R2-saved-after.json",
+      "original": {
+        "sha256": "bc53d573b061cecaba443d16e61ef2c40e304b1b87a2c1616b6329700d08f918",
+        "bytes": 164,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "bc53d573b061cecaba443d16e61ef2c40e304b1b87a2c1616b6329700d08f918",
+        "bytes": 164,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0013-Undo-R2-saved-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0013-Undo-R2-saved-before.json",
+      "original": {
+        "sha256": "b4b3e9ad240b7aea32604c087a3799f5311a1833619c5064044cd68fe79368fd",
+        "bytes": 142,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "b4b3e9ad240b7aea32604c087a3799f5311a1833619c5064044cd68fe79368fd",
+        "bytes": 142,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0014-one-native-Redo-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0014-one-native-Redo-after.json",
+      "original": {
+        "sha256": "97c03c4856cc65474f77be69a2e99e59657f0b3ea654fc9dc728b178141a6f34",
+        "bytes": 169,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "97c03c4856cc65474f77be69a2e99e59657f0b3ea654fc9dc728b178141a6f34",
+        "bytes": 169,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0014-one-native-Redo-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0014-one-native-Redo-before.json",
+      "original": {
+        "sha256": "2faa0e2c574f520a29c1f07b869b255185336d1f707e3ac2f2118fe71ef14ea8",
+        "bytes": 144,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "2faa0e2c574f520a29c1f07b869b255185336d1f707e3ac2f2118fe71ef14ea8",
+        "bytes": 144,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0015-after-one-Redo-R3-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0015-after-one-Redo-R3-after.json",
+      "original": {
+        "sha256": "83bf669e2835d92f781ca9f1b382020ede312623541a472adf64e9fb3e2dd362",
+        "bytes": 168,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "83bf669e2835d92f781ca9f1b382020ede312623541a472adf64e9fb3e2dd362",
+        "bytes": 168,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0015-after-one-Redo-R3-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0015-after-one-Redo-R3-before.json",
+      "original": {
+        "sha256": "c50d176967a6f2b1c42e975e6d281afccc77aa64c562e1a8d2140ee02bd9a3f4",
+        "bytes": 146,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "c50d176967a6f2b1c42e975e6d281afccc77aa64c562e1a8d2140ee02bd9a3f4",
+        "bytes": 146,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0016-save-Redo-R3-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0016-save-Redo-R3-after.json",
+      "original": {
+        "sha256": "1b538b3bb72f56566d123c49649ab36977d2fffac2e9822fc318d24c88b64d2c",
+        "bytes": 166,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "1b538b3bb72f56566d123c49649ab36977d2fffac2e9822fc318d24c88b64d2c",
+        "bytes": 166,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0016-save-Redo-R3-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0016-save-Redo-R3-before.json",
+      "original": {
+        "sha256": "8ea4c870afad8bdaa49177e21fdff873de123d4d4deedaca1196d9e55b7af98e",
+        "bytes": 141,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "8ea4c870afad8bdaa49177e21fdff873de123d4d4deedaca1196d9e55b7af98e",
+        "bytes": 141,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0017-Redo-R3-saved-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0017-Redo-R3-saved-after.json",
+      "original": {
+        "sha256": "c8c2f9a8980b6827731f0761d189bf017dcde1805f57bc683ed87353f6ea4374",
+        "bytes": 164,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "c8c2f9a8980b6827731f0761d189bf017dcde1805f57bc683ed87353f6ea4374",
+        "bytes": 164,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0017-Redo-R3-saved-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0017-Redo-R3-saved-before.json",
+      "original": {
+        "sha256": "835fb4d3c34517707fdc130b27e2a98549302dc45e5d17156bb7316773feb8bd",
+        "bytes": 141,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "835fb4d3c34517707fdc130b27e2a98549302dc45e5d17156bb7316773feb8bd",
+        "bytes": 141,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0018-quit-owned-P1-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0018-quit-owned-P1-after.json",
+      "original": {
+        "sha256": "0b26474958b0308fd98345b1c1a36fdbdb0aa5fb8d58eea3a6b83bb982d9d9aa",
+        "bytes": 167,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "0b26474958b0308fd98345b1c1a36fdbdb0aa5fb8d58eea3a6b83bb982d9d9aa",
+        "bytes": 167,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0018-quit-owned-P1-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0018-quit-owned-P1-before.json",
+      "original": {
+        "sha256": "d08e18d7b0ee21752bd8e4b03bddc993e126b85dfebaca8580f82f8aca303990",
+        "bytes": 143,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "d08e18d7b0ee21752bd8e4b03bddc993e126b85dfebaca8580f82f8aca303990",
+        "bytes": 143,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0019-bind-owned-P2-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0019-bind-owned-P2-after.json",
+      "original": {
+        "sha256": "3bf9ea89fa1015fdabf042350a4b62f2a3ccd2ad7a7757cab16df13804afb9ba",
+        "bytes": 164,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "3bf9ea89fa1015fdabf042350a4b62f2a3ccd2ad7a7757cab16df13804afb9ba",
+        "bytes": 164,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0019-bind-owned-P2-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0019-bind-owned-P2-before.json",
+      "original": {
+        "sha256": "6530ae229981c89a6eaa6635a06513f01b7f81d987f3113b8c2b09e7c4472051",
+        "bytes": 142,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "6530ae229981c89a6eaa6635a06513f01b7f81d987f3113b8c2b09e7c4472051",
+        "bytes": 142,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0020-raise-owned-P2-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0020-raise-owned-P2-after.json",
+      "original": {
+        "sha256": "0dd55f99a2627a86eb6e90ba759f699798096ed165d4ba70c5ed54eb5aa36fad",
+        "bytes": 168,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "0dd55f99a2627a86eb6e90ba759f699798096ed165d4ba70c5ed54eb5aa36fad",
+        "bytes": 168,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0020-raise-owned-P2-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0020-raise-owned-P2-before.json",
+      "original": {
+        "sha256": "2c6ecaca213fe9a8c40c4523d1fa9c0a396cc06d70ce8b3b989d2623b32c3182",
+        "bytes": 144,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "2c6ecaca213fe9a8c40c4523d1fa9c0a396cc06d70ce8b3b989d2623b32c3182",
+        "bytes": 144,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0021-fresh-P2-reopened-R3-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0021-fresh-P2-reopened-R3-after.json",
+      "original": {
+        "sha256": "44106c0aec5f6078d80f76a8daa88aa102734b8b77a3d0f262dda55c613a5ad0",
+        "bytes": 171,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "44106c0aec5f6078d80f76a8daa88aa102734b8b77a3d0f262dda55c613a5ad0",
+        "bytes": 171,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0021-fresh-P2-reopened-R3-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0021-fresh-P2-reopened-R3-before.json",
+      "original": {
+        "sha256": "3b679afc4f8ffff0be7d6b272f65412350488c346a4abaa1a0a23faae8d4f1b4",
+        "bytes": 150,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "3b679afc4f8ffff0be7d6b272f65412350488c346a4abaa1a0a23faae8d4f1b4",
+        "bytes": 150,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0022-select-reopened-piece-2-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0022-select-reopened-piece-2-after.json",
+      "original": {
+        "sha256": "8962d7fbd35ac2f025a2ba2c7a71fb0e26792f8397cbb6bd03da8323828ef1e5",
+        "bytes": 177,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "8962d7fbd35ac2f025a2ba2c7a71fb0e26792f8397cbb6bd03da8323828ef1e5",
+        "bytes": 177,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0022-select-reopened-piece-2-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0022-select-reopened-piece-2-before.json",
+      "original": {
+        "sha256": "2cf9c1a25d1e5b2a95e136a34b2867403d9b22f4892344aa980f1bea31dd2a54",
+        "bytes": 152,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "2cf9c1a25d1e5b2a95e136a34b2867403d9b22f4892344aa980f1bea31dd2a54",
+        "bytes": 152,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0023-reopened-piece-selected-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0023-reopened-piece-selected-after.json",
+      "original": {
+        "sha256": "bf946af2b64cceb34ac0febccf5ab1991aa8c2c128a2a0722a45073f2e81d961",
+        "bytes": 174,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "bf946af2b64cceb34ac0febccf5ab1991aa8c2c128a2a0722a45073f2e81d961",
+        "bytes": 174,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0023-reopened-piece-selected-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0023-reopened-piece-selected-before.json",
+      "original": {
+        "sha256": "26827a775851d34fe8ce5411ac3a9d6282211576327c0f8352ad375c3f605eac",
+        "bytes": 153,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "26827a775851d34fe8ce5411ac3a9d6282211576327c0f8352ad375c3f605eac",
+        "bytes": 153,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0024-open-boundary-picker-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0024-open-boundary-picker-after.json",
+      "original": {
+        "sha256": "a1f8ae3fe8aa17c8acdf6252010f8f0a8f7cb0ed096dafbad5f1078eb6e3a8e8",
+        "bytes": 174,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "a1f8ae3fe8aa17c8acdf6252010f8f0a8f7cb0ed096dafbad5f1078eb6e3a8e8",
+        "bytes": 174,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0024-open-boundary-picker-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0024-open-boundary-picker-before.json",
+      "original": {
+        "sha256": "34970349c9d5b0ae3222bf76a4b7bdf158764b22fb20bddd3f45dc8e5d71e3a0",
+        "bytes": 150,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "34970349c9d5b0ae3222bf76a4b7bdf158764b22fb20bddd3f45dc8e5d71e3a0",
+        "bytes": 150,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0025-boundary-picker-open-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0025-boundary-picker-open-after.json",
+      "original": {
+        "sha256": "21b4719e1155a09f40e768606b1ca179d676948ffc06627b355e1ff58d84a67c",
+        "bytes": 171,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "21b4719e1155a09f40e768606b1ca179d676948ffc06627b355e1ff58d84a67c",
+        "bytes": 171,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0025-boundary-picker-open-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0025-boundary-picker-open-before.json",
+      "original": {
+        "sha256": "bdd7e37ac73e8cc2c42e1b8c36e4b514b61075536a4beefb99f241c2a2291f9e",
+        "bytes": 150,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "bdd7e37ac73e8cc2c42e1b8c36e4b514b61075536a4beefb99f241c2a2291f9e",
+        "bytes": 150,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0026-boundary-picker-visual-context-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0026-boundary-picker-visual-context-after.json",
+      "original": {
+        "sha256": "3d00476a1c9911d91f8fde8a4130bfe81f253575aaf0b063bd8fb4b2abe45b3a",
+        "bytes": 177,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "3d00476a1c9911d91f8fde8a4130bfe81f253575aaf0b063bd8fb4b2abe45b3a",
+        "bytes": 177,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0026-boundary-picker-visual-context-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0026-boundary-picker-visual-context-before.json",
+      "original": {
+        "sha256": "5184441ea3614082f0b7b1fc81fea361ffe1ed478e2ee77cdad891bebfa1ef5c",
+        "bytes": 160,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "5184441ea3614082f0b7b1fc81fea361ffe1ed478e2ee77cdad891bebfa1ef5c",
+        "bytes": 160,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0027-choose-boundary-7-visible-row-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0027-choose-boundary-7-visible-row-after.json",
+      "original": {
+        "sha256": "6e6ce9225a641c647bb445ce166d010f4a9bb8cb76615a1d38bc7fc2a303e93e",
+        "bytes": 183,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "6e6ce9225a641c647bb445ce166d010f4a9bb8cb76615a1d38bc7fc2a303e93e",
+        "bytes": 183,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0027-choose-boundary-7-visible-row-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0027-choose-boundary-7-visible-row-before.json",
+      "original": {
+        "sha256": "b28dc4b0e728eeb4ab1e0f720d9f12436fb5bcfb571a6828af619972cd4151ac",
+        "bytes": 159,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "b28dc4b0e728eeb4ab1e0f720d9f12436fb5bcfb571a6828af619972cd4151ac",
+        "bytes": 159,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0028-boundary-7-selected-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0028-boundary-7-selected-after.json",
+      "original": {
+        "sha256": "9ddbd8a4e99daa6fbbf0a7e39b7e63fbb8ddaeaafb3f2ed3c140b6f92af0cc28",
+        "bytes": 170,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "9ddbd8a4e99daa6fbbf0a7e39b7e63fbb8ddaeaafb3f2ed3c140b6f92af0cc28",
+        "bytes": 170,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0028-boundary-7-selected-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0028-boundary-7-selected-before.json",
+      "original": {
+        "sha256": "4d8e16fcb15a03045ad7e4fe93ebbe248556bf45234c3b792814206532317788",
+        "bytes": 149,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "4d8e16fcb15a03045ad7e4fe93ebbe248556bf45234c3b792814206532317788",
+        "bytes": 149,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0029-Frame-all-once-after-reopen-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0029-Frame-all-once-after-reopen-after.json",
+      "original": {
+        "sha256": "e9b1025f0be7ddef7fa87067ea2e599ba6891b3200ef1bd7a713eaf4328a83e3",
+        "bytes": 181,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e9b1025f0be7ddef7fa87067ea2e599ba6891b3200ef1bd7a713eaf4328a83e3",
+        "bytes": 181,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0029-Frame-all-once-after-reopen-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0029-Frame-all-once-after-reopen-before.json",
+      "original": {
+        "sha256": "8d223e35fdbc5d63380a363d3fdc789961bca72ff23f920920d2209de99761dd",
+        "bytes": 157,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "8d223e35fdbc5d63380a363d3fdc789961bca72ff23f920920d2209de99761dd",
+        "bytes": 157,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0030-framed-reopened-P0-before-edit-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0030-framed-reopened-P0-before-edit-after.json",
+      "original": {
+        "sha256": "4b2cf5edeeb218270cf040521749ea30d5323d0e612291ab0d287d19983d8e99",
+        "bytes": 181,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "4b2cf5edeeb218270cf040521749ea30d5323d0e612291ab0d287d19983d8e99",
+        "bytes": 181,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0030-framed-reopened-P0-before-edit-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0030-framed-reopened-P0-before-edit-before.json",
+      "original": {
+        "sha256": "0201aec067666b5835d62d2d238b619857f8c6540d464112c712cd774c55d21e",
+        "bytes": 160,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "0201aec067666b5835d62d2d238b619857f8c6540d464112c712cd774c55d21e",
+        "bytes": 160,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0031-one-reopened-P0-left-10mm-drag-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0031-one-reopened-P0-left-10mm-drag-after.json",
+      "original": {
+        "sha256": "b0dacee0d4c91cc8d27dc5de7a7ba77b319dfd9a7e1d5c785e6ea1f8bf1fe4be",
+        "bytes": 184,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "b0dacee0d4c91cc8d27dc5de7a7ba77b319dfd9a7e1d5c785e6ea1f8bf1fe4be",
+        "bytes": 184,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0031-one-reopened-P0-left-10mm-drag-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0031-one-reopened-P0-left-10mm-drag-before.json",
+      "original": {
+        "sha256": "5950e3990287461d641f52393e613ad116729f9530d7a5996c90dfbb4b672667",
+        "bytes": 160,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "5950e3990287461d641f52393e613ad116729f9530d7a5996c90dfbb4b672667",
+        "bytes": 160,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0032-reopened-edit-R4-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0032-reopened-edit-R4-after.json",
+      "original": {
+        "sha256": "ac8ad2d7ce5700d8020749473941b57bbee66a274817009ef49a29fb320fd4f2",
+        "bytes": 167,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "ac8ad2d7ce5700d8020749473941b57bbee66a274817009ef49a29fb320fd4f2",
+        "bytes": 167,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0032-reopened-edit-R4-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0032-reopened-edit-R4-before.json",
+      "original": {
+        "sha256": "6a578e52cf1c8f9c73c6d145d14425b2f0a803bf682565cf1d5e9d82d90f4097",
+        "bytes": 146,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "6a578e52cf1c8f9c73c6d145d14425b2f0a803bf682565cf1d5e9d82d90f4097",
+        "bytes": 146,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0033-save-reopened-edit-R4-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0033-save-reopened-edit-R4-after.json",
+      "original": {
+        "sha256": "cac5c23ad114df1f40956110dd10cf79129467d1de4210977134f8770a0044a1",
+        "bytes": 175,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "cac5c23ad114df1f40956110dd10cf79129467d1de4210977134f8770a0044a1",
+        "bytes": 175,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0033-save-reopened-edit-R4-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0033-save-reopened-edit-R4-before.json",
+      "original": {
+        "sha256": "c835a614834a840e89a3669a078b8251104b92a3a10b3ce6624152bb0aa8b9b3",
+        "bytes": 150,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "c835a614834a840e89a3669a078b8251104b92a3a10b3ce6624152bb0aa8b9b3",
+        "bytes": 150,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0034-reopened-edit-R4-saved-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0034-reopened-edit-R4-saved-after.json",
+      "original": {
+        "sha256": "9f1d8e668cc8ac3542a9784c33ce6e9f864d3ce35bbd6305520f5bb7e15e5adf",
+        "bytes": 173,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "9f1d8e668cc8ac3542a9784c33ce6e9f864d3ce35bbd6305520f5bb7e15e5adf",
+        "bytes": 173,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0034-reopened-edit-R4-saved-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0034-reopened-edit-R4-saved-before.json",
+      "original": {
+        "sha256": "f71fa09804c914a5e672747101a2d354f92550bbcaf644e59f1fad244b1d28ab",
+        "bytes": 152,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "f71fa09804c914a5e672747101a2d354f92550bbcaf644e59f1fad244b1d28ab",
+        "bytes": 152,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0035-quit-owned-P2-after.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0035-quit-owned-P2-after.json",
+      "original": {
+        "sha256": "df43b7f9c202500681dd567b2eebb79284df89c72958cfd3aa5b5937d3d023f2",
+        "bytes": 167,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "df43b7f9c202500681dd567b2eebb79284df89c72958cfd3aa5b5937d3d023f2",
+        "bytes": 167,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/trace/0035-quit-owned-P2-before.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/trace/0035-quit-owned-P2-before.json",
+      "original": {
+        "sha256": "ec45875089599a53076f3bc63f940afe473614cc6397cf3f73ae2c6b7ed26b3a",
+        "bytes": 143,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "ec45875089599a53076f3bc63f940afe473614cc6397cf3f73ae2c6b7ed26b3a",
+        "bytes": 143,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/work/rectangle.weftforge",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/work/rectangle.weftforge",
+      "original": {
+        "sha256": "cb6243e904bd9d39b5f9426f1b63c69d412dc8c8af50f42d66a114feaa2d16a0",
+        "bytes": 3229,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "cb6243e904bd9d39b5f9426f1b63c69d412dc8c8af50f42d66a114feaa2d16a0",
+        "bytes": 3229,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/work/rectangle.weftforge.autosave",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/work/rectangle.weftforge.autosave",
+      "original": {
+        "sha256": "cb6243e904bd9d39b5f9426f1b63c69d412dc8c8af50f42d66a114feaa2d16a0",
+        "bytes": 3229,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "cb6243e904bd9d39b5f9426f1b63c69d412dc8c8af50f42d66a114feaa2d16a0",
+        "bytes": 3229,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/work/rectangle.weftforge.autosave.recovery",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/work/rectangle.weftforge.autosave.recovery",
+      "original": {
+        "sha256": "3a1055029c3a013a31ea5d558f5de8cfe2194eb3d6de05399fe9fa831c30cfb3",
+        "bytes": 3229,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "3a1055029c3a013a31ea5d558f5de8cfe2194eb3d6de05399fe9fa831c30cfb3",
+        "bytes": 3229,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "native-RG001",
+      "input": ".local/native-rectangle-20261116/RG001/work/rectangle.weftforge.recovery",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/native-RG001/work/rectangle.weftforge.recovery",
+      "original": {
+        "sha256": "3a1055029c3a013a31ea5d558f5de8cfe2194eb3d6de05399fe9fa831c30cfb3",
+        "bytes": 3229,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "3a1055029c3a013a31ea5d558f5de8cfe2194eb3d6de05399fe9fa831c30cfb3",
+        "bytes": 3229,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "file-checker",
+      "input": ".local/rectangle-file-checker-20261116/README.txt",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/file-checker/README.txt",
+      "original": {
+        "sha256": "20177e3940bbc1921e04882f8cc6e4ea07727e9eef4f30d4d228211d27b9134e",
+        "bytes": 2300,
+        "mode": "0444"
+      },
+      "expected_public": {
+        "sha256": "20177e3940bbc1921e04882f8cc6e4ea07727e9eef4f30d4d228211d27b9134e",
+        "bytes": 2300,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "file-checker",
+      "input": ".local/rectangle-file-checker-20261116/checker.py",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/file-checker/checker.py",
+      "original": {
+        "sha256": "f5fc1d1985578affcde122288ec3973d6118f83c332c11e1a078a0873842259c",
+        "bytes": 24175,
+        "mode": "0444"
+      },
+      "expected_public": {
+        "sha256": "f5fc1d1985578affcde122288ec3973d6118f83c332c11e1a078a0873842259c",
+        "bytes": 24175,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "file-checker",
+      "input": ".local/rectangle-file-checker-20261116/freeze.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/file-checker/freeze.json",
+      "original": {
+        "sha256": "602bb9372dc39fa3747b6fe6322f07d54b4b0eae2d70be143546d1ff6c080cd3",
+        "bytes": 2052,
+        "mode": "0444"
+      },
+      "expected_public": {
+        "sha256": "602bb9372dc39fa3747b6fe6322f07d54b4b0eae2d70be143546d1ff6c080cd3",
+        "bytes": 2052,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "file-checker",
+      "input": ".local/rectangle-file-checker-20261116/run-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/file-checker/run-receipt.json",
+      "original": {
+        "sha256": "65940096f056a1328854632b8dbf37607c781610491d42b009bc0f71ee420184",
+        "bytes": 6064,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "65940096f056a1328854632b8dbf37607c781610491d42b009bc0f71ee420184",
+        "bytes": 6064,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "file-checker",
+      "input": ".local/rectangle-file-checker-20261116/run-started.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/file-checker/run-started.json",
+      "original": {
+        "sha256": "e5d4531e3fefbe2c5b6ddf09aef56aef33a0a03e2d22b8ae9fd93bc1d1410720",
+        "bytes": 137,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e5d4531e3fefbe2c5b6ddf09aef56aef33a0a03e2d22b8ae9fd93bc1d1410720",
+        "bytes": 137,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "file-checker",
+      "input": ".local/rectangle-file-checker-20261116/seed-expected.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/file-checker/seed-expected.json",
+      "original": {
+        "sha256": "5b0449d038beb04e0ae94c79e53c78d715da8e5b5dda0f82fbf472d042aaa7db",
+        "bytes": 1977,
+        "mode": "0444"
+      },
+      "expected_public": {
+        "sha256": "5b0449d038beb04e0ae94c79e53c78d715da8e5b5dda0f82fbf472d042aaa7db",
+        "bytes": 1977,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "file-checker",
+      "input": ".local/rectangle-file-checker-20261116/selfcheck-receipt.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/file-checker/selfcheck-receipt.json",
+      "original": {
+        "sha256": "ce446e6f95b8f02bcdd8398ff1eb78b35f4e5c30c29de75e27ec25380d7253fb",
+        "bytes": 11235,
+        "mode": "0444"
+      },
+      "expected_public": {
+        "sha256": "ce446e6f95b8f02bcdd8398ff1eb78b35f4e5c30c29de75e27ec25380d7253fb",
+        "bytes": 11235,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "file-checker",
+      "input": ".local/rectangle-file-checker-20261116/targets.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/file-checker/targets.json",
+      "original": {
+        "sha256": "402abadb803a9c580d3723c89e9aae71476e6336f9613c6392599cc843bef7bc",
+        "bytes": 2408,
+        "mode": "0444"
+      },
+      "expected_public": {
+        "sha256": "402abadb803a9c580d3723c89e9aae71476e6336f9613c6392599cc843bef7bc",
+        "bytes": 2408,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "file-supplement-FS001",
+      "input": ".local/rectangle-file-supplement-20261116/FS001/RESULT.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/file-supplement-FS001/RESULT.json",
+      "original": {
+        "sha256": "d319d4fd7ab2458ef2e395b700f0144c6af63f150c069d35c11a805fad740740",
+        "bytes": 547,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "d319d4fd7ab2458ef2e395b700f0144c6af63f150c069d35c11a805fad740740",
+        "bytes": 547,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "file-supplement-FS001",
+      "input": ".local/rectangle-file-supplement-20261116/FS001/ROOT-GO.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/file-supplement-FS001/ROOT-GO.json",
+      "original": {
+        "sha256": "f3282ea044824b80d205ce9593572578d17844d5542621230838346f1168b7ab",
+        "bytes": 1429,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "f3282ea044824b80d205ce9593572578d17844d5542621230838346f1168b7ab",
+        "bytes": 1429,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "file-supplement-FS001",
+      "input": ".local/rectangle-file-supplement-20261116/FS001/STARTED.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/file-supplement-FS001/STARTED.json",
+      "original": {
+        "sha256": "bcf4284e339bfed8a6206517a15397d3e73f9f81618dd76e126ca840b893f753",
+        "bytes": 191,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "bcf4284e339bfed8a6206517a15397d3e73f9f81618dd76e126ca840b893f753",
+        "bytes": 191,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "file-supplement-FS001",
+      "input": ".local/rectangle-file-supplement-20261116/FS001/stderr.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/file-supplement-FS001/stderr.log",
+      "original": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "file-supplement-FS001",
+      "input": ".local/rectangle-file-supplement-20261116/FS001/stdout.log",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/file-supplement-FS001/stdout.log",
+      "original": {
+        "sha256": "ef7a883dfc1b09fc97342f616ad0f58b84aaed482290a606b2699fc3e1969258",
+        "bytes": 130,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "ef7a883dfc1b09fc97342f616ad0f58b84aaed482290a606b2699fc3e1969258",
+        "bytes": 130,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    },
+    {
+      "group": "source-integration",
+      "input": ".local/rectangle-delivery-source-integration-20261116/ROOT-INTEGRATION-001.json",
+      "proposed_public_path": "parity/reports/artifacts/rectangle-gesture-20261116/source-integration/ROOT-INTEGRATION-001.json",
+      "original": {
+        "sha256": "fe6755f42fac78865d88f5dca0229c40b8f7191a6ba3d9a5792a7cd42b6fa24e",
+        "bytes": 10865,
+        "mode": "0644"
+      },
+      "expected_public": {
+        "sha256": "fe6755f42fac78865d88f5dca0229c40b8f7191a6ba3d9a5792a7cd42b6fa24e",
+        "bytes": 10865,
+        "mode": "0644",
+        "git_mode": "100644"
+      },
+      "transformation": "literal root then home replacement only; UTF-8 bytes otherwise unchanged",
+      "replacement_counts": {
+        "root_to_ROOT": 0,
+        "remaining_home_to_HOME": 0
+      }
+    }
+  ],
+  "omitted": [
+    {
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/first-fix-main.rs",
+      "reason": "Intermediate full source snapshot omitted; original baseline, exact stage patch, raw logs/receipts and historical handoff hashes are retained.",
+      "bytes": 895021,
+      "mode": "0644",
+      "sha256": "7737e43585577d421c212fa8fe423f60ffff025624503f764005c29c3c19dcee"
+    },
+    {
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/guard-candidate-main.rs",
+      "reason": "Intermediate full source snapshot omitted; original baseline, exact stage patch, raw logs/receipts and historical handoff hashes are retained.",
+      "bytes": 907684,
+      "mode": "0644",
+      "sha256": "4dc5723de4ce31535c5ab0135607381f3e4bcbe8dce9b0eb20bf37185ba0c915"
+    },
+    {
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/original-with-regression-main.rs",
+      "reason": "Intermediate full source snapshot omitted; original baseline, exact stage patch, raw logs/receipts and historical handoff hashes are retained.",
+      "bytes": 892447,
+      "mode": "0644",
+      "sha256": "e8ebc0d4f4fad67040aa67ce2488f41bdc3fe89365ad4c26db4ac6a53e7ce726"
+    },
+    {
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/review-candidate-main.rs",
+      "reason": "Intermediate full source snapshot omitted; original baseline, exact stage patch, raw logs/receipts and historical handoff hashes are retained.",
+      "bytes": 908222,
+      "mode": "0644",
+      "sha256": "18ab3e365244209deed35f16aff86b5d9e7c0d1cf3e1e4440f2be2e16e22612f"
+    },
+    {
+      "input": ".local/rectangle-gesture-repair-20261116/.local/rectangle-gesture-evidence/revision2-main.rs",
+      "reason": "Intermediate full source snapshot omitted; original baseline, exact stage patch, raw logs/receipts and historical handoff hashes are retained.",
+      "bytes": 908229,
+      "mode": "0644",
+      "sha256": "e71dc25755216633de62157ecd4f7640e5003703b6129a3382828a571e18027e"
+    },
+    {
+      "input": ".local/rectangle-combined-source-review-20261116/MERGE.log",
+      "reason": "Root source review JSON alone is needed; merge log is redundant.",
+      "bytes": 344,
+      "mode": "0644",
+      "sha256": "fdb6261bdedceeaabfaebc5fe8945936848b10747c06149be43797f735609e45"
+    },
+    {
+      "input": ".local/native-rectangle-20261116/RG001/WeftForge-RG001.app/Contents/Info.plist",
+      "reason": "Exclude complete own .app bundle, executable and bundled license/resource payload; frozen raw manifest records its identity without delivering it.",
+      "bytes": 618,
+      "mode": "0644"
+    },
+    {
+      "input": ".local/native-rectangle-20261116/RG001/WeftForge-RG001.app/Contents/MacOS/weftforge",
+      "reason": "Exclude complete own .app bundle, executable and bundled license/resource payload; frozen raw manifest records its identity without delivering it.",
+      "bytes": 62737176,
+      "mode": "0755"
+    },
+    {
+      "input": ".local/native-rectangle-20261116/RG001/WeftForge-RG001.app/Contents/Resources/licenses/OFL-Inter.txt",
+      "reason": "Exclude complete own .app bundle, executable and bundled license/resource payload; frozen raw manifest records its identity without delivering it.",
+      "bytes": 4380,
+      "mode": "0644"
+    },
+    {
+      "input": ".local/native-rectangle-20261116/RG001/WeftForge-RG001.app/Contents/Resources/licenses/OFL-JetBrainsMono.txt",
+      "reason": "Exclude complete own .app bundle, executable and bundled license/resource payload; frozen raw manifest records its identity without delivering it.",
+      "bytes": 4399,
+      "mode": "0644"
+    }
+  ],
+  "scope_limit": "Own WeftForge source/native/checker evidence only. No commercial reference evidence outside the repository was accessed, selected or copied. No targets/caches/fonts/executable payloads selected.",
+  "public_mode_policy": "All public derivatives are new non-executable regular files, filesystem0644 and Git100644. Original private mode, including0444 freezes, remains recorded separately; Git does not preserve readonly permission differences."
+}

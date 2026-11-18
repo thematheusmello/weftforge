@@ -1,0 +1,5 @@
+Prepared from exact13fb in `.local/material-network-regression-20261117`, branch `feat/material-network-regression`. Only `crates/weftforge-sim/src/tests.rs` differs; no production math, GUI, config, command, docs, dependency, metadata or old-case file changes. Own target is absent; no Cargo or production call ran.
+
+Review INPUT.json, REFERENCE.json, reference.py, ORACLE-PROOF.md, PROPOSED-TEST.rs/test-only.patch and FREEZE.json. Eight-face complete-group topology and original free masses are exact. The reference is a certified local stationary minimum with explicit global limitations; tolerances were predeclared before execution. The proposed actual-kernel material-only regression isolates the coupled free-edge network, not the whole Cloth.step pipeline.
+
+Next is ROOT REVIEW/GO, not automatic execution. PROPOSED-RED-COMMAND.json records the later one-test command and isolated target. No production RED has been attempted. A future compile/representation/force/position result must be retained exactly and classified before choosing a correction. Do not change fixture, reference, counts or tolerances to obtain a result.

@@ -1,0 +1,10 @@
+{
+  "initial_root_verify_exit": 1,
+  "initial_failure": "Parent PATH changed after compiler binding",
+  "stage": "source-only validation before any GO/build/model",
+  "initial_root_PATH_sha256": "9086f85f05efab81a09ac1679c38f91578c5c6b435a8e0180c99535b46ab8cc5",
+  "approved_parent_PATH_sha256": "8c86e52fc6a07382728db509acb03e61aaee60051f788ea59648ccb1573e8db5",
+  "source_or_control_bytes_changed": false,
+  "resolution": "Run this reproducible preparation/build/controller with the exact reviewed parent PATH from SOURCE-PREFLIGHT. Child compiler PATH/tools remain explicitly pinned by the unchanged binding. No guard removed or spoofed outcome.",
+  "builds_or_Cloth_initializations_or_steps": 0
+}

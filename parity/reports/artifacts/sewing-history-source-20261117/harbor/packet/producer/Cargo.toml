@@ -1,0 +1,11 @@
+[package]
+name = "harbor-coupled-producer"
+version = "0.0.0"
+edition = "2024"
+
+[workspace]
+
+[dependencies]
+weftforge-core = { path = "../../../crates/weftforge-core" }
+weftforge-sim = { path = "../../../crates/weftforge-sim" }
+serde_json = { version = "=1.0.154", features = ["float_roundtrip"] }

@@ -1,0 +1,295 @@
+{
+  "actual_GUI_native_app_model_Cargo_network_calls": 0,
+  "all_regular_files_covered_by_explicit_and_recursive_bindings": true,
+  "changes": {
+    "Quit": "Only exact observed App quit isError may be qualified by protected Quit caller with same-call fresh evidence, exact dispatch and successful timely bounded GATE/CLOSE",
+    "loaded_fixture": "Python bound Path(plan.fixture.path).name; JS validated/use bound basename; physical fixture bytes unchanged",
+    "metadata": "quit_response_qualification records exact-response/lifecycle provenance; later owner/producer/monitor/no-signal absence and final audit still decide acceptance",
+    "raw_response": "Retained unchanged including isError true; no generic helper error waiver",
+    "store_load": "Structural exact-value checks; independent deserialized objects and key order are tested"
+  },
+  "check_result": {
+    "Node_scenarios": 12,
+    "Python_scenarios": 1,
+    "actual_test_producer_cases": 1,
+    "bounds": {
+      "disk_floor_bytes": 8000000000,
+      "retained_output_bytes": 8388608,
+      "sampled_group_plus_supervisor_RSS_bytes": 268435456,
+      "seconds": 60
+    },
+    "case_path": "stub-check-001",
+    "current_integration_after": {
+      "HEAD": "023b45a84cfeb9248e20f620628911bc3c0c843a",
+      "index_bytes": 3425019,
+      "index_sha256": "f2a827a3a469b4fd5c25c0a97077005d6d1de5adf7d91f756d0b42080def2c33",
+      "tracked_status": ""
+    },
+    "current_integration_postexact": true,
+    "disk_observation": {
+      "last_available_bytes": 10950860800,
+      "max_snapshot_gap_seconds": 0.05234458390623331,
+      "minimum_available_bytes": 10950860800,
+      "path": "<PREPARATION_V6>",
+      "samples": 6,
+      "stop_below_available_bytes": 8000000000
+    },
+    "exact_wait4_direct_producer_peak_RSS_bytes": 65257472,
+    "immutable_references_postexact": true,
+    "original_exec_chunk": "262980",
+    "original_tool_terminal_exit_code": 0,
+    "pending_session": null,
+    "poll_count": 0,
+    "producer_exit_code": 0,
+    "producer_pgid": 24141,
+    "producer_pid": 24141,
+    "read_only_preserved_paths": 477,
+    "restarted": false,
+    "retained_case_bytes_before_external_terminal": 115158,
+    "sampled_RSS_qualification": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.05270720808766782,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 3,
+      "timeouts": 0
+    },
+    "sampled_peak_group_plus_supervisor_RSS_bytes": 105201664,
+    "source_inputs_postexact": true,
+    "stderr_bytes": 0,
+    "stop_reason": null,
+    "terminal_was_immediate": true,
+    "total_scenarios": 13,
+    "whole_elapsed_seconds": 0.3625566659029573
+  },
+  "current_INT_metadata_pin": {
+    "HEAD": "023b45a84cfeb9248e20f620628911bc3c0c843a",
+    "git_optional_locks": false,
+    "index_bytes": 3425019,
+    "index_path": "<REPOSITORY_ROOT>/.git/worktrees/notch-bend-integration-20261117/index",
+    "index_sha256": "f2a827a3a469b4fd5c25c0a97077005d6d1de5adf7d91f756d0b42080def2c33",
+    "integration_root": "<WORKTREE>",
+    "source_and_native_attribution": "Metadata-only HEAD; production source91/native e12 remain D, source QA belongs to f30 and optimized build to a70; no new build/QA claim",
+    "status": "ROOT_STABLE_METADATA_HEAD_READ_ONLY_PIN",
+    "tracked_status": ""
+  },
+  "current_INT_pin_sha256": "8fd2ff1bcaa7005e140d4743baae20591b9ae79a4bf068802f9a4dd095f5e6e5",
+  "current_INT_postexact_at_freeze": true,
+  "files": {
+    "CHANGE.patch": {
+      "bytes": 81065,
+      "mode": 420,
+      "sha256": "368e8ab241369451ab0161335aba01f1a1b2d77499c937681edb2a6b4c599e36"
+    },
+    "EXEC-INITIAL.json": {
+      "bytes": 393,
+      "mode": 420,
+      "sha256": "5bd091d1f57191810415a8c47a02a19bba6b46f1754485c79da0aae5c54d2013"
+    },
+    "EXEC-TERMINAL.json": {
+      "bytes": 520,
+      "mode": 420,
+      "sha256": "a6cf8dea89d80ac67479e012283b71233581ca0357e768b718ef8091ee5f3959"
+    },
+    "HANDOFF.md": {
+      "bytes": 4434,
+      "mode": 420,
+      "sha256": "63af98cbd4e54b5609352865ccccf7a5364bf9cbe83a5fc18830b97c7cfcbd95"
+    },
+    "INT-PIN.json": {
+      "bytes": 717,
+      "mode": 420,
+      "sha256": "8fd2ff1bcaa7005e140d4743baae20591b9ae79a4bf068802f9a4dd095f5e6e5"
+    },
+    "README.md": {
+      "bytes": 5777,
+      "mode": 420,
+      "sha256": "8b8a3191433149013715555ab9bac080b58db76a446d31af3b4236c7a8de18d4"
+    },
+    "RECEIPT.json": {
+      "bytes": 8428,
+      "mode": 420,
+      "sha256": "189bff29f8435e0cebc68405127e25904c07a0cd825df78cf2e390b65587d120"
+    },
+    "RUNTIME.patch": {
+      "bytes": 7235,
+      "mode": 420,
+      "sha256": "1ea4bc434a93d15c0dbe341e78438b3ad1a2949953aba4ccbc760877d3690b7b"
+    },
+    "SOURCE-FREEZE.json": {
+      "bytes": 2297,
+      "mode": 384,
+      "sha256": "d7b2c6179b780a488df0beab24f6bbb49ca38ee6127c7b14d4a1857b5ba6cf13"
+    },
+    "call_recorder.py": {
+      "bytes": 2720,
+      "mode": 420,
+      "sha256": "39e3c74f3950e712918e71f7234e5da6a4783773d2281326be7219735397f848"
+    },
+    "check_run.py": {
+      "bytes": 8501,
+      "mode": 420,
+      "sha256": "6e79f211cbe37f08824ae9f58a990f0bc92cc14d353f9b2b955c38baf4748022"
+    },
+    "cleanup.py": {
+      "bytes": 14388,
+      "mode": 420,
+      "sha256": "1881ccdf8fb55b33796a15c08170e42037c7a619c886a0ba071a4651d691f07a"
+    },
+    "clock.py": {
+      "bytes": 4617,
+      "mode": 420,
+      "sha256": "2e6a43e3db584c56e7fb1f05a4e9b8802141130c3ef778f41e54209fadc24301"
+    },
+    "focused_selfcheck.cjs": {
+      "bytes": 11967,
+      "mode": 420,
+      "sha256": "a7f6fb4d08da8dcee972e81bb19df169bc3bfa4b9f3fce681d862cc1f92b78dc"
+    },
+    "focused_selfcheck.py": {
+      "bytes": 4048,
+      "mode": 420,
+      "sha256": "211cd66b967654b3436f56b09962d6d679ef323f8a5321c3d920a89e69c3de87"
+    },
+    "inventory.js": {
+      "bytes": 1352,
+      "mode": 420,
+      "sha256": "4136073f3e97e406034320d2eb058e38b7021e25ba3c6b3adcf3e41d53c6b36a"
+    },
+    "native_call.js": {
+      "bytes": 4573,
+      "mode": 420,
+      "sha256": "9d108334cf4b1666e5e6546df221af1aba71d5c32a9a2642c2e49cac6545f890"
+    },
+    "preview_launch.js": {
+      "bytes": 5421,
+      "mode": 420,
+      "sha256": "e2ac162cd162b0d5b6192c2ad6774149d0cfcc9a05fc71be22c6a9885f004bad"
+    },
+    "preview_launch.py": {
+      "bytes": 23274,
+      "mode": 420,
+      "sha256": "9ffc78abcc4a28f0734a9b136d4cf1dde7fd2d68398d0f24e68e529c8c1ab6ae"
+    },
+    "preview_owner.py": {
+      "bytes": 21735,
+      "mode": 420,
+      "sha256": "59403dd14c55a483b690e26feeba1b8fcf5b8eb59034c0a1ee89179e68780cfa"
+    },
+    "preview_sequence.js": {
+      "bytes": 19874,
+      "mode": 420,
+      "sha256": "9345d29ef22f060c55df0ad0106c1320935ec13d96037a09821401523f77882a"
+    },
+    "resource_observer.py": {
+      "bytes": 8123,
+      "mode": 420,
+      "sha256": "21200ee8595d3abc8e5878b9b521fee85d3e779cc69b02fc35d302b90d1b2901"
+    },
+    "resources.py": {
+      "bytes": 12679,
+      "mode": 420,
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781"
+    },
+    "stub-check-001/EXTERNAL-TERMINAL.json": {
+      "bytes": 201,
+      "mode": 384,
+      "sha256": "322fc0cd4bfe14cd780d2ec185f2f67c5438fab8c23d970f799933a290c21adc"
+    },
+    "stub-check-001/MANIFEST.json": {
+      "bytes": 1681,
+      "mode": 384,
+      "sha256": "ae01e5a8eb6d114cb6cb6478327f099a512e8b1583d7062be66ee73339daadd7"
+    },
+    "stub-check-001/PREFLIGHT.json": {
+      "bytes": 89918,
+      "mode": 384,
+      "sha256": "4e2b5cac56a3ad1876ff1bf50e9a7a01a14953e78015ff7928441fb44f60a402"
+    },
+    "stub-check-001/RESULT.json": {
+      "bytes": 10549,
+      "mode": 384,
+      "sha256": "57e51707d6a845b66001456a57f0df9a8d9f5d1dbe19e95263e338f0253a3444"
+    },
+    "stub-check-001/STARTED.json": {
+      "bytes": 1396,
+      "mode": 384,
+      "sha256": "b634c4b8adadbc53a6696005b1dc04dd9db5ef17bae8b36bb1cf8e2ae9255303"
+    },
+    "stub-check-001/stderr.log": {
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stub-check-001/stdout.log": {
+      "bytes": 7931,
+      "mode": 420,
+      "sha256": "95d11d8c103ea5f9912c405b05bec016f27b1a3095a4a9f59ece1720ebba6431"
+    }
+  },
+  "future_actual_binding": {
+    "PLAN_sha256": null,
+    "actual_case": null,
+    "actual_current_native_binding": null,
+    "app": null,
+    "root_GO": null
+  },
+  "future_contract": {
+    "cleanup_seconds": 60,
+    "cutoff_seconds": 240,
+    "disk_floor_bytes": 8000000000,
+    "max_actions": 20,
+    "max_observations": 40,
+    "max_startup_snapshots": 3,
+    "native_RSS": "Five settled public-sample observations; B+512 MiB",
+    "new_GUI_calls": 0,
+    "new_OS_observations": 0,
+    "normal_reserved_actions": 4,
+    "normal_reserved_observations": 40,
+    "post_Quit_getter": false,
+    "retained_output_bytes": 536870912,
+    "startup_reserved_observations": 16,
+    "whole_seconds": 300
+  },
+  "generic_native_call_sha256": "9d108334cf4b1666e5e6546df221af1aba71d5c32a9a2642c2e49cac6545f890",
+  "no_live_GO": true,
+  "preserved": {
+    "P004_case_freeze_sha256": "a5760a4ac0e3861506750b00e6946786721432b7d3bd6276e08c790a9fc73511",
+    "P004_normal_Quit_helper_credit": false,
+    "P004_replayed_or_regraded": false,
+    "P004_root_outcome_sha256": "a8a4d1e92e6b210f1829e1dd38f8d63ac717b2f74b37b90b3f367898c73a57e7",
+    "P004_status": "CLOSED_NEGATIVE_AFTER_INITIAL_STATE_BEFORE_FRAME_OR_CONSTRUCTOR",
+    "V5_freeze_sha256": "7c1f8df869968ef23f57eb9b0b9682b302cee033a712f6fe8e6d818f585680bc",
+    "V5_root_review_freeze_sha256": "38c6aaf104c45133770df298132e3c1f2355cef11a32855f37103e878ea6b54a",
+    "observed_P004_Quit_response_sha256": "ff2c24624b1f93383aef3a9c4720f5273d9805dc021fde9eae522a72e9ba8499",
+    "old_suites_repeated": false
+  },
+  "prior_broad_suites_repeated": false,
+  "private_ignored_preparation_not_public_delivery": true,
+  "quality_or_reference_acceptance": false,
+  "recursive_case_artifacts": {
+    "note": "Outer files separately bind this manifest and its later external terminal.",
+    "path": "stub-check-001/MANIFEST.json",
+    "regular_files_covered": 12,
+    "sha256": "ae01e5a8eb6d114cb6cb6478327f099a512e8b1583d7062be66ee73339daadd7"
+  },
+  "regular_file_counts": {
+    "excluding_this_freeze": 37,
+    "including_this_freeze": 38
+  },
+  "remaining_gate": "Root review/exact binding and distinct fresh P005 GO; no replay or P004 credit change",
+  "runtime_changed_files": [
+    "preview_launch.py",
+    "preview_sequence.js"
+  ],
+  "source_and_reference_postexact_at_freeze": true,
+  "source_pretest_freeze_sha256": "d7b2c6179b780a488df0beab24f6bbb49ca38ee6127c7b14d4a1857b5ba6cf13",
+  "status": "V6_BOUND_BASENAME_EXACT_QUIT_CALLER_AND_ONE_FOCUSED_SOURCE_PROOF_FROZEN_UNARMED",
+  "symlinks": [],
+  "tracked_INT_index_target_mutations": 0,
+  "visual_alignment_accepted": false
+}

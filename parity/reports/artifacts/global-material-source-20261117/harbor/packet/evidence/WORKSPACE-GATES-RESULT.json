@@ -1,0 +1,61 @@
+{
+  "CLI_invoked_by_workspace_tests": true,
+  "Rust_workspace_actual_counts": {
+    "failed": 0,
+    "ignored": 0,
+    "passed": 409,
+    "summaries": 31
+  },
+  "all3_new_stages_passed": true,
+  "at": "2026-11-17T03:22:41.440880+00:00",
+  "binaries": {
+    "weftforge": {
+      "bytes": 62720696,
+      "sha256": "05f00a279510aeedafcde7d6975a83dc445736c0cfad519d30f91bd490035934"
+    },
+    "weftforge-cli": {
+      "bytes": 10651472,
+      "sha256": "38888f64b17beccced333948d5d79b557c0b772543cecddc5ec7635dfe195b65"
+    }
+  },
+  "commit": "52099b6f6b7aff43b3e9ada8bad4f830cb987134",
+  "elapsed_seconds": 431.0146821249509,
+  "fmt_reused_exact88_source": {
+    "author_receipt_sha256": "2bce86476bbc9d35a4a542ca7bc946d221901c69d4f27a6c096056af85e5f1e5",
+    "path": "<ROOT>/.local/global-material-repair-20261117/.local/targeted-stabilization-20261117/FMT/RESULT.json",
+    "scope": "cargo fmt --all --check alreadypassed onexact88source, no repeat"
+  },
+  "metadata_freshness_xtask_pending": true,
+  "native_launched": false,
+  "no_full_garment_or_reference_execution": true,
+  "no_target_or_binary_copied": true,
+  "stages": [
+    {
+      "PID": 62007,
+      "all_source88_metadata59_original8_exact": true,
+      "elapsed_seconds": 344.7526191250654,
+      "exit_code": 0,
+      "log_sha256": "14872efbf723ea8bfbf804e7f88af433f330dc251ba575170d4f71db566176d2",
+      "name": "workspace-tests",
+      "stop_reason": null
+    },
+    {
+      "PID": 66869,
+      "all_source88_metadata59_original8_exact": true,
+      "elapsed_seconds": 66.25854737509508,
+      "exit_code": 0,
+      "log_sha256": "b5f5e6b99847ea2b9c9f36f7a6b4db682d021b9d7a29b106e410fe9071f6cbc9",
+      "name": "workspace-clippy",
+      "stop_reason": null
+    },
+    {
+      "PID": 67388,
+      "all_source88_metadata59_original8_exact": true,
+      "elapsed_seconds": 19.628474958008155,
+      "exit_code": 0,
+      "log_sha256": "12143545262059698552d2857a5776e8e838229f922864a3a8c8ccbea554e7be",
+      "name": "native-cli-debug",
+      "stop_reason": null
+    }
+  ]
+}

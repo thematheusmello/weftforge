@@ -1,0 +1,72 @@
+
+running 62 tests
+test contact::tests::hierarchy_query_cancels_when_all_bounds_overlap ... ok
+test capsule::tests::saved_original_and_harbor_surface_witnesses_are_detected ... ok
+test capsule::tests::exact_closest_features_include_caps_faces_edges_and_vertices ... ok
+test capsule::tests::parallel_and_coplanar_segments_reach_face_between_outside_endpoints ... ok
+test capsule::tests::zero_distance_fallback_is_deterministic_finite_and_radial ... ok
+test capsule::tests::distance_and_barycentric_gradients_survive_rigid_transforms ... ok
+test contact::tests::leaf_candidates_and_bounds_stop_before_each_primitive ... ok
+test strain::tests::rounded_squares_are_compensated_and_nonfinite_sums_stay_nonfinite ... ok
+test capsule::tests::tiny_and_degenerate_triangles_keep_closed_surface_coverage ... ok
+test tests::bending_reduces_fold_angle_without_translating_center_of_mass ... ok
+test tests::cancellable_constructor_keeps_invalid_input_checks_and_honors_early_cancel ... ok
+test tests::analytic_dihedral_gradient_matches_independent_finite_difference ... ok
+test capsule::tests::controlled_capsule_features_preserve_results_and_abort_at_each_task ... ok
+test contact::tests::moving_contact_query_reaches_a_later_plane ... ok
+test tests::closed_elastic_stitch_handles_zero_gap_pins_and_denominator_guard ... ok
+test tests::closed_elastic_stitch_keeps_accepted_weights_and_endpoint_arithmetic ... ok
+test tests::closed_elastic_stitch_merges_repeated_and_cross_side_vertices ... ok
+test tests::capsule_surface_projection_uses_barycentric_inverse_masses_and_existing_friction ... ok
+test tests::closed_elastic_stitch_preserves_isolated_energy_and_units ... ok
+test contact::tests::partitioned_queries_preserve_sequential_contact_order ... ok
+test tests::closed_elastic_stitch_n32_matches_independent_quadratic_and_individual_actions ... ok
+test tests::closed_elastic_stitch_two_free_masses_preserve_reactions_under_rigid_transforms ... ok
+test constructor_control_tests::validation_charges_each_record_and_stops_exactly_at_caller_abort ... ok
+test tests::capsule_surface_fixed_nodes_report_conflict_and_reset_restores_full_occupancy ... ok
+test tests::coupled_membrane_reaches_independent_incremental_energy_equilibrium ... ok
+test tests::capsule_axis_face_crossing_has_finite_deterministic_recovery_and_honest_residual ... ok
+test tests::conservative_skinny_capsule_pairs_remain_visible_and_exact_collapsed_faces_are_not_dropped ... ok
+test tests::cancellation_after_measurement_preserves_peak_strain ... ok
+test tests::final_capsule_surface_residual_rechecks_contacts_undone_by_a_later_capsule ... ok
+test tests::finite_diagnostics_do_not_claim_satisfied_contact ... ok
+test tests::global_material_zero_rhs_pins_and_cancellation_preserve_stage_state ... ok
+test tests::cancellation_and_failures_preserve_old_state_and_allow_recovery ... ok
+test tests::freefall_matches_symplectic_euler_and_refines_toward_analytic_solution ... ok
+test tests::capsule_projection_and_final_surface_analysis_cancellation_preserve_the_accepted_step ... ok
+test tests::grouped_mixed_grain_materials_reach_direct_energy_balance_with_pins ... ok
+test tests::closed_elastic_stitch_cancellation_and_failure_retain_whole_call_state ... ok
+test tests::malformed_external_geometry_material_and_constraints_are_rejected ... ok
+test tests::elastic_stitch_substeps_reset_multipliers_when_target_reaches_zero ... ok
+test contact::tests::swept_hierarchy_candidates_equal_exhaustive_inclusive_queries ... ok
+test tests::material_stage_retains_each_input_face_once_in_order ... ok
+test tests::nonfinite_strain_after_a_finite_candidate_invalidates_diagnostics ... ok
+test tests::membrane_projection_matches_analytic_uniaxial_and_shear_updates ... ok
+test tests::membrane_affine_strain_follows_material_axes_under_arrangement_and_winding ... ok
+test tests::peak_strain_uses_input_triangle_order_and_exact_ties_choose_warp ... ok
+test tests::positive_targets_and_hard_stitches_keep_radial_updates ... ok
+test tests::shared_edge_peak_preserves_exact_transforms_and_distinguishes_near_ties ... ok
+test tests::area_mass_rest_and_reset_are_si_consistent ... ok
+test tests::weighted_stitch_closes_unequal_samples_and_preserves_momentum ... ok
+test tests::shared_edge_material_reaches_independent_incremental_energy_equilibrium ... ok
+test constructor_control_tests::diagnostics_charges_each_scan_and_preserves_numeric_results ... ok
+test tests::ground_torso_and_capsule_project_to_exterior ... ok
+test contact::tests::hierarchy_build_and_partition_cancel_during_work ... ok
+test tests::material_network_reaches_independent_incremental_energy_equilibrium ... ok
+test tests::layers_contact_and_transfer_motion_to_the_other_layer ... ok
+test contact::tests::hierarchy_is_conservative_and_prunes_separated_bounds ... ok
+test tests::seam_assembly_is_bounded_monotone_cancellable_and_resettable ... ok
+test tests::swept_layer_crossing_is_resolved_and_ground_friction_resists_slide ... ok
+test constructor_control_tests::constructor_charges_initialization_and_never_publishes_after_abort ... ok
+test tests::initial_hierarchy_matches_brute_force_for_contacts_thickness_and_sewing_filters ... ok
+test tests::constructor_cancels_inside_initial_contact_query_without_publishing_state ... ok
+test tests::grain_rotation_changes_the_physical_hanging_response ... ok
+test tests::physical_stiffness_changes_extension_and_refinement_preserves_mass_and_sag ... ok
+
+test result: ok. 62 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 9.20s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

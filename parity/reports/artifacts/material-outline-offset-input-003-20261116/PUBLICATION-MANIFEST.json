@@ -1,0 +1,1296 @@
+{
+  "notice": "PUBLIC REVIEW DERIVATIVE, NOT AN ORIGINAL RUN PACKET. Maps closed own-app003 evidence to public derivatives; does not grade the run.",
+  "prepared_at_utc": "2026-11-16T14:19:28.596340+00:00",
+  "publication_state": "local_staging_only; prior43-file public stage preserved; no Git tracking, registry/map check, delivery, or copy into either worktree asserted",
+  "scope": "Closed OFFSET-R1-003 step-1 Pattern name input-route stop after clean New Empty success; no authoring commands or offset operation.",
+  "credits": {
+    "native_acceptance": false,
+    "product_defect_attribution": false,
+    "offset_math_acceptance": false,
+    "reference_acceptance": false,
+    "physics_validation": false,
+    "prior_case_fix": false,
+    "feature_complete": false
+  },
+  "locator_policy": "public_locator values are relative to this bundle and contain no traversal. original_locator values are relative to the private workspace and are not bundled originals. private_reference_as_recorded strings are archival references, not public bundle paths; omitted source/build receipts and worktree paths were not resolved for publication.",
+  "transformation_policy": "Normalize the exact private workspace prefix to <private-workspace>, then the exact private home prefix to <private-home>. Explicitly omit the two personal tool locator occurrences at listed JSON pointers. All other outcomes, timestamps, action order, scopes, and scores are preserved; screenshots are byte-identical.",
+  "original_inventory": {
+    "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/ARTIFACTS-after-stop-003.json",
+    "original_sha256": "b32b9e9bc1bc031e459398370a557e2de32438d845694d83a3740b8642b5d63f",
+    "recorded_artifact_sha256_bytes_modes_verified": 28,
+    "stop_observation_sha256_bytes_verified": 11,
+    "mismatches": 0
+  },
+  "selected_original_artifact_count": 17,
+  "selected_original_bytes": 589346,
+  "selected_derivative_bytes": 587455,
+  "public_payload_file_count_excluding_this_manifest": 19,
+  "public_payload_bytes_excluding_this_manifest": 593744,
+  "selected_artifacts": [
+    {
+      "public_locator": "runs/OFFSET-R1-003/ARTIFACTS-after-stop-003.json",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/ARTIFACTS-after-stop-003.json",
+      "original_sha256": "b32b9e9bc1bc031e459398370a557e2de32438d845694d83a3740b8642b5d63f",
+      "original_bytes": 5130,
+      "original_mode": "0644",
+      "derivative_sha256": "b32b9e9bc1bc031e459398370a557e2de32438d845694d83a3740b8642b5d63f",
+      "derivative_bytes": 5130,
+      "transformations": [
+        {
+          "kind": "byte_identical_selected_copy"
+        }
+      ]
+    },
+    {
+      "public_locator": "runs/OFFSET-R1-003/BINDING.final.json",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/BINDING.final.json",
+      "original_sha256": "12adb0b89c9ee98b98f998db3ab8a3efadd33d3f37c0d0dd0c5cdb69f956ca65",
+      "original_bytes": 28991,
+      "original_mode": "0444",
+      "derivative_sha256": "36ea4fbc112bc04bf43e8ed99a251fc7c4566b13bdf523d06bf603ffb3e1a9b8",
+      "derivative_bytes": 27276,
+      "transformations": [
+        {
+          "kind": "exact_workspace_prefix_normalization",
+          "replacement": "<private-workspace>",
+          "occurrences": 36
+        },
+        {
+          "kind": "declared_json_privacy_omissions_and_reserialization",
+          "json_pointers": [
+            "/final_binding/read_only_file_measurement_method/tool_executable",
+            "/final_binding/read_only_file_measurement_method/invocation_argv/0"
+          ]
+        },
+        {
+          "kind": "exact_home_prefix_normalization_policy",
+          "replacement": "<private-home>",
+          "original_occurrences": 2,
+          "published_occurrences_normalized": 0,
+          "note": "Both personal executable occurrences were explicitly omitted before home-prefix normalization; no home locator is retained."
+        }
+      ],
+      "explicit_field_omissions": [
+        {
+          "json_pointer": "/final_binding/read_only_file_measurement_method/tool_executable",
+          "operation": "field omitted",
+          "original_value_sha256": "5c99af86102854783968341a6f82d9503a9f0125bea8ee25706dbcacbc8504ca",
+          "reason": "Personal executable locator outside the workspace; omitted for privacy, with no guessed executable or version."
+        },
+        {
+          "json_pointer": "/final_binding/read_only_file_measurement_method/invocation_argv/0",
+          "operation": "value explicitly omitted as null; argv positions and all other arguments retained",
+          "original_value_sha256": "5c99af86102854783968341a6f82d9503a9f0125bea8ee25706dbcacbc8504ca",
+          "reason": "Repeated personal executable locator; this formal method was not invoked. Null is a privacy omission, not an executable or a runnable command."
+        }
+      ]
+    },
+    {
+      "public_locator": "runs/OFFSET-R1-003/NATIVE-PROTOCOL-003.md",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/NATIVE-PROTOCOL-003.md",
+      "original_sha256": "681a0c307eac37116fc5b50a96f97f24d72018de19d2a958563f694c19ec653b",
+      "original_bytes": 12858,
+      "original_mode": "0444",
+      "derivative_sha256": "98b664a6aa5832af40535783ab49cc67f30db421a8b6a659de0a3b7e669a56b6",
+      "derivative_bytes": 12814,
+      "transformations": [
+        {
+          "kind": "exact_workspace_prefix_normalization",
+          "replacement": "<private-workspace>",
+          "occurrences": 1
+        }
+      ]
+    },
+    {
+      "public_locator": "runs/OFFSET-R1-003/POST-CASE-CLEANUP.json",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/POST-CASE-CLEANUP.json",
+      "original_sha256": "70bd2010a6a482065a40eeb415527582c8dc2d88ac247dde5abc1489f1049af4",
+      "original_bytes": 605,
+      "original_mode": "0644",
+      "derivative_sha256": "0564f8fb98143003294bbd68d921c2f2b947a70f94e1c25d58f3c2cb64ab909f",
+      "derivative_bytes": 561,
+      "transformations": [
+        {
+          "kind": "exact_workspace_prefix_normalization",
+          "replacement": "<private-workspace>",
+          "occurrences": 1
+        }
+      ]
+    },
+    {
+      "public_locator": "runs/OFFSET-R1-003/ROOT-CLOTH-DATAFLOW-AUDIT-001.json",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/ROOT-CLOTH-DATAFLOW-AUDIT-001.json",
+      "original_sha256": "f715201d2a7b1c10bbd94431b07d5fa328010f63378dd0c050170f1e28c37155",
+      "original_bytes": 1411,
+      "original_mode": "0444",
+      "derivative_sha256": "f715201d2a7b1c10bbd94431b07d5fa328010f63378dd0c050170f1e28c37155",
+      "derivative_bytes": 1411,
+      "transformations": [
+        {
+          "kind": "byte_identical_selected_copy"
+        }
+      ]
+    },
+    {
+      "public_locator": "runs/OFFSET-R1-003/RUN-STOP-003.json",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/RUN-STOP-003.json",
+      "original_sha256": "c7407d3dbbc01b9cb5b718dcce84016fec6e32235473161713e6f183414eed7d",
+      "original_bytes": 4718,
+      "original_mode": "0644",
+      "derivative_sha256": "c7407d3dbbc01b9cb5b718dcce84016fec6e32235473161713e6f183414eed7d",
+      "derivative_bytes": 4718,
+      "transformations": [
+        {
+          "kind": "byte_identical_selected_copy"
+        }
+      ]
+    },
+    {
+      "public_locator": "runs/OFFSET-R1-003/observations/001-initial.ax.txt",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/observations/001-initial.ax.txt",
+      "original_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+      "original_bytes": 75,
+      "original_mode": "0644",
+      "derivative_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+      "derivative_bytes": 75,
+      "transformations": [
+        {
+          "kind": "byte_identical_selected_copy"
+        }
+      ]
+    },
+    {
+      "public_locator": "runs/OFFSET-R1-003/observations/001-initial.png",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/observations/001-initial.png",
+      "original_sha256": "0e0281299a097e681d2baa56ed3578302a6478cd3aec5bd7a784b09fb796d1da",
+      "original_bytes": 175782,
+      "original_mode": "0644",
+      "derivative_sha256": "0e0281299a097e681d2baa56ed3578302a6478cd3aec5bd7a784b09fb796d1da",
+      "derivative_bytes": 175782,
+      "transformations": [
+        {
+          "kind": "byte_identical_selected_copy"
+        }
+      ]
+    },
+    {
+      "public_locator": "runs/OFFSET-R1-003/observations/001-initial.time.json",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/observations/001-initial.time.json",
+      "original_sha256": "744a3602b580f9c46f8be83a707ea26f77a48459dc9b063305498f5b1aa9488e",
+      "original_bytes": 78,
+      "original_mode": "0644",
+      "derivative_sha256": "744a3602b580f9c46f8be83a707ea26f77a48459dc9b063305498f5b1aa9488e",
+      "derivative_bytes": 78,
+      "transformations": [
+        {
+          "kind": "byte_identical_selected_copy"
+        }
+      ]
+    },
+    {
+      "public_locator": "runs/OFFSET-R1-003/observations/002-new-empty.ax.txt",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/observations/002-new-empty.ax.txt",
+      "original_sha256": "b778b885c2edbd59f893ad159dff50689f0006ae99881eaedca7c5271d6b542c",
+      "original_bytes": 322,
+      "original_mode": "0644",
+      "derivative_sha256": "b778b885c2edbd59f893ad159dff50689f0006ae99881eaedca7c5271d6b542c",
+      "derivative_bytes": 322,
+      "transformations": [
+        {
+          "kind": "byte_identical_selected_copy"
+        }
+      ]
+    },
+    {
+      "public_locator": "runs/OFFSET-R1-003/observations/002-new-empty.png",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/observations/002-new-empty.png",
+      "original_sha256": "7df41b8a2c60c2dc8ea8e51c53ec461d508bbceae39e778532fbe51e24228760",
+      "original_bytes": 176595,
+      "original_mode": "0644",
+      "derivative_sha256": "7df41b8a2c60c2dc8ea8e51c53ec461d508bbceae39e778532fbe51e24228760",
+      "derivative_bytes": 176595,
+      "transformations": [
+        {
+          "kind": "byte_identical_selected_copy"
+        }
+      ]
+    },
+    {
+      "public_locator": "runs/OFFSET-R1-003/observations/002-new-empty.time.json",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/observations/002-new-empty.time.json",
+      "original_sha256": "493da9dd1553361e33b1a91f73ec1727553b291ae58540d6c75f8f9e7d67277c",
+      "original_bytes": 78,
+      "original_mode": "0644",
+      "derivative_sha256": "493da9dd1553361e33b1a91f73ec1727553b291ae58540d6c75f8f9e7d67277c",
+      "derivative_bytes": 78,
+      "transformations": [
+        {
+          "kind": "byte_identical_selected_copy"
+        }
+      ]
+    },
+    {
+      "public_locator": "runs/OFFSET-R1-003/observations/003-rectangle-draft-name-width.ax.txt",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/observations/003-rectangle-draft-name-width.ax.txt",
+      "original_sha256": "055a667f8e81837720c1f88b03df8613a7070fc1a213399956938661ea7311a5",
+      "original_bytes": 3407,
+      "original_mode": "0644",
+      "derivative_sha256": "055a667f8e81837720c1f88b03df8613a7070fc1a213399956938661ea7311a5",
+      "derivative_bytes": 3407,
+      "transformations": [
+        {
+          "kind": "byte_identical_selected_copy"
+        }
+      ]
+    },
+    {
+      "public_locator": "runs/OFFSET-R1-003/observations/003-rectangle-draft-name-width.png",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/observations/003-rectangle-draft-name-width.png",
+      "original_sha256": "99bf218379a0127fbdac599af85e3dffb027964a1ce3bdc16bf683ef9aade9ab",
+      "original_bytes": 177673,
+      "original_mode": "0644",
+      "derivative_sha256": "99bf218379a0127fbdac599af85e3dffb027964a1ce3bdc16bf683ef9aade9ab",
+      "derivative_bytes": 177673,
+      "transformations": [
+        {
+          "kind": "byte_identical_selected_copy"
+        }
+      ]
+    },
+    {
+      "public_locator": "runs/OFFSET-R1-003/observations/003-rectangle-draft-name-width.time.json",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/observations/003-rectangle-draft-name-width.time.json",
+      "original_sha256": "42fed1889b88c759865cad90d2fdcdb5f7af40d0b13cf7db8966c2969aca719c",
+      "original_bytes": 78,
+      "original_mode": "0644",
+      "derivative_sha256": "42fed1889b88c759865cad90d2fdcdb5f7af40d0b13cf7db8966c2969aca719c",
+      "derivative_bytes": 78,
+      "transformations": [
+        {
+          "kind": "byte_identical_selected_copy"
+        }
+      ]
+    },
+    {
+      "public_locator": "runs/OFFSET-R1-003/observations/native-actions.jsonl",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/observations/native-actions.jsonl",
+      "original_sha256": "bcb5a3663dd2039579e0e7324dea8d397a7c34c61398b6b446c04cf1533f1359",
+      "original_bytes": 722,
+      "original_mode": "0644",
+      "derivative_sha256": "bcb5a3663dd2039579e0e7324dea8d397a7c34c61398b6b446c04cf1533f1359",
+      "derivative_bytes": 722,
+      "transformations": [
+        {
+          "kind": "byte_identical_selected_copy"
+        }
+      ]
+    },
+    {
+      "public_locator": "runs/OFFSET-R1-003/observations/process-1-launch.json",
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/observations/process-1-launch.json",
+      "original_sha256": "0d34b3bcd2d76b89dc793a9c02c87f90d6b73308b06870b2fcbc86b26fb9fc00",
+      "original_bytes": 823,
+      "original_mode": "0644",
+      "derivative_sha256": "ccde7cafe144633cd8d9f530c8ccfab0a5c13dab1b1bf962a79f2d8f29e1d2ee",
+      "derivative_bytes": 735,
+      "transformations": [
+        {
+          "kind": "exact_workspace_prefix_normalization",
+          "replacement": "<private-workspace>",
+          "occurrences": 2
+        }
+      ]
+    }
+  ],
+  "generated_artifacts": [
+    {
+      "public_locator": "README.md",
+      "sha256": "0f206ad9797b7a63f5acc424a716fd759529fe686c51798c58e0766033cbdf57",
+      "bytes": 3644,
+      "origin": "new authored publication explanation/summary; no original counterpart"
+    },
+    {
+      "public_locator": "SUMMARY.json",
+      "sha256": "79086b339ec7143d58c30c744b3e3f14706e3a4220ee3371582c23906410cdef",
+      "bytes": 2645,
+      "origin": "new authored publication explanation/summary; no original counterpart"
+    }
+  ],
+  "omitted_original_run_files": [
+    {
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/BINDING.prelaunch-proposed-002.json",
+      "original_sha256": "b1570f39044436383cd096c99ca7f2283d7c47b202ac100c82075caded0555ec",
+      "original_bytes": 27696,
+      "original_mode": "0444",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Obsolete unbound/prelaunch proposal omitted. Final frozen binding, protocol, and actual closed stop are retained."
+    },
+    {
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/BINDING.proposed.json",
+      "original_sha256": "bfe273033dd44ba3809b329567a50e1656d0114527a909ed685fa11fc484f97e",
+      "original_bytes": 10713,
+      "original_mode": "0644",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Obsolete unbound/prelaunch proposal omitted. Final frozen binding, protocol, and actual closed stop are retained."
+    },
+    {
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/CLOSED-CASES-READONLY-BASELINE.json",
+      "original_sha256": "a0009da0adcb8bcc63b935bc261ac13232445e704c0521309d43a266837b61fc",
+      "original_bytes": 6707,
+      "original_mode": "0644",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Earlier closed-case baseline omitted from this separate003 derivative. Independent before/after SHA256+mode+byte comparisons confirm the old packets and prior public stage are unchanged."
+    },
+    {
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/CLOTH-DATAFLOW.proposal-002.json",
+      "original_sha256": "f719bc3a23ec3d620ac8c49aa761deed58ea6320d6aa2e1353d13c4b636ffb1f",
+      "original_bytes": 2340,
+      "original_mode": "0444",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Provisional static dataflow proposal omitted. The root-reviewed static audit is retained with its source-only limitations."
+    },
+    {
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/HARDWARE.prelaunch-002.json",
+      "original_sha256": "6cbcf5acaa614b5f588fefc9de3f6a06d960f13038daa17c3c4fd70c40afb42d",
+      "original_bytes": 968,
+      "original_mode": "0444",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Duplicate prelaunch hardware record omitted; captured hardware facts remain in the final binding."
+    },
+    {
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/PACKAGE-CHECKS-002.json",
+      "original_sha256": "be8dd73645ba16df58a8217b8912a3782df94fa0372461035a31a4bb4836a9d5",
+      "original_bytes": 4277,
+      "original_mode": "0444",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Preparation/package-only check record omitted; original digest retained. These checks do not grade the stopped native workflow."
+    },
+    {
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/PREPARATION-CHECKS.json",
+      "original_sha256": "edfc2a822648706bbbd56932345199c73a6282ecefeff0bd4647b92fc697552a",
+      "original_bytes": 1462,
+      "original_mode": "0644",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Preparation/package-only check record omitted; original digest retained. These checks do not grade the stopped native workflow."
+    },
+    {
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/PROPOSAL.md",
+      "original_sha256": "f761b1e84aa52f73e5878dd9a1ab675d678b1b2fe92d874f0ed042bd8382daab",
+      "original_bytes": 3164,
+      "original_mode": "0644",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Obsolete unbound/prelaunch proposal omitted. Final frozen binding, protocol, and actual closed stop are retained."
+    },
+    {
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/SOURCE87.prelaunch-002.json",
+      "original_sha256": "9c1300bd457e5fc8bfb586078e288fc7c20f4a283f478514efac4ee5e1fb5e28",
+      "original_bytes": 10630,
+      "original_mode": "0444",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Duplicate source-hash manifest omitted. All87 recorded source hashes remain in the final binding; no source tree is copied."
+    },
+    {
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/bundle/WeftForge.app/Contents/Info.plist",
+      "original_sha256": "4d81fd486a8231487b26b306b571065c89a738ae7656c7b58e28a6b122d6a069",
+      "original_bytes": 663,
+      "original_mode": "0444",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Entire application bundle and compiled executable omitted. Recorded identities retained; no binary or bundle is packaged."
+    },
+    {
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/bundle/WeftForge.app/Contents/MacOS/weftforge",
+      "original_sha256": "c05bac974a4f8b40e2c5c46e4f857d5e00c270410f3a817f83439dbbb1f5d71e",
+      "original_bytes": 62551368,
+      "original_mode": "0755",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Entire application bundle and compiled executable omitted. Recorded identities retained; no binary or bundle is packaged."
+    },
+    {
+      "original_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003/measure_saved_files.py",
+      "original_sha256": "cd8ab9e04b930778636323c821b619b9512bce3192e785e7b44db69cc7468d0b",
+      "original_bytes": 16228,
+      "original_mode": "0444",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Formal saved-file evaluator omitted and never invoked. No authored snapshot/export outputs were produced."
+    }
+  ],
+  "omitted_external_or_source_references": [
+    {
+      "private_reference_as_recorded": ".cargo/config.toml",
+      "sha256_as_recorded": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "Cargo.lock",
+      "sha256_as_recorded": "eb8a60650b473c79dda2e58a56f68b1abe9ca9a68c15115c9c8754c561732f3a",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "Cargo.toml",
+      "sha256_as_recorded": "032b32e80547618a72d39e42c0204611ff37908b8a6bf28615b3e592f79fa499",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "THIRD_PARTY.md",
+      "sha256_as_recorded": "86d65f258938c55ed36d3a621222ef5124e348f5519d01eab8f61db540a4876e",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge-cli/Cargo.toml",
+      "sha256_as_recorded": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge-cli/src/main.rs",
+      "sha256_as_recorded": "7049615180a793ad1557a2bbd3a27797b4b06aac060a2cb0620bd40436e64e0b",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge-cli/src/mcp.rs",
+      "sha256_as_recorded": "b0ac7f62a8f9f5e27236ebfc92b26791e9f7a84d67e7adcb663b43566dd34ef9",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge-cli/tests/curves.rs",
+      "sha256_as_recorded": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge-cli/tests/dxf_import.rs",
+      "sha256_as_recorded": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge-cli/tests/ellipse.rs",
+      "sha256_as_recorded": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge-cli/tests/grain.rs",
+      "sha256_as_recorded": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge-cli/tests/holes.rs",
+      "sha256_as_recorded": "c7e0656dcb756db3ced588e52c08c969a997b99661f85bbb8d5079a27421ad77",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge-cli/tests/mcp_stdio.rs",
+      "sha256_as_recorded": "8c20f4e7bfd7b0a2ef60538a43c662d4363288b66ba05abd1c5528b15fde3811",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge-cli/tests/svg_import.rs",
+      "sha256_as_recorded": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge/Cargo.toml",
+      "sha256_as_recorded": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge/assets/fonts/Inter-Regular.ttf",
+      "sha256_as_recorded": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge/assets/fonts/Inter-SemiBold.ttf",
+      "sha256_as_recorded": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf",
+      "sha256_as_recorded": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge/assets/fonts/OFL-Inter.txt",
+      "sha256_as_recorded": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt",
+      "sha256_as_recorded": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge/assets/fonts/SOURCES.json",
+      "sha256_as_recorded": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "apps/weftforge/src/main.rs",
+      "sha256_as_recorded": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/Cargo.toml",
+      "sha256_as_recorded": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/src/document.rs",
+      "sha256_as_recorded": "642c5f18dc91850011622a82afd271a9b8122b6b1a5155818c0f196d3e30c5b9",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/src/geometry.rs",
+      "sha256_as_recorded": "3738282136928c459eaf524036c61e20d4c8b3cf2e04cd46ac812faf4f823c41",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/src/lib.rs",
+      "sha256_as_recorded": "8f1a57b619222ea11986bf68a424e277b31a26d8da5eccef7c6d31b913ce76f8",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/src/offset.rs",
+      "sha256_as_recorded": "761881af22d784d0354ac25e6cda98971cb459bf78fd1d635eee21dc3e758203",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/src/persistence.rs",
+      "sha256_as_recorded": "69e76f3c73567731a46bc234e9a28e89d6036cb069c0ad501b4dd4570e40d691",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/src/persistence/dxf.rs",
+      "sha256_as_recorded": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/src/persistence/dxf_import.rs",
+      "sha256_as_recorded": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/src/persistence/svg.rs",
+      "sha256_as_recorded": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/src/sewing.rs",
+      "sha256_as_recorded": "dc7cb6cab0a62c313698c155728409f8940319bb49ed51c5c2fbc88c88f21146",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/src/simulation.rs",
+      "sha256_as_recorded": "24e12aaf323f34abe745dc9c42c9823acbd6e2a1832d6827a5a6397112525707",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/cut_piece.rs",
+      "sha256_as_recorded": "7c5e12e7a4b6f0cec65199e795c8ad16889a0f0aa08247da2a2f94b567a59c86",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/dxf.rs",
+      "sha256_as_recorded": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/dxf_import.rs",
+      "sha256_as_recorded": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/ellipse.rs",
+      "sha256_as_recorded": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge",
+      "sha256_as_recorded": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/fixtures/original-cut-l.weftforge",
+      "sha256_as_recorded": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge",
+      "sha256_as_recorded": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf",
+      "sha256_as_recorded": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/fixtures/original-editable-patterns.svg",
+      "sha256_as_recorded": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/grain.rs",
+      "sha256_as_recorded": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/hole_io.rs",
+      "sha256_as_recorded": "35e4b82cf53dc0b80218574e948d0b0fa09f7e8f4c1524e52b6a8650cd83ea98",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/holes.rs",
+      "sha256_as_recorded": "eaf21904ea94858632e6d11caddda63c0bf220845788633481c3bd114a355594",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/internal_lines.rs",
+      "sha256_as_recorded": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/joins.rs",
+      "sha256_as_recorded": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/migration.rs",
+      "sha256_as_recorded": "1f4b8aec8bfa9622c7c69b2b7ef2a9ec2c745340c5d56c5edab87d40d7f66418",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/outline_offset.rs",
+      "sha256_as_recorded": "9e5711fe91d8cb1b42818f7db241e94186110585cea8839eb312f01e6a0b3f69",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/pattern_transform.rs",
+      "sha256_as_recorded": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/seam_reversal.rs",
+      "sha256_as_recorded": "6a6590557bcdfd29d7a6d0b85de939ed542586e0c573180a1b035b8aaa114c5d",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/sewing_groups.rs",
+      "sha256_as_recorded": "a3e9ad0393b0039b7257193b5bcd0f54e7aafe5ab5566ae8459c1392a0ce6f41",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/shirt.rs",
+      "sha256_as_recorded": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/svg_import.rs",
+      "sha256_as_recorded": "57d693d8cc307bb711093140f0b1110cddfd2a5b68bce8e338d54a2deddd34ab",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-core/tests/workflow.rs",
+      "sha256_as_recorded": "05eba55a4ee1d2ea5c569dad68f6c4fdeb3e02a9bf09f0778dce00e4bbc3dea7",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-sim/Cargo.toml",
+      "sha256_as_recorded": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-sim/src/capsule.rs",
+      "sha256_as_recorded": "04634a93371e4e7f513401fa617075e28c1b4776023b158c3f6dc168d24371a0",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-sim/src/constraints.rs",
+      "sha256_as_recorded": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-sim/src/contact.rs",
+      "sha256_as_recorded": "20df8876462dcbf7d32761b0e061ab66def60e7f88a5eccbfb6e7839108c26c8",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-sim/src/lib.rs",
+      "sha256_as_recorded": "f69f2b18464ae980ada76d81fd86c46ee3dd575457b194be826fbd6cb1c2a546",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-sim/src/math.rs",
+      "sha256_as_recorded": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-sim/src/strain.rs",
+      "sha256_as_recorded": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "crates/weftforge-sim/src/tests.rs",
+      "sha256_as_recorded": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "docs/architecture.md",
+      "sha256_as_recorded": "c0c0a1e786f28ab7b3af7bc9dad51dfd0ab598e6c6a8fe6a2e7627d30a923dba",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "docs/automation.md",
+      "sha256_as_recorded": "04597a2ec92023e3ae76868863f3d3f69ac4834741ad6d5e1833191293a6bacb",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "docs/dependencies.json",
+      "sha256_as_recorded": "31b44a3989e374510638df611ec403bfdd55bac31095bb9ce2ed66a685c07e2a",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "docs/file-formats.md",
+      "sha256_as_recorded": "1d61ad2278a74ebf5e236d4ec9d0f2441d6abbf05e22212d4ce33d214df69a50",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "rust-toolchain.toml",
+      "sha256_as_recorded": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "spec/features/APP-001-new-empty.md",
+      "sha256_as_recorded": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "spec/features/PAT-004-native-transform-selection.md",
+      "sha256_as_recorded": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "spec/features/PAT-004-piece-rigid-transform.md",
+      "sha256_as_recorded": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "spec/features/PAT-006-internal-segments.md",
+      "sha256_as_recorded": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "spec/features/PAT-006-straight-cut.md",
+      "sha256_as_recorded": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "spec/features/PAT-006-straight-hole.md",
+      "sha256_as_recorded": "634028923f25811aa364d85ce13947db242812d6523635c13ce5a715277b1d2f",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "spec/features/PAT-009-material-outline-offset.md",
+      "sha256_as_recorded": "604d9cc5d12da398a90bd819b78eb7b9999a48a2f96c32e900780d4457b6dbc6",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "spec/features/SEW-001-cut-and-sew.md",
+      "sha256_as_recorded": "9420f9a88ea184868aba5543f0d356181fcd8373dadfa4632376cc4a5a5f8941",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "spec/features/SEW-002-physical-length.md",
+      "sha256_as_recorded": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "spec/features/fixtures/PAT-009-offset-originals.json",
+      "sha256_as_recorded": "6de6eefff1bc040363f1f2de335f5c4f70dc526dacd5224ba22e1c33e1820bec",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "spec/features/fixtures/PAT-009-offset-reviewed-additions.json",
+      "sha256_as_recorded": "fc4b133cadada09a676266cea90c736a35342767552cb54a573460eea9f41991",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "vendor/earcutr/Cargo.toml",
+      "sha256_as_recorded": "906d72d033764b39570416ef92906a90d4c49e85b9c35ab0138cf7a0aafe9c76",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "vendor/earcutr/LICENSE",
+      "sha256_as_recorded": "ac0e50e523dd0ea36f077c373833f1ae6c7ad130ea5ac6ff23bfa8d3f402145f",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "vendor/earcutr/UPSTREAM.md",
+      "sha256_as_recorded": "e686aeaa8758581d2c0659b1ed5e87dce4fe6608a8605c29ba90459495818944",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "vendor/earcutr/src/legacy.rs",
+      "sha256_as_recorded": "fd5120ba533484556e7a6d1a460d28084ac1f4c90f3334c71ff6f67976b933c8",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "vendor/earcutr/src/lib.rs",
+      "sha256_as_recorded": "29992d5bd3d0717df6b4db9e60a3d280c276b67c3ddb87fa5de9173c1b3578d3",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "vendor/earcutr/src/tests.rs",
+      "sha256_as_recorded": "2e54cb4cceb9c073ae911a5909d2d9b430c6bf4ce53000332254233b21a544e9",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "xtask/Cargo.toml",
+      "sha256_as_recorded": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "xtask/src/main.rs",
+      "sha256_as_recorded": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source file omitted to avoid a duplicate source tree. Digest is pre-run provenance, not a new source check, live Cloth observation, or native acceptance.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "<private-workspace>/.local/cancellable-triangulation-review-20261116/CHECKS.json",
+      "sha256_as_recorded": "4843ca67cac78b1bd2e1d091631ef18671e8a2847c2f2da3fa2dca44185d490a",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source/build/check receipt omitted and not re-run during publication. Its success does not replace the native step-1 stop.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "<private-workspace>/.local/cancellable-triangulation-integration-20261116/clean-7a8df7e-verify-001/CHECKS.json",
+      "sha256_as_recorded": "e5819d8eb479eaf833da5e1c3fa426b3e2172aae6544ae5be99d2e41fd3663c3",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Source/build/check receipt omitted and not re-run during publication. Its success does not replace the native step-1 stop.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "<private-workspace>/.local/seam-allowance-contract-20261116/ORIGINAL-SCENARIOS-001.json",
+      "sha256_as_recorded": "6de6eefff1bc040363f1f2de335f5c4f70dc526dacd5224ba22e1c33e1820bec",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Independent authored scenario/contract packet omitted. No raw restricted reference evidence or reference acceptance is included.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "<private-workspace>/.local/seam-allowance-contract-review-20261116/CONTRACT-REVIEWED-001.md",
+      "sha256_as_recorded": "b5e0b8c441d0fdc595840ee13ca8d56ae113b682e7c42ae499ad4a5466c2f73a",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Independent authored scenario/contract packet omitted. No raw restricted reference evidence or reference acceptance is included.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "<private-workspace>/.local/cancellable-triangulation-20261116/target/debug/weftforge",
+      "sha256_as_recorded": "c05bac974a4f8b40e2c5c46e4f857d5e00c270410f3a817f83439dbbb1f5d71e",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Compiled source-build target omitted; the runtime worktree and its targets were not accessed or written during derivative preparation.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "/usr/bin/open",
+      "sha256_as_recorded": "6a052c2e9fe7b92dbc8e399304d45e1fac4563382ee68bb0e035e7e5aed07dc3",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "System launcher identity retained only; executable not copied or run during publication.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "/bin/ps",
+      "sha256_as_recorded": "d0e7b30250a9b1bd2afd1d6462a10d8a2d10ca448d9ce76be067db8a9bf459e0",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "System process-probe identity retained only; executable not copied or run during publication.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "<omitted-personal-tool-executable>",
+      "sha256_as_recorded": "dae804f93cd396de84720747c66218ff0aed9f74385f71dd9b3e62c49ce5b2ce",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Personal formal-method executable locator explicitly omitted at the two recorded JSON pointers. Recorded executable bytes hash retained; the tool was not copied or invoked.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-001/RUN-STOP-001.json",
+      "sha256_as_recorded": "546a38ef0c67d79c5f2cb0f101ec882f83bc04b2720d3188561c20564b99a27b",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Earlier closed run artifact omitted from this separate003 bundle. Old originals and the prior public derivative remain unchanged;003 clears no earlier outcome.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-001/BINDING.final.json",
+      "sha256_as_recorded": "af056f271a23ad6e8dd5c92a88b32012d3179687cfe630bf840964c62f91b95a",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Earlier closed run artifact omitted from this separate003 bundle. Old originals and the prior public derivative remain unchanged;003 clears no earlier outcome.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/RUN-STOP-002.json",
+      "sha256_as_recorded": "adc734e689744b610b59fa857763897669f809a6b40a91738e1267ea94710154",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Earlier closed run artifact omitted from this separate003 bundle. Old originals and the prior public derivative remain unchanged;003 clears no earlier outcome.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/BINDING.final.json",
+      "sha256_as_recorded": "c1826c25ba6db999a9de9e430f907077b52f215ba280dbd1a1e81eefcaa27d36",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Earlier closed run artifact omitted from this separate003 bundle. Old originals and the prior public derivative remain unchanged;003 clears no earlier outcome.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "<private-workspace>/.local/native-idle-fix-review-20261116/diagnostic-001/RUN-OUTCOME.json",
+      "sha256_as_recorded": "71fb72f0750f47df5c1447862e01e30bcbb14d816a0c51c51403322a454c7245",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Earlier diagnostic outcome omitted from this separate003 bundle. It remains not reproduced with no cause/fix and retained timing deviations;003 clears no earlier outcome.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-001/NATIVE-PROTOCOL-001.md",
+      "sha256_as_recorded": "5ecee7b014419806e284e246869652e750ae77e88baebe6b0350399275c1bd13",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Inherited closed-case preparation protocol omitted;003 protocol is retained. No old run was replayed or regraded.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/NATIVE-PROTOCOL-002.md",
+      "sha256_as_recorded": "2f15c5bd9fd4500c0ea8566d658d789be5aff05c20f6d44028593c8299c797b8",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "Inherited closed-case preparation protocol omitted;003 protocol is retained. No old run was replayed or regraded.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    },
+    {
+      "private_reference_as_recorded": "current CLI artifact (no pathname recorded in this binding)",
+      "sha256_as_recorded": "578315b809d70ba35f15cdde08f606a8abdab952acf56bef899b32767d01d9d1",
+      "included_in_public_derivative": false,
+      "scope_and_reason": "CLI identity retained only; CLI was not part of this native case and was not executed/copied during publication.",
+      "referenced_by_public_locator": "runs/OFFSET-R1-003/BINDING.final.json"
+    }
+  ],
+  "planned_files_not_created": [
+    {
+      "binding_key": "before",
+      "planned_private_locator_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-003/snapshots/before.weftforge",
+      "sha256": null,
+      "status": "not_created; absent at derivative preparation",
+      "scope": "Planned authored/output or measurement path;003 stopped before Add rectangle, material entry, baseline save, or any offset workflow. No output or grading result is implied."
+    },
+    {
+      "binding_key": "cancel",
+      "planned_private_locator_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-003/snapshots/cancel.weftforge",
+      "sha256": null,
+      "status": "not_created; absent at derivative preparation",
+      "scope": "Planned authored/output or measurement path;003 stopped before Add rectangle, material entry, baseline save, or any offset workflow. No output or grading result is implied."
+    },
+    {
+      "binding_key": "applied",
+      "planned_private_locator_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-003/snapshots/applied.weftforge",
+      "sha256": null,
+      "status": "not_created; absent at derivative preparation",
+      "scope": "Planned authored/output or measurement path;003 stopped before Add rectangle, material entry, baseline save, or any offset workflow. No output or grading result is implied."
+    },
+    {
+      "binding_key": "undo",
+      "planned_private_locator_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-003/snapshots/undo.weftforge",
+      "sha256": null,
+      "status": "not_created; absent at derivative preparation",
+      "scope": "Planned authored/output or measurement path;003 stopped before Add rectangle, material entry, baseline save, or any offset workflow. No output or grading result is implied."
+    },
+    {
+      "binding_key": "redo",
+      "planned_private_locator_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-003/snapshots/redo.weftforge",
+      "sha256": null,
+      "status": "not_created; absent at derivative preparation",
+      "scope": "Planned authored/output or measurement path;003 stopped before Add rectangle, material entry, baseline save, or any offset workflow. No output or grading result is implied."
+    },
+    {
+      "binding_key": "edited",
+      "planned_private_locator_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-003/snapshots/edited.weftforge",
+      "sha256": null,
+      "status": "not_created; absent at derivative preparation",
+      "scope": "Planned authored/output or measurement path;003 stopped before Add rectangle, material entry, baseline save, or any offset workflow. No output or grading result is implied."
+    },
+    {
+      "binding_key": "final",
+      "planned_private_locator_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-003/snapshots/final.weftforge",
+      "sha256": null,
+      "status": "not_created; absent at derivative preparation",
+      "scope": "Planned authored/output or measurement path;003 stopped before Add rectangle, material entry, baseline save, or any offset workflow. No output or grading result is implied."
+    },
+    {
+      "binding_key": "svg",
+      "planned_private_locator_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-003/exports/OFFSET-R1.svg",
+      "sha256": null,
+      "status": "not_created; absent at derivative preparation",
+      "scope": "Planned authored/output or measurement path;003 stopped before Add rectangle, material entry, baseline save, or any offset workflow. No output or grading result is implied."
+    },
+    {
+      "binding_key": "dxf",
+      "planned_private_locator_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-003/exports/OFFSET-R1.dxf",
+      "sha256": null,
+      "status": "not_created; absent at derivative preparation",
+      "scope": "Planned authored/output or measurement path;003 stopped before Add rectangle, material entry, baseline save, or any offset workflow. No output or grading result is implied."
+    },
+    {
+      "binding_key": "rest_obj",
+      "planned_private_locator_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-003/exports/OFFSET-R1.obj",
+      "sha256": null,
+      "status": "not_created; absent at derivative preparation",
+      "scope": "Planned authored/output or measurement path;003 stopped before Add rectangle, material entry, baseline save, or any offset workflow. No output or grading result is implied."
+    },
+    {
+      "binding_key": "independent_file_measurements",
+      "planned_private_locator_as_recorded": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-003/independent-file-measurements.json",
+      "sha256": null,
+      "status": "not_created; absent at derivative preparation",
+      "scope": "Planned authored/output or measurement path;003 stopped before Add rectangle, material entry, baseline save, or any offset workflow. No output or grading result is implied."
+    }
+  ],
+  "originals_and_prior_stage_preservation": {
+    "algorithm": "SHA256 over compact sort_keys JSON of sorted file entries: relative_locator, sha256, bytes, mode; no symlinks accepted.",
+    "groups": [
+      {
+        "group": "OFFSET-R1-003",
+        "root_relative_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-003",
+        "file_count": 29,
+        "total_bytes": 63225562,
+        "before_sha256_mode_bytes_tree_digest": "309afc782194debf08b0a6aff0969b314d934c5b1547b03515a63654d8d89389",
+        "after_sha256_mode_bytes_tree_digest": "309afc782194debf08b0a6aff0969b314d934c5b1547b03515a63654d8d89389",
+        "all_file_sha256_bytes_modes_equal": true,
+        "mismatches": []
+      },
+      {
+        "group": "OFFSET-R1-001",
+        "root_relative_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-001",
+        "file_count": 15,
+        "total_bytes": 63453375,
+        "before_sha256_mode_bytes_tree_digest": "335b7d851f04b68882f15e0e21165cb76e836cab6a2de54cb5a47477257fc34d",
+        "after_sha256_mode_bytes_tree_digest": "335b7d851f04b68882f15e0e21165cb76e836cab6a2de54cb5a47477257fc34d",
+        "all_file_sha256_bytes_modes_equal": true,
+        "mismatches": []
+      },
+      {
+        "group": "OFFSET-R1-002",
+        "root_relative_locator": ".local/native-material-outline-offset-20261116/OFFSET-R1-002",
+        "file_count": 21,
+        "total_bytes": 64006374,
+        "before_sha256_mode_bytes_tree_digest": "2fc172a6bd99e7613dd269a05cd57e007338c6bcf923471f0380d96aefee0a9d",
+        "after_sha256_mode_bytes_tree_digest": "2fc172a6bd99e7613dd269a05cd57e007338c6bcf923471f0380d96aefee0a9d",
+        "all_file_sha256_bytes_modes_equal": true,
+        "mismatches": []
+      },
+      {
+        "group": "NATIVE-IDLE-DIAG-001",
+        "root_relative_locator": ".local/native-idle-fix-review-20261116/diagnostic-001",
+        "file_count": 17,
+        "total_bytes": 63831692,
+        "before_sha256_mode_bytes_tree_digest": "9c8a92b92c10b0f41f7565aa8f3f805ec95a838035b406cb5cfc9fdf10be5b3b",
+        "after_sha256_mode_bytes_tree_digest": "9c8a92b92c10b0f41f7565aa8f3f805ec95a838035b406cb5cfc9fdf10be5b3b",
+        "all_file_sha256_bytes_modes_equal": true,
+        "mismatches": []
+      },
+      {
+        "group": "prior-public-stage",
+        "root_relative_locator": ".local/offset-stop-publication-20261116/public",
+        "file_count": 43,
+        "total_bytes": 1132906,
+        "before_sha256_mode_bytes_tree_digest": "3775e852c9fb9b67640d6751e80b8d7f808f4a5bb3fc26ee972ac345b8c96121",
+        "after_sha256_mode_bytes_tree_digest": "3775e852c9fb9b67640d6751e80b8d7f808f4a5bb3fc26ee972ac345b8c96121",
+        "all_file_sha256_bytes_modes_equal": true,
+        "mismatches": []
+      }
+    ],
+    "prior_public_content_digest_matches_previous_handoff": "bdf9f064b77d2e693e432c51d84468fdc78fc276c058da79fda0574363064a3b",
+    "private_before_baseline_relative_locator": ".local/offset-stop-publication-20261116/003-ORIGINALS-BEFORE.json",
+    "private_before_baseline_sha256": "d0a530218b19474540aca8dece9552994215cd261c23706d39848e4596029e70",
+    "runtime_and_publication_worktree_access": "No reads or writes performed in either worktree; no claim of a fresh whole-worktree fingerprint is made."
+  },
+  "unbundled_conversation_context": {
+    "status": "not included; no transcript file was part of the original003 directory",
+    "sha256": null,
+    "scope": "Entire tool conversations/discovery outputs can contain unrelated app/browser context. Only retained authored own-app observations are bundled; no missing full tree or controller interaction detail is invented."
+  },
+  "review_checks": {
+    "screenshots_visually_reviewed": 3,
+    "screenshots_byte_identical": true,
+    "screen_scope": "Own WeftForge window only; no unrelated browser/task context observed.",
+    "json_and_jsonl_parse_checked": true,
+    "semantic_comparison_except_declared_path_transforms_and_privacy_omissions": true,
+    "original_hash_bytes_modes_before_after_equal": true,
+    "public_symlink_count": 0,
+    "public_path_traversal_count": 0,
+    "personal_workspace_home_username_byte_scan_matches": 0,
+    "product_or_reference_experiments_performed": 0
+  },
+  "manifest_digest_note": "This manifest excludes its own hash and bytes to avoid circular hashing. Handoff records its SHA256 and an aggregate over all final public files."
+}

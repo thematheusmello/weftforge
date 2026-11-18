@@ -1,0 +1,51 @@
+{
+  "case": "D003",
+  "files": {
+    "checker": {
+      "bytes": 14800,
+      "mode": "0o444",
+      "name": "check_outputs.py",
+      "sha256": "e2eb412b12f7e5fb5f1a1150b45375bb9da5f6d31548aebb5f0f7c0be70b1c22"
+    },
+    "frozen_seed": {
+      "bytes": 3308,
+      "mode": "0o444",
+      "name": "seed.expected.json",
+      "sha256": "ba14733d505c8f9ee0bc71b0d38c7a3236c31ba25e9640ae6dd77d4124040077"
+    },
+    "self_check": {
+      "bytes": 751,
+      "mode": "0o444",
+      "name": "self-check.json",
+      "sha256": "1fcd5c76fc689c938ac5146ae26bd3bcae0947acad0a8b54a2f72ed9575e9d5f"
+    },
+    "targets": {
+      "bytes": 1795,
+      "mode": "0o444",
+      "name": "targets.json",
+      "sha256": "7ce9327027ac4b48a9ae5435e447eff9ae3a6d942c5607f653d8e24d3fc205ac"
+    }
+  },
+  "frozen_utc": "2026-11-16T19:59:49.525017+00:00",
+  "outputs_inspected_before_freeze": false,
+  "targets": {
+    "absolute_si_tolerance": "1e-12",
+    "all_other_authoring": "exact parsed seed expectation",
+    "edited_redo_area_m2": "0.2635",
+    "edited_redo_position_m": [
+      "-0.02",
+      "-0.01"
+    ],
+    "final_work": "byte-identical to redo",
+    "piece_id": 2,
+    "point_id": 3,
+    "revision_by_role": {
+      "edited": 6,
+      "final_work": 8,
+      "redo": 8,
+      "seed": 5,
+      "undo": 7
+    },
+    "seed_undo_area_m2": "0.2604"
+  }
+}

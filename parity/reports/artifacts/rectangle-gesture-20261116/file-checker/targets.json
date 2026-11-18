@@ -1,0 +1,46 @@
+{
+  "case": "native-rectangle-20261116/RG001",
+  "seed": {
+    "path": ".local/native-rectangle-20261116/RG001/input/empty.weftforge",
+    "sha256": "5b0449d038beb04e0ae94c79e53c78d715da8e5b5dda0f82fbf472d042aaa7db",
+    "bytes": 1977,
+    "mode": "0644"
+  },
+  "files": {
+    ".local/native-rectangle-20261116/RG001/snapshots/created.weftforge": "created",
+    ".local/native-rectangle-20261116/RG001/snapshots/undo.weftforge": "undo",
+    ".local/native-rectangle-20261116/RG001/snapshots/redo.weftforge": "redo",
+    ".local/native-rectangle-20261116/RG001/snapshots/reopened-edit.weftforge": "reopened-edit",
+    ".local/native-rectangle-20261116/RG001/work/rectangle.weftforge": "work"
+  },
+  "contract": {
+    "source": "Parent-supplied pre-output native v5 serialization and case contract; only the empty native seed inspected.",
+    "revision_by_stage": {"created": 1, "undo": 2, "redo": 3, "reopened-edit": 4},
+    "piece_id": 2,
+    "piece_name": "Pattern 1",
+    "point_ids": [3, 4, 5, 6],
+    "curve_ids": [7, 8, 9, 10],
+    "curve_loop": [[3, 4], [4, 5], [5, 6], [6, 3]],
+    "next_id_after_creation_undo_redo_edit": 11,
+    "width_m": 0.4,
+    "height_m": 0.6,
+    "area_m2": 0.24,
+    "perimeter_m": 2.0,
+    "coordinate_lattice_m": 0.01,
+    "absolute_geometry_tolerance_m": 1e-12,
+    "absolute_area_tolerance_m2": 1e-12,
+    "reopened_P0_x_delta_m": -0.01,
+    "reopened_area_m2": 0.243,
+    "reopened_bottom_width_m": 0.41,
+    "reopened_top_width_m": 0.4,
+    "mechanism_correction": "Before native GO/outputs: R4 is a 10 mm leftward point drag after Frame all, because exterior endpoint numeric UI fields are absent. File targets and tolerances unchanged.",
+    "creation_origin": "Unspecified; test translation-invariant geometry and 10 mm coordinate lattice.",
+    "creation_placement": "Finite f64 translation and rotation 3-vectors, otherwise unspecified; unchanged in redo and R4.",
+    "untouched_values": "Exact JSON types and f64 bits, including signed zero; no ignored extra fields.",
+    "seed_shape_absent": true,
+    "file_size_cap_bytes": 262144,
+    "json_maximum_nesting": 64,
+    "check_execution": "Exactly one actual file check, only after explicit parent GO plus complete output SHA-256 list; no repair, rerun or regrade.",
+    "limits": "File-only. No UI, gesture mechanism, lifecycle, native reopen, reference, physics, 3D surface or full garment acceptance."
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "kind": "clean_committed_publication_check",
+  "checked_commit": "3f16230368bfed61ebd0bb3228f85bcf09cf40bc",
+  "command": [
+    "cargo",
+    "xtask",
+    "verify"
+  ],
+  "exit_code": 0,
+  "passed": true,
+  "session_id": 35392,
+  "seconds": 166.35989237506874,
+  "source_count": 87,
+  "report_count": 46,
+  "qualifying_metadata_count": 5,
+  "checked_inputs_unchanged": true,
+  "artifacts": [
+    {
+      "path": "CHECKS.json",
+      "original_sha256": "0b77063021dd9940d58e347688fc3994ae8a291119727e3482381ae4a6113a32",
+      "public_sha256": "0b77063021dd9940d58e347688fc3994ae8a291119727e3482381ae4a6113a32",
+      "original_bytes": 17242,
+      "public_bytes": 17242,
+      "transformation": "Literal repository/home locator normalization only; behavior, inputs, outcomes and test counts unchanged."
+    },
+    {
+      "path": "verify.stdout",
+      "original_sha256": "73d3c124e2ba257b51bc82f1924d028b6a1a5b7eabc61a0874ac69ca252c7dc3",
+      "public_sha256": "73d3c124e2ba257b51bc82f1924d028b6a1a5b7eabc61a0874ac69ca252c7dc3",
+      "original_bytes": 2712,
+      "public_bytes": 2712,
+      "transformation": "Literal repository/home locator normalization only; behavior, inputs, outcomes and test counts unchanged."
+    },
+    {
+      "path": "verify.stderr",
+      "original_sha256": "6d67bbbf12736406b8c38414a350637ef5d4d77bdfa7e32219d035381ba79ef6",
+      "public_sha256": "3270eef94784c087702076a8f3356bba71201b4fda957f2cfc346811748f99f3",
+      "original_bytes": 1856,
+      "public_bytes": 1601,
+      "transformation": "Literal repository/home locator normalization only; behavior, inputs, outcomes and test counts unchanged."
+    }
+  ],
+  "native_execution": false,
+  "reference_execution": false,
+  "native_or_physics_or_parity_acceptance": false
+}

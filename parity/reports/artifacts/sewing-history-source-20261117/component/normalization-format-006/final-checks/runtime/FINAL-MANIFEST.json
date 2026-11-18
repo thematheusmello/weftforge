@@ -1,0 +1,106 @@
+{
+  "actual_session": 49524,
+  "all_bound_source88_inputs_and_prior_artifacts_exact": true,
+  "all_owned_PIDs_and_groups_absent": {
+    "79695": true,
+    "79926": true,
+    "80025": true,
+    "group79926": true,
+    "group80025": true
+  },
+  "files": {
+    "CHECKS-PLAN.json": {
+      "bytes": 1077,
+      "sha256": "2367b0144f16458e79b9b577a74120155d2a6ec98a14ec3757d2cccad93f767a"
+    },
+    "run_checks.py": {
+      "bytes": 5141,
+      "sha256": "93265ee5898d55f9c427578aedb7f7d756002f9ce1afc3868bd269d28ef04385"
+    },
+    "runtime/PERSISTENCE-CLOCK.json": {
+      "bytes": 161,
+      "sha256": "735813b92545107efeb31bf55be612e49738a617c6528984d1f651005ee7c5f1"
+    },
+    "runtime/RESULT.json": {
+      "bytes": 3203,
+      "sha256": "28c550a948698cb925c240190d0c74cf12e85a17f2779d7132092304c2f14c9e"
+    },
+    "runtime/STARTED.json": {
+      "bytes": 613,
+      "sha256": "ba829a9a9be8b359cb6ae52cb15a2e13a8edaa39bdb527435bd99f81ef8b7e87"
+    },
+    "runtime/TERMINAL-WITNESS.json": {
+      "bytes": 622,
+      "sha256": "dcc2e2341c9ceb9eb7f883bd0dfdd634ec64097ff7eb237b9c86df3784f331e5"
+    },
+    "runtime/fmt-POST-GUARD.json": {
+      "bytes": 110,
+      "sha256": "4321dd0e23aa8ee35b738304cab5165269ea81be59adc7bd6e7ad8bd98d422ab"
+    },
+    "runtime/fmt-PRE-GUARD.json": {
+      "bytes": 110,
+      "sha256": "4321dd0e23aa8ee35b738304cab5165269ea81be59adc7bd6e7ad8bd98d422ab"
+    },
+    "runtime/fmt-RECEIPT.json": {
+      "bytes": 1276,
+      "sha256": "48afd57657eb769f4ad23c5fe30f6f3dd5faea7f2e767e0a6fe32ed6951abc31"
+    },
+    "runtime/fmt-STARTED.json": {
+      "bytes": 1033,
+      "sha256": "4ef3c4f7bc0a812d245d11d0f1543d69c1b3a8db8ffb345d0a185ccdd95d5ffe"
+    },
+    "runtime/fmt.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "runtime/fmt.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "runtime/sim-clippy-POST-GUARD.json": {
+      "bytes": 110,
+      "sha256": "4321dd0e23aa8ee35b738304cab5165269ea81be59adc7bd6e7ad8bd98d422ab"
+    },
+    "runtime/sim-clippy-PRE-GUARD.json": {
+      "bytes": 110,
+      "sha256": "4321dd0e23aa8ee35b738304cab5165269ea81be59adc7bd6e7ad8bd98d422ab"
+    },
+    "runtime/sim-clippy-RECEIPT.json": {
+      "bytes": 1381,
+      "sha256": "d611d35afd441d416cac49f81b4be9f34f8e9de0cfcd9c0182900e4b0b47e1a8"
+    },
+    "runtime/sim-clippy-STARTED.json": {
+      "bytes": 1129,
+      "sha256": "8451e1c15dfb6512da769700b432a4722e1cf3168eceba920e5cacc6293e743c"
+    },
+    "runtime/sim-clippy.stderr": {
+      "bytes": 230,
+      "sha256": "800e47ca5ae227e0a36ab1a3e9effc4b7792c520bf8b3d73d3968c771500af79"
+    },
+    "runtime/sim-clippy.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "final_clean_HEAD": "40817073cd38e58a8438bb397d09a0ab9d95f9bb",
+  "observed_controller_terminal_exit": 0,
+  "stages": [
+    {
+      "exit_code": 0,
+      "name": "fmt",
+      "peak_rss_bytes": 59703296,
+      "pid": 79926,
+      "sampled_peak_rss_bytes": 80576512,
+      "stop_reason": null
+    },
+    {
+      "exit_code": 0,
+      "name": "sim-clippy",
+      "peak_rss_bytes": 183992320,
+      "pid": 80025,
+      "sampled_peak_rss_bytes": 263520256,
+      "stop_reason": null
+    }
+  ],
+  "status": "CLOSED_FINAL_FMT_AND_FIRST_NORMALIZATION_SIM_CLIPPY_GREEN"
+}

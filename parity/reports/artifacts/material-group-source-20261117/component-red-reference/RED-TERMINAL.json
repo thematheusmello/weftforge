@@ -1,0 +1,41 @@
+{
+  "argv": [
+    "cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--lib",
+    "tests::shared_edge_material_reaches_independent_incremental_energy_equilibrium",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "pid": 83305,
+  "status": "terminal",
+  "started_at": "2026-11-16T23:27:22.798836+00:00",
+  "freeze_sha256": "e2104078f7b99ffc6664eeba230f52490d85ae18da139a042a6104875cd37d76",
+  "test_executions": 1,
+  "own_target": "<ROOT>/.local/coupled-edge-regression-20261116/target",
+  "CARGO_BUILD_JOBS": "1",
+  "exit_code": 101,
+  "seconds": 12.32760275003966,
+  "finished_at": "2026-11-16T23:27:35.126515+00:00",
+  "raw_log_sha256": "b01629e50416c72f4dbe3ddfafa634c3da612150760e942d8a0d70946b12a4b9",
+  "all_frozen_sources_and_proofs_unchanged": true,
+  "source_hashes_after": {
+    ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "Cargo.lock": "eb8a60650b473c79dda2e58a56f68b1abe9ca9a68c15115c9c8754c561732f3a",
+    "Cargo.toml": "032b32e80547618a72d39e42c0204611ff37908b8a6bf28615b3e592f79fa499",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/capsule.rs": "04634a93371e4e7f513401fa617075e28c1b4776023b158c3f6dc168d24371a0",
+    "crates/weftforge-sim/src/constraints.rs": "ee5b7fba70aae91a7ed36fa668e11b34d36793b825ce101ea891c8cf8eaed2bf",
+    "crates/weftforge-sim/src/contact.rs": "20df8876462dcbf7d32761b0e061ab66def60e7f88a5eccbfb6e7839108c26c8",
+    "crates/weftforge-sim/src/lib.rs": "e4a6e5fd7123ba00f694a1e5549109a200a2b9f7ee47d84b0c5605d6cb697378",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/strain.rs": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+    "crates/weftforge-sim/src/tests.rs": "04f53392d30f4bc1e9ae8535064f0e9a58fbf23b4bf9965e9f965adbb3113a6b",
+    "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51"
+  }
+}

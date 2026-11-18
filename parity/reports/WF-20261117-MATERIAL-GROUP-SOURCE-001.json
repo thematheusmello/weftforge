@@ -1,0 +1,343 @@
+{
+  "kind": "implementation_only",
+  "freshness": "stale",
+  "commit": "13fb43fe08c045f08a1b85007aff3c15388a1e24",
+  "current_source_commit": "8fe1c7b3018e807a61afffc3d0af77f5bbbe45d7",
+  "platform": "macOS local; Rust1.94.1/CPython3.13.0 from retained compiler/child receipts; numerical resources/caps are separately qualified.",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "complete_contract": false,
+  "reference_executed": false,
+  "reference_verified": false,
+  "native_ui_verified": false,
+  "native_case_executed": false,
+  "physics_accepted": false,
+  "full_feature_accepted": false,
+  "full_garment_accepted": false,
+  "roadmap_accepted": false,
+  "single_identified_candidate_workflow": false,
+  "replayed_repaired_or_regraded": false,
+  "source_scope": [
+    ".cargo/config.toml",
+    "Cargo.lock",
+    "Cargo.toml",
+    "THIRD_PARTY.md",
+    "rust-toolchain.toml",
+    "crates/weftforge-core/Cargo.toml",
+    "crates/weftforge-core/src",
+    "crates/weftforge-sim/Cargo.toml",
+    "crates/weftforge-sim/src",
+    "vendor/earcutr/Cargo.toml",
+    "vendor/earcutr/LICENSE",
+    "vendor/earcutr/UPSTREAM.md",
+    "vendor/earcutr/src",
+    "docs/physics.md"
+  ],
+  "source_hashes": {
+    ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "Cargo.lock": "eb8a60650b473c79dda2e58a56f68b1abe9ca9a68c15115c9c8754c561732f3a",
+    "Cargo.toml": "032b32e80547618a72d39e42c0204611ff37908b8a6bf28615b3e592f79fa499",
+    "THIRD_PARTY.md": "86d65f258938c55ed36d3a621222ef5124e348f5519d01eab8f61db540a4876e",
+    "crates/weftforge-core/Cargo.toml": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+    "crates/weftforge-core/src/document.rs": "642c5f18dc91850011622a82afd271a9b8122b6b1a5155818c0f196d3e30c5b9",
+    "crates/weftforge-core/src/geometry.rs": "3738282136928c459eaf524036c61e20d4c8b3cf2e04cd46ac812faf4f823c41",
+    "crates/weftforge-core/src/lib.rs": "8f1a57b619222ea11986bf68a424e277b31a26d8da5eccef7c6d31b913ce76f8",
+    "crates/weftforge-core/src/offset.rs": "761881af22d784d0354ac25e6cda98971cb459bf78fd1d635eee21dc3e758203",
+    "crates/weftforge-core/src/persistence.rs": "69e76f3c73567731a46bc234e9a28e89d6036cb069c0ad501b4dd4570e40d691",
+    "crates/weftforge-core/src/persistence/dxf.rs": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338",
+    "crates/weftforge-core/src/persistence/dxf_import.rs": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+    "crates/weftforge-core/src/persistence/svg.rs": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7",
+    "crates/weftforge-core/src/sewing.rs": "dc7cb6cab0a62c313698c155728409f8940319bb49ed51c5c2fbc88c88f21146",
+    "crates/weftforge-core/src/simulation.rs": "24e12aaf323f34abe745dc9c42c9823acbd6e2a1832d6827a5a6397112525707",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/capsule.rs": "04634a93371e4e7f513401fa617075e28c1b4776023b158c3f6dc168d24371a0",
+    "crates/weftforge-sim/src/constraints.rs": "7b07c9750569bd1962d7986b41fc5a00da9b1e319dfb90aa6ab50167e9f35596",
+    "crates/weftforge-sim/src/contact.rs": "20df8876462dcbf7d32761b0e061ab66def60e7f88a5eccbfb6e7839108c26c8",
+    "crates/weftforge-sim/src/lib.rs": "22c50515e20f6fa4fd6d95ee122ea0c140964722e18e0e71ececbeb5c7d1608b",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/strain.rs": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+    "crates/weftforge-sim/src/tests.rs": "0cca724fac864630a69dbb50e651d906d273b3830795bea114f464da426fe330",
+    "docs/physics.md": "b4ef9c0124e8c29d87969baacc45d0b00908d1c4b0caa20a2c0baca764e64e28",
+    "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+    "vendor/earcutr/Cargo.toml": "906d72d033764b39570416ef92906a90d4c49e85b9c35ab0138cf7a0aafe9c76",
+    "vendor/earcutr/LICENSE": "ac0e50e523dd0ea36f077c373833f1ae6c7ad130ea5ac6ff23bfa8d3f402145f",
+    "vendor/earcutr/UPSTREAM.md": "e686aeaa8758581d2c0659b1ed5e87dce4fe6608a8605c29ba90459495818944",
+    "vendor/earcutr/src/legacy.rs": "fd5120ba533484556e7a6d1a460d28084ac1f4c90f3334c71ff6f67976b933c8",
+    "vendor/earcutr/src/lib.rs": "29992d5bd3d0717df6b4db9e60a3d280c276b67c3ddb87fa5de9173c1b3578d3",
+    "vendor/earcutr/src/tests.rs": "2e54cb4cceb9c073ae911a5909d2d9b430c6bf4ce53000332254233b21a544e9"
+  },
+  "selected_manifest": {
+    "path": "parity/reports/artifacts/material-group-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json",
+    "sha256": "039761fe166fe8953d06f3a26d5ade5879f7ea2ca71de53ebe080091786947ed"
+  },
+  "source_identity_qualification": "All88 integrated8fe source bytes match actual13fb407-gate FREEZE. This report binds the31-file physical/meshing dependency scope; the full88/407 identity remains a separate historical ledger. Other source/UI/native reports retain their own original scopes and explicit freshness transitions.",
+  "id": "WF-20261117-MATERIAL-GROUP-SOURCE-001",
+  "status": "passed",
+  "timestamp": "2026-11-17T00:10:24.515107Z",
+  "feature_ids": [
+    "SIM-001",
+    "SIM-006"
+  ],
+  "scope": "Bounded independent two-face material component RED/GREEN, review and source407 workspace gates only; no whole garment/physics/native/reference acceptance.",
+  "component_reference_and_regression": {
+    "original_meaningful_RED": {
+      "actual_base": "ae8dd6ebe6da760501f507248a11b069a02cb453",
+      "session": 99626,
+      "Cargo_PID": 83305,
+      "exit": 101,
+      "seconds": 12.32760275003966,
+      "selected_test_count": 1,
+      "maximum_position_error_m": 4.266274346685227e-07,
+      "maximum_force_residual_N": 0.0027341292831298387,
+      "original_component_bounds": {
+        "maximum_free_node_position_error_m": 1e-08,
+        "maximum_free_node_force_residual_N": 1e-06
+      }
+    },
+    "independent_math_reference": "Prepared before the sole unchanged-production RED. Direct physical energy uses one inertia term per free mass and original two-face energies;80/100-digit roots and independent arithmetic are retained. This is a mathematical component reference, never proprietary application/reference parity.",
+    "first_candidate_GREEN": {
+      "session": 69323,
+      "Cargo_PID": 89003,
+      "exit": 0,
+      "seconds": 5.9702455420047045,
+      "maximum_position_error_m": 5.683890753411727e-18,
+      "maximum_force_residual_N": 1.0747913121812962e-14,
+      "limits_and_oracle_unchanged": true,
+      "qualification": "First-GREEN source map remains historical and does not include later tests/docs. Final production constraints are identical; later lib cfg(test) polling checks, tests and documentation have separate final maps."
+    },
+    "retained_stabilization_failure": {
+      "stage": "Strict sim Clippy",
+      "PID": 4252,
+      "exit": 101,
+      "reason": "Needless-range-loop in new test oracle; mechanical test-only iterator correction preserves operation order/reference/bounds. Raw failed log/map retained."
+    },
+    "final_sim_source_stage": {
+      "unit_tests_passed": 60,
+      "doc_tests": 0,
+      "fmt_and_strict_sim_Clippy_passed": true,
+      "independent_source_review": "NO_BLOCKER; source/hash changes during review remain explicitly recorded."
+    },
+    "actual_full_workspace_gates": {
+      "at": "2026-11-17T00:10:24.515107+00:00",
+      "commit": "13fb43fe08c045f08a1b85007aff3c15388a1e24",
+      "all4_stages_passed": true,
+      "elapsed_seconds": 484.50709720805753,
+      "Rust_workspace_actual_counts": {
+        "passed": 407,
+        "failed": 0,
+        "ignored": 0,
+        "summaries": 31
+      },
+      "binaries": {
+        "weftforge": {
+          "sha256": "5d75d37c30e8882dbba6d8d6a09178aa5a005aaebd9879c3546c5e6cd0f71dbb",
+          "bytes": 62966376
+        },
+        "weftforge-cli": {
+          "sha256": "1d5cf5b192b9b58bcd1594cd9a975b0ef7e6dda76458a8f4db42b606b7a52a64",
+          "bytes": 10852608
+        }
+      },
+      "all_source88_metadata59_inventory8_unchanged": {
+        "source88": true,
+        "metadata59": true,
+        "original8": true,
+        "clean": true,
+        "at": "2026-11-17T00:10:24.654359+00:00"
+      },
+      "native_launched": false,
+      "CLI_invoked_by_workspace_tests": true,
+      "no_target_or_binary_copied": true,
+      "no_garment_or_reference_execution": true,
+      "metadata_freshness_xtask_pending": true
+    }
+  },
+  "retained_combined_gates": {
+    "at": "2026-11-17T00:10:24.515107+00:00",
+    "commit": "13fb43fe08c045f08a1b85007aff3c15388a1e24",
+    "all4_stages_passed": true,
+    "elapsed_seconds": 484.50709720805753,
+    "Rust_workspace_actual_counts": {
+      "passed": 407,
+      "failed": 0,
+      "ignored": 0,
+      "summaries": 31
+    },
+    "binaries": {
+      "weftforge": {
+        "sha256": "5d75d37c30e8882dbba6d8d6a09178aa5a005aaebd9879c3546c5e6cd0f71dbb",
+        "bytes": 62966376
+      },
+      "weftforge-cli": {
+        "sha256": "1d5cf5b192b9b58bcd1594cd9a975b0ef7e6dda76458a8f4db42b606b7a52a64",
+        "bytes": 10852608
+      }
+    },
+    "all_source88_metadata59_inventory8_unchanged": {
+      "source88": true,
+      "metadata59": true,
+      "original8": true,
+      "clean": true,
+      "at": "2026-11-17T00:10:24.654359+00:00"
+    },
+    "native_launched": false,
+    "CLI_invoked_by_workspace_tests": true,
+    "no_target_or_binary_copied": true,
+    "no_garment_or_reference_execution": true,
+    "metadata_freshness_xtask_pending": true
+  },
+  "historical_report_freshness_transitions": [
+    {
+      "path": "parity/reports/WF-20261116-COUPLED-HARBOR-A8-001.json",
+      "original_sha256": "c87a54d43a1094818084132d7d2ba9d5ab3a6c1b0e30e123c23b245a4e1db6b9",
+      "exact_archive": {
+        "path": "parity/reports/artifacts/material-group-source-20261117/history/WF-20261116-COUPLED-HARBOR-A8-001.original.json",
+        "sha256": "c87a54d43a1094818084132d7d2ba9d5ab3a6c1b0e30e123c23b245a4e1db6b9"
+      },
+      "only_changed_fields": [
+        "freshness",
+        "freshness_reason"
+      ],
+      "changed_scoped_source_files": [
+        "crates/weftforge-sim/src/constraints.rs",
+        "crates/weftforge-sim/src/lib.rs",
+        "crates/weftforge-sim/src/tests.rs",
+        "docs/physics.md"
+      ]
+    },
+    {
+      "path": "parity/reports/WF-20261116-COUPLED-MATERIAL-SOURCE-001.json",
+      "original_sha256": "bfc0f4d6bc7b67386cd5e2d541dd52839056e29e10daf9e10d75beb157fc6d4f",
+      "exact_archive": {
+        "path": "parity/reports/artifacts/material-group-source-20261117/history/WF-20261116-COUPLED-MATERIAL-SOURCE-001.original.json",
+        "sha256": "bfc0f4d6bc7b67386cd5e2d541dd52839056e29e10daf9e10d75beb157fc6d4f"
+      },
+      "only_changed_fields": [
+        "freshness",
+        "freshness_reason"
+      ],
+      "changed_scoped_source_files": [
+        "crates/weftforge-sim/src/constraints.rs",
+        "crates/weftforge-sim/src/lib.rs",
+        "crates/weftforge-sim/src/tests.rs",
+        "docs/physics.md"
+      ]
+    },
+    {
+      "path": "parity/reports/WF-20261116-RECTANGLE-FILE-SUPPLEMENT-001.json",
+      "original_sha256": "b5dd94b7b1416631dff1a8b939bb0b6a66e598ab12cebe5a88e52beb3392a623",
+      "exact_archive": {
+        "path": "parity/reports/artifacts/material-group-source-20261117/history/WF-20261116-RECTANGLE-FILE-SUPPLEMENT-001.original.json",
+        "sha256": "b5dd94b7b1416631dff1a8b939bb0b6a66e598ab12cebe5a88e52beb3392a623"
+      },
+      "only_changed_fields": [
+        "freshness",
+        "freshness_reason"
+      ],
+      "changed_scoped_source_files": [
+        "crates/weftforge-sim/src/lib.rs"
+      ]
+    },
+    {
+      "path": "parity/reports/WF-20261116-RECTANGLE-NATIVE-001.json",
+      "original_sha256": "9042647db284a35369303ebff07de159948d7cf108488868241aa79cfd0dc411",
+      "exact_archive": {
+        "path": "parity/reports/artifacts/material-group-source-20261117/history/WF-20261116-RECTANGLE-NATIVE-001.original.json",
+        "sha256": "9042647db284a35369303ebff07de159948d7cf108488868241aa79cfd0dc411"
+      },
+      "only_changed_fields": [
+        "freshness",
+        "freshness_reason"
+      ],
+      "changed_scoped_source_files": [
+        "crates/weftforge-sim/src/lib.rs"
+      ]
+    },
+    {
+      "path": "parity/reports/WF-20261116-RECTANGLE-SOURCE-001.json",
+      "original_sha256": "a1b2a693de9e8ba0010726cc4a14dacde79540efa9d4cfa142e068304b9aa1c9",
+      "exact_archive": {
+        "path": "parity/reports/artifacts/material-group-source-20261117/history/WF-20261116-RECTANGLE-SOURCE-001.original.json",
+        "sha256": "a1b2a693de9e8ba0010726cc4a14dacde79540efa9d4cfa142e068304b9aa1c9"
+      },
+      "only_changed_fields": [
+        "freshness",
+        "freshness_reason"
+      ],
+      "changed_scoped_source_files": [
+        "crates/weftforge-sim/src/lib.rs"
+      ]
+    }
+  ],
+  "artifact_hashes": {
+    "parity/reports/artifacts/material-group-source-20261117/component-red-reference/FINAL-MANIFEST.json": "a0683ef27bcc55ce299f2e50c04c7d76370c0c88fee5a393457a9b9af7fda935",
+    "parity/reports/artifacts/material-group-source-20261117/component-red-reference/FREEZE.json": "6a637efae319bf7f5246907d47b5acd9747e0a4f51664c23a5dfcd6bbbca0652",
+    "parity/reports/artifacts/material-group-source-20261117/component-red-reference/HANDOFF.md": "04b835eaa883c0782eb5f3feccc5d5414083dcd94ca07b96cdcd4935eb141e24",
+    "parity/reports/artifacts/material-group-source-20261117/component-red-reference/INPUT.json": "3fa66e4f92b92776faf80ada0eb17bf19ce474a7270dc07b69d9d31095c23b65",
+    "parity/reports/artifacts/material-group-source-20261117/component-red-reference/ORACLE-PROOF.md": "0ec00e583e9d2f7d0997335b7817849283523a54b617fcf0f0f2ed7ffd001fed",
+    "parity/reports/artifacts/material-group-source-20261117/component-red-reference/RED-INDEPENDENT-ARITHMETIC.json": "c9f9fbd4bf31d91c94b71481d9251a7585450fa3ff956563a024f9d226b36191",
+    "parity/reports/artifacts/material-group-source-20261117/component-red-reference/RED-RUNNING.json": "ef6160a87c37e0593dc3162a0e5dee95ab11c436b25c24d3248d6e65f63f31cc",
+    "parity/reports/artifacts/material-group-source-20261117/component-red-reference/RED-TERMINAL.json": "fe465b2684ee6904fd558219d78f5d4361c05e846e7c5b08e8c164b8f30d5106",
+    "parity/reports/artifacts/material-group-source-20261117/component-red-reference/REFERENCE.json": "7fb99a51d2991a9bcaab7907973220ba4dbd1f4e15771998c9f43c49f25c0519",
+    "parity/reports/artifacts/material-group-source-20261117/component-red-reference/SOURCE-BEFORE.json": "c98f04367099b042a51436ee57d183be695bb0394d70f8e7c468c6df4bebb8f9",
+    "parity/reports/artifacts/material-group-source-20261117/component-red-reference/red.log": "707b05cd43af82b3f01078dcbaecd734332544eac7f7e7f1e6724ef0d70f67e2",
+    "parity/reports/artifacts/material-group-source-20261117/component-red-reference/reference.log": "7fb99a51d2991a9bcaab7907973220ba4dbd1f4e15771998c9f43c49f25c0519",
+    "parity/reports/artifacts/material-group-source-20261117/component-red-reference/reference.py": "ec796082364b332b56aef9e0adb823c20a4464f348e06764548df8a7289db51b",
+    "parity/reports/artifacts/material-group-source-20261117/component-red-reference/test-only.patch": "cf46c27efa9e0f307c911274fdf3ed68b3e83996e04028702e68988a8a3929e9",
+    "parity/reports/artifacts/material-group-source-20261117/component-red-reference/tests-red.rs": "04f53392d30f4bc1e9ae8535064f0e9a58fbf23b4bf9965e9f965adbb3113a6b",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/CANDIDATE-1-INPUTS.json": "63a93ca5c273540686fca02dd8aefe8d7381b2d08316ab49922ec5bc6d9ae663",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/CANDIDATE-1-RUNNING.json": "416142f2458b3f16f1b5013b094719903271b2e4ae47b49d0bbb6d46666f8591",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/CANDIDATE-1-TERMINAL.json": "311c1f4144f02a85e4c9ef9040e7786d4de0fa6323da9dbc6b40c847786a85f6",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/FINAL-HANDOFF.md": "f64e2b9c89009c38cf61c28d02e1829b51cf68d6619887bd4876c4d21e16b5bb",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/FINAL-MANIFEST.json": "df942bbe3045832514295aea73d2e7f90e6c67e539b9e5cc704a6b52908d2c27",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/FINAL-WHITESPACE.json": "eb14350903ed1a3f4d9711e102411e6650d691b7ee2f9a0bcef8f5ebb9d95358",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/FINAL.patch": "5d04903d803f835b6783de0ecc70f97c655cb98c8a9134907bec5ab323e4413a",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/STABILIZATION-1-INPUTS.json": "ded2564d0e6453160816d71965c42607396b09c3cbc711df3315feade513d9a9",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/STABILIZATION-1-clippy.json": "6df59be19fb5c99e127850eb0fe5353b9560fe3120bd3bde7d334155b09e5ca6",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/STABILIZATION-1-fmt.json": "f006b25aed3c269b0312c5f467db68f76110d3ecebf8f61de0606cebac3412be",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/STABILIZATION-2-INPUTS.json": "fdea5bfb5731ea626946994d1eff96526e4d47deb4fa3b2ce24796fee41af7c9",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/STABILIZATION-2-clippy.json": "cbf330e2d8ede4b26e755294b3f97adf627ea9ccc5f893f196e0460d1169ca38",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/STABILIZATION-2-fmt.json": "baa0950f05fd5b79da91d97eb213c1cf20d9f418e85b08473bdf6910152548bd",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/STABILIZATION-2-sim-tests.json": "2cfb0c0633e8ac845c0955c8f4b117ec1fce068aad8576c8f223cba7ae63494a",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/candidate-1-constraints.rs": "7b07c9750569bd1962d7986b41fc5a00da9b1e319dfb90aa6ab50167e9f35596",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/candidate-1-lib.rs": "97b4dfb8967b9af1d8649afdaff542622527293ce4da6742c6ec903f29bf490c",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/candidate-1.log": "c9972dc3cebf32aa4cd4a53ddb9389134fa0a1087874290ec45f0d4d1b4ae25b",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/candidate-1.patch": "83fdcb469adcf61129b682a23531a26acc2518619a2343aca31541e683443e99",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/final-constraints.rs": "7b07c9750569bd1962d7986b41fc5a00da9b1e319dfb90aa6ab50167e9f35596",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/final-lib.rs": "22c50515e20f6fa4fd6d95ee122ea0c140964722e18e0e71ececbeb5c7d1608b",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/final-physics.md": "b4ef9c0124e8c29d87969baacc45d0b00908d1c4b0caa20a2c0baca764e64e28",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/final-tests.rs": "0cca724fac864630a69dbb50e651d906d273b3830795bea114f464da426fe330",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/final-whitespace.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/final-whitespace.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/stabilization-1-clippy.log": "0ecb25d3ffa469b1b239f8304364d8050d0984798f6a377ebeed1e0038e1ff76",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/stabilization-1-fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/stabilization-2-clippy.log": "1f7050d4886f3fe4c7b6c20ad6fc0fc989a469ec98a44346bd7deeba7c642394",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/stabilization-2-fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-group-source-20261117/component-green-stabilization/stabilization-2-sim-tests.log": "4a00846f944717080bcbb81d05ab50c065b7a4e4271d09fa2328c1e837d2e5b7",
+    "parity/reports/artifacts/material-group-source-20261117/workspace407-gates/BEFORE.json": "fc83d434ef05257f108066902c78c688869e78ec1676addf675409060683cd96",
+    "parity/reports/artifacts/material-group-source-20261117/workspace407-gates/FREEZE.json": "6c05336d9e0840922d599bad5cc1214ce2df1954c765573520d382ff3328a24d",
+    "parity/reports/artifacts/material-group-source-20261117/workspace407-gates/ORIGINAL8-GUARD.json": "d2395f6f50922ea764f9caba74ff3c65881fcb5d42f97a04deff0b276e4d1ca7",
+    "parity/reports/artifacts/material-group-source-20261117/workspace407-gates/RESULT.json": "891872ec2cff7f92f2e713221e4ff43e25a8cd21f5125e3a87971f59a2fc5c38",
+    "parity/reports/artifacts/material-group-source-20261117/workspace407-gates/fmt-RESULT.json": "51ed90c8307c3e9f8173074009795011e0498172483d157f7cc4168b21c889b7",
+    "parity/reports/artifacts/material-group-source-20261117/workspace407-gates/fmt-STARTED.json": "a392c114ef95841ca8ddc5a19f88f693d035ed825c7e4006477b498aa6d226b1",
+    "parity/reports/artifacts/material-group-source-20261117/workspace407-gates/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-group-source-20261117/workspace407-gates/native-cli-debug-build-RESULT.json": "b05bc8bf0c761eb589c064094b88c0a1fcc02deeb56c83c6a5869bf426b2c7db",
+    "parity/reports/artifacts/material-group-source-20261117/workspace407-gates/native-cli-debug-build-STARTED.json": "d837951e0dad419cd778c50932ea6f978e7fd9a05800eaff0fef44fa1eb53de4",
+    "parity/reports/artifacts/material-group-source-20261117/workspace407-gates/native-cli-debug-build.log": "51ffb58253be23311935b96c97f5dc5022104e99ea9b13a394670b33f4b5fdc6",
+    "parity/reports/artifacts/material-group-source-20261117/workspace407-gates/workspace-clippy-RESULT.json": "618d4b0427a012a241cdf623696eb55a1ad91282dde2e538de4e4d9b358224b8",
+    "parity/reports/artifacts/material-group-source-20261117/workspace407-gates/workspace-clippy-STARTED.json": "b8e50b2253696c7490feb2ef062fb1f95d962b395dda0c17bf0a8c7785c59b8e",
+    "parity/reports/artifacts/material-group-source-20261117/workspace407-gates/workspace-clippy.log": "33bc45483f63e7d7149e1d9e91b63b9d668fb9e350f6d19e1e9a3d76b3027436",
+    "parity/reports/artifacts/material-group-source-20261117/workspace407-gates/workspace-tests-RESULT.json": "26a65c298f183c884da426d7994fa6a003e2a77da46a984ae65f0e6f24ee7607",
+    "parity/reports/artifacts/material-group-source-20261117/workspace407-gates/workspace-tests-STARTED.json": "e708cfb41020b1b4e5ea5a252571bb72a5373e6add8d4353b8a1568ed375956a",
+    "parity/reports/artifacts/material-group-source-20261117/workspace407-gates/workspace-tests.log": "cb3661a957db1475e5bc68f0c1d15a42747a59eec492c47124974fd60ce44549",
+    "parity/reports/artifacts/material-group-source-20261117/source-review/INDEPENDENT-SOURCE-REVIEW.json": "b8c85c417290402d3fd55b7b5bab888a1dfc0038653a8f38b34802ddb5a2c527",
+    "parity/reports/artifacts/material-group-source-20261117/source-review/ROOT-REVIEW-COMMIT-001.json": "cf913419b554d7c4a0d1c6d519ab0b6e3e828a164ae2e45236fe238c0b104fc5",
+    "parity/reports/artifacts/material-group-source-20261117/source-integration/ROOT-INTEGRATION-001.json": "3c304f9af5764c6244b2d6415a68311a683e478f75ad4ea589745c545da962c2",
+    "parity/reports/artifacts/material-group-source-20261117/history/WF-20261116-COUPLED-HARBOR-A8-001.original.json": "c87a54d43a1094818084132d7d2ba9d5ab3a6c1b0e30e123c23b245a4e1db6b9",
+    "parity/reports/artifacts/material-group-source-20261117/history/WF-20261116-COUPLED-MATERIAL-SOURCE-001.original.json": "bfc0f4d6bc7b67386cd5e2d541dd52839056e29e10daf9e10d75beb157fc6d4f",
+    "parity/reports/artifacts/material-group-source-20261117/history/WF-20261116-RECTANGLE-FILE-SUPPLEMENT-001.original.json": "b5dd94b7b1416631dff1a8b939bb0b6a66e598ab12cebe5a88e52beb3392a623",
+    "parity/reports/artifacts/material-group-source-20261117/history/WF-20261116-RECTANGLE-NATIVE-001.original.json": "9042647db284a35369303ebff07de159948d7cf108488868241aa79cfd0dc411",
+    "parity/reports/artifacts/material-group-source-20261117/history/WF-20261116-RECTANGLE-SOURCE-001.original.json": "a1b2a693de9e8ba0010726cc4a14dacde79540efa9d4cfa142e068304b9aa1c9",
+    "parity/reports/artifacts/material-group-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "039761fe166fe8953d06f3a26d5ade5879f7ea2ca71de53ebe080091786947ed"
+  },
+  "freshness_reason": "Historical13fb/integrated8fe paired-material result is stale at reviewed global material source52099/integrated97a1524 because constraints.rs, lib.rs, tests.rs and docs/physics.md changed inside its declared31-file scope. Exact original is archived at parity/reports/artifacts/global-material-source-20261117/history/WF-20261117-MATERIAL-GROUP-SOURCE-001.original.json. Original status/results/scopes/identities/artifacts and prior full Harbor strict strain failure remain unchanged; the new incomplete420s global case is a separate operational failure with no computed quality grade."
+}

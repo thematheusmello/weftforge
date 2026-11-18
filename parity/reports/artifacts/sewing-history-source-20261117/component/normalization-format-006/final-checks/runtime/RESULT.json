@@ -1,0 +1,98 @@
+{
+  "elapsed_seconds": 3.5126396249979734,
+  "numerical_tests_repeated": 0,
+  "retained_output_bytes_before_receipt": 6102,
+  "stages": [
+    {
+      "argv": [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "disk_observation": {
+        "last_available_bytes": null,
+        "max_snapshot_gap_seconds": 0.0,
+        "minimum_available_bytes": null,
+        "path": "<ROOT>/.local/positive-target-sewing-component-20261117",
+        "samples": 0,
+        "stop_below_available_bytes": null
+      },
+      "end_monotonic_seconds": 1034440.169397791,
+      "exit_code": 0,
+      "name": "fmt",
+      "peak_rss_bytes": 59703296,
+      "pid": 79926,
+      "process_group": 79926,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.15157658304087818,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 10,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 80576512,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1034558.961196833,
+        "output_bytes": 1756,
+        "output_cap_bytes": 8388608,
+        "reserve_bytes": 65536
+      }
+    },
+    {
+      "argv": [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "clippy",
+        "-p",
+        "weftforge-sim",
+        "--all-targets",
+        "--locked",
+        "--offline",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "disk_observation": {
+        "last_available_bytes": null,
+        "max_snapshot_gap_seconds": 0.0,
+        "minimum_available_bytes": null,
+        "path": "<ROOT>/.local/positive-target-sewing-component-20261117",
+        "samples": 0,
+        "stop_below_available_bytes": null
+      },
+      "end_monotonic_seconds": 1034442.390826916,
+      "exit_code": 0,
+      "name": "sim-clippy",
+      "peak_rss_bytes": 183992320,
+      "pid": 80025,
+      "process_group": 80025,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.14150016696657985,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 20,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 263520256,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1034558.961196833,
+        "output_bytes": 4611,
+        "output_cap_bytes": 8388608,
+        "reserve_bytes": 65536
+      }
+    }
+  ],
+  "status": "ALL_FOCUSED_CHECKS_PASSED"
+}

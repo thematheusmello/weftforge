@@ -1,0 +1,101 @@
+{
+  "commit": "36524293b89686c2368f22d13ad09289fc70af03",
+  "branch": "feat/coupled-cloth-solve",
+  "git_status": "",
+  "review_freeze_unchanged_after_checks_and_commit": true,
+  "reviewed_source_hashes": {
+    "crates/weftforge-sim/src/lib.rs": "e4a6e5fd7123ba00f694a1e5549109a200a2b9f7ee47d84b0c5605d6cb697378",
+    "crates/weftforge-sim/src/constraints.rs": "ee5b7fba70aae91a7ed36fa668e11b34d36793b825ce101ea891c8cf8eaed2bf",
+    "crates/weftforge-sim/src/tests.rs": "84cacf0cab2afe525b10f758497eabde30fc91df0888fe41efaa1d877bcafaba",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "docs/physics.md": "d95c8c6087bf8e90a89e077e02134724192e92a757e15940d3ccf525d56d9fff",
+    "Cargo.toml": "032b32e80547618a72d39e42c0204611ff37908b8a6bf28615b3e592f79fa499",
+    "Cargo.lock": "eb8a60650b473c79dda2e58a56f68b1abe9ca9a68c15115c9c8754c561732f3a"
+  },
+  "checks": [
+    {
+      "session": 66899,
+      "exit": 101,
+      "scope": "unchanged production equilibrium RED"
+    },
+    {
+      "session": 59422,
+      "exit": 0,
+      "scope": "initial coupled membrane GREEN, 3 tests"
+    },
+    {
+      "session": 39802,
+      "exit": 0,
+      "scope": "initial sim suite,57 tests"
+    },
+    {
+      "session": 36997,
+      "exit": 0,
+      "scope": "initial strict sim Clippy"
+    },
+    {
+      "session": 77995,
+      "exit": 0,
+      "scope": "rounded-history sim suite,57 tests"
+    },
+    {
+      "session": 2632,
+      "exit": 0,
+      "scope": "final cancellation/documentation sim suite,57 tests"
+    },
+    {
+      "session": null,
+      "exit": 0,
+      "scope": "final all-workspace formatting check, direct tool completion"
+    },
+    {
+      "session": null,
+      "exit": 0,
+      "scope": "final strict sim all-target Clippy, direct tool completion"
+    }
+  ],
+  "new_material_equilibrium": {
+    "unchanged_production_position_error_m": 2.8435443613128523e-06,
+    "unchanged_production_stationarity_N": 0.0017635992037970116,
+    "final_position_error_m": 8.810015435002893e-16,
+    "final_stationarity_N": 5.759318500416976e-13,
+    "position_limit_m": 1e-08,
+    "stationarity_limit_N": 1e-06,
+    "same_32_material_iterations": true
+  },
+  "old_garment_runs_or_grades": 0,
+  "gui_windows_created": 0,
+  "active_jobs_owned": 0,
+  "full_workspace_gates_pending_root_review": true,
+  "private_ignored_artifacts_are_not_delivery": true,
+  "binary_sha256": "8edf428096fde36160079ebbe690164b1008c1d23b0fafa24db28972590e90e1",
+  "files": {
+    "FINAL-INPUTS.json": "579137767f45d3288a98990029def73b50d6e1c8284a31fc2c9dd9f067450ac8",
+    "FINDINGS.md": "59bd10fa804bbbb1afab4d6e90a79c094d6107eca43d8fd8e6813192de86f304",
+    "GREEN-INPUTS.json": "f08e55a68347dc17cab0b7bfd486162db28c12a6c6af2909caeebafb2309ac50",
+    "RED-INPUTS.json": "9baecf5156ef1a59c4134edd8c806a61eb1d65656df19553ba0e74f6640a23f6",
+    "RED-TERMINAL.json": "cc4e944d649e31e1e5d4a485cf11b87a5bc27e840e347578464c2bebd1035fd9",
+    "REFERENCE.json": "20b421205c27a9d9a3e3a61c8b5e35b3f7a8615281e39c00ec91b74996eda103",
+    "REVIEW-INPUTS.json": "ef884c4f0da0d47ec1cab62df32d8ed3c0d93c378e18fef116a988d12478a6d4",
+    "analytic-shear-first-step.json": "d0cbf68c0c72be1761226c43db369444f73528a8c3fb0ddfc3ecd3fd14290078",
+    "clippy.log": "7d13d0cba6de7a1a721772a7a4dc76f731f678067875c42b90f7eae9e106d107",
+    "constraints-before.rs": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+    "final-fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "final-sim-tests.log": "25e3997c87d878baede8980d4792cd8244c183350429eebdcdf2cd717a673e7a",
+    "fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "green-focused.log": "9abdc2dcd5c41fba1ed269f88288925af21436d9094c5edbc39714a8395e2008",
+    "implementation.patch": "46c79afcc10d1e5d463b7574b289ea87a595efc54501d3c50ee0192776ae3709",
+    "lib-before.rs": "f69f2b18464ae980ada76d81fd86c46ee3dd575457b194be826fbd6cb1c2a546",
+    "oracle-preparation-failure.txt": "9c62d6bed65aedef863d214a0fd85dc69e5f58c795886994a23694ebf75a4536",
+    "red.log": "6b926a0f6e2eb86a5cefc9a6ed1df36dde931de6fba75f9673148daa5178c26e",
+    "reference-initial-oracle-stop.py": "0be52a342492322c8d000b3746dbd2994f1b8040f6bcc824671b7020adeec739",
+    "reference.log": "20b421205c27a9d9a3e3a61c8b5e35b3f7a8615281e39c00ec91b74996eda103",
+    "reference.py": "28930e5a24099abeb98acb092c51598498e534000811c153cc8585118da7034f",
+    "review-clippy.log": "d100b08f129a5191e50a0a8e934192985ae6aaf770123e39f3c83c05b0ff44e4",
+    "review-fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "review-sim-tests.log": "9a976b833eacaea91df2a9544eb8310a71deb3c1831be59e2efcb1e3a8d1dd69",
+    "sim-tests.log": "323f39ddad83545dc5499ef1fb1787099abefa34c298196aef9a99a6fca45bbc",
+    "tests-before.rs": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+    "tests-red.rs": "e4133b5e9bdbd3955426967ee16de9db0e996275c94f5f52ac47fa1346394f22"
+  }
+}

@@ -1,0 +1,36 @@
+Registry valid: 56 inventoried contracts; generated reports checked.
+PASS: additive source 97a152468ca34fa7edae9e4680167ba02bdccbb7; 39 candidate rechecks; 34 Rust variants / 33 schema commands / 9 MCP tools; historical snapshot unchanged. No behavior/parity verification.
+PASS: 949 unique catalog IDs; preserved 949 entries/205 packets and original 928-entry expansion; 205 reviewed groups/packets; 56 source landmarks; catalog hashes, feature/source links and acyclic dependencies valid.
+WeftForge CLI — offline editable garment tools
+
+mcp                                    local MCP stdio file authoring
+new PROJECT
+sample PROJECT                         original two-panel shirt (implementation fixture)
+inspect PROJECT
+lengths PROJECT interval CURVE_ID T0 T1   authored/rest length, unrounded SI JSON
+lengths PROJECT seam SEAM_ID
+lengths PROJECT sewing-group GROUP_ID
+inspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)
+execute INPUT OUTPUT COMMANDS.json      one atomic shared command array
+import-svg INPUT OUTPUT PATTERNS.svg   editable single contours in physical mm; refuses compound holes
+import-dxf INPUT OUTPUT PATTERNS.dxf   bounded R2000 LINE/cubic boundaries in mm
+rectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT
+ellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT   four editable cubic spans
+resize INPUT OUTPUT PIECE_ID WIDTH HEIGHT
+curve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m
+curve-controls INPUT OUTPUT CURVE_ID straight
+split INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing
+join INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary
+grain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V
+stiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m
+export-obj PROJECT OUTPUT.obj          actual rest surface with holes; metres, Y-up
+export-svg PROJECT OUTPUT.svg          compound evenodd paths with holes; mm, inverted Y
+export-dxf PROJECT OUTPUT.dxf          exterior boundaries in mm; refuses projects with holes
+simulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled
+benchmark PROJECT STEPS                JSON measurements for the same solver
+fit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape
+fit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass
+recover PROJECT OUTPUT                explicitly load last valid recovery
+
+Units: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.
+Simulation is currently a rebuildable state; projects store editable construction.

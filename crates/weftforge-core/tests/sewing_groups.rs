@@ -886,6 +886,7 @@ fn strict_v4_and_legacy_v2_keep_authored_values_and_maps_without_reinterpretatio
     let mut v3 = value.clone();
     v3["version"] = json!(3);
     for piece in v3["project"]["pieces"].as_array_mut().unwrap() {
+        piece.as_object_mut().unwrap().remove("notches");
         piece.as_object_mut().unwrap().remove("holes");
         piece.as_object_mut().unwrap().remove("internal_curves");
     }
@@ -926,7 +927,7 @@ fn strict_v4_and_legacy_v2_keep_authored_values_and_maps_without_reinterpretatio
                 bad["project"]["sewing_groups"][0]["id"] = bad["project"]["seams"][0]["id"].clone()
             }
             3 => bad["project"]["sewing_groups"][0]["a"][0]["t0"] = json!(null),
-            _ => bad["version"] = json!(6),
+            _ => bad["version"] = json!(weftforge_core::FORMAT_VERSION + 1),
         }
         assert!(Project::from_json(&serde_json::to_vec(&bad).unwrap()).is_err());
     }

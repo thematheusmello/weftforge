@@ -218,7 +218,7 @@ fn check_cut_command(kind: &str, modern: bool) {
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 32);
+    assert_eq!(variants.len(), 36);
     let execute = tools
         .iter()
         .find(|tool| tool["name"] == "project_execute")
@@ -726,7 +726,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
             .as_array()
             .unwrap()
             .len(),
-        32
+        36
     );
     success(&server.call("project_create", json!({"output":project_path})));
     let initial = server.call("project_inspect", json!({"path":project_path}));
@@ -863,7 +863,7 @@ fn sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constrai
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 32);
+    assert_eq!(variants.len(), 36);
     for name in [
         "add_sewing_group",
         "update_sewing_group",
@@ -1088,7 +1088,7 @@ fn physical_length_sewing_schema_and_cli_mcp_use_the_shared_candidate_transactio
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 32);
+    assert_eq!(variants.len(), 36);
     let variant = variants
         .iter()
         .find(|variant| variant["properties"]["type"]["const"] == "add_sewing_by_length")
@@ -2477,6 +2477,156 @@ fn inspection_matches_saved_native_json_without_changing_f32_materials_or_f64_ge
 }
 
 #[test]
+fn authored_notches_share_closed_typed_commands_across_cli_and_both_mcp_profiles() {
+    for modern in [false, true] {
+        let directory = Directory::new();
+        let empty = directory.path("empty.weftforge");
+        let cli_path = directory.path("cli.weftforge");
+        let mcp_path = directory.path("mcp.weftforge");
+        let commands_file = directory.path("commands.json");
+        Project::default().save(&empty).unwrap();
+        let commands = json!([
+            {"type":"add_rectangle","data":{"name":"Original notch panel","origin":[0,0],"width":0.24,"height":0.36}},
+            {"type":"add_notch","data":{"piece":2,"curve":7,"t":0.25,"length":0.005}},
+            {"type":"update_notch","data":{"notch":{"id":11,"curve":7,"t":0.75,"length":0.008}}},
+            {"type":"add_notch","data":{"piece":2,"curve":9,"t":1,"length":0.01}},
+            {"type":"remove_notch","data":{"notch":12}}
+        ]);
+        let run_cli = |input: &Path, output: &Path, commands: &Value| {
+            fs::write(&commands_file, serde_json::to_vec(commands).unwrap()).unwrap();
+            Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+                .arg("execute")
+                .arg(input)
+                .arg(output)
+                .arg(&commands_file)
+                .output()
+                .unwrap()
+        };
+        let cli = run_cli(&empty, &cli_path, &commands);
+        assert!(
+            cli.status.success(),
+            "{}",
+            String::from_utf8_lossy(&cli.stderr)
+        );
+        let mut server = Server::start();
+        if !modern {
+            server.initialize("2025-11-25");
+        }
+        let profile = |mut params: Value| {
+            if modern {
+                params["_meta"] = modern_metadata("2026-07-28");
+            }
+            params
+        };
+        let listed = server.request("tools/list", profile(json!({})));
+        let tools = listed["result"]["tools"].as_array().unwrap();
+        assert_eq!(tools.len(), 9);
+        let variants = tools
+            .iter()
+            .find(|tool| tool["name"] == "project_execute")
+            .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
+            .as_array()
+            .unwrap();
+        assert_eq!(variants.len(), 36);
+        for (name, required) in [
+            ("add_notch", json!(["piece", "curve", "t", "length"])),
+            ("update_notch", json!(["notch"])),
+            ("remove_notch", json!(["notch"])),
+        ] {
+            let variant = variants
+                .iter()
+                .find(|variant| variant["properties"]["type"]["const"] == name)
+                .unwrap();
+            assert_eq!(variant["additionalProperties"], false);
+            let data = &variant["properties"]["data"];
+            assert_eq!(data["required"], required);
+            assert_eq!(data["additionalProperties"], false);
+            let fields = if name == "update_notch" {
+                &data["properties"]["notch"]
+            } else {
+                data
+            };
+            if name != "remove_notch" {
+                assert_eq!(fields["additionalProperties"], false);
+                for field in [
+                    "curve",
+                    if name == "update_notch" {
+                        "id"
+                    } else {
+                        "piece"
+                    },
+                ] {
+                    assert_eq!(fields["properties"][field]["minimum"], 1);
+                    assert_eq!(fields["properties"][field]["maximum"], u64::MAX);
+                }
+                assert_eq!(fields["properties"]["t"]["minimum"], 0);
+                assert_eq!(fields["properties"]["t"]["maximum"], 1);
+                assert_eq!(
+                    fields["properties"]["length"]["minimum"],
+                    weftforge_core::MIN_NOTCH_LENGTH
+                );
+                assert_eq!(
+                    fields["properties"]["length"]["maximum"],
+                    weftforge_core::MAX_NOTCH_LENGTH
+                );
+            } else {
+                assert_eq!(data["properties"]["notch"]["minimum"], 1);
+                assert_eq!(data["properties"]["notch"]["maximum"], u64::MAX);
+            }
+        }
+        let executed = server.request("tools/call", profile(json!({"name":"project_execute","arguments":{"input":empty,"output":mcp_path,"commands":commands}})));
+        assert_eq!(success(&executed)["revision"], 1);
+        assert_eq!(fs::read(&cli_path).unwrap(), fs::read(&mcp_path).unwrap());
+        let inspected = server.request(
+            "tools/call",
+            profile(json!({"name":"project_inspect","arguments":{"path":mcp_path}})),
+        );
+        assert_eq!(
+            success(&inspected)["project"]["pieces"][0]["notches"],
+            json!([{"id":11,"curve":7,"t":0.75,"length":0.008}])
+        );
+        let inspected_cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+            .arg("inspect")
+            .arg(&cli_path)
+            .output()
+            .unwrap();
+        assert!(
+            inspected_cli.status.success(),
+            "{}",
+            String::from_utf8_lossy(&inspected_cli.stderr)
+        );
+        assert_eq!(
+            serde_json::from_slice::<Value>(&inspected_cli.stdout).unwrap()["patterns"][0]["notches"],
+            success(&inspected)["project"]["pieces"][0]["notches"]
+        );
+        let primary = fs::read(&mcp_path).unwrap();
+        let backup = b"retained prior recovery";
+        for path in [&cli_path, &mcp_path] {
+            fs::write(recovery_path(path), backup).unwrap();
+        }
+        for bad in [
+            json!([{"type":"add_notch","data":{"piece":2,"curve":7,"t":1.1,"length":0.005}}]),
+            json!([{"type":"add_notch","data":{"piece":2,"curve":7,"t":0.5,"length":0}}]),
+            json!([{"type":"add_notch","data":{"piece":2,"curve":7,"t":0.5,"length":0.101}}]),
+            json!([{"type":"add_notch","data":{"piece":2,"curve":7,"t":0.5,"length":0.005,"extra":true}}]),
+            json!([{"type":"update_notch","data":{"notch":{"id":11,"curve":7,"t":0.5,"length":0.005,"extra":true}}}]),
+            json!([{"type":"update_notch","data":{"notch":{"id":11,"curve":3,"t":0.5,"length":0.005}}}]),
+            json!([{"type":"remove_notch","data":{"notch":0}}]),
+            json!([{"type":"add_notch","data":{"piece":2,"curve":7,"t":0.5,"length":0.005}},{"type":"remove_notch","data":{"notch":999}}]),
+        ] {
+            assert!(!run_cli(&cli_path, &cli_path, &bad).status.success());
+            let response = server.request("tools/call", profile(json!({"name":"project_execute","arguments":{"input":mcp_path,"output":mcp_path,"commands":bad}})));
+            assert_eq!(response["result"]["isError"], true, "{response}");
+            for path in [&cli_path, &mcp_path] {
+                assert_eq!(fs::read(path).unwrap(), primary);
+                assert_eq!(fs::read(recovery_path(path)).unwrap(), backup);
+            }
+        }
+        server.finish();
+    }
+}
+
+#[test]
 fn internal_annotations_share_closed_schema_cli_and_mcp_transactions_without_new_tools() {
     let directory = Directory::new();
     let empty = directory.path("empty.weftforge");
@@ -2525,7 +2675,7 @@ fn internal_annotations_share_closed_schema_cli_and_mcp_transactions_without_new
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 32);
+    assert_eq!(variants.len(), 36);
     for (name, required, id_field) in [
         (
             "add_internal_segment",
@@ -2687,6 +2837,203 @@ fn internal_annotations_share_closed_schema_cli_and_mcp_transactions_without_new
 }
 
 #[test]
+fn outline_offsets_share_closed_schemas_material_domain_and_atomic_files() {
+    let dir = Directory::new();
+    let mut editor = Editor::default();
+    editor
+        .execute(Command::AddRectangle {
+            name: "Offset rectangle".into(),
+            origin: [0., 0.],
+            width: 0.4,
+            height: 0.6,
+        })
+        .unwrap();
+    editor.project.materials[0].areal_density = 0.2;
+    editor.project.pieces[0].grain_angle = 0.37;
+    editor.project.pieces[0].placement.translation = [0.4, 0.8, -0.2];
+    editor.project.pieces[0].placement.rotation = [0.2, -0.1, 0.3];
+    let original = editor.project.to_json().unwrap();
+    let source_piece = editor.project.pieces[0].clone();
+    let backup = Project::default().to_json().unwrap();
+    let commands_path = dir.path("commands.json");
+    let run_cli = |input: &Path, output: &Path, raw: &str| {
+        fs::write(&commands_path, raw).unwrap();
+        Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+            .arg("execute")
+            .arg(input)
+            .arg(output)
+            .arg(&commands_path)
+            .output()
+            .unwrap()
+    };
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let listed = server.request("tools/list", json!({}));
+    let tools = listed["result"]["tools"].as_array().unwrap();
+    assert_eq!(tools.len(), 9);
+    let execute = tools
+        .iter()
+        .find(|tool| tool["name"] == "project_execute")
+        .unwrap();
+    let variants = execute["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
+        .as_array()
+        .unwrap();
+    assert_eq!(variants.len(), 36);
+    let matches = variants
+        .iter()
+        .filter(|variant| variant["properties"]["type"]["const"] == "offset_outline")
+        .collect::<Vec<_>>();
+    assert_eq!(matches.len(), 1);
+    assert_eq!(matches[0]["additionalProperties"], false);
+    let data = &matches[0]["properties"]["data"];
+    assert_eq!(data["additionalProperties"], false);
+    assert_eq!(data["required"], json!(["piece", "width", "outward"]));
+    assert_eq!(data["properties"].as_object().unwrap().len(), 3);
+    assert_eq!(data["properties"]["piece"]["minimum"], 1);
+    assert_eq!(data["properties"]["piece"]["maximum"], u64::MAX);
+    assert_eq!(data["properties"]["width"]["exclusiveMinimum"], 0);
+    assert_eq!(data["properties"]["outward"]["type"], "boolean");
+
+    for (outward, width, height, area, mass) in [
+        (true, 0.42, 0.62, 0.2604, 0.05208),
+        (false, 0.38, 0.58, 0.2204, 0.04408),
+    ] {
+        let cli_path = dir.path(&format!("offset-cli-{outward}.weftforge"));
+        let mcp_path = dir.path(&format!("offset-mcp-{outward}.weftforge"));
+        for path in [&cli_path, &mcp_path] {
+            fs::write(path, &original).unwrap();
+            fs::write(recovery_path(path), &backup).unwrap();
+        }
+        let command = json!({"type":"offset_outline","data":{"piece":source_piece.id,"width":0.01,"outward":outward}});
+        let cli = run_cli(&cli_path, &cli_path, &json!([command.clone()]).to_string());
+        assert!(
+            cli.status.success(),
+            "{}",
+            String::from_utf8_lossy(&cli.stderr)
+        );
+        let result = server.call(
+            "project_execute",
+            json!({"input":mcp_path,"output":mcp_path,"commands":[command]}),
+        );
+        assert_eq!(success(&result)["revision"], editor.project.revision + 1);
+        assert_eq!(fs::read(&cli_path).unwrap(), fs::read(&mcp_path).unwrap());
+        for path in [&cli_path, &mcp_path] {
+            assert_eq!(fs::read(recovery_path(path)).unwrap(), original);
+        }
+        let project = Project::load(&mcp_path).unwrap();
+        let piece = project.piece(source_piece.id).unwrap();
+        assert_eq!(piece.name, source_piece.name);
+        assert_eq!(piece.material, source_piece.material);
+        assert_eq!(piece.placement, source_piece.placement);
+        assert_eq!(piece.grain_angle, source_piece.grain_angle);
+        assert_eq!(project.materials, editor.project.materials);
+        assert!(
+            source_piece
+                .boundary
+                .iter()
+                .all(|id| piece.boundary.contains(id))
+        );
+        let mesh = project.mesh().unwrap();
+        let rest_area: f64 = mesh
+            .triangles
+            .iter()
+            .map(|triangle| {
+                let [a, b, c] = triangle.map(|vertex| mesh.uv[vertex]);
+                ((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])).abs() * 0.5
+            })
+            .sum();
+        let cloth = weftforge_core::simulation::create_cloth(&project, &mesh).unwrap();
+        let actual_mass: f64 = cloth.masses().iter().sum();
+        assert!((rest_area - area).abs() < 1e-10);
+        assert!((actual_mass - mass).abs() < 1e-10);
+        assert!((actual_mass - 0.2 * rest_area).abs() <= 2e-10);
+        let svg = dir.path(&format!("offset-{outward}.svg"));
+        let exported = server.call("project_export_svg", json!({"input":mcp_path,"output":svg}));
+        assert_eq!(success(&exported)["source_revision"], project.revision);
+        let text = fs::read_to_string(svg).unwrap();
+        let attribute = |name: &str| {
+            text.split(&format!("{name}=\""))
+                .nth(1)
+                .unwrap()
+                .split('"')
+                .next()
+                .unwrap()
+                .to_owned()
+        };
+        assert!(
+            (attribute("width")
+                .trim_end_matches("mm")
+                .parse::<f64>()
+                .unwrap()
+                - width * 1000.)
+                .abs()
+                < 1e-6
+        );
+        assert!(
+            (attribute("height")
+                .trim_end_matches("mm")
+                .parse::<f64>()
+                .unwrap()
+                - height * 1000.)
+                .abs()
+                < 1e-6
+        );
+    }
+
+    let refused_cli = dir.path("refused-cli.weftforge");
+    let refused_mcp = dir.path("refused-mcp.weftforge");
+    for path in [&refused_cli, &refused_mcp] {
+        fs::write(path, &original).unwrap();
+        fs::write(recovery_path(path), &backup).unwrap();
+    }
+    let valid = json!({"type":"offset_outline","data":{"piece":source_piece.id,"width":0.01,"outward":true}});
+    let mut failures = Vec::new();
+    for (field, value) in [
+        ("piece", json!(0)),
+        ("piece", json!(2.5)),
+        ("piece", json!("2")),
+        ("width", json!(0)),
+        ("width", json!(-0.01)),
+        ("width", json!("0.01")),
+        ("width", Value::Null),
+        ("width", json!(1e9)),
+        ("outward", json!("true")),
+        ("outward", json!(1)),
+        ("guide_only", json!(true)),
+    ] {
+        let mut bad = valid.clone();
+        bad["data"][field] = value;
+        failures.push(json!([bad]).to_string());
+    }
+    for field in ["piece", "width", "outward"] {
+        let mut bad = valid.clone();
+        bad["data"].as_object_mut().unwrap().remove(field);
+        failures.push(json!([bad]).to_string());
+    }
+    let raw_valid = json!([valid.clone()]).to_string();
+    for field in ["piece", "width", "outward"] {
+        let marker = format!("\"{field}\":");
+        let value = &valid["data"][field];
+        failures.push(raw_valid.replace(&marker, &format!("\"{field}\":{value},\"{field}\":")));
+    }
+    failures.push(raw_valid.replace("0.01", "1e309"));
+    failures.push(json!([valid, {"type":"set_resolution","data":{"metres":0}}]).to_string());
+    failures.push(json!([{"type":"offset_outline","data":{"piece":source_piece.id,"width":0.31,"outward":false}}]).to_string());
+    for raw in failures {
+        let result = run_cli(&refused_cli, &refused_cli, &raw);
+        assert!(!result.status.success(), "Unexpected CLI acceptance: {raw}");
+        let request = json!({"jsonrpc":"2.0","id":"raw-offset","method":"tools/call","params":{"name":"project_execute","arguments":{"input":refused_mcp,"output":refused_mcp,"commands":"OFFSET_RAW_COMMANDS"}}}).to_string().replace("\"OFFSET_RAW_COMMANDS\"", &raw);
+        server.send(&request);
+        tool_error(&server.receive());
+        for path in [&refused_cli, &refused_mcp] {
+            assert_eq!(fs::read(path).unwrap(), original);
+            assert_eq!(fs::read(recovery_path(path)).unwrap(), backup);
+        }
+    }
+    server.finish();
+}
+
+#[test]
 fn straight_holes_keep_closed_discovery_shared_ids_and_atomic_refusal() {
     let directory = Directory::new();
     let path = directory.path("annulus.weftforge");
@@ -2711,7 +3058,7 @@ fn straight_holes_keep_closed_discovery_shared_ids_and_atomic_refusal() {
     assert_eq!(commands["minItems"], 1);
     assert_eq!(commands["maxItems"], 1024);
     let variants = commands["items"]["oneOf"].as_array().unwrap();
-    assert_eq!(variants.len(), 32);
+    assert_eq!(variants.len(), 36);
     for (name, required, id) in [
         ("add_hole", json!(["piece", "vertices"]), "piece"),
         ("remove_hole", json!(["hole"]), "hole"),

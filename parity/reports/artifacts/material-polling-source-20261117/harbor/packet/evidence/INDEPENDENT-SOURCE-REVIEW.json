@@ -1,0 +1,122 @@
+{
+  "at_utc": "2026-11-17T05:09:19.501827+00:00",
+  "author_commit_during_review_source_hashes_unchanged": true,
+  "base_commit": "52099b6f6b7aff43b3e9ada8bad4f830cb987134",
+  "callback_budget": "2+floor((168*N+119*T+48)/64)",
+  "candidate_manifest": {
+    "bytes": 9779,
+    "mode": "0644",
+    "sha256": "91784599fc80139dd94f4053193adb2123560900c058864d98faea6ef1c03d1a"
+  },
+  "check_receipt": {
+    "bytes": 3722,
+    "mode": "0644",
+    "sha256": "58723b2e9b74d61c9214daedd54adf74d876e908b47034e7a4cdb6607001d7bf"
+  },
+  "crate_tests_available": 65,
+  "final_candidate_commit": "9d4b629c077f06c348f6615fe90df7bbeacedb24",
+  "final_checkout_clean_before_after": true,
+  "final_evidence31_before_after_exact": true,
+  "findings": [],
+  "first_fmt_only_failure": {
+    "bytes": 1580,
+    "mode": "0600",
+    "sha256": "c9b92d87319adb0b4d2c144ef59d881547c90d4bb70f1fa594516ad1f72af305"
+  },
+  "focused_tests_distinct": 16,
+  "format_only_correction": "tuple-array line wrapping and trailing comma; other tokens unchanged",
+  "four_successful_exits_check_original_callback_before_commit": true,
+  "frozen115_before_after_exact": true,
+  "initial_observed_head": "52099b6f6b7aff43b3e9ada8bad4f830cb987134",
+  "limits": [
+    "Source and retained-result review only.",
+    "No speedup, hard cancellation latency, whole-crate/workspace/Clippy/native/full-garment acceptance.",
+    "RSS sampling and SDK/linker/shared-library closure remain qualified."
+  ],
+  "max_skipped_checkpoints": 63,
+  "next_bound_proof": "Separate root GO after GUI settlement: same-build old/new actual-clock material-only paired timing with frozen inputs and32 x/p boundary-bit comparisons; no old case retry.",
+  "oracle_suffix_exact_base": true,
+  "oracle_suffix_sha256": "6d696c240d4bc251cf4d98a929baf72c7a3ef6e21b6b78d460696c465fbc30f9",
+  "protected_seals_before_after_exact": {
+    "<ROOT>/.local/global-material-full-case-closure-20261117/FINAL-MANIFEST.json": {
+      "bytes": 17874,
+      "mode": "0644",
+      "sha256": "cfa30db44a98308aeaafdb1ee54a203740103c70011993ed5caf9aff0a4e9c00"
+    },
+    "<ROOT>/.local/global-material-perf-probe-20261117/.local/material-kernel-baseline-20261117/FINAL-MANIFEST.json": {
+      "bytes": 7049,
+      "mode": "0644",
+      "sha256": "f145a89dbe45eedcd20671a96bfc2acb7bf26eea96c87433ea0fde339db3e8c4"
+    },
+    "<ROOT>/.local/global-material-perf-probe-20261117/.local/material-kernel-clock-predicate-20261117/FINAL-MANIFEST.json": {
+      "bytes": 7450,
+      "mode": "0644",
+      "sha256": "ca10761fc9345b83798e169cf813b74ac7c911e555062ceb843947c38ae78844"
+    },
+    "<ROOT>/.local/global-material-repair-20261117/crates/weftforge-sim/src/constraints.rs": {
+      "bytes": 15204,
+      "mode": "0644",
+      "sha256": "975d043dba7b67a8546d854cec7c96577353c4111490579d18a97dc7542bbf11"
+    },
+    "<ROOT>/.local/global-material-repair-20261117/crates/weftforge-sim/src/lib.rs": {
+      "bytes": 36052,
+      "mode": "0644",
+      "sha256": "904f373d8e4f3b314b388731458f36a364c309badaed3175752da2c5f9d88d1f"
+    },
+    "<ROOT>/.local/global-material-repair-20261117/crates/weftforge-sim/src/tests.rs": {
+      "bytes": 82069,
+      "mode": "0644",
+      "sha256": "4b77ef465ec5ec150aaad6e7b6d4191a7e377404b7b9375fd4e48865ffeb9383"
+    },
+    "<ROOT>/.local/global-material-repair-20261117/docs/physics.md": {
+      "bytes": 45101,
+      "mode": "0644",
+      "sha256": "43a221cf3b1c1a5694cce34e2e4b8fbd55bf781051dcf24afcae728974c8d629"
+    }
+  },
+  "registered_removal_restores_exact_base_constraints": true,
+  "report": {
+    "bytes": 4535,
+    "mode": "0644",
+    "sha256": "7827baee5a48c58921e69eea81b2c437f3a6672e9adf76050444a50f98695595"
+  },
+  "reviewer_program_executions": {
+    "Cargo": 0,
+    "UI": 0,
+    "evaluator": 0,
+    "model": 0,
+    "network": 0,
+    "product": 0,
+    "tests": 0,
+    "timing": 0
+  },
+  "source_before_after": {
+    "crates/weftforge-sim/src/constraints.rs": {
+      "bytes": 16609,
+      "mode": "0644",
+      "sha256": "a98e065f8d3cb83bc01b7c0e11dad3241d82205163abd1d70e6c257437473637"
+    },
+    "crates/weftforge-sim/src/lib.rs": {
+      "bytes": 36052,
+      "mode": "0644",
+      "sha256": "904f373d8e4f3b314b388731458f36a364c309badaed3175752da2c5f9d88d1f"
+    },
+    "crates/weftforge-sim/src/tests.rs": {
+      "bytes": 85309,
+      "mode": "0644",
+      "sha256": "5344f54f81c0aec65f8678c001bb8ebfb8bd3a720db880d3f7afa217726a37f5"
+    },
+    "docs/physics.md": {
+      "bytes": 45566,
+      "mode": "0644",
+      "sha256": "11d8e499ed76b4829073249f5872d31ecf5483b165bb27236580e2b013b01420"
+    }
+  },
+  "source_freeze": {
+    "bytes": 33511,
+    "mode": "0644",
+    "sha256": "69d4cd2607c13be368ad24ae0893e27142032e2076851a0bee963bd020f3b23c"
+  },
+  "status": "NO_BLOCKER_FOUND_BOUNDED_CANCELLATION_SOURCE_REVIEW",
+  "wall_time_latency_guarantee": false
+}

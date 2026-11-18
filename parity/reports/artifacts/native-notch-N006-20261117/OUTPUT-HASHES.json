@@ -1,0 +1,30 @@
+{
+  "DXF_sentinel": {
+    "application_refusal_message": "DXF v1 export does not support authored notches; save native or export SVG instead",
+    "bytes": 75,
+    "native_Replace_confirmation_actually_accepted": true,
+    "path": "parity/reports/artifacts/native-notch-N006-20261117/outputs/existing.dxf",
+    "sha256_after_confirmed_Replace_and_app_refusal": "f6fe814b1871fe7b931985fd3c8d4daed80d6719a476d84bdbc89f3b1e5d0d40",
+    "sha256_after_fresh_reopen_final_manifest": "f6fe814b1871fe7b931985fd3c8d4daed80d6719a476d84bdbc89f3b1e5d0d40",
+    "sha256_before_case_from_PLAN": "f6fe814b1871fe7b931985fd3c8d4daed80d6719a476d84bdbc89f3b1e5d0d40"
+  },
+  "SVG": {
+    "bytes": 864,
+    "path": "parity/reports/artifacts/native-notch-N006-20261117/outputs/garment.svg",
+    "sha256_after_fresh_reopen_final_manifest": "f98be661186002e4fd55abe964e30db6c36a9d4918db761731c311ffa254588c",
+    "sha256_before_DXF_quit_reopen_from_independent_check": "f98be661186002e4fd55abe964e30db6c36a9d4918db761731c311ffa254588c"
+  },
+  "method": "Selected existing before/after hash witnesses; no rerun. Native and SVG before refer to the independently checked bytes before first Quit and fresh-process reopen, not to precreation absence.",
+  "native_v6": {
+    "bytes": 3377,
+    "path": "parity/reports/artifacts/native-notch-N006-20261117/outputs/garment.weftforge",
+    "precreation_absence_hash_witness": null,
+    "sha256_after_fresh_reopen_final_manifest": "9306ed73343b85108771d7bfa1f7489764ecddc00f8eb1c5d90f79d743ddea00",
+    "sha256_before_first_quit_from_independent_check": "9306ed73343b85108771d7bfa1f7489764ecddc00f8eb1c5d90f79d743ddea00"
+  },
+  "original_private_witness_sha256": {
+    "INDEPENDENT-NATIVE-ARTIFACT-CHECK.json": "2e6d7d76dc71b0781c84249a078cf70ae00c62a386302785ee11b7fc687968a7",
+    "MANIFEST.json": "f89f1ab0a2cc646f53286854c4e8b8878545fd63ac0188d4b26136f515c9e538",
+    "PLAN.json": "d401274b55b1b46bc284114b318053291bae8ced0847eba2002dcaa9a57295d5"
+  }
+}

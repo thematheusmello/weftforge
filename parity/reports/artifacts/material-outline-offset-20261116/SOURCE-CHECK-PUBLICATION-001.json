@@ -1,0 +1,167 @@
+{
+  "scope": "Public source-check evidence; no native/reference/whole-first-phase acceptance. Test, lint and debug build results stay on their actual source inputs.",
+  "files": {
+    "gates/source-gates-001/CHECKS.json": {
+      "sha256": "fda1e5fe16802e9f94e5040d95e64b127c2fa085d7274a4859970c26547c53da",
+      "bytes": 2330,
+      "private_original_sha256": "3d3c249fac80a8631b22588a83fea56616fd6f300a0391be32b088399627ccbd",
+      "private_original_bytes": 2422,
+      "derivative": "literal workspace/repository/home path prefixes only"
+    },
+    "gates/source-gates-001/SOURCE-INPUTS.json": {
+      "sha256": "d5dfbd11e33a441e541115100d4d8ae93159667ec1466b796ca41f2906f2fce8",
+      "bytes": 9819,
+      "private_original_sha256": "d5dfbd11e33a441e541115100d4d8ae93159667ec1466b796ca41f2906f2fce8",
+      "private_original_bytes": 9819,
+      "derivative": "exact bytes"
+    },
+    "gates/source-gates-001/fmt.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "private_original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "private_original_bytes": 0,
+      "derivative": "exact bytes"
+    },
+    "gates/source-gates-001/fmt.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "private_original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "private_original_bytes": 0,
+      "derivative": "exact bytes"
+    },
+    "gates/source-gates-001/test.stderr": {
+      "sha256": "1c987945ace62c98c233a3dbe111698c13484413d00184ec1d48d8ce7d58f5d5",
+      "bytes": 1493,
+      "private_original_sha256": "e680202408b80dc990e1498fce64bb61d441586a09b41213dbb1cd175cf3aec0",
+      "private_original_bytes": 1953,
+      "derivative": "literal workspace/repository/home path prefixes only"
+    },
+    "gates/source-gates-001/test.stdout": {
+      "sha256": "b0728e4b591a87d4841a747a09e2be870f1dd29b942a2698dfa36ac0a1b0a8ec",
+      "bytes": 16834,
+      "private_original_sha256": "b0728e4b591a87d4841a747a09e2be870f1dd29b942a2698dfa36ac0a1b0a8ec",
+      "private_original_bytes": 16834,
+      "derivative": "exact bytes"
+    },
+    "gates/source-gates-002/PRECHECK-STOP.json": {
+      "sha256": "96682af7b12432535bf6cecbd3fba6a84b8f41b55fe20fb7826df2b90f977bfa",
+      "bytes": 735,
+      "private_original_sha256": "96682af7b12432535bf6cecbd3fba6a84b8f41b55fe20fb7826df2b90f977bfa",
+      "private_original_bytes": 735,
+      "derivative": "exact bytes"
+    },
+    "gates/source-gates-003/CHECKS.json": {
+      "sha256": "1de617493c237516a9cd71e730ba3c40833804e0b499a856b7dc43d06853a6f0",
+      "bytes": 4022,
+      "private_original_sha256": "6257e853ec5404dd7d4cd6446beb1bf3648345c09f02fcac62903a5809eae66a",
+      "private_original_bytes": 4114,
+      "derivative": "literal workspace/repository/home path prefixes only"
+    },
+    "gates/source-gates-003/SOURCE-INPUTS.json": {
+      "sha256": "e1c3f00da24fbc9eada09dbeffbbd2447dcfca1ccb94c98ad70c8c4742c1f31a",
+      "bytes": 9819,
+      "private_original_sha256": "e1c3f00da24fbc9eada09dbeffbbd2447dcfca1ccb94c98ad70c8c4742c1f31a",
+      "private_original_bytes": 9819,
+      "derivative": "exact bytes"
+    },
+    "gates/source-gates-003/clippy.stderr": {
+      "sha256": "9a945924d5aaec17fcb7de619f034b0d1747c956938d4fe97eb3aa4b7dbcb730",
+      "bytes": 5722,
+      "private_original_sha256": "451a5eb2d10dde08832f07ef88ce088dd2380c722a3f6ef5eaf89544fbede9c7",
+      "private_original_bytes": 6182,
+      "derivative": "literal workspace/repository/home path prefixes only"
+    },
+    "gates/source-gates-003/clippy.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "private_original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "private_original_bytes": 0,
+      "derivative": "exact bytes"
+    },
+    "gates/source-gates-003/debug-build.stderr": {
+      "sha256": "e4789b2fdd4014a8b07a0c22857ead874e8ec4ea0dff89cbe26db061fe9c48fe",
+      "bytes": 131,
+      "private_original_sha256": "d588312de2a88bc2fdc4fbc367c5038f7f650f6907e952165b18dbd7229122c3",
+      "private_original_bytes": 223,
+      "derivative": "literal workspace/repository/home path prefixes only"
+    },
+    "gates/source-gates-003/debug-build.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "private_original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "private_original_bytes": 0,
+      "derivative": "exact bytes"
+    },
+    "gates/source-gates-003/fmt.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "private_original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "private_original_bytes": 0,
+      "derivative": "exact bytes"
+    },
+    "gates/source-gates-003/fmt.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "private_original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "private_original_bytes": 0,
+      "derivative": "exact bytes"
+    },
+    "gates/source-gates-003/test.stderr": {
+      "sha256": "add600ee119147a113d221b57dcbdeb0173ebe444d88fd15fc1b0e74f9e49b59",
+      "bytes": 3184,
+      "private_original_sha256": "59bb5254fd897a7202ffd4dbc0e1ff67eb0a038a005754a809cbab84cc51086f",
+      "private_original_bytes": 3276,
+      "derivative": "literal workspace/repository/home path prefixes only"
+    },
+    "gates/source-gates-003/test.stdout": {
+      "sha256": "05e1c46623b4f86189e810e0c0bfa47ffb3acdf01d83fb9035c460ad7089f277",
+      "bytes": 36758,
+      "private_original_sha256": "05e1c46623b4f86189e810e0c0bfa47ffb3acdf01d83fb9035c460ad7089f277",
+      "private_original_bytes": 36758,
+      "derivative": "exact bytes"
+    },
+    "gates/MCP-DISCOVERY-CORRECTION.patch": {
+      "sha256": "e8f20393b33cfa6229e878ea62d86392302ffa64b1166f62e8a455fd26a8ec71",
+      "bytes": 398,
+      "derivative": "exact unified diff of sole changed source input; independent reviewed pins retain both hashes"
+    }
+  },
+  "source_inputs": 79,
+  "failed001_vs_passed003_differences": [
+    "apps/weftforge-cli/tests/mcp_stdio.rs"
+  ],
+  "other78_source_inputs_byte_exact": true,
+  "failed001_retained": {
+    "exit_code": 101,
+    "reason": "Old multiline MCP discovery assertion expected32 rather than33.",
+    "passed_total_qualification": "Original receipt138 sums only successful result groups and excludes17 passed tests in the failed group; the original failed stdout/stderr are retained unchanged except marked path derivatives."
+  },
+  "precheck002_retained": {
+    "Cargo_executed": false,
+    "reason": "Original independent pin includes the old assertion; exact one-token reversal proved the delta, then independent supplement refreshed pins."
+  },
+  "passed003": {
+    "Rust_tests": 363,
+    "fmt_test_strict_Clippy_debug_build_exits": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "private_receipt_sha256": "6257e853ec5404dd7d4cd6446beb1bf3648345c09f02fcac62903a5809eae66a",
+    "source_unchanged_before_after": true,
+    "binaries": {
+      "weftforge": {
+        "sha256": "6450fcfbf998b41563673acae0a1dd5374d0231f33ac65de7ef512c32f1e219a",
+        "bytes": 63391144
+      },
+      "weftforge-cli": {
+        "sha256": "132500cb74412ec94ffd4015db9502681deb9a8a9346b8486b9d22e9e4b70155",
+        "bytes": 11098576
+      }
+    }
+  },
+  "earcut_internal_polling_and_work_bound": "UNMET",
+  "xtask_clean_tracking_and_native_gates": "pending",
+  "prior_closed_cases_replayed": false
+}

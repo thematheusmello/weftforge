@@ -1,0 +1,96 @@
+[
+  {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "fmt",
+      "--all",
+      "--check"
+    ],
+    "exit_code": 0,
+    "green": true,
+    "index": 1,
+    "log": "01-fmt-check.log",
+    "log_bytes": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "name": "fmt-check",
+    "pgid": 61254,
+    "pid": 61254,
+    "root_go_sha256": "4076d535f5a7f376535dfba188ab119aba7cf25eb6fddfbd60859c6835a13bfc",
+    "source": "3409887062719fc3cd0feefc8c2c6d0334e6c985",
+    "stop_cause": null,
+    "test_summaries": [],
+    "utc_epoch_finished": 1794950071.530965,
+    "utc_epoch_started": 1794950070.807076
+  },
+  {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "-p",
+      "weftforge",
+      "--bin",
+      "weftforge",
+      "contextual_properties_tests",
+      "--",
+      "--nocapture"
+    ],
+    "exit_code": 0,
+    "green": true,
+    "index": 2,
+    "log": "02-new-six-contextual-guards.log",
+    "log_bytes": 1137,
+    "log_sha256": "7b53493ed8465447eb8998f6358597ff397a5df956074f0f1a90aa03720a1c4a",
+    "name": "new-six-contextual-guards",
+    "pgid": 61263,
+    "pid": 61263,
+    "root_go_sha256": "4076d535f5a7f376535dfba188ab119aba7cf25eb6fddfbd60859c6835a13bfc",
+    "source": "3409887062719fc3cd0feefc8c2c6d0334e6c985",
+    "stop_cause": null,
+    "test_summaries": [
+      [
+        "ok",
+        "6",
+        "0",
+        "0"
+      ]
+    ],
+    "utc_epoch_finished": 1794950092.018039,
+    "utc_epoch_started": 1794950071.6234949
+  },
+  {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "test",
+      "--locked",
+      "--offline",
+      "-p",
+      "weftforge",
+      "--bin",
+      "weftforge"
+    ],
+    "exit_code": 101,
+    "green": false,
+    "index": 3,
+    "log": "03-all-native-UI-tests.log",
+    "log_bytes": 20060,
+    "log_sha256": "1e87fd0a757206b8e2692edd365e4518ae76deabc92df702fc660b8f368ac3fb",
+    "name": "all-native-UI-tests",
+    "pgid": 61508,
+    "pid": 61508,
+    "root_go_sha256": "4076d535f5a7f376535dfba188ab119aba7cf25eb6fddfbd60859c6835a13bfc",
+    "source": "3409887062719fc3cd0feefc8c2c6d0334e6c985",
+    "stop_cause": null,
+    "test_summaries": [
+      [
+        "FAILED",
+        "160",
+        "6",
+        "0"
+      ]
+    ],
+    "utc_epoch_finished": 1794950169.252351,
+    "utc_epoch_started": 1794950092.111226
+  }
+]

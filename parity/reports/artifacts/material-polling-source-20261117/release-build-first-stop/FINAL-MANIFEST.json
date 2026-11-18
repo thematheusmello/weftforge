@@ -1,0 +1,99 @@
+{
+  "Cargo_wait4_exit_code": -15,
+  "at_utc": "2026-11-17T05:52:05.610072+00:00",
+  "build_launches": 1,
+  "clean_exact_commit": true,
+  "commit": "9d4b629c077f06c348f6615fe90df7bbeacedb24",
+  "completed_release_binary_set": {},
+  "controller_exit_code": 1,
+  "external_stop_receipt_sha256": "466298a2c9735bdf1c67a8c339d205973a119d92f0cf0e090ef2a086bad78ad4",
+  "file_count_excluding_self": 14,
+  "files": {
+    "EXTERNAL-STOP-RECEIPT.json": {
+      "bytes": 1884,
+      "mode": "0o644",
+      "sha256": "466298a2c9735bdf1c67a8c339d205973a119d92f0cf0e090ef2a086bad78ad4"
+    },
+    "FINDINGS.md": {
+      "bytes": 1848,
+      "mode": "0o644",
+      "sha256": "227fc89406594a4cd49dbb6c801cb5dce534ef89a8910ebff2e1f9eddf986ba5"
+    },
+    "FREEZE.json": {
+      "bytes": 39654,
+      "mode": "0o644",
+      "sha256": "3d653d270afeb9d7a4e770dd75266645ad388ecb7638305f90b802918b98a6ea"
+    },
+    "HOST-MEMORY.json": {
+      "bytes": 2056,
+      "mode": "0o644",
+      "sha256": "4602655cd6fa042630e6feaad01f22987eee9e819362c0a2fc562fe64cd2fb9b"
+    },
+    "ROOT-DISK-STOP.json": {
+      "bytes": 460,
+      "mode": "0o644",
+      "sha256": "539be216239da79ee0db4ce2370044c2572444a2fb9debff2384291a6618e86f"
+    },
+    "resources.py": {
+      "bytes": 10924,
+      "mode": "0o644",
+      "sha256": "f0af9e1665da6246a89e13e7fd947cbfbaef68cc19f6827ec32572c323be0240"
+    },
+    "run.py": {
+      "bytes": 6834,
+      "mode": "0o644",
+      "sha256": "767488fdb8181e331ca5ce865fb3d4afea3415ea403946a2b4184d2e16731260"
+    },
+    "runtime/RESULT.json": {
+      "bytes": 20840,
+      "mode": "0o600",
+      "sha256": "fad756f2e6039fd3a7fe8b914afdd54cba6e70a005c119afd799bab2748ecca6"
+    },
+    "runtime/STARTED.json": {
+      "bytes": 590,
+      "mode": "0o600",
+      "sha256": "437aa462216d56f72aea33e8737e6222d0294eec652a075c4e919049f5f64efa"
+    },
+    "runtime/TERMINAL.json": {
+      "bytes": 310,
+      "mode": "0o600",
+      "sha256": "7877c61f9c42ad7a400e3251fae67a73e3ef0a41f9e010ca0e7791b00c7a1eff"
+    },
+    "runtime/release-build-RESULT.json": {
+      "bytes": 1413,
+      "mode": "0o600",
+      "sha256": "cad3bf31d5fbe9e7f99ef4205e7b2a9fed35bf706d48383967109d6569831ad5"
+    },
+    "runtime/release-build-STARTED.json": {
+      "bytes": 793,
+      "mode": "0o600",
+      "sha256": "3f8af448488710065c9e276cfb3da36f947d9955b9c6569bd0e21b9ca570d94d"
+    },
+    "runtime/release-build.stderr": {
+      "bytes": 6303,
+      "mode": "0o644",
+      "sha256": "08eab4916edc3ce982cefc83d469ea72802b980e1661c547170aa6237941c271"
+    },
+    "runtime/release-build.stdout": {
+      "bytes": 0,
+      "mode": "0o644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "internal_terminal_sha256": "7877c61f9c42ad7a400e3251fae67a73e3ef0a41f9e010ca0e7791b00c7a1eff",
+  "owned_PID_groups_absent": [
+    81013,
+    81016
+  ],
+  "posthoc_scope": "External stop/FINDINGS/final manifest are new read/hash closure notes, not edits to frozen inputs/logs or another build",
+  "release_build_completed": false,
+  "release_executable_file_existence": {
+    "weftforge": false,
+    "weftforge-cli": false
+  },
+  "result_sha256": "fad756f2e6039fd3a7fe8b914afdd54cba6e70a005c119afd799bab2748ecca6",
+  "scope": "Closed negative buildonly attempt; externally stopped for real disk protection",
+  "source88_metadata59_original8_exact": true,
+  "source_changes_retries_cleanup_tests_models_GUI_bundles_benchmarks": 0,
+  "source_freeze_sha256": "3d653d270afeb9d7a4e770dd75266645ad388ecb7638305f90b802918b98a6ea"
+}

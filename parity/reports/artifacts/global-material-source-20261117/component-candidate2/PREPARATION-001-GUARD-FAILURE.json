@@ -1,0 +1,7 @@
+{
+  "stage": "pre-execution source/adapter guard preparation",
+  "numerical_executions": 0,
+  "failure": "Whitespace-only literal comparison rejects Rustfmt multiline-array trailing commas",
+  "correction": "Compare exact numeric token strings and whitespace/trailing-comma equivalent tokens; no source input, reference, tolerance or oracle edit",
+  "retained_original_and_adapted_tests": true
+}

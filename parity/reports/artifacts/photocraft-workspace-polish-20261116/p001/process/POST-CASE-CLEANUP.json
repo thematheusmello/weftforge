@@ -1,0 +1,28 @@
+{
+  "kind": "post-case cleanup; separate from frozen GUI observations",
+  "observed_utc": "2026-11-16T15:04:38.757710+00:00",
+  "owned_pid": 85382,
+  "expected_full_command": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/NATIVE-UI-PREVIEW-001/WeftForge UI Preview P001.app/Contents/MacOS/weftforge",
+  "before": {
+    "returncode": 0,
+    "rows": [
+      {
+        "pid": 85382,
+        "full_command": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/NATIVE-UI-PREVIEW-001/WeftForge UI Preview P001.app/Contents/MacOS/weftforge"
+      }
+    ],
+    "stderr": ""
+  },
+  "reason": "Name calibration failed without authoring; final full AX exposed no clean-window close control. ROOT explicitly authorized proven-owned PID termination after final CUA summary.",
+  "cua_summary_preceded_this_check": true,
+  "window_dismissal_ui_observed": false,
+  "termination_signal": "SIGTERM",
+  "after": {
+    "returncode": 1,
+    "rows": [],
+    "stderr": ""
+  },
+  "owned_pid_absent": true,
+  "completed_utc": "2026-11-16T15:04:38.824589+00:00",
+  "elapsed_seconds_from_launch": 267.921961417
+}

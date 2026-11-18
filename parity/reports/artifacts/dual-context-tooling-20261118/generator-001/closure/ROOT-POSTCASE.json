@@ -1,0 +1,33 @@
+{
+  "recorded_utc": "2026-11-17T23:55:45.927302+00:00",
+  "metadata_commit": "4ffb20e3aa9ebf715db833f279381c77245a47dc",
+  "classification": "GENERATOR_EXIT_ZERO_BOUNDED_CASE_FAILED_LEDGER_VOLUME",
+  "accepted": false,
+  "generator_exit_code": 0,
+  "elapsed_seconds": 60.999782666098326,
+  "time_cap_seconds": 120,
+  "retained_bytes": 10527765,
+  "retained_cap_bytes": 8388608,
+  "all_original_guards_passed": {
+    "all186_immutable_hashes_bytes_modes_exact": true,
+    "all237_original_hashes_bytes_modes_exact": true,
+    "all13866_public_hashes_bytes_modes_exact": true,
+    "HEAD_fixed": true,
+    "index_empty_fixed": true,
+    "only2_allowed_outputs_dirty": true,
+    "project_tool_inputs_fixed": true,
+    "controller_sources_fixed": true
+  },
+  "all_recorded_controller_generator_PIDs_groups_absent": [
+    7595,
+    7608
+  ],
+  "only_two_generated_outputs_changed": true,
+  "generated_output_hashes": {
+    "docs/dashboard/index.html": "24c3d0c70a347eea27738c0eadbab17341a908338432709393bf4a77f6428175",
+    "docs/progress.md": "006272a7776c983623aa70fd2f2b8315258ea626fa22554de07ec5134e384d72"
+  },
+  "full_case_not_regraded_or_retried": true,
+  "semantic_outputs_require_separate_clean_check": "Use these existing files for required clean cargoxtaskverify/progress--check. No generator success cap claim and no source or generator rerun.",
+  "cause": "Root selected the entire13866-file historical public ledger for repeated snapshots; three large ledger documents exceeded8MiB. Next verification protects the new240-file publication increment plus immutable report/source inputs; progress validator still verifies all reported public artifacts."
+}

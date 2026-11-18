@@ -1,0 +1,180 @@
+diff --git a/apps/weftforge/src/main.rs b/apps/weftforge/src/main.rs
+index 909fe72..f1009b9 100644
+--- a/apps/weftforge/src/main.rs
++++ b/apps/weftforge/src/main.rs
+@@ -21364,7 +21364,7 @@ mod hole_tests {
+ 
+ #[cfg(test)]
+ mod point_drag_release_tests {
+-    use super::pattern_transform_tests::{frame, pointer_frame};
++    use super::pattern_transform_tests::{action, button, frame, pointer_frame};
+     use super::*;
+ 
+     fn fixture(owner: &str) -> (egui::Context, Studio, Id) {
+@@ -21539,4 +21539,166 @@ mod point_drag_release_tests {
+             assert!(app.editor.can_redo());
+         }
+     }
++
++    fn primary(position: Pos2, pressed: bool) -> egui::Event {
++        egui::Event::PointerButton {
++            pos: position,
++            button: egui::PointerButton::Primary,
++            pressed,
++            modifiers: egui::Modifiers::NONE,
++        }
++    }
++
++    fn coalesced_events(start: Pos2, end: Pos2) -> Vec<egui::Event> {
++        vec![
++            egui::Event::PointerMoved(start),
++            primary(start, true),
++            egui::Event::PointerMoved(end),
++            egui::Event::PointerMoved(end),
++            primary(end, false),
++        ]
++    }
++
++    #[test]
++    fn coalesced_endpoint_drag_commits_once_before_any_later_hover() {
++        for owner in ["boundary", "internal", "hole"] {
++            for later_hover in [false, true] {
++                let (ctx, mut app, point) = fixture(owner);
++                let before = app.editor.project.clone();
++                let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
++                let start = app.to_screen([-0.01; 2], rect);
++                let mut events = coalesced_events(start, start - Vec2::new(13., 0.));
++                if later_hover {
++                    events.push(egui::Event::PointerMoved(
++                        rect.right_top() + Vec2::new(100., 0.),
++                    ));
++                }
++                frame(&ctx, &mut app, events);
++                assert_move_and_history(&ctx, &mut app, &before, point, [-0.02, -0.01]);
++            }
++        }
++    }
++
++    #[test]
++    fn coalesced_endpoint_drag_invalid_release_preserves_project_history_and_redo() {
++        for owner in ["boundary", "internal", "hole"] {
++            let (ctx, mut app, _) = fixture(owner);
++            let before = format!("{:?}", app.editor);
++            let curve = app
++                .editor
++                .project
++                .curve(app.selected_curve.unwrap())
++                .unwrap();
++            let invalid = app.editor.project.point(curve.end).unwrap().position;
++            let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
++            let start = app.to_screen([-0.01; 2], rect);
++            let end = app.to_screen(invalid, rect);
++            frame(&ctx, &mut app, coalesced_events(start, end));
++            assert_eq!(format!("{:?}", app.editor), before, "{owner}");
++            assert!(app.drag_point.is_none() && app.preview.is_none());
++            assert!(!app.dirty && app.editor.can_redo());
++        }
++    }
++
++    #[test]
++    fn coalesced_endpoint_drag_rejects_blocked_outside_click_and_ambiguous_input() {
++        for case in [
++            "paused",
++            "popup",
++            "disabled",
++            "outside",
++            "click",
++            "snap noop",
++            "secondary",
++            "two pairs",
++        ] {
++            let (ctx, mut app, _) = fixture("boundary");
++            let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
++            if case == "paused" {
++                app.search = true;
++            } else if case == "popup" {
++                let output = frame(&ctx, &mut app, vec![]);
++                frame(
++                    &ctx,
++                    &mut app,
++                    vec![action(
++                        button(&output, "File"),
++                        egui::accesskit::Action::Click,
++                        None,
++                    )],
++                );
++                assert!(egui::Popup::is_any_open(&ctx));
++            } else if case == "disabled" {
++                app.rectangle = Some(RectangleDraft {
++                    origin: [0.; 2],
++                    dimensions_mm: ["400".into(), "600".into()],
++                    error: None,
++                });
++            } else if case == "outside" {
++                let outside = Pos2::new(rect.left() - 2., rect.center().y);
++                app.center = [
++                    -0.01 - f64::from((outside.x - rect.center().x) / app.scale),
++                    -0.01 + f64::from((outside.y - rect.center().y) / app.scale),
++                ];
++            }
++            let start = app.to_screen([-0.01; 2], rect);
++            let end = match case {
++                "click" => start,
++                "snap noop" => start - Vec2::new(8., 0.),
++                "outside" => start + Vec2::new(20., 0.),
++                _ => start - Vec2::new(13., 0.),
++            };
++            let mut events = coalesced_events(start, end);
++            if case == "secondary" {
++                for event in &mut events {
++                    if let egui::Event::PointerButton { button, .. } = event {
++                        *button = egui::PointerButton::Secondary;
++                    }
++                }
++            } else if case == "two pairs" {
++                events.extend(coalesced_events(start, end));
++            }
++            let before = format!("{:?}", app.editor);
++            frame(&ctx, &mut app, events);
++            assert_eq!(format!("{:?}", app.editor), before, "{case}");
++            assert!(!app.dirty && app.editor.can_redo(), "{case}");
++        }
++    }
++
++    #[test]
++    fn coalesced_endpoint_drag_captures_snap_bypass_from_the_press() {
++        let (ctx, mut app, point) = fixture("boundary");
++        let before = app.editor.project.clone();
++        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
++        let start = app.to_screen([-0.01; 2], rect);
++        let mut events = coalesced_events(start, start - Vec2::new(13., 0.));
++        if let egui::Event::PointerButton { modifiers, .. } = &mut events[1] {
++            modifiers.alt = true;
++        }
++        frame(&ctx, &mut app, events);
++        let position = app.editor.project.point(point).unwrap().position;
++        assert!((position[0] + 0.0165).abs() < 1e-6);
++        assert_move_and_history(&ctx, &mut app, &before, point, position);
++    }
++
++    #[test]
++    fn point_drag_release_position_precedes_later_hover_in_a_recognized_drag() {
++        let (ctx, mut app, point) = fixture("boundary");
++        let before = app.editor.project.clone();
++        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
++        let start = app.to_screen([-0.01; 2], rect);
++        pointer_frame(&ctx, &mut app, start, Some(true), false);
++        pointer_frame(&ctx, &mut app, start - Vec2::new(20., 0.), None, false);
++        let release = start - Vec2::new(40., 0.);
++        frame(
++            &ctx,
++            &mut app,
++            vec![
++                egui::Event::PointerMoved(release),
++                primary(release, false),
++                egui::Event::PointerMoved(rect.right_top() + Vec2::new(100., 0.)),
++            ],
++        );
++        assert_move_and_history(&ctx, &mut app, &before, point, [-0.03, -0.01]);
++    }
+ }

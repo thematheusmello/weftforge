@@ -1,0 +1,23 @@
+{
+  "FORMAT_ONLY_patch_sha256": "f7ba344fa282572f1ed22844fe7b4d8401ee7b65f142ecd6a6e9839177e77b20",
+  "N32_after_sha256": "1e06a583896211e9f99dbb24be641c6c727b34c0766788d067fc596121df3482",
+  "N32_before_sha256": "113db99174af1140055358bc643570845f68faa3ec76f9be272e145949baeca4",
+  "actual_fmt_failure_stdout_sha256": "4733aa04a22ba7047679b377cc000e1a5bf71638dbb542626476963f5e120f37",
+  "after_known_fmt_normalizations_and_whitespace_equal": true,
+  "after_tests_sha256": "dad231e2b2997a1ef8e3f8d2c27d2787350217566078f2fc9510576038908c46",
+  "before_tests_sha256": "d2107c9455d35ef1e51706d16c6256df7ec0b94738d35bded6fe5fde2038388d",
+  "exact_known_fmt_syntax_normalizations": [
+    "assert macro trailing argument comma/layout",
+    "brace wrapper around identical from_fn closure expression"
+  ],
+  "final_oracle_position_force_action_assertion_slice_byte_exact": true,
+  "numerical_tests_repeated": false,
+  "prior_commit": "03f4a2df883581dc5f34ddc361bc9327b71ba6b0",
+  "production_constraints_and_docs_byte_exact": {
+    "crates/weftforge-sim/src/constraints.rs": "f733e8be75c8092af5bd80f52d6addaa8adf94c8397e69d1bbbe6ae7114eac92",
+    "docs/physics.md": "8c42e1f5f54e5c7c1ef2703af4be16dd6933f0156081636087620e962afc25bf"
+  },
+  "raw_N32_whitespace_only_equal": false,
+  "source_oracle_fixtures_bounds_iterations_and_sweep_counts_changed": false,
+  "status": "FORMAT_ONLY_NO_NUMERICAL_TOKEN_OR_VALUE_CHANGE"
+}

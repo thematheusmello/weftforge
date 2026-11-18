@@ -1,0 +1,44 @@
+{
+  "status": "authorized_one_clean_xtask_verify",
+  "one_cycle_only": true,
+  "metadata_commit": "317565b6e270aacaba8b6cc26e5305d2148ddaeb",
+  "freeze_path": "FREEZE.json",
+  "freeze_sha256": "422683f3498d4265ce1f5cb45ebaf36ad3586e4482edeeeb98d82a8965ee2403",
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "xtask",
+    "verify"
+  ],
+  "caps": {
+    "seconds": 360,
+    "RSS_bytes": 6442450944,
+    "retained_bytes": 16777216,
+    "disk_floor_bytes": 8000000000
+  },
+  "pinned_env": {
+    "CARGO": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_BUILD_RUSTC_WORKSPACE_WRAPPER": "",
+    "CARGO_BUILD_RUSTC_WRAPPER": "",
+    "CARGO_ENCODED_RUSTDOCFLAGS": "",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_HOME": "<HOME>/.cargo",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/notch-bend-integration-20261117/target",
+    "PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONOPTIMIZE": "0",
+    "RUSTC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTC_WORKSPACE_WRAPPER": "",
+    "RUSTC_WRAPPER": "",
+    "RUSTDOC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+    "RUSTDOCFLAGS": "",
+    "RUSTFLAGS": "",
+    "RUSTUP_TOOLCHAIN": "1.94.1-aarch64-apple-darwin"
+  },
+  "reused_pure_caps_sha256": "1d90a32badb6a88ad0eddb75e299b500ae39a17e1a015fd47de289802602b8ba",
+  "root_review": "One required cleanverification; useexistinggeneratedfiles, preservefailedgeneratorcap, no generatoror459tests/lint/model/native rerun. Existingverifiedlogic reused withcountlabels only; ownwarmtarget."
+}

@@ -1,0 +1,290 @@
+{
+  "at": "2026-11-16T23:51:24.599989+00:00",
+  "status": "FOCUSED_RED_TO_GREEN_AND_FULL_SIM60_COMPLETE_UNCOMMITTED_WAITING_ROOT_REVIEW",
+  "base_commit": "ae8dd6ebe6da760501f507248a11b069a02cb453",
+  "branch": "feat/coupled-edge-regression",
+  "source_hashes": {
+    "crates/weftforge-sim/src/constraints.rs": "7b07c9750569bd1962d7986b41fc5a00da9b1e319dfb90aa6ab50167e9f35596",
+    "crates/weftforge-sim/src/lib.rs": "22c50515e20f6fa4fd6d95ee122ea0c140964722e18e0e71ececbeb5c7d1608b",
+    "crates/weftforge-sim/src/tests.rs": "0cca724fac864630a69dbb50e651d906d273b3830795bea114f464da426fe330",
+    "docs/physics.md": "b4ef9c0124e8c29d87969baacc45d0b00908d1c4b0caa20a2c0baca764e64e28"
+  },
+  "source_diff_patch": {
+    "path": "FINAL.patch",
+    "sha256": "5d04903d803f835b6783de0ecc70f97c655cb98c8a9134907bec5ab323e4413a",
+    "bytes": 37335
+  },
+  "original_RED_files_exact": true,
+  "original_reference_and_bounds_exact": true,
+  "production_constraints_exact_to_first_GREEN": true,
+  "production_lib_prefix_exact_to_first_GREEN": true,
+  "Bend_and_below_tail_exact_to_base": true,
+  "API_Cargo_core_GUI_changes": false,
+  "public_metadata_changes": false,
+  "actual_receipts": {
+    "CANDIDATE-1-TERMINAL.json": {
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--lib",
+        "tests::shared_edge_material_reaches_independent_incremental_energy_equilibrium",
+        "--",
+        "--exact",
+        "--nocapture"
+      ],
+      "pid": 89003,
+      "status": "terminal",
+      "started_at": "2026-11-16T23:37:34.530804+00:00",
+      "inputs_sha256": "63a93ca5c273540686fca02dd8aefe8d7381b2d08316ab49922ec5bc6d9ae663",
+      "exit_code": 0,
+      "seconds": 5.9702455420047045,
+      "raw_log_sha256": "0822884453bc93ba18bcbd9342e46d6026a43821d1bd120ba34cdebb4c3056a3",
+      "all_original_RED_and_candidate_inputs_unchanged": true
+    },
+    "STABILIZATION-1-fmt.json": {
+      "stage": "fmt",
+      "argv": [
+        "cargo",
+        "fmt",
+        "-p",
+        "weftforge-sim",
+        "--check"
+      ],
+      "pid": 4194,
+      "status": "terminal",
+      "started_at": "2026-11-16T23:44:57.505841+00:00",
+      "exit_code": 0,
+      "seconds": 0.1590859160060063,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_unchanged": true
+    },
+    "STABILIZATION-1-clippy.json": {
+      "stage": "clippy",
+      "argv": [
+        "cargo",
+        "clippy",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--all-targets",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "pid": 4252,
+      "status": "terminal",
+      "started_at": "2026-11-16T23:44:57.666366+00:00",
+      "exit_code": 101,
+      "seconds": 2.252979667042382,
+      "log_sha256": "5fdc9d1c8173ec822139fd663233b80267a040936e08270a95686987731353ec",
+      "source_unchanged": true
+    },
+    "STABILIZATION-2-fmt.json": {
+      "stage": "fmt",
+      "argv": [
+        "cargo",
+        "fmt",
+        "-p",
+        "weftforge-sim",
+        "--check"
+      ],
+      "pid": 5022,
+      "status": "terminal",
+      "started_at": "2026-11-16T23:45:54.381368+00:00",
+      "exit_code": 0,
+      "seconds": 0.32745945907663554,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_unchanged": true
+    },
+    "STABILIZATION-2-clippy.json": {
+      "stage": "clippy",
+      "argv": [
+        "cargo",
+        "clippy",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--all-targets",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "pid": 5080,
+      "status": "terminal",
+      "started_at": "2026-11-16T23:45:54.708672+00:00",
+      "exit_code": 0,
+      "seconds": 1.4007267500273883,
+      "log_sha256": "77787167c1475f1d00b50be3e51580bc55063ba10a53578a3db0ab2f28d39835",
+      "source_unchanged": true
+    },
+    "STABILIZATION-2-sim-tests.json": {
+      "stage": "sim-tests",
+      "argv": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim"
+      ],
+      "pid": 5084,
+      "status": "terminal",
+      "started_at": "2026-11-16T23:45:56.110848+00:00",
+      "exit_code": 0,
+      "seconds": 9.527780874981545,
+      "log_sha256": "133c2a896f0d0bc5ea2114e7cd361966f415779eab756574393e8954341baa8e",
+      "source_unchanged": true
+    }
+  },
+  "final_unit_test_count": 60,
+  "final_doc_test_count": 0,
+  "failures_retained": [
+    "original_RED_101",
+    "stabilization1_Clippy_101"
+  ],
+  "test_binary_current": {
+    "path": "target/debug/deps/weftforge_sim-40f8b89cc1ad501d",
+    "sha256": "d1edb58d94d8a7bbd403a028023e9c47167eca54705abb715106cdcd13d377e9",
+    "bytes": 9549936,
+    "built_in_own_target_not_copied": true
+  },
+  "whitespace": {
+    "argv": [
+      "git",
+      "diff",
+      "--check",
+      "--",
+      "crates/weftforge-sim/src/constraints.rs",
+      "crates/weftforge-sim/src/lib.rs",
+      "crates/weftforge-sim/src/tests.rs",
+      "docs/physics.md"
+    ],
+    "pid": 8386,
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "owned_active_jobs": [],
+  "commit_created": false,
+  "private_artifacts": {
+    "CANDIDATE-1-INPUTS.json": {
+      "sha256": "63a93ca5c273540686fca02dd8aefe8d7381b2d08316ab49922ec5bc6d9ae663",
+      "bytes": 3543
+    },
+    "CANDIDATE-1-RUNNING.json": {
+      "sha256": "416142f2458b3f16f1b5013b094719903271b2e4ae47b49d0bbb6d46666f8591",
+      "bytes": 429
+    },
+    "CANDIDATE-1-TERMINAL.json": {
+      "sha256": "311c1f4144f02a85e4c9ef9040e7786d4de0fa6323da9dbc6b40c847786a85f6",
+      "bytes": 628
+    },
+    "FINAL-HANDOFF.md": {
+      "sha256": "f64e2b9c89009c38cf61c28d02e1829b51cf68d6619887bd4876c4d21e16b5bb",
+      "bytes": 6710
+    },
+    "FINAL-WHITESPACE.json": {
+      "sha256": "eb14350903ed1a3f4d9711e102411e6650d691b7ee2f9a0bcef8f5ebb9d95358",
+      "bytes": 424
+    },
+    "FINAL.patch": {
+      "sha256": "5d04903d803f835b6783de0ecc70f97c655cb98c8a9134907bec5ab323e4413a",
+      "bytes": 37335
+    },
+    "STABILIZATION-1-INPUTS.json": {
+      "sha256": "ded2564d0e6453160816d71965c42607396b09c3cbc711df3315feade513d9a9",
+      "bytes": 1060
+    },
+    "STABILIZATION-1-clippy.json": {
+      "sha256": "6df59be19fb5c99e127850eb0fe5353b9560fe3120bd3bde7d334155b09e5ca6",
+      "bytes": 443
+    },
+    "STABILIZATION-1-fmt.json": {
+      "sha256": "f006b25aed3c269b0312c5f467db68f76110d3ecebf8f61de0606cebac3412be",
+      "bytes": 361
+    },
+    "STABILIZATION-2-INPUTS.json": {
+      "sha256": "fdea5bfb5731ea626946994d1eff96526e4d47deb4fa3b2ce24796fee41af7c9",
+      "bytes": 1210
+    },
+    "STABILIZATION-2-clippy.json": {
+      "sha256": "cbf330e2d8ede4b26e755294b3f97adf627ea9ccc5f893f196e0460d1169ca38",
+      "bytes": 442
+    },
+    "STABILIZATION-2-fmt.json": {
+      "sha256": "baa0950f05fd5b79da91d97eb213c1cf20d9f418e85b08473bdf6910152548bd",
+      "bytes": 362
+    },
+    "STABILIZATION-2-sim-tests.json": {
+      "sha256": "2cfb0c0633e8ac845c0955c8f4b117ec1fce068aad8576c8f223cba7ae63494a",
+      "bytes": 385
+    },
+    "candidate-1-constraints.rs": {
+      "sha256": "7b07c9750569bd1962d7986b41fc5a00da9b1e319dfb90aa6ab50167e9f35596",
+      "bytes": 14990
+    },
+    "candidate-1-lib.rs": {
+      "sha256": "97b4dfb8967b9af1d8649afdaff542622527293ce4da6742c6ec903f29bf490c",
+      "bytes": 37156
+    },
+    "candidate-1.log": {
+      "sha256": "0822884453bc93ba18bcbd9342e46d6026a43821d1bd120ba34cdebb4c3056a3",
+      "bytes": 845
+    },
+    "candidate-1.patch": {
+      "sha256": "83fdcb469adcf61129b682a23531a26acc2518619a2343aca31541e683443e99",
+      "bytes": 16182
+    },
+    "final-constraints.rs": {
+      "sha256": "7b07c9750569bd1962d7986b41fc5a00da9b1e319dfb90aa6ab50167e9f35596",
+      "bytes": 14990
+    },
+    "final-lib.rs": {
+      "sha256": "22c50515e20f6fa4fd6d95ee122ea0c140964722e18e0e71ececbeb5c7d1608b",
+      "bytes": 37401
+    },
+    "final-physics.md": {
+      "sha256": "b4ef9c0124e8c29d87969baacc45d0b00908d1c4b0caa20a2c0baca764e64e28",
+      "bytes": 43266
+    },
+    "final-tests.rs": {
+      "sha256": "0cca724fac864630a69dbb50e651d906d273b3830795bea114f464da426fe330",
+      "bytes": 73825
+    },
+    "final-whitespace.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "final-whitespace.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "stabilization-1-clippy.log": {
+      "sha256": "5fdc9d1c8173ec822139fd663233b80267a040936e08270a95686987731353ec",
+      "bytes": 909
+    },
+    "stabilization-1-fmt.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "stabilization-2-clippy.log": {
+      "sha256": "77787167c1475f1d00b50be3e51580bc55063ba10a53578a3db0ab2f28d39835",
+      "bytes": 233
+    },
+    "stabilization-2-fmt.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "stabilization-2-sim-tests.log": {
+      "sha256": "133c2a896f0d0bc5ea2114e7cd361966f415779eab756574393e8954341baa8e",
+      "bytes": 5799
+    }
+  },
+  "source_status": " M crates/weftforge-sim/src/constraints.rs\n M crates/weftforge-sim/src/lib.rs\n M crates/weftforge-sim/src/tests.rs\n M docs/physics.md\n"
+}

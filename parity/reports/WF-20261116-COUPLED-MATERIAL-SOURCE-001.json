@@ -1,0 +1,207 @@
+{
+  "kind": "implementation_only",
+  "freshness": "stale",
+  "commit": "96d3baee4543c7edbdb804df6090697a9f65da09",
+  "timestamp": "2026-11-16T22:10:44.194086Z",
+  "timestamp_qualification": "Metadata proposal preparation time only; each retained execution has its original clock and source identity. No execution is added by this report.",
+  "platform": "macOS 27.2 arm64; Rust 1.94.1; CPython 3.13.0 for independently authored numerical evaluator; exact receipts retained",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "complete_contract": false,
+  "native_ui_verified": false,
+  "native_case_executed": false,
+  "reference_executed": false,
+  "reference_verified": false,
+  "physics_accepted": false,
+  "full_feature_accepted": false,
+  "full_garment_accepted": false,
+  "roadmap_accepted": false,
+  "single_identified_candidate_workflow": false,
+  "replayed_repaired_or_regraded": false,
+  "source_scope": [
+    ".cargo/config.toml",
+    "Cargo.lock",
+    "Cargo.toml",
+    "THIRD_PARTY.md",
+    "rust-toolchain.toml",
+    "crates/weftforge-core/Cargo.toml",
+    "crates/weftforge-core/src",
+    "crates/weftforge-sim/Cargo.toml",
+    "crates/weftforge-sim/src",
+    "vendor/earcutr/Cargo.toml",
+    "vendor/earcutr/LICENSE",
+    "vendor/earcutr/UPSTREAM.md",
+    "vendor/earcutr/src",
+    "docs/physics.md"
+  ],
+  "source_hashes": {
+    ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "Cargo.lock": "eb8a60650b473c79dda2e58a56f68b1abe9ca9a68c15115c9c8754c561732f3a",
+    "Cargo.toml": "032b32e80547618a72d39e42c0204611ff37908b8a6bf28615b3e592f79fa499",
+    "THIRD_PARTY.md": "86d65f258938c55ed36d3a621222ef5124e348f5519d01eab8f61db540a4876e",
+    "crates/weftforge-core/Cargo.toml": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+    "crates/weftforge-core/src/document.rs": "642c5f18dc91850011622a82afd271a9b8122b6b1a5155818c0f196d3e30c5b9",
+    "crates/weftforge-core/src/geometry.rs": "3738282136928c459eaf524036c61e20d4c8b3cf2e04cd46ac812faf4f823c41",
+    "crates/weftforge-core/src/lib.rs": "8f1a57b619222ea11986bf68a424e277b31a26d8da5eccef7c6d31b913ce76f8",
+    "crates/weftforge-core/src/offset.rs": "761881af22d784d0354ac25e6cda98971cb459bf78fd1d635eee21dc3e758203",
+    "crates/weftforge-core/src/persistence.rs": "69e76f3c73567731a46bc234e9a28e89d6036cb069c0ad501b4dd4570e40d691",
+    "crates/weftforge-core/src/persistence/dxf.rs": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338",
+    "crates/weftforge-core/src/persistence/dxf_import.rs": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+    "crates/weftforge-core/src/persistence/svg.rs": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7",
+    "crates/weftforge-core/src/sewing.rs": "dc7cb6cab0a62c313698c155728409f8940319bb49ed51c5c2fbc88c88f21146",
+    "crates/weftforge-core/src/simulation.rs": "24e12aaf323f34abe745dc9c42c9823acbd6e2a1832d6827a5a6397112525707",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/capsule.rs": "04634a93371e4e7f513401fa617075e28c1b4776023b158c3f6dc168d24371a0",
+    "crates/weftforge-sim/src/constraints.rs": "ee5b7fba70aae91a7ed36fa668e11b34d36793b825ce101ea891c8cf8eaed2bf",
+    "crates/weftforge-sim/src/contact.rs": "20df8876462dcbf7d32761b0e061ab66def60e7f88a5eccbfb6e7839108c26c8",
+    "crates/weftforge-sim/src/lib.rs": "e4a6e5fd7123ba00f694a1e5549109a200a2b9f7ee47d84b0c5605d6cb697378",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/strain.rs": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+    "crates/weftforge-sim/src/tests.rs": "84cacf0cab2afe525b10f758497eabde30fc91df0888fe41efaa1d877bcafaba",
+    "docs/physics.md": "d95c8c6087bf8e90a89e077e02134724192e92a757e15940d3ccf525d56d9fff",
+    "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+    "vendor/earcutr/Cargo.toml": "906d72d033764b39570416ef92906a90d4c49e85b9c35ab0138cf7a0aafe9c76",
+    "vendor/earcutr/LICENSE": "ac0e50e523dd0ea36f077c373833f1ae6c7ad130ea5ac6ff23bfa8d3f402145f",
+    "vendor/earcutr/UPSTREAM.md": "e686aeaa8758581d2c0659b1ed5e87dce4fe6608a8605c29ba90459495818944",
+    "vendor/earcutr/src/legacy.rs": "fd5120ba533484556e7a6d1a460d28084ac1f4c90f3334c71ff6f67976b933c8",
+    "vendor/earcutr/src/lib.rs": "29992d5bd3d0717df6b4db9e60a3d280c276b67c3ddb87fa5de9173c1b3578d3",
+    "vendor/earcutr/src/tests.rs": "2e54cb4cceb9c073ae911a5909d2d9b430c6bf4ce53000332254233b21a544e9"
+  },
+  "source_identity_qualification": "The 31-file physical/meshing producer dependency closure is byte-exact between actual 96 and delivery a9. This freshness is relevant-source identity, not current whole-workspace gates/native acceptance. Full 88 actual 96 source identities and 398 gates remain a separate historical ledger. Later 7d19 UI / 404 gates are outside this report and are not imported. Producer/evaluator/controller snapshot hashes belong to artifacts, not source_hashes at 96.",
+  "selected_manifest": {
+    "path": "parity/reports/artifacts/material-source-20261116/SELECTED-PUBLIC-MANIFEST-001.json",
+    "sha256": "518e2cd8515201fe324d756065b990c1f71ee38417467172b79246bbe8407ac2"
+  },
+  "id": "WF-20261116-COUPLED-MATERIAL-SOURCE-001",
+  "status": "passed",
+  "feature_ids": [
+    "SIM-001",
+    "SIM-006"
+  ],
+  "artifact_hashes": {
+    "parity/reports/artifacts/material-source-20261116/SOURCE-INTEGRATION-001.json": "7be6af57fc60afaf1ef7dc850b745993be2ae9284a198226ef2744dd005d1eca",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/ENVIRONMENT.json": "960521ac96aa0d9f511cd49a5d0fbe7a6d2d8c2b9ecbc80e064cbef9ccb7320c",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/FINAL-MANIFEST.json": "e800cbf23faa281e09854a3dc39284fa46889c4d441a76d81d9abe8c91b3bde2",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/HANDOFF.md": "cc1f7b419fabd349e82df3bcfc8f4a391480be9b0356b04fbfc1c2dd0d8e6a49",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/LAUNCH-ATTRIBUTION.json": "21964d057ba835b6dcb5730a63fbda9f219aabb8a9743a630045ebff3c35c8ca",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/METADATA-FREEZE.json": "62263a62e2e6a1dc5b783bc6f9dceacc82c17455a75676e2de664cd24e75c71e",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/RESULT.json": "acfe09704dfab6fc4c7640d1daed7166d3bd20c4d8d75ea3f22453902d27ea87",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/SOURCE88.json": "1c7dfd33e2de90b40a69b3655dd8f73f1196ad369f1da0ab82896d2b7e8bb1d0",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/fmt-SOURCE-AFTER.json": "724ef263a4e82951f9cda4a366f0ce3f0fe1a5fcea6bf14281b8064b856ddc2a",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/fmt-receipt.json": "8d85696a27e96da5cfe61dc099ba3001a35e670c49ad457dc336de049a588f4f",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/native-cli-debug-build-SOURCE-AFTER.json": "724ef263a4e82951f9cda4a366f0ce3f0fe1a5fcea6bf14281b8064b856ddc2a",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/native-cli-debug-build-receipt.json": "2de8860402a17406b54dca88aab021f01023b3edd8ef8beaa5c90fc6e2ce2f65",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/native-cli-debug-build.log": "f2abf3cecbb2dba543c7cdff3c2daf3fc49534a9c26ddb44114a17db7e94607b",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/workspace-clippy-SOURCE-AFTER.json": "724ef263a4e82951f9cda4a366f0ce3f0fe1a5fcea6bf14281b8064b856ddc2a",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/workspace-clippy-receipt.json": "795bd1b680c20599fef32da71dc1d7b7d7f2532f8666804ffa52a0465cefac20",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/workspace-clippy.log": "6d73f7684519dfd8f3454cdb6ab2a4d63fd9a33b31da322cdd62f499e1296f8a",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/workspace-tests-SOURCE-AFTER.json": "724ef263a4e82951f9cda4a366f0ce3f0fe1a5fcea6bf14281b8064b856ddc2a",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/workspace-tests-receipt.json": "8e9f8d7d782496dfaa660eb46887144aa36cba088287b30d354ed1223c04e222",
+    "parity/reports/artifacts/material-source-20261116/combined-gates/workspace-tests.log": "f4518b84c90c58ae384cbb0bac0929f9270261e16af9bc4776e86c621a1025e4",
+    "parity/reports/artifacts/material-source-20261116/component/FINAL-INPUTS.json": "579137767f45d3288a98990029def73b50d6e1c8284a31fc2c9dd9f067450ac8",
+    "parity/reports/artifacts/material-source-20261116/component/FINAL-MANIFEST.json": "9b98864c238b5bcbd033dcf477e782a27c5ae625449e7b4f3e4629ea95414cda",
+    "parity/reports/artifacts/material-source-20261116/component/FINDINGS.md": "59bd10fa804bbbb1afab4d6e90a79c094d6107eca43d8fd8e6813192de86f304",
+    "parity/reports/artifacts/material-source-20261116/component/GREEN-INPUTS.json": "f08e55a68347dc17cab0b7bfd486162db28c12a6c6af2909caeebafb2309ac50",
+    "parity/reports/artifacts/material-source-20261116/component/RED-INPUTS.json": "9baecf5156ef1a59c4134edd8c806a61eb1d65656df19553ba0e74f6640a23f6",
+    "parity/reports/artifacts/material-source-20261116/component/RED-TERMINAL.json": "cc4e944d649e31e1e5d4a485cf11b87a5bc27e840e347578464c2bebd1035fd9",
+    "parity/reports/artifacts/material-source-20261116/component/REFERENCE.json": "20b421205c27a9d9a3e3a61c8b5e35b3f7a8615281e39c00ec91b74996eda103",
+    "parity/reports/artifacts/material-source-20261116/component/REVIEW-INPUTS.json": "ef884c4f0da0d47ec1cab62df32d8ed3c0d93c378e18fef116a988d12478a6d4",
+    "parity/reports/artifacts/material-source-20261116/component/analytic-shear-first-step.json": "d0cbf68c0c72be1761226c43db369444f73528a8c3fb0ddfc3ecd3fd14290078",
+    "parity/reports/artifacts/material-source-20261116/component/final-sim-tests.log": "6707011ed7bc001b81dd688e328d142180ae499739bc02b23ef0334805a79c98",
+    "parity/reports/artifacts/material-source-20261116/component/green-focused.log": "735a704b91fb61206b9ef2b6d27343a8e544d742ff50fa2eb627fdb6d1062e79",
+    "parity/reports/artifacts/material-source-20261116/component/implementation.patch": "46c79afcc10d1e5d463b7574b289ea87a595efc54501d3c50ee0192776ae3709",
+    "parity/reports/artifacts/material-source-20261116/component/oracle-preparation-failure.txt": "9c62d6bed65aedef863d214a0fd85dc69e5f58c795886994a23694ebf75a4536",
+    "parity/reports/artifacts/material-source-20261116/component/red.log": "ec76765f00b08731a92d0efb6f321b3934993544f503434ff23f75742a3f55d1",
+    "parity/reports/artifacts/material-source-20261116/component/reference-initial-oracle-stop.py": "0be52a342492322c8d000b3746dbd2994f1b8040f6bcc824671b7020adeec739",
+    "parity/reports/artifacts/material-source-20261116/component/reference.py": "28930e5a24099abeb98acb092c51598498e534000811c153cc8585118da7034f",
+    "parity/reports/artifacts/material-source-20261116/component/review-clippy.log": "154ee169d430143522ced16e98c56437675386c0ea171493fe8c7fd79e99223f",
+    "parity/reports/artifacts/material-source-20261116/component/review-fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-source-20261116/component/review-sim-tests.log": "c89efdda4b15bfad64ca56db2d063f3d869ef68b58ad45a3f5f1bc2858887e4c",
+    "parity/reports/artifacts/material-source-20261116/component/tests-red.rs": "e4133b5e9bdbd3955426967ee16de9db0e996275c94f5f52ac47fa1346394f22",
+    "parity/reports/artifacts/material-source-20261116/history/WF-20261116-ENDPOINT-EDIT-NATIVE-001.original.json": "21f072df998aaee00b4f243c2ba8e7d8e54775fdf2102b5c7175a091995e5525",
+    "parity/reports/artifacts/material-source-20261116/history/WF-20261116-ENDPOINT-EDIT-SOURCE-001.original.json": "25bd45e3262936bb256a38bd960ed95782dcfee9b796038b7fd99d163fc9327b",
+    "parity/reports/artifacts/material-source-20261116/SELECTED-PUBLIC-MANIFEST-001.json": "518e2cd8515201fe324d756065b990c1f71ee38417467172b79246bbe8407ac2"
+  },
+  "scope": "Bounded source/math convergence correction and retained exact-source component/combined build gates only; no numerical Harbor acceptance follows.",
+  "bounded_method": {
+    "source_commit": "36524293b89686c2368f22d13ad09289fc70af03",
+    "physical_equations": "Per-triangle local inertial/elastic anchor z=x-p; A=J W J^T+diag(1/(k h^2)); A eta=J p-C; d=-p+W J^T eta. Diagonal-scaled 3\u00d73 Cholesky plus at most 16 Armijo halvings, retaining actual rounded positional corrections. Material-loop cancellation preserves whole-call rollback.",
+    "unchanged": "Existing geometry/material/contact/timestep/substeps/iterations/seam speed/settings/defaults. Bending, sewing and contact retain their prior algorithms; no full coupled-contact equilibrium is proved."
+  },
+  "independent_component_regression": {
+    "basis": "Independent one-free-node energy equilibrium reference and analytic shear first step; not production XPBD residual matching or an invented garment expected answer.",
+    "red_unchanged_production": {
+      "session": "66899",
+      "exit_code": 101,
+      "position_error_m": 2.843544361e-06,
+      "force_residual_N": 0.001763599204
+    },
+    "green_final_reviewed": {
+      "position_error_m": 8.810015435e-16,
+      "force_residual_N": 5.7593185e-13
+    },
+    "identity_qualification": "Original red/green inputs/maps retained exactly. Later cancellation/documentation additions are independently attributed to final review inputs; they are not retroactively part of earlier source maps."
+  },
+  "retained_combined_gates": {
+    "actual_commit": "96d3baee4543c7edbdb804df6090697a9f65da09",
+    "source_inputs": 88,
+    "fmt_exit": 0,
+    "workspace_tests": {
+      "passed": 398,
+      "failed": 0,
+      "ignored": 0
+    },
+    "strict_workspace_all_targets_clippy_exit": 0,
+    "native_and_cli_debug_build_exit": 0,
+    "native_launched": false,
+    "cli_qualification": "CLI was invoked by workspace integration tests; original RESULT launched:false describes the explicit build stage only and is qualified by LAUNCH-ATTRIBUTION.json.",
+    "executables_distributed": false,
+    "metadata_generator_or_xtask_executed_in_combined_gate": false
+  },
+  "remaining_gaps": [
+    "Independent equilibrium regression covers a small material patch; it does not calibrate fabric or establish large cloth, full coupled contacts or garment equilibrium.",
+    "The actual new Harbor numerical report is failed; final-only fitting screens do not replace all-frame strict delivery.",
+    "Current native garment controls, reference behavior/calibration, complete contact coverage, performance and full roadmap remain unverified."
+  ],
+  "historical_report_freshness_transitions": [
+    {
+      "path": "parity/reports/WF-20261116-ENDPOINT-EDIT-SOURCE-001.json",
+      "original_sha256": "25bd45e3262936bb256a38bd960ed95782dcfee9b796038b7fd99d163fc9327b",
+      "exact_archive": {
+        "path": "parity/reports/artifacts/material-source-20261116/history/WF-20261116-ENDPOINT-EDIT-SOURCE-001.original.json",
+        "sha256": "25bd45e3262936bb256a38bd960ed95782dcfee9b796038b7fd99d163fc9327b"
+      },
+      "only_allowed_top_level_changes": {
+        "freshness": {
+          "before": "current",
+          "after": "stale"
+        },
+        "freshness_reason": {
+          "before": "ABSENT",
+          "after": "Actual material solver files constraints.rs, lib.rs and tests.rs changed from tested 3fd/integrated ac6 to365/integrated96+a9. This report's original 87-source scope is stale. Endpoint main.rs remains byte-identical; original outcomes, source/build identities and artifacts remain unchanged. Exact original is archived under material-source-20261116/history. No new native or endpoint acceptance is transferred."
+        }
+      },
+      "all_other_fields_semantically_exact": true
+    },
+    {
+      "path": "parity/reports/WF-20261116-ENDPOINT-EDIT-NATIVE-001.json",
+      "original_sha256": "21f072df998aaee00b4f243c2ba8e7d8e54775fdf2102b5c7175a091995e5525",
+      "exact_archive": {
+        "path": "parity/reports/artifacts/material-source-20261116/history/WF-20261116-ENDPOINT-EDIT-NATIVE-001.original.json",
+        "sha256": "21f072df998aaee00b4f243c2ba8e7d8e54775fdf2102b5c7175a091995e5525"
+      },
+      "only_allowed_top_level_changes": {
+        "freshness": {
+          "before": "current",
+          "after": "stale"
+        },
+        "freshness_reason": {
+          "before": "ABSENT",
+          "after": "Actual material solver files constraints.rs, lib.rs and tests.rs changed from tested 3fd/integrated ac6 to365/integrated96+a9. This report's original 87-source scope is stale. Endpoint main.rs remains byte-identical; original outcomes, source/build identities and artifacts remain unchanged. Exact original is archived under material-source-20261116/history. No new native or endpoint acceptance is transferred."
+        }
+      },
+      "all_other_fields_semantically_exact": true
+    }
+  ],
+  "freshness_reason": "Actual13fb material-group source changes crates/weftforge-sim/src/constraints.rs, crates/weftforge-sim/src/lib.rs, crates/weftforge-sim/src/tests.rs, docs/physics.md from this report's original tested source. The complete original report is archived exactly at parity/reports/artifacts/material-group-source-20261117/history/WF-20261116-COUPLED-MATERIAL-SOURCE-001.original.json. All outcomes, source scopes/hashes, timestamps, cases and artifact maps remain unchanged; no replay/regrade or native/garment/reference acceptance transfers."
+}

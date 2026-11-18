@@ -1,0 +1,228 @@
+{
+  "actual_receipts": {
+    "N32_component_reruns_after_GREEN": 0,
+    "RED_Cargo_invocations": 1,
+    "RED_exit": 101,
+    "actual_GREEN_Cargo_invocations": 1,
+    "actual_GREEN_exit": 0,
+    "actual_GREEN_raw_summary": [
+      "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 70 filtered out; finished in 0.00s"
+    ],
+    "first_focused_stages": [
+      {
+        "exit_code": 0,
+        "name": "stitches"
+      },
+      {
+        "exit_code": 0,
+        "name": "rollback"
+      },
+      {
+        "exit_code": 1,
+        "name": "fmt"
+      }
+    ],
+    "formatted_final_stages": [
+      {
+        "exit_code": 0,
+        "name": "fmt"
+      },
+      {
+        "exit_code": 0,
+        "name": "sim-clippy"
+      }
+    ],
+    "initial_GREEN_controller_Cargo_invocations": 0,
+    "initial_GREEN_controller_status": "CONTROLLER_OR_GUARD_FAILURE"
+  },
+  "changed_paths_parent_of_first_GREEN_to_final": [
+    "crates/weftforge-sim/src/constraints.rs",
+    "crates/weftforge-sim/src/tests.rs",
+    "docs/physics.md"
+  ],
+  "classification": "INDEPENDENT_STATIC_SOURCE_AND_RECORDED_EVIDENCE_REVIEW",
+  "current_HEAD_observed": "51dc403a46337a112c9eabcca4834d04611d2d3d",
+  "current_status_porcelain_observed": "",
+  "finding": {
+    "case": "d=(u,u,0), u=f64::from_bits(1), H=0, inverse masses[1,0], endpoint vertices0/1, compliance=1,dt=1,target=1. W=a=1. An unscaled subnormal radius rounds on the u lattice; n=(u/r,u/r,0) is not unit (for r=u, n=(1,1,0)). A finite ordinary-size next=(.5,.5,0) then misses the exact radius.5 minimizer (.5/sqrt(2),.5/sqrt(2),0).",
+    "derivation_only": true,
+    "id": "PS-001",
+    "lines": "crates/weftforge-sim/src/constraints.rs:584-606",
+    "no_actual_runtime_outcome_or_garment_causality_claim": true,
+    "priority": "P2",
+    "smallest_fix": "Normalize max-absolute-scaled components, including fallback direction; retain real radius for scalar update and existing transactional guards. Freeze a distinct small edge test rather than alter the original N32 fixture/oracle.",
+    "status": "STATIC_NUMERICAL_ROBUSTNESS_BUG_NOT_EXECUTED"
+  },
+  "first_GREEN_commit": "03f4a2df883581dc5f34ddc361bc9327b71ba6b0",
+  "good_properties": [
+    "Exact local difference-anchor derivation and scalar radial minimum for W>0,a>0 and representable direction.",
+    "Shared/repeated vertex coefficients merged before W and updates; at most one nonzero update per vertex.",
+    "All-pinned nonzero constitutive history and zero-gap no-op match declared limitation.",
+    "Zero-anchor tie is current direction or deterministic +X.",
+    "All trial next/delta/updates/positions finite-checked before positive-branch commit.",
+    "Cloth::step uses local candidate positions/velocity/seam state; original cancellation/validation/publication unchanged.",
+    "Legacy scalar bookkeeping assertions replaced with physical position/vector-action/force assertions at same1e-14 bound; hard cases retained."
+  ],
+  "independent_reviewer_executions": 0,
+  "independent_static_byte_comparisons": {
+    "N32_final_assertion_tail_byte_exact_RED_firstGREEN_finalformat": true,
+    "all_other_old_tests_except_authorized_legacy_test_byte_exact": true,
+    "closed_and_hard_production_bytes_unchanged": true,
+    "constraints_positive_insertion_lines": 58,
+    "final_parent_is_first_GREEN": true,
+    "first_GREEN_N32_only_logger_change": true,
+    "first_to_final_constraints_and_docs_byte_exact": true,
+    "formatting_diff_counts": {
+      "git_diff_unified0_header_count": 6,
+      "git_diff_unified3_header_count": 5,
+      "qualification": "Six original rustfmt hunks / zero-context Git hunks merge into five Git hunks with three context lines; these count different representations, not different changes.",
+      "recorded_rustfmt_hunks": 6
+    },
+    "removing_positive_branch_restores_entire_old_constraints_bytes": true
+  },
+  "input_manifest": {
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/FIXTURE.json": {
+      "bytes": 1319,
+      "sha256": "859f478a24bdd227c29221b216f81896b5873a0ea82e2b6464f9cae9d9a9bd45"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/ORACLE.md": {
+      "bytes": 3641,
+      "sha256": "e2d8ae2ff2cef036b84e7481bd3fd02b8f92fa7309d880e46f332adab47302af"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/PLAN.json": {
+      "bytes": 3921,
+      "sha256": "42b3634e39d12cd0ab5d19d5cbf5781db3999e1d611c81d794e386e0d623a097"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/ROOT-GO.json": {
+      "bytes": 2312,
+      "sha256": "6aec6f033a522a8d2015d9d6a092dc8dc0bece9fe01f99eac5a2b10cc9c8d7cb"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/SOURCE-ONLY-FREEZE.json": {
+      "bytes": 17586,
+      "sha256": "d86c34a9c40816e514a76f8906a3db7b8c19eb4534ca5da82eda5f8ca5a45351"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/format-epoch-002/FORMAT-ONLY.patch": {
+      "bytes": 2577,
+      "sha256": "f7ba344fa282572f1ed22844fe7b4d8401ee7b65f142ecd6a6e9839177e77b20"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/format-epoch-002/FORMAT-PROOF.json": {
+      "bytes": 1415,
+      "sha256": "828f6c6817911797f4b0cec826a13bdfb5736654019cf713fcb7793519a6b9dd"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/format-epoch-002/FORMAT-SOURCE-FREEZE.json": {
+      "bytes": 17643,
+      "sha256": "99257524ddbef2d8284cf3b93095585c5c5b8b9795a7a02dc2f5cb2d16215d81"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/format-epoch-002/final-checks/runtime/RESULT.json": {
+      "bytes": 3193,
+      "sha256": "1ca45e99b6e77ac329fe512da1f0c28eeae27e9defe93f4aed3477692fb081fa"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/format-epoch-002/final-checks/runtime/fmt.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/format-epoch-002/final-checks/runtime/fmt.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/format-epoch-002/final-checks/runtime/sim-clippy.stderr": {
+      "bytes": 291,
+      "sha256": "b625d69f98d7aba89b6b0251e40985e390e8004c039630028a48ee7824e56f3c"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/format-epoch-002/final-checks/runtime/sim-clippy.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/green-execution-002/green-001/FINAL-MANIFEST.json": {
+      "bytes": 3387,
+      "sha256": "159701ddbe271b40addc36ed0aecfa0519202a5c42c6f59a64a8bdb5c2fde210"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/green-execution-002/green-001/RESULT.json": {
+      "bytes": 2111,
+      "sha256": "3a5acf5b87e1939d09fb44c8e6627258bff81cce28c90ff70cf011aa111bb0e2"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/green-execution-002/green-001/TERMINAL-WITNESS.json": {
+      "bytes": 492,
+      "sha256": "47f75077dc0411ab047ed6ffaba32c1d5865ce852f7c110f8f577fa6799f6ac8"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/green-execution-002/green-001/stderr.txt": {
+      "bytes": 316,
+      "sha256": "1f91b6a1b1e538372c44126a75afde75056678251ff52ec315aec12dc34d60eb"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/green-execution-002/green-001/stdout.txt": {
+      "bytes": 1341,
+      "sha256": "79e56850733223b3ad96b4e20cd11b778851d5fcdba56ee6230b02d265a0bd2d"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/red-001/FINAL-MANIFEST.json": {
+      "bytes": 4602,
+      "sha256": "6a5c04946c2c80404b27162e24def5915b58debce240bcb9afd11d279f6d4f86"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/red-001/POSTHOC-FINDINGS.json": {
+      "bytes": 2199,
+      "sha256": "872f05d8b30ebc25683a17286cdf5e29dc678fdb04c264ec8dbdc437e9a4111b"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/red-001/RESULT.json": {
+      "bytes": 2115,
+      "sha256": "e27c6ee17df5b0c8d9d6b7b23f139acc61438c0c82f51dca74c618aca885ea8a"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/red-001/stderr.txt": {
+      "bytes": 848,
+      "sha256": "71b30837b4e2f368d472b412ebdf2fea8185cb598c3b43f6f2693c0ebf5d67bf"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/red-001/stdout.txt": {
+      "bytes": 1421,
+      "sha256": "b87f3717af0bf5ecfe76f0708eb976d253ef96c233cb09256ef0fe9e571b4bd0"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/repair-001/BEFORE-SOURCE.json": {
+      "bytes": 14968,
+      "sha256": "0bdc5cdf038423030e28bb6cab1f5b29bc5a7f5c88386c2b903e9bae8fc0cfc9"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/repair-001/SOURCE-PROOF.json": {
+      "bytes": 1588,
+      "sha256": "ace8fb29083854e9aa1f449df13294cd040e3d014cb53111b61e16aabe2977fd"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/repair-001/focused-checks-001/runtime/RESULT.json": {
+      "bytes": 4950,
+      "sha256": "cc0bbb15c1ca4c74f5744a5ed50a2b9bb911534d6a6ec4fe3ee0811f47fe9414"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/repair-001/focused-checks-001/runtime/fmt.stdout": {
+      "bytes": 3390,
+      "sha256": "4733aa04a22ba7047679b377cc000e1a5bf71638dbb542626476963f5e120f37"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/repair-001/focused-checks-001/runtime/rollback.stdout": {
+      "bytes": 196,
+      "sha256": "e687eab91b6959d64e1b62e5954ef0c4b22a9c5125b0ab562acad579afe38df8"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/repair-001/focused-checks-001/runtime/stitches.stdout": {
+      "bytes": 2288,
+      "sha256": "4025179935fe526f467121ef3a296c9069aa0555abcf350e0483d16e92212dd7"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/repair-001/green-001/RESULT.json": {
+      "bytes": 599,
+      "sha256": "b76cb5943c42f44d4cde503f6b45b714951e73268393b6988a2bf64285b783a1"
+    }
+  },
+  "limits": [
+    "No helper/candidate import, test/checker/build/model/evaluator/GUI/network run by this reviewer. Git and stdlib operations only read committed source/recorded evidence and write this new private review.",
+    "No full workspace/fmt/clippy/xtask acceptance inferred: only actual focused receipts are listed.",
+    "No garment causality, full-quality, reference, full-feature or roadmap acceptance.",
+    "Subnormal example is a static derivation, not a newly executed RED or grade."
+  ],
+  "read_bookkeeping_error": "First git diff read failed in zsh because unquoted parent caret was expanded as a glob; quoted static read succeeded. No source/input changed and no product command executed.",
+  "receipt_history": {
+    "prior_receipts_preserved": [
+      "REVIEW-RECEIPT-001.json",
+      "REVIEW-RECEIPT-002.json"
+    ],
+    "qualification": "001 counted both @@ tokens per zero-context header (12). 002 correctly counted five default-context headers but its correction prose still named six rustfmt hunks. 003 explicitly distinguishes six zero-context/rustfmt hunks from five context-merged Git hunks. No source, oracle, test, finding or runtime result changed."
+  },
+  "review_report_sha256": "e61f2d04a383a2906b5c510bc9faf152d0850d0cb957d625c01837971244dbda",
+  "reviewed_commit": "51dc403a46337a112c9eabcca4834d04611d2d3d",
+  "reviewed_file_hashes": {
+    "crates/weftforge-sim/src/constraints.rs": "f733e8be75c8092af5bd80f52d6addaa8adf94c8397e69d1bbbe6ae7114eac92",
+    "crates/weftforge-sim/src/tests.rs": "dad231e2b2997a1ef8e3f8d2c27d2787350217566078f2fc9510576038908c46",
+    "docs/physics.md": "8c42e1f5f54e5c7c1ef2703af4be16dd6933f0156081636087620e962afc25bf"
+  },
+  "reviewed_tree": "d82bd5771fdc5c63d4e70b5533b52fbf179b2904",
+  "verdict": "FIX_PS_001_BEFORE_GENERAL_ROBUSTNESS_PROMOTION"
+}

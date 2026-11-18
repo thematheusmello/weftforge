@@ -1,0 +1,23 @@
+{
+  "case": "original-red",
+  "base_commit": "33ea04a29b374883150d0c694353968e33e23587",
+  "command": [
+    "cargo",
+    "test",
+    "-p",
+    "weftforge",
+    "rectangle_drag_tests",
+    "--",
+    "--nocapture"
+  ],
+  "environment": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/rectangle-gesture-repair-20261116/target"
+  },
+  "source_sha256": "e8ebc0d4f4fad67040aa67ce2488f41bdc3fe89365ad4c26db4ac6a53e7ce726",
+  "started_utc": "2026-11-16T21:12:26Z",
+  "scope": "Full Studio eframe App::ui via existing raw-event test helper; original authored pixel/metre coordinates; no native UI, no reference acceptance, no frozen experiment rerun.",
+  "exit_code": 101,
+  "ended_utc": "2026-11-16T21:14:25Z",
+  "log_sha256": "0515c5dcf85fedcc0bf48ae4124b03c0d8252abfe986a8b4f9a7e227a12f374a"
+}

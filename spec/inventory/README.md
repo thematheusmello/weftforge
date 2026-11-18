@@ -102,3 +102,21 @@ canvas input. Retain the failed attempts and remaining modal-capture/AX
 limitations while testing each route. Expand the catalog with real canvas
 context menus, toolbar flyouts, all panels/tabs, dialogs, shortcuts,
 checked/enabled states, input limits, error/cancellation and end-to-end results.
+
+The [2026-11-17 menu re-observation](../observations/REF-UI-MENUS-20261117-001.json)
+exactly matches 589 existing menu paths and adds no paths or IDs. Four
+selected-seam-only paths were not reobserved in the empty document and remain in
+the 593-record union. The native Show All item now exposes a disabled marker;
+this context-specific observation does not overwrite its original state or prove
+command behavior. All 593 menu / 949 combined catalog records, 205 packets and
+56 broad features remain unchanged.
+
+The same four configured graphics values and displayed toolbar hints were
+reobserved. User Interface category navigation returned AXError.notImplemented;
+current units/defaults, checked language/numeric locale, effective shortcuts and
+selected-notch/seam behavior remain unresolved here. Notches remain in PAT-007.
+Owned app/window cleanup was confirmed at +582.532s; metadata sealing at +633.332s
+missed the requested 600s sealing deadline by 33.332s. The record retains original
+digests and that overrun; vendor pixels, account text and private locators remain
+private. No implementation, verification, freshness or parity status changes
+follow from this presence/value observation.

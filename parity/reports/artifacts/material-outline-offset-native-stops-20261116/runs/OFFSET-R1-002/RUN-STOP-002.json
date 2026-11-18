@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "attempt_id": "OFFSET-R1-002",
+  "status": "STOPPED_STEP_1_NEW_EMPTY_REFUSAL",
+  "case_started_at_utc": "2026-11-16T12:10:06.041517+00:00",
+  "stop_recorded_at_utc": "2026-11-16T12:11:45.314398+00:00",
+  "process_1_pid": 29796,
+  "process_2": null,
+  "bound_CUA_selector": "org.weftforge.nativecase.offsetr1.r002",
+  "CUA_selection_result": "Succeeded; actual WeftForge window observed. Initial selection AX showed rev 0 and 0 pieces.",
+  "initial_window_observation": {
+    "screenshot": "observations/001-initial.png",
+    "AX": "observations/001-initial.ax.txt",
+    "without_authoring_actions": "Later observation showed rev 2, 0 pieces, Unsaved, dirty Untitled.weftforge title, and Rest mesh rebuilt from editable construction."
+  },
+  "first_unexpected_failure": {
+    "step": 1,
+    "action": "File > New Empty",
+    "observation_unedited": "Save current edits before creating New Empty.",
+    "AX": "observations/003-new-empty.ax.txt",
+    "screenshot": "observations/003-new-empty.png",
+    "consequence": "New Empty was refused before rectangle authoring; no save/discard/repair/retry route was attempted."
+  },
+  "meaningful_native_actions_recorded": 3,
+  "authoring_commands_performed": 0,
+  "snapshots_or_exports_created": false,
+  "CUA_completion_summary": "Stopped the empty project case",
+  "CUA_completion_summary_returned_text_unedited": "Completion summary received.",
+  "grader_invocations": 0,
+  "no_retry_or_repair_or_regrade": true,
+  "acceptance_or_reference_result": false
+}

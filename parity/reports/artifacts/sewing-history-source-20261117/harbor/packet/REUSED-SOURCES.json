@@ -1,0 +1,59 @@
+{
+  "closed_failed_d982_packet": "<ROOT>/.local/bend-inspector-candidate-20261117/.local/harbor-bend-inspector-preparation-20261117",
+  "control_ready_sha256": "befa43a86da09f2f93ca42f1ca0174cdc862d878f86250779b0da9bd49b16b04",
+  "original11_reuse_qualification": "Exact existing producer/consumer sources reused; no actual helper check was repeated and no old engine/binary/trajectory acceptance transfers.",
+  "original_files": {
+    "consumer/bindings.py": "ba8499944ee4d63b55fcc86de997b9823cf5a949fdb118491569c5dbfcd69a4f",
+    "consumer/capsule_geometry.py": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b",
+    "consumer/decimal_oracle.py": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d",
+    "consumer/evaluator.py": "bc981d2333b4e02fb95c8fa83bb2b2a48d8d0486ae65594bf9173e935513c91b",
+    "consumer/geometry_math.py": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40",
+    "consumer/metadata_adapter.py": "f7aea5b61bafda604cb9b2112f40c83285497300c41c4d02b1344339fe00386e",
+    "consumer/metrics.py": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+    "consumer/static_geometry.py": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34",
+    "producer/Cargo.lock": "6acc2df8d38cf70047cbe22ca2875a38a0fd204a63452edb2d42b4ce14c1ec89",
+    "producer/Cargo.toml": "bdbf9b113ba7bb05e968b25fbfc71a30317bfd66aa090fb809e2f551070ff5e8",
+    "producer/src/main.rs": "87b15646929d7ed76b03970fe84626176eb6cef72207f5f75a247ff649907a0b"
+  },
+  "original_input_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+  "original_rest_sha256": "d96697949c686fbf15f19b99b6d7551b35d3449b17157009aceb75649fbaeeb9",
+  "outer_derivatives": {
+    "launch_and_record.py": {
+      "draft_sha256": "6b679942ae6420bd9679d20b5c5a9a50d8fca94da18feae7bd845ca6a626f99e",
+      "tested_origin_sha256": "6b679942ae6420bd9679d20b5c5a9a50d8fca94da18feae7bd845ca6a626f99e"
+    },
+    "supervise.py": {
+      "draft_sha256": "155b3a0c1a021d942febe221e4cf0e26125fb619b6c13acde85ce394c140deda",
+      "tested_origin_sha256": "0d33f3986a2720f23887dfcc48c9830794526d3c3aa2f7075e5f37ab56bc37e7"
+    }
+  },
+  "source_pending": true,
+  "tested_volume_control_files": {
+    "build_release.py": {
+      "draft_sha256": "b662696a36107fc269f797c5cfe82de6ac00af5773c015cfa99bca996982c12f",
+      "tested_origin_sha256": "b662696a36107fc269f797c5cfe82de6ac00af5773c015cfa99bca996982c12f"
+    },
+    "common.py": {
+      "draft_sha256": "69b5d03e4c92a7cff9be3f719ae04ff384ad0f752903d64a2d277d73d413a101",
+      "tested_origin_sha256": "221c41b918ccbb606e01cc6297ca5184de9bb95ba6625e33da2591cb95e24a20"
+    },
+    "controller.py": {
+      "draft_sha256": "b54f882ad435ce755160d5a815387cdc012e396252f79e9a91d018f7ad57e515",
+      "tested_origin_sha256": "b54f882ad435ce755160d5a815387cdc012e396252f79e9a91d018f7ad57e515"
+    },
+    "resources.py": {
+      "draft_sha256": "ba4560b912abaf8e310f87dc33b334fddfc96bc9d41c74a046a46b2d1f815d12",
+      "tested_origin_sha256": "ba4560b912abaf8e310f87dc33b334fddfc96bc9d41c74a046a46b2d1f815d12"
+    },
+    "worker.py": {
+      "draft_sha256": "8f5fd89dab9d3f1298c3722812918a4c52492d56dd78b11d6463603fc6be86ae",
+      "tested_origin_sha256": "8f5fd89dab9d3f1298c3722812918a4c52492d56dd78b11d6463603fc6be86ae"
+    }
+  },
+  "unchanged_helpers4": {
+    "bind_source.py": "5b883da7b83e2a88918e9ecda3011dc1b7ef6fcfa34cd6870c178945a942a384",
+    "freeze_prep.py": "691cd98517a0ce43a8cd60c0a330c73b8c25fe53620040ccf81308353306688b",
+    "source_inputs.py": "0574f9247f06d01315de7c02d1970ffed71a827b22d15998144049b632aa137d",
+    "test_toolchain_env.py": "c48173c6c67146d41768f3788000094a720805f755089a249210dc05198faecd"
+  }
+}

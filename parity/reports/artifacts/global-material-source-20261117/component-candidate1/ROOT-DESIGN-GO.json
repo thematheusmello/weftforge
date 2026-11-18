@@ -1,0 +1,13 @@
+{
+  "authority": "Parent task and root messages before numerical execution",
+  "one_first_focused_candidate_authorized": true,
+  "base_commit": "13fb43fe08c045f08a1b85007aff3c15388a1e24",
+  "max_PCG_iterations": 32,
+  "relative_linear_residual_norm": 1e-12,
+  "max_Armijo_trials": 16,
+  "network_position_limit_m": 1e-08,
+  "network_force_limit_N": 1e-06,
+  "literal_inputs_reference_FD_oracle_unchanged": true,
+  "before_any_candidate_numerical_execution": true,
+  "no_broad_checks_without_root_followup": true
+}

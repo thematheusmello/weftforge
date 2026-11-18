@@ -1,0 +1,32 @@
+
+running 12 tests
+test tests::closed_elastic_stitch_preserves_isolated_energy_and_units ... ok
+test tests::closed_elastic_stitch_handles_zero_gap_pins_and_denominator_guard ... ok
+test tests::closed_elastic_stitch_merges_repeated_and_cross_side_vertices ... ok
+test tests::weighted_stitch_closes_unequal_samples_and_preserves_momentum ... ok
+test tests::closed_elastic_stitch_two_free_masses_preserve_reactions_under_rigid_transforms ... ok
+test tests::closed_elastic_stitch_keeps_accepted_weights_and_endpoint_arithmetic ... ok
+fixed_operator_N=32 h_s=1 c_m_per_N=1 free_mass_kg=1
+x_m=[[0.33333333333333337, 0.3333333333333333, 0.0], [1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+lambda_private_kg_m=[[0.6666666666666667, -0.33333333333333337, 0.0], [-0.33333333333333337, 0.6666666666666667, 0.0]]
+lambda_vector_kg_m=[[0.6666666666666667, -0.33333333333333337, 0.0], [-0.33333333333333337, 0.6666666666666667, 0.0]]
+residual_m=[[1.1102230246251565e-16, -5.551115123125783e-17, 0.0], [0.0, 0.0, 0.0]]
+individual_action_N=[[0.6666666666666667, -0.33333333333333315, 0.0], [-0.3333333333333331, 0.6666666666666667, 0.0]]
+individual_transport_N=[2.220446049250313e-16, 2.7755575615628914e-16]
+energy_J=0.5555555555555556
+objective_J=0.6666666666666667
+stationarity_N=[1.1102230246251565e-16, -1.1102230246251565e-16, 0.0]
+expected_x_m=[0.3333333333333333, 0.3333333333333333, 0.0]
+expected_lambda_kg_m=[[0.6666666666666666, -0.3333333333333333, 0.0], [-0.3333333333333333, 0.6666666666666666, 0.0]]
+expected_residual_m=[[-5.421010862427522e-20, 1.0842021724855044e-19, 0.0], [0.0, 0.0, 0.0]]
+expected_energy_J=0.5555555555555556
+expected_objective_J=0.6666666666666666
+test tests::positive_targets_and_hard_stitches_keep_radial_updates ... ok
+test tests::closed_elastic_stitch_n32_matches_independent_quadratic_and_individual_actions ... ok
+test tests::positive_compliant_stitch_merges_shared_vertices_and_balances_physical_force ... ok
+test tests::positive_compliant_stitch_handles_pins_zero_anchor_and_nonfinite_guards ... ok
+test tests::closed_elastic_stitch_cancellation_and_failure_retain_whole_call_state ... ok
+test tests::elastic_stitch_substeps_reset_multipliers_when_target_reaches_zero ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 59 filtered out; finished in 0.02s
+

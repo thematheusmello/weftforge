@@ -1,0 +1,48 @@
+{
+  "N32_GREEN_on_normalization_source": {
+    "closed_action_error_N": 5.551115123125783e-17,
+    "force_residual_norm_N": 1.6653345369377348e-16,
+    "position_error_m": 1.2412670766236366e-16,
+    "radial_action_error_N": 1.1188630228279524e-16
+  },
+  "active_owned_jobs": [],
+  "all_initial_RED_GREEN_fmt_controller_failure_and_edge_outcomes_preserved": true,
+  "at_utc": "2026-11-17T10:44:48.595802+00:00",
+  "broader_workspace_Harbor_native_reference_or_full_physics_acceptance": false,
+  "changed_files": {
+    "crates/weftforge-sim/src/constraints.rs": "bb65c4367b2283c18cb026f573cfa14a510383bf465b1ed6daec383a557f469c",
+    "crates/weftforge-sim/src/tests.rs": "b1f17eb3813e5453958154a188a52c7613ad88a831b93db35822b6b8715624e0",
+    "docs/physics.md": "ccb82a57b73a2e16024fce38c9d13075e91ec5b229486526ceb5edf7f566f780"
+  },
+  "edge_GREEN_both_paths": {
+    "force_residual_norm_N": 7.850462293418876e-17,
+    "manifest_sha256": "be34fc2e8c10ba1b6aaa04ee40cb9e038826d9248e8de3afdd5fca59cc874526",
+    "position_error_m": 0.0,
+    "radius_error_m": 5.551115123125783e-17
+  },
+  "edge_RED_both_paths": {
+    "force_residual_norm_N": 0.41421356237309515,
+    "manifest_sha256": "db242e9d921fb7cf93f820b36868b07a746f8886d20b3e62eb77bed57df5f65e",
+    "position_error_m": 0.20710678118654757,
+    "radius_error_m": 0.20710678118654757
+  },
+  "edge_frozen_bounds": "1e-14m position/radius and1e-14N independent force;2fresh subcases",
+  "execution_qualification": "Each authorized monitored command stayed below120s/1GiB/8MiB;exactwait4 directchild RSS and sampledaggregate observations are separate;laterposthocseals are not commandtiming or fullcase acceptance.",
+  "final_checks_manifest_sha256": "ce2475ad9ad7442e28679f7331eb4838b5c8e9fbf6450bc5aa269cf591c9f3e2",
+  "final_logger_whitespace_proof_sha256": "e6be09476eb76dc13b72c4bf71432e892cb8db636e59d235b4c1be41f082783d",
+  "final_source88_freeze_sha256": "11d37183a30b10b80c810bb2265e110d1b240f1c2f914c3b0ed2a5a34c8ae37a",
+  "final_source_commit": "40817073cd38e58a8438bb397d09a0ab9d95f9bb",
+  "final_terminal_witness_sha256": "dcc2e2341c9ceb9eb7f883bd0dfdd634ec64097ff7eb237b9c86df3784f331e5",
+  "independent_PS001_closure": "pending reviewer static receipt;no broader gate authorized here",
+  "normalization_proof_sha256": "3092e959345f6d8ee9a9b148d2d8760afadd6d279fdf62deb1a2e55fc4f6a2ab",
+  "normalization_repair": "Maxabs-scaled unit direction on nonzero-anchor and zero-anchor-fallback paths; original spring radii/compliance/target/W/guards unchanged",
+  "normalization_source_followups": "3positive regressions passed;edge/N32excluded;one logger whitespace fmt correction;finalfmt+firststrictsimClippy passed",
+  "oldcase_regrade_replay_continuation_warmstart_or_garment_causality_claim": false,
+  "original_N32_bounds": "1e-8m position;1e-6N force/action;32sweeps unchanged",
+  "physical_repair": "Exact local positive-compliant radial-energy minimization with retained Vec3 weighted correction history",
+  "preserved_invalid_command_no_test_manifest_sha256": "37e19a05823e7972a9ad7047bad53b820081ce29ae865495bf2090f6c0144ac6",
+  "preserved_prior_accepted51dc_epoch_manifest_sha256": "53479646efa900b1e110e79a579cb20e84e5ecd69633def1adc991ad431bb18f",
+  "source_scope": "Three files only; lib/API/schema/deps/materials/settings/iteration counts unchanged; original zero-target and hard branch bytes preserved",
+  "status": "BOUNDED_COMPONENT_AND_NARROW_SOURCE_CHECKS_GREEN_READY_FOR_INDEPENDENT_ROOT_REVIEW",
+  "tracked_status_clean": true
+}

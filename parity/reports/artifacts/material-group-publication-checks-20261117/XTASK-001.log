@@ -1,0 +1,97 @@
+   Compiling proc-macro2 v1.0.107
+info: syncing channel updates for stable-aarch64-apple-darwin
+info: latest update on 2026-11-12 for version 1.100.0 (0ef1bc386 2026-11-09)
+info: removing previous version of component cargo
+info: removing previous version of component rust-std
+info: removing previous version of component rustc
+info: downloading 4 components
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.27
+   Compiling serde_core v1.0.229
+   Compiling zmij v1.0.23
+   Compiling syn v3.0.10
+   Compiling serde v1.0.229
+   Compiling serde_json v1.0.154
+   Compiling serde_derive v1.0.229
+   Compiling itoa v1.0.19
+   Compiling memchr v2.8.3
+   Compiling xtask v0.1.0 (<ROOT>/.local/material-group-delivery-integration-20261117/xtask)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 20.11s
+     Running `target/debug/xtask verify`
+Registry valid: 56 inventoried contracts; generated reports checked.
+PASS: additive source 8fe1c7b3018e807a61afffc3d0af77f5bbbe45d7; 39 candidate rechecks; 34 Rust variants / 33 schema commands / 9 MCP tools; historical snapshot unchanged. No behavior/parity verification.
+PASS: 949 unique catalog IDs; preserved 949 entries/205 packets and original 928-entry expansion; 205 reviewed groups/packets; 56 source landmarks; catalog hashes, feature/source links and acyclic dependencies valid.
+................................................
+----------------------------------------------------------------------
+Ran 48 tests in 136.879s
+
+OK
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.006s
+
+OK
+info: syncing channel updates for stable-aarch64-apple-darwin
+info: latest update on 2026-11-12 for version 1.100.0 (0ef1bc386 2026-11-09)
+info: removing previous version of component cargo
+info: removing previous version of component rust-std
+info: removing previous version of component rustc
+info: downloading 4 components
+   Compiling autocfg v1.5.1
+   Compiling num-traits v0.2.19
+   Compiling either v1.19.0
+   Compiling memchr v2.8.3
+   Compiling itertools v0.14.0
+   Compiling serde_json v1.0.154
+error[E0514]: found crate `serde_core` compiled by an incompatible version of rustc
+   --> <HOME>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.154/src/lib.rs:382:1
+    |
+382 | extern crate serde_core as serde;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: the following crate versions were found:
+            crate `serde_core` compiled by <unknown rustc version>: <ROOT>/.local/material-group-delivery-integration-20261117/target/debug/deps/libserde_core-fb36fccf0eeae6d6.rmeta
+    = help: please recompile that crate using this compiler (rustc 1.94.1 (e408947bf 2026-03-25)) (consider running `cargo clean` first)
+
+error[E0514]: found crate `itoa` compiled by an incompatible version of rustc
+   --> <HOME>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.154/src/de.rs:692:32
+    |
+692 |             .extend_from_slice(itoa::Buffer::new().format(partial_significand).as_bytes());
+    |                                ^^^^
+    |
+    = note: the following crate versions were found:
+            crate `itoa` compiled by <unknown rustc version>: <ROOT>/.local/material-group-delivery-integration-20261117/target/debug/deps/libitoa-16e13c836da8277f.rmeta
+    = help: please recompile that crate using this compiler (rustc 1.94.1 (e408947bf 2026-03-25)) (consider running `cargo clean` first)
+
+error[E0514]: found crate `zmij` compiled by an incompatible version of rustc
+   --> <HOME>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.154/src/error.rs:474:17
+    |
+474 |                 zmij::Buffer::new().format(value),
+    |                 ^^^^
+    |
+    = note: the following crate versions were found:
+            crate `zmij` compiled by <unknown rustc version>: <ROOT>/.local/material-group-delivery-integration-20261117/target/debug/deps/libzmij-3a10145afcd133bd.rmeta
+    = help: please recompile that crate using this compiler (rustc 1.94.1 (e408947bf 2026-03-25)) (consider running `cargo clean` first)
+
+error[E0220]: associated type `Value` not found for `V`
+   --> <HOME>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.154/src/value/de.rs:195:68
+    |
+195 | fn visit_array<'de, V>(array: Vec<Value>, visitor: V) -> Result<V::Value, Error>
+    |                                                                    ^^^^^ associated type `Value` not found
+
+error[E0220]: associated type `Value` not found for `V`
+   --> <HOME>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.154/src/value/de.rs:731:74
+    |
+731 | fn visit_array_ref<'de, V>(array: &'de [Value], visitor: V) -> Result<V::Value, Error>
+    |                                                                          ^^^^^ associated type `Value` not found
+
+error[E0220]: associated type `Value` not found for `V`
+   --> <HOME>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.154/src/de.rs:118:53
+    |
+118 |     fn visit<'de, V>(self, visitor: V) -> Result<V::Value>
+    |                                                     ^^^^^ associated type `Value` not found
+
+Some errors have detailed explanations: E0220, E0514.
+For more information about an error, try `rustc --explain E0220`.
+error: could not compile `serde_json` (lib) due to 6 previous errors
+xtask: cargo run -p weftforge-cli -- --help failed

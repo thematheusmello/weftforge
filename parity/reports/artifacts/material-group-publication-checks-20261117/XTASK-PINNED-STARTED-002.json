@@ -1,0 +1,45 @@
+{
+  "PID": 39198,
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "xtask",
+    "verify"
+  ],
+  "at": "2026-11-17T02:54:13.392138+00:00",
+  "commit": "bb8ae0d2b3db6e09c96c65f3ac5dddefc9695267",
+  "cwd": "<ROOT>/.local/material-group-delivery-integration-20261117",
+  "deadline": 1007268.560419083,
+  "environment": {
+    "CARGO": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/material-group-delivery-integration-20261117/target/pinned-xtask-002",
+    "PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/opt/homebrew/Cellar/pyenv/2.6.28/libexec:/opt/homebrew/Cellar/pyenv/2.6.28/plugins/python-build/bin:<HOME>/.codex/packages/app-server-daemon/releases/0.169.0-aarch64-apple-darwin/codex-path:<HOME>/Library/Android/sdk/platform-tools:<HOME>/Library/Android/sdk/emulator:<HOME>/.bun/bin:<HOME>/.local/bin:<HOME>/google-cloud-sdk/bin:<HOME>/.codeium/windsurf/bin:<HOME>/.pyenv/shims:<HOME>/.rvm/rubies/ruby-3.3.1/bin:<HOME>/.rvm/gems/ruby-3.3.1@global/bin:<HOME>/.rvm/gems/ruby-3.3.1/bin:<HOME>/.gem/ruby/3.3.0/bin:/usr/local/opt/openssl@1.1/bin:<HOME>/.nvm/versions/node/v22.11.0/bin:/opt/homebrew/Cellar/zplug/2.4.2/bin:/opt/homebrew/opt/zplug/bin:<HOME>/.pyenv/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Applications/VMware Fusion.app/Contents/Public:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:<HOME>/.codex/tmp/arg0-macos/codex-arg0csAYjs:<HOME>/.codex/tmp/arg0-macos/codex-arg08lzfaY:<HOME>/.codex/packages/app-server-daemon/releases/0.168.0-aarch64-apple-darwin/codex-path:<HOME>/.codex/tmp/arg0-macos/codex-arg0EuGpZI:<HOME>/.codex/packages/app-server-daemon/releases/0.167.2-aarch64-apple-darwin/codex-path:<HOME>/.codex/tmp/arg0-macos/codex-arg01g8zjN:<HOME>/.codex/packages/app-server-daemon/releases/0.167.1-aarch64-apple-darwin/codex-path:<HOME>/.codex/tmp/arg0-macos/codex-arg0GqJ5II:<HOME>/.codex/packages/app-server-daemon/releases/0.167.0-aarch64-apple-darwin/codex-path:<HOME>/.codex/tmp/arg0-macos/codex-arg0zSXQgn:<HOME>/.codex/packages/app-server-daemon/releases/0.166.0-aarch64-apple-darwin/codex-path:<HOME>/.codex/tmp/arg0-macos/codex-arg0jKBtit:<HOME>/.nvm/versions/node/v22.11.0/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex-path:<HOME>/.unity/bin:<HOME>/Library/pnpm:<HOME>/.cargo/bin:/Applications/iTerm.app/Contents/Resources/utilities:<HOME>/dotnet:<HOME>/.rvm/bin:<HOME>/.maestro/bin",
+    "RUSTC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTC_WORKSPACE_WRAPPER": "",
+    "RUSTC_WRAPPER": "",
+    "RUSTDOC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+    "RUSTFLAGS": "",
+    "RUSTUP_TOOLCHAIN": "1.94.1-aarch64-apple-darwin"
+  },
+  "input_count": 152,
+  "input_freeze_sha256": "68837d5640cc3c97709c77e9533b92b9c1ae5eeac3075a02f21ebfc7ba689cb1",
+  "reason": "Original gate1 failed only on mixed compiler crates after48+6Python tests passed; retain it. Corrected fully pinned child environment and fresh own nested target, no source/check weakening.",
+  "started": 1006368.560419083,
+  "toolchain_binaries": {
+    "cargo": {
+      "path": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "sha256": "532141271ce821135f63822c21fcd76c7972cbf69c19bc35e6ca8b00fcd5c40e"
+    },
+    "rustc": {
+      "path": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+      "sha256": "b69cbcffa5e990057035d53ccc8163e8392ce784f6abb114c19ceb61528ba9f6"
+    },
+    "rustdoc": {
+      "path": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+      "sha256": "63f095b26810d1f78a683edd1e10d8bbaea00f044e27cc189416f10f8080f13a"
+    }
+  },
+  "wrapper_PID": 39174
+}

@@ -1,0 +1,73 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.27
+   Compiling serde_core v1.0.229
+   Compiling zmij v1.0.23
+   Compiling syn v3.0.10
+   Compiling serde_json v1.0.154
+   Compiling serde v1.0.229
+   Compiling serde_derive v1.0.229
+   Compiling itoa v1.0.19
+   Compiling memchr v2.8.3
+   Compiling xtask v0.1.0 (<ROOT>/.local/material-group-delivery-integration-20261117/xtask)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 8.99s
+     Running `target/pinned-xtask-002/debug/xtask verify`
+Registry valid: 56 inventoried contracts; generated reports checked.
+PASS: additive source 8fe1c7b3018e807a61afffc3d0af77f5bbbe45d7; 39 candidate rechecks; 34 Rust variants / 33 schema commands / 9 MCP tools; historical snapshot unchanged. No behavior/parity verification.
+PASS: 949 unique catalog IDs; preserved 949 entries/205 packets and original 928-entry expansion; 205 reviewed groups/packets; 56 source landmarks; catalog hashes, feature/source links and acyclic dependencies valid.
+................................................
+----------------------------------------------------------------------
+Ran 48 tests in 135.521s
+
+OK
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.005s
+
+OK
+   Compiling autocfg v1.5.1
+   Compiling num-traits v0.2.19
+   Compiling memchr v2.8.3
+   Compiling either v1.19.0
+   Compiling itertools v0.14.0
+   Compiling serde_json v1.0.154
+   Compiling weftforge-sim v0.1.0 (<ROOT>/.local/material-group-delivery-integration-20261117/crates/weftforge-sim)
+   Compiling earcutr v0.5.0 (<ROOT>/.local/material-group-delivery-integration-20261117/vendor/earcutr)
+   Compiling quick-xml v0.41.0
+   Compiling weftforge-core v0.1.0 (<ROOT>/.local/material-group-delivery-integration-20261117/crates/weftforge-core)
+   Compiling weftforge-cli v0.1.0 (<ROOT>/.local/material-group-delivery-integration-20261117/apps/weftforge-cli)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 11.36s
+     Running `target/pinned-xtask-002/debug/weftforge-cli --help`
+WeftForge CLI — offline editable garment tools
+
+mcp                                    local MCP stdio file authoring
+new PROJECT
+sample PROJECT                         original two-panel shirt (implementation fixture)
+inspect PROJECT
+lengths PROJECT interval CURVE_ID T0 T1   authored/rest length, unrounded SI JSON
+lengths PROJECT seam SEAM_ID
+lengths PROJECT sewing-group GROUP_ID
+inspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)
+execute INPUT OUTPUT COMMANDS.json      one atomic shared command array
+import-svg INPUT OUTPUT PATTERNS.svg   editable single contours in physical mm; refuses compound holes
+import-dxf INPUT OUTPUT PATTERNS.dxf   bounded R2000 LINE/cubic boundaries in mm
+rectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT
+ellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT   four editable cubic spans
+resize INPUT OUTPUT PIECE_ID WIDTH HEIGHT
+curve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m
+curve-controls INPUT OUTPUT CURVE_ID straight
+split INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing
+join INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary
+grain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V
+stiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m
+export-obj PROJECT OUTPUT.obj          actual rest surface with holes; metres, Y-up
+export-svg PROJECT OUTPUT.svg          compound evenodd paths with holes; mm, inverted Y
+export-dxf PROJECT OUTPUT.dxf          exterior boundaries in mm; refuses projects with holes
+simulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled
+benchmark PROJECT STEPS                JSON measurements for the same solver
+fit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape
+fit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass
+recover PROJECT OUTPUT                explicitly load last valid recovery
+
+Units: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.
+Simulation is currently a rebuildable state; projects store editable construction.

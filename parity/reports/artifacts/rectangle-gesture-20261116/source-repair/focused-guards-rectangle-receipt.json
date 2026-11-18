@@ -1,0 +1,21 @@
+{
+  "case": "focused-guards-rectangle",
+  "command": [
+    "cargo",
+    "test",
+    "-p",
+    "weftforge",
+    "rectangle",
+    "--",
+    "--nocapture"
+  ],
+  "source_sha256": "4dc5723de4ce31535c5ab0135607381f3e4bcbe8dce9b0eb20bf37185ba0c915",
+  "environment": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/rectangle-gesture-repair-20261116/target"
+  },
+  "started_utc": "2026-11-16T21:19:34Z",
+  "exit_code": 101,
+  "ended_utc": "2026-11-16T21:19:42Z",
+  "log_sha256": "3fbc33bef1de64776ab4ff4af8e7f201e152aea7544ce5c04cf656e712c591a7"
+}

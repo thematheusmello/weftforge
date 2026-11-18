@@ -1,0 +1,45 @@
+{
+  "all_old_tests_byte_exact": true,
+  "branch": "feat/sewing-dual-action",
+  "changed_paths_exact": [
+    "crates/weftforge-sim/src/constraints.rs",
+    "crates/weftforge-sim/src/tests.rs",
+    "docs/physics.md"
+  ],
+  "equations_sha256": "0576bcd1be4b65361724bcfb1371a7d1b9ec505bbd7ac416913c5ef3f4d6ae20",
+  "guard_sha256": "1877cc2b19d7feea971cfa8cb7bc20d4dd2b46dbab3f70522f4590227a8c48ae",
+  "head": "526b9451b41900200359afa8b00f0abb214132bc",
+  "manual_guard_independence_review": true,
+  "manual_math_review": true,
+  "no_execution_GO": true,
+  "no_source_packet_oldcase_modification": true,
+  "packet_manifest_sha256": "a9dcd1d0ede16fea08db426c240a16437fd13475a32965dc772be6b10ead02a1",
+  "packet_members_exact": 16,
+  "parent": "1029d52e632cfa6f110adbb65c46bc55f7708b07",
+  "protected_path_proof_sha256": "8d46597a7a50248fa4bd64ed1557f6b623578e811cc3726ea3823a968133a233",
+  "review_sha256": "1e58f61db1414a68d0261a5de4c38955bf65875840a4f4fcb239c75a84e809aa",
+  "runtime_executed_by_reviewer": false,
+  "runtime_failure_cause_or_fix_proved": false,
+  "singleton_material_bend_primal_suffix_byte_exact": true,
+  "source91_current_and_Git_exact": 91,
+  "source_diff_sha256": "ffa9aadbdee6e548a929f819924eb0040d19bceb64b034ef4ffe39df74616026",
+  "source_files": {
+    "crates/weftforge-sim/src/constraints.rs": {
+      "bytes": 44807,
+      "mode": 420,
+      "sha256": "75440d14553971a969b429a9e153d611912bb12145e553e2286e2edcdf5baf8b"
+    },
+    "crates/weftforge-sim/src/tests.rs": {
+      "bytes": 131749,
+      "mode": 420,
+      "sha256": "79b2192d8d1e474eef5b2959733b2c14b54eaf6dad743a96e0ad8ff8761cf5c0"
+    },
+    "docs/physics.md": {
+      "bytes": 58260,
+      "mode": 420,
+      "sha256": "da8d50a9f4a2beb81e8992ff14e72162e669a165e3a5a41c61ff23b041e386ca"
+    }
+  },
+  "source_freeze_sha256": "6d3a94e982a34df05ebebb8a6bd5f39819064aba1455308a57336c8503e62f84",
+  "status": "STATIC_READY_FOR_DISTINCT_ROOT_FOCUSED_GO"
+}

@@ -1,0 +1,126 @@
+{
+  "schema": "weftforge.offset-integrated-source-gates.v1",
+  "scope": "Integrated source gates only; no native/reference/whole-first-phase acceptance. Clean registry/map xtask follows runtime commit and metadata integration.",
+  "base_commit": "1fc1d71993cf193801e44982b757fca8abc5aba7",
+  "source_inputs": 79,
+  "source_unchanged_before_after": true,
+  "source_input_receipt_sha256": "e1c3f00da24fbc9eada09dbeffbbd2447dcfca1ccb94c98ad70c8c4742c1f31a",
+  "math_review_sha256": "e50d8112148261713b71b784c4d95bf3c15fa822c71e454541c60c0f9bf5a110",
+  "math_pin_supplement_sha256": "36d5883d29fb7778316cb86a24a1e5bf25d1e5f5919abd5722e92cf0715f7a58",
+  "commands": [
+    {
+      "name": "fmt",
+      "argv": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:20:40.709146+00:00",
+      "finished_utc": "2026-11-16T11:20:41.294595+00:00",
+      "elapsed_seconds": 0.5852675839560106
+    },
+    {
+      "name": "test",
+      "argv": [
+        "cargo",
+        "test",
+        "--workspace"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:20:41.294709+00:00",
+      "finished_utc": "2026-11-16T11:23:21.490590+00:00",
+      "elapsed_seconds": 160.1949368340429
+    },
+    {
+      "name": "clippy",
+      "argv": [
+        "cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:23:21.490690+00:00",
+      "finished_utc": "2026-11-16T11:24:26.363916+00:00",
+      "elapsed_seconds": 64.87284970795736
+    },
+    {
+      "name": "debug-build",
+      "argv": [
+        "cargo",
+        "build",
+        "-p",
+        "weftforge",
+        "-p",
+        "weftforge-cli"
+      ],
+      "exit_code": 0,
+      "started_utc": "2026-11-16T11:24:26.363998+00:00",
+      "finished_utc": "2026-11-16T11:24:31.618679+00:00",
+      "elapsed_seconds": 5.254665625048801
+    }
+  ],
+  "all_passed": true,
+  "Rust_passed_total": 363,
+  "Rust_failed_total": 0,
+  "Rust_test_result_groups": 31,
+  "binaries": {
+    "weftforge": {
+      "sha256": "6450fcfbf998b41563673acae0a1dd5374d0231f33ac65de7ef512c32f1e219a",
+      "bytes": 63391144
+    },
+    "weftforge-cli": {
+      "sha256": "132500cb74412ec94ffd4015db9502681deb9a8a9346b8486b9d22e9e4b70155",
+      "bytes": 11098576
+    }
+  },
+  "target": "[WORKSPACE]/target-material-outline-offset",
+  "cargo_build_jobs": 1,
+  "logs": {
+    "clippy.stderr": {
+      "sha256": "451a5eb2d10dde08832f07ef88ce088dd2380c722a3f6ef5eaf89544fbede9c7",
+      "bytes": 6182
+    },
+    "clippy.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "test.stdout": {
+      "sha256": "05e1c46623b4f86189e810e0c0bfa47ffb3acdf01d83fb9035c460ad7089f277",
+      "bytes": 36758
+    },
+    "debug-build.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "fmt.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "fmt.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "debug-build.stderr": {
+      "sha256": "d588312de2a88bc2fdc4fbc367c5038f7f650f6907e952165b18dbd7229122c3",
+      "bytes": 223
+    },
+    "SOURCE-INPUTS.json": {
+      "sha256": "e1c3f00da24fbc9eada09dbeffbbd2447dcfca1ccb94c98ad70c8c4742c1f31a",
+      "bytes": 9819
+    },
+    "test.stderr": {
+      "sha256": "59bb5254fd897a7202ffd4dbc0e1ff67eb0a038a005754a809cbab84cc51086f",
+      "bytes": 3276
+    }
+  },
+  "prior_failed_gate_receipt_sha256": "3d3c249fac80a8631b22588a83fea56616fd6f300a0391be32b088399627ccbd",
+  "prior_precheck_stop_sha256": "96682af7b12432535bf6cecbd3fba6a84b8f41b55fe20fb7826df2b90f977bfa",
+  "earcut_internal_polling_and_work_bound": "UNMET; controlled work only",
+  "xtask_and_clean_tracking_gate": "pending"
+}

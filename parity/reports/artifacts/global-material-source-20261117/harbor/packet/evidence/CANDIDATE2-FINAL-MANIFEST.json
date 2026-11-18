@@ -1,0 +1,185 @@
+{
+  "actual_test_executions": 1,
+  "cleanup": {
+    "additional_numerical_runs": 0,
+    "after_frozen_numerical_terminal": true,
+    "at_utc": "2026-11-17T02:56:11.678736+00:00",
+    "broad_checks": 0,
+    "owned_PID": 43959,
+    "owned_child_reaped": true,
+    "owned_process_group": 43959,
+    "owned_process_group_absent": true,
+    "source_edits_after_candidate2_attempt": 0,
+    "windows_opened": 0
+  },
+  "files": {
+    "ANNOTATION-ONLY.patch": {
+      "bytes": 475,
+      "mode": "0444",
+      "sha256": "aafae7e87450062e1b52395fe14c91bc15d1190118435046081bd6df9607404e"
+    },
+    "CANDIDATE-NETWORK-TEST.rs": {
+      "bytes": 7203,
+      "mode": "0444",
+      "sha256": "b0a314545ee1fac18f68c342d9781ae6e1f4090c8a02b535a75e422cdeb5d311"
+    },
+    "CANDIDATE1-PRESERVATION.json": {
+      "bytes": 495,
+      "mode": "0444",
+      "sha256": "2226ba3dc72fa275396556a8d158cec8fdc101e976ddc12b15541c73418f5a50"
+    },
+    "CANDIDATE1-SOURCE-DELTA.patch": {
+      "bytes": 51941,
+      "mode": "0444",
+      "sha256": "27db5f3074e3573f40d0bec72a823d9df3d40fae77e8dd43baf3a25b1002c335"
+    },
+    "CANDIDATE1-SOURCE-FREEZE.json": {
+      "bytes": 14291,
+      "mode": "0444",
+      "sha256": "335e95c2f67961ec42c9f3ebc40bdc938be0429b2de6a3cc159a0a700ae065e1"
+    },
+    "CANDIDATE2-ENVIRONMENT-SEAL.json": {
+      "bytes": 3909,
+      "mode": "0444",
+      "sha256": "b949a381c0a713c9edddffc1aab1993689cdee0ab5d3bcb0667092cc3e4082f3"
+    },
+    "CANDIDATE2-FINAL-GUARD.json": {
+      "bytes": 380,
+      "mode": "0444",
+      "sha256": "a1d21b225f9039fbb80c7797ae87a44cf2bf1a2f73669dded6ce7f11ad0a294e"
+    },
+    "CANDIDATE2-RUNNING.json": {
+      "bytes": 1691,
+      "mode": "0444",
+      "sha256": "a7364723cf7e73682e932a2ee86dc5994584b3380ab23df622f54e0606648652"
+    },
+    "CANDIDATE2-SOURCE-BEFORE.json": {
+      "bytes": 14946,
+      "mode": "0444",
+      "sha256": "9d798588a2a4526c4aa4d7e12c3e24db34e11ef44247c9e5d79433e09f0d15a3"
+    },
+    "CANDIDATE2-TERMINAL.json": {
+      "bytes": 17868,
+      "mode": "0444",
+      "sha256": "2e7564748b5ec35870138d8def43d24b4263ec15302cfc453dbf29c4dcf6e87a"
+    },
+    "CANDIDATE2/started.json": {
+      "bytes": 864,
+      "mode": "0444",
+      "sha256": "791460e9d7f0db6e0f630c25bbe5e9a662bf1ab257e3bf2f7079c9b01527cc6e"
+    },
+    "CANDIDATE2/stderr.log": {
+      "bytes": 318,
+      "mode": "0444",
+      "sha256": "59efcade39198db5b067e26fc81f06817c8d91978aea011731644d180e9a9b47"
+    },
+    "CANDIDATE2/stdout.log": {
+      "bytes": 569,
+      "mode": "0444",
+      "sha256": "4b419d5f0590edb520dc692003c63dbe76d4468a4d005bf54e9bcda0f02c7a04"
+    },
+    "DESIGN-BEFORE-NUMERICAL.md": {
+      "bytes": 1920,
+      "mode": "0444",
+      "sha256": "1ac2573bc77f847d85890ec33cd09a7bf613cf6e4b0b5e47784736c491f054dc"
+    },
+    "HANDOFF.md": {
+      "bytes": 1440,
+      "mode": "0444",
+      "sha256": "48b26a335716b40a72201c1bff3af53e8f933775b0f48bbbe02b2f10c0164e65"
+    },
+    "NETWORK-LITERAL-GUARDS.json": {
+      "bytes": 1342,
+      "mode": "0444",
+      "sha256": "a1a8c15ae82c784f4fd9ffb5139f21b66688639f74a04ad08847d78539d8d6fc"
+    },
+    "NETWORK-STAGE-ADAPTER.patch": {
+      "bytes": 4033,
+      "mode": "0444",
+      "sha256": "b31481521a61af277196dfc6ea916f9b10458ca28670ad479235f43c0b20daf4"
+    },
+    "POST-CASE-CLEANUP.json": {
+      "bytes": 340,
+      "mode": "0444",
+      "sha256": "ab5ad1e6bcfca83f980443ccf7aa1136bcb779faf16583ba9287296d744594c2"
+    },
+    "PREPARATION-001-GUARD-FAILURE.json": {
+      "bytes": 396,
+      "mode": "0444",
+      "sha256": "e88556c2f2ad8ab1cd7043d56f02c377a3fb2d159cfdaf34a12c621768ee0a42"
+    },
+    "PROPOSED-COMMAND.json": {
+      "bytes": 439,
+      "mode": "0444",
+      "sha256": "28cb648ee3e06932975b5a190ee6d033e7a2ccb9bd20136adaae07b760aeb960"
+    },
+    "ROOT-DESIGN-GO.json": {
+      "bytes": 409,
+      "mode": "0444",
+      "sha256": "d825e0fc3e509de5b57a43566e4ea7700ad0652f645072a51e29234d268a8e77"
+    },
+    "SOURCE-DELTA.patch": {
+      "bytes": 51952,
+      "mode": "0444",
+      "sha256": "9669a831091321bd8ff0a216c6695c53d63634155b7169c7dea02671fe2daeee"
+    },
+    "SOURCE-FREEZE.json": {
+      "bytes": 15302,
+      "mode": "0444",
+      "sha256": "86888b71b8aa75693199e0ba99d93ba124178b2f80c141f7f3fa843ac11958f0"
+    },
+    "original-FREEZE.json": {
+      "bytes": 23447,
+      "mode": "0444",
+      "sha256": "ad4d326900deda803a76e0f42686e46048abaf21f4589dac7e1aeefdb96e0c67"
+    },
+    "original-INPUT.json": {
+      "bytes": 6327,
+      "mode": "0444",
+      "sha256": "fb2a80ebc94b8cef4269f5c906af64a821255c3f3b2e998eae07f34fc6c6a21e"
+    },
+    "original-RED-FINAL-MANIFEST.json": {
+      "bytes": 6138,
+      "mode": "0444",
+      "sha256": "99be7ba76328360d55f68c02a9d0241b09622e17f6f1440a6ce9750bca6d4778"
+    },
+    "original-RED-test.rs": {
+      "bytes": 6820,
+      "mode": "0444",
+      "sha256": "ab917733c28eebd9a9ab813818b2f03945660b8c0bb9a67d9babdd4090342560"
+    },
+    "original-REFERENCE.json": {
+      "bytes": 11755,
+      "mode": "0444",
+      "sha256": "81e34a2c1d3f5b5992abd4bf7dafbb2bc809488f7956828546cb3d33a20d9d3b"
+    },
+    "original-input-guards.json": {
+      "bytes": 446,
+      "mode": "0444",
+      "sha256": "87aee352b3e00fbc4e241002568845c900154471ac440a48931f4244decc08fe"
+    },
+    "original-test-only.patch": {
+      "bytes": 7311,
+      "mode": "0444",
+      "sha256": "b72910edebcaec0e585f6e0579d64ffa15513281e4ff5a47a70635799b54d6ea"
+    },
+    "resources.py": {
+      "bytes": 10575,
+      "mode": "0444",
+      "sha256": "4df98ac4595d45a71059fb12ad5c66da7b4fdbf9c1dfe7a0b74144f17f606987"
+    },
+    "run_candidate2.py": {
+      "bytes": 7834,
+      "mode": "0444",
+      "sha256": "6af40c9241bc342df927397d53a4446d0487e97a9a3a1ba97c56427cabe464e5"
+    }
+  },
+  "numbers": {
+    "force_residual_N": 1.2857517012326884e-07,
+    "position_error_m": 2.0770362583566576e-10
+  },
+  "retained_source_unchanged": true,
+  "source_freeze_sha256": "86888b71b8aa75693199e0ba99d93ba124178b2f80c141f7f3fa843ac11958f0",
+  "status": "CANDIDATE2_GREEN_FIXED_COMPONENT_ONLY",
+  "terminal_sha256": "2e7564748b5ec35870138d8def43d24b4263ec15302cfc453dbf29c4dcf6e87a"
+}

@@ -1,0 +1,119 @@
+{
+  "actual_execution_counts": {
+    "GUI": 0,
+    "cargo": 0,
+    "formatter": 0,
+    "helper_import": 0,
+    "model_constructor_or_step": 0,
+    "product_test": 0
+  },
+  "actual_unified_four_gate_result_sha256": null,
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--lib",
+    "tests::shared_stitch_n32_matches_independent_duplicate_row_cartesian_energy",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "branch": "test/shared-stitch-stationarity",
+  "candidate_commit": "d8bcb3b7fa6c185e715603ef7bf84128b3110c24",
+  "caps": {
+    "aggregate_retained_output_bytes": 8388608,
+    "aggregate_sampled_owned_rss_bytes": 1073741824,
+    "minimum_available_disk_bytes": 8000000000,
+    "whole_wall_seconds": 120
+  },
+  "caps_scope": "From before command/controller entry through terminal receipts; sampled process-group RSS plus direct-child wait4 terminal rusage, output and terminal deadline checks; retain first result and cleanup. Observation gaps explicit; no hard OS or uncontended timing claim.",
+  "case": "WF-20261117-SHARED-STITCH-STATIONARITY-RED-001",
+  "criteria": {
+    "independent_oracle_force_selfcheck_N": 1e-06,
+    "max_COM_error_each_sweep_m": 1e-14,
+    "max_cartesian_position_error_m": 1e-08,
+    "max_full_cartesian_force_residual_N": 1e-06,
+    "positions_and_histories_finite_each_sweep": true
+  },
+  "cwd": "<ROOT>/.local/shared-stitch-stationarity-20261117",
+  "execution_authorized": false,
+  "expected_RED_prediction_only": {
+    "exact_real_force_residual_N": 0.08777113274509969,
+    "exact_real_max_position_error_m": 2.1942782602963774e-10,
+    "failure": "independent summed Cartesian force residual, not necessarily position",
+    "not_executed_product_result": true
+  },
+  "first_result_policy": "Preserve successful compilation/test failure separately from operational/compiler failure. Print full Cartesian q/gradient/COM/energy before final assertions; no automatic source fix or retry.",
+  "fixture": {
+    "actual_stage_calls": 64,
+    "compliance_m_per_N_each": 1e-08,
+    "free_nodes": 2,
+    "fresh_predictors_m": [
+      [
+        0.0,
+        0.0,
+        0.015
+      ],
+      [
+        0.0,
+        0.0,
+        -0.015
+      ]
+    ],
+    "h_s": 0.0020833333333333333,
+    "history": "two Vec3 zero histories once before 32 sweeps",
+    "identical_ordered_rows": 2,
+    "masses_kg": [
+      4.5714285714285506e-05,
+      4.571428571428556e-05
+    ],
+    "stage": "production constraints::solve_stitch row0 then row1, normal input order; no full Cloth/other force stages",
+    "sweeps": 32,
+    "target_m": 0.01333333333333439
+  },
+  "future_group_adapter_limit": "A separately reviewed production group API may replace only the history/stage adapter. All fixture/oracle/criteria/32-sweep/COM-finite checks remain semantically exact; no candidate is implemented here.",
+  "parent_commit": "8aa850975fa388c3c4bd206db74adf7171916451",
+  "prerequisites": [
+    "Root reviews this exact test/fixture/oracle/source freeze",
+    "Root accepts actual unified source checks on 8aa85097; no green result inferred here",
+    "Separate root GO and compute release for this one exact invocation",
+    "At admission, bind actual tool/config/dependency/environment closure and source91 before/after; refuse unexpected wrappers/flags",
+    "Use an existing reviewed resource monitor, no new executor framework"
+  ],
+  "prospective_child_env": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_ENCODED_RUSTDOCFLAGS": "",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_DEV_INCREMENTAL": "false",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_PROFILE_TEST_INCREMENTAL": "false",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/shared-stitch-stationarity-20261117/target",
+    "CARGO_TERM_COLOR": "never",
+    "CFLAGS": "",
+    "CPPFLAGS": "",
+    "CXXFLAGS": "",
+    "LDFLAGS": "",
+    "PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONOPTIMIZE": "0",
+    "RUSTC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTC_BOOTSTRAP": "",
+    "RUSTC_WORKSPACE_WRAPPER": "",
+    "RUSTC_WRAPPER": "",
+    "RUSTDOC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+    "RUSTDOCFLAGS": "",
+    "RUSTFLAGS": "",
+    "RUSTUP_TOOLCHAIN": "1.94.1",
+    "RUST_TEST_THREADS": "1"
+  },
+  "root_go_sha256": null,
+  "safety_and_scope": "Two finite free nodes, positive masses/dt/target/compliance, nonzero director and radius. No zero-anchor/subnormal case, pins, material, bending, contact, garment dynamics or archived state. COM substitutes for momentum/pin constraints here. Both spring energies retained; no deduplication, tuning, sweep, warmstart, retry, solver candidate or garment-causality claim.",
+  "status": "SOURCE_ONLY_FROZEN_AWAITING_ROOT_REVIEW_AND_COMPUTE_RELEASE",
+  "worktree": "<ROOT>/.local/shared-stitch-stationarity-20261117"
+}

@@ -1,0 +1,133 @@
+{
+  "Cargo_exit_code": 101,
+  "ROOT_GO_sha256": "6aec6f033a522a8d2015d9d6a092dc8dc0bece9fe01f99eac5a2b10cc9c8d7cb",
+  "actual_Cargo_invocations": 1,
+  "at_utc": "2026-11-17T09:59:16.194435+00:00",
+  "command_result_fsynced_elapsed_seconds": 15.561177334049717,
+  "controller_exit_code": 1,
+  "execution_freeze_sha256": "3338b202bd7c6b6471468e2e25acc79bf42ae32496e4f7c77d7a70db8595df12",
+  "external_terminal_witness_elapsed_seconds": 74.0003948340891,
+  "files": {
+    "EXECUTION-FREEZE.json": {
+      "bytes": 1239,
+      "mode": "0o644",
+      "sha256": "3338b202bd7c6b6471468e2e25acc79bf42ae32496e4f7c77d7a70db8595df12"
+    },
+    "FIXTURE.json": {
+      "bytes": 1319,
+      "mode": "0o644",
+      "sha256": "859f478a24bdd227c29221b216f81896b5873a0ea82e2b6464f9cae9d9a9bd45"
+    },
+    "HANDOFF.md": {
+      "bytes": 1605,
+      "mode": "0o644",
+      "sha256": "80eede229b8ff67b9ca946ec05b4db2cb30eee2ff64224697a0fca0ac86345a5"
+    },
+    "ORACLE.md": {
+      "bytes": 3641,
+      "mode": "0o644",
+      "sha256": "e2d8ae2ff2cef036b84e7481bd3fd02b8f92fa7309d880e46f332adab47302af"
+    },
+    "PLAN.json": {
+      "bytes": 3921,
+      "mode": "0o644",
+      "sha256": "42b3634e39d12cd0ab5d19d5cbf5781db3999e1d611c81d794e386e0d623a097"
+    },
+    "ROOT-GO.json": {
+      "bytes": 2312,
+      "mode": "0o644",
+      "sha256": "6aec6f033a522a8d2015d9d6a092dc8dc0bece9fe01f99eac5a2b10cc9c8d7cb"
+    },
+    "SOURCE-ONLY-FREEZE.json": {
+      "bytes": 17586,
+      "mode": "0o644",
+      "sha256": "d86c34a9c40816e514a76f8906a3db7b8c19eb4534ca5da82eda5f8ca5a45351"
+    },
+    "TEST-ONLY.patch": {
+      "bytes": 4983,
+      "mode": "0o644",
+      "sha256": "c3816d7a8163094ed05f87d33584490a70a73ea810a25a558a2c9e65e75d3ed5"
+    },
+    "red-001/CHILD-STARTED.json": {
+      "bytes": 1210,
+      "mode": "0o600",
+      "sha256": "a25be6eb161f1072daf7a4a83958beed6a4030f323aae2bd0811711280ed919c"
+    },
+    "red-001/COMMAND.json": {
+      "bytes": 2742,
+      "mode": "0o600",
+      "sha256": "b0c4d8e385ea252ff12e9efe1b955ff7f9cb10e938f33f6ecca7013aa7efbf10"
+    },
+    "red-001/PERSISTENCE-CLOCK.json": {
+      "bytes": 302,
+      "mode": "0o600",
+      "sha256": "a1f70eb6c0a427ab0eb470a499ee9e0b0f241a619e4193523f1591174b6d10d6"
+    },
+    "red-001/POST-GUARD.json": {
+      "bytes": 396,
+      "mode": "0o600",
+      "sha256": "5164608e750d2399c24bfa3c322fc83f1ed4061d831086aafb3c175571f48a7c"
+    },
+    "red-001/POSTHOC-FINDINGS.json": {
+      "bytes": 2199,
+      "mode": "0o644",
+      "sha256": "872f05d8b30ebc25683a17286cdf5e29dc678fdb04c264ec8dbdc437e9a4111b"
+    },
+    "red-001/PRE-GUARD.json": {
+      "bytes": 396,
+      "mode": "0o600",
+      "sha256": "5164608e750d2399c24bfa3c322fc83f1ed4061d831086aafb3c175571f48a7c"
+    },
+    "red-001/RESULT.json": {
+      "bytes": 2115,
+      "mode": "0o600",
+      "sha256": "e27c6ee17df5b0c8d9d6b7b23f139acc61438c0c82f51dca74c618aca885ea8a"
+    },
+    "red-001/STARTED.json": {
+      "bytes": 129,
+      "mode": "0o600",
+      "sha256": "def3ed6d78a67da6f2c459341078163cd4b161248933e8b7185c901d6646f3e5"
+    },
+    "red-001/TERMINAL-WITNESS.json": {
+      "bytes": 801,
+      "mode": "0o644",
+      "sha256": "eaef82da770fe8d621f74b9541b0d946a339aacf70b7b32ea7a5996bbb8a8b12"
+    },
+    "red-001/stderr.txt": {
+      "bytes": 848,
+      "mode": "0o644",
+      "sha256": "71b30837b4e2f368d472b412ebdf2fea8185cb598c3b43f6f2693c0ebf5d67bf"
+    },
+    "red-001/stdout.txt": {
+      "bytes": 1421,
+      "mode": "0o644",
+      "sha256": "b87f3717af0bf5ecfe76f0708eb976d253ef96c233cb09256ef0fe9e571b4bd0"
+    },
+    "resources.py": {
+      "bytes": 12679,
+      "mode": "0o644",
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781"
+    },
+    "run_red.py": {
+      "bytes": 7409,
+      "mode": "0o644",
+      "sha256": "ba39aea895b64ece47961181108ae1a4f6054ac7d1ec34d5697ff5e096ae2175"
+    }
+  },
+  "first_raw_test_summary": [
+    "test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 68 filtered out; finished in 0.00s"
+  ],
+  "garment_cases_or_grades": 0,
+  "output_bytes_before_final_receipts": 12559,
+  "owned_PIDs_absent": {
+    "52622": true,
+    "52746": true
+  },
+  "post_source88_test_fixture_oracle_GO_exact": true,
+  "resource_stop_reason": null,
+  "result_sha256": "e27c6ee17df5b0c8d9d6b7b23f139acc61438c0c82f51dca74c618aca885ea8a",
+  "source_commit": "d982d3af570e862fc8a5d059a32256eb6a45d1ce",
+  "source_edits_or_retries_after_result": 0,
+  "source_only_freeze_sha256": "d86c34a9c40816e514a76f8906a3db7b8c19eb4534ca5da82eda5f8ca5a45351",
+  "status": "CLOSED_FIRST_COMPONENT_RED_SOURCE_UNCHANGED"
+}

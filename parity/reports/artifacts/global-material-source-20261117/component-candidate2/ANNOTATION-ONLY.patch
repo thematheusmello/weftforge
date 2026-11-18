@@ -1,0 +1,11 @@
+--- candidate1/constraints.rs
++++ candidate2/constraints.rs
+@@ -93,7 +93,7 @@
+ ) -> Result<(), SimulationError> {
+     let unstable = || SimulationError::Unstable("non-finite global material solve".into());
+     let mut root_weight = Vec::with_capacity(x.len());
+-    let mut diagonal = vec![[1.; 3]; x.len()];
++    let mut diagonal: Vec<Vec3> = vec![[1.; 3]; x.len()];
+     for &weight in inverse_mass {
+         check_cancel(cancelled)?;
+         let root = weight.sqrt();

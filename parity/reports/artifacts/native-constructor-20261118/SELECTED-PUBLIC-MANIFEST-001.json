@@ -1,0 +1,4022 @@
+{
+  "status": "PUBLIC_PROPOSAL_ONLY_NOT_INSTALLED",
+  "metadata_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a",
+  "actual_native_build_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+  "actual_source_QA_commit": "f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f",
+  "source91_C_D_E_exact_via_immutable_Git_objects": true,
+  "mutable_current_source_or_HEAD_index_read": false,
+  "new_execution_or_acceptance_from_curation": false,
+  "selection": "118 frozen text originals plus four exact returned AX/text-value extracts, manifest and two reports =125 public files. Six image-bearing original files are omitted completely; no pixels, images, compiled bundles or duplicate helper trees are delivered.",
+  "transformation": "Ordered exact locator-prefix substitution only for delivered text; all other delivered text bytes, line structure, 64hex sequences, raw clocks, JSON numbers/booleans/null and Python literals remain exact. Four content[0].text values are separately extracted with original response/content-index/hash provenance; their complete image-bearing raw responses are omitted. JPEG bytes are never altered or delivered.",
+  "public_visual_limitation": "Root manually accepted the original private unchanged capture. The selected public package has no pixels and cannot independently verify image/layout alignment; it provides no full feature, gate or native-workflow acceptance.",
+  "symbolic_locator_qualification": "Symbolic locators in raw records identify immutable private provenance. They are not runnable public paths. Only selected.path and reused_tracked_dependencies.path are delivered artifacts; raw freeze/plan/manifest parent hashes do not imply every parent was delivered.",
+  "locator_rules_in_order": [
+    {
+      "name": "CASE_P002",
+      "symbolic_locator": "<CASE_P002>"
+    },
+    {
+      "name": "POSTCASE_P002",
+      "symbolic_locator": "<POSTCASE_P002>"
+    },
+    {
+      "name": "CASE_P003",
+      "symbolic_locator": "<CASE_P003>"
+    },
+    {
+      "name": "POSTCASE_P003",
+      "symbolic_locator": "<POSTCASE_P003>"
+    },
+    {
+      "name": "CASE_P004",
+      "symbolic_locator": "<CASE_P004>"
+    },
+    {
+      "name": "POSTCASE_P004",
+      "symbolic_locator": "<POSTCASE_P004>"
+    },
+    {
+      "name": "CASE_P005",
+      "symbolic_locator": "<CASE_P005>"
+    },
+    {
+      "name": "POSTCASE_P005",
+      "symbolic_locator": "<POSTCASE_P005>"
+    },
+    {
+      "name": "PREPARATION_V6_ROOT_REVIEW",
+      "symbolic_locator": "<PREPARATION_V6_ROOT_REVIEW>"
+    },
+    {
+      "name": "PREPARATION_V6",
+      "symbolic_locator": "<PREPARATION_V6>"
+    },
+    {
+      "name": "WORKTREE",
+      "symbolic_locator": "<WORKTREE>"
+    },
+    {
+      "name": "REPOSITORY_LOCAL",
+      "symbolic_locator": "<REPOSITORY_LOCAL>"
+    },
+    {
+      "name": "REPOSITORY_ROOT",
+      "symbolic_locator": "<REPOSITORY_ROOT>"
+    },
+    {
+      "name": "WORKSPACE_PARENT",
+      "symbolic_locator": "<WORKSPACE_PARENT>"
+    },
+    {
+      "name": "WORKSPACE_CONTAINER",
+      "symbolic_locator": "<WORKSPACE_CONTAINER>"
+    },
+    {
+      "name": "WORKSPACE_BASE",
+      "symbolic_locator": "<WORKSPACE_BASE>"
+    },
+    {
+      "name": "CARGO_HOME",
+      "symbolic_locator": "<CARGO_HOME>"
+    },
+    {
+      "name": "RUSTUP_HOME",
+      "symbolic_locator": "<RUSTUP_HOME>"
+    },
+    {
+      "name": "PYENV_HOME",
+      "symbolic_locator": "<PYENV_HOME>"
+    },
+    {
+      "name": "HOME",
+      "symbolic_locator": "<HOME>"
+    },
+    {
+      "name": "HOME_PARENT",
+      "symbolic_locator": "<HOME_PARENT>"
+    },
+    {
+      "name": "TMPDIR",
+      "symbolic_locator": "<TMPDIR>/"
+    },
+    {
+      "name": "HOMEBREW_PREFIX",
+      "symbolic_locator": "<HOMEBREW_PREFIX>"
+    }
+  ],
+  "locator_substitution_counts": {
+    "CASE_P005": 94,
+    "PREPARATION_V6_ROOT_REVIEW": 3,
+    "PREPARATION_V6": 12,
+    "WORKTREE": 109,
+    "PYENV_HOME": 22,
+    "REPOSITORY_ROOT": 3,
+    "HOME": 1,
+    "CASE_P002": 6,
+    "CASE_P003": 15,
+    "CASE_P004": 3
+  },
+  "selected": [
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/PLAN.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/PLAN.json",
+      "original_sha256": "d8c0d99f582f4bee8c720ee1db3405d7ccca4a53721cd9b7f8efa787c49d0193",
+      "original_bytes": 56507,
+      "public_sha256": "051cf94042b91c1fa15530dcff92ba98538505e554d5b71c4a9a0a60107d8e53",
+      "public_bytes": 44004,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 19,
+        "PREPARATION_V6_ROOT_REVIEW": 2,
+        "PREPARATION_V6": 4,
+        "WORKTREE": 101,
+        "PYENV_HOME": 1
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/SOURCE-BINDING.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/SOURCE-BINDING.json",
+      "original_sha256": "90758ade32e9e9fb70e963ca6099a86e4ea8cf3d4eb32ecab6af9086dced8356",
+      "original_bytes": 19274,
+      "public_sha256": "ef50c9a9655e2060f2b3ed97fee7448270cb703a200167ebb0ca26e6f9763b5e",
+      "public_bytes": 18535,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "PREPARATION_V6_ROOT_REVIEW": 1,
+        "PREPARATION_V6": 2,
+        "WORKTREE": 5
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/ROOT-NATIVE-GO.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/ROOT-NATIVE-GO.json",
+      "original_sha256": "ccc657cfcd3e4d7dd8939f7e08ff06adb751ead05a15ae00559ac0b838e84db7",
+      "original_bytes": 568,
+      "public_sha256": "ccc657cfcd3e4d7dd8939f7e08ff06adb751ead05a15ae00559ac0b838e84db7",
+      "public_bytes": 568,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/STARTED.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/STARTED.json",
+      "original_sha256": "efd7e462fa841872b16e5df59325f27c7412c7b28d9c470b4564d6e3e58868a8",
+      "original_bytes": 283,
+      "public_sha256": "efd7e462fa841872b16e5df59325f27c7412c7b28d9c470b4564d6e3e58868a8",
+      "public_bytes": 283,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/PRELAUNCH-ABSENCE.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/PRELAUNCH-ABSENCE.json",
+      "original_sha256": "149a0534ade684b0b421f2a64a90c4823aefefe8f9bd605405187ff05c8c9714",
+      "original_bytes": 54,
+      "public_sha256": "149a0534ade684b0b421f2a64a90c4823aefefe8f9bd605405187ff05c8c9714",
+      "public_bytes": 54,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/LAUNCH-INTENT.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/LAUNCH-INTENT.json",
+      "original_sha256": "395b8fcbfa961fb0387a175ddb60546c9323b861082617c4cac8fbefa555ba06",
+      "original_bytes": 941,
+      "public_sha256": "3355d23cb9b14de1e7ac2c5924122a4e0c30c5e599b1c58601bdf96874fce988",
+      "public_bytes": 663,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 2
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/DIRECT-CHILD.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/DIRECT-CHILD.json",
+      "original_sha256": "fe6f39e36abe67ab6a9759980fe5adbe6211d0b2437b4b79ae8db51752cdbb72",
+      "original_bytes": 739,
+      "public_sha256": "e285787a10bb90340947b385ed54f449439823fa4c1e653087718ad871b39c2e",
+      "public_bytes": 600,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 1
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/LAUNCH-PRODUCER-LEASE.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/LAUNCH-PRODUCER-LEASE.json",
+      "original_sha256": "5bbeb3b640d3e1689a885cf59ad72d64818adc83fe9eeb17bc3df0b5f73a0890",
+      "original_bytes": 619,
+      "public_sha256": "a5c93ce99d2e4a9996e19ab4edbec377dd2021e878de7895e5190580d73f83b3",
+      "public_bytes": 456,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 1,
+        "PYENV_HOME": 2
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/LAUNCH-PRODUCER-TERMINAL.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/LAUNCH-PRODUCER-TERMINAL.json",
+      "original_sha256": "1f41155704dd45cbb9f9e50496bde6d0d07d78451fb5ccf2468b2449c8ef06a6",
+      "original_bytes": 229,
+      "public_sha256": "1f41155704dd45cbb9f9e50496bde6d0d07d78451fb5ccf2468b2449c8ef06a6",
+      "public_bytes": 229,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/LAUNCH-READY.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/LAUNCH-READY.json",
+      "original_sha256": "be421679918f87bf5567e2a7c091830a43051d56f07a41a0ad9651c7637a77a9",
+      "original_bytes": 2080,
+      "public_sha256": "46a313537236bf7f9011b2dfc8d599e390ce9e07505c0ab71d0d7a3dc9f53e4c",
+      "public_bytes": 1663,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 3
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/LAUNCH-READINESS-ADMISSION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/LAUNCH-READINESS-ADMISSION.json",
+      "original_sha256": "af06d9aa9b6337110c6fb5d1b2e96f1bb3bd56a13265a5b93d100a787ebf9f74",
+      "original_bytes": 544,
+      "public_sha256": "af06d9aa9b6337110c6fb5d1b2e96f1bb3bd56a13265a5b93d100a787ebf9f74",
+      "public_bytes": 544,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/LAUNCH-INVENTORY.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/LAUNCH-INVENTORY.json",
+      "original_sha256": "45649908af197192fd073d5482a6aa34e07d698a4b6ba20b837c3f0229b0e883",
+      "original_bytes": 7381,
+      "public_sha256": "b681349d1447e22c9b3bf8701196a66bae8673c2047c64f0fa8221760763d415",
+      "public_bytes": 6825,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 4
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/STARTUP-INVENTORY-001.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/STARTUP-INVENTORY-001.json",
+      "original_sha256": "149a0534ade684b0b421f2a64a90c4823aefefe8f9bd605405187ff05c8c9714",
+      "original_bytes": 54,
+      "public_sha256": "149a0534ade684b0b421f2a64a90c4823aefefe8f9bd605405187ff05c8c9714",
+      "public_bytes": 54,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/STARTUP-INVENTORY-002.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/STARTUP-INVENTORY-002.json",
+      "original_sha256": "45649908af197192fd073d5482a6aa34e07d698a4b6ba20b837c3f0229b0e883",
+      "original_bytes": 7381,
+      "public_sha256": "b681349d1447e22c9b3bf8701196a66bae8673c2047c64f0fa8221760763d415",
+      "public_bytes": 6825,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 4
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/OWNED-IDENTITY.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/OWNED-IDENTITY.json",
+      "original_sha256": "3b642aed9805bb85b8f8ec621ce9f35274f7cfe6ad7ec2cacdd3d408401aa726",
+      "original_bytes": 1430,
+      "public_sha256": "1060bb497db8e6bac080006661efc8f30529762c3cf273b3bd691b01d2544e58",
+      "public_bytes": 1152,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 2
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/BIND-INVENTORY.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/BIND-INVENTORY.json",
+      "original_sha256": "cabfb7f54a7eb8e5af0cdb0d99ff944007396a7d0f181fd2fcb77cd5728454a8",
+      "original_bytes": 6803,
+      "public_sha256": "8e4e59c59dd56e3a2193233c3e6992466ebd4cdaad6b385a43d8072e9e41d029",
+      "public_bytes": 6525,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 2
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/POST-GETTER-INVENTORY.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/POST-GETTER-INVENTORY.json",
+      "original_sha256": "cabfb7f54a7eb8e5af0cdb0d99ff944007396a7d0f181fd2fcb77cd5728454a8",
+      "original_bytes": 6803,
+      "public_sha256": "8e4e59c59dd56e3a2193233c3e6992466ebd4cdaad6b385a43d8072e9e41d029",
+      "public_bytes": 6525,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 2
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/BIND-bind-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/BIND-bind-COMPLETION.json",
+      "original_sha256": "09cc873e0485b1a8e40ca6eaddb69615962301b17e7a72d083a60c22aaae167d",
+      "original_bytes": 10192,
+      "public_sha256": "4589eb6086d25dc8f53ca67933093e4cc7924eb223a12260db0aac1f7b924d92",
+      "public_bytes": 9195,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 7,
+        "PYENV_HOME": 2
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/BIND-post-getter-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/BIND-post-getter-COMPLETION.json",
+      "original_sha256": "6cb583586fec2fb50758e27618d86281fca998b99181960639882ff46f3e009c",
+      "original_bytes": 440,
+      "public_sha256": "f610e339fcd447fc59ce14823615befaf82b66567093447a73d823b52eaa2e39",
+      "public_bytes": 301,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 1
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/BIND-arm-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/BIND-arm-COMPLETION.json",
+      "original_sha256": "4f9ab91102f3db30856c8965290d9f6ea877fb2cab43f38be25285fa0556dbe8",
+      "original_bytes": 780,
+      "public_sha256": "8865ebdaf1689efa3d100e769615d97d1970e8784024d882f385f51785182558",
+      "public_bytes": 641,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 1
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/COUNTS.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/COUNTS.json",
+      "original_sha256": "1c84cad7f6f266ec43435be147882ff26908200121ad602fe88181bd1aab14fc",
+      "original_bytes": 172,
+      "public_sha256": "1c84cad7f6f266ec43435be147882ff26908200121ad602fe88181bd1aab14fc",
+      "public_bytes": 172,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/SEQUENCE-METADATA.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/SEQUENCE-METADATA.json",
+      "original_sha256": "0ba6423e6cfc9ec5adeaa5bc6cd070fa8601d5d0fbbcd851e5325994fd7e3332",
+      "original_bytes": 1255,
+      "public_sha256": "28fe15e8b07de9edbc1d4cf5e677f745efbdbee73aaa8016db2d8c44ce0ec879",
+      "public_bytes": 838,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 3
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/PREVIEW-RESULT.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/PREVIEW-RESULT.json",
+      "original_sha256": "4b50dd2eabb0cea5c78b49a9eef6a04cf19c758f664a54ad5e331a991ac3c9c9",
+      "original_bytes": 10141,
+      "public_sha256": "31e3bf1dbd79cfa2e1b2ef70ffd6429611d43fc8167bf8df4dd59e95641dfcce",
+      "public_bytes": 9561,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 4,
+        "PYENV_HOME": 2
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/PREVIEW-MANIFEST.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/PREVIEW-MANIFEST.json",
+      "original_sha256": "cfee6976553d0307cb192e2a695f827c0235688f077a341956c6293a33142a45",
+      "original_bytes": 14238,
+      "public_sha256": "cfee6976553d0307cb192e2a695f827c0235688f077a341956c6293a33142a45",
+      "public_bytes": 14238,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/PREVIEW-EXTERNAL-TERMINAL.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/PREVIEW-EXTERNAL-TERMINAL.json",
+      "original_sha256": "b740f67b4e6decf346e32873c004b87da5ed0a7533e141f933c4117d1f3f2049",
+      "original_bytes": 386,
+      "public_sha256": "b740f67b4e6decf346e32873c004b87da5ed0a7533e141f933c4117d1f3f2049",
+      "public_bytes": 386,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/RSS-BASELINE.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/RSS-BASELINE.json",
+      "original_sha256": "e54ab52918a22a4d5e3a1ad321c59d7aacbd04858bd4a257d06530c8cb394531",
+      "original_bytes": 2693,
+      "public_sha256": "16b6ae04d2ce6b52e29ccf4eed1d19769ddb0867d214f1a1341c98a4526da104",
+      "public_bytes": 1998,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 5
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/RSS-SAMPLES.jsonl",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/RSS-SAMPLES.jsonl",
+      "original_sha256": "f82cf23c64ce096408b2e6271ec6cfa3d2429636395b9be61acc1be4ee471814",
+      "original_bytes": 9995,
+      "public_sha256": "2aea23a20e0eeb892f6ac311604906bef3bd77f6df56d50760cba976dce99635",
+      "public_bytes": 6798,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 23
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/RESOURCE-READY.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/RESOURCE-READY.json",
+      "original_sha256": "0c950be27c1a08e1b2ce98510c904eda13ad46cb8fe71d6f01526ba4bcf2cb2a",
+      "original_bytes": 420,
+      "public_sha256": "0c950be27c1a08e1b2ce98510c904eda13ad46cb8fe71d6f01526ba4bcf2cb2a",
+      "public_bytes": 420,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/RESOURCE-TERMINAL.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/RESOURCE-TERMINAL.json",
+      "original_sha256": "0de7538b27d155dd586a75e477b66015f18a5cc989dc8f4bd7ede0559cdbdc11",
+      "original_bytes": 183,
+      "public_sha256": "0de7538b27d155dd586a75e477b66015f18a5cc989dc8f4bd7ede0559cdbdc11",
+      "public_bytes": 183,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/WATCHDOG-READY.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/WATCHDOG-READY.json",
+      "original_sha256": "5634295fae22f890ef9e096801c14464ba5340695b0b355770403446b2ddcc2b",
+      "original_bytes": 319,
+      "public_sha256": "5634295fae22f890ef9e096801c14464ba5340695b0b355770403446b2ddcc2b",
+      "public_bytes": 319,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/WATCHDOG-TERMINAL.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/WATCHDOG-TERMINAL.json",
+      "original_sha256": "cf2054d22b50ecd26f55d52147f9da520cacf002a5e0f1c371ae585924bd4aaa",
+      "original_bytes": 115,
+      "public_sha256": "cf2054d22b50ecd26f55d52147f9da520cacf002a5e0f1c371ae585924bd4aaa",
+      "public_bytes": 115,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/LAUNCH-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/LAUNCH-COMPLETION.json",
+      "original_sha256": "38bf94c00e7a266a4e1445491ae212aaa7c33a43e134ea1f869aa57cac834a8c",
+      "original_bytes": 395,
+      "public_sha256": "67b6622737559fb53b7f2e84cd678ce54f0ca660f67a468f47407231414abe1e",
+      "public_bytes": 256,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 1
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/RESOURCE-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/RESOURCE-COMPLETION.json",
+      "original_sha256": "7471d6c87eae0f45dfd097873cd99fb6d7a2095bcb36fcdcc43db92d309407c0",
+      "original_bytes": 126,
+      "public_sha256": "7471d6c87eae0f45dfd097873cd99fb6d7a2095bcb36fcdcc43db92d309407c0",
+      "public_bytes": 126,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/WATCHDOG-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/WATCHDOG-COMPLETION.json",
+      "original_sha256": "b2005a21ffef4a5b0aa680cf9da5d7536d21e2edc97a3bf78ae3e826590b055c",
+      "original_bytes": 126,
+      "public_sha256": "b2005a21ffef4a5b0aa680cf9da5d7536d21e2edc97a3bf78ae3e826590b055c",
+      "public_bytes": 126,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/CLEANUP-PRODUCER.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/CLEANUP-PRODUCER.json",
+      "original_sha256": "893f401cd62e71cc15e838d06a098fdc98386219f00e55dddf9f8297cd541c37",
+      "original_bytes": 165,
+      "public_sha256": "893f401cd62e71cc15e838d06a098fdc98386219f00e55dddf9f8297cd541c37",
+      "public_bytes": 165,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/CLEANUP.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/CLEANUP.json",
+      "original_sha256": "d48fc9e8791169d89b344e1e92cfd15998ee1bb1fc927c250ba8ae57ed5320f0",
+      "original_bytes": 1372,
+      "public_sha256": "0b2b9fd6f0671ffcdb85e773453cb654637a4e387f0c7e7f6fb5b295da22f550",
+      "public_bytes": 1209,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 1,
+        "PYENV_HOME": 2
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/OWNER-OS-ABSENCE.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/OWNER-OS-ABSENCE.json",
+      "original_sha256": "9f757e0e8e606e695e75398f1941835679ca9f0bfccbd9446d61917fd5502611",
+      "original_bytes": 159,
+      "public_sha256": "9f757e0e8e606e695e75398f1941835679ca9f0bfccbd9446d61917fd5502611",
+      "public_bytes": 159,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/OWNER-close-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/OWNER-close-COMPLETION.json",
+      "original_sha256": "b0fe9668d7c1e6744195214ad46fc35028e1b5b21f74b62d4434d4f60bf5300b",
+      "original_bytes": 205,
+      "public_sha256": "b0fe9668d7c1e6744195214ad46fc35028e1b5b21f74b62d4434d4f60bf5300b",
+      "public_bytes": 205,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/OWNER-seal-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/OWNER-seal-COMPLETION.json",
+      "original_sha256": "04c94fee1990cd9e47ffd3710b5181092ca3514a565f372d46d066f2f92737f1",
+      "original_bytes": 201,
+      "public_sha256": "04c94fee1990cd9e47ffd3710b5181092ca3514a565f372d46d066f2f92737f1",
+      "public_bytes": 201,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/RSS-PID-36692-ABSENT.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/RSS-PID-36692-ABSENT.json",
+      "original_sha256": "74f6cff56fb64d86e5daaade22a24c9ef5ec0a6af9c95f09b3130b5e9a25877f",
+      "original_bytes": 59,
+      "public_sha256": "74f6cff56fb64d86e5daaade22a24c9ef5ec0a6af9c95f09b3130b5e9a25877f",
+      "public_bytes": 59,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/SAMPLE-SETTLED.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/SAMPLE-SETTLED.json",
+      "original_sha256": "6c38efe3fa524db806dbe9e88413ed13c19571eb4250f3e07ea72d4cc96c6a21",
+      "original_bytes": 142,
+      "public_sha256": "6c38efe3fa524db806dbe9e88413ed13c19571eb4250f3e07ea72d4cc96c6a21",
+      "public_bytes": 142,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/QUIT-EXPECTED-36692.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/QUIT-EXPECTED-36692.json",
+      "original_sha256": "dd48f6e38736bd0d5dc00fa5be717671b9503ddbe5b5a002e141b50b50385d7e",
+      "original_bytes": 85,
+      "public_sha256": "dd48f6e38736bd0d5dc00fa5be717671b9503ddbe5b5a002e141b50b50385d7e",
+      "public_bytes": 85,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/DONE",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/DONE",
+      "original_sha256": "491a959b7f227fb4d8f5021f352bfbca7260c69ba7438b6c9b21a3158bce9188",
+      "original_bytes": 64,
+      "public_sha256": "491a959b7f227fb4d8f5021f352bfbca7260c69ba7438b6c9b21a3158bce9188",
+      "public_bytes": 64,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/VISUAL-01-state-AX-RETURNED-TEXT.txt",
+      "kind": "exact_returned_text_value_extract_with_locator_substitutions",
+      "original_response_locator": "<CASE_P005>/VISUAL-01-state.json",
+      "original_response_sha256": "0782df63bf30f98c2d2a35ad848a9ecc52c5e5a153808dc91474d219d760d52d",
+      "original_response_content_index": 0,
+      "original_text_utf8_sha256": "014cee243dfe04a5290e456368684803263a9d4698461f1b429b2beeed88d008",
+      "original_text_utf8_bytes": 4808,
+      "qualification": "Exact UTF-8 encoding of original content[0].text; full image-bearing raw response is private/omitted. All extracted text bytes outside exact locator prefixes remain unchanged; this is not a complete raw-response derivative.",
+      "public_sha256": "8f3d4e12017b054427b8c3fa7d04fc6aec23d83dafe70baa11a9696e4bbb064f",
+      "public_bytes": 4669,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 1
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/VISUAL-01-state-GATE-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/VISUAL-01-state-GATE-COMPLETION.json",
+      "original_sha256": "92c69682564127b8e03a7ce8c0d86eb69a001663b998c88a788d0d649d7d4f0d",
+      "original_bytes": 474,
+      "public_sha256": "92c69682564127b8e03a7ce8c0d86eb69a001663b998c88a788d0d649d7d4f0d",
+      "public_bytes": 474,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/VISUAL-01-state-CLOSE-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/VISUAL-01-state-CLOSE-COMPLETION.json",
+      "original_sha256": "5e03d7f924c6d6675394c035cd51a9313832a95e56ff7d40f22e85db64d7539d",
+      "original_bytes": 642,
+      "public_sha256": "5e03d7f924c6d6675394c035cd51a9313832a95e56ff7d40f22e85db64d7539d",
+      "public_bytes": 642,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/VISUAL-01-state-CALL-TERMINAL.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/VISUAL-01-state-CALL-TERMINAL.json",
+      "original_sha256": "fd488bbeadac36b909b0bc6df84c7803134de5a16a7ee478b888749e19197ce8",
+      "original_bytes": 402,
+      "public_sha256": "fd488bbeadac36b909b0bc6df84c7803134de5a16a7ee478b888749e19197ce8",
+      "public_bytes": 402,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/VISUAL-02-frame-AX-RETURNED-TEXT.txt",
+      "kind": "exact_returned_text_value_extract_with_locator_substitutions",
+      "original_response_locator": "<CASE_P005>/VISUAL-02-frame.json",
+      "original_response_sha256": "cec23e6b27c5bf633abb8ede0d8e33d1a0652d17509a53331741eb939a8d7a4b",
+      "original_response_content_index": 0,
+      "original_text_utf8_sha256": "4d14650fe4032dec0f07cdc356306daa694620fa8cc00d13a10661c5ed9a60cb",
+      "original_text_utf8_bytes": 4536,
+      "qualification": "Exact UTF-8 encoding of original content[0].text; full image-bearing raw response is private/omitted. All extracted text bytes outside exact locator prefixes remain unchanged; this is not a complete raw-response derivative.",
+      "public_sha256": "4d14650fe4032dec0f07cdc356306daa694620fa8cc00d13a10661c5ed9a60cb",
+      "public_bytes": 4536,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/VISUAL-02-frame-GATE-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/VISUAL-02-frame-GATE-COMPLETION.json",
+      "original_sha256": "018255fcfa1ec2a68710f963974a8ecb440178f5f93a9794150e66b71b1fea0e",
+      "original_bytes": 474,
+      "public_sha256": "018255fcfa1ec2a68710f963974a8ecb440178f5f93a9794150e66b71b1fea0e",
+      "public_bytes": 474,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/VISUAL-02-frame-CLOSE-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/VISUAL-02-frame-CLOSE-COMPLETION.json",
+      "original_sha256": "f37f5aa643105ec41296f2fcf2002b8b9c494f1b3e7c2e2b435db53555450d77",
+      "original_bytes": 643,
+      "public_sha256": "f37f5aa643105ec41296f2fcf2002b8b9c494f1b3e7c2e2b435db53555450d77",
+      "public_bytes": 643,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/VISUAL-02-frame-CALL-TERMINAL.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/VISUAL-02-frame-CALL-TERMINAL.json",
+      "original_sha256": "64138bc5f87a66ed85700494c87dfc590237b763750b6a13eb5606fb5a7e5859",
+      "original_bytes": 404,
+      "public_sha256": "64138bc5f87a66ed85700494c87dfc590237b763750b6a13eb5606fb5a7e5859",
+      "public_bytes": 404,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/VISUAL-03-create-AX-RETURNED-TEXT.txt",
+      "kind": "exact_returned_text_value_extract_with_locator_substitutions",
+      "original_response_locator": "<CASE_P005>/VISUAL-03-create.json",
+      "original_response_sha256": "6abb930919b4d486fbbe7ec083107b49c87c068de36ee02beb2d162844805d4d",
+      "original_response_content_index": 0,
+      "original_text_utf8_sha256": "8a88959b705b8c80d46b7ea835a8cd3927e6b4bdfe4d84966eca1ce94274e147",
+      "original_text_utf8_bytes": 4513,
+      "qualification": "Exact UTF-8 encoding of original content[0].text; full image-bearing raw response is private/omitted. All extracted text bytes outside exact locator prefixes remain unchanged; this is not a complete raw-response derivative.",
+      "public_sha256": "8a88959b705b8c80d46b7ea835a8cd3927e6b4bdfe4d84966eca1ce94274e147",
+      "public_bytes": 4513,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/VISUAL-03-create-GATE-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/VISUAL-03-create-GATE-COMPLETION.json",
+      "original_sha256": "2bf178c5ebe1a7927565c36656fec8403e7f3e4694a7499c030cc884b3a46269",
+      "original_bytes": 473,
+      "public_sha256": "2bf178c5ebe1a7927565c36656fec8403e7f3e4694a7499c030cc884b3a46269",
+      "public_bytes": 473,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/VISUAL-03-create-CLOSE-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/VISUAL-03-create-CLOSE-COMPLETION.json",
+      "original_sha256": "6a1a91d3af0f94d34dcdde2e33150d0e57ad53894977881aa8a57eba5b64176d",
+      "original_bytes": 644,
+      "public_sha256": "6a1a91d3af0f94d34dcdde2e33150d0e57ad53894977881aa8a57eba5b64176d",
+      "public_bytes": 644,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/VISUAL-03-create-CALL-TERMINAL.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/VISUAL-03-create-CALL-TERMINAL.json",
+      "original_sha256": "bafd7d4a4ad816cffa86171f29f13a5f3844fd29ca5d8758f0c396b9ac57d5fa",
+      "original_bytes": 403,
+      "public_sha256": "bafd7d4a4ad816cffa86171f29f13a5f3844fd29ca5d8758f0c396b9ac57d5fa",
+      "public_bytes": 403,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/VISUAL-04-quit.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/VISUAL-04-quit.json",
+      "original_sha256": "ff2c24624b1f93383aef3a9c4720f5273d9805dc021fde9eae522a72e9ba8499",
+      "original_bytes": 135,
+      "public_sha256": "ff2c24624b1f93383aef3a9c4720f5273d9805dc021fde9eae522a72e9ba8499",
+      "public_bytes": 135,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/VISUAL-04-quit-GATE-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/VISUAL-04-quit-GATE-COMPLETION.json",
+      "original_sha256": "cecdedd6261dd2425a484ed30a3cf5007b701f82c9da5b592fc84d4edafc4cf6",
+      "original_bytes": 474,
+      "public_sha256": "cecdedd6261dd2425a484ed30a3cf5007b701f82c9da5b592fc84d4edafc4cf6",
+      "public_bytes": 474,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/VISUAL-04-quit-CLOSE-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/VISUAL-04-quit-CLOSE-COMPLETION.json",
+      "original_sha256": "9ccc7934afc1f65e5bdb10e1389dc2ec1905e897335ed001ff71b655b274f24f",
+      "original_bytes": 640,
+      "public_sha256": "9ccc7934afc1f65e5bdb10e1389dc2ec1905e897335ed001ff71b655b274f24f",
+      "public_bytes": 640,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/VISUAL-04-quit-CALL-TERMINAL.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P005>/VISUAL-04-quit-CALL-TERMINAL.json",
+      "original_sha256": "790f81479da7efe7e99b23e481074512dad7d454a955bc68a5bdf2e5e801fa78",
+      "original_bytes": 400,
+      "public_sha256": "790f81479da7efe7e99b23e481074512dad7d454a955bc68a5bdf2e5e801fa78",
+      "public_bytes": 400,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/post-case/CASE-FREEZE.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<POSTCASE_P005>/CASE-FREEZE.json",
+      "original_sha256": "ea7ef8b507a252a7879b6527590e565e219479753efe996ba5a3376b2a2019ce",
+      "original_bytes": 17895,
+      "public_sha256": "ea7ef8b507a252a7879b6527590e565e219479753efe996ba5a3376b2a2019ce",
+      "public_bytes": 17895,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/post-case/POSTCASE-INITIAL.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<POSTCASE_P005>/POSTCASE-INITIAL.json",
+      "original_sha256": "0ee1ff0d6a25bd5e549008213e8fbef93af696d0598a99966ac3e384e16933e9",
+      "original_bytes": 3117,
+      "public_sha256": "a68d8bd7642cd50f2e5908c024b04fa54c1fe4b1657f43b9760f57b77dda10f7",
+      "public_bytes": 2700,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 3
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/post-case/ROOT-FINAL-CALLER-ADMISSION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<POSTCASE_P005>/ROOT-FINAL-CALLER-ADMISSION.json",
+      "original_sha256": "41b9820c5aa66084c4b3554d8cc493b748ee54b4c5b6bbb0936cac6967cbf23a",
+      "original_bytes": 2552,
+      "public_sha256": "be4db43ea64288836e7687faf2cc4631ed5695759235a7c348ef2c3f441c9b7b",
+      "public_bytes": 1996,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P005": 4
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/post-case/ROOT-OUTCOME.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<POSTCASE_P005>/ROOT-OUTCOME.json",
+      "original_sha256": "9ec1c59b344a48b121dd3fad2fb900df9b50397990210828966f3d43307eb436",
+      "original_bytes": 1074,
+      "public_sha256": "9ec1c59b344a48b121dd3fad2fb900df9b50397990210828966f3d43307eb436",
+      "public_bytes": 1074,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/actual-P005/post-case/VISUAL-REVIEW.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<POSTCASE_P005>/VISUAL-REVIEW.json",
+      "original_sha256": "76640cfb9f9896e774d64eb620a5ed311d2081212970ac172e876325c749e57c",
+      "original_bytes": 1853,
+      "public_sha256": "76640cfb9f9896e774d64eb620a5ed311d2081212970ac172e876325c749e57c",
+      "public_bytes": 1853,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/INT-PIN.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/INT-PIN.json",
+      "original_sha256": "8fd2ff1bcaa7005e140d4743baae20591b9ae79a4bf068802f9a4dd095f5e6e5",
+      "original_bytes": 717,
+      "public_sha256": "46afef4a3b812cf58e2a56142a28852af6784d63c6be2fb6396d5fde66a9e745",
+      "public_bytes": 579,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "WORKTREE": 1,
+        "REPOSITORY_ROOT": 1
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/README.md",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/README.md",
+      "original_sha256": "8b8a3191433149013715555ab9bac080b58db76a446d31af3b4236c7a8de18d4",
+      "original_bytes": 5777,
+      "public_sha256": "8b8a3191433149013715555ab9bac080b58db76a446d31af3b4236c7a8de18d4",
+      "public_bytes": 5777,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/call_recorder.py",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/call_recorder.py",
+      "original_sha256": "39e3c74f3950e712918e71f7234e5da6a4783773d2281326be7219735397f848",
+      "original_bytes": 2720,
+      "public_sha256": "39e3c74f3950e712918e71f7234e5da6a4783773d2281326be7219735397f848",
+      "public_bytes": 2720,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/check_run.py",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/check_run.py",
+      "original_sha256": "6e79f211cbe37f08824ae9f58a990f0bc92cc14d353f9b2b955c38baf4748022",
+      "original_bytes": 8501,
+      "public_sha256": "57bac8b358b0ac8aa45b8c77f8d483e60b9dbe0f12ba245569c7159cced6e5c9",
+      "public_bytes": 8489,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "PYENV_HOME": 1
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/cleanup.py",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/cleanup.py",
+      "original_sha256": "1881ccdf8fb55b33796a15c08170e42037c7a619c886a0ba071a4651d691f07a",
+      "original_bytes": 14388,
+      "public_sha256": "1881ccdf8fb55b33796a15c08170e42037c7a619c886a0ba071a4651d691f07a",
+      "public_bytes": 14388,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/clock.py",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/clock.py",
+      "original_sha256": "2e6a43e3db584c56e7fb1f05a4e9b8802141130c3ef778f41e54209fadc24301",
+      "original_bytes": 4617,
+      "public_sha256": "2e6a43e3db584c56e7fb1f05a4e9b8802141130c3ef778f41e54209fadc24301",
+      "public_bytes": 4617,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/focused_selfcheck.cjs",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/focused_selfcheck.cjs",
+      "original_sha256": "a7f6fb4d08da8dcee972e81bb19df169bc3bfa4b9f3fce681d862cc1f92b78dc",
+      "original_bytes": 11967,
+      "public_sha256": "a7f6fb4d08da8dcee972e81bb19df169bc3bfa4b9f3fce681d862cc1f92b78dc",
+      "public_bytes": 11967,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/focused_selfcheck.py",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/focused_selfcheck.py",
+      "original_sha256": "211cd66b967654b3436f56b09962d6d679ef323f8a5321c3d920a89e69c3de87",
+      "original_bytes": 4048,
+      "public_sha256": "a4f2f840bc4d029222e2332c86418772277e199dddf409727619f44cc56374eb",
+      "public_bytes": 4037,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "HOME": 1
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/inventory.js",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/inventory.js",
+      "original_sha256": "4136073f3e97e406034320d2eb058e38b7021e25ba3c6b3adcf3e41d53c6b36a",
+      "original_bytes": 1352,
+      "public_sha256": "4136073f3e97e406034320d2eb058e38b7021e25ba3c6b3adcf3e41d53c6b36a",
+      "public_bytes": 1352,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/native_call.js",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/native_call.js",
+      "original_sha256": "9d108334cf4b1666e5e6546df221af1aba71d5c32a9a2642c2e49cac6545f890",
+      "original_bytes": 4573,
+      "public_sha256": "9d108334cf4b1666e5e6546df221af1aba71d5c32a9a2642c2e49cac6545f890",
+      "public_bytes": 4573,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/preview_launch.js",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/preview_launch.js",
+      "original_sha256": "e2ac162cd162b0d5b6192c2ad6774149d0cfcc9a05fc71be22c6a9885f004bad",
+      "original_bytes": 5421,
+      "public_sha256": "e2ac162cd162b0d5b6192c2ad6774149d0cfcc9a05fc71be22c6a9885f004bad",
+      "public_bytes": 5421,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/preview_launch.py",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/preview_launch.py",
+      "original_sha256": "9ffc78abcc4a28f0734a9b136d4cf1dde7fd2d68398d0f24e68e529c8c1ab6ae",
+      "original_bytes": 23274,
+      "public_sha256": "9ffc78abcc4a28f0734a9b136d4cf1dde7fd2d68398d0f24e68e529c8c1ab6ae",
+      "public_bytes": 23274,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/preview_owner.py",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/preview_owner.py",
+      "original_sha256": "59403dd14c55a483b690e26feeba1b8fcf5b8eb59034c0a1ee89179e68780cfa",
+      "original_bytes": 21735,
+      "public_sha256": "59403dd14c55a483b690e26feeba1b8fcf5b8eb59034c0a1ee89179e68780cfa",
+      "public_bytes": 21735,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/preview_sequence.js",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/preview_sequence.js",
+      "original_sha256": "9345d29ef22f060c55df0ad0106c1320935ec13d96037a09821401523f77882a",
+      "original_bytes": 19874,
+      "public_sha256": "9345d29ef22f060c55df0ad0106c1320935ec13d96037a09821401523f77882a",
+      "public_bytes": 19874,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/resource_observer.py",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/resource_observer.py",
+      "original_sha256": "21200ee8595d3abc8e5878b9b521fee85d3e779cc69b02fc35d302b90d1b2901",
+      "original_bytes": 8123,
+      "public_sha256": "21200ee8595d3abc8e5878b9b521fee85d3e779cc69b02fc35d302b90d1b2901",
+      "public_bytes": 8123,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/resources.py",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/resources.py",
+      "original_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "original_bytes": 12679,
+      "public_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "public_bytes": 12679,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/SOURCE-FREEZE.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/SOURCE-FREEZE.json",
+      "original_sha256": "d7b2c6179b780a488df0beab24f6bbb49ca38ee6127c7b14d4a1857b5ba6cf13",
+      "original_bytes": 2297,
+      "public_sha256": "d7b2c6179b780a488df0beab24f6bbb49ca38ee6127c7b14d4a1857b5ba6cf13",
+      "public_bytes": 2297,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/FREEZE.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/FREEZE.json",
+      "original_sha256": "ce32d4f3d1e691a74ce1b64de48e1672a15b0c4e3b76d8667e052d71a22ee66e",
+      "original_bytes": 11300,
+      "public_sha256": "d3078a97d3c4467d228814b8bd0953dfff1a474c5af10703bb3ff37701a237a8",
+      "public_bytes": 11069,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "PREPARATION_V6": 1,
+        "WORKTREE": 1,
+        "REPOSITORY_ROOT": 1
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/RECEIPT.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/RECEIPT.json",
+      "original_sha256": "189bff29f8435e0cebc68405127e25904c07a0cd825df78cf2e390b65587d120",
+      "original_bytes": 8428,
+      "public_sha256": "cdb07358a6dfa4fd1886d2d4537e9b1e734911f433e8bd95d94bd198b3bd494f",
+      "public_bytes": 8197,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "PREPARATION_V6": 1,
+        "WORKTREE": 1,
+        "REPOSITORY_ROOT": 1
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/RUNTIME.patch",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/RUNTIME.patch",
+      "original_sha256": "1ea4bc434a93d15c0dbe341e78438b3ad1a2949953aba4ccbc760877d3690b7b",
+      "original_bytes": 7235,
+      "public_sha256": "1ea4bc434a93d15c0dbe341e78438b3ad1a2949953aba4ccbc760877d3690b7b",
+      "public_bytes": 7235,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/EXEC-INITIAL.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/EXEC-INITIAL.json",
+      "original_sha256": "5bd091d1f57191810415a8c47a02a19bba6b46f1754485c79da0aae5c54d2013",
+      "original_bytes": 393,
+      "public_sha256": "5bd091d1f57191810415a8c47a02a19bba6b46f1754485c79da0aae5c54d2013",
+      "public_bytes": 393,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/EXEC-TERMINAL.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/EXEC-TERMINAL.json",
+      "original_sha256": "a6cf8dea89d80ac67479e012283b71233581ca0357e768b718ef8091ee5f3959",
+      "original_bytes": 520,
+      "public_sha256": "a6cf8dea89d80ac67479e012283b71233581ca0357e768b718ef8091ee5f3959",
+      "public_bytes": 520,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/stub-check-001/RESULT.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/stub-check-001/RESULT.json",
+      "original_sha256": "57e51707d6a845b66001456a57f0df9a8d9f5d1dbe19e95263e338f0253a3444",
+      "original_bytes": 10549,
+      "public_sha256": "28b36487e2e72c9dae4daed127beb09f62c42e3790894e9a139a21ce49690050",
+      "public_bytes": 10351,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "PREPARATION_V6": 2,
+        "PYENV_HOME": 1
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/stub-check-001/MANIFEST.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/stub-check-001/MANIFEST.json",
+      "original_sha256": "ae01e5a8eb6d114cb6cb6478327f099a512e8b1583d7062be66ee73339daadd7",
+      "original_bytes": 1681,
+      "public_sha256": "ae01e5a8eb6d114cb6cb6478327f099a512e8b1583d7062be66ee73339daadd7",
+      "public_bytes": 1681,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/stub-check-001/EXTERNAL-TERMINAL.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/stub-check-001/EXTERNAL-TERMINAL.json",
+      "original_sha256": "322fc0cd4bfe14cd780d2ec185f2f67c5438fab8c23d970f799933a290c21adc",
+      "original_bytes": 201,
+      "public_sha256": "322fc0cd4bfe14cd780d2ec185f2f67c5438fab8c23d970f799933a290c21adc",
+      "public_bytes": 201,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/stub-check-001/STARTED.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/stub-check-001/STARTED.json",
+      "original_sha256": "b634c4b8adadbc53a6696005b1dc04dd9db5ef17bae8b36bb1cf8e2ae9255303",
+      "original_bytes": 1396,
+      "public_sha256": "37c91a4b497f1c37ca4ba03335ca109bd35afa5901b3fcb4066eb249f2465ac0",
+      "public_bytes": 1198,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "PREPARATION_V6": 2,
+        "PYENV_HOME": 1
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/stub-check-001/stdout.log",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/stub-check-001/stdout.log",
+      "original_sha256": "95d11d8c103ea5f9912c405b05bec016f27b1a3095a4a9f59ece1720ebba6431",
+      "original_bytes": 7931,
+      "public_sha256": "95d11d8c103ea5f9912c405b05bec016f27b1a3095a4a9f59ece1720ebba6431",
+      "public_bytes": 7931,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/stub-check-001/stderr.log",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6>/stub-check-001/stderr.log",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/root-review/FREEZE.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6_ROOT_REVIEW>/FREEZE.json",
+      "original_sha256": "8ec213dfe14a416b520051abafe4b96293d461de694728a59594e3933cd99bb2",
+      "original_bytes": 249,
+      "public_sha256": "8ec213dfe14a416b520051abafe4b96293d461de694728a59594e3933cd99bb2",
+      "public_bytes": 249,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/root-review/RECEIPT.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6_ROOT_REVIEW>/RECEIPT.json",
+      "original_sha256": "5d353d7a6af30360ee84567ac562817cd3faeb3a50aee2333f5bd715f4b7e51e",
+      "original_bytes": 757,
+      "public_sha256": "5d353d7a6af30360ee84567ac562817cd3faeb3a50aee2333f5bd715f4b7e51e",
+      "public_bytes": 757,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/root-review/REVIEW.md",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<PREPARATION_V6_ROOT_REVIEW>/REVIEW.md",
+      "original_sha256": "fccec94d65a9a913764dd6079c068b4de62f70c2ab6557592160a7c0e1bb28f3",
+      "original_bytes": 1338,
+      "public_sha256": "fccec94d65a9a913764dd6079c068b4de62f70c2ab6557592160a7c0e1bb28f3",
+      "public_bytes": 1338,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P002/LAUNCH-LIVE.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P002>/LAUNCH-LIVE.json",
+      "original_sha256": "0e7e00a74753c7df772a9360ef45eec7272ff296f78e969fee6069a081d77820",
+      "original_bytes": 1530,
+      "public_sha256": "1f98481ab8bfa729d2a22a58ef1f15bfaf146f58f34acfc438946268eaddb2ff",
+      "public_bytes": 974,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P002": 4
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P002/LAUNCH-PRODUCER-TERMINAL.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P002>/LAUNCH-PRODUCER-TERMINAL.json",
+      "original_sha256": "8d5a3527babec60dd6975c2c5b7c0c03f7021ca9343bbf02ab2337e451e7b31b",
+      "original_bytes": 424,
+      "public_sha256": "8d5a3527babec60dd6975c2c5b7c0c03f7021ca9343bbf02ab2337e451e7b31b",
+      "public_bytes": 424,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P002/CLEANUP.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P002>/CLEANUP.json",
+      "original_sha256": "2f2feb5b949e8cd0f2fb0b0477adce1c43387b6e03872d5290ff0981b61ec280",
+      "original_bytes": 1328,
+      "public_sha256": "f61261e690be9e4c80b9a354b55ac7fb25aa4c7db9ff28ed488f6b0f7e4a2468",
+      "public_bytes": 1165,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P002": 1,
+        "PYENV_HOME": 2
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P002/COUNTS.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P002>/COUNTS.json",
+      "original_sha256": "551ac9c1c2ccdb9f4f49c49a300d3603aa622dbbd095a8f6d2f7a230ab60cbae",
+      "original_bytes": 163,
+      "public_sha256": "551ac9c1c2ccdb9f4f49c49a300d3603aa622dbbd095a8f6d2f7a230ab60cbae",
+      "public_bytes": 163,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P002/DIRECT-CHILD.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P002>/DIRECT-CHILD.json",
+      "original_sha256": "5a9ee2cec7e0f008da701b520866d4ebfa524e93de453d7c3ed523d54400cd76",
+      "original_bytes": 389,
+      "public_sha256": "971437031e2cc2617c714c02407c59da588e739e46d74d21c8c21d5714463e9b",
+      "public_bytes": 250,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P002": 1
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P002/post-case/CASE-FREEZE.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<POSTCASE_P002>/CASE-FREEZE.json",
+      "original_sha256": "fa82f30f6641dc2121ce22309eee2d52fcdbe755d98274dd02a276940524a72e",
+      "original_bytes": 8233,
+      "public_sha256": "fa82f30f6641dc2121ce22309eee2d52fcdbe755d98274dd02a276940524a72e",
+      "public_bytes": 8233,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P002/post-case/ROOT-OUTCOME.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<POSTCASE_P002>/ROOT-OUTCOME.json",
+      "original_sha256": "adc80d844826085c37cd83bfccace34e143f5dad2ed1b048f07d8bb0561dc67f",
+      "original_bytes": 1614,
+      "public_sha256": "adc80d844826085c37cd83bfccace34e143f5dad2ed1b048f07d8bb0561dc67f",
+      "public_bytes": 1614,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P003/STARTUP-INVENTORY-002.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P003>/STARTUP-INVENTORY-002.json",
+      "original_sha256": "12cde317e85753cc6c9c237b6b1b3e169c76db8e5f93694857109f11c9f14e2c",
+      "original_bytes": 7365,
+      "public_sha256": "fcb038e04fc556446c596a38b44c095115d898ebc71d8c184e5e8b9d47e4662a",
+      "public_bytes": 6809,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P003": 4
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P003/DIRECT-CHILD.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P003>/DIRECT-CHILD.json",
+      "original_sha256": "dc29f41a011a2325f83b687cb4938e86a4094b9ed287bdd4478d69a0625a8604",
+      "original_bytes": 477,
+      "public_sha256": "69864631105a39465b5308d1c310e59b3121b2ffeca79765187c5f8c90e1f42b",
+      "public_bytes": 338,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P003": 1
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P003/LAUNCH-PRODUCER-TERMINAL.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P003>/LAUNCH-PRODUCER-TERMINAL.json",
+      "original_sha256": "9b558930eb22152241380ceaa8800dd210159212aba0f0c3284f5a68cacb166a",
+      "original_bytes": 404,
+      "public_sha256": "9b558930eb22152241380ceaa8800dd210159212aba0f0c3284f5a68cacb166a",
+      "public_bytes": 404,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P003/LAUNCH-LIVE.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P003>/LAUNCH-LIVE.json",
+      "original_sha256": "e426a7f18104ffa214a5feaa6fcb8f2f4716c7030ae00d18cc5dd7e5b8f318d8",
+      "original_bytes": 1515,
+      "public_sha256": "598a3a162a3977776e50976d619038d0261f4643a5684748e273893b819f2e88",
+      "public_bytes": 959,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P003": 4
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P003/COUNTS.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P003>/COUNTS.json",
+      "original_sha256": "93c5b6750ae8b41c42818350e9bfd61f1648e5db781f053d33879bda6c2e8a0b",
+      "original_bytes": 163,
+      "public_sha256": "93c5b6750ae8b41c42818350e9bfd61f1648e5db781f053d33879bda6c2e8a0b",
+      "public_bytes": 163,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P003/CLEANUP.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P003>/CLEANUP.json",
+      "original_sha256": "6d4bbde5753e3b848084d0ef492e840bf463007b438af2dbfc36f6da8b42c401",
+      "original_bytes": 1372,
+      "public_sha256": "3e421ec38c58bb26e6a0785bbb58d74a04bdff3cd9326ecff28e5c95f0953750",
+      "public_bytes": 1209,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P003": 1,
+        "PYENV_HOME": 2
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P003/post-case/CASE-FREEZE.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<POSTCASE_P003>/CASE-FREEZE.json",
+      "original_sha256": "72d66be9d57660e0e5dfaee58e42c590eddfd07d4256749bfebec03c5a42ee41",
+      "original_bytes": 9425,
+      "public_sha256": "72d66be9d57660e0e5dfaee58e42c590eddfd07d4256749bfebec03c5a42ee41",
+      "public_bytes": 9425,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P003/post-case/ROOT-OUTCOME.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<POSTCASE_P003>/ROOT-OUTCOME.json",
+      "original_sha256": "9b260841f0fa8f0b635d37c66a328e88fb3946410ce5bdc6d357ac2a2f3ed7fc",
+      "original_bytes": 4831,
+      "public_sha256": "9207dcd1702b0e0d9216333e7665f3d36e53855e858ca103866b6de0fb84c8c5",
+      "public_bytes": 4112,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P003": 5,
+        "PYENV_HOME": 2
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P004/SEQUENCE-METADATA.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P004>/SEQUENCE-METADATA.json",
+      "original_sha256": "fff9a4a95c92619e410bddc3eb69e4a8620712fd26fcd9f24f34c082fdd44808",
+      "original_bytes": 330,
+      "public_sha256": "fff9a4a95c92619e410bddc3eb69e4a8620712fd26fcd9f24f34c082fdd44808",
+      "public_bytes": 330,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P004/VISUAL-01-state-AX-RETURNED-TEXT.txt",
+      "kind": "exact_returned_text_value_extract_with_locator_substitutions",
+      "original_response_locator": "<CASE_P004>/VISUAL-01-state.json",
+      "original_response_sha256": "2edb938ce6e054eb0bc82a208b342da2585681b0085e4b316bb2957304361b4e",
+      "original_response_content_index": 0,
+      "original_text_utf8_sha256": "2b27a6e391810742e010d2565ae74ca88040ebc07154eb8a2e5d548c828504d9",
+      "original_text_utf8_bytes": 4808,
+      "qualification": "Exact UTF-8 encoding of original content[0].text; full image-bearing raw response is private/omitted. All extracted text bytes outside exact locator prefixes remain unchanged; this is not a complete raw-response derivative.",
+      "public_sha256": "e06a282a700a53bddd794d37c87a12726ea900174b4b28f9ddfcdbcd8eb0a713",
+      "public_bytes": 4669,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P004": 1
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P004/VISUAL-04-quit.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P004>/VISUAL-04-quit.json",
+      "original_sha256": "ff2c24624b1f93383aef3a9c4720f5273d9805dc021fde9eae522a72e9ba8499",
+      "original_bytes": 135,
+      "public_sha256": "ff2c24624b1f93383aef3a9c4720f5273d9805dc021fde9eae522a72e9ba8499",
+      "public_bytes": 135,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P004/VISUAL-04-quit-CLOSE-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P004>/VISUAL-04-quit-CLOSE-COMPLETION.json",
+      "original_sha256": "1f688cf1eda69113e3559ca64da0088f68efb4ddada458d752e3f83808253500",
+      "original_bytes": 639,
+      "public_sha256": "1f688cf1eda69113e3559ca64da0088f68efb4ddada458d752e3f83808253500",
+      "public_bytes": 639,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P004/VISUAL-04-quit-GATE-COMPLETION.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P004>/VISUAL-04-quit-GATE-COMPLETION.json",
+      "original_sha256": "61cfe88c982a28d45847fe7bdc568b84c47fd5f5ade16d33b6744177976b7db1",
+      "original_bytes": 474,
+      "public_sha256": "61cfe88c982a28d45847fe7bdc568b84c47fd5f5ade16d33b6744177976b7db1",
+      "public_bytes": 474,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P004/LAUNCH-PRODUCER-TERMINAL.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P004>/LAUNCH-PRODUCER-TERMINAL.json",
+      "original_sha256": "92366cbd57b13eb090280f32a2730c7391e9ba5a906c04057f4e3315f05b1673",
+      "original_bytes": 230,
+      "public_sha256": "92366cbd57b13eb090280f32a2730c7391e9ba5a906c04057f4e3315f05b1673",
+      "public_bytes": 230,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P004/CLEANUP.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P004>/CLEANUP.json",
+      "original_sha256": "931c426fe0a4d62d92bf4a232fdcd06e76661db11f7d2deea9d952504003d545",
+      "original_bytes": 1372,
+      "public_sha256": "eb8940da104d6c829fbb931e79b46fe15d690495b11768b9e508c2a2d103dd4d",
+      "public_bytes": 1209,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P004": 1,
+        "PYENV_HOME": 2
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P004/COUNTS.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P004>/COUNTS.json",
+      "original_sha256": "181d282b267a5dafa9c3128191b7c88f42aa69bcd29667837cd8628c3f271bc9",
+      "original_bytes": 172,
+      "public_sha256": "181d282b267a5dafa9c3128191b7c88f42aa69bcd29667837cd8628c3f271bc9",
+      "public_bytes": 172,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P004/PREVIEW-RESULT.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P004>/PREVIEW-RESULT.json",
+      "original_sha256": "e69c7539400b046f7e6a0f5319a9e642cfabcb44e456a1a60dc40ba5eb9031a6",
+      "original_bytes": 8714,
+      "public_sha256": "faaca8c0b93f216f161470dc8f5d1efa73b966a671676c7b70c3b2eb145179db",
+      "public_bytes": 8551,
+      "public_mode": "0644",
+      "locator_substitutions": {
+        "CASE_P004": 1,
+        "PYENV_HOME": 2
+      }
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P004/PREVIEW-EXTERNAL-TERMINAL.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<CASE_P004>/PREVIEW-EXTERNAL-TERMINAL.json",
+      "original_sha256": "03ec9863e1fbb464abc09dd14981da0f804c00337e66542b7283924557f988e2",
+      "original_bytes": 388,
+      "public_sha256": "03ec9863e1fbb464abc09dd14981da0f804c00337e66542b7283924557f988e2",
+      "public_bytes": 388,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P004/post-case/CASE-FREEZE.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<POSTCASE_P004>/CASE-FREEZE.json",
+      "original_sha256": "a5760a4ac0e3861506750b00e6946786721432b7d3bd6276e08c790a9fc73511",
+      "original_bytes": 15038,
+      "public_sha256": "a5760a4ac0e3861506750b00e6946786721432b7d3bd6276e08c790a9fc73511",
+      "public_bytes": 15038,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    },
+    {
+      "path": "parity/reports/artifacts/native-constructor-20261118/negative-P004/post-case/ROOT-OUTCOME.json",
+      "kind": "locator_only_text_derivative",
+      "original_locator": "<POSTCASE_P004>/ROOT-OUTCOME.json",
+      "original_sha256": "a8a4d1e92e6b210f1829e1dd38f8d63ac717b2f74b37b90b3f367898c73a57e7",
+      "original_bytes": 1913,
+      "public_sha256": "a8a4d1e92e6b210f1829e1dd38f8d63ac717b2f74b37b90b3f367898c73a57e7",
+      "public_bytes": 1913,
+      "public_mode": "0644",
+      "locator_substitutions": {}
+    }
+  ],
+  "reused_tracked_dependencies": [
+    {
+      "path": "fixtures/harbor-shirt.weftforge",
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "bytes": 11808,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/WF-20261117-DUAL-SEWING-HARBOR-A8-001.json",
+      "sha256": "25d89da938d20b56019eeed59fb7af09cc33ec939718f65c4da069e295e1ab93",
+      "bytes": 28400,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/WF-20261118-CONTACT-RECOVERY-D-TOOLING-001.json",
+      "sha256": "b64239045f60bcadd54c27538c8c54a08c253a6dce29de486bdac16afbbe4486",
+      "bytes": 33899,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json",
+      "sha256": "d7c4eabd0c83814726257e1ac061c57c136782c3031333f6d01b058b15b57fc1",
+      "bytes": 28183,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/ROOT-PUBLIC-REVIEW.json",
+      "sha256": "85eee5385a23ddaeb2da4e1bee08fdb33a4d93da1dc1a1d48ba43578f3d8361b",
+      "bytes": 1453,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/SELECTED-PUBLIC-MANIFEST-001.json",
+      "sha256": "d18b3b2e9c3d37489761e93c59c328b05435533fd803f56b5e5e2b4ff96061e1",
+      "bytes": 133995,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/EXTERNAL-TERMINAL.json",
+      "sha256": "7d538449abffafd6592e4e9a99431d180ceca476919cdfcbecbacfa838ab08d5",
+      "bytes": 750,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/LAUNCH.json",
+      "sha256": "ab422516c9bf5544ed6ac515503f3ee13e866b6b527cee6fb791fd851d640505",
+      "bytes": 416,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/POST-TERMINAL-CLOCK.json",
+      "sha256": "11ad69f2db3a5d8bc60c5606be4ba8ade19f4298cfc4edfdbe6bb8b091b123ca",
+      "bytes": 575,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/ROOT-GO.json",
+      "sha256": "31e8fbafe0c2d2eb8eff1d8dd81188c11c7d0490b53abefbf094e8b20558e0c9",
+      "bytes": 1268,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/controller.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/controller.stdout",
+      "sha256": "13ed4110a57267949b63bd49e04cdc59367a87a9175a8096c5e293afbccdd674",
+      "bytes": 388,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/launch.py",
+      "sha256": "988a207184db66fb64277921909abce1559fcdb58065f3f452b1877815d45939",
+      "bytes": 3664,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/post-case/ROOT-CLOSURE.json",
+      "sha256": "fe64accf7dbf4f13901e32b82a75a605d955f56d107b1a327d5815b28a943fef",
+      "bytes": 22311,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/runfull.py",
+      "sha256": "5d12cd06407c8e610bcbb544680a02a183533b74812f94ec0bbf01c79e5de133",
+      "bytes": 8005,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/verify-001.json",
+      "sha256": "57657295d9704dabca00f0125d67873fa1d7f2dd34d4af0d0a635b765cedd653",
+      "bytes": 123423,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/verify-001/RESULT.json",
+      "sha256": "641a41b5ece7d743683122ced4770aa1597c88d68b902f7181c5e800b3709ce1",
+      "bytes": 18591,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/verify-001/STARTED.json",
+      "sha256": "4b07a4e62c6aae81b26458f1e4aa98f399b88ba1e43cd5dff579d7abe5d0fe47",
+      "bytes": 270,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/verify-001/TERMINAL.json",
+      "sha256": "9f5d9132d58c8d3e5562219f31bd1f05136465fbb1e69156173cf8453b83e921",
+      "bytes": 160,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/verify-001/cargo-xtask-verify-RESULT.json",
+      "sha256": "fb20a809fb3829541917964fe2c2f1939459c9c74f5e1ea0646c89b6fd8fa314",
+      "bytes": 1176,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/verify-001/cargo-xtask-verify-STARTED.json",
+      "sha256": "50251360cb62ff26b7f71b0206d8f2dbc862fe55273247473d4784052f367e6b",
+      "bytes": 927,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/verify-001/cargo-xtask-verify.stderr",
+      "sha256": "9345edf724c1124e687c4155ab885206a4bd83e4d9d6ad7c7673a606afa35786",
+      "bytes": 1015,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/clean-xtask/verify-001/cargo-xtask-verify.stdout",
+      "sha256": "929afcb2f9fe39f1cf434544ade7b2d41f134c2d44285ffd90148a10071d775c",
+      "bytes": 2757,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/EXTERNAL-TERMINAL.json",
+      "sha256": "1c8f56b1db888633a5f1ba2b21f0e123fb2ed4420e151a541c79c83f6af11d6f",
+      "bytes": 746,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/LAUNCH.json",
+      "sha256": "1dd26b4975b5111ef833a7ed4a084b9dcb630a6d0e231070002c9ed2c124b81a",
+      "bytes": 414,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/POST-TERMINAL-CLOCK.json",
+      "sha256": "b8579a143fcee994824c75dadc17c99cff659b41c8269d94014c6b5921e44b02",
+      "bytes": 575,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/ROOT-GO.json",
+      "sha256": "1274e4a1f46f7453cb2cca1a73175384aa5513ffc6fc621df9b916259217972f",
+      "bytes": 893,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001.json",
+      "sha256": "33db9bf67bba1fbc1494aa4ee442a0c39c6bf503f4c916effefe84c12cdfb68e",
+      "bytes": 124711,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001/PROFILE-BINDING.json",
+      "sha256": "077df5bd176d079645bc67ba1daa58778fbc98b9b8e9509e13d95a98f06a7e76",
+      "bytes": 4469,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001/RESULT.json",
+      "sha256": "435e0c090680427e8b7569a65cc60ee965c5e96befc394f609e480110c2eac6e",
+      "bytes": 18539,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001/STARTED.json",
+      "sha256": "9ec7f98400a11d91a56a8b2f91ed45a8af2602bde5fc053b73940814b5281dcd",
+      "bytes": 269,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001/TERMINAL.json",
+      "sha256": "f3869f3bccb137afd3249e56550c07e8420f4015dabf15f9692c8d22fc4bec1d",
+      "bytes": 160,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001/native-cli-release-build-RESULT.json",
+      "sha256": "d32d3cb65bd2fa01aa5f16ff34ba963344c0ee0df14786e9bdeb7fdc375b019d",
+      "bytes": 1280,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001/native-cli-release-build-STARTED.json",
+      "sha256": "4332d1496a475fda8c2df7a5d093ea518472b00ff099f3e463f63c513acdc0b6",
+      "bytes": 1032,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001/native-cli-release-build.stderr",
+      "sha256": "5bc25ded8fbceda9ca5a097553ca4d17088ac1773bf0fa11995c6432779dc8d8",
+      "bytes": 12819,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/build-001/native-cli-release-build.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/controller.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/controller.stdout",
+      "sha256": "009c3de93adc1efad64acbd92257cb8990c9af8810b4b3d8c980c36c57a36bc4",
+      "bytes": 391,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/launch_release.py",
+      "sha256": "5e22d3e0e9249f5d94bf62c56225ef271ad1e6f5545c2301d8ca7ba45822bb96",
+      "bytes": 3662,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/post-case/ROOT-CLOSURE.json",
+      "sha256": "0f7a8c9305731d09da0e50615fae3342d9db99fb48943390988bbcc4070eb34e",
+      "bytes": 1628,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-runtime-20261118/optimized-build/runfull.py",
+      "sha256": "8dba2961df2e2435b120cfb7021d2795010ad0d8a09bc31f07d9862c60d1f35a",
+      "bytes": 8959,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json",
+      "sha256": "8f483daa0c59d69b61c665c60bf7038e9d33055f97b785477b4978fbcc8f9571",
+      "bytes": 31190,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/EXTERNAL-TERMINAL.json",
+      "sha256": "7b1f85e02eccca5f9a256897ea7baeccc384e0299185392bc23000a65683a23c",
+      "bytes": 812,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/LAUNCH.json",
+      "sha256": "f4723263ef8b19ed19271b7f09b01406f6f4013c85acacd396c53dc2befd3cfa",
+      "bytes": 416,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/POST-TERMINAL-CLOCK.json",
+      "sha256": "3491c85c1bbc289b67ecc36eec8be1d8d8a513f7e7224651cf0c163b34194c1d",
+      "bytes": 577,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/ROOT-GO.json",
+      "sha256": "d624cd347c5f119ed980ffe820c48c2b9cab32eb0c8269778e678ba15d273451",
+      "bytes": 1267,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/controller.stdout",
+      "sha256": "fd4247aac3b5e1f403a94dc41ac7b300dafd1c696351d14686b0b8249bb8cd3e",
+      "bytes": 345,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001.json",
+      "sha256": "5062e63380de4deac77bb8eef6a32ca4f2db45422c476516340a35ed6bae1d75",
+      "bytes": 124135,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/RESULT.json",
+      "sha256": "3175d751c560e8dfeb6b2d84dab809c959bda54120e3f4b45e40e82923995811",
+      "bytes": 16637,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/STARTED.json",
+      "sha256": "a3a5eca823d5ab450d415d5077dac3e7b45d802fb2ba06beba97a634e626012d",
+      "bytes": 262,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/full-001/TERMINAL.json",
+      "sha256": "9c7cad8ee4842a7d199039b3801f6015b7af8533a723cbf4c538a07ad1e7d3f9",
+      "bytes": 160,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/launch.py",
+      "sha256": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+      "bytes": 3661,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/post-case/ROOT-CLOSURE.json",
+      "sha256": "d3a0f6481bd78b9b554a055427dbd74f836f812042e6b2849019eaa99ef5ee53",
+      "bytes": 435,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/resources.py",
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "bytes": 12679,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-001/runfull.py",
+      "sha256": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+      "bytes": 7864,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/EXTERNAL-TERMINAL.json",
+      "sha256": "5e50ff3e7f291e517a7e33d07b9f3b7f99a9a42eb7dd5cd5b226455504d334c3",
+      "bytes": 748,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/LAUNCH.json",
+      "sha256": "344c06f4e727cca6f9b5138d92f6c2bfc2e0721ab8f2ba881885b7be6fb40d40",
+      "bytes": 416,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/POST-TERMINAL-CLOCK.json",
+      "sha256": "0b8f661b79f9fd42d7354571360b020fa19cce91340f91346de54cb62036e924",
+      "bytes": 575,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/ROOT-GO.json",
+      "sha256": "f9b5c95a7351ab1a421cd8deba764b815144b428aeb21bb81dd79bb84a808450",
+      "bytes": 1267,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/controller.stdout",
+      "sha256": "2bd8eb8d7d747a33e4cb79ac3eef38e7b5372eb2bf29d8ae6ad9eac352b116ac",
+      "bytes": 640,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001.json",
+      "sha256": "f8587b6dc4c673e161072afc4665513c858e025f7c6f1184360dedfa07cc1ab1",
+      "bytes": 124513,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/RESULT.json",
+      "sha256": "ef2cd34449cd0fc01b688b917ed6113cef577a8b17de97219be155fd734c4b50",
+      "bytes": 22748,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/STARTED.json",
+      "sha256": "6ce68b70d094a87b6d6a3986663064c66fb0af6ef6ee68580297ccdde9a7025e",
+      "bytes": 268,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/TERMINAL.json",
+      "sha256": "f8bfcc7161def3b425808cf885cc53ae92d9b6c53b9ebd8363dc558c3671a04b",
+      "bytes": 160,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-RESULT.json",
+      "sha256": "f0f5c8059d245113067d81457a7b2553392bef28007d276d90ba702e2c159281",
+      "bytes": 1178,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt-STARTED.json",
+      "sha256": "16792f0fd70914619d04074bbebdcea549751accd79f21fbe4ebb66d57d02cf3",
+      "bytes": 937,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/full-fmt.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-RESULT.json",
+      "sha256": "36389ece19aaea1e62eeeb2a8faeadd58bd8804a6834f713521a18528f5cd329",
+      "bytes": 1249,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build-STARTED.json",
+      "sha256": "8be97bbe77f1697219589b4388bd6a1e7374754e0ab8646c1ce61802208911c8",
+      "bytes": 1002,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stderr",
+      "sha256": "abf1e915526b6cc8c93c443e5d47e170a3528213944fb39b5065518db4c7a69d",
+      "bytes": 118,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/native-cli-build.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-RESULT.json",
+      "sha256": "6f96edde45d2f9a6a62d0b1b94378853c2596eb31d2000527f968761e03e5113",
+      "bytes": 1269,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy-STARTED.json",
+      "sha256": "5a0818f005bed9443813c2635b5b0811dc4917641513658a345ed76649d90f48",
+      "bytes": 1021,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stderr",
+      "sha256": "c36013a9357a14a576cbb2c0d5bb18e96d0ff323e2e9426b860ca5fe8237f1a0",
+      "bytes": 323,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-clippy.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-RESULT.json",
+      "sha256": "7f491ba297ee8e019e537a78e2a2b43f459595ebb9dcb9a6a42edfafa560f811",
+      "bytes": 1212,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests-STARTED.json",
+      "sha256": "8476b3ed8dabd549a1b8b7a8dcc5c6d0af0bf1e86e117364ac5cb4a701c8083f",
+      "bytes": 962,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stderr",
+      "sha256": "57becd812498ebb78e13fa39c63536c7fd273cbf03c6f2d414efac9372bc75a7",
+      "bytes": 2747,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/full-001/workspace-tests.stdout",
+      "sha256": "1d5d80153fc252e371ec42ce125c6c78a34400a032803a346733fda1a363fd64",
+      "bytes": 47536,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/launch.py",
+      "sha256": "68baa072dfb6646a0649765cb72ac325919ecd604f1d59ace21c82f4892032fc",
+      "bytes": 3661,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/post-case/ROOT-CLOSURE.json",
+      "sha256": "f27d1504c036c3c2b375cdd3462d37ddb732de6ca3fa19a95fb1d3ef11960599",
+      "bytes": 17731,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/resources.py",
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "bytes": 12679,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/case-002/runfull.py",
+      "sha256": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+      "bytes": 7864,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/contact-recovery-source-20261118/history/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.original.json",
+      "sha256": "56344664e613b259f0eb52a31538d085a3d003c722c927b36c7a75464ff65935",
+      "bytes": 28044,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/harbor-workflow-20261114/headless-attempt/runs/base/rest-metadata.json",
+      "sha256": "d96697949c686fbf15f19b99b6d7551b35d3449b17157009aceb75649fbaeeb9",
+      "bytes": 590736,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/bind_source.py",
+      "sha256": "5b883da7b83e2a88918e9ecda3011dc1b7ef6fcfa34cd6870c178945a942a384",
+      "bytes": 586,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/capsule_geometry.py",
+      "sha256": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b",
+      "bytes": 11717,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/decimal_oracle.py",
+      "sha256": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d",
+      "bytes": 2959,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/geometry_math.py",
+      "sha256": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40",
+      "bytes": 1443,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/metrics.py",
+      "sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+      "bytes": 18354,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/consumer/static_geometry.py",
+      "sha256": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34",
+      "bytes": 2388,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/controller.py",
+      "sha256": "b54f882ad435ce755160d5a815387cdc012e396252f79e9a91d018f7ad57e515",
+      "bytes": 6492,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/inputs/base.weftforge",
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "bytes": 11808,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/resources.py",
+      "sha256": "ba4560b912abaf8e310f87dc33b334fddfc96bc9d41c74a046a46b2d1f815d12",
+      "bytes": 12756,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    },
+    {
+      "path": "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/test_toolchain_env.py",
+      "sha256": "c48173c6c67146d41768f3788000094a720805f755089a249210dc05198faecd",
+      "bytes": 2316,
+      "tracked_in_commit": "023b45a84cfeb9248e20f620628911bc3c0c843a"
+    }
+  ],
+  "omitted_originals": [
+    {
+      "original_locator": "<CASE_P005>/BIND-arm-INITIAL.json",
+      "bytes": 780,
+      "mode": 420,
+      "sha256": "4f9ab91102f3db30856c8965290d9f6ea877fb2cab43f38be25285fa0556dbe8",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/BIND-bind-INITIAL.json",
+      "bytes": 10192,
+      "mode": 420,
+      "sha256": "09cc873e0485b1a8e40ca6eaddb69615962301b17e7a72d083a60c22aaae167d",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/BIND-post-getter-INITIAL.json",
+      "bytes": 440,
+      "mode": 420,
+      "sha256": "6cb583586fec2fb50758e27618d86281fca998b99181960639882ff46f3e009c",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/LAUNCH-EXEC-INITIAL.json",
+      "bytes": 130,
+      "mode": 420,
+      "sha256": "7c5211a26a6b2791c253570cc2dd22364f26594d36b1f4fdd2acbd1fac034a77",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/LAUNCH-GATE.json",
+      "bytes": 353,
+      "mode": 384,
+      "sha256": "d4070d27221076ba45001c8ad9b909f2d9aa8fd93a28a461f7a1ee701120c57f",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/LAUNCH-INITIAL.json",
+      "bytes": 130,
+      "mode": 420,
+      "sha256": "7c5211a26a6b2791c253570cc2dd22364f26594d36b1f4fdd2acbd1fac034a77",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/LAUNCH-LIVE.json",
+      "bytes": 189,
+      "mode": 420,
+      "sha256": "cb386b15df01bb121561e34a0920b01b9683ec2fb7ada243a34a29fa7301a985",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/LAUNCH-STOP.json",
+      "bytes": 184,
+      "mode": 384,
+      "sha256": "fbd6cbc4d7fed08ff8bc15ed05d70a5e65b61520cdfa2907838066265cc1e74f",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/LAUNCH-WAIT-001.json",
+      "bytes": 454,
+      "mode": 420,
+      "sha256": "499dfe64018393e1e4f7fca7a784eefa4318ac57285a1cfefa1f95f2d46822d9",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/LAUNCH.json",
+      "bytes": 495,
+      "mode": 384,
+      "sha256": "fdb17dc0f040f019f400800e631e525b4715284023c11df949ebfe97e2500ad9",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/OWNED-IDENTITY-001.json",
+      "bytes": 1430,
+      "mode": 384,
+      "sha256": "3b642aed9805bb85b8f8ec621ce9f35274f7cfe6ad7ec2cacdd3d408401aa726",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/OWNER-NEGATIVE-FALLBACK.json",
+      "bytes": 156,
+      "mode": 384,
+      "sha256": "d27d14081cfe45bec641b9d023f1889851d1a6aabcdc8cbe14e2b7577ff6c762",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/OWNER-baseline-COMPLETION.json",
+      "bytes": 2664,
+      "mode": 420,
+      "sha256": "1a991808a0b196afd3aa2e211ed5c9375778115104f2da849f4273b439fd9c3b",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/OWNER-baseline-INITIAL.json",
+      "bytes": 2664,
+      "mode": 420,
+      "sha256": "1a991808a0b196afd3aa2e211ed5c9375778115104f2da849f4273b439fd9c3b",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/OWNER-close-INITIAL.json",
+      "bytes": 205,
+      "mode": 420,
+      "sha256": "b0fe9668d7c1e6744195214ad46fc35028e1b5b21f74b62d4434d4f60bf5300b",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/OWNER-seal-INITIAL.json",
+      "bytes": 201,
+      "mode": 420,
+      "sha256": "04c94fee1990cd9e47ffd3710b5181092ca3514a565f372d46d066f2f92737f1",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/RESOURCE-EXEC-INITIAL.json",
+      "bytes": 131,
+      "mode": 420,
+      "sha256": "b741af7df164d2b0163c2f2afb63350cec2f405e4eafc2e4adcc5ecd617771a4",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/RESOURCE-INITIAL.json",
+      "bytes": 131,
+      "mode": 420,
+      "sha256": "b741af7df164d2b0163c2f2afb63350cec2f405e4eafc2e4adcc5ecd617771a4",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/RESOURCE-LIVE.json",
+      "bytes": 191,
+      "mode": 420,
+      "sha256": "759f5d1dc0eb813c8d474e465f7bfeffc3a5fdb0b8c10084730e02085d20e2b3",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/RESOURCE-STOP",
+      "bytes": 38,
+      "mode": 420,
+      "sha256": "938ff6f1c69f5f8469f0ebb61adeb5d95d9cbfdc17461a4c1f4cf24624826a59",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/RESOURCE-WAIT-001.json",
+      "bytes": 186,
+      "mode": 420,
+      "sha256": "f19c990c5e41af5de4df59486555d453166d3e60e77ea1157978db10e6aacba8",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/VISUAL-01-state-CLOSE.json",
+      "bytes": 642,
+      "mode": 420,
+      "sha256": "5e03d7f924c6d6675394c035cd51a9313832a95e56ff7d40f22e85db64d7539d",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/VISUAL-01-state-GATE.json",
+      "bytes": 474,
+      "mode": 420,
+      "sha256": "92c69682564127b8e03a7ce8c0d86eb69a001663b998c88a788d0d649d7d4f0d",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/VISUAL-02-frame-CLOSE.json",
+      "bytes": 643,
+      "mode": 420,
+      "sha256": "f37f5aa643105ec41296f2fcf2002b8b9c494f1b3e7c2e2b435db53555450d77",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/VISUAL-02-frame-GATE.json",
+      "bytes": 474,
+      "mode": 420,
+      "sha256": "018255fcfa1ec2a68710f963974a8ecb440178f5f93a9794150e66b71b1fea0e",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/VISUAL-03-create-CLOSE.json",
+      "bytes": 644,
+      "mode": 420,
+      "sha256": "6a1a91d3af0f94d34dcdde2e33150d0e57ad53894977881aa8a57eba5b64176d",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/VISUAL-03-create-GATE.json",
+      "bytes": 473,
+      "mode": 420,
+      "sha256": "2bf178c5ebe1a7927565c36656fec8403e7f3e4694a7499c030cc884b3a46269",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/VISUAL-04-quit-CLOSE.json",
+      "bytes": 640,
+      "mode": 420,
+      "sha256": "9ccc7934afc1f65e5bdb10e1389dc2ec1905e897335ed001ff71b655b274f24f",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/VISUAL-04-quit-GATE.json",
+      "bytes": 474,
+      "mode": 420,
+      "sha256": "cecdedd6261dd2425a484ed30a3cf5007b701f82c9da5b592fc84d4edafc4cf6",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/WATCHDOG-EXEC-INITIAL.json",
+      "bytes": 131,
+      "mode": 420,
+      "sha256": "669fe10783c4a9f698250bd3c548d885b325a497051f6fbcae6d6244f814e6c6",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/WATCHDOG-INITIAL.json",
+      "bytes": 131,
+      "mode": 420,
+      "sha256": "669fe10783c4a9f698250bd3c548d885b325a497051f6fbcae6d6244f814e6c6",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/WATCHDOG-LIVE.json",
+      "bytes": 191,
+      "mode": 420,
+      "sha256": "3f6fbc842ee5cb59f66395279ea797f8d6405b0ae19581133df9bfa55552fd39",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/WATCHDOG-WAIT-001.json",
+      "bytes": 186,
+      "mode": 420,
+      "sha256": "5d7c7a3d5e598f7da7c002b6183bdd0b0e81758c72fac1f912c3896215405561",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/WeftForge Constructor Preview P005.app/Contents/Info.plist",
+      "bytes": 641,
+      "mode": 420,
+      "sha256": "27b4f8dcc16e6df328258dc52f14778bf1418db24401f376cf524c02c1d3b8a7",
+      "reason": "Compiled app bundle/native binary omitted; identity is evidence only, never a delivered executable."
+    },
+    {
+      "original_locator": "<CASE_P005>/WeftForge Constructor Preview P005.app/Contents/MacOS/weftforge",
+      "bytes": 15948256,
+      "mode": 365,
+      "sha256": "e12e4b9e975830b9b1b7b3a22d464c103d800d9c142c09902e589174757fcc48",
+      "reason": "Compiled app bundle/native binary omitted; identity is evidence only, never a delivered executable."
+    },
+    {
+      "original_locator": "<CASE_P005>/call_recorder.py",
+      "bytes": 2720,
+      "mode": 420,
+      "sha256": "39e3c74f3950e712918e71f7234e5da6a4783773d2281326be7219735397f848",
+      "reason": "Duplicate current helper; byte-exact original is delivered once under preparation-v6, with public locator redactions."
+    },
+    {
+      "original_locator": "<CASE_P005>/cleanup.py",
+      "bytes": 14388,
+      "mode": 420,
+      "sha256": "1881ccdf8fb55b33796a15c08170e42037c7a619c886a0ba071a4651d691f07a",
+      "reason": "Duplicate current helper; byte-exact original is delivered once under preparation-v6, with public locator redactions."
+    },
+    {
+      "original_locator": "<CASE_P005>/clock.py",
+      "bytes": 4617,
+      "mode": 420,
+      "sha256": "2e6a43e3db584c56e7fb1f05a4e9b8802141130c3ef778f41e54209fadc24301",
+      "reason": "Duplicate current helper; byte-exact original is delivered once under preparation-v6, with public locator redactions."
+    },
+    {
+      "original_locator": "<CASE_P005>/inputs/original-harbor.weftforge",
+      "bytes": 11808,
+      "mode": 292,
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "reason": "Readonly public sample copy omitted; byte-exact original fixture is already tracked on E."
+    },
+    {
+      "original_locator": "<CASE_P005>/inventory.js",
+      "bytes": 1352,
+      "mode": 420,
+      "sha256": "4136073f3e97e406034320d2eb058e38b7021e25ba3c6b3adcf3e41d53c6b36a",
+      "reason": "Duplicate current helper; byte-exact original is delivered once under preparation-v6, with public locator redactions."
+    },
+    {
+      "original_locator": "<CASE_P005>/native.stderr.log",
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/native.stdout.log",
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P005>/native_call.js",
+      "bytes": 4573,
+      "mode": 420,
+      "sha256": "9d108334cf4b1666e5e6546df221af1aba71d5c32a9a2642c2e49cac6545f890",
+      "reason": "Duplicate current helper; byte-exact original is delivered once under preparation-v6, with public locator redactions."
+    },
+    {
+      "original_locator": "<CASE_P005>/preview_launch.js",
+      "bytes": 5421,
+      "mode": 420,
+      "sha256": "e2ac162cd162b0d5b6192c2ad6774149d0cfcc9a05fc71be22c6a9885f004bad",
+      "reason": "Duplicate current helper; byte-exact original is delivered once under preparation-v6, with public locator redactions."
+    },
+    {
+      "original_locator": "<CASE_P005>/preview_launch.py",
+      "bytes": 23274,
+      "mode": 420,
+      "sha256": "9ffc78abcc4a28f0734a9b136d4cf1dde7fd2d68398d0f24e68e529c8c1ab6ae",
+      "reason": "Duplicate current helper; byte-exact original is delivered once under preparation-v6, with public locator redactions."
+    },
+    {
+      "original_locator": "<CASE_P005>/preview_owner.py",
+      "bytes": 21735,
+      "mode": 420,
+      "sha256": "59403dd14c55a483b690e26feeba1b8fcf5b8eb59034c0a1ee89179e68780cfa",
+      "reason": "Duplicate current helper; byte-exact original is delivered once under preparation-v6, with public locator redactions."
+    },
+    {
+      "original_locator": "<CASE_P005>/preview_sequence.js",
+      "bytes": 19874,
+      "mode": 420,
+      "sha256": "9345d29ef22f060c55df0ad0106c1320935ec13d96037a09821401523f77882a",
+      "reason": "Duplicate current helper; byte-exact original is delivered once under preparation-v6, with public locator redactions."
+    },
+    {
+      "original_locator": "<CASE_P005>/resource_observer.py",
+      "bytes": 8123,
+      "mode": 420,
+      "sha256": "21200ee8595d3abc8e5878b9b521fee85d3e779cc69b02fc35d302b90d1b2901",
+      "reason": "Duplicate current helper; byte-exact original is delivered once under preparation-v6, with public locator redactions."
+    },
+    {
+      "original_locator": "<CASE_P005>/resources.py",
+      "bytes": 12679,
+      "mode": 420,
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "reason": "Duplicate current helper; byte-exact original is delivered once under preparation-v6, with public locator redactions."
+    },
+    {
+      "original_locator": "<PREPARATION_V6>/CHANGE.patch",
+      "bytes": 81065,
+      "mode": 420,
+      "sha256": "368e8ab241369451ab0161335aba01f1a1b2d77499c937681edb2a6b4c599e36",
+      "reason": "Nonessential preflight, focused stub fixture, handoff or older change history omitted; raw hashes remain provenance, not delivered parent claims."
+    },
+    {
+      "original_locator": "<PREPARATION_V6>/HANDOFF.md",
+      "bytes": 4434,
+      "mode": 420,
+      "sha256": "63af98cbd4e54b5609352865ccccf7a5364bf9cbe83a5fc18830b97c7cfcbd95",
+      "reason": "Nonessential preflight, focused stub fixture, handoff or older change history omitted; raw hashes remain provenance, not delivered parent claims."
+    },
+    {
+      "original_locator": "<PREPARATION_V6>/stub-check-001/PREFLIGHT.json",
+      "bytes": 89918,
+      "mode": 384,
+      "sha256": "4e2b5cac56a3ad1876ff1bf50e9a7a01a14953e78015ff7928441fb44f60a402",
+      "reason": "Nonessential preflight, focused stub fixture, handoff or older change history omitted; raw hashes remain provenance, not delivered parent claims."
+    },
+    {
+      "original_locator": "<PREPARATION_V6>/stub-check-001/bound-basename/BIND-INVENTORY.json",
+      "bytes": 34,
+      "mode": 384,
+      "sha256": "15b6ec49c69435bed0c70d182cd8a3ff55974f4c66bdc17964ce52e2ddb214df",
+      "reason": "Nonessential preflight, focused stub fixture, handoff or older change history omitted; raw hashes remain provenance, not delivered parent claims."
+    },
+    {
+      "original_locator": "<PREPARATION_V6>/stub-check-001/bound-basename/LAUNCH-PRODUCER-LEASE.json",
+      "bytes": 487,
+      "mode": 384,
+      "sha256": "129990dcbc74c92f4d67b35dae7ecdf06d11cb52812de53d61475fe494c3e3c0",
+      "reason": "Nonessential preflight, focused stub fixture, handoff or older change history omitted; raw hashes remain provenance, not delivered parent claims."
+    },
+    {
+      "original_locator": "<PREPARATION_V6>/stub-check-001/bound-basename/LAUNCH-READINESS-ADMISSION.json",
+      "bytes": 474,
+      "mode": 384,
+      "sha256": "61838fb722571117e55fdbed2eb3b0832f9a12171581acd8800f216de17d25fe",
+      "reason": "Nonessential preflight, focused stub fixture, handoff or older change history omitted; raw hashes remain provenance, not delivered parent claims."
+    },
+    {
+      "original_locator": "<PREPARATION_V6>/stub-check-001/bound-basename/LAUNCH-READY.json",
+      "bytes": 1206,
+      "mode": 384,
+      "sha256": "cb4479e80bc3da9e8ad595fb705cf32a621f24781eef28ee4b1da366055b831e",
+      "reason": "Nonessential preflight, focused stub fixture, handoff or older change history omitted; raw hashes remain provenance, not delivered parent claims."
+    },
+    {
+      "original_locator": "<PREPARATION_V6>/stub-check-001/bound-basename/OWNED-IDENTITY-001.json",
+      "bytes": 716,
+      "mode": 384,
+      "sha256": "72d88b28da47192a61b0ba9b247ad31a2acfffa46b6583225e57332666f1c93f",
+      "reason": "Nonessential preflight, focused stub fixture, handoff or older change history omitted; raw hashes remain provenance, not delivered parent claims."
+    },
+    {
+      "original_locator": "<PREPARATION_V6>/stub-check-001/bound-basename/OWNED-IDENTITY.json",
+      "bytes": 716,
+      "mode": 384,
+      "sha256": "72d88b28da47192a61b0ba9b247ad31a2acfffa46b6583225e57332666f1c93f",
+      "reason": "Nonessential preflight, focused stub fixture, handoff or older change history omitted; raw hashes remain provenance, not delivered parent claims."
+    },
+    {
+      "original_locator": "<PREPARATION_V6>/stub-check-001/bound-basename/different-readonly-input.weftforge",
+      "bytes": 50,
+      "mode": 292,
+      "sha256": "4f5b6c20ba468a299ee8aa04287f4573bd04e0e11b3410037c3f751049094cf4",
+      "reason": "Nonessential preflight, focused stub fixture, handoff or older change history omitted; raw hashes remain provenance, not delivered parent claims."
+    },
+    {
+      "original_locator": "<CASE_P002>/BIND-arm-COMPLETION.json",
+      "bytes": 780,
+      "mode": 420,
+      "sha256": "bf2b46155b356e161d07eefe035c9bc4ba10c13a62474930c817aa68be36c92c",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/BIND-arm-INITIAL.json",
+      "bytes": 780,
+      "mode": 420,
+      "sha256": "bf2b46155b356e161d07eefe035c9bc4ba10c13a62474930c817aa68be36c92c",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/CLEANUP-PRODUCER.json",
+      "bytes": 279,
+      "mode": 384,
+      "sha256": "61a1a59070d2a718e17e34a559381f5cfafbe3f44f5b6eae44fe73d5eb5328c0",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/DONE",
+      "bytes": 64,
+      "mode": 420,
+      "sha256": "491a959b7f227fb4d8f5021f352bfbca7260c69ba7438b6c9b21a3158bce9188",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/LAUNCH-EXEC-INITIAL.json",
+      "bytes": 131,
+      "mode": 420,
+      "sha256": "3336802aa2611582b68208566946761075baf566defcd551d2cfdcae8dc0ba69",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/LAUNCH-GATE.json",
+      "bytes": 354,
+      "mode": 384,
+      "sha256": "f61976a844f58949c3efaf57f6f96d95e6ea27bd64eab52665dd19c2a4bad466",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/LAUNCH-INITIAL.json",
+      "bytes": 131,
+      "mode": 420,
+      "sha256": "3336802aa2611582b68208566946761075baf566defcd551d2cfdcae8dc0ba69",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/LAUNCH-INTENT.json",
+      "bytes": 940,
+      "mode": 384,
+      "sha256": "da658e0fb98f05fbb35590ade0103775aaa4151e8f7fdd1136c412d2f97e7743",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/LAUNCH-PRODUCER-LEASE.json",
+      "bytes": 619,
+      "mode": 384,
+      "sha256": "93cc857d09ba64fdb73ade35216710e43610f09899a0dd10b881f409d2c70d99",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/LAUNCH-STOP.json",
+      "bytes": 184,
+      "mode": 384,
+      "sha256": "d09006cdfdebd8aea860831d4afbdf6d413324c6ef96b3a8d370a63d2c05542e",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/OWNER-NEGATIVE-FALLBACK.json",
+      "bytes": 156,
+      "mode": 384,
+      "sha256": "d27d14081cfe45bec641b9d023f1889851d1a6aabcdc8cbe14e2b7577ff6c762",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/OWNER-close-COMPLETION.json",
+      "bytes": 205,
+      "mode": 420,
+      "sha256": "be52634f11936a139d2bb9484a3a3a2688783b34f7b02df8968c7249773ad89c",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/OWNER-close-INITIAL.json",
+      "bytes": 205,
+      "mode": 420,
+      "sha256": "be52634f11936a139d2bb9484a3a3a2688783b34f7b02df8968c7249773ad89c",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/PLAN.json",
+      "bytes": 55055,
+      "mode": 420,
+      "sha256": "ec3ce3b9ca78f0e3876ac1719c7db313aa2ac1d53904ca66d2ad2780fee0716b",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/PRELAUNCH-ABSENCE.json",
+      "bytes": 34,
+      "mode": 384,
+      "sha256": "15b6ec49c69435bed0c70d182cd8a3ff55974f4c66bdc17964ce52e2ddb214df",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/RESOURCE-COMPLETION.json",
+      "bytes": 125,
+      "mode": 420,
+      "sha256": "dd0d27304e2ce40f90e9ffb9ffdabc27ee9f82f948e77e16e889fe4e68da4488",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/RESOURCE-EXEC-INITIAL.json",
+      "bytes": 128,
+      "mode": 420,
+      "sha256": "01d789083a96f55531e552d29aa4b4076f535770aa138b3a7623f53ff4a43148",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/RESOURCE-INITIAL.json",
+      "bytes": 128,
+      "mode": 420,
+      "sha256": "01d789083a96f55531e552d29aa4b4076f535770aa138b3a7623f53ff4a43148",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/RESOURCE-LIVE.json",
+      "bytes": 191,
+      "mode": 420,
+      "sha256": "523e389be33dfd3ac016d31107ae392676d058bfac19142064a4fb114347bb3a",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/RESOURCE-READY.json",
+      "bytes": 421,
+      "mode": 420,
+      "sha256": "0d920f62552511ddb9ffce74567e4fc1a0e3f2f8e4b004346e9e2ee4a7a4a297",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/RESOURCE-STOP",
+      "bytes": 38,
+      "mode": 420,
+      "sha256": "938ff6f1c69f5f8469f0ebb61adeb5d95d9cbfdc17461a4c1f4cf24624826a59",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/RESOURCE-TERMINAL.json",
+      "bytes": 170,
+      "mode": 420,
+      "sha256": "dbdf61449cbb786b8b4a04ea159daf3dbfe31f9af63fc2ec3c02e1cb9014b0c8",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/RESOURCE-WAIT-001.json",
+      "bytes": 185,
+      "mode": 420,
+      "sha256": "d56255eaa74d52984d7da98d58c0b153630c167aa327a6bdaace394a9765fe78",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/ROOT-NATIVE-GO.json",
+      "bytes": 467,
+      "mode": 420,
+      "sha256": "ff768868a88538e9cf0b1847e5cf7ab6540179b978ca527bb272e6c5e3ef585c",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/RSS-SAMPLES.jsonl",
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/SOURCE-BINDING.json",
+      "bytes": 18408,
+      "mode": 420,
+      "sha256": "bacfc8beb84a1fbf8acbe8f49b408ecdc1a60b87d8818ff4f4249ed8b183ff64",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/STARTED.json",
+      "bytes": 283,
+      "mode": 420,
+      "sha256": "6625c987e81ce52d63a634ddef75350fbf5de9ac6b6625554422b872de023d83",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/WATCHDOG-COMPLETION.json",
+      "bytes": 126,
+      "mode": 420,
+      "sha256": "4e24238df3e0fe5a75681f26ec2eb0d311af008f968f5363be1658bcabfa14af",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/WATCHDOG-EXEC-INITIAL.json",
+      "bytes": 127,
+      "mode": 420,
+      "sha256": "5b4fb6d2a381999f4067441510b1f4952e687ed1ce25592a08cd5302a1ecb593",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/WATCHDOG-INITIAL.json",
+      "bytes": 127,
+      "mode": 420,
+      "sha256": "5b4fb6d2a381999f4067441510b1f4952e687ed1ce25592a08cd5302a1ecb593",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/WATCHDOG-LIVE.json",
+      "bytes": 191,
+      "mode": 420,
+      "sha256": "11e5fc5ed986fa040181e38ad2dd9e39413f67597cde6bea3ebaa7c7518afdcd",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/WATCHDOG-READY.json",
+      "bytes": 319,
+      "mode": 384,
+      "sha256": "636dfe32820567fd8e4476d0091ec6de7fdd18803ff8fb407090dedea25af2f7",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/WATCHDOG-TERMINAL.json",
+      "bytes": 115,
+      "mode": 384,
+      "sha256": "d4ea72ff0e7e7cd9436ecc3e6ded313258d79c4c41a6fbd4b2e939bc06c2b0dc",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/WATCHDOG-WAIT-001.json",
+      "bytes": 186,
+      "mode": 420,
+      "sha256": "15f0d94afb748fa91af62ff3fe581398529a06203d2f53e969e14662f46b3979",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/WeftForge Constructor Preview P002.app/Contents/Info.plist",
+      "bytes": 641,
+      "mode": 420,
+      "sha256": "98afd3453739f0b146cfcf4b1529592229c5389cd3fcb56711a62106fc4ec9d6",
+      "reason": "Compiled app bundle/native binary omitted; identity is evidence only, never a delivered executable."
+    },
+    {
+      "original_locator": "<CASE_P002>/WeftForge Constructor Preview P002.app/Contents/MacOS/weftforge",
+      "bytes": 15948256,
+      "mode": 365,
+      "sha256": "e12e4b9e975830b9b1b7b3a22d464c103d800d9c142c09902e589174757fcc48",
+      "reason": "Compiled app bundle/native binary omitted; identity is evidence only, never a delivered executable."
+    },
+    {
+      "original_locator": "<CASE_P002>/call_recorder.py",
+      "bytes": 2720,
+      "mode": 420,
+      "sha256": "39e3c74f3950e712918e71f7234e5da6a4783773d2281326be7219735397f848",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P002>/cleanup.py",
+      "bytes": 10933,
+      "mode": 420,
+      "sha256": "9c6c18dd15911c29185b224192de123287e4e34a2be8d1ce1cd08919444471b2",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P002>/clock.py",
+      "bytes": 4617,
+      "mode": 420,
+      "sha256": "2e6a43e3db584c56e7fb1f05a4e9b8802141130c3ef778f41e54209fadc24301",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P002>/inputs/original-harbor.weftforge",
+      "bytes": 11808,
+      "mode": 292,
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "reason": "Readonly public sample copy omitted; byte-exact original fixture is already tracked on E."
+    },
+    {
+      "original_locator": "<CASE_P002>/inventory.js",
+      "bytes": 925,
+      "mode": 420,
+      "sha256": "ab5f447a4aa2c85d66b78243d317a988cba998153a572098d1bd4195271a7702",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P002>/native.stderr.log",
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/native.stdout.log",
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P002>/native_call.js",
+      "bytes": 4573,
+      "mode": 420,
+      "sha256": "9d108334cf4b1666e5e6546df221af1aba71d5c32a9a2642c2e49cac6545f890",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P002>/preview_launch.js",
+      "bytes": 4931,
+      "mode": 420,
+      "sha256": "ae82215644a0e23d0ad2916e0ec66ac1348acdc2002b3e842a874766d21603e6",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P002>/preview_launch.py",
+      "bytes": 16690,
+      "mode": 420,
+      "sha256": "76b903faf71ae10c0772faf9f8c4332372dd2c186d8a06d9f2e027e8f2703ef7",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P002>/preview_owner.py",
+      "bytes": 18535,
+      "mode": 420,
+      "sha256": "2111514fd90e15763c740ae4788df2410baa0392873e86db89bd043c11b31aa0",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P002>/preview_sequence.js",
+      "bytes": 15289,
+      "mode": 420,
+      "sha256": "c18a5066a293800f416553b91e05cda7b4b9264cf6fa783efdada8ce083e9473",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P002>/resource_observer.py",
+      "bytes": 7309,
+      "mode": 420,
+      "sha256": "37ac6fc93fdfffd82e4dba492996761afbf538c02c21b6abc9d0ffc69ffb6414",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P002>/resources.py",
+      "bytes": 12679,
+      "mode": 420,
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P003>/BIND-arm-COMPLETION.json",
+      "bytes": 783,
+      "mode": 420,
+      "sha256": "db42baa1d37951e84a324557c1569c675fbddadacd5e10626b30762c110c3a5d",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/BIND-arm-INITIAL.json",
+      "bytes": 783,
+      "mode": 420,
+      "sha256": "db42baa1d37951e84a324557c1569c675fbddadacd5e10626b30762c110c3a5d",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/CLEANUP-PRODUCER.json",
+      "bytes": 278,
+      "mode": 384,
+      "sha256": "2e760860a1567b6cd79c432f918462b6ac323c89a0ed53dab2ef7a67bc04ba50",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/DONE",
+      "bytes": 64,
+      "mode": 420,
+      "sha256": "491a959b7f227fb4d8f5021f352bfbca7260c69ba7438b6c9b21a3158bce9188",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/LAUNCH-COMPLETION.json",
+      "bytes": 1455,
+      "mode": 420,
+      "sha256": "62128b9a7399d398ca905ab296b41d1b33224cecf7fcc558469d21421f278747",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/LAUNCH-EXEC-INITIAL.json",
+      "bytes": 131,
+      "mode": 420,
+      "sha256": "4ab886d602fa8032369a09e5201b2d0b35c28ccca35d54fe23769c603f6cf7fb",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/LAUNCH-GATE.json",
+      "bytes": 356,
+      "mode": 384,
+      "sha256": "b97d9aa8039fa00e99b678245b52bf82e6d1af4e1187c41e0825b8ff63a30fef",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/LAUNCH-INITIAL.json",
+      "bytes": 1455,
+      "mode": 420,
+      "sha256": "62128b9a7399d398ca905ab296b41d1b33224cecf7fcc558469d21421f278747",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/LAUNCH-INTENT.json",
+      "bytes": 940,
+      "mode": 384,
+      "sha256": "06a50bcdc1a57847409d0a39ce03bffb513859e20e176f849f2d4cba1274de60",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/LAUNCH-PRODUCER-LEASE.json",
+      "bytes": 618,
+      "mode": 384,
+      "sha256": "7540b0d43e14e7d7c03d978f2ce5e37848376ce6026d0f1dac89a250ff79bdaa",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/LAUNCH-STOP.json",
+      "bytes": 185,
+      "mode": 384,
+      "sha256": "0dc5e56be40b780eec191d086e01b4d3536f2c30aac39ab27be4e86cf45a353e",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/OWNER-NEGATIVE-FALLBACK.json",
+      "bytes": 156,
+      "mode": 384,
+      "sha256": "d27d14081cfe45bec641b9d023f1889851d1a6aabcdc8cbe14e2b7577ff6c762",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/OWNER-close-COMPLETION.json",
+      "bytes": 205,
+      "mode": 420,
+      "sha256": "24d832a05d8f2eafcee96ba74d098a2a6c32ffd164a38f45b312cf6f04b539dd",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/OWNER-close-INITIAL.json",
+      "bytes": 205,
+      "mode": 420,
+      "sha256": "24d832a05d8f2eafcee96ba74d098a2a6c32ffd164a38f45b312cf6f04b539dd",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/PLAN.json",
+      "bytes": 55661,
+      "mode": 420,
+      "sha256": "b9bfe8a2b0719f421df1e542d472a1d1de9c452f9994eac483914ee113d827fe",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/PRELAUNCH-ABSENCE.json",
+      "bytes": 54,
+      "mode": 384,
+      "sha256": "149a0534ade684b0b421f2a64a90c4823aefefe8f9bd605405187ff05c8c9714",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/RESOURCE-COMPLETION.json",
+      "bytes": 126,
+      "mode": 420,
+      "sha256": "051df8e972db801524c44b8aea8b17033ad9580ffe397ba1869e741e385faeb8",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/RESOURCE-EXEC-INITIAL.json",
+      "bytes": 131,
+      "mode": 420,
+      "sha256": "d1d6ad942f11b9dca37f6ac9237fa481efc81075dbffe8edad2e7d4e6c657704",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/RESOURCE-INITIAL.json",
+      "bytes": 131,
+      "mode": 420,
+      "sha256": "d1d6ad942f11b9dca37f6ac9237fa481efc81075dbffe8edad2e7d4e6c657704",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/RESOURCE-LIVE.json",
+      "bytes": 191,
+      "mode": 420,
+      "sha256": "cc5bdd2708c20ffed0a738c0604e9e92bd72257044df3a744fa9869925478178",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/RESOURCE-READY.json",
+      "bytes": 422,
+      "mode": 420,
+      "sha256": "09db535d5fc2c97c465d67fe196169a168638162f905d9f817ed159042159652",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/RESOURCE-STOP",
+      "bytes": 38,
+      "mode": 420,
+      "sha256": "938ff6f1c69f5f8469f0ebb61adeb5d95d9cbfdc17461a4c1f4cf24624826a59",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/RESOURCE-TERMINAL.json",
+      "bytes": 171,
+      "mode": 420,
+      "sha256": "856ab4f24e312c1935496e460c1c38d0bed43ed5e1314000f34fbfe75ef00f19",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/RESOURCE-WAIT-001.json",
+      "bytes": 186,
+      "mode": 420,
+      "sha256": "31df8445c097e38009fb15dfbf249f5569f94a65f498f7c79ba8d950e24f6194",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/ROOT-NATIVE-GO.json",
+      "bytes": 471,
+      "mode": 420,
+      "sha256": "24d796852ecccefb767d4d54ec965c987af9d2fe84b2a8135b2abfe8a8299267",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/RSS-SAMPLES.jsonl",
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/SOURCE-BINDING.json",
+      "bytes": 18774,
+      "mode": 420,
+      "sha256": "32b7ab8c6855d45d65d223f5bd9f3f10b5836fa4c8117a13cfe0d7f13ca1e335",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/STARTED.json",
+      "bytes": 286,
+      "mode": 420,
+      "sha256": "f51afd24d359a89ef19366c3dcc567777e074620d8bb96755bb63be47ed2d3a4",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/STARTUP-INVENTORY-001.json",
+      "bytes": 54,
+      "mode": 384,
+      "sha256": "149a0534ade684b0b421f2a64a90c4823aefefe8f9bd605405187ff05c8c9714",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/WATCHDOG-COMPLETION.json",
+      "bytes": 124,
+      "mode": 420,
+      "sha256": "482d978bdf023a874bd8e1a6c298358f46913dc5c104573dd412bb062eb83b5a",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/WATCHDOG-EXEC-INITIAL.json",
+      "bytes": 130,
+      "mode": 420,
+      "sha256": "fbcbc733aa9fc1b9115ba3e1e9121ffc5b75e28cdc464f79ac2df4330deacadd",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/WATCHDOG-INITIAL.json",
+      "bytes": 130,
+      "mode": 420,
+      "sha256": "fbcbc733aa9fc1b9115ba3e1e9121ffc5b75e28cdc464f79ac2df4330deacadd",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/WATCHDOG-LIVE.json",
+      "bytes": 189,
+      "mode": 420,
+      "sha256": "fd247e3b3da34a34d1580e142af1470c6647fbabe47e4b3a4d52a35b4d81f105",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/WATCHDOG-READY.json",
+      "bytes": 321,
+      "mode": 384,
+      "sha256": "2a8ac97e7e69e624cc94c7c085aa4ca8452d7a0915153457fce5e8bbc1527165",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/WATCHDOG-TERMINAL.json",
+      "bytes": 115,
+      "mode": 384,
+      "sha256": "6f3ac1d278085054abc5e6283fe9864047e736c87d5f0f11966c7646a93de167",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/WATCHDOG-WAIT-001.json",
+      "bytes": 183,
+      "mode": 420,
+      "sha256": "cb8f7fb0ebc4c69d68b7c39a7516d7088f18e26154b8d690bec32700a109e63d",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/WeftForge Constructor Preview P003.app/Contents/Info.plist",
+      "bytes": 641,
+      "mode": 420,
+      "sha256": "4dd7131efe6ce1dde93fd79790ea57a1ac2f70e55643471d44ef877f214ad314",
+      "reason": "Compiled app bundle/native binary omitted; identity is evidence only, never a delivered executable."
+    },
+    {
+      "original_locator": "<CASE_P003>/WeftForge Constructor Preview P003.app/Contents/MacOS/weftforge",
+      "bytes": 15948256,
+      "mode": 365,
+      "sha256": "e12e4b9e975830b9b1b7b3a22d464c103d800d9c142c09902e589174757fcc48",
+      "reason": "Compiled app bundle/native binary omitted; identity is evidence only, never a delivered executable."
+    },
+    {
+      "original_locator": "<CASE_P003>/call_recorder.py",
+      "bytes": 2720,
+      "mode": 420,
+      "sha256": "39e3c74f3950e712918e71f7234e5da6a4783773d2281326be7219735397f848",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P003>/cleanup.py",
+      "bytes": 10933,
+      "mode": 420,
+      "sha256": "9c6c18dd15911c29185b224192de123287e4e34a2be8d1ce1cd08919444471b2",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P003>/clock.py",
+      "bytes": 4617,
+      "mode": 420,
+      "sha256": "2e6a43e3db584c56e7fb1f05a4e9b8802141130c3ef778f41e54209fadc24301",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P003>/inputs/original-harbor.weftforge",
+      "bytes": 11808,
+      "mode": 292,
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "reason": "Readonly public sample copy omitted; byte-exact original fixture is already tracked on E."
+    },
+    {
+      "original_locator": "<CASE_P003>/inventory.js",
+      "bytes": 1274,
+      "mode": 420,
+      "sha256": "2768bc92b2a0e506959dd235c553f46cfa4ef5231f55325033bb7d1538b29f5a",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P003>/native.stderr.log",
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/native.stdout.log",
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P003>/native_call.js",
+      "bytes": 4573,
+      "mode": 420,
+      "sha256": "9d108334cf4b1666e5e6546df221af1aba71d5c32a9a2642c2e49cac6545f890",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P003>/preview_launch.js",
+      "bytes": 5421,
+      "mode": 420,
+      "sha256": "e2ac162cd162b0d5b6192c2ad6774149d0cfcc9a05fc71be22c6a9885f004bad",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P003>/preview_launch.py",
+      "bytes": 22051,
+      "mode": 420,
+      "sha256": "e2531572466e3bcfa3f818729e4df86f6940ea8e1b2f06b91fc2c6734e9d20eb",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P003>/preview_owner.py",
+      "bytes": 18535,
+      "mode": 420,
+      "sha256": "2111514fd90e15763c740ae4788df2410baa0392873e86db89bd043c11b31aa0",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P003>/preview_sequence.js",
+      "bytes": 15894,
+      "mode": 420,
+      "sha256": "f4db0e75d7ee66c9b7a6e72907c08a02bee796ed712f9f5aa5d93a1d6432fdfa",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P003>/resource_observer.py",
+      "bytes": 7309,
+      "mode": 420,
+      "sha256": "37ac6fc93fdfffd82e4dba492996761afbf538c02c21b6abc9d0ffc69ffb6414",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P003>/resources.py",
+      "bytes": 12679,
+      "mode": 420,
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P004>/BIND-INVENTORY.json",
+      "bytes": 6803,
+      "mode": 384,
+      "sha256": "f9935b3feea70126e236838bdcf2ad215ab09c3ffd182e2bc049840571eb8ba4",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/BIND-arm-COMPLETION.json",
+      "bytes": 780,
+      "mode": 420,
+      "sha256": "32e2cdc2bc9cfe59a64b845f1a7d4e357bde460c43856db8dae37ce7c467eddc",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/BIND-arm-INITIAL.json",
+      "bytes": 780,
+      "mode": 420,
+      "sha256": "32e2cdc2bc9cfe59a64b845f1a7d4e357bde460c43856db8dae37ce7c467eddc",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/BIND-bind-COMPLETION.json",
+      "bytes": 10141,
+      "mode": 420,
+      "sha256": "aedd7330f27f9dc637f66468420224a5a241e5a62dcedbee6f31a327c0b506e1",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/BIND-bind-INITIAL.json",
+      "bytes": 10141,
+      "mode": 420,
+      "sha256": "aedd7330f27f9dc637f66468420224a5a241e5a62dcedbee6f31a327c0b506e1",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/BIND-post-getter-COMPLETION.json",
+      "bytes": 440,
+      "mode": 420,
+      "sha256": "ea1b372d1227e1dfa98e464249b9b913669159add2b559489a6ed80a3ba32be8",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/BIND-post-getter-INITIAL.json",
+      "bytes": 440,
+      "mode": 420,
+      "sha256": "ea1b372d1227e1dfa98e464249b9b913669159add2b559489a6ed80a3ba32be8",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/CLEANUP-PRODUCER.json",
+      "bytes": 165,
+      "mode": 384,
+      "sha256": "0829581a82e0a2a506356d77cae9016f25464fc694fcd5ebde106aee6e548394",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/DIRECT-CHILD.json",
+      "bytes": 742,
+      "mode": 384,
+      "sha256": "807e184742ddfe5b0647b76882139fbbfd8d85d60631b3a4392c77e67d9a5e0d",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/DONE",
+      "bytes": 64,
+      "mode": 420,
+      "sha256": "491a959b7f227fb4d8f5021f352bfbca7260c69ba7438b6c9b21a3158bce9188",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/LAUNCH-COMPLETION.json",
+      "bytes": 398,
+      "mode": 420,
+      "sha256": "31e6af2fe9b6fbf3c083bf7a7963ac9f2fbf81db35919f6671fb693f704ba517",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/LAUNCH-EXEC-INITIAL.json",
+      "bytes": 130,
+      "mode": 420,
+      "sha256": "6b87c46d40cfe5b188225a091c8c80b5243751bdf132dbf1b36d9c27c1682191",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/LAUNCH-GATE.json",
+      "bytes": 353,
+      "mode": 384,
+      "sha256": "4ce4035a871791b6d9596f077a77099bb6a23a860e20274bcb76d30eb3a69a5c",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/LAUNCH-INITIAL.json",
+      "bytes": 130,
+      "mode": 420,
+      "sha256": "6b87c46d40cfe5b188225a091c8c80b5243751bdf132dbf1b36d9c27c1682191",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/LAUNCH-INTENT.json",
+      "bytes": 941,
+      "mode": 384,
+      "sha256": "b35328dce4f1c2a92103c74740950cc6ab62d0698467e3decb3d98a2fb8124ef",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/LAUNCH-INVENTORY.json",
+      "bytes": 7381,
+      "mode": 384,
+      "sha256": "89a97e7c93eba76e13d2fa45a521f4302cc306740b320c07ced762582d03bebc",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/LAUNCH-LIVE.json",
+      "bytes": 189,
+      "mode": 420,
+      "sha256": "4cf0f7ed25ec5cb07d936cd5efebfef54dfe260ba0ec8269f6cfa71b16e47c01",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/LAUNCH-PRODUCER-LEASE.json",
+      "bytes": 619,
+      "mode": 384,
+      "sha256": "785e11f41289357c73e25abc52ecde834e194025531f40d4ddb06f9d542abe03",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/LAUNCH-READINESS-ADMISSION.json",
+      "bytes": 547,
+      "mode": 384,
+      "sha256": "d6a5a575cce5c2d1ce652af1f8bc859fd8df498372497c787977aaf919be10b1",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/LAUNCH-READY.json",
+      "bytes": 2083,
+      "mode": 384,
+      "sha256": "3083f98a87e08a418a7e2bf28294697ef61405ad03549f3a3347df7ee15ceb05",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/LAUNCH-STOP.json",
+      "bytes": 184,
+      "mode": 384,
+      "sha256": "2b35acb48fe8fe8b154ea9b8403cc9459fe62556d33c84bb9cb7acaa93a90535",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/LAUNCH-WAIT-001.json",
+      "bytes": 457,
+      "mode": 420,
+      "sha256": "c33142f5f2696f9f3557c65e9cf9ba02a0e840d060a2efa0683630220d57e799",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/LAUNCH.json",
+      "bytes": 495,
+      "mode": 384,
+      "sha256": "18b85969108777c02b97c24f66e32d46ef08f384bac06dfb638895cf17af9dd8",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/OWNED-IDENTITY-001.json",
+      "bytes": 1431,
+      "mode": 384,
+      "sha256": "ade59cafee9ef653763cfa763ae6cd50a066ce326190e67c2dfa4b8b30a5a2af",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/OWNED-IDENTITY.json",
+      "bytes": 1431,
+      "mode": 384,
+      "sha256": "ade59cafee9ef653763cfa763ae6cd50a066ce326190e67c2dfa4b8b30a5a2af",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/OWNER-NEGATIVE-FALLBACK.json",
+      "bytes": 156,
+      "mode": 384,
+      "sha256": "d27d14081cfe45bec641b9d023f1889851d1a6aabcdc8cbe14e2b7577ff6c762",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/OWNER-OS-ABSENCE.json",
+      "bytes": 159,
+      "mode": 384,
+      "sha256": "0eeef4f7ed51dae11497ed37a3fb02d04ec4aaefe68fa0701cd87d8175d65782",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/OWNER-close-COMPLETION.json",
+      "bytes": 205,
+      "mode": 420,
+      "sha256": "26dca55e49ba80b573422c40fc1804b089b35335bfecf41da05eacd65cababdc",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/OWNER-close-INITIAL.json",
+      "bytes": 205,
+      "mode": 420,
+      "sha256": "26dca55e49ba80b573422c40fc1804b089b35335bfecf41da05eacd65cababdc",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/OWNER-seal-COMPLETION.json",
+      "bytes": 1454,
+      "mode": 420,
+      "sha256": "9ac931fbe9776a6aea7a9e46a3da249f4e211ed896c1b1c8eebc69c9963e29c8",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/OWNER-seal-INITIAL.json",
+      "bytes": 1454,
+      "mode": 420,
+      "sha256": "9ac931fbe9776a6aea7a9e46a3da249f4e211ed896c1b1c8eebc69c9963e29c8",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/PLAN.json",
+      "bytes": 55668,
+      "mode": 420,
+      "sha256": "546b667f7295195d1ade8c541e099371c6394c3efc2cf0c63406ed0d8d556e51",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/POST-GETTER-INVENTORY.json",
+      "bytes": 6803,
+      "mode": 384,
+      "sha256": "f9935b3feea70126e236838bdcf2ad215ab09c3ffd182e2bc049840571eb8ba4",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/PRELAUNCH-ABSENCE.json",
+      "bytes": 54,
+      "mode": 384,
+      "sha256": "149a0534ade684b0b421f2a64a90c4823aefefe8f9bd605405187ff05c8c9714",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/PREVIEW-MANIFEST.json",
+      "bytes": 11839,
+      "mode": 384,
+      "sha256": "e8cd2041786acc0037e0b052fcb965073f2f3872402cd8b03a64e2d5d690f16f",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/QUIT-EXPECTED-75570.json",
+      "bytes": 85,
+      "mode": 420,
+      "sha256": "711435a19947051d9d31d1381a916706673c626238ce4813a12599df205f93d5",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/RESOURCE-COMPLETION.json",
+      "bytes": 125,
+      "mode": 420,
+      "sha256": "8b1b1d8e3c5a3a543a3c733db1c8f28509cac0d8e24f64af77e32fb2e7211eeb",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/RESOURCE-EXEC-INITIAL.json",
+      "bytes": 130,
+      "mode": 420,
+      "sha256": "0102cf195b78bbf2cc40a39b80e7bd57f87e7074c192744fd7584315bb7b13b0",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/RESOURCE-INITIAL.json",
+      "bytes": 130,
+      "mode": 420,
+      "sha256": "0102cf195b78bbf2cc40a39b80e7bd57f87e7074c192744fd7584315bb7b13b0",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/RESOURCE-LIVE.json",
+      "bytes": 189,
+      "mode": 420,
+      "sha256": "a89053efd8c872bc8c5ed158ed1117a4be5bc9eeecd1320c87b5a2c6bddbe150",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/RESOURCE-READY.json",
+      "bytes": 419,
+      "mode": 420,
+      "sha256": "e2d5e9a15b80d7d98f1d7d56d179b81a431c38e435b00cc51ae151b9a38a30f8",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/RESOURCE-STOP",
+      "bytes": 38,
+      "mode": 420,
+      "sha256": "938ff6f1c69f5f8469f0ebb61adeb5d95d9cbfdc17461a4c1f4cf24624826a59",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/RESOURCE-TERMINAL.json",
+      "bytes": 177,
+      "mode": 420,
+      "sha256": "f12896dd36d59ea48dce575918b23d2d4a8c3178e15c1490fd33aa052fbba628",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/RESOURCE-WAIT-001.json",
+      "bytes": 184,
+      "mode": 420,
+      "sha256": "03e37ae672c2fcd8f66ad0250c83ed5be92087d5b63aafba6035365358bcce53",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/ROOT-NATIVE-GO.json",
+      "bytes": 494,
+      "mode": 420,
+      "sha256": "54de8dea2d09027477e0909283b666725f7ec62569999a9359b49cb2f85e8a2a",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/RSS-PID-75570-ABSENT.json",
+      "bytes": 58,
+      "mode": 420,
+      "sha256": "bb254527fee185e8fb8ff216ab9e1afd1681d21fa5c838a47837a963d77eff1d",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/RSS-SAMPLES.jsonl",
+      "bytes": 6943,
+      "mode": 420,
+      "sha256": "301b5989caec2fa50c073d350df4debfa3e317778f03cc687cd8c2fee61be11c",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/SOURCE-BINDING.json",
+      "bytes": 18765,
+      "mode": 420,
+      "sha256": "c9f1a4576f12433b003c3973bc8ce7b9d01e2c0f789ab357b749999ff9a3fff6",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/STARTED.json",
+      "bytes": 283,
+      "mode": 420,
+      "sha256": "45fc486dfcf3115f0f4cd350c34e44450f929fb4a68c8735f456cbb12b3281cd",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/STARTUP-INVENTORY-001.json",
+      "bytes": 54,
+      "mode": 384,
+      "sha256": "149a0534ade684b0b421f2a64a90c4823aefefe8f9bd605405187ff05c8c9714",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/STARTUP-INVENTORY-002.json",
+      "bytes": 7381,
+      "mode": 384,
+      "sha256": "89a97e7c93eba76e13d2fa45a521f4302cc306740b320c07ced762582d03bebc",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/VISUAL-01-state-CALL-TERMINAL.json",
+      "bytes": 400,
+      "mode": 420,
+      "sha256": "fd8f20178cc7c013679a2fa2b457195a90aab1a1bb687d7d971e74f334f3cbfb",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/VISUAL-01-state-CLOSE-COMPLETION.json",
+      "bytes": 641,
+      "mode": 420,
+      "sha256": "ac314ac3f6f53124b40d7675c886b625f171c0a797c4acca432888294d4887ae",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/VISUAL-01-state-CLOSE.json",
+      "bytes": 641,
+      "mode": 420,
+      "sha256": "ac314ac3f6f53124b40d7675c886b625f171c0a797c4acca432888294d4887ae",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/VISUAL-01-state-GATE-COMPLETION.json",
+      "bytes": 472,
+      "mode": 420,
+      "sha256": "950e4caed048c04da0da150bce06ee7366b7e0cde681d238a44b2e58f3602e67",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/VISUAL-01-state-GATE.json",
+      "bytes": 472,
+      "mode": 420,
+      "sha256": "950e4caed048c04da0da150bce06ee7366b7e0cde681d238a44b2e58f3602e67",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/VISUAL-04-quit-CALL-TERMINAL.json",
+      "bytes": 400,
+      "mode": 420,
+      "sha256": "aa5af10ee663e53a540aa6187fea08ff6231e56566fac1d210558a8485850464",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/VISUAL-04-quit-CLOSE.json",
+      "bytes": 639,
+      "mode": 420,
+      "sha256": "1f688cf1eda69113e3559ca64da0088f68efb4ddada458d752e3f83808253500",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/VISUAL-04-quit-GATE.json",
+      "bytes": 474,
+      "mode": 420,
+      "sha256": "61cfe88c982a28d45847fe7bdc568b84c47fd5f5ade16d33b6744177976b7db1",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/WATCHDOG-COMPLETION.json",
+      "bytes": 126,
+      "mode": 420,
+      "sha256": "1d32bf2205a34e175d72a65aa948e9151c910bd061dabb9e1ddd6121cd0c33d7",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/WATCHDOG-EXEC-INITIAL.json",
+      "bytes": 131,
+      "mode": 420,
+      "sha256": "a915e86aeef023d6c7830e5618ff935776174517429d02f6d9ee74750618845b",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/WATCHDOG-INITIAL.json",
+      "bytes": 131,
+      "mode": 420,
+      "sha256": "a915e86aeef023d6c7830e5618ff935776174517429d02f6d9ee74750618845b",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/WATCHDOG-LIVE.json",
+      "bytes": 190,
+      "mode": 420,
+      "sha256": "85fa6af45580ae3aaed0bd6148909874868f0028530b37e2dbf5ffdd2adc2e4d",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/WATCHDOG-READY.json",
+      "bytes": 319,
+      "mode": 384,
+      "sha256": "85897abe2e7eba7e572bf054686f75b4d5bcfe111e743feebe75e0bac47e59ab",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/WATCHDOG-TERMINAL.json",
+      "bytes": 115,
+      "mode": 384,
+      "sha256": "a4be769143cdbf09e4b5ddcf5e290c52ea8aae2f604215071fa6bc974aaa972d",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/WATCHDOG-WAIT-001.json",
+      "bytes": 186,
+      "mode": 420,
+      "sha256": "8cfae721f45af10622cf7e9de039fbacb8b5be59f9da23f32fdabf776f719460",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/WeftForge Constructor Preview P004.app/Contents/Info.plist",
+      "bytes": 641,
+      "mode": 420,
+      "sha256": "f1683573bdac7793bedac73fb25531a6aa42027f976dae2efdb823fdea8c6587",
+      "reason": "Compiled app bundle/native binary omitted; identity is evidence only, never a delivered executable."
+    },
+    {
+      "original_locator": "<CASE_P004>/WeftForge Constructor Preview P004.app/Contents/MacOS/weftforge",
+      "bytes": 15948256,
+      "mode": 365,
+      "sha256": "e12e4b9e975830b9b1b7b3a22d464c103d800d9c142c09902e589174757fcc48",
+      "reason": "Compiled app bundle/native binary omitted; identity is evidence only, never a delivered executable."
+    },
+    {
+      "original_locator": "<CASE_P004>/call_recorder.py",
+      "bytes": 2720,
+      "mode": 420,
+      "sha256": "39e3c74f3950e712918e71f7234e5da6a4783773d2281326be7219735397f848",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P004>/cleanup.py",
+      "bytes": 14388,
+      "mode": 420,
+      "sha256": "1881ccdf8fb55b33796a15c08170e42037c7a619c886a0ba071a4651d691f07a",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P004>/clock.py",
+      "bytes": 4617,
+      "mode": 420,
+      "sha256": "2e6a43e3db584c56e7fb1f05a4e9b8802141130c3ef778f41e54209fadc24301",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P004>/inputs/original-harbor.weftforge",
+      "bytes": 11808,
+      "mode": 292,
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "reason": "Readonly public sample copy omitted; byte-exact original fixture is already tracked on E."
+    },
+    {
+      "original_locator": "<CASE_P004>/inventory.js",
+      "bytes": 1352,
+      "mode": 420,
+      "sha256": "4136073f3e97e406034320d2eb058e38b7021e25ba3c6b3adcf3e41d53c6b36a",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P004>/native.stderr.log",
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/native.stdout.log",
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Redundant or nonessential original receipt omitted; original identity retained without a delivered-artifact claim."
+    },
+    {
+      "original_locator": "<CASE_P004>/native_call.js",
+      "bytes": 4573,
+      "mode": 420,
+      "sha256": "9d108334cf4b1666e5e6546df221af1aba71d5c32a9a2642c2e49cac6545f890",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P004>/preview_launch.js",
+      "bytes": 5421,
+      "mode": 420,
+      "sha256": "e2ac162cd162b0d5b6192c2ad6774149d0cfcc9a05fc71be22c6a9885f004bad",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P004>/preview_launch.py",
+      "bytes": 23206,
+      "mode": 420,
+      "sha256": "a47c3bc13d0f62c6805f3b2a719b2776c425510d4cbebe647f74827323560429",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P004>/preview_owner.py",
+      "bytes": 21735,
+      "mode": 420,
+      "sha256": "59403dd14c55a483b690e26feeba1b8fcf5b8eb59034c0a1ee89179e68780cfa",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P004>/preview_sequence.js",
+      "bytes": 16442,
+      "mode": 420,
+      "sha256": "d42afb43e92ea7f268aabce738917b80280c22197d40395aa15afeb2ea9ab91f",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P004>/resource_observer.py",
+      "bytes": 8123,
+      "mode": 420,
+      "sha256": "21200ee8595d3abc8e5878b9b521fee85d3e779cc69b02fc35d302b90d1b2901",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    },
+    {
+      "original_locator": "<CASE_P004>/resources.py",
+      "bytes": 12679,
+      "mode": 420,
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "reason": "Historical helper tree omitted; negative outcomes and selected raw witnesses retained without importing old private parents."
+    }
+  ],
+  "unsafe_image_bearing_originals_omitted_in_full": [
+    {
+      "original_locator": "<CASE_P005>/captures/constructor-1.jpg",
+      "bytes": 213389,
+      "mode": 384,
+      "sha256": "07ebd461b1109f23745872f20292a33c35b04e79fe7638ca25d814c5633e6e4e",
+      "reason": "Contains the unchanged original JPEG with a nonzero hardware-specific ICC metadata tag. Omitted in full; neither pixels nor metadata were edited."
+    },
+    {
+      "original_locator": "<CASE_P005>/VISUAL-01-state.json",
+      "bytes": 286965,
+      "mode": 420,
+      "sha256": "0782df63bf30f98c2d2a35ad848a9ecc52c5e5a153808dc91474d219d760d52d",
+      "reason": "Contains the unchanged original JPEG with a nonzero hardware-specific ICC metadata tag. Omitted in full; neither pixels nor metadata were edited."
+    },
+    {
+      "original_locator": "<CASE_P005>/VISUAL-02-frame.json",
+      "bytes": 293082,
+      "mode": 420,
+      "sha256": "cec23e6b27c5bf633abb8ede0d8e33d1a0652d17509a53331741eb939a8d7a4b",
+      "reason": "Contains the unchanged original JPEG with a nonzero hardware-specific ICC metadata tag. Omitted in full; neither pixels nor metadata were edited."
+    },
+    {
+      "original_locator": "<CASE_P005>/VISUAL-03-create.json",
+      "bytes": 289514,
+      "mode": 420,
+      "sha256": "6abb930919b4d486fbbe7ec083107b49c87c068de36ee02beb2d162844805d4d",
+      "reason": "Contains the unchanged original JPEG with a nonzero hardware-specific ICC metadata tag. Omitted in full; neither pixels nor metadata were edited."
+    },
+    {
+      "original_locator": "<CASE_P004>/VISUAL-01-state.json",
+      "bytes": 286965,
+      "mode": 420,
+      "sha256": "2edb938ce6e054eb0bc82a208b342da2585681b0085e4b316bb2957304361b4e",
+      "reason": "Contains the unchanged original JPEG with a nonzero hardware-specific ICC metadata tag. Omitted in full; neither pixels nor metadata were edited."
+    },
+    {
+      "original_locator": "<POSTCASE_P004>/returned-state.jpg",
+      "bytes": 211254,
+      "mode": 420,
+      "sha256": "2ba393adbf0dbaebbba75496076c16123e55436e2f48d7d4eeb6f424d5b31288",
+      "reason": "Contains the unchanged original JPEG with a nonzero hardware-specific ICC metadata tag. Omitted in full; neither pixels nor metadata were edited."
+    }
+  ],
+  "additional_private_parent_omissions": [
+    "P001, V1-V5 and their recursive proof/review histories remain historical private provenance; no opaque parent dependency is represented as delivered.",
+    "Private current metadata verify closure, raw release plan/closure and retained native executable remain original locator/hash provenance. The already tracked E public D-tooling/source reports and their exact artifact dependencies supply bounded public build/source evidence.",
+    "P002/P003/P004 omitted plans, source bindings and historical helper trees remain private; negative case freezes retain their original complete raw hash inventories.",
+    "V6 PREFLIGHT and stub bound-basename files are omitted; selected frozen source/proof/receipt describes the original focused case. Their omitted parent hashes remain unchanged and confer no further execution."
+  ],
+  "duplicate_helper_mapping": {
+    "call_recorder.py": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/call_recorder.py",
+    "cleanup.py": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/cleanup.py",
+    "clock.py": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/clock.py",
+    "inventory.js": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/inventory.js",
+    "native_call.js": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/native_call.js",
+    "preview_launch.js": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/preview_launch.js",
+    "preview_launch.py": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/preview_launch.py",
+    "preview_owner.py": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/preview_owner.py",
+    "preview_sequence.js": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/preview_sequence.js",
+    "resource_observer.py": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/resource_observer.py",
+    "resources.py": "parity/reports/artifacts/native-constructor-20261118/preparation-v6/resources.py"
+  },
+  "readonly_fixture_reuse": "fixtures/harbor-shirt.weftforge",
+  "original_case_frozen_file_counts": {
+    "P002": 55,
+    "P003": 58,
+    "P004": 92,
+    "P005": 109
+  },
+  "private_original_JPEG_metadata_inspection": {
+    "actual-P005/captures/constructor-1.jpg": {
+      "dimensions": [
+        1640,
+        1032
+      ],
+      "metadata_segments": [
+        {
+          "marker": "0xe0",
+          "bytes": 14,
+          "sha256": "fd08fbd3243f516c5eddbc12dfce3099349a6824eaa1b00cb09e221d61f99009"
+        },
+        {
+          "marker": "0xe1",
+          "bytes": 62,
+          "sha256": "ca2f3840264f391ed541d78c6bd6149c1a7c87bdfe10fa6a38b567fbc225df04"
+        },
+        {
+          "marker": "0xed",
+          "bytes": 54,
+          "sha256": "56884d80a2b6ac06e1872100ac480d6b96a4972e17cc1fbf36e219bb15ae539d"
+        },
+        {
+          "marker": "0xe2",
+          "bytes": 3386,
+          "sha256": "d0f48dd4482f8613702780801c644f97c154690d59620cb45b32d377bf79491f"
+        }
+      ],
+      "nonzero_hardware_specific_ICC_mmod_tag_present": true,
+      "private_content_metadata_check": "Image withheld: nonzero hardware-specific ICC tag cannot be established as non-identifying. Dimensions-only Exif and empty IPTC do not remove that concern. No image bytes were changed."
+    },
+    "negative-P004/post-case/returned-state.jpg": {
+      "dimensions": [
+        1640,
+        1032
+      ],
+      "metadata_segments": [
+        {
+          "marker": "0xe0",
+          "bytes": 14,
+          "sha256": "fd08fbd3243f516c5eddbc12dfce3099349a6824eaa1b00cb09e221d61f99009"
+        },
+        {
+          "marker": "0xe1",
+          "bytes": 62,
+          "sha256": "ca2f3840264f391ed541d78c6bd6149c1a7c87bdfe10fa6a38b567fbc225df04"
+        },
+        {
+          "marker": "0xed",
+          "bytes": 54,
+          "sha256": "56884d80a2b6ac06e1872100ac480d6b96a4972e17cc1fbf36e219bb15ae539d"
+        },
+        {
+          "marker": "0xe2",
+          "bytes": 3386,
+          "sha256": "d0f48dd4482f8613702780801c644f97c154690d59620cb45b32d377bf79491f"
+        }
+      ],
+      "nonzero_hardware_specific_ICC_mmod_tag_present": true,
+      "private_content_metadata_check": "Image withheld: nonzero hardware-specific ICC tag cannot be established as non-identifying. Dimensions-only Exif and empty IPTC do not remove that concern. No image bytes were changed."
+    }
+  },
+  "curation_preflight_history": {
+    "first_attempt": "NEGATIVE_BEFORE_PUBLIC_TREE_CREATION",
+    "original_exec_exit_code": 1,
+    "original_exec_wall_seconds": 3.22806975,
+    "original_private_outcome_sha256": "964568fb7ae066a0496832da706dab617125a73c29c9d9134bc127632cf13cfe",
+    "reason": "Conservative metadata preflight rejected an unsupported Exif marker before PUBLIC existed. Read-only inspection established dimensions-only Exif and empty IPTC but also a nonzero hardware-specific ICC tag. Root approved a separately recorded image-free selection; the failed attempt and all images remain unchanged privately."
+  },
+  "checks": {
+    "original_124_selected_and_all_inventoried_omissions_unchanged": true,
+    "raw_provisional_flags_and_AppQuit_isError_preserved": true,
+    "JSON_scalar_files": 97,
+    "JSONL_lines": 23,
+    "Python_literal_files": 9,
+    "inverse_locator_substitution_reproduces_all_original_text_bytes": true,
+    "private_locator_credential_rejection_selfchecks": true,
+    "all_delivered_artifacts_resolve_PUBLIC_or_tracked_E": true
+  },
+  "publication_gate": "Root review, Git tracking, and clean-checkout registry/map checks remain required. No installation, registry/STATUS edits or current-source execution was performed by curation."
+}

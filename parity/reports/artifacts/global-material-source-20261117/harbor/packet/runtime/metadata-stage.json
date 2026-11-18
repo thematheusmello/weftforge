@@ -1,0 +1,35 @@
+{
+  "argv": [
+    "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+    "-B",
+    "<ROOT>/.local/global-material-repair-20261117/.local/harbor-global-material-preparation-20261117/worker.py",
+    "metadata",
+    "--deadline",
+    "1010634.749378333"
+  ],
+  "end_monotonic_seconds": 1010216.899284333,
+  "exit_code": 0,
+  "peak_rss_bytes": 36339712,
+  "pid": 89726,
+  "process_group": 89726,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.05671320797409862,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 14,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 33505280,
+  "stop_reason": null,
+  "terminal_phase_checks": {
+    "deadline": 1010634.749378333,
+    "output_bytes": 1515317,
+    "output_cap_bytes": 268435456,
+    "reserve_bytes": 131072
+  }
+}

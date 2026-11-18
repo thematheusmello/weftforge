@@ -1,0 +1,99 @@
+{
+  "kind": "new qualified post-generation assessment; original wrapper result unchanged",
+  "root_freeze_preparation_qualification": "The154 xtask verification roster includes the2 expected mutable generated outputs. GENERATOR-ROOT-GO simultaneously declares those exact2 as allowed outputs. During this generation only152 non-output inputs are immutable; after outputs are committed a future clean xtask may correctly require all154 unchanged.",
+  "original_result": {
+    "path": "RESULT.json",
+    "sha256": "0a168610ae532d6044a4b1a6461d06532e2d7a702415a7ef37d67e0f8983022c",
+    "generator_exit_code": 0,
+    "wrapper_exit_code": 2,
+    "all154_unchanged_claim": false,
+    "original_failed_guard_retained": true
+  },
+  "session": 15672,
+  "PID": 28417,
+  "actual_elapsed_seconds": 48.24499995901715,
+  "raw_stdout": {
+    "sha256": "5e56cf9d6e6f9bff5b9d6ff939685c7c957d21c10f2b0019b158fe96825b6236",
+    "bytes": 69
+  },
+  "raw_stderr": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "scoped_before_after": {
+    "roster154": 154,
+    "immutable_non_output152": 152,
+    "all152_unchanged": true,
+    "source88_and61reports_and3_non_output_metadata_unchanged": true,
+    "expected_outputs_changed": {
+      "docs/dashboard/index.html": {
+        "before": "0f58773cd1c74f0d3d233631f35f38e3c23f0cb307e6632eed1edcd550b41092",
+        "after": "3acb45c22f7231aeee098556028026e8fd62b070c6c54a87192e124f2d46cdab"
+      },
+      "docs/progress.md": {
+        "before": "8ac0c4d36889e11acb09828b133e627eb0df41786460546dc22f4bccbd86fe20",
+        "after": "b588c9297d6585f15421cb71b6d9d1955328805f107294fb7638cf82cc846047"
+      }
+    },
+    "only_expected_outputs_dirty": true,
+    "all227_original_hashes_bytes_modes_unchanged": true,
+    "all228_artifact_hashes_bytes_modes_unchanged": true,
+    "HEAD_GO_freeze_index_fixed": true
+  },
+  "output_delta": {
+    "git_numstat": "1\t1\tdocs/dashboard/index.html\n14\t12\tdocs/progress.md\n",
+    "diff_path": "GENERATED-OUTPUTS.diff",
+    "diff_sha256": "173b80c3cceb6ee4ab10ef9b3189589246bdba565c009859207a7d0ac94a85b0",
+    "md_source_links_added": {
+      "WF-20261117-GLOBAL-MATERIAL-SOURCE-001": 2,
+      "WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001": 5
+    },
+    "md_attributable_rows_added": {
+      "WF-20261117-GLOBAL-MATERIAL-SOURCE-001": 1,
+      "WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001": 1
+    },
+    "same5_SIM_rows_full_state_columns_unchanged": true,
+    "md_failed_gap_rows_appended": 5,
+    "html_attributable_rows_added": {
+      "WF-20261117-GLOBAL-MATERIAL-SOURCE-001": 1,
+      "WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001": 1
+    },
+    "html_failed_gap_rows_appended": 3,
+    "old_paired_report_rows_only_freshness_and_reason": {
+      "WF-20261117-MATERIAL-GROUP-SOURCE-001": {
+        "old_label": "passed / current",
+        "new_label": "passed / stale"
+      },
+      "WF-20261116-MATERIAL-GROUPS-HARBOR-A8-001": {
+        "old_label": "failed / current",
+        "new_label": "failed / stale"
+      }
+    },
+    "removing_only_these_scoped_changes_recovers_exact_prior_markdown": true,
+    "removing_only_these_scoped_changes_recovers_exact_prior_dashboard": true
+  },
+  "displayed_counts": {
+    "Implementation:": "Implementation: 0/56 implemented; 41/56 partial; 0/56 in progress; 15/56 planned.",
+    "Verified reference parity:": "Verified reference parity: **0/56** inventoried contracts. Implementation-only checks do not count as reference parity.",
+    "Verification states:": "Verification states: passed 0/56, failed 5/56, blocked 3/56, stale 0/56, not_run 48/56.",
+    "Reference observation:": "Reference observation: observed 1/56, documentation_only 6/56, unobserved 49/56, blocked 0/56.",
+    "Evidence freshness:": "Evidence freshness: current 5/56, stale 30/56, missing 21/56."
+  },
+  "displayed_counts_byte_exact_to_prior": true,
+  "displayed_run_labels": {
+    "WF-20261117-GLOBAL-MATERIAL-SOURCE-001": "passed / current",
+    "WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001": "failed / current",
+    "WF-20261117-MATERIAL-GROUP-SOURCE-001": "passed / stale",
+    "WF-20261116-MATERIAL-GROUPS-HARBOR-A8-001": "failed / stale"
+  },
+  "failure_qualification_preserved": true,
+  "privacy": "Neither output contains account home/repository absolute locators.",
+  "followup_execution": {
+    "generator_retries": 0,
+    "extra_registry_map_or_whitespace_checkers": 0,
+    "Cargo_xtask": 0,
+    "model_UI_native_benchmark": 0,
+    "network_push": 0
+  },
+  "approval_state": "Generated outputs remain unstaged/uncommitted at original0cad9dd HEAD, awaiting root approval. No result/wrapper regrade or overwrite."
+}

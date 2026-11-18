@@ -1,0 +1,112 @@
+{
+  "actual_second_inventory_owned_launch_time": null,
+  "captures": 0,
+  "case": "WF-20261118-NATIVE-CONSTRUCTOR-VISUAL-P003-001",
+  "case_freeze_sha256": "72d66be9d57660e0e5dfaee58e42c590eddfd07d4256749bfebec03c5a42ee41",
+  "checked_utc": "2026-11-18T07:47:45.621195+00:00",
+  "head_and_index_clean": true,
+  "identity_requirement_not_met": "NSRunningApplication.launchDate serialized null for owned direct Popen child; freshness not admitted. No product visual defect established.",
+  "launcher_terminal": {
+    "chunk_id": "6827b0",
+    "exit_code": 1,
+    "original_token_count": 327,
+    "output": "Traceback (most recent call last):\n  File \"<CASE_P003>/preview_launch.py\", line 310, in <module>\n    main()\n    ~~~~^^\n  File \"<CASE_P003>/preview_launch.py\", line 290, in main\n    result = native_producer(plan, started, digest)\n  File \"<CASE_P003>/preview_launch.py\", line 227, in native_producer\n    p.require(failure is None and ready and child.returncode == 0 and not signals, 'Direct producer negative: ' + str(failure))\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<CASE_P003>/preview_owner.py\", line 25, in require\n    raise RuntimeError(message)\nRuntimeError: Direct producer negative: RuntimeError: Wrong native creation time; no startup retry or GUI\n",
+    "wall_time_seconds": 8.166e-06
+  },
+  "native_mcp_calls": 0,
+  "normal_quit_credit": false,
+  "observed_exact_child_and_bundle_and_content_window": true,
+  "owned_cleanup": {
+    "absent": true,
+    "after": {
+      "apps": [],
+      "child_apps": [],
+      "windows": []
+    },
+    "before": {
+      "apps": [],
+      "child_apps": [],
+      "windows": []
+    },
+    "case": "WF-20261118-NATIVE-CONSTRUCTOR-VISUAL-P003-001",
+    "corrupt_leases_retained": [],
+    "elapsed_since_case_start": 14.762906789779663,
+    "method": "producer barrier/group shutdown then strict same-case app cleanup",
+    "producer_barrier": {
+      "method": "verified original producer group absence",
+      "producer": {
+        "case": "WF-20261118-NATIVE-CONSTRUCTOR-VISUAL-P003-001",
+        "command": [
+          "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+          "-B",
+          "<CASE_P003>/preview_launch.py",
+          "launch"
+        ],
+        "executable": "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+        "pgid": 7839,
+        "pid": 7839,
+        "plan_sha256": "b9bfe8a2b0719f421df1e542d472a1d1de9c452f9994eac483914ee113d827fe",
+        "start_epoch": 1794987862.9658291,
+        "start_token": "Wed Nov 18 07:44:25 2026"
+      },
+      "quiescent": true,
+      "remaining": [],
+      "signals": [],
+      "stop_error": null
+    },
+    "producer_quiescent": true,
+    "signals": [],
+    "start_epoch": 1794987862.9658291,
+    "unexpected_case_apps": []
+  },
+  "owned_pids_and_groups_absent": [
+    7595,
+    7717,
+    7839,
+    7964
+  ],
+  "postcase_inventory": {
+    "apps": [],
+    "child_apps": [],
+    "windows": []
+  },
+  "primary_error": "LAUNCH original handle is not still live; no GUI dispatch",
+  "producer_failure": {
+    "case": "WF-20261118-NATIVE-CONSTRUCTOR-VISUAL-P003-001",
+    "child_exit": -15,
+    "child_pid": 7964,
+    "failure": "RuntimeError: Wrong native creation time; no startup retry or GUI",
+    "pgid": 7839,
+    "pid": 7839,
+    "ready": false,
+    "signals": [
+      {
+        "pgid": 7839,
+        "pid": 7964,
+        "signal": "SIGTERM",
+        "target": "native_child"
+      }
+    ],
+    "terminal_epoch": 1794987870.196192
+  },
+  "reference_credit": false,
+  "required109_exact": true,
+  "resource_terminal": {
+    "chunk_id": "cc3969",
+    "exit_code": 0,
+    "original_token_count": 0,
+    "output": "",
+    "wall_time_seconds": 0.558630583
+  },
+  "source_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+  "status": "CLOSED_NEGATIVE_BEFORE_ANY_GUI_CALLS",
+  "visual_acceptance": false,
+  "watchdog_terminal": {
+    "chunk_id": "cf3368",
+    "exit_code": 0,
+    "original_token_count": 0,
+    "output": "",
+    "wall_time_seconds": 0.2996775
+  },
+  "workflow_credit": false
+}

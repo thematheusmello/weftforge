@@ -1,0 +1,51 @@
+{
+  "case_id": "NATIVE-UI-PREVIEW-001",
+  "status": "proposal ready; pre-GO gates passed; explicit ROOT GO required; no launch performed",
+  "runtime_source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "source_roster": {
+    "path": "SOURCE87.json",
+    "sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+    "source_count": 87,
+    "actual_inputs_match": true
+  },
+  "main_source_sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd",
+  "native": {
+    "target_path": "${ROOT}/.local/photocraft-workspace-polish-20261116/target/debug/weftforge",
+    "bundle_path": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/NATIVE-UI-PREVIEW-001/WeftForge UI Preview P001.app",
+    "executable_relative": "Contents/MacOS/weftforge",
+    "sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+    "mode": "0755"
+  },
+  "info_plist_sha256": "0f4c5886e6fe7925be9568fb21bf5fb8e7c8dc0df1f7637c1fd535ea76afc983",
+  "plan_sha256": "809e96b7fe8d159b2d894ac734617f3bae4d7c67037119152e294431cdc7f686",
+  "gate_log_manifest_sha256": "c1831f67dcf162773d4cf18cdae92a9a6ac9cd51b6d258936dc4e5aa5d499546",
+  "source_before_workspace_gates_sha256": "7d6306a0da5a4af88a7020d941f6e6da0614718861c67d03fdbffbf55ba2f9bb",
+  "source_review_supplement": {
+    "path": "${ROOT}/.local/photocraft-ui-review-20261116/SOURCE-REVIEW-SUPPLEMENT.json",
+    "sha256": "9160e4e7a6b2fb3a6837bb4db65a9d17df2b93d93bd145cfe8e3c69bce2c0c4d"
+  },
+  "recorder": {
+    "path": "recorder.cjs",
+    "sha256": "4c34ff28585c827e08c2dac0e76cffa0ba1628b2240acec8b2476d41ace5e770",
+    "origin": "Existing own generic trace recorder; only PNG extension support added; no old case fixture/data reused"
+  },
+  "owned_pid": null,
+  "launch_performed": false,
+  "getApp_performed": false,
+  "source_after_workspace_gates_sha256": "fd18154ee9868ee50f9a00b9e2a9d2996f6fcebccd18fd663fbc62c8546dde70",
+  "workspace_test_receipt_sha256": "8bd30ac98dfb4417164048830b0c968a19ba12e7ce49f1d884f3fc7f93ffbdc8",
+  "workspace_clippy_receipt_sha256": "fd18154ee9868ee50f9a00b9e2a9d2996f6fcebccd18fd663fbc62c8546dde70",
+  "recorder_selfcheck_sha256": "11ab899d14936f6820ec494f601a3a76c843c05165ed1eafcdd61922cd2f4360",
+  "all87_before_after_equal": true,
+  "native_before_after_equal": true,
+  "full_workspace_tests": {
+    "passed": 389,
+    "failed": 0,
+    "exit_code": 0,
+    "tool_session_id": 40882
+  },
+  "strict_workspace_clippy": {
+    "exit_code": 0,
+    "tool_session_id": 13931
+  }
+}

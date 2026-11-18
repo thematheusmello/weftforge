@@ -1,0 +1,65 @@
+{
+  "candidate_success": true,
+  "deadline": 1047002.580932666,
+  "guards": {
+    "HEAD_fixed": true,
+    "all176_immutable_hashes_bytes_modes_exact": true,
+    "all424_original_hashes_bytes_modes_exact": true,
+    "all425_public_hashes_bytes_modes_exact": true,
+    "all8_supporting_tools_hashes_bytes_modes_exact": true,
+    "checkout_clean_after": true,
+    "controller_sources_fixed": true,
+    "index_empty_fixed": true,
+    "no_working_paths_dirty": true,
+    "project_tool_inputs_fixed": true
+  },
+  "metadata_commit": "bf100c3310bf6acf53df18e07052780312372965",
+  "mutable_output_after": {},
+  "mutable_output_before": {},
+  "no_retry_or_source420_model_workflow_UI_network_execution": true,
+  "raw_stderr_sha256": "f567fe37ae774de11cd101dfee8a2269cf32e15c34df7b5d9220d1a724750875",
+  "raw_stdout_sha256": "54df13c7265285afc75a02955a480d397d53ea070c8da93adca1959b56e9e058",
+  "stage": {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "xtask",
+      "verify"
+    ],
+    "disk_observation": {
+      "last_available_bytes": 12196683776,
+      "max_snapshot_gap_seconds": 0.5765363749815151,
+      "minimum_available_bytes": 11812671488,
+      "path": "<ROOT>/.local/sewing-history-delivery-integration-20261117",
+      "samples": 4770,
+      "stop_below_available_bytes": 8000000000
+    },
+    "end_monotonic_seconds": 1046952.318996,
+    "exit_code": 0,
+    "peak_rss_bytes": 87851008,
+    "pid": 92595,
+    "process_group": 92595,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.5730220410041511,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 4767,
+      "timeouts": 0
+    },
+    "sampled_peak_rss_bytes": 570720256,
+    "stop_reason": null,
+    "terminal_phase_checks": {
+      "deadline": 1047002.580932666,
+      "output_bytes": 769329,
+      "output_cap_bytes": 16777216,
+      "reserve_bytes": 262144
+    }
+  },
+  "started": 1046642.580932666,
+  "status": "pending_final_post_persistence_clock_volume_verdict",
+  "xtask_exit_code": 0
+}

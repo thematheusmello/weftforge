@@ -1,0 +1,44 @@
+{
+  "MCP_GUI_calls": 0,
+  "all_owned_processes_absent": true,
+  "all_required108_root_bindings_exact": true,
+  "captures": 0,
+  "case": "WF-20261118-NATIVE-CONSTRUCTOR-VISUAL-P002-001",
+  "initial_failure": "lease_from_inventory required exactly one matching app at first post-Popen inventory; count/value not retained, so neither absence timing nor identity cause established",
+  "native_child_launches": 1,
+  "normal_Quit_credit": false,
+  "observed_utc": "2026-11-18T06:30:01.288493+00:00",
+  "original_case_frozen_sha256": "fa82f30f6641dc2121ce22309eee2d52fcdbe755d98274dd02a276940524a72e",
+  "owned_pid_pgs": [
+    89179,
+    89300,
+    89465,
+    89595
+  ],
+  "producer_terminal": {
+    "case": "WF-20261118-NATIVE-CONSTRUCTOR-VISUAL-P002-001",
+    "child_exit": -15,
+    "child_pid": 89595,
+    "failure": "RuntimeError: Exactly one fresh owned native process required; extras refuse GUI",
+    "pgid": 89465,
+    "pid": 89465,
+    "ready": false,
+    "signals": [
+      {
+        "pgid": 89465,
+        "pid": 89595,
+        "signal": "SIGTERM",
+        "target": "native_child"
+      }
+    ],
+    "terminal_epoch": 1794982933.044767
+  },
+  "qualification": "Separate root safety/process/source preservation only; no case restart/regrade, UI/layout/workflow/physics/reference acceptance or extended deadline.",
+  "secondary_failure": "LAUNCH-LIVE had consumed terminal receipt; close repolled original92873 and got Unknown process id",
+  "separate_postcase_inventory": {
+    "apps": [],
+    "windows": []
+  },
+  "source_native_fixture_unchanged": true,
+  "status": "NEGATIVE_ORCHESTRATION_STARTUP_NO_GUI"
+}

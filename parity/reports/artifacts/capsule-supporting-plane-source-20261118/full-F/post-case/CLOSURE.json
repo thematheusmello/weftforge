@@ -1,0 +1,48 @@
+{
+  "active_Cargo_or_native_processes": [],
+  "all_owned_processes_absent": true,
+  "built_binary_descriptors_exact": true,
+  "completed_case": "<FULL_SOURCE_QA>",
+  "completed_case_unchanged": true,
+  "completed_clock_witness": {
+    "accepted": true,
+    "actual_seconds_through_persisted_external_terminal": 413.5268909998704,
+    "available_bytes": 11192557568,
+    "case_cap_seconds": 900,
+    "controller_exit_code": 0,
+    "external_terminal_sha256": "85eabc8781bd7718d534f7c14c24bb85b064abae6e4ece643081781cfbae5e19",
+    "launcher_timeout": false,
+    "qualification": "Clock sampled after external terminal and controller stdio fsync. This witness preserves that completed-case observation and is not a new command or timing regrade.",
+    "retained_bytes_at_terminal": 285409,
+    "retained_cap_bytes": 8388608
+  },
+  "config19_exact": true,
+  "head": "c766f3fa48c03ac698da8b22cc3bf927ee71f195",
+  "independent_review_exact": true,
+  "owned_pids": [
+    76021,
+    76164,
+    76592,
+    76761,
+    96877,
+    97873
+  ],
+  "owned_process_groups": [
+    76164,
+    76592,
+    76761,
+    96877,
+    97873
+  ],
+  "prior_artifact_count": 78,
+  "prior_cases_exact": true,
+  "qualification": "Post-case preservation and process closure only; no command replay, source edit, timing regrade or acceptance extension.",
+  "remaining_owned_processes": [],
+  "source91_count": 91,
+  "source91_exact": true,
+  "source_case_artifact_count": 32,
+  "source_case_artifact_manifest_sha256": "36adfbbfa86dd361311aa3d10498d5ba51211784b13026e842936b1bf07ed5d7",
+  "source_case_retained_bytes_now": 285984,
+  "tools7_exact": true,
+  "tracked_tree_clean": true
+}

@@ -1,0 +1,36 @@
+{
+  "review": "material-outline-offset-code-review-20261116/REVIEW-SUPPLEMENT-002.md",
+  "supplements": "SOURCE-PINS-001.json",
+  "date": "2026-11-16",
+  "mode": "targeted read-only lexical verification; no product execution",
+  "worktree": ".local/material-outline-offset-20261116",
+  "base_commit": "1fc1d71993cf193801e44982b757fca8abc5aba7",
+  "reviewed_delta": {
+    "path": "apps/weftforge-cli/tests/mcp_stdio.rs",
+    "line": 729,
+    "before": 32,
+    "after": 33,
+    "reconstructed_previous_sha256": "f8fa6ffe6f1b664810aec4d1b68ba82e6888f752cfce2475325f2e8354aa9f63",
+    "reconstruction_matches_001_pin": true,
+    "other_lexical_changes_in_test_file": false
+  },
+  "other_pin_basis": "Inherited unchanged from immutable SOURCE-PINS-001.json; other source was not reread in this targeted supplement",
+  "source_sha256": {
+    "crates/weftforge-core/src/offset.rs": "77669333b842d3d75cfc5cadf785592f661ea225092c7e0575d7dfbbdda63177",
+    "crates/weftforge-core/src/document.rs": "e51a9889d743dc3530cc83e15c55938dece9bd8d37430859775e0f8ad344f010",
+    "crates/weftforge-core/src/geometry.rs": "ff833b2f42b41713508a448392cfeb319f0df0a480837796622f3a973f4c973a",
+    "crates/weftforge-core/src/simulation.rs": "4265e2239c7ec54d7b9ba2f91bdd0e9c7bd039e7495e830c0d9f84f6832c4386",
+    "crates/weftforge-core/src/lib.rs": "8f1a57b619222ea11986bf68a424e277b31a26d8da5eccef7c6d31b913ce76f8",
+    "crates/weftforge-core/tests/outline_offset.rs": "3b6e3c75e9fa525d7b1556bb7280aa2af4cebe2c7f7349246876c0e7b2aac2ea",
+    "apps/weftforge-cli/src/main.rs": "7049615180a793ad1557a2bbd3a27797b4b06aac060a2cb0620bd40436e64e0b",
+    "apps/weftforge-cli/src/mcp.rs": "b0ac7f62a8f9f5e27236ebfc92b26791e9f7a84d67e7adcb663b43566dd34ef9",
+    "apps/weftforge-cli/tests/mcp_stdio.rs": "8c20f4e7bfd7b0a2ef60538a43c662d4363288b66ba05abd1c5528b15fde3811",
+    "apps/weftforge/src/main.rs": "24de266c826ab46d1c5d8cfb885de0b2a275e5b6f735dd3918f894a57913c95e"
+  },
+  "contract_pin_basis": "Unchanged contract pins in SOURCE-PINS-001.json",
+  "remaining_contract_gap": "earcut internal predicates do not provide per-256-task cancellation or complete request-work accounting; UNMET, not waived",
+  "cargo_or_gui_reruns": false,
+  "evaluator_or_grader_runs": false,
+  "source_or_git_mutations": false,
+  "parity_credit": 0
+}

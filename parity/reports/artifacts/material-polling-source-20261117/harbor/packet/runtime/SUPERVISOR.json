@@ -1,0 +1,191 @@
+{
+  "deadline": 1021072.927959916,
+  "experiment": "WF-20261117-MATERIAL-POLLING-HARBOR-A8-001",
+  "final_numerical_receipt_sha256": "752486de9f0f86b2d59b9f540db62e50a1db61f80e35c9b62426611b8bbb7c4d",
+  "finalization_process_end_monotonic_seconds": 1020949.610031125,
+  "native_or_reference_acceptance": false,
+  "root_go_sha256": "7764a6160264daeb4ad4bf251e4d0d3d07bb32d25439cf3acbba8f99f259a19f",
+  "source_commit": "9d4b629c077f06c348f6615fe90df7bbeacedb24",
+  "stages": [
+    {
+      "argv": [
+        "<ROOT>/.local/material-cancellation-polling-20261117/target/release/harbor-coupled-producer",
+        "prepare",
+        "inputs/base.weftforge",
+        "preflight-base"
+      ],
+      "end_monotonic_seconds": 1020654.179322791,
+      "exit_code": 0,
+      "name": "init-only",
+      "peak_rss_bytes": 8159232,
+      "pid": 21562,
+      "process_group": 21562,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.06849912507459521,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 13,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 8110080,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1021072.927959916,
+        "output_bytes": 916412,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    },
+    {
+      "argv": [
+        "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+        "-B",
+        "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/worker.py",
+        "metadata",
+        "--deadline",
+        "1021072.927959916"
+      ],
+      "end_monotonic_seconds": 1020654.872912916,
+      "exit_code": 0,
+      "name": "metadata",
+      "peak_rss_bytes": 36323328,
+      "pid": 21590,
+      "process_group": 21590,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.0594828330213204,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 13,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 34619392,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1021072.927959916,
+        "output_bytes": 1509994,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    },
+    {
+      "argv": [
+        "<ROOT>/.local/material-cancellation-polling-20261117/target/release/harbor-coupled-producer",
+        "run",
+        "inputs/base.weftforge",
+        "runs/base",
+        "expected/approved-metadata.json"
+      ],
+      "end_monotonic_seconds": 1020908.151124125,
+      "exit_code": 0,
+      "name": "producer",
+      "peak_rss_bytes": 11091968,
+      "pid": 21626,
+      "process_group": 21626,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.324226374970749,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 4422,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 11091968,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1021072.927959916,
+        "output_bytes": 18200057,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    },
+    {
+      "argv": [
+        "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+        "-B",
+        "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/worker.py",
+        "analyze",
+        "--deadline",
+        "1021072.927959916"
+      ],
+      "end_monotonic_seconds": 1020947.701349291,
+      "exit_code": 2,
+      "name": "analysis",
+      "peak_rss_bytes": 38895616,
+      "pid": 32881,
+      "process_group": 32881,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.13540812500286847,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 729,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 38895616,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1021072.927959916,
+        "output_bytes": 19202130,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    },
+    {
+      "argv": [
+        "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+        "-B",
+        "<ROOT>/.local/material-cancellation-polling-20261117/.local/harbor-material-polling-preparation-20261117/worker.py",
+        "finalize",
+        "--deadline",
+        "1021072.927959916"
+      ],
+      "end_monotonic_seconds": 1020949.610031125,
+      "exit_code": 0,
+      "name": "finalization",
+      "peak_rss_bytes": 35487744,
+      "pid": 34803,
+      "process_group": 34803,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.06381449999753386,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 35,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 35487744,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1021072.927959916,
+        "output_bytes": 19209907,
+        "output_cap_bytes": 268435456,
+        "reserve_bytes": 131072
+      }
+    }
+  ],
+  "started": 1020652.927959916,
+  "status": "pending_post_persistence_terminal_verdict",
+  "strict_quality_passed": false
+}

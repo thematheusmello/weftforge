@@ -1,0 +1,10 @@
+{
+  "session_id_awaited": 44013,
+  "receipt": {
+    "chunk_id": "6827b0",
+    "wall_time_seconds": 0.000008166,
+    "exit_code": 1,
+    "original_token_count": 327,
+    "output": "Traceback (most recent call last):\n  File \"<CASE_P003>/preview_launch.py\", line 310, in <module>\n    main()\n    ~~~~^^\n  File \"<CASE_P003>/preview_launch.py\", line 290, in main\n    result = native_producer(plan, started, digest)\n  File \"<CASE_P003>/preview_launch.py\", line 227, in native_producer\n    p.require(failure is None and ready and child.returncode == 0 and not signals, 'Direct producer negative: ' + str(failure))\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<CASE_P003>/preview_owner.py\", line 25, in require\n    raise RuntimeError(message)\nRuntimeError: Direct producer negative: RuntimeError: Wrong native creation time; no startup retry or GUI\n"
+  }
+}

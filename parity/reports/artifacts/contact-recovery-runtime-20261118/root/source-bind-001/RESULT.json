@@ -1,0 +1,78 @@
+{
+  "Cargo_Cloth_model_GUI_calls": 0,
+  "build_numerical_GO_absent": true,
+  "child_argv": [
+    "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+    "-B",
+    "<NUMERICAL_PACKET>/bind_source.py"
+  ],
+  "conservative_parent_plus_child_peak_bytes": 54345728,
+  "pinned_env": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_ENCODED_RUSTDOCFLAGS": "",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_DEV_INCREMENTAL": "false",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_PROFILE_TEST_INCREMENTAL": "false",
+    "CARGO_TARGET_DIR": "<WORKTREE>/target",
+    "CARGO_TERM_COLOR": "never",
+    "CFLAGS": "",
+    "CPPFLAGS": "",
+    "CXXFLAGS": "",
+    "LDFLAGS": "",
+    "PATH": "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin:<PYENV_HOME>/versions/3.13.0/bin:/usr/bin:/bin:/usr/sbin:/sbin:<HOMEBREW_PREFIX>/bin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONOPTIMIZE": "0",
+    "RUSTC": "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTC_BOOTSTRAP": "",
+    "RUSTC_WORKSPACE_WRAPPER": "",
+    "RUSTC_WRAPPER": "",
+    "RUSTDOC": "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+    "RUSTDOCFLAGS": "",
+    "RUSTFLAGS": "",
+    "RUSTUP_TOOLCHAIN": "1.94.1",
+    "RUST_TEST_THREADS": "1"
+  },
+  "source_bind_invocations": 1,
+  "source_bind_only": true,
+  "source_preflight_sha256": "d6640efe58349ce828a136a0a06d3e99d40af13f94b26ac59eb619abdbe21bd6",
+  "source_preflight_written": true,
+  "stage": {
+    "argv": [
+      "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+      "-B",
+      "<NUMERICAL_PACKET>/bind_source.py"
+    ],
+    "end_monotonic_seconds": 1107223.523802458,
+    "exit_code": 0,
+    "peak_rss_bytes": 31588352,
+    "pid": 20568,
+    "process_group": 20568,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.0554966249037534,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 9,
+      "timeouts": 0
+    },
+    "sampled_peak_rss_bytes": 31440896,
+    "stop_reason": null,
+    "terminal_phase_checks": {
+      "deadline": 1107283.044435291,
+      "output_bytes": 8344,
+      "output_cap_bytes": 1048576,
+      "reserve_bytes": 65536
+    }
+  },
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "935f87e27d9b80aa5ae68ba3b5c60d7070c94250b0e05d5979ca065fe0ffd77d",
+  "supervisor_peak_rss_bytes": 22757376
+}

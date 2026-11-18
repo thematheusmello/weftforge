@@ -1,0 +1,69 @@
+--- tested-control-or-closed-source/common.py
++++ sewing-history-draft/common.py
+@@ -16,7 +16,7 @@
+ import evaluator as c
+ import resources as r
+ 
+-EXPERIMENT = "WF-20261117-BEND-INSPECTOR-HARBOR-A8-001"
++EXPERIMENT = "WF-20261117-SEWING-HISTORY-HARBOR-A8-001"
+ SOURCE = _candidate.get("source_commit")
+ OWN_TARGET = "target"
+ CAP_SECONDS = 420.0
+@@ -31,7 +31,7 @@
+     r.require(_candidate.get("status") == "root_reviewed_candidate" and _candidate.get("root_confirms_green_source_and_review") is True and REPO is not None and
+               isinstance(SOURCE, str) and len(SOURCE) == 40 and all(q in "0123456789abcdef" for q in SOURCE),
+               "Reviewed candidate source is pending; no build/freeze/initialization/dynamics authorized")
+-    r.require(ROOT == REPO / ".local/harbor-bend-inspector-preparation-20261117",
++    r.require(ROOT == REPO / ".local/harbor-sewing-history-preparation-20261117",
+               "Install the source-only packet in the reviewed candidate checkout before final preparation")
+     r.require(c.same(read(ROOT / "CANDIDATE.json"), _candidate), "Candidate binding changed")
+     for path_key, sha_key in [("source_manifest", "source_manifest_sha256"),
+@@ -66,13 +66,13 @@
+               workspace["metadata_frozen"] == gate["metadata_frozen"] and workspace["original8"] == gate["original8"] and
+               summary["all_status_ok"] is True and
+               all(type(summary[key]) is int and summary[key] == expected for key, expected in
+-                  [("passed",416),("failed",0),("ignored",0),("summary_count",31)]) and
++                  [("passed",420),("failed",0),("ignored",0),("summary_count",31)]) and
+               type(summary["raw_summaries"]) is list and len(summary["raw_summaries"]) == 31 and
+               all(entry["status"] == "ok" and all(type(entry[key]) is int and entry[key] >= 0
+                   for key in ["passed","failed","ignored"]) for entry in summary["raw_summaries"]) and
+               all(sum(entry[key] for entry in summary["raw_summaries"]) == summary[key]
+                   for key in ["passed","failed","ignored"]),
+-              "Actual four-stage416 source result/counts do not match the full88 freeze")
++              "Actual four-stage420 source result/counts do not match the full88 freeze")
+     r.require(type(workspace["stages"]) is list and len(workspace["stages"]) == 4 and
+               [stage["name"] for stage in workspace["stages"]] ==
+                   ["full-fmt","workspace-tests","workspace-clippy","native-cli-debug"] and
+--- tested-control-or-closed-source/compiler_inputs.py
++++ sewing-history-draft/compiler_inputs.py
+@@ -4,7 +4,7 @@
+ from pathlib import Path
+ import tomllib
+ 
+-LOCAL_ROOTS=('crates/weftforge-core','crates/weftforge-sim','vendor/earcutr','.local/harbor-bend-inspector-preparation-20261117/producer')
++LOCAL_ROOTS=('crates/weftforge-core','crates/weftforge-sim','vendor/earcutr','.local/harbor-sewing-history-preparation-20261117/producer')
+ 
+ 
+ def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+@@ -28,7 +28,7 @@
+ 
+ 
+ def dependency_inventory(wt,cargo_home):
+-    lock=tomllib.loads((Path(wt)/'.local/harbor-bend-inspector-preparation-20261117/producer/Cargo.lock').read_text());result=[]
++    lock=tomllib.loads((Path(wt)/'.local/harbor-sewing-history-preparation-20261117/producer/Cargo.lock').read_text());result=[]
+     for package in lock['package']:
+         if 'source' not in package:continue
+         if package['source']!='registry+https://github.com/rust-lang/crates.io-index':raise ValueError('unexpected dependency source')
+--- tested-control-or-closed-source/outer/supervise.py
++++ sewing-history-draft/outer/supervise.py
+@@ -7,8 +7,8 @@
+ import time
+ 
+ OUT = Path(__file__).resolve().parent
+-REPO = OUT.parent / "bend-inspector-candidate-20261117"
+-PACKET = REPO / ".local/harbor-bend-inspector-preparation-20261117"
++REPO = OUT.parent / "positive-target-sewing-component-20261117"
++PACKET = REPO / ".local/harbor-sewing-history-preparation-20261117"
+ sys.path.insert(0, str(PACKET))
+ import common as b
+ from common import r

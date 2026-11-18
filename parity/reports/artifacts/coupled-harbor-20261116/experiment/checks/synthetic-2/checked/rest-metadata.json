@@ -1,0 +1,394 @@
+{
+  "all_contact_enabled": true,
+  "boundary": [
+    {
+      "curve": 6,
+      "piece": 2,
+      "t": 0.0,
+      "vertex": 0
+    },
+    {
+      "curve": 6,
+      "piece": 2,
+      "t": 0.5,
+      "vertex": 1
+    },
+    {
+      "curve": 7,
+      "piece": 2,
+      "t": 0.0,
+      "vertex": 2
+    },
+    {
+      "curve": 7,
+      "piece": 2,
+      "t": 0.3333333333333333,
+      "vertex": 3
+    },
+    {
+      "curve": 7,
+      "piece": 2,
+      "t": 0.6666666666666666,
+      "vertex": 4
+    },
+    {
+      "curve": 8,
+      "piece": 2,
+      "t": 0.0,
+      "vertex": 5
+    },
+    {
+      "curve": 8,
+      "piece": 2,
+      "t": 0.5,
+      "vertex": 6
+    },
+    {
+      "curve": 6,
+      "piece": 2,
+      "t": 1.0,
+      "vertex": 2
+    },
+    {
+      "curve": 7,
+      "piece": 2,
+      "t": 1.0,
+      "vertex": 5
+    },
+    {
+      "curve": 8,
+      "piece": 2,
+      "t": 1.0,
+      "vertex": 0
+    }
+  ],
+  "doc_revision": 0,
+  "ground_height_m": 0.0,
+  "masses_kg": [
+    0.008333333333333333,
+    0.013888888888888888,
+    0.005555555555555554,
+    0.015277777777777776,
+    0.015277777777777776,
+    0.005555555555555557,
+    0.013888888888888888,
+    0.02222222222222222
+  ],
+  "piece_ids": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "pins": [],
+  "project": {
+    "curves": [
+      {
+        "controls": null,
+        "end": 4,
+        "id": 6,
+        "start": 3
+      },
+      {
+        "controls": null,
+        "end": 5,
+        "id": 7,
+        "start": 4
+      },
+      {
+        "controls": null,
+        "end": 3,
+        "id": 8,
+        "start": 5
+      }
+    ],
+    "mannequin": {
+      "capsules": []
+    },
+    "materials": [
+      {
+        "areal_density": 0.2,
+        "bending_stiffness": 0.003,
+        "collision_thickness": 0.003,
+        "color": [
+          0.30000001192092896,
+          0.4000000059604645,
+          0.5
+        ],
+        "damping": 0.2,
+        "friction": 0.4,
+        "id": 1,
+        "name": "Synthetic known areal mass",
+        "shear_stiffness": 100.0,
+        "warp_stiffness": 400.0,
+        "weft_stiffness": 400.0
+      }
+    ],
+    "next_id": 9,
+    "pieces": [
+      {
+        "boundary": [
+          6,
+          7,
+          8
+        ],
+        "grain_angle": 0.0,
+        "holes": [],
+        "id": 2,
+        "internal_curves": [],
+        "material": 1,
+        "name": "New analytic triangle",
+        "placement": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    ],
+    "points": [
+      {
+        "id": 3,
+        "position": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": 4,
+        "position": [
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "id": 5,
+        "position": [
+          0.0,
+          2.0
+        ]
+      }
+    ],
+    "resolution": 0.5,
+    "revision": 0,
+    "seams": [],
+    "sewing_groups": []
+  },
+  "rest_positions_m": [
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.5,
+      1.0,
+      0.0
+    ],
+    [
+      1.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.6666666666666667,
+      1.3333333333333333,
+      0.0
+    ],
+    [
+      0.33333333333333337,
+      1.6666666666666665,
+      0.0
+    ],
+    [
+      0.0,
+      2.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.5,
+      0.0
+    ],
+    [
+      0.25,
+      1.25,
+      0.0
+    ]
+  ],
+  "stitches": [],
+  "triangle_materials": [
+    {
+      "areal_density": 0.2,
+      "bending_stiffness": 0.003,
+      "collision_thickness": 0.003,
+      "damping": 0.2,
+      "friction": 0.4,
+      "grain_angle": 0.0,
+      "material_id": 1,
+      "piece_id": 2,
+      "shear_stiffness": 100.0,
+      "warp_stiffness": 400.0,
+      "weft_stiffness": 400.0
+    },
+    {
+      "areal_density": 0.2,
+      "bending_stiffness": 0.003,
+      "collision_thickness": 0.003,
+      "damping": 0.2,
+      "friction": 0.4,
+      "grain_angle": 0.0,
+      "material_id": 1,
+      "piece_id": 2,
+      "shear_stiffness": 100.0,
+      "warp_stiffness": 400.0,
+      "weft_stiffness": 400.0
+    },
+    {
+      "areal_density": 0.2,
+      "bending_stiffness": 0.003,
+      "collision_thickness": 0.003,
+      "damping": 0.2,
+      "friction": 0.4,
+      "grain_angle": 0.0,
+      "material_id": 1,
+      "piece_id": 2,
+      "shear_stiffness": 100.0,
+      "warp_stiffness": 400.0,
+      "weft_stiffness": 400.0
+    },
+    {
+      "areal_density": 0.2,
+      "bending_stiffness": 0.003,
+      "collision_thickness": 0.003,
+      "damping": 0.2,
+      "friction": 0.4,
+      "grain_angle": 0.0,
+      "material_id": 1,
+      "piece_id": 2,
+      "shear_stiffness": 100.0,
+      "warp_stiffness": 400.0,
+      "weft_stiffness": 400.0
+    },
+    {
+      "areal_density": 0.2,
+      "bending_stiffness": 0.003,
+      "collision_thickness": 0.003,
+      "damping": 0.2,
+      "friction": 0.4,
+      "grain_angle": 0.0,
+      "material_id": 1,
+      "piece_id": 2,
+      "shear_stiffness": 100.0,
+      "warp_stiffness": 400.0,
+      "weft_stiffness": 400.0
+    },
+    {
+      "areal_density": 0.2,
+      "bending_stiffness": 0.003,
+      "collision_thickness": 0.003,
+      "damping": 0.2,
+      "friction": 0.4,
+      "grain_angle": 0.0,
+      "material_id": 1,
+      "piece_id": 2,
+      "shear_stiffness": 100.0,
+      "warp_stiffness": 400.0,
+      "weft_stiffness": 400.0
+    },
+    {
+      "areal_density": 0.2,
+      "bending_stiffness": 0.003,
+      "collision_thickness": 0.003,
+      "damping": 0.2,
+      "friction": 0.4,
+      "grain_angle": 0.0,
+      "material_id": 1,
+      "piece_id": 2,
+      "shear_stiffness": 100.0,
+      "warp_stiffness": 400.0,
+      "weft_stiffness": 400.0
+    }
+  ],
+  "triangles": [
+    [
+      1,
+      7,
+      0
+    ],
+    [
+      7,
+      6,
+      0
+    ],
+    [
+      1,
+      2,
+      3
+    ],
+    [
+      4,
+      5,
+      6
+    ],
+    [
+      7,
+      3,
+      4
+    ],
+    [
+      7,
+      1,
+      3
+    ],
+    [
+      4,
+      6,
+      7
+    ]
+  ],
+  "uv_m": [
+    [
+      0.0,
+      1.0
+    ],
+    [
+      0.5,
+      1.0
+    ],
+    [
+      1.0,
+      1.0
+    ],
+    [
+      0.6666666666666667,
+      1.3333333333333333
+    ],
+    [
+      0.33333333333333337,
+      1.6666666666666665
+    ],
+    [
+      0.0,
+      2.0
+    ],
+    [
+      0.0,
+      1.5
+    ],
+    [
+      0.25,
+      1.25
+    ]
+  ]
+}

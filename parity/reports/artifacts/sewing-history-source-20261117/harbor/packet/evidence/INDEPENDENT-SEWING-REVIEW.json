@@ -1,0 +1,209 @@
+{
+  "actual_final_stages": [
+    {
+      "exit_code": 0,
+      "name": "fmt",
+      "pid": 79926
+    },
+    {
+      "exit_code": 0,
+      "name": "sim-clippy",
+      "pid": 80025
+    }
+  ],
+  "actual_final_terminal_witness": {
+    "RESULT_sha256": "28c550a948698cb925c240190d0c74cf12e85a17f2779d7132092304c2f14c9e",
+    "all_owned_PIDs_and_groups_absent": {
+      "79695": true,
+      "79926": true,
+      "80025": true,
+      "group79926": true,
+      "group80025": true
+    },
+    "controller_exit_code_observed": 0,
+    "controller_pid": 79695,
+    "elapsed_from_controller_start_seconds": 164.5899245829787,
+    "final_clean_HEAD": "40817073cd38e58a8438bb397d09a0ab9d95f9bb",
+    "final_source88_and_all_bound_old_inputs_artifacts_exact": true,
+    "fmt_Cargo_pid": 79926,
+    "numerical_tests_in_this_format_epoch": 0,
+    "session": 49524,
+    "simClippy_Cargo_pid": 80025
+  },
+  "changed_paths_since51dc": [
+    "crates/weftforge-sim/src/constraints.rs",
+    "crates/weftforge-sim/src/tests.rs",
+    "docs/physics.md"
+  ],
+  "current_HEAD_observed": "40817073cd38e58a8438bb397d09a0ab9d95f9bb",
+  "current_status_observed": "",
+  "finding": "PS-001",
+  "independent_static_byte_comparisons": {
+    "4fef_to408_constraints_and_docs_exact": true,
+    "51dc_source_before_normalization_byte_exact": true,
+    "N32_entire_body_byte_exact51dc_GREEN408": true,
+    "all_51dc_tests_byte_exact_after_removing_new_edge_before_format": true,
+    "edge_assertions_exact_RED_GREEN408": true,
+    "entire_GREEN_tests_file_byte_exact_frozen_actual_RED_tests": true,
+    "final_testfile_only_whitespace_from_GREEN": true,
+    "old_review_FINAL_MANIFEST002_exact": true,
+    "radius_compliance_target_denominator_guards_closed_hard_transaction_bytes_preserved": true,
+    "remove_exact_six_line_closure_restore_two_calls_recovers_all_51dc_constraints_bytes": true
+  },
+  "input_manifest": {
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/normalization-format-006/FINAL-HANDOFF.json": {
+      "bytes": 3510,
+      "sha256": "d4756ca92552c667ebc9805fc1b664b46851cfaddbd1c332d363809ed5e726b4"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/normalization-format-006/FINAL-MANIFEST.json": {
+      "bytes": 42380,
+      "sha256": "d82dea36fc73bd188127c904a3436b2a7d58d261c110dabbb843d0b7c3e09289"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/normalization-format-006/FORMAT-PROOF.json": {
+      "bytes": 947,
+      "sha256": "e6be09476eb76dc13b72c4bf71432e892cb8db636e59d235b4c1be41f082783d"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/normalization-format-006/SOURCE-FREEZE.json": {
+      "bytes": 18374,
+      "sha256": "11d37183a30b10b80c810bb2265e110d1b240f1c2f914c3b0ed2a5a34c8ae37a"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/normalization-format-006/final-checks/runtime/FINAL-MANIFEST.json": {
+      "bytes": 3427,
+      "sha256": "ce2475ad9ad7442e28679f7331eb4838b5c8e9fbf6450bc5aa269cf591c9f3e2"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/normalization-format-006/final-checks/runtime/RESULT.json": {
+      "bytes": 3203,
+      "sha256": "28c550a948698cb925c240190d0c74cf12e85a17f2779d7132092304c2f14c9e"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/normalization-format-006/final-checks/runtime/TERMINAL-WITNESS.json": {
+      "bytes": 622,
+      "sha256": "dcc2e2341c9ceb9eb7f883bd0dfdd634ec64097ff7eb237b9c86df3784f331e5"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/normalization-format-006/final-checks/runtime/fmt.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/normalization-format-006/final-checks/runtime/fmt.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/normalization-format-006/final-checks/runtime/sim-clippy.stderr": {
+      "bytes": 230,
+      "sha256": "800e47ca5ae227e0a36ab1a3e9effc4b7792c520bf8b3d73d3968c771500af79"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/normalization-format-006/final-checks/runtime/sim-clippy.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-edge-003/EDGE-FIXTURE.json": {
+      "bytes": 843,
+      "sha256": "733f60e46f96bb457ad8ac28f58cf14db0a5d9d3d775cd20e3609a0cea3f77b6"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-edge-003/EDGE-ORACLE.md": {
+      "bytes": 2617,
+      "sha256": "1e56fcd64ddbeb73e28aa0e876d3241d5e498160978c9517eee40802805424d8"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-edge-003/EDGE-SOURCE-PROOF.json": {
+      "bytes": 463,
+      "sha256": "e6f17058b607325d7cb0b712c7104c08e6c2507eb57bf9351d0f8debba4c1e01"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-edge-003/red-001/FINAL-MANIFEST.json": {
+      "bytes": 3718,
+      "sha256": "37e19a05823e7972a9ad7047bad53b820081ce29ae865495bf2090f6c0144ac6"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-edge-003/red-001/RESULT.json": {
+      "bytes": 2078,
+      "sha256": "bc081bc8312c3c6dd28ecbbfc5f89d627b27a9c2e5e50f2e636c1d2764eb3b90"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-edge-003/red-001/stderr.txt": {
+      "bytes": 199,
+      "sha256": "70aaac3ce90e6c5c88a09b67d23378ef59652be53e444f19d24f1ac9f862706f"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-edge-red-004/EDGE-PLAN.json": {
+      "bytes": 1932,
+      "sha256": "a3887013d8736708cd3ef9a675eb79539143b4597a194ae5d6e1479f18548a5b"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-edge-red-004/EDGE-RED-SOURCE-FREEZE.json": {
+      "bytes": 17438,
+      "sha256": "471eee438e3ffd55b5c6212dd797903eb64e53e6a96825636c0cfff1465886e5"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-edge-red-004/red-001/FINAL-MANIFEST.json": {
+      "bytes": 2632,
+      "sha256": "db242e9d921fb7cf93f820b36868b07a746f8886d20b3e62eb77bed57df5f65e"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-edge-red-004/red-001/RESULT.json": {
+      "bytes": 2113,
+      "sha256": "131f8365af375af2b7317d2e869605bac2a56a6fb7fc2882bcf5c134eb4bc007"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-edge-red-004/red-001/stdout.txt": {
+      "bytes": 1389,
+      "sha256": "d5aba68a3eb8a581f1f03a93d845f4ed01493ef64734462e567338842b131f6c"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-normalization-repair-005/NORMALIZATION-ONLY.patch": {
+      "bytes": 2068,
+      "sha256": "169834ac818a4e98583b3820dd76a035ed76a881b4ee17e8a95732d8c30157d7"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-normalization-repair-005/NORMALIZATION-PROOF.json": {
+      "bytes": 1041,
+      "sha256": "3092e959345f6d8ee9a9b148d2d8760afadd6d279fdf62deb1a2e55fc4f6a2ab"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-normalization-repair-005/SOURCE-FREEZE.json": {
+      "bytes": 17966,
+      "sha256": "8f310a0ac5558c3ffc29697b695cc3e16d77397d5ae68a3b546ef8bd908a0934"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-normalization-repair-005/final-checks/runtime/FINAL-MANIFEST.json": {
+      "bytes": 2899,
+      "sha256": "e5ee0e1380439228a01d0a31f512ba1d282d7a0aaa6661e408570d91fee0f36c"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-normalization-repair-005/final-checks/runtime/RESULT.json": {
+      "bytes": 3431,
+      "sha256": "d57468e741601754085f57205a73f3db2581c98881d8d9814f0f616863cc9337"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-normalization-repair-005/final-checks/runtime/fmt.stdout": {
+      "bytes": 589,
+      "sha256": "033d139411d1cd63d7bcddb7e44ba96655f410a6eb64be7fbc80282428256839"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-normalization-repair-005/final-checks/runtime/positive.stdout": {
+      "bytes": 375,
+      "sha256": "103b80bf35265c1da19fa0299fd31e9769ed72d425b920ba120d368e5faaea74"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-normalization-repair-005/green-tests/runtime/FINAL-MANIFEST.json": {
+      "bytes": 3077,
+      "sha256": "be34fc2e8c10ba1b6aaa04ee40cb9e038826d9248e8de3afdd5fca59cc874526"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-normalization-repair-005/green-tests/runtime/N32.stdout": {
+      "bytes": 1341,
+      "sha256": "13587e9e50b94321e6fc468c096ace6a1fae31e9072f4e7efb1f58cb3cd8fe67"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-normalization-repair-005/green-tests/runtime/RESULT.json": {
+      "bytes": 3505,
+      "sha256": "f14f395ce899541f627dee15c2f6260819d6962fc1fdffdff5af2ec3b942e2d6"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-normalization-repair-005/green-tests/runtime/TERMINAL-WITNESS.json": {
+      "bytes": 356,
+      "sha256": "10a8ffd026bc91d42accbac6b37036747c0011de10b9701ac2e2bd492a9a2b14"
+    },
+    ".local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-normalization-repair-005/green-tests/runtime/edge.stdout": {
+      "bytes": 1401,
+      "sha256": "511a6db79ea2f4407d2e2b6f803aa029c3bf3c45e191177813daf09df6aac797"
+    }
+  },
+  "kind": "INDEPENDENT_STATIC_PS001_CLOSURE",
+  "no_wholegarment_quality_reference_or_roadmap_acceptance": true,
+  "numerical_tests_repeated_after_format": 0,
+  "old51dc_review_unchanged": true,
+  "parent": "4fef6e9b9f032f553e6f64e9953c7faaad42a1f0",
+  "report_sha256": "c8d2925d47cd00992d54b67d24d5e098ef5ef72ac7d21cab7d75225548c5a8ed",
+  "reviewed_commit": "40817073cd38e58a8438bb397d09a0ab9d95f9bb",
+  "reviewed_file_hashes": {
+    "crates/weftforge-sim/src/constraints.rs": "bb65c4367b2283c18cb026f573cfa14a510383bf465b1ed6daec383a557f469c",
+    "crates/weftforge-sim/src/tests.rs": "b1f17eb3813e5453958154a188a52c7613ad88a831b93db35822b6b8715624e0",
+    "docs/physics.md": "ccb82a57b73a2e16024fce38c9d13075e91ec5b229486526ceb5edf7f566f780"
+  },
+  "reviewer_product_execution_count": 0,
+  "scope": "Only read committed source, text/byte comparisons and actual frozen receipts; stdlib/Git reads write new private closure records only.",
+  "source_or_old_record_mutations": 0,
+  "state": "CLOSED_FOR_REVIEWED_NORMALIZATION_SOURCE",
+  "tree": "9ef6175c35fd60158c3d7f06b9e070592c97e6e5",
+  "verdict": "NO_REMAINING_MUST_OR_SHOULD_FIX_IN_BOUNDED_NORMALIZATION_DELTA"
+}

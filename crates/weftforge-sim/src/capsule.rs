@@ -1,4 +1,4 @@
-use crate::{Vec3, math::*};
+use crate::{SimulationError, Vec3, check_cancel, math::*};
 
 fn norm(v: Vec3) -> f64 {
     v[0].hypot(v[1]).hypot(v[2])
@@ -15,6 +15,17 @@ pub(crate) struct Closest {
 // The minimum is on a closed edge, an axis endpoint's face projection, or a face crossing.
 // shortcut: static occupancy misses between-step crossings, upgrade with continuous capsule contact.
 pub(crate) fn closest(triangle: [Vec3; 3], a: Vec3, b: Vec3) -> Closest {
+    closest_cancellable(triangle, a, b, &|| false)
+        .expect("A non-cancelling callback cannot interrupt capsule contact")
+}
+
+pub(crate) fn closest_cancellable(
+    triangle: [Vec3; 3],
+    a: Vec3,
+    b: Vec3,
+    cancelled: &impl Fn() -> bool,
+) -> Result<Closest, SimulationError> {
+    check_cancel(cancelled)?;
     let origin = triangle[0];
     let relative = [
         sub(triangle[1], origin),
@@ -28,20 +39,20 @@ pub(crate) fn closest(triangle: [Vec3; 3], a: Vec3, b: Vec3) -> Closest {
         .map(f64::abs)
         .fold(0., f64::max);
     if !scale.is_finite() {
-        return Closest {
+        return Ok(Closest {
             bary: [1., 0., 0.],
             axis_fraction: 0.,
             distance: 0.,
             uncertain: true,
-        };
+        });
     }
     if scale == 0. {
-        return Closest {
+        return Ok(Closest {
             bary: [1., 0., 0.],
             axis_fraction: 0.,
             distance: 0.,
             uncertain: false,
-        };
+        });
     }
     let [u, v, a, b] = relative.map(|p| p.map(|x| x / scale));
     let triangle = [[0.; 3], u, v];
@@ -65,6 +76,7 @@ pub(crate) fn closest(triangle: [Vec3; 3], a: Vec3, b: Vec3) -> Closest {
         }
     };
     for [i, j] in [[0, 1], [1, 2], [2, 0]] {
+        check_cancel(cancelled)?;
         let p = triangle[i];
         let q = triangle[j];
         let edge = sub(q, p);
@@ -74,10 +86,15 @@ pub(crate) fn closest(triangle: [Vec3; 3], a: Vec3, b: Vec3) -> Closest {
             bary[j] = t;
             consider(&mut best, bary, s);
         };
+        check_cancel(cancelled)?;
         offer(0., axis_fraction(p, a, b));
+        check_cancel(cancelled)?;
         offer(1., axis_fraction(q, a, b));
+        check_cancel(cancelled)?;
         offer(axis_fraction(a, p, q), 0.);
+        check_cancel(cancelled)?;
         offer(axis_fraction(b, p, q), 1.);
+        check_cancel(cancelled)?;
         let normal = cross(edge, axis);
         let normal_length = norm(normal);
         if normal_length > 0. {
@@ -90,6 +107,7 @@ pub(crate) fn closest(triangle: [Vec3; 3], a: Vec3, b: Vec3) -> Closest {
             }
         }
     }
+    check_cancel(cancelled)?;
     let normal = cross(u, v);
     let normal_length = norm(normal);
     let normal_squared = dot(normal, normal);
@@ -100,7 +118,7 @@ pub(crate) fn closest(triangle: [Vec3; 3], a: Vec3, b: Vec3) -> Closest {
     if underflow {
         best.distance = 0.;
         best.uncertain = true;
-        return best;
+        return Ok(best);
     }
     if normal_length <= 1e-7 * longest_squared {
         // Every face point is within this altitude of the longest closed edge.
@@ -118,7 +136,7 @@ pub(crate) fn closest(triangle: [Vec3; 3], a: Vec3, b: Vec3) -> Closest {
         };
         best.distance = (best.distance - altitude).max(0.) * scale;
         best.uncertain = normal_length > 0. || rounding > 0.;
-        return best;
+        return Ok(best);
     }
     let barycentric = |p: Vec3| {
         let v_weight = dot(cross(p, v), normal) / normal_squared;
@@ -129,10 +147,12 @@ pub(crate) fn closest(triangle: [Vec3; 3], a: Vec3, b: Vec3) -> Closest {
             .then_some(bary)
     };
     for (p, fraction) in [(a, 0.), (b, 1.)] {
+        check_cancel(cancelled)?;
         if let Some(bary) = barycentric(p) {
             consider(&mut best, bary, fraction);
         }
     }
+    check_cancel(cancelled)?;
     let start = dot(a, normal);
     let change = dot(axis, normal);
     if change != 0. {
@@ -144,17 +164,43 @@ pub(crate) fn closest(triangle: [Vec3; 3], a: Vec3, b: Vec3) -> Closest {
         }
     }
     best.distance *= scale;
-    best
+    Ok(best)
 }
 
 pub(crate) fn axis_fraction(p: Vec3, a: Vec3, b: Vec3) -> f64 {
     let axis = sub(b, a);
-    let squared = dot(axis, axis);
-    if squared > 0. {
-        (dot(sub(p, a), axis) / squared).clamp(0., 1.)
-    } else {
-        0.
+    let offset = sub(p, a);
+    if !finite(axis) || !finite(offset) {
+        return f64::NAN;
     }
+    let axis_scale = axis.into_iter().map(f64::abs).fold(0., f64::max);
+    let offset_scale = offset.into_iter().map(f64::abs).fold(0., f64::max);
+    if axis_scale == 0. || offset_scale == 0. {
+        return 0.;
+    }
+    let axis = axis.map(|value| value / axis_scale);
+    let projection = dot(offset.map(|value| value / offset_scale), axis) / dot(axis, axis);
+    if projection <= 0. {
+        0.
+    } else if projection >= axis_scale / offset_scale {
+        1.
+    } else {
+        projection * offset_scale / axis_scale
+    }
+}
+
+pub(crate) fn point_feature(p: Vec3, a: Vec3, b: Vec3) -> (Closest, Option<Vec3>) {
+    let fraction = axis_fraction(p, a, b);
+    let delta = sub(sub(p, a), mul(sub(b, a), fraction));
+    (
+        Closest {
+            bary: [1., 0., 0.],
+            axis_fraction: fraction,
+            distance: norm(delta),
+            uncertain: false,
+        },
+        normalized(delta),
+    )
 }
 
 fn normalized(v: Vec3) -> Option<Vec3> {
@@ -243,9 +289,80 @@ pub(crate) fn normal(
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::cell::Cell;
 
     fn face() -> [Vec3; 3] {
         [[-2., -2., 0.], [2., -2., 0.], [0., 2., 0.]]
+    }
+
+    #[test]
+    fn point_features_preserve_tiny_nonzero_axes_and_current_normals() {
+        for exponent in [-600, -60, -40, 0, 500] {
+            let scale = 2_f64.powi(exponent);
+            let (a, b) = ([0.; 3], [2. * scale, 0., 0.]);
+            for (point, fraction, distance, direction) in [
+                ([scale, 0.25 * scale, 0.], 0.5, 0.25, [0., 1., 0.]),
+                (
+                    [scale, scale * 2_f64.powi(-50), 0.],
+                    0.5,
+                    2_f64.powi(-50),
+                    [0., 1., 0.],
+                ),
+                ([-scale, 0., 0.], 0., 1., [-1., 0., 0.]),
+                ([3. * scale, 0., 0.], 1., 1., [1., 0., 0.]),
+            ] {
+                let (feature, normal) = point_feature(point, a, b);
+                assert!((feature.axis_fraction - fraction).abs() <= 1e-14);
+                assert!((feature.distance / scale - distance).abs() <= 1e-14);
+                assert_eq!(normal, Some(direction));
+            }
+            let (feature, normal) = point_feature([0.6 * scale, 0.8 * scale, 0.], a, a);
+            assert!((feature.distance / scale - 1.).abs() <= 1e-14);
+            assert!(norm(sub(normal.unwrap(), [0.6, 0.8, 0.])) <= 1e-14);
+            let (feature, normal) = point_feature(a, a, b);
+            assert_eq!(feature.distance, 0.);
+            assert_eq!(normal, None);
+        }
+    }
+
+    #[test]
+    fn point_features_scale_both_projection_vectors_before_the_dot_product() {
+        let a = [0.; 3];
+        let b = [1e308; 3];
+        let point = b.map(|value| 0.75 * value);
+        let (feature, normal) = point_feature(point, a, b);
+        assert_eq!(feature.axis_fraction, 0.75);
+        assert_eq!(feature.distance, 0.);
+        assert_eq!(normal, None);
+        assert_eq!(axis_fraction([-1e308; 3], a, b), 0.);
+        assert_eq!(axis_fraction([1.5e308; 3], a, b), 1.);
+    }
+
+    #[test]
+    fn controlled_capsule_features_preserve_results_and_abort_at_each_task() {
+        for triangle in [face(), [[-1., 0., 0.], [0.; 3], [1., 0., 0.]], [[0.; 3]; 3]] {
+            let (a, b) = ([0., 0., -1.], [0., 0., 1.]);
+            let calls = Cell::new(0);
+            let complete = closest_cancellable(triangle, a, b, &|| {
+                calls.set(calls.get() + 1);
+                false
+            })
+            .unwrap();
+            let ordinary = closest(triangle, a, b);
+            assert_eq!(format!("{complete:?}"), format!("{ordinary:?}"));
+            assert_eq!(complete.distance, 0.);
+            assert_eq!(calls.get(), if triangle == face() { 23 } else { 20 });
+            for stop_at in 1..=calls.get() {
+                let polls = Cell::new(0);
+                let result = closest_cancellable(triangle, a, b, &|| {
+                    polls.set(polls.get() + 1);
+                    assert!(polls.get() <= stop_at);
+                    polls.get() == stop_at
+                });
+                assert!(matches!(result, Err(SimulationError::Cancelled)));
+                assert_eq!(polls.get(), stop_at);
+            }
+        }
     }
 
     fn check(triangle: [Vec3; 3], a: Vec3, b: Vec3, expected: f64) -> Closest {

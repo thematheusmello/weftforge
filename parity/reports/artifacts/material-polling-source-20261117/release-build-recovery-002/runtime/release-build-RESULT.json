@@ -1,0 +1,57 @@
+{
+  "all_source88_metadata59_original8_exact": true,
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "build",
+    "--release",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge",
+    "-p",
+    "weftforge-cli"
+  ],
+  "disk_observation": {
+    "last_available_bytes": 25840058368,
+    "max_snapshot_gap_seconds": 0.21235912502743304,
+    "minimum_available_bytes": 25804513280,
+    "path": "<ROOT>/.local/material-polling-release-20261117",
+    "samples": 2658,
+    "stop_below_available_bytes": 8000000000
+  },
+  "end_monotonic_seconds": 1018334.707052,
+  "exit_code": 0,
+  "peak_rss_bytes": 512851968,
+  "pid": 96423,
+  "post_guard": {
+    "all_source88_metadata59_original8_exact": true,
+    "clean_exact_commit": true,
+    "compiler_inventory_tools_configs_old_seals_exact": true
+  },
+  "pre_guard": {
+    "all_source88_metadata59_original8_exact": true,
+    "clean_exact_commit": true,
+    "compiler_inventory_tools_configs_old_seals_exact": true
+  },
+  "process_group": 96423,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.21223179204389453,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 2655,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 640155648,
+  "stop_reason": null,
+  "terminal_phase_checks": {
+    "deadline": 1019384.947202666,
+    "output_bytes": 2166,
+    "output_cap_bytes": 16777216,
+    "reserve_bytes": 262144
+  }
+}

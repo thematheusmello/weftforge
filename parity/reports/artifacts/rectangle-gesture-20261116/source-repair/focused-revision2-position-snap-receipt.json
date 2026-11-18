@@ -1,0 +1,21 @@
+{
+  "case": "focused-revision2-position-snap",
+  "command": [
+    "cargo",
+    "test",
+    "-p",
+    "weftforge",
+    "position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule",
+    "--",
+    "--nocapture"
+  ],
+  "source_sha256": "e71dc25755216633de62157ecd4f7640e5003703b6129a3382828a571e18027e",
+  "environment": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/rectangle-gesture-repair-20261116/target"
+  },
+  "started_utc": "2026-11-16T21:21:26Z",
+  "exit_code": 101,
+  "ended_utc": "2026-11-16T21:21:26Z",
+  "log_sha256": "b6c76f537d000f6884ee81d5a755d76aa3a58a94f8ddc3a7d68684a35fa17a97"
+}

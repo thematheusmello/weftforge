@@ -1,0 +1,41 @@
+{
+  "argv": [
+    "<HOME>/.pyenv/versions/3.13.0/bin/python3",
+    "-B",
+    "-c",
+    "import time;time.sleep(.12);print('fake completed')"
+  ],
+  "end_monotonic_seconds": 998406.959671291,
+  "exit_code": 0,
+  "peak_rss_bytes": 14286848,
+  "pid": 47563,
+  "process_group": 47563,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [
+      {
+        "at_monotonic_seconds": 998406.797614208,
+        "consecutive_failures": 1,
+        "kind": "TimeoutExpired",
+        "pid": 47563,
+        "timeout_seconds": 1.0
+      }
+    ],
+    "failures": 1,
+    "max_consecutive_failures": 1,
+    "max_snapshot_gap_seconds": 0.025244415970519185,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 6,
+    "timeouts": 1
+  },
+  "sampled_peak_rss_bytes": 1048576,
+  "stop_reason": null,
+  "terminal_phase_checks": {
+    "deadline": 998409.792833458,
+    "output_bytes": 15,
+    "output_cap_bytes": 1048576,
+    "reserve_bytes": 131072
+  }
+}

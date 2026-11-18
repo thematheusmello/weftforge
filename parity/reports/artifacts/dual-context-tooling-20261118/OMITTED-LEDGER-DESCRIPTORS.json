@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "kind": "partial_descriptors_of_unselected_private_ledgers",
+  "payload_selected": false,
+  "complete_ledger_payloads_published": 0,
+  "descriptor_count": 6,
+  "qualification": "All six full BEFORE/AFTER/FREEZE ledgers are retained privately and omitted from this small packet. The generator three-ledger original retention volume failure remains unchanged. Original root result/terminal/closure records are selected separately; their internal hashes address private originals.",
+  "ledgers": [
+    {
+      "case": "generator-001",
+      "original_locator": "<ROOT>/.local/notch-bend-integration-20261117/.local/dual-context-metadata-verification-20261117/generator-001/AFTER.json",
+      "original": {
+        "sha256": "99ceb4c66f147ad3aa729077f54180b0523163aac6a42fb318d32880704f7f8f",
+        "bytes": 3476499,
+        "mode": "0600"
+      },
+      "payload_selected": false,
+      "descriptor_is_partial": true,
+      "top_level_roster_counts": {
+        "dirty": 2,
+        "guards": 8,
+        "immutable_inputs": 186,
+        "mutable_outputs2": 2,
+        "originals237": 237,
+        "public13866": 13866
+      },
+      "qualification": "Complete original payload remains private. Counts and descriptor are partial metadata, not a replacement ledger, independently replayed guard proof, or a new case grade.",
+      "case_metadata_commit": "4ffb20e3aa9ebf715db833f279381c77245a47dc"
+    },
+    {
+      "case": "generator-001",
+      "original_locator": "<ROOT>/.local/notch-bend-integration-20261117/.local/dual-context-metadata-verification-20261117/generator-001/BEFORE.json",
+      "original": {
+        "sha256": "fbcb16f16d422ad983b7f989cbefd4621d493fa5ea6333ef843026cf79df87e5",
+        "bytes": 3476148,
+        "mode": "0600"
+      },
+      "payload_selected": false,
+      "descriptor_is_partial": true,
+      "top_level_roster_counts": {
+        "immutable_inputs": 186,
+        "mutable_outputs2": 2,
+        "originals237": 237,
+        "public13866": 13866
+      },
+      "qualification": "Complete original payload remains private. Counts and descriptor are partial metadata, not a replacement ledger, independently replayed guard proof, or a new case grade.",
+      "case_metadata_commit": "4ffb20e3aa9ebf715db833f279381c77245a47dc"
+    },
+    {
+      "case": "generator-001",
+      "original_locator": "<ROOT>/.local/notch-bend-integration-20261117/.local/dual-context-metadata-verification-20261117/generator-001/FREEZE.json",
+      "original": {
+        "sha256": "85eb4fc9ee661bb41f26957d608f49612d7514675b6cb1c03bdbf051a6595a47",
+        "bytes": 3545104,
+        "mode": "0644"
+      },
+      "payload_selected": false,
+      "descriptor_is_partial": true,
+      "top_level_roster_counts": {
+        "allowed_outputs": 2,
+        "immutable_inputs": 186,
+        "selected_originals": 237,
+        "public_artifacts": 13866,
+        "controller_sources": 2,
+        "project_tool_inputs": 17,
+        "actual_tool_binaries": 2,
+        "count_qualification": 3
+      },
+      "qualification": "Complete original payload remains private. Counts and descriptor are partial metadata, not a replacement ledger, independently replayed guard proof, or a new case grade.",
+      "case_metadata_commit": "4ffb20e3aa9ebf715db833f279381c77245a47dc"
+    },
+    {
+      "case": "clean-verify-001",
+      "original_locator": "<ROOT>/.local/notch-bend-integration-20261117/.local/dual-context-metadata-verification-20261117/clean-verify-001/AFTER.json",
+      "original": {
+        "sha256": "2bdd61b998c673313d7b4eef1a515cb91b308d210c34fde682951be7142eafd5",
+        "bytes": 154634,
+        "mode": "0600"
+      },
+      "payload_selected": false,
+      "descriptor_is_partial": true,
+      "top_level_roster_counts": {
+        "dirty": 0,
+        "guards": 10,
+        "immutable188": 188,
+        "no_mutable_outputs": 0,
+        "originals237": 237,
+        "public242": 242,
+        "supporting8": 8
+      },
+      "qualification": "Complete original payload remains private. Counts and descriptor are partial metadata, not a replacement ledger, independently replayed guard proof, or a new case grade.",
+      "case_metadata_commit": "317565b6e270aacaba8b6cc26e5305d2148ddaeb"
+    },
+    {
+      "case": "clean-verify-001",
+      "original_locator": "<ROOT>/.local/notch-bend-integration-20261117/.local/dual-context-metadata-verification-20261117/clean-verify-001/BEFORE.json",
+      "original": {
+        "sha256": "3a2af733a9fba8c5eacfd66199b576efa735ef19263959fb914104501924a716",
+        "bytes": 154255,
+        "mode": "0600"
+      },
+      "payload_selected": false,
+      "descriptor_is_partial": true,
+      "top_level_roster_counts": {
+        "immutable188": 188,
+        "no_mutable_outputs": 0,
+        "originals237": 237,
+        "public242": 242,
+        "supporting8": 8
+      },
+      "qualification": "Complete original payload remains private. Counts and descriptor are partial metadata, not a replacement ledger, independently replayed guard proof, or a new case grade.",
+      "case_metadata_commit": "317565b6e270aacaba8b6cc26e5305d2148ddaeb"
+    },
+    {
+      "case": "clean-verify-001",
+      "original_locator": "<ROOT>/.local/notch-bend-integration-20261117/.local/dual-context-metadata-verification-20261117/clean-verify-001/FREEZE.json",
+      "original": {
+        "sha256": "422683f3498d4265ce1f5cb45ebaf36ad3586e4482edeeeb98d82a8965ee2403",
+        "bytes": 224780,
+        "mode": "0644"
+      },
+      "payload_selected": false,
+      "descriptor_is_partial": true,
+      "top_level_roster_counts": {
+        "allowed_outputs": 0,
+        "immutable188": 188,
+        "supporting_tool_inputs": 8,
+        "selected_originals": 237,
+        "public_artifacts": 242,
+        "controller_sources": 2,
+        "project_tool_inputs": 21,
+        "actual_tool_binaries": 6,
+        "count_qualification": 4
+      },
+      "qualification": "Complete original payload remains private. Counts and descriptor are partial metadata, not a replacement ledger, independently replayed guard proof, or a new case grade.",
+      "case_metadata_commit": "317565b6e270aacaba8b6cc26e5305d2148ddaeb"
+    }
+  ]
+}

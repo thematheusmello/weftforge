@@ -1,0 +1,177 @@
+{
+  "at_utc": "2026-11-17T04:47:14.170854+00:00",
+  "authority": "No generator/execution/publication approval; no new grade.",
+  "checkout_clean_before_after": true,
+  "existing_reports": {
+    "archives_exact": true,
+    "freshness_reason_only_transitions": 2,
+    "unchanged_byte_exact": 57
+  },
+  "failed_case": {
+    "all103_sealed_members_selected_exact": true,
+    "analysis_present": false,
+    "completed_steps": 153,
+    "computed_quality_grade": false,
+    "elapsed_seconds": 420.0070624999935,
+    "original_closure_seal_sha256": "cfa30db44a98308aeaafdb1ee54a203740103c70011993ed5caf9aff0a4e9c00",
+    "raw_states": 154,
+    "terminal_exit": 1
+  },
+  "findings": [],
+  "head_before_after": "0cad9dd675097731533e29d8afc5ee9c55063943",
+  "inputs_before_after": {
+    ".local/global-material-delivery-proposal-20261117/ANCHOR-AUDIT-001.json": {
+      "bytes": 227730,
+      "mode": "0644",
+      "sha256": "37450286cfa42bea5e713b125b6c28a9160fff4459bc008faccb0915579e4ff8"
+    },
+    ".local/global-material-delivery-proposal-20261117/DERIVATIVE-SELECTION-002.json": {
+      "bytes": 673,
+      "mode": "0644",
+      "sha256": "298b193ee1ef5940f03f1df8531c831ed54c2d133b0d2afc0d77575462e3310e"
+    },
+    ".local/global-material-delivery-proposal-20261117/FINAL-CHECKPOINT-002.json": {
+      "bytes": 1784,
+      "mode": "0644",
+      "sha256": "3aa4d5b7e6608d07515b3d5f47131195e963a0016fc5f62a700f3ad58d04ed59"
+    },
+    ".local/global-material-delivery-proposal-20261117/FINAL-STAGED-002.json": {
+      "bytes": 37103,
+      "mode": "0644",
+      "sha256": "548574607175764ebb113fb8f1a947f92ee0fc4049fe90738a85a3c231d62d89"
+    },
+    ".local/global-material-delivery-proposal-20261117/NEXT-COMMANDS-002.json": {
+      "bytes": 1752,
+      "mode": "0644",
+      "sha256": "71b32810670d53a77456554a426dc6a9f3819240838dba5459a1f8c4cef3e994"
+    },
+    ".local/global-material-delivery-proposal-20261117/SELECTED-ORIGINALS-002.json": {
+      "bytes": 149807,
+      "mode": "0644",
+      "sha256": "8a95ae3375107ddc8740fab0b543251970d2a8a460d6370b7332b1bf15e0ada1"
+    },
+    ".local/global-material-delivery-proposal-20261117/SOURCE-MAP-MIGRATION-001.json": {
+      "bytes": 21662,
+      "mode": "0644",
+      "sha256": "c529a047e11b2596bfcb1624dee6810e2dfed762b59e17e98b28b31e6e27a19c"
+    }
+  },
+  "map": {
+    "active_valid_JSON_anchors": 390,
+    "all_old390_history_retained": true,
+    "exact_old_records": 382,
+    "new_identities": 4,
+    "predecessor_digests_match_Git": true,
+    "repins": 4,
+    "retirements": 4,
+    "valid_paired_Markdown_refs": 356
+  },
+  "new_image_paths": 0,
+  "new_mirrors_exact": 7,
+  "old_runs_exact": 246,
+  "only_features_appended": [
+    "SIM-001",
+    "SIM-002",
+    "SIM-003",
+    "SIM-004",
+    "SIM-006"
+  ],
+  "original225_files_before_after_exact": true,
+  "original8_exact": true,
+  "outstanding": [
+    "Root-owned generator cycle and generated-output review.",
+    "Clean committed registry/map/xtask verification before publication."
+  ],
+  "preserved_feature_count": 56,
+  "public_artifact_snapshot_sha256": "30289162ef362a72b4351efe05c31e8f17d8ad23a203f5c1493bdb31d7dfe90b",
+  "public_artifacts228_before_after_exact": true,
+  "reconstructed_transforms": {
+    "HOME": 611,
+    "ROOT": 91,
+    "original_modes": {
+      "0444": 107,
+      "0600": 19,
+      "0644": 101
+    },
+    "public_git_mode": "100644"
+  },
+  "report": {
+    "bytes": 4679,
+    "mode": "0644",
+    "sha256": "8c4cc9e04cbeb039abc15919bfd148af290a0c7e260ba2565e1327e767f95a9a"
+  },
+  "report_maps": {
+    "exact_tracked_set": true,
+    "harbor": 109,
+    "source": 120,
+    "union": 228
+  },
+  "reviewed_metadata_before_after": {
+    "STATUS.md": {
+      "bytes": 88360,
+      "mode": "0644",
+      "sha256": "c9a99d04547be35ac3b9d767de2806e3f724f8fbc719c53ddd04d4f9073e4509"
+    },
+    "docs/dashboard/index.html": {
+      "bytes": 304418,
+      "mode": "0644",
+      "sha256": "0f58773cd1c74f0d3d233631f35f38e3c23f0cb307e6632eed1edcd550b41092"
+    },
+    "docs/progress.md": {
+      "bytes": 140631,
+      "mode": "0644",
+      "sha256": "8ac0c4d36889e11acb09828b133e627eb0df41786460546dc22f4bccbd86fe20"
+    },
+    "parity/features.yaml": {
+      "bytes": 8439703,
+      "mode": "0644",
+      "sha256": "1e608f3a5fddde2c165378e58019454be70ee732f6d094ad7de76539d58e169c"
+    },
+    "parity/reports/WF-20261116-MATERIAL-GROUPS-HARBOR-A8-001.json": {
+      "bytes": 55106,
+      "mode": "0644",
+      "sha256": "b99cb00e3b56293cbc17a9086e23772b4b77fe0a6d4a44cc3208f481f7ab0117"
+    },
+    "parity/reports/WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001.json": {
+      "bytes": 29992,
+      "mode": "0644",
+      "sha256": "d8bf20ae31c10c667c10a8e9725e52cc8bfc9ecc9da80b5bd964c1bcf83fdf74"
+    },
+    "parity/reports/WF-20261117-GLOBAL-MATERIAL-SOURCE-001.json": {
+      "bytes": 34943,
+      "mode": "0644",
+      "sha256": "71ed4828a03b3e75beb1c07dd1fe603dbf908ebcaf023dc9594f3a591b332f2c"
+    },
+    "parity/reports/WF-20261117-MATERIAL-GROUP-SOURCE-001.json": {
+      "bytes": 25824,
+      "mode": "0644",
+      "sha256": "2a0a280aef1cfa19671c68d7def9db8cec05f56f53e721a2cd1490186b6ebe73"
+    },
+    "spec/inventory/weftforge-current-source-addendum.json": {
+      "bytes": 263776,
+      "mode": "0644",
+      "sha256": "a7220d1618e01fa3a9dde09518b21db5bd94edfb8413af6bdd25734cd278b542"
+    },
+    "spec/inventory/weftforge-current-source-addendum.md": {
+      "bytes": 138703,
+      "mode": "0644",
+      "sha256": "754bff5c68103ac65a6f9cc6b2dfdc13eb0dde0381004f3c5b05bcbf094f0841"
+    }
+  },
+  "reviewer_executions": {
+    "Cargo": 0,
+    "UI": 0,
+    "evaluator": 0,
+    "generator": 0,
+    "model": 0,
+    "network": 0,
+    "repository_scripts_or_checkers": 0,
+    "xtask": 0
+  },
+  "source88_before_after_exact": true,
+  "status": "NO_BLOCKER_FOUND_PRE_GENERATOR_PUBLICATION_REVIEW",
+  "target_absent": true,
+  "tree_before_after": "acd6f788fbc63f20546319f391f7f3e126390428",
+  "two_git_archives_exact": true,
+  "unsafe_d995_is_ancestor": false
+}

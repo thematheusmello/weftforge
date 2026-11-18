@@ -1,0 +1,266 @@
+{
+  "GO_sha256": "f27b797f3d203c161f918a61ebff61b925c70032bd0bb97bc68ccde84742e648",
+  "available_bytes": 12356644864,
+  "cached_registry_tree_digest": {
+    "bytes": 466384267,
+    "files": 20817,
+    "package_trees": 410,
+    "sha256": "d4c5aabd1c26ea93383fd352a48f6ab954329eac838dba60fcd3b36bf3992077"
+  },
+  "caps": {
+    "cargo_jobs": 1,
+    "minimum_available_disk_bytes": 8000000000,
+    "retained_output_bytes": 8388608,
+    "rss_bytes": 1610612736
+  },
+  "child_env": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_ENCODED_RUSTDOCFLAGS": "",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_DEV_INCREMENTAL": "false",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_PROFILE_TEST_INCREMENTAL": "false",
+    "CARGO_TARGET_DIR": "<INTEGRATION_WORKTREE>/target",
+    "CARGO_TERM_COLOR": "never",
+    "CFLAGS": "",
+    "CPPFLAGS": "",
+    "CXXFLAGS": "",
+    "LDFLAGS": "",
+    "PATH": "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin:<PYENV_HOME>/versions/3.13.0/bin:/usr/bin:/bin:/usr/sbin:/sbin:<HOMEBREW_PREFIX>/bin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONOPTIMIZE": "0",
+    "RUSTC": "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTC_BOOTSTRAP": "",
+    "RUSTC_WORKSPACE_WRAPPER": "",
+    "RUSTC_WRAPPER": "",
+    "RUSTDOC": "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+    "RUSTDOCFLAGS": "",
+    "RUSTFLAGS": "",
+    "RUSTUP_TOOLCHAIN": "1.94.1",
+    "RUST_TEST_THREADS": "1"
+  },
+  "cold_target_expected": false,
+  "commands": [
+    {
+      "argv": [
+        "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "name": "full-fmt"
+    },
+    {
+      "argv": [
+        "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--workspace",
+        "--locked",
+        "--offline"
+      ],
+      "expected_exit": 0,
+      "expected_tests": {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 480,
+        "summaries": 32
+      },
+      "name": "workspace-tests"
+    },
+    {
+      "argv": [
+        "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--locked",
+        "--offline",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "expected_exit": 0,
+      "name": "workspace-clippy"
+    },
+    {
+      "argv": [
+        "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "build",
+        "-p",
+        "weftforge",
+        "-p",
+        "weftforge-cli",
+        "--locked",
+        "--offline"
+      ],
+      "expected_exit": 0,
+      "name": "native-cli-build"
+    }
+  ],
+  "config_inputs": {
+    "/.cargo/config": null,
+    "/.cargo/config.toml": null,
+    "<HOME_PARENT>/.cargo/config": null,
+    "<HOME_PARENT>/.cargo/config.toml": null,
+    "<CARGO_HOME>/config": null,
+    "<CARGO_HOME>/config.toml": null,
+    "<WORKSPACE_BASE>/.cargo/config": null,
+    "<WORKSPACE_BASE>/.cargo/config.toml": null,
+    "<WORKSPACE_CONTAINER>/.cargo/config": null,
+    "<WORKSPACE_CONTAINER>/.cargo/config.toml": null,
+    "<WORKSPACE_PARENT>/.cargo/config": null,
+    "<WORKSPACE_PARENT>/.cargo/config.toml": null,
+    "<REPOSITORY_ROOT>/.cargo/config": null,
+    "<REPOSITORY_ROOT>/.cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "<REPOSITORY_ROOT>/.local/.cargo/config": null,
+    "<REPOSITORY_ROOT>/.local/.cargo/config.toml": null,
+    "<INTEGRATION_WORKTREE>/.cargo/config": null,
+    "<INTEGRATION_WORKTREE>/.cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "<INTEGRATION_WORKTREE>/STATUS.md": "c3eeb60169a32e2a4b95cd24e4dd1ace2b9637217532536a1ff1bced9a48f2ca"
+  },
+  "head": "c766f3fa48c03ac698da8b22cc3bf927ee71f195",
+  "helper_hashes": {
+    "launch.py": "52980f410c5bea62eb7dff36cfa194bba92f3ed763e3949e8b32239e02b09fd0",
+    "resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+    "runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2"
+  },
+  "locked_registry_archive_count": 410,
+  "plan_sha256": "b44315700554f7d3020521858e4e3cbf49bcd71dd5e34cc6432805ff3592325a",
+  "prepare_sha256": "81bcaafd66d18a0bd1475ee33067337cedd444d27c626547d634fc79b172fe81",
+  "preservation_manifest_files": 78,
+  "source91_changed_from_prior": [
+    "crates/weftforge-sim/src/capsule.rs",
+    "crates/weftforge-sim/src/contact.rs",
+    "docs/physics.md"
+  ],
+  "source91_count": 91,
+  "source91_roster": [
+    ".cargo/config.toml",
+    "Cargo.lock",
+    "Cargo.toml",
+    "THIRD_PARTY.md",
+    "apps/weftforge-cli/Cargo.toml",
+    "apps/weftforge-cli/src/main.rs",
+    "apps/weftforge-cli/src/mcp.rs",
+    "apps/weftforge-cli/tests/curves.rs",
+    "apps/weftforge-cli/tests/dxf_import.rs",
+    "apps/weftforge-cli/tests/ellipse.rs",
+    "apps/weftforge-cli/tests/grain.rs",
+    "apps/weftforge-cli/tests/holes.rs",
+    "apps/weftforge-cli/tests/mcp_stdio.rs",
+    "apps/weftforge-cli/tests/svg_import.rs",
+    "apps/weftforge/Cargo.toml",
+    "apps/weftforge/assets/fonts/Inter-Regular.ttf",
+    "apps/weftforge/assets/fonts/Inter-SemiBold.ttf",
+    "apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf",
+    "apps/weftforge/assets/fonts/OFL-Inter.txt",
+    "apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt",
+    "apps/weftforge/assets/fonts/SOURCES.json",
+    "apps/weftforge/src/main.rs",
+    "crates/weftforge-core/Cargo.toml",
+    "crates/weftforge-core/src/document.rs",
+    "crates/weftforge-core/src/geometry.rs",
+    "crates/weftforge-core/src/lib.rs",
+    "crates/weftforge-core/src/offset.rs",
+    "crates/weftforge-core/src/persistence.rs",
+    "crates/weftforge-core/src/persistence/dxf.rs",
+    "crates/weftforge-core/src/persistence/dxf_import.rs",
+    "crates/weftforge-core/src/persistence/svg.rs",
+    "crates/weftforge-core/src/sewing.rs",
+    "crates/weftforge-core/src/simulation.rs",
+    "crates/weftforge-core/tests/cut_piece.rs",
+    "crates/weftforge-core/tests/dxf.rs",
+    "crates/weftforge-core/tests/dxf_import.rs",
+    "crates/weftforge-core/tests/ellipse.rs",
+    "crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge",
+    "crates/weftforge-core/tests/fixtures/original-cut-l.weftforge",
+    "crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge",
+    "crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf",
+    "crates/weftforge-core/tests/fixtures/original-editable-patterns.svg",
+    "crates/weftforge-core/tests/fixtures/original-notch-migration-v5.weftforge",
+    "crates/weftforge-core/tests/grain.rs",
+    "crates/weftforge-core/tests/hole_io.rs",
+    "crates/weftforge-core/tests/holes.rs",
+    "crates/weftforge-core/tests/internal_lines.rs",
+    "crates/weftforge-core/tests/joins.rs",
+    "crates/weftforge-core/tests/migration.rs",
+    "crates/weftforge-core/tests/notches.rs",
+    "crates/weftforge-core/tests/outline_offset.rs",
+    "crates/weftforge-core/tests/pattern_transform.rs",
+    "crates/weftforge-core/tests/seam_reversal.rs",
+    "crates/weftforge-core/tests/sewing_groups.rs",
+    "crates/weftforge-core/tests/shirt.rs",
+    "crates/weftforge-core/tests/svg_import.rs",
+    "crates/weftforge-core/tests/workflow.rs",
+    "crates/weftforge-sim/Cargo.toml",
+    "crates/weftforge-sim/src/capsule.rs",
+    "crates/weftforge-sim/src/constraints.rs",
+    "crates/weftforge-sim/src/contact.rs",
+    "crates/weftforge-sim/src/lib.rs",
+    "crates/weftforge-sim/src/math.rs",
+    "crates/weftforge-sim/src/strain.rs",
+    "crates/weftforge-sim/src/tests.rs",
+    "docs/architecture.md",
+    "docs/automation.md",
+    "docs/dependencies.json",
+    "docs/file-formats.md",
+    "docs/physics.md",
+    "rust-toolchain.toml",
+    "spec/features/APP-001-new-empty.md",
+    "spec/features/PAT-004-native-transform-selection.md",
+    "spec/features/PAT-004-piece-rigid-transform.md",
+    "spec/features/PAT-006-authored-notches.md",
+    "spec/features/PAT-006-internal-segments.md",
+    "spec/features/PAT-006-straight-cut.md",
+    "spec/features/PAT-006-straight-hole.md",
+    "spec/features/PAT-009-material-outline-offset.md",
+    "spec/features/SEW-001-cut-and-sew.md",
+    "spec/features/SEW-002-physical-length.md",
+    "spec/features/fixtures/PAT-009-offset-originals.json",
+    "spec/features/fixtures/PAT-009-offset-reviewed-additions.json",
+    "vendor/earcutr/Cargo.toml",
+    "vendor/earcutr/LICENSE",
+    "vendor/earcutr/UPSTREAM.md",
+    "vendor/earcutr/src/legacy.rs",
+    "vendor/earcutr/src/lib.rs",
+    "vendor/earcutr/src/tests.rs",
+    "xtask/Cargo.toml",
+    "xtask/src/main.rs"
+  ],
+  "status": "prepared_not_launched_explicit_root_GO_pending",
+  "tools": {
+    "cargo": {
+      "path": "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "sha256": "532141271ce821135f63822c21fcd76c7972cbf69c19bc35e6ca8b00fcd5c40e"
+    },
+    "cargo-clippy": {
+      "path": "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo-clippy",
+      "sha256": "d2fe4cf0ebeb0e066fad0c5d8454d1fd55d0a3b1548fbc02b26979d508937977"
+    },
+    "clippy-driver": {
+      "path": "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/clippy-driver",
+      "sha256": "71779f599ebe4e4d8d52ca5c685fba04fd229e79819c26c0a9a9d96a761371e7"
+    },
+    "python": {
+      "path": "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+      "sha256": "dae804f93cd396de84720747c66218ff0aed9f74385f71dd9b3e62c49ce5b2ce"
+    },
+    "rustc": {
+      "path": "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+      "sha256": "b69cbcffa5e990057035d53ccc8163e8392ce784f6abb114c19ceb61528ba9f6"
+    },
+    "rustdoc": {
+      "path": "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+      "sha256": "63f095b26810d1f78a683edd1e10d8bbaea00f044e27cc189416f10f8080f13a"
+    },
+    "rustfmt": {
+      "path": "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/rustfmt",
+      "sha256": "f6bdb3170f9c87527e86da0ed89e10f30c1d5bbf68090f6c097a4a15e844009c"
+    }
+  },
+  "wall_seconds": 900
+}

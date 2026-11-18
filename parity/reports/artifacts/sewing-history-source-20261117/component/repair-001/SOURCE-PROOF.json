@@ -1,0 +1,22 @@
+{
+  "N32_only_change_is_permitted_private_history_logger": true,
+  "RED_source_snapshot_receipt_sha256": "0bdc5cdf038423030e28bb6cab1f5b29bc5a7f5c88386c2b903e9bae8fc0cfc9",
+  "all_N32_oracle_inputs_loops_forces_bounds_pin_and_finite_checks_byte_exact_except_logger": true,
+  "candidate_patch_sha256": "2a393f0245a259269b5a0b9c92e8d4f1d8c57ac6a9bdc278e0ca141e3949529e",
+  "existing_tests_other_than_authorized_positive_scalar_history_function_byte_exact": true,
+  "frozen_N32_assertion_slice_byte_exact": true,
+  "frozen_N32_assertion_slice_sha256": "35c55ca483da5e4b64d39d217fd0e130fb8b4f66e6413bb7a4722a0d5a4958df",
+  "lib_rs_changed": false,
+  "new_N32_logger": "    let history_force = lambda.map(|history| history.map(|value| value / (h * h)));\n",
+  "new_persistent_storage_public_API_schema_dependencies_iterations_settings_or_physical_coefficients": false,
+  "new_production_branch_sha256": "a1bcf131b4c262b832a907d2cea8258261702227c252ba2adcfac1267b7ebf3b",
+  "new_tests": [
+    "positive_compliant_stitch_merges_shared_vertices_and_balances_physical_force",
+    "positive_compliant_stitch_handles_pins_zero_anchor_and_nonfinite_guards"
+  ],
+  "old_N32_logger": "    let history_force = [\n        x[0].map(|value| lambda[0][0] * value / (radius * h * h)),\n        lambda[1].map(|value| value / (h * h)),\n    ];\n",
+  "production_only_change": "58-line positive-compliant branch inserted into solve_stitch",
+  "removing_inserted_branch_restores_all_constraints_rs_bytes": true,
+  "status": "SOURCE_READY_BEFORE_FIRST_GREEN",
+  "zero_target_and_hard_branches_byte_exact": true
+}

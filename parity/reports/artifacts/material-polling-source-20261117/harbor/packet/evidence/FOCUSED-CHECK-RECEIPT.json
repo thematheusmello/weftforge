@@ -1,0 +1,88 @@
+{
+  "available_crate_tests": 65,
+  "controller_exit_code": 0,
+  "eight_face_oracle": {
+    "bounds_unchanged": [
+      1e-08,
+      1e-06
+    ],
+    "force_residual_N": 1.2857517012326884e-07,
+    "position_error_m": 2.0770362583566576e-10,
+    "source_unchanged": true
+  },
+  "elapsed_after_all_persistence_seconds": 14.408200582955033,
+  "no_timing_benchmark_fullgarment_fullworkspace_nativebuild_UI_or_evaluator": true,
+  "postclose_guards": {
+    "changed_tracked_paths": [
+      "crates/weftforge-sim/src/constraints.rs",
+      "crates/weftforge-sim/src/tests.rs",
+      "docs/physics.md"
+    ],
+    "closed_source_and_case_seals_unchanged": true,
+    "closed_tracked_source_clean": true,
+    "frozen_files_and_modes": 115,
+    "old_component_artifacts_hashes_modes_exact": 63,
+    "old_component_binary_hashes_exact": 2,
+    "owned_PID_groups_absent": [
+      44838,
+      44985,
+      45061,
+      46387,
+      46427
+    ],
+    "registered_polling_insertion_removal_exact": true,
+    "registry_files": 301,
+    "registry_packages": 7,
+    "tools": 4
+  },
+  "provenance": "Transcription of unified exec completion session3238, exit0; internal persisted child/controller receipts separately bound",
+  "retained_command_output_bytes": 17347,
+  "retained_first_failure": "fmt-only generation1; only tuple line wrapping changed; source snapshot retained",
+  "source_generation": 2,
+  "terminal_sha256": "d89c05068bb434d89fa69b1bc940b2a42cc9610c07c4a92597b9f2c712f2a904",
+  "tests": {
+    "cancellation_tests": {
+      "failed": 0,
+      "ignored": 0,
+      "names": [
+        "constraints::material_cancellation_tests::material_cancellation_polls_after_at_most_63_skipped_checkpoints",
+        "tests::cancellation_after_measurement_preserves_peak_strain",
+        "tests::cancellation_and_failures_preserve_old_state_and_allow_recovery",
+        "tests::capsule_projection_and_final_surface_analysis_cancellation_preserve_the_accepted_step",
+        "tests::closed_elastic_stitch_cancellation_and_failure_retain_whole_call_state",
+        "tests::global_material_zero_rhs_pins_and_cancellation_preserve_stage_state",
+        "tests::material_cancellation_at_every_cloth_callback_rolls_back_all_persistent_state",
+        "tests::material_cancellation_checks_entry_and_each_noop_return"
+      ],
+      "passed": 8
+    },
+    "material_tests": {
+      "failed": 0,
+      "ignored": 0,
+      "names": [
+        "constraints::material_cancellation_tests::material_cancellation_polls_after_at_most_63_skipped_checkpoints",
+        "tests::global_material_zero_rhs_pins_and_cancellation_preserve_stage_state",
+        "tests::grouped_mixed_grain_materials_reach_direct_energy_balance_with_pins",
+        "tests::malformed_external_geometry_material_and_constraints_are_rejected",
+        "tests::material_cancellation_at_every_cloth_callback_rolls_back_all_persistent_state",
+        "tests::material_cancellation_checks_entry_and_each_noop_return",
+        "tests::material_network_reaches_independent_incremental_energy_equilibrium",
+        "tests::material_stage_retains_each_input_face_once_in_order",
+        "tests::membrane_affine_strain_follows_material_axes_under_arrangement_and_winding",
+        "tests::shared_edge_material_reaches_independent_incremental_energy_equilibrium"
+      ],
+      "passed": 10
+    },
+    "membrane_tests": {
+      "failed": 0,
+      "ignored": 0,
+      "names": [
+        "tests::coupled_membrane_reaches_independent_incremental_energy_equilibrium",
+        "tests::membrane_affine_strain_follows_material_axes_under_arrangement_and_winding",
+        "tests::membrane_projection_matches_analytic_uniaxial_and_shear_updates"
+      ],
+      "passed": 3
+    }
+  },
+  "unique_tests": 16
+}

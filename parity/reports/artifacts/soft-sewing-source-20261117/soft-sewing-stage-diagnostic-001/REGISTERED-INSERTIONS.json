@@ -1,0 +1,46 @@
+[
+  {
+    "anchor": "        let mut seam_remaining = self.seam_remaining.clone();\n",
+    "addition": "        // TEMPORARY DIAGNOSTIC ONLY: read hooks, not a retained product option.\n        let mut trace_substep = 0;\n        eprintln!(\"WF_INIT vertices={} triangles={} stitches={} mass_kg={} settings={:?} initial_contact={} initial_strain={}\", x.len(), self.input.triangles.len(), self.input.stitches.len(), self.masses.iter().sum::<f64>(), settings, self.diagnostics.max_contact_error, self.diagnostics.max_stretch_error);\n"
+  },
+  {
+    "anchor": "        for _ in 0..settings.substeps {\n",
+    "addition": "            trace_substep += 1;\n"
+  },
+  {
+    "anchor": "            let mut hard_seam_lambda = vec![[0.; 3]; self.input.stitches.len()];\n",
+    "addition": "            let mut trace_outer = 0;\n            let mut trace_previous = previous.clone();\n            trace_stage(self, trace_substep, trace_outer, \"predictor\", &x, &velocities, &material_corrections, &bend_corrections, &sewing_corrections, &seam_remaining, dt, contacts, &mut trace_previous);\n"
+  },
+  {
+    "anchor": "            for _ in 0..settings.iterations {\n",
+    "addition": "                trace_outer += 1;\n"
+  },
+  {
+    "anchor": "                    &mut material_corrections,\n                    &cancelled,\n                )?;\n",
+    "addition": "                trace_stage(self, trace_substep, trace_outer, \"material\", &x, &velocities, &material_corrections, &bend_corrections, &sewing_corrections, &seam_remaining, dt, contacts, &mut trace_previous);\n"
+  },
+  {
+    "anchor": "                    &mut bend_corrections,\n                    &cancelled,\n                )?;\n",
+    "addition": "                trace_stage(self, trace_substep, trace_outer, \"bending\", &x, &velocities, &material_corrections, &bend_corrections, &sewing_corrections, &seam_remaining, dt, contacts, &mut trace_previous);\n"
+  },
+  {
+    "anchor": "                    &mut sewing_corrections,\n                    &cancelled,\n                )?;\n",
+    "addition": "                trace_stage(self, trace_substep, trace_outer, \"sewing\", &x, &velocities, &material_corrections, &bend_corrections, &sewing_corrections, &seam_remaining, dt, contacts, &mut trace_previous);\n"
+  },
+  {
+    "anchor": "                contacts += self.project_colliders(&mut x, &previous, &cancelled)?;\n",
+    "addition": "                trace_stage(self, trace_substep, trace_outer, \"colliders\", &x, &velocities, &material_corrections, &bend_corrections, &sewing_corrections, &seam_remaining, dt, contacts, &mut trace_previous);\n"
+  },
+  {
+    "anchor": "                contacts += self.project_cloth(&mut x, &previous, &cancelled)?;\n",
+    "addition": "                trace_stage(self, trace_substep, trace_outer, \"cloth\", &x, &velocities, &material_corrections, &bend_corrections, &sewing_corrections, &seam_remaining, dt, contacts, &mut trace_previous);\n"
+  },
+  {
+    "anchor": "            }\n        }\n        if cancelled() {\n            return Err(SimulationError::Cancelled);\n        }\n        let contact_error = self.contact_errors_cancellable(&x, &cancelled)?;\n",
+    "replacement": "            }\n            trace_stage(self, trace_substep, trace_outer, \"substep_end\", &x, &velocities, &material_corrections, &bend_corrections, &sewing_corrections, &seam_remaining, dt, contacts, &mut trace_previous);\n        }\n        if cancelled() {\n            return Err(SimulationError::Cancelled);\n        }\n        let contact_error = self.contact_errors_cancellable(&x, &cancelled)?;\n"
+  },
+  {
+    "anchor": "fn invalid(message: &str) -> SimulationError {",
+    "addition_before": "// TEMPORARY DIAGNOSTIC ONLY: no solver mutation; never merge this observer.\nfn trace_stage(cloth: &Cloth, substep: usize, outer: usize, phase: &str, x: &[Vec3], velocities: &[Vec3], pm: &[Vec3], pb: &[Vec3], ps: &[Vec3], targets: &[f64], h: f64, contacts: usize, previous_trace: &mut [Vec3]) {\n    let mut peak = (0_usize, 0_usize, 0_f64);\n    for (index, &vertices) in cloth.input.triangles.iter().enumerate() {\n        let values = strain::signed_strains(vertices.map(|v| x[v]), vertices.map(|v| cloth.input.material_uv[v]), cloth.input.triangle_materials[index].grain_angle);\n        for (axis, value) in values.into_iter().enumerate() {\n            if value.abs() > peak.2.abs() { peak = (index, axis, value); }\n        }\n    }\n    let mut moment = [0.; 3]; let mut ps_moment = [0.; 3]; let mut pm_moment = [0.; 3]; let mut pb_moment = [0.; 3];\n    let mut max_delta = (0_f64, 0_usize); let mut pmax = 0_f64; let mut vmax = 0_f64; let mut inertia = 0.;\n    for i in 0..x.len() {\n        moment = add(moment, mul(x[i], cloth.masses[i]));\n        ps_moment = add(ps_moment, mul(ps[i], cloth.masses[i]));\n        pm_moment = add(pm_moment, mul(pm[i], cloth.masses[i]));\n        pb_moment = add(pb_moment, mul(pb[i], cloth.masses[i]));\n        let delta = length(sub(x[i], previous_trace[i]));\n        if delta > max_delta.0 { max_delta = (delta, i); }\n        pmax = pmax.max(length(ps[i])); vmax = vmax.max(length(velocities[i]));\n        inertia += 0.5 * cloth.masses[i] * dot(ps[i], ps[i]);\n    }\n    let mut gap_max = 0_f64; let mut target_error = 0_f64; let mut potential = 0.;\n    for (stitch, &target) in cloth.input.stitches.iter().zip(targets) {\n        let gap = length(sub(stitch.a.position(x), stitch.b.position(x)));\n        gap_max = gap_max.max(gap); target_error = target_error.max((gap-target).abs());\n        if stitch.compliance > 0. { potential += 0.5 * h * h * (gap-target).powi(2) / stitch.compliance; }\n    }\n    let vertices = cloth.input.triangles[peak.0];\n    eprintln!(\"WF_STAGE\\t{}\\t{}\\t{}\\t{}\\t{}\\t{}\\t{}\\t{}\\t{}\\t{:?}\\t{:?}\\t{:?}\\t{:?}\\t{}\\t{}\\t{}\\t{}\\t{:?}\\t{:?}\\t{:?}\\t{:?}\\t{}\\t{}\\t{}\",\n        substep, outer, phase, peak.0, peak.1, peak.2, max_delta.0, max_delta.1, pmax, moment, ps_moment, pm_moment, pb_moment,\n        targets.iter().copied().fold(0_f64, f64::max), gap_max, target_error, contacts, vertices, vertices.map(|v| x[v]), vertices.map(|v| ps[v]), vertices.map(|v| cloth.input.material_uv[v]), inertia, potential, vmax);\n    previous_trace.copy_from_slice(x);\n}\n\n"
+  }
+]

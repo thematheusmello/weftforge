@@ -1,0 +1,14 @@
+{
+  "scope": "Separate retrospective attribution correction; original RESULT and raw gate receipts unchanged",
+  "original_result_sha256": "acfe09704dfab6fc4c7640d1daed7166d3bd20c4d8d75ea3f22453902d27ea87",
+  "native_gui_launched": false,
+  "explicit_build_stage_launched_binaries": false,
+  "cli_was_exercised_by_workspace_integration_tests": true,
+  "basis": [
+    "apps/weftforge-cli/tests/curves.rs uses CARGO_BIN_EXE_weftforge-cli and Command::new",
+    "apps/weftforge-cli/tests/mcp_stdio.rs and other integration modules run CLI child processes",
+    "the workspace test gate completed all398 tests"
+  ],
+  "no_source_or_gate_outcome_changed": true,
+  "case_or_native_acceptance_transfer": false
+}

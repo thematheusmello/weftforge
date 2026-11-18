@@ -35,6 +35,10 @@ fn area_mass_rest_and_reset_are_si_consistent() {
     });
     assert_eq!(cloth.diagnostics().peak_strain, rest_peak);
     assert_eq!(Diagnostics::default().peak_strain, None);
+    assert_eq!(
+        Diagnostics::default().initial_contact_recovery_projections,
+        0
+    );
     assert!((cloth.masses().iter().sum::<f64>() - 0.2).abs() < 1e-14);
     let rest = cloth.positions().to_vec();
     for _ in 0..20 {
@@ -246,6 +250,183 @@ fn nonfinite_strain_after_a_finite_candidate_invalidates_diagnostics() {
 }
 
 #[test]
+fn shared_edge_material_reaches_independent_incremental_energy_equilibrium() {
+    let rest = [
+        [-0.064, 0., 0.],
+        [0., -0.004, 0.],
+        [0., 0.004, 0.],
+        [0.064, 0., 0.],
+    ];
+    let material = Material {
+        areal_density: 0.18,
+        warp_stiffness: 400.,
+        weft_stiffness: 400.,
+        shear_stiffness: 100.,
+        grain_angle: std::f64::consts::FRAC_PI_2,
+        bending_stiffness: 0.,
+        damping: 0.,
+        friction: 0.,
+        collision_thickness: 0.003,
+    };
+    let mut cloth = Cloth::new(ClothInput {
+        positions: rest.to_vec(),
+        material_uv: rest.map(|v| [v[0], v[1]]).to_vec(),
+        triangles: vec![[0, 1, 2], [1, 3, 2]],
+        triangle_materials: vec![material; 2],
+        pins: vec![
+            Pin {
+                vertex: 0,
+                target: rest[0],
+            },
+            Pin {
+                vertex: 3,
+                target: rest[3],
+            },
+        ],
+        ..Default::default()
+    })
+    .unwrap();
+    let h = (1. / 60.) / 8.;
+    let speed = 0.0005 / h;
+    cloth.velocities[1] = [0., -speed, 0.];
+    cloth.velocities[2] = [0., speed, 0.];
+    let predicted = [
+        add(rest[1], mul(cloth.velocities[1], h)),
+        add(rest[2], mul(cloth.velocities[2], h)),
+    ];
+    let area = 0.064 * 0.008 / 2.;
+    let mass = 2. * 0.18 * area / 3.;
+    for v in [1, 2] {
+        assert!((cloth.masses()[v] - mass).abs() < 1e-18);
+    }
+    assert!(cloth.bends.is_empty() && cloth.input.stitches.is_empty());
+    assert!(cloth.input.colliders.is_empty());
+    cloth
+        .step(
+            StepSettings {
+                dt: h,
+                substeps: 1,
+                iterations: 32,
+                gravity: [0.; 3],
+                seam_closure_speed: 0.,
+            },
+            || false,
+        )
+        .unwrap();
+
+    // Independent 100-digit Newton root of the six-DOF physical energy;
+    // the symmetric quarter-turn reduction also gives an independent cubic.
+    let expected = [
+        [6.729906241347043e-23, -0.004000552234905839, 0.],
+        [-6.729906241347043e-23, 0.004000552234905839, 0.],
+    ];
+    let x = [cloth.positions()[1], cloth.positions()[2]];
+    let position_error = (0..2)
+        .map(|i| length(sub(x[i], expected[i])))
+        .fold(0., f64::max);
+
+    // Direct columns for this independent two-face geometry, with one inertia
+    // per free particle. No cached constraint gradients or multipliers enter.
+    let center = mul(add(x[0], x[1]), 0.5);
+    let v = mul(sub(x[1], x[0]), 1. / 0.008);
+    let (sin, cos) = material.grain_angle.sin_cos();
+    let mut gradient: [Vec3; 2] =
+        std::array::from_fn(|i| mul(sub(x[i], predicted[i]), mass / (h * h)));
+    for sign in [1., -1.] {
+        let u = add([1., 0., 0.], mul(center, sign / 0.064));
+        let w = add(mul(u, cos), mul(v, sin));
+        let f = add(mul(u, -sin), mul(v, cos));
+        let cw = (dot(w, w) - 1.) / 2.;
+        let cf = (dot(f, f) - 1.) / 2.;
+        let cs = dot(w, f);
+        let gu = add(
+            add(
+                mul(w, 400. * area * cw * cos),
+                mul(f, -400. * area * cf * sin),
+            ),
+            mul(sub(mul(f, cos), mul(w, sin)), 100. * area * cs),
+        );
+        let gv = add(
+            add(
+                mul(w, 400. * area * cw * sin),
+                mul(f, 400. * area * cf * cos),
+            ),
+            mul(add(mul(f, sin), mul(w, cos)), 100. * area * cs),
+        );
+        for (i, entry) in gradient.iter_mut().enumerate() {
+            *entry = add(
+                *entry,
+                add(mul(gu, sign / 0.128), mul(gv, (2. * i as f64 - 1.) / 0.008)),
+            );
+        }
+    }
+    let stationarity = gradient.into_iter().map(length).fold(0., f64::max);
+    println!(
+        "shared-edge positions={x:?} reference={expected:?} position_error={position_error:e}m stationarity={stationarity:e}N"
+    );
+    assert!(position_error < 1e-8 && stationarity < 1e-6);
+    assert_eq!(cloth.positions()[0], rest[0]);
+    assert_eq!(cloth.positions()[3], rest[3]);
+}
+
+#[test]
+fn coupled_membrane_reaches_independent_incremental_energy_equilibrium() {
+    let uv = [[0., 0.], [0.01, 0.], [0.003, 0.07]];
+    let material = Material {
+        areal_density: 0.18,
+        warp_stiffness: 400.,
+        weft_stiffness: 400.,
+        shear_stiffness: 100.,
+        grain_angle: std::f64::consts::FRAC_PI_2,
+        ..Default::default()
+    };
+    let membrane = constraints::Membrane::new([0, 1, 2], &uv, material);
+    let h = (1. / 60.) / 8.;
+    let area = 0.01 * 0.07 / 2.;
+    let mass = 0.18 * area / 3.;
+    let predicted = [0.012, 0.002, 0.];
+    let mut x = [[0.; 3], predicted, [0.003, 0.07, 0.]];
+    let mut state = [[0.; 3]; 3];
+    for _ in 0..32 {
+        constraints::solve_material(
+            std::slice::from_ref(&membrane),
+            &mut x,
+            &[0., 1. / mass, 0.],
+            h,
+            &mut state,
+            &|| false,
+        )
+        .unwrap();
+    }
+
+    // Independent dense Newton root of inertia plus the direct deformation-gradient energy.
+    let expected = [0.010007132086944948, 0.000027306978065735514, 0.];
+    let position_error = length(sub(x[1], expected));
+    let u = mul(x[1], 100.);
+    let v = mul(sub([0.003, 0.07, 0.], mul(x[1], 0.3)), 1. / 0.07);
+    let cu = 0.5 * (dot(u, u) - 1.);
+    let cv = 0.5 * (dot(v, v) - 1.);
+    let cs = dot(u, v);
+    let elastic_gradient = add(
+        mul(
+            add(mul(u, 100. * cu), mul(v, -0.3 / 0.07 * cv)),
+            400. * area,
+        ),
+        mul(add(mul(v, 100.), mul(u, -0.3 / 0.07)), 100. * area * cs),
+    );
+    let stationarity = length(add(
+        mul(sub(x[1], predicted), mass / (h * h)),
+        elastic_gradient,
+    ));
+    println!(
+        "independent energy position error={position_error:e}m stationarity={stationarity:e}N"
+    );
+    assert!(position_error < 1e-8 && stationarity < 1e-6);
+    assert_eq!(x[0], [0.; 3]);
+    assert_eq!(x[2], [0.003, 0.07, 0.]);
+}
+
+#[test]
 fn membrane_projection_matches_analytic_uniaxial_and_shear_updates() {
     let uv = [[0., 0.], [1., 0.], [0., 1.]];
     for (grain_angle, expected_x) in [
@@ -264,7 +445,15 @@ fn membrane_projection_matches_analytic_uniaxial_and_shear_updates() {
         );
         let mut x = [[0., 0., 0.], [1.2, 0., 0.], [0., 1., 0.]];
         // Only x[1] moves: C=0.22, dC/dx=1.2, alpha=4 or 0.2 for area=0.5 m².
-        membrane.solve(&mut x, &[0., 1., 0.], 0.1, &mut [0.; 3]);
+        constraints::solve_material(
+            &[membrane],
+            &mut x,
+            &[0., 1., 0.],
+            0.1,
+            &mut [[0.; 3]; 3],
+            &|| false,
+        )
+        .unwrap();
         assert!((x[1][0] - expected_x).abs() < 1e-14);
         assert_eq!(x[0], [0.; 3]);
         assert_eq!(x[2], [0., 1., 0.]);
@@ -279,12 +468,24 @@ fn membrane_projection_matches_analytic_uniaxial_and_shear_updates() {
     );
     let height = 0.91_f64.sqrt();
     let mut x = [[0., 0., 0.], [1., 0., 0.], [0.3, height, 0.]];
-    // Both axes have unit length: only shear acts, with C=0.3 and delta_lambda=-1/32.
-    membrane.solve(&mut x, &[1.; 3], 0.2, &mut [0.; 3]);
+    // Exact rational solve of the coupled Gram matrix with rows [33/16,3/10,8/5],
+    // [3/10,25/12,8/5], [8/5,8/5,48/5] and RHS [0,0,-3/10].
+    constraints::solve_material(
+        &[membrane],
+        &mut x,
+        &[1.; 3],
+        0.2,
+        &mut [[0.; 3]; 3],
+        &|| false,
+    )
+    .unwrap();
+    let [warp, weft, shear] = [1284. / 46963., 1269. / 46963., -60579. / 1502816.];
+    let u = [1., 0., 0.];
+    let v = [0.3, height, 0.];
     let expected = [
-        [0.040625, height / 32., 0.],
-        [0.990625, -height / 32., 0.],
-        [0.26875, height, 0.],
+        mul(add(mul(u, warp + shear), mul(v, weft + shear)), -1.),
+        add(u, add(mul(u, warp), mul(v, shear))),
+        add(v, add(mul(v, weft), mul(u, shear))),
     ];
     for (actual, expected) in x.into_iter().zip(expected) {
         assert!(length(sub(actual, expected)) < 1e-14);
@@ -306,7 +507,7 @@ fn weighted_stitch_closes_unequal_samples_and_preserves_momentum() {
     };
     let mut x = vec![[0., 0., 0.], [1., 0., 0.], [2., 0.3, 0.], [3., 0.3, 0.]];
     let before = x.iter().copied().fold([0.; 3], add);
-    constraints::solve_stitch(stitch, 0., &mut x, &[1.; 4], 0.01, &mut [0.; 3]);
+    constraints::solve_hard_stitch(stitch, 0., &mut x, &[1.; 4], 0.01, &mut [0.; 3]);
     assert!(length(sub(stitch.a.position(&x), stitch.b.position(&x))) < 1e-12);
     assert!(length(sub(x.iter().copied().fold([0.; 3], add), before)) < 1e-12);
     // A repeated endpoint must be treated as one degree of freedom.
@@ -315,29 +516,40 @@ fn weighted_stitch_closes_unequal_samples_and_preserves_momentum() {
         b: WeightedPoint::vertex(2),
         compliance: 0.,
     };
-    constraints::solve_stitch(s, 0., &mut x, &[1.; 4], 0.01, &mut [0.; 3]);
+    constraints::solve_hard_stitch(s, 0., &mut x, &[1.; 4], 0.01, &mut [0.; 3]);
     assert!(length(sub(x[0], x[2])) < 1e-12);
 }
 
-// This read-only adapter keeps the frozen N32 observer identical for scalar RED and vector GREEN.
-trait ObservedStitchMultiplier: Copy + Default + std::fmt::Debug {
-    fn endpoint_vector(self, difference: Vec3) -> Vec3;
-    fn is_scalar(self) -> bool;
+// These adapters invoke the production block and independently report constitutive impulse.
+fn single_soft_stitch(
+    stitch: Stitch,
+    target: f64,
+    x: &mut [Vec3],
+    inverse_mass: &[f64],
+    h: f64,
+    correction: &mut [Vec3],
+) -> Result<(), SimulationError> {
+    constraints::solve_sewing(
+        &[stitch],
+        &[target],
+        x,
+        inverse_mass,
+        h,
+        correction,
+        &|| false,
+    )
 }
-impl ObservedStitchMultiplier for f64 {
-    fn endpoint_vector(self, difference: Vec3) -> Vec3 {
-        mul(difference, self / length(difference))
-    }
-    fn is_scalar(self) -> bool {
-        true
-    }
-}
-impl ObservedStitchMultiplier for Vec3 {
-    fn endpoint_vector(self, _: Vec3) -> Vec3 {
-        self
-    }
-    fn is_scalar(self) -> bool {
-        false
+
+fn soft_stitch_impulse(stitch: Stitch, target: f64, x: &[Vec3], h: f64) -> Vec3 {
+    let difference = sub(stitch.a.position(x), stitch.b.position(x));
+    if target == 0. {
+        mul(difference, -h * h / stitch.compliance)
+    } else {
+        let radius = length(difference);
+        mul(
+            difference,
+            -h * h * (radius - target) / (stitch.compliance * radius),
+        )
     }
 }
 
@@ -350,59 +562,49 @@ fn closed_elastic_stitch_n32_matches_independent_quadratic_and_individual_action
         b: WeightedPoint::vertex(anchor),
         compliance: 1.,
     });
-    let mut lambda = [Default::default(); 2];
-    let mut individual_action = [[0.; 3]; 2];
+    let mut correction = [[0.; 3]; 3];
     for _ in 0..32 {
-        for i in 0..2 {
-            let before = x[0];
-            constraints::solve_stitch(stitches[i], 0., &mut x, &[1., 0., 0.], 1., &mut lambda[i]);
-            individual_action[i] = add(individual_action[i], sub(x[0], before));
-        }
+        constraints::solve_sewing(
+            &stitches,
+            &[0.; 2],
+            &mut x,
+            &[1., 0., 0.],
+            1.,
+            &mut correction,
+            &|| false,
+        )
+        .unwrap();
     }
     let q = stitches.map(|s| sub(s.a.position(&x), s.b.position(&x)));
-    let lambda_vector = std::array::from_fn::<_, 2, _>(|i| lambda[i].endpoint_vector(q[i]));
-    let residual = std::array::from_fn::<_, 2, _>(|i| add(q[i], lambda_vector[i]));
-    let transport =
-        std::array::from_fn::<_, 2, _>(|i| length(sub(individual_action[i], lambda_vector[i])));
+    let impulses = stitches.map(|s| soft_stitch_impulse(s, 0., &x, 1.));
     let energy = (dot(q[0], q[0]) + dot(q[1], q[1])) / 2.;
     let objective = dot(x[0], x[0]) / 2. + energy;
-    // The gradient of Phi=3(x²+y²)/2-x-y+1 is independent of the multiplier ledger.
+    // The gradient of Phi=3(x²+y²)/2-x-y+1 is independent of stage history.
     let stationarity = add(x[0], add(q[0], q[1]));
     let u = 2_f64.powi(-64);
     let expected_x = [(1. - u) / 3., (1. + 2. * u) / 3., 0.];
-    let expected_lambda = [
+    let expected_impulses = [
         [(2. - 2. * u) / 3., (-1. + 4. * u) / 3., 0.],
         [(-1. + u) / 3., (2. - 2. * u) / 3., 0.],
     ];
-    let expected_residual = [[-u, 2. * u, 0.], [0.; 3]];
     let expected_energy = (5. - u + 5. * u * u) / 9.;
     let expected_objective = 2. / 3. + 5. * u * u / 6.;
+    let action = correction[0]; // m/h²=1 in this fixture.
     println!(
-        "fixed_operator_N=32 h_s=1 c_m_per_N=1 free_mass_kg=1\n\
-         x_m={x:?}\nlambda_private_kg_m={lambda:?}\nlambda_vector_kg_m={lambda_vector:?}\n\
-         residual_m={residual:?}\nindividual_action_N={individual_action:?}\n\
-         individual_transport_N={transport:?}\nenergy_J={energy:?}\n\
-         objective_J={objective:?}\nstationarity_N={stationarity:?}\n\
-         expected_x_m={expected_x:?}\nexpected_lambda_kg_m={expected_lambda:?}\n\
-         expected_residual_m={expected_residual:?}\nexpected_energy_J={expected_energy:?}\n\
-         expected_objective_J={expected_objective:?}"
+        "N=32 x_m={x:?} nodal_history_m={correction:?} impulses_N_s2={impulses:?} energy_J={energy} objective_J={objective} stationarity_N={stationarity:?}"
     );
-    if lambda[0].is_scalar() {
-        assert!(transport[0] > 0.01, "legacy stitch1 RED witness: N");
-    }
     assert_eq!(&x[1..], &anchors);
     assert!(length(sub(x[0], expected_x)) <= 1e-12, "position: m");
     for i in 0..2 {
         assert!(
-            length(sub(lambda_vector[i], expected_lambda[i])) <= 1e-12,
-            "stitch{i} multiplier: kg m"
+            length(sub(impulses[i], expected_impulses[i])) <= 1e-12,
+            "stitch{i} physical impulse: kg m"
         );
-        assert!(
-            length(sub(residual[i], expected_residual[i])) <= 1e-12,
-            "stitch{i} constitutive residual: m"
-        );
-        assert!(transport[i] <= 1e-12, "stitch{i} individual transport: N");
     }
+    assert!(
+        length(sub(action, add(impulses[0], impulses[1]))) <= 1e-12,
+        "total action: N"
+    );
     assert!((energy - expected_energy).abs() <= 1e-12, "energy: J");
     assert!(
         (objective - expected_objective).abs() <= 1e-12,
@@ -420,16 +622,18 @@ fn closed_elastic_stitch_preserves_isolated_energy_and_units() {
     };
     let predictor = [1., 2., 0.];
     let mut x = [predictor, [0.; 3]];
-    let mut lambda = [0.; 3];
-    constraints::solve_stitch(stitch, 0., &mut x, &[0.5, 0.], 0.5, &mut lambda);
-    assert_eq!(lambda, [-1., -2., 0.]);
+    let mut correction = [[0.; 3]; 2];
+    single_soft_stitch(stitch, 0., &mut x, &[0.5, 0.], 0.5, &mut correction).unwrap();
+    let impulse = soft_stitch_impulse(stitch, 0., &x, 0.5);
+    assert_eq!(impulse, [-1., -2., 0.]);
     assert_eq!(x, [[0.5, 1., 0.], [0.; 3]]);
     let q = sub(stitch.a.position(&x), stitch.b.position(&x));
     let force = [-4., -8., 0.];
     assert_eq!(mul(q, -1. / stitch.compliance), force);
-    assert_eq!(mul(lambda, 1. / 0.5_f64.powi(2)), force);
+    assert_eq!(mul(impulse, 1. / 0.5_f64.powi(2)), force);
     assert_eq!(mul(sub(x[0], predictor), 2. / 0.5_f64.powi(2)), force);
     assert_eq!(dot(q, q) / (2. * stitch.compliance), 5.);
+    assert_eq!(correction[0], sub(x[0], predictor));
 }
 
 #[test]
@@ -469,8 +673,9 @@ fn closed_elastic_stitch_two_free_masses_preserve_reactions_under_rigid_transfor
             let before = predictor.map(transform);
             let mut x = before;
             let initial_lambda = rotate(initial_lambda);
-            let mut lambda = initial_lambda;
-            constraints::solve_stitch(stitch, 0., &mut x, &[0.5, 0.25], 0.5, &mut lambda);
+            let mut correction = [mul(initial_lambda, 0.5), mul(initial_lambda, -0.25)];
+            single_soft_stitch(stitch, 0., &mut x, &[0.5, 0.25], 0.5, &mut correction).unwrap();
+            let lambda = soft_stitch_impulse(stitch, 0., &x, 0.5);
             for (actual, expected) in x.into_iter().zip(expected_x.map(transform)) {
                 assert!(length(sub(actual, expected)) <= 1e-12, "position: m");
             }
@@ -505,17 +710,13 @@ fn closed_elastic_stitch_merges_repeated_and_cross_side_vertices() {
         compliance: 1.,
     };
     let mut x = [[0.; 3], [1., 0., 0.]];
-    let mut lambda = [0.; 3];
-    constraints::solve_stitch(stitch, 0., &mut x, &[1., 0.], 1., &mut lambda);
-    assert!(length(sub(lambda, [12. / 25., 0., 0.])) <= 1e-14);
+    let mut correction = [[0.; 3]; 2];
+    single_soft_stitch(stitch, 0., &mut x, &[1., 0.], 1., &mut correction).unwrap();
+    let impulse = soft_stitch_impulse(stitch, 0., &x, 1.);
+    assert!(length(sub(impulse, [12. / 25., 0., 0.])) <= 1e-14);
     assert!(length(sub(x[0], [9. / 25., 0., 0.])) <= 1e-14);
     assert_eq!(x[1], [1., 0., 0.]);
-    assert!(
-        length(add(
-            sub(stitch.a.position(&x), stitch.b.position(&x)),
-            lambda
-        )) <= 1e-14
-    );
+    assert!(length(sub(correction[0], mul(impulse, 0.75))) <= 1e-14);
 }
 
 #[test]
@@ -544,9 +745,9 @@ fn closed_elastic_stitch_keeps_accepted_weights_and_endpoint_arithmetic() {
     assert!(length(q) > 0.001);
     let expected_lambda = q.map(|value| -value / (beta * beta + 1.));
     let expected_free = add(before[1], mul(expected_lambda, beta));
-    let mut lambda = [0.; 3];
-    constraints::solve_stitch(stitch, 0., &mut x, &[0., 1., 0.], 1., &mut lambda);
-    assert_eq!(lambda, expected_lambda);
+    let mut correction = [[0.; 3]; 3];
+    single_soft_stitch(stitch, 0., &mut x, &[0., 1., 0.], 1., &mut correction).unwrap();
+    assert_eq!(correction[1], sub(x[1], before[1]));
     assert_eq!(x, [before[0], expected_free, before[2]]);
     assert_eq!(stitch.a.weights, [0.25, beta]);
 }
@@ -559,16 +760,16 @@ fn closed_elastic_stitch_handles_zero_gap_pins_and_denominator_guard() {
         compliance: 1.,
     };
     let mut x = [[0.; 3]; 2];
-    let mut lambda = [0.; 3];
-    constraints::solve_stitch(stitch, 0., &mut x, &[1., 0.], 1., &mut lambda);
+    let mut correction = [[0.; 3]; 2];
+    single_soft_stitch(stitch, 0., &mut x, &[1., 0.], 1., &mut correction).unwrap();
     assert_eq!(x, [[0.; 3]; 2]);
-    assert_eq!(lambda, [0.; 3]);
+    assert_eq!(correction, [[0.; 3]; 2]);
     assert_eq!(dot(x[0], x[0]) / (2. * stitch.compliance), 0.);
-    lambda = [2., -4., 1.];
-    constraints::solve_stitch(stitch, 0., &mut x, &[1., 0.], 1., &mut lambda);
-    assert_eq!(lambda, [1., -2., 0.5]);
+    correction[0] = [2., -4., 1.];
+    single_soft_stitch(stitch, 0., &mut x, &[1., 0.], 1., &mut correction).unwrap();
+    assert_eq!(correction[0], [1., -2., 0.5]);
     assert_eq!(x, [[-1., 2., -0.5], [0.; 3]]);
-    assert_eq!(add(sub(x[0], x[1]), lambda), [0.; 3]);
+    assert_eq!(add(sub(x[0], x[1]), correction[0]), [0.; 3]);
 
     let stitch = Stitch {
         compliance: 0.125,
@@ -576,64 +777,959 @@ fn closed_elastic_stitch_handles_zero_gap_pins_and_denominator_guard() {
     };
     let pinned = [[1., 2., 3.], [0.; 3]];
     x = pinned;
-    lambda = [0.; 3];
-    constraints::solve_stitch(stitch, 0., &mut x, &[0.; 2], 0.5, &mut lambda);
+    correction = [[0.; 3]; 2];
+    single_soft_stitch(stitch, 0., &mut x, &[0.; 2], 0.5, &mut correction).unwrap();
     assert_eq!(x, pinned);
-    assert_eq!(lambda, [-2., -4., -6.]);
-    assert_eq!(mul(lambda, 4.), [-8., -16., -24.]);
+    assert_eq!(correction, [[0.; 3]; 2]);
+    let impulse = soft_stitch_impulse(stitch, 0., &x, 0.5);
+    assert_eq!(impulse, [-2., -4., -6.]);
+    assert_eq!(mul(impulse, 4.), [-8., -16., -24.]);
     assert_eq!(mul(sub(x[0], x[1]), -8.), [-8., -16., -24.]);
-
     for (compliance, dt) in [(1e-21, 1.), (1., 1e-200)] {
         let stitch = Stitch {
             compliance,
             ..stitch
         };
-        let before_lambda = lambda;
-        constraints::solve_stitch(stitch, 0., &mut x, &[0.; 2], dt, &mut lambda);
+        let before = correction;
+        single_soft_stitch(stitch, 0., &mut x, &[0.; 2], dt, &mut correction).unwrap();
         assert_eq!(x, pinned);
-        assert_eq!(lambda, before_lambda);
+        assert_eq!(correction, before);
     }
 }
 
 #[test]
 fn positive_targets_and_hard_stitches_keep_radial_updates() {
+    for target in [1., f64::from_bits(1)] {
+        let stitch = Stitch {
+            a: WeightedPoint::vertex(0),
+            b: WeightedPoint::vertex(1),
+            compliance: 0.125,
+        };
+        let predictor = [3., 4., 0.];
+        let mut x = [predictor, [0.; 3]];
+        let mut correction = [[0.; 3]; 2];
+        single_soft_stitch(stitch, target, &mut x, &[0.5, 0.], 0.5, &mut correction).unwrap();
+        let lambda = soft_stitch_impulse(stitch, target, &x, 0.5);
+        // Mass 2 kg and h=.5 s give Phi=4|q-p|²+4(|q|-target)².
+        let expected = predictor.map(|value| value * ((5. + target) / 10.));
+        assert!(length(sub(x[0], expected)) <= 1e-14);
+        assert_eq!(x[1], [0.; 3]);
+        assert!(length(sub(lambda, mul(sub(expected, predictor), 2.))) <= 1e-14);
+        let force = mul(x[0], -(length(x[0]) - target) / (0.125 * length(x[0])));
+        assert!(length(sub(mul(sub(x[0], predictor), 8.), force)) <= 1e-14);
+    }
     // Reciprocal normalization rounds the 3-4-5 direction's squared length above one.
     let r = 1.0_f64 / 5.;
     let d = 0.5 * ((3. * r).powi(2) + (4. * r).powi(2));
     let hard_expected = 0.25 - 5. / d;
     assert!((hard_expected + 9.75).abs() <= 1e-14);
-    for (target, compliance, expected_x, expected_lambda) in [
-        (1., 0.125, [1.7625, 2.35, 0.], -3.875),
-        (f64::from_bits(1), 0.125, [1.4625, 1.95, 0.], -4.875),
-        (0., 0., [0.; 3], hard_expected),
-    ] {
-        let stitch = Stitch {
-            a: WeightedPoint::vertex(0),
-            b: WeightedPoint::vertex(1),
-            compliance,
-        };
-        let mut x = [[3., 4., 0.], [0.; 3]];
-        let mut lambda = [0.25, 7., -8.];
-        constraints::solve_stitch(stitch, target, &mut x, &[0.5, 0.], 0.5, &mut lambda);
-        assert!(length(sub(x[0], expected_x)) <= 1e-14);
-        assert_eq!(x[1], [0.; 3]);
-        assert_eq!(lambda, [expected_lambda, 7., -8.]);
-    }
     let hard = Stitch {
         a: WeightedPoint::vertex(0),
         b: WeightedPoint::vertex(1),
         compliance: 0.,
     };
+    let mut x = [[3., 4., 0.], [0.; 3]];
+    let mut lambda = [0.25, 7., -8.];
+    constraints::solve_hard_stitch(hard, 0., &mut x, &[0.5, 0.], 0.5, &mut lambda);
+    assert!(length(sub(x[0], [0.; 3])) <= 1e-14);
+    assert_eq!(x[1], [0.; 3]);
+    assert_eq!(lambda, [hard_expected, 7., -8.]);
     let pinned = [[1., 0., 0.], [0.; 3]];
-    let mut x = pinned;
-    let mut lambda = [2., 3., 4.];
-    constraints::solve_stitch(hard, 0., &mut x, &[0.; 2], 1., &mut lambda);
+    x = pinned;
+    lambda = [2., 3., 4.];
+    constraints::solve_hard_stitch(hard, 0., &mut x, &[0.; 2], 1., &mut lambda);
     assert_eq!(x, pinned);
     assert_eq!(lambda, [2., 3., 4.]);
     x = [[0.; 3]; 2];
-    constraints::solve_stitch(hard, 1., &mut x, &[1.; 2], 1., &mut lambda);
+    constraints::solve_hard_stitch(hard, 1., &mut x, &[1.; 2], 1., &mut lambda);
     assert_eq!(x, [[0.; 3]; 2]);
     assert_eq!(lambda, [2., 3., 4.]);
+}
+
+#[test]
+fn positive_compliant_stitch_merges_shared_vertices_and_balances_physical_force() {
+    let stitch = Stitch {
+        a: WeightedPoint {
+            vertices: [0, 1],
+            weights: [0.25, 0.75],
+        },
+        b: WeightedPoint {
+            vertices: [0, 2],
+            weights: [0.25, 0.75],
+        },
+        compliance: 0.25,
+    };
+    let before = [[2., -1., 0.5], [3., 4., 0.], [0.; 3]];
+    let mut x = before;
+    let mut correction = [[0.; 3]; 3];
+    single_soft_stitch(stitch, 0.75, &mut x, &[0.5, 0.25, 0.], 0.5, &mut correction).unwrap();
+    let lambda = soft_stitch_impulse(stitch, 0.75, &x, 0.5);
+    // Phi=8|q-p|²+2(.75|q|-.75)² gives radius (80+2.25)/(16+2.25).
+    let expected = [3. / 5., 4. / 5., 0.].map(|value| value * (329. / 73.));
+    assert!(length(sub(x[1], expected)) <= 1e-14);
+    assert_eq!(x[0], before[0]);
+    assert_eq!(x[2], before[2]);
+    let difference = sub(stitch.a.position(&x), stitch.b.position(&x));
+    let force = mul(
+        difference,
+        -3. * (length(difference) - 0.75) / length(difference),
+    );
+    assert!(length(sub(mul(sub(x[1], before[1]), 16.), force)) <= 1e-14);
+    assert!(length(sub(mul(lambda, 3.), force)) <= 1e-14);
+}
+
+#[test]
+fn positive_compliant_stitch_handles_pins_zero_anchor_and_nonfinite_guards() {
+    let stitch = Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(1),
+        compliance: 0.125,
+    };
+    let pinned = [[3., 4., 0.], [0.; 3]];
+    let mut x = pinned;
+    let mut correction = [[0.; 3]; 2];
+    single_soft_stitch(stitch, 1., &mut x, &[0.; 2], 0.5, &mut correction).unwrap();
+    assert_eq!(x, pinned);
+    assert!(
+        length(sub(
+            soft_stitch_impulse(stitch, 1., &x, 0.5),
+            [-4.8, -6.4, 0.]
+        )) <= 1e-14
+    );
+    assert_eq!(correction, [[0.; 3]; 2]);
+    for (start, history, expected) in [
+        ([0.; 3], [0.; 3], [0.5, 0., 0.]),
+        ([0., 1., 0.], [0., 2., 0.], [0., 0.5, 0.]),
+    ] {
+        x = [start, [0.; 3]];
+        correction = [mul(history, 0.5), [0.; 3]];
+        single_soft_stitch(stitch, 1., &mut x, &[0.5, 0.], 0.5, &mut correction).unwrap();
+        assert_eq!(x, [expected, [0.; 3]]);
+        assert_eq!(correction[0], expected);
+        assert_eq!(length(x[0]), 0.5);
+    }
+    x = [[0.; 3]; 2];
+    correction = [[0.; 3]; 2];
+    single_soft_stitch(stitch, 1., &mut x, &[0.; 2], 0.5, &mut correction).unwrap();
+    assert_eq!(x, [[0.; 3]; 2]);
+    assert_eq!(correction, [[0.; 3]; 2]);
+    for (target, compliance, dt) in [
+        (f64::INFINITY, 0.125, 0.5),
+        (f64::NAN, 0.125, 0.5),
+        (-1., 0.125, 0.5),
+        (1., 1e-21, 1.),
+        (1., 1., 1e-200),
+    ] {
+        x = pinned;
+        correction = [[0.; 3]; 2];
+        let result = single_soft_stitch(
+            Stitch {
+                compliance,
+                ..stitch
+            },
+            target,
+            &mut x,
+            &[0.; 2],
+            dt,
+            &mut correction,
+        );
+        if !target.is_finite() || target < 0. {
+            assert!(matches!(result, Err(SimulationError::Unstable(_))));
+        } else {
+            result.unwrap();
+        }
+        assert_eq!(x, pinned);
+        assert_eq!(correction, [[0.; 3]; 2]);
+    }
+    x = [[1., 0., 0.], [0.; 3]];
+    correction = [[0.; 3]; 2];
+    assert!(matches!(
+        single_soft_stitch(
+            Stitch {
+                compliance: 1e-20,
+                ..stitch
+            },
+            f64::MAX,
+            &mut x,
+            &[1e-21, 0.],
+            1.,
+            &mut correction
+        ),
+        Err(SimulationError::Unstable(_))
+    ));
+    assert_eq!(x, [[1., 0., 0.], [0.; 3]]);
+    assert_eq!(correction, [[0.; 3]; 2]);
+}
+
+#[test]
+fn positive_stitch_subnormal_anchor_and_fallback_use_unit_direction() {
+    let epsilon = f64::from_bits(1);
+    let current = [epsilon, epsilon, 0.];
+    let expected = [0.5 / 2_f64.sqrt(), 0.5 / 2_f64.sqrt(), 0.];
+    let histories = [[0.; 3], current];
+    let anchors = [current, [0.; 3]];
+    let stitch = Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(1),
+        compliance: 1.,
+    };
+    let norm = |v: Vec3| (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
+    let mut errors = [[0.; 3]; 2];
+    for i in 0..2 {
+        let mut x = [current, [0.; 3]];
+        let mut history = [histories[i], [0.; 3]];
+        single_soft_stitch(stitch, 1., &mut x, &[1., 0.], 1., &mut history).unwrap();
+        let radius = norm(x[0]);
+        let force = x[0].map(|value| (1. - radius) * value / radius);
+        let residual = std::array::from_fn(|axis| x[0][axis] - anchors[i][axis] - force[axis]);
+        errors[i] = [
+            norm(std::array::from_fn(|axis| x[0][axis] - expected[axis])),
+            (radius - 0.5).abs(),
+            norm(residual),
+        ];
+        println!(
+            "subnormal_case={i} inverse_mass_per_kg=1 h_s=1 compliance_m_per_N=1 target_m=1\n\
+             initial_difference_m={current:?}\nlocal_anchor_m={:?}\n\
+             x_m={x:?}\nhistory_displacement_m={history:?}\nexpected_m={expected:?}\n\
+             radius_m={radius}\nindependent_force_N={force:?}\n\
+             independent_stationarity_N={residual:?}\nposition_radius_force_errors={:?}",
+            anchors[i], errors[i]
+        );
+        assert_eq!(x[1], [0.; 3]);
+        assert!(x.into_iter().flatten().all(f64::is_finite));
+        assert!(history.into_iter().flatten().all(f64::is_finite));
+    }
+    for (i, [position, radius, force]) in errors.into_iter().enumerate() {
+        assert!(position <= 1e-14, "edge{i} independent position: m");
+        assert!(radius <= 1e-14, "edge{i} independent radius: m");
+        assert!(force <= 1e-14, "edge{i} independent stationarity: N");
+    }
+}
+
+#[test]
+fn positive_target_stitch_n32_matches_independent_coupled_radial_energy() {
+    let mass = 0.01_f64;
+    let h = 0.1_f64;
+    let predictor = [0., 1., 0.];
+    let anchors = [[0.; 3], [1., 0., 0.]];
+    let mut x = [predictor, anchors[0], anchors[1]];
+    let inverse_mass = [mass.recip(), 0., 0.];
+    let stitches = [1, 2].map(|anchor| Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(anchor),
+        compliance: 2.,
+    });
+    let targets = [0.5, 0.];
+    let mut history = [[0.; 3]; 3];
+    let mut applied_action = [0.; 3];
+    let mut last_update = [0.; 3];
+    let norm = |v: Vec3| (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
+    for _ in 0..32 {
+        assert!(
+            norm(x[0]) > 1e-6,
+            "fixture stays away from radial singularity"
+        );
+        let before = x[0];
+        constraints::solve_sewing(
+            &stitches,
+            &targets,
+            &mut x,
+            &inverse_mass,
+            h,
+            &mut history,
+            &|| false,
+        )
+        .unwrap();
+        for (axis, &value) in before.iter().enumerate() {
+            last_update[axis] = x[0][axis] - value;
+            applied_action[axis] += mass * last_update[axis] / (h * h);
+        }
+        assert_eq!([x[1], x[2]], anchors, "pins: m");
+        assert!(x.into_iter().flatten().all(f64::is_finite));
+        assert!(history.into_iter().flatten().all(f64::is_finite));
+        assert!(applied_action.into_iter().all(f64::is_finite));
+    }
+    // Direct differentiation of Phi=.5|q-p|²+.25(|q|-.5)²+.25|q-a|².
+    let independent_forces = |q: Vec3| {
+        let radius = norm(q);
+        [
+            q.map(|value| -0.5 * (radius - 0.5) * value / radius),
+            std::array::from_fn(|axis| -0.5 * (q[axis] - anchors[1][axis])),
+        ]
+    };
+    let objective = |q: Vec3| {
+        let predictor_distance_squared = (0..3)
+            .map(|axis| (q[axis] - predictor[axis]).powi(2))
+            .sum::<f64>();
+        let anchor_distance_squared = (0..3)
+            .map(|axis| (q[axis] - anchors[1][axis]).powi(2))
+            .sum::<f64>();
+        0.5 * predictor_distance_squared
+            + 0.25 * (norm(q) - 0.5).powi(2)
+            + 0.25 * anchor_distance_squared
+    };
+    let root_five = 5_f64.sqrt();
+    let expected = [
+        0.25 + 1. / (8. * root_five),
+        0.5 + 1. / (4. * root_five),
+        0.,
+    ];
+    let forces = independent_forces(x[0]);
+    let expected_forces = independent_forces(expected);
+    let stationarity = std::array::from_fn(|axis| {
+        mass * (x[0][axis] - predictor[axis]) / (h * h) - forces[0][axis] - forces[1][axis]
+    });
+    let oracle_stationarity = std::array::from_fn(|axis| {
+        expected[axis] - predictor[axis] - expected_forces[0][axis] - expected_forces[1][axis]
+    });
+    let action_error = std::array::from_fn::<_, 2, _>(|i| {
+        norm(std::array::from_fn(|axis| {
+            expected_forces[i][axis] - forces[i][axis]
+        }))
+    });
+    let radius = norm(x[0]);
+    let history_force = history[0].map(|value| mass * value / (h * h));
+    let position_error = norm(std::array::from_fn(|axis| x[0][axis] - expected[axis]));
+    let direction = x[0].map(|value| value / radius);
+    println!(
+        "positive_then_zero_N=32 mass_kg={mass} h_s={h} compliance_m_per_N=2\n\
+         predictor_m={predictor:?}\nx_m={x:?}\nexpected_m={expected:?}\n\
+         initial_radial_direction=[0,1,0]\nfinal_radial_direction={direction:?}\n\
+         nodal_history_m={history:?}\ncurrent_history_force_N={history_force:?}\n\
+         independent_elastic_force_N={forces:?}\napplied_action_N={applied_action:?}\n\
+         action_error_N={action_error:?}\nlast_stage_update_m={last_update:?}\n\
+         stationarity_N={stationarity:?}\n\
+         position_error_m={position_error}\nobjective_J={}\nexpected_objective_J={}",
+        objective(x[0]),
+        objective(expected)
+    );
+    assert!(norm(oracle_stationarity) <= 1e-14, "independent oracle: N");
+    assert!(position_error <= 1e-8, "coupled radial position: m");
+    assert!(norm(stationarity) <= 1e-6, "independent stationarity: N");
+    for (i, error) in action_error.into_iter().enumerate() {
+        assert!(error <= 1e-6, "stitch{i} independent physical force: N");
+    }
+    assert!(
+        norm(std::array::from_fn(|axis| applied_action[axis]
+            - forces[0][axis]
+            - forces[1][axis]))
+            <= 1e-6,
+        "total stage action: N"
+    );
+    assert!(
+        norm(std::array::from_fn(
+            |axis| history[0][axis] - (x[0][axis] - predictor[axis])
+        )) <= 1e-14,
+        "actual nodal history: m"
+    );
+}
+
+#[test]
+fn shared_stitch_n32_matches_independent_duplicate_row_cartesian_energy() {
+    let masses = [4.5714285714285506e-05_f64, 4.571428571428556e-05];
+    let h = 1. / 480.;
+    let compliance = 1e-8_f64;
+    let target = 0.01333333333333439;
+    let predictor: [Vec3; 2] = [[0., 0., 0.015], [0., 0., -0.015]];
+    let inverse_mass = masses.map(|mass| mass.recip());
+    let stitches = [Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(1),
+        compliance,
+    }; 2];
+    let mut x = predictor;
+    let norm = |v: Vec3| (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
+    let total_mass = masses[0] + masses[1];
+    let center = |q: [Vec3; 2]| -> Vec3 {
+        std::array::from_fn(|axis| (masses[0] * q[0][axis] + masses[1] * q[1][axis]) / total_mass)
+    };
+    let predictor_center = center(predictor);
+    // Production adapter: nodal displacement history once; both input energies retained.
+    let mut history = [[0.; 3]; 2];
+    for _ in 0..32 {
+        constraints::solve_sewing(
+            &stitches,
+            &[target; 2],
+            &mut x,
+            &inverse_mass,
+            h,
+            &mut history,
+            &|| false,
+        )
+        .unwrap();
+        assert!(x.into_iter().flatten().all(f64::is_finite));
+        assert!(history.into_iter().flatten().all(f64::is_finite));
+        let center_error = norm(std::array::from_fn(|axis| {
+            center(x)[axis] - predictor_center[axis]
+        }));
+        assert!(center_error <= 1e-14, "two-free-node center of mass: m");
+    }
+    // Independent Cartesian energy: both .5*k*(|q0-q1|-target)^2 terms count.
+    let stiffness = compliance.recip();
+    let reduced_mass = masses[0] * masses[1] / total_mass;
+    let inertia = reduced_mass / (h * h);
+    let initial_difference: Vec3 =
+        std::array::from_fn(|axis| predictor[0][axis] - predictor[1][axis]);
+    let initial_radius = norm(initial_difference);
+    let radius = (inertia * initial_radius + 2. * stiffness * target) / (inertia + 2. * stiffness);
+    let expected_difference = initial_difference.map(|value| value * radius / initial_radius);
+    let expected: [Vec3; 2] = [
+        std::array::from_fn(|axis| {
+            predictor_center[axis] + masses[1] / total_mass * expected_difference[axis]
+        }),
+        std::array::from_fn(|axis| {
+            predictor_center[axis] - masses[0] / total_mass * expected_difference[axis]
+        }),
+    ];
+    let independent_residual = |q: [Vec3; 2]| -> [Vec3; 2] {
+        let difference: Vec3 = std::array::from_fn(|axis| q[0][axis] - q[1][axis]);
+        let distance = norm(difference);
+        let elastic =
+            difference.map(|value| 2. * stiffness * (distance - target) * value / distance);
+        [
+            std::array::from_fn(|axis| {
+                masses[0] * (q[0][axis] - predictor[0][axis]) / (h * h) + elastic[axis]
+            }),
+            std::array::from_fn(|axis| {
+                masses[1] * (q[1][axis] - predictor[1][axis]) / (h * h) - elastic[axis]
+            }),
+        ]
+    };
+    let objective = |q: [Vec3; 2]| {
+        let inertial = (0..2)
+            .map(|i| {
+                masses[i]
+                    * (0..3)
+                        .map(|axis| (q[i][axis] - predictor[i][axis]).powi(2))
+                        .sum::<f64>()
+                    / (2. * h * h)
+            })
+            .sum::<f64>();
+        let difference = std::array::from_fn(|axis| q[0][axis] - q[1][axis]);
+        inertial + stiffness * (norm(difference) - target).powi(2)
+    };
+    let residuals = independent_residual(x);
+    let oracle_residuals = independent_residual(expected);
+    let position_error = (0..2)
+        .map(|i| norm(std::array::from_fn(|axis| x[i][axis] - expected[i][axis])))
+        .fold(0_f64, f64::max);
+    let force_error = residuals.map(norm).into_iter().fold(0_f64, f64::max);
+    let oracle_force_error = oracle_residuals.map(norm).into_iter().fold(0_f64, f64::max);
+    println!(
+        "duplicate_rows=2 sweeps=32 masses_kg={masses:?} h_s={h}\n\
+         compliance_m_per_N_each={compliance} target_m={target}\n\
+         predictors_m={predictor:?}\nx_m={x:?}\nexpected_m={expected:?}\n\
+         nodal_history_m={history:?}\ncenter_m={:?}\nexpected_center_m={predictor_center:?}\n\
+         independent_cartesian_residual_N={residuals:?}\n\
+         oracle_cartesian_residual_N={oracle_residuals:?}\n\
+         position_error_m={position_error}\nforce_error_N={force_error}\n\
+         objective_J={}\nexpected_objective_J={}",
+        center(x),
+        objective(x),
+        objective(expected)
+    );
+    assert!(oracle_force_error <= 1e-6, "independent oracle force: N");
+    assert!(position_error <= 1e-8, "shared-row Cartesian position: m");
+    assert!(
+        force_error <= 1e-6,
+        "shared-row full Cartesian stationarity: N"
+    );
+}
+
+#[test]
+fn shared_zero_target_sewing_matches_independent_weighted_spd_energy() {
+    let predictor = [
+        [0.2, -0.1, 0.3],
+        [-0.4, 0.2, 0.1],
+        [1., 0.5, -0.5],
+        [-0.5, 1., 0.25],
+    ];
+    let stitches = [
+        Stitch {
+            a: WeightedPoint {
+                vertices: [0, 0],
+                weights: [0.25, 0.75],
+            },
+            b: WeightedPoint {
+                vertices: [1, 2],
+                weights: [0.5, 0.5],
+            },
+            compliance: 0.25,
+        },
+        Stitch {
+            a: WeightedPoint {
+                vertices: [0, 1],
+                weights: [0.25, 0.75],
+            },
+            b: WeightedPoint::vertex(3),
+            compliance: 0.5,
+        },
+    ];
+    // For h=.5 and masses2/1, each Cartesian Hessian is this positive2x2 matrix.
+    let (a, b, c) = (12.125, -1.625, 6.125);
+    let determinant = a * c - b * b;
+    assert_eq!(determinant, 71.625);
+    let rhs0: Vec3 = std::array::from_fn(|axis| {
+        8. * predictor[0][axis] + 2. * predictor[2][axis] + 0.5 * predictor[3][axis]
+    });
+    let rhs1: Vec3 = std::array::from_fn(|axis| {
+        4. * predictor[1][axis] - predictor[2][axis] + 1.5 * predictor[3][axis]
+    });
+    let expected = [
+        std::array::from_fn(|axis| (c * rhs0[axis] - b * rhs1[axis]) / determinant),
+        std::array::from_fn(|axis| (a * rhs1[axis] - b * rhs0[axis]) / determinant),
+    ];
+    let mut x = predictor;
+    let mut correction = [[0.; 3]; 4];
+    for _ in 0..32 {
+        constraints::solve_sewing(
+            &stitches,
+            &[0.; 2],
+            &mut x,
+            &[0.5, 1., 0., 0.],
+            0.5,
+            &mut correction,
+            &|| false,
+        )
+        .unwrap();
+        assert_eq!([x[2], x[3]], [predictor[2], predictor[3]]);
+        assert_eq!([correction[2], correction[3]], [[0.; 3]; 2]);
+        assert!(x.into_iter().flatten().all(f64::is_finite));
+        assert!(correction.into_iter().flatten().all(f64::is_finite));
+    }
+    let r0: Vec3 =
+        std::array::from_fn(|axis| x[0][axis] - 0.5 * x[1][axis] - 0.5 * predictor[2][axis]);
+    let r1: Vec3 =
+        std::array::from_fn(|axis| 0.25 * x[0][axis] + 0.75 * x[1][axis] - predictor[3][axis]);
+    let forces = [
+        std::array::from_fn(|axis| {
+            8. * (x[0][axis] - predictor[0][axis]) + 4. * r0[axis] + 0.5 * r1[axis]
+        }),
+        std::array::from_fn(|axis| {
+            4. * (x[1][axis] - predictor[1][axis]) - 2. * r0[axis] + 1.5 * r1[axis]
+        }),
+    ];
+    for i in 0..2 {
+        assert!(
+            length(sub(x[i], expected[i])) <= 1e-12,
+            "weighted SPD position: m"
+        );
+        assert!(length(forces[i]) <= 1e-12, "independent Cartesian force: N");
+        assert!(
+            length(sub(correction[i], sub(x[i], predictor[i]))) <= 1e-14,
+            "actual nodal history: m"
+        );
+    }
+}
+
+#[test]
+fn shared_soft_sewing_cancellation_noop_and_invalid_inputs_are_atomic() {
+    use std::cell::Cell;
+    let predictor = [
+        [0.2, -0.1, 0.3],
+        [-0.4, 0.2, 0.1],
+        [1., 0.5, -0.5],
+        [-0.5, 1., 0.25],
+    ];
+    let stitches = [
+        Stitch {
+            a: WeightedPoint::vertex(0),
+            b: WeightedPoint {
+                vertices: [1, 2],
+                weights: [0.5, 0.5],
+            },
+            compliance: 0.25,
+        },
+        Stitch {
+            a: WeightedPoint {
+                vertices: [0, 1],
+                weights: [0.25, 0.75],
+            },
+            b: WeightedPoint::vertex(3),
+            compliance: 0.5,
+        },
+    ];
+    let total = Cell::new(0);
+    let mut accepted = predictor;
+    let mut accepted_history = [[0.; 3]; 4];
+    constraints::solve_sewing(
+        &stitches,
+        &[0.; 2],
+        &mut accepted,
+        &[0.5, 1., 0., 0.],
+        0.5,
+        &mut accepted_history,
+        &|| {
+            total.set(total.get() + 1);
+            false
+        },
+    )
+    .unwrap();
+    assert!(
+        total.get() >= 3,
+        "entry, internal bounded poll, and final pre-copy poll"
+    );
+    assert_ne!(accepted, predictor);
+    assert_ne!(accepted_history, [[0.; 3]; 4]);
+    assert_eq!([accepted[2], accepted[3]], [predictor[2], predictor[3]]);
+    for stop in 1..=total.get() {
+        let calls = Cell::new(0);
+        let mut x = predictor;
+        let mut history = [[0.; 3]; 4];
+        let result = constraints::solve_sewing(
+            &stitches,
+            &[0.; 2],
+            &mut x,
+            &[0.5, 1., 0., 0.],
+            0.5,
+            &mut history,
+            &|| {
+                calls.set(calls.get() + 1);
+                calls.get() == stop
+            },
+        );
+        assert_eq!(result, Err(SimulationError::Cancelled));
+        assert_eq!(calls.get(), stop);
+        assert_eq!(x, predictor);
+        assert_eq!(history, [[0.; 3]; 4]);
+    }
+    // Exercise every singleton callback, including the final pre-copy cancellation.
+    for target in [0., 0.5] {
+        let total = Cell::new(0);
+        let mut accepted = predictor;
+        let mut accepted_history = [[0.; 3]; 4];
+        constraints::solve_sewing(
+            &stitches[..1],
+            &[target],
+            &mut accepted,
+            &[0.5, 1., 0., 0.],
+            0.5,
+            &mut accepted_history,
+            &|| {
+                total.set(total.get() + 1);
+                false
+            },
+        )
+        .unwrap();
+        assert!(
+            total.get() >= 2,
+            "singleton entry and final successful pre-copy callback"
+        );
+        assert_ne!(accepted, predictor);
+        assert_ne!(accepted_history, [[0.; 3]; 4]);
+        assert_eq!([accepted[2], accepted[3]], [predictor[2], predictor[3]]);
+        assert_eq!([accepted_history[2], accepted_history[3]], [[0.; 3]; 2]);
+        assert!(accepted.into_iter().flatten().all(f64::is_finite));
+        assert!(accepted_history.into_iter().flatten().all(f64::is_finite));
+        for stop in 1..=total.get() {
+            let calls = Cell::new(0);
+            let mut x = predictor;
+            let mut history = [[0.; 3]; 4];
+            let result = constraints::solve_sewing(
+                &stitches[..1],
+                &[target],
+                &mut x,
+                &[0.5, 1., 0., 0.],
+                0.5,
+                &mut history,
+                &|| {
+                    calls.set(calls.get() + 1);
+                    calls.get() == stop
+                },
+            );
+            assert_eq!(result, Err(SimulationError::Cancelled));
+            assert_eq!(calls.get(), stop);
+            assert_eq!(x, predictor);
+            assert_eq!(history, [[0.; 3]; 4]);
+        }
+    }
+    let mut x = predictor;
+    let mut history = [[0.; 3]; 4];
+    constraints::solve_sewing(
+        &[],
+        &[],
+        &mut x,
+        &[0.5, 1., 0., 0.],
+        0.5,
+        &mut history,
+        &|| false,
+    )
+    .unwrap();
+    let hard = Stitch {
+        compliance: 0.,
+        ..stitches[0]
+    };
+    constraints::solve_sewing(
+        &[hard],
+        &[0.],
+        &mut x,
+        &[0.5, 1., 0., 0.],
+        0.5,
+        &mut history,
+        &|| false,
+    )
+    .unwrap();
+    constraints::solve_sewing(
+        &stitches,
+        &[0.; 2],
+        &mut x,
+        &[0.; 4],
+        0.5,
+        &mut history,
+        &|| false,
+    )
+    .unwrap();
+    assert_eq!(x, predictor);
+    assert_eq!(history, [[0.; 3]; 4]);
+    for dt in [0., f64::NAN, f64::INFINITY] {
+        assert!(matches!(
+            constraints::solve_sewing(
+                &stitches,
+                &[0.; 2],
+                &mut x,
+                &[0.5, 1., 0., 0.],
+                dt,
+                &mut history,
+                &|| false
+            ),
+            Err(SimulationError::Unstable(_))
+        ));
+        assert_eq!(x, predictor);
+        assert_eq!(history, [[0.; 3]; 4]);
+    }
+    assert!(matches!(
+        constraints::solve_sewing(
+            &stitches,
+            &[0.; 2],
+            &mut x,
+            &[-1., 1., 0., 0.],
+            0.5,
+            &mut history,
+            &|| false
+        ),
+        Err(SimulationError::Unstable(_))
+    ));
+    assert_eq!(x, predictor);
+    assert_eq!(history, [[0.; 3]; 4]);
+    history[0][0] = f64::NAN;
+    let bits_before = history.map(|v| v.map(f64::to_bits));
+    assert!(matches!(
+        constraints::solve_sewing(
+            &stitches,
+            &[0.; 2],
+            &mut x,
+            &[0.5, 1., 0., 0.],
+            0.5,
+            &mut history,
+            &|| false
+        ),
+        Err(SimulationError::Unstable(_))
+    ));
+    assert_eq!(x, predictor);
+    assert_eq!(history.map(|v| v.map(f64::to_bits)), bits_before);
+}
+
+#[test]
+fn shared_soft_sewing_whole_call_cancellation_preserves_every_field() {
+    use std::cell::Cell;
+    let mut input = square();
+    input.pins.push(Pin {
+        vertex: 2,
+        target: input.positions[2],
+    });
+    input.stitches = [1, 3]
+        .map(|vertex| Stitch {
+            a: WeightedPoint::vertex(0),
+            b: WeightedPoint::vertex(vertex),
+            compliance: 0.5,
+        })
+        .to_vec();
+    let original = Cloth::new(input.clone()).unwrap();
+    let previous = format!("{original:?}");
+    let settings = StepSettings {
+        dt: 0.02,
+        substeps: 2,
+        iterations: 2,
+        gravity: [0.; 3],
+        seam_closure_speed: 100.,
+    };
+    let total = Cell::new(0);
+    let mut accepted = original.clone();
+    accepted
+        .step(settings, || {
+            total.set(total.get() + 1);
+            false
+        })
+        .unwrap();
+    assert_eq!(accepted.positions[2], input.positions[2]);
+    assert!(accepted.diagnostics.finite);
+    for stop in 1..=total.get() {
+        let calls = Cell::new(0);
+        let mut cloth = original.clone();
+        assert_eq!(
+            cloth
+                .step(settings, || {
+                    calls.set(calls.get() + 1);
+                    calls.get() == stop
+                })
+                .unwrap_err(),
+            SimulationError::Cancelled
+        );
+        assert_eq!(calls.get(), stop);
+        assert_eq!(
+            format!("{cloth:?}"),
+            previous,
+            "all persistent fields at callback{stop}"
+        );
+    }
+    let accepted_before = format!("{accepted:?}");
+    let mut reset = accepted.clone();
+    reset.reset();
+    assert_eq!(
+        format!("{accepted:?}"),
+        accepted_before,
+        "independent clone"
+    );
+    assert_eq!(reset.positions, input.positions);
+    assert_eq!(reset.velocities, vec![[0.; 3]; input.positions.len()]);
+    assert_eq!(reset.simulation_time(), 0.);
+    assert_eq!(reset.seam_remaining, original.seam_remaining);
+}
+
+#[test]
+fn soft_sewing_dual_preserves_nonconstant_kernel_with_history_and_pins() {
+    let masses = [1., 4., 0.25, 1., 4., 0.25];
+    let h = 0.5_f64;
+    let compliance = 0.25;
+    // C_j=.5*A_j+.5*A_(j+1)-.25*B_j-.75*B_(j+1).
+    // Both the constant vector and this nonconstant vector are in ker(C).
+    let kernel = [0., 1., 2., -0.25, 0.75, 1.75];
+    let coefficients = [
+        [(0, 0.5), (1, 0.5), (3, -0.25), (4, -0.75)],
+        [(1, 0.5), (2, 0.5), (4, -0.25), (5, -0.75)],
+    ];
+    let stitches = [0, 1].map(|j| Stitch {
+        a: WeightedPoint {
+            vertices: [j, j + 1],
+            weights: [0.5, 0.5],
+        },
+        b: WeightedPoint {
+            vertices: [j + 3, j + 4],
+            weights: [0.25, 0.75],
+        },
+        compliance,
+    });
+    for pinned in [false, true] {
+        let mut inverse_mass = masses.map(|mass: f64| mass.recip());
+        if pinned {
+            inverse_mass[0] = 0.;
+        }
+        for offset in [0., 2_f64.powi(-10)] {
+            let expected: [Vec3; 6] = std::array::from_fn(|i| {
+                let v = 2_f64.powi(-10) * kernel[i];
+                let b = if i >= 3 { offset } else { 0. };
+                [0.125 + v + 2. * b, 0.25 + 0.5 * v - b, 0.5 - v + 3. * b]
+            });
+            // Manufacture z=q*+W*C^T*k*h²*C*q*. Its strictly convex energy has minimum q*.
+            // Offset0 also has an exactly zero dual RHS despite nonzero retained p.
+            let expected_difference = [-2. * offset, offset, -3. * offset];
+            let optimum_impulse = expected_difference.map(|v| -h * h * v / compliance);
+            let old_impulses = [
+                [1. / 64., -1. / 32., 1. / 128.],
+                [-1. / 64., 1. / 16., 1. / 64.],
+            ];
+            let mut optimum_history = [[0.; 3]; 6];
+            let mut history = [[0.; 3]; 6];
+            for (j, row) in coefficients.into_iter().enumerate() {
+                assert_eq!(row.into_iter().map(|(i, c)| c * kernel[i]).sum::<f64>(), 0.);
+                for (i, c) in row {
+                    optimum_history[i] = add(
+                        optimum_history[i],
+                        mul(optimum_impulse, inverse_mass[i] * c),
+                    );
+                    history[i] = add(history[i], mul(old_impulses[j], inverse_mass[i] * c));
+                }
+            }
+            assert_ne!(history, [[0.; 3]; 6]);
+            let anchor: [Vec3; 6] = std::array::from_fn(|i| sub(expected[i], optimum_history[i]));
+            let mut x: [Vec3; 6] = std::array::from_fn(|i| add(anchor[i], history[i]));
+            let initial = x;
+            let initial_history = history;
+            let independent_force = |q: [Vec3; 6]| {
+                let mut force = std::array::from_fn::<_, 6, _>(|i| {
+                    mul(sub(q[i], anchor[i]), masses[i] / (h * h))
+                });
+                for row in coefficients {
+                    let mut d = [0.; 3];
+                    for (i, c) in row {
+                        d = add(d, mul(q[i], c));
+                    }
+                    for (i, c) in row {
+                        force[i] = add(force[i], mul(d, c / compliance));
+                    }
+                }
+                force
+            };
+            let oracle_force = independent_force(expected);
+            for i in 0..6 {
+                if inverse_mass[i] > 0. {
+                    assert!(length(oracle_force[i]) <= 1e-12, "manufactured minimum: N");
+                }
+            }
+            let mut kernel_moment = [0.; 3];
+            for _ in 0..32 {
+                constraints::solve_sewing(
+                    &stitches,
+                    &[0.; 2],
+                    &mut x,
+                    &inverse_mass,
+                    h,
+                    &mut history,
+                    &|| false,
+                )
+                .unwrap();
+                kernel_moment = [0.; 3];
+                let mut total_action = [0.; 3];
+                for i in 0..6 {
+                    kernel_moment = add(kernel_moment, mul(history[i], masses[i] * kernel[i]));
+                    total_action = add(total_action, mul(history[i], masses[i]));
+                    assert!(
+                        length(sub(
+                            history[i],
+                            add(initial_history[i], sub(x[i], initial[i]))
+                        )) <= 1e-14,
+                        "actual nodal history: m"
+                    );
+                }
+                assert!(
+                    length(kernel_moment) <= 1e-12,
+                    "nonconstant-kernel physical action: kg m"
+                );
+                if !pinned {
+                    assert!(length(total_action) <= 1e-12, "total internal action: kg m");
+                }
+                if pinned {
+                    assert_eq!(x[0], initial[0]);
+                    assert_eq!(history[0], [0.; 3]);
+                }
+                assert!(x.into_iter().flatten().all(f64::is_finite));
+                assert!(history.into_iter().flatten().all(f64::is_finite));
+            }
+            let force = independent_force(x);
+            println!(
+                "dual_action_guard pinned={pinned} offset={offset} x_m={x:?} expected_m={expected:?} kernel_moment_kg_m={kernel_moment:?} force_N={force:?}"
+            );
+            for i in 0..6 {
+                assert!(
+                    length(sub(x[i], expected[i])) <= 1e-12,
+                    "manufactured position: m"
+                );
+                if inverse_mass[i] > 0. {
+                    assert!(length(force[i]) <= 1e-12, "independent force: N");
+                }
+            }
+        }
+    }
 }
 
 #[test]
@@ -908,17 +2004,48 @@ fn cancellation_after_measurement_preserves_peak_strain() {
 
 #[test]
 fn cancellation_and_failures_preserve_old_state_and_allow_recovery() {
-    let mut cloth = Cloth::new(square()).unwrap();
+    let mut input = square();
+    for position in square().positions {
+        input.positions.push(add(position, [3., 0., 0.]));
+    }
+    input.material_uv.extend(square().material_uv);
+    input.triangles.extend([[4, 5, 6], [4, 6, 7]]);
+    input.triangle_materials.extend(square().triangle_materials);
+    for position in &mut input.positions {
+        position[0] *= 1.5;
+    }
+    let mut cloth = Cloth::new(input).unwrap();
+    assert_eq!(cloth.membrane.len(), 4);
     let before = cloth.positions().to_vec();
     let before_peak = cloth.diagnostics().peak_strain;
+    let before_state = format!("{cloth:?}");
+    let stage_calls = std::cell::Cell::new(0);
+    let mut projected = before.clone();
+    constraints::solve_material(
+        &cloth.membrane,
+        &mut projected,
+        &cloth.inverse_masses,
+        settings().dt,
+        &mut vec![[0.; 3]; before.len()],
+        &|| {
+            stage_calls.set(stage_calls.get() + 1);
+            false
+        },
+    )
+    .unwrap();
+    assert_ne!(projected, before);
+    let stop_at = 3 + stage_calls.get() + 1;
     let counter = std::cell::Cell::new(0);
     let error = cloth
         .step(settings(), || {
             counter.set(counter.get() + 1);
-            counter.get() > 4
+            // The first material sweep has already changed the staged positions.
+            counter.get() == stop_at
         })
         .unwrap_err();
     assert_eq!(error, SimulationError::Cancelled);
+    assert_eq!(counter.get(), stop_at);
+    assert_eq!(format!("{cloth:?}"), before_state);
     assert_eq!(cloth.positions(), before);
     assert_eq!(cloth.diagnostics().peak_strain, before_peak);
     assert_eq!(cloth.simulation_time(), 0.);
@@ -935,6 +2062,7 @@ fn cancellation_and_failures_preserve_old_state_and_allow_recovery() {
     );
     assert_eq!(cloth.positions(), before);
     assert_eq!(cloth.diagnostics().peak_strain, before_peak);
+    assert_eq!(format!("{cloth:?}"), before_state);
     assert!(matches!(
         cloth.step(
             StepSettings {
@@ -947,8 +2075,10 @@ fn cancellation_and_failures_preserve_old_state_and_allow_recovery() {
     ));
     assert_eq!(cloth.positions(), before);
     assert_eq!(cloth.diagnostics().peak_strain, before_peak);
+    assert_eq!(format!("{cloth:?}"), before_state);
     cloth.step(settings(), || false).unwrap();
     assert!(cloth.diagnostics().finite);
+    assert_ne!(cloth.positions(), before);
 }
 
 #[test]
@@ -1063,20 +2193,437 @@ fn physical_stiffness_changes_extension_and_refinement_preserves_mass_and_sag() 
 }
 
 #[test]
+fn bending_reaches_independent_pinned_hinge_incremental_energy_equilibrium() {
+    let rest = [[0., 0., 0.], [1., 0., 0.], [0., 1., 0.], [0., -1., 0.]];
+    let bends = [constraints::Bend::new([0, 1, 2, 3], &rest, 0.5)];
+    let (sin, cos) = 1_f64.sin_cos();
+    let predicted = [0., cos, sin];
+    let mut x = rest;
+    x[2] = predicted;
+    let mut correction = [[0.; 3]; 4];
+    for _ in 0..32 {
+        constraints::solve_bending(
+            &bends,
+            &mut x,
+            &[0., 0., 100., 0.],
+            0.1,
+            &mut correction,
+            &|| false,
+        )
+        .unwrap();
+    }
+
+    // Independent polar minimization: m/h²=1, k=0.5, r=cos(theta-1).
+    // Its angular equation is strictly increasing for 0<=theta<=1.
+    let (mut low, mut high) = (0_f64, 1_f64);
+    for _ in 0..64 {
+        let theta = (low + high) * 0.5;
+        if 0.5 * theta + 0.5 * (2. * (theta - 1.)).sin() < 0. {
+            low = theta;
+        } else {
+            high = theta;
+        }
+    }
+    let theta = (low + high) * 0.5;
+    let radius = (theta - 1.).cos();
+    let expected = [0., radius * theta.cos(), radius * theta.sin()];
+    let [_, y, z] = x[2];
+    let angle = z.atan2(y);
+    let radius_squared = y * y + z * z;
+    let gradient = [
+        0.,
+        y - predicted[1] - 0.5 * angle * z / radius_squared,
+        z - predicted[2] + 0.5 * angle * y / radius_squared,
+    ];
+    let position_error = length(sub(x[2], expected));
+    let stationarity = length(gradient);
+    println!(
+        "pinned hinge q={:?} reference={expected:?} position_error={position_error:e}m stationarity={stationarity:e}N",
+        x[2]
+    );
+    assert!(position_error < 1e-8 && stationarity < 1e-6);
+    for i in [0, 1, 3] {
+        assert_eq!(x[i], rest[i]);
+    }
+}
+
+#[test]
+fn shared_bending_n32_matches_independent_nonlinear_cartesian_energy() {
+    let a = 7.575757575757576e-5_f64;
+    let l = 0.0675_f64;
+    let w = 0.008181818181818182_f64;
+    let h = 1. / 480.;
+    let mass = 6.627272727272728e-5_f64;
+    let stiffness = 0.024750031175957105_f64;
+    let rigidity = 0.003_f64;
+    let rest = [[0.; 3], [a, l, 0.], [-a, -l, 0.], [w, 0., 0.], [-w, 0., 0.]];
+    let predictor = [0., 0., 1e-5];
+    let inverse_mass = [mass.recip(), 0., 0., 0., 0.];
+    let hinge_vertices = [[1, 0, 3, 4], [2, 0, 3, 4]];
+
+    // Production adapter only; a future group API needs separate adapter review.
+    let bends = hinge_vertices.map(|vertices| constraints::Bend::new(vertices, &rest, rigidity));
+    let mut histories = [[0.; 3]; 5];
+    let mut advance_bending = |positions: &mut [Vec3; 5]| {
+        constraints::solve_bending(&bends, positions, &inverse_mass, h, &mut histories, &|| {
+            false
+        })
+        .unwrap();
+    };
+    // End production adapter; fixture, sweeps, oracle and assertions stay fixed.
+
+    let mut x = rest;
+    x[0] = predictor;
+    for _ in 0..32 {
+        advance_bending(&mut x);
+        assert_eq!(&x[1..], &rest[1..]);
+        assert!(x.into_iter().flatten().all(f64::is_finite));
+    }
+
+    // Independent Cartesian derivative of D|q-p|²/2 + k(theta_+²+theta_-²)/2.
+    let independent = |q: Vec3| {
+        let [x, y, z] = q;
+        let b = a * a + l * l;
+        let inertia = mass / (h * h);
+        let offset = [x, y, z - predictor[2]];
+        let mut energy = 0.5 * inertia * offset.into_iter().map(|v| v * v).sum::<f64>();
+        let mut residual = offset.map(|v| inertia * v);
+        for sign in [1., -1.] {
+            let v = [x - sign * a, y - sign * l, z];
+            let radius = (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
+            let n = sign * 2. * l * w * z * radius;
+            let d = w * w * (y - sign * l).powi(2) - (l * x - a * y).powi(2) + (w * w - b) * z * z;
+            let theta = n.atan2(d);
+            let mut dn = v.map(|value| sign * 2. * l * w * z * value / radius);
+            dn[2] += sign * 2. * l * w * radius;
+            let dd = [
+                -2. * l * (l * x - a * y),
+                2. * w * w * (y - sign * l) + 2. * a * (l * x - a * y),
+                2. * (w * w - b) * z,
+            ];
+            energy += 0.5 * stiffness * theta * theta;
+            for axis in 0..3 {
+                residual[axis] +=
+                    stiffness * theta * (d * dn[axis] - n * dd[axis]) / (n * n + d * d);
+            }
+        }
+        (energy, residual)
+    };
+    // Strict convexity and in-plane symmetry reduce the independent minimum to this scalar root.
+    let expected = [0., 0., 5.1358750877942195e-8];
+    let norm = |v: Vec3| (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
+    let (energy, residual) = independent(x[0]);
+    let (expected_energy, expected_residual) = independent(expected);
+    let position_error = norm(std::array::from_fn(|axis| x[0][axis] - expected[axis]));
+    let force_residual = norm(residual);
+    println!(
+        "shared_bending_N=32 h_s={h} mass_kg={mass} k_Nm_each={stiffness}\n\
+         predictor_m={predictor:?}\nq_m={:?}\nexpected_m={expected:?}\n\
+         independent_force_residual_N={residual:?}\nforce_residual_N={force_residual:e}\n\
+         expected_force_residual_N={expected_residual:?}\nposition_error_m={position_error:e}\n\
+         objective_J={energy:e}\nexpected_objective_J={expected_energy:e}",
+        x[0]
+    );
+    assert!(energy.is_finite());
+    assert!(residual.into_iter().all(f64::is_finite));
+    assert!(position_error <= 1e-8, "shared bending position: m");
+    assert!(
+        force_residual <= 1e-6,
+        "independent Cartesian force residual: N"
+    );
+}
+
+#[test]
 fn bending_reduces_fold_angle_without_translating_center_of_mass() {
     let rest = vec![[0., 0., 0.], [1., 0., 0.], [0.5, 1., 0.], [0.5, -1., 0.]];
-    let bend = constraints::Bend::new([0, 1, 2, 3], &rest, 0.1);
+    let bends = [constraints::Bend::new([0, 1, 2, 3], &rest, 0.1)];
     let mut x = rest;
     x[2][2] = 0.4;
     let before_angle = constraints::dihedral([0, 1, 2, 3], &x).unwrap().0.abs();
     let before_center = x.iter().copied().fold([0.; 3], add);
-    let mut lambda = 0.;
+    let mut correction = [[0.; 3]; 4];
     for _ in 0..8 {
-        bend.solve(&mut x, &[1.; 4], 0.1, &mut lambda);
+        constraints::solve_bending(&bends, &mut x, &[1.; 4], 0.1, &mut correction, &|| false)
+            .unwrap();
     }
     let after_angle = constraints::dihedral([0, 1, 2, 3], &x).unwrap().0.abs();
     assert!(after_angle < before_angle);
     assert!(length(sub(x.iter().copied().fold([0.; 3], add), before_center)) < 1e-12);
+}
+
+#[test]
+fn bending_cancellation_retains_positions_and_displacement_history() {
+    let rest = [[0., 0., 0.], [1., 0., 0.], [0., 1., 0.], [0., -1., 0.]];
+    let bends = [constraints::Bend::new([0, 1, 2, 3], &rest, 0.5)];
+    let mut x = rest;
+    x[2] = [0., 1_f64.cos(), 1_f64.sin()];
+    let predictor = x;
+    let mut correction = [[0.; 3]; 4];
+    constraints::solve_bending(
+        &bends,
+        &mut x,
+        &[0., 0., 100., 0.],
+        0.1,
+        &mut correction,
+        &|| false,
+    )
+    .unwrap();
+    assert_ne!(x, predictor);
+    for i in 0..4 {
+        assert_eq!(correction[i], sub(x[i], predictor[i]));
+    }
+    let before = x;
+    let history = correction;
+    let calls = std::cell::Cell::new(0);
+    constraints::solve_bending(
+        &bends,
+        &mut x,
+        &[0., 0., 100., 0.],
+        0.1,
+        &mut correction,
+        &|| {
+            calls.set(calls.get() + 1);
+            false
+        },
+    )
+    .unwrap();
+    assert_ne!(x, before);
+    for stop_at in 1..=calls.get() {
+        let mut x = before;
+        let mut correction = history;
+        let polls = std::cell::Cell::new(0);
+        assert_eq!(
+            constraints::solve_bending(
+                &bends,
+                &mut x,
+                &[0., 0., 100., 0.],
+                0.1,
+                &mut correction,
+                &|| {
+                    polls.set(polls.get() + 1);
+                    polls.get() == stop_at
+                },
+            ),
+            Err(SimulationError::Cancelled)
+        );
+        assert_eq!(polls.get(), stop_at);
+        assert_eq!(x, before);
+        assert_eq!(correction, history);
+    }
+    let extreme = [constraints::Bend::new([0, 1, 2, 3], &rest, 1e308)];
+    let mut x = before;
+    let mut correction = history;
+    assert!(matches!(
+        constraints::solve_bending(
+            &extreme,
+            &mut x,
+            &[0., 0., 100., 0.],
+            1.,
+            &mut correction,
+            &|| false,
+        ),
+        Err(SimulationError::Unstable(_))
+    ));
+    assert_eq!(x, before);
+    assert_eq!(correction, history);
+}
+
+#[test]
+fn shared_bending_cancellation_retains_group_displacement_and_pins() {
+    let rest = [
+        [0.; 3],
+        [1., 0., 0.],
+        [-1., 0., 0.],
+        [0., 1., 0.],
+        [0., -1., 0.],
+    ];
+    let bends =
+        [[1, 0, 3, 4], [2, 0, 3, 4]].map(|vertices| constraints::Bend::new(vertices, &rest, 0.5));
+    let weights = [100., 0., 0., 0., 0.];
+    let mut x = rest;
+    x[0][2] = 0.2;
+    let predictor = x;
+    let mut correction = [[0.; 3]; 5];
+    constraints::solve_bending(&bends, &mut x, &weights, 0.1, &mut correction, &|| false).unwrap();
+    assert_ne!(x, predictor);
+    assert_eq!(&x[1..], &rest[1..]);
+    for i in 0..x.len() {
+        assert_eq!(correction[i], sub(x[i], predictor[i]));
+    }
+    assert!(x.into_iter().flatten().all(f64::is_finite));
+    let before = x;
+    let history = correction;
+    let calls = std::cell::Cell::new(0);
+    constraints::solve_bending(&bends, &mut x, &weights, 0.1, &mut correction, &|| {
+        calls.set(calls.get() + 1);
+        false
+    })
+    .unwrap();
+    assert_ne!(x, before);
+    assert!(calls.get() >= 2);
+    for stop_at in 1..=calls.get() {
+        let mut x = before;
+        let mut correction = history;
+        let polls = std::cell::Cell::new(0);
+        assert_eq!(
+            constraints::solve_bending(&bends, &mut x, &weights, 0.1, &mut correction, &|| {
+                polls.set(polls.get() + 1);
+                polls.get() == stop_at
+            }),
+            Err(SimulationError::Cancelled)
+        );
+        assert_eq!(polls.get(), stop_at);
+        assert_eq!(x, before);
+        assert_eq!(correction, history);
+    }
+}
+
+#[test]
+fn global_bending_noop_and_invalid_inputs_preserve_stage_state() {
+    let rest = [[0., 0., 0.], [1., 0., 0.], [0., 1., 0.], [0., -1., 0.]];
+    let bends = [constraints::Bend::new([0, 1, 2, 3], &rest, 0.5)];
+    let mut deformed = rest;
+    deformed[2][2] = 0.4;
+    for (before, weights, hinges) in [
+        (rest, [1.; 4], bends.as_slice()),
+        (deformed, [0.; 4], bends.as_slice()),
+        ([[0.; 3]; 4], [1.; 4], bends.as_slice()),
+        (deformed, [1.; 4], &[]),
+    ] {
+        let calls = std::cell::Cell::new(0);
+        let mut x = before;
+        let mut correction = [[0.; 3]; 4];
+        constraints::solve_bending(hinges, &mut x, &weights, 0.1, &mut correction, &|| {
+            calls.set(calls.get() + 1);
+            false
+        })
+        .unwrap();
+        assert_eq!(calls.get(), 2);
+        assert_eq!(x, before);
+        assert_eq!(correction, [[0.; 3]; 4]);
+        for stop_at in 1..=calls.get() {
+            let polls = std::cell::Cell::new(0);
+            assert_eq!(
+                constraints::solve_bending(hinges, &mut x, &weights, 0.1, &mut correction, &|| {
+                    polls.set(polls.get() + 1);
+                    polls.get() == stop_at
+                }),
+                Err(SimulationError::Cancelled)
+            );
+            assert_eq!(polls.get(), stop_at);
+            assert_eq!(x, before);
+            assert_eq!(correction, [[0.; 3]; 4]);
+        }
+    }
+    let mut invalid_position = deformed;
+    invalid_position[2][2] = f64::NAN;
+    let mut invalid_history = [[0.; 3]; 4];
+    invalid_history[2][2] = f64::INFINITY;
+    for (before, weights, history) in [
+        (invalid_position, [1.; 4], [[0.; 3]; 4]),
+        (deformed, [-1., 1., 1., 1.], [[0.; 3]; 4]),
+        (deformed, [1.; 4], invalid_history),
+    ] {
+        let mut x = before;
+        let mut correction = history;
+        assert!(matches!(
+            constraints::solve_bending(&bends, &mut x, &weights, 0.1, &mut correction, &|| false),
+            Err(SimulationError::Unstable(_))
+        ));
+        assert_eq!(
+            x.map(|v| v.map(f64::to_bits)),
+            before.map(|v| v.map(f64::to_bits))
+        );
+        assert_eq!(
+            correction.map(|v| v.map(f64::to_bits)),
+            history.map(|v| v.map(f64::to_bits))
+        );
+    }
+}
+
+#[test]
+fn bending_cancellation_at_every_cloth_callback_rolls_back_all_persistent_state() {
+    let mut input = square();
+    for material in &mut input.triangle_materials {
+        material.bending_stiffness = 0.5;
+    }
+    input.pins = [0, 1, 3]
+        .map(|vertex| Pin {
+            vertex,
+            target: input.positions[vertex],
+        })
+        .to_vec();
+    let mut accepted = Cloth::new(input).unwrap();
+    assert_eq!(accepted.bends.len(), 1);
+    accepted.velocities[2] = [0., 1., 0.];
+    let settings = StepSettings {
+        substeps: 2,
+        iterations: 2,
+        ..settings()
+    };
+    let before = format!("{accepted:?}");
+    let mut complete = accepted.clone();
+    let calls = std::cell::Cell::new(0);
+    complete
+        .step(settings, || {
+            calls.set(calls.get() + 1);
+            false
+        })
+        .unwrap();
+    assert_ne!(complete.positions, accepted.positions);
+    for stop_at in 1..=calls.get() {
+        let mut candidate = accepted.clone();
+        let polls = std::cell::Cell::new(0);
+        assert_eq!(
+            candidate
+                .step(settings, || {
+                    polls.set(polls.get() + 1);
+                    polls.get() == stop_at
+                })
+                .unwrap_err(),
+            SimulationError::Cancelled
+        );
+        assert_eq!(polls.get(), stop_at);
+        assert_eq!(format!("{candidate:?}"), before);
+        assert_eq!(candidate.positions, accepted.positions);
+        assert_eq!(candidate.velocities, accepted.velocities);
+        assert_eq!(candidate.seam_remaining, accepted.seam_remaining);
+        assert_eq!(candidate.simulation_time(), accepted.simulation_time());
+    }
+}
+
+#[test]
+fn bending_displacement_history_resets_between_substeps() {
+    let mut input = square();
+    for material in &mut input.triangle_materials {
+        material.bending_stiffness = 0.5;
+    }
+    input.pins = [0, 1, 3]
+        .map(|vertex| Pin {
+            vertex,
+            target: input.positions[vertex],
+        })
+        .to_vec();
+    let mut combined = Cloth::new(input).unwrap();
+    combined.velocities[2][1] = 4.;
+    let mut split = combined.clone();
+    let combined_settings = StepSettings {
+        dt: 0.02,
+        substeps: 2,
+        iterations: 4,
+        ..settings()
+    };
+    combined.step(combined_settings, || false).unwrap();
+    let split_settings = StepSettings {
+        dt: 0.01,
+        substeps: 1,
+        ..combined_settings
+    };
+    split.step(split_settings, || false).unwrap();
+    split.step(split_settings, || false).unwrap();
+    assert_eq!(combined.positions(), split.positions());
+    assert_eq!(combined.velocities(), split.velocities());
+    assert_eq!(combined.simulation_time(), split.simulation_time());
 }
 
 #[test]
@@ -1086,7 +2633,9 @@ fn swept_layer_crossing_is_resolved_and_ground_friction_resists_slide() {
         p[1] = 1.1;
     }
     let mut cloth = Cloth::new(input).unwrap();
-    cloth
+    assert_eq!(cloth.diagnostics().initial_intersections, 0);
+    assert_eq!(cloth.diagnostics().initial_contact_recovery_projections, 0);
+    let crossing = cloth
         .step(
             StepSettings {
                 dt: 0.02,
@@ -1098,6 +2647,7 @@ fn swept_layer_crossing_is_resolved_and_ground_friction_resists_slide() {
             || false,
         )
         .unwrap();
+    assert_eq!(crossing.initial_contact_recovery_projections, 0);
     assert!(cloth.positions()[4..].iter().all(|p| p[1] >= 1.02 - 1e-6));
     let slide = |friction| {
         let mut input = square();
@@ -1126,6 +2676,82 @@ fn swept_layer_crossing_is_resolved_and_ground_friction_resists_slide() {
     let rough = slide(0.5);
     assert!(frictionless > 0.07);
     assert!(rough.abs() < 1e-8, "rough slide={rough}");
+}
+
+#[test]
+fn transient_ground_contact_releases_at_independent_material_sewing_minimum() {
+    let positions = [[0., 1., 0.], [0., 3., 0.], [1., 3., 0.], [0., -4., 0.]];
+    let thickness = 1. / 64.;
+    let material = Material {
+        areal_density: 6.,
+        warp_stiffness: 1.,
+        weft_stiffness: 10. / 3.,
+        shear_stiffness: 1.,
+        bending_stiffness: 0.,
+        grain_angle: 0.,
+        damping: 0.,
+        friction: 0.,
+        collision_thickness: thickness,
+    };
+    let mut cloth = Cloth::new(ClothInput {
+        positions: positions.to_vec(),
+        material_uv: vec![[0., 0.], [0., 1.], [1., 1.], [0., -6.]],
+        triangles: vec![[0, 1, 2], [3, 1, 2]],
+        triangle_materials: vec![material; 2],
+        stitches: vec![Stitch {
+            a: WeightedPoint::vertex(0),
+            b: WeightedPoint::vertex(3),
+            compliance: 1.,
+        }],
+        pins: (1..4)
+            .map(|vertex| Pin {
+                vertex,
+                target: positions[vertex],
+            })
+            .collect(),
+        colliders: vec![Collider::Ground { height: -thickness }],
+    })
+    .unwrap();
+    assert_eq!(cloth.masses()[0], 1.);
+    assert!(cloth.diagnostics().initial_intersections > 0);
+    let diagnostics = cloth
+        .step(
+            StepSettings {
+                dt: 1.,
+                substeps: 1,
+                iterations: 128,
+                gravity: [0.; 3],
+                seam_closure_speed: 5.,
+            },
+            || false,
+        )
+        .unwrap();
+    let q = cloth.positions()[0];
+    let position_error = q[0].hypot(q[1] - 1.).hypot(q[2]);
+    // Direct differentiation of the independent SI energy; its unique minimum is [0,1,0].
+    let force = 2. * q[1] + 3. + (5. / 6.) * (q[1] - 3.) * ((q[1] - 3.).powi(2) - 1.);
+    println!(
+        "CONTACT_RELEASE_ORACLE {{\"q_m\":{q:?},\"position_error_m\":{position_error:.17e},\"independent_force_N\":{force:.17e},\"contacts\":{},\"pinned_ground_conflict_m\":{}}}",
+        diagnostics.contacts, diagnostics.max_contact_error
+    );
+    for (vertex, &position) in positions.iter().enumerate().skip(1) {
+        assert_eq!(cloth.positions()[vertex], position);
+    }
+    assert_eq!(diagnostics.seam_assembly_remaining, 0.);
+    assert_eq!(diagnostics.initial_contact_recovery_projections, 0);
+    assert!(
+        diagnostics.contacts > 0,
+        "transient ground contact was active"
+    );
+    assert!(q[1] > 0., "free-node ground contact is inactive");
+    assert!(
+        position_error <= 1e-7,
+        "independent unique minimum position: m; error={position_error}"
+    );
+    assert!(
+        force.abs() <= 1e-6,
+        "independent energy stationarity: N; residual={force}"
+    );
 }
 
 #[test]
@@ -1222,6 +2848,7 @@ fn finite_diagnostics_do_not_claim_satisfied_contact() {
     let result = cloth.step(settings(), || false).unwrap();
     assert!(result.finite);
     assert_eq!(result.initial_intersections, 4);
+    assert_eq!(result.initial_contact_recovery_projections, 0);
     assert!(result.max_contact_error > 1.);
     assert_eq!(result.contacts, 0);
 }
@@ -1476,6 +3103,118 @@ fn edge_capsule_input() -> ClothInput {
 }
 
 #[test]
+fn initial_recovery_is_transactional_first_substep_only_and_rearmed_by_reset() {
+    use std::cell::Cell;
+    let mut input = edge_capsule_input();
+    input.positions[2][0] = -0.;
+    input.pins.push(Pin {
+        vertex: 2,
+        target: input.positions[2],
+    });
+    let initial = Cloth::new(input).unwrap();
+    let initial_state = format!("{initial:?}");
+    assert_eq!(initial.diagnostics().initial_intersections, 1);
+    assert_eq!(
+        initial.diagnostics().initial_contact_recovery_projections,
+        0
+    );
+    let single = StepSettings {
+        iterations: 1,
+        ..settings()
+    };
+    let mut first = initial.clone();
+    let first_diagnostics = first.step(single, || false).unwrap();
+    assert!(first_diagnostics.initial_contact_recovery_projections > 0);
+    assert!((first.positions()[0][2] - 0.25).abs() <= 1e-14);
+    assert!((first.velocities()[0][2] - 15.).abs() <= 1e-12);
+    assert!(first_diagnostics.kinetic_energy > 0.);
+    let provenance = format!("{:?}", first.initial_recovery_provenance);
+    let mut second = first.clone();
+    let second_diagnostics = second.step(single, || false).unwrap();
+    assert!(second_diagnostics.contacts > 0);
+    assert_eq!(
+        second_diagnostics.initial_contact_recovery_projections,
+        first_diagnostics.initial_contact_recovery_projections
+    );
+    assert_eq!(
+        format!("{:?}", second.initial_recovery_provenance),
+        provenance
+    );
+
+    let combined_settings = StepSettings {
+        dt: 2. * single.dt,
+        substeps: 2,
+        ..single
+    };
+    let total = Cell::new(0);
+    let mut combined = initial.clone();
+    let combined_diagnostics = combined
+        .step(combined_settings, || {
+            total.set(total.get() + 1);
+            false
+        })
+        .unwrap();
+    assert_eq!(combined.positions(), second.positions());
+    assert_eq!(combined.velocities(), second.velocities());
+    assert_eq!(combined.simulation_time(), second.simulation_time());
+    assert_eq!(
+        combined_diagnostics.initial_contact_recovery_projections,
+        first_diagnostics.initial_contact_recovery_projections
+    );
+    assert_eq!(
+        format!("{:?}", combined.initial_recovery_provenance),
+        provenance
+    );
+    assert_eq!(
+        format!("{:?}", combined.input),
+        format!("{:?}", initial.input)
+    );
+    assert_eq!(
+        combined.positions()[2].map(f64::to_bits),
+        initial.positions()[2].map(f64::to_bits)
+    );
+    assert_eq!(combined.velocities()[2], [0.; 3]);
+
+    for stop_at in 1..=total.get() {
+        let mut cancelled = initial.clone();
+        let calls = Cell::new(0);
+        assert_eq!(
+            cancelled
+                .step(combined_settings, || {
+                    calls.set(calls.get() + 1);
+                    calls.get() == stop_at
+                })
+                .unwrap_err(),
+            SimulationError::Cancelled
+        );
+        assert_eq!(calls.get(), stop_at);
+        assert_eq!(format!("{cancelled:?}"), initial_state);
+    }
+    let mut overflow = initial.clone();
+    overflow.initial_recovery_provenance.projections = usize::MAX;
+    let before_failure = format!("{overflow:?}");
+    assert!(matches!(
+        overflow.step(single, || false),
+        Err(SimulationError::Unstable(_))
+    ));
+    assert_eq!(format!("{overflow:?}"), before_failure);
+
+    combined.reset();
+    assert_eq!(format!("{combined:?}"), initial_state);
+    let rearmed = combined.step(single, || false).unwrap();
+    assert_eq!(combined.positions(), first.positions());
+    assert_eq!(combined.velocities(), first.velocities());
+    assert_eq!(
+        rearmed.initial_contact_recovery_projections,
+        first_diagnostics.initial_contact_recovery_projections
+    );
+    assert_eq!(
+        format!("{:?}", combined.initial_recovery_provenance),
+        provenance
+    );
+}
+
+#[test]
 fn capsule_surface_projection_uses_barycentric_inverse_masses_and_existing_friction() {
     let input = edge_capsule_input();
     for &p in &input.positions {
@@ -1489,7 +3228,12 @@ fn capsule_surface_projection_uses_barycentric_inverse_masses_and_existing_frict
         let previous: Vec<_> = x.iter().map(|&p| sub(p, [0.1, 0., 0.])).collect();
         assert_eq!(
             cloth
-                .project_colliders(&mut x, &previous, &|| false)
+                .project_colliders(
+                    &mut x,
+                    &previous,
+                    &mut contact::ContactState::default(),
+                    &|| false,
+                )
                 .unwrap(),
             1
         );
@@ -1521,9 +3265,11 @@ fn capsule_surface_fixed_nodes_report_conflict_and_reset_restores_full_occupancy
     let result = cloth.step(settings(), || false).unwrap();
     assert!(result.finite);
     assert_eq!(result.contacts, 0);
+    assert_eq!(result.initial_contact_recovery_projections, 0);
     assert!((result.max_contact_error - 0.15).abs() < 1e-14);
     assert_eq!(cloth.positions(), rest);
     cloth.reset();
+    assert_eq!(cloth.diagnostics().initial_contact_recovery_projections, 0);
     assert_eq!(cloth.diagnostics().initial_intersections, 1);
     assert!((cloth.diagnostics().max_contact_error - 0.15).abs() < 1e-14);
     assert_eq!(cloth.diagnostics().capsule_surface_uncertain_pairs, 0);
@@ -1679,19 +3425,29 @@ fn capsule_projection_and_final_surface_analysis_cancellation_preserve_the_accep
     let previous = accepted.input.positions.clone();
     let mut candidate = previous.clone();
     accepted
-        .project_colliders(&mut candidate, &previous, &|| {
-            collider_calls.set(collider_calls.get() + 1);
-            false
-        })
+        .project_colliders(
+            &mut candidate,
+            &previous,
+            &mut contact::ContactState::default(),
+            &|| {
+                collider_calls.set(collider_calls.get() + 1);
+                false
+            },
+        )
         .unwrap();
     assert_ne!(candidate, previous);
     let calls = Cell::new(0);
     let mut partial = previous.clone();
     assert!(matches!(
-        accepted.project_colliders(&mut partial, &previous, &|| {
-            calls.set(calls.get() + 1);
-            calls.get() == collider_calls.get()
-        }),
+        accepted.project_colliders(
+            &mut partial,
+            &previous,
+            &mut contact::ContactState::default(),
+            &|| {
+                calls.set(calls.get() + 1);
+                calls.get() == collider_calls.get()
+            }
+        ),
         Err(SimulationError::Cancelled)
     ));
     assert_ne!(partial, previous);
@@ -1699,9 +3455,8 @@ fn capsule_projection_and_final_surface_analysis_cancellation_preserve_the_accep
     let old_velocities = accepted.velocities().to_vec();
     let old_targets = accepted.seam_remaining.clone();
     let old_diagnostics = format!("{:?}", accepted.diagnostics());
-    // The first iteration's last collider poll follows a projected first triangle;
-    // the complete call's penultimate poll is inside the final surface residual scan.
-    for stop_at in [3 + collider_calls.get(), total.get() - 1] {
+    // Cover every actual callback, including projected contacts and final surface analysis.
+    for stop_at in 1..=total.get() {
         let calls = Cell::new(0);
         let error = accepted
             .step(settings(), || {
@@ -1720,4 +3475,553 @@ fn capsule_projection_and_final_surface_analysis_cancellation_preserve_the_accep
     assert_eq!(accepted.positions(), complete.positions());
     assert_eq!(accepted.velocities(), complete.velocities());
     assert_eq!(accepted.seam_remaining, complete.seam_remaining);
+}
+
+#[test]
+fn material_stage_retains_each_input_face_once_in_order() {
+    let mut input = square();
+    input.positions.push([-0.3, 2., 0.1]);
+    input.material_uv.push([-0.3, 0.1]);
+    input.triangles.push([0, 3, 4]);
+    input.triangle_materials.push(Material::default());
+    let cloth = Cloth::new(input).unwrap();
+    assert_eq!(
+        cloth
+            .membrane
+            .iter()
+            .map(|m| m.vertices)
+            .collect::<Vec<_>>(),
+        vec![[0, 1, 2], [0, 2, 3], [0, 3, 4]],
+    );
+    assert_eq!(
+        format!("{:?}", cloth.membrane),
+        format!("{:?}", cloth.clone().membrane)
+    );
+}
+
+#[test]
+fn global_material_zero_rhs_pins_and_cancellation_preserve_stage_state() {
+    let cloth = Cloth::new(square()).unwrap();
+    let before = cloth.positions().to_vec();
+    let mut x = before.clone();
+    let mut correction = vec![[0.; 3]; x.len()];
+    constraints::solve_material(
+        &cloth.membrane,
+        &mut x,
+        &cloth.inverse_masses,
+        settings().dt,
+        &mut correction,
+        &|| false,
+    )
+    .unwrap();
+    assert_eq!(x, before);
+    assert_eq!(correction, vec![[0.; 3]; x.len()]);
+
+    x.iter_mut().for_each(|p| p[0] *= 1.5);
+    let strained = x.clone();
+    constraints::solve_material(
+        &cloth.membrane,
+        &mut x,
+        &[0.; 4],
+        settings().dt,
+        &mut correction,
+        &|| false,
+    )
+    .unwrap();
+    assert_eq!(x, strained);
+    assert_eq!(correction, vec![[0.; 3]; x.len()]);
+
+    let calls = std::cell::Cell::new(0);
+    constraints::solve_material(
+        &cloth.membrane,
+        &mut x,
+        &cloth.inverse_masses,
+        settings().dt,
+        &mut correction,
+        &|| {
+            calls.set(calls.get() + 1);
+            false
+        },
+    )
+    .unwrap();
+    assert_ne!(x, strained);
+    for i in 0..x.len() {
+        assert_eq!(correction[i], sub(x[i], strained[i]));
+    }
+    // Cancel at every actual callback, including entry and the final pre-copy check.
+    for stop_at in 1..=calls.get() {
+        let mut candidate = strained.clone();
+        let mut p = vec![[0.; 3]; x.len()];
+        let polls = std::cell::Cell::new(0);
+        let error = constraints::solve_material(
+            &cloth.membrane,
+            &mut candidate,
+            &cloth.inverse_masses,
+            settings().dt,
+            &mut p,
+            &|| {
+                polls.set(polls.get() + 1);
+                polls.get() == stop_at
+            },
+        )
+        .unwrap_err();
+        assert_eq!(error, SimulationError::Cancelled);
+        assert_eq!(polls.get(), stop_at);
+        assert_eq!(candidate, strained);
+        assert_eq!(p, vec![[0.; 3]; x.len()]);
+    }
+}
+
+#[test]
+fn material_cancellation_checks_entry_and_each_noop_return() {
+    let cloth = Cloth::new(square()).unwrap();
+    let rest = cloth.positions().to_vec();
+    let mut strained = rest.clone();
+    strained.iter_mut().for_each(|p| p[0] *= 1.5);
+    for (before, weights) in [
+        (rest, cloth.inverse_masses.as_slice()),
+        (strained, &[0.; 4]),
+    ] {
+        let calls = std::cell::Cell::new(0);
+        let mut x = before.clone();
+        let mut p = vec![[0.; 3]; x.len()];
+        constraints::solve_material(
+            &cloth.membrane,
+            &mut x,
+            weights,
+            settings().dt,
+            &mut p,
+            &|| {
+                calls.set(calls.get() + 1);
+                false
+            },
+        )
+        .unwrap();
+        assert_eq!(calls.get(), 2);
+        assert_eq!(x, before);
+        assert_eq!(p, vec![[0.; 3]; x.len()]);
+        for stop_at in 1..=calls.get() {
+            let polls = std::cell::Cell::new(0);
+            assert_eq!(
+                constraints::solve_material(
+                    &cloth.membrane,
+                    &mut x,
+                    weights,
+                    settings().dt,
+                    &mut p,
+                    &|| {
+                        polls.set(polls.get() + 1);
+                        polls.get() == stop_at
+                    },
+                ),
+                Err(SimulationError::Cancelled)
+            );
+            assert_eq!(polls.get(), stop_at);
+            assert_eq!(x, before);
+            assert_eq!(p, vec![[0.; 3]; x.len()]);
+        }
+    }
+}
+
+#[test]
+fn material_cancellation_at_every_cloth_callback_rolls_back_all_persistent_state() {
+    let mut input = square();
+    input.positions.iter_mut().for_each(|p| p[0] *= 1.5);
+    input.pins.push(Pin {
+        vertex: 0,
+        target: input.positions[0],
+    });
+    input.stitches.push(Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(1),
+        compliance: 0.01,
+    });
+    input.colliders.push(Collider::Ground { height: 0. });
+    let settings = StepSettings {
+        iterations: 2,
+        gravity: [0., -9.81, 0.],
+        ..settings()
+    };
+    let mut accepted = Cloth::new(input).unwrap();
+    accepted.step(settings, || false).unwrap();
+    let before = format!("{accepted:?}");
+    let mut complete = accepted.clone();
+    let calls = std::cell::Cell::new(0);
+    complete
+        .step(settings, || {
+            calls.set(calls.get() + 1);
+            false
+        })
+        .unwrap();
+    assert_ne!(complete.positions, accepted.positions);
+    assert!(complete.seam_remaining[0] < accepted.seam_remaining[0]);
+    for stop_at in 1..=calls.get() {
+        let mut candidate = accepted.clone();
+        let polls = std::cell::Cell::new(0);
+        assert_eq!(
+            candidate
+                .step(settings, || {
+                    polls.set(polls.get() + 1);
+                    polls.get() == stop_at
+                })
+                .unwrap_err(),
+            SimulationError::Cancelled
+        );
+        assert_eq!(polls.get(), stop_at);
+        assert_eq!(format!("{candidate:?}"), before);
+        assert_eq!(candidate.positions, accepted.positions);
+        assert_eq!(candidate.velocities, accepted.velocities);
+        assert_eq!(candidate.seam_remaining, accepted.seam_remaining);
+        assert_eq!(candidate.simulation_time(), accepted.simulation_time());
+    }
+}
+
+#[test]
+fn grouped_mixed_grain_materials_reach_direct_energy_balance_with_pins() {
+    fn objective(x: &[Vec3], predicted: &[Vec3], input: &ClothInput, mass: &[f64], h: f64) -> f64 {
+        let inertia = [1, 2]
+            .into_iter()
+            .map(|i| {
+                let d = sub(x[i], predicted[i]);
+                0.5 * mass[i] * dot(d, d) / (h * h)
+            })
+            .sum::<f64>();
+        inertia
+            + input
+                .triangles
+                .iter()
+                .zip(&input.triangle_materials)
+                .map(|(t, m)| {
+                    let [a, b, c] = t.map(|i| input.material_uv[i]);
+                    let du1 = b[0] - a[0];
+                    let du2 = c[0] - a[0];
+                    let dv1 = b[1] - a[1];
+                    let dv2 = c[1] - a[1];
+                    let det = du1 * dv2 - du2 * dv1;
+                    let e1 = sub(x[t[1]], x[t[0]]);
+                    let e2 = sub(x[t[2]], x[t[0]]);
+                    let u = mul(sub(mul(e1, dv2), mul(e2, dv1)), det.recip());
+                    let v = mul(sub(mul(e2, du1), mul(e1, du2)), det.recip());
+                    let (s, c) = m.grain_angle.sin_cos();
+                    let w = add(mul(u, c), mul(v, s));
+                    let f = add(mul(u, -s), mul(v, c));
+                    let cw = (dot(w, w) - 1.) / 2.;
+                    let cf = (dot(f, f) - 1.) / 2.;
+                    let cs = dot(w, f);
+                    det.abs() / 4.
+                        * (m.warp_stiffness * cw * cw
+                            + m.weft_stiffness * cf * cf
+                            + m.shear_stiffness * cs * cs)
+                })
+                .sum::<f64>()
+    }
+    let rest = vec![
+        [-0.064, 0., -0.],
+        [0., -0.004, 0.],
+        [0., 0.004, 0.],
+        [0.064, 0., 0.],
+    ];
+    let input = ClothInput {
+        positions: rest.clone(),
+        material_uv: rest.iter().map(|v| [v[0], v[1]]).collect(),
+        triangles: vec![[0, 1, 2], [1, 3, 2]],
+        triangle_materials: vec![
+            Material {
+                areal_density: 0.18,
+                warp_stiffness: 300.,
+                weft_stiffness: 700.,
+                shear_stiffness: 55.,
+                grain_angle: 0.31,
+                bending_stiffness: 0.,
+                damping: 0.,
+                ..Default::default()
+            },
+            Material {
+                areal_density: 0.25,
+                warp_stiffness: 950.,
+                weft_stiffness: 120.,
+                shear_stiffness: 140.,
+                grain_angle: -0.47,
+                bending_stiffness: 0.,
+                damping: 0.,
+                ..Default::default()
+            },
+        ],
+        pins: vec![
+            Pin {
+                vertex: 0,
+                target: rest[0],
+            },
+            Pin {
+                vertex: 3,
+                target: rest[3],
+            },
+        ],
+        ..Default::default()
+    };
+    let h = (1. / 60.) / 8.;
+    let mut cloth = Cloth::new(input.clone()).unwrap();
+    assert_eq!(cloth.membrane.len(), 2);
+    cloth.velocities[1] = [0.0001 / h, -0.00015 / h, 0.00003 / h];
+    cloth.velocities[2] = [-0.00008 / h, 0.00012 / h, -0.00002 / h];
+    let predicted: Vec<_> = rest
+        .iter()
+        .zip(&cloth.velocities)
+        .map(|(&p, &v)| add(p, mul(v, h)))
+        .collect();
+    let area = 0.064 * 0.008 / 2.;
+    let mass = [
+        0.18 * area / 3.,
+        (0.18 + 0.25) * area / 3.,
+        (0.18 + 0.25) * area / 3.,
+        0.25 * area / 3.,
+    ];
+    for (actual, expected) in cloth.masses().iter().zip(mass) {
+        assert!((actual - expected).abs() < 1e-18);
+    }
+    let initial = objective(&predicted, &predicted, &input, &mass, h);
+    cloth
+        .step(
+            StepSettings {
+                dt: h,
+                substeps: 1,
+                iterations: 32,
+                gravity: [0.; 3],
+                seam_closure_speed: 0.,
+            },
+            || false,
+        )
+        .unwrap();
+    assert!(objective(cloth.positions(), &predicted, &input, &mass, h) < initial);
+    let epsilon = 1e-8;
+    let mut maximum = 0_f64;
+    for node in [1, 2] {
+        let mut gradient = [0.; 3];
+        for axis in 0..3 {
+            let mut plus = cloth.positions().to_vec();
+            let mut minus = plus.clone();
+            plus[node][axis] += epsilon;
+            minus[node][axis] -= epsilon;
+            gradient[axis] = (objective(&plus, &predicted, &input, &mass, h)
+                - objective(&minus, &predicted, &input, &mass, h))
+                / (2. * epsilon);
+        }
+        maximum = maximum.max(length(gradient));
+    }
+    println!("mixed-grain pair direct energy force residual={maximum:e}N");
+    assert!(maximum < 1e-6);
+    for pin in &input.pins {
+        assert_eq!(
+            cloth.positions()[pin.vertex].map(f64::to_bits),
+            pin.target.map(f64::to_bits)
+        );
+    }
+}
+
+#[test]
+#[allow(clippy::approx_constant)] // Preserve the independently frozen material literal.
+fn material_network_reaches_independent_incremental_energy_equilibrium() {
+    fn objective(
+        x: &[Vec3],
+        input: &ClothInput,
+        predictor: &[Vec3],
+        masses: [f64; 2],
+        h: f64,
+    ) -> f64 {
+        let inertia = [5, 6]
+            .into_iter()
+            .zip(masses)
+            .map(|(node, mass)| {
+                let delta = sub(x[node], predictor[node]);
+                0.5 * mass * dot(delta, delta) / (h * h)
+            })
+            .sum::<f64>();
+        inertia
+            + input
+                .triangles
+                .iter()
+                .zip(&input.triangle_materials)
+                .map(|(t, m)| {
+                    let [a, b, c] = t.map(|i| input.material_uv[i]);
+                    let du1 = b[0] - a[0];
+                    let du2 = c[0] - a[0];
+                    let dv1 = b[1] - a[1];
+                    let dv2 = c[1] - a[1];
+                    let det = du1 * dv2 - du2 * dv1;
+                    let e1 = sub(x[t[1]], x[t[0]]);
+                    let e2 = sub(x[t[2]], x[t[0]]);
+                    let u = mul(sub(mul(e1, dv2), mul(e2, dv1)), det.recip());
+                    let v = mul(sub(mul(e2, du1), mul(e1, du2)), det.recip());
+                    let (s, c) = m.grain_angle.sin_cos();
+                    let w = add(mul(u, c), mul(v, s));
+                    let f = add(mul(u, -s), mul(v, c));
+                    let cw = (dot(w, w) - 1.) / 2.;
+                    let cf = (dot(f, f) - 1.) / 2.;
+                    let cs = dot(w, f);
+                    det.abs() / 4.
+                        * (m.warp_stiffness * cw * cw
+                            + m.weft_stiffness * cf * cf
+                            + m.shear_stiffness * cs * cs)
+                })
+                .sum::<f64>()
+    }
+    // Complete actual groups around global free nodes500/501 at saved frame28.
+    // Global nodes:39,307,308,498,499,500,501,561; faces:214,215,216,221,286,288,414,416.
+    let rest = vec![
+        [-0.033333333333333326, 1.5, 0.24],
+        [-0.0331818181818182, 1.365, 0.24],
+        [-0.016818181818181843, 1.365, 0.24],
+        [-0.00840909090909081, 1.4325, 0.24],
+        [-0.041439393939394, 1.4325, 0.24],
+        [-0.03325757575757571, 1.4325, 0.24],
+        [-0.02507575757575764, 1.4325, 0.24],
+        [-0.024924242424242404, 1.2974999999999999, 0.24],
+    ];
+    let uv = vec![
+        [-0.7533333333333333, 1.5],
+        [-0.7531818181818182, 1.365],
+        [-0.7368181818181818, 1.365],
+        [-0.7284090909090908, 1.4325],
+        [-0.761439393939394, 1.4325],
+        [-0.7532575757575757, 1.4325],
+        [-0.7450757575757576, 1.4325],
+        [-0.7449242424242424, 1.2974999999999999],
+    ];
+    let predictor = vec![
+        [
+            -0.033498148833116595,
+            1.5168706938759002,
+            0.14566104866625693,
+        ],
+        [-0.0334210793269415, 1.3870810608749282, 0.18200059013621286],
+        [-0.01683930195603287, 1.387278279312309, 0.18465908192500208],
+        [-0.008383278964555426, 1.45621973330344, 0.17850616015501183],
+        [
+            -0.043347835925128614,
+            1.4559258593972446,
+            0.17374173905854726,
+        ],
+        [-0.0350218534159662, 1.4560676877118206, 0.17520016483975107],
+        [
+            -0.025356882744323836,
+            1.455932023624931,
+            0.17679416384316252,
+        ],
+        [-0.02469902892629936, 1.31825428209096, 0.1827706602096836],
+    ];
+    let triangles = vec![
+        [0, 5, 6],
+        [2, 6, 1],
+        [6, 5, 1],
+        [1, 7, 2],
+        [0, 4, 5],
+        [4, 1, 5],
+        [0, 6, 3],
+        [3, 6, 2],
+    ];
+    let material = Material {
+        areal_density: 0.18,
+        warp_stiffness: 400.0,
+        weft_stiffness: 400.0,
+        shear_stiffness: 100.0,
+        bending_stiffness: 0.003,
+        grain_angle: 1.5707963267948966,
+        damping: 0.2,
+        friction: 0.4,
+        collision_thickness: 0.003,
+    };
+    let input = ClothInput {
+        positions: rest,
+        material_uv: uv,
+        triangles,
+        triangle_materials: vec![material; 8],
+        pins: (0..8)
+            .filter(|v| ![5, 6].contains(v))
+            .map(|vertex| Pin {
+                vertex,
+                target: predictor[vertex],
+            })
+            .collect(),
+        ..Default::default()
+    };
+    let cloth = Cloth::new(input.clone()).unwrap();
+    let expected_mass: [f64; 2] = [6.627272727272724e-05, 0.00013377272727272752];
+    for (node, mass) in [5, 6].into_iter().zip(expected_mass) {
+        assert_eq!(cloth.masses()[node].to_bits(), mass.to_bits());
+    }
+    // The global stage retains every original face in order; it has no pair partition.
+    assert_eq!(
+        cloth
+            .membrane
+            .iter()
+            .map(|m| m.vertices)
+            .collect::<Vec<_>>(),
+        input.triangles,
+    );
+    for node in 0..8 {
+        assert_eq!(cloth.inverse_masses[node] == 0., ![5, 6].contains(&node));
+    }
+    let h: f64 = (1. / 60.) / 8.;
+    let mut x = predictor.clone();
+    let mut corrections = vec![[0.; 3]; x.len()];
+    // One isolated material substep: no prediction, damping, bending, sewing or contact stage.
+    cloth.apply_pins(&mut x);
+    for _ in 0..32 {
+        constraints::solve_material(
+            &cloth.membrane,
+            &mut x,
+            &cloth.inverse_masses,
+            h,
+            &mut corrections,
+            &|| false,
+        )
+        .unwrap();
+        cloth.apply_pins(&mut x);
+    }
+    // Independent100-digit stationary reference, locally positive Hessian; no global uniqueness claim.
+    let expected: [Vec3; 2] = [
+        [
+            -0.03468793525197834,
+            1.4559016208026938,
+            0.17491839356990843,
+        ],
+        [
+            -0.02602759678104083,
+            1.4559576701123809,
+            0.17611347479474232,
+        ],
+    ];
+    let position_error = [5, 6]
+        .into_iter()
+        .zip(expected)
+        .map(|(node, target)| length(sub(x[node], target)))
+        .fold(0., f64::max);
+    let epsilon = 1e-7;
+    let mut force_residual = 0_f64;
+    for node in [5, 6] {
+        let mut gradient = [0.; 3];
+        for (axis, entry) in gradient.iter_mut().enumerate() {
+            let energy_at = |offset| {
+                let mut q = x.clone();
+                q[node][axis] += offset;
+                objective(&q, &input, &predictor, expected_mass, h)
+            };
+            *entry = (energy_at(-2. * epsilon) - 8. * energy_at(-epsilon)
+                + 8. * energy_at(epsilon)
+                - energy_at(2. * epsilon))
+                / (12. * epsilon);
+        }
+        force_residual = force_residual.max(length(gradient));
+    }
+    println!(
+        "material-network q={:?} reference={expected:?} position_error={position_error:e}m force_residual={force_residual:e}N",
+        [x[5], x[6]]
+    );
+    assert!(position_error < 1e-8 && force_residual < 1e-6);
+    for pin in &input.pins {
+        assert_eq!(
+            x[pin.vertex].map(f64::to_bits),
+            pin.target.map(f64::to_bits)
+        );
+    }
 }

@@ -1,0 +1,39 @@
+{
+  "status": "INPUT_AND_LIMITS_FIXED_BEFORE_REFERENCE_AND_PRODUCTION",
+  "at_utc": "2026-11-17T01:49:06.429602+00:00",
+  "inputs": {
+    ".local/coupled-edge-regression-20261116/.local/harbor-material-groups-preparation-20261116-v2/runs/base/rest-metadata.json": {
+      "sha256": "90128ed174829cd118e1d638ccba0fa501003889e85b5d70d214b4884f14aec7",
+      "bytes": 590840
+    },
+    ".local/coupled-edge-regression-20261116/.local/harbor-material-groups-preparation-20261116-v2/runs/base/trajectory.jsonl": {
+      "sha256": "c04e7fbc469d4f95cd0776758ba56c49beaf317b6ad894d1a82e273ba8d69b1a",
+      "bytes": 15435770
+    }
+  },
+  "base_source_files": {
+    "crates/weftforge-sim/src/constraints.rs": "7b07c9750569bd1962d7986b41fc5a00da9b1e319dfb90aa6ab50167e9f35596",
+    "crates/weftforge-sim/src/lib.rs": "22c50515e20f6fa4fd6d95ee122ea0c140964722e18e0e71ececbeb5c7d1608b",
+    "crates/weftforge-sim/src/tests.rs": "0cca724fac864630a69dbb50e651d906d273b3830795bea114f464da426fe330",
+    "docs/physics.md": "b4ef9c0124e8c29d87969baacc45d0b00908d1c4b0caa20a2c0baca764e64e28"
+  },
+  "extraction_amendment": "Initial six-face list omitted actual incident face215; root authorized all actual incident faces plus partners. Minimal closure adds215 and partner221; no arbitrary scene substitution.",
+  "pairing_and_free_masses_exact": true,
+  "input_sha256": "fb2a80ebc94b8cef4269f5c906af64a821255c3f3b2e998eae07f34fc6c6a21e",
+  "reference_plan": {
+    "precisions_decimal_digits": [
+      80,
+      100
+    ],
+    "start": "exact saved-frame28 predictor, once at each precision for arithmetic crosscheck only",
+    "objective": "sum_free m*|q-y|^2/(2*h^2)+sum_retained_triangles A*(kw*Cw^2+kf*Cf^2+ks*Cs^2)/2",
+    "derivatives": "Analytic quadratic constraint gradients/Hessians; independent direct F energy and fourth-order differences.",
+    "max_newton_iterations": 80,
+    "root_gradient_target_N": "1e-55",
+    "local_certificate_box_radius_m": "1e-8",
+    "global_minimum_claim": false
+  },
+  "production_Cloth_initializations": 0,
+  "production_steps_or_tests": 0,
+  "Cargo_invocations": 0
+}

@@ -1,0 +1,195 @@
+{
+  "all6pairs_every32_x_p_boundary_bits_pins_finite_passed": true,
+  "at_utc": "2026-11-17T05:13:46.481636+00:00",
+  "binary": {
+    "bytes": 462864,
+    "path": "target/release/material-cancellation-comparison",
+    "sha256": "b5458a1190d0b3713458b8211b377f39cab3b004f09ca83b6b478e9ef923106f"
+  },
+  "build_launches": 1,
+  "candidate_commit": "9d4b629c077f06c348f6615fe90df7bbeacedb24",
+  "candidate_tracked_status_clean": true,
+  "comparison_receipt_sha256": "3b8edc74241ab44ff6eeaafff7d5f0d1c93624b4732daadd49e9e659e2226ac1",
+  "file_count_excluding_self": 29,
+  "files": {
+    "CARGO-CONFIG-INPUTS.json": {
+      "bytes": 2160,
+      "mode": "0o644",
+      "sha256": "44130f3da2d1f7de67408a7250ec880739363c058fa3054f90d1963e963082d4"
+    },
+    "COMPARISON-RECEIPT.json": {
+      "bytes": 2127,
+      "mode": "0o644",
+      "sha256": "3b8edc74241ab44ff6eeaafff7d5f0d1c93624b4732daadd49e9e659e2226ac1"
+    },
+    "FINDINGS.md": {
+      "bytes": 2715,
+      "mode": "0o644",
+      "sha256": "6ae81e3b928f0df5cda115b9a7d630bf3786f1bc35d3c848d259ca074b4ca790"
+    },
+    "FIXTURE-PROOF.json": {
+      "bytes": 802,
+      "mode": "0o644",
+      "sha256": "97cc6aad68f499f763b7cf2fd6dddf237815a26b0c730c9400e36c081cc4f374"
+    },
+    "FREEZE.json": {
+      "bytes": 11751,
+      "mode": "0o644",
+      "sha256": "da4e551124cc5e89dabf85ca3910fa6a8a5b11c98618ac3bfb638d8eeccb296e"
+    },
+    "LOCKED-DEPENDENCIES.json": {
+      "bytes": 30549,
+      "mode": "0o644",
+      "sha256": "b2c6ccbc8ebedcf3c359b3c22751991cfa30096e3e223a6260ee7b9a1aecbfcc"
+    },
+    "PLAN.json": {
+      "bytes": 2319,
+      "mode": "0o644",
+      "sha256": "98b3fe271aefb3dfd64b08e9c62f8517ce5231811c42b193cb8a08f824808098"
+    },
+    "PRESERVATION.json": {
+      "bytes": 810,
+      "mode": "0o644",
+      "sha256": "be587cd453312a1796608af13e3b9acdec56df6b749cf26ed3ead1a1b466a037"
+    },
+    "PROFILE-ENV.json": {
+      "bytes": 4169,
+      "mode": "0o644",
+      "sha256": "8e525999eb424b8f5d9ef33f2727d966327142a9d5332274f1a9934e0cfdbf49"
+    },
+    "README.md": {
+      "bytes": 702,
+      "mode": "0o644",
+      "sha256": "3d3c6974957d1aa554de9a16761aceb53fd868ee066e33962b6dd26f8af3697b"
+    },
+    "new-material.rs": {
+      "bytes": 12091,
+      "mode": "0o644",
+      "sha256": "b012476a54e91752d3f1dca2fbd3fd709a5cd5a741fbba6456d78f0e404f3231"
+    },
+    "old-material.rs": {
+      "bytes": 10686,
+      "mode": "0o644",
+      "sha256": "069da15b32af181be1385f437bb821c65900b5203ee4da315b3e4330e852658e"
+    },
+    "probe.rs": {
+      "bytes": 5466,
+      "mode": "0o644",
+      "sha256": "4d4b00a5f51da5375dba9d948889d09f62c91c9295402ae5cab8615aa673655a"
+    },
+    "producer/Cargo.lock": {
+      "bytes": 1934,
+      "mode": "0o644",
+      "sha256": "ca8506497c030e60be500ef7d890b2ed26a83883a8802b097033014fbe459544"
+    },
+    "producer/Cargo.toml": {
+      "bytes": 339,
+      "mode": "0o644",
+      "sha256": "5bfe33b34dbc2945477644724c0bab0c5fef1594952671cfec4be759c6dc4dce"
+    },
+    "producer/src/main.rs": {
+      "bytes": 573,
+      "mode": "0o644",
+      "sha256": "7f5895da69d215ee99b1daf097dbd0c3e5a3409f4aba9c465b94999b3619c972"
+    },
+    "resources.py": {
+      "bytes": 10924,
+      "mode": "0o644",
+      "sha256": "f0af9e1665da6246a89e13e7fd947cbfbaef68cc19f6827ec32572c323be0240"
+    },
+    "run.py": {
+      "bytes": 5802,
+      "mode": "0o644",
+      "sha256": "cde2a04f2a829b1a72f6a592c820a01ee08e90e0b44922d23f9281e020d1de6e"
+    },
+    "runtime/RESULT.json": {
+      "bytes": 2914,
+      "mode": "0o600",
+      "sha256": "3760c56c988e6a01201692717b5d401dfe858334f168ab4a36adc011327ca9cd"
+    },
+    "runtime/STARTED.json": {
+      "bytes": 394,
+      "mode": "0o600",
+      "sha256": "fdc9181fb140e13b75e548f78f45f83b878ca46106acae9a11718f888ee2b07c"
+    },
+    "runtime/TERMINAL.json": {
+      "bytes": 364,
+      "mode": "0o600",
+      "sha256": "2e80a6734aaa945360195a44f17d5b8e5b64fcb031f16eb6c9dd8e50e86430b9"
+    },
+    "runtime/build-RESULT.json": {
+      "bytes": 1192,
+      "mode": "0o600",
+      "sha256": "30b620f75a4be41c37d8ad1f4941482b27c6239607be33f48807db460b475dad"
+    },
+    "runtime/build-STARTED.json": {
+      "bytes": 961,
+      "mode": "0o600",
+      "sha256": "cb455446315c52284736fdfcac0e004ebd585b258a2078da47e206fa7c5f9d03"
+    },
+    "runtime/build.stderr": {
+      "bytes": 17516,
+      "mode": "0o644",
+      "sha256": "5258e5f39a168cce5966d4de3408df4f1edb419064ac02ea1984af3cf691247a"
+    },
+    "runtime/build.stdout": {
+      "bytes": 0,
+      "mode": "0o644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "runtime/kernel-RESULT.json": {
+      "bytes": 982,
+      "mode": "0o600",
+      "sha256": "bdfc31e27ec44b4fabd3efaea4c9d9e4cbfa9cc3728431028a1a37ba093e942c"
+    },
+    "runtime/kernel-STARTED.json": {
+      "bytes": 755,
+      "mode": "0o600",
+      "sha256": "47eb607b88bbcff013f66b84e294ff5d8f4d4a852e0f9d0a1014413a1edf9711"
+    },
+    "runtime/kernel.stderr": {
+      "bytes": 0,
+      "mode": "0o644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "runtime/kernel.stdout": {
+      "bytes": 1413,
+      "mode": "0o644",
+      "sha256": "d540ee4f41f93ffd89cf53e1936f63edc9da62ccba7ac4a35fa2059468c90962"
+    }
+  },
+  "fixture_function_sha256": "4f4af1323dc0d75d80283f9a18fe0e78e7585ec83da4f23a32573a8dfb07ba18",
+  "freeze_sha256": "da4e551124cc5e89dabf85ca3910fa6a8a5b11c98618ac3bfb638d8eeccb296e",
+  "kernel_launches": 1,
+  "material_calls_per_variant": 192,
+  "measured_pairs": 5,
+  "new_median_ms": 41.278792,
+  "old_commit": "52099b6f6b7aff43b3e9ada8bad4f830cb987134",
+  "old_median_ms": 226.077583,
+  "old_over_new_ratio": 5.476845906730992,
+  "postclose_guards": {
+    "actual_tools": 3,
+    "config_paths_including_absences": 22,
+    "exact_frozen_fixture_function": true,
+    "exact_old_new_source_prefixes": true,
+    "frozen_files_modes": 31,
+    "locked_registry_packages": 7,
+    "locked_registry_source_files": 301,
+    "old_component_and_closed_case_seals_unchanged": true,
+    "old_component_binaries_unchanged": 2,
+    "old_component_files_hashes_modes_unchanged": 63,
+    "owned_PID_groups_absent": [
+      54326,
+      54448,
+      55073
+    ]
+  },
+  "posthoc_receipts_separately_attributable": "COMPARISON-RECEIPT/FINDINGS/this final manifest are read/hash/arithmetic after original command, not repeated workloads",
+  "result_sha256": "3760c56c988e6a01201692717b5d401dfe858334f168ab4a36adc011327ca9cd",
+  "scope": "Closed same-build old/new material-only component proof; no garment/wholecase acceptance",
+  "scope_limits": "Material-only planar grid with fixed uncancelled calls. RSS snapshots have gaps; SDK/linker/shared-library closure not fully frozen. Same-build speed is not fullgarment speed or physics acceptance.",
+  "solver_timing_instrumentation": 0,
+  "terminal_sha256": "2e80a6734aaa945360195a44f17d5b8e5b64fcb031f16eb6c9dd8e50e86430b9",
+  "timed_per_callback_counters": 0,
+  "warmups": 1
+}

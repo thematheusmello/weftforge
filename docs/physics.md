@@ -1,7 +1,7 @@
 # CPU cloth model
 
-This is an independently authored CPU solver, not a calibrated reconstruction of
-Marvelous Designer. All checks below are implementation-only. No reference drape,
+This is WeftForge's independently authored CPU solver. All checks below are
+implementation-only. No reference drape,
 contact, numerical tolerance or complete garment workflow has been compared yet.
 
 ## State and units
@@ -31,8 +31,9 @@ colliders and duplicate pins are rejected before a solver is returned.
 
 ## Integration and compliant constraints
 
-The engineering choice is a deterministic sequential CPU XPBD path, using the
-compliant local projection method from
+The engineering choice is a deterministic sequential CPU path. Compliant sewing,
+membrane and bending use the incremental-energy updates described below.
+Hard sewing retains the scalar projection from
 [Macklin, Müller and Chentanez, XPBD (2016)](https://matthias-research.github.io/pages/publications/XPBD.pdf).
 The small dependency surface and explicit physical energy coefficients make it
 suitable for repeatable checks and future accelerated-path comparisons. It is not
@@ -45,22 +46,26 @@ v* = exp(-damping*h) * (v + h*gravity)
 x* = x + h*v*
 ```
 
-The solver clears elastic/seam multipliers at each substep and iterates membrane,
-bending, sewing, analytic contact, cloth contact and pins in that order. For an
-energy E = k*C(x)^2/2, the constraint compliance is alpha = 1/k:
+The solver clears material, bending, soft-sewing and ordinary contact displacement
+histories and hard-seam multipliers at each substep, then iterates membrane, bending, sewing,
+analytic contact, cloth contact and pins in that order. The scalar radial projection for hard sewing
+uses zero compliance in the following formula:
 
 ```text
-a = alpha / h²
+a = 0
 delta_lambda = (-C - a*lambda) / (sum_i(w_i*|gradient_i(C)|²) + a)
 x_i += w_i*gradient_i(C)*delta_lambda
 lambda += delta_lambda
 ```
 
-The new velocity is the solved displacement divided by h. Damping is exponential
+The first substep can also apply the separately attributed initial-overlap repairs
+described below. These repairs use the existing iteration budget. The new velocity
+is the entire solved displacement divided by h, including any initial repair.
+Damping is exponential
 velocity damping in s^-1, rather than a frame-dependent interpolation. Its
 operator splitting introduces a finite-step error in forced trajectories. The
 zero-damping gravity test has the expected symplectic Euler error. There is no
-restitution, air drag, wind, calibrated viscoelasticity or implicit global solve.
+restitution, air drag, wind, calibrated viscoelasticity or fully coupled implicit solve.
 
 The defaults are dt=1/60 s, four substeps, eight constraint iterations, sewing
 closure speed 0.5 m/s and gravity (0,-9.81,0) m/s². Step arguments require finite
@@ -103,6 +108,123 @@ sets piece grain to zero, preserving the old physical inputs. Neither set is an
 identified measured fabric or a reference-application preset. Shear, bending,
 density, damping, friction and collision offset remain separate parameters;
 changing the display color does not change them.
+
+### Global material projection
+
+Warp, weft and shear share triangle positions, and adjacent triangles share nodal
+inertia. A scalar multiplier history alone does not retain the nonlinear inertial
+relation when gradients rotate. The original XPBD derivation explicitly omits
+that primal residual;
+[Chen et al. (2024)](https://physbam.stanford.edu/papers/stanford2024-02_2.pdf)
+also discuss its effect on backward-Euler force balance. This material stage is
+derived directly from this crate's existing energy. It is not a calibrated
+implementation or a convergence claim for either paper's full method.
+
+One actual material displacement p per vertex resets to zero each substep.
+During a material sweep its anchor z=x-p stays fixed; displacements from the
+other stages move x without changing p, so the next material anchor follows them.
+All triangles enter one physical incremental objective, with each triangle's
+unchanged energy once and each free vertex's physical lumped inertia once:
+
+```text
+Phi(q) = sum_free_i m_i*|q_i-z_i|²/(2*h²) + sum_triangles sum_a k_a*C_a(q)²/2
+```
+
+Pinned coordinates stay fixed. There are no material pairs or separate group
+anchors. Bending and compliant sewing use their separate incremental-energy
+updates below; contact uses its own displacement histories and pins remain exact.
+Each outer iteration makes one global Gauss–Newton material update before those
+stages, in the same order. The garment acceptance settings
+remain dt=1/60 s, eight substeps and 32 outer iterations; the standalone DTO
+defaults above are unchanged.
+
+Let J contain every triangle's three existing mode gradients, K the diagonal of
+its area-scaled stiffnesses and W the inverse nodal masses, zero at pins. Using
+mass-weighted displacement coordinates gives:
+
+```text
+B = h*sqrt(K)*J*sqrt(W)
+r = h*sqrt(K)*C
+A = I + B^T*B
+b = -p/sqrt(W) - B^T*r
+A*u = b
+d = sqrt(W)*u
+```
+
+The inertia term in b is zero at pins. Matrix products visit the cached sparse
+three-node rows of B and the identity; no dense global matrix is stored. A
+symmetric diagonal preconditioner uses S_ii=1/sqrt(A_ii), solving S*A*S and
+recovering u=S*v. Repeated `hypot` computes sqrt(A_ii) without first squaring
+large coefficients. The preconditioned right-hand side is divided by its largest
+absolute component before conjugate gradients and restored afterward. This
+normalization does not change the objective or direction. An exactly zero
+right-hand side leaves positions and p unchanged, including an all-pinned mesh.
+
+The linear solve starts at zero, takes at most 32 conjugate-gradient iterations,
+and stops when the recursive residual norm is at most 1e-12 of its initial norm
+(squared comparison 1e-24), with no absolute tolerance floor. Reaching the cap
+uses the finite approximate direction and still requires descent. This internal
+linear work is additional to the public outer-iteration count; 32 outer iterations
+do not mean only 32 local projections. Finite convergence and the recursive
+residual do not certify a physical force tolerance on an arbitrary mesh.
+
+The same complete objective h²*Phi governs Armijo descent, with coefficient
+1e-4 and at most 16 fractions starting at one and halving. Each trial evaluates
+all triangle energies and one inertia per free vertex. Only an accepted finite
+trial changes x and p; p accumulates the actual rounded position displacement.
+An exhausted search or non-descent direction leaves that sweep unchanged.
+Current non-finite coefficients, diagonal scales, objective, linear curvature,
+iterates or reconstructed directions abort with `Unstable`. Non-finite trial
+energies are rejected during backtracking. Positive linear curvature is required.
+Products, accumulated dot products and energies must fit finite f64; diagonal
+scaling and RHS normalization reduce overflow exposure but do not supply arbitrary
+range arithmetic. Underflow, rounding, extreme compression and ill conditioning
+can still stall. Existing strain/contact/finite diagnostics remain necessary.
+
+For N vertices and T triangles, each sweep stores 3*T sparse rows and O(N+T)
+workspace, plus the retained three-component p per vertex. Its fixed budget is
+at most 32 matrix products and 17 complete objective scans (current plus trials),
+with at most 168*N + 119*T + 48 cancellation checkpoints over all vertex,
+row, CG-iteration and backtracking scans. Each unit has bounded scalar work;
+vector allocations/copies add O(N+T) work. Every input vector is finite in length;
+the solver introduces no smaller geometry/input limit. A complete step runs at
+most substeps*iterations such sweeps under the existing 1..=1000 settings limits.
+Rows, vertices, every CG iteration and every trial visit these checkpoints. The
+material stage polls the original cancellation callback at entry, at every 64th
+checkpoint, and immediately before each successful return or accepted x/p copy.
+At most 63 checkpoints can skip the callback between polls; the callback budget
+is at most 2 + floor((168*N + 119*T + 48)/64) per sweep. Vector allocation and
+copying remain uninterruptible, so this is not a wall-time latency guarantee.
+A cancelled direct material stage returns before changing x or p. Candidate
+arrays and p stay local to the whole-call transaction, so cancellation or numerical
+failure preserves accepted positions, velocities, seam targets, time and
+diagnostics. These bounds do not assert a wall-time or aggregate-memory limit.
+
+The global objective resolves material coupling across the entire mesh in each
+direction. It does not establish convergence of the separately projected bending,
+sewing, friction or contact equations, nor general garment equilibrium.
+
+The focused pinned/free-node regression compares the projected positions with
+an independent dense Newton solution of the inertial-plus-material energy and
+evaluates its force balance from a direct deformation gradient, with bounds of
+1e-8 m and 1e-6 N. A second fixed regression uses two triangles sharing two free
+edge nodes and independently derived UV-area masses. Its six-DOF energy reference
+has a positive Hessian bound on an inertia ball containing every minimizer; an
+independent cubic reduction and high-precision/finite-difference checks support
+the same predeclared position/force bounds. Mixed anisotropy/grain, fixed pins,
+once-only face coverage and whole-call cancellation remain separate checks.
+These are small incremental-energy component checks, not garment answers.
+A frozen eight-face component retains exact original masses, material data and
+saved predictor positions at two free nodes. Its test invokes this production
+global stage for 32 sweeps and checks the same predeclared 1e-8 m position and
+1e-6 N independently differenced physical-force bounds. Its 80/100-digit
+reference establishes a strict local minimum near the expected point, without
+global uniqueness. Obsolete pair/order guards are replaced with exact face-order
+and free/pinned-partition guards; the physical data and oracle stay unchanged.
+Material convergence at finite budgets, the separate bending/sewing updates,
+friction, and complete coupled-contact equilibrium remain separate
+questions. Earlier garment results below retain their original source
+and algorithm attribution; this source change does not regrade them.
 
 `max_stretch_error` reports max(abs(length(f_w)-1), abs(length(f_f)-1)). It is a
 material-axis length diagnostic, not a bound on all principal strains or shear.
@@ -163,6 +285,87 @@ cannot provide a usable dihedral gradient and are skipped for that projection;
 reported strain/residuals and the numerical checks remain relevant. Zero D
 intentionally disables that material's bending energy, not collision.
 
+The bending stage retains one actual displacement `p_b` per node, reset to zero
+once every substep. This is a displacement, not a force or scalar multiplier.
+Its anchor `z=x-p_b` stays fixed during the stage's update and follows
+displacements from other stages. All active hinges share the same inertial
+term in the incremental objective:
+
+```text
+h²*Phi_b(q) = sum_free_i m_i*|q_i-z_i|²/2 + h²*sum_b k_b*C_b(q)²/2
+```
+
+Writing `a_i=p_b_i/sqrt(w_i)`, each row
+`J_bi=h*sqrt(k_b*w_i)*gradient_i(C_b)` and residual
+`r_b=h*sqrt(k_b)*C_b`, the mass-normalized Gauss–Newton system is:
+
+```text
+(I + J^T J) y = -(a + J^T r)
+d_i = sqrt(w_i)*y_i
+```
+
+Pinned nodes have zero `a_i`, row entries and displacement. Shared-node rows
+are summed in one matrix-free solve, using diagonal preconditioning, at most
+32 PCG iterations and relative residual `1e-12`. This replaces separately
+iterated hinge objectives whose shared-node coupling can remain unresolved
+after 32 outer sweeps. It changes neither rigidity nor the angular energy.
+These histories remain separate from the material and sewing histories; they
+are not extra physical masses. Finite-budget convergence of the combined
+stages is not established.
+
+The complete block objective accepts an Armijo descent with coefficient `1e-4`
+and at most 16 fractions, starting at one and halving. Current degenerate
+hinges are omitted from that invocation. Any trial degenerating an active
+hinge is rejected for the whole block, as is a non-finite trial. Non-finite
+current quantities abort; an exhausted search leaves the stage unchanged.
+Only an accepted finite trial changes positions and history, using actual
+rounded displacement. The original cancellation callback is checked on entry,
+at most every 64 bounded internal checkpoints and immediately before every
+successful return or accepted position/history copy. No cancellation result
+is returned after that copy. All history and scratch storage is local to the
+candidate substep/call, preserving the whole-Cloth transaction.
+
+An independent pinned-hinge check uses one free 0.01 kg node, a 0.1 s substep,
+0.5 N m bend coefficient and a predictor at radius 1 m and angle 1 radian.
+Eliminating radius gives `r=cos(theta-1)` and the strictly increasing equation
+`0.5*theta+0.5*sin(2*(theta-1))=0` on `[0,1]`. Its unique minimum supplies a
+64-bisection position oracle; direct polar energy derivatives supply force
+residuals without the production dihedral gradient. The fixed bounds are
+`1e-8 m` and `1e-6 N`. At 32 sweeps the old scalar history misses by
+0.1185816818 m / 0.1065595925 N; displacement history gives
+3.835502563e-9 m / 3.349162043e-9 N. Those numbers describe the earlier
+single-hinge implementation, not a run of the coupled stage. Its checks now
+call the shared production stage while retaining their independent criteria.
+
+A fresh five-node/two-hinge case has one free node, mass
+`6.627272727272728e-5 kg`, substep `1/480 s`, two coefficients
+`0.024750031175957105 N m`, and a `1e-5 m` normal predictor. Independent
+Cartesian derivatives and a strict-convexity proof give the unique minimum
+`[0,0,5.1358750877942195e-8] m`. At 32 ordered local-hinge sweeps, the
+compiled RED misses by `2.661405569226554e-8 m` with force residual
+`7.912503711575184e-5 N`, exceeding the fixed `1e-8 m` / `1e-6 N` bounds.
+On coupled-stage commit `9643ad0a430380f85b7c42f915c5ead3352c98b8`, the one
+filtered component check passes with position error `5.360130369343619e-22 m`
+and independent Cartesian force residual `1.6534083130403943e-18 N`.
+The reference-force norm is `2.710505431213761e-20 N`; pins and finiteness
+pass after each of the unchanged 32 sweeps. The subsequent `82cc77ee` workspace
+check passed 425 tests, including the four guards for shared history/pins and
+cancellation, no-op/invalid-input atomicity, active-trial degeneration and
+whole-call rollback. Formatting, strict Clippy and native/CLI builds also passed.
+These results describe that separate source checkpoint; the integrated notch/v6
+source still requires its own checks.
+
+A fresh full original-shirt run on `82cc77ee` completed 180 steps and independently
+analyzed all 181 saved states in 358.903 seconds within its predeclared 420-second
+bound. At dt=1/60 s, eight substeps, 32 iterations and 1 m/s sewing closure, the
+unchanged 15% strain screen fails at frames 28 and 29. The peak is 50.9601855%
+warp extension at frame 28; the final maximum is 9.43082%. All finite-value,
+supported-contact and uncertainty screens pass; seam error passes after exact
+closure at frame 29. The final frame does not override trajectory failure.
+This is a failed implementation-only garment result, not measured-fabric,
+reference, complete-feature or garment-workflow acceptance. Earlier failed and
+incomplete runs retain their original source attribution and grades.
+
 ## Sewing, pins and construction correspondence
 
 A stitch constrains the distance between two convex weighted points. Each point
@@ -181,12 +384,141 @@ L_next = max(0, L_previous - seam_closure_speed*h)
 C_seam = length(weighted_a - weighted_b) - L_next
 ```
 
-At exactly zero target with positive compliance c, projection uses the vector
-constraint `weighted_a - weighted_b`, preserving energy `|C|²/(2c)` with a
-three-component multiplier. Positive targets and hard stitches retain the scalar
-radial update above. The [closed soft stitch contract](../spec/features/SIM-001-closed-stitch-coordinates.md)
-defines the bounded analytic checks; garment quality and reference parity remain
-unmeasured for this change.
+For positive compliance c, all input soft stitches share one incremental-energy
+block and one actual displacement history `p_s` per node. This history resets
+once each substep and remains separate from the material/bending histories.
+Its anchor is `z=x-p_s`. The unchanged energy counts every input spring,
+including duplicate rows, and one nodal inertia term:
+
+```text
+h²*Phi_s(q) = sum_free_i |q_i-z_i|²/(2*w_i)
+             + h²*sum_soft_s (|weighted_a(q)-weighted_b(q)|-target_s)²/(2*c_s)
+```
+
+Here `w_i=1/m_i`; pins have zero inverse mass and remain fixed. Repeated endpoint
+indices merge signed coefficients for gradient scatter, without deleting,
+deduplicating or renormalizing any physical spring/weight. Target zero is the
+same vector energy, represented by three Cartesian residuals. Positive targets
+retain the radial energy. With merged coefficients beta, mass-normalized rows
+and residuals are:
+
+```text
+zero target: r_axis=(h/sqrt(c))*d_axis
+             J_axis,i=(h/sqrt(c))*sqrt(w_i)*beta_i*e_axis
+positive:    r=(h/sqrt(c))*(|d|-target)
+             J_i=(h/sqrt(c))*sqrt(w_i)*beta_i*unit(d)
+(I+J^T*J)u = -p_s/sqrt(W)-J^T*r
+Delta_x_i = sqrt(w_i)*u_i
+```
+
+`p_s` is a displacement in metres, not a force or multiplier. Both inertia
+`p_s/sqrt(w)` and each scaled spring residual have units m*sqrt(kg), so this
+objective is h² times physical energy.
+
+Exactly one soft spring uses the analytic proximal path in production. This is
+a rank-one weighted difference, regardless of endpoint IDs or the number of
+hard rows. Eliminating nodal inertia gives the unchanged local objective
+`|D-d_z|²/(2*W)+(|D|-target)²/(2*alpha)`, with
+`d_z=weighted_a(z)-weighted_b(z)`, `W=sum(w_i*beta_i²)` and `alpha=c/h²`.
+For nonzero d_z its minimizing impulse is
+`H=unit(d_z)*(target-|d_z|)/(alpha+W)`; at target0 it is
+`H=-d_z/(alpha+W)`, preserving the original division/weighted-endpoint arithmetic.
+At zero anchor the current direction is retained if defined, otherwise+X.
+A private candidate starts at z and scatters `w_i*beta_i*H`; pins stay bit-exact.
+Finite trials must not increase the same complete inertial/spring energy.
+The actual nodal displacement is retained, not a reconstructed per-row multiplier.
+This preserves the isolated analytic guards without normal-solver rounding.
+Both duplicate inputs remain separate energies and therefore take the shared path.
+
+For two or more soft springs, the block solves the equivalent row-space
+Woodbury system. Here J is the physical scaled residual Jacobian,
+W is the inverse nodal mass (zero at pins), and p is the retained nodal history:
+
+```text
+(I + J*W*J^T) eta = J*p_free - r
+delta_free = -p_free + W*J^T*eta
+delta_pin = 0
+p_new = (1-alpha)*p + alpha*W*J^T*eta   # free nodes, exact arithmetic
+```
+
+The old history appears in both RHS and recovery. A zero dual RHS does not
+mean no movement: eta=0 still requires delta=-p. This distinction is tested
+with a nonzero old history and a zero-energy manufactured minimum.
+Each finite dual iterate produces an actual weighted row scatter. With
+balanced endpoint weights this retains equal/opposite internal actions;
+more generally it respects the actual coefficients rather than recentering COM
+or silently normalizing accepted weights. Floating position rounding remains.
+
+With B=J*sqrt(W), a=p_free/sqrt(W), the row diagonal is
+D_j=sqrt(1+sum_i |B_ji|^2), accumulated using hypot. Diagonal PCG solves
+D^-1*(I+B*B^T)*D^-1 with at most32 iterations and relative residual1e-12.
+The operator scatters B^T into nodal workspace then gathers B back to rows;
+every duplicate physical row remains present. The true primal gradient
+`a+B^T*r` dotted with the recovered mass-normalized direction controls descent.
+The unchanged full radial/vector objective controls Armijo1e-4 with at most16
+fractions. Only finite accepted trials copy x/p, retaining actual rounded delta.
+A zero/non-descent direction or exhausted search leaves the stage unchanged.
+The singleton, material and bending numerical paths are unchanged.
+
+This replaces finite diagonal-primal PCG for soft sewing: that approximation
+can move outside the weighted row-action space before convergence. In a frozen
+five-panel core integration test, first ground/capsule contact produces59.26%
+compression; subsequent sewing stages amplify the coupled state, reaching798.7%
+extension and the existing500% instability rejection. Temporary read hooks
+reproduce the exact failure and show non-roundoff sewing-history action drift,
+even though every sewing update decreases its own complete objective. This is
+an integration failure, not a new accepted garment case. The row-space repair
+addresses the demonstrated invariant gap; complete stability still needs the
+unchanged integration test and broader checks.
+
+In the shared block, positive zero-gap rows choose the nonzero weighted
+inertial-anchor direction, or world+X when that anchor is also zero. Nonzero current directions first divide
+components by their maximum absolute value before unit normalization, preserving
+subnormal45-degree directions. This deterministic choice supplies a trial at the
+radial cusp, not differentiability or a global-minimum guarantee. Non-finite
+current quantities abort atomically; non-finite trials are rejected. An exhausted
+search or non-descent direction leaves the stage unchanged. All-pinned or exact
+zero-RHS stages preserve positions and displacement history; pin reactions remain
+available from the physical spring energy without storing a fictitious pin history.
+
+The sewing slot now applies the coupled soft block, then the original hard
+projections in input order. This makes mixed hard/soft ordering explicit; it
+changes their finite-iteration interaction. All-hard order/arithmetic, hard scalar
+history remain unchanged; the subsequent contact treatment is described below.
+No targets, closure speed, stiffness, time step, substeps or outer
+iteration limits change. No fully coupled sewing/contact equilibrium is claimed.
+
+For N vertices, S input stitches and R=3*S_zero+S_positive<=3*S soft rows,
+workspace is O(N+R), with one retained Vec3 history per node. One sweep performs
+at most32 matrix products and17 complete objective scans. Bounded internal
+checkpoint count is at most71*N+166*R+19*S+48 (at most71*N+517*S+48).
+The original cancellation callback is polled at entry, every64th checkpoint,
+and immediately before each successful return or x/p_s copy: at most63 skipped
+checkpoints and at most2+floor(bound/64) calls. Allocation/copying remain
+uninterruptible, so this is no wall-time latency guarantee. There is no Cancelled
+return after the accepted copy. Histories/workspaces remain local to each
+whole-Cloth transaction; cancellation/errors preserve all accepted persistent fields.
+
+The earlier local vector-history algorithm repaired rotating-direction local
+stationarity, and its .01kg, h=.1s positive+zero two-spring component keeps its
+independent1e-8m/1e-6N physical bounds. It did not resolve general stiff sharing.
+A fresh two-free-node/two-duplicate-row component at masses
+`4.5714285714285506e-5`/`4.571428571428556e-5 kg`, h=`1/480 s`, c=`1e-8 m/N`
+and positive target `0.01333333333333439 m` has a unique independent Cartesian
+minimum. At32 old local sweeps, compiled source `d8bcb3b7` passes position with
+`2.1942782660322457e-10 m` error but fails full force balance with
+`0.08777113262758984 N` residual. Both physical spring energies remain in the
+new block and the independent oracle/32/1e-8m/1e-6N/COM-finite checks stay fixed.
+The primal component passed the same fixed criteria, but its subsequent full
+source checks stopped at the separate integration failure above; remaining
+stages were not run. The dual candidate is unexecuted. A new independent guard
+uses a six-node/two-row weighted network with a nonconstant kernel vector,
+nonzero old row-scattered history, free/pinned partitions, and analytically
+manufactured strictly convex zero-target minima. It checks nonconstant-kernel
+action orthogonality rather than just COM, exact pins, finite/history transport,
+and1e-12 position/force bounds. A second configuration has exactly zero dual
+RHS but nonzero p. These are source/component facts, not a garment-spike causal
+verdict, garment acceptance or reference parity.
 
 This explicitly models assembly, separate from fabric stiffness. A zero target
 requests coincidence; finite compliance can leave a gap. The default speed is
@@ -226,11 +558,35 @@ linear fallback can still be expensive. This optimization adds no collision law,
 contact toggle or continuous-collision completeness. See
 [SIM-004](../spec/features/SIM-004-contact-candidates.md).
 
-Particle/triangle closest points include face, edge and vertex regions. Penetration
-below the summed thickness creates an inverse-mass-weighted unilateral position
-projection on the particle and the three triangle nodes. Relative tangential
-displacement is limited by a Coulomb-style friction correction, bounded by mu
-times the normal correction. This transfers motion between layers. Mesh one-ring
+Ordinary contact retains each support's actual nodal displacement p for the current
+substep. At a support visit its anchor is z_i=x_i-p_i for free nodes; pinned
+coordinates stay fixed. Ground and particle/triangle geometry is queried at that
+anchor. Capsules use the current-side supporting plane described below. For unit
+normal n, the selected stencil's signed gap c_a at the anchor, coefficients a_i
+and inverse masses w_i:
+
+```text
+D = sum_i w_i*a_i²
+lambda = max(0, -c_a/D)
+t = tangential_part(sum_i a_i*(z_i-previous_i))
+tau = min(mu*lambda, |t|/D)
+q_i = z_i + w_i*a_i*(lambda*n - tau*t/|t|)
+p_i = q_i-z_i
+```
+
+The tangential term is zero at negligible |t|; an immovable support applies no
+motion and keeps its reported conflict. This replaces the support's old action
+rather than accumulating a positive-only correction. An inactive stencil releases
+both normal and friction action; exactly zero actions are removed. For capsules,
+this means separation from the selected current-side halfspace. The multiplier
+has units kg m, not momentum or force. A force interpretation additionally depends
+on the substep's h² scaling and model. Previously active particle/triangle pairs
+are revisited even when their current bounds leave the hierarchy query. Unusable
+active geometry returns an error and preserves the last accepted whole-step state.
+
+Particle/triangle closest points include face, edge and vertex regions. Their
+coefficients are [1, -beta_0, -beta_1, -beta_2], transferring motion between layers.
+Mesh one-ring
 neighbors and directly stitched endpoint neighborhoods are excluded because
 contact between adjacent elements would oppose their shared surface or seam.
 
@@ -238,13 +594,16 @@ An additional linearized swept face test preserves the previous side when a
 particle endpoint has crossed a triangle interior. This is **not full continuous
 collision detection**: deforming triangle trajectories, tangential crossings and
 edge/edge intersections can be missed. Very thin, fast or initially entangled
-scenes can interpenetrate. Initial intersections are counted where this contact
-model detects them and are retained in diagnostics; the constructor permits such
-arrangements so contact can attempt recovery. An undetected edge/edge crossing
+scenes can interpenetrate. The ordinary particle/triangle path uses one closest
+feature per pair and can stall at an infeasible fixed point even for an isolated
+moving triangle. Its action bookkeeping does not establish nonlinear convergence;
+a controlled nonlinear contact block remains open. Initial intersections are
+counted where this model detects them; the constructor permits such arrangements
+and freezes the recovery eligibility described below. An undetected edge/edge crossing
 cannot be interpreted as an intersection-free scene.
 
 Ground is an exact horizontal offset plane: a linear triangle's minimum Y is at
-a vertex. Capsules retain the existing vertex projection and additionally test
+a vertex. Capsules test their vertices and additionally test
 every complete cloth triangle against the closed capsule axis segment. The
 closest-feature search covers edges, axis endpoints projected onto faces, and
 face/axis crossings, including parallel and coplanar axes; a zero-length capsule
@@ -253,15 +612,54 @@ capsule radius plus the maximum existing incident vertex physical offset on the
 triangle. This conservative material-boundary policy agrees with a uniform
 offset; rendered thickness does not enter contact.
 
-For a closest triangle point with barycentric weights beta and node inverse
-masses w, the normal correction uses denominator sum(w_i beta_i²) and moves
-each node by w_i beta_i times depth/denominator. A zero denominator leaves a
-reported conflict. Tangential motion at that same barycentric point uses the
-existing Coulomb-style correction and its barycentrically interpolated physical
-friction coefficient. A surface pair already separated by vertex projections
-gets no additional normal or friction correction. Features are recomputed at
-each pair projection and solver iteration. The capsule phase currently scans
-all triangle/capsule pairs without a broad phase.
+Vertex/capsule and retained material-point/capsule visits choose a unit outward
+normal at the **current** point's closest axis feature. They evaluate that
+normal's supporting halfspace at the retracted anchor; they do not choose a new
+radial projection branch from the anchor. For capsule endpoints A, B and excluded
+radius R (including the existing physical offset), the translated gap is:
+
+```text
+current_point = sum_i a_i*x_i
+anchor_point = sum_i a_i*z_i
+c_a = dot(n, anchor_point-A) - max(0, dot(n, B-A)) - R
+```
+
+The full-axis support value matters even when the current point is exactly on
+an endpoint and a deterministic fallback supplies n. For a movable resolved
+support, the resulting plane excludes the complete convex capsule. Finite
+friction stays in that plane. Point features scale both the axis and offset
+before the projection dot product, preserving tiny nonzero axes without an
+absolute length cutoff. Unusable axis, offset or distance arithmetic returns a
+simulation error before it can be mistaken for separation.
+
+This is a local current-side contact law. A same-side separated anchor releases
+its action. An anchor on the body's opposite side can retain a reaction on the
+current side; this deliberately does not implement a global nearest exterior
+projection. Branch selection, complete continuous collision detection and
+general nonlinear convergence remain open. A single finite friction visit can
+have positive curved-surface clearance with a nonzero reaction. Current-normal
+complementarity and Coulomb balance follow at a converged fixed point, rather
+than from a penetration-only diagnostic or an arbitrary finite iteration count.
+
+The two-mass regression compares the free sewing block with its exact quadratic
+minimum, then compares 32 unchanged sewing/contact passes with an independently
+bracketed constrained-energy minimum on a capsule hemisphere. It checks final
+force balance as well as position, history, feasibility and complementarity.
+Separate vertex and pinned barycentric tests retain the first-visit plane
+friction oracle and check progress toward a known sphere Coulomb fixed point
+after 32 visits. These component checks do not establish garment equilibrium,
+calibration or reference parity.
+
+Ordinary triangle/capsule contact keeps a family of fixed material points beta
+per pair. Each owns three nodal actions and uses a_i=beta_i in the update above,
+with barycentrically interpolated physical friction. Each pass revisits retained
+supports in insertion order and then discovers at most one new current closest
+point, or revisits its exact existing beta. Zero-action supports are removed.
+Thus I passes retain O(I) supports and make O(I²) support visits per pair in the
+worst case. This avoids discarding another material point's action when the closest
+feature changes, but does not prove whole-triangle feasibility or global equilibrium
+at a finite iteration count. The capsule phase scans all triangle/capsule pairs
+without a broad phase.
 
 Skinny faces (cross-product magnitude at most 1e-7 times the longest squared
 edge length) use a conservative lower distance bound: closed-boundary distance
@@ -289,7 +687,11 @@ Pins and finite iteration budgets can leave explicitly reported penetration.
 Capsule surface contact is static: between-step tunnelling remains possible.
 
 The original torso collider remains a vertex-tested ellipsoid with inflated
-radii and radial projection, an approximation to a constant signed-distance offset. No
+radii and radial projection, an approximation to a constant signed-distance
+offset. Away from principal axes its radial direction is not the ellipsoid's
+surface normal; the associated friction step can re-enter even that approximate
+surface. This separate unresolved limit is not repaired by the capsule law.
+The current core mannequin adapter constructs Ground and Capsules. No
 proprietary avatar is bundled. Arbitrary triangle-mesh avatars and animated or
 moving collider trajectories are not supported by this crate yet. Collider
 contact friction uses the cloth's physical friction coefficient.
@@ -307,6 +709,32 @@ vertex-only capsule residuals retain their original narrower scope. Ellipsoid
 surface coverage, self edge/edge contact and continuous collision remain open.
 An exact zero residual in a small fixture does not establish production
 collision robustness.
+
+### Initial-overlap repair
+
+Construction and reset freeze the specific nonexcluded particle/triangle and
+triangle/capsule pairs whose supported static depth exceeds 1e-8 m, using the
+same completed analysis as `initial_intersections`. Eligibility is per pair;
+ground and vertex/collider contacts remain ordinary balanced contacts. New pairs
+created by later motion are not eligible.
+
+Only the first substep at simulated time zero uses the former positive-only
+geometric normal/friction correction for those eligible nonlinear pairs. It adds
+no passes or iterations. This is a kinematic initial-placement repair, not an
+equilibrium reaction: cumulative actual nodal motion is attributed separately and
+ordinary balanced contact does not retract it. Later substeps use ordinary contact.
+The usual velocity update includes repair motion, so it can inject kinetic energy.
+Pins stay exact, and immovable or uncertain conflicts remain visible.
+
+`initial_contact_recovery_projections` counts repair projections that actually
+moved nodes, including repeated visits, since construction/reset. It is zero
+initially, persists through later accepted calls, and reset clears and rearms it.
+Cancellation or failure preserves both its prior value and the recovery phase,
+positions, velocities and provenance. Legacy diagnostic JSON defaults the absent
+field to zero for decoding compatibility; absence does not prove that an older
+execution used no initial repair. Fitting requires a present zero count at the
+initial state and every accepted whole-step boundary; repairs cannot qualify a
+garment quality pass.
 
 ## Failure, cancellation and recovery
 
@@ -330,7 +758,8 @@ A step builds candidate positions/velocities locally. Cancellation is checked at
 substeps, iterations, hierarchy work, bounded intervals in vertex/capsule surface
 work, every 32 particles of the cloth contact loop, and inside final contact
 analysis. Poll counts are implementation details. A failed or
-cancelled call preserves positions, velocities, time and diagnostics from the
+cancelled call preserves positions, velocities, time, diagnostics and initial
+recovery provenance from the
 last successful call. The caller receives the explicit error. Non-finite state or
 derived diagnostics, displacement above 100 m in one substep, or material-axis
 extension above 500% rejects the complete call as unstable. These are runaway
@@ -452,10 +881,20 @@ cargo run --release -p weftforge-cli -- fit-benchmark fixtures/original-shirt.we
 
 `fit-benchmark` prints JSON containing the declared settings, per-phase timings,
 requested/completed step counts, actual diagnostics and fixed quality criteria.
-A quality failure still prints the report and exits nonzero. `fit` uses the same
+A quality failure still prints the report and exits nonzero. Quality now covers
+the initial state and every successfully completed whole-step boundary: finite
+diagnostics, finite nonnegative assembly target, strain below 15%, penetration
+below 2 mm, zero uncertain capsule pairs and zero initial-repair projections.
+States with an exactly zero assembly target also require seam gap below 5 mm;
+the final target must be zero. `quality_states_checked` includes the initial
+state, and `first_quality_failure_state` identifies the first failed boundary
+(zero is initial). A quality failure does not truncate the 180-step protocol;
+a solver error stops it. Substep-internal quality is not certified. `fit` uses the same
 protocol and writes the actual simulated OBJ only after the criteria pass; failed
 quality preserves any prior output. Neither command claims reference parity.
 
+The following historical runs used final-state CLI quality checks. They have not
+been rerun or regraded against the trajectory and initial-repair requirements.
 Observed release results on Apple M3 Max, 48 GiB RAM, macOS 27.2 arm64,
 Rust 1.94.1, 2026-11-13:
 

@@ -1,0 +1,47 @@
+{
+  "status": "authorized_one_clean_xtask_verify",
+  "at_utc": "2026-11-17T14:04:31.181444Z",
+  "one_cycle_only": true,
+  "metadata_commit": "bf100c3310bf6acf53df18e07052780312372965",
+  "freeze_path": "VERIFICATION-FREEZE-176.json",
+  "freeze_sha256": "5de334c2cd3d86b638e52eb511632b9924030f8cc7f9cb7243539fa36a85e351",
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "xtask",
+    "verify"
+  ],
+  "caps": {
+    "seconds": 360,
+    "RSS_bytes": 6442450944,
+    "retained_bytes": 16777216,
+    "disk_floor_bytes": 8000000000
+  },
+  "pinned_env": {
+    "CARGO": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "CARGO_BUILD_JOBS": "2",
+    "CARGO_BUILD_RUSTC_WORKSPACE_WRAPPER": "",
+    "CARGO_BUILD_RUSTC_WRAPPER": "",
+    "CARGO_ENCODED_RUSTDOCFLAGS": "",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_HOME": "<HOME>/.cargo",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/sewing-history-delivery-integration-20261117/target",
+    "PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONOPTIMIZE": "0",
+    "RUSTC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTC_WORKSPACE_WRAPPER": "",
+    "RUSTC_WRAPPER": "",
+    "RUSTDOC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+    "RUSTDOCFLAGS": "",
+    "RUSTFLAGS": "",
+    "RUSTUP_TOOLCHAIN": "1.94.1-aarch64-apple-darwin"
+  },
+  "reused_pure_caps_sha256": "1d90a32badb6a88ad0eddb75e299b500ae39a17e1a015fd47de289802602b8ba",
+  "root_authority": "Explicit root GO after accepted bf100c3310 generated outputs; source unchanged. Root expands tooling whole-command cap to360s before execution for six added bridge tests/report roster. One run; preserve failure; no retry/fix/push.",
+  "concurrent_activity": "Root permits concurrent SOURCE425 checks on a different worktree under their own1GiB cap. No global-idle requirement; this is tooling verification, not a performance or garment threshold.",
+  "other_source_focused_generator_model_native_reference_network_publication_authorized": false
+}

@@ -1,0 +1,71 @@
+{
+  "argv": [
+    "<RUST_TOOLCHAIN_BIN>/cargo",
+    "test",
+    "--workspace",
+    "--locked",
+    "--offline"
+  ],
+  "disk_observation": {
+    "last_available_bytes": 7993475072,
+    "max_snapshot_gap_seconds": 6.970108375186101,
+    "minimum_available_bytes": 7993475072,
+    "path": "<WORKTREE>",
+    "samples": 2879,
+    "stop_below_available_bytes": 8000000000
+  },
+  "end_monotonic_seconds": 1095249.918143833,
+  "exit_code": -9,
+  "peak_rss_bytes": 616071168,
+  "pid": 95654,
+  "process_group": 95654,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [
+      {
+        "at_monotonic_seconds": 1095192.099347333,
+        "consecutive_failures": 1,
+        "kind": "TimeoutExpired",
+        "pid": 95654,
+        "timeout_seconds": 1.0
+      },
+      {
+        "at_monotonic_seconds": 1095194.502091666,
+        "consecutive_failures": 2,
+        "kind": "TimeoutExpired",
+        "pid": 95654,
+        "timeout_seconds": 1.0
+      },
+      {
+        "at_monotonic_seconds": 1095209.505557208,
+        "consecutive_failures": 1,
+        "kind": "TimeoutExpired",
+        "pid": 95654,
+        "timeout_seconds": 1.0
+      },
+      {
+        "at_monotonic_seconds": 1095215.793965958,
+        "consecutive_failures": 1,
+        "kind": "TimeoutExpired",
+        "pid": 95654,
+        "timeout_seconds": 1.0
+      }
+    ],
+    "failures": 4,
+    "max_consecutive_failures": 2,
+    "max_snapshot_gap_seconds": 8.65074420790188,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 2872,
+    "timeouts": 4
+  },
+  "sampled_peak_rss_bytes": 940605440,
+  "stop_reason": "disk_space_below_floor",
+  "terminal_phase_checks": {
+    "deadline": 1095956.910739208,
+    "output_bytes": 16996,
+    "output_cap_bytes": 8388608,
+    "reserve_bytes": 262144
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "status": "PASS",
+  "file_only": true,
+  "actual_case_execution_count": 1,
+  "limits": [
+    "No UI, gesture, process lifecycle, native reopen, reference, physics, or full garment acceptance."
+  ],
+  "freeze_sha256": "602bb9372dc39fa3747b6fe6322f07d54b4b0eae2d70be143546d1ff6c080cd3",
+  "metrics": {
+    "created": {
+      "width_m": 0.4,
+      "height_m": 0.5999999999999999,
+      "signed_area_m2": 0.23999999999999996,
+      "perimeter_m": 1.9999999999999998
+    },
+    "reopened-edit": {
+      "signed_area_m2": 0.24299999999999997,
+      "bottom_width_m": 0.41,
+      "top_width_m": 0.4,
+      "height_m": 0.6,
+      "P0_x_delta_m": -0.010000000000000009
+    }
+  },
+  "semantic_status": "PASS",
+  "before": {
+    ".local/rectangle-file-checker-20261116/checker.py": {
+      "sha256": "f5fc1d1985578affcde122288ec3973d6118f83c332c11e1a078a0873842259c",
+      "bytes": 24175,
+      "mode": "0444"
+    },
+    ".local/rectangle-file-checker-20261116/targets.json": {
+      "sha256": "402abadb803a9c580d3723c89e9aae71476e6336f9613c6392599cc843bef7bc",
+      "bytes": 2408,
+      "mode": "0444"
+    },
+    ".local/rectangle-file-checker-20261116/seed-expected.json": {
+      "sha256": "5b0449d038beb04e0ae94c79e53c78d715da8e5b5dda0f82fbf472d042aaa7db",
+      "bytes": 1977,
+      "mode": "0444"
+    },
+    ".local/rectangle-file-checker-20261116/selfcheck-receipt.json": {
+      "sha256": "ce446e6f95b8f02bcdd8398ff1eb78b35f4e5c30c29de75e27ec25380d7253fb",
+      "bytes": 11235,
+      "mode": "0444"
+    },
+    ".local/rectangle-file-checker-20261116/README.txt": {
+      "sha256": "20177e3940bbc1921e04882f8cc6e4ea07727e9eef4f30d4d228211d27b9134e",
+      "bytes": 2300,
+      "mode": "0444"
+    },
+    ".local/rectangle-file-checker-20261116/freeze.json": {
+      "sha256": "602bb9372dc39fa3747b6fe6322f07d54b4b0eae2d70be143546d1ff6c080cd3",
+      "bytes": 2052,
+      "mode": "0444"
+    },
+    ".local/native-rectangle-20261116/RG001/OUTPUT-HASHES.json": {
+      "sha256": "bca6593b934a6d5b3255c6b10b6f24bc05df9345a4b48fa78a1527c51e6ee111",
+      "bytes": 700,
+      "mode": "0644"
+    },
+    ".local/native-rectangle-20261116/RG001/input/empty.weftforge": {
+      "sha256": "5b0449d038beb04e0ae94c79e53c78d715da8e5b5dda0f82fbf472d042aaa7db",
+      "bytes": 1977,
+      "mode": "0644"
+    },
+    ".local/native-rectangle-20261116/RG001/snapshots/created.weftforge": {
+      "sha256": "ade00e7b2b5cf1ce050dbcaaea310419f5945aea95a99c7f2255ea4ee96f8132",
+      "bytes": 3229,
+      "mode": "0644"
+    },
+    ".local/native-rectangle-20261116/RG001/snapshots/undo.weftforge": {
+      "sha256": "d59ca698bf4e6ec3b33848166e4f81a890fa46a650edc3580134b285ef7874cb",
+      "bytes": 1978,
+      "mode": "0644"
+    },
+    ".local/native-rectangle-20261116/RG001/snapshots/redo.weftforge": {
+      "sha256": "3a1055029c3a013a31ea5d558f5de8cfe2194eb3d6de05399fe9fa831c30cfb3",
+      "bytes": 3229,
+      "mode": "0644"
+    },
+    ".local/native-rectangle-20261116/RG001/snapshots/reopened-edit.weftforge": {
+      "sha256": "cb6243e904bd9d39b5f9426f1b63c69d412dc8c8af50f42d66a114feaa2d16a0",
+      "bytes": 3229,
+      "mode": "0644"
+    },
+    ".local/native-rectangle-20261116/RG001/work/rectangle.weftforge": {
+      "sha256": "cb6243e904bd9d39b5f9426f1b63c69d412dc8c8af50f42d66a114feaa2d16a0",
+      "bytes": 3229,
+      "mode": "0644"
+    }
+  },
+  "after": {
+    ".local/rectangle-file-checker-20261116/checker.py": {
+      "sha256": "f5fc1d1985578affcde122288ec3973d6118f83c332c11e1a078a0873842259c",
+      "bytes": 24175,
+      "mode": "0444"
+    },
+    ".local/rectangle-file-checker-20261116/targets.json": {
+      "sha256": "402abadb803a9c580d3723c89e9aae71476e6336f9613c6392599cc843bef7bc",
+      "bytes": 2408,
+      "mode": "0444"
+    },
+    ".local/rectangle-file-checker-20261116/seed-expected.json": {
+      "sha256": "5b0449d038beb04e0ae94c79e53c78d715da8e5b5dda0f82fbf472d042aaa7db",
+      "bytes": 1977,
+      "mode": "0444"
+    },
+    ".local/rectangle-file-checker-20261116/selfcheck-receipt.json": {
+      "sha256": "ce446e6f95b8f02bcdd8398ff1eb78b35f4e5c30c29de75e27ec25380d7253fb",
+      "bytes": 11235,
+      "mode": "0444"
+    },
+    ".local/rectangle-file-checker-20261116/README.txt": {
+      "sha256": "20177e3940bbc1921e04882f8cc6e4ea07727e9eef4f30d4d228211d27b9134e",
+      "bytes": 2300,
+      "mode": "0444"
+    },
+    ".local/rectangle-file-checker-20261116/freeze.json": {
+      "sha256": "602bb9372dc39fa3747b6fe6322f07d54b4b0eae2d70be143546d1ff6c080cd3",
+      "bytes": 2052,
+      "mode": "0444"
+    },
+    ".local/native-rectangle-20261116/RG001/OUTPUT-HASHES.json": {
+      "sha256": "bca6593b934a6d5b3255c6b10b6f24bc05df9345a4b48fa78a1527c51e6ee111",
+      "bytes": 700,
+      "mode": "0644"
+    },
+    ".local/native-rectangle-20261116/RG001/input/empty.weftforge": {
+      "sha256": "5b0449d038beb04e0ae94c79e53c78d715da8e5b5dda0f82fbf472d042aaa7db",
+      "bytes": 1977,
+      "mode": "0644"
+    },
+    ".local/native-rectangle-20261116/RG001/snapshots/created.weftforge": {
+      "sha256": "ade00e7b2b5cf1ce050dbcaaea310419f5945aea95a99c7f2255ea4ee96f8132",
+      "bytes": 3229,
+      "mode": "0644"
+    },
+    ".local/native-rectangle-20261116/RG001/snapshots/undo.weftforge": {
+      "sha256": "d59ca698bf4e6ec3b33848166e4f81a890fa46a650edc3580134b285ef7874cb",
+      "bytes": 1978,
+      "mode": "0644"
+    },
+    ".local/native-rectangle-20261116/RG001/snapshots/redo.weftforge": {
+      "sha256": "3a1055029c3a013a31ea5d558f5de8cfe2194eb3d6de05399fe9fa831c30cfb3",
+      "bytes": 3229,
+      "mode": "0644"
+    },
+    ".local/native-rectangle-20261116/RG001/snapshots/reopened-edit.weftforge": {
+      "sha256": "cb6243e904bd9d39b5f9426f1b63c69d412dc8c8af50f42d66a114feaa2d16a0",
+      "bytes": 3229,
+      "mode": "0644"
+    },
+    ".local/native-rectangle-20261116/RG001/work/rectangle.weftforge": {
+      "sha256": "cb6243e904bd9d39b5f9426f1b63c69d412dc8c8af50f42d66a114feaa2d16a0",
+      "bytes": 3229,
+      "mode": "0644"
+    }
+  },
+  "inputs_unchanged": true,
+  "finished_utc": "2026-11-16T22:42:52.027769+00:00"
+}

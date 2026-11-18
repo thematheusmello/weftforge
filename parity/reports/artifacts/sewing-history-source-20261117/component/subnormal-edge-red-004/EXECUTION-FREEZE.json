@@ -1,0 +1,37 @@
+{
+  "GO_sha256": "9e823d9c6fbfc56bf40fd12cdc9e9b65ea91eea26514ea79f20b5fdeb2ae16a7",
+  "absolute_PLAN_path": "<ROOT>/.local/positive-target-sewing-component-20261117/.local/positive-target-sewing-component-20261117/subnormal-edge-red-004/EDGE-PLAN.json",
+  "added_control_files": {
+    "resources.py": {
+      "mode": "0o644",
+      "sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781"
+    },
+    "run_edge_red.py": {
+      "mode": "0o644",
+      "sha256": "209c16e9056b7b3b88bc392d6ecc0cec1a28b9142caa57be9c3500b08587d436"
+    }
+  },
+  "argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--lib",
+    "tests::positive_stitch_subnormal_anchor_and_fallback_use_unit_direction",
+    "--",
+    "--exact",
+    "--nocapture"
+  ],
+  "caps": {
+    "retained_output_bytes": 8388608,
+    "sampled_process_group_plus_controller_RSS_bytes": 1073741824,
+    "whole_command_seconds_including_compile": 120
+  },
+  "literal_equality_guard_before_spawn": true,
+  "prior_actual_edge_test_executions": 0,
+  "prior_invalid_command_manifest_sha256": "37e19a05823e7972a9ad7047bad53b820081ce29ae865495bf2090f6c0144ac6",
+  "source_freeze_sha256": "471eee438e3ffd55b5c6212dd797903eb64e53e6a96825636c0cfff1465886e5",
+  "status": "ROOT_AUTHORIZED_DIRECT_LITERAL_FIRST_EDGE_RED"
+}

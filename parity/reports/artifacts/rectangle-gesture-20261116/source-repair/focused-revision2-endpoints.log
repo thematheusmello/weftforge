@@ -1,0 +1,15 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s
+     Running unittests src/main.rs (target/debug/deps/weftforge-5704a18cf508861a)
+
+running 8 tests
+test point_drag_release_tests::coalesced_endpoint_drag_captures_snap_bypass_from_the_press ... ok
+test point_drag_release_tests::point_drag_release_position_precedes_later_hover_in_a_recognized_drag ... ok
+test point_drag_release_tests::coalesced_endpoint_drag_invalid_release_preserves_project_history_and_redo ... ok
+test point_drag_release_tests::point_drag_release_commits_beyond_the_previous_changed_preview ... ok
+test point_drag_release_tests::point_drag_release_rejects_an_invalid_final_position_without_committing_the_preview ... ok
+test point_drag_release_tests::point_drag_release_commits_final_movement_after_a_snapped_noop_preview ... ok
+test point_drag_release_tests::coalesced_endpoint_drag_commits_once_before_any_later_hover ... ok
+test point_drag_release_tests::coalesced_endpoint_drag_rejects_blocked_outside_click_and_ambiguous_input ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 143 filtered out; finished in 0.98s
+

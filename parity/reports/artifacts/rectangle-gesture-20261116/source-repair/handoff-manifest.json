@@ -1,0 +1,179 @@
+{
+  "base_commit": "33ea04a29b374883150d0c694353968e33e23587",
+  "source_commit": "496b9bc2b336c9193d0508837c17b6170582490e",
+  "branch": "feat/rectangle-gesture-repair",
+  "git_tracked_status_clean": true,
+  "owned_tracked_files": [
+    "apps/weftforge/src/main.rs"
+  ],
+  "source_sha256": "18ab3e365244209deed35f16aff86b5d9e7c0d1cf3e1e4440f2be2e16e22612f",
+  "test_binary": {
+    "path": "target/debug/deps/weftforge-5704a18cf508861a",
+    "sha256": "7a554ee4a16f6b909f87c7940e2772ab43639c2eff0fb98ba511461e6f0078cf"
+  },
+  "checks_passed": {
+    "rectangle_filter_tests": 8,
+    "endpoint_regression_tests": 8,
+    "existing_position_snapping_regression": 1,
+    "cargo_fmt_all_check": true,
+    "git_diff_check": true
+  },
+  "not_run": [
+    "cargo test --workspace",
+    "cargo clippy --workspace --all-targets -- -D warnings",
+    "cargo xtask verify",
+    "native UI smoke or acceptance",
+    "registry/map publication checks"
+  ],
+  "claims": "Implementation regression only. Not native feature acceptance, reference parity, public evidence delivery, a frozen experiment rerun or registry regrade.",
+  "files": {
+    "committed-main.rs": {
+      "sha256": "18ab3e365244209deed35f16aff86b5d9e7c0d1cf3e1e4440f2be2e16e22612f",
+      "bytes": 908222
+    },
+    "committed.patch": {
+      "sha256": "b570e0a5f7c6481d0bd8de745f8d52e0e168bf6e84955ba1b2bf5d725ecfa03a",
+      "bytes": 31181
+    },
+    "first-fix-main.rs": {
+      "sha256": "7737e43585577d421c212fa8fe423f60ffff025624503f764005c29c3c19dcee",
+      "bytes": 895021
+    },
+    "first-fix.patch": {
+      "sha256": "8a4640ad393a61a1b95b62dfba1ca0ccac2e307d29ce7d49e70e63f0631d53ef",
+      "bytes": 12199
+    },
+    "first-green-receipt.json": {
+      "sha256": "3cfb845e005448ff0383fcbf83f5b88134bc2cee6bff8e65926fa07352fc517b",
+      "bytes": 425
+    },
+    "first-green.log": {
+      "sha256": "0c5c44b91ec711185314d9d2e28f79722728ed5cf05e49bf169c4c784b121272",
+      "bytes": 631
+    },
+    "focused-guards-rectangle-receipt.json": {
+      "sha256": "0521626e873073308a750691b8d6f27aad24e03ab7ef03b14f2860ad6342b5a6",
+      "bytes": 620
+    },
+    "focused-guards-rectangle.log": {
+      "sha256": "3fbc33bef1de64776ab4ff4af8e7f201e152aea7544ce5c04cf656e712c591a7",
+      "bytes": 8858
+    },
+    "focused-revision2-endpoints-receipt.json": {
+      "sha256": "8868ee13479e94490da285777ca175e815f03e8ba27f8dd06d8c1feaac69ff91",
+      "bytes": 636
+    },
+    "focused-revision2-endpoints.log": {
+      "sha256": "abc882196e019c24ef9c06bbc4ad9f8e19713a6200cbd36d997be117d58c1ed1",
+      "bytes": 1131
+    },
+    "focused-revision2-position-snap-receipt.json": {
+      "sha256": "d5d6227489211305ecbbeba68330adbaec1daff0ceaa3384c7fe2c7f4148b576",
+      "bytes": 693
+    },
+    "focused-revision2-position-snap.log": {
+      "sha256": "b6c76f537d000f6884ee81d5a755d76aa3a58a94f8ddc3a7d68684a35fa17a97",
+      "bytes": 840
+    },
+    "focused-revision2-rectangle-receipt.json": {
+      "sha256": "ca15f05bd7d1d76c2ebaf8c1d8e5cd999b2ee038e1ce8013900d74f7ee369d88",
+      "bytes": 621
+    },
+    "focused-revision2-rectangle.log": {
+      "sha256": "e93366e525210afca3f616b0be4772233c13e34ca392f58e6f9cdac4fa9766dc",
+      "bytes": 1242
+    },
+    "guard-candidate-main.rs": {
+      "sha256": "4dc5723de4ce31535c5ab0135607381f3e4bcbe8dce9b0eb20bf37185ba0c915",
+      "bytes": 907684
+    },
+    "guard-candidate.patch": {
+      "sha256": "b71074fd3f08374aa960085f51a9f5f8009cc77e560af2930293096c0e3e7d4e",
+      "bytes": 29108
+    },
+    "guard-review-note.txt": {
+      "sha256": "a2527dea4c7315b67d90a971885f32e67fc4acdff694fdb7f1d2b34acbdd798b",
+      "bytes": 937
+    },
+    "original-production-main.rs": {
+      "sha256": "3ddd1a624e7dd9af0c6228a12065782cc8dadef5bddb85f31d4958458f3adf21",
+      "bytes": 889046
+    },
+    "original-red-receipt.json": {
+      "sha256": "c5c9365789156b4b1003796bf2c2a478fae09f12567b11265edf47421084f7a6",
+      "bytes": 867
+    },
+    "original-red.log": {
+      "sha256": "0515c5dcf85fedcc0bf48ae4124b03c0d8252abfe986a8b4f9a7e227a12f374a",
+      "bytes": 7616
+    },
+    "original-regression.patch": {
+      "sha256": "803bfe0ab5c0ebd3eb1cf42b54ae8b4048ae54b0e6536d39d9fce4c8c9a9184c",
+      "bytes": 3802
+    },
+    "original-with-regression-main.rs": {
+      "sha256": "e8ebc0d4f4fad67040aa67ce2488f41bdc3fe89365ad4c26db4ac6a53e7ce726",
+      "bytes": 892447
+    },
+    "post-case-cleanup-receipt.json": {
+      "sha256": "d7b9ed42a67a081f972f9d7e4ba3edd4473870f720443e5ed895ba9d2454252a",
+      "bytes": 484
+    },
+    "review-candidate-diff-check-receipt.json": {
+      "sha256": "b2d5f7f9745de292b43aa687ec25535c811bd5b84c7d5c478d03f8fff4812cca",
+      "bytes": 561
+    },
+    "review-candidate-diff-check.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "review-candidate-endpoints-receipt.json": {
+      "sha256": "a4a275fd3566ccef567c5a6a63142425d0b5d96a4d7120dca19f7998bdde664f",
+      "bytes": 635
+    },
+    "review-candidate-endpoints.log": {
+      "sha256": "e2fdd4345e4d3bc7e385875feba724dabf85ebe0297522762c3acddd3e271d13",
+      "bytes": 1131
+    },
+    "review-candidate-fmt-receipt.json": {
+      "sha256": "f1580718fd969db80767870428f796f85a4776e818c2791420937865b0ecf7f3",
+      "bytes": 568
+    },
+    "review-candidate-fmt.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "review-candidate-main.rs": {
+      "sha256": "18ab3e365244209deed35f16aff86b5d9e7c0d1cf3e1e4440f2be2e16e22612f",
+      "bytes": 908222
+    },
+    "review-candidate-position-snap-receipt.json": {
+      "sha256": "89e0bcf1065d7c2a8d2f94df26b1f20c66ac735b356b63406f683f9078c2e801",
+      "bytes": 690
+    },
+    "review-candidate-position-snap.log": {
+      "sha256": "56d0ce87906f7aea895232e820cef0b642c5dc02bf6e3c4f37c04024a2f2c5d2",
+      "bytes": 364
+    },
+    "review-candidate-rectangle-receipt.json": {
+      "sha256": "a4316918f77ef152f98a41c38cadc5cb7b5452fb936d89d0a45f5e0a505a80a4",
+      "bytes": 620
+    },
+    "review-candidate-rectangle.log": {
+      "sha256": "d96a0ccb7e0344db14755bdfdc0c38c91cd0f305b035c956df6262e82ebed858",
+      "bytes": 1242
+    },
+    "review-candidate.patch": {
+      "sha256": "b570e0a5f7c6481d0bd8de745f8d52e0e168bf6e84955ba1b2bf5d725ecfa03a",
+      "bytes": 31181
+    },
+    "revision2-main.rs": {
+      "sha256": "e71dc25755216633de62157ecd4f7640e5003703b6129a3382828a571e18027e",
+      "bytes": 908229
+    },
+    "revision2.patch": {
+      "sha256": "0333c2c59fba71e353f8ed27c6ca97ae54e4db53b0dc6a3c308298b986c4aa03",
+      "bytes": 29891
+    }
+  }
+}

@@ -1,0 +1,18 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.11s
+     Running unittests src/main.rs (target/debug/deps/weftforge-5704a18cf508861a)
+
+running 1 test
+
+thread 'tests::position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule' (74679413) panicked at apps/weftforge/src/main.rs:8592:17:
+[-0.2759999975562096, -0.24599999859929084] != [-0.284, -0.246]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test tests::position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule ... FAILED
+
+failures:
+
+failures:
+    tests::position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 150 filtered out; finished in 0.11s
+
+error: test failed, to rerun pass `-p weftforge --bin weftforge`

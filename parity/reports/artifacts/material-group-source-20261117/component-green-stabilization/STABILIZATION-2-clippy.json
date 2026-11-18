@@ -1,0 +1,22 @@
+{
+  "stage": "clippy",
+  "argv": [
+    "cargo",
+    "clippy",
+    "--locked",
+    "--offline",
+    "-p",
+    "weftforge-sim",
+    "--all-targets",
+    "--",
+    "-D",
+    "warnings"
+  ],
+  "pid": 5080,
+  "status": "terminal",
+  "started_at": "2026-11-16T23:45:54.708672+00:00",
+  "exit_code": 0,
+  "seconds": 1.4007267500273883,
+  "log_sha256": "77787167c1475f1d00b50be3e51580bc55063ba10a53578a3db0ab2f28d39835",
+  "source_unchanged": true
+}

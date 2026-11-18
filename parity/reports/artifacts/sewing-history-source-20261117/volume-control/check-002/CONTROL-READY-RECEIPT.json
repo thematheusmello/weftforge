@@ -1,0 +1,69 @@
+{
+  "at_utc": "2026-11-17T10:24:48.789698+00:00",
+  "independent_cause_basis": [
+    "Path(/var).is_symlink() is true and resolves to/private/var.",
+    "monitor.no_links(stdout/stderr) precedes Popen; if it refuses, child remains None and cleanup mock has no child to handle.",
+    "After the sole canonical fixture change, the unchanged cleanup assertion and all9 tests pass in one authorized invocation."
+  ],
+  "new_outcome": {
+    "PID": 67127,
+    "actual_invocations": 1,
+    "cap_retained_bytes": 1048576,
+    "cap_seconds": 30,
+    "direct_child_reaped": true,
+    "elapsed_after_all_persistence_seconds": 0.15932612493634224,
+    "exit_code": 0,
+    "failed": 0,
+    "passed": 9,
+    "retained_runtime_bytes_at_terminal": 4215,
+    "tests": 9
+  },
+  "new_result_sha256": "7f084bcb66a6be36642759db60a654a850b0ff40c761899f3f75b66b73d80374",
+  "new_stderr_sha256": "eab4281419f49474c6773f172eab4705e82da9e9196e5418e92a366609bcb99e",
+  "new_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "new_terminal_sha256": "1375803bdb7b91dbba74a0c485d4aa097ec809d3a8b1127b9f7a8bbcc1d6968b",
+  "next": "Stop. Fresh numerical protocol/source/control review and a distinct GO remain separate; no new model authorization.",
+  "no_Harbor_model_init_steps_analysis_GUI_network_binary_Rust_or_old_case_writes": true,
+  "old_draft_seal_sha256": "848d19e49c307c2880a021ce09abd2be0578c54443777d7db8970523929bed67",
+  "old_outcome": "8passed1failed, preserved unchanged",
+  "old_root_check_files_retained_exact": {
+    "RESULT.json": {
+      "bytes": 455,
+      "mode": 420,
+      "sha256": "2d402d502240217f37d13b526cf16165993ed0770000f5db6e705d3390fdb23b"
+    },
+    "ROOT-GO.json": {
+      "bytes": 828,
+      "mode": 420,
+      "sha256": "7023897ba44df9d53463e174a63ccf0acf8da54589382278b5dca986ddcc498b"
+    },
+    "stderr.log": {
+      "bytes": 1033,
+      "mode": 420,
+      "sha256": "337b78fd2f77188cafe604385f4f332f0f3835cdfb68f146ff101e6800f3ef34"
+    },
+    "stdout.log": {
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "one_line_test_delta_sha256": "0b2e47fcdddf5a0459605dc63d9e884ea679c3688ec16ec4b7bacbbcc2ee0ab5",
+  "only_test_delta": "Terminal-count fixture root = Path(temporary).resolve(); no hardguard, product counter or cleanup assertion changes.",
+  "product_control_delta_sha256": "25fed07b3cd8d2e295fd9daa820ea44be70555c574660c88d0c4b81fee242c5f",
+  "product_control_source_byte_exact_to848": [
+    "packet/build_release.py",
+    "packet/common.py",
+    "packet/controller.py",
+    "packet/resources.py",
+    "packet/worker.py",
+    "outer/launch_and_record.py",
+    "outer/supervise.py"
+  ],
+  "resources_sha256": "ba4560b912abaf8e310f87dc33b334fddfc96bc9d41c74a046a46b2d1f815d12",
+  "root_authorization_sha256": "6fbe8820902f0e82df3f1fc9f05671e8dd5653fd46d021dcaa1b326e1e72fc8f",
+  "source_freeze_sha256": "9e6125528800a7794bb89ec3666993570fcc7f770d9fcd3997f0058f49e45c4c",
+  "source_snapshot": ".local/directory-volume-control-repair-20261117-draft-002",
+  "status": "READY_CONTROL_REPAIR_002_ALL9_SYNTHETIC_PASS_NO_NUMERICAL_GO",
+  "test_sha256": "d3e9ffdf3d04725d5a41576638b6b34462b95f3b2a48cf212099154da169b338"
+}

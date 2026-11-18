@@ -1,0 +1,51 @@
+{
+  "case_id": "NATIVE-TEXT-FOCUS-002",
+  "status": "STOPPED_INITIAL_AX_PRECONDITION",
+  "reason": "Missing or unexpected empty/focus evidence: {\"focus\":null,\"fields\":[],\"revision\":null,\"pieces\":null,\"unsaved\":false,\"status\":[]}",
+  "search_tabs": 0,
+  "paste_attempts": 0,
+  "authoring_calls": 0,
+  "screenshots": [
+    {
+      "file": "captures/01-empty-clean.jpg",
+      "bytes": 159031,
+      "sha256": "6eeb833805cd57d8dfa722eb741ea0ef7db69f08a59cc0797901bf57712290df",
+      "source_record": "0002",
+      "unedited": true,
+      "utc": "2026-11-16T15:36:12.433Z",
+      "monotonic_ns": "965687862674083"
+    },
+    {
+      "file": "captures/02-initial-ax-precondition-stop.jpg",
+      "bytes": 159031,
+      "sha256": "6eeb833805cd57d8dfa722eb741ea0ef7db69f08a59cc0797901bf57712290df",
+      "source_record": "0003",
+      "unedited": true,
+      "utc": "2026-11-16T15:36:33.425Z",
+      "monotonic_ns": "965708855179875"
+    }
+  ],
+  "first_observation": {
+    "focus": null,
+    "fields": [],
+    "revision": null,
+    "pieces": null,
+    "unsaved": false,
+    "status": []
+  },
+  "final_calibration_observation": {
+    "focus": null,
+    "fields": [],
+    "revision": null,
+    "pieces": null,
+    "unsaved": false,
+    "status": []
+  },
+  "seconds_from_launch": 39.417,
+  "meaningful_calls_before_cleanup": 4,
+  "source_records": [
+    "0002",
+    "0003"
+  ],
+  "cause": "Unknown; no input route attempted and no product defect inferred."
+}

@@ -1,0 +1,1106 @@
+{
+  "schema_version": 1,
+  "kind": "selected_public_derivative_manifest",
+  "selection_is_proposal_only": true,
+  "actual_source_QA_execution_commit": "59501451cd36f3ec51aba3560090090c94881427",
+  "copied_at_utc": "2026-11-18T11:49:41.895769Z",
+  "selected_original_count": 37,
+  "new_public_file_count": 42,
+  "selected_original_bytes": 270629,
+  "transform_order": [
+    "SOURCE_QA",
+    "SOURCE_CLOSURE",
+    "H_DEBUG_BINARIES",
+    "SOURCE_REVIEW",
+    "PRIOR_NUMERICAL_FREEZE",
+    "CARGO_TARGET",
+    "INTEGRATION_WORKTREE",
+    "REPOSITORY_ROOT",
+    "WORKSPACE_PARENT",
+    "WORKSPACE_CONTAINER",
+    "WORKSPACE_BASE",
+    "CARGO_HOME",
+    "RUSTUP_HOME",
+    "PYENV_HOME",
+    "HOME",
+    "HOME_PARENT",
+    "TMPDIR",
+    "PACKAGE_MANAGER",
+    "RELATIVE_INTEGRATION_NAME"
+  ],
+  "transform_definitions": {
+    "SOURCE_QA": "Exact original locator replaced with <SOURCE_QA>; original locator bytes remain private.",
+    "SOURCE_CLOSURE": "Exact original locator replaced with <SOURCE_CLOSURE>; original locator bytes remain private.",
+    "H_DEBUG_BINARIES": "Exact original locator replaced with <H_DEBUG_BINARIES>; original locator bytes remain private.",
+    "SOURCE_REVIEW": "Exact original locator replaced with <SOURCE_REVIEW>; original locator bytes remain private.",
+    "PRIOR_NUMERICAL_FREEZE": "Exact original locator replaced with <PRIOR_NUMERICAL_FREEZE>; original locator bytes remain private.",
+    "CARGO_TARGET": "Exact original locator replaced with <CARGO_TARGET>; original locator bytes remain private.",
+    "INTEGRATION_WORKTREE": "Exact original locator replaced with <INTEGRATION_WORKTREE>; original locator bytes remain private.",
+    "REPOSITORY_ROOT": "Exact original locator replaced with <REPOSITORY_ROOT>; original locator bytes remain private.",
+    "WORKSPACE_PARENT": "Exact original locator replaced with <WORKSPACE_PARENT>; original locator bytes remain private.",
+    "WORKSPACE_CONTAINER": "Exact original locator replaced with <WORKSPACE_CONTAINER>; original locator bytes remain private.",
+    "WORKSPACE_BASE": "Exact original locator replaced with <WORKSPACE_BASE>; original locator bytes remain private.",
+    "CARGO_HOME": "Exact original locator replaced with <CARGO_HOME>; original locator bytes remain private.",
+    "RUSTUP_HOME": "Exact original locator replaced with <RUSTUP_HOME>; original locator bytes remain private.",
+    "PYENV_HOME": "Exact original locator replaced with <PYENV_HOME>; original locator bytes remain private.",
+    "HOME": "Exact original locator replaced with <HOME>; original locator bytes remain private.",
+    "HOME_PARENT": "Exact original locator replaced with <HOME_PARENT>; original locator bytes remain private.",
+    "TMPDIR": "Exact original locator replaced with <TMPDIR>/; original locator bytes remain private.",
+    "PACKAGE_MANAGER": "Exact original locator replaced with <PACKAGE_MANAGER>; original locator bytes remain private.",
+    "RELATIVE_INTEGRATION_NAME": "Exact original locator replaced with <INTEGRATION_CHECKOUT_NAME>; original locator bytes remain private."
+  },
+  "replacement_totals": {
+    "CARGO_TARGET": 6,
+    "RUSTUP_HOME": 28,
+    "PYENV_HOME": 4,
+    "PACKAGE_MANAGER": 2,
+    "INTEGRATION_WORKTREE": 25,
+    "SOURCE_REVIEW": 2,
+    "REPOSITORY_ROOT": 6,
+    "WORKSPACE_PARENT": 2,
+    "WORKSPACE_CONTAINER": 2,
+    "WORKSPACE_BASE": 2,
+    "CARGO_HOME": 822,
+    "HOME_PARENT": 2,
+    "H_DEBUG_BINARIES": 2
+  },
+  "byte_preservation": "Exact ordered locator substitutions and public mode0644 only. Typed JSON scalar values/tokens, Python numeric/boolean/null literals, all64hex, whitespace, line endings and EOF state remain exact. Git source patch is byte-exact. No case program is imported/executed and no outcome is edited/regraded.",
+  "source93": {
+    ".cargo/config.toml": {
+      "sha256": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+      "bytes": 34,
+      "mode": 420
+    },
+    "Cargo.lock": {
+      "sha256": "70661ff2dbb345e8aa0e2c326f8d76408ecdc107e84e7d812899af311c3b92d4",
+      "bytes": 107031,
+      "mode": 420
+    },
+    "Cargo.toml": {
+      "sha256": "032b32e80547618a72d39e42c0204611ff37908b8a6bf28615b3e592f79fa499",
+      "bytes": 735,
+      "mode": 420
+    },
+    "THIRD_PARTY.md": {
+      "sha256": "86d65f258938c55ed36d3a621222ef5124e348f5519d01eab8f61db540a4876e",
+      "bytes": 2910,
+      "mode": 420
+    },
+    "apps/weftforge-cli/Cargo.toml": {
+      "sha256": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+      "bytes": 347,
+      "mode": 420
+    },
+    "apps/weftforge-cli/src/main.rs": {
+      "sha256": "08a30dcdea5b7c6e225f3eee809c8afe61088a93717c55332108d1f633c8d0e3",
+      "bytes": 32831,
+      "mode": 420
+    },
+    "apps/weftforge-cli/src/mcp.rs": {
+      "sha256": "0ce9cf83e5d8933152aa002d788333b18eb3b52091beb269243503c530b4352e",
+      "bytes": 32622,
+      "mode": 420
+    },
+    "apps/weftforge-cli/tests/curves.rs": {
+      "sha256": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+      "bytes": 5513,
+      "mode": 420
+    },
+    "apps/weftforge-cli/tests/dxf_import.rs": {
+      "sha256": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d",
+      "bytes": 5338,
+      "mode": 420
+    },
+    "apps/weftforge-cli/tests/ellipse.rs": {
+      "sha256": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b",
+      "bytes": 4339,
+      "mode": 420
+    },
+    "apps/weftforge-cli/tests/grain.rs": {
+      "sha256": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+      "bytes": 3098,
+      "mode": 420
+    },
+    "apps/weftforge-cli/tests/holes.rs": {
+      "sha256": "c7e0656dcb756db3ced588e52c08c969a997b99661f85bbb8d5079a27421ad77",
+      "bytes": 5651,
+      "mode": 420
+    },
+    "apps/weftforge-cli/tests/mcp_stdio.rs": {
+      "sha256": "285bcd7090fa301542b7d4a6c63e51010e9e6f58721f400c34868b2298ac43b5",
+      "bytes": 128410,
+      "mode": 420
+    },
+    "apps/weftforge-cli/tests/svg_import.rs": {
+      "sha256": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af",
+      "bytes": 5336,
+      "mode": 420
+    },
+    "apps/weftforge/Cargo.toml": {
+      "sha256": "6c7a79c94f71e940bcb4bfcdf2a8cac6f0753bcffa13bf624c7a756e4b853100",
+      "bytes": 381,
+      "mode": 420
+    },
+    "apps/weftforge/assets/fonts/Inter-Regular.ttf": {
+      "sha256": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82",
+      "bytes": 411640,
+      "mode": 420
+    },
+    "apps/weftforge/assets/fonts/Inter-SemiBold.ttf": {
+      "sha256": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3",
+      "bytes": 419744,
+      "mode": 420
+    },
+    "apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf": {
+      "sha256": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1",
+      "bytes": 270224,
+      "mode": 420
+    },
+    "apps/weftforge/assets/fonts/OFL-Inter.txt": {
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "bytes": 4380,
+      "mode": 420
+    },
+    "apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt": {
+      "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "bytes": 4399,
+      "mode": 420
+    },
+    "apps/weftforge/assets/fonts/SOURCES.json": {
+      "sha256": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c",
+      "bytes": 1445,
+      "mode": 420
+    },
+    "apps/weftforge/src/capture.rs": {
+      "sha256": "10c9347d5f50d11f992217d4c54f6a9a2f447bb6beeb9b0c78d424e8da6db884",
+      "bytes": 36788,
+      "mode": 420
+    },
+    "apps/weftforge/src/main.rs": {
+      "sha256": "661b35a4204198fc11bbe10fcf3b19180247c4a0829d579eea290f589b0bfdb8",
+      "bytes": 1031431,
+      "mode": 420
+    },
+    "crates/weftforge-core/Cargo.toml": {
+      "sha256": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+      "bytes": 341,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/document.rs": {
+      "sha256": "7f57bd9a51850158754318ab181561653b64eb96c53823a35ed369f0e133f3df",
+      "bytes": 96064,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/geometry.rs": {
+      "sha256": "3738282136928c459eaf524036c61e20d4c8b3cf2e04cd46ac812faf4f823c41",
+      "bytes": 71927,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/lib.rs": {
+      "sha256": "e86bf9bffa8a40eb1f57bf989ce554a69ee028d9caed9877a4d3a702900b6831",
+      "bytes": 1333,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/offset.rs": {
+      "sha256": "4507ab301afa9de95f97b9426b807046aa91817ddb0e7059344033aeb3745572",
+      "bytes": 89821,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/persistence.rs": {
+      "sha256": "d7f79c33193e6a5a03dc2faadd84e8d2d0959e8607b3f60e586b9f79a992ff80",
+      "bytes": 35608,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/persistence/dxf.rs": {
+      "sha256": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338",
+      "bytes": 7133,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/persistence/dxf_import.rs": {
+      "sha256": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+      "bytes": 18713,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/persistence/svg.rs": {
+      "sha256": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7",
+      "bytes": 18436,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/sewing.rs": {
+      "sha256": "dc7cb6cab0a62c313698c155728409f8940319bb49ed51c5c2fbc88c88f21146",
+      "bytes": 33824,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/simulation.rs": {
+      "sha256": "24e12aaf323f34abe745dc9c42c9823acbd6e2a1832d6827a5a6397112525707",
+      "bytes": 10468,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/cut_piece.rs": {
+      "sha256": "0a51167339fddebdc302a2dfc3ba9264b584cb57fe04cd2b47b62ec80a275826",
+      "bytes": 62833,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/dxf.rs": {
+      "sha256": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+      "bytes": 16900,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/dxf_import.rs": {
+      "sha256": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b",
+      "bytes": 14935,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/ellipse.rs": {
+      "sha256": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78",
+      "bytes": 12167,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge": {
+      "sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+      "bytes": 8107,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/fixtures/original-cut-l.weftforge": {
+      "sha256": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d",
+      "bytes": 3622,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge": {
+      "sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+      "bytes": 3211,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf": {
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "bytes": 4289,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/fixtures/original-editable-patterns.svg": {
+      "sha256": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+      "bytes": 729,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/fixtures/original-notch-migration-v5.weftforge": {
+      "sha256": "8212107e1cbf74f78cdadf0ac4f0e82da875075c65ca55b06dbbad1c921177dc",
+      "bytes": 1724,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/grain.rs": {
+      "sha256": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+      "bytes": 5015,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/hole_io.rs": {
+      "sha256": "02e55792aaef3b1c1bf8c9e232b23831602d132d684b057bf64c86aa23e43151",
+      "bytes": 10791,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/holes.rs": {
+      "sha256": "eaf21904ea94858632e6d11caddda63c0bf220845788633481c3bd114a355594",
+      "bytes": 36802,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/internal_lines.rs": {
+      "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786",
+      "bytes": 24048,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/joins.rs": {
+      "sha256": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10",
+      "bytes": 19861,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/migration.rs": {
+      "sha256": "8d009ebf1392b3b48f8e8578c78855b9354e6d53f79d87c0e0a69825c74ccf19",
+      "bytes": 18511,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/notches.rs": {
+      "sha256": "1f44e3d8734c8f373805a2ab68a607c31279258f924867ded0ce1c0ef6b82310",
+      "bytes": 20517,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/outline_offset.rs": {
+      "sha256": "62c00a9cf9e6e781928e831def0df4f4060438ce529055a82c303c30511b4c57",
+      "bytes": 35369,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/pattern_transform.rs": {
+      "sha256": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31",
+      "bytes": 24219,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/seam_reversal.rs": {
+      "sha256": "6a6590557bcdfd29d7a6d0b85de939ed542586e0c573180a1b035b8aaa114c5d",
+      "bytes": 6231,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/sewing_groups.rs": {
+      "sha256": "4f05df2a401f0e44aed2f728ca99186266019ea06bec6a0ede911c73e819c74c",
+      "bytes": 57392,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/shirt.rs": {
+      "sha256": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+      "bytes": 2949,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/svg_import.rs": {
+      "sha256": "57d693d8cc307bb711093140f0b1110cddfd2a5b68bce8e338d54a2deddd34ab",
+      "bytes": 18828,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/workflow.rs": {
+      "sha256": "05eba55a4ee1d2ea5c569dad68f6c4fdeb3e02a9bf09f0778dce00e4bbc3dea7",
+      "bytes": 23929,
+      "mode": 420
+    },
+    "crates/weftforge-sim/Cargo.toml": {
+      "sha256": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+      "bytes": 205,
+      "mode": 420
+    },
+    "crates/weftforge-sim/src/capsule.rs": {
+      "sha256": "ac833840d7568fd2deda6731325d4c33f29e1935df386bfeec7d1f206dd4e322",
+      "bytes": 22986,
+      "mode": 420
+    },
+    "crates/weftforge-sim/src/constraints.rs": {
+      "sha256": "c8a7aa09f1b2ce9fffd8a8e1531b0ffdf36594ac747154974f55a1cb56072ef6",
+      "bytes": 44848,
+      "mode": 420
+    },
+    "crates/weftforge-sim/src/contact.rs": {
+      "sha256": "89d3d5f31dc2d6cb7ce5e207c070bb774aeb90ed36df50b9d0acb34fd2a8cac4",
+      "bytes": 95276,
+      "mode": 420
+    },
+    "crates/weftforge-sim/src/lib.rs": {
+      "sha256": "91f2a76d4eef9c55a0443b2d506c0d190780c5e6332c7157da3a5b873f63411d",
+      "bytes": 38657,
+      "mode": 420
+    },
+    "crates/weftforge-sim/src/math.rs": {
+      "sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+      "bytes": 2391,
+      "mode": 420
+    },
+    "crates/weftforge-sim/src/strain.rs": {
+      "sha256": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+      "bytes": 1858,
+      "mode": 420
+    },
+    "crates/weftforge-sim/src/tests.rs": {
+      "sha256": "5289956bc358ac0c72192e8419fe224660d18719af01a228c78d3c9db9bb838e",
+      "bytes": 139223,
+      "mode": 420
+    },
+    "docs/architecture.md": {
+      "sha256": "a2d315e6e635516c65d9606c9e57919a3dcae8c5c88d5ec89f2667e29464a6dd",
+      "bytes": 13806,
+      "mode": 420
+    },
+    "docs/automation.md": {
+      "sha256": "75322fc3e1d27f04f45cf9c6b572c3d23c34146b4fc08c56339c0402461e5519",
+      "bytes": 33398,
+      "mode": 420
+    },
+    "docs/dependencies.json": {
+      "sha256": "31b44a3989e374510638df611ec403bfdd55bac31095bb9ce2ed66a685c07e2a",
+      "bytes": 98288,
+      "mode": 420
+    },
+    "docs/file-formats.md": {
+      "sha256": "61d807d41093ef5f15bae94f92bbb0cc96fe613a8612959686adb83f7b523ace",
+      "bytes": 25646,
+      "mode": 420
+    },
+    "docs/physics.md": {
+      "sha256": "628953bb7294bc373fca731937b963cd2b2b3615b0c67085d14a5092ffadc6a9",
+      "bytes": 64793,
+      "mode": 420
+    },
+    "rust-toolchain.toml": {
+      "sha256": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+      "bytes": 86,
+      "mode": 420
+    },
+    "spec/features/APP-001-new-empty.md": {
+      "sha256": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+      "bytes": 2422,
+      "mode": 420
+    },
+    "spec/features/MAT-003-workspace-capture.md": {
+      "sha256": "2e2fa45d8c28b339d6528fa8a073c70297e12141b5f0e449138ee20595561690",
+      "bytes": 2804,
+      "mode": 420
+    },
+    "spec/features/PAT-004-native-transform-selection.md": {
+      "sha256": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
+      "bytes": 1051,
+      "mode": 420
+    },
+    "spec/features/PAT-004-piece-rigid-transform.md": {
+      "sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+      "bytes": 22481,
+      "mode": 420
+    },
+    "spec/features/PAT-006-authored-notches.md": {
+      "sha256": "568587bd7a5720432e9d031f81f14ca372412ca1d079999bf0906f9e12ea0da0",
+      "bytes": 7211,
+      "mode": 420
+    },
+    "spec/features/PAT-006-internal-segments.md": {
+      "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+      "bytes": 43508,
+      "mode": 420
+    },
+    "spec/features/PAT-006-straight-cut.md": {
+      "sha256": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c",
+      "bytes": 17836,
+      "mode": 420
+    },
+    "spec/features/PAT-006-straight-hole.md": {
+      "sha256": "634028923f25811aa364d85ce13947db242812d6523635c13ce5a715277b1d2f",
+      "bytes": 24548,
+      "mode": 420
+    },
+    "spec/features/PAT-009-material-outline-offset.md": {
+      "sha256": "604d9cc5d12da398a90bd819b78eb7b9999a48a2f96c32e900780d4457b6dbc6",
+      "bytes": 16002,
+      "mode": 420
+    },
+    "spec/features/SEW-001-cut-and-sew.md": {
+      "sha256": "9420f9a88ea184868aba5543f0d356181fcd8373dadfa4632376cc4a5a5f8941",
+      "bytes": 9082,
+      "mode": 420
+    },
+    "spec/features/SEW-002-physical-length.md": {
+      "sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+      "bytes": 14576,
+      "mode": 420
+    },
+    "spec/features/fixtures/PAT-009-offset-originals.json": {
+      "sha256": "6de6eefff1bc040363f1f2de335f5c4f70dc526dacd5224ba22e1c33e1820bec",
+      "bytes": 31080,
+      "mode": 420
+    },
+    "spec/features/fixtures/PAT-009-offset-reviewed-additions.json": {
+      "sha256": "fc4b133cadada09a676266cea90c736a35342767552cb54a573460eea9f41991",
+      "bytes": 10015,
+      "mode": 420
+    },
+    "vendor/earcutr/Cargo.toml": {
+      "sha256": "906d72d033764b39570416ef92906a90d4c49e85b9c35ab0138cf7a0aafe9c76",
+      "bytes": 273,
+      "mode": 420
+    },
+    "vendor/earcutr/LICENSE": {
+      "sha256": "ac0e50e523dd0ea36f077c373833f1ae6c7ad130ea5ac6ff23bfa8d3f402145f",
+      "bytes": 771,
+      "mode": 420
+    },
+    "vendor/earcutr/UPSTREAM.md": {
+      "sha256": "e686aeaa8758581d2c0659b1ed5e87dce4fe6608a8605c29ba90459495818944",
+      "bytes": 2118,
+      "mode": 420
+    },
+    "vendor/earcutr/src/legacy.rs": {
+      "sha256": "fd5120ba533484556e7a6d1a460d28084ac1f4c90f3334c71ff6f67976b933c8",
+      "bytes": 4057,
+      "mode": 420
+    },
+    "vendor/earcutr/src/lib.rs": {
+      "sha256": "29992d5bd3d0717df6b4db9e60a3d280c276b67c3ddb87fa5de9173c1b3578d3",
+      "bytes": 49959,
+      "mode": 420
+    },
+    "vendor/earcutr/src/tests.rs": {
+      "sha256": "2e54cb4cceb9c073ae911a5909d2d9b430c6bf4ce53000332254233b21a544e9",
+      "bytes": 34672,
+      "mode": 420
+    },
+    "xtask/Cargo.toml": {
+      "sha256": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+      "bytes": 241,
+      "mode": 420
+    },
+    "xtask/src/main.rs": {
+      "sha256": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709",
+      "bytes": 7562,
+      "mode": 420
+    }
+  },
+  "source_inputs_all_tracked_hash_exact_in_H": true,
+  "files": [
+    {
+      "private_source_id": "full-H/EXTERNAL-TERMINAL.json",
+      "original_sha256": "a72bbb5ae9a9750cd582d91e904631db53bcdf89f0945178a877e4f234b5c2fb",
+      "original_bytes": 747,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/EXTERNAL-TERMINAL.json",
+      "public_sha256": "a72bbb5ae9a9750cd582d91e904631db53bcdf89f0945178a877e4f234b5c2fb",
+      "public_bytes": 747,
+      "public_mode": "0644",
+      "line_count": 18,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "full-H/LAUNCH.json",
+      "original_sha256": "0004917f93c2c4e6416dae3e2ce5a6ad5211f23d5b07fd0e19428eee5308caa3",
+      "original_bytes": 431,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/LAUNCH.json",
+      "public_sha256": "0004917f93c2c4e6416dae3e2ce5a6ad5211f23d5b07fd0e19428eee5308caa3",
+      "public_bytes": 431,
+      "public_mode": "0644",
+      "line_count": 14,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "full-H/POST-TERMINAL-CLOCK.json",
+      "original_sha256": "ab95e78b16096a8cac110e906eab43dd42377a4bbf5293f12c27634a99ce69e3",
+      "original_bytes": 576,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/POST-TERMINAL-CLOCK.json",
+      "public_sha256": "ab95e78b16096a8cac110e906eab43dd42377a4bbf5293f12c27634a99ce69e3",
+      "public_bytes": 576,
+      "public_mode": "0644",
+      "line_count": 12,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "full-H/ROOT-GO.json",
+      "original_sha256": "3c13aa356b4c04072e665108568f0955afbf82dc3db037789f779e4206bf7d62",
+      "original_bytes": 1703,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/ROOT-GO.json",
+      "public_sha256": "043c3deef4e5cd1024d94f09dd95c101db620fede76c4c1c0258934b3dc383f7",
+      "public_bytes": 1564,
+      "public_mode": "0644",
+      "line_count": 36,
+      "replacements": {
+        "CARGO_TARGET": 1,
+        "RUSTUP_HOME": 3,
+        "PYENV_HOME": 1,
+        "PACKAGE_MANAGER": 1
+      }
+    },
+    {
+      "private_source_id": "full-H/controller.stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/controller.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "full-H/controller.stdout",
+      "original_sha256": "3f0f148c2cefb0aca52342a910f9825cd30fc8441b013c7a2b4e13aab9f4bd68",
+      "original_bytes": 639,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/controller.stdout",
+      "public_sha256": "3f0f148c2cefb0aca52342a910f9825cd30fc8441b013c7a2b4e13aab9f4bd68",
+      "public_bytes": 639,
+      "public_mode": "0644",
+      "line_count": 5,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "full-H/full-001/RESULT.json",
+      "original_sha256": "159783b20398efed47bf8736b2a05fd86995410e81878e2eefe3865a8313065e",
+      "original_bytes": 23715,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/RESULT.json",
+      "public_sha256": "157bdae75dc36917e75a0761e6e084d2542a31f1624ceadda78f5c4036aa9bda",
+      "public_bytes": 23157,
+      "public_mode": "0644",
+      "line_count": 675,
+      "replacements": {
+        "CARGO_TARGET": 2,
+        "INTEGRATION_WORKTREE": 4,
+        "RUSTUP_HOME": 4
+      }
+    },
+    {
+      "private_source_id": "full-H/full-001/STARTED.json",
+      "original_sha256": "511c8d04df1913f4cc129839b208a9e51d129cf170e1add2063d70f6ba47550f",
+      "original_bytes": 266,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/STARTED.json",
+      "public_sha256": "511c8d04df1913f4cc129839b208a9e51d129cf170e1add2063d70f6ba47550f",
+      "public_bytes": 266,
+      "public_mode": "0644",
+      "line_count": 9,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "full-H/full-001/TERMINAL.json",
+      "original_sha256": "05b5735ae3ce06be659682bafbd24847b7561953dce21889c38606afa8a2a9fe",
+      "original_bytes": 160,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/TERMINAL.json",
+      "public_sha256": "05b5735ae3ce06be659682bafbd24847b7561953dce21889c38606afa8a2a9fe",
+      "public_bytes": 160,
+      "public_mode": "0644",
+      "line_count": 5,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "full-H/full-001/full-fmt-RESULT.json",
+      "original_sha256": "078772be6f77c4679b83330ee157ec84f791632b9bfa9b9f34c9ee4bfd29978b",
+      "original_bytes": 1286,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/full-fmt-RESULT.json",
+      "public_sha256": "e32a262b75724f7527563982d83dae92f502c16981bf76a75ccd3c8a5b7332a0",
+      "public_bytes": 1194,
+      "public_mode": "0644",
+      "line_count": 41,
+      "replacements": {
+        "INTEGRATION_WORKTREE": 1,
+        "RUSTUP_HOME": 1
+      }
+    },
+    {
+      "private_source_id": "full-H/full-001/full-fmt-STARTED.json",
+      "original_sha256": "421c7b4b22b87871893d78c68d3ac99d564027ca6c0aab80451856129a70c7e3",
+      "original_bytes": 1043,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/full-fmt-STARTED.json",
+      "public_sha256": "07e8a5788e9a1e5c63129c2d14663b8ef5f6b23bda15adfd8c96ab4661114476",
+      "public_bytes": 951,
+      "public_mode": "0644",
+      "line_count": 34,
+      "replacements": {
+        "INTEGRATION_WORKTREE": 1,
+        "RUSTUP_HOME": 1
+      }
+    },
+    {
+      "private_source_id": "full-H/full-001/full-fmt.stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/full-fmt.stderr",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "full-H/full-001/full-fmt.stdout",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/full-fmt.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "full-H/full-001/native-cli-build-RESULT.json",
+      "original_sha256": "286277da4e6b1f7d2ec3e92c9fadad4dbe9727825103b27d902a8248af2f1f5b",
+      "original_bytes": 1354,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/native-cli-build-RESULT.json",
+      "public_sha256": "e66a654459c0b824323e042749c8a10fd7d911994696ecd953e4d966067eebf4",
+      "public_bytes": 1262,
+      "public_mode": "0644",
+      "line_count": 45,
+      "replacements": {
+        "INTEGRATION_WORKTREE": 1,
+        "RUSTUP_HOME": 1
+      }
+    },
+    {
+      "private_source_id": "full-H/full-001/native-cli-build-STARTED.json",
+      "original_sha256": "e7d1cd4551242567ca19b477f129a42bd19eb7593797c4306a0b5778d700105f",
+      "original_bytes": 1108,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/native-cli-build-STARTED.json",
+      "public_sha256": "20616d2d1c7343aa0b707152844a734eb68c0c31b5b47c2fb26a44d9223e2c1f",
+      "public_bytes": 1016,
+      "public_mode": "0644",
+      "line_count": 38,
+      "replacements": {
+        "INTEGRATION_WORKTREE": 1,
+        "RUSTUP_HOME": 1
+      }
+    },
+    {
+      "private_source_id": "full-H/full-001/native-cli-build.stderr",
+      "original_sha256": "cd2c2a340b0bf8e0d017d55b0ae37afd57d14ed0505da5459ef6637c85893ac1",
+      "original_bytes": 210,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/native-cli-build.stderr",
+      "public_sha256": "1843c86240611ee64a7541ae81c29edbcfda4b8e1c34be2f4b8c712425090018",
+      "public_bytes": 130,
+      "public_mode": "0644",
+      "line_count": 2,
+      "replacements": {
+        "INTEGRATION_WORKTREE": 1
+      }
+    },
+    {
+      "private_source_id": "full-H/full-001/native-cli-build.stdout",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/native-cli-build.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "full-H/full-001/workspace-clippy-RESULT.json",
+      "original_sha256": "e2f0e89b1c3c86f5b133888e592854ca2f6838cba28f847ba37aa6aad6da7c52",
+      "original_bytes": 1375,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/workspace-clippy-RESULT.json",
+      "public_sha256": "033ef4fc233bd76f92239bb4107d1cdf63e85b523afbcec061da2328d28b31b1",
+      "public_bytes": 1283,
+      "public_mode": "0644",
+      "line_count": 46,
+      "replacements": {
+        "INTEGRATION_WORKTREE": 1,
+        "RUSTUP_HOME": 1
+      }
+    },
+    {
+      "private_source_id": "full-H/full-001/workspace-clippy-STARTED.json",
+      "original_sha256": "9fcd7c3d72e62c0b82c61dc785a5a16963b6c9f3338e9dbfd3df2f1d2014e428",
+      "original_bytes": 1127,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/workspace-clippy-STARTED.json",
+      "public_sha256": "9ee1086bd02aa58d18a563f0fd1049ad1629fb4e60d1653c81f148fa9a4eaf57",
+      "public_bytes": 1035,
+      "public_mode": "0644",
+      "line_count": 39,
+      "replacements": {
+        "INTEGRATION_WORKTREE": 1,
+        "RUSTUP_HOME": 1
+      }
+    },
+    {
+      "private_source_id": "full-H/full-001/workspace-clippy.stderr",
+      "original_sha256": "92407c10b32e7d01a1417530ec9a4decf50e01ca9c93890028590516920536e1",
+      "original_bytes": 530,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/workspace-clippy.stderr",
+      "public_sha256": "2f4b362d843aa409896786606d9690af5fac1f562c699b71a0e061536551e82c",
+      "public_bytes": 290,
+      "public_mode": "0644",
+      "line_count": 4,
+      "replacements": {
+        "INTEGRATION_WORKTREE": 3
+      }
+    },
+    {
+      "private_source_id": "full-H/full-001/workspace-clippy.stdout",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/workspace-clippy.stdout",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "public_mode": "0644",
+      "line_count": 0,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "full-H/full-001/workspace-tests-RESULT.json",
+      "original_sha256": "82516f73daf7fbb1d02b5da30a3821d02cd2e9525b95caf963ddc68f1d452185",
+      "original_bytes": 1314,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/workspace-tests-RESULT.json",
+      "public_sha256": "8842193b58e81650d2a177c2a1f34d27d8baff378cc0111a39f1e1a2d10d44b3",
+      "public_bytes": 1222,
+      "public_mode": "0644",
+      "line_count": 42,
+      "replacements": {
+        "INTEGRATION_WORKTREE": 1,
+        "RUSTUP_HOME": 1
+      }
+    },
+    {
+      "private_source_id": "full-H/full-001/workspace-tests-STARTED.json",
+      "original_sha256": "0df9aea0a5031d34e43723679a8ffd88b0157e1638de7a3451a3ea47d39e89fd",
+      "original_bytes": 1068,
+      "original_mode": "0600",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/workspace-tests-STARTED.json",
+      "public_sha256": "7acf8427d90a606f5a19a2897a1bdcd95249fc3a3525510343b25547de28edf3",
+      "public_bytes": 976,
+      "public_mode": "0644",
+      "line_count": 35,
+      "replacements": {
+        "INTEGRATION_WORKTREE": 1,
+        "RUSTUP_HOME": 1
+      }
+    },
+    {
+      "private_source_id": "full-H/full-001/workspace-tests.stderr",
+      "original_sha256": "84550ddc6f8aab3b59e09827a45ec7092695fbb456ae91c8e60c796a82615206",
+      "original_bytes": 2955,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/workspace-tests.stderr",
+      "public_sha256": "425701fa1ef7c3fd01e5ac9db65d158005f110c1c0355c20e01bed4b9b0f6664",
+      "public_bytes": 2715,
+      "public_mode": "0644",
+      "line_count": 36,
+      "replacements": {
+        "INTEGRATION_WORKTREE": 3
+      }
+    },
+    {
+      "private_source_id": "full-H/full-001/workspace-tests.stdout",
+      "original_sha256": "75691ef518882b53b50a56da18680a27a5c9b8b69f8017941092e0e2443aa888",
+      "original_bytes": 48937,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/workspace-tests.stdout",
+      "public_sha256": "75691ef518882b53b50a56da18680a27a5c9b8b69f8017941092e0e2443aa888",
+      "public_bytes": 48937,
+      "public_mode": "0644",
+      "line_count": 646,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "full-H/full-001.json",
+      "original_sha256": "b04ea90baac720225d79a4c7f408e8dcfea6454daeaef2ab345a75184f12b8ef",
+      "original_bytes": 136881,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001.json",
+      "public_sha256": "ca87bf154e4ac72cde6303bc70c0d8e806a671cb44de400ad9b8d21a8db138a0",
+      "public_bytes": 125704,
+      "public_mode": "0644",
+      "line_count": 1491,
+      "replacements": {
+        "SOURCE_REVIEW": 2,
+        "CARGO_TARGET": 1,
+        "INTEGRATION_WORKTREE": 6,
+        "REPOSITORY_ROOT": 6,
+        "WORKSPACE_PARENT": 2,
+        "WORKSPACE_CONTAINER": 2,
+        "WORKSPACE_BASE": 2,
+        "CARGO_HOME": 822,
+        "RUSTUP_HOME": 13,
+        "PYENV_HOME": 2,
+        "HOME_PARENT": 2,
+        "PACKAGE_MANAGER": 1
+      }
+    },
+    {
+      "private_source_id": "full-H/launch.py",
+      "original_sha256": "d51b2e74b01efd970ad7336bb8702650d7e70858255e75fee5178381ac5bc280",
+      "original_bytes": 3687,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/launch.py",
+      "public_sha256": "ee82552471c73a3045fcea25cac858b153c87ce97d458b42303dd34355995fb1",
+      "public_bytes": 3675,
+      "public_mode": "0644",
+      "line_count": 40,
+      "replacements": {
+        "PYENV_HOME": 1
+      }
+    },
+    {
+      "private_source_id": "full-H/resources.py",
+      "original_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "original_bytes": 12679,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/resources.py",
+      "public_sha256": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+      "public_bytes": 12679,
+      "public_mode": "0644",
+      "line_count": 244,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "full-H/runfull.py",
+      "original_sha256": "0749b06db0361dc829bf0c184eb77e008edf47cff75da4432d035639d10a537e",
+      "original_bytes": 7884,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/runfull.py",
+      "public_sha256": "0749b06db0361dc829bf0c184eb77e008edf47cff75da4432d035639d10a537e",
+      "public_bytes": 7884,
+      "public_mode": "0644",
+      "line_count": 140,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "full-H/post-case/ROOT-CLOSURE.json",
+      "original_sha256": "53f9c2aece0f4a94cfc5294b2fe31a948a8b50ffc752e7cf88265b031a571c6e",
+      "original_bytes": 3107,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/post-case/ROOT-CLOSURE.json",
+      "public_sha256": "6a63432a0eed9c7bb8e450e3e8ae6cd16f5fd2b2d68b1a7606458a190419d5a2",
+      "public_bytes": 2659,
+      "public_mode": "0644",
+      "line_count": 63,
+      "replacements": {
+        "H_DEBUG_BINARIES": 2,
+        "CARGO_TARGET": 2
+      }
+    },
+    {
+      "private_source_id": "full-H/post-case/ORIGINAL-EXEC-TERMINAL.json",
+      "original_sha256": "6cb4b313e2e894f63c7bee3696e05bed8521dc64026b09e29238767b8ef64440",
+      "original_bytes": 707,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/post-case/ORIGINAL-EXEC-TERMINAL.json",
+      "public_sha256": "6cb4b313e2e894f63c7bee3696e05bed8521dc64026b09e29238767b8ef64440",
+      "public_bytes": 707,
+      "public_mode": "0644",
+      "line_count": 7,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "reviews/source/FREEZE-001.json",
+      "original_sha256": "7d5a298c5b6edad35c7d25d41a99249940589a67b5175d7012ec95268180b20d",
+      "original_bytes": 179,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/reviews/source/FREEZE-001.json",
+      "public_sha256": "7d5a298c5b6edad35c7d25d41a99249940589a67b5175d7012ec95268180b20d",
+      "public_bytes": 179,
+      "public_mode": "0644",
+      "line_count": 4,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "reviews/source/REVIEW-001.json",
+      "original_sha256": "b29e058f8c5f8cba4f44972f08bb0a6cf5c134a79000b585b39753669db289d9",
+      "original_bytes": 3615,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/reviews/source/REVIEW-001.json",
+      "public_sha256": "b29e058f8c5f8cba4f44972f08bb0a6cf5c134a79000b585b39753669db289d9",
+      "public_bytes": 3615,
+      "public_mode": "0644",
+      "line_count": 61,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "reviews/source/REVIEW-001.md",
+      "original_sha256": "552d4ce64dfd17fdcba782c9c8f388da4a38b9b1890172c0c84d9283476f7d0e",
+      "original_bytes": 4121,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/reviews/source/REVIEW-001.md",
+      "public_sha256": "552d4ce64dfd17fdcba782c9c8f388da4a38b9b1890172c0c84d9283476f7d0e",
+      "public_bytes": 4121,
+      "public_mode": "0644",
+      "line_count": 23,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "reviews/source/FREEZE-002.json",
+      "original_sha256": "45b32646b5fd949cc130b1c4f4b52b0532f38f8fa60d5109ca9eb2074dbd93ff",
+      "original_bytes": 1329,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/reviews/source/FREEZE-002.json",
+      "public_sha256": "45b32646b5fd949cc130b1c4f4b52b0532f38f8fa60d5109ca9eb2074dbd93ff",
+      "public_bytes": 1329,
+      "public_mode": "0644",
+      "line_count": 21,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "reviews/source/REVIEW-002.json",
+      "original_sha256": "ffbc89af2a957dd4431d27e191f86434e8e0a7e39c0e0953029ee10dae5252c5",
+      "original_bytes": 3400,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/reviews/source/REVIEW-002.json",
+      "public_sha256": "ffbc89af2a957dd4431d27e191f86434e8e0a7e39c0e0953029ee10dae5252c5",
+      "public_bytes": 3400,
+      "public_mode": "0644",
+      "line_count": 65,
+      "replacements": {}
+    },
+    {
+      "private_source_id": "reviews/source/REVIEW-002.md",
+      "original_sha256": "fb6c3c2b3da148d5be2c6036eb9eb0294ec76b928c7c2bac27fb0a8885888c27",
+      "original_bytes": 2496,
+      "original_mode": "0644",
+      "public_path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/reviews/source/REVIEW-002.md",
+      "public_sha256": "fb6c3c2b3da148d5be2c6036eb9eb0294ec76b928c7c2bac27fb0a8885888c27",
+      "public_bytes": 2496,
+      "public_mode": "0644",
+      "line_count": 17,
+      "replacements": {}
+    }
+  ],
+  "generated_artifacts": [
+    {
+      "path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/source/H-from-G-owned-source.patch",
+      "sha256": "39a8ee4c522e73e3b3d8a0a5cd23f21d7287f7e3e6f16fec123ab58d97e8f481",
+      "qualification": "Byte-exact immutable Git G-to-H diff restricted to six implementation files plus the actual capture contract. STATUS and unrelated history are excluded."
+    },
+    {
+      "path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/source/H-SOURCE93.json",
+      "sha256": "da3aecc93b393360729c2fe3d0ded81dc99bf318eedd31a842ad1febd0beabb1",
+      "qualification": "All 93 recorded source hashes, byte sizes and modes match immutable Git H. No mutable checkout source/HEAD/index or executable identity was substituted."
+    },
+    {
+      "path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/SOURCE-SCOPE.md",
+      "sha256": "08a011285334ee7c15f02b049987742224dc5247a6cee66dbdde0443d3c0db8f",
+      "qualification": "Curation scope explanation only; no additional test or runtime outcome."
+    }
+  ],
+  "authentic_whitespace_exceptions": [
+    {
+      "path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/full-001/workspace-tests.stdout",
+      "line": 646,
+      "qualification": "Authentic original blank line at EOF retained; no normalization."
+    },
+    {
+      "path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/source/H-from-G-owned-source.patch",
+      "line": 989,
+      "qualification": "Authentic original trailing whitespace retained; no normalization."
+    },
+    {
+      "path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/source/H-from-G-owned-source.patch",
+      "line": 1219,
+      "qualification": "Authentic original trailing whitespace retained; no normalization."
+    },
+    {
+      "path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/source/H-from-G-owned-source.patch",
+      "line": 1227,
+      "qualification": "Authentic original trailing whitespace retained; no normalization."
+    },
+    {
+      "path": "parity/reports/artifacts/workspace-png-integrated-source-20261118/source/H-from-G-owned-source.patch",
+      "line": 1304,
+      "qualification": "Authentic original trailing whitespace retained; no normalization."
+    }
+  ],
+  "historical_inner_hashes": "Raw frozen input hashes remain verbatim and identify originals, not locator derivatives; the file mapping gives distinct public hashes.",
+  "public_dependency_bindings": {
+    "<SOURCE_QA>": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H",
+    "<SOURCE_CLOSURE>": "parity/reports/artifacts/workspace-png-integrated-source-20261118/full-H/post-case",
+    "<SOURCE_REVIEW>": "parity/reports/artifacts/workspace-png-integrated-source-20261118/reviews/source"
+  },
+  "descriptor_only_locators": [
+    "<H_DEBUG_BINARIES>",
+    "<CARGO_TARGET>",
+    "<PRIOR_NUMERICAL_FREEZE>",
+    "<CARGO_HOME>",
+    "<RUSTUP_HOME>",
+    "<PYENV_HOME>"
+  ],
+  "excluded": [
+    "Application binary bytes and images",
+    "New native/backend execution",
+    "Cargo/model/test reruns",
+    "Canonical G/D/E reports and trajectories",
+    "Registry/cache/tool binary bytes",
+    "Private path-bearing originals"
+  ],
+  "publication_gate": "Private proposal only: root review, tracking, generated metadata and clean registry/map verification precede publication."
+}

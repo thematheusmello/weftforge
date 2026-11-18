@@ -1,0 +1,39 @@
+{
+  "controller_pid": 75909,
+  "deadline": 1034264.610232541,
+  "frozen_commands": [
+    [
+      "edge",
+      [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--lib",
+        "tests::positive_stitch_subnormal_anchor_and_fallback_use_unit_direction",
+        "--",
+        "--exact",
+        "--nocapture"
+      ]
+    ],
+    [
+      "N32",
+      [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--lib",
+        "tests::positive_target_stitch_n32_matches_independent_coupled_radial_energy",
+        "--",
+        "--exact",
+        "--nocapture"
+      ]
+    ]
+  ],
+  "start_monotonic": 1034144.610232541
+}

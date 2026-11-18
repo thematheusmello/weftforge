@@ -1,0 +1,77 @@
+{
+  "Cargo_PID_and_group": 96423,
+  "Cargo_wait4_exit_code": 0,
+  "at_utc": "2026-11-17T06:18:20.268594+00:00",
+  "branch": "build/material-polling-release",
+  "build_launches": 1,
+  "commit": "9d4b629c077f06c348f6615fe90df7bbeacedb24",
+  "controller_PID": 96420,
+  "controller_exit_code": 0,
+  "controller_result_sha256": "b838051f45463c3be11ab7e689f279a6f8c61ec8d8ba3cfd5874aae242ad8b45",
+  "controller_terminal_sha256": "444c1777cbaaa5a87a3438796026ddda1348862dfb756196beb4f1604779b78d",
+  "direct_child_exact_wait4_peak_RSS_bytes": 512851968,
+  "disk_observation": {
+    "last_available_bytes": 25840058368,
+    "max_snapshot_gap_seconds": 0.21235912502743304,
+    "minimum_available_bytes": 25804513280,
+    "path": "<ROOT>/.local/material-polling-release-20261117",
+    "samples": 2658,
+    "stop_below_available_bytes": 8000000000
+  },
+  "disk_thresholds_decimal_bytes": {
+    "launch_minimum": 20000000000,
+    "stop_floor": 8000000000
+  },
+  "elapsed_after_all_persistence_seconds": 149.98046270909254,
+  "initial_target_exists_partial_reuse": true,
+  "namespace": "release-space-recovery-002",
+  "newly_authorized_recovery_not_reset_of_old_attempt": true,
+  "original_stopped_case_sha256": "c262fde9a12245291ae6bcf622fa4dcf19f2b3725ad457d926e0af9b1a505982",
+  "original_stopped_files_hashes_modes_exact": 14,
+  "postclose_guards": {
+    "all_hashes_modes_exact": true,
+    "clean_exact_commit": true,
+    "metadata_frozen": 59,
+    "original8": 8,
+    "owned_PID_groups_absent": [
+      96420,
+      96423
+    ],
+    "release_binary_hashes_exact": 2,
+    "source88": 88,
+    "tools_configs_old_kernel_seals_and_binary_hashes_exact": true
+  },
+  "progress_banner_label_defect": {
+    "authoritative_bindings": [
+      "FREEZE.json cold_own_target_before_build:false and initial_target_exists_partial_reuse:true",
+      "runtime/STARTED.json initial_target_exists_partial_reuse:true",
+      "Controller precondition requires target directory already exists"
+    ],
+    "correct_fact": "Own partial target existed and was explicitly reused under root recovery authority",
+    "handling": "Frozen code/banner retained unchanged; root informed immediately; no cold-target claim for this recovery",
+    "inherited_banner_field": "cold_own_target:true"
+  },
+  "release_binaries": {
+    "weftforge": {
+      "built_not_launched": true,
+      "bytes": 16001040,
+      "mode": 493,
+      "path": "<ROOT>/.local/material-polling-release-20261117/target/release/weftforge",
+      "sha256": "dd76e0862943f196f3d4534da80fd5fda8ac49fdca8b6c15b6bf54acbc89a6e2"
+    },
+    "weftforge-cli": {
+      "built_not_launched": true,
+      "bytes": 2697376,
+      "mode": 493,
+      "path": "<ROOT>/.local/material-polling-release-20261117/target/release/weftforge-cli",
+      "sha256": "4573cc0cf6f762147247e8d0002e749aebfd0e94fd7f1650582d3df0a34e74cf"
+    }
+  },
+  "retained_command_output_bytes": 26326,
+  "sampled_aggregate_peak_RSS_bytes": 640155648,
+  "scope": "Read/hash closure of distinct root-authorized recovery after external disk cleanup",
+  "scope_limits": "Best-effort summed child process-group plus supervisor RSS snapshots with recorded gaps; exact direct-child wait4 and supervisor ru_maxrss separately. Shared pages may be counted multiple times; not continuous capture. SDK/linker/shared-library closure is not fully frozen.",
+  "source_freeze_sha256": "1b86ed45b95977bbe5afb3070e4e3fbba3da6b14ccfdbd53361d885b2b9098ae",
+  "tests_models_GUI_bundles_benchmarks_source_changes_or_automatic_retry": 0,
+  "unified_exec_session": 45072
+}

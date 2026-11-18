@@ -1,0 +1,79 @@
+{
+  "source_commit": "3fddeb9a72e5b4395e8e874a628086937331af2f",
+  "finished_utc": "2026-11-16T19:53:33.533299+00:00",
+  "source_count": 87,
+  "source_inputs_unchanged_across_new_gates": true,
+  "source_before_sha256": "6136868510b0afaa30c1546a44bfae39246841ce342e2d3b12b1aba4adff5b5f",
+  "source_after_sha256": "6136868510b0afaa30c1546a44bfae39246841ce342e2d3b12b1aba4adff5b5f",
+  "main_rs_sha256": "3ddd1a624e7dd9af0c6228a12065782cc8dadef5bddb85f31d4958458f3adf21",
+  "format_reused_without_rerun": true,
+  "format_reuse_receipt_sha256": "3cf915dbb7d83a43aa7a3a5f3077dc2812281ffd8be49e5f1d9d778bdb3430ae",
+  "format_qualification": "Full format ran after focused green on this exact main source. The other86 source inputs stayed equal to381c and the only later tracked edit before checkpoint was STATUS.md, outside the87 input roster. No format rerun and no newly observed format-time87 map is claimed.",
+  "gate_sequence": [
+    "workspace-tests",
+    "clippy",
+    "native-build"
+  ],
+  "gates": {
+    "workspace-tests": {
+      "terminal_session": 89394,
+      "cargo_pid": 91355,
+      "exit_code": 0,
+      "elapsed_seconds": 215.45382729102857,
+      "command": [
+        "cargo",
+        "test",
+        "--workspace"
+      ],
+      "log_sha256": "a1c4c734609eee70ed6fcb0e769916bda8140290d2f45b896df9970cadda81b3",
+      "receipt_sha256": "4ccab198c2f1809d0673f135fd701b9e48e1ef815b87a9acad8e6362f36a16ae"
+    },
+    "clippy": {
+      "terminal_session": 60306,
+      "cargo_pid": 95040,
+      "exit_code": 0,
+      "elapsed_seconds": 66.02467741596047,
+      "command": [
+        "cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "log_sha256": "c7c023696a254cf144120a35b4a6a6f5e965eba80a2dac91d6b17d2f91fcf5c8",
+      "receipt_sha256": "6e338bfa8f59eed3b4a34cd68b0c01a9df87dc181fbc0d244ec2410053578424"
+    },
+    "native-build": {
+      "terminal_session": 12453,
+      "cargo_pid": 95894,
+      "exit_code": 0,
+      "elapsed_seconds": 4.985245416057296,
+      "command": [
+        "cargo",
+        "build",
+        "-p",
+        "weftforge"
+      ],
+      "log_sha256": "7015277ec3687406d0dc87fc93fa199919a4bec90483bf6457fa431a8894e319",
+      "receipt_sha256": "288d718a0d3e54966dd0736c960ee17b54f0fb952d2e02289b0bf4732780aba3"
+    }
+  },
+  "all_new_gates_passed_once": true,
+  "workspace_rust_tests_passed": 397,
+  "native_path": "ROOT/.local/coalesced-endpoint-drag-20261116/target/debug/weftforge",
+  "native_sha256": "eccf633cbdb82dcd91952bf1123395e82a528180fc8959dab3509a3ea4c5d66d",
+  "native_bytes": 62642024,
+  "tracked_checkout_clean": true,
+  "no_source_style_fix_needed": true,
+  "owned_cargo_jobs_terminal": true,
+  "cargo_target_is_worktree_local": true,
+  "binary_or_target_copied_to_another_worktree": false,
+  "gui_run": false,
+  "metadata_map_report_publication_changes": false,
+  "trace47_included": false,
+  "original_red_paused_artifacts_unchanged": true,
+  "native_acceptance_claimed": false,
+  "xtask_verify_run": false
+}

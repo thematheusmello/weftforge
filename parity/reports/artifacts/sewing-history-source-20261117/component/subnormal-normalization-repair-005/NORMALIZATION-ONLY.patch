@@ -1,0 +1,43 @@
+diff --git a/crates/weftforge-sim/src/constraints.rs b/crates/weftforge-sim/src/constraints.rs
+index a1c7aa2c..257332b1 100644
+--- a/crates/weftforge-sim/src/constraints.rs
++++ b/crates/weftforge-sim/src/constraints.rs
+@@ -586,8 +586,14 @@ pub(crate) fn solve_stitch(
+         if !radius.is_finite() {
+             return;
+         }
++        let unit_direction = |vector: Vec3| {
++            let scale = vector[0].abs().max(vector[1].abs()).max(vector[2].abs());
++            let scaled = vector.map(|value| value / scale);
++            let norm = scaled[0].hypot(scaled[1]).hypot(scaled[2]);
++            scaled.map(|value| value / norm)
++        };
+         let direction = if radius > 0. {
+-            anchor.map(|value| value / radius)
++            unit_direction(anchor)
+         } else {
+             if weight == 0. {
+                 return;
+@@ -598,7 +604,7 @@ pub(crate) fn solve_stitch(
+             }
+             // At a zero anchor every direction minimizes the radial objective.
+             if distance > 0. {
+-                difference.map(|value| value / distance)
++                unit_direction(difference)
+             } else {
+                 [1., 0., 0.]
+             }
+diff --git a/docs/physics.md b/docs/physics.md
+index ced0c3ab..c2072c42 100644
+--- a/docs/physics.md
++++ b/docs/physics.md
+@@ -374,6 +374,9 @@ At exactly zero anchor and W>0, all directions minimize the radial objective:
+ the update retains the current endpoint direction if defined, otherwise chooses
+ world +X deterministically. An all-pinned zero gap is unchanged. All-pinned
+ nonzero gaps retain their constitutive vector history without moving positions.
++Both unit-direction paths first divide by the largest absolute component before
++normalizing, so a rounded subnormal radius cannot produce a non-unit direction.
++The spring radius and all compliance, target and denominator guards are unchanged.
+ Nonfinite or unrepresentable positive-target trial arithmetic leaves positions
+ and history unchanged; all trial position updates are checked before committing.
+ 

@@ -1,0 +1,297 @@
+{
+  "actual_BUILD_GO_present": false,
+  "actual_ROOT_GO_present": false,
+  "actual_tools_bound": [
+    "rustc",
+    "cargo",
+    "rustdoc"
+  ],
+  "approved_parent_and_child_PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+  "build_binding_sha256": "461cb838c010a05d5d93555be1f3820151db6f82c251674619046246c858b585",
+  "build_model_initialization_simulation_analysis_UI_network_push": 0,
+  "candidate_sha256": "6555b091c43ffa0a6fe3c84f1dd643f377978a5be453e092d8d8731431e24bc2",
+  "compiler_dependency_scope_limit": "Actual Cargo/rustc/rustdoc executables, full child PATH/toolchain/known flags, local/config and locked crate source inputs are bound. Linker/macOS SDK/sysroot shared-library closure is not certified.",
+  "experiment": "WF-20261117-MATERIAL-POLLING-HARBOR-A8-001",
+  "file_count_excluding_self": 54,
+  "files": {
+    "BUILD-GO.template.json": {
+      "bytes": 719,
+      "mode": "0644",
+      "sha256": "452a94dfd8b8d83654c1f03f55fe4cca1b63819d3469a099c757b89c0f92068f"
+    },
+    "CANDIDATE.json": {
+      "bytes": 2981,
+      "mode": "0644",
+      "sha256": "6555b091c43ffa0a6fe3c84f1dd643f377978a5be453e092d8d8731431e24bc2"
+    },
+    "COMMANDS.md": {
+      "bytes": 567,
+      "mode": "0644",
+      "sha256": "8e5e5f4502f163e393ddfa1e9ea97b221be46043f1c57a899a363c9696ba1200"
+    },
+    "DELTA.json": {
+      "bytes": 3221,
+      "mode": "0644",
+      "sha256": "df8b8330ce438d8fda7c6400f142a56021115ef852adbd1eaad669a04d7123b8"
+    },
+    "DRAFT-FREEZE.json": {
+      "bytes": 8450,
+      "mode": "0644",
+      "sha256": "406bcceb55da3d825d8a86f16972e70d319c2fd49ad7cf89e5a30731d1944c67"
+    },
+    "DRAFT-ORIGIN.json": {
+      "bytes": 4796,
+      "mode": "0644",
+      "sha256": "77c0511a23e55ff4cc6d1d9c3a554c32eab9299e71f450f1271b6425c12f92b0"
+    },
+    "HANDOFF.md": {
+      "bytes": 1201,
+      "mode": "0644",
+      "sha256": "0b0243990fedc3bff6e0606a9187f24b40d7eae22514a65159b3f980c5970ea6"
+    },
+    "INSTALL-RECEIPT.json": {
+      "bytes": 8691,
+      "mode": "0644",
+      "sha256": "d0041c0875967007576d043c8d4c5cf028cee5149ffd84d4cd9c3132ad1b8c4a"
+    },
+    "PRESERVATION.json": {
+      "bytes": 75482,
+      "mode": "0644",
+      "sha256": "e66a8b37b3ff8ad1fdabc28c1bc14faa83027b61fa968c85ad29d8ecb9f7a113"
+    },
+    "PROTOCOL-DRAFT.json": {
+      "bytes": 6681,
+      "mode": "0644",
+      "sha256": "c87d0634aefb5f9878760f188d6cf43cbf882ea0e8e140f4ba5af1710f20401f"
+    },
+    "REUSED-SOURCES.json": {
+      "bytes": 2153,
+      "mode": "0644",
+      "sha256": "eb2f82e024483ea1c006fa16aae3553cc3511a35ceddf0562567ea23d1ee7b67"
+    },
+    "ROOT-GO.template.json": {
+      "bytes": 584,
+      "mode": "0644",
+      "sha256": "0a46dd7d6fd523fb469961322049a8f60acb85a32f99d66e36b4f7198043b0c7"
+    },
+    "SOURCE-ONLY-DELTA.patch": {
+      "bytes": 10617,
+      "mode": "0644",
+      "sha256": "e1d1e5b9b330d3cc6f88bb2bb9be29a867bda0df78ccb39cf0c3e14dca1f31bf"
+    },
+    "SOURCE-PREFLIGHT.json": {
+      "bytes": 88983,
+      "mode": "0600",
+      "sha256": "8ea119dd0ed22601e42309d72f196580473f9713ddb09991aa88b590224962be"
+    },
+    "SOURCE.json": {
+      "bytes": 10466,
+      "mode": "0644",
+      "sha256": "60ba933e7508f1bb0b642a5f0f9923a871e9ae3b6ac99bf1ed1cace21369f326"
+    },
+    "bind_source.py": {
+      "bytes": 586,
+      "mode": "0644",
+      "sha256": "5b883da7b83e2a88918e9ecda3011dc1b7ef6fcfa34cd6870c178945a942a384"
+    },
+    "build_release.py": {
+      "bytes": 2724,
+      "mode": "0644",
+      "sha256": "019721222496afee79075815c825195fa0fac11a574997c635c52c5904c70949"
+    },
+    "checks/source-bind-001/RESULT.json": {
+      "bytes": 824,
+      "mode": "0644",
+      "sha256": "44b8b05bf623ee77d15c4b489ee191eb4bde71dd0a2a718aaacdd0c44e4d27b7"
+    },
+    "checks/source-bind-001/STARTED.json": {
+      "bytes": 1252,
+      "mode": "0644",
+      "sha256": "5e878154f96042fd19d6ae194fbbf8876512c6ed44de63fe6e0ec8d53c17b902"
+    },
+    "checks/source-bind-001/stderr.log": {
+      "bytes": 0,
+      "mode": "0644",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "checks/source-bind-001/stdout.log": {
+      "bytes": 244,
+      "mode": "0644",
+      "sha256": "3c8044f7e76766864e3f5559a78320ff4608a9cc8daeb76ee56c4cb397d7ded6"
+    },
+    "common.py": {
+      "bytes": 17156,
+      "mode": "0644",
+      "sha256": "bcb62dfdd456dcb98756067fa873ecefb1d2953b88a48b9befc0a22fcd6d51cf"
+    },
+    "compiler_inputs.py": {
+      "bytes": 2318,
+      "mode": "0644",
+      "sha256": "b99a7ba77d12e13f6459ce6d03824d8e7dc2349e90d209f2481488e8b158c63f"
+    },
+    "consumer/bindings.py": {
+      "bytes": 138,
+      "mode": "0644",
+      "sha256": "ba8499944ee4d63b55fcc86de997b9823cf5a949fdb118491569c5dbfcd69a4f"
+    },
+    "consumer/capsule_geometry.py": {
+      "bytes": 11717,
+      "mode": "0644",
+      "sha256": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b"
+    },
+    "consumer/decimal_oracle.py": {
+      "bytes": 2959,
+      "mode": "0644",
+      "sha256": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d"
+    },
+    "consumer/evaluator.py": {
+      "bytes": 33339,
+      "mode": "0644",
+      "sha256": "bc981d2333b4e02fb95c8fa83bb2b2a48d8d0486ae65594bf9173e935513c91b"
+    },
+    "consumer/geometry_math.py": {
+      "bytes": 1443,
+      "mode": "0644",
+      "sha256": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40"
+    },
+    "consumer/metadata_adapter.py": {
+      "bytes": 2594,
+      "mode": "0644",
+      "sha256": "f7aea5b61bafda604cb9b2112f40c83285497300c41c4d02b1344339fe00386e"
+    },
+    "consumer/metrics.py": {
+      "bytes": 18354,
+      "mode": "0644",
+      "sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610"
+    },
+    "consumer/static_geometry.py": {
+      "bytes": 2388,
+      "mode": "0644",
+      "sha256": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34"
+    },
+    "controller.py": {
+      "bytes": 6465,
+      "mode": "0644",
+      "sha256": "353192e160e999a94cede0e2c8bca62e55c012da3e684004c1716a042988fd35"
+    },
+    "evidence/COMPARISON-FINAL-MANIFEST.json": {
+      "bytes": 6980,
+      "mode": "0644",
+      "sha256": "820f5a5ca9c20317712c705325740834b00468b75ed24450822f3b111b76edc1"
+    },
+    "evidence/COMPARISON-FINDINGS.md": {
+      "bytes": 2715,
+      "mode": "0644",
+      "sha256": "6ae81e3b928f0df5cda115b9a7d630bf3786f1bc35d3c848d259ca074b4ca790"
+    },
+    "evidence/COMPARISON-RECEIPT.json": {
+      "bytes": 2127,
+      "mode": "0644",
+      "sha256": "3b8edc74241ab44ff6eeaafff7d5f0d1c93624b4732daadd49e9e659e2226ac1"
+    },
+    "evidence/FOCUSED-CHECK-RECEIPT.json": {
+      "bytes": 3722,
+      "mode": "0644",
+      "sha256": "58723b2e9b74d61c9214daedd54adf74d876e908b47034e7a4cdb6607001d7bf"
+    },
+    "evidence/FOCUSED-FINAL-MANIFEST.json": {
+      "bytes": 9779,
+      "mode": "0644",
+      "sha256": "91784599fc80139dd94f4053193adb2123560900c058864d98faea6ef1c03d1a"
+    },
+    "evidence/FOCUSED-FINDINGS.md": {
+      "bytes": 4261,
+      "mode": "0644",
+      "sha256": "25879c74c58bad6c436b63a1e78b9bd5bdea44f0fda0fcbd6c12f28a232639b7"
+    },
+    "evidence/FULL-FMT-RESULT.json": {
+      "bytes": 1327,
+      "mode": "0600",
+      "sha256": "8f01319596e531a9a0d8bd301fd47aa9245fcd9db7128f5639f3e082242fca6e"
+    },
+    "evidence/INDEPENDENT-SOURCE-REVIEW.json": {
+      "bytes": 5225,
+      "mode": "0444",
+      "sha256": "f246ebbc5459f61f9881430080a12448fd5f27a09f268415a8af08ab8e20c360"
+    },
+    "evidence/INDEPENDENT-SOURCE-REVIEW.md": {
+      "bytes": 4535,
+      "mode": "0444",
+      "sha256": "7827baee5a48c58921e69eea81b2c437f3a6672e9adf76050444a50f98695595"
+    },
+    "evidence/ORIGINAL8-GUARD.json": {
+      "bytes": 930,
+      "mode": "0644",
+      "sha256": "d2395f6f50922ea764f9caba74ff3c65881fcb5d42f97a04deff0b276e4d1ca7"
+    },
+    "evidence/ROOT-SOURCE-BINDING.json": {
+      "bytes": 11099,
+      "mode": "0444",
+      "sha256": "c1a801edb6593a5a4121a687d0b5152fd06f3624593720dda6f87df9c86576e5"
+    },
+    "evidence/WORKSPACE-GATE-START-FREEZE.json": {
+      "bytes": 38316,
+      "mode": "0644",
+      "sha256": "b609c92ae88021e87dacbf1960b20e5020d0dcf00d733b0a1af4799535aac67c"
+    },
+    "evidence/WORKSPACE-GATES-FINAL-MANIFEST.json": {
+      "bytes": 6574,
+      "mode": "0644",
+      "sha256": "e883c9d3ef1914fb62836c317327840edc0768c861e834ff2afe8eaed886dd15"
+    },
+    "evidence/WORKSPACE-GATES-RESULT.json": {
+      "bytes": 33939,
+      "mode": "0600",
+      "sha256": "4994019f808f070e89863ae2fc3d07aff6930f4240de53cc44162b600d6e8691"
+    },
+    "freeze_prep.py": {
+      "bytes": 3821,
+      "mode": "0644",
+      "sha256": "691cd98517a0ce43a8cd60c0a330c73b8c25fe53620040ccf81308353306688b"
+    },
+    "producer/Cargo.lock": {
+      "bytes": 4086,
+      "mode": "0644",
+      "sha256": "6acc2df8d38cf70047cbe22ca2875a38a0fd204a63452edb2d42b4ce14c1ec89"
+    },
+    "producer/Cargo.toml": {
+      "bytes": 297,
+      "mode": "0644",
+      "sha256": "bdbf9b113ba7bb05e968b25fbfc71a30317bfd66aa090fb809e2f551070ff5e8"
+    },
+    "producer/src/main.rs": {
+      "bytes": 6969,
+      "mode": "0644",
+      "sha256": "87b15646929d7ed76b03970fe84626176eb6cef72207f5f75a247ff649907a0b"
+    },
+    "resources.py": {
+      "bytes": 10575,
+      "mode": "0644",
+      "sha256": "4df98ac4595d45a71059fb12ad5c66da7b4fdbf9c1dfe7a0b74144f17f606987"
+    },
+    "source_inputs.py": {
+      "bytes": 7292,
+      "mode": "0644",
+      "sha256": "0574f9247f06d01315de7c02d1970ffed71a827b22d15998144049b632aa137d"
+    },
+    "test_toolchain_env.py": {
+      "bytes": 2316,
+      "mode": "0644",
+      "sha256": "c48173c6c67146d41768f3788000094a720805f755089a249210dc05198faecd"
+    },
+    "worker.py": {
+      "bytes": 7339,
+      "mode": "0644",
+      "sha256": "bd2958bcb03d3c54ffb44b9fa5c29cbb80b52ff568011d9c6a0ca85ddd5e4eb2"
+    }
+  },
+  "independent_review_then_distinct_BUILD_GO_required": true,
+  "no_old_native_state_or_release_recovery_binary_read_copied": true,
+  "original_producer_consumer11_and_helpers7_exact": true,
+  "original_root_draft47_unchanged": true,
+  "root_source_binding_sha256": "c1a801edb6593a5a4121a687d0b5152fd06f3624593720dda6f87df9c86576e5",
+  "source88_metadata59_original8_input_gold_old_case_proof_perf_originals_unchanged": true,
+  "source_commit": "9d4b629c077f06c348f6615fe90df7bbeacedb24",
+  "source_preflight_sha256": "8ea119dd0ed22601e42309d72f196580473f9713ddb09991aa88b590224962be",
+  "status": "SOURCE_ONLY_INSTALLED_BOUND_PENDING_INDEPENDENT_REVIEW_AND_DISTINCT_BUILD_GO"
+}

@@ -1,0 +1,372 @@
+{
+  "actual_build_argv": [
+    "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "build",
+    "--release",
+    "--locked",
+    "--offline",
+    "--manifest-path",
+    "<ROOT>/.local/positive-target-sewing-component-20261117/.local/harbor-sewing-history-preparation-20261117/producer/Cargo.toml"
+  ],
+  "actual_gate_manifest_file_mismatches": [],
+  "actual_gate_manifest_roster_exact": true,
+  "actual_hashes": {
+    "CANDIDATE.json": "45a2372d54535770585a1a3310b5fc244750b832d03355579fa993f08dafcb1a",
+    "DRAFT-FREEZE.json": "eb18c5d9aa58f441f21045d9af34cef904b6c78a1a75dc2090c610e5fc3d7eff",
+    "FREEZE.json": "2e933df47082568365e66cfdf27610922106d323799d2f1f2f8244dac2107c89",
+    "PROTOCOL.json": "34c038a010346a16d9164b5a37cb73ddb685dbff829d8ea83ec2fe203cef9c6e",
+    "SOURCE-PREFLIGHT.json": "61b49486a41b76d8a5cf5098dab74780a19ebe6bcafb1ca962b7bfa1ede75b13",
+    "checks/BUILD-RECEIPT.json": "ad081ee02c9ed40b2339c98ef43e00b0b6470225a07d3adffaaa3fca9322f000",
+    "evidence/HARBOR-PROTOCOL-REVIEW.json": "550488a1b8bba35b763f1419a57d626f63a1cad712fd1abd4cd708c289a0ddff",
+    "evidence/WORKSPACE-GATE-START-FREEZE.json": "ce4a3a83216fa22324e14ac0be1ffdc64d86cb00243e3e53b16c42ae17c57d90",
+    "evidence/WORKSPACE-GATES-FINAL-MANIFEST.json": "2d3816b1fe05fafe866ea157965cf82df2d4283326ce0e9f20b4daed46ee83a7",
+    "evidence/WORKSPACE-GATES-RESULT.json": "e5c064530552291a8562d410cd3a97cf7ff93209c87faf7e485a02b7ff75c4a7"
+  },
+  "all4_commands_equal_frozen": true,
+  "all4_stages_exact": [
+    {
+      "all_source88_metadata59_original8_exact": true,
+      "argv": [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "exit_code": 0,
+      "name": "full-fmt",
+      "post_guard": {
+        "all_source88_metadata59_original8_exact": true,
+        "clean_exact_commit": true,
+        "tools_configs_compiler_inventory_exact": true
+      },
+      "pre_guard": {
+        "all_source88_metadata59_original8_exact": true,
+        "clean_exact_commit": true,
+        "tools_configs_compiler_inventory_exact": true
+      },
+      "stop_reason": null
+    },
+    {
+      "all_source88_metadata59_original8_exact": true,
+      "argv": [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--workspace",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "name": "workspace-tests",
+      "post_guard": {
+        "all_source88_metadata59_original8_exact": true,
+        "clean_exact_commit": true,
+        "tools_configs_compiler_inventory_exact": true
+      },
+      "pre_guard": {
+        "all_source88_metadata59_original8_exact": true,
+        "clean_exact_commit": true,
+        "tools_configs_compiler_inventory_exact": true
+      },
+      "stop_reason": null
+    },
+    {
+      "all_source88_metadata59_original8_exact": true,
+      "argv": [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--locked",
+        "--offline",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit_code": 0,
+      "name": "workspace-clippy",
+      "post_guard": {
+        "all_source88_metadata59_original8_exact": true,
+        "clean_exact_commit": true,
+        "tools_configs_compiler_inventory_exact": true
+      },
+      "pre_guard": {
+        "all_source88_metadata59_original8_exact": true,
+        "clean_exact_commit": true,
+        "tools_configs_compiler_inventory_exact": true
+      },
+      "stop_reason": null
+    },
+    {
+      "all_source88_metadata59_original8_exact": true,
+      "argv": [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "build",
+        "-p",
+        "weftforge",
+        "-p",
+        "weftforge-cli",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "name": "native-cli-debug",
+      "post_guard": {
+        "all_source88_metadata59_original8_exact": true,
+        "clean_exact_commit": true,
+        "tools_configs_compiler_inventory_exact": true
+      },
+      "pre_guard": {
+        "all_source88_metadata59_original8_exact": true,
+        "clean_exact_commit": true,
+        "tools_configs_compiler_inventory_exact": true
+      },
+      "stop_reason": null
+    }
+  ],
+  "ambient_build_env_bound": {},
+  "automatic_build_rs_mismatches": [],
+  "binary": {
+    "header_hex": "cffaedfe0c000001",
+    "is_symlink": false,
+    "mode": 493,
+    "path": "<ROOT>/.local/positive-target-sewing-component-20261117/target/release/harbor-coupled-producer",
+    "sha256": "4fea1240400da563ffd3d0ac1e83dfeed4157399143d4a1e74f86ac4b3b9f858",
+    "size_bytes": 1348432
+  },
+  "binary_all_bindings_exact": true,
+  "build_binding_canonical_hash": "8e51ce002131bbd01b9ebfac2296b025469ffc5482dfc105694d85fd7bc4cbe7",
+  "build_binding_canonical_hash_exact": true,
+  "build_stage": {
+    "argv": [
+      "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+      "build",
+      "--release",
+      "--locked",
+      "--offline",
+      "--manifest-path",
+      "<ROOT>/.local/positive-target-sewing-component-20261117/.local/harbor-sewing-history-preparation-20261117/producer/Cargo.toml"
+    ],
+    "end_monotonic_seconds": 1037038.375040041,
+    "exit_code": 0,
+    "peak_rss_bytes": 392921088,
+    "sampled_peak_rss_bytes": 388530176,
+    "stop_reason": null,
+    "terminal_phase_checks": {
+      "deadline": 1037126.661905875,
+      "output_bytes": 2185,
+      "output_cap_bytes": 8388608,
+      "reserve_bytes": 131072
+    }
+  },
+  "candidate_approved": true,
+  "candidate_evidence_hash_mismatches": [],
+  "child_env": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_ENCODED_RUSTFLAGS": "",
+    "CARGO_HOME": "<HOME>/.cargo",
+    "CARGO_TARGET_DIR": "<ROOT>/.local/positive-target-sewing-component-20261117/target",
+    "PATH": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:<HOME>/.pyenv/versions/3.13.0/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONOPTIMIZE": "0",
+    "RUSTC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+    "RUSTC_WORKSPACE_WRAPPER": "",
+    "RUSTC_WRAPPER": "",
+    "RUSTDOC": "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustdoc",
+    "RUSTDOCFLAGS": "",
+    "RUSTFLAGS": "",
+    "RUSTUP_TOOLCHAIN": "1.94.1"
+  },
+  "code_path_count": 19,
+  "code_rosters_exact": true,
+  "config_count": 18,
+  "config_hash_or_absence_mismatches": [],
+  "config_roster_exact": true,
+  "control_ready_exact": true,
+  "dependency_file_count": 688,
+  "dependency_hash_mismatches": [],
+  "dependency_package_count": 16,
+  "dependency_package_lock_exact": true,
+  "dependency_roster_extra": [],
+  "dependency_sources_only_expected_registry": true,
+  "dependency_symlink_paths": [],
+  "draft_json_field_changes": {
+    "CANDIDATE.json": [
+      "confirmed",
+      "fmt_receipt_sha256",
+      "green_checks_sha256",
+      "independent_review_sha256",
+      "root_confirms_green_source_and_review",
+      "root_install_and_source_bind_authorized",
+      "source_manifest_sha256",
+      "source_only_draft_not_installed",
+      "source_pending",
+      "source_preflight_and_build_digest_receipts_external_to_avoid_self_reference",
+      "source_review_sha256",
+      "status",
+      "workspace_gate_start_sha256",
+      "workspace_gates_composition_sha256",
+      "workspace_gates_final_sha256",
+      "workspace_gates_root_go_sha256",
+      "workspace_gates_root_source_review_sha256",
+      "workspace_gates_sha256",
+      "workspace_gates_status_at_binding"
+    ],
+    "SOURCE.json": [
+      "status"
+    ]
+  },
+  "freeze_file_count": 60,
+  "freeze_file_hash_mismatches": [],
+  "freeze_repo_file_hash_mismatches": [],
+  "frozen_roster_extra": [],
+  "frozen_roster_missing": [],
+  "full88_fmt_exact_first_stage": true,
+  "gate_evidence_original_copies_exact": {
+    "WORKSPACE-GATE-START-FREEZE.json": true,
+    "WORKSPACE-GATES-FINAL-MANIFEST.json": true,
+    "WORKSPACE-GATES-RESULT.json": true,
+    "WORKSPACE-GATES-ROOT-GO.json": true,
+    "WORKSPACE-GATES-SOURCE-REVIEW.json": true
+  },
+  "gate_root_terminal": {
+    "actual_final_stdout": {
+      "command_complete_under_caps": true,
+      "controller_exit_code": 0,
+      "elapsed_after_all_persistence_seconds": 260.4531114998972,
+      "no_garment_or_speed_acceptance": true,
+      "retained_output_bytes": 111152,
+      "status": "GREEN_FOUR_WORKSPACE_SOURCE_GATES",
+      "terminal_sha256": "d01f28f1eb5d0533fc4e3bee87006fd50f3eca28ad26be0a57953197d0968339"
+    },
+    "actual_tool_terminal_exit_code": 0,
+    "at_utc": "2026-11-17T11:19:06.752985+00:00",
+    "external_observation_elapsed_seconds": 331.3129123339895,
+    "owned_controller_and_stage_PIDs_groups_absent": [
+      10810,
+      10817,
+      10846,
+      21486,
+      23105
+    ],
+    "qualification": "Actual tool exit0 and retained final stdout observed; controller final acceptance clock includes its persistence/hash/volume work. This later postclose record is not a repeated stage or a new continuous resource/timing guarantee.",
+    "session": 63363
+  },
+  "git_HEAD": "40817073cd38e58a8438bb397d09a0ab9d95f9bb",
+  "git_status_porcelain": "",
+  "guard_counts": {
+    "input_modes": 155,
+    "metadata_frozen": 59,
+    "original8": 8
+  },
+  "hash_mismatches": [],
+  "input_mode_mismatches": [],
+  "installed_code_vs_reviewed_draft_mismatches": [],
+  "local_input_hash_mismatches": [],
+  "local_input_roster_extra": [],
+  "local_root_counts": {
+    ".local/harbor-sewing-history-preparation-20261117/producer": 3,
+    "crates/weftforge-core": 33,
+    "crates/weftforge-sim": 8,
+    "vendor/earcutr": 6
+  },
+  "metadata59_hash_mismatches": [],
+  "original11_mismatches": [],
+  "original8_hash_mismatches": [],
+  "original_input_gold_exact": true,
+  "original_input_gold_hashes": {
+    "parity/reports/artifacts/closed-stitch-harbor-20261115/experiment/inputs/base.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+    "parity/reports/artifacts/closed-stitch-harbor-20261115/experiment/runs/base/rest-metadata.json": "d96697949c686fbf15f19b99b6d7551b35d3449b17157009aceb75649fbaeeb9"
+  },
+  "outer_actual_copies_exact": {
+    "launch_and_record.py": true,
+    "supervise.py": true
+  },
+  "outer_admission_or_GO_exists": {
+    "ROOT-ADMISSION.json": false,
+    "ROOT-GO.json": false
+  },
+  "packet": "<ROOT>/.local/positive-target-sewing-component-20261117/.local/harbor-sewing-history-preparation-20261117",
+  "packet_model_namespace_or_GO_exists": {
+    "ROOT-GO.json": false,
+    "expected": false,
+    "inputs": false,
+    "preflight-base": false,
+    "runs": false,
+    "runtime": false
+  },
+  "packet_symlink_or_nonregular_paths": [],
+  "parent_child_PATH_exact": true,
+  "preflight_build_binding_exact": true,
+  "preflight_file_count": 42,
+  "preflight_file_hash_mismatches": [],
+  "python_binary_hash_exact": true,
+  "raw_summaries_typed_exact": true,
+  "retained_historical_metadata": {
+    "CANDIDATE.build_binding_sha256": null,
+    "CANDIDATE.source_preflight_sha256": null,
+    "PROTOCOL.source_prerequisites": "Actual four workspace gates/full88FMT and420-test receipt are pending. Root must genuinely bind final408+independent source review after all4 close, then separately authorize install/source-only bind, build-onlyGO, binary/finalfreeze review and newexecutionGO.",
+    "PROTOCOL.workspace_gate_scope": "PENDING actual FOUR source gates/full88FMT on final408. Static420/31 hint is not a test result. Focused408 source/component checks are facts only; no workspace or garment acceptance transfers.",
+    "SOURCE.actual_workspace_gate_result_sha256": null,
+    "SOURCE.approval_or_installation": false
+  },
+  "review_execution_scope": "Static standard-library file/JSON/Git/hash reads only; no packet/helper import, selftest, verify-only, build, model, analyzer, GUI, network, or GO invocation.",
+  "root_build_result_hash_exact": true,
+  "root_build_review": {
+    "Cloth_initializations": 0,
+    "Cloth_steps": 0,
+    "actual_root_final_elapsed_after_persistence_seconds": 32.58273520891089,
+    "actual_root_session": 91603,
+    "actual_tool_exit_code": 0,
+    "at_utc": "2026-11-17T11:26:52.055983+00:00",
+    "binary": {
+      "path": "target/release/harbor-coupled-producer",
+      "sha256": "4fea1240400da563ffd3d0ac1e83dfeed4157399143d4a1e74f86ac4b3b9f858",
+      "size_bytes": 1348432
+    },
+    "build_binding_sha256": "8e51ce002131bbd01b9ebfac2296b025469ffc5482dfc105694d85fd7bc4cbe7",
+    "build_receipt_sha256": "ad081ee02c9ed40b2339c98ef43e00b0b6470225a07d3adffaaa3fca9322f000",
+    "owned_PIDs_and_groups_absent": [
+      27580,
+      27581,
+      27593
+    ],
+    "root_reviewed_build_only": true,
+    "root_terminal_sha256": "d99432342743f1f5c0b9b58c5feac252a681484fc69f2f00382212b4db6d0cb2",
+    "scope": "Actual first build and exact own-source release binary reviewed. Final source/binary seal only is authorized; no model or numerical GO.",
+    "separate_final_source_binary_freeze_authorized": true,
+    "source_commit": "40817073cd38e58a8438bb397d09a0ab9d95f9bb",
+    "source_preflight_sha256": "61b49486a41b76d8a5cf5098dab74780a19ebe6bcafb1ca962b7bfa1ede75b13",
+    "whole_root_build_phase_complete_under_caps": true
+  },
+  "root_build_terminal_hash_exact": true,
+  "scope_limit": "Actual Cargo/rustc/rustdoc executables, full child PATH/toolchain/known flags, local/config and locked crate source inputs are bound. Linker/macOS SDK/sysroot shared-library closure is not certified.",
+  "source88_count": 88,
+  "source88_hash_mismatches": [],
+  "source_commit": "40817073cd38e58a8438bb397d09a0ab9d95f9bb",
+  "source_maps_exact": true,
+  "source_review_genuine_fields": {
+    "commit": "40817073cd38e58a8438bb397d09a0ab9d95f9bb",
+    "full_garment_or_reference_acceptance": false,
+    "independent_review_sha256": "b3bb006cbf00c8c35b58e596bfaa509d50f3e93233711d58b9849724511c904d",
+    "old_case_regrade": false,
+    "root_read_production_diff_validation_callers_final_tests_physics_and_independent_review": true,
+    "root_reviewed_controller_final_under_caps": true,
+    "root_reviewed_controller_terminal_exit": 0,
+    "workspace_gates_result_sha256": "e5c064530552291a8562d410cd3a97cf7ff93209c87faf7e485a02b7ff75c4a7"
+  },
+  "tested_volume_resource_exact": true,
+  "tool_hash_mismatches": [],
+  "tracked_diff_vs_d982": [
+    "crates/weftforge-sim/src/constraints.rs",
+    "crates/weftforge-sim/src/tests.rs",
+    "docs/physics.md"
+  ],
+  "unchanged_helpers4_mismatches": [],
+  "workspace_test_summary": {
+    "all_status_ok": true,
+    "failed": 0,
+    "ignored": 0,
+    "passed": 420,
+    "summary_count": 31
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "after": {
+    "checker": {
+      "bytes": 14800,
+      "mode": "0o444",
+      "sha256": "e2eb412b12f7e5fb5f1a1150b45375bb9da5f6d31548aebb5f0f7c0be70b1c22"
+    },
+    "edited": {
+      "bytes": 3276,
+      "mode": "0o644",
+      "sha256": "c916a6f3fc1e5bb9d49fea37742cd44742fc664bf002d07ca29de3e08c7f9eb3"
+    },
+    "final_work": {
+      "bytes": 3276,
+      "mode": "0o644",
+      "sha256": "25187f68130d53b6d22c1cab2525b67268571d6c91d3bc1d6d2ac60393a79bc5"
+    },
+    "freeze_manifest": {
+      "bytes": 1342,
+      "mode": "0o444",
+      "sha256": "a7a19895968ce5cd3b97f91d2e330382c61dd6746ccf1320a3e4dcf49a935ce9"
+    },
+    "frozen_seed": {
+      "bytes": 3308,
+      "mode": "0o444",
+      "sha256": "ba14733d505c8f9ee0bc71b0d38c7a3236c31ba25e9640ae6dd77d4124040077"
+    },
+    "redo": {
+      "bytes": 3276,
+      "mode": "0o644",
+      "sha256": "25187f68130d53b6d22c1cab2525b67268571d6c91d3bc1d6d2ac60393a79bc5"
+    },
+    "source_seed": {
+      "bytes": 3308,
+      "mode": "0o444",
+      "sha256": "ba14733d505c8f9ee0bc71b0d38c7a3236c31ba25e9640ae6dd77d4124040077"
+    },
+    "targets": {
+      "bytes": 1795,
+      "mode": "0o444",
+      "sha256": "7ce9327027ac4b48a9ae5435e447eff9ae3a6d942c5607f653d8e24d3fc205ac"
+    },
+    "undo": {
+      "bytes": 3308,
+      "mode": "0o644",
+      "sha256": "bfe3243c6222d03a1449284228154b4f62b83d9e8b1ac0cce620a25854680cbd"
+    }
+  },
+  "all_input_hash_size_modes_unchanged": true,
+  "before": {
+    "checker": {
+      "bytes": 14800,
+      "mode": "0o444",
+      "sha256": "e2eb412b12f7e5fb5f1a1150b45375bb9da5f6d31548aebb5f0f7c0be70b1c22"
+    },
+    "edited": {
+      "bytes": 3276,
+      "mode": "0o644",
+      "sha256": "c916a6f3fc1e5bb9d49fea37742cd44742fc664bf002d07ca29de3e08c7f9eb3"
+    },
+    "final_work": {
+      "bytes": 3276,
+      "mode": "0o644",
+      "sha256": "25187f68130d53b6d22c1cab2525b67268571d6c91d3bc1d6d2ac60393a79bc5"
+    },
+    "freeze_manifest": {
+      "bytes": 1342,
+      "mode": "0o444",
+      "sha256": "a7a19895968ce5cd3b97f91d2e330382c61dd6746ccf1320a3e4dcf49a935ce9"
+    },
+    "frozen_seed": {
+      "bytes": 3308,
+      "mode": "0o444",
+      "sha256": "ba14733d505c8f9ee0bc71b0d38c7a3236c31ba25e9640ae6dd77d4124040077"
+    },
+    "redo": {
+      "bytes": 3276,
+      "mode": "0o644",
+      "sha256": "25187f68130d53b6d22c1cab2525b67268571d6c91d3bc1d6d2ac60393a79bc5"
+    },
+    "source_seed": {
+      "bytes": 3308,
+      "mode": "0o444",
+      "sha256": "ba14733d505c8f9ee0bc71b0d38c7a3236c31ba25e9640ae6dd77d4124040077"
+    },
+    "targets": {
+      "bytes": 1795,
+      "mode": "0o444",
+      "sha256": "7ce9327027ac4b48a9ae5435e447eff9ae3a6d942c5607f653d8e24d3fc205ac"
+    },
+    "undo": {
+      "bytes": 3308,
+      "mode": "0o644",
+      "sha256": "bfe3243c6222d03a1449284228154b4f62b83d9e8b1ac0cce620a25854680cbd"
+    }
+  },
+  "failures": [],
+  "finished_utc": "2026-11-16T20:08:53.833254+00:00",
+  "passed": true,
+  "relations": {
+    "final_work_equals_redo_bytes": true,
+    "redo_equals_edited_except_revision": true,
+    "undo_equals_seed_except_revision": true
+  },
+  "scope": "Own native D003 file content and analytic straight-edge area only. No reference parity, UI gesture, fresh-process reopening, format compatibility, physics, or workflow acceptance is inferred.",
+  "started_utc": "2026-11-16T20:08:53.829846+00:00",
+  "states": {
+    "edited": {
+      "failures": [],
+      "metrics": {
+        "all_other_authoring_fields_unchanged": true,
+        "area_error_m2": "1.922E-17",
+        "area_m2": "0.26350000000000001922",
+        "area_target_m2": "0.2635",
+        "curve_ids": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "max_position_error_m": "0.00",
+        "point_3_position_m": [
+          "-0.02",
+          "-0.01"
+        ],
+        "point_ids": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "revision": 6
+      },
+      "passed": true
+    },
+    "final_work": {
+      "failures": [],
+      "metrics": {
+        "all_other_authoring_fields_unchanged": true,
+        "area_error_m2": "1.922E-17",
+        "area_m2": "0.26350000000000001922",
+        "area_target_m2": "0.2635",
+        "curve_ids": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "max_position_error_m": "0.00",
+        "point_3_position_m": [
+          "-0.02",
+          "-0.01"
+        ],
+        "point_ids": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "revision": 8
+      },
+      "passed": true
+    },
+    "redo": {
+      "failures": [],
+      "metrics": {
+        "all_other_authoring_fields_unchanged": true,
+        "area_error_m2": "1.922E-17",
+        "area_m2": "0.26350000000000001922",
+        "area_target_m2": "0.2635",
+        "curve_ids": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "max_position_error_m": "0.00",
+        "point_3_position_m": [
+          "-0.02",
+          "-0.01"
+        ],
+        "point_ids": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "revision": 8
+      },
+      "passed": true
+    },
+    "undo": {
+      "failures": [],
+      "metrics": {
+        "all_other_authoring_fields_unchanged": true,
+        "area_error_m2": "1.94200000000E-17",
+        "area_m2": "0.2604000000000000194200000000",
+        "area_target_m2": "0.2604",
+        "curve_ids": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "max_position_error_m": "0E-18",
+        "point_3_position_m": [
+          "-0.010000000000000002",
+          "-0.009999999999999998"
+        ],
+        "point_ids": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "revision": 7
+      },
+      "passed": true
+    }
+  },
+  "tolerance_si": "0.000000000001"
+}

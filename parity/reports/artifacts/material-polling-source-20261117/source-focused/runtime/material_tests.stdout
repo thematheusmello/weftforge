@@ -1,0 +1,18 @@
+
+running 10 tests
+test constraints::material_cancellation_tests::material_cancellation_polls_after_at_most_63_skipped_checkpoints ... ok
+test tests::global_material_zero_rhs_pins_and_cancellation_preserve_stage_state ... ok
+test tests::grouped_mixed_grain_materials_reach_direct_energy_balance_with_pins ... mixed-grain pair direct energy force residual=2.3468301330621803e-10N
+ok
+test tests::malformed_external_geometry_material_and_constraints_are_rejected ... ok
+test tests::material_cancellation_at_every_cloth_callback_rolls_back_all_persistent_state ... ok
+test tests::material_cancellation_checks_entry_and_each_noop_return ... ok
+test tests::material_network_reaches_independent_incremental_energy_equilibrium ... material-network q=[[-0.03468793527666286, 1.4559016208314208, 0.17491839377412946], [-0.026027596766149637, 1.4559576700566903, 0.17611347474357655]] reference=[[-0.03468793525197834, 1.4559016208026938, 0.17491839356990843], [-0.02602759678104083, 1.4559576701123809, 0.17611347479474232]] position_error=2.0770362583566576e-10m force_residual=1.2857517012326884e-7N
+ok
+test tests::material_stage_retains_each_input_face_once_in_order ... ok
+test tests::membrane_affine_strain_follows_material_axes_under_arrangement_and_winding ... ok
+test tests::shared_edge_material_reaches_independent_incremental_energy_equilibrium ... shared-edge positions=[[6.661143843934282e-18, -0.00400055223490584, 0.0], [6.556879730592487e-18, 0.004000552234905835, 0.0]] reference=[[6.729906241347043e-23, -0.004000552234905839, 0.0], [-6.729906241347043e-23, 0.004000552234905839, 0.0]] position_error=7.41826236406616e-18m stationarity=1.0759747422946182e-14N
+ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 55 filtered out; finished in 0.02s
+

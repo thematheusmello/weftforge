@@ -13,6 +13,67 @@ Complete garment fitting, distribution and end-to-end acceptance remain in
 progress. See [current status](STATUS.md) for tested builds, known failures and
 remaining work.
 
+## Current execution order — 18 November 2026
+
+The registry currently contains 56 broad contracts: 42 partial and 14 planned.
+None is fully implemented or reference verified, and no delivery gate is accepted.
+Discovery is incomplete, so these 56 contracts are not a final product denominator.
+
+1. Finish the native UI and interaction foundation in the PhotoCraft-inspired
+   visual direction: consistent panels/tools/dialogs, linked selection, precise
+   input, focus, history and responsive job feedback. Contextual tabs, input
+   retirement and aligned constructor metre labels have source checks. Historical
+   native P005 accepted the bounded layout/normal-close component on E/D-built
+   native; its image-free public package cannot independently verify that layout.
+   New native workspace-PNG capture has source/pixel/lifecycle/input-preservation
+   checks, including the resolved shutdown wait and modal Escape behavior.
+   Execute its actual native save first, then authoring, save/export and
+   fresh-process reopen on the current build.
+   Earlier 8aa notch workflow and genuine modal accessibility-setter observations
+   remain historical; they are not transferred to the changed source.
+2. Close the first garment path. Shared soft sewing retains every energy in one
+   balanced nodal history. Contact now replaces its own nodal actions and exposes
+   separately attributed initial-repair projections; fitting requires zero repair
+   at initial and every accepted whole-step state. The new complete 181-state
+   case on a70c0df0 failed strain in 153 frames, 28 through 180, with peak
+   20.243551% and final 15.349281%; its final external-clock proof remains
+   unsealed. The capsule correction's fresh complete G case also fails all
+   153 strain frames: peak 19.770147%, final 15.721208%. Its original final
+   external verdict is retained at 379.697 seconds / 420. Supported contact,
+   finite states, uncertainty, zero recovery and closed-target seams pass. Keep
+   both failed grades: the new peak is lower while final strain is higher, with
+   no broad improvement or old-clock repair. Original inputs/settings/criteria
+   and earlier 16.063338%/50.9602% failures remain intact. Diagnose the actual
+   edge-contact/sewing/material/history coupling before choosing another engine
+   change. Moving-triangle nonlinear contact and calibration remain open.
+3. Complete the real empty-document shirt workflow through the UI: create pieces,
+   sew, arrange, simulate, change dimension/material, save, quit, reopen, edit and
+   export. Independently verify output and compare the recorded reference case.
+4. Work through Gates 2–4 below: professional editing/construction and fitting,
+   fabric/contact robustness, avatars/animation/materials/rendering and output.
+   Run reference discovery and comparison alongside implementation throughout.
+5. Close Gate 5 across every required feature and format, including additional
+   capabilities discovered during the full reference audit. Keep file compatibility
+   research distinct from successful mesh import or export.
+6. Complete Gate 6 locally across macOS/Apple Silicon, Windows and Linux; finish
+   recovery, packaging, documentation, assets/licenses and reproducible releases.
+   Keep GitHub Actions disabled throughout development. Re-enable it only after
+   the complete project is finished, as the user requested.
+
+Actual current source `59501451` passes formatting, 486 workspace tests across
+32 summaries with zero failed/ignored, strict all-target Clippy and native/CLI
+debug builds in 386.000 seconds within 900. Its 102 simulator tests are included
+within 486. These executions belong to H. The actual G xtask pass in 306.716
+seconds, separate optimized build and failed full numerical case retain their
+own source and exact archived reports; they do not transfer to H. Current
+source/runtime evidence and the updated 457-anchor map require clean
+registry/map/xtask verification before publication. Native PNG capture and the
+complete garment workflow still require their actual runtime cases. No garment,
+full native or reference acceptance follows from source checks or the bounded
+historical preview. Push each atomic development commit after its local checks.
+Earlier CLI/native notch results retain their 8aa source identity. All full
+feature contracts and release gates remain open.
+
 ## Before and throughout every gate
 
 - Freeze reference build, installer/executable hashes, OS/architecture, units,

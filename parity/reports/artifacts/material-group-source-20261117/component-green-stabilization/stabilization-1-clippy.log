@@ -1,0 +1,19 @@
+    Checking serde_core v1.0.229
+    Checking serde v1.0.229
+    Checking weftforge-sim v0.1.0 (<ROOT>/.local/coupled-edge-regression-20261116/crates/weftforge-sim)
+error: the loop variable `i` is used to index `gradient`
+   --> crates/weftforge-sim/src/tests.rs:352:18
+    |
+352 |         for i in 0..2 {
+    |                  ^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.94.0/index.html#needless_range_loop
+    = note: `-D clippy::needless-range-loop` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::needless_range_loop)]`
+help: consider using an iterator and enumerate()
+    |
+352 -         for i in 0..2 {
+352 +         for (i, <item>) in gradient.iter_mut().enumerate() {
+    |
+
+error: could not compile `weftforge-sim` (lib test) due to 1 previous error

@@ -1,0 +1,14 @@
+   Compiling weftforge v0.1.0 (<ROOT>/.local/contextual-properties-20261117/apps/weftforge)
+    Finished `test` profile [unoptimized] target(s) in 6.18s
+     Running unittests src/main.rs (target/debug/deps/weftforge-13c025c8f6d6aef9)
+
+running 6 tests
+test contextual_properties_tests::collapsing_the_edited_context_preserves_input_without_holding_hidden_focus ... ok
+test contextual_properties_tests::refocus_and_paste_in_one_frame_uses_the_retained_input_without_overwriting_the_new_edit ... ok
+test contextual_properties_tests::refused_new_empty_and_failed_load_keep_hidden_input_but_accepted_same_identity_load_drops_it ... ok
+test contextual_properties_tests::tab_switches_suspend_numeric_focus_and_restore_raw_text_caret_and_draft_on_refocus ... ok
+test contextual_properties_tests::tabs_and_contextual_groups_reach_real_controls_without_authoring ... ok
+test contextual_properties_tests::unfinished_hidden_input_refuses_other_commits_then_joins_one_valid_transaction ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 160 filtered out; finished in 14.58s
+

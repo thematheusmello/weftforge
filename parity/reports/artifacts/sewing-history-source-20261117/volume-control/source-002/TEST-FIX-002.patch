@@ -1,0 +1,11 @@
+--- sealed848-test/test_directory_volume_snapshot.py
++++ canonical002-test/test_directory_volume_snapshot.py
+@@ -157,7 +157,7 @@
+ 
+     def test_terminal_count_failure_returns_explicit_negative_after_cleanup(self):
+         with tempfile.TemporaryDirectory() as temporary:
+-            root = Path(temporary)
++            root = Path(temporary).resolve()
+             child = SimpleNamespace(pid=43210, returncode=None)
+             usage = SimpleNamespace(ru_maxrss=0)
+             count = Mock(side_effect=[0, FileNotFoundError("synthetic persistent volume failure")])

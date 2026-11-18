@@ -1,0 +1,262 @@
+{
+  "CLI_scope_qualification": "CLI integration tests invoked authoring/inspection commands; the controller directly launches Cargo only. No benchmark/fit/simulate command invocation found in the audited CLI/core tests. Native GUI was not launched.",
+  "all4_stages_passed": true,
+  "all_stages_actual_source88_metadata59_original8_pre_post_exact": true,
+  "anticipated_Clippy_items_after_test_module_failure_occurred": false,
+  "at_utc": "2026-11-17T05:34:54.911530+00:00",
+  "built_binaries": {
+    "weftforge": {
+      "built_not_launched_by_this_controller": true,
+      "bytes": 62733448,
+      "mode": 493,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/target/debug/weftforge",
+      "sha256": "909cc39ad525b04d89b09c256f7adaa78bcbe5d85a6715fd7345293886f16616"
+    },
+    "weftforge-cli": {
+      "built_not_launched_by_this_controller": true,
+      "bytes": 10659600,
+      "mode": 493,
+      "path": "<ROOT>/.local/material-cancellation-polling-20261117/target/debug/weftforge-cli",
+      "sha256": "c7af88584d2306f90bf6ada19c27336aa13ae537415e568242ec8ab137006184"
+    }
+  },
+  "candidate_tracked_status_clean": true,
+  "commit": "9d4b629c077f06c348f6615fe90df7bbeacedb24",
+  "conditional_source_move_or_retry_triggered": false,
+  "controller_result_sha256": "4994019f808f070e89863ae2fc3d07aff6930f4240de53cc44162b600d6e8691",
+  "controller_terminal_sha256": "7fdba53d590ebfd1b1b0a414c9d0f65dc6aec1094abf1cb5d375918b52eb2b61",
+  "largest_RSS_snapshot_gap_seconds": 0.4265052080154419,
+  "no_xtask_registry_refresh_fullgarment_native_GUI_launch_or_timing_benchmark": true,
+  "observed_sampled_aggregate_peak_RSS_bytes": 1035730944,
+  "outer_terminal_observation": {
+    "command_complete_under_caps": true,
+    "controller_PID": 61038,
+    "controller_exit_code": 0,
+    "elapsed_after_all_persistence_seconds": 447.52523183298763,
+    "provenance": "Transcription of unified exec final completion",
+    "retained_command_output_bytes": 104480,
+    "unified_exec_session": 87355
+  },
+  "postclose_guards": {
+    "actual_tool_binaries_exact": 6,
+    "all_hashes_modes_exact": true,
+    "clean_exact_commit": true,
+    "compiled_binaries_exact": 2,
+    "configs_exact": true,
+    "metadata_frozen": 59,
+    "original8": 8,
+    "owned_PID_groups_absent": [
+      61038,
+      61043,
+      61064,
+      70912,
+      72963
+    ],
+    "source88": 88
+  },
+  "scope": "Read/hash terminal binding after the single four-stage source-gate command",
+  "scope_limits": "Best-effort summed child process-group plus supervisor RSS snapshots with recorded gaps; exact wait4 only for direct child and exact supervisor ru_maxrss. Shared pages may be counted multiple times. SDK/linker/shared-library closure is not fully frozen.",
+  "source_freeze_sha256": "b609c92ae88021e87dacbf1960b20e5020d0dcf00d733b0a1af4799535aac67c",
+  "stage_exit_codes": {
+    "full-fmt": 0,
+    "native-cli-debug": 0,
+    "workspace-clippy": 0,
+    "workspace-tests": 0
+  },
+  "supervisor_exact_peak_RSS_bytes": 27492352,
+  "workspace_test_summary": {
+    "all_status_ok": true,
+    "failed": 0,
+    "ignored": 0,
+    "passed": 412,
+    "raw_summaries": [
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 151,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 3,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 1,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 1,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 1,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 1,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 1,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 18,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 1,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 29,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 14,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 4,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 6,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 4,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 3,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 5,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 12,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 10,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 7,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 11,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 14,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 8,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 2,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 20,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 1,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 8,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 10,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 65,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 1,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 0,
+        "status": "ok"
+      },
+      {
+        "failed": 0,
+        "ignored": 0,
+        "passed": 0,
+        "status": "ok"
+      }
+    ],
+    "summary_count": 31
+  }
+}

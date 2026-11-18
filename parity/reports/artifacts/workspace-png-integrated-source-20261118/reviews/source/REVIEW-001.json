@@ -1,0 +1,61 @@
+{
+  "review_kind": "independent read-only source review; not runtime or parity acceptance",
+  "base_head": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+  "reviewed_source_sha256": {
+    "Cargo.lock": "70661ff2dbb345e8aa0e2c326f8d76408ecdc107e84e7d812899af311c3b92d4",
+    "apps/weftforge/Cargo.toml": "6c7a79c94f71e940bcb4bfcdf2a8cac6f0753bcffa13bf624c7a756e4b853100",
+    "apps/weftforge/src/main.rs": "d06b639574943b158843df9fd08bfc352241ef7312efa4d4389d0e74eaada68a",
+    "apps/weftforge/src/capture.rs": "2559bda74a24a8fc006e683a06b337e7d4e307db5987be664b05f20e19a5de88",
+    "crates/weftforge-core/src/lib.rs": "e86bf9bffa8a40eb1f57bf989ce554a69ee028d9caed9877a4d3a702900b6831",
+    "crates/weftforge-core/src/persistence.rs": "d7f79c33193e6a5a03dc2faadd84e8d2d0959e8607b3f60e586b9f79a992ff80"
+  },
+  "observed_source_sha256_at_report": {
+    "Cargo.lock": "70661ff2dbb345e8aa0e2c326f8d76408ecdc107e84e7d812899af311c3b92d4",
+    "apps/weftforge/Cargo.toml": "6c7a79c94f71e940bcb4bfcdf2a8cac6f0753bcffa13bf624c7a756e4b853100",
+    "apps/weftforge/src/main.rs": "d06b639574943b158843df9fd08bfc352241ef7312efa4d4389d0e74eaada68a",
+    "apps/weftforge/src/capture.rs": "2559bda74a24a8fc006e683a06b337e7d4e307db5987be664b05f20e19a5de88",
+    "crates/weftforge-core/src/lib.rs": "e86bf9bffa8a40eb1f57bf989ce554a69ee028d9caed9877a4d3a702900b6831",
+    "crates/weftforge-core/src/persistence.rs": "d7f79c33193e6a5a03dc2faadd84e8d2d0959e8607b3f60e586b9f79a992ff80"
+  },
+  "reviewed_sources_unchanged_at_report": true,
+  "reviewed_tracked_diff_sha256": "0cbdd34ce48d316068b11d0378cd9456a5cfc4076549bcbbf0a470476dbe9a93",
+  "current_tracked_diff_sha256": "0cbdd34ce48d316068b11d0378cd9456a5cfc4076549bcbbf0a470476dbe9a93",
+  "cached_dependency_sources_sha256": {
+    "eframe-0.35.0/src/native/wgpu_integration.rs": "9e95a9e70d7e5b6ecca5185f940a77b05ea6700da175446cc5cfbe1d789d18c5",
+    "egui-wgpu-0.35.0/src/winit.rs": "0a5a23e6e109be1ff91964a5325d656cca9cd279a0de186c4aa96bda3fa1dc00",
+    "egui-wgpu-0.35.0/src/capture.rs": "e7d140b8cf32b258820bddcbe643546a873e3a5603752271a17afc7dcdaa0b61",
+    "egui-0.35.0/src/context.rs": "4ce16e3e6a19444051c994576d57b4a41ded2b5cf16fa739090c939fedc141db",
+    "egui-0.35.0/src/data/user_data.rs": "095cc614060c8cc42b1e6b079d441ed9021474f9fd85bc823cbb7d005a79a04f",
+    "egui-0.35.0/src/viewport.rs": "a35e25a6720939643fa6aea67f1c3661468c6766928dc837b35a164d8630bf74",
+    "egui-winit-0.35.0/src/lib.rs": "32db57036ce89d9e472c44d1bfc1389c62dcfaaee91c231119c2f70592e5df5b",
+    "ecolor-0.35.0/src/color32.rs": "83074d915e20e5a6e7345eb93b9be1768a149ad2dce378e91272202dedc25081",
+    "png-0.18.1/src/encoder.rs": "787f6f8922588a74436c76a3b2c2b5689206f7ed13a19a36227b8809710812ce"
+  },
+  "commands_excluded": [
+    "Cargo",
+    "tests",
+    "builds",
+    "native/model launch",
+    "network",
+    "commits"
+  ],
+  "proposal_or_integration_mutations": false,
+  "findings": [
+    {
+      "id": "PNG-SOURCE-001",
+      "severity": "must fix",
+      "file": "apps/weftforge/src/capture.rs",
+      "lines": [
+        261,
+        264
+      ],
+      "title": "A stalled PNG worker can block application shutdown indefinitely",
+      "status": "open; implementation agent preparing bounded fix under root direction"
+    }
+  ],
+  "scope_limits": [
+    "Backend GPU/readback allocation occurs before Event::Screenshot admission and cannot be retroactively capped by this module.",
+    "Saving has no whole-operation timeout in the reviewed original; 10 seconds is a readback deadline only.",
+    "Parent separately owns broad main.rs File/search/retained-input and lifecycle-hook review."
+  ]
+}

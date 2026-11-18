@@ -1,0 +1,47 @@
+{
+  "case_id": "NATIVE-UI-PREVIEW-001",
+  "derivative_kind": "Selected public derivative of a closed private case",
+  "frozen_status": "CLOSED_FAILED_PLAIN_NAME_CALIBRATION_PRECONDITION",
+  "runtime_source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "main_rs_sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd",
+  "native_sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+  "actual_result": "One coordinate-click, Cmd+A, typeText, Tab route left the constructor name Pattern 1 on both retained AX rereads. Final AX focus was File; rev 0 / 0 pieces. No Add occurred.",
+  "expected_name": "Studio preview",
+  "observed_name": "Pattern 1",
+  "authoring_calls": 0,
+  "cause": "Unknown",
+  "captures": [
+    {
+      "path": "captures/01-empty-clean.jpg",
+      "role": "Initial clean empty studio; initial AX exposes native window chrome only."
+    },
+    {
+      "path": "captures/02-name-calibration-mismatch.jpg",
+      "role": "Final actual mismatch; Pattern 1 remains and no piece exists."
+    }
+  ],
+  "decisive_AX": [
+    "captures/02-calibration-first-ax.txt",
+    "captures/02-name-calibration-mismatch-ax.txt"
+  ],
+  "cleanup": {
+    "owned_pid": 85382,
+    "method": "Recorded exact-owned PID SIGTERM after final CUA summary",
+    "independent_absence_confirmed_in_frozen_receipt": true,
+    "elapsed_seconds": 267.921961417,
+    "fresh_check_during_derivative_preparation": false
+  },
+  "implementation_gates": {
+    "workspace_tests_passed": 389,
+    "workspace_tests_failed": 0,
+    "strict_workspace_clippy_exit_code": 0,
+    "source_identical_frozen_receipts": true
+  },
+  "limits": [
+    "Causes remain unknown; no proven product defect.",
+    "No filled UI, native authoring, selected-piece/rest-mesh, reference parity, physics, full-feature or release credit.",
+    "Implementation tests and strict Clippy do not establish reference parity or successful native input.",
+    "No replay, repair or regrade; the two frozen cases remain separate.",
+    "Existing cleanup receipts record PID absence; no fresh process inventory or UI check was performed during preparation."
+  ]
+}

@@ -1,0 +1,387 @@
+diff --git a/apps/weftforge/src/main.rs b/apps/weftforge/src/main.rs
+index 1b6e737..33714b7 100644
+--- a/apps/weftforge/src/main.rs
++++ b/apps/weftforge/src/main.rs
+@@ -957,6 +957,14 @@ impl Studio {
+         cc.egui_ctx
+             .send_viewport_cmd(egui::ViewportCommand::SetTheme(egui::SystemTheme::Dark));
+         let mut app = Self::empty();
++        eprintln!(
++            "WF_IDLE_DIAG INIT revision={} pieces={} resolution={:.17} resolution_bits={:016x} dirty={}",
++            app.editor.project.revision,
++            app.editor.project.pieces.len(),
++            app.editor.project.resolution,
++            app.editor.project.resolution.to_bits(),
++            app.dirty
++        );
+         if let Some(path) = std::env::args_os().nth(1) {
+             app.open(PathBuf::from(path));
+         }
+@@ -1044,10 +1052,25 @@ impl Studio {
+         }
+     }
+     fn apply_command(&mut self, command: Command) -> bool {
++        eprintln!(
++            "WF_IDLE_DIAG COMMAND_BEFORE revision={} resolution={:.17} bits={:016x} dirty={} selected={:?} command={command:?}",
++            self.editor.project.revision,
++            self.editor.project.resolution,
++            self.editor.project.resolution.to_bits(),
++            self.dirty,
++            self.selected
++        );
+         let old_pieces = self.editor.project.pieces.len();
+         let old_groups = self.editor.project.sewing_groups.len();
+         match self.editor.execute(command) {
+             Ok(()) => {
++                eprintln!(
++                    "WF_IDLE_DIAG COMMAND_AFTER revision={} resolution={:.17} bits={:016x} pieces={}",
++                    self.editor.project.revision,
++                    self.editor.project.resolution,
++                    self.editor.project.resolution.to_bits(),
++                    self.editor.project.pieces.len()
++                );
+                 self.dirty = true;
+                 self.message = "Construction updated; simulation invalidated.".into();
+                 if self.editor.project.pieces.len() < old_pieces
+@@ -1075,6 +1098,17 @@ impl Studio {
+             return true;
+         }
+         let commands = draft.commands(&self.editor.project);
++        eprintln!(
++            "WF_IDLE_DIAG DRAFT_COMPARE revision={} source_revision={} selected={:?} curve={:?} source_resolution={:.17} source_bits={:016x} draft_resolution={:.17} draft_bits={:016x} commands={commands:?}",
++            draft.revision,
++            self.editor.project.revision,
++            draft.selected,
++            draft.curve.as_ref().map(|curve| curve.id),
++            self.editor.project.resolution,
++            self.editor.project.resolution.to_bits(),
++            draft.resolution,
++            draft.resolution.to_bits()
++        );
+         commands.is_empty() || self.apply_command(Command::Transaction(commands))
+     }
+     fn apply_inspector_action(
+@@ -1490,6 +1524,13 @@ impl Studio {
+         if self.job.is_some() || !self.needs_mesh {
+             return;
+         }
++        eprintln!(
++            "WF_IDLE_DIAG MESH_START frame={} revision={} pieces={} resolution_bits={:016x}",
++            ctx.cumulative_frame_nr(),
++            self.editor.project.revision,
++            self.editor.project.pieces.len(),
++            self.editor.project.resolution.to_bits()
++        );
+         let project = self.editor.project.clone();
+         self.needs_mesh = false;
+         self.job = Some(Job::spawn(
+@@ -5814,6 +5855,19 @@ impl Studio {
+     }
+ }
+ impl eframe::App for Studio {
++    fn raw_input_hook(&mut self, ctx: &egui::Context, raw_input: &mut egui::RawInput) {
++        eprintln!(
++            "WF_IDLE_DIAG RAW frame={} time={:?} revision={} resolution_bits={:016x} focus={:?} native_focused={} viewport={:?} events={:?}",
++            ctx.cumulative_frame_nr(),
++            raw_input.time,
++            self.editor.project.revision,
++            self.editor.project.resolution.to_bits(),
++            ctx.memory(|memory| memory.focused()),
++            raw_input.focused,
++            raw_input.viewport(),
++            raw_input.events
++        );
++    }
+     fn on_exit(&mut self) {
+         // macOS application Quit bypasses the cancellable viewport close request.
+         if let Err(error) = self.retain_on_exit() {
+@@ -6511,8 +6565,15 @@ fn finish_numeric_action(ctx: &egui::Context, focused: Option<egui::Id>, succeed
+ fn numeric_value<'a>(ui: &egui::Ui, value: &'a mut f64) -> egui::DragValue<'a> {
+     let id = ui.next_auto_id();
+     let ctx = ui.ctx().clone();
++    let trace_ctx = ctx.clone();
+     let formatter = ui.style().number_formatter.clone();
+-    egui::DragValue::new(value).custom_formatter(move |value, decimals| {
++    egui::DragValue::from_get_set(move |next| {
++        if let Some(next) = next {
++            eprintln!("WF_IDLE_DIAG NUMERIC_WRITE frame={} id={id:?} old={:.17} old_bits={:016x} new={next:.17} new_bits={:016x} focus={:?} events={:?}", trace_ctx.cumulative_frame_nr(), *value, value.to_bits(), next.to_bits(), trace_ctx.memory(|memory|memory.focused()), trace_ctx.input(|input| input.events.clone()));
++            *value = next;
++        }
++        *value
++    }).custom_formatter(move |value, decimals| {
+         // egui reparses its edit buffer on blur even when the text was never changed.
+         if ctx.memory(|memory| memory.has_focus(id)) {
+             value.to_string()
+@@ -7012,6 +7073,272 @@ fn main() -> eframe::Result {
+         Box::new(|cc| Ok(Box::new(Studio::new(cc)))),
+     )
+ }
++#[cfg(test)]
++mod native_idle_numeric_tests {
++    use super::*;
++    use egui::accesskit::{Action, ActionData, ActionRequest, NodeId, TreeId};
++
++    fn action(id: NodeId, action: Action, data: Option<ActionData>) -> egui::Event {
++        egui::Event::AccessKitActionRequest(ActionRequest {
++            action,
++            target_tree: TreeId::ROOT,
++            target_node: id,
++            data,
++        })
++    }
++    fn button(output: &egui::FullOutput, label: &str) -> NodeId {
++        output
++            .platform_output
++            .accesskit_update
++            .as_ref()
++            .unwrap()
++            .nodes
++            .iter()
++            .find(|(_, node)| {
++                node.label() == Some(label)
++                    && node.supports_action(Action::Click)
++                    && !node.is_disabled()
++            })
++            .unwrap_or_else(|| panic!("missing {label}"))
++            .0
++    }
++
++    fn frame(
++        ctx: &egui::Context,
++        app: &mut Studio,
++        height: f32,
++        events: Vec<egui::Event>,
++    ) -> egui::FullOutput {
++        ctx.run_ui(
++            egui::RawInput {
++                screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1640., height))),
++                events,
++                ..Default::default()
++            },
++            |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
++        )
++    }
++
++    #[test]
++    fn native_window_idle_keeps_empty_project_clean() {
++        for height in [1000., 1032.] {
++            for accesskit in [false, true] {
++                let ctx = egui::Context::default();
++                if accesskit {
++                    ctx.enable_accesskit();
++                }
++                studio_style(&ctx);
++                let mut app = Studio::empty();
++                app.session_autosave = None;
++                let before = app.editor.project.clone();
++                for pass in 0..40 {
++                    let output = frame(&ctx, &mut app, height, vec![]);
++                    let _ = ctx.tessellate(output.shapes, output.pixels_per_point);
++                    assert_eq!(
++                        app.editor.project,
++                        before,
++                        "height {height} AX {accesskit} pass {pass}; resolution bits {:x} -> {:x}; draft commands {:?}",
++                        before.resolution.to_bits(),
++                        app.editor.project.resolution.to_bits(),
++                        app.draft.as_ref().map(|draft| draft.commands(&before))
++                    );
++                    assert!(!app.dirty && !app.editor.can_undo());
++                }
++            }
++        }
++    }
++
++    #[test]
++    fn native_window_numeric_focus_and_file_new_do_not_author_empty_project() {
++        for focus in ["none", "resolution", "tab"] {
++            let ctx = egui::Context::default();
++            ctx.enable_accesskit();
++            studio_style(&ctx);
++            let mut app = Studio::empty();
++            app.session_autosave = None;
++            let before = app.editor.project.to_json().unwrap();
++            let mut output = frame(&ctx, &mut app, 1032., vec![]);
++            if focus == "resolution" {
++                let field = output
++                    .platform_output
++                    .accesskit_update
++                    .as_ref()
++                    .unwrap()
++                    .nodes
++                    .iter()
++                    .find(|(_, node)| node.numeric_value() == Some(0.07))
++                    .unwrap()
++                    .0;
++                frame(
++                    &ctx,
++                    &mut app,
++                    1032.,
++                    vec![action(field, Action::Focus, None)],
++                );
++                output = frame(&ctx, &mut app, 1032., vec![]);
++            }
++            if focus == "tab" {
++                for _ in 0..40 {
++                    output = frame(
++                        &ctx,
++                        &mut app,
++                        1032.,
++                        vec![egui::Event::Key {
++                            key: egui::Key::Tab,
++                            physical_key: None,
++                            pressed: true,
++                            repeat: false,
++                            modifiers: egui::Modifiers::NONE,
++                        }],
++                    );
++                    assert_eq!(app.editor.project.to_json().unwrap(), before);
++                }
++            }
++            let file = button(&output, "File");
++            frame(
++                &ctx,
++                &mut app,
++                1032.,
++                vec![action(file, Action::Click, None)],
++            );
++            output = frame(&ctx, &mut app, 1032., vec![]);
++            let new = button(&output, "New Empty");
++            frame(
++                &ctx,
++                &mut app,
++                1032.,
++                vec![action(new, Action::Click, None)],
++            );
++            for _ in 0..4 {
++                frame(&ctx, &mut app, 1032., vec![]);
++            }
++            assert!(
++                app.message.starts_with("New empty editable project"),
++                "{focus}: {}",
++                app.message
++            );
++            assert_eq!(app.editor.project.to_json().unwrap(), before);
++            assert!(!app.dirty && !app.editor.can_undo());
++        }
++    }
++
++    #[test]
++    fn native_window_loaded_precision_survives_numeric_focus_blur_and_accessibility_edits() {
++        let ctx = egui::Context::default();
++        ctx.enable_accesskit();
++        studio_style(&ctx);
++        let mut app = Studio::empty();
++        app.session_autosave = None;
++        app.editor
++            .execute(Command::AddRectangle {
++                name: "Precision source".into(),
++                origin: [0.; 2],
++                width: 0.41333333333333333,
++                height: 0.6234567890123456,
++            })
++            .unwrap();
++        app.editor
++            .execute(Command::SetResolution {
++                metres: 0.073456789012345,
++            })
++            .unwrap();
++        let piece = app.editor.project.pieces[0].id;
++        app.editor
++            .execute(Command::SetGrain {
++                piece,
++                angle: 0.37123456789012345,
++            })
++            .unwrap();
++        app.selected = Some(piece);
++        let before = app.editor.project.to_json().unwrap();
++        let output = frame(&ctx, &mut app, 1032., vec![]);
++        let fields: Vec<_> = output
++            .platform_output
++            .accesskit_update
++            .as_ref()
++            .unwrap()
++            .nodes
++            .iter()
++            .filter(|(_, node)| node.numeric_value().is_some() && !node.is_disabled())
++            .map(|(id, _)| *id)
++            .collect();
++        for field in fields {
++            frame(
++                &ctx,
++                &mut app,
++                1032.,
++                vec![action(field, Action::Focus, None)],
++            );
++            frame(&ctx, &mut app, 1032., vec![]);
++            frame(
++                &ctx,
++                &mut app,
++                1032.,
++                vec![egui::Event::Key {
++                    key: egui::Key::Tab,
++                    physical_key: None,
++                    pressed: true,
++                    repeat: false,
++                    modifiers: egui::Modifiers::NONE,
++                }],
++            );
++            frame(&ctx, &mut app, 1032., vec![]);
++            assert_eq!(
++                app.editor.project.to_json().unwrap(),
++                before,
++                "unedited focus field {field:?}; resolution {:.17}",
++                app.editor.project.resolution
++            );
++            assert!(!app.dirty);
++        }
++        let output = frame(&ctx, &mut app, 1032., vec![]);
++        let old_angle = app.editor.project.pieces[0].grain_angle;
++        let grain = output
++            .platform_output
++            .accesskit_update
++            .as_ref()
++            .unwrap()
++            .nodes
++            .iter()
++            .find(|(_, node)| node.numeric_value() == Some(old_angle))
++            .unwrap()
++            .0;
++        let edited_angle = old_angle.next_up();
++        let revision = app.editor.project.revision;
++        frame(
++            &ctx,
++            &mut app,
++            1032.,
++            vec![action(
++                grain,
++                Action::SetValue,
++                Some(ActionData::NumericValue(edited_angle)),
++            )],
++        );
++        assert_eq!(
++            app.editor.project.pieces[0].grain_angle.to_bits(),
++            edited_angle.to_bits()
++        );
++        assert_eq!(
++            app.editor.project.revision,
++            revision + 1,
++            "a real one-bit edit is one transaction"
++        );
++        assert!(app.dirty);
++        app.new_empty(&ctx, None);
++        assert_eq!(app.message, "Save current edits before creating New Empty.");
++        assert_eq!(
++            app.editor.project.pieces[0].grain_angle.to_bits(),
++            edited_angle.to_bits()
++        );
++        app.history(&ctx, false);
++        assert_eq!(
++            app.editor.project.pieces[0].grain_angle.to_bits(),
++            old_angle.to_bits()
++        );
++    }
++}
++
+ #[cfg(test)]
+ mod tests {
+     use super::*;

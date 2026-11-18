@@ -1,0 +1,34 @@
+{
+  "actions": {
+    "compile_tests_UI_network_push": 0,
+    "helpers_or_model_init_step_analysis": 0,
+    "packet_or_outer_imports": 0
+  },
+  "actual_binary": {
+    "path": "target/release/harbor-coupled-producer",
+    "sha256": "17d8d1e5b624b3edb68c6c7e0b9fb8b20f85ac3e3c38cb34b8e5ffd419b5c989",
+    "size_bytes": 1331760
+  },
+  "corrected_outer_supervisor_sha256": "b62b1d86c4b05a54bc37e9a20d49822ddab4374a9abddf67901913e4be35afbf",
+  "exact_delta_verified": "post-result volume before final monotonic timestamp; gate and stdout use measured volume",
+  "final_input_hashes": {
+    "FREEZE.json": "5ad83bba74240553cee9d7b7e5d05ce82ee9e748e4b084f14ab9d02fdb9f823c",
+    "PROTOCOL.json": "5e4cf661bcb686e9d9e75275367ceb63590e40cd15a39b412872c43130b7b769",
+    "SOURCE-ONLY-SEAL.json": "1e9bb57eb888c032b2c47259d435180fc0dca21460b3f1278135787b710fb9bc",
+    "SOURCE-PREFLIGHT.json": "8ea119dd0ed22601e42309d72f196580473f9713ddb09991aa88b590224962be",
+    "checks/BUILD-RECEIPT.json": "102da82b8d975d4ba08b18cf20a11cf1c097ca8db95c65734928b07051f97596"
+  },
+  "final_review_sha256": "81f648f10e2af9ff2f64ce647b1385b35007257640b1a7320f3c0153338576a4",
+  "no_actual_ROOT_GO_or_numerical_attempt": true,
+  "old_supervisor_sha256": "5e54e1ca6eb3c1cfe0cba226631ee8f2ae1183f5cd1420d2d6300e855b1d3860",
+  "packet61_and5_repo_bindings_rehashed_exact": true,
+  "prior_checks_sha256": "84d566f87742d74c4d232a98fb9de20d222443081ef5140d25fa5a4d22716d37",
+  "prior_review_sha256": "ef7e06215b913150deefe1d3440286863358ea86b3c282b29a22abdd968175e8",
+  "resolved_finding": "R1",
+  "reviewed_at_utc": "2026-11-17T06:50:07.795669+00:00",
+  "root_fix_note_sha256": "45112548a40da90b794d9b3ffaeec279367e45155692757bca62172191e3eedb",
+  "scope": "One base case, two fresh initializations,180 steps/181 states,420s whole case,256MiB numerical child RSS/output; strict quality unproven.",
+  "source_commit": "9d4b629c077f06c348f6615fe90df7bbeacedb24",
+  "static_AST_order_checked": true,
+  "status": "READY_FOR_ROOT_ONE_EXACT13_KEY_NUMERICAL_GO_NOT_AUTHORIZATION"
+}

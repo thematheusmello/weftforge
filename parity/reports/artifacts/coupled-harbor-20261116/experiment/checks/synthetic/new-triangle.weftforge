@@ -1,0 +1,103 @@
+{
+  "format": "weftforge",
+  "project": {
+    "curves": [
+      {
+        "controls": null,
+        "end": 4,
+        "id": 6,
+        "start": 3
+      },
+      {
+        "controls": null,
+        "end": 5,
+        "id": 7,
+        "start": 4
+      },
+      {
+        "controls": null,
+        "end": 3,
+        "id": 8,
+        "start": 5
+      }
+    ],
+    "mannequin": {
+      "capsules": []
+    },
+    "materials": [
+      {
+        "areal_density": 0.2,
+        "bending_stiffness": 0.003,
+        "collision_thickness": 0.003,
+        "color": [
+          0.3,
+          0.4,
+          0.5
+        ],
+        "damping": 0.2,
+        "friction": 0.4,
+        "id": 1,
+        "name": "Synthetic known areal mass",
+        "shear_stiffness": 100.0,
+        "warp_stiffness": 400.0,
+        "weft_stiffness": 400.0
+      }
+    ],
+    "next_id": 9,
+    "pieces": [
+      {
+        "boundary": [
+          6,
+          7,
+          8
+        ],
+        "grain_angle": 0.0,
+        "holes": [],
+        "id": 2,
+        "internal_curves": [],
+        "material": 1,
+        "name": "New analytic triangle",
+        "placement": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    ],
+    "points": [
+      {
+        "id": 3,
+        "position": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": 4,
+        "position": [
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "id": 5,
+        "position": [
+          0.0,
+          2.0
+        ]
+      }
+    ],
+    "resolution": 1.0,
+    "revision": 0,
+    "seams": [],
+    "sewing_groups": []
+  },
+  "version": 5
+}

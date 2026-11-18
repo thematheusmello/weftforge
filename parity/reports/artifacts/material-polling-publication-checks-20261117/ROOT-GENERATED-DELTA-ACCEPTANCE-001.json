@@ -1,0 +1,22 @@
+{
+  "at": "2026-11-17T09:19:58.513017+00:00",
+  "root_reviewed_generated_delta_and_receipt": true,
+  "metadata_commit": "bbbedb37b9a08266ae6a18a8def852a9283adf96",
+  "review_receipt_sha256": "a4323c0703d7228b4adff78e378b76b5ed6caea1279865adb8a009560f6950f2",
+  "outputs": {
+    "docs/dashboard/index.html": {
+      "bytes": 324635,
+      "mode": "0644",
+      "sha256": "b6611d8214cd7f37d43c03f646ff1c6195b9e95d42e00ae85689431357410c95"
+    },
+    "docs/progress.md": {
+      "bytes": 157387,
+      "mode": "0644",
+      "sha256": "7a93d08219d503ac06d106e2915aa0d89c2b2f787adcdb45892527ddbaf5e286"
+    }
+  },
+  "counts_and_full56_scope_unchanged": true,
+  "new_full181_failure_and_old_ungraded_failure_preserved": true,
+  "authorized_next": "Stage and commit only docs/progress.md and docs/dashboard/index.html, then prepare one clean156-input pinned xtask verify under separate recorded GO with prior300s/6GiB/16MiB/disk8GB caps; execute only after guards/resource preparation. No source tests/fmt/clippy rerun, no model/GUI, no push/PR/merge/deploy/Actions/Pages change.",
+  "review_read_attempt_note": "Whole-text difflib review process was terminated after a slow read-only comparison; no artifacts or source changed. Root used linear row delta recovery plus actual output hashes and the bounded generator/delta receipt."
+}

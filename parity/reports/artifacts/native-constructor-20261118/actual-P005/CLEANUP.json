@@ -1,0 +1,43 @@
+{
+  "absent": true,
+  "after": {
+    "apps": [],
+    "child_apps": [],
+    "windows": []
+  },
+  "before": {
+    "apps": [],
+    "child_apps": [],
+    "windows": []
+  },
+  "case": "WF-20261118-NATIVE-CONSTRUCTOR-VISUAL-P005-001",
+  "corrupt_leases_retained": [],
+  "elapsed_since_case_start": 35.584856033325195,
+  "method": "producer barrier/group shutdown then strict same-case app cleanup",
+  "producer_barrier": {
+    "method": "verified original producer group absence",
+    "producer": {
+      "case": "WF-20261118-NATIVE-CONSTRUCTOR-VISUAL-P005-001",
+      "command": [
+        "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+        "-B",
+        "<CASE_P005>/preview_launch.py",
+        "launch"
+      ],
+      "executable": "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+      "pgid": 36567,
+      "pid": 36567,
+      "plan_sha256": "d8c0d99f582f4bee8c720ee1db3405d7ccca4a53721cd9b7f8efa787c49d0193",
+      "start_epoch": 1794992132.609684,
+      "start_token": "Wed Nov 18 08:55:34 2026"
+    },
+    "quiescent": true,
+    "remaining": [],
+    "signals": [],
+    "stop_error": null
+  },
+  "producer_quiescent": true,
+  "signals": [],
+  "start_epoch": 1794992132.609684,
+  "unexpected_case_apps": []
+}

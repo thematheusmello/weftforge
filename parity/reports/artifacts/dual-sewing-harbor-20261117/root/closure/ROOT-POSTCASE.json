@@ -1,0 +1,156 @@
+{
+  "status": "CLOSED_OPERATIONALLY_COMPLETE_STRICT_QUALITY_FAILED",
+  "recorded_at_utc": "2026-11-17T22:16:10.247965+00:00",
+  "source_commit": "ef313fa869647c708a163853301ebc1d70a1d0b2",
+  "experiment": "WF-20261117-DUAL-SEWING-HARBOR-A8-001",
+  "actual_unified_session": 92020,
+  "actual_exit_code": 2,
+  "external_operational_accepted": true,
+  "strict_quality_passed": false,
+  "authoritative_external_elapsed_seconds": 323.21197587484494,
+  "whole_case_cap_seconds": 420,
+  "original_external_counted_bytes": 19242864,
+  "analyzed_states": 181,
+  "completed_steps": 180,
+  "failed_frames_by_screen": {
+    "completed_assembly_target_exact_zero": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28
+    ],
+    "finite": [],
+    "independent_capsule_unknown_pairs_exact_zero": [],
+    "material_axis_strain_below_0_15": [
+      29
+    ],
+    "physical_contact_below_0_002_m": [],
+    "reported_capsule_conservative_pairs_exact_zero": [],
+    "sampled_seam_gap_below_0_005_m": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28
+    ]
+  },
+  "peak_frame": 29,
+  "peak": {
+    "triangle_index": 78,
+    "piece_id": 2,
+    "axis": "warp",
+    "stiffness_N_per_m": 400.0,
+    "vertices_0based": [
+      37,
+      170,
+      36
+    ],
+    "signed_strain": 0.1606333827124784,
+    "absolute_strain": 0.1606333827124784
+  },
+  "all_owned_PIDs_absent": [
+    {
+      "pid": 53700,
+      "absent": true,
+      "observation": ""
+    },
+    {
+      "pid": 53821,
+      "absent": true,
+      "observation": ""
+    },
+    {
+      "pid": 53830,
+      "absent": true,
+      "observation": ""
+    },
+    {
+      "pid": 53859,
+      "absent": true,
+      "observation": ""
+    },
+    {
+      "pid": 53885,
+      "absent": true,
+      "observation": ""
+    },
+    {
+      "pid": 53909,
+      "absent": true,
+      "observation": ""
+    },
+    {
+      "pid": 69035,
+      "absent": true,
+      "observation": ""
+    },
+    {
+      "pid": 70798,
+      "absent": true,
+      "observation": ""
+    }
+  ],
+  "all_recorded_owned_groups_absent": [
+    53859,
+    53885,
+    53909,
+    69035,
+    70798
+  ],
+  "source91_freeze_binary_postchecked_exact": true,
+  "no_signals_sent_by_this_closure": true,
+  "postcase_preservation_only_not_timing_regrade": true,
+  "full_garment_reference_native_acceptance": false,
+  "old_cases_regraded": false,
+  "retry_or_continuation": false,
+  "external_witness_sha256": "ccaed35ae385ed3d8a8c8545ac1f98477b1048db0d1e0ccc964624d42802ad2b"
+}

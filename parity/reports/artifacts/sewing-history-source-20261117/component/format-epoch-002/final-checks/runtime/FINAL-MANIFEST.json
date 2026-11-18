@@ -1,0 +1,105 @@
+{
+  "actual_numerical_test_invocations_this_epoch": 0,
+  "files": {
+    "FREEZE.json": {
+      "bytes": 1107,
+      "sha256": "b64c9431c31985a21053099a1aa49a2a0667f8e501ceb9a22a2d8097012bd234"
+    },
+    "run_checks.py": {
+      "bytes": 4330,
+      "sha256": "0b5d684f5b5f21be0eaf3dac104d44b3f9d956681e7ffb88697f682e5f2402e4"
+    },
+    "runtime/PERSISTENCE-CLOCK.json": {
+      "bytes": 161,
+      "sha256": "e14dd1ba7b20352de5e5c7c36c86eb0fb9f821380cc78c428e491971d16bacdb"
+    },
+    "runtime/RESULT.json": {
+      "bytes": 3193,
+      "sha256": "1ca45e99b6e77ac329fe512da1f0c28eeae27e9defe93f4aed3477692fb081fa"
+    },
+    "runtime/STARTED.json": {
+      "bytes": 609,
+      "sha256": "27dd227b007e11587fe904d1b72fe55a284725e216940d084097c1ca54d833d1"
+    },
+    "runtime/TERMINAL-WITNESS.json": {
+      "bytes": 462,
+      "sha256": "2acec5118e314fc5324fa9d16bbfc01487d019f428cce7c63f2266e2fce22928"
+    },
+    "runtime/fmt-POST-GUARD.json": {
+      "bytes": 110,
+      "sha256": "5ede69b0278a85d1b21c1c27a9cce8bd167973986c5422cc8d55f49874934b36"
+    },
+    "runtime/fmt-PRE-GUARD.json": {
+      "bytes": 110,
+      "sha256": "5ede69b0278a85d1b21c1c27a9cce8bd167973986c5422cc8d55f49874934b36"
+    },
+    "runtime/fmt-RECEIPT.json": {
+      "bytes": 1273,
+      "sha256": "3316b18189a23085ae438f968961b78c426a10cc6bb7ca8df657cddb3be70ffa"
+    },
+    "runtime/fmt-STARTED.json": {
+      "bytes": 1033,
+      "sha256": "f4805a671433478d71fd534af6d16700d7b1dfa5d843c49d2fde554b2e88da15"
+    },
+    "runtime/fmt.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "runtime/fmt.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "runtime/sim-clippy-POST-GUARD.json": {
+      "bytes": 110,
+      "sha256": "5ede69b0278a85d1b21c1c27a9cce8bd167973986c5422cc8d55f49874934b36"
+    },
+    "runtime/sim-clippy-PRE-GUARD.json": {
+      "bytes": 110,
+      "sha256": "5ede69b0278a85d1b21c1c27a9cce8bd167973986c5422cc8d55f49874934b36"
+    },
+    "runtime/sim-clippy-RECEIPT.json": {
+      "bytes": 1379,
+      "sha256": "7d619cd416312f947ecaf1da08e9d217eac7166dd4a5c2a196945ffe41a650cb"
+    },
+    "runtime/sim-clippy-STARTED.json": {
+      "bytes": 1129,
+      "sha256": "3e35f4c718c5cca9f9ae0723c0bb1583724c9b1670a7e2c64ffcb9872eb5f0d9"
+    },
+    "runtime/sim-clippy.stderr": {
+      "bytes": 291,
+      "sha256": "b625d69f98d7aba89b6b0251e40985e390e8004c039630028a48ee7824e56f3c"
+    },
+    "runtime/sim-clippy.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "owned_PIDs_and_groups_absent": {
+    "65882": true,
+    "66008": true,
+    "66035": true,
+    "group66008": true,
+    "group66035": true
+  },
+  "post_source88_and_inputs_exact_each_stage": true,
+  "source_commit": "51dc403a46337a112c9eabcca4834d04611d2d3d",
+  "stages": [
+    {
+      "exit_code": 0,
+      "name": "fmt",
+      "peak_rss_bytes": 63340544,
+      "pid": 66008,
+      "sampled_peak_rss_bytes": 89718784,
+      "stop_reason": null
+    },
+    {
+      "exit_code": 0,
+      "name": "sim-clippy",
+      "peak_rss_bytes": 248020992,
+      "pid": 66035,
+      "sampled_peak_rss_bytes": 365101056,
+      "stop_reason": null
+    }
+  ],
+  "status": "CLOSED_FMT_AND_FIRST_SIM_CLIPPY_GREEN"
+}

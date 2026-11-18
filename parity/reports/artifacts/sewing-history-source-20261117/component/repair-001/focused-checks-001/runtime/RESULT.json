@@ -1,0 +1,149 @@
+{
+  "N32_component_reruns": 0,
+  "elapsed_seconds": 1.4238417079905048,
+  "retained_output_bytes_before_receipt": 15885,
+  "stages": [
+    {
+      "argv": [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--lib",
+        "stitch",
+        "--",
+        "--skip",
+        "tests::positive_target_stitch_n32_matches_independent_coupled_radial_energy",
+        "--nocapture"
+      ],
+      "disk_observation": {
+        "last_available_bytes": null,
+        "max_snapshot_gap_seconds": 0.0,
+        "minimum_available_bytes": null,
+        "path": "<ROOT>/.local/positive-target-sewing-component-20261117",
+        "samples": 0,
+        "stop_below_available_bytes": null
+      },
+      "end_monotonic_seconds": 1032944.224384833,
+      "exit_code": 0,
+      "name": "stitches",
+      "peak_rss_bytes": 78020608,
+      "pid": 61677,
+      "process_group": 61677,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.060850834008306265,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 4,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 101515264,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1033063.90927625,
+        "output_bytes": 5166,
+        "output_cap_bytes": 8388608,
+        "reserve_bytes": 65536
+      }
+    },
+    {
+      "argv": [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "weftforge-sim",
+        "--lib",
+        "tests::cancellation_and_failures_preserve_old_state_and_allow_recovery",
+        "--",
+        "--exact",
+        "--nocapture"
+      ],
+      "disk_observation": {
+        "last_available_bytes": null,
+        "max_snapshot_gap_seconds": 0.0,
+        "minimum_available_bytes": null,
+        "path": "<ROOT>/.local/positive-target-sewing-component-20261117",
+        "samples": 0,
+        "stop_below_available_bytes": null
+      },
+      "end_monotonic_seconds": 1032944.443171041,
+      "exit_code": 0,
+      "name": "rollback",
+      "peak_rss_bytes": 78544896,
+      "pid": 61687,
+      "process_group": 61687,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.05940337502397597,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 2,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 90800128,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1033063.90927625,
+        "output_bytes": 8404,
+        "output_cap_bytes": 8388608,
+        "reserve_bytes": 65536
+      }
+    },
+    {
+      "argv": [
+        "<HOME>/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "disk_observation": {
+        "last_available_bytes": null,
+        "max_snapshot_gap_seconds": 0.0,
+        "minimum_available_bytes": null,
+        "path": "<ROOT>/.local/positive-target-sewing-component-20261117",
+        "samples": 0,
+        "stop_below_available_bytes": null
+      },
+      "end_monotonic_seconds": 1032945.278610583,
+      "exit_code": 1,
+      "name": "fmt",
+      "peak_rss_bytes": 62128128,
+      "pid": 61695,
+      "process_group": 61695,
+      "rss_observation": {
+        "consecutive_failure_limit": 3,
+        "failure_events": [],
+        "failures": 0,
+        "max_consecutive_failures": 0,
+        "max_snapshot_gap_seconds": 0.057356499950401485,
+        "omitted_failure_events": 0,
+        "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+        "snapshot_timeout_max_seconds": 1.0,
+        "successful_snapshots": 14,
+        "timeouts": 0
+      },
+      "sampled_peak_rss_bytes": 89309184,
+      "stop_reason": null,
+      "terminal_phase_checks": {
+        "deadline": 1033063.90927625,
+        "output_bytes": 14498,
+        "output_cap_bytes": 8388608,
+        "reserve_bytes": 65536
+      }
+    }
+  ],
+  "status": "FIRST_CHECK_FAILURE_RETAINED"
+}

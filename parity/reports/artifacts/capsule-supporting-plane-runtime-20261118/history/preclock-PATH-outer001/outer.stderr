@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "<HISTORY_PRECLOCK_PATH_OUTER001>/supervise.py", line 116, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "<HISTORY_PRECLOCK_PATH_OUTER001>/supervise.py", line 41, in main
+    frozen = b.verify_bound()
+  File "<NUMERICAL_PACKET>/common.py", line 222, in verify_bound
+    verify_preflight(deadline)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "<NUMERICAL_PACKET>/source_inputs.py", line 78, in verify_preflight
+    clean_child_env(binding);b.validate_environment(value["python"],deadline);r.deadline_check(deadline)
+    ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "<NUMERICAL_PACKET>/source_inputs.py", line 25, in clean_child_env
+    r.require(os.environ.get("PATH","")==binding["parent_path"],"Parent PATH changed after compiler binding")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<NUMERICAL_PACKET>/resources.py", line 20, in require
+    raise ValueError(message)
+ValueError: Parent PATH changed after compiler binding

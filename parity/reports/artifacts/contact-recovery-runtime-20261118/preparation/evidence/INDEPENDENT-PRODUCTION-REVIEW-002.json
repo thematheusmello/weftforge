@@ -1,0 +1,88 @@
+{
+  "kind": "independent_source_only_review",
+  "review_revision": 2,
+  "utc": "2026-11-18T04:31:56.963865+00:00",
+  "candidate_worktree": ".local/contact-history-correctness-20261118/source-red",
+  "expected_source_sha256": {
+    "crates/weftforge-sim/src/contact.rs": "b81b1c268359333e92a12a7f0060ad02996c0b4750ea39fc5dbec0ec0365a023",
+    "crates/weftforge-sim/src/lib.rs": "91f2a76d4eef9c55a0443b2d506c0d190780c5e6332c7157da3a5b873f63411d",
+    "crates/weftforge-sim/src/tests.rs": "5289956bc358ac0c72192e8419fe224660d18719af01a228c78d3c9db9bb838e"
+  },
+  "observed_end_source_sha256": {
+    "crates/weftforge-sim/src/contact.rs": "b81b1c268359333e92a12a7f0060ad02996c0b4750ea39fc5dbec0ec0365a023",
+    "crates/weftforge-sim/src/lib.rs": "91f2a76d4eef9c55a0443b2d506c0d190780c5e6332c7157da3a5b873f63411d",
+    "crates/weftforge-sim/src/tests.rs": "5289956bc358ac0c72192e8419fe224660d18719af01a228c78d3c9db9bb838e"
+  },
+  "stale": false,
+  "amendment": ".local/contact-history-correctness-20261118/initial-recovery-finish-20261118/revision-002/AMENDMENT.json",
+  "amendment_sha256": "f9d3194301dde74f6f905a0d4085f7cae7964c048b4edd4d041d30576116c432",
+  "initial_recovery_only_patch_sha256": "53e77cee17978730539d3713680bec1f2de43ace3007be4bbe911e3be6654f8c",
+  "initial_all_five_hashes_matched": true,
+  "verdict": "SOURCE_REVIEW_ACCEPTED_REVISION_002_NO_RUNTIME_GO",
+  "kernel_mathematical_must_fix_count": 0,
+  "build_source_must_fix_count": 0,
+  "root_integration_required": [
+    "Native cumulative recovery diagnostic and velocity-injection disclosure",
+    "CLI legacy Diagnostics round-trip removal/assertion for serde-defaulted counter",
+    "CLI fit_quality and report criteria require counter == 0, with positive-counter rejection test",
+    "Current docs/automation/output/evaluator consumers carry semantics; historical artifacts stay unchanged",
+    "Future Harbor 181-state capture with initial_intersections == 0 explicitly requires integer counter 0 in every state"
+  ],
+  "source_expected_tests": 94,
+  "source_new_tests": 4,
+  "source_prior_test_names_removed": [],
+  "source_ignored_tests_found": 0,
+  "critical_legacy_function_bodies_byte_identical": true,
+  "runtime_execution_performed": false,
+  "runtime_go": false,
+  "cargo_execution_count": 0,
+  "model_execution_count": 0,
+  "native_execution_count": 0,
+  "reference_execution_count": 0,
+  "network_execution_count": 0,
+  "commits": 0,
+  "pushes": 0,
+  "open_limits": [
+    "N4 nonlinear moving-triangle false fixed point remains open",
+    "Capsule finite support normal mode is not a whole-triangle metric prox",
+    "Kinematic recovery injects velocity and kinetic energy and is not equilibrium or parity proof",
+    "The amended expected 94-test package has not run; earlier 90-test package remains failed at 88/2"
+  ],
+  "frozen_copy_source_sha256": {
+    "crates/weftforge-sim/src/contact.rs": "b81b1c268359333e92a12a7f0060ad02996c0b4750ea39fc5dbec0ec0365a023",
+    "crates/weftforge-sim/src/lib.rs": "91f2a76d4eef9c55a0443b2d506c0d190780c5e6332c7157da3a5b873f63411d",
+    "crates/weftforge-sim/src/tests.rs": "5289956bc358ac0c72192e8419fe224660d18719af01a228c78d3c9db9bb838e"
+  },
+  "artifact_expected_observed_sha256": {
+    "AMENDMENT.json": {
+      "expected": "f9d3194301dde74f6f905a0d4085f7cae7964c048b4edd4d041d30576116c432",
+      "observed": "f9d3194301dde74f6f905a0d4085f7cae7964c048b4edd4d041d30576116c432"
+    },
+    "review-fix-only.patch": {
+      "expected": "fb4f231ce957808e02f4481e5300c345360748ef5ec302ab2da45ce291d5c5d4",
+      "observed": "fb4f231ce957808e02f4481e5300c345360748ef5ec302ab2da45ce291d5c5d4"
+    },
+    "initial-recovery-only.patch": {
+      "expected": "53e77cee17978730539d3713680bec1f2de43ace3007be4bbe911e3be6654f8c",
+      "observed": "53e77cee17978730539d3713680bec1f2de43ace3007be4bbe911e3be6654f8c"
+    },
+    "parent_AMENDMENT.json": {
+      "expected": "24ff0ca7244dd880a1224c36d4f174e38774e8e5c19ae4f2e3880284c6ea6600",
+      "observed": "24ff0ca7244dd880a1224c36d4f174e38774e8e5c19ae4f2e3880284c6ea6600"
+    }
+  },
+  "review_fix_only_patch_sha256": "fb4f231ce957808e02f4481e5300c345360748ef5ec302ab2da45ce291d5c5d4",
+  "exact_revision_change_verified": "only cfg(test) before contact_errors; lib.rs/tests.rs unchanged",
+  "resolved_prior_finding": "contact_errors guarded with cfg(test); only remaining caller is in the test module",
+  "source_test_counts": {
+    "capsule.rs": 7,
+    "lib.rs": 3,
+    "contact.rs": 17,
+    "strain.rs": 1,
+    "math.rs": 0,
+    "constraints.rs": 2,
+    "tests.rs": 64
+  },
+  "original_review_receipt": "REVIEW-001.json",
+  "review_report_sha256": "36250503bd64b768a17cb8e171d50d0128c1984c328bff75ab51a06ac01ea078"
+}

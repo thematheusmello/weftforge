@@ -1,0 +1,63 @@
+{
+  "Cloth_initializations": 0,
+  "Cloth_steps": 0,
+  "errors": [],
+  "owned_Cargo_cleanup": [
+    {
+      "absent": true,
+      "group": 682,
+      "signal_sent": false
+    }
+  ],
+  "producer": {
+    "path": "target/release/harbor-coupled-producer",
+    "sha256": "a5fc2023cfc44dbbf7b32cfa12de4e4ab1988ad93c495ee1ddf85e76930c2853",
+    "size_bytes": 1509312
+  },
+  "producer_build_receipt_sha256": "9a0cce06abb5d9ec3415b0e3a26d07f9fa2d316ff2fb1485e17c4922e586af40",
+  "runtime_GO_or_final_freeze_created": false,
+  "stage": {
+    "argv": [
+      "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+      "-B",
+      "<NUMERICAL_PACKET>/build_release.py",
+      "--go",
+      "checks/ROOT-BUILD-GO.json",
+      "--go-sha256",
+      "dd6363ef5095b720a422ac14bd0ec3eff13e21db0a216226f4a03b0391484bdd"
+    ],
+    "disk_observation": {
+      "last_available_bytes": 11284643840,
+      "max_snapshot_gap_seconds": 0.07536691683344543,
+      "minimum_available_bytes": 11224367104,
+      "path": "<WORKTREE>",
+      "samples": 443,
+      "stop_below_available_bytes": 8000000000
+    },
+    "end_monotonic_seconds": 1119299.558848,
+    "exit_code": 0,
+    "peak_rss_bytes": 408698880,
+    "pid": 666,
+    "process_group": 666,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.07560237497091293,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 440,
+      "timeouts": 0
+    },
+    "sampled_peak_rss_bytes": 68059136,
+    "stop_reason": null,
+    "terminal_phase_checks": {
+      "deadline": 1119391.50632025,
+      "output_bytes": 94793,
+      "output_cap_bytes": 8388608,
+      "reserve_bytes": 262144
+    }
+  }
+}

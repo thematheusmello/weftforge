@@ -1,0 +1,22 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.27
+   Compiling quote v1.0.47
+   Compiling serde_core v1.0.229
+   Compiling syn v3.0.10
+   Compiling serde v1.0.229
+   Compiling serde_derive v1.0.229
+   Compiling weftforge-sim v0.1.0 (<ROOT>/.local/global-material-repair-20261117/crates/weftforge-sim)
+error[E0689]: can't call method `hypot` on ambiguous numeric type `{float}`
+   --> crates/weftforge-sim/src/constraints.rs:123:69
+    |
+123 |                     diagonal[vertex][axis] = diagonal[vertex][axis].hypot(component);
+    |                                                                     ^^^^^
+
+error[E0689]: can't call method `is_finite` on ambiguous numeric type `{float}`
+   --> crates/weftforge-sim/src/constraints.rs:124:48
+    |
+124 |                     if !diagonal[vertex][axis].is_finite() {
+    |                                                ^^^^^^^^^
+
+For more information about this error, try `rustc --explain E0689`.
+error: could not compile `weftforge-sim` (lib test) due to 2 previous errors

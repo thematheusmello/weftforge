@@ -1,0 +1,57 @@
+{
+  "notice": "PUBLIC REVIEW DERIVATIVE, NOT THE ORIGINAL PRIVATE RUN PACKETS. Closed own-app UI evidence only; no replay or new product experiment.",
+  "publication_state": "Local staged derivative only; no assertion of Git tracking, registry/map verification, or delivery.",
+  "credit": {
+    "native_acceptance": false,
+    "reference_acceptance": false,
+    "physics_validation": false,
+    "product_fix": false,
+    "feature_complete": false
+  },
+  "runs": [
+    {
+      "id": "OFFSET-R1-001",
+      "status_as_recorded": "STOPPED_CONTROLLER_BINDING_FAILURE",
+      "outcome": "Bare-executable CUA selector returned Invalid app. Controller/setup stop at step 1; no native window was observed.",
+      "binary_sha256": "6450fcfbf998b41563673acae0a1dd5374d0231f33ac65de7ef512c32f1e219a",
+      "step": 1,
+      "started_at_utc": "2026-11-16T12:00:23.776913+00:00",
+      "stop_recorded_at_utc": "2026-11-16T12:01:16.798205+00:00",
+      "authoring_actions": 0,
+      "snapshots_or_exports_created": false,
+      "grader_invocations": 0,
+      "owned_process_cleanup_verified": true,
+      "primary_public_locator": "runs/OFFSET-R1-001/RUN-STOP-001.json"
+    },
+    {
+      "id": "OFFSET-R1-002",
+      "status_as_recorded": "STOPPED_STEP_1_NEW_EMPTY_REFUSAL",
+      "outcome": "Owned macOS bundle selection succeeded. Initial selection AX was rev 0/0 pieces; later retained AX/screenshot showed rev 2/0 pieces/Unsaved without authoring commands. File > New Empty refused: Save current edits before creating New Empty. Cause remains unexplained.",
+      "binary_sha256": "6450fcfbf998b41563673acae0a1dd5374d0231f33ac65de7ef512c32f1e219a",
+      "step": 1,
+      "started_at_utc": "2026-11-16T12:10:06.041517+00:00",
+      "stop_recorded_at_utc": "2026-11-16T12:11:45.314398+00:00",
+      "meaningful_native_actions_recorded": 3,
+      "authoring_commands_performed": 0,
+      "snapshots_or_exports_created": false,
+      "grader_invocations": 0,
+      "owned_process_cleanup_verified": true,
+      "primary_public_locator": "runs/OFFSET-R1-002/RUN-STOP-002.json"
+    },
+    {
+      "id": "NATIVE-IDLE-DIAG-001",
+      "status_as_recorded": "ENDED_NOT_REPRODUCED_NO_CAUSE_IDENTIFIED",
+      "outcome": "Different instrumented binary did not reproduce the revision/dirty drift. New Empty succeeded with rev 0/0 pieces/clean. No cause, product fix, or acceptance was established.",
+      "instrumented_different_binary": true,
+      "binary_sha256": "0f5416888eded8d5eda756178b02a4f3611b8d13f046652bdf324f3bbb6de2c9",
+      "temporary_patch_sha256": "64b404425d3048cbae9d4f739448b93605534b0637f8c4646abdd680ee4b6b37",
+      "started_at_utc": "2026-11-16T12:50:08.344056+00:00",
+      "product_actions": 2,
+      "timing_deviation_as_recorded": "Scheduled10/25/45s snapshots were missed due documentation/controller/model latency. First retained screenshot was32.729s,File64.801s,New71.068s. No timing was fabricated; hard120s and two product actions were respected.",
+      "owned_process_cleanup_verified": true,
+      "cleanup_elapsed_seconds_from_launch_as_recorded": 91.86311604199,
+      "primary_public_locator": "runs/NATIVE-IDLE-DIAG-001/RUN-OUTCOME.json"
+    }
+  ],
+  "unproved": "No offset geometry, preview, apply/cancel/history/reopen, saved authoring/output-file measurements, native acceptance, reference acceptance, calibrated material, or physics result follows from these runs. Source checks and diagnostic tests do not upgrade the stopped cases."
+}

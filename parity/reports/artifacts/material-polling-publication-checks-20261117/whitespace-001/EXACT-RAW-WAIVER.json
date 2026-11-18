@@ -1,0 +1,142 @@
+{
+  "checked_commit": "92ac19094aed5adbf38fca95f26fed834c3c46a2",
+  "original_full_check_exit": 2,
+  "full_stdout_sha256": "0a9c0a49fb9672da5201c18fb5b1e05a643da12254306bcdfe428880ca6a7cb1",
+  "reason": "Preserve exact original raw evidence: unified-patch blank context lines and blank final lines in original generated lock/test stdout. No production/source/report whitespace finding is waived; no raw file is edited.",
+  "findings": [
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/component-comparison/producer/Cargo.lock",
+      "line": 82,
+      "kind": "new blank line at EOF",
+      "exact_line_hex": "0a",
+      "sha256": "ca8506497c030e60be500ef7d890b2ed26a83883a8802b097033014fbe459544"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/harbor/packet/SOURCE-ONLY-DELTA.patch",
+      "line": 6,
+      "kind": "trailing whitespace",
+      "exact_line_hex": "200a",
+      "sha256": "e1d1e5b9b330d3cc6f88bb2bb9be29a867bda0df78ccb39cf0c3e14dca1f31bf"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/harbor/packet/SOURCE-ONLY-DELTA.patch",
+      "line": 113,
+      "kind": "trailing whitespace",
+      "exact_line_hex": "200a",
+      "sha256": "e1d1e5b9b330d3cc6f88bb2bb9be29a867bda0df78ccb39cf0c3e14dca1f31bf"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/harbor/packet/SOURCE-ONLY-DELTA.patch",
+      "line": 116,
+      "kind": "trailing whitespace",
+      "exact_line_hex": "200a",
+      "sha256": "e1d1e5b9b330d3cc6f88bb2bb9be29a867bda0df78ccb39cf0c3e14dca1f31bf"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/harbor/packet/SOURCE-ONLY-DELTA.patch",
+      "line": 117,
+      "kind": "trailing whitespace",
+      "exact_line_hex": "200a",
+      "sha256": "e1d1e5b9b330d3cc6f88bb2bb9be29a867bda0df78ccb39cf0c3e14dca1f31bf"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/harbor/packet/SOURCE-ONLY-DELTA.patch",
+      "line": 120,
+      "kind": "trailing whitespace",
+      "exact_line_hex": "200a",
+      "sha256": "e1d1e5b9b330d3cc6f88bb2bb9be29a867bda0df78ccb39cf0c3e14dca1f31bf"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/harbor/packet/SOURCE-ONLY-DELTA.patch",
+      "line": 121,
+      "kind": "trailing whitespace",
+      "exact_line_hex": "200a",
+      "sha256": "e1d1e5b9b330d3cc6f88bb2bb9be29a867bda0df78ccb39cf0c3e14dca1f31bf"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/source-first-format/DIFF.patch",
+      "line": 8,
+      "kind": "trailing whitespace",
+      "exact_line_hex": "200a",
+      "sha256": "85f5920866300ec2e4ace694c990dffd80d0345f9b0b621a5d2ea42926190eee"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/source-first-format/DIFF.patch",
+      "line": 14,
+      "kind": "trailing whitespace",
+      "exact_line_hex": "200a",
+      "sha256": "85f5920866300ec2e4ace694c990dffd80d0345f9b0b621a5d2ea42926190eee"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/source-first-format/DIFF.patch",
+      "line": 73,
+      "kind": "trailing whitespace",
+      "exact_line_hex": "200a",
+      "sha256": "85f5920866300ec2e4ace694c990dffd80d0345f9b0b621a5d2ea42926190eee"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/source-first-format/DIFF.patch",
+      "line": 135,
+      "kind": "trailing whitespace",
+      "exact_line_hex": "200a",
+      "sha256": "85f5920866300ec2e4ace694c990dffd80d0345f9b0b621a5d2ea42926190eee"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/source-focused/DIFF.patch",
+      "line": 8,
+      "kind": "trailing whitespace",
+      "exact_line_hex": "200a",
+      "sha256": "8ae369c2af3b3c965f6de6e3b6c176857a25d5566216d5d86eb08d3ec31c5288"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/source-focused/DIFF.patch",
+      "line": 14,
+      "kind": "trailing whitespace",
+      "exact_line_hex": "200a",
+      "sha256": "8ae369c2af3b3c965f6de6e3b6c176857a25d5566216d5d86eb08d3ec31c5288"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/source-focused/DIFF.patch",
+      "line": 73,
+      "kind": "trailing whitespace",
+      "exact_line_hex": "200a",
+      "sha256": "8ae369c2af3b3c965f6de6e3b6c176857a25d5566216d5d86eb08d3ec31c5288"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/source-focused/DIFF.patch",
+      "line": 135,
+      "kind": "trailing whitespace",
+      "exact_line_hex": "200a",
+      "sha256": "8ae369c2af3b3c965f6de6e3b6c176857a25d5566216d5d86eb08d3ec31c5288"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/cancellation_tests.stdout",
+      "line": 13,
+      "kind": "new blank line at EOF",
+      "exact_line_hex": "0a",
+      "sha256": "9ba523441c96a664c44a3e11563ed3311eeb2f12bc6f78cbd97b1ea521f511e0"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/material_tests.stdout",
+      "line": 18,
+      "kind": "new blank line at EOF",
+      "exact_line_hex": "0a",
+      "sha256": "e7f76f1503cdd6b5a686d0ee104c5a6c440b39ff0f3775637e7e0f8f54b78d68"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/source-focused/runtime/membrane_tests.stdout",
+      "line": 9,
+      "kind": "new blank line at EOF",
+      "exact_line_hex": "0a",
+      "sha256": "aa4b01508bc13d8f5ae9c8cdfa317527c538b95c847f0970ecc345175727eba9"
+    },
+    {
+      "path": "parity/reports/artifacts/material-polling-source-20261117/workspace412-gates/runtime/workspace-tests.stdout",
+      "line": 567,
+      "kind": "new blank line at EOF",
+      "exact_line_hex": "0a",
+      "sha256": "10ed75ba71610ccbac8213ff63492417869eea01798426ed84bf7d7c9bf82ca7"
+    }
+  ],
+  "at": "2026-11-17T09:35:52.856332+00:00"
+}

@@ -1,0 +1,66 @@
+{
+  "binding": {
+    "diff_sha256": "b3da1bcdbfd5b1094808c231b222fe78b79bc7399cdc758e3397a356adb1a32f",
+    "guard_sha256": "ba4560b912abaf8e310f87dc33b334fddfc96bc9d41c74a046a46b2d1f815d12",
+    "head": "a70c0df0606463f5efbe4fa7518c91819c595546",
+    "runner_sha256": "0a4697a3296aa54e1219c5e34989629c0eae8de2e45df0f28da0b9a666f1b324",
+    "test_source_sha256": "fee6b80e51b98fc0dfaa6ade8c449b9a8747e3ce4d172ab5c944ea8b88b2bd18"
+  },
+  "budgets": {
+    "observed_aggregate_rss_bytes": 1073741824,
+    "output_bytes": 8388608,
+    "target_disk_bytes": 8000000000,
+    "whole_seconds": 180
+  },
+  "diagnostic_pass_is_not_coupled_convergence_pass": true,
+  "elapsed_seconds": 14.276309459004551,
+  "peaks": {
+    "aggregate_rss_bytes": 615022592,
+    "target_bytes": 78248139
+  },
+  "source_unchanged": true,
+  "stage": {
+    "argv": [
+      "cargo",
+      "test",
+      "-p",
+      "weftforge-sim",
+      "--lib",
+      "contact::tests::zero_target_stitch_capsule_n32_analytic_coupling_diagnostic",
+      "--offline",
+      "--locked",
+      "-j",
+      "1",
+      "--",
+      "--exact",
+      "--ignored",
+      "--nocapture",
+      "--test-threads=1"
+    ],
+    "end_monotonic_seconds": 1110858.479939708,
+    "exit_code": 0,
+    "peak_rss_bytes": 554123264,
+    "pid": 33508,
+    "process_group": 33508,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.08103387500159442,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 191,
+      "timeouts": 0
+    },
+    "sampled_peak_rss_bytes": 543752192,
+    "stop_reason": null,
+    "terminal_phase_checks": {
+      "deadline": 1111024.203642916,
+      "output_bytes": 25896,
+      "output_cap_bytes": 8388608,
+      "reserve_bytes": 65536
+    }
+  }
+}
