@@ -1,0 +1,37 @@
+{
+  "historical_cases": [
+    {
+      "case": "P001",
+      "outcome": "NEGATIVE native harness before PNG request; no native PNG/backend acceptance",
+      "original_closure_sha256": "d44a178cf460888d98094e05c2ca4a897a76eea9c620ac5a0138924fbbdc472a",
+      "original_case_freeze_sha256": "ceeeb01afde699d72e2f01652b3132929635886feed632332353efa095d4a2bd",
+      "original_counts": {
+        "actions": 4,
+        "observations": 40
+      },
+      "no_png_request": true,
+      "reason": "Missing, ambiguous or disabled Save workspace PNG… in the inspector’s truncated list",
+      "ordinary_child_exit": 0,
+      "signals": []
+    },
+    {
+      "case": "P002",
+      "outcome": "NEGATIVE startup/binding harness; no UI or PNG request",
+      "original_closure_sha256": "8b090cd8c25ff86398c970cb0a3ce404e79fa9df16de5c05d0a01b14c47bf827",
+      "original_case_freeze_sha256": "300ead4bc2032cfb1dea6cbf0e5c73d53e2166e7aff8055ad7362ad7aa23bc22",
+      "original_counts": {
+        "actions": 1,
+        "observations": 31
+      },
+      "no_png_request": true,
+      "reason": "osascript inventory timed out after3s in BIND-bind",
+      "cleanup_observer": "owner-close ps snapshot timed out after2s; original watchdog observed to terminal, no replay",
+      "ordinary_child_exit": -15,
+      "producer_signal_names": [
+        "SIGTERM"
+      ]
+    }
+  ],
+  "original_negative_outcomes_preserved": true,
+  "native_capture_was_not_requested_in_either": true
+}

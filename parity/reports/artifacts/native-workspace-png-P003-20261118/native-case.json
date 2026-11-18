@@ -1,0 +1,168 @@
+{
+  "case": "WF-20261118-NATIVE-WORKSPACE-PNG-P003",
+  "timestamp_UTC": "2026-11-18T14:00:06Z",
+  "platform": {
+    "os": "macOS",
+    "version": "27.2",
+    "build": "26B123",
+    "architecture": "arm64"
+  },
+  "checked_out_at_launch": "f7fbcf065525a7333abf2095f6cacca5b71ad242",
+  "binary_source": "59501451cd36f3ec51aba3560090090c94881427",
+  "binary_sha256": "360c3d3d509a379b4833ad5795b363fbbd153c7605c6af7e953d639bbae6fb54",
+  "source_input_count": 93,
+  "source_inputs_match_checked_out_main": true,
+  "original_fixture": "fixtures/harbor-shirt.weftforge",
+  "fixture_sha256_before_after": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+  "fixture_read_only": true,
+  "launch_pid": 93097,
+  "normal_child_exit": 0,
+  "termination_signals": [],
+  "elapsed_seconds_at_child_exit": 70.268789768219,
+  "case_timeout_seconds": 300,
+  "launch_admission_disk_bytes": 8582934528,
+  "final_pid_absent": true,
+  "native_calls": [
+    {
+      "event": "01-initial",
+      "raw_sha256": "cd69e2779209375496dd7ccc2ca71e4aa64a4d253945835b5d53dbdaed82f555",
+      "same_owned_application_pid": true,
+      "provider_error": false,
+      "selected_ax_lines": [
+        "Window: \"WeftForge\", App: WeftForge Capture P003.",
+        "\t\t2 button File",
+        "\t\t8 button Redo",
+        "\t\t9 button Undo",
+        "\t\t10 text (settable) harbor-capture.weftforge",
+        "\t\t17 button Frame all",
+        "\t\t18 text (settable) rev 20  ·  2 pieces  ·  8 seams  ·  0 groups  ·  654 vertices",
+        "\t\t28 text (settable) Rest arrangement"
+      ]
+    },
+    {
+      "event": "02-framed",
+      "raw_sha256": "91b187d89b2fdeba417d7ae9bb4c9ebc3cb811a86039e588f06fd144cdf98125",
+      "same_owned_application_pid": true,
+      "provider_error": false,
+      "selected_ax_lines": [
+        "Window: \"WeftForge\", App: WeftForge Capture P003.",
+        "\t\t2 button File",
+        "\t\t18 text (settable) rev 20  ·  2 pieces  ·  8 seams  ·  0 groups  ·  654 vertices"
+      ]
+    },
+    {
+      "event": "03-file-menu",
+      "raw_sha256": "08e920c0e2b503ae09337c9a41ea0dc97d5ef2757bd3761118bd6a76e1a52b7a",
+      "same_owned_application_pid": true,
+      "provider_error": false,
+      "selected_ax_lines": [
+        "Window: \"WeftForge\", App: WeftForge Capture P003.",
+        "\t1 container (showing 0-100 of 136 items)",
+        "\t\t2 button File"
+      ]
+    },
+    {
+      "event": "04-save-panel",
+      "raw_sha256": "6a6a7395058cdceaf9d01548497874f52865f9407e61efda4f649d44731bb009",
+      "same_owned_application_pid": true,
+      "provider_error": false,
+      "selected_ax_lines": [
+        "Window: \"Save\", App: WeftForge Capture P003.",
+        "0 dialog Save, ID: save-panel, Secondary Actions: Raise",
+        "\t\t3 text Value: Where:, ID: whereLabel",
+        "\t\t4 pop up button Where:, Value: Documents, ID: where popup",
+        "\t\t6 text Value: Save As:, ID: nameFieldLabel",
+        "\t\t7 text field (settable) Value: workspace, ID: saveAsNameTextField",
+        "\t\t10 button Cancel, ID: CancelButton",
+        "\t\t11 button Save, ID: OKButton"
+      ]
+    },
+    {
+      "event": "05-go-to-folder",
+      "raw_sha256": "56ac03eddc31da867b55dec18bdb2f56a428c2e46410f72a51e29a66a92b762d",
+      "same_owned_application_pid": true,
+      "provider_error": false,
+      "selected_ax_lines": [
+        "Window: \"\", App: WeftForge Capture P003.",
+        "0 sheet ID: GoToWindow, Secondary Actions: Raise",
+        "\t\t\t\t\t7 text Go to:"
+      ]
+    },
+    {
+      "event": "06-folder-path",
+      "raw_sha256": "b7ee152836512009c8fb693f54d53282140ecb632ef45187af324ef12d3b3312",
+      "same_owned_application_pid": true,
+      "provider_error": false,
+      "selected_ax_lines": [
+        "Window: \"\", App: WeftForge Capture P003.",
+        "0 sheet ID: GoToWindow, Secondary Actions: Raise",
+        "\t2 text field (settable) ID: PathTextField, Value: <CASE_OUTPUTS>",
+        "The focused UI element is 2 text field (settable) ID: PathTextField, Value: <CASE_OUTPUTS>"
+      ]
+    },
+    {
+      "event": "07-destination",
+      "raw_sha256": "ff9b5795430df8b7b6ca00aae7d799d90f1cc80bacf3a91c170fba3334f53eed",
+      "same_owned_application_pid": true,
+      "provider_error": false,
+      "selected_ax_lines": [
+        "Window: \"Save\", App: WeftForge Capture P003.",
+        "0 dialog Save, ID: save-panel, Secondary Actions: Raise",
+        "\t\t3 text Value: Where:, ID: whereLabel",
+        "\t\t4 pop up button Where:, Value: outputs, ID: where popup",
+        "\t\t7 text field (settable) Value: workspace, ID: saveAsNameTextField",
+        "\t\t11 button Save, ID: OKButton"
+      ]
+    },
+    {
+      "event": "08-save-result",
+      "raw_sha256": "d21fffcbfacac420c674561e2400974822bdbf326a696e1abf78a566809f42a7",
+      "same_owned_application_pid": true,
+      "provider_error": false,
+      "selected_ax_lines": [
+        "Window: \"WeftForge\", App: WeftForge Capture P003.",
+        "\t\t18 text (settable) rev 20  ·  2 pieces  ·  8 seams  ·  0 groups  ·  654 vertices",
+        "\t\t19 text (settable) Saving workspace PNG… Escape cancels."
+      ]
+    },
+    {
+      "event": "09-terminal-state",
+      "raw_sha256": "88a41b1cbe90f38747e3fc75f149e0205c1544b80b1360deac4d1189b986cb08",
+      "same_owned_application_pid": true,
+      "provider_error": false,
+      "selected_ax_lines": [
+        "Window: \"WeftForge\", App: WeftForge Capture P003.",
+        "\t\t8 button Redo",
+        "\t\t9 button Undo",
+        "\t\t10 text (settable) harbor-capture.weftforge",
+        "\t\t18 text (settable) rev 20  ·  2 pieces  ·  8 seams  ·  0 groups  ·  654 vertices",
+        "\t\t19 text (settable) Saved workspace PNG · 1640 × 1000 px.",
+        "\t\t28 text (settable) Rest arrangement"
+      ]
+    },
+    {
+      "event": "10-quit",
+      "raw_sha256": "3e0ad32a816d79e3f755fe87bf9b65bd3111b6ce066513ec0774809108bbc769",
+      "same_owned_application_pid": false,
+      "provider_error": true,
+      "selected_ax_lines": [
+        "Computer Use server error -10005: App quit"
+      ]
+    }
+  ],
+  "file_menu_selection": {
+    "fresh_response": "03-file-menu",
+    "x": 91,
+    "y": 352,
+    "label_visible_in_original_image": "Save workspace PNG…",
+    "method": "A coordinate inside the visible menu item in the same returned image. The provider accessibility listing omitted this item."
+  },
+  "selection_scope": "Selected original accessibility lines with only the owned destination replaced by <CASE_OUTPUTS>. Image-bearing provider replies and unrelated folder history stay private. The separately tracked PNG is the exact app output.",
+  "private_case_freeze_sha256": "a1b6c8bf0f4dd80b0383a0a450c9fabe938cace238059d514afc7c019bc147a2",
+  "keep_open": {
+    "reference_comparison": true,
+    "complete_garment": true,
+    "full_MAT_003_and_UI_001": true,
+    "high_DPI_cross_platform_and_calibrated_rendering": true
+  }
+}

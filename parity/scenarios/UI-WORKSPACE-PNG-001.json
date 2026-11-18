@@ -1,0 +1,14 @@
+{
+  "id": "UI-WORKSPACE-PNG-001",
+  "kind": "implementation_only",
+  "initial_conditions": "Actual native macOS app, read-only original Harbor sample, paused in its rest arrangement. Choose a fresh owned PNG file destination.",
+  "fixture_hashes": {
+    "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7"
+  },
+  "operations": [
+    "Frame all, open File, and choose Save workspace PNG…",
+    "Navigate the system save panel to the owned folder, save, and read the completion message.",
+    "Independently decode the original PNG, check dimensions and permitted chunks, compare the project file hash and document presentation before and after, then normally quit."
+  ],
+  "expected_outcomes": "A decodable RGBA8 PNG of the native client, with sRGB as its only ancillary chunk. Its dimensions match the actual app confirmation. Editable project bytes, visible revision and rest state stay unchanged. The native child exits normally."
+}

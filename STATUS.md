@@ -1,3 +1,24 @@
+# Native workspace capture — 18 November 2026
+
+**File → Save workspace PNG… passed on Apple Silicon.** The `59501451` native
+binary was launched from the merged checkout with all 93 source inputs unchanged.
+It saved an original 1640 × 1000 client PNG in case P003, confirmed completion in
+the UI and quit normally in 70.269 seconds. Independent decoding verified RGBA8,
+dimensions and the standard sRGB chunk. Project bytes, visible revision and rest
+arrangement stayed unchanged. [Native case and image](parity/reports/WF-20261118-NATIVE-WORKSPACE-PNG-P003.json).
+
+The earlier P001 truncated inspection and P002 startup timeouts remain recorded
+as stops before a PNG request. The P003 run verifies the File route on this build.
+Command search, cross-platform capture and the full scene-capture contract remain
+open. The separate tooling receipt records the actual clean `6872e7c3` metadata
+verification. [Tooling report](parity/reports/WF-20261118-WORKSPACE-PNG-I-TOOLING-001.json).
+
+The latest complete garment run still exceeds the 15% strain limit. Next, author
+and sew the two Harbor panels in a fresh native project and verify editable
+save/reopen and export. The separately reviewed, private garment diagnostic
+remains outside the product. Keep Actions disabled and land each checked increment
+in a small PR. The full roadmap remains active.
+
 # Main landing — 18 November 2026
 
 The checked 95-commit development stack is landed in **main** through

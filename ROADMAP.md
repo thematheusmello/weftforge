@@ -27,8 +27,9 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    native; its image-free public package cannot independently verify that layout.
    New native workspace-PNG capture has source/pixel/lifecycle/input-preservation
    checks, including the resolved shutdown wait and modal Escape behavior.
-   Execute its actual native save first, then authoring, save/export and
-   fresh-process reopen on the current build.
+   A native File-menu save on the `59501451` build produced an independently
+   decoded 1640 × 1000 workspace PNG and preserved the editable project.
+   Native authoring, save/export and fresh-process reopen are next.
    Earlier 8aa notch workflow and genuine modal accessibility-setter observations
    remain historical; they are not transferred to the changed source.
 2. Close the first garment path. Shared soft sewing retains every energy in one
@@ -66,11 +67,11 @@ debug builds in 386.000 seconds within 900. Its 102 simulator tests are included
 within 486. These executions belong to H. The actual G xtask pass in 306.716
 seconds, separate optimized build and failed full numerical case retain their
 own source and exact archived reports; they do not transfer to H. Current
-source/runtime evidence and the updated 457-anchor map require clean
-registry/map/xtask verification before publication. Native PNG capture and the
-complete garment workflow still require their actual runtime cases. No garment,
-full native or reference acceptance follows from source checks or the bounded
-historical preview. Push each atomic development commit after its local checks.
+source/runtime evidence and the updated 457-anchor map passed clean verification
+on `6872e7c3`. Native PNG P003 verifies one actual File-menu capture on macOS.
+The complete garment workflow, full native feature contracts and reference
+acceptance still require their own cases. Push each atomic development commit
+after its local checks.
 Earlier CLI/native notch results retain their 8aa source identity. All full
 feature contracts and release gates remain open.
 
