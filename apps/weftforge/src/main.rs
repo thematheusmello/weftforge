@@ -1033,6 +1033,8 @@ struct Studio {
     discard_on_exit: bool,
     search: bool,
     query: String,
+    search_input: Option<(Option<Id>, RetainedInspectorInput)>,
+    search_focus: bool,
 }
 impl Studio {
     fn new(cc: &eframe::CreationContext<'_>) -> Self {
@@ -1127,6 +1129,8 @@ impl Studio {
             discard_on_exit: false,
             search: false,
             query: String::new(),
+            search_input: None,
+            search_focus: false,
         };
         app.refresh_recovery();
         app
@@ -1347,6 +1351,14 @@ impl Studio {
         ctx.data_mut(|data| data.get_temp::<((u64, Option<Id>, Option<Id>), egui::Id)>(key))
             .filter(|(stamp, _)| *stamp == identity)
             .map(|(_, id)| id)
+            .or_else(|| {
+                self.search_input
+                    .as_ref()
+                    .filter(|(curve, input)| {
+                        self.search && (input.revision, input.selected, *curve) == identity
+                    })
+                    .and_then(|(_, input)| input.focus)
+            })
     }
     fn export_button(&self, ui: &mut egui::Ui, format: ExportFormat, label: &str) -> bool {
         let focused = self.inspector_focus(ui.ctx());
@@ -1620,6 +1632,7 @@ impl Studio {
     }
     fn rebuild(&mut self) {
         // Also invalidate buffers when a replacement document reuses the same revision and IDs.
+        self.suspended_properties.extend(self.search_input.take());
         for (_, input) in &mut self.suspended_properties {
             input.text = None;
         }
@@ -2312,6 +2325,31 @@ impl Studio {
             )
     }
 
+    fn open_command_search(&mut self, ctx: &egui::Context) {
+        if !self.search {
+            self.search_input = Some((self.selected_curve, self.free_sewing_input(ctx)));
+            self.suspend_properties_input(ctx);
+            self.search = true;
+            self.search_focus = true;
+            ctx.memory_mut(|memory| memory.request_focus(egui::Id::new("command-search-query")));
+        }
+    }
+
+    fn close_command_search(&mut self, ctx: &egui::Context) {
+        self.search = false;
+        self.search_focus = false;
+        if let Some((curve, input)) = self.search_input.take()
+            && (input.revision, input.selected, curve)
+                == (
+                    self.editor.project.revision,
+                    self.selected,
+                    self.selected_curve,
+                )
+        {
+            input.close_without_commit(ctx);
+        }
+    }
+
     fn retain_inspector_input(&self, response: &egui::Response, open: bool) {
         if open {
             // Popup closes on Escape without consuming it; retain the numeric editor's text.
@@ -2507,7 +2545,7 @@ impl Studio {
                     ui.close();
                 }
                 if ui.button("Commands ⌘K").clicked() {
-                    self.search = true;
+                    self.open_command_search(ui.ctx());
                     ui.close();
                 }
             });
@@ -2538,7 +2576,7 @@ impl Studio {
                 let response = ui.button("Commands ⌘K");
                 self.retain_inspector_input(&response, false);
                 if response.clicked() {
-                    self.search = true;
+                    self.open_command_search(ui.ctx());
                 }
                 for (label, redo) in [("Redo", true), ("Undo", false)] {
                     let response = ui.button(label);
@@ -6642,6 +6680,11 @@ impl eframe::App for Studio {
         let ctx = ui.ctx().clone();
         self.poll();
         self.poll_autosave();
+        if self.search
+            && ctx.input_mut(|input| input.consume_key(egui::Modifiers::NONE, egui::Key::Escape))
+        {
+            self.close_command_search(&ctx);
+        }
         if ctx.input(|input| input.key_pressed(egui::Key::Escape))
             && self.workspace_capture.cancel()
         {
@@ -6670,6 +6713,19 @@ impl eframe::App for Studio {
             || self.free_sewing.as_ref().is_some_and(|draft| draft.modal)
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some();
+        if self.search && self.search_focus && !authoring_modal {
+            ctx.memory_mut(|memory| memory.request_focus(egui::Id::new("command-search-query")));
+        }
+        if !authoring_modal
+            && !egui::Popup::is_any_open(&ctx)
+            && ctx.input_mut(|input| input.consume_key(egui::Modifiers::COMMAND, egui::Key::K))
+        {
+            if self.search {
+                self.close_command_search(&ctx);
+            } else {
+                self.open_command_search(&ctx);
+            }
+        }
         let global_shortcuts = !authoring_modal && !egui::Popup::is_any_open(&ctx);
         if global_shortcuts
             && self.cut_piece.is_some()
@@ -6731,11 +6787,6 @@ impl eframe::App for Studio {
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::Z))
         {
             self.history(&ctx, false);
-        }
-        if global_shortcuts
-            && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::K))
-        {
-            self.search = !self.search;
         }
         if global_shortcuts && !self.search && !ctx.egui_wants_keyboard_input() {
             if ctx.input(|i| i.key_pressed(egui::Key::Space)) {
@@ -6910,13 +6961,50 @@ impl eframe::App for Studio {
                 );
             });
         if self.search {
+            if self
+                .search_input
+                .as_ref()
+                .and_then(|(_, input)| input.focus)
+                .is_some_and(|id| numeric_replacement_requested(&ctx, id))
+            {
+                self.search_input = None;
+            } else if self.search_input.is_some() && numeric_focus(&ctx).is_some() {
+                self.search_input = Some((self.selected_curve, self.free_sewing_input(&ctx)));
+            }
+            if let Some((curve, input)) = &self.search_input
+                && (input.revision, input.selected, *curve)
+                    == (
+                        self.editor.project.revision,
+                        self.selected,
+                        self.selected_curve,
+                    )
+            {
+                input.restore(&ctx);
+            }
             let mut open = true;
             egui::Window::new("Command search")
                 .enabled(!authoring_modal)
                 .open(&mut open)
                 .collapsible(false)
                 .show(&ctx, |ui| {
-                    native_text_edit(ui, &mut self.query, None, usize::MAX, |edit| edit);
+                    ui.horizontal(|ui| {
+                        let label = ui.label("Search commands");
+                        // Window's invisible sizing pass discards focus requests.
+                        if self.search_focus && ui.is_visible() && ui.is_enabled() {
+                            ui.memory_mut(|memory| {
+                                memory.request_focus(egui::Id::new("command-search-query"))
+                            });
+                            self.search_focus = false;
+                        }
+                        native_text_edit(
+                            ui,
+                            &mut self.query,
+                            Some(egui::Id::new("command-search-query")),
+                            usize::MAX,
+                            |edit| edit.desired_width(240.),
+                        )
+                        .labelled_by(label.id);
+                    });
                     for label in [
                         "New Empty",
                         "Save project",
@@ -6996,10 +7084,13 @@ impl eframe::App for Studio {
                                 _ => {}
                             }
                             self.search = false;
+                            self.search_input = None;
                         }
                     }
                 });
-            self.search &= open;
+            if !open {
+                self.close_command_search(&ctx);
+            }
         }
         self.recovery_window(&ctx);
         if let Some(events) = modal_events {
@@ -9100,6 +9191,490 @@ mod contextual_properties_tests {
                 }
             }
         }
+    }
+
+    #[test]
+    fn command_search_keyboard_and_buttons_retain_property_text_and_escape_only_closes_search() {
+        let query = egui::Id::new("command-search-query");
+        for route in 0..4 {
+            for text in ["0.4500", "1e-", "NaN"] {
+                let (ctx, mut app) = fixture();
+                app.set_tool(Tool::Polygon);
+                app.polygon = vec![[0., 0.], [0.1, 0.]];
+                let polygon = app.polygon.clone();
+                let output = frame(&ctx, &mut app, 1000., vec![]);
+                let width = numeric(&output, 0.4);
+                let commands = button(&output, "Commands ⌘K");
+                frame(
+                    &ctx,
+                    &mut app,
+                    1000.,
+                    vec![action(width, Action::Focus, None)],
+                );
+                frame(&ctx, &mut app, 1000., vec![]);
+                frame(
+                    &ctx,
+                    &mut app,
+                    1000.,
+                    vec![
+                        key(egui::Key::A, egui::Modifiers::COMMAND),
+                        egui::Event::Text(text.into()),
+                    ],
+                );
+                let focus = numeric_focus(&ctx).unwrap();
+                let caret = egui::TextEdit::load_state(&ctx, focus)
+                    .unwrap()
+                    .cursor
+                    .char_range();
+                let editor = format!("{:?}", app.editor);
+                let pending = format!(
+                    "{:?}",
+                    app.draft.as_ref().unwrap().commands(&app.editor.project)
+                );
+                let (_worker, receiver) = mpsc::channel();
+                let cancelled = Arc::new(AtomicBool::new(false));
+                app.job = Some(Job {
+                    id: 1,
+                    revision: app.editor.project.revision,
+                    kind: JobKind::Mesh,
+                    batch: None,
+                    completed_steps: Arc::new(AtomicU64::new(0)),
+                    cancel: cancelled.clone(),
+                    receiver,
+                });
+                match route {
+                    0 | 1 => frame(
+                        &ctx,
+                        &mut app,
+                        1000.,
+                        vec![key(
+                            egui::Key::K,
+                            if route == 0 {
+                                egui::Modifiers::COMMAND
+                            } else {
+                                egui::Modifiers {
+                                    ctrl: true,
+                                    command: true,
+                                    ..Default::default()
+                                }
+                            },
+                        )],
+                    ),
+                    2 => frame(
+                        &ctx,
+                        &mut app,
+                        1000.,
+                        vec![action(commands, Action::Click, None)],
+                    ),
+                    _ => {
+                        let output = click(&ctx, &mut app, "Edit");
+                        let menu_command = output
+                            .platform_output
+                            .accesskit_update
+                            .as_ref()
+                            .unwrap()
+                            .nodes
+                            .iter()
+                            .find(|(id, node)| {
+                                *id != commands && node.label() == Some("Commands ⌘K")
+                            })
+                            .expect("Edit menu Commands entry")
+                            .0;
+                        frame(
+                            &ctx,
+                            &mut app,
+                            1000.,
+                            vec![action(menu_command, Action::Click, None)],
+                        )
+                    }
+                };
+                assert!(app.search);
+                let output = frame(
+                    &ctx,
+                    &mut app,
+                    1000.,
+                    vec![egui::Event::Text("Reset".into())],
+                );
+                assert_eq!(
+                    ctx.memory(|memory| memory.focused()),
+                    Some(query),
+                    "route {route}"
+                );
+                let nodes = &output
+                    .platform_output
+                    .accesskit_update
+                    .as_ref()
+                    .unwrap()
+                    .nodes;
+                let field = nodes
+                    .iter()
+                    .find(|(id, _)| *id == query.accesskit_id())
+                    .unwrap();
+                assert_eq!(field.1.role(), egui::accesskit::Role::TextInput);
+                assert!(field.1.labelled_by().iter().any(|label| {
+                    nodes.iter().any(|(id, node)| {
+                        id == label
+                            && (node.label() == Some("Search commands")
+                                || node.value() == Some("Search commands"))
+                    })
+                }));
+                assert_eq!(app.query, "Reset");
+                for _ in 0..3 {
+                    frame(&ctx, &mut app, 1000., vec![]);
+                }
+                assert_eq!(
+                    format!("{:?}", app.editor),
+                    editor,
+                    "open route {route}: {text}"
+                );
+                frame(
+                    &ctx,
+                    &mut app,
+                    1000.,
+                    vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+                );
+                for _ in 0..3 {
+                    frame(&ctx, &mut app, 1000., vec![]);
+                }
+                assert!(!app.search);
+                assert_eq!(
+                    app.polygon, polygon,
+                    "Escape must not cancel the underlying polygon"
+                );
+                assert_eq!(numeric_focus(&ctx), Some(focus));
+                assert_eq!(
+                    ctx.data_mut(|data| data.get_temp::<String>(focus))
+                        .as_deref(),
+                    Some(text)
+                );
+                assert_eq!(
+                    egui::TextEdit::load_state(&ctx, focus)
+                        .unwrap()
+                        .cursor
+                        .char_range(),
+                    caret
+                );
+                assert_eq!(format!("{:?}", app.editor), editor);
+                assert_eq!(
+                    format!(
+                        "{:?}",
+                        app.draft.as_ref().unwrap().commands(&app.editor.project)
+                    ),
+                    pending
+                );
+                assert!(
+                    !app.dirty && !app.needs_mesh && app.job.is_some() && app.editor.can_redo()
+                );
+                assert!(!cancelled.load(Ordering::Relaxed));
+
+                frame(
+                    &ctx,
+                    &mut app,
+                    1000.,
+                    vec![key(egui::Key::K, egui::Modifiers::COMMAND)],
+                );
+                frame(
+                    &ctx,
+                    &mut app,
+                    1000.,
+                    vec![
+                        key(egui::Key::A, egui::Modifiers::COMMAND),
+                        egui::Event::Text("Select".into()),
+                    ],
+                );
+                let output = frame(&ctx, &mut app, 1000., vec![]);
+                let select = super::tests::command_search_action(&output, "Select");
+                frame(
+                    &ctx,
+                    &mut app,
+                    1000.,
+                    vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+                );
+                assert_eq!(
+                    ctx.memory(|memory| memory.focused())
+                        .unwrap()
+                        .accesskit_id(),
+                    select
+                );
+                frame(
+                    &ctx,
+                    &mut app,
+                    1000.,
+                    vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+                );
+                assert!(!app.search && app.tool == Tool::Select);
+                let output = frame(&ctx, &mut app, 1000., vec![]);
+                assert!(
+                    output
+                        .platform_output
+                        .accesskit_update
+                        .as_ref()
+                        .unwrap()
+                        .nodes
+                        .iter()
+                        .any(|(id, _)| *id == width),
+                    "property AX identity: route {route}, text {text}"
+                );
+                frame(
+                    &ctx,
+                    &mut app,
+                    1000.,
+                    vec![action(width, Action::Focus, None)],
+                );
+                for _ in 0..3 {
+                    frame(&ctx, &mut app, 1000., vec![]);
+                }
+                assert_eq!(
+                    ctx.data_mut(|data| data.get_temp::<String>(focus))
+                        .as_deref(),
+                    Some(text)
+                );
+                assert_eq!(format!("{:?}", app.editor), editor);
+                assert_eq!(
+                    format!(
+                        "{:?}",
+                        app.draft.as_ref().unwrap().commands(&app.editor.project)
+                    ),
+                    pending
+                );
+                frame(
+                    &ctx,
+                    &mut app,
+                    1000.,
+                    vec![key(egui::Key::K, egui::Modifiers::COMMAND)],
+                );
+                frame(
+                    &ctx,
+                    &mut app,
+                    1000.,
+                    vec![action(width, Action::Focus, None)],
+                );
+                frame(
+                    &ctx,
+                    &mut app,
+                    1000.,
+                    vec![
+                        key(egui::Key::A, egui::Modifiers::COMMAND),
+                        egui::Event::Text("0.4750".into()),
+                    ],
+                );
+                frame(
+                    &ctx,
+                    &mut app,
+                    1000.,
+                    vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+                );
+                for _ in 0..3 {
+                    frame(&ctx, &mut app, 1000., vec![]);
+                }
+                assert_eq!(
+                    ctx.data_mut(|data| data.get_temp::<String>(focus))
+                        .as_deref(),
+                    Some("0.4750")
+                );
+                assert_eq!(
+                    app.draft.as_ref().unwrap().dimensions.as_ref().unwrap()[0],
+                    0.475
+                );
+                assert_eq!(format!("{:?}", app.editor), editor);
+            }
+        }
+    }
+
+    #[test]
+    fn command_search_toolbar_keyboard_activation_focuses_query_and_shortcut_closes_it() {
+        let (ctx, mut app) = fixture();
+        let output = frame(&ctx, &mut app, 1000., vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![action(button(&output, "Commands ⌘K"), Action::Focus, None)],
+        );
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+        );
+        assert!(app.search);
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![egui::Event::Text("Select".into())],
+        );
+        assert_eq!(
+            ctx.memory(|memory| memory.focused()),
+            Some(egui::Id::new("command-search-query"))
+        );
+        assert_eq!(app.query, "Select");
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![key(egui::Key::K, egui::Modifiers::COMMAND)],
+        );
+        assert!(!app.search);
+    }
+
+    #[test]
+    fn command_search_preserves_explicit_save_shortcut() {
+        let (ctx, mut app) = fixture();
+        let dir = super::tests::exit_test_directory("command-search-save");
+        let path = dir.join("panel.weftforge");
+        app.path = Some(path.clone());
+        app.draft.as_mut().unwrap().dimensions.as_mut().unwrap()[0] = 0.45;
+        let revision = app.editor.project.revision;
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![key(egui::Key::K, egui::Modifiers::COMMAND)],
+        );
+        assert_eq!(app.editor.project.revision, revision);
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![key(egui::Key::S, egui::Modifiers::COMMAND)],
+        );
+        assert!(app.search);
+        assert_eq!(app.editor.project.revision, revision + 1);
+        assert_eq!(Project::load(&path).unwrap(), app.editor.project);
+        assert_eq!(app.message, "Saved editable project atomically.");
+        assert!(!app.dirty);
+        fs::remove_dir_all(dir).unwrap();
+    }
+
+    #[test]
+    fn command_search_failed_load_retains_input_and_same_identity_replacement_retires_it() {
+        let (ctx, mut app) = fixture();
+        let dir = super::tests::exit_test_directory("command-search-load");
+        let path = dir.join("same-identity.weftforge");
+        let original = app.editor.project.clone();
+        original.save(&path).unwrap();
+        let selected = app.selected;
+        let output = frame(&ctx, &mut app, 1000., vec![]);
+        let width = numeric(&output, 0.4);
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![action(width, Action::Focus, None)],
+        );
+        frame(&ctx, &mut app, 1000., vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("0.4500".into()),
+            ],
+        );
+        let focus = numeric_focus(&ctx).unwrap();
+        let caret = egui::TextEdit::load_state(&ctx, focus)
+            .unwrap()
+            .cursor
+            .char_range();
+        let editor = format!("{:?}", app.editor);
+        app.open_command_search(&ctx);
+        frame(&ctx, &mut app, 1000., vec![]);
+        frame(&ctx, &mut app, 1000., vec![]);
+        assert!(app.search_input.as_ref().unwrap().1.text.is_some());
+        app.open(dir.join("missing.weftforge"));
+        assert!(app.search_input.as_ref().unwrap().1.text.is_some());
+        app.close_command_search(&ctx);
+        for _ in 0..3 {
+            frame(&ctx, &mut app, 1000., vec![]);
+        }
+        assert_eq!(
+            ctx.data_mut(|data| data.get_temp::<String>(focus))
+                .as_deref(),
+            Some("0.4500")
+        );
+        assert_eq!(format!("{:?}", app.editor), editor);
+        assert_eq!(
+            egui::TextEdit::load_state(&ctx, focus)
+                .unwrap()
+                .cursor
+                .char_range(),
+            caret
+        );
+
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![key(egui::Key::K, egui::Modifiers::COMMAND)],
+        );
+        frame(&ctx, &mut app, 1000., vec![]);
+        assert!(app.search_input.as_ref().unwrap().1.text.is_some());
+        assert!(
+            ctx.data_mut(
+                |data| data.get_temp::<(u64, RetainedInspectorInput)>(egui::Id::new(
+                    "cancelled-inspector-input"
+                ))
+            )
+            .is_none()
+        );
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![action(width, Action::Focus, None)],
+        );
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("0.4750".into()),
+            ],
+        );
+        assert!(
+            ctx.data_mut(|data| data
+                .get_temp::<RetainedInspectorInput>(focus.with("suspended-property-input")))
+                .is_none()
+        );
+        assert_eq!(
+            app.search_input
+                .as_ref()
+                .unwrap()
+                .1
+                .text
+                .as_ref()
+                .unwrap()
+                .0,
+            "0.4750"
+        );
+        app.open(path);
+        assert_eq!(app.editor.project, original);
+        assert!(
+            app.search_input.is_none(),
+            "a replacement may reuse the revision and every field ID"
+        );
+        frame(&ctx, &mut app, 1000., vec![]);
+        app.select(&ctx, selected);
+        frame(&ctx, &mut app, 1000., vec![]);
+        app.close_command_search(&ctx);
+        for _ in 0..3 {
+            frame(&ctx, &mut app, 1000., vec![]);
+        }
+        assert_eq!(app.editor.project, original);
+        assert_eq!(
+            app.draft.as_ref().unwrap().dimensions.as_ref().unwrap()[0],
+            0.4
+        );
+        assert_ne!(
+            ctx.data_mut(|data| data.get_temp::<String>(focus))
+                .as_deref(),
+            Some("0.4750")
+        );
+        app.cancel();
+        fs::remove_dir_all(dir).unwrap();
     }
 
     #[test]
@@ -22209,19 +22784,7 @@ mod internal_line_tests {
         empty.query = "Internal line".into();
         frame(&ctx, &mut empty, vec![]);
         let output = frame(&ctx, &mut empty, vec![]);
-        let command = output
-            .platform_output
-            .accesskit_update
-            .as_ref()
-            .unwrap()
-            .nodes
-            .iter()
-            .rev()
-            .find(|(_, node)| {
-                node.label() == Some("Internal line") && node.supports_action(Action::Click)
-            })
-            .unwrap()
-            .0;
+        let command = tests::command_search_action(&output, "Internal line");
         frame(&ctx, &mut empty, vec![action(command, Action::Click, None)]);
         assert!(empty.tool == Tool::InternalLine && !empty.search);
         empty.open_internal_line(&ctx, None);

@@ -1,3 +1,20 @@
+# Command search keyboard access — 18 November 2026
+
+Command search focuses its named input on opening. Tab and Return run a
+matching command. Escape dismisses the palette and restores staged inspector
+text. The source regression checks that a failed open preserves the draft and
+a successful replacement clears the old input even when both files use the
+same revision and object IDs.
+
+The Apple Silicon app opened the second revision 23 Harbor file while search
+was visible, reselected the front piece at 1.320 m, and ran Polygon from the
+keyboard. It saved the 1640 × 1000 workspace PNG from the palette and closed
+normally. Both input copies retained their exact bytes.
+[Harbor workspace preview](parity/reports/artifacts/command-search-native-20261118/workspace.png) · [Native observation](parity/reports/artifacts/command-search-native-20261118/NATIVE-OBSERVATION.json).
+
+The complete Harbor fit, cross-platform keyboard checks and wider
+accessibility coverage remain open.
+
 # Apple Silicon packaging — 18 November 2026
 
 The package command uses the studio and CLI executables reported by its Cargo
