@@ -1,0 +1,69 @@
+{
+  "scope": "Native save and cancellation during 60-step zero-gravity assembly",
+  "launch": {
+    "pid": 51819,
+    "source_commit": "6078c2af423b150a9f7b0bcaf21abb6e2e954b56",
+    "binary_sha256": "766a1d06c0cba46f8134465c4ed4ffa8bfee146d894d4edeb56f20e17dd46846",
+    "start_utc": "2026-11-18T20:18:31.883723+00:00",
+    "input_sha256": "604107601b530013624a622f318f11c35a5a67a7db37bdff347635370d6c7402",
+    "scope": "Native framing and save during a live assembly job, then cancellation"
+  },
+  "process_terminal": {
+    "pid": 51819,
+    "exit_code": 0,
+    "elapsed_seconds": 88.69616933399811,
+    "signals": [],
+    "input_unchanged": true,
+    "saved_sha256": "604107601b530013624a622f318f11c35a5a67a7db37bdff347635370d6c7402"
+  },
+  "observations": [
+    {
+      "event": "assembly_dispatched",
+      "epoch": 1795033148.07,
+      "revision": 20
+    },
+    {
+      "event": "frame_all_dispatched",
+      "epoch": 1795033150.287,
+      "next_visible_completed_steps": 2,
+      "planned_steps": 60
+    },
+    {
+      "event": "save_as_opened_while_assembly_active",
+      "epoch": 1795033152.898
+    },
+    {
+      "event": "save_click",
+      "epoch": 1795033175.061
+    },
+    {
+      "event": "saved_while_running",
+      "observed_epoch": 1795033178.619,
+      "confirmation": "Saved editable project atomically.",
+      "visible_completed_steps": 23,
+      "planned_steps": 60,
+      "revision": 20,
+      "input_and_copy_sha256": "604107601b530013624a622f318f11c35a5a67a7db37bdff347635370d6c7402"
+    },
+    {
+      "event": "cancel_dispatched",
+      "epoch": 1795033189.791,
+      "visible_completed_steps_before_dispatch": 33,
+      "planned_steps": 60,
+      "revision": 20
+    },
+    {
+      "event": "cancelled",
+      "observed_epoch": 1795033191.378,
+      "completed_steps": 35,
+      "planned_steps": 60,
+      "revision": 20,
+      "result": "Simulation cancelled and discarded",
+      "obsolete_input": false,
+      "retained_stage": "Rest arrangement"
+    }
+  ],
+  "execution_time_scope": "Tool-observed action and readback timestamps include native controller delays.",
+  "owned_window_closed": true,
+  "whole_fit_evaluated": false
+}

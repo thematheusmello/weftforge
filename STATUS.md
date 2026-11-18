@@ -1,3 +1,16 @@
+# Native save and cancellation — 18 November 2026
+
+The optimized Apple Silicon studio saved a byte-identical Harbor project while
+assembly was at step 23 of 60. Task Details recorded cancellation at step 35,
+discarded the simulation result and retained the rest arrangement at revision
+20. The studio quit normally.
+[Native job-control case](parity/reports/WF-20261118-HARBOR-NATIVE-JOB-CONTROL-001.json).
+
+The native recovery check landed in [PR #67](https://github.com/thematheusmello/weftforge/pull/67).
+The isolated-stitch solver change is in testing against the unchanged Harbor
+case. Native fit still fails the 15% strain limit in the current main build.
+GitHub Actions and automated Pages deployments stay disabled.
+
 # Native project recovery — 18 November 2026
 
 The optimized Apple Silicon studio kept Harbor revision 20 open after a
