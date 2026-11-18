@@ -1,0 +1,62 @@
+{
+  "kind": "implementation_only",
+  "scope": "Apple Silicon package creation, app launch and packaged CLI smoke",
+  "platform": "macOS Apple Silicon",
+  "cargo_build_command": [
+    "cargo",
+    "build",
+    "--locked",
+    "--release",
+    "-p",
+    "weftforge",
+    "-p",
+    "weftforge-cli"
+  ],
+  "application_source_commit": "38c0389165e90ff21cb4f4943fe993eeb4a32d7f",
+  "packaging_command": [
+    "cargo",
+    "xtask",
+    "package"
+  ],
+  "packaging_source": "xtask/src/main.rs",
+  "packaging_source_sha256": "af6a791e66f7a76b666d8f11822b915044e52987ae6330d9afdb49d36fd55251",
+  "packaging_exit_code": 0,
+  "configured_build_directory": "separate CARGO_TARGET_DIR within the checkout",
+  "stale_default_executables": {
+    "used_test_markers": true,
+    "markers_unchanged": true,
+    "package_matches_reported_build_executables": true
+  },
+  "packaged_executables": {
+    "studio": {
+      "sha256": "a488bdb4ff0266a7892668f27e94608da66d950c2035c0ae745dbcb6c56cb1fe",
+      "file": "Mach-O 64-bit executable arm64"
+    },
+    "cli": {
+      "sha256": "457f56d23e702c8dc00f5c4b777fef744753a4b97d733ba99884687cdfb99797",
+      "file": "Mach-O 64-bit executable arm64"
+    },
+    "studio_bundle": {
+      "sha256": "a488bdb4ff0266a7892668f27e94608da66d950c2035c0ae745dbcb6c56cb1fe",
+      "file": "Mach-O 64-bit executable arm64"
+    }
+  },
+  "notices_present": 8,
+  "packaged_cli": {
+    "input_sha256": "4dd6b23e0e3d7cbefcb92fd6a1d53bb7d36f8e45f1ee4a3887fab826c051981b",
+    "read_preserved": true,
+    "pieces": 2,
+    "vertices": 134,
+    "triangles": 196,
+    "units": "m",
+    "up": "Y"
+  },
+  "native_window": {
+    "observation": "The opened WeftForge window rendered the empty revision 0 studio with 2D Pattern, 3D Garment, Properties and simulation controls.",
+    "bundle_identifier": "org.weftforge.studio",
+    "binary_sha256": "a488bdb4ff0266a7892668f27e94608da66d950c2035c0ae745dbcb6c56cb1fe",
+    "close_action": "Command-Q",
+    "window_closed_and_process_absent": true
+  },
+  "remaining": "Windows and Linux launch, signing and full release acceptance"
+}

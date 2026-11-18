@@ -81,6 +81,8 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    research distinct from successful mesh import or export.
 6. Complete Gate 6 locally across macOS/Apple Silicon, Windows and Linux; finish
    recovery, packaging, documentation, assets/licenses and reproducible releases.
+   The Apple Silicon package now uses the executables selected by Cargo and
+   has a local launch and CLI smoke check with a separate build directory.
    Keep GitHub Actions disabled throughout development. Re-enable it only after
    the complete project is finished, as the user requested.
 

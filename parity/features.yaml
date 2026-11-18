@@ -12486,7 +12486,7 @@
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending.",
         "A complete live native text-entry journey remains unverified after N004 exposed no AX authoring content. Native AX activation/interaction diagnosis and fresh current-source acceptance remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "PAT-001",
@@ -47012,7 +47012,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "MAT-002",
@@ -50598,7 +50598,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FILE-004",
@@ -61357,7 +61357,8 @@
         "APP-003"
       ],
       "implementation_locations": [
-        "apps/weftforge/src/main.rs"
+        "apps/weftforge/src/main.rs",
+        "xtask/src/main.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/7"
