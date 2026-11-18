@@ -1,3 +1,16 @@
+# Native Harbor fit — 18 November 2026
+
+The optimized Apple Silicon studio completed 60 assembly steps and 120 drape
+steps on the reopened Harbor project. It displayed 15.71% strain after assembly
+and 15.72% after drape, both above the strict 15% limit. The displayed seam gaps
+were 0.5 mm and 0.6 mm. Project bytes stayed exact and the studio quit normally
+after 338.044 seconds. [Native phase endpoints](parity/reports/WF-20261118-HARBOR-NATIVE-FIT-001.json).
+
+These are phase endpoint observations. The separate 181-state garment failure
+retains its original source and grade. The next solver check uses the saved
+six-node case to test whether a direct solve can satisfy both sewing and contact.
+Gate 1 remains open. GitHub Actions and automated Pages deployments stay disabled.
+
 # Native Harbor authoring and exports — 18 November 2026
 
 On Apple Silicon the studio arranged the two recovered UI-authored Harbor
@@ -10,9 +23,7 @@ The native File menu saved the SVG and DXF patterns, the two OBJ rest surfaces
 and a 1640 × 1000 workspace PNG. Both test windows closed normally.
 [Case and verified files](parity/reports/WF-20261118-HARBOR-NATIVE-AUTHORING-REOPEN-001.json).
 
-Continue with native assembly and drape on the saved construction and the
-solver experiment on the retained contact and sewing observations. The strict
-full-garment strain failure remains open. The polygon fix and its 488-test
+The strict full-garment strain failure remains open. The polygon fix and its 488-test
 source check landed in [PR #64](https://github.com/thematheusmello/weftforge/pull/64).
 GitHub Actions and automated Pages deployments remain disabled.
 
