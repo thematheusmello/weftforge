@@ -1,3 +1,15 @@
+# First failing fit state — 18 November 2026
+
+The `first_quality_failure` field in `fit` and `fit-benchmark` contains the
+failed whole-step index, diagnostics and peak-strain piece when available. Its
+value is null when every fit-quality check passes. Both optimized CLI runs
+checked all 181 states on the original shirt and failed at state 22. The
+added report identifies 17.59% weft
+strain on triangle 7. The existing non-timing fields matched across both runs.
+[Fit-report comparison](parity/reports/artifacts/fit-first-failure-20261118/COMPARISON.json).
+
+The complete Harbor fit remains open.
+
 # Command search keyboard access — 18 November 2026
 
 Command search focuses its named input on opening. Tab and Return run a

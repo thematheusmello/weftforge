@@ -481,9 +481,13 @@ fn fit_quality(d: &Diagnostics) -> bool {
     fit_state_quality(d) && d.seam_assembly_remaining == 0.
 }
 
-fn record_fit_state(d: &Diagnostics, checked: &mut usize, first_failure: &mut Option<usize>) {
+fn record_fit_state(
+    d: &Diagnostics,
+    checked: &mut usize,
+    first_failure: &mut Option<(usize, Diagnostics)>,
+) {
     if !fit_state_quality(d) {
-        first_failure.get_or_insert(*checked);
+        first_failure.get_or_insert_with(|| (*checked, d.clone()));
     }
     *checked += 1;
 }
@@ -496,11 +500,11 @@ fn fit(project: &Project) -> Result<(Mesh, serde_json::Value, bool)> {
     let mut failure = None;
     let mut timings = Vec::new();
     let mut quality_states_checked = 0;
-    let mut first_quality_failure_state = None;
+    let mut first_quality_failure = None;
     record_fit_state(
         cloth.diagnostics(),
         &mut quality_states_checked,
-        &mut first_quality_failure_state,
+        &mut first_quality_failure,
     );
     for (name, steps, gravity) in [("assembly", 60, [0.; 3]), ("drape", 120, [0., -9.81, 0.])] {
         let settings = StepSettings {
@@ -515,11 +519,7 @@ fn fit(project: &Project) -> Result<(Mesh, serde_json::Value, bool)> {
         for _ in 0..steps {
             match cloth.step(settings, || false) {
                 Ok(d) => {
-                    record_fit_state(
-                        &d,
-                        &mut quality_states_checked,
-                        &mut first_quality_failure_state,
-                    );
+                    record_fit_state(&d, &mut quality_states_checked, &mut first_quality_failure);
                     timings.push(d.step_seconds);
                     completed += 1;
                 }
@@ -542,9 +542,18 @@ fn fit(project: &Project) -> Result<(Mesh, serde_json::Value, bool)> {
     let seconds = start.elapsed().as_secs_f64();
     let final_quality = fit_quality(cloth.diagnostics());
     if !final_quality {
-        first_quality_failure_state.get_or_insert(quality_states_checked - 1);
+        first_quality_failure
+            .get_or_insert_with(|| (quality_states_checked - 1, cloth.diagnostics().clone()));
     }
-    let passed = failure.is_none() && first_quality_failure_state.is_none() && final_quality;
+    let passed = failure.is_none() && first_quality_failure.is_none() && final_quality;
+    let first_quality_failure_state = first_quality_failure.as_ref().map(|(state, _)| *state);
+    let first_quality_failure = first_quality_failure.map(|(state, diagnostics)| {
+        serde_json::json!({
+            "state": state,
+            "peak_strain_piece": strain_piece(project, &mesh, &diagnostics),
+            "diagnostics": diagnostics,
+        })
+    });
     timings.sort_by(f64::total_cmp);
     let median = timings.get(timings.len() / 2).copied();
     let p95 = timings
@@ -565,6 +574,7 @@ fn fit(project: &Project) -> Result<(Mesh, serde_json::Value, bool)> {
             "capsule_surface_uncertain_pairs":0,"initial_contact_recovery_projections":0
         },
         "quality_states_checked":quality_states_checked,"first_quality_failure_state":first_quality_failure_state,
+        "first_quality_failure":first_quality_failure,
         "platform":std::env::consts::OS,"architecture":std::env::consts::ARCH,
         "vertices":mesh.positions.len(),"triangles":mesh.triangles.len(),"phases":phases,
         "wall_seconds":seconds,"simulated_seconds":cloth.simulation_time(),"simulated_seconds_per_wall_second":cloth.simulation_time()/seconds,
@@ -712,7 +722,7 @@ mod tests {
             record_fit_state(state, &mut checked, &mut first_failure);
         }
         assert_eq!(checked, 2);
-        assert_eq!(first_failure, None);
+        assert!(first_failure.is_none());
         for failure in [
             Diagnostics {
                 max_stretch_error: 0.15,
@@ -739,15 +749,24 @@ mod tests {
                 ..open.clone()
             },
         ] {
-            let states = [open.clone(), failure, closed.clone()];
+            let later_failure = Diagnostics {
+                max_stretch_error: 0.25,
+                ..closed.clone()
+            };
+            let states = [open.clone(), failure, later_failure, closed.clone()];
             assert!(fit_quality(states.last().unwrap()));
             let mut checked = 0;
             let mut first_failure = None;
             for state in &states {
                 record_fit_state(state, &mut checked, &mut first_failure);
             }
-            assert_eq!(checked, 3);
-            assert_eq!(first_failure, Some(1));
+            assert_eq!(checked, 4);
+            let (state, diagnostics) = first_failure.unwrap();
+            assert_eq!(state, 1);
+            assert_eq!(
+                serde_json::to_value(diagnostics).unwrap(),
+                serde_json::to_value(&states[state]).unwrap()
+            );
         }
     }
     #[test]
