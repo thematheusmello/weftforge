@@ -15,7 +15,7 @@ See [current status](STATUS.md), [generated progress](docs/progress.md), [dashbo
 Original sample projects are available in [fixtures](fixtures). See
 [verification](docs/verification.md) for tested workflows and current limits.
 
-![WeftForge’s native workspace with Harbor front and back patterns and their 3D rest arrangement](parity/reports/artifacts/native-workspace-png-P003-20261118/workspace.png)
+![WeftForge’s native workspace with Harbor’s two editable patterns, eight seams and 3D rest arrangement](parity/reports/artifacts/native-harbor-workflow-20261118/Harbor-workspace.png)
 
 The updated studio uses charcoal surfaces, compact menus, a left tool rail,
 a document tab, paired 2D/3D canvases, Properties and Scene docks, and a slim
@@ -42,8 +42,9 @@ arc lengths across partial, reversed or disconnected spans, with editable easing
 maps; legacy single seams retain their curve-parameter correspondence.
 
 **File → Save workspace PNG…** exports the native-size 2D and 3D workspace
-image. The capture above came from this command on macOS, and the sample
-project stayed unchanged. [Native capture check](parity/reports/WF-20261118-NATIVE-WORKSPACE-PNG-P003.json).
+image. The capture above came from the reopened Harbor project on macOS.
+Its saved construction stayed unchanged during export.
+[Native capture check](parity/reports/WF-20261118-HARBOR-NATIVE-AUTHORING-REOPEN-001.json).
 
 **Free sewing** creates partial boundary pairs from exact Start t, direction
 and a Length in millimetres. Confirming A keeps a pending preview; confirming B

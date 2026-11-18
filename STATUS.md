@@ -1,3 +1,21 @@
+# Native Harbor authoring and exports — 18 November 2026
+
+On Apple Silicon the studio arranged the two recovered UI-authored Harbor
+panels, sewed eight matching boundary pairs and saved the editable project.
+A fresh studio process reopened the project. It saved a front height change
+from 0.640 m to 0.680 m, then saved Undo, Redo and the restored original.
+Independent readback checked all eight seam relationships across the edits.
+
+The native File menu saved the SVG and DXF patterns, the two OBJ rest surfaces
+and a 1640 × 1000 workspace PNG. Both test windows closed normally.
+[Case and verified files](parity/reports/WF-20261118-HARBOR-NATIVE-AUTHORING-REOPEN-001.json).
+
+Continue with native assembly and drape on the saved construction and the
+solver experiment on the retained contact and sewing observations. The strict
+full-garment strain failure remains open. The polygon fix and its 488-test
+source check landed in [PR #64](https://github.com/thematheusmello/weftforge/pull/64).
+GitHub Actions and automated Pages deployments remain disabled.
+
 # Polygon close transaction — 18 November 2026
 
 Closing a polygon now commits pending inspector edits and the new piece in one

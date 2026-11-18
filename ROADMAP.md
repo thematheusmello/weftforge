@@ -31,8 +31,10 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    decoded 1640 × 1000 workspace PNG and preserved the editable project.
    The polygon close transaction now keeps the draft and staged points on
    rejection and records one Undo step on success. The two UI-authored Harbor
-   panels reopened from recovery. Finish placement, sewing, editable save and
-   fresh-process export through the native workspace.
+   panels were arranged, sewn and saved in the native workspace. The reopened
+   project passed the height edit and history checks. Independent readback
+   verified its SVG, DXF, OBJ rest surfaces and workspace PNG.
+   [Native Harbor case](parity/reports/WF-20261118-HARBOR-NATIVE-AUTHORING-REOPEN-001.json).
    Earlier 8aa notch workflow and genuine modal accessibility-setter observations
    remain historical; they are not transferred to the changed source.
 2. Close the first garment path. Shared soft sewing retains every energy in one
@@ -50,9 +52,9 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    and earlier 16.063338%/50.9602% failures remain intact. Diagnose the actual
    edge-contact/sewing/material/history coupling before choosing another engine
    change. Moving-triangle nonlinear contact and calibration remain open.
-3. Complete the real empty-document shirt workflow through the UI: create pieces,
-   sew, arrange, simulate, change dimension/material, save, quit, reopen, edit and
-   export. Independently verify output and compare the recorded reference case.
+3. Complete the native shirt workflow through simulation, material edits and
+   verified simulated-mesh export. Repeat the integrated empty-document journey
+   on one current build and compare the recorded reference case.
 4. Work through Gates 2–4 below: professional editing/construction and fitting,
    fabric/contact robustness, avatars/animation/materials/rendering and output.
    Run reference discovery and comparison alongside implementation throughout.

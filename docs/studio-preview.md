@@ -1,5 +1,14 @@
 # Native studio preview
 
+## Harbor patterns and seam layout
+
+The native studio saved this view after reopening the two Harbor pieces and
+checking their eight seams. The front height edit, Undo and Redo kept the
+seam relationships. The 3D viewport shows the rest arrangement.
+[Native workflow and exports](../parity/reports/WF-20261118-HARBOR-NATIVE-AUTHORING-REOPEN-001.json).
+
+![Harbor front and back patterns with eight seams and their 3D rest arrangement](../parity/reports/artifacts/native-harbor-workflow-20261118/Harbor-workspace.png)
+
 ## Workspace PNG saved by WeftForge
 
 File → **Save workspace PNG…** saved this 1640 × 1000 image from the native
