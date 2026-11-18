@@ -1,5 +1,15 @@
 # WeftForge current-source addendum
 
+## Atomic polygon close source overlay
+
+Source `6078c2af423b150a9f7b0bcaf21abb6e2e954b56` combines pending inspector edits and polygon creation in the existing typed transaction. Rejected creation retains staged vertices, pending edits, history and derived state. Successful creation records one Undo entry and selects the new piece. The Close button retains inspector input between pointer press and release. Return uses the same transaction. The registry records the separate verification results.
+
+The map retains all **457 source anchors**. It updates **212 main.rs hashes** and **184 line numbers**. The `undo-redo` entry describes the transaction. The catalog and reviewed contracts retain their prior scope.
+
+The previous addendum is available at `752335a427b42bbdb8aa80a1ff3a17e22f106c8c` for source `59501451cd36f3ec51aba3560090090c94881427`. The prior Markdown follows, with its historical source and evidence references.
+
+# WeftForge current-source addendum
+
 ## Workspace-client PNG implementation source overlay
 
 Current immutable source `59501451cd36f3ec51aba3560090090c94881427` adds **Save workspace PNG…** in File and existing command search. The source-only `viewport-snapshot` recheck maps the bounded MAT-003 scene-capture relationship while expressly retaining the reference 3D-only capture scope as unknown. Existing `workspace-panels` supplies the UI-001 view-action/input note. This is an original whole-client framebuffer export, including both views and egui controls; it is not native-titlebar/desktop/dialog/cursor capture, calibrated rendering, full accessibility/high-DPI, full MAT-003/UI-001 or reference acceptance. No reference catalog ID or authoring command is invented.

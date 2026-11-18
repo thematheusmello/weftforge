@@ -29,7 +29,10 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    checks, including the resolved shutdown wait and modal Escape behavior.
    A native File-menu save on the `59501451` build produced an independently
    decoded 1640 × 1000 workspace PNG and preserved the editable project.
-   Native authoring, save/export and fresh-process reopen are next.
+   The polygon close transaction now keeps the draft and staged points on
+   rejection and records one Undo step on success. The two UI-authored Harbor
+   panels reopened from recovery. Finish placement, sewing, editable save and
+   fresh-process export through the native workspace.
    Earlier 8aa notch workflow and genuine modal accessibility-setter observations
    remain historical; they are not transferred to the changed source.
 2. Close the first garment path. Shared soft sewing retains every energy in one
@@ -61,7 +64,10 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    Keep GitHub Actions disabled throughout development. Re-enable it only after
    the complete project is finished, as the user requested.
 
-Actual current source `59501451` passes formatting, 486 workspace tests across
+Current source `6078c2af` passed formatting, 488 workspace tests across
+32 summaries, strict all-target Clippy and native and CLI builds.
+[Polygon close source checks](parity/reports/WF-20261118-POLYGON-CLOSE-SOURCE-001.json).
+Earlier source `59501451` passed formatting, 486 workspace tests across
 32 summaries with zero failed/ignored, strict all-target Clippy and native/CLI
 debug builds in 386.000 seconds within 900. Its 102 simulator tests are included
 within 486. These executions belong to H. The actual G xtask pass in 306.716

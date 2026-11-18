@@ -25,7 +25,7 @@
   "roadmap_accepted": false,
   "new_garment_execution": false,
   "all_delivery_gates_passed": false,
-  "freshness": "current",
+  "freshness": "stale",
   "source_hashes": {
     ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
     "Cargo.lock": "70661ff2dbb345e8aa0e2c326f8d76408ecdc107e84e7d812899af311c3b92d4",
@@ -370,5 +370,6 @@
     "Actual G full181 remains failed elsewhere; no trajectory is duplicated, rerun, repaired or regraded here.",
     "No physics, full garment/feature, reference, roadmap or delivery gate acceptance follows."
   ],
-  "metadata_scope": "ROOT reviewed and installed selected evidence. Actual source/runtime executions retain their own identities. Git tracking and clean current registry/map/xtask checks are required before publication; no full feature or delivery acceptance."
+  "metadata_scope": "ROOT reviewed and installed selected evidence. Actual source/runtime executions retain their own identities. Git tracking and clean current registry/map/xtask checks are required before publication; no full feature or delivery acceptance.",
+  "freshness_reason": "The polygon-close transaction changed the studio source. This report retains the outcome on its original tested build."
 }

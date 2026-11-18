@@ -25,7 +25,7 @@
   "roadmap_accepted": false,
   "new_garment_execution": false,
   "all_delivery_gates_passed": false,
-  "freshness": "current",
+  "freshness": "stale",
   "source_hashes": {
     ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
     "Cargo.lock": "70661ff2dbb345e8aa0e2c326f8d76408ecdc107e84e7d812899af311c3b92d4",
@@ -271,5 +271,6 @@
     "No actual PNG, native P001, backend, color calibration, physics, garment, full feature, reference, roadmap or gate acceptance.",
     "H486 is neither repeated nor transferred; old G/H archives and trajectories are not recopied.",
     "Root reviews declared source freshness and tracks all artifacts/metadata before publication."
-  ]
+  ],
+  "freshness_reason": "The polygon-close transaction changed the studio source. This report retains the outcome on its original tested build."
 }

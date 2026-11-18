@@ -2286,18 +2286,20 @@ impl Studio {
             }
         }
     }
-    fn finish_polygon(&mut self) {
+    fn finish_polygon(&mut self, ctx: &egui::Context, focused: Option<egui::Id>) {
         if self.polygon.len() < 3 {
             return;
         }
-        let revision = self.editor.project.revision;
-        self.execute(Command::AddPolygon {
-            name: self.name.clone(),
-            vertices: self.polygon.clone(),
-        });
-        if revision != self.editor.project.revision {
+        if self.apply_inspector_action(
+            ctx,
+            Command::AddPolygon {
+                name: self.name.clone(),
+                vertices: self.polygon.clone(),
+            },
+            focused,
+        ) {
             self.polygon.clear();
-            self.selected = self.editor.project.pieces.last().map(|p| p.id);
+            self.select(ctx, self.editor.project.pieces.last().map(|piece| piece.id));
         }
     }
     fn document_name(&self) -> String {
@@ -3312,7 +3314,10 @@ impl Studio {
                 if response.clicked() { create_internal=true; }
             }
             if ui.button("Add polygon point").clicked() { self.set_tool(Tool::Polygon); self.polygon.push(self.coordinate); }
-            if ui.button(format!("Close pattern ({} points)",self.polygon.len())).clicked() { acting=true; close_polygon=true; }
+            let response=ui.button(format!("Close pattern ({} points)",self.polygon.len()));
+            self.retain_inspector_input(&response,false);
+            acting|=response.is_pointer_button_down_on() || response.clicked();
+            if response.clicked() { close_polygon=true; }
             });
             });
             self.retain_properties_group(&creation);
@@ -3468,7 +3473,7 @@ impl Studio {
                 self.select(ui.ctx(), self.editor.project.pieces.last().map(|piece|piece.id));
             }
             if add_ellipse { self.add_ellipse(ui.ctx(),action_focus); }
-            if close_polygon { self.finish_polygon(); }
+            if close_polygon { self.finish_polygon(ui.ctx(),action_focus); }
             if let Some(seam)=remove { self.execute(Command::RemoveSeam { seam }); }
             if let Some(curve)=split { self.execute(Command::SplitCurve { curve,t:self.split_t }); }
             if let Some(curve)=join { acting=true; self.apply_inspector_action(ui.ctx(),Command::JoinCurve { curve },action_focus); }
@@ -6755,7 +6760,8 @@ impl eframe::App for Studio {
                 } else if self.tool == Tool::CutPiece {
                     self.open_cut_piece(&ctx);
                 } else {
-                    self.finish_polygon();
+                    let focused = self.inspector_focus(&ctx);
+                    self.finish_polygon(&ctx, focused);
                 }
             }
             if self.tool == Tool::SewingPaths
@@ -8886,6 +8892,214 @@ mod contextual_properties_tests {
             .find(|(_, node)| node.numeric_value() == Some(value))
             .unwrap()
             .0
+    }
+
+    #[test]
+    fn polygon_close_rejection_retains_front_draft_back_points_and_derived_state() {
+        let (ctx, mut app) = fixture();
+        let before = app.editor.project.clone();
+        let history = format!("{:?}", app.editor);
+        let front = app.selected.unwrap();
+        let curve = before.piece(front).unwrap().boundary[0];
+        app.selected_curve = Some(curve);
+        let mut draft = InspectorDraft::new(&before, app.selected, app.selected_curve);
+        draft.placement.as_mut().unwrap().translation[2] = 0.25;
+        let pending = draft.commands(&before);
+        app.draft = Some(draft);
+        app.polygon = vec![[0.7, 0.0], [1.1, 0.0], [1.1, 0.6], [0.7, 0.6]];
+        let back = app.polygon.clone();
+        app.name.clear();
+        let mesh = Arc::new(before.mesh().unwrap());
+        let cloth = Arc::new(weftforge_core::simulation::create_cloth(&before, &mesh).unwrap());
+        app.mesh = Some(mesh.clone());
+        app.cloth = Some(cloth.clone());
+        let (_sender, receiver) = mpsc::channel();
+        let cancelled = Arc::new(AtomicBool::new(false));
+        app.job = Some(Job {
+            id: 1,
+            revision: before.revision,
+            kind: JobKind::Mesh,
+            batch: None,
+            completed_steps: Arc::new(AtomicU64::new(0)),
+            cancel: cancelled.clone(),
+            receiver,
+        });
+        let focus = egui::Id::new("polygon-close-pending-placement");
+        ctx.data_mut(|data| data.insert_temp(focus, "0.2500".to_owned()));
+        ctx.memory_mut(|memory| memory.request_focus(focus));
+
+        app.finish_polygon(&ctx, Some(focus));
+        assert!(app.message.contains("Names must be nonempty"));
+        assert_eq!(app.editor.project, before);
+        assert_eq!(format!("{:?}", app.editor), history);
+        assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+        assert_eq!(app.polygon, back);
+        assert_eq!(
+            (app.selected, app.selected_curve),
+            (Some(front), Some(curve))
+        );
+        assert!(!app.dirty && !app.needs_mesh && app.editor.can_redo());
+        assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+        assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+        assert!(!cancelled.load(Ordering::Relaxed));
+        assert_eq!(numeric_focus(&ctx), Some(focus));
+        assert_eq!(
+            ctx.data_mut(|data| data.get_temp::<String>(focus))
+                .as_deref(),
+            Some("0.2500")
+        );
+
+        app.name = "Back".into();
+        app.finish_polygon(&ctx, Some(focus));
+        let created = app.editor.project.clone();
+        assert_eq!(created.revision, before.revision + 1);
+        assert_eq!(created.piece(front).unwrap().placement.translation[2], 0.25);
+        let piece = created.pieces.last().unwrap();
+        assert_eq!(piece.name, "Back");
+        for (&boundary, position) in piece.boundary.iter().zip(&back) {
+            let point = created.curve(boundary).unwrap().start;
+            assert_eq!(
+                created.point(point).unwrap().position.map(f64::to_bits),
+                position.map(f64::to_bits)
+            );
+        }
+        assert!(app.polygon.is_empty() && app.draft.is_none());
+        assert_eq!((app.selected, app.selected_curve), (Some(piece.id), None));
+        assert!(app.dirty && app.needs_mesh && !app.editor.can_redo());
+        assert!(cancelled.load(Ordering::Relaxed));
+        assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focus)), None);
+        assert!(app.editor.undo());
+        assert_eq!(app.editor.project.revision, created.revision + 1);
+        let mut restored = serde_json::to_value(&app.editor.project).unwrap();
+        let original = serde_json::to_value(&before).unwrap();
+        let allocated = serde_json::to_value(&created).unwrap();
+        assert!(restored["next_id"].as_u64().unwrap() >= allocated["next_id"].as_u64().unwrap());
+        restored["revision"] = original["revision"].clone();
+        restored["next_id"] = original["next_id"].clone();
+        assert_eq!(
+            restored, original,
+            "one Undo removes Back and the Front edit"
+        );
+        assert!(app.editor.redo());
+        let mut redone = app.editor.project.clone();
+        redone.revision = created.revision;
+        assert_eq!(redone, created);
+    }
+
+    #[test]
+    fn polygon_close_pointer_press_and_enter_keep_rejected_creation_atomic() {
+        for pointer in [true, false] {
+            let (ctx, mut app) = fixture();
+            app.set_tool(Tool::Polygon);
+            app.polygon = vec![[0.7, 0.0], [1.1, 0.0], [1.1, 0.6], [0.7, 0.6]];
+            app.name.clear();
+            let before = app.editor.project.clone();
+            let history = format!("{:?}", app.editor);
+            let output = frame(&ctx, &mut app, 2200., vec![]);
+            let focus = if pointer {
+                frame(
+                    &ctx,
+                    &mut app,
+                    2200.,
+                    vec![action(numeric(&output, 0.4), Action::Focus, None)],
+                );
+                frame(&ctx, &mut app, 2200., vec![]);
+                frame(
+                    &ctx,
+                    &mut app,
+                    2200.,
+                    vec![
+                        key(egui::Key::A, egui::Modifiers::COMMAND),
+                        egui::Event::Text("0.4500".into()),
+                    ],
+                );
+                Some(numeric_focus(&ctx).expect("focused Front width"))
+            } else {
+                app.draft.as_mut().unwrap().dimensions.as_mut().unwrap()[0] = 0.45;
+                None
+            };
+            let pending = app.draft.as_ref().unwrap().commands(&before);
+            assert_eq!(pending.len(), 1);
+            let output = frame(&ctx, &mut app, 2200., vec![]);
+            if pointer {
+                let node = button(&output, "Close pattern (4 points)");
+                let bounds = output
+                    .platform_output
+                    .accesskit_update
+                    .as_ref()
+                    .unwrap()
+                    .nodes
+                    .iter()
+                    .find(|(id, _)| *id == node)
+                    .unwrap()
+                    .1
+                    .bounds()
+                    .unwrap();
+                let pos = Pos2::new(
+                    ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                    ((bounds.y0 + bounds.y1) * 0.5) as f32,
+                );
+                let (_, _, clip, _) = ctx
+                    .data_mut(|data| {
+                        data.get_temp::<(egui::Id, Vec2, Rect, Vec2)>(egui::Id::new(
+                            "authored-length-scroll",
+                        ))
+                    })
+                    .unwrap();
+                assert!(
+                    clip.contains(pos),
+                    "Close pattern must be pointer-reachable"
+                );
+                for pressed in [true, false] {
+                    frame(
+                        &ctx,
+                        &mut app,
+                        2200.,
+                        vec![
+                            egui::Event::PointerMoved(pos),
+                            egui::Event::PointerButton {
+                                pos,
+                                button: egui::PointerButton::Primary,
+                                pressed,
+                                modifiers: egui::Modifiers::NONE,
+                            },
+                        ],
+                    );
+                    assert_eq!(
+                        format!("{:?}", app.editor),
+                        history,
+                        "pointer pressed={pressed}"
+                    );
+                }
+            } else {
+                assert!(!ctx.egui_wants_keyboard_input());
+                frame(
+                    &ctx,
+                    &mut app,
+                    2200.,
+                    vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+                );
+            }
+            assert!(app.message.contains("Names must be nonempty"));
+            for _ in 0..3 {
+                frame(&ctx, &mut app, 2200., vec![]);
+                assert_eq!(
+                    format!("{:?}", app.editor),
+                    history,
+                    "delayed blur; pointer={pointer}"
+                );
+                assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+                assert_eq!(app.polygon.len(), 4);
+                assert!(!app.dirty && !app.needs_mesh && app.editor.can_redo());
+                if let Some(focus) = focus {
+                    assert_eq!(
+                        ctx.data_mut(|data| data.get_temp::<String>(focus))
+                            .as_deref(),
+                        Some("0.4500")
+                    );
+                }
+            }
+        }
     }
 
     #[test]
