@@ -25,7 +25,8 @@
         "parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-NATIVE-STOPS-001.json",
         "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-NATIVE-STOPS-001.original.json",
         "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-PREVIEW-001.original.json",
-        "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-SOURCE-001.original.json"
+        "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-SOURCE-001.original.json",
+        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -2553,6 +2554,65 @@
             "parity/reports/artifacts/dual-context-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "13881d385b4b17617d959bb60deffbbe7bd4dd770fcadbb1175cb07f0a64ae42"
           },
           "path": "parity/reports/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-CONSTRUCTOR-FORM-SOURCE-001",
+          "commit": "f6144bced7c56c12f0a82e1787d05d2bf5841858",
+          "timestamp": "2026-11-18T04:21:06.560216Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/EXTERNAL-TERMINAL.json": "e33ead69e3ab9de0b1de216bbb660ed099841919feba2d6754a38f4c6cc1f49d",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/LAUNCH.json": "01a65fad57f7da1b88e5a63f7a2b26ffdc3a26156b1584512ba407b5a8898139",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "5ee12973531b4b6e2e4ebc15431591a1a7f0a9a65a1bfe87df6d6944a81ec1a0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/ROOT-GO.json": "a20f3fe9998d37dcb5b7b534dfcaa82d339db133ab4bc136e97d258696cbeb0b",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/controller.stdout": "ca6d7174cc6f348778a3feb715dda7968dcece56ab86b03de7323e26428e7ddf",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/RESULT.json": "a7676c55d3c97b7f7b59dc3e37dc8cef9e5f9f3c467a49bc6711c1935e347742",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/STARTED.json": "44eb066bce2e7f2370ee574479c1e81f4870be8b64b26ea90c2b2739f4f065d3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/TERMINAL.json": "4b534eed914fd659970110ec76c02c5bd5e50314ef35fcf0e06902760ffdfa96",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt-RESULT.json": "59c020a8002e255713fc3a5f8b25c49293981314dc193ffa69bca452b790e1c3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt-STARTED.json": "86d6bd4cdbb3aee69570442829bc3712d6b1f363e05b2958bc266924cdb7766c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests-RESULT.json": "02521830e17d5428f67f6d62d71c29229143b7e10dba0ec4e6b559d446f30f6c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests-STARTED.json": "f2b580ac7a55405f1a5d6aa8af77470b18fe333eb261e5e4562379e4b7d41a73",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests.stderr": "a6035a80e250392c9287efcbba00121c647fc7cc629ec55cd5599e385df1597d",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests.stdout": "11199c0366af685bc74bc652aac6de916370a099671deb6fa60569c87ca056ba",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001.json": "0204e98295795c631c0c568759a07fffcfea3236f8db2205ee0b96d400a1c851",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/launch.py": "ec1eb940ac4a753bf8428f835b476977acd5be34fefe6f3a23a0e0795cdb1bad",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "7ccec1afba38db159980b71e0f57c11efae2a227d59144845727ce8befe76a1a",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/EXTERNAL-TERMINAL.json": "93a4d71c2f9c5dbbc08b6fd81382f7cc29fa3cb17eddd9baa3d1f852b85e5066",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/LAUNCH.json": "7f3dbc131ca4ac31f5bfc83d63fc2b16e9417ddc832eac4bed8b4e50826b45a4",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "86f61e65e9ae17aa4874cc29b76b47b870e918a9bc10fe34b2f4cb47de4b39c2",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/ROOT-GO.json": "3574361075a329dc364237b8de8e2e69cc258fe5c04d3d58d5cf75fbc58219b0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/RESULT.json": "71282b22d7b6a03567f0dd47dcfbe73ffc0092ee4db32a86dd5f344abc8894e6",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/STARTED.json": "97d7d72834e03ba76f5fdfd6b7572dd4b2113d9706be642143c04abcc06cae9a",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/TERMINAL.json": "4cc9ebd6240d1c4598b34bcbcb741b4a070431fbe850389b4ad4b75c2f8cd7f3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build-RESULT.json": "54cbcb4dcbd50547e8d26ad477062c850b435587311170d20070349e3309593c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build-STARTED.json": "d51395ea00ada23e1967332874f8b14bf76682f31457d9cbe95b680613e8b360",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build.stderr": "9747cf832b1c4f11157193a4a0848c5b21241a69d4723a7451dc81dfbd1481ef",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy-RESULT.json": "ffa4f04b365a4babda069fb2a9acfdd4f178cf45a7ce6c672ba94099d57e62cc",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy-STARTED.json": "7a77fcbf64c467d008977c358430f25929b9a855878b66053d8c8585b4ba7dce",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy.stderr": "dee2c756b0b662e32d514aaadd104df4f14d790e32b8fbcfbc19d00fbcbca2f8",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests-RESULT.json": "b6782780cb8285522836de926e47a02c04af32b23488ca4935e5394dc0388fa4",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests-STARTED.json": "d9cebe546da22de02f62c79c504218730c1f4f140ebfe337eced21e04a109aa3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests.stderr": "ebfcbd6ca6537a716e7a4edc8e9fafc9156cc3379dca625f27fe41984d598492",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests.stdout": "0b76af831a4a6b54abf36b49556d9d4220d9edab81f141b6b08af2b03d408ee1",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002.json": "2e58a37cf08cf1755c740fc3b6f22cd946ef62c183dd469c63a0556e5afd24e0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/controller.stdout": "1f48900caedfbc0eb62b67d3a9cadff963c5484a4b9cf694311f4200a212f3e5",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/launch.py": "58414fc34887a11f559da69d93c429e6dfd77365d4f9457c76c5832929c5c3cb",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/runfull.py": "2131da0c1b85281813f3e6be68a038db6628f6e92881bbdb42c25087d9a65335",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002-post-case/ROOT-POSTCASE.json": "84a7264db021d2cd27cc486f62277b8813f3f15245d001495fc54338e7f5cb58",
+            "parity/reports/artifacts/constructor-form-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "7e1959d6007090b1366c290aed7120083ba792b6f4af174751ef2ba3329e303c",
+            "parity/reports/artifacts/constructor-form-source-20261118/history/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.original.json": "3e80bc52a9f48f711dedd8c329440eadc8db5e471a9e454810c1baa0c2281194"
+          },
+          "path": "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -2565,7 +2625,8 @@
         "At b776, retained formatting, 389 workspace tests, strict Clippy and native-build source gates and N003 exact name plus one default rectangle are separately bounded. P001/N002 retain their stopped outcomes and unknown causes. Full connected workspace/native authoring and reference contracts remain not_run; no coarse pass or roadmap credit is added.",
         "At integratedac6 the four b776 current reports become stale solely for changed scoped runtime source; exact originals are archived and only freshness/reason change. Earlier current wording remains historical. Separately bounded3fd PAT-001/UI-004 endpoint source/D003/file evidence does not revive these workspace/primitive/offset results or change original failures, coarse statuses, full scopes or reference observation. E001/D001/D002 remain closed, unreplayed and unregraded; no complete offset/garment/roadmap credit follows.",
         "Contextual property tabs/input retirement have separately attributed source-only guards through actual997: original166pass belongs351; a66 ownsfmt/Clippy/nativebuild but zerotests. RealDown cacheRED then eightfocusedpointer/keyboardGREEN are retained. Fullsource scope is stale after combinedSIMchange; N008over-bound preview adds no workflowcredit. Native/reference/highDPI/fullcontract coverage remainsopen.",
-        "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This is current implementation-only source evidence. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen."
+        "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This was the source checkpoint at publication; its declared full scope is now stale after the constructor change, with original outcomes unchanged. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen.",
+        "At actual f6144bce, the constructor retains numeric helpers/ranges/field order and shared authoring paths while aligning Width/Height/Position X/Y metre labels and accessibility associations. Source checks pass 459/32, formatting, strict Clippy and native/CLI builds across two separately bound invocations; the first disk-floor stop and 59 partial ok lines remain failed/incomplete. Native constructor appearance, full workflow, contact quality, reference, full feature and platform acceptance remain open. The isolated failed contact-recovery prototype is not part of this source."
       ],
       "contradictions": [],
       "blockers": [
@@ -2592,7 +2653,8 @@
         "parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-SOURCE-001.json",
         "parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-PREVIEW-001.json",
         "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-PREVIEW-001.original.json",
-        "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-SOURCE-001.original.json"
+        "parity/reports/artifacts/endpoint-edit-source-20261116/history/WF-20261116-PHOTOCRAFT-WORKSPACE-SOURCE-001.original.json",
+        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -3085,6 +3147,65 @@
             "parity/reports/artifacts/dual-context-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "13881d385b4b17617d959bb60deffbbe7bd4dd770fcadbb1175cb07f0a64ae42"
           },
           "path": "parity/reports/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-CONSTRUCTOR-FORM-SOURCE-001",
+          "commit": "f6144bced7c56c12f0a82e1787d05d2bf5841858",
+          "timestamp": "2026-11-18T04:21:06.560216Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/EXTERNAL-TERMINAL.json": "e33ead69e3ab9de0b1de216bbb660ed099841919feba2d6754a38f4c6cc1f49d",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/LAUNCH.json": "01a65fad57f7da1b88e5a63f7a2b26ffdc3a26156b1584512ba407b5a8898139",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "5ee12973531b4b6e2e4ebc15431591a1a7f0a9a65a1bfe87df6d6944a81ec1a0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/ROOT-GO.json": "a20f3fe9998d37dcb5b7b534dfcaa82d339db133ab4bc136e97d258696cbeb0b",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/controller.stdout": "ca6d7174cc6f348778a3feb715dda7968dcece56ab86b03de7323e26428e7ddf",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/RESULT.json": "a7676c55d3c97b7f7b59dc3e37dc8cef9e5f9f3c467a49bc6711c1935e347742",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/STARTED.json": "44eb066bce2e7f2370ee574479c1e81f4870be8b64b26ea90c2b2739f4f065d3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/TERMINAL.json": "4b534eed914fd659970110ec76c02c5bd5e50314ef35fcf0e06902760ffdfa96",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt-RESULT.json": "59c020a8002e255713fc3a5f8b25c49293981314dc193ffa69bca452b790e1c3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt-STARTED.json": "86d6bd4cdbb3aee69570442829bc3712d6b1f363e05b2958bc266924cdb7766c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests-RESULT.json": "02521830e17d5428f67f6d62d71c29229143b7e10dba0ec4e6b559d446f30f6c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests-STARTED.json": "f2b580ac7a55405f1a5d6aa8af77470b18fe333eb261e5e4562379e4b7d41a73",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests.stderr": "a6035a80e250392c9287efcbba00121c647fc7cc629ec55cd5599e385df1597d",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests.stdout": "11199c0366af685bc74bc652aac6de916370a099671deb6fa60569c87ca056ba",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001.json": "0204e98295795c631c0c568759a07fffcfea3236f8db2205ee0b96d400a1c851",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/launch.py": "ec1eb940ac4a753bf8428f835b476977acd5be34fefe6f3a23a0e0795cdb1bad",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "7ccec1afba38db159980b71e0f57c11efae2a227d59144845727ce8befe76a1a",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/EXTERNAL-TERMINAL.json": "93a4d71c2f9c5dbbc08b6fd81382f7cc29fa3cb17eddd9baa3d1f852b85e5066",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/LAUNCH.json": "7f3dbc131ca4ac31f5bfc83d63fc2b16e9417ddc832eac4bed8b4e50826b45a4",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "86f61e65e9ae17aa4874cc29b76b47b870e918a9bc10fe34b2f4cb47de4b39c2",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/ROOT-GO.json": "3574361075a329dc364237b8de8e2e69cc258fe5c04d3d58d5cf75fbc58219b0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/RESULT.json": "71282b22d7b6a03567f0dd47dcfbe73ffc0092ee4db32a86dd5f344abc8894e6",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/STARTED.json": "97d7d72834e03ba76f5fdfd6b7572dd4b2113d9706be642143c04abcc06cae9a",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/TERMINAL.json": "4cc9ebd6240d1c4598b34bcbcb741b4a070431fbe850389b4ad4b75c2f8cd7f3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build-RESULT.json": "54cbcb4dcbd50547e8d26ad477062c850b435587311170d20070349e3309593c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build-STARTED.json": "d51395ea00ada23e1967332874f8b14bf76682f31457d9cbe95b680613e8b360",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build.stderr": "9747cf832b1c4f11157193a4a0848c5b21241a69d4723a7451dc81dfbd1481ef",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy-RESULT.json": "ffa4f04b365a4babda069fb2a9acfdd4f178cf45a7ce6c672ba94099d57e62cc",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy-STARTED.json": "7a77fcbf64c467d008977c358430f25929b9a855878b66053d8c8585b4ba7dce",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy.stderr": "dee2c756b0b662e32d514aaadd104df4f14d790e32b8fbcfbc19d00fbcbca2f8",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests-RESULT.json": "b6782780cb8285522836de926e47a02c04af32b23488ca4935e5394dc0388fa4",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests-STARTED.json": "d9cebe546da22de02f62c79c504218730c1f4f140ebfe337eced21e04a109aa3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests.stderr": "ebfcbd6ca6537a716e7a4edc8e9fafc9156cc3379dca625f27fe41984d598492",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests.stdout": "0b76af831a4a6b54abf36b49556d9d4220d9edab81f141b6b08af2b03d408ee1",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002.json": "2e58a37cf08cf1755c740fc3b6f22cd946ef62c183dd469c63a0556e5afd24e0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/controller.stdout": "1f48900caedfbc0eb62b67d3a9cadff963c5484a4b9cf694311f4200a212f3e5",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/launch.py": "58414fc34887a11f559da69d93c429e6dfd77365d4f9457c76c5832929c5c3cb",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/runfull.py": "2131da0c1b85281813f3e6be68a038db6628f6e92881bbdb42c25087d9a65335",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002-post-case/ROOT-POSTCASE.json": "84a7264db021d2cd27cc486f62277b8813f3f15245d001495fc54338e7f5cb58",
+            "parity/reports/artifacts/constructor-form-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "7e1959d6007090b1366c290aed7120083ba792b6f4af174751ef2ba3329e303c",
+            "parity/reports/artifacts/constructor-form-source-20261118/history/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.original.json": "3e80bc52a9f48f711dedd8c329440eadc8db5e471a9e454810c1baa0c2281194"
+          },
+          "path": "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -3093,7 +3214,8 @@
         "N003 observes only the automatically selected new owner #2 and matching Scene row/Properties/2D/3D rest display. Native Scene clicking, annotation/hole subobject selection and complete cross-view selection remain unexecuted; the four source regression definitions are separate headless evidence. Whole verification stays not_run.",
         "At integratedac6 the four b776 current reports become stale solely for changed scoped runtime source; exact originals are archived and only freshness/reason change. Earlier current wording remains historical. Separately bounded3fd PAT-001/UI-004 endpoint source/D003/file evidence does not revive these workspace/primitive/offset results or change original failures, coarse statuses, full scopes or reference observation. E001/D001/D002 remain closed, unreplayed and unregraded; no complete offset/garment/roadmap credit follows.",
         "Contextual property tabs/input retirement have separately attributed source-only guards through actual997: original166pass belongs351; a66 ownsfmt/Clippy/nativebuild but zerotests. RealDown cacheRED then eightfocusedpointer/keyboardGREEN are retained. Fullsource scope is stale after combinedSIMchange; N008over-bound preview adds no workflowcredit. Native/reference/highDPI/fullcontract coverage remainsopen.",
-        "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This is current implementation-only source evidence. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen."
+        "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This was the source checkpoint at publication; its declared full scope is now stale after the constructor change, with original outcomes unchanged. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen.",
+        "At actual f6144bce, the constructor retains numeric helpers/ranges/field order and shared authoring paths while aligning Width/Height/Position X/Y metre labels and accessibility associations. Source checks pass 459/32, formatting, strict Clippy and native/CLI builds across two separately bound invocations; the first disk-floor stop and 59 partial ok lines remain failed/incomplete. Native constructor appearance, full workflow, contact quality, reference, full feature and platform acceptance remain open. The isolated failed contact-recovery prototype is not part of this source."
       ],
       "contradictions": [],
       "blockers": [
@@ -3112,7 +3234,9 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
+      ],
       "scenarios": [
         {
           "id": "UI-NATIVE-STUDIO-001",
@@ -3458,13 +3582,73 @@
             "parity/reports/artifacts/dual-context-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "13881d385b4b17617d959bb60deffbbe7bd4dd770fcadbb1175cb07f0a64ae42"
           },
           "path": "parity/reports/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-CONSTRUCTOR-FORM-SOURCE-001",
+          "commit": "f6144bced7c56c12f0a82e1787d05d2bf5841858",
+          "timestamp": "2026-11-18T04:21:06.560216Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/EXTERNAL-TERMINAL.json": "e33ead69e3ab9de0b1de216bbb660ed099841919feba2d6754a38f4c6cc1f49d",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/LAUNCH.json": "01a65fad57f7da1b88e5a63f7a2b26ffdc3a26156b1584512ba407b5a8898139",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "5ee12973531b4b6e2e4ebc15431591a1a7f0a9a65a1bfe87df6d6944a81ec1a0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/ROOT-GO.json": "a20f3fe9998d37dcb5b7b534dfcaa82d339db133ab4bc136e97d258696cbeb0b",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/controller.stdout": "ca6d7174cc6f348778a3feb715dda7968dcece56ab86b03de7323e26428e7ddf",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/RESULT.json": "a7676c55d3c97b7f7b59dc3e37dc8cef9e5f9f3c467a49bc6711c1935e347742",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/STARTED.json": "44eb066bce2e7f2370ee574479c1e81f4870be8b64b26ea90c2b2739f4f065d3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/TERMINAL.json": "4b534eed914fd659970110ec76c02c5bd5e50314ef35fcf0e06902760ffdfa96",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt-RESULT.json": "59c020a8002e255713fc3a5f8b25c49293981314dc193ffa69bca452b790e1c3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt-STARTED.json": "86d6bd4cdbb3aee69570442829bc3712d6b1f363e05b2958bc266924cdb7766c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests-RESULT.json": "02521830e17d5428f67f6d62d71c29229143b7e10dba0ec4e6b559d446f30f6c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests-STARTED.json": "f2b580ac7a55405f1a5d6aa8af77470b18fe333eb261e5e4562379e4b7d41a73",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests.stderr": "a6035a80e250392c9287efcbba00121c647fc7cc629ec55cd5599e385df1597d",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests.stdout": "11199c0366af685bc74bc652aac6de916370a099671deb6fa60569c87ca056ba",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001.json": "0204e98295795c631c0c568759a07fffcfea3236f8db2205ee0b96d400a1c851",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/launch.py": "ec1eb940ac4a753bf8428f835b476977acd5be34fefe6f3a23a0e0795cdb1bad",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "7ccec1afba38db159980b71e0f57c11efae2a227d59144845727ce8befe76a1a",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/EXTERNAL-TERMINAL.json": "93a4d71c2f9c5dbbc08b6fd81382f7cc29fa3cb17eddd9baa3d1f852b85e5066",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/LAUNCH.json": "7f3dbc131ca4ac31f5bfc83d63fc2b16e9417ddc832eac4bed8b4e50826b45a4",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "86f61e65e9ae17aa4874cc29b76b47b870e918a9bc10fe34b2f4cb47de4b39c2",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/ROOT-GO.json": "3574361075a329dc364237b8de8e2e69cc258fe5c04d3d58d5cf75fbc58219b0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/RESULT.json": "71282b22d7b6a03567f0dd47dcfbe73ffc0092ee4db32a86dd5f344abc8894e6",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/STARTED.json": "97d7d72834e03ba76f5fdfd6b7572dd4b2113d9706be642143c04abcc06cae9a",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/TERMINAL.json": "4cc9ebd6240d1c4598b34bcbcb741b4a070431fbe850389b4ad4b75c2f8cd7f3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build-RESULT.json": "54cbcb4dcbd50547e8d26ad477062c850b435587311170d20070349e3309593c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build-STARTED.json": "d51395ea00ada23e1967332874f8b14bf76682f31457d9cbe95b680613e8b360",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build.stderr": "9747cf832b1c4f11157193a4a0848c5b21241a69d4723a7451dc81dfbd1481ef",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy-RESULT.json": "ffa4f04b365a4babda069fb2a9acfdd4f178cf45a7ce6c672ba94099d57e62cc",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy-STARTED.json": "7a77fcbf64c467d008977c358430f25929b9a855878b66053d8c8585b4ba7dce",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy.stderr": "dee2c756b0b662e32d514aaadd104df4f14d790e32b8fbcfbc19d00fbcbca2f8",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests-RESULT.json": "b6782780cb8285522836de926e47a02c04af32b23488ca4935e5394dc0388fa4",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests-STARTED.json": "d9cebe546da22de02f62c79c504218730c1f4f140ebfe337eced21e04a109aa3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests.stderr": "ebfcbd6ca6537a716e7a4edc8e9fafc9156cc3379dca625f27fe41984d598492",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests.stdout": "0b76af831a4a6b54abf36b49556d9d4220d9edab81f141b6b08af2b03d408ee1",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002.json": "2e58a37cf08cf1755c740fc3b6f22cd946ef62c183dd469c63a0556e5afd24e0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/controller.stdout": "1f48900caedfbc0eb62b67d3a9cadff963c5484a4b9cf694311f4200a212f3e5",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/launch.py": "58414fc34887a11f559da69d93c429e6dfd77365d4f9457c76c5832929c5c3cb",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/runfull.py": "2131da0c1b85281813f3e6be68a038db6628f6e92881bbdb42c25087d9a65335",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002-post-case/ROOT-POSTCASE.json": "84a7264db021d2cd27cc486f62277b8813f3f15245d001495fc54338e7f5cb58",
+            "parity/reports/artifacts/constructor-form-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "7e1959d6007090b1366c290aed7120083ba792b6f4af174751ef2ba3329e303c",
+            "parity/reports/artifacts/constructor-form-source-20261118/history/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.original.json": "3e80bc52a9f48f711dedd8c329440eadc8db5e471a9e454810c1baa0c2281194"
+          },
+          "path": "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "Source 21b9 passes the full gates with 192 Rust and 54 Python tests, while native checks 001 and 002 stop before typing on setup and focus observability. Neither establishes a product defect or pass. Native numeric entry, pending text during Snap changes, same-pixel snapping, history, Save, geometry-consumer and M:N keyboard checks remain unexercised. A separate read-only Harbor preview shows the layout and one accepted Mesh outcome. The full native and reference contracts remain open.",
         "Contextual property tabs/input retirement have separately attributed source-only guards through actual997: original166pass belongs351; a66 ownsfmt/Clippy/nativebuild but zerotests. RealDown cacheRED then eightfocusedpointer/keyboardGREEN are retained. Fullsource scope is stale after combinedSIMchange; N008over-bound preview adds no workflowcredit. Native/reference/highDPI/fullcontract coverage remainsopen.",
-        "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This is current implementation-only source evidence. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen."
+        "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This was the source checkpoint at publication; its declared full scope is now stale after the constructor change, with original outcomes unchanged. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen.",
+        "At actual f6144bce, the constructor retains numeric helpers/ranges/field order and shared authoring paths while aligning Width/Height/Position X/Y metre labels and accessibility associations. Source checks pass 459/32, formatting, strict Clippy and native/CLI builds across two separately bound invocations; the first disk-floor stop and 59 partial ok lines remain failed/incomplete. Native constructor appearance, full workflow, contact quality, reference, full feature and platform acceptance remain open. The isolated failed contact-recovery prototype is not part of this source."
       ],
       "contradictions": [],
       "blockers": [
@@ -3504,7 +3688,8 @@
         "parity/reports/WF-20261116-RECTANGLE-NATIVE-001.json",
         "parity/reports/WF-20261116-RECTANGLE-FILE-SUPPLEMENT-001.json",
         "parity/reports/artifacts/rectangle-gesture-20261116/SELECTED-PUBLIC-MANIFEST-001.json",
-        "parity/reports/WF-20261117-NATIVE-NOTCH-N006-001.json"
+        "parity/reports/WF-20261117-NATIVE-NOTCH-N006-001.json",
+        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -8048,6 +8233,65 @@
             "parity/reports/artifacts/dual-context-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "13881d385b4b17617d959bb60deffbbe7bd4dd770fcadbb1175cb07f0a64ae42"
           },
           "path": "parity/reports/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-CONSTRUCTOR-FORM-SOURCE-001",
+          "commit": "f6144bced7c56c12f0a82e1787d05d2bf5841858",
+          "timestamp": "2026-11-18T04:21:06.560216Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/EXTERNAL-TERMINAL.json": "e33ead69e3ab9de0b1de216bbb660ed099841919feba2d6754a38f4c6cc1f49d",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/LAUNCH.json": "01a65fad57f7da1b88e5a63f7a2b26ffdc3a26156b1584512ba407b5a8898139",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "5ee12973531b4b6e2e4ebc15431591a1a7f0a9a65a1bfe87df6d6944a81ec1a0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/ROOT-GO.json": "a20f3fe9998d37dcb5b7b534dfcaa82d339db133ab4bc136e97d258696cbeb0b",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/controller.stdout": "ca6d7174cc6f348778a3feb715dda7968dcece56ab86b03de7323e26428e7ddf",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/RESULT.json": "a7676c55d3c97b7f7b59dc3e37dc8cef9e5f9f3c467a49bc6711c1935e347742",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/STARTED.json": "44eb066bce2e7f2370ee574479c1e81f4870be8b64b26ea90c2b2739f4f065d3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/TERMINAL.json": "4b534eed914fd659970110ec76c02c5bd5e50314ef35fcf0e06902760ffdfa96",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt-RESULT.json": "59c020a8002e255713fc3a5f8b25c49293981314dc193ffa69bca452b790e1c3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt-STARTED.json": "86d6bd4cdbb3aee69570442829bc3712d6b1f363e05b2958bc266924cdb7766c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests-RESULT.json": "02521830e17d5428f67f6d62d71c29229143b7e10dba0ec4e6b559d446f30f6c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests-STARTED.json": "f2b580ac7a55405f1a5d6aa8af77470b18fe333eb261e5e4562379e4b7d41a73",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests.stderr": "a6035a80e250392c9287efcbba00121c647fc7cc629ec55cd5599e385df1597d",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests.stdout": "11199c0366af685bc74bc652aac6de916370a099671deb6fa60569c87ca056ba",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001.json": "0204e98295795c631c0c568759a07fffcfea3236f8db2205ee0b96d400a1c851",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/launch.py": "ec1eb940ac4a753bf8428f835b476977acd5be34fefe6f3a23a0e0795cdb1bad",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "7ccec1afba38db159980b71e0f57c11efae2a227d59144845727ce8befe76a1a",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/EXTERNAL-TERMINAL.json": "93a4d71c2f9c5dbbc08b6fd81382f7cc29fa3cb17eddd9baa3d1f852b85e5066",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/LAUNCH.json": "7f3dbc131ca4ac31f5bfc83d63fc2b16e9417ddc832eac4bed8b4e50826b45a4",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "86f61e65e9ae17aa4874cc29b76b47b870e918a9bc10fe34b2f4cb47de4b39c2",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/ROOT-GO.json": "3574361075a329dc364237b8de8e2e69cc258fe5c04d3d58d5cf75fbc58219b0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/RESULT.json": "71282b22d7b6a03567f0dd47dcfbe73ffc0092ee4db32a86dd5f344abc8894e6",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/STARTED.json": "97d7d72834e03ba76f5fdfd6b7572dd4b2113d9706be642143c04abcc06cae9a",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/TERMINAL.json": "4cc9ebd6240d1c4598b34bcbcb741b4a070431fbe850389b4ad4b75c2f8cd7f3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build-RESULT.json": "54cbcb4dcbd50547e8d26ad477062c850b435587311170d20070349e3309593c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build-STARTED.json": "d51395ea00ada23e1967332874f8b14bf76682f31457d9cbe95b680613e8b360",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build.stderr": "9747cf832b1c4f11157193a4a0848c5b21241a69d4723a7451dc81dfbd1481ef",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy-RESULT.json": "ffa4f04b365a4babda069fb2a9acfdd4f178cf45a7ce6c672ba94099d57e62cc",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy-STARTED.json": "7a77fcbf64c467d008977c358430f25929b9a855878b66053d8c8585b4ba7dce",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy.stderr": "dee2c756b0b662e32d514aaadd104df4f14d790e32b8fbcfbc19d00fbcbca2f8",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests-RESULT.json": "b6782780cb8285522836de926e47a02c04af32b23488ca4935e5394dc0388fa4",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests-STARTED.json": "d9cebe546da22de02f62c79c504218730c1f4f140ebfe337eced21e04a109aa3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests.stderr": "ebfcbd6ca6537a716e7a4edc8e9fafc9156cc3379dca625f27fe41984d598492",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests.stdout": "0b76af831a4a6b54abf36b49556d9d4220d9edab81f141b6b08af2b03d408ee1",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002.json": "2e58a37cf08cf1755c740fc3b6f22cd946ef62c183dd469c63a0556e5afd24e0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/controller.stdout": "1f48900caedfbc0eb62b67d3a9cadff963c5484a4b9cf694311f4200a212f3e5",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/launch.py": "58414fc34887a11f559da69d93c429e6dfd77365d4f9457c76c5832929c5c3cb",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/runfull.py": "2131da0c1b85281813f3e6be68a038db6628f6e92881bbdb42c25087d9a65335",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002-post-case/ROOT-POSTCASE.json": "84a7264db021d2cd27cc486f62277b8813f3f15245d001495fc54338e7f5cb58",
+            "parity/reports/artifacts/constructor-form-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "7e1959d6007090b1366c290aed7120083ba792b6f4af174751ef2ba3329e303c",
+            "parity/reports/artifacts/constructor-form-source-20261118/history/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.original.json": "3e80bc52a9f48f711dedd8c329440eadc8db5e471a9e454810c1baa0c2281194"
+          },
+          "path": "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -8063,7 +8307,8 @@
         "At actual7d19/integratedae8, source404 gates pass (six new Rectangle regressions; original red covers two). RG001 observes empty creation of one editable400x600mm RectangleR1, one UndoemptyR2/RedoR3, native saves, explicit freshP2 reopenR3 and one10mm point editR4/save. Original whole-case finalization FAILED:1008.460155082983s/900s; UI560.473s/760s and separate cleanup649.864573250059s do not override it. Separate frozen FS001 file-only PASS runs once in0.07889999996405095s with seals unchanged; no timing regrade or UI/lifecycle/reference/physics/full-feature/garment/roadmap acceptance. Three pre-first-app-call recorder errors remain; no app call replay. Only this bounded current scope is added; earlier failures, math31-current scopes and endpoint stales remain exact. Public JPEG copies retain exact encoded scans and color-characterization tags, with only eight ICC display identifier metadata bytes cleared per image. The current public index and redaction journal supersede only nine earlier image hashes/whole-byte wording; private originals and scientific/native/file outcomes remain unchanged.",
         "The Rectangle source/native/file reports are now stale solely because their original declared physical dependency scope includes changed sim lib.rs at13fb. Exact original reports are archived; original source404 pass, failed900s native finalization and separate file-only pass remain unchanged. Unchanged GUI source does not silently transfer original scoped acceptance.",
         "Contextual property tabs/input retirement have separately attributed source-only guards through actual997: original166pass belongs351; a66 ownsfmt/Clippy/nativebuild but zerotests. RealDown cacheRED then eightfocusedpointer/keyboardGREEN are retained. Fullsource scope is stale after combinedSIMchange; N008over-bound preview adds no workflowcredit. Native/reference/highDPI/fullcontract coverage remainsopen.",
-        "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This is current implementation-only source evidence. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen."
+        "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This was the source checkpoint at publication; its declared full scope is now stale after the constructor change, with original outcomes unchanged. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen.",
+        "At actual f6144bce, the constructor retains numeric helpers/ranges/field order and shared authoring paths while aligning Width/Height/Position X/Y metre labels and accessibility associations. Source checks pass 459/32, formatting, strict Clippy and native/CLI builds across two separately bound invocations; the first disk-floor stop and 59 partial ok lines remain failed/incomplete. Native constructor appearance, full workflow, contact quality, reference, full feature and platform acceptance remain open. The isolated failed contact-recovery prototype is not part of this source."
       ],
       "contradictions": [],
       "blockers": [
@@ -8619,7 +8864,8 @@
       ],
       "reference_observation_status": "unobserved",
       "evidence_ids": [
-        "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json"
+        "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json",
+        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
       ],
       "scenarios": [],
       "comparison_criteria": {
@@ -8823,13 +9069,73 @@
             "parity/reports/artifacts/dual-context-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "13881d385b4b17617d959bb60deffbbe7bd4dd770fcadbb1175cb07f0a64ae42"
           },
           "path": "parity/reports/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-CONSTRUCTOR-FORM-SOURCE-001",
+          "commit": "f6144bced7c56c12f0a82e1787d05d2bf5841858",
+          "timestamp": "2026-11-18T04:21:06.560216Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/EXTERNAL-TERMINAL.json": "e33ead69e3ab9de0b1de216bbb660ed099841919feba2d6754a38f4c6cc1f49d",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/LAUNCH.json": "01a65fad57f7da1b88e5a63f7a2b26ffdc3a26156b1584512ba407b5a8898139",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "5ee12973531b4b6e2e4ebc15431591a1a7f0a9a65a1bfe87df6d6944a81ec1a0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/ROOT-GO.json": "a20f3fe9998d37dcb5b7b534dfcaa82d339db133ab4bc136e97d258696cbeb0b",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/controller.stdout": "ca6d7174cc6f348778a3feb715dda7968dcece56ab86b03de7323e26428e7ddf",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/RESULT.json": "a7676c55d3c97b7f7b59dc3e37dc8cef9e5f9f3c467a49bc6711c1935e347742",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/STARTED.json": "44eb066bce2e7f2370ee574479c1e81f4870be8b64b26ea90c2b2739f4f065d3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/TERMINAL.json": "4b534eed914fd659970110ec76c02c5bd5e50314ef35fcf0e06902760ffdfa96",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt-RESULT.json": "59c020a8002e255713fc3a5f8b25c49293981314dc193ffa69bca452b790e1c3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt-STARTED.json": "86d6bd4cdbb3aee69570442829bc3712d6b1f363e05b2958bc266924cdb7766c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests-RESULT.json": "02521830e17d5428f67f6d62d71c29229143b7e10dba0ec4e6b559d446f30f6c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests-STARTED.json": "f2b580ac7a55405f1a5d6aa8af77470b18fe333eb261e5e4562379e4b7d41a73",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests.stderr": "a6035a80e250392c9287efcbba00121c647fc7cc629ec55cd5599e385df1597d",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests.stdout": "11199c0366af685bc74bc652aac6de916370a099671deb6fa60569c87ca056ba",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001.json": "0204e98295795c631c0c568759a07fffcfea3236f8db2205ee0b96d400a1c851",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/launch.py": "ec1eb940ac4a753bf8428f835b476977acd5be34fefe6f3a23a0e0795cdb1bad",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "7ccec1afba38db159980b71e0f57c11efae2a227d59144845727ce8befe76a1a",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/EXTERNAL-TERMINAL.json": "93a4d71c2f9c5dbbc08b6fd81382f7cc29fa3cb17eddd9baa3d1f852b85e5066",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/LAUNCH.json": "7f3dbc131ca4ac31f5bfc83d63fc2b16e9417ddc832eac4bed8b4e50826b45a4",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "86f61e65e9ae17aa4874cc29b76b47b870e918a9bc10fe34b2f4cb47de4b39c2",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/ROOT-GO.json": "3574361075a329dc364237b8de8e2e69cc258fe5c04d3d58d5cf75fbc58219b0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/RESULT.json": "71282b22d7b6a03567f0dd47dcfbe73ffc0092ee4db32a86dd5f344abc8894e6",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/STARTED.json": "97d7d72834e03ba76f5fdfd6b7572dd4b2113d9706be642143c04abcc06cae9a",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/TERMINAL.json": "4cc9ebd6240d1c4598b34bcbcb741b4a070431fbe850389b4ad4b75c2f8cd7f3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build-RESULT.json": "54cbcb4dcbd50547e8d26ad477062c850b435587311170d20070349e3309593c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build-STARTED.json": "d51395ea00ada23e1967332874f8b14bf76682f31457d9cbe95b680613e8b360",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build.stderr": "9747cf832b1c4f11157193a4a0848c5b21241a69d4723a7451dc81dfbd1481ef",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy-RESULT.json": "ffa4f04b365a4babda069fb2a9acfdd4f178cf45a7ce6c672ba94099d57e62cc",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy-STARTED.json": "7a77fcbf64c467d008977c358430f25929b9a855878b66053d8c8585b4ba7dce",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy.stderr": "dee2c756b0b662e32d514aaadd104df4f14d790e32b8fbcfbc19d00fbcbca2f8",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests-RESULT.json": "b6782780cb8285522836de926e47a02c04af32b23488ca4935e5394dc0388fa4",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests-STARTED.json": "d9cebe546da22de02f62c79c504218730c1f4f140ebfe337eced21e04a109aa3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests.stderr": "ebfcbd6ca6537a716e7a4edc8e9fafc9156cc3379dca625f27fe41984d598492",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests.stdout": "0b76af831a4a6b54abf36b49556d9d4220d9edab81f141b6b08af2b03d408ee1",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002.json": "2e58a37cf08cf1755c740fc3b6f22cd946ef62c183dd469c63a0556e5afd24e0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/controller.stdout": "1f48900caedfbc0eb62b67d3a9cadff963c5484a4b9cf694311f4200a212f3e5",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/launch.py": "58414fc34887a11f559da69d93c429e6dfd77365d4f9457c76c5832929c5c3cb",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/runfull.py": "2131da0c1b85281813f3e6be68a038db6628f6e92881bbdb42c25087d9a65335",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002-post-case/ROOT-POSTCASE.json": "84a7264db021d2cd27cc486f62277b8813f3f15245d001495fc54338e7f5cb58",
+            "parity/reports/artifacts/constructor-form-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "7e1959d6007090b1366c290aed7120083ba792b6f4af174751ef2ba3329e303c",
+            "parity/reports/artifacts/constructor-form-source-20261118/history/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.original.json": "3e80bc52a9f48f711dedd8c329440eadc8db5e471a9e454810c1baa0c2281194"
+          },
+          "path": "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "Integrated 8aa has bounded native string SetValue handling at nine existing sites with four actual-event regressions in actual 446/32 source checks. This is partial implementation only. Historical N004 on 06329 is BLOCKED before authoring, not an integrated native pass. High-DPI, full keyboard/focus/screen-reader/name-role-action coverage and reference interaction remain open.",
         "Contextual property tabs/input retirement have separately attributed source-only guards through actual997: original166pass belongs351; a66 ownsfmt/Clippy/nativebuild but zerotests. RealDown cacheRED then eightfocusedpointer/keyboardGREEN are retained. Fullsource scope is stale after combinedSIMchange; N008over-bound preview adds no workflowcredit. Native/reference/highDPI/fullcontract coverage remainsopen.",
-        "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This is current implementation-only source evidence. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen."
+        "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This was the source checkpoint at publication; its declared full scope is now stale after the constructor change, with original outcomes unchanged. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen.",
+        "At actual f6144bce, the constructor retains numeric helpers/ranges/field order and shared authoring paths while aligning Width/Height/Position X/Y metre labels and accessibility associations. Source checks pass 459/32, formatting, strict Clippy and native/CLI builds across two separately bound invocations; the first disk-floor stop and 59 partial ok lines remain failed/incomplete. Native constructor appearance, full workflow, contact quality, reference, full feature and platform acceptance remain open. The isolated failed contact-recovery prototype is not part of this source."
       ],
       "contradictions": [],
       "blockers": [
@@ -21536,7 +21842,8 @@
         "parity/reports/artifacts/internal-annotations-20261115/README.md",
         "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-METADATA-001.json",
         "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json",
-        "parity/reports/WF-20261117-NATIVE-NOTCH-N006-001.json"
+        "parity/reports/WF-20261117-NATIVE-NOTCH-N006-001.json",
+        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -21800,6 +22107,65 @@
             "parity/reports/artifacts/dual-context-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "13881d385b4b17617d959bb60deffbbe7bd4dd770fcadbb1175cb07f0a64ae42"
           },
           "path": "parity/reports/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-CONSTRUCTOR-FORM-SOURCE-001",
+          "commit": "f6144bced7c56c12f0a82e1787d05d2bf5841858",
+          "timestamp": "2026-11-18T04:21:06.560216Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/EXTERNAL-TERMINAL.json": "e33ead69e3ab9de0b1de216bbb660ed099841919feba2d6754a38f4c6cc1f49d",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/LAUNCH.json": "01a65fad57f7da1b88e5a63f7a2b26ffdc3a26156b1584512ba407b5a8898139",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "5ee12973531b4b6e2e4ebc15431591a1a7f0a9a65a1bfe87df6d6944a81ec1a0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/ROOT-GO.json": "a20f3fe9998d37dcb5b7b534dfcaa82d339db133ab4bc136e97d258696cbeb0b",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/controller.stdout": "ca6d7174cc6f348778a3feb715dda7968dcece56ab86b03de7323e26428e7ddf",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/RESULT.json": "a7676c55d3c97b7f7b59dc3e37dc8cef9e5f9f3c467a49bc6711c1935e347742",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/STARTED.json": "44eb066bce2e7f2370ee574479c1e81f4870be8b64b26ea90c2b2739f4f065d3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/TERMINAL.json": "4b534eed914fd659970110ec76c02c5bd5e50314ef35fcf0e06902760ffdfa96",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt-RESULT.json": "59c020a8002e255713fc3a5f8b25c49293981314dc193ffa69bca452b790e1c3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt-STARTED.json": "86d6bd4cdbb3aee69570442829bc3712d6b1f363e05b2958bc266924cdb7766c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests-RESULT.json": "02521830e17d5428f67f6d62d71c29229143b7e10dba0ec4e6b559d446f30f6c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests-STARTED.json": "f2b580ac7a55405f1a5d6aa8af77470b18fe333eb261e5e4562379e4b7d41a73",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests.stderr": "a6035a80e250392c9287efcbba00121c647fc7cc629ec55cd5599e385df1597d",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests.stdout": "11199c0366af685bc74bc652aac6de916370a099671deb6fa60569c87ca056ba",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001.json": "0204e98295795c631c0c568759a07fffcfea3236f8db2205ee0b96d400a1c851",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/launch.py": "ec1eb940ac4a753bf8428f835b476977acd5be34fefe6f3a23a0e0795cdb1bad",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "7ccec1afba38db159980b71e0f57c11efae2a227d59144845727ce8befe76a1a",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/EXTERNAL-TERMINAL.json": "93a4d71c2f9c5dbbc08b6fd81382f7cc29fa3cb17eddd9baa3d1f852b85e5066",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/LAUNCH.json": "7f3dbc131ca4ac31f5bfc83d63fc2b16e9417ddc832eac4bed8b4e50826b45a4",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "86f61e65e9ae17aa4874cc29b76b47b870e918a9bc10fe34b2f4cb47de4b39c2",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/ROOT-GO.json": "3574361075a329dc364237b8de8e2e69cc258fe5c04d3d58d5cf75fbc58219b0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/RESULT.json": "71282b22d7b6a03567f0dd47dcfbe73ffc0092ee4db32a86dd5f344abc8894e6",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/STARTED.json": "97d7d72834e03ba76f5fdfd6b7572dd4b2113d9706be642143c04abcc06cae9a",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/TERMINAL.json": "4cc9ebd6240d1c4598b34bcbcb741b4a070431fbe850389b4ad4b75c2f8cd7f3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build-RESULT.json": "54cbcb4dcbd50547e8d26ad477062c850b435587311170d20070349e3309593c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build-STARTED.json": "d51395ea00ada23e1967332874f8b14bf76682f31457d9cbe95b680613e8b360",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build.stderr": "9747cf832b1c4f11157193a4a0848c5b21241a69d4723a7451dc81dfbd1481ef",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy-RESULT.json": "ffa4f04b365a4babda069fb2a9acfdd4f178cf45a7ce6c672ba94099d57e62cc",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy-STARTED.json": "7a77fcbf64c467d008977c358430f25929b9a855878b66053d8c8585b4ba7dce",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy.stderr": "dee2c756b0b662e32d514aaadd104df4f14d790e32b8fbcfbc19d00fbcbca2f8",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests-RESULT.json": "b6782780cb8285522836de926e47a02c04af32b23488ca4935e5394dc0388fa4",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests-STARTED.json": "d9cebe546da22de02f62c79c504218730c1f4f140ebfe337eced21e04a109aa3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests.stderr": "ebfcbd6ca6537a716e7a4edc8e9fafc9156cc3379dca625f27fe41984d598492",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests.stdout": "0b76af831a4a6b54abf36b49556d9d4220d9edab81f141b6b08af2b03d408ee1",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002.json": "2e58a37cf08cf1755c740fc3b6f22cd946ef62c183dd469c63a0556e5afd24e0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/controller.stdout": "1f48900caedfbc0eb62b67d3a9cadff963c5484a4b9cf694311f4200a212f3e5",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/launch.py": "58414fc34887a11f559da69d93c429e6dfd77365d4f9457c76c5832929c5c3cb",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/runfull.py": "2131da0c1b85281813f3e6be68a038db6628f6e92881bbdb42c25087d9a65335",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002-post-case/ROOT-POSTCASE.json": "84a7264db021d2cd27cc486f62277b8813f3f15245d001495fc54338e7f5cb58",
+            "parity/reports/artifacts/constructor-form-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "7e1959d6007090b1366c290aed7120083ba792b6f4af174751ef2ba3329e303c",
+            "parity/reports/artifacts/constructor-form-source-20261118/history/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.original.json": "3e80bc52a9f48f711dedd8c329440eadc8db5e471a9e454810c1baa0c2281194"
+          },
+          "path": "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -21809,7 +22175,8 @@
         "Ad7 implements bounded straight editable internal annotations owned by a piece, two-point and precise endpoint authoring, shared-command history, applied lengths and strict v4 persistence. The approved PAT-006-internal-segments contract is engineering policy for this annotation subset; it does not establish cuts/holes or reference behavior. Internal cubics and shapes, names/notches, persistent measurements/constraints, internal sewing/folds and topological cuts remain open. The bounded headless/A003 engineering report is current; native B\u2013E and full annotation/reference contracts remain required outside its scope.",
         "Ad7 passes the original 86-observation/434-pair headless scope and root-accepted native A003 only (142 operations + one summary; conservative 641.657843875 s upper bound). A observes empty launch, one straight annotation, invalid/modal/caret retention, one compound edit, history and six v4 saves. B\u2013E/full annotation remain outside this packet; no native New/Recover, process restart, full automation, cuts/holes, physics or reference completion. Coarse feature remains partial/not_run; old failures and stale reports keep their original outcomes.",
         "Integrated 8aa adds bounded authored notches under PAT-007. The legacy filename spec/features/PAT-006-authored-notches.md does not assign notch acceptance to cut/hole PAT-006. Source 446 checks and separate real seven-call CLI/export checks cover stable ID 11, invalid t=2 retention, 0.25/8 mm to 0.75/10 mm native v6, an independently read 10 mm SVG marker and existing-sentinel DXF refusal. Historical N004 remains BLOCKED before native creation; CLI does not satisfy that journey. Shape/angle variants, full names/measurement/constraint behavior, high-DPI/keyboard and notch-reference behavior remain open.",
-        "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This is current implementation-only source evidence. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen."
+        "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This was the source checkpoint at publication; its declared full scope is now stale after the constructor change, with original outcomes unchanged. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen.",
+        "At actual f6144bce, the constructor retains numeric helpers/ranges/field order and shared authoring paths while aligning Width/Height/Position X/Y metre labels and accessibility associations. Source checks pass 459/32, formatting, strict Clippy and native/CLI builds across two separately bound invocations; the first disk-floor stop and 59 partial ok lines remain failed/incomplete. Native constructor appearance, full workflow, contact quality, reference, full feature and platform acceptance remain open. The isolated failed contact-recovery prototype is not part of this source."
       ],
       "contradictions": [],
       "blockers": [
@@ -30446,7 +30813,8 @@
         "parity/reports/WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001.json",
         "parity/reports/WF-20261117-MATERIAL-POLLING-SOURCE-001.json",
         "parity/reports/WF-20261117-MATERIAL-POLLING-HARBOR-A8-001.json",
-        "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json"
+        "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json",
+        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -32791,6 +33159,65 @@
             "parity/reports/artifacts/dual-context-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "13881d385b4b17617d959bb60deffbbe7bd4dd770fcadbb1175cb07f0a64ae42"
           },
           "path": "parity/reports/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-CONSTRUCTOR-FORM-SOURCE-001",
+          "commit": "f6144bced7c56c12f0a82e1787d05d2bf5841858",
+          "timestamp": "2026-11-18T04:21:06.560216Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/EXTERNAL-TERMINAL.json": "e33ead69e3ab9de0b1de216bbb660ed099841919feba2d6754a38f4c6cc1f49d",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/LAUNCH.json": "01a65fad57f7da1b88e5a63f7a2b26ffdc3a26156b1584512ba407b5a8898139",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "5ee12973531b4b6e2e4ebc15431591a1a7f0a9a65a1bfe87df6d6944a81ec1a0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/ROOT-GO.json": "a20f3fe9998d37dcb5b7b534dfcaa82d339db133ab4bc136e97d258696cbeb0b",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/controller.stdout": "ca6d7174cc6f348778a3feb715dda7968dcece56ab86b03de7323e26428e7ddf",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/RESULT.json": "a7676c55d3c97b7f7b59dc3e37dc8cef9e5f9f3c467a49bc6711c1935e347742",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/STARTED.json": "44eb066bce2e7f2370ee574479c1e81f4870be8b64b26ea90c2b2739f4f065d3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/TERMINAL.json": "4b534eed914fd659970110ec76c02c5bd5e50314ef35fcf0e06902760ffdfa96",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt-RESULT.json": "59c020a8002e255713fc3a5f8b25c49293981314dc193ffa69bca452b790e1c3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt-STARTED.json": "86d6bd4cdbb3aee69570442829bc3712d6b1f363e05b2958bc266924cdb7766c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests-RESULT.json": "02521830e17d5428f67f6d62d71c29229143b7e10dba0ec4e6b559d446f30f6c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests-STARTED.json": "f2b580ac7a55405f1a5d6aa8af77470b18fe333eb261e5e4562379e4b7d41a73",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests.stderr": "a6035a80e250392c9287efcbba00121c647fc7cc629ec55cd5599e385df1597d",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests.stdout": "11199c0366af685bc74bc652aac6de916370a099671deb6fa60569c87ca056ba",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001.json": "0204e98295795c631c0c568759a07fffcfea3236f8db2205ee0b96d400a1c851",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/launch.py": "ec1eb940ac4a753bf8428f835b476977acd5be34fefe6f3a23a0e0795cdb1bad",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "7ccec1afba38db159980b71e0f57c11efae2a227d59144845727ce8befe76a1a",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/EXTERNAL-TERMINAL.json": "93a4d71c2f9c5dbbc08b6fd81382f7cc29fa3cb17eddd9baa3d1f852b85e5066",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/LAUNCH.json": "7f3dbc131ca4ac31f5bfc83d63fc2b16e9417ddc832eac4bed8b4e50826b45a4",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "86f61e65e9ae17aa4874cc29b76b47b870e918a9bc10fe34b2f4cb47de4b39c2",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/ROOT-GO.json": "3574361075a329dc364237b8de8e2e69cc258fe5c04d3d58d5cf75fbc58219b0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/RESULT.json": "71282b22d7b6a03567f0dd47dcfbe73ffc0092ee4db32a86dd5f344abc8894e6",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/STARTED.json": "97d7d72834e03ba76f5fdfd6b7572dd4b2113d9706be642143c04abcc06cae9a",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/TERMINAL.json": "4cc9ebd6240d1c4598b34bcbcb741b4a070431fbe850389b4ad4b75c2f8cd7f3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build-RESULT.json": "54cbcb4dcbd50547e8d26ad477062c850b435587311170d20070349e3309593c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build-STARTED.json": "d51395ea00ada23e1967332874f8b14bf76682f31457d9cbe95b680613e8b360",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build.stderr": "9747cf832b1c4f11157193a4a0848c5b21241a69d4723a7451dc81dfbd1481ef",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy-RESULT.json": "ffa4f04b365a4babda069fb2a9acfdd4f178cf45a7ce6c672ba94099d57e62cc",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy-STARTED.json": "7a77fcbf64c467d008977c358430f25929b9a855878b66053d8c8585b4ba7dce",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy.stderr": "dee2c756b0b662e32d514aaadd104df4f14d790e32b8fbcfbc19d00fbcbca2f8",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests-RESULT.json": "b6782780cb8285522836de926e47a02c04af32b23488ca4935e5394dc0388fa4",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests-STARTED.json": "d9cebe546da22de02f62c79c504218730c1f4f140ebfe337eced21e04a109aa3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests.stderr": "ebfcbd6ca6537a716e7a4edc8e9fafc9156cc3379dca625f27fe41984d598492",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests.stdout": "0b76af831a4a6b54abf36b49556d9d4220d9edab81f141b6b08af2b03d408ee1",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002.json": "2e58a37cf08cf1755c740fc3b6f22cd946ef62c183dd469c63a0556e5afd24e0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/controller.stdout": "1f48900caedfbc0eb62b67d3a9cadff963c5484a4b9cf694311f4200a212f3e5",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/launch.py": "58414fc34887a11f559da69d93c429e6dfd77365d4f9457c76c5832929c5c3cb",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/runfull.py": "2131da0c1b85281813f3e6be68a038db6628f6e92881bbdb42c25087d9a65335",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002-post-case/ROOT-POSTCASE.json": "84a7264db021d2cd27cc486f62277b8813f3f15245d001495fc54338e7f5cb58",
+            "parity/reports/artifacts/constructor-form-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "7e1959d6007090b1366c290aed7120083ba792b6f4af174751ef2ba3329e303c",
+            "parity/reports/artifacts/constructor-form-source-20261118/history/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.original.json": "3e80bc52a9f48f711dedd8c329440eadc8db5e471a9e454810c1baa0c2281194"
+          },
+          "path": "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -32806,7 +33233,8 @@
         "Actual9d4/integrated076 changes only material cancellation cadence: entry/every64sites/pre-success checks, unchanged numerical PCG32/Armijo16 and rollback. Actual four source gates412 pass; same-build six-pair32-boundary material outputs are bit-identical with5.476845906730992x component-only median ratio, not whole-garment speed. First fmt-only failure and external release disk stop remain; recovery002 uses own partial cache and retains the corrected cold-banner qualification. One new Harbor A8 run is operationally accepted298.4210457500303s/420s (external terminal observation398.1007409580052s),180frames/181 independent states, but STRICT STRAIN FAILED frame29/triangle618/piece31/warp at0.1558088708602663 >0.15. Final9.430147percent does not override failure. All181 finite/contact/uncertainty screens pass; seam<5mm after closure29 and exacttargets60/180 pass, while initial seam/target0..28 failures remain. Published52099 global153/180 failure remains ungraded/stale with exact originals; earlier paired strict failure remains historical. No retry/oldregrade/native/reference/calibrated-physics/full-feature/garment/roadmap acceptance; full scopes/statuses/scenarios/dependencies remain unchanged.",
         "Integrated 8aa passes actual 446/32 source checks, fmt, strict Clippy and native+CLI build on 91 exact inputs. Coupled-stage regressions are implementation-only. The complete 82cc 181-state Harbor strict failure remains historical; no new 8aa garment or numerical acceptance exists. Original failed outcomes and full native/calibration/reference/feature/garment/roadmap gaps remain unchanged.",
         "Actualef313 soft-sewing evidence retains451tests on526 plus exact type-only proof/current fmt-Clippy-build. The separately fresh180step/181state garment case is strictFAIL: strainframe29=16.06333827124784% exceeds15%; finite/supported-contact/uncertainty pass. Both full91 reports are stale solely for later contextualUI main.rs; all prior failures and full scopes remain. No garment/reference/full-contract credit.",
-        "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This is current implementation-only source evidence. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen."
+        "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This was the source checkpoint at publication; its declared full scope is now stale after the constructor change, with original outcomes unchanged. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen.",
+        "At actual f6144bce, the constructor retains numeric helpers/ranges/field order and shared authoring paths while aligning Width/Height/Position X/Y metre labels and accessibility associations. Source checks pass 459/32, formatting, strict Clippy and native/CLI builds across two separately bound invocations; the first disk-floor stop and 59 partial ok lines remain failed/incomplete. Native constructor appearance, full workflow, contact quality, reference, full feature and platform acceptance remain open. The isolated failed contact-recovery prototype is not part of this source."
       ],
       "contradictions": [],
       "blockers": [
@@ -37111,7 +37539,8 @@
         "parity/reports/WF-20261117-GLOBAL-MATERIAL-HARBOR-A8-001.json",
         "parity/reports/WF-20261117-MATERIAL-POLLING-SOURCE-001.json",
         "parity/reports/WF-20261117-MATERIAL-POLLING-HARBOR-A8-001.json",
-        "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json"
+        "parity/reports/WF-20261117-NOTCH-TEXT-BENDING-SOURCE-001.json",
+        "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
       ],
       "scenarios": [
         {
@@ -39158,6 +39587,65 @@
             "parity/reports/artifacts/dual-context-source-20261117/SELECTED-PUBLIC-MANIFEST-001.json": "13881d385b4b17617d959bb60deffbbe7bd4dd770fcadbb1175cb07f0a64ae42"
           },
           "path": "parity/reports/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.json"
+        },
+        {
+          "id": "WF-20261118-CONSTRUCTOR-FORM-SOURCE-001",
+          "commit": "f6144bced7c56c12f0a82e1787d05d2bf5841858",
+          "timestamp": "2026-11-18T04:21:06.560216Z",
+          "platform": "macOS Apple Silicon; pinned Rust 1.94.1 and Python 3.13; own worktree Cargo target; one job; locked offline debug builds.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/EXTERNAL-TERMINAL.json": "e33ead69e3ab9de0b1de216bbb660ed099841919feba2d6754a38f4c6cc1f49d",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/LAUNCH.json": "01a65fad57f7da1b88e5a63f7a2b26ffdc3a26156b1584512ba407b5a8898139",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "5ee12973531b4b6e2e4ebc15431591a1a7f0a9a65a1bfe87df6d6944a81ec1a0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/ROOT-GO.json": "a20f3fe9998d37dcb5b7b534dfcaa82d339db133ab4bc136e97d258696cbeb0b",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/controller.stdout": "ca6d7174cc6f348778a3feb715dda7968dcece56ab86b03de7323e26428e7ddf",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/RESULT.json": "a7676c55d3c97b7f7b59dc3e37dc8cef9e5f9f3c467a49bc6711c1935e347742",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/STARTED.json": "44eb066bce2e7f2370ee574479c1e81f4870be8b64b26ea90c2b2739f4f065d3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/TERMINAL.json": "4b534eed914fd659970110ec76c02c5bd5e50314ef35fcf0e06902760ffdfa96",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt-RESULT.json": "59c020a8002e255713fc3a5f8b25c49293981314dc193ffa69bca452b790e1c3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt-STARTED.json": "86d6bd4cdbb3aee69570442829bc3712d6b1f363e05b2958bc266924cdb7766c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/full-fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests-RESULT.json": "02521830e17d5428f67f6d62d71c29229143b7e10dba0ec4e6b559d446f30f6c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests-STARTED.json": "f2b580ac7a55405f1a5d6aa8af77470b18fe333eb261e5e4562379e4b7d41a73",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests.stderr": "a6035a80e250392c9287efcbba00121c647fc7cc629ec55cd5599e385df1597d",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001/workspace-tests.stdout": "11199c0366af685bc74bc652aac6de916370a099671deb6fa60569c87ca056ba",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/full-001.json": "0204e98295795c631c0c568759a07fffcfea3236f8db2205ee0b96d400a1c851",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/launch.py": "ec1eb940ac4a753bf8428f835b476977acd5be34fefe6f3a23a0e0795cdb1bad",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/post-case/ROOT-CLOSURE.json": "7ccec1afba38db159980b71e0f57c11efae2a227d59144845727ce8befe76a1a",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-001/runfull.py": "8f725ccdbd8eec08b4d82bbb5ac88b40e9265cf2255d380cb3094a59e2e10ca2",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/EXTERNAL-TERMINAL.json": "93a4d71c2f9c5dbbc08b6fd81382f7cc29fa3cb17eddd9baa3d1f852b85e5066",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/LAUNCH.json": "7f3dbc131ca4ac31f5bfc83d63fc2b16e9417ddc832eac4bed8b4e50826b45a4",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/POST-TERMINAL-CLOCK.json": "86f61e65e9ae17aa4874cc29b76b47b870e918a9bc10fe34b2f4cb47de4b39c2",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/ROOT-GO.json": "3574361075a329dc364237b8de8e2e69cc258fe5c04d3d58d5cf75fbc58219b0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/RESULT.json": "71282b22d7b6a03567f0dd47dcfbe73ffc0092ee4db32a86dd5f344abc8894e6",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/STARTED.json": "97d7d72834e03ba76f5fdfd6b7572dd4b2113d9706be642143c04abcc06cae9a",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/TERMINAL.json": "4cc9ebd6240d1c4598b34bcbcb741b4a070431fbe850389b4ad4b75c2f8cd7f3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build-RESULT.json": "54cbcb4dcbd50547e8d26ad477062c850b435587311170d20070349e3309593c",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build-STARTED.json": "d51395ea00ada23e1967332874f8b14bf76682f31457d9cbe95b680613e8b360",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build.stderr": "9747cf832b1c4f11157193a4a0848c5b21241a69d4723a7451dc81dfbd1481ef",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/native-cli-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy-RESULT.json": "ffa4f04b365a4babda069fb2a9acfdd4f178cf45a7ce6c672ba94099d57e62cc",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy-STARTED.json": "7a77fcbf64c467d008977c358430f25929b9a855878b66053d8c8585b4ba7dce",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy.stderr": "dee2c756b0b662e32d514aaadd104df4f14d790e32b8fbcfbc19d00fbcbca2f8",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests-RESULT.json": "b6782780cb8285522836de926e47a02c04af32b23488ca4935e5394dc0388fa4",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests-STARTED.json": "d9cebe546da22de02f62c79c504218730c1f4f140ebfe337eced21e04a109aa3",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests.stderr": "ebfcbd6ca6537a716e7a4edc8e9fafc9156cc3379dca625f27fe41984d598492",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002/workspace-tests.stdout": "0b76af831a4a6b54abf36b49556d9d4220d9edab81f141b6b08af2b03d408ee1",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/checks-002.json": "2e58a37cf08cf1755c740fc3b6f22cd946ef62c183dd469c63a0556e5afd24e0",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/controller.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/controller.stdout": "1f48900caedfbc0eb62b67d3a9cadff963c5484a4b9cf694311f4200a212f3e5",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/launch.py": "58414fc34887a11f559da69d93c429e6dfd77365d4f9457c76c5832929c5c3cb",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/resources.py": "29d9e6c0c2d12126582056d3e62d3b226f4d12bfda1860341cc9ae01f5742781",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002/runfull.py": "2131da0c1b85281813f3e6be68a038db6628f6e92881bbdb42c25087d9a65335",
+            "parity/reports/artifacts/constructor-form-source-20261118/case-002-post-case/ROOT-POSTCASE.json": "84a7264db021d2cd27cc486f62277b8813f3f15245d001495fc54338e7f5cb58",
+            "parity/reports/artifacts/constructor-form-source-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "7e1959d6007090b1366c290aed7120083ba792b6f4af174751ef2ba3329e303c",
+            "parity/reports/artifacts/constructor-form-source-20261118/history/WF-20261117-DUAL-CONTEXT-INTEGRATED-SOURCE-001.original.json": "3e80bc52a9f48f711dedd8c329440eadc8db5e471a9e454810c1baa0c2281194"
+          },
+          "path": "parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json"
         }
       ],
       "known_gaps": [
@@ -39172,7 +39660,8 @@
         "Actual9d4/integrated076 changes only material cancellation cadence: entry/every64sites/pre-success checks, unchanged numerical PCG32/Armijo16 and rollback. Actual four source gates412 pass; same-build six-pair32-boundary material outputs are bit-identical with5.476845906730992x component-only median ratio, not whole-garment speed. First fmt-only failure and external release disk stop remain; recovery002 uses own partial cache and retains the corrected cold-banner qualification. One new Harbor A8 run is operationally accepted298.4210457500303s/420s (external terminal observation398.1007409580052s),180frames/181 independent states, but STRICT STRAIN FAILED frame29/triangle618/piece31/warp at0.1558088708602663 >0.15. Final9.430147percent does not override failure. All181 finite/contact/uncertainty screens pass; seam<5mm after closure29 and exacttargets60/180 pass, while initial seam/target0..28 failures remain. Published52099 global153/180 failure remains ungraded/stale with exact originals; earlier paired strict failure remains historical. No retry/oldregrade/native/reference/calibrated-physics/full-feature/garment/roadmap acceptance; full scopes/statuses/scenarios/dependencies remain unchanged.",
         "Integrated 8aa passes actual 446/32 source checks, fmt, strict Clippy and native+CLI build on 91 exact inputs. Coupled-stage regressions are implementation-only. The complete 82cc 181-state Harbor strict failure remains historical; no new 8aa garment or numerical acceptance exists. Original failed outcomes and full native/calibration/reference/feature/garment/roadmap gaps remain unchanged.",
         "Actualef313 soft-sewing evidence retains451tests on526 plus exact type-only proof/current fmt-Clippy-build. The separately fresh180step/181state garment case is strictFAIL: strainframe29=16.06333827124784% exceeds15%; finite/supported-contact/uncertainty pass. Both full91 reports are stale solely for later contextualUI main.rs; all prior failures and full scopes remain. No garment/reference/full-contract credit.",
-        "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This is current implementation-only source evidence. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen."
+        "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This was the source checkpoint at publication; its declared full scope is now stale after the constructor change, with original outcomes unchanged. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen.",
+        "At actual f6144bce, the constructor retains numeric helpers/ranges/field order and shared authoring paths while aligning Width/Height/Position X/Y metre labels and accessibility associations. Source checks pass 459/32, formatting, strict Clippy and native/CLI builds across two separately bound invocations; the first disk-floor stop and 59 partial ok lines remain failed/incomplete. Native constructor appearance, full workflow, contact quality, reference, full feature and platform acceptance remain open. The isolated failed contact-recovery prototype is not part of this source."
       ],
       "contradictions": [],
       "blockers": [

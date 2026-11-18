@@ -1,54 +1,63 @@
 # Current development checkpoint — 18 November 2026
 
-The latest published checkpoint is [draft PR #62](https://github.com/thematheusmello/weftforge/pull/62),
-head `3e1f9ef8`, stacked on draft #61. Its clean registry/map closure passed in
-69.478 seconds. Newer work below is local and awaiting reviewed public evidence;
-no garment, reference, full feature or delivery gate is accepted.
+The latest published checkpoint remains [draft PR #62](https://github.com/thematheusmello/weftforge/pull/62),
+head `3e1f9ef8`, stacked on draft #61. New UI code is local commit `f6144bce`.
+No garment, reference, full feature or delivery gate is accepted.
 
-The constructor now has aligned Width, Height and Position X/Y fields, explicit
-metres and accessibility label associations. Numeric helpers, ranges, field order
-and authoring paths remain unchanged. All 168 native-package tests pass on the
-isolated candidate, with existing test definitions unchanged. Its integrated
-optimized native build passed in 312.116 seconds / 900 with executable
-`fbf91108fa828597a6c16fac476970b4844c24234b303a5a1dae7a27c5fd4592`.
-This build contains the published solver. Full integrated checks and constructor
-appearance observation remain pending.
+Constructor Width, Height and Position X/Y fields now have aligned metre labels
+and accessibility associations. Numeric helpers, ranges, field order and shared
+authoring paths are retained. Actual clean `f6144bce` passes **459 workspace tests
+across 32 summaries, zero failed/ignored**, formatting, strict all-target Clippy
+and native/CLI debug builds. The first invocation passed formatting, then stopped
+at the disk floor after 59 partial ok test lines, without a complete summary.
+Its 193.072-second failure stays failed. After inactive owned caches were cleared
+with same-worktree executable preservation, a distinct unchanged-source invocation
+passed only the unfinished tests/lint/builds in **378.958 seconds / 900**.
+There is no single successful four-command clock. See the
+[source report](parity/reports/WF-20261118-CONSTRUCTOR-FORM-SOURCE-001.json).
 
-Preview P001 observed the loaded original Harbor sample, then failed its control
-time allowance before Frame all or opening the constructor. The two state-call
-lifecycles totalled 2.141 seconds; preparation/operator gaps consumed the allowance.
-The watchdog closed the owned process, without normal-Quit credit, and final
-sealing exceeded 300 seconds. The original failure remains failed; all owned
-processes are absent. A shorter continuous sequence with protected cleanup is
-being prepared. No constructor alignment or product-defect claim comes from P001.
-Earlier N009/N010 input/controller failures also remain unchanged.
+The current debug native identity is
+`ba7c80382a78acac937c367f223778b8c6e2898476985340b2ac10c6fa99134f`;
+the CLI is `1626b5af3a0b460b993e34271f4613dbc40eedb30f3786b56e0972f7519cf4be`.
+Immutable copies remain inside this checkout, outside Cargo inputs. Earlier
+optimized constructor build `fbf91108fa828597a6c16fac476970b4844c24234b303a5a1dae7a27c5fd4592`
+retains its pre-commit source attribution. Generated progress updated in
+73.032 seconds / 120; clean metadata/xtask verification is next.
 
-A separate solver prototype passes the independent equilibrium oracle at
-Y approximately 1 metre, with force residual -9.77e-15 N. An ungraded diagnostic
-on the previous solver completed in 88.891 seconds / 180, with 31 control/observer
-states bit-identical in persistent physics. It identified contact-history and
-changing-support issues; elastic coupling remains another unresolved concern.
-The original full 181-state garment case still fails at 16.063338% strain against
-15%. No garment improvement is claimed from these smaller checks.
+Preview P001 captured the loaded original Harbor sample, but failed before
+Frame all or opening the constructor. The two state-call lifecycles totalled
+2.141 seconds; preparation/operator gaps consumed the dispatch allowance.
+The watchdog closed the owned process, without normal-Quit credit; sealing also
+exceeded 300 seconds. It remains failed. The continuous successor is unarmed
+while its binding, image validation, cleanup and final admission are corrected.
+No constructor appearance or complete native workflow is accepted. Earlier
+N009/N010 failures and their cleanup outcomes remain unchanged.
 
-The first contact-repair package failed with 85 passed and two failures. A reviewed
-successor queries geometry after retracting its owned action and retains separate
-capsule material-point supports. It passes all eight new regressions and the old
-fast-crossing case, but its full package still fails: 88 passed, two existing
-failures, zero ignored. Capsule penetration is 0.0093352567 m; the fixed-layer
-residual is 2.9023345e-6 m. Both exceed unchanged 1e-6 m limits. That source is
-isolated and not integrated. Moving-triangle self-contact also has a documented
-nonlinear fixed-point limitation. Stronger whole-triangle projection is under
-independent mathematical review; no thresholds or iteration budgets were weakened.
+A separate simulation successor now passes **94 package tests, zero
+failed/ignored**, including unchanged capsule, pinned-layer and swept-crossing
+criteria. Its independent ground-equilibrium result is Y approximately 1 metre,
+force residual -9.77e-15 N. Source review separates balanced contact actions from
+explicit kinematic recovery of frozen initially intersecting nonlinear pairs in
+the first substep. A persistent recovery counter records motion; it must remain
+zero at every state of the future full Harbor case. Recovery contributes to
+velocity and supplies no normal-dynamics or calibration proof. The 85/2 and 88/2
+predecessors remain failed, with thresholds and outer iterations unchanged.
 
-Next: complete the UI-only integrated formatting, workspace tests, strict Clippy,
-metadata/xtask checks and controlled appearance observation; continue the isolated
-contact repair until its unchanged package passes, then integrate and run the full
-garment case and native empty-project authoring/save/reopen/export workflow.
-No native, solver or Cargo job is currently running. Rebuildable compiled debug
-inputs are cold; release dependencies belong to this worktree. GitHub Actions
-remain disabled; main and existing Pages stay unchanged. All six gates and ten
-acceptance journeys remain open, with 42 partial and 14 planned broad groups.
+That simulator source is still isolated. GUI/CLI/default-data compatibility,
+zero-recovery fitting criteria, documentation and integrated source checks must
+be completed before its full garment/native runs. Moving-triangle nonlinear
+fixed-point and broader contact/calibration limits remain open. The original
+181-state garment case still fails at 16.063338% strain against 15%; no new
+garment improvement is claimed from package tests.
+
+Next: commit the tracked UI metadata checkpoint; integrate the reviewed simulator
+and all adapters/docs; run full local source checks, the unchanged all-181-state
+quality case and the genuine native empty-project create/sew/simulate/edit/save/
+reopen/export workflow. No Cargo, native or standalone simulation job is running.
+Actions are disabled at repository level and both workflows are disabled manually;
+54 historical runs remain, none active. Main and existing Pages are unchanged.
+All six gates and ten acceptance journeys remain open, with 42 partial and 14
+planned broad groups; discovery is incomplete.
 
 The published checkpoint below retains its original source and timing attribution.
 

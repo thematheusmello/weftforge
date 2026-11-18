@@ -1,0 +1,20 @@
+{
+  "controller_exit_code": 1,
+  "controller_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "controller_stdout_sha256": "ca6d7174cc6f348778a3feb715dda7968dcece56ab86b03de7323e26428e7ddf",
+  "controller_terminal": {
+    "elapsed_after_persistence_hash_volume_seconds": 193.04633312486112,
+    "errors": [
+      "ValueError: Resource/monitor stop: disk_space_below_floor"
+    ],
+    "expected_red_observed": false,
+    "phase": "full-001",
+    "protocol_complete_under_caps": false,
+    "terminal_sha256": "4b534eed914fd659970110ec76c02c5bd5e50314ef35fcf0e06902760ffdfa96",
+    "total_retained_bytes": 39734
+  },
+  "deadline": 1095956.895915041,
+  "launcher_timeout": false,
+  "metadata_commit": "f6144bced7c56c12f0a82e1787d05d2bf5841858",
+  "started_monotonic": 1095056.895915041
+}
