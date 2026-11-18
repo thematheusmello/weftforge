@@ -35,6 +35,9 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    project passed the height edit and history checks. Independent readback
    verified its SVG, DXF, OBJ rest surfaces and workspace PNG.
    [Native Harbor case](parity/reports/WF-20261118-HARBOR-NATIVE-AUTHORING-REOPEN-001.json).
+   The four Fabric numeric fields expose individual names and SI units in the
+   native macOS accessibility tree.
+   [Fabric accessibility case](parity/reports/WF-20261118-FABRIC-ACCESSIBLE-NAMES-001.json).
    Earlier 8aa notch workflow and genuine modal accessibility-setter observations
    remain historical; they are not transferred to the changed source.
 2. Close the first garment path. Shared soft sewing retains every energy in one
@@ -79,7 +82,7 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    Keep GitHub Actions disabled throughout development. Re-enable it only after
    the complete project is finished, as the user requested.
 
-Current source `e5f043ef` passed formatting, 489 workspace tests across
+Simulator source `e5f043ef` passed formatting, 489 workspace tests across
 32 summaries, strict all-target Clippy and optimized studio and CLI builds.
 [Independent soft-stitch source checks](parity/reports/WF-20261118-HARBOR-ISOLATED-SEWING-FIT-001.json).
 Earlier source `6078c2af` passed formatting, 488 workspace tests, strict

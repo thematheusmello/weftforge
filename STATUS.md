@@ -1,3 +1,16 @@
+# Fabric accessibility — 18 November 2026
+
+The four Fabric numeric controls expose their on-screen names and physical
+units to accessibility tools. The optimized macOS build exposed separate Warp
+stiffness and Weft stiffness controls when both values were 400 N/m. The
+focused editor regression passed, and the native test window closed.
+[Native Fabric labels](parity/reports/WF-20261118-FABRIC-ACCESSIBLE-NAMES-001.json).
+
+The unchanged CLI executable retains the recorded 181-state Harbor fit failure.
+The first strain-limit crossing occurs in a substep while the seam target is
+positive. The next solver check uses that recorded sewing and contact state.
+GitHub Actions and automated Pages deployments stay disabled.
+
 # Native Fabric editing — 18 November 2026
 
 The current Apple Silicon studio changed Harbor's shared warp stiffness from
