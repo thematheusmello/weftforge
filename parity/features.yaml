@@ -50570,6 +50570,23 @@
             "parity/reports/artifacts/native-harbor-workflow-20261118/undo.weftforge": "972be11ddb06d5beb3abb0b401fe0be15b398d202d3ecf57f81c3104540f049e"
           },
           "path": "parity/reports/WF-20261118-HARBOR-NATIVE-AUTHORING-REOPEN-001.json"
+        },
+        {
+          "id": "WF-20261118-HARBOR-NATIVE-SIMULATED-OBJ-001",
+          "commit": "9a3b70b752868ece9340dc80fe5228e12a52aea1",
+          "timestamp": "2026-11-18T22:16:10.295198Z",
+          "platform": "macOS Apple Silicon, optimized native desktop",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/artifacts/rest.obj": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/artifacts/simulated.obj": "4215795bfc9dc802e1394cb0e5ddd555279e924dce4419d05ac22ac1270ce283",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/EVALUATION.json": "33e035bed26d423b8be1616dc3ba5697e4a316c76d20c1dfc5817060f382e405",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/verify_obj.py": "5108b8074c7e01bd7dc25c95599e4096871e6c2b454db5e029f718612c892ce8",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/observations/NATIVE-OBSERVATIONS.json": "fcd29755d76641dd2fe1f07df185b2040df429debe89736ef8c4f2621b454e94",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/CLOSURE.json": "9e60dc2305fe237ecb10f6b43300b900add97b9ade2257e705404078c6fd0fd1",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/SOURCE-BINARY.json": "04f794dc21631c8273015b6e3a2be0f7e8a60579852bbe43abf85afa09b2d77c"
+          },
+          "path": "parity/reports/WF-20261118-HARBOR-NATIVE-SIMULATED-OBJ-001.json"
         }
       ],
       "known_gaps": [
@@ -50581,7 +50598,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "FILE-004",

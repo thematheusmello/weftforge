@@ -66,11 +66,13 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    six-node case before testing another full garment.
    [Independent soft-stitch fit](parity/reports/WF-20261118-HARBOR-ISOLATED-SEWING-FIT-001.json).
 3. A native Harbor Fabric edit passed Undo, Redo, editable save, fresh reopen
-   and an initial simulation step. Finish complete fit and verified
-   simulated-mesh export after a construction or fabric change. Repeat the
+   and an initial simulation step. Independent parsing verified the native
+   simulated OBJ after that step, including physical scale and preserved
+   topology and UVs. Finish complete fit and export a fitted mesh. Repeat the
    integrated empty-document journey on one current build and compare the
    recorded reference case.
    [Native Fabric case](parity/reports/WF-20261118-HARBOR-NATIVE-FABRIC-001.json).
+   [Native simulated OBJ case](parity/reports/WF-20261118-HARBOR-NATIVE-SIMULATED-OBJ-001.json).
 4. Work through Gates 2–4 below: professional editing/construction and fitting,
    fabric/contact robustness, avatars/animation/materials/rendering and output.
    Run reference discovery and comparison alongside implementation throughout.

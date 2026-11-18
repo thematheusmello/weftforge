@@ -1,3 +1,17 @@
+# Native simulated OBJ — 18 November 2026
+
+The Apple Silicon studio exported the revision 23 Harbor garment before and
+after one manual simulation step. An independent parser verified 654 vertices,
+1172 faces, metre scale, Y-up placement, UVs, piece groups and finite,
+winding-aligned normals. All 654 positions moved, by up to 4.55 mm. The
+editable project remained at revision 23 and the test window closed.
+[Native export case and both meshes](parity/reports/WF-20261118-HARBOR-NATIVE-SIMULATED-OBJ-001.json).
+
+The full Harbor fit remains open. The next solver increment couples the
+independent soft stitch to its capsule contacts and checks refreshed curved
+geometry before changing the substep. GitHub Actions and automated Pages
+deployments stay disabled.
+
 # Fabric accessibility — 18 November 2026
 
 The four Fabric numeric controls expose their on-screen names and physical
