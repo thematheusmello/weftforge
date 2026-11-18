@@ -1,0 +1,120 @@
+--- a/crates/weftforge-sim/src/contact.rs
++++ b/crates/weftforge-sim/src/contact.rs
+@@ -728,6 +728,11 @@
+             for &collider in &self.input.colliders {
+                 check_cancel(cancelled)?;
+                 if let Some((_, depth)) = collider_contact(collider, x[v], self.thickness[v]) {
++                    if !depth.is_finite() {
++                        return Err(SimulationError::Unstable(
++                            "non-finite analytic contact geometry".into(),
++                        ));
++                    }
+                     maximum = maximum.max(depth);
+                     if depth > 1e-8 {
+                         count += 1;
+@@ -1055,6 +1060,9 @@
+         Collider::Capsule { a, b, radius } => {
+             let (feature, direction) = capsule::point_feature(p, a, b);
+             let depth = radius + thickness - feature.distance;
++            if !feature.axis_fraction.is_finite() || !depth.is_finite() {
++                return Some(([f64::NAN; 3], f64::NAN));
++            }
+             if depth <= 0. && !include_separated {
+                 return None;
+             }
+@@ -1333,6 +1341,44 @@
+                 .project_colliders(&mut x, &[current], &mut ContactState::default(), &|| false)
+                 .unwrap();
+             assert!((capsule::point_feature(x[0], a, b).0.distance - 1.).abs() <= 1e-14);
++        }
++    }
++
++    #[test]
++    fn capsule_point_queries_detect_large_finite_axes_and_reject_unusable_geometry() {
++        let b = [1e308; 3];
++        let point = b.map(|value| 0.75 * value);
++        let collider = Collider::Capsule {
++            a: [0.; 3],
++            b,
++            radius: 1.,
++        };
++        let (normal, depth) = collider_contact(collider, point, 0.).unwrap();
++        assert!(finite(normal));
++        assert_eq!(depth, 1., "the independent axis fraction is exactly 3/4");
++        for (point, a, b) in [
++            ([0.; 3], [-1e308, 0., 0.], [1e308, 0., 0.]),
++            ([1e308, 0., 0.], [-1e308, 0., 0.], [-0.5e308, 0., 0.]),
++            ([0.; 3], [0.; 3], [f64::NAN, 0., 0.]),
++            ([0.; 3], [0.; 3], [f64::INFINITY, 0., 0.]),
++            ([f64::NAN, 0., 0.], [0.; 3], [0., 1., 0.]),
++            ([f64::INFINITY, 0., 0.], [0.; 3], [0., 1., 0.]),
++            ([-1.5e308, -1.5e308, 0.], [0.; 3], [1e308, 1e308, 0.]),
++        ] {
++            let cloth = capsule_fixture(&[point], &[1.], a, b, 1., 0.);
++            let mut x = [point];
++            let retained = x.map(|p| p.map(f64::to_bits));
++            let mut history = ContactState::default();
++            assert!(matches!(
++                cloth.project_colliders(&mut x, &[point], &mut history, &|| false),
++                Err(SimulationError::Unstable(_))
++            ));
++            assert_eq!(x.map(|p| p.map(f64::to_bits)), retained);
++            assert!(history.vertex_colliders.is_empty());
++            assert!(matches!(
++                cloth.contact_errors_cancellable(&[point], &|| false),
++                Err(SimulationError::Unstable(_))
++            ));
+         }
+     }
+ 
+--- a/crates/weftforge-sim/src/capsule.rs
++++ b/crates/weftforge-sim/src/capsule.rs
+@@ -169,12 +169,23 @@
+ 
+ pub(crate) fn axis_fraction(p: Vec3, a: Vec3, b: Vec3) -> f64 {
+     let axis = sub(b, a);
+-    let scale = axis.into_iter().map(f64::abs).fold(0., f64::max);
+-    if scale > 0. {
+-        let axis = axis.map(|value| value / scale);
+-        (dot(sub(p, a), axis) / scale / dot(axis, axis)).clamp(0., 1.)
++    let offset = sub(p, a);
++    if !finite(axis) || !finite(offset) {
++        return f64::NAN;
++    }
++    let axis_scale = axis.into_iter().map(f64::abs).fold(0., f64::max);
++    let offset_scale = offset.into_iter().map(f64::abs).fold(0., f64::max);
++    if axis_scale == 0. || offset_scale == 0. {
++        return 0.;
++    }
++    let axis = axis.map(|value| value / axis_scale);
++    let projection = dot(offset.map(|value| value / offset_scale), axis) / dot(axis, axis);
++    if projection <= 0. {
++        0.
++    } else if projection >= axis_scale / offset_scale {
++        1.
+     } else {
+-        0.
++        projection * offset_scale / axis_scale
+     }
+ }
+ 
+@@ -315,6 +326,19 @@
+     }
+ 
+     #[test]
++    fn point_features_scale_both_projection_vectors_before_the_dot_product() {
++        let a = [0.; 3];
++        let b = [1e308; 3];
++        let point = b.map(|value| 0.75 * value);
++        let (feature, normal) = point_feature(point, a, b);
++        assert_eq!(feature.axis_fraction, 0.75);
++        assert_eq!(feature.distance, 0.);
++        assert_eq!(normal, None);
++        assert_eq!(axis_fraction([-1e308; 3], a, b), 0.);
++        assert_eq!(axis_fraction([1.5e308; 3], a, b), 1.);
++    }
++
++    #[test]
+     fn controlled_capsule_features_preserve_results_and_abort_at_each_task() {
+         for triangle in [face(), [[-1., 0., 0.], [0.; 3], [1., 0., 0.]], [[0.; 3]; 3]] {
+             let (a, b) = ([0., 0., -1.], [0., 0., 1.]);

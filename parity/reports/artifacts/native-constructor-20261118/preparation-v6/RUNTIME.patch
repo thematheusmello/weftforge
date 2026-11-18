@@ -1,0 +1,89 @@
+--- v5/preview_launch.py
++++ v6/preview_launch.py
+@@ -280,6 +280,7 @@
+               'Observed original process/window lease changed')
+     p.require(time.time() + 120 < started['action_cutoff_epoch'] and p.bounds(started)['within_bounds'], 'Bound case no longer admissible')
+     return {'case': plan['case'], 'case_path': str(CASE), 'app': plan['app'], 'plan_sha256': digest, 'started': started, 'inventory': current,
++            'fixture_basename': Path(plan['fixture']['path']).name,
+             'lease': lease, 'producer': producer, 'monitors': monitors, 'readiness_admission': admission, 'checked_epoch': time.time(),
+             'sources_exact': True, 'same_case_ready_and_processes_live': True}
+ 
+--- v5/preview_sequence.js
++++ v6/preview_sequence.js
+@@ -108,6 +108,7 @@
+       started.action_cutoff_epoch !== started.start_epoch + 240 || started.deadline_epoch !== started.start_epoch + 300 ||
+       plan.action_cutoff_epoch !== started.action_cutoff_epoch || plan.deadline_epoch !== started.deadline_epoch ||
+       binding.case_path !== plan.case_path || binding.case !== plan.case || binding.plan_sha256 !== plan.plan_sha256 ||
++      typeof binding.fixture_basename !== "string" || !binding.fixture_basename.trim() || /[\\/]/.test(binding.fixture_basename) ||
+       typeof binding.app !== "string" || !binding.app || binding.app !== plan.app || plan.bound_app !== binding.app ||
+       binding.lease.app_path !== binding.app ||
+       binding.lease.pid !== plan.expected_pid || !Number.isInteger(plan.expected_pid) || plan.expected_pid <= 0 ||
+@@ -159,7 +160,7 @@
+     return matches[0][1];
+   };
+   const result = {preview_error: null, quit_error: null, constructor_response: null,
+-    normal_quit_helper_completed: false, visual_alignment_accepted: false, calls: []};
++    normal_quit_helper_completed: false, quit_response_qualification: null, visual_alignment_accepted: false, calls: []};
+   let owned = false;
+   const navigation = async (label, method, args = {}) => {
+     if (Date.now() + 120000 >= plan.action_cutoff_epoch * 1000) throw Error("Preserve full navigation and Quit allowances");
+@@ -185,7 +186,7 @@
+         !Number.isFinite(checked.checked_epoch) || checked.checked_epoch * 1000 > Date.now() ||
+         Date.now() - checked.checked_epoch * 1000 > 5000) throw Error("Post-getter ownership changed; no navigation/replay");
+     owned = true;
+-    if (!textOf(state).includes("harbor-shirt.weftforge") || !textOf(state).includes("Rest mesh rebuilt from editable construction."))
++    if (!textOf(state).includes(plan.binding.fixture_basename) || !textOf(state).includes("Rest mesh rebuilt from editable construction."))
+       throw Error("Loaded settled public sample not established");
+     await previewSave(plan, "SAMPLE-SETTLED.json", {pid: plan.expected_pid, settled_epoch: Date.now() / 1000,
+       basis: "VISUAL-01-state loaded public sample; no Empty-project or workflow credit"});
+@@ -206,11 +207,47 @@
+     result.preview_error = String(error.message || error);
+   } finally {
+     try {
+-      if (!owned || Date.now() + 60000 >= plan.action_cutoff_epoch * 1000) throw Error("No confirmed owned state/full Quit allowance");
++      const quitStarted = Date.now();
++      const quitDeadline = Math.min(quitStarted + 60000, plan.action_cutoff_epoch * 1000, plan.deadline_epoch * 1000);
++      if (!owned || quitStarted + 60000 >= Math.min(plan.action_cutoff_epoch * 1000, plan.deadline_epoch * 1000))
++        throw Error("No confirmed owned state/full Quit allowance");
++      const quit = {label: "VISUAL-04-quit", method: "press_key", args: {key: "super+q"},
++        actions: 1, observations: 2, showImage: false};
++      const key = suffix => "native-ui:" + plan.case_path + ":VISUAL-04-quit" + suffix;
++      if ([".json", "-GATE-COMPLETION.json", "-CLOSE-COMPLETION.json"].some(suffix => load(key(suffix)) != null))
++        throw Error("Quit label already has retained evidence; no replay");
+       await previewSave(plan, "QUIT-EXPECTED-" + plan.expected_pid + ".json", {pid: plan.expected_pid,
+         normal_native_Quit_expected: true, epoch: Date.now() / 1000});
+-      await nativeCall({label: "VISUAL-04-quit", method: "press_key", args: {key: "super+q"},
+-        actions: 1, observations: 2, showImage: false});
++      let qualification = {kind: "NONERROR_NATIVE_CALL_RETURN"};
++      try { await nativeCall(quit); }
++      catch (error) {
++        const raw = load(key(".json")), gate = load(key("-GATE-COMPLETION.json")), close = load(key("-CLOSE-COMPLETION.json"));
++        // The unique exact value is compared structurally: load may deserialize each receipt.
++        const appQuit = value => value && Object.keys(value).sort().join(",") === "content,isError" && value.isError === true &&
++          Array.isArray(value.content) && value.content.length === 1 && value.content[0] &&
++          Object.keys(value.content[0]).sort().join(",") === "text,type" && value.content[0].type === "text" &&
++          value.content[0].text === "Computer Use server error -10005: App quit";
++        let lifecycle;
++        try { lifecycle = JSON.parse(close.output.split("\n")[0]); } catch (_) {}
++        const qualified = Date.now();
++        if (!owned || quit.label !== "VISUAL-04-quit" || quit.method !== "press_key" || quit.args.key !== "super+q" ||
++            error.message !== "Stop native authoring; retained failed/late call without replay or MCP cancellation claim" ||
++            !appQuit(raw) || !appQuit(load("native-ui-last-result")) ||
++            !gate || gate.exit_code !== 0 || gate.session_id != null || !close || close.exit_code !== 0 || close.session_id != null ||
++            !lifecycle || lifecycle.label !== quit.label || lifecycle.bounded_lifecycle !== true ||
++            !Number.isFinite(lifecycle.closed_epoch) || lifecycle.closed_epoch < quitStarted / 1000 || lifecycle.closed_epoch > qualified / 1000 ||
++            !Number.isFinite(lifecycle.elapsed_through_persisted_receipt_seconds) || lifecycle.elapsed_through_persisted_receipt_seconds < 0 ||
++            lifecycle.elapsed_through_persisted_receipt_seconds >= 60 || qualified >= quitDeadline ||
++            ["-GATE-LATE.json", "-GATE-PENDING.json", "-CLOSE-LATE.json", "-CLOSE-PENDING.json"].some(suffix => load(key(suffix)) != null))
++          throw error;
++        qualification = {kind: "EXACT_OBSERVED_APP_QUIT_ERROR_WITH_BOUNDED_CLOSE", raw_isError: true,
++          response_key: key(".json"), gate_completion_key: key("-GATE-COMPLETION.json"), close_completion_key: key("-CLOSE-COMPLETION.json")};
++      }
++      const qualified = Date.now();
++      if (quit.label !== "VISUAL-04-quit" || quit.method !== "press_key" || quit.args.key !== "super+q" || qualified >= quitDeadline)
++        throw Error("Quit dispatch or caller lifecycle is not the exact timely owned request");
++      result.quit_response_qualification = {...qualification, label: quit.label, method: quit.method, key: quit.args.key,
++        caller_start_epoch: quitStarted / 1000, caller_deadline_epoch: quitDeadline / 1000, qualified_epoch: qualified / 1000};
+       result.normal_quit_helper_completed = true;
+     } catch (error) { result.quit_error = String(error.message || error); }
+     finally {

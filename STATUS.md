@@ -10,16 +10,53 @@ quality criteria are unchanged. Ground, moving-triangle and radial Torso limits
 remain separate; the capsule method follows a local current-side branch and
 provides no general global-projection or continuous-collision guarantee.
 
-Current-source formatting, workspace tests, strict Clippy and native/CLI builds
-are next. Their results must be bound to this integration, followed by updated
-source maps/evidence and clean verification, optimized builds and a fresh
-unchanged all-181-state numerical case. The prior full case below remains failed;
-no garment improvement is claimed from component regressions. The native
-constructor layout has a separately retained bounded observation; the complete
-empty-project authoring/simulation/save/reopen/export journey remains open.
-GitHub Actions stay disabled; no delivery gate or full feature is accepted.
+Actual clean source `c766f3fa` passes formatting, **480 workspace tests across
+32 summaries, zero failed/ignored**, strict all-target Clippy and native/CLI
+debug builds in **413.527 seconds / 900**. The 102 simulator tests are included
+within 480. Independent review accepts the bounded correction, including the
+large-finite-axis fix; the earlier numeric finding remains preserved. See the
+[source report](parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-SOURCE-001.json).
+These executions belong to `c766f3fa`; metadata commits do not inherit execution.
 
-The runtime checkpoint below retains its original source and results.
+Historical native P005 completed its bounded constructor observation and normal
+close in **37.025 seconds / 300** on the E checkpoint, using the D-built native.
+Separate review of the unchanged original capture accepted aligned metre labels
+and controls in the charcoal/blue workspace. The public text-only package omits
+all image-bearing originals for metadata privacy and cannot independently verify
+that layout. It provides no current-F or complete native-workflow acceptance.
+P002/P003/P004 retain their negative harness outcomes, without an inferred product
+visual defect. See the [bounded native report](parity/reports/WF-20261118-NATIVE-CONSTRUCTOR-VISUAL-P005-001.json)
+and [earlier stops](parity/reports/WF-20261118-NATIVE-CONSTRUCTOR-HARNESS-STOPS-001.json).
+
+The updated source map preserves all 441 occurrence identities: three capsule
+contact anchors are repinned and 438 are exact. The 949 catalog IDs, 205 packets,
+56 historical landmarks, 24 reviewed contract documents and command schemas
+remain unchanged. Prior C/D reports are conservatively stale for their complete
+source scope; exact original report archives preserve their outcomes and hashes.
+Clean E registry/map/xtask verification passed separately in 253.837 seconds / 360.
+Current metadata still requires its own clean verification before publication.
+
+Next: finish generated progress, commit this evidence/metadata atomically, run
+clean current `cargo xtask verify` and push promptly. Then build current optimized
+native/CLI and numerical producer binaries and execute the unchanged full
+181-state case. Its independent prospective source review is ready; actual
+current bindings, builds, runtime freeze, admission and GO are pending. Original
+inputs, 15% strain, 5 mm closed-seam and 2 mm contact limits, all states, zero
+repair requirement and physical settings stay fixed. The D full case below
+remains failed; source/component success claims no garment improvement.
+
+Then complete the empty-project native creation/sewing/simulation/edit/save/
+quit/reopen/export journey and independently inspect its output. No Cargo,
+native or model job is running at this checkpoint. Latest published development
+checkpoint is [draft PR #62](https://github.com/thematheusmello/weftforge/pull/62)
+at `023b45a8`; push every checked atomic increment to keep remote synchronized.
+GitHub Actions and both workflows stay disabled, with 54 historical runs and
+none active. Main and existing static Pages remain unchanged. All 56 broad
+groups remain partial/planned (42 partial, 14 planned); discovery, six gates,
+ten acceptance journeys and three platform targets remain open.
+
+The runtime checkpoints below retain their original source, pending actions and
+results as historical records.
 
 # Current runtime checkpoint — 18 November 2026
 

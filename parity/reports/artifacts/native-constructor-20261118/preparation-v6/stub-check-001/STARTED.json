@@ -1,0 +1,38 @@
+{
+  "child": {
+    "argv": [
+      "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+      "-B",
+      "<PREPARATION_V6>/focused_selfcheck.py"
+    ],
+    "disk_observation": {
+      "last_available_bytes": 10950922240,
+      "max_snapshot_gap_seconds": 0.0,
+      "minimum_available_bytes": 10950922240,
+      "path": "<PREPARATION_V6>",
+      "samples": 1,
+      "stop_below_available_bytes": 8000000000
+    },
+    "exit_code": null,
+    "peak_rss_bytes": null,
+    "pid": 24141,
+    "process_group": 24141,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.0,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 0,
+      "timeouts": 0
+    },
+    "sampled_peak_rss_bytes": 0,
+    "stop_reason": null
+  },
+  "deadline_monotonic": 1113940.337499375,
+  "source_freeze_sha256": "d7b2c6179b780a488df0beab24f6bbb49ca38ee6127c7b14d4a1857b5ba6cf13",
+  "start_monotonic": 1113880.337499375
+}

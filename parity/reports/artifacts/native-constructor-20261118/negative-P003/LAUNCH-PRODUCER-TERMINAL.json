@@ -1,0 +1,18 @@
+{
+  "case": "WF-20261118-NATIVE-CONSTRUCTOR-VISUAL-P003-001",
+  "child_exit": -15,
+  "child_pid": 7964,
+  "failure": "RuntimeError: Wrong native creation time; no startup retry or GUI",
+  "pgid": 7839,
+  "pid": 7839,
+  "ready": false,
+  "signals": [
+    {
+      "pgid": 7839,
+      "pid": 7964,
+      "signal": "SIGTERM",
+      "target": "native_child"
+    }
+  ],
+  "terminal_epoch": 1794987870.196192
+}

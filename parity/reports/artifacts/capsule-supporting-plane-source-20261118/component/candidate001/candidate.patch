@@ -1,0 +1,675 @@
+diff --git a/crates/weftforge-sim/src/capsule.rs b/crates/weftforge-sim/src/capsule.rs
+index 8709e088..fd63d327 100644
+--- a/crates/weftforge-sim/src/capsule.rs
++++ b/crates/weftforge-sim/src/capsule.rs
+@@ -169,14 +169,29 @@ pub(crate) fn closest_cancellable(
+ 
+ pub(crate) fn axis_fraction(p: Vec3, a: Vec3, b: Vec3) -> f64 {
+     let axis = sub(b, a);
+-    let squared = dot(axis, axis);
+-    if squared > 0. {
+-        (dot(sub(p, a), axis) / squared).clamp(0., 1.)
++    let scale = axis.into_iter().map(f64::abs).fold(0., f64::max);
++    if scale > 0. {
++        let axis = axis.map(|value| value / scale);
++        (dot(sub(p, a), axis) / scale / dot(axis, axis)).clamp(0., 1.)
+     } else {
+         0.
+     }
+ }
+ 
++pub(crate) fn point_feature(p: Vec3, a: Vec3, b: Vec3) -> (Closest, Option<Vec3>) {
++    let fraction = axis_fraction(p, a, b);
++    let delta = sub(sub(p, a), mul(sub(b, a), fraction));
++    (
++        Closest {
++            bary: [1., 0., 0.],
++            axis_fraction: fraction,
++            distance: norm(delta),
++            uncertain: false,
++        },
++        normalized(delta),
++    )
++}
++
+ fn normalized(v: Vec3) -> Option<Vec3> {
+     let scale = v.into_iter().map(f64::abs).fold(0., f64::max);
+     if scale == 0. || !scale.is_finite() {
+@@ -269,6 +284,36 @@ mod tests {
+         [[-2., -2., 0.], [2., -2., 0.], [0., 2., 0.]]
+     }
+ 
++    #[test]
++    fn point_features_preserve_tiny_nonzero_axes_and_current_normals() {
++        for exponent in [-600, -60, -40, 0, 500] {
++            let scale = 2_f64.powi(exponent);
++            let (a, b) = ([0.; 3], [2. * scale, 0., 0.]);
++            for (point, fraction, distance, direction) in [
++                ([scale, 0.25 * scale, 0.], 0.5, 0.25, [0., 1., 0.]),
++                (
++                    [scale, scale * 2_f64.powi(-50), 0.],
++                    0.5,
++                    2_f64.powi(-50),
++                    [0., 1., 0.],
++                ),
++                ([-scale, 0., 0.], 0., 1., [-1., 0., 0.]),
++                ([3. * scale, 0., 0.], 1., 1., [1., 0., 0.]),
++            ] {
++                let (feature, normal) = point_feature(point, a, b);
++                assert!((feature.axis_fraction - fraction).abs() <= 1e-14);
++                assert!((feature.distance / scale - distance).abs() <= 1e-14);
++                assert_eq!(normal, Some(direction));
++            }
++            let (feature, normal) = point_feature([0.6 * scale, 0.8 * scale, 0.], a, a);
++            assert!((feature.distance / scale - 1.).abs() <= 1e-14);
++            assert!(norm(sub(normal.unwrap(), [0.6, 0.8, 0.])) <= 1e-14);
++            let (feature, normal) = point_feature(a, a, b);
++            assert_eq!(feature.distance, 0.);
++            assert_eq!(normal, None);
++        }
++    }
++
+     #[test]
+     fn controlled_capsule_features_preserve_results_and_abort_at_each_task() {
+         for triangle in [face(), [[-1., 0., 0.], [0.; 3], [1., 0., 0.]], [[0.; 3]; 3]] {
+diff --git a/crates/weftforge-sim/src/contact.rs b/crates/weftforge-sim/src/contact.rs
+index d6c06aa4..86e3ae5f 100644
+--- a/crates/weftforge-sim/src/contact.rs
++++ b/crates/weftforge-sim/src/contact.rs
+@@ -332,12 +332,26 @@ impl Cloth {
+                         .copied()
+                         .unwrap_or([[0.; 3]]),
+                 )?;
+-                if let Some((normal, gap)) = collider_feature(
++                let point = if matches!(collider, Collider::Capsule { .. }) {
++                    x[i]
++                } else {
++                    anchor[0]
++                };
++                if let Some((normal, mut gap)) = collider_feature(
+                     collider,
+-                    anchor[0],
++                    point,
+                     self.thickness[i],
+                     history.vertex_colliders.contains_key(&key),
+                 ) {
++                    if let Collider::Capsule { a, b, radius } = collider {
++                        gap = capsule_support_gap(
++                            normal,
++                            anchor[0],
++                            a,
++                            b,
++                            radius + self.thickness[i],
++                        );
++                    }
+                     contacts += Contact {
+                         vertices: [i],
+                         coefficients: [1.],
+@@ -494,23 +508,26 @@ impl Cloth {
+             return Err(unstable());
+         }
+         let anchor = contact_anchor(vertices, x, &self.inverse_masses, support.action)?;
+-        let point = bary_point(&anchor, [0, 1, 2], support.bary);
+-        if !finite(point) {
++        let current = vertices.map(|i| x[i]);
++        let point = bary_point(&current, [0, 1, 2], support.bary);
++        let anchor_point = bary_point(&anchor, [0, 1, 2], support.bary);
++        if !finite(point) || !finite(anchor_point) {
+             return Err(unstable());
+         }
+         let (a, b, radius) = capsule;
+-        let mut feature = capsule::closest([point; 3], a, b);
+-        if !feature.distance.is_finite() || !feature.axis_fraction.is_finite() || feature.uncertain
+-        {
++        let (mut feature, direction) = capsule::point_feature(point, a, b);
++        if !feature.distance.is_finite() || !feature.axis_fraction.is_finite() {
+             return Err(unstable());
+         }
+         feature.bary = support.bary;
+-        let normal = capsule::normal(feature, anchor, vertices.map(|i| previous[i]), a, b);
++        let normal = direction.unwrap_or_else(|| {
++            capsule::normal(feature, current, vertices.map(|i| previous[i]), a, b)
++        });
+         Contact {
+             vertices,
+             coefficients: support.bary,
+             normal,
+-            gap: -(radius + thickness - feature.distance),
++            gap: capsule_support_gap(normal, anchor_point, a, b, radius + thickness),
+             friction: (0..3)
+                 .map(|j| self.friction[vertices[j]] * support.bary[j])
+                 .sum(),
+@@ -1018,6 +1035,12 @@ pub(crate) fn collider_contact(collider: Collider, p: Vec3, thickness: f64) -> O
+     collider_feature(collider, p, thickness, false).map(|(normal, gap)| (normal, -gap))
+ }
+ 
++fn capsule_support_gap(normal: Vec3, anchor: Vec3, a: Vec3, b: Vec3, radius: f64) -> f64 {
++    // shortcut: current-side planes give local contact only, upgrade when global projection or CCD is required.
++    let normal = mul(normal, length(normal).recip());
++    dot(normal, sub(anchor, a)) - dot(normal, sub(b, a)).max(0.) - radius
++}
++
+ fn collider_feature(
+     collider: Collider,
+     p: Vec3,
+@@ -1030,34 +1053,13 @@ fn collider_feature(
+             (depth > 0. || include_separated).then_some(([0., 1., 0.], -depth))
+         }
+         Collider::Capsule { a, b, radius } => {
+-            let edge = sub(b, a);
+-            let edge_squared = dot(edge, edge);
+-            let t = if edge_squared > 1e-20 {
+-                (dot(sub(p, a), edge) / edge_squared).clamp(0., 1.)
+-            } else {
+-                0.
+-            };
+-            let delta = sub(p, add(a, mul(edge, t)));
+-            let distance = length(delta);
+-            let depth = radius + thickness - distance;
++            let (feature, direction) = capsule::point_feature(p, a, b);
++            let depth = radius + thickness - feature.distance;
+             if depth <= 0. && !include_separated {
+                 return None;
+             }
+-            let normal = if distance > 1e-12 {
+-                mul(delta, distance.recip())
+-            } else {
+-                let reference = if edge[0].abs() < edge[1].abs() {
+-                    [1., 0., 0.]
+-                } else {
+-                    [0., 1., 0.]
+-                };
+-                let normal = unit(cross(edge, reference));
+-                if length(normal) > 0.5 {
+-                    normal
+-                } else {
+-                    [1., 0., 0.]
+-                }
+-            };
++            let normal =
++                direction.unwrap_or_else(|| capsule::normal(feature, [p; 3], [p; 3], a, b));
+             Some((normal, -depth))
+         }
+         Collider::Torso { center, radii } => {
+@@ -1090,9 +1092,480 @@ fn collider_feature(
+ #[cfg(test)]
+ mod tests {
+     use super::*;
+-    use crate::{ClothInput, Material, Pin};
++    use crate::{ClothInput, Material, Pin, Stitch, WeightedPoint};
+     use std::cell::Cell;
+ 
++    fn capsule_fixture(
++        positions: &[Vec3],
++        inverse_mass: &[f64],
++        a: Vec3,
++        b: Vec3,
++        radius: f64,
++        friction: f64,
++    ) -> Cloth {
++        let n = positions.len();
++        // Algebra fixtures omit membrane and triangle discovery to isolate each exact contact stencil.
++        Cloth {
++            input: ClothInput {
++                positions: positions.to_vec(),
++                colliders: vec![Collider::Capsule { a, b, radius }],
++                ..Default::default()
++            },
++            positions: positions.to_vec(),
++            velocities: vec![[0.; 3]; n],
++            masses: inverse_mass
++                .iter()
++                .map(|&w| if w > 0. { w.recip() } else { 1. })
++                .collect(),
++            inverse_masses: inverse_mass.to_vec(),
++            thickness: vec![0.; n],
++            damping: vec![0.; n],
++            friction: vec![friction; n],
++            membrane: vec![],
++            bends: vec![],
++            excluded: vec![BTreeSet::new(); n],
++            seam_remaining: vec![],
++            initial_recovery_eligibility: InitialRecoveryEligibility::default(),
++            initial_recovery_provenance: RecoveryProvenance::default(),
++            diagnostics: crate::Diagnostics::default(),
++        }
++    }
++
++    #[test]
++    fn zero_target_stitch_capsule_n32_matches_independent_equilibrium() {
++        let mass = 0.00012_f64;
++        let h = 1. / 480.;
++        let compliance = 1e-8_f64;
++        let radius = 0.1_f64;
++        let a = 0.1_f64;
++        let b = 0.025_f64;
++        let inertia = mass / (h * h);
++        let predictor = [[a, b, 0.], [-a, b, 0.]];
++        let inverse_mass = [mass.recip(); 2];
++        let stitch = Stitch {
++            a: WeightedPoint::vertex(0),
++            b: WeightedPoint::vertex(1),
++            compliance,
++        };
++        let gradient = |q: [Vec3; 2], anchor: [Vec3; 2]| -> [Vec3; 2] {
++            let difference = sub(q[0], q[1]);
++            std::array::from_fn(|i| {
++                add(
++                    mul(sub(q[i], anchor[i]), inertia),
++                    mul(difference, if i == 0 { 1. } else { -1. } / compliance),
++                )
++            })
++        };
++        let maximum = |q: [Vec3; 2]| q.map(length).into_iter().fold(0_f64, f64::max);
++        let mut q = predictor;
++        let mut sewing = [[0.; 3]; 2];
++        for _ in 0..32 {
++            crate::constraints::solve_sewing(
++                &[stitch],
++                &[0.],
++                &mut q,
++                &inverse_mass,
++                h,
++                &mut sewing,
++                &|| false,
++            )
++            .unwrap();
++        }
++        // (M + h² Aᵀ C⁻¹ A)q = My, for A=[I,-I] and M=mI.
++        let free_x = inertia * a / (inertia + 2. / compliance);
++        let free_oracle = [[free_x, b, 0.], [-free_x, b, 0.]];
++        let free_error = maximum(std::array::from_fn(|i| sub(q[i], free_oracle[i])));
++        let free_force = maximum(gradient(q, predictor));
++        println!(
++            "COUPLING_FREE q_m={q:?} oracle_m={free_oracle:?} position_error_m={free_error:e} force_residual_N={free_force:e}"
++        );
++        assert!(free_error <= 1e-14, "free quadratic position: m");
++        assert!(free_force <= 1e-6, "free quadratic stationarity: N");
++
++        // In symmetric upper-hemisphere kinematics, E(θ)=k[(Rsinθ-a)²+(Rcosθ-b)²]+2R²sin²θ/c.
++        let derivative = |theta: f64| {
++            let (sine, cosine) = theta.sin_cos();
++            inertia * (b * sine - a * cosine) + 2. * radius * sine * cosine / compliance
++        };
++        let (mut lo, mut hi) = (0., a.atan2(b));
++        assert!(derivative(lo) < 0. && derivative(hi) > 0.);
++        for _ in 0..100 {
++            let mid = 0.5 * (lo + hi);
++            if derivative(mid) < 0. {
++                lo = mid;
++            } else {
++                hi = mid;
++            }
++        }
++        let (sine, cosine) = (0.5 * (lo + hi)).sin_cos();
++        let oracle = [
++            [radius * sine, radius * cosine, 0.],
++            [-radius * sine, radius * cosine, 0.],
++        ];
++        let kkt = |q: [Vec3; 2], reaction: [Vec3; 2]| -> (f64, f64, f64, f64) {
++            let g = gradient(q, predictor);
++            let mut balance = 0_f64;
++            let mut tangential = 0_f64;
++            let mut complementarity = 0_f64;
++            let mut tensile = 0_f64;
++            for i in 0..2 {
++                let normal = mul(q[i], length(q[i]).recip());
++                let lambda = dot(reaction[i], normal);
++                balance = balance.max(length(sub(g[i], reaction[i])));
++                tangential = tangential.max(length(sub(reaction[i], mul(normal, lambda))));
++                complementarity = complementarity.max((lambda * (length(q[i]) - radius)).abs());
++                tensile = tensile.max(-lambda);
++            }
++            (balance, tangential, complementarity, tensile)
++        };
++        let oracle_reaction = gradient(oracle, predictor);
++        let oracle_kkt = kkt(oracle, oracle_reaction);
++        assert!(oracle_kkt.1 <= 1e-6 && oracle_kkt.2 <= 1e-12 && oracle_kkt.3 == 0.);
++        assert!(predictor.into_iter().all(|p| length(p) > radius));
++        assert_eq!(length([0., radius, 0.]), radius);
++
++        let cloth = capsule_fixture(
++            &predictor,
++            &inverse_mass,
++            [0., -0.2, 0.],
++            [0.; 3],
++            radius,
++            0.,
++        );
++        q = predictor;
++        sewing = [[0.; 3]; 2];
++        let mut contact = ContactState::default();
++        let mut max_block_force = 0_f64;
++        let mut final_kkt = (0., 0., 0., 0.);
++        for pass in 1..=32 {
++            let before = q;
++            let anchor = std::array::from_fn(|i| sub(q[i], sewing[i]));
++            crate::constraints::solve_sewing(
++                &[stitch],
++                &[0.],
++                &mut q,
++                &inverse_mass,
++                h,
++                &mut sewing,
++                &|| false,
++            )
++            .unwrap();
++            let after_sewing = q;
++            let block_force = maximum(gradient(q, anchor));
++            max_block_force = max_block_force.max(block_force);
++            cloth
++                .project_colliders(&mut q, &predictor, &mut contact, &|| false)
++                .unwrap();
++            let action = std::array::from_fn(|i| {
++                contact
++                    .vertex_colliders
++                    .get(&(i, 0))
++                    .copied()
++                    .unwrap_or([[0.; 3]])[0]
++            });
++            let reaction = action.map(|p| mul(p, inertia));
++            final_kkt = kkt(q, reaction);
++            let history_error = maximum(std::array::from_fn(|i| {
++                sub(sub(q[i], predictor[i]), add(sewing[i], action[i]))
++            }));
++            let gap = q.map(|p| length(p) - radius);
++            println!(
++                "COUPLING_PASS pass={pass} before_m={before:?} after_sewing_m={after_sewing:?} after_contact_m={q:?} sewing_m={sewing:?} contact_m={action:?} sewing_block_force_N={block_force:e} gap_m={gap:?} history_error_m={history_error:e} final_kkt_N_N_J_N={final_kkt:?}"
++            );
++            assert!(q.into_iter().all(finite) && sewing.into_iter().all(finite));
++            assert!(q[0][1] > 0. && q[1][1] > 0., "upper capsule hemisphere");
++            assert!(gap.into_iter().all(|value| value >= -1e-14));
++            assert!(
++                history_error <= 1e-14,
++                "actual block displacement identity: m"
++            );
++        }
++        let position_error = maximum(std::array::from_fn(|i| sub(q[i], oracle[i])));
++        println!(
++            "COUPLING_FINAL mass_kg={mass} h_s={h} compliance_m_per_N={compliance} oracle_m={oracle:?} oracle_kkt_N_N_J_N={oracle_kkt:?} position_error_m={position_error:e} max_sewing_block_force_N={max_block_force:e} final_kkt_N_N_J_N={final_kkt:?}"
++        );
++        assert!(
++            max_block_force <= 1e-6,
++            "exact sewing block stationarity: N"
++        );
++        assert!(position_error <= 1e-14, "independent coupled position: m");
++        assert!(final_kkt.0 <= 1e-6, "actual final force balance: N");
++        assert!(final_kkt.1 <= 1e-6, "current-normal reaction: N");
++        assert!(
++            final_kkt.2 <= 1e-12 && final_kkt.3 == 0.,
++            "contact complementarity"
++        );
++    }
++
++    #[test]
++    fn capsule_vertex_queries_and_diagnostics_keep_tiny_nonzero_axes() {
++        for exponent in [-600, -60, -40, 0, 500] {
++            let scale = 2_f64.powi(exponent);
++            let positions = [[scale, 0.25 * scale, 0.]];
++            let cloth = capsule_fixture(
++                &positions,
++                &[1.],
++                [0.; 3],
++                [2. * scale, 0., 0.],
++                0.5 * scale,
++                0.,
++            );
++            let collider = cloth.input.colliders[0];
++            let (normal, depth) = collider_contact(collider, positions[0], 0.).unwrap();
++            assert_eq!(normal, [0., 1., 0.]);
++            assert!((depth / scale - 0.25).abs() <= 1e-14);
++            let mut x = positions;
++            let mut history = ContactState::default();
++            cloth
++                .project_colliders(&mut x, &positions, &mut history, &|| false)
++                .unwrap();
++            assert!((x[0][1] / scale - 0.5).abs() <= 1e-14);
++            assert_eq!(x[0][0], scale);
++            assert!(collider_contact(collider, x[0], 0.).is_none());
++        }
++        for (a, b, current) in [
++            ([0.; 3], [0.; 3], [0.; 3]),
++            ([0.; 3], [0., 2., 0.], [0., 2., 0.]),
++        ] {
++            let cloth = capsule_fixture(&[current], &[1.], a, b, 1., 0.);
++            let mut x = [current];
++            cloth
++                .project_colliders(&mut x, &[current], &mut ContactState::default(), &|| false)
++                .unwrap();
++            assert!((capsule::point_feature(x[0], a, b).0.distance - 1.).abs() <= 1e-14);
++        }
++    }
++
++    #[test]
++    fn capsule_zero_distance_support_uses_the_entire_axis_even_at_an_endpoint() {
++        let beta = [0.25, 0.5, 0.25];
++        let inverse_mass = [1., 3., 0.];
++        for (b, previous_point, expected) in [
++            ([0.; 3], [0., 0., 0.5], [0., 0., 1.]),
++            ([0., 2., 0.], [0., 3., 0.], [0., 3., 0.]),
++        ] {
++            let a = [0.; 3];
++            let mut x = [a; 3];
++            let previous = [previous_point; 3];
++            let cloth = capsule_fixture(&x, &inverse_mass, a, b, 1., 0.);
++            let pin_bits = x[2].map(f64::to_bits);
++            let mut support = CapsuleSupport {
++                bary: beta,
++                action: [[0.; 3]; 3],
++            };
++            cloth
++                .project_capsule_support([0, 1, 2], (a, b, 1.), 0., &mut support, &mut x, &previous)
++                .unwrap();
++            let point = bary_point(&x, [0, 1, 2], beta);
++            assert!(length(sub(point, expected)) <= 1e-14);
++            assert!((capsule::point_feature(point, a, b).0.distance - 1.).abs() <= 1e-14);
++            assert_eq!(x[2].map(f64::to_bits), pin_bits);
++            assert_eq!(support.action[2], [0.; 3]);
++        }
++        let a = [2_f64.powi(40); 3];
++        let b = add(a, [0., 2., 0.]);
++        assert_eq!(capsule_support_gap([0., 1., 0.], a, a, b, 1.), -3.);
++    }
++
++    #[test]
++    fn capsule_current_side_branch_releases_and_replaces_rotating_pinned_supports() {
++        let positions = [[1., 0., 0.]];
++        let cloth = capsule_fixture(&positions, &[1.], [0.; 3], [0.; 3], 1., 0.);
++        let mut x = positions;
++        let mut history = ContactState {
++            vertex_colliders: BTreeMap::from([((0, 0), [[3., 0., 0.]])]),
++            ..Default::default()
++        };
++        cloth
++            .project_colliders(&mut x, &positions, &mut history, &|| false)
++            .unwrap();
++        // The retracted anchor is -2X; retaining +X deliberately chooses the current local branch.
++        assert_eq!(x, positions);
++        assert_eq!(history.vertex_colliders[&(0, 0)], [[3., 0., 0.]]);
++        x[0] = [5., 0., 0.];
++        cloth
++            .project_colliders(&mut x, &positions, &mut history, &|| false)
++            .unwrap();
++        assert_eq!(x, [[2., 0., 0.]]);
++        assert!(
++            history.vertex_colliders.is_empty(),
++            "same-side halfspace releases"
++        );
++
++        let beta = [0.25, 0.5, 0.25];
++        let inverse_mass = [1., 3., 0.];
++        let previous = [[0., 0., 0.5]; 3];
++        let cloth = capsule_fixture(&previous, &inverse_mass, [0.; 3], [0.; 3], 1., 0.);
++        let mut x = previous;
++        let mut support = CapsuleSupport {
++            bary: beta,
++            action: [[0.; 3]; 3],
++        };
++        cloth
++            .project_capsule_support(
++                [0, 1, 2],
++                ([0.; 3], [0.; 3], 1.),
++                0.,
++                &mut support,
++                &mut x,
++                &previous,
++            )
++            .unwrap();
++        let z_action = support.action;
++        x = [[0.5, 0., 0.]; 3];
++        let pin_bits = x[2].map(f64::to_bits);
++        cloth
++            .project_capsule_support(
++                [0, 1, 2],
++                ([0.; 3], [0.; 3], 1.),
++                0.,
++                &mut support,
++                &mut x,
++                &previous,
++            )
++            .unwrap();
++        // D=sum(w_i beta_i²)=13/16, so the new halfspace multiplier is 8/13 kg m.
++        for i in 0..3 {
++            let expected_action = [inverse_mass[i] * beta[i] * 8. / 13., 0., 0.];
++            assert!(length(sub(support.action[i], expected_action)) <= 1e-14);
++            assert!(
++                length(sub(
++                    x[i],
++                    add(sub([0.5, 0., 0.], z_action[i]), expected_action)
++                )) <= 1e-14
++            );
++        }
++        assert_eq!(x[2].map(f64::to_bits), pin_bits);
++        let retained = support.action;
++        for point in &mut x {
++            point[0] += 2.;
++        }
++        let moved = x;
++        cloth
++            .project_capsule_support(
++                [0, 1, 2],
++                ([0.; 3], [0.; 3], 1.),
++                0.,
++                &mut support,
++                &mut x,
++                &previous,
++            )
++            .unwrap();
++        assert_eq!(support.action, [[0.; 3]; 3]);
++        for i in 0..3 {
++            assert!(length(sub(x[i], sub(moved[i], retained[i]))) <= 1e-14);
++        }
++        assert_eq!(x[2].map(f64::to_bits), moved[2].map(f64::to_bits));
++    }
++
++    #[test]
++    fn capsule_friction_preserves_the_plane_oracle_and_reaches_the_sphere_fixed_point() {
++        let anchor = [0., 0., 0.5];
++        let previous_point = [1., 0., 0.5];
++        let oracle = [0.6, 0., 0.8];
++        for (beta, inverse_mass) in [
++            ([1., 0., 0.], [1., 0., 0.]),
++            ([0.25, 0.5, 0.25], [1., 3., 0.]),
++        ] {
++            let denominator: f64 = (0..3).map(|i| inverse_mass[i] * beta[i] * beta[i]).sum();
++            let previous = if beta[0] == 1. {
++                [previous_point, anchor, anchor]
++            } else {
++                [[4. / 3., 0., 0.5], [4. / 3., 0., 0.5], anchor]
++            };
++            let cloth = capsule_fixture(&[anchor; 3], &inverse_mass, [0.; 3], [0.; 3], 1., 0.5);
++            let mut x = [anchor; 3];
++            let mut history = ContactState::default();
++            let mut support = CapsuleSupport {
++                bary: beta,
++                action: [[0.; 3]; 3],
++            };
++            let mut visit = |x: &mut [Vec3]| -> [Vec3; 3] {
++                if beta[0] == 1. {
++                    cloth
++                        .project_colliders(x, &previous, &mut history, &|| false)
++                        .unwrap();
++                    std::array::from_fn(|i| {
++                        history
++                            .vertex_colliders
++                            .get(&(i, 0))
++                            .copied()
++                            .unwrap_or([[0.; 3]])[0]
++                    })
++                } else {
++                    cloth
++                        .project_capsule_support(
++                            [0, 1, 2],
++                            ([0.; 3], [0.; 3], 1.),
++                            0.,
++                            &mut support,
++                            x,
++                            &previous,
++                        )
++                        .unwrap();
++                    support.action
++                }
++            };
++            // Independent Coulomb projection of the anchor onto z=1: +0.5 normal, +0.25 tangent.
++            let first_action = visit(&mut x);
++            for i in 0..3 {
++                let expected = mul([0.25, 0., 0.5], inverse_mass[i] * beta[i] / denominator);
++                assert!(length(sub(first_action[i], expected)) <= 1e-14);
++                assert!(length(sub(x[i], add(anchor, expected))) <= 1e-14);
++            }
++            let first_point = bary_point(&x, [0, 1, 2], beta);
++            assert!(length(sub(first_point, [0.25, 0., 1.])) <= 1e-14);
++            assert!(
++                length(first_point) > 1.,
++                "the first plane visit need not have sphere complementarity"
++            );
++
++            let mut action = first_action;
++            for _ in 1..32 {
++                action = visit(&mut x);
++                for i in 0..3 {
++                    assert!(length(sub(sub(x[i], anchor), action[i])) <= 1e-14);
++                    if inverse_mass[i] == 0. {
++                        assert_eq!(x[i].map(f64::to_bits), anchor.map(f64::to_bits));
++                        assert_eq!(action[i], [0.; 3]);
++                    }
++                }
++            }
++            let point = bary_point(&x, [0, 1, 2], beta);
++            // With h=1 s, effective-point reaction is its displacement divided by D.
++            let reaction = mul(bary_point(&action, [0, 1, 2], beta), denominator.recip());
++            let normal = mul(point, length(point).recip());
++            let lambda = dot(reaction, normal);
++            let relative = sub(anchor, previous_point);
++            let tangent = sub(relative, mul(normal, dot(relative, normal)));
++            let friction_amount = (0.5 * lambda).min(length(tangent) / denominator);
++            let expected = sub(
++                mul(normal, lambda),
++                mul(tangent, friction_amount / length(tangent)),
++            );
++            let force_residual = length(sub(reaction, expected));
++            let gap = length(point) - 1.;
++            let position_error = length(sub(point, oracle));
++            println!(
++                "CAPSULE_FRICTION beta={beta:?} q_m={point:?} position_error_m={position_error:e} current_normal_force_residual_N={force_residual:e} complementarity_J={:e}",
++                (lambda * gap).abs()
++            );
++            assert!(position_error <= 1e-3, "known sphere fixed point: m");
++            assert!(force_residual <= 1e-3, "current-normal Coulomb force: N");
++            assert!(gap >= -1e-14 && lambda >= 0.);
++            assert!((lambda * gap).abs() <= 1e-8, "sphere gap times reaction: J");
++
++            // The independent target is itself fixed: n=(.6,0,.8), lambda=.6/D, |t|=.3/D.
++            let oracle_lambda = (1. - dot(oracle, anchor)) / denominator;
++            let oracle_tangent = sub(relative, mul(oracle, dot(relative, oracle)));
++            let oracle_impulse = sub(
++                mul(oracle, oracle_lambda),
++                mul(oracle_tangent, 0.5 * oracle_lambda / length(oracle_tangent)),
++            );
++            assert!(length(sub(add(anchor, mul(oracle_impulse, denominator)), oracle)) <= 1e-14);
++        }
++    }
++
+     fn planes_input(upper_y: f64) -> ClothInput {
+         let positions = vec![
+             [0.25, 0.004, 0.25],

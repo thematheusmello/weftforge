@@ -1,0 +1,50 @@
+{
+  "all109_bindings_exact": true,
+  "all_owned_groups_absent": [
+    75203,
+    75324,
+    75445,
+    75570
+  ],
+  "basis": "Actual returned state names original-harbor.weftforge and rest rebuilt, but controller expected literal harbor-shirt.weftforge. Quit response is raw provider error App quit; helper marks it negative despite normal child exit0. Neither failure establishes a product visual defect.",
+  "case": "WF-20261118-NATIVE-CONSTRUCTOR-VISUAL-P004-001",
+  "case_freeze_sha256": "a5760a4ac0e3861506750b00e6946786721432b7d3bd6276e08c790a9fc73511",
+  "constructor_visual_accepted": false,
+  "garment_or_reference_accepted": false,
+  "image_extraction": {
+    "image_sha256": "2ba393adbf0dbaebbba75496076c16123e55436e2f48d7d4eeb6f424d5b31288",
+    "method": "Strict transport base64 decode only; no pixel edits/crop/resize",
+    "original_response_sha256": "2edb938ce6e054eb0bc82a208b342da2585681b0085e4b316bb2957304361b4e",
+    "path": "returned-state.jpg"
+  },
+  "metadata": {
+    "calls": [
+      "VISUAL-01-state"
+    ],
+    "constructor_response": null,
+    "normal_quit_helper_completed": false,
+    "preview_error": "Loaded settled public sample not established",
+    "quit_error": "Stop native authoring; retained failed/late call without replay or MCP cancellation claim",
+    "visual_alignment_accepted": false
+  },
+  "native_calls": [
+    "VISUAL-01-state:get_app_state",
+    "VISUAL-04-quit:press_key super+q"
+  ],
+  "normal_child_exit0": true,
+  "normal_quit_helper_credit": false,
+  "observed_utc": "2026-11-18T08:24:57.819373+00:00",
+  "postcase_inventory": {
+    "apps": [],
+    "child_apps": [],
+    "windows": []
+  },
+  "quit_raw_isError": true,
+  "quit_raw_text": "Computer Use server error -10005: App quit",
+  "quit_raw_top_keys": [
+    "content",
+    "isError"
+  ],
+  "source_HEAD_index_clean": true,
+  "status": "CLOSED_NEGATIVE_AFTER_INITIAL_STATE_BEFORE_FRAME_OR_CONSTRUCTOR"
+}

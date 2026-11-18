@@ -1,0 +1,25 @@
+{
+  "preview_error": null,
+  "quit_error": null,
+  "constructor_response": "VISUAL-03-create",
+  "normal_quit_helper_completed": true,
+  "quit_response_qualification": {
+    "kind": "EXACT_OBSERVED_APP_QUIT_ERROR_WITH_BOUNDED_CLOSE",
+    "raw_isError": true,
+    "response_key": "native-ui:<CASE_P005>:VISUAL-04-quit.json",
+    "gate_completion_key": "native-ui:<CASE_P005>:VISUAL-04-quit-GATE-COMPLETION.json",
+    "close_completion_key": "native-ui:<CASE_P005>:VISUAL-04-quit-CLOSE-COMPLETION.json",
+    "label": "VISUAL-04-quit",
+    "method": "press_key",
+    "key": "super+q",
+    "caller_start_epoch": 1794992161.233,
+    "caller_deadline_epoch": 1794992221.233,
+    "qualified_epoch": 1794992166.989
+  },
+  "visual_alignment_accepted": false,
+  "calls": [
+    "VISUAL-01-state",
+    "VISUAL-02-frame",
+    "VISUAL-03-create"
+  ]
+}

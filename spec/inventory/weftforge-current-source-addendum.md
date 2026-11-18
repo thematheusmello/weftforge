@@ -1,5 +1,17 @@
 # WeftForge current-source addendum
 
+## Capsule current-normal supporting-plane source overlay
+
+Current source `c766f3fa48c03ac698da8b22cc3bf927ee71f195` selects the current capsule normal for vertex and retained material-point contacts, evaluates the complete capsule supporting halfspace at the retracted anchor and scales point-feature geometry with fail-closed arithmetic. The existing `simulate` row appends this implementation-only scope. No typed authoring command, CLI/MCP schema, menu, control, catalog ID or UI surface is added or removed.
+
+The exact preceding addendum remains at `a70c0df0606463f5efbe4fa7518c91819c595546`, source `f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f`: JSON SHA-256 `ae9289a812d40ae512eae564cc648189144d978950d07ceb8a3920d29214507c`; Markdown SHA-256 `823a172c781e40a502ac3020a1011f82386638ade824f756125018317943e006`. All **441 preceding occurrence identities** and the complete nested origin history remain: **three contact.rs hash/line re-pins and 438 exact occurrences**, with no additions or retirements. The preceding **239 re-pins / 202 exact** classification is preserved as history, not reused as the current delta. Counts remain **39 rechecks / 25 surfaces / 24 reviewed contract documents**, **949 catalog IDs / 205 packets / 56 historical landmarks** and **37 Rust variants / 36 schema commands / nine MCP tools**. Mapping counts are not completed features.
+
+The full-axis plane includes endpoint fallback directions. Friction remains in that plane, and same-side separated anchors release their action; an opposite-side anchor may retain a current-side reaction. This is a local contact branch. Finite friction can leave positive curved-surface clearance with a nonzero reaction, so convergence, complementarity and Coulomb balance cannot be inferred from one visit or penetration alone. Eight added unit-test definitions cover bounded component behavior; this static map does not execute them. Ground, torso, particle/triangle contact and the initial-repair policy retain their preceding scope. Static occupancy, nonlinear convergence, whole-garment quality, calibration, native workflow and reference acceptance remain unresolved by this overlay.
+
+Reviewed implementation documentation [physics.md](../../docs/physics.md) is pinned in the new source-update metadata at SHA-256 `628953bb7294bc373fca731937b963cd2b2b3615b0c67085d14a5092ffadc6a9`, superseding its preceding source hash `f74f621d15db604d552ca7c214a59e8469a6cc8974b69c62aa50ca2fad4ec0e7`. It was not one of the 24 reviewed behavior-contract rows; those rows remain exact. This preparation runs no Cargo, garment/physics case, native workflow, reference comparison, registry or map checker and transfers no prior execution result. Real clean-checkout registry/map checks belong to integration after source evidence is retained. Earlier sections keep their exact source checkpoints, counts, scopes and qualifications.
+
+# WeftForge current-source addendum
+
 ## Contact actions, initial-repair diagnostics and whole-step quality source overlay
 
 Current source `f30c588d2602eabc3f8c79f63c74f50a6bd2ee5f` maps bounded contact action replacement, frozen first-substep initial-overlap repair and cumulative diagnostic attribution. Existing `simulate`, `workspace-statistics` and `fit-maps` rows append current source descriptions while retaining their complete missing scope. This static preparation executes no source test, numerical case, native workflow or reference comparison and grants no acceptance.

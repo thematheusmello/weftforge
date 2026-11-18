@@ -1,0 +1,195 @@
+diff --git a/crates/weftforge-sim/src/contact.rs b/crates/weftforge-sim/src/contact.rs
+index d6c06aa4..f94a0a00 100644
+--- a/crates/weftforge-sim/src/contact.rs
++++ b/crates/weftforge-sim/src/contact.rs
+@@ -1090,9 +1090,189 @@ fn collider_feature(
+ #[cfg(test)]
+ mod tests {
+     use super::*;
+-    use crate::{ClothInput, Material, Pin};
++    use crate::{ClothInput, Material, Pin, Stitch, WeightedPoint};
+     use std::cell::Cell;
+ 
++    #[test]
++    #[ignore = "diagnostic: finite-pass coupled convergence is not an accepted requirement"]
++    fn zero_target_stitch_capsule_n32_analytic_coupling_diagnostic() {
++        let mass = 0.00012_f64;
++        let h = 1. / 480.;
++        let compliance = 1e-8_f64;
++        let radius = 0.1_f64;
++        let a = 0.1_f64;
++        let b = 0.025_f64;
++        let inertia = mass / (h * h);
++        let predictor = [[a, b, 0.], [-a, b, 0.]];
++        let inverse_mass = [mass.recip(); 2];
++        let stitch = Stitch {
++            a: WeightedPoint::vertex(0),
++            b: WeightedPoint::vertex(1),
++            compliance,
++        };
++        let gradient = |q: [Vec3; 2], anchor: [Vec3; 2]| -> [Vec3; 2] {
++            let difference = sub(q[0], q[1]);
++            std::array::from_fn(|i| {
++                add(
++                    mul(sub(q[i], anchor[i]), inertia),
++                    mul(difference, if i == 0 { 1. } else { -1. } / compliance),
++                )
++            })
++        };
++        let maximum = |q: [Vec3; 2]| q.map(length).into_iter().fold(0_f64, f64::max);
++        let mut q = predictor;
++        let mut sewing = [[0.; 3]; 2];
++        for _ in 0..32 {
++            crate::constraints::solve_sewing(
++                &[stitch],
++                &[0.],
++                &mut q,
++                &inverse_mass,
++                h,
++                &mut sewing,
++                &|| false,
++            )
++            .unwrap();
++        }
++        // (M + h² Aᵀ C⁻¹ A)q = My, for A=[I,-I] and M=mI.
++        let free_x = inertia * a / (inertia + 2. / compliance);
++        let free_oracle = [[free_x, b, 0.], [-free_x, b, 0.]];
++        let free_error = maximum(std::array::from_fn(|i| sub(q[i], free_oracle[i])));
++        let free_force = maximum(gradient(q, predictor));
++        println!(
++            "COUPLING_FREE q_m={q:?} oracle_m={free_oracle:?} position_error_m={free_error:e} force_residual_N={free_force:e}"
++        );
++        assert!(free_error <= 1e-14, "free quadratic position: m");
++        assert!(free_force <= 1e-6, "free quadratic stationarity: N");
++
++        // In symmetric upper-hemisphere kinematics, E(θ)=k[(Rsinθ-a)²+(Rcosθ-b)²]+2R²sin²θ/c.
++        let derivative = |theta: f64| {
++            let (sine, cosine) = theta.sin_cos();
++            inertia * (b * sine - a * cosine) + 2. * radius * sine * cosine / compliance
++        };
++        let (mut lo, mut hi) = (0., a.atan2(b));
++        assert!(derivative(lo) < 0. && derivative(hi) > 0.);
++        for _ in 0..100 {
++            let mid = 0.5 * (lo + hi);
++            if derivative(mid) < 0. {
++                lo = mid;
++            } else {
++                hi = mid;
++            }
++        }
++        let (sine, cosine) = (0.5 * (lo + hi)).sin_cos();
++        let oracle = [
++            [radius * sine, radius * cosine, 0.],
++            [-radius * sine, radius * cosine, 0.],
++        ];
++        let kkt = |q: [Vec3; 2], reaction: [Vec3; 2]| -> (f64, f64, f64, f64) {
++            let g = gradient(q, predictor);
++            let mut balance = 0_f64;
++            let mut tangential = 0_f64;
++            let mut complementarity = 0_f64;
++            let mut tensile = 0_f64;
++            for i in 0..2 {
++                let normal = mul(q[i], length(q[i]).recip());
++                let lambda = dot(reaction[i], normal);
++                balance = balance.max(length(sub(g[i], reaction[i])));
++                tangential = tangential.max(length(sub(reaction[i], mul(normal, lambda))));
++                complementarity = complementarity.max((lambda * (length(q[i]) - radius)).abs());
++                tensile = tensile.max(-lambda);
++            }
++            (balance, tangential, complementarity, tensile)
++        };
++        let oracle_reaction = gradient(oracle, predictor);
++        let oracle_kkt = kkt(oracle, oracle_reaction);
++        assert!(oracle_kkt.1 <= 1e-6 && oracle_kkt.2 <= 1e-12 && oracle_kkt.3 == 0.);
++        assert!(predictor.into_iter().all(|p| length(p) > radius));
++        assert_eq!(length([0., radius, 0.]), radius);
++
++        // Test-only algebra fixture: omit membrane and triangle contact so the two-node energy is exact.
++        let cloth = Cloth {
++            input: ClothInput {
++                positions: predictor.to_vec(),
++                stitches: vec![stitch],
++                colliders: vec![Collider::Capsule {
++                    a: [0., -0.2, 0.],
++                    b: [0.; 3],
++                    radius,
++                }],
++                ..Default::default()
++            },
++            positions: predictor.to_vec(),
++            velocities: vec![[0.; 3]; 2],
++            masses: vec![mass; 2],
++            inverse_masses: inverse_mass.to_vec(),
++            thickness: vec![0.; 2],
++            damping: vec![0.; 2],
++            friction: vec![0.; 2],
++            membrane: vec![],
++            bends: vec![],
++            excluded: vec![BTreeSet::new(); 2],
++            seam_remaining: vec![0.],
++            initial_recovery_eligibility: InitialRecoveryEligibility::default(),
++            initial_recovery_provenance: RecoveryProvenance::default(),
++            diagnostics: crate::Diagnostics::default(),
++        };
++        q = predictor;
++        sewing = [[0.; 3]; 2];
++        let mut contact = ContactState::default();
++        let mut max_block_force = 0_f64;
++        let mut final_kkt = (0., 0., 0., 0.);
++        for pass in 1..=32 {
++            let before = q;
++            let anchor = std::array::from_fn(|i| sub(q[i], sewing[i]));
++            crate::constraints::solve_sewing(
++                &[stitch],
++                &[0.],
++                &mut q,
++                &inverse_mass,
++                h,
++                &mut sewing,
++                &|| false,
++            )
++            .unwrap();
++            let after_sewing = q;
++            let block_force = maximum(gradient(q, anchor));
++            max_block_force = max_block_force.max(block_force);
++            cloth
++                .project_colliders(&mut q, &predictor, &mut contact, &|| false)
++                .unwrap();
++            let action = std::array::from_fn(|i| {
++                contact
++                    .vertex_colliders
++                    .get(&(i, 0))
++                    .copied()
++                    .unwrap_or([[0.; 3]])[0]
++            });
++            let reaction = action.map(|p| mul(p, inertia));
++            final_kkt = kkt(q, reaction);
++            let history_error = maximum(std::array::from_fn(|i| {
++                sub(sub(q[i], predictor[i]), add(sewing[i], action[i]))
++            }));
++            let gap = q.map(|p| length(p) - radius);
++            println!(
++                "COUPLING_PASS pass={pass} before_m={before:?} after_sewing_m={after_sewing:?} after_contact_m={q:?} sewing_m={sewing:?} contact_m={action:?} sewing_block_force_N={block_force:e} gap_m={gap:?} history_error_m={history_error:e} final_kkt_N_N_J_N={final_kkt:?}"
++            );
++            assert!(q.into_iter().all(finite) && sewing.into_iter().all(finite));
++            assert!(q[0][1] > 0. && q[1][1] > 0., "upper capsule hemisphere");
++            assert!(gap.into_iter().all(|value| value >= -1e-14));
++            assert!(
++                history_error <= 1e-14,
++                "actual block displacement identity: m"
++            );
++        }
++        let position_error = maximum(std::array::from_fn(|i| sub(q[i], oracle[i])));
++        println!(
++            "COUPLING_FINAL mass_kg={mass} h_s={h} compliance_m_per_N={compliance} oracle_m={oracle:?} oracle_kkt_N_N_J_N={oracle_kkt:?} position_error_m={position_error:e} max_sewing_block_force_N={max_block_force:e} final_kkt_N_N_J_N={final_kkt:?}"
++        );
++        assert!(
++            max_block_force <= 1e-6,
++            "exact sewing block stationarity: N"
++        );
++        // Convergence is reported, not required: this diagnostic distinguishes an exact block from a split solve.
++    }
++
+     fn planes_input(upper_y: f64) -> ClothInput {
+         let positions = vec![
+             [0.25, 0.004, 0.25],

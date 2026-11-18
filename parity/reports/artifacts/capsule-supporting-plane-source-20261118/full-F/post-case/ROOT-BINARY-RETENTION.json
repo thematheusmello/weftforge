@@ -1,0 +1,43 @@
+{
+  "accepted_clock": {
+    "accepted": true,
+    "actual_seconds_through_persisted_external_terminal": 413.5268909998704,
+    "available_bytes": 11192557568,
+    "case_cap_seconds": 900,
+    "controller_exit_code": 0,
+    "external_terminal_sha256": "85eabc8781bd7718d534f7c14c24bb85b064abae6e4ece643081781cfbae5e19",
+    "launcher_timeout": false,
+    "qualification": "Clock sampled after external terminal and controller stdio fsync. This witness preserves that completed-case observation and is not a new command or timing regrade.",
+    "retained_bytes_at_terminal": 285409,
+    "retained_cap_bytes": 8388608
+  },
+  "four_checks_passed": true,
+  "immutable_debug_binaries": {
+    "weftforge": {
+      "bytes": 51930752,
+      "mode": "0555",
+      "not_Cargo_input": true,
+      "path": "<F_DEBUG_BINARIES>/weftforge-82079833060acff3be80466d1d4ddd62a22d067051dc04595355e7b9a0c85fdf",
+      "same_original_worktree": true,
+      "sha256": "82079833060acff3be80466d1d4ddd62a22d067051dc04595355e7b9a0c85fdf"
+    },
+    "weftforge-cli": {
+      "bytes": 9672208,
+      "mode": "0555",
+      "not_Cargo_input": true,
+      "path": "<F_DEBUG_BINARIES>/weftforge-cli-6541cc801800756a129ea25a05fa756e9ee5edfe2f2bff768af51f76e6922182",
+      "same_original_worktree": true,
+      "sha256": "6541cc801800756a129ea25a05fa756e9ee5edfe2f2bff768af51f76e6922182"
+    }
+  },
+  "qualification": "Post-case same-original-worktree immutable binary retention only; no GUI/model/standalone CLI quality execution or case regrade.",
+  "source91_exact": true,
+  "source_commit": "c766f3fa48c03ac698da8b22cc3bf927ee71f195",
+  "source_qa_closure_sha256": "f91d8b7ba6115df532504b7b9a6501eee241ba5ebc4f11b13c0feef0dfc6bef5",
+  "test_summary": {
+    "failed": 0,
+    "ignored": 0,
+    "passed": 480,
+    "summaries": 32
+  }
+}

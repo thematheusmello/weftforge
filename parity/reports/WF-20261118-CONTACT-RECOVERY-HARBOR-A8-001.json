@@ -16,7 +16,7 @@
   "full_garment_accepted": false,
   "roadmap_accepted": false,
   "all_delivery_gates_passed": false,
-  "freshness": "current",
+  "freshness": "stale",
   "source_hashes": {
     ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
     "Cargo.lock": "eb8a60650b473c79dda2e58a56f68b1abe9ca9a68c15115c9c8754c561732f3a",
@@ -148,7 +148,7 @@
     "source91_exact_C_D": true,
     "workspace_Rust_tests_repeated_on_D": false,
     "execution_transferred_between_commits": false,
-    "existing_source_report": "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json",
+    "existing_source_report": "parity/reports/artifacts/capsule-supporting-plane-source-20261118/history/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.original.json",
     "qualification": "Original C source QA and original D invocations retain their own identity; later metadata commits do not inherit execution."
   },
   "historical_failures_retained": "All old source/native/N004/garment/full181/prototype failures retain their original source, bytes, clocks and grades. No historical invocation was run or regraded by curation.",
@@ -272,7 +272,6 @@
     "parity/reports/artifacts/contact-recovery-runtime-20261118/producer-build-002/owner.stdout": "c688cbb15c25feca56778b6f714deb6fdde0ccb90fc4b15f4054aabffa243f1c",
     "parity/reports/artifacts/contact-recovery-runtime-20261118/producer-build-002/run.py": "5e9bfe1e77c78060b5758646888c03a6a99dbdf40418b88c23c1334d0255b754",
     "parity/reports/artifacts/contact-recovery-runtime-20261118/SELECTED-PUBLIC-MANIFEST-001.json": "d18b3b2e9c3d37489761e93c59c328b05435533fd803f56b5e5e2b4ff96061e1",
-    "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json": "d7c4eabd0c83814726257e1ac061c57c136782c3031333f6d01b058b15b57fc1",
     "parity/reports/artifacts/contact-recovery-source-20261118/case-001/EXTERNAL-TERMINAL.json": "7b1f85e02eccca5f9a256897ea7baeccc384e0299185392bc23000a65683a23c",
     "parity/reports/artifacts/contact-recovery-source-20261118/case-001/LAUNCH.json": "f4723263ef8b19ed19271b7f09b01406f6f4013c85acacd396c53dc2befd3cfa",
     "parity/reports/artifacts/contact-recovery-source-20261118/case-001/POST-TERMINAL-CLOCK.json": "3491c85c1bbc289b67ecc36eec8be1d8d8a513f7e7224651cf0c163b34194c1d",
@@ -331,7 +330,8 @@
     "parity/reports/artifacts/sewing-history-source-20261117/harbor/packet/inputs/base.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
     "parity/reports/artifacts/harbor-workflow-20261114/headless-attempt/runs/base/rest-metadata.json": "d96697949c686fbf15f19b99b6d7551b35d3449b17157009aceb75649fbaeeb9",
     "parity/reports/WF-20261117-DUAL-SEWING-HARBOR-A8-001.json": "25d89da938d20b56019eeed59fb7af09cc33ec939718f65c4da069e295e1ab93",
-    "parity/reports/artifacts/contact-recovery-runtime-20261118/ROOT-PUBLIC-REVIEW.json": "85eee5385a23ddaeb2da4e1bee08fdb33a4d93da1dc1a1d48ba43578f3d8361b"
+    "parity/reports/artifacts/contact-recovery-runtime-20261118/ROOT-PUBLIC-REVIEW.json": "85eee5385a23ddaeb2da4e1bee08fdb33a4d93da1dc1a1d48ba43578f3d8361b",
+    "parity/reports/artifacts/capsule-supporting-plane-source-20261118/history/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.original.json": "d7c4eabd0c83814726257e1ac061c57c136782c3031333f6d01b058b15b57fc1"
   },
   "actual_current_numerical_producer_executed": true,
   "new_garment_execution": false,
@@ -720,5 +720,6 @@
     "No standalone CLI/native/reference/complete feature/physics/roadmap/gate acceptance; all56 inventoried contracts remain partial/planned (42 partial,14 planned),6 delivery gates,10 journeys and3 platform targets remain open.",
     "Every original failure remains unchanged; no retry, continuation, sweep, repair, threshold adjustment or old-case regrade.",
     "The ef250 outer external-terminal witness is included exactly as a locator derivative and retains pending-final-verdict=true. ROOT-OUTCOME separately reports the later353.244897 clock; no additional raw sealed final external-clock verdict is available. No full final external-clock admission is claimed."
-  ]
+  ],
+  "freshness_reason": "The declared full91 source scope changes at c766f3fa48c03ac698da8b22cc3bf927ee71f195 in crates/weftforge-sim/src/contact.rs, crates/weftforge-sim/src/capsule.rs and docs/physics.md. Original execution, outcomes, counts and artifact map remain unchanged; exact pre-staleness bytes are archived at parity/reports/artifacts/capsule-supporting-plane-source-20261118/history/WF-20261118-CONTACT-RECOVERY-HARBOR-A8-001.original.json. F source QA is separate; full181 garment behavior on F remains pending."
 }

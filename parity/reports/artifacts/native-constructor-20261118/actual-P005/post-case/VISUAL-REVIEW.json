@@ -1,0 +1,31 @@
+{
+  "actual_metadata_head": "023b45a84cfeb9248e20f620628911bc3c0c843a",
+  "actual_native_build_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+  "actual_native_sha256": "e12e4b9e975830b9b1b7b3a22d464c103d800d9c142c09902e589174757fcc48",
+  "alignment_accepted": true,
+  "case": "WF-20261118-NATIVE-CONSTRUCTOR-VISUAL-P005-001",
+  "dimensions": [
+    1640,
+    1032
+  ],
+  "image": "captures/constructor-1.jpg",
+  "image_sha256": "07ebd461b1109f23745872f20292a33c35b04e79fe7638ca25d814c5633e6e4e",
+  "inspection": "Root viewed the unedited returned native image after normal close and verified against retained AX state.",
+  "limits": [
+    "Display/label/layout component only; no numeric typing or gesture semantics tested in this case.",
+    "Original public sample loaded; no empty-document authoring, sewing or simulation executed.",
+    "No save/export/reopen, garment fitting, full UI contract, accessibility/high-DPI coverage or reference parity acceptance.",
+    "Image review is a separate post-case observation and does not extend the original37.025-second capture/close clock; original provisional alignment flags remain unchanged."
+  ],
+  "normal_close_accepted": true,
+  "normal_close_original_seconds": 37.02531599998474,
+  "observations": [
+    "Both original 2D pieces fit the pane after Frame all; the independent 3D rest view is visible.",
+    "Width m, Height m, Position X m and Position Y m labels are readable and their numeric controls align in one column.",
+    "Pattern/Fabric/Simulation tabs, tool rail, Scene and simulation controls are visible in the established charcoal/blue visual direction.",
+    "No constructor field is clipped at the observed window size."
+  ],
+  "original_case_cap_seconds": 300,
+  "reviewed_utc": "2026-11-18T09:02:02.434674+00:00",
+  "status": "BOUNDED_CONSTRUCTOR_VISUAL_COMPONENT_ACCEPTED"
+}

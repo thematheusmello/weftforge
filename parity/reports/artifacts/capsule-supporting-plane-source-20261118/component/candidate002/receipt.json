@@ -1,0 +1,70 @@
+{
+  "binding": {
+    "diff_sha256": "b0983a836903f63320c208d3e5164bcd83b354249cb57076016d73d861c6947d",
+    "guard_sha256": "ba4560b912abaf8e310f87dc33b334fddfc96bc9d41c74a046a46b2d1f815d12",
+    "head": "a70c0df0606463f5efbe4fa7518c91819c595546",
+    "runner_sha256": "5e7bba93e8028be23fc02d86ec9a9ab58d62873215c9577a1f133f753f6ba4e7",
+    "sources": {
+      "crates/weftforge-sim/src/capsule.rs": "ac833840d7568fd2deda6731325d4c33f29e1935df386bfeec7d1f206dd4e322",
+      "crates/weftforge-sim/src/contact.rs": "89d3d5f31dc2d6cb7ce5e207c070bb774aeb90ed36df50b9d0acb34fd2a8cac4"
+    }
+  },
+  "budgets": {
+    "free_disk_floor_bytes": 8000000000,
+    "observed_aggregate_rss_bytes": 1073741824,
+    "output_bytes": 8388608,
+    "target_disk_bytes": 8000000000,
+    "whole_seconds": 180
+  },
+  "elapsed_seconds": 20.77143937512301,
+  "peaks": {
+    "aggregate_rss_bytes": 620118016,
+    "target_bytes": 82575537
+  },
+  "source_unchanged": true,
+  "stages": [
+    {
+      "name": "sim-package",
+      "result": {
+        "argv": [
+          "cargo",
+          "test",
+          "-p",
+          "weftforge-sim",
+          "--offline",
+          "--locked",
+          "-j",
+          "1",
+          "--",
+          "--nocapture",
+          "--test-threads=1"
+        ],
+        "end_monotonic_seconds": 1112738.956776333,
+        "exit_code": 0,
+        "peak_rss_bytes": 560381952,
+        "pid": 79888,
+        "process_group": 79888,
+        "rss_observation": {
+          "consecutive_failure_limit": 3,
+          "failure_events": [],
+          "failures": 0,
+          "max_consecutive_failures": 0,
+          "max_snapshot_gap_seconds": 0.07624812494032085,
+          "omitted_failure_events": 0,
+          "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+          "snapshot_timeout_max_seconds": 1.0,
+          "successful_snapshots": 293,
+          "timeouts": 0
+        },
+        "sampled_peak_rss_bytes": 542294016,
+        "stop_reason": null,
+        "terminal_phase_checks": {
+          "deadline": 1112898.186000791,
+          "output_bytes": 43467,
+          "output_cap_bytes": 8388608,
+          "reserve_bytes": 65536
+        }
+      }
+    }
+  ]
+}

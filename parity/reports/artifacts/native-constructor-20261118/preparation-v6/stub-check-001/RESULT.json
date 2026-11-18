@@ -1,0 +1,332 @@
+{
+  "actual_GUI_native_app_model_Cargo_network_calls": 0,
+  "candidate_passed": true,
+  "elapsed_before_result_seconds": 0.36041108309291303,
+  "immutable_references_postexact": true,
+  "integration_after": {
+    "HEAD": "023b45a84cfeb9248e20f620628911bc3c0c843a",
+    "index_bytes": 3425019,
+    "index_sha256": "f2a827a3a469b4fd5c25c0a97077005d6d1de5adf7d91f756d0b42080def2c33",
+    "tracked_status": ""
+  },
+  "integration_postexact": true,
+  "native_GO": false,
+  "sources_postexact": true,
+  "stage": {
+    "argv": [
+      "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+      "-B",
+      "<PREPARATION_V6>/focused_selfcheck.py"
+    ],
+    "disk_observation": {
+      "last_available_bytes": 10950860800,
+      "max_snapshot_gap_seconds": 0.05234458390623331,
+      "minimum_available_bytes": 10950860800,
+      "path": "<PREPARATION_V6>",
+      "samples": 6,
+      "stop_below_available_bytes": 8000000000
+    },
+    "end_monotonic_seconds": 1113880.624367708,
+    "exit_code": 0,
+    "peak_rss_bytes": 65257472,
+    "pid": 24141,
+    "process_group": 24141,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.05270720808766782,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 3,
+      "timeouts": 0
+    },
+    "sampled_peak_rss_bytes": 105201664,
+    "stop_reason": null,
+    "terminal_phase_checks": {
+      "deadline": 1113940.337499375,
+      "output_bytes": 102928,
+      "output_cap_bytes": 8388608,
+      "reserve_bytes": 65536
+    }
+  },
+  "status": "PROVISIONAL_SOURCE_PROOF_REQUIRES_ZERO_TIMELY_ORIGINAL_TOOL_TERMINAL",
+  "summary": {
+    "Node_scenarios": 12,
+    "Python_check": "actual bound response returns readonly fixture Path.name; bytes unchanged",
+    "Python_scenarios": 1,
+    "actual_GUI_native_app_model_Cargo_network_calls": 0,
+    "count": 13,
+    "node": {
+      "actual_GUI_native_app_model_Cargo_network_calls": 0,
+      "count": 12,
+      "native_call_sha256": "9d108334cf4b1666e5e6546df221af1aba71d5c32a9a2642c2e49cac6545f890",
+      "node": "v26.12.1",
+      "observed_Quit_input_sha256": "ff2c24624b1f93383aef3a9c4720f5273d9805dc021fde9eae522a72e9ba8499",
+      "status": "PASSED_V6_FOCUSED_NODE_CALLER_CHECKS",
+      "store_load_always_deserializes": true,
+      "tests": [
+        {
+          "calls": [
+            "GATE:VISUAL-01-state",
+            "MCP:state",
+            "CLOSE:VISUAL-01-state",
+            "post-getter",
+            "owner:baseline",
+            "GATE:VISUAL-02-frame",
+            "MCP:frame",
+            "CLOSE:VISUAL-02-frame",
+            "GATE:VISUAL-03-create",
+            "MCP:create",
+            "CLOSE:VISUAL-03-create",
+            "GATE:VISUAL-04-quit",
+            "MCP:quit",
+            "CLOSE:VISUAL-04-quit",
+            "owner:close",
+            "owner:seal",
+            "owner:audit"
+          ],
+          "name": "different_bound_basename_and_exact_AppQuit_with_deserialized_receipts",
+          "status": "passed_focused_stub"
+        },
+        {
+          "calls": [
+            "GATE:VISUAL-01-state",
+            "MCP:state",
+            "CLOSE:VISUAL-01-state",
+            "post-getter",
+            "owner:baseline",
+            "GATE:VISUAL-02-frame",
+            "MCP:frame",
+            "CLOSE:VISUAL-02-frame",
+            "GATE:VISUAL-03-create",
+            "MCP:create",
+            "CLOSE:VISUAL-03-create",
+            "GATE:VISUAL-04-quit",
+            "MCP:quit",
+            "CLOSE:VISUAL-04-quit",
+            "owner:close",
+            "owner:seal"
+          ],
+          "name": "other_Quit_error_remains_negative",
+          "status": "passed_focused_stub"
+        },
+        {
+          "calls": [
+            "GATE:VISUAL-01-state",
+            "MCP:state",
+            "CLOSE:VISUAL-01-state",
+            "post-getter",
+            "owner:baseline",
+            "GATE:VISUAL-02-frame",
+            "MCP:frame",
+            "CLOSE:VISUAL-02-frame",
+            "GATE:VISUAL-03-create",
+            "MCP:create",
+            "CLOSE:VISUAL-03-create",
+            "GATE:VISUAL-04-quit",
+            "MCP:quit",
+            "CLOSE:VISUAL-04-quit",
+            "owner:close",
+            "owner:seal"
+          ],
+          "name": "extra_Quit_response_text_remains_negative",
+          "status": "passed_focused_stub"
+        },
+        {
+          "calls": [
+            "GATE:VISUAL-01-state",
+            "MCP:state",
+            "CLOSE:VISUAL-01-state",
+            "post-getter",
+            "owner:baseline",
+            "GATE:VISUAL-02-frame",
+            "MCP:frame",
+            "CLOSE:VISUAL-02-frame",
+            "GATE:VISUAL-03-create",
+            "MCP:create",
+            "CLOSE:VISUAL-03-create",
+            "GATE:VISUAL-04-quit",
+            "MCP:quit",
+            "CLOSE:VISUAL-04-quit",
+            "owner:close",
+            "owner:seal"
+          ],
+          "name": "missing_CLOSE_completion_remains_negative",
+          "status": "passed_focused_stub"
+        },
+        {
+          "calls": [
+            "GATE:VISUAL-01-state",
+            "MCP:state",
+            "CLOSE:VISUAL-01-state",
+            "post-getter",
+            "owner:baseline",
+            "GATE:VISUAL-02-frame",
+            "MCP:frame",
+            "CLOSE:VISUAL-02-frame",
+            "GATE:VISUAL-03-create",
+            "MCP:create",
+            "CLOSE:VISUAL-03-create",
+            "GATE:VISUAL-04-quit",
+            "MCP:quit",
+            "CLOSE:VISUAL-04-quit",
+            "owner:close",
+            "owner:seal"
+          ],
+          "name": "caller_60s_includes_marker_preparation",
+          "status": "passed_focused_stub"
+        },
+        {
+          "calls": [
+            "GATE:VISUAL-01-state",
+            "MCP:state",
+            "CLOSE:VISUAL-01-state",
+            "post-getter",
+            "owner:baseline",
+            "GATE:VISUAL-02-frame",
+            "MCP:frame",
+            "CLOSE:VISUAL-02-frame",
+            "GATE:VISUAL-03-create",
+            "MCP:create",
+            "CLOSE:VISUAL-03-create",
+            "GATE:VISUAL-04-quit",
+            "MCP:quit",
+            "CLOSE:VISUAL-04-quit",
+            "owner:close",
+            "owner:seal"
+          ],
+          "name": "nonzero_CLOSE_remains_negative",
+          "status": "passed_focused_stub"
+        },
+        {
+          "calls": [
+            "GATE:VISUAL-01-state",
+            "MCP:state",
+            "CLOSE:VISUAL-01-state",
+            "post-getter",
+            "owner:baseline",
+            "GATE:VISUAL-02-frame",
+            "MCP:frame",
+            "CLOSE:VISUAL-02-frame",
+            "GATE:VISUAL-03-create",
+            "MCP:create",
+            "CLOSE:VISUAL-03-create",
+            "GATE:VISUAL-04-quit",
+            "MCP:quit",
+            "CLOSE:VISUAL-04-quit",
+            "owner:close",
+            "owner:seal"
+          ],
+          "name": "wrong_Quit_key_remains_negative",
+          "status": "passed_focused_stub"
+        },
+        {
+          "calls": [
+            "GATE:VISUAL-01-state",
+            "MCP:state",
+            "CLOSE:VISUAL-01-state",
+            "post-getter",
+            "owner:baseline",
+            "GATE:VISUAL-02-frame",
+            "MCP:frame",
+            "CLOSE:VISUAL-02-frame",
+            "owner:close",
+            "owner:seal"
+          ],
+          "name": "same_AppQuit_error_on_Frame_still_refused_by_generic_helper",
+          "status": "passed_focused_stub"
+        },
+        {
+          "calls": [
+            "GATE:VISUAL-01-state",
+            "MCP:state",
+            "CLOSE:VISUAL-01-state",
+            "post-getter",
+            "owner:baseline",
+            "GATE:VISUAL-02-frame",
+            "MCP:frame",
+            "CLOSE:VISUAL-02-frame",
+            "GATE:VISUAL-03-create",
+            "MCP:create",
+            "CLOSE:VISUAL-03-create",
+            "owner:close",
+            "owner:seal"
+          ],
+          "name": "stale_per_label_result_refuses_Quit_replay",
+          "status": "passed_focused_stub"
+        },
+        {
+          "calls": [
+            "GATE:VISUAL-01-state",
+            "MCP:state",
+            "CLOSE:VISUAL-01-state",
+            "post-getter",
+            "owner:baseline",
+            "GATE:VISUAL-02-frame",
+            "MCP:frame",
+            "CLOSE:VISUAL-02-frame",
+            "GATE:VISUAL-03-create",
+            "MCP:create",
+            "CLOSE:VISUAL-03-create",
+            "GATE:VISUAL-04-quit",
+            "MCP:quit",
+            "CLOSE:VISUAL-04-quit",
+            "owner:close",
+            "owner:seal"
+          ],
+          "name": "different_last_call_value_refuses_qualification",
+          "status": "passed_focused_stub"
+        },
+        {
+          "calls": [
+            "GATE:VISUAL-01-state",
+            "MCP:state",
+            "CLOSE:VISUAL-01-state",
+            "post-getter",
+            "owner:baseline",
+            "GATE:VISUAL-02-frame",
+            "MCP:frame",
+            "CLOSE:VISUAL-02-frame",
+            "GATE:VISUAL-03-create",
+            "MCP:create",
+            "CLOSE:VISUAL-03-create",
+            "GATE:VISUAL-04-quit",
+            "MCP:quit",
+            "CLOSE:VISUAL-04-quit",
+            "owner:close",
+            "owner:seal"
+          ],
+          "name": "stored_zero_CLOSE_with_retention_failure_remains_negative",
+          "status": "passed_focused_stub"
+        },
+        {
+          "calls": [
+            "GATE:VISUAL-01-state",
+            "MCP:state",
+            "CLOSE:VISUAL-01-state",
+            "post-getter",
+            "owner:baseline",
+            "GATE:VISUAL-02-frame",
+            "MCP:frame",
+            "CLOSE:VISUAL-02-frame",
+            "GATE:VISUAL-03-create",
+            "MCP:create",
+            "CLOSE:VISUAL-03-create",
+            "GATE:VISUAL-04-quit",
+            "MCP:quit",
+            "CLOSE:VISUAL-04-quit",
+            "owner:close",
+            "owner:seal"
+          ],
+          "name": "wrong_CLOSE_lifecycle_label_remains_negative",
+          "status": "passed_focused_stub"
+        }
+      ]
+    },
+    "old_proof_rerun_or_regraded": false,
+    "status": "PASSED_V6_FOCUSED_CALLER_CHECKS"
+  }
+}

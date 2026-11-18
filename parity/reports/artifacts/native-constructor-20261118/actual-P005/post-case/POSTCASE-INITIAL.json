@@ -1,0 +1,67 @@
+{
+  "HEAD_index_tracked_clean": true,
+  "actual_native_build_commit": "a70c0df0606463f5efbe4fa7518c91819c595546",
+  "all110_bindings_exact": true,
+  "all_owned_ids_absent": [
+    36174,
+    36296,
+    36567,
+    36692
+  ],
+  "bounded_capture_normal_close_seconds": 37.02531599998474,
+  "cap_seconds": 300,
+  "captures": [
+    {
+      "actual_mime_type": "image/jpeg",
+      "bytes": 213389,
+      "dimensions": [
+        1640,
+        1032
+      ],
+      "path": "captures/constructor-1.jpg",
+      "provider_mime_type": "image/jpeg",
+      "provider_type_mismatch": false,
+      "sha256": "07ebd461b1109f23745872f20292a33c35b04e79fe7638ca25d814c5633e6e4e",
+      "unedited_tool_image": true,
+      "validation": "strict canonical base64 + structural PNG/JPEG + sips format/dimensions"
+    }
+  ],
+  "case": "WF-20261118-NATIVE-CONSTRUCTOR-VISUAL-P005-001",
+  "case_freeze_sha256": "ea7ef8b507a252a7879b6527590e565e219479753efe996ba5a3376b2a2019ce",
+  "head": "023b45a84cfeb9248e20f620628911bc3c0c843a",
+  "initial_root_closure_preflight": "Expected three extracted files, but unchanged controller intentionally extracts only the constructor image; three original response images remain in their raw JSON. No case/runtime/source mutation or regrade.",
+  "metadata": {
+    "calls": [
+      "VISUAL-01-state",
+      "VISUAL-02-frame",
+      "VISUAL-03-create"
+    ],
+    "constructor_response": "VISUAL-03-create",
+    "normal_quit_helper_completed": true,
+    "preview_error": null,
+    "quit_error": null,
+    "quit_response_qualification": {
+      "caller_deadline_epoch": 1794992221.233,
+      "caller_start_epoch": 1794992161.233,
+      "close_completion_key": "native-ui:<CASE_P005>:VISUAL-04-quit-CLOSE-COMPLETION.json",
+      "gate_completion_key": "native-ui:<CASE_P005>:VISUAL-04-quit-GATE-COMPLETION.json",
+      "key": "super+q",
+      "kind": "EXACT_OBSERVED_APP_QUIT_ERROR_WITH_BOUNDED_CLOSE",
+      "label": "VISUAL-04-quit",
+      "method": "press_key",
+      "qualified_epoch": 1794992166.989,
+      "raw_isError": true,
+      "response_key": "native-ui:<CASE_P005>:VISUAL-04-quit.json"
+    },
+    "visual_alignment_accepted": false
+  },
+  "observed_utc": "2026-11-18T08:58:30.626815+00:00",
+  "original_caller_admission_sha256": "41b9820c5aa66084c4b3554d8cc493b748ee54b4c5b6bbb0936cac6967cbf23a",
+  "postcase_inventory": {
+    "apps": [],
+    "child_apps": [],
+    "windows": []
+  },
+  "qualification": "Separate post-case preservation; no post-Quit getter. Raw App quit isError remains true, qualified only for exact same-call bounded Quit. No authoring/simulation/save/export/full-workflow/reference credit.",
+  "status": "BOUNDED_CAPTURE_NORMAL_CLOSE_CLOSED_IMAGE_REVIEW_PENDING"
+}

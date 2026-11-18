@@ -22,8 +22,10 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
 1. Finish the native UI and interaction foundation in the PhotoCraft-inspired
    visual direction: consistent panels/tools/dialogs, linked selection, precise
    input, focus, history and responsive job feedback. Contextual tabs, input
-   retirement and aligned constructor metre labels have source checks. Execute authoring,
-   save/export and fresh-process reopen on the new integrated native build.
+   retirement and aligned constructor metre labels have source checks. Historical
+   native P005 accepted the bounded layout/normal-close component on E/D-built
+   native; its image-free public package cannot independently verify that layout.
+   Execute authoring, save/export and fresh-process reopen on the current build.
    Earlier 8aa notch workflow and genuine modal accessibility-setter observations
    remain historical; they are not transferred to the changed source.
 2. Close the first garment path. Shared soft sewing retains every energy in one
@@ -35,9 +37,11 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    finite states, uncertainty and zero recovery pass. Its raw final external
    clock verdict remains unsealed; the separate post-case timing does not repair
    that proof. Preserve these results, the earlier 16.063338% and 50.9602%
-   failures, and all original inputs/settings/criteria. Review and integrate the
-   capsule-contact correction, run the integrated checks, then execute a fresh
-   unchanged full case. Moving-triangle nonlinear contact and calibration remain open.
+   failures, and all original inputs/settings/criteria. The reviewed capsule
+   correction now passes current-source checks, including the large-finite-axis
+   regression. Finish clean evidence/map verification and current optimized
+   builds, then execute a fresh unchanged full case. Moving-triangle nonlinear
+   contact and calibration remain open.
 3. Complete the real empty-document shirt workflow through the UI: create pieces,
    sew, arrange, simulate, change dimension/material, save, quit, reopen, edit and
    export. Independently verify output and compare the recorded reference case.
@@ -52,16 +56,19 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    Keep GitHub Actions disabled throughout development. Re-enable it only after
    the complete project is finished, as the user requested.
 
-Actual combined source `f30c588d` passes 472 tests across 32 summaries, formatting,
-strict Clippy and native/CLI builds in 381.554 seconds within 900. Its earlier
-preflight STATUS-hash failure started no Cargo command and remains preserved.
-Clean a70c0df0 `cargo xtask verify` then passed in 264.142 seconds within 360;
-its separate optimized native/CLI build passed in 53.293 seconds within 900.
-The new runtime evidence and metadata require their own clean registry/map check
-before publication. No garment or native acceptance follows from source checks;
-the current native binary still needs its actual complete garment workflow.
-Earlier CLI/native notch results retain their 8aa source identity. All full
-feature contracts and release gates remain open.
+Actual current source `c766f3fa` passes formatting, 480 workspace tests across
+32 summaries with zero failed/ignored, strict all-target Clippy and native/CLI
+debug builds in 413.527 seconds within 900. Its 102 simulator tests are included
+within 480. Clean E `cargo xtask verify` passed separately in 253.837 seconds
+within 360; that result belongs to E. Updated current-source evidence, native
+history and source-map metadata require their own clean registry/map/xtask check
+before publication, followed by current optimized builds and the fresh full case.
+The earlier C/D source/tooling results and failed numerical case retain exact
+archived reports and their original identities. No garment or complete native
+acceptance follows from source checks or the bounded historical preview. Push
+each atomic development commit after its local checks. Earlier CLI/native notch
+results retain their 8aa source identity. All full feature contracts and release
+gates remain open.
 
 ## Before and throughout every gate
 

@@ -1,0 +1,18 @@
+{
+  "case": "WF-20261118-NATIVE-CONSTRUCTOR-VISUAL-P002-001",
+  "child_exit": -15,
+  "child_pid": 89595,
+  "failure": "RuntimeError: Exactly one fresh owned native process required; extras refuse GUI",
+  "pgid": 89465,
+  "pid": 89465,
+  "ready": false,
+  "signals": [
+    {
+      "pgid": 89465,
+      "pid": 89595,
+      "signal": "SIGTERM",
+      "target": "native_child"
+    }
+  ],
+  "terminal_epoch": 1794982933.044767
+}

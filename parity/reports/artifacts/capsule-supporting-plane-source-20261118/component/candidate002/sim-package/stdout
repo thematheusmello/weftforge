@@ -1,0 +1,219 @@
+
+running 102 tests
+test capsule::tests::controlled_capsule_features_preserve_results_and_abort_at_each_task ... ok
+test capsule::tests::distance_and_barycentric_gradients_survive_rigid_transforms ... ok
+test capsule::tests::exact_closest_features_include_caps_faces_edges_and_vertices ... ok
+test capsule::tests::parallel_and_coplanar_segments_reach_face_between_outside_endpoints ... ok
+test capsule::tests::point_features_preserve_tiny_nonzero_axes_and_current_normals ... ok
+test capsule::tests::point_features_scale_both_projection_vectors_before_the_dot_product ... ok
+test capsule::tests::saved_original_and_harbor_surface_witnesses_are_detected ... ok
+test capsule::tests::tiny_and_degenerate_triangles_keep_closed_surface_coverage ... ok
+test capsule::tests::zero_distance_fallback_is_deterministic_finite_and_radial ... ok
+test constraints::bending_energy_tests::active_hinge_trial_degeneracy_rejects_the_whole_bending_energy ... ok
+test constraints::material_cancellation_tests::material_cancellation_polls_after_at_most_63_skipped_checkpoints ... ok
+test constructor_control_tests::constructor_charges_initialization_and_never_publishes_after_abort ... ok
+test constructor_control_tests::diagnostics_charges_each_scan_and_preserves_numeric_results ... ok
+test constructor_control_tests::validation_charges_each_record_and_stops_exactly_at_caller_abort ... ok
+test contact::tests::capsule_current_side_branch_releases_and_replaces_rotating_pinned_supports ... ok
+test contact::tests::capsule_friction_preserves_the_plane_oracle_and_reaches_the_sphere_fixed_point ... CAPSULE_FRICTION beta=[1.0, 0.0, 0.0] q_m=[0.5999722751020592, 0.0, 0.8000207930062331] position_error_m=3.465572209655775e-5 current_normal_force_residual_N=8.664264143117186e-6 complementarity_J=4.003821175628864e-11
+CAPSULE_FRICTION beta=[0.25, 0.5, 0.25] q_m=[0.5999722751020593, 0.0, 0.8000207930062331] position_error_m=3.4655722096468936e-5 current_normal_force_residual_N=1.0663709714573317e-5 complementarity_J=4.927779908466295e-11
+ok
+test contact::tests::capsule_point_queries_detect_large_finite_axes_and_reject_unusable_geometry ... ok
+test contact::tests::capsule_supports_resolve_distinct_material_points_and_release_after_translation ... ok
+test contact::tests::capsule_vertex_queries_and_diagnostics_keep_tiny_nonzero_axes ... ok
+test contact::tests::capsule_zero_distance_support_uses_the_entire_axis_even_at_an_endpoint ... ok
+test contact::tests::cloth_contact_queries_retracted_point_before_releasing_a_finite_face ... ok
+test contact::tests::contact_action_replaces_barycentric_support_with_nonzero_pinned_weight ... ok
+test contact::tests::contact_action_replaces_inactive_and_rotating_normal_history ... ok
+test contact::tests::contact_friction_sticks_slides_and_releases_with_normal_action ... ok
+test contact::tests::hierarchy_build_and_partition_cancel_during_work ... ok
+test contact::tests::hierarchy_is_conservative_and_prunes_separated_bounds ... ok
+test contact::tests::hierarchy_query_cancels_when_all_bounds_overlap ... ok
+test contact::tests::initial_capsule_recovery_owns_only_frozen_pairs_and_keeps_displacement_provenance ... ok
+test contact::tests::initial_recovery_eligibility_is_pair_specific_and_frozen_before_motion ... ok
+test contact::tests::leaf_candidates_and_bounds_stop_before_each_primitive ... ok
+test contact::tests::moving_contact_query_reaches_a_later_plane ... ok
+test contact::tests::old_cloth_actions_release_outside_bounds_and_reject_lost_features ... ok
+test contact::tests::partitioned_queries_preserve_sequential_contact_order ... ok
+test contact::tests::recovery_provenance_accumulates_actual_normal_and_friction_motion_atomically ... ok
+test contact::tests::shallow_torso_contact_keeps_unit_normals_across_scales_and_at_boundary ... ok
+test contact::tests::swept_hierarchy_candidates_equal_exhaustive_inclusive_queries ... ok
+test contact::tests::zero_target_stitch_capsule_n32_matches_independent_equilibrium ... COUPLING_FREE q_m=[[1.3823998085138456e-8, 0.025, 0.0], [-1.3823998085138456e-8, 0.025, 0.0]] oracle_m=[[1.3823998088970504e-8, 0.025, 0.0], [-1.3823998088970504e-8, 0.025, 0.0]] position_error_m=3.832048190911134e-18 force_residual_N=7.664100465376578e-10
+COUPLING_PASS pass=1 before_m=[[0.1, 0.025, 0.0], [-0.1, 0.025, 0.0]] after_sewing_m=[[1.3823998085138456e-8, 0.025, 0.0], [-1.3823998085138456e-8, 0.025, 0.0]] after_contact_m=[[5.5295992340545386e-8, 0.09999999999998471, 0.0], [-5.5295992340545386e-8, 0.09999999999998471, 0.0]] sewing_m=[[-0.09999998617600192, 0.0, 0.0], [0.09999998617600192, 0.0, 0.0]] contact_m=[[4.147199425540693e-8, 0.07499999999998472, 0.0], [-4.147199425540693e-8, 0.07499999999998472, 0.0]] sewing_block_force_N=7.664100465376578e-10 gap_m=[0.0, 0.0] history_error_m=0e0 final_kkt_N_N_J_N=(8.294398850314977, 0.0, 0.0, 0.0)
+COUPLING_PASS pass=2 before_m=[[5.5295992340545386e-8, 0.09999999999998471, 0.0], [-5.5295992340545386e-8, 0.09999999999998471, 0.0]] after_sewing_m=[[1.3824003830542608e-8, 0.09999999999998471, 0.0], [-1.3824003830542608e-8, 0.09999999999998471, 0.0]] after_contact_m=[[-1.727998755195532e-8, 0.10000000000000334, 0.0], [1.727998755195532e-8, 0.10000000000000334, 0.0]] sewing_m=[[-0.10000002764799043, 0.0, 0.0], [0.10000002764799043, 0.0, 0.0]] contact_m=[[1.0368002872909001e-8, 0.07500000000000334, 0.0], [-1.0368002872909001e-8, 0.07500000000000334, 0.0]] sewing_block_force_N=1.6968821903162734e-9 gap_m=[4.829470157119431e-15, 4.829470157119431e-15] history_error_m=0e0 final_kkt_N_N_J_N=(6.2207982748027035, 6.44972365307528e-7, 1.0014389317802907e-14, 0.0)
+COUPLING_PASS pass=3 before_m=[[-1.727998755195532e-8, 0.10000000000000334, 0.0], [1.727998755195532e-8, 0.10000000000000334, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.10000000000000334, 0.0], [-1.3823999528428388e-8, 0.10000000000000334, 0.0]] after_contact_m=[[1.3823996301840196e-8, 0.09999999999999905, 0.0], [-1.3823996301840196e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400335, 0.0, 0.0], [0.09999999654400335, 0.0, 0.0]] contact_m=[[1.036799964632081e-8, 0.07499999999999905, 0.0], [-1.036799964632081e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2370731106159383e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(6.4408056559627e-7, 6.690799410603306e-14, 0.0, 0.0)
+COUPLING_PASS pass=4 before_m=[[1.3823996301840196e-8, 0.09999999999999905, 0.0], [-1.3823996301840196e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428838e-8, 0.09999999999999905, 0.0], [-1.3823999528428838e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.23725225265144e-9, 4.440892099466981e-16, 0.0, 0.0)
+COUPLING_PASS pass=5 before_m=[[1.3823999528428838e-8, 0.09999999999999905, 0.0], [-1.3823999528428838e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=6 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=7 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=8 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=9 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=10 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=11 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=12 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=13 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=14 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=15 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=16 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=17 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=18 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=19 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=20 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=21 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=22 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=23 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=24 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=25 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=26 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=27 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=28 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=29 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=30 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=31 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_PASS pass=32 before_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_sewing_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] after_contact_m=[[1.3823999528428388e-8, 0.09999999999999905, 0.0], [-1.3823999528428388e-8, 0.09999999999999905, 0.0]] sewing_m=[[-0.09999999654400012, 0.0, 0.0], [0.09999999654400012, 0.0, 0.0]] contact_m=[[1.036799964632126e-8, 0.07499999999999905, 0.0], [-1.036799964632126e-8, 0.07499999999999905, 0.0]] sewing_block_force_N=1.2371623725471181e-9 gap_m=[0.0, 0.0] history_error_m=1.3877787807814457e-17 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+COUPLING_FINAL mass_kg=0.00012 h_s=0.0020833333333333333 compliance_m_per_N=0.00000001 oracle_m=[[1.3823999522242579e-8, 0.09999999999999905, 0.0], [-1.3823999522242579e-8, 0.09999999999999905, 0.0]] oracle_kkt_N_N_J_N=(0.0, 5.372452668108382e-16, 0.0, 0.0) position_error_m=6.185808821904251e-18 max_sewing_block_force_N=1.6968821903162734e-9 final_kkt_N_N_J_N=(1.2371621025418404e-9, 4.440892098500658e-16, 0.0, 0.0)
+ok
+test strain::tests::rounded_squares_are_compensated_and_nonfinite_sums_stay_nonfinite ... ok
+test tests::analytic_dihedral_gradient_matches_independent_finite_difference ... ok
+test tests::area_mass_rest_and_reset_are_si_consistent ... ok
+test tests::bending_cancellation_at_every_cloth_callback_rolls_back_all_persistent_state ... ok
+test tests::bending_cancellation_retains_positions_and_displacement_history ... ok
+test tests::bending_displacement_history_resets_between_substeps ... ok
+test tests::bending_reaches_independent_pinned_hinge_incremental_energy_equilibrium ... pinned hinge q=[0.0, 0.7484906795030447, 0.5663078127830443] reference=[0.0, 0.7484906771420161, 0.5663078097603594] position_error=3.835502562969019e-9m stationarity=3.3491620429313135e-9N
+ok
+test tests::bending_reduces_fold_angle_without_translating_center_of_mass ... ok
+test tests::cancellable_constructor_keeps_invalid_input_checks_and_honors_early_cancel ... ok
+test tests::cancellation_after_measurement_preserves_peak_strain ... ok
+test tests::cancellation_and_failures_preserve_old_state_and_allow_recovery ... ok
+test tests::capsule_axis_face_crossing_has_finite_deterministic_recovery_and_honest_residual ... ok
+test tests::capsule_projection_and_final_surface_analysis_cancellation_preserve_the_accepted_step ... ok
+test tests::capsule_surface_fixed_nodes_report_conflict_and_reset_restores_full_occupancy ... ok
+test tests::capsule_surface_projection_uses_barycentric_inverse_masses_and_existing_friction ... ok
+test tests::closed_elastic_stitch_cancellation_and_failure_retain_whole_call_state ... ok
+test tests::closed_elastic_stitch_handles_zero_gap_pins_and_denominator_guard ... ok
+test tests::closed_elastic_stitch_keeps_accepted_weights_and_endpoint_arithmetic ... ok
+test tests::closed_elastic_stitch_merges_repeated_and_cross_side_vertices ... ok
+test tests::closed_elastic_stitch_n32_matches_independent_quadratic_and_individual_actions ... N=32 x_m=[[0.3333333333333333, 0.3333333333333333, 0.0], [1.0, 0.0, 0.0], [0.0, 1.0, 0.0]] nodal_history_m=[[0.3333333333333333, 0.3333333333333333, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]] impulses_N_s2=[[0.6666666666666667, -0.3333333333333333, -0.0], [-0.3333333333333333, 0.6666666666666667, -0.0]] energy_J=0.5555555555555556 objective_J=0.6666666666666667 stationarity_N=[-1.1102230246251565e-16, -1.1102230246251565e-16, 0.0]
+ok
+test tests::closed_elastic_stitch_preserves_isolated_energy_and_units ... ok
+test tests::closed_elastic_stitch_two_free_masses_preserve_reactions_under_rigid_transforms ... ok
+test tests::conservative_skinny_capsule_pairs_remain_visible_and_exact_collapsed_faces_are_not_dropped ... ok
+test tests::constructor_cancels_inside_initial_contact_query_without_publishing_state ... ok
+test tests::coupled_membrane_reaches_independent_incremental_energy_equilibrium ... independent energy position error=1.7621147558844469e-15m stationarity=1.1542914787997926e-12N
+ok
+test tests::elastic_stitch_substeps_reset_multipliers_when_target_reaches_zero ... ok
+test tests::final_capsule_surface_residual_rechecks_contacts_undone_by_a_later_capsule ... ok
+test tests::finite_diagnostics_do_not_claim_satisfied_contact ... ok
+test tests::freefall_matches_symplectic_euler_and_refines_toward_analytic_solution ... ok
+test tests::global_bending_noop_and_invalid_inputs_preserve_stage_state ... ok
+test tests::global_material_zero_rhs_pins_and_cancellation_preserve_stage_state ... ok
+test tests::grain_rotation_changes_the_physical_hanging_response ... ok
+test tests::ground_torso_and_capsule_project_to_exterior ... ok
+test tests::grouped_mixed_grain_materials_reach_direct_energy_balance_with_pins ... mixed-grain pair direct energy force residual=2.3468301330621803e-10N
+ok
+test tests::initial_hierarchy_matches_brute_force_for_contacts_thickness_and_sewing_filters ... ok
+test tests::initial_recovery_is_transactional_first_substep_only_and_rearmed_by_reset ... ok
+test tests::layers_contact_and_transfer_motion_to_the_other_layer ... ok
+test tests::malformed_external_geometry_material_and_constraints_are_rejected ... ok
+test tests::material_cancellation_at_every_cloth_callback_rolls_back_all_persistent_state ... ok
+test tests::material_cancellation_checks_entry_and_each_noop_return ... ok
+test tests::material_network_reaches_independent_incremental_energy_equilibrium ... material-network q=[[-0.03468793527666286, 1.4559016208314208, 0.17491839377412946], [-0.026027596766149637, 1.4559576700566903, 0.17611347474357655]] reference=[[-0.03468793525197834, 1.4559016208026938, 0.17491839356990843], [-0.02602759678104083, 1.4559576701123809, 0.17611347479474232]] position_error=2.0770362583566576e-10m force_residual=1.2857517012326884e-7N
+ok
+test tests::material_stage_retains_each_input_face_once_in_order ... ok
+test tests::membrane_affine_strain_follows_material_axes_under_arrangement_and_winding ... ok
+test tests::membrane_projection_matches_analytic_uniaxial_and_shear_updates ... ok
+test tests::nonfinite_strain_after_a_finite_candidate_invalidates_diagnostics ... ok
+test tests::peak_strain_uses_input_triangle_order_and_exact_ties_choose_warp ... ok
+test tests::physical_stiffness_changes_extension_and_refinement_preserves_mass_and_sag ... ok
+test tests::positive_compliant_stitch_handles_pins_zero_anchor_and_nonfinite_guards ... ok
+test tests::positive_compliant_stitch_merges_shared_vertices_and_balances_physical_force ... ok
+test tests::positive_stitch_subnormal_anchor_and_fallback_use_unit_direction ... subnormal_case=0 inverse_mass_per_kg=1 h_s=1 compliance_m_per_N=1 target_m=1
+initial_difference_m=[5e-324, 5e-324, 0.0]
+local_anchor_m=[5e-324, 5e-324, 0.0]
+x_m=[[0.35355339059327373, 0.35355339059327373, 0.0], [0.0, 0.0, 0.0]]
+history_displacement_m=[[0.35355339059327373, 0.35355339059327373, 0.0], [0.0, 0.0, 0.0]]
+expected_m=[0.35355339059327373, 0.35355339059327373, 0.0]
+radius_m=0.49999999999999994
+independent_force_N=[0.3535533905932738, 0.3535533905932738, 0.0]
+independent_stationarity_N=[-5.551115123125783e-17, -5.551115123125783e-17, 0.0]
+position_radius_force_errors=[0.0, 5.551115123125783e-17, 7.850462293418876e-17]
+subnormal_case=1 inverse_mass_per_kg=1 h_s=1 compliance_m_per_N=1 target_m=1
+initial_difference_m=[5e-324, 5e-324, 0.0]
+local_anchor_m=[0.0, 0.0, 0.0]
+x_m=[[0.35355339059327373, 0.35355339059327373, 0.0], [0.0, 0.0, 0.0]]
+history_displacement_m=[[0.35355339059327373, 0.35355339059327373, 0.0], [0.0, 0.0, 0.0]]
+expected_m=[0.35355339059327373, 0.35355339059327373, 0.0]
+radius_m=0.49999999999999994
+independent_force_N=[0.3535533905932738, 0.3535533905932738, 0.0]
+independent_stationarity_N=[-5.551115123125783e-17, -5.551115123125783e-17, 0.0]
+position_radius_force_errors=[0.0, 5.551115123125783e-17, 7.850462293418876e-17]
+ok
+test tests::positive_target_stitch_n32_matches_independent_coupled_radial_energy ... positive_then_zero_N=32 mass_kg=0.01 h_s=0.1 compliance_m_per_N=2
+predictor_m=[0.0, 1.0, 0.0]
+x_m=[[0.30590169943749435, 0.6118033988749896, 0.0], [0.0, 0.0, 0.0], [1.0, 0.0, 0.0]]
+expected_m=[0.30590169943749473, 0.6118033988749895, 0.0]
+initial_radial_direction=[0,1,0]
+final_radial_direction=[0.44721359549995743, 0.8944271909999161, 0.0]
+nodal_history_m=[[0.30590169943749435, -0.3881966011250104, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+current_history_force_N=[0.3059016994374943, -0.38819660112501037, 0.0]
+independent_elastic_force_N=[[-0.041147450843757816, -0.08229490168751576, -0.0], [0.3470491502812528, -0.3059016994374948, -0.0]]
+applied_action_N=[0.3059016994374943, -0.3881966011250103, 0.0]
+action_error_N=[8.121767085755589e-17, 2.2887833992611187e-16]
+last_stage_update_m=[0.0, 0.0, 0.0]
+stationarity_N=[-7.216449660063518e-16, 1.6653345369377348e-16, 0.0]
+position_error_m=0.0000000000000004041272810440265
+objective_J=0.34462075140626314
+expected_objective_J=0.34462075140626314
+ok
+test tests::positive_targets_and_hard_stitches_keep_radial_updates ... ok
+test tests::seam_assembly_is_bounded_monotone_cancellable_and_resettable ... ok
+test tests::shared_bending_cancellation_retains_group_displacement_and_pins ... ok
+test tests::shared_bending_n32_matches_independent_nonlinear_cartesian_energy ... shared_bending_N=32 h_s=0.0020833333333333333 mass_kg=0.00006627272727272728 k_Nm_each=0.024750031175957105
+predictor_m=[0.0, 0.0, 1e-5]
+q_m=[0.0, 0.0, 5.135875087794166e-8]
+expected_m=[0.0, 0.0, 5.1358750877942195e-8]
+independent_force_residual_N=[0.0, 0.0, -1.6534083130403943e-18]
+force_residual_N=1.6534083130403943e-18
+expected_force_residual_N=[0.0, 0.0, -2.710505431213761e-20]
+position_error_m=5.360130369343619e-22
+objective_J=7.595407736494411e-10
+expected_objective_J=7.595407736494409e-10
+ok
+test tests::shared_edge_material_reaches_independent_incremental_energy_equilibrium ... shared-edge positions=[[6.661143843934282e-18, -0.00400055223490584, 0.0], [6.556879730592487e-18, 0.004000552234905835, 0.0]] reference=[[6.729906241347043e-23, -0.004000552234905839, 0.0], [-6.729906241347043e-23, 0.004000552234905839, 0.0]] position_error=7.41826236406616e-18m stationarity=1.0759747422946182e-14N
+ok
+test tests::shared_edge_peak_preserves_exact_transforms_and_distinguishes_near_ties ... ok
+test tests::shared_soft_sewing_cancellation_noop_and_invalid_inputs_are_atomic ... ok
+test tests::shared_soft_sewing_whole_call_cancellation_preserves_every_field ... ok
+test tests::shared_stitch_n32_matches_independent_duplicate_row_cartesian_energy ... duplicate_rows=2 sweeps=32 masses_kg=[4.5714285714285506e-5, 4.571428571428556e-5] h_s=0.0020833333333333333
+compliance_m_per_N_each=0.00000001 target_m=0.01333333333333439
+predictors_m=[[0.0, 0.0, 0.015], [0.0, 0.0, -0.015]]
+x_m=[[0.0, 0.0, 0.006666666886095752], [0.0, 0.0, -0.006666666886095763]]
+expected_m=[[0.0, 0.0, 0.006666666886095756], [0.0, 0.0, -0.006666666886095767]]
+nodal_history_m=[[0.0, 0.0, -0.008333333113904247], [0.0, 0.0, 0.008333333113904237]]
+center_m=[0.0, 0.0, -9.264422860593947e-18]
+expected_center_m=[0.0, 0.0, -9.264422860593947e-18]
+independent_cartesian_residual_N=[[0.0, 0.0, -1.409884292646879e-9], [0.0, 0.0, 1.409884292646879e-9]]
+oracle_cartesian_residual_N=[[0.0, 0.0, -2.210547023206999e-11], [0.0, 0.0, 2.2105442476494375e-11]]
+position_error_m=0.000000000000000004336808689942018
+force_error_N=0.000000001409884292646879
+objective_J=0.0007314285521689169
+expected_objective_J=0.0007314285521689168
+ok
+test tests::shared_zero_target_sewing_matches_independent_weighted_spd_energy ... ok
+test tests::soft_sewing_dual_preserves_nonconstant_kernel_with_history_and_pins ... dual_action_guard pinned=false offset=0 x_m=[[0.125, 0.25, 0.5], [0.1259765625, 0.25048828125, 0.4990234375], [0.126953125, 0.2509765625, 0.498046875], [0.124755859375, 0.2498779296875, 0.500244140625], [0.125732421875, 0.2503662109375, 0.499267578125], [0.126708984375, 0.2508544921875, 0.498291015625]] expected_m=[[0.125, 0.25, 0.5], [0.1259765625, 0.25048828125, 0.4990234375], [0.126953125, 0.2509765625, 0.498046875], [0.124755859375, 0.2498779296875, 0.500244140625], [0.125732421875, 0.2503662109375, 0.499267578125], [0.126708984375, 0.2508544921875, 0.498291015625]] kernel_moment_kg_m=[0.0, 0.0, 0.0] force_N=[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+dual_action_guard pinned=false offset=0.0009765625 x_m=[[0.125, 0.25, 0.5], [0.1259765625, 0.25048828125, 0.4990234375], [0.126953125, 0.2509765625, 0.498046875], [0.126708984375, 0.2489013671875, 0.503173828125], [0.127685546875, 0.2493896484375, 0.502197265625], [0.128662109375, 0.2498779296875, 0.501220703125]] expected_m=[[0.125, 0.25, 0.5], [0.1259765625, 0.25048828125, 0.4990234375], [0.126953125, 0.2509765625, 0.498046875], [0.126708984375, 0.2489013671875, 0.503173828125], [0.127685546875, 0.2493896484375, 0.502197265625], [0.128662109375, 0.2498779296875, 0.501220703125]] kernel_moment_kg_m=[0.0, 0.0, 0.0] force_N=[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+dual_action_guard pinned=true offset=0 x_m=[[0.125, 0.25, 0.5], [0.1259765625, 0.25048828125, 0.4990234375], [0.126953125, 0.2509765625, 0.498046875], [0.124755859375, 0.2498779296875, 0.500244140625], [0.125732421875, 0.2503662109375, 0.499267578125], [0.126708984375, 0.2508544921875, 0.498291015625]] expected_m=[[0.125, 0.25, 0.5], [0.1259765625, 0.25048828125, 0.4990234375], [0.126953125, 0.2509765625, 0.498046875], [0.124755859375, 0.2498779296875, 0.500244140625], [0.125732421875, 0.2503662109375, 0.499267578125], [0.126708984375, 0.2508544921875, 0.498291015625]] kernel_moment_kg_m=[0.0, 0.0, 0.0] force_N=[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+dual_action_guard pinned=true offset=0.0009765625 x_m=[[0.125, 0.25, 0.5], [0.1259765625, 0.25048828125, 0.4990234375], [0.126953125, 0.2509765625, 0.498046875], [0.126708984375, 0.2489013671875, 0.503173828125], [0.127685546875, 0.2493896484375, 0.502197265625], [0.128662109375, 0.2498779296875, 0.501220703125]] expected_m=[[0.125, 0.25, 0.5], [0.1259765625, 0.25048828125, 0.4990234375], [0.126953125, 0.2509765625, 0.498046875], [0.126708984375, 0.2489013671875, 0.503173828125], [0.127685546875, 0.2493896484375, 0.502197265625], [0.128662109375, 0.2498779296875, 0.501220703125]] kernel_moment_kg_m=[0.0, 0.0, 0.0] force_N=[[-0.00390625, 0.001953125, -0.005859375], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+ok
+test tests::swept_layer_crossing_is_resolved_and_ground_friction_resists_slide ... ok
+test tests::transient_ground_contact_releases_at_independent_material_sewing_minimum ... CONTACT_RELEASE_ORACLE {"q_m":[0.0, 0.9999999999999991, 0.0],"position_error_m":8.88178419700125232e-16,"independent_force_N":-9.76996261670137756e-15,"contacts":3,"pinned_ground_conflict_m":4}
+ok
+test tests::weighted_stitch_closes_unequal_samples_and_preserves_momentum ... ok
+
+test result: ok. 102 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 10.71s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

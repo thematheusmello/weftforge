@@ -1,0 +1,49 @@
+{
+  "preview_error": null,
+  "quit_error": null,
+  "constructor_response": "VISUAL-03-create",
+  "normal_quit_helper_completed": true,
+  "quit_response_qualification": {
+    "kind": "EXACT_OBSERVED_APP_QUIT_ERROR_WITH_BOUNDED_CLOSE",
+    "raw_isError": true,
+    "response_key": "native-ui:<CASE_P005>:VISUAL-04-quit.json",
+    "gate_completion_key": "native-ui:<CASE_P005>:VISUAL-04-quit-GATE-COMPLETION.json",
+    "close_completion_key": "native-ui:<CASE_P005>:VISUAL-04-quit-CLOSE-COMPLETION.json",
+    "label": "VISUAL-04-quit",
+    "method": "press_key",
+    "key": "super+q",
+    "caller_start_epoch": 1794992161.233,
+    "caller_deadline_epoch": 1794992221.233,
+    "qualified_epoch": 1794992166.989
+  },
+  "visual_alignment_accepted": false,
+  "calls": [
+    "VISUAL-01-state",
+    "VISUAL-02-frame",
+    "VISUAL-03-create"
+  ],
+  "status": "BOUNDED_CAPTURE_AND_NORMAL_CLOSE_PENDING_VISUAL_REVIEW",
+  "normal_close_accepted": true,
+  "alignment_accepted": false,
+  "final_audit": {
+    "alignment_accepted": false,
+    "all_persisted_files_digest": "0cd6bbbf302ba6dbca23d6f649bd643780e41e9bec4e2a8b37f22c98c5f8a66e",
+    "available_disk_bytes": 10801455104,
+    "caller_must_check_post_terminal_retention_deadline": true,
+    "case": "WF-20261118-NATIVE-CONSTRUCTOR-VISUAL-P005-001",
+    "checked_epoch": 1794992169.628335,
+    "deadline_epoch": 1794992432.609684,
+    "filesystem_writes_after_final_probe": 0,
+    "persisted_file_count": 109,
+    "persisted_manifest_sha256": "cfee6976553d0307cb192e2a695f827c0235688f077a341956c6293a33142a45",
+    "plan_sha256": "d8c0d99f582f4bee8c720ee1db3405d7ccca4a53721cd9b7f8efa787c49d0193",
+    "provisional_candidate": true,
+    "reserved_admission_bytes": 65536,
+    "retained_bytes": 17361184,
+    "status": "PROVISIONAL_FINAL_AUDIT",
+    "within_bounds": true
+  },
+  "final_audit_receipt_key": "preview:<CASE_P005>:OWNER-audit-COMPLETION.json",
+  "authoritative_admission_epoch": 1794992169.635,
+  "persisted_files_remain_provisional": true
+}
