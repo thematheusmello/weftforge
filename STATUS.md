@@ -6,9 +6,12 @@ UI-side atomic commit. Pending authoring remains untouched. Shutdown stops
 waiting for a worker result, and Escape cancels capture through popups/modals
 without consuming their normal event. The original shutdown review finding is
 preserved; its source resolution is reviewed. Pixel, lifecycle, input-retention
-and file-preservation tests are prepared. Formatting, workspace tests, strict
-Clippy, builds, clean metadata verification and actual native capture remain
-pending. See the [bounded capture contract](spec/features/MAT-003-workspace-capture.md).
+and file-preservation tests are included. Actual clean source `59501451` passes
+formatting, **486 workspace tests across 32 summaries, zero failed/ignored**,
+strict all-target Clippy and native/CLI debug builds in **386.000 seconds / 900**.
+Its 102 simulator tests are included within 486. Clean metadata verification and
+actual native capture remain pending. See the [bounded capture contract](spec/features/MAT-003-workspace-capture.md)
+and [source report](parity/reports/WF-20261118-WORKSPACE-PNG-INTEGRATED-SOURCE-001.json).
 
 The fresh G `e30a71a5` all-181-state numerical case completed operationally in
 **379.697 seconds / 420**, with its exact final external tool verdict retained.
@@ -17,7 +20,8 @@ peak **19.770147%** at frame 29/front triangle 6, final **15.721208%** at back
 triangle 654. The peak is lower than D's 20.243551%, while final strain is higher
 than D's 15.349281%. Finite states, supported contact, uncertainty, zero recovery
 and closed-target seams pass. Original physical inputs, settings and thresholds
-are unchanged. Initial open arrangements are not completed-fit failures.
+are unchanged. Initial open arrangements are not completed-fit failures. See the
+[failed complete case](parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-HARBOR-A8-001.json).
 
 An earlier external admission stopped on an incorrect parent PATH before GO
 validation, the numerical clock/controller or any model initialization. Its
@@ -30,11 +34,30 @@ result, and no prior numerical result or clock gap is repaired or regraded.
 Current G optimized native/CLI builds passed in 63.854 seconds; source binding
 passed in 2.563 seconds and its standalone producer build in 23.183 seconds.
 All owned process groups are absent. These executions belong to G and do not
-transfer to the new PNG source. Public runtime evidence/maps and local checks
-must be reconciled before the next atomic checkpoint is pushed. The actual G
-strain failure is under separate saved-state diagnosis; no fitting improvement,
-full feature, native journey, reference parity or delivery gate is accepted.
-GitHub Actions remain disabled. The full end-to-end goal stays active.
+transfer to the PNG source. See the [G tooling report](parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json).
+The new source map preserves all 441 prior occurrence identities: 218 are
+repinned and 223 are exact, with 16 new capture anchors for 457 total. It has
+40 rechecks, 25 existing surfaces and 25 reviewed documents; all prior 24 document
+rows, 949 catalog IDs, 205 packets, 56 historical landmarks and command schemas
+are preserved. The private static map check completed its hash/literal/line and
+preservation checks, then failed an incorrect wording assertion; its tail was
+not run. This is not a map-check pass. Actual clean map/registry/xtask verification
+is required before publication.
+
+Selected runtime/source evidence and generated progress are installed. The first
+generation refused ten feature rows whose current labels had no current H run;
+only those freshness fields were corrected to stale, preserving all outcomes
+and feature scopes. The corrected generation passed separately in 82.533 seconds;
+the [freshness correction](parity/reports/artifacts/workspace-png-integrated-source-20261118/REGISTRY-FRESHNESS-CORRECTION-001.json)
+retains the original failure's identity. Next: commit the coherent metadata
+checkpoint, run clean `cargo xtask verify` and push each checked atomic commit
+promptly. Then test File-to-PNG through the actual native
+app, inspect the original pixels/metadata and unchanged project, and close the
+owned window. Empty-project creation/sewing/simulation/edit/save/reopen/export
+and the remaining reference and release journeys remain open. The actual G
+strain failure is under separate saved-state diagnosis; no broad fitting
+improvement, full feature, native journey, reference parity or delivery gate is
+accepted. GitHub Actions remain disabled. The full end-to-end goal stays active.
 
 The earlier source/runtime checkpoints below retain their original identities.
 

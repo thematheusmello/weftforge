@@ -1,0 +1,55 @@
+{
+  "actual_dynamics_runs": 1,
+  "approved_metadata_sha256": "d86699042712c4b80d6a4b56135d04b049366f72dc1520387f5214e09077e865",
+  "artifacts": {
+    "completed-case.json": "a37a19615ae91c073b727a61c413cadf6e75a4a7564e64fd2a41b0548366e0da",
+    "initialized-state.json": "926593b6a00a210416a305709a28ff0a821c3d4bda1e7a7e64a739a671bb2c77",
+    "rest-metadata.json": "c0e7333933d3539a2e1ce5c195ff8d86d0a9562c5809dbd84a8295d5c0592e2c",
+    "stage-000.obj": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+    "stage-060.obj": "a4ed49fc338581b9c0c1763e93e76262cd8990dc1125c34f0403407567bac0ac",
+    "stage-180.obj": "2655a22d74fd814b0116a3c046f0411f798a0e21b76fa332b0cf58a67bc77964",
+    "steps.jsonl": "d4306aac5bf5ba4c41caf9b85b068b84193e2b4242feb3afe29c331934486d31",
+    "trajectory.jsonl": "cc13cfd6329ca6c152981cb952e9dd7179121e1164f55fc2c560549061ee232d"
+  },
+  "init_only_step_calls": 0,
+  "input_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+  "original_initialized_gate_sha256": "c886280e96ceb8884cc505d64601623ab6f536ed13bffff417e58973a05e1842",
+  "producer_sha256": "a5fc2023cfc44dbbf7b32cfa12de4e4ab1988ad93c495ee1ddf85e76930c2853",
+  "source_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+  "source_manifest_sha256": "80b76c73a7d8cad6391c47549ea3e48e985f0a766ccba767795e6e17bd01c786",
+  "stage": {
+    "argv": [
+      "<WORKTREE>/target/release/harbor-coupled-producer",
+      "run",
+      "inputs/base.weftforge",
+      "runs/base",
+      "expected/approved-metadata.json"
+    ],
+    "end_monotonic_seconds": 1121354.175856541,
+    "exit_code": 0,
+    "peak_rss_bytes": 11468800,
+    "pid": 47322,
+    "process_group": 47322,
+    "rss_observation": {
+      "consecutive_failure_limit": 3,
+      "failure_events": [],
+      "failures": 0,
+      "max_consecutive_failures": 0,
+      "max_snapshot_gap_seconds": 0.47988991695456207,
+      "omitted_failure_events": 0,
+      "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+      "snapshot_timeout_max_seconds": 1.0,
+      "successful_snapshots": 6394,
+      "timeouts": 0
+    },
+    "sampled_peak_rss_bytes": 11468800,
+    "stop_reason": null,
+    "terminal_phase_checks": {
+      "deadline": 1121439.877983833,
+      "output_bytes": 18200781,
+      "output_cap_bytes": 268435456,
+      "reserve_bytes": 131072
+    }
+  },
+  "two_fresh_initializations": true
+}

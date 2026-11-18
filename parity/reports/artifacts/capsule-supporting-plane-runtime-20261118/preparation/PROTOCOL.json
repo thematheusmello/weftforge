@@ -1,0 +1,174 @@
+{
+  "actual_dynamics_runs": 1,
+  "actual_run_initializations": 1,
+  "analysis_path": "runs/base/analysis.json",
+  "argv": {
+    "analysis": [
+      "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+      "-B",
+      "<NUMERICAL_PACKET>/worker.py",
+      "analyze",
+      "--deadline",
+      "<ONE_ABSOLUTE_DEADLINE>"
+    ],
+    "controller": [
+      "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+      "-B",
+      "<NUMERICAL_PACKET>/controller.py",
+      "--go",
+      "ROOT-GO.json",
+      "--go-sha256",
+      "<EXACT_NEW_ROOT_GO_SHA256>"
+    ],
+    "finalization": [
+      "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+      "-B",
+      "<NUMERICAL_PACKET>/worker.py",
+      "finalize",
+      "--deadline",
+      "<ONE_ABSOLUTE_DEADLINE>"
+    ],
+    "init_only": [
+      "<WORKTREE>/target/release/harbor-coupled-producer",
+      "prepare",
+      "inputs/base.weftforge",
+      "preflight-base"
+    ],
+    "original_metadata_gate": [
+      "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+      "-B",
+      "<NUMERICAL_PACKET>/worker.py",
+      "metadata",
+      "--deadline",
+      "<ONE_ABSOLUTE_DEADLINE>"
+    ],
+    "producer": [
+      "<WORKTREE>/target/release/harbor-coupled-producer",
+      "run",
+      "inputs/base.weftforge",
+      "runs/base",
+      "expected/approved-metadata.json"
+    ]
+  },
+  "both_initializations_charged_to_one_case_clock": true,
+  "build_binding_sha256": "a053504aa90327367fdf1264bbf4ec0710ee6b928c84770025b52078923d80d3",
+  "caps": {
+    "numerical_output_bytes": 268435456,
+    "peak_rss_bytes_each_numerical_child": 268435456,
+    "whole_case_seconds": 420.0
+  },
+  "case": "base",
+  "clock": "Controller starts before input copying and both initializations; every numerical phase, analysis inner work/serialization and final guards/receipt persistence is supervised under one absolute deadline. Final positive witness is controller terminal stdout+exit after its pending receipt is fsynced/hashed and an external post-persistence clock/volume check. Late negative failure appendices cannot create a successful grade.",
+  "cwd": "<NUMERICAL_PACKET>",
+  "directory_volume_policy": {
+    "consumer_math_unchanged_worker_counter_callback_only": true,
+    "deadline_and_hard_symlink_type_errors_preserved": true,
+    "observed_partial_peak_retained": true,
+    "only_FileNotFoundError_retried": true,
+    "persistent_snapshot_failure_negative": true,
+    "resources_sha256": "ba4560b912abaf8e310f87dc33b334fddfc96bc9d41c74a046a46b2d1f815d12",
+    "snapshot_attempts": 3,
+    "source_control_ready_sha256": "befa43a86da09f2f93ca42f1ca0174cdc862d878f86250779b0da9bd49b16b04",
+    "temporary_files_counted": true
+  },
+  "exit_semantics": {
+    "0": "operational completion and independent strict quality pass",
+    "1": "operational failure/refusal; no prefix regrade",
+    "2": "operational completion but independent strict quality failed"
+  },
+  "experiment": "WF-20261118-CAPSULE-SUPPORTING-PLANE-HARBOR-A8-001",
+  "external_clock_owner": "Unchanged retained external launcher and outer420s clock; prospective outer <HISTORY_PRECLOCK_PATH_OUTER001>. No admission or clock exists. Root must immediately retain the exact original exec terminal receipt/stdout outside the case.",
+  "grading": "Original all181 finite/strain/contact/uncertainty, completed-fit seam and exact60/180 target screens, plus a required present integer zero initial-recovery count at REST and all181 states. No old case is regraded.",
+  "init_only_initializations": 1,
+  "init_only_step_calls": 0,
+  "input_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+  "large_analysis_is_fully_counted": true,
+  "no_retry_reset_continuation_or_sweep": true,
+  "numerical_output_directories": [
+    "inputs",
+    "expected",
+    "preflight-base",
+    "runs",
+    "runtime"
+  ],
+  "original_physical_expectation": {
+    "mass_kg": 0.213228,
+    "stitches": 48,
+    "triangles": 1172,
+    "vertices": 654
+  },
+  "original_rest_sha256": "d96697949c686fbf15f19b99b6d7551b35d3449b17157009aceb75649fbaeeb9",
+  "own_candidate_target": "target",
+  "planned_producer_path": null,
+  "pre_step_gate": "A fresh init-only constructor executes zero steps and is compared bit/type-exact to original d966 gold after holes=[], internal_curves=[] and notches=[] on only pieces2/31 plus the already approved authored-color f32 conversion. A separately fresh 180-step producer must compare its canonical round-trip rest metadata with this approved record before its first step. All project/physical/topology/material/mass/UV/stitch fields otherwise remain exact.",
+  "producer_binary": {
+    "path": "target/release/harbor-coupled-producer",
+    "sha256": "a5fc2023cfc44dbbf7b32cfa12de4e4ab1988ad93c495ee1ddf85e76930c2853",
+    "size_bytes": 1509312
+  },
+  "python": {
+    "binary_path": "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+    "binary_sha256": "dae804f93cd396de84720747c66218ff0aed9f74385f71dd9b3e62c49ce5b2ce",
+    "bytecode_disabled": true,
+    "implementation": "cpython",
+    "optimize": 0,
+    "platform": "Darwin",
+    "rss_units": "bytes",
+    "sum_probe": 1.0000000000000002,
+    "version": [
+      3,
+      13,
+      0
+    ]
+  },
+  "receipt_reserve_bytes": 131072,
+  "rss_observation_policy": {
+    "child_or_phase_retries": 0,
+    "max_consecutive_failures": 3,
+    "negative_stop_reason": "rss_observation_unavailable",
+    "same_child_wait4_repoll_after_failure": true,
+    "sample_gap_receipt": "rss_observation.max_snapshot_gap_seconds; failure events bounded16",
+    "scope": "Best-effort snapshots, including observation gaps; no continuous20ms RSS claim. Exact wait4 RSS is direct-child only.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "timeout_capped_to_remaining_phase_deadline": true
+  },
+  "same_checkout_existing_target_allowed": true,
+  "saved_state_wording_qualification": "Independent evaluator code and inherited saved-state labels remain exact. Worker explicitly records that these 181 snapshots came from the new separately fresh candidate producer after the original-rest init-only gate.",
+  "scope": "New headless numerical case only. No equilibrium/calibration/CCD/edge-edge/moving-avatar/native/full-garment/reference acceptance; all old cases and replay failures remain untouched.",
+  "screens": {
+    "assembly_target_exact_zero_frames": [
+      60,
+      180
+    ],
+    "axis_strain_strict_below": 0.15,
+    "capsule_uncertain_pairs": 0,
+    "finite_all181_states": true,
+    "initial_contact_recovery_projections_exact_zero_at_rest_and_all181": true,
+    "seam_gap_strict_below_m_after_zero_target": 0.005,
+    "supported_contact_strict_below_m": 0.002
+  },
+  "settings": {
+    "assembly_gravity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "assembly_steps": 60,
+    "drape_gravity": [
+      0.0,
+      -9.81,
+      0.0
+    ],
+    "drape_steps": 120,
+    "dt": 0.016666666666666666,
+    "iterations": 32,
+    "seam_closure_speed_m_per_s": 1.0,
+    "substeps": 8
+  },
+  "source_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+  "source_pending": false,
+  "source_prerequisites": "Actual c766480 workspace/fmt/Clippy/native+CLI debug-build execution, exact full91 roster/hashes with complete compiler inputs at later clean metadata head G, current clean G cargo xtask verify, current independent/root review and fresh optimized native/CLI/producer builds. F test execution is never attributed to G.",
+  "status": "prepared_not_authorized",
+  "termination": "Exact direct-child wait4 plus best-effort process-group RSS snapshots with explicit gaps; ps timeout never means child termination. Re-poll same child after observation failure, retry observation only; stop negatively after three consecutive failures. Process-group SIGKILL and reap on caps/error/completion; failed outputs retained; no phase/child retry or continuation.",
+  "validation_only_check_mode": "Synthetic preparation only; not an actual Harbor command or authorized dynamics attempt."
+}

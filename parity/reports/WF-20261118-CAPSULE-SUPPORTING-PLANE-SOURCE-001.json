@@ -32,7 +32,7 @@
   "roadmap_accepted": false,
   "new_garment_execution": false,
   "all_delivery_gates_passed": false,
-  "freshness": "current",
+  "freshness": "stale",
   "source_hashes": {
     ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
     "Cargo.lock": "eb8a60650b473c79dda2e58a56f68b1abe9ca9a68c15115c9c8754c561732f3a",
@@ -455,5 +455,6 @@
     "No N4/Torso calibration, full garment, native workflow, complete feature, reference, physics, gate or roadmap acceptance follows from these source checks.",
     "All old source, native and garment failures preserve their original outcomes and execution identities."
   ],
-  "metadata_scope": "ROOT reviewed and installed selected evidence; Git tracking and a clean registry/map/xtask verification are required before publication. Actual source and runtime executions retain their own identities; no delivery acceptance transfers."
+  "metadata_scope": "ROOT reviewed and installed selected evidence; Git tracking and a clean registry/map/xtask verification are required before publication. Actual source and runtime executions retain their own identities; no delivery acceptance transfers.",
+  "freshness_reason": "Full F/G source scope is stale after the H workspace-PNG overlay changed Cargo.lock, GUI and core persistence/export bytes and added capture.rs. Actual F480 checks retain F attribution and their original outcome; current H486 checks are separate. No native or garment acceptance transfers."
 }

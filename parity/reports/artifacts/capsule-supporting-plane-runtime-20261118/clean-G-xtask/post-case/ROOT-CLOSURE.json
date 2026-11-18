@@ -1,0 +1,56 @@
+{
+  "accepted": true,
+  "head": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+  "observed_utc": "2026-11-18T10:00:35.041241+00:00",
+  "original_session": 9395,
+  "original_tool_terminal_exit": 0,
+  "clock": {
+    "accepted": true,
+    "actual_seconds_through_persisted_external_terminal": 306.715780292172,
+    "available_bytes": 11737051136,
+    "case_cap_seconds": 360,
+    "controller_exit_code": 0,
+    "external_terminal_sha256": "52cac10cf9553db262669b632dd2e41ee5302e0b555b03def0a533601ebb87de",
+    "launcher_timeout": false,
+    "qualification": "Clock sampled after external terminal and controller stdio fsync. This witness preserves that completed-case observation and is not a new command or timing regrade.",
+    "retained_bytes_at_terminal": 306845,
+    "retained_cap_bytes": 8388608
+  },
+  "plan_sha256": "2d5d2e0b382dc06a9b8fa3604f862c38b1f137018ca41add327edc88f74d625c",
+  "result_sha256": "a5528cbf73ba5ef8a9c451cd73c3e441b2c33080a9503bb38910227bc694b26d",
+  "terminal_sha256": "240bec2ab18372f8aee8619029cb189d458e7c6b4e6d3d7ad423ca4915532ab8",
+  "external_terminal_sha256": "52cac10cf9553db262669b632dd2e41ee5302e0b555b03def0a533601ebb87de",
+  "post_terminal_clock_sha256": "4c386becc0c238d62879662b73861d9e854e7ce29cd4474666bbcb8c35ccd6b4",
+  "source91_and478_configs_exact": true,
+  "HEAD_index_tracked_clean": true,
+  "all_owned_ids_absent": [
+    57545,
+    57667,
+    57862
+  ],
+  "same_original_worktree_immutable_binaries": {
+    "weftforge": {
+      "bytes": 51930752,
+      "identity_captured_after_xtask": true,
+      "mode": 493,
+      "path": "<WORKTREE>/target/debug/weftforge",
+      "sha256": "82079833060acff3be80466d1d4ddd62a22d067051dc04595355e7b9a0c85fdf",
+      "standalone_help_executed_here": false,
+      "immutable_path": "<WORKTREE>/.local/capsule-constructor-verify-binaries-20261118/weftforge-82079833060acff3be80466d1d4ddd62a22d067051dc04595355e7b9a0c85fdf",
+      "not_Cargo_input": true,
+      "same_original_worktree": true
+    },
+    "weftforge-cli": {
+      "bytes": 9690128,
+      "identity_captured_after_xtask": true,
+      "mode": 493,
+      "path": "<WORKTREE>/target/debug/weftforge-cli",
+      "sha256": "02ae3984f73764cd73580f1867f05bb86d3aa516db91b2d10641e3d73c67d119",
+      "standalone_help_executed_here": true,
+      "immutable_path": "<WORKTREE>/.local/capsule-constructor-verify-binaries-20261118/weftforge-cli-02ae3984f73764cd73580f1867f05bb86d3aa516db91b2d10641e3d73c67d119",
+      "not_Cargo_input": true,
+      "same_original_worktree": true
+    }
+  },
+  "qualification": "Separate post-case preservation; actual F480 remains F, actual G xtask remains G. No native workflow, garment, reference, full feature or gate acceptance."
+}

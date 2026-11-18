@@ -1,0 +1,63 @@
+{
+  "accepted": true,
+  "head": "59501451cd36f3ec51aba3560090090c94881427",
+  "original_session": 57121,
+  "original_tool_terminal_exit": 0,
+  "clock": {
+    "accepted": true,
+    "actual_seconds_through_persisted_external_terminal": 385.99961775005795,
+    "available_bytes": 11481206784,
+    "case_cap_seconds": 900,
+    "controller_exit_code": 0,
+    "external_terminal_sha256": "a72bbb5ae9a9750cd582d91e904631db53bcdf89f0945178a877e4f234b5c2fb",
+    "launcher_timeout": false,
+    "qualification": "Clock sampled after external terminal and controller stdio fsync. This witness preserves that completed-case observation and is not a new command or timing regrade.",
+    "retained_bytes_at_terminal": 251099,
+    "retained_cap_bytes": 8388608
+  },
+  "test_summary": {
+    "failed": 0,
+    "ignored": 0,
+    "passed": 486,
+    "summaries": 32
+  },
+  "source_inputs_count": 93,
+  "source93_config23_controller3_exact": true,
+  "HEAD_index_tracked_clean": true,
+  "all_owned_ids_absent": [
+    47631,
+    47752,
+    47928,
+    47958,
+    62491,
+    62950
+  ],
+  "plan_sha256": "b04ea90baac720225d79a4c7f408e8dcfea6454daeaef2ab345a75184f12b8ef",
+  "result_sha256": "159783b20398efed47bf8736b2a05fd86995410e81878e2eefe3865a8313065e",
+  "terminal_sha256": "05b5735ae3ce06be659682bafbd24847b7561953dce21889c38606afa8a2a9fe",
+  "external_terminal_sha256": "a72bbb5ae9a9750cd582d91e904631db53bcdf89f0945178a877e4f234b5c2fb",
+  "post_terminal_clock_sha256": "ab95e78b16096a8cac110e906eab43dd42377a4bbf5293f12c27634a99ce69e3",
+  "same_original_worktree_immutable_binaries": {
+    "weftforge": {
+      "built_not_launched": true,
+      "bytes": 52385808,
+      "mode": 493,
+      "path": "<CARGO_TARGET>/debug/weftforge",
+      "sha256": "360c3d3d509a379b4833ad5795b363fbbd153c7605c6af7e953d639bbae6fb54",
+      "immutable_path": "<H_DEBUG_BINARIES>/weftforge-360c3d3d509a379b4833ad5795b363fbbd153c7605c6af7e953d639bbae6fb54",
+      "same_original_worktree": true,
+      "not_Cargo_input": true
+    },
+    "weftforge-cli": {
+      "built_not_launched": true,
+      "bytes": 9672128,
+      "mode": 493,
+      "path": "<CARGO_TARGET>/debug/weftforge-cli",
+      "sha256": "dc1b33a6bd33efe2442fcb2b27c6b24a335ed05f8eeeecb4e6aff3b43a8a4865",
+      "immutable_path": "<H_DEBUG_BINARIES>/weftforge-cli-dc1b33a6bd33efe2442fcb2b27c6b24a335ed05f8eeeecb4e6aff3b43a8a4865",
+      "same_original_worktree": true,
+      "not_Cargo_input": true
+    }
+  },
+  "qualification": "Separate post-case preservation; actual clean H fullsource checks only. No actual PNG/backend/native/garment/reference/fullfeature acceptance; current metadata/xtask remains required before publication."
+}

@@ -1,0 +1,35 @@
+{
+  "argv": [
+    "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+    "-B",
+    "<NUMERICAL_PACKET>/worker.py",
+    "finalize",
+    "--deadline",
+    "1121439.877983833"
+  ],
+  "end_monotonic_seconds": 1121397.420538541,
+  "exit_code": 0,
+  "peak_rss_bytes": 35323904,
+  "pid": 80422,
+  "process_group": 80422,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.06312224990688264,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort process-group snapshots with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 46,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 35323904,
+  "stop_reason": null,
+  "terminal_phase_checks": {
+    "deadline": 1121439.877983833,
+    "output_bytes": 19263637,
+    "output_cap_bytes": 268435456,
+    "reserve_bytes": 131072
+  }
+}

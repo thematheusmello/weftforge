@@ -1,0 +1,472 @@
+{
+  "commit": "59501451cd36f3ec51aba3560090090c94881427",
+  "source_count": 93,
+  "source_inputs": {
+    ".cargo/config.toml": {
+      "sha256": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+      "bytes": 34,
+      "mode": 420
+    },
+    "Cargo.lock": {
+      "sha256": "70661ff2dbb345e8aa0e2c326f8d76408ecdc107e84e7d812899af311c3b92d4",
+      "bytes": 107031,
+      "mode": 420
+    },
+    "Cargo.toml": {
+      "sha256": "032b32e80547618a72d39e42c0204611ff37908b8a6bf28615b3e592f79fa499",
+      "bytes": 735,
+      "mode": 420
+    },
+    "THIRD_PARTY.md": {
+      "sha256": "86d65f258938c55ed36d3a621222ef5124e348f5519d01eab8f61db540a4876e",
+      "bytes": 2910,
+      "mode": 420
+    },
+    "apps/weftforge-cli/Cargo.toml": {
+      "sha256": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+      "bytes": 347,
+      "mode": 420
+    },
+    "apps/weftforge-cli/src/main.rs": {
+      "sha256": "08a30dcdea5b7c6e225f3eee809c8afe61088a93717c55332108d1f633c8d0e3",
+      "bytes": 32831,
+      "mode": 420
+    },
+    "apps/weftforge-cli/src/mcp.rs": {
+      "sha256": "0ce9cf83e5d8933152aa002d788333b18eb3b52091beb269243503c530b4352e",
+      "bytes": 32622,
+      "mode": 420
+    },
+    "apps/weftforge-cli/tests/curves.rs": {
+      "sha256": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+      "bytes": 5513,
+      "mode": 420
+    },
+    "apps/weftforge-cli/tests/dxf_import.rs": {
+      "sha256": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d",
+      "bytes": 5338,
+      "mode": 420
+    },
+    "apps/weftforge-cli/tests/ellipse.rs": {
+      "sha256": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b",
+      "bytes": 4339,
+      "mode": 420
+    },
+    "apps/weftforge-cli/tests/grain.rs": {
+      "sha256": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+      "bytes": 3098,
+      "mode": 420
+    },
+    "apps/weftforge-cli/tests/holes.rs": {
+      "sha256": "c7e0656dcb756db3ced588e52c08c969a997b99661f85bbb8d5079a27421ad77",
+      "bytes": 5651,
+      "mode": 420
+    },
+    "apps/weftforge-cli/tests/mcp_stdio.rs": {
+      "sha256": "285bcd7090fa301542b7d4a6c63e51010e9e6f58721f400c34868b2298ac43b5",
+      "bytes": 128410,
+      "mode": 420
+    },
+    "apps/weftforge-cli/tests/svg_import.rs": {
+      "sha256": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af",
+      "bytes": 5336,
+      "mode": 420
+    },
+    "apps/weftforge/Cargo.toml": {
+      "sha256": "6c7a79c94f71e940bcb4bfcdf2a8cac6f0753bcffa13bf624c7a756e4b853100",
+      "bytes": 381,
+      "mode": 420
+    },
+    "apps/weftforge/assets/fonts/Inter-Regular.ttf": {
+      "sha256": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82",
+      "bytes": 411640,
+      "mode": 420
+    },
+    "apps/weftforge/assets/fonts/Inter-SemiBold.ttf": {
+      "sha256": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3",
+      "bytes": 419744,
+      "mode": 420
+    },
+    "apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf": {
+      "sha256": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1",
+      "bytes": 270224,
+      "mode": 420
+    },
+    "apps/weftforge/assets/fonts/OFL-Inter.txt": {
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "bytes": 4380,
+      "mode": 420
+    },
+    "apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt": {
+      "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "bytes": 4399,
+      "mode": 420
+    },
+    "apps/weftforge/assets/fonts/SOURCES.json": {
+      "sha256": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c",
+      "bytes": 1445,
+      "mode": 420
+    },
+    "apps/weftforge/src/capture.rs": {
+      "sha256": "10c9347d5f50d11f992217d4c54f6a9a2f447bb6beeb9b0c78d424e8da6db884",
+      "bytes": 36788,
+      "mode": 420
+    },
+    "apps/weftforge/src/main.rs": {
+      "sha256": "661b35a4204198fc11bbe10fcf3b19180247c4a0829d579eea290f589b0bfdb8",
+      "bytes": 1031431,
+      "mode": 420
+    },
+    "crates/weftforge-core/Cargo.toml": {
+      "sha256": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+      "bytes": 341,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/document.rs": {
+      "sha256": "7f57bd9a51850158754318ab181561653b64eb96c53823a35ed369f0e133f3df",
+      "bytes": 96064,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/geometry.rs": {
+      "sha256": "3738282136928c459eaf524036c61e20d4c8b3cf2e04cd46ac812faf4f823c41",
+      "bytes": 71927,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/lib.rs": {
+      "sha256": "e86bf9bffa8a40eb1f57bf989ce554a69ee028d9caed9877a4d3a702900b6831",
+      "bytes": 1333,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/offset.rs": {
+      "sha256": "4507ab301afa9de95f97b9426b807046aa91817ddb0e7059344033aeb3745572",
+      "bytes": 89821,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/persistence.rs": {
+      "sha256": "d7f79c33193e6a5a03dc2faadd84e8d2d0959e8607b3f60e586b9f79a992ff80",
+      "bytes": 35608,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/persistence/dxf.rs": {
+      "sha256": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338",
+      "bytes": 7133,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/persistence/dxf_import.rs": {
+      "sha256": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+      "bytes": 18713,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/persistence/svg.rs": {
+      "sha256": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7",
+      "bytes": 18436,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/sewing.rs": {
+      "sha256": "dc7cb6cab0a62c313698c155728409f8940319bb49ed51c5c2fbc88c88f21146",
+      "bytes": 33824,
+      "mode": 420
+    },
+    "crates/weftforge-core/src/simulation.rs": {
+      "sha256": "24e12aaf323f34abe745dc9c42c9823acbd6e2a1832d6827a5a6397112525707",
+      "bytes": 10468,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/cut_piece.rs": {
+      "sha256": "0a51167339fddebdc302a2dfc3ba9264b584cb57fe04cd2b47b62ec80a275826",
+      "bytes": 62833,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/dxf.rs": {
+      "sha256": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+      "bytes": 16900,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/dxf_import.rs": {
+      "sha256": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b",
+      "bytes": 14935,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/ellipse.rs": {
+      "sha256": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78",
+      "bytes": 12167,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge": {
+      "sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+      "bytes": 8107,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/fixtures/original-cut-l.weftforge": {
+      "sha256": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d",
+      "bytes": 3622,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge": {
+      "sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+      "bytes": 3211,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf": {
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "bytes": 4289,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/fixtures/original-editable-patterns.svg": {
+      "sha256": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+      "bytes": 729,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/fixtures/original-notch-migration-v5.weftforge": {
+      "sha256": "8212107e1cbf74f78cdadf0ac4f0e82da875075c65ca55b06dbbad1c921177dc",
+      "bytes": 1724,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/grain.rs": {
+      "sha256": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+      "bytes": 5015,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/hole_io.rs": {
+      "sha256": "02e55792aaef3b1c1bf8c9e232b23831602d132d684b057bf64c86aa23e43151",
+      "bytes": 10791,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/holes.rs": {
+      "sha256": "eaf21904ea94858632e6d11caddda63c0bf220845788633481c3bd114a355594",
+      "bytes": 36802,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/internal_lines.rs": {
+      "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786",
+      "bytes": 24048,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/joins.rs": {
+      "sha256": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10",
+      "bytes": 19861,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/migration.rs": {
+      "sha256": "8d009ebf1392b3b48f8e8578c78855b9354e6d53f79d87c0e0a69825c74ccf19",
+      "bytes": 18511,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/notches.rs": {
+      "sha256": "1f44e3d8734c8f373805a2ab68a607c31279258f924867ded0ce1c0ef6b82310",
+      "bytes": 20517,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/outline_offset.rs": {
+      "sha256": "62c00a9cf9e6e781928e831def0df4f4060438ce529055a82c303c30511b4c57",
+      "bytes": 35369,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/pattern_transform.rs": {
+      "sha256": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31",
+      "bytes": 24219,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/seam_reversal.rs": {
+      "sha256": "6a6590557bcdfd29d7a6d0b85de939ed542586e0c573180a1b035b8aaa114c5d",
+      "bytes": 6231,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/sewing_groups.rs": {
+      "sha256": "4f05df2a401f0e44aed2f728ca99186266019ea06bec6a0ede911c73e819c74c",
+      "bytes": 57392,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/shirt.rs": {
+      "sha256": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+      "bytes": 2949,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/svg_import.rs": {
+      "sha256": "57d693d8cc307bb711093140f0b1110cddfd2a5b68bce8e338d54a2deddd34ab",
+      "bytes": 18828,
+      "mode": 420
+    },
+    "crates/weftforge-core/tests/workflow.rs": {
+      "sha256": "05eba55a4ee1d2ea5c569dad68f6c4fdeb3e02a9bf09f0778dce00e4bbc3dea7",
+      "bytes": 23929,
+      "mode": 420
+    },
+    "crates/weftforge-sim/Cargo.toml": {
+      "sha256": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+      "bytes": 205,
+      "mode": 420
+    },
+    "crates/weftforge-sim/src/capsule.rs": {
+      "sha256": "ac833840d7568fd2deda6731325d4c33f29e1935df386bfeec7d1f206dd4e322",
+      "bytes": 22986,
+      "mode": 420
+    },
+    "crates/weftforge-sim/src/constraints.rs": {
+      "sha256": "c8a7aa09f1b2ce9fffd8a8e1531b0ffdf36594ac747154974f55a1cb56072ef6",
+      "bytes": 44848,
+      "mode": 420
+    },
+    "crates/weftforge-sim/src/contact.rs": {
+      "sha256": "89d3d5f31dc2d6cb7ce5e207c070bb774aeb90ed36df50b9d0acb34fd2a8cac4",
+      "bytes": 95276,
+      "mode": 420
+    },
+    "crates/weftforge-sim/src/lib.rs": {
+      "sha256": "91f2a76d4eef9c55a0443b2d506c0d190780c5e6332c7157da3a5b873f63411d",
+      "bytes": 38657,
+      "mode": 420
+    },
+    "crates/weftforge-sim/src/math.rs": {
+      "sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+      "bytes": 2391,
+      "mode": 420
+    },
+    "crates/weftforge-sim/src/strain.rs": {
+      "sha256": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+      "bytes": 1858,
+      "mode": 420
+    },
+    "crates/weftforge-sim/src/tests.rs": {
+      "sha256": "5289956bc358ac0c72192e8419fe224660d18719af01a228c78d3c9db9bb838e",
+      "bytes": 139223,
+      "mode": 420
+    },
+    "docs/architecture.md": {
+      "sha256": "a2d315e6e635516c65d9606c9e57919a3dcae8c5c88d5ec89f2667e29464a6dd",
+      "bytes": 13806,
+      "mode": 420
+    },
+    "docs/automation.md": {
+      "sha256": "75322fc3e1d27f04f45cf9c6b572c3d23c34146b4fc08c56339c0402461e5519",
+      "bytes": 33398,
+      "mode": 420
+    },
+    "docs/dependencies.json": {
+      "sha256": "31b44a3989e374510638df611ec403bfdd55bac31095bb9ce2ed66a685c07e2a",
+      "bytes": 98288,
+      "mode": 420
+    },
+    "docs/file-formats.md": {
+      "sha256": "61d807d41093ef5f15bae94f92bbb0cc96fe613a8612959686adb83f7b523ace",
+      "bytes": 25646,
+      "mode": 420
+    },
+    "docs/physics.md": {
+      "sha256": "628953bb7294bc373fca731937b963cd2b2b3615b0c67085d14a5092ffadc6a9",
+      "bytes": 64793,
+      "mode": 420
+    },
+    "rust-toolchain.toml": {
+      "sha256": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+      "bytes": 86,
+      "mode": 420
+    },
+    "spec/features/APP-001-new-empty.md": {
+      "sha256": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+      "bytes": 2422,
+      "mode": 420
+    },
+    "spec/features/MAT-003-workspace-capture.md": {
+      "sha256": "2e2fa45d8c28b339d6528fa8a073c70297e12141b5f0e449138ee20595561690",
+      "bytes": 2804,
+      "mode": 420
+    },
+    "spec/features/PAT-004-native-transform-selection.md": {
+      "sha256": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
+      "bytes": 1051,
+      "mode": 420
+    },
+    "spec/features/PAT-004-piece-rigid-transform.md": {
+      "sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+      "bytes": 22481,
+      "mode": 420
+    },
+    "spec/features/PAT-006-authored-notches.md": {
+      "sha256": "568587bd7a5720432e9d031f81f14ca372412ca1d079999bf0906f9e12ea0da0",
+      "bytes": 7211,
+      "mode": 420
+    },
+    "spec/features/PAT-006-internal-segments.md": {
+      "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+      "bytes": 43508,
+      "mode": 420
+    },
+    "spec/features/PAT-006-straight-cut.md": {
+      "sha256": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c",
+      "bytes": 17836,
+      "mode": 420
+    },
+    "spec/features/PAT-006-straight-hole.md": {
+      "sha256": "634028923f25811aa364d85ce13947db242812d6523635c13ce5a715277b1d2f",
+      "bytes": 24548,
+      "mode": 420
+    },
+    "spec/features/PAT-009-material-outline-offset.md": {
+      "sha256": "604d9cc5d12da398a90bd819b78eb7b9999a48a2f96c32e900780d4457b6dbc6",
+      "bytes": 16002,
+      "mode": 420
+    },
+    "spec/features/SEW-001-cut-and-sew.md": {
+      "sha256": "9420f9a88ea184868aba5543f0d356181fcd8373dadfa4632376cc4a5a5f8941",
+      "bytes": 9082,
+      "mode": 420
+    },
+    "spec/features/SEW-002-physical-length.md": {
+      "sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+      "bytes": 14576,
+      "mode": 420
+    },
+    "spec/features/fixtures/PAT-009-offset-originals.json": {
+      "sha256": "6de6eefff1bc040363f1f2de335f5c4f70dc526dacd5224ba22e1c33e1820bec",
+      "bytes": 31080,
+      "mode": 420
+    },
+    "spec/features/fixtures/PAT-009-offset-reviewed-additions.json": {
+      "sha256": "fc4b133cadada09a676266cea90c736a35342767552cb54a573460eea9f41991",
+      "bytes": 10015,
+      "mode": 420
+    },
+    "vendor/earcutr/Cargo.toml": {
+      "sha256": "906d72d033764b39570416ef92906a90d4c49e85b9c35ab0138cf7a0aafe9c76",
+      "bytes": 273,
+      "mode": 420
+    },
+    "vendor/earcutr/LICENSE": {
+      "sha256": "ac0e50e523dd0ea36f077c373833f1ae6c7ad130ea5ac6ff23bfa8d3f402145f",
+      "bytes": 771,
+      "mode": 420
+    },
+    "vendor/earcutr/UPSTREAM.md": {
+      "sha256": "e686aeaa8758581d2c0659b1ed5e87dce4fe6608a8605c29ba90459495818944",
+      "bytes": 2118,
+      "mode": 420
+    },
+    "vendor/earcutr/src/legacy.rs": {
+      "sha256": "fd5120ba533484556e7a6d1a460d28084ac1f4c90f3334c71ff6f67976b933c8",
+      "bytes": 4057,
+      "mode": 420
+    },
+    "vendor/earcutr/src/lib.rs": {
+      "sha256": "29992d5bd3d0717df6b4db9e60a3d280c276b67c3ddb87fa5de9173c1b3578d3",
+      "bytes": 49959,
+      "mode": 420
+    },
+    "vendor/earcutr/src/tests.rs": {
+      "sha256": "2e54cb4cceb9c073ae911a5909d2d9b430c6bf4ce53000332254233b21a544e9",
+      "bytes": 34672,
+      "mode": 420
+    },
+    "xtask/Cargo.toml": {
+      "sha256": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+      "bytes": 241,
+      "mode": 420
+    },
+    "xtask/src/main.rs": {
+      "sha256": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709",
+      "bytes": 7562,
+      "mode": 420
+    }
+  },
+  "qualification": "All 93 recorded source hashes, byte sizes and modes match immutable Git H. No mutable checkout source/HEAD/index or executable identity was substituted."
+}

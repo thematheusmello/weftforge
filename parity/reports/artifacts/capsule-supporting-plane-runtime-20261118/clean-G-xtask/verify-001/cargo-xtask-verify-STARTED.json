@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "<RUSTUP_HOME>/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+    "xtask",
+    "verify"
+  ],
+  "disk_observation": {
+    "last_available_bytes": 11633168384,
+    "max_snapshot_gap_seconds": 0.0,
+    "minimum_available_bytes": 11633168384,
+    "path": "<WORKTREE>",
+    "samples": 1,
+    "stop_below_available_bytes": 8000000000
+  },
+  "exit_code": null,
+  "peak_rss_bytes": null,
+  "pid": 57862,
+  "process_group": 57862,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.0,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 0,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 0,
+  "stop_reason": null
+}

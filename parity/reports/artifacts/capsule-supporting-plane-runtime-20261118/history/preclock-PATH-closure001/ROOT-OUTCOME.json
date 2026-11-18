@@ -1,0 +1,24 @@
+{
+  "status": "FAILED_PRECLOCK_PARENT_PATH_ADMISSION",
+  "original_tool_terminal_exit": 1,
+  "original_tool_total_wall_seconds": 0.817948292,
+  "primary_error": "Parent PATH changed after compiler binding",
+  "secondary_error": "External launcher tried to parse empty outer.stdout after rejected outer preflight.",
+  "OUTER_clock_started": false,
+  "numerical_controller_started": false,
+  "model_initializations": 0,
+  "simulation_steps": 0,
+  "independent_grades": 0,
+  "numerical_output_directories_present": [],
+  "all_owned_ids_absent": [
+    10133,
+    10254
+  ],
+  "HEAD_index_source_clean": true,
+  "raw_original_tool_receipt_sha256": "aaea022c4582fb7c037c22ac11d099547008a6e0f6ac0f0024763c6073ce5bdd",
+  "frozen_outer_sha256": "acf3b6d8f687b654612aeac32ce37def5c430b948eb1e6f73023f5c4774b7b67",
+  "source_packet_freeze_sha256": "0e076ffa7c111986c891dc7ddb21ab02ab69f9488fddd3402339c7e9a0d6cd93",
+  "old_attempt_retried_regraded_or_changed": false,
+  "product_simulation_defect_established": false,
+  "qualification": "No numerical clock/result can be inferred. Preserve original failure; recovery requires separate admission and exact pinned parent environment."
+}

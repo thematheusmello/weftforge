@@ -1,0 +1,7 @@
+{
+  "chunk_id": "9d1b26",
+  "wall_time_seconds": 0.817948292,
+  "exit_code": 1,
+  "original_token_count": 297,
+  "output": "Traceback (most recent call last):\n  File \"<HISTORY_PRECLOCK_PATH_OUTER001>/launch_and_record.py\", line 50, in <module>\n    if __name__==\"__main__\":raise SystemExit(main())\n                                             ~~~~^^\n  File \"<HISTORY_PRECLOCK_PATH_OUTER001>/launch_and_record.py\", line 35, in main\n    terminal=json.loads((OUT/\"outer.stdout\").read_text())\n  File \"<PYENV_HOME>/versions/3.13.0/lib/python3.13/json/__init__.py\", line 346, in loads\n    return _default_decoder.decode(s)\n           ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"<PYENV_HOME>/versions/3.13.0/lib/python3.13/json/decoder.py\", line 344, in decode\n    obj, end = self.raw_decode(s, idx=_w(s, 0).end())\n               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<PYENV_HOME>/versions/3.13.0/lib/python3.13/json/decoder.py\", line 362, in raw_decode\n    raise JSONDecodeError(\"Expecting value\", s, err.value) from None\njson.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)\n"
+}

@@ -1,0 +1,44 @@
+{
+  "argv": [
+    "<PYENV_HOME>/versions/3.13.0/bin/python3.13",
+    "-B",
+    "<WORKTREE_CONTAINER>/capsule-current-bind-prep-20261118/install_source.py",
+    "--root-approval",
+    "<SOURCE_BIND>/ROOT-APPROVAL.json",
+    "--root-approval-sha256",
+    "2299c1c4ce07d1534e45439838afc85498a5b11471388ae0b7ca5d7a433eaa69"
+  ],
+  "disk_observation": {
+    "last_available_bytes": 11822665728,
+    "max_snapshot_gap_seconds": 0.061723000137135386,
+    "minimum_available_bytes": 11822665728,
+    "path": "<WORKTREE>",
+    "samples": 39,
+    "stop_below_available_bytes": 8000000000
+  },
+  "end_monotonic_seconds": 1118977.577206666,
+  "exit_code": 0,
+  "peak_rss_bytes": 76726272,
+  "pid": 93849,
+  "process_group": 93849,
+  "rss_observation": {
+    "consecutive_failure_limit": 3,
+    "failure_events": [],
+    "failures": 0,
+    "max_consecutive_failures": 0,
+    "max_snapshot_gap_seconds": 0.06170454085804522,
+    "omitted_failure_events": 0,
+    "scope": "Best-effort sum of child process-group and supervisor RSS, with gaps; only direct-child wait4 RSS is exact.",
+    "snapshot_timeout_max_seconds": 1.0,
+    "successful_snapshots": 36,
+    "timeouts": 0
+  },
+  "sampled_peak_rss_bytes": 113901568,
+  "stop_reason": null,
+  "terminal_phase_checks": {
+    "deadline": 1119090.514460458,
+    "output_bytes": 944267,
+    "output_cap_bytes": 8388608,
+    "reserve_bytes": 262144
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "accepted": true,
+  "source_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+  "original_session": 93863,
+  "original_tool_terminal_exit": 0,
+  "clock": {
+    "accepted": true,
+    "elapsed_seconds_through_prior_persistence": 23.18316854094155,
+    "cap_seconds": 120,
+    "terminal_sha256": "f5a88adde1df2fe21342c6d596b840a671d65bb791aa633f3513f1843f9ea88e",
+    "counted_bytes": 97086,
+    "available_bytes": 11284631552,
+    "producer": {
+      "path": "target/release/harbor-coupled-producer",
+      "sha256": "a5fc2023cfc44dbbf7b32cfa12de4e4ab1988ad93c495ee1ddf85e76930c2853",
+      "size_bytes": 1509312
+    },
+    "errors": []
+  },
+  "producer_build_receipt_sha256": "9a0cce06abb5d9ec3415b0e3a26d07f9fa2d316ff2fb1485e17c4922e586af40",
+  "result_sha256": "caeeb25d2548468a8d2783f956e1b051f8851ae5c5c16172c27b443b44054f55",
+  "terminal_sha256": "f5a88adde1df2fe21342c6d596b840a671d65bb791aa633f3513f1843f9ea88e",
+  "all_owned_ids_absent": [
+    654,
+    666,
+    682
+  ],
+  "HEAD_index_tracked_clean": true,
+  "same_original_worktree_immutable_producer": {
+    "path": "<WORKTREE>/.local/capsule-supporting-plane-producer-binary-20261118/a5fc2023cfc44dbbf7b32cfa12de4e4ab1988ad93c495ee1ddf85e76930c2853",
+    "sha256": "a5fc2023cfc44dbbf7b32cfa12de4e4ab1988ad93c495ee1ddf85e76930c2853",
+    "bytes": 1509312,
+    "not_Cargo_input": true
+  },
+  "zero_model_initializations_and_steps": true,
+  "qualification": "Separate post-case build closure; no model or numerical acceptance."
+}

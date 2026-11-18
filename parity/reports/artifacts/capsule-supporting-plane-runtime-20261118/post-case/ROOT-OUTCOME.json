@@ -1,0 +1,77 @@
+{
+  "status": "OPERATIONAL_COMPLETE_STRICT_QUALITY_FAILED",
+  "source_commit": "e30a71a5ffbaef9de00e1d4b10a6fa51a28ff621",
+  "experiment": "WF-20261118-CAPSULE-SUPPORTING-PLANE-HARBOR-A8-001",
+  "outer_admission_sequence": 2,
+  "original_session": 76874,
+  "original_tool_terminal_exit": 2,
+  "original_tool_terminal_sha256": "d11ea3cd3da2bfc5d450922e407f3d690e681dc04296340683aac3bdad7a2be1",
+  "authoritative_external_verdict": {
+    "external_operational_accepted": true,
+    "strict_quality_passed": false,
+    "outer_exit_code": 2,
+    "elapsed_after_external_witness_persistence_seconds": 379.69743795786053,
+    "total_counted_bytes": 19299046,
+    "external_witness_sha256": "9c2441663a7ed12390b152e59c19c989dc972d1d43487afaf86902aff6f7d36b"
+  },
+  "analysis_sha256": "ed4a7bc2e0ea67808260cd2790159a38f6593077cf6318b9614753e085f99e9b",
+  "numerical_freeze_sha256": "f971355c4c115c92d504c282c7473fd77f7a4fed657f271d37bb2f3c4c5ed888",
+  "all181_independent_analysis_complete": true,
+  "two_fresh_initializations": true,
+  "init_only_steps": 0,
+  "actual_dynamics_runs": 1,
+  "peak": {
+    "frame": 29,
+    "triangle_index": 6,
+    "piece_id": 2,
+    "axis": "warp",
+    "stiffness_N_per_m": 400.0,
+    "vertices_0based": [
+      42,
+      171,
+      41
+    ],
+    "signed_strain": 0.1977014699862063,
+    "absolute_strain": 0.1977014699862063
+  },
+  "final": {
+    "frame": 180,
+    "triangle_index": 654,
+    "piece_id": 31,
+    "axis": "warp",
+    "stiffness_N_per_m": 400.0,
+    "vertices_0based": [
+      227,
+      101,
+      102
+    ],
+    "signed_strain": 0.15721208406142773,
+    "absolute_strain": 0.15721208406142773
+  },
+  "strain_failed_frames": {
+    "count": 153,
+    "first": 28,
+    "last": 180
+  },
+  "all_finite_supported_contact_uncertainty_zero_repair_screens_passed": true,
+  "closed_target_seams_passed": true,
+  "max_closed_seam_m": 0.0010385296438127154,
+  "max_contact_upper_m": 1.2786742945580798e-05,
+  "initial_open_arrangements_counted_as_completed_fit_failures": false,
+  "all_owned_ids_absent": [
+    46898,
+    47098,
+    47178,
+    47227,
+    47273,
+    47322,
+    74483,
+    80422
+  ],
+  "source91_HEAD_index_exact_clean": true,
+  "all_frozen_packet_and_repository_bindings_exact": true,
+  "old_preclock_admission_unchanged": true,
+  "old_D_unsealed_clock_repaired": false,
+  "full_feature_garment_native_reference_gate_acceptance": false,
+  "qualification": "Post-case preservation, not a new grade, clock extension, replay or retry. Current peak is lower than oldD but final strain is higher; strict garment quality remains failed."
+}
