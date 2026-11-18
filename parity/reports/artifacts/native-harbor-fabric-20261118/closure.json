@@ -1,0 +1,78 @@
+{
+  "case_id": "WF-20261118-HARBOR-NATIVE-FABRIC-001",
+  "confirmed_utc": "2026-11-18T21:18:46.591001Z",
+  "native_source_commit": "e5f043ef4f60a19f93b73e419d5584152de19ca9",
+  "merged_checkout": "678dc97e818d713da9bf357c8df2cdbaab3c6729",
+  "native_binary_sha256": "db9fa06c8d1de4dda0d00e77db4d11f45578bf0cb5f99a60afb92a8b2174cf92",
+  "original_project_sha256": "604107601b530013624a622f318f11c35a5a67a7db37bdff347635370d6c7402",
+  "saved_project_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+  "workspace_png_sha256": "22495011e70f47d903b5cde8ffd70af4aec24224ec6c403d9dec66f06147d0fb",
+  "platform": "macOS Apple Silicon",
+  "native_operations": [
+    {
+      "operation": "Open editable Harbor",
+      "revision": 20,
+      "pieces": 2,
+      "seams": 8,
+      "vertices": 654,
+      "warp_stiffness_n_m": 400
+    },
+    {
+      "operation": "Commit warp stiffness in the Front Fabric controls",
+      "revision": 21,
+      "warp_stiffness_n_m": 520
+    },
+    {
+      "operation": "Undo",
+      "revision": 22,
+      "warp_stiffness_n_m": 400
+    },
+    {
+      "operation": "Redo",
+      "revision": 23,
+      "warp_stiffness_n_m": 520
+    },
+    {
+      "operation": "Save as and workspace PNG",
+      "revision": 23,
+      "saved_project_confirmed": true,
+      "workspace_png": [
+        1640,
+        1000
+      ]
+    },
+    {
+      "operation": "Quit then reopen in a fresh empty studio process",
+      "revision": 23,
+      "back_panel_warp_stiffness_n_m": 520,
+      "shared_pieces": 2
+    },
+    {
+      "operation": "Manual Step",
+      "revision": 23,
+      "displayed_simulation_seconds": 0.017
+    },
+    {
+      "operation": "Reset the rest arrangement and quit",
+      "revision": 23,
+      "warp_stiffness_n_m": 520
+    }
+  ],
+  "independent_readback": {
+    "editable_revision_and_warp_stiffness_are_only_project_differences": true,
+    "original_input_exact": true,
+    "piece_count": 2,
+    "seam_count": 8,
+    "png_dimensions": [
+      1640,
+      1000
+    ],
+    "png_format": "RGBA8 sRGB",
+    "png_chunk_crcs_valid": true
+  },
+  "window_cleanup": {
+    "first_process_absent_before_restart": true,
+    "second_process_absent_after_quit": true
+  },
+  "scope": "One shared fabric stiffness edit and one manual simulation step on the reopened document."
+}
