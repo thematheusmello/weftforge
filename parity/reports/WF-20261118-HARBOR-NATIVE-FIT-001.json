@@ -18,7 +18,7 @@
   ],
   "complete_contract": false,
   "reference_executed": false,
-  "freshness": "current",
+  "freshness": "stale",
   "source_hashes": {
     ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
     "Cargo.lock": "70661ff2dbb345e8aa0e2c326f8d76408ecdc107e84e7d812899af311c3b92d4",
@@ -149,5 +149,6 @@
   "scenario_basis": "UI-HARBOR-001 native assembly and drape phases",
   "scope": "Observed assembly and drape completion and their endpoint values. Earlier independent whole-trajectory results retain their own tested source and outcome.",
   "strict_strain_limit_percent": 15.0,
-  "result": "Both displayed endpoint strains exceed the limit. Editable input bytes stayed exact and the studio quit normally within 420 s."
+  "result": "Both displayed endpoint strains exceed the limit. Editable input bytes stayed exact and the studio quit normally within 420 s.",
+  "freshness_reason": "The independent soft-stitch solve changed the scoped simulator source. The recorded result belongs to the earlier build."
 }

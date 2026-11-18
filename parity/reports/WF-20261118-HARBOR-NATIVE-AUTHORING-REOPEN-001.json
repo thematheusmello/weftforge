@@ -159,9 +159,10 @@
     "spec/features/fixtures/PAT-009-offset-originals.json",
     "spec/features/fixtures/PAT-009-offset-reviewed-additions.json"
   ],
-  "freshness": "current",
+  "freshness": "stale",
   "native_ui_verified": true,
   "native_capture": "File \u2192 Save workspace PNG",
   "scenario_basis": "Authoring and history steps from UI-HARBOR-001. The SVG, DXF and OBJ rest exports were verified separately.",
-  "quality_verdict": "The complete simulated garment and its fixed strain, seam and contact requirements remain open."
+  "quality_verdict": "The complete simulated garment and its fixed strain, seam and contact requirements remain open.",
+  "freshness_reason": "The independent soft-stitch solve changed the scoped simulator source. The recorded result belongs to the earlier build."
 }

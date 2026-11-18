@@ -1,3 +1,22 @@
+# Independent soft stitches — 18 November 2026
+
+The solver now solves soft stitches analytically wherever their movable nodes
+are independent. Shared rows still use the coupled update, and the sewing
+stage commits both updates and their history together. Source `e5f043ef`
+passed the targeted mixed-topology regression, formatting, 489 workspace tests,
+strict all-target Clippy and the optimized studio and CLI builds.
+
+The optimized CLI completed all 181 quality states on the saved Harbor project
+in 258.064 seconds. The first failed state was 28. The final strain was 15.65%,
+above the 15% limit. Final seam gap was 0.575 mm and supported penetration was
+0.0062 mm. [Source checks and failed fit](parity/reports/WF-20261118-HARBOR-ISOLATED-SEWING-FIT-001.json).
+
+A private six-node case satisfied the frozen planes and friction bounds with an
+active-set solver. Next, verify its normal projection in Rust, then test the
+friction treatment and contact discovery through the existing simulation entry
+point. Full native fit and Gate 1 remain open. GitHub Actions and automated
+Pages deployments stay disabled.
+
 # Native save and cancellation — 18 November 2026
 
 The optimized Apple Silicon studio saved a byte-identical Harbor project while
@@ -6,10 +25,7 @@ discarded the simulation result and retained the rest arrangement at revision
 20. The studio quit normally.
 [Native job-control case](parity/reports/WF-20261118-HARBOR-NATIVE-JOB-CONTROL-001.json).
 
-The native recovery check landed in [PR #67](https://github.com/thematheusmello/weftforge/pull/67).
-The isolated-stitch solver change is in testing against the unchanged Harbor
-case. Native fit still fails the 15% strain limit in the current main build.
-GitHub Actions and automated Pages deployments stay disabled.
+The native job-control case landed in [PR #68](https://github.com/thematheusmello/weftforge/pull/68).
 
 # Native project recovery — 18 November 2026
 

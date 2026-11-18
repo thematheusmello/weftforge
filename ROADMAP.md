@@ -56,6 +56,12 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    strain at both phase endpoints. Moving-triangle nonlinear contact and
    calibration remain open.
    [Native phase endpoints](parity/reports/WF-20261118-HARBOR-NATIVE-FIT-001.json).
+   The independent soft-stitch update completed all 181 CLI fit states in
+   258.064 seconds on the saved native construction. The first failed state
+   was 28. Final strain was 15.65% against the 15% limit. The next contact
+   increment checks the active normal projection and friction on the saved
+   six-node case before testing another full garment.
+   [Independent soft-stitch fit](parity/reports/WF-20261118-HARBOR-ISOLATED-SEWING-FIT-001.json).
 3. Complete the native shirt workflow through simulation, material edits and
    verified simulated-mesh export. Repeat the integrated empty-document journey
    on one current build and compare the recorded reference case.
@@ -70,8 +76,11 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    Keep GitHub Actions disabled throughout development. Re-enable it only after
    the complete project is finished, as the user requested.
 
-Current source `6078c2af` passed formatting, 488 workspace tests across
-32 summaries, strict all-target Clippy and native and CLI builds.
+Current source `e5f043ef` passed formatting, 489 workspace tests across
+32 summaries, strict all-target Clippy and optimized studio and CLI builds.
+[Independent soft-stitch source checks](parity/reports/WF-20261118-HARBOR-ISOLATED-SEWING-FIT-001.json).
+Earlier source `6078c2af` passed formatting, 488 workspace tests, strict
+all-target Clippy and native and CLI builds.
 [Polygon close source checks](parity/reports/WF-20261118-POLYGON-CLOSE-SOURCE-001.json).
 Earlier source `59501451` passed formatting, 486 workspace tests across
 32 summaries with zero failed/ignored, strict all-target Clippy and native/CLI
