@@ -560,12 +560,14 @@ contact toggle or continuous-collision completeness. See
 
 Ordinary contact retains each support's actual nodal displacement p for the current
 substep. At a support visit its anchor is z_i=x_i-p_i for free nodes; pinned
-coordinates stay fixed. Geometry is queried at that anchor. For unit normal n,
-signed allowed gap c(z), coefficients a_i and inverse masses w_i:
+coordinates stay fixed. Ground and particle/triangle geometry is queried at that
+anchor. Capsules use the current-side supporting plane described below. For unit
+normal n, the selected stencil's signed gap c_a at the anchor, coefficients a_i
+and inverse masses w_i:
 
 ```text
 D = sum_i w_i*a_i²
-lambda = max(0, -c(z)/D)
+lambda = max(0, -c_a/D)
 t = tangential_part(sum_i a_i*(z_i-previous_i))
 tau = min(mu*lambda, |t|/D)
 q_i = z_i + w_i*a_i*(lambda*n - tau*t/|t|)
@@ -574,8 +576,9 @@ p_i = q_i-z_i
 
 The tangential term is zero at negligible |t|; an immovable support applies no
 motion and keeps its reported conflict. This replaces the support's old action
-rather than accumulating a positive-only correction. A separated anchor releases
-both normal and friction action; exactly zero actions are removed. The multiplier
+rather than accumulating a positive-only correction. An inactive stencil releases
+both normal and friction action; exactly zero actions are removed. For capsules,
+this means separation from the selected current-side halfspace. The multiplier
 has units kg m, not momentum or force. A force interpretation additionally depends
 on the substep's h² scaling and model. Previously active particle/triangle pairs
 are revisited even when their current bounds leave the hierarchy query. Unusable
@@ -600,7 +603,7 @@ and freezes the recovery eligibility described below. An undetected edge/edge cr
 cannot be interpreted as an intersection-free scene.
 
 Ground is an exact horizontal offset plane: a linear triangle's minimum Y is at
-a vertex. Capsules retain the existing vertex projection and additionally test
+a vertex. Capsules test their vertices and additionally test
 every complete cloth triangle against the closed capsule axis segment. The
 closest-feature search covers edges, axis endpoints projected onto faces, and
 face/axis crossings, including parallel and coplanar axes; a zero-length capsule
@@ -608,6 +611,44 @@ is a sphere. It uses f64 in a scaled local frame. The excluded radius is the
 capsule radius plus the maximum existing incident vertex physical offset on the
 triangle. This conservative material-boundary policy agrees with a uniform
 offset; rendered thickness does not enter contact.
+
+Vertex/capsule and retained material-point/capsule visits choose a unit outward
+normal at the **current** point's closest axis feature. They evaluate that
+normal's supporting halfspace at the retracted anchor; they do not choose a new
+radial projection branch from the anchor. For capsule endpoints A, B and excluded
+radius R (including the existing physical offset), the translated gap is:
+
+```text
+current_point = sum_i a_i*x_i
+anchor_point = sum_i a_i*z_i
+c_a = dot(n, anchor_point-A) - max(0, dot(n, B-A)) - R
+```
+
+The full-axis support value matters even when the current point is exactly on
+an endpoint and a deterministic fallback supplies n. For a movable resolved
+support, the resulting plane excludes the complete convex capsule. Finite
+friction stays in that plane. Point features scale both the axis and offset
+before the projection dot product, preserving tiny nonzero axes without an
+absolute length cutoff. Unusable axis, offset or distance arithmetic returns a
+simulation error before it can be mistaken for separation.
+
+This is a local current-side contact law. A same-side separated anchor releases
+its action. An anchor on the body's opposite side can retain a reaction on the
+current side; this deliberately does not implement a global nearest exterior
+projection. Branch selection, complete continuous collision detection and
+general nonlinear convergence remain open. A single finite friction visit can
+have positive curved-surface clearance with a nonzero reaction. Current-normal
+complementarity and Coulomb balance follow at a converged fixed point, rather
+than from a penetration-only diagnostic or an arbitrary finite iteration count.
+
+The two-mass regression compares the free sewing block with its exact quadratic
+minimum, then compares 32 unchanged sewing/contact passes with an independently
+bracketed constrained-energy minimum on a capsule hemisphere. It checks final
+force balance as well as position, history, feasibility and complementarity.
+Separate vertex and pinned barycentric tests retain the first-visit plane
+friction oracle and check progress toward a known sphere Coulomb fixed point
+after 32 visits. These component checks do not establish garment equilibrium,
+calibration or reference parity.
 
 Ordinary triangle/capsule contact keeps a family of fixed material points beta
 per pair. Each owns three nodal actions and uses a_i=beta_i in the update above,
@@ -646,7 +687,11 @@ Pins and finite iteration budgets can leave explicitly reported penetration.
 Capsule surface contact is static: between-step tunnelling remains possible.
 
 The original torso collider remains a vertex-tested ellipsoid with inflated
-radii and radial projection, an approximation to a constant signed-distance offset. No
+radii and radial projection, an approximation to a constant signed-distance
+offset. Away from principal axes its radial direction is not the ellipsoid's
+surface normal; the associated friction step can re-enter even that approximate
+surface. This separate unresolved limit is not repaired by the capsule law.
+The current core mannequin adapter constructs Ground and Capsules. No
 proprietary avatar is bundled. Arbitrary triangle-mesh avatars and animated or
 moving collider trajectories are not supported by this crate yet. Collider
 contact friction uses the cloth's physical friction coefficient.

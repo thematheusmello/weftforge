@@ -169,12 +169,38 @@ pub(crate) fn closest_cancellable(
 
 pub(crate) fn axis_fraction(p: Vec3, a: Vec3, b: Vec3) -> f64 {
     let axis = sub(b, a);
-    let squared = dot(axis, axis);
-    if squared > 0. {
-        (dot(sub(p, a), axis) / squared).clamp(0., 1.)
-    } else {
-        0.
+    let offset = sub(p, a);
+    if !finite(axis) || !finite(offset) {
+        return f64::NAN;
     }
+    let axis_scale = axis.into_iter().map(f64::abs).fold(0., f64::max);
+    let offset_scale = offset.into_iter().map(f64::abs).fold(0., f64::max);
+    if axis_scale == 0. || offset_scale == 0. {
+        return 0.;
+    }
+    let axis = axis.map(|value| value / axis_scale);
+    let projection = dot(offset.map(|value| value / offset_scale), axis) / dot(axis, axis);
+    if projection <= 0. {
+        0.
+    } else if projection >= axis_scale / offset_scale {
+        1.
+    } else {
+        projection * offset_scale / axis_scale
+    }
+}
+
+pub(crate) fn point_feature(p: Vec3, a: Vec3, b: Vec3) -> (Closest, Option<Vec3>) {
+    let fraction = axis_fraction(p, a, b);
+    let delta = sub(sub(p, a), mul(sub(b, a), fraction));
+    (
+        Closest {
+            bary: [1., 0., 0.],
+            axis_fraction: fraction,
+            distance: norm(delta),
+            uncertain: false,
+        },
+        normalized(delta),
+    )
 }
 
 fn normalized(v: Vec3) -> Option<Vec3> {
@@ -267,6 +293,49 @@ mod tests {
 
     fn face() -> [Vec3; 3] {
         [[-2., -2., 0.], [2., -2., 0.], [0., 2., 0.]]
+    }
+
+    #[test]
+    fn point_features_preserve_tiny_nonzero_axes_and_current_normals() {
+        for exponent in [-600, -60, -40, 0, 500] {
+            let scale = 2_f64.powi(exponent);
+            let (a, b) = ([0.; 3], [2. * scale, 0., 0.]);
+            for (point, fraction, distance, direction) in [
+                ([scale, 0.25 * scale, 0.], 0.5, 0.25, [0., 1., 0.]),
+                (
+                    [scale, scale * 2_f64.powi(-50), 0.],
+                    0.5,
+                    2_f64.powi(-50),
+                    [0., 1., 0.],
+                ),
+                ([-scale, 0., 0.], 0., 1., [-1., 0., 0.]),
+                ([3. * scale, 0., 0.], 1., 1., [1., 0., 0.]),
+            ] {
+                let (feature, normal) = point_feature(point, a, b);
+                assert!((feature.axis_fraction - fraction).abs() <= 1e-14);
+                assert!((feature.distance / scale - distance).abs() <= 1e-14);
+                assert_eq!(normal, Some(direction));
+            }
+            let (feature, normal) = point_feature([0.6 * scale, 0.8 * scale, 0.], a, a);
+            assert!((feature.distance / scale - 1.).abs() <= 1e-14);
+            assert!(norm(sub(normal.unwrap(), [0.6, 0.8, 0.])) <= 1e-14);
+            let (feature, normal) = point_feature(a, a, b);
+            assert_eq!(feature.distance, 0.);
+            assert_eq!(normal, None);
+        }
+    }
+
+    #[test]
+    fn point_features_scale_both_projection_vectors_before_the_dot_product() {
+        let a = [0.; 3];
+        let b = [1e308; 3];
+        let point = b.map(|value| 0.75 * value);
+        let (feature, normal) = point_feature(point, a, b);
+        assert_eq!(feature.axis_fraction, 0.75);
+        assert_eq!(feature.distance, 0.);
+        assert_eq!(normal, None);
+        assert_eq!(axis_fraction([-1e308; 3], a, b), 0.);
+        assert_eq!(axis_fraction([1.5e308; 3], a, b), 1.);
     }
 
     #[test]

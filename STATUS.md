@@ -1,3 +1,26 @@
+# Capsule contact integration — 18 November 2026
+
+The reviewed capsule-contact correction is integrated. Current vertices and
+retained barycentric supports use exact capsule supporting planes, with their
+current closest-axis normals and independently retained nodal actions. This
+addresses the demonstrated stiff-sewing split instability. Scaled point queries
+preserve nonzero axes, and unusable geometry fails before it can be mistaken
+for separation. Physical parameters, closure speed, outer iterations and garment
+quality criteria are unchanged. Ground, moving-triangle and radial Torso limits
+remain separate; the capsule method follows a local current-side branch and
+provides no general global-projection or continuous-collision guarantee.
+
+Current-source formatting, workspace tests, strict Clippy and native/CLI builds
+are next. Their results must be bound to this integration, followed by updated
+source maps/evidence and clean verification, optimized builds and a fresh
+unchanged all-181-state numerical case. The prior full case below remains failed;
+no garment improvement is claimed from component regressions. The native
+constructor layout has a separately retained bounded observation; the complete
+empty-project authoring/simulation/save/reopen/export journey remains open.
+GitHub Actions stay disabled; no delivery gate or full feature is accepted.
+
+The runtime checkpoint below retains its original source and results.
+
 # Current runtime checkpoint — 18 November 2026
 
 The current full 181-state garment case on `a70c0df0` is **failed**.
