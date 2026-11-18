@@ -554,6 +554,77 @@ fn soft_stitch_impulse(stitch: Stitch, target: f64, x: &[Vec3], h: f64) -> Vec3 
 }
 
 #[test]
+fn independent_positive_stitches_minimize_about_their_retracted_anchors() {
+    let stitches = [(0, 1), (2, 3), (4, 5), (4, 5)].map(|(a, b)| Stitch {
+        a: WeightedPoint::vertex(a),
+        b: WeightedPoint::vertex(b),
+        compliance: 1.,
+    });
+    let mut x = [
+        [0., 1., 0.],
+        [0.; 3],
+        [5., 0., 0.],
+        [4., 0., 0.],
+        [9., 0., 0.],
+        [7., 0., 0.],
+    ];
+    let mut correction = [[0.; 3]; 6];
+    correction[0] = [-1., 1., 0.];
+    correction[1] = [1., 0., 0.];
+    correction[4] = [0.5, 0., 0.];
+    correction[5] = [-0.5, 0., 0.];
+    let anchor: [Vec3; 6] = std::array::from_fn(|i| sub(x[i], correction[i]));
+    let (initial_x, initial_correction) = (x, correction);
+    let targets = [1., 0.4, 1., 1.5];
+    let polls = std::cell::Cell::new(0);
+    constraints::solve_sewing(
+        &stitches,
+        &targets,
+        &mut x,
+        &[1.; 6],
+        1.,
+        &mut correction,
+        &|| {
+            polls.set(polls.get() + 1);
+            false
+        },
+    )
+    .unwrap();
+
+    // The independent denominators are three. The shared pair has both spring energies.
+    let expected = [
+        [2. / 3., 0., 0.],
+        [-2. / 3., 0., 0.],
+        [4.8, 0., 0.],
+        [4.2, 0., 0.],
+        [8.6, 0., 0.],
+        [7.4, 0., 0.],
+    ];
+    for i in 0..6 {
+        assert!(length(sub(x[i], expected[i])) < 1e-12, "{x:?}");
+        assert!(length(sub(sub(x[i], correction[i]), anchor[i])) < 1e-12);
+    }
+
+    let before_commit = polls.get();
+    polls.set(0);
+    (x, correction) = (initial_x, initial_correction);
+    let result = constraints::solve_sewing(
+        &stitches,
+        &targets,
+        &mut x,
+        &[1.; 6],
+        1.,
+        &mut correction,
+        &|| {
+            polls.set(polls.get() + 1);
+            polls.get() == before_commit
+        },
+    );
+    assert!(matches!(result, Err(SimulationError::Cancelled)));
+    assert_eq!((x, correction), (initial_x, initial_correction));
+}
+
+#[test]
 fn closed_elastic_stitch_n32_matches_independent_quadratic_and_individual_actions() {
     let anchors = [[1., 0., 0.], [0., 1., 0.]];
     let mut x = [[0.; 3], anchors[0], anchors[1]];

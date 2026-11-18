@@ -415,9 +415,10 @@ Delta_x_i = sqrt(w_i)*u_i
 `p_s/sqrt(w)` and each scaled spring residual have units m*sqrt(kg), so this
 objective is h² times physical energy.
 
-Exactly one soft spring uses the analytic proximal path in production. This is
-a rank-one weighted difference, regardless of endpoint IDs or the number of
-hard rows. Eliminating nodal inertia gives the unchanged local objective
+A soft spring uses the analytic proximal path when its movable nodes belong
+to that spring alone. Pins may be shared. This gives a rank-one weighted
+difference even in a garment with multiple soft springs. Eliminating nodal
+inertia gives the local objective
 `|D-d_z|²/(2*W)+(|D|-target)²/(2*alpha)`, with
 `d_z=weighted_a(z)-weighted_b(z)`, `W=sum(w_i*beta_i²)` and `alpha=c/h²`.
 For nonzero d_z its minimizing impulse is
@@ -427,10 +428,11 @@ At zero anchor the current direction is retained if defined, otherwise+X.
 A private candidate starts at z and scatters `w_i*beta_i*H`; pins stay bit-exact.
 Finite trials must not increase the same complete inertial/spring energy.
 The actual nodal displacement is retained, not a reconstructed per-row multiplier.
-This preserves the isolated analytic guards without normal-solver rounding.
-Both duplicate inputs remain separate energies and therefore take the shared path.
+Duplicate inputs remain separate energies and take the shared path. A garment
+can contain both kinds of rows. Each block retracts the sewing history only
+on its own movable nodes, and both results are committed together.
 
-For two or more soft springs, the block solves the equivalent row-space
+For shared soft springs, the block solves the equivalent row-space
 Woodbury system. Here J is the physical scaled residual Jacobian,
 W is the inverse nodal mass (zero at pins), and p is the retained nodal history:
 
@@ -458,7 +460,7 @@ every duplicate physical row remains present. The true primal gradient
 The unchanged full radial/vector objective controls Armijo1e-4 with at most16
 fractions. Only finite accepted trials copy x/p, retaining actual rounded delta.
 A zero/non-descent direction or exhausted search leaves the stage unchanged.
-The singleton, material and bending numerical paths are unchanged.
+The material and bending stages use their own existing histories.
 
 This replaces finite diagonal-primal PCG for soft sewing: that approximation
 can move outside the weighted row-action space before convergence. In a frozen
@@ -481,23 +483,25 @@ search or non-descent direction leaves the stage unchanged. All-pinned or exact
 zero-RHS stages preserve positions and displacement history; pin reactions remain
 available from the physical spring energy without storing a fictitious pin history.
 
-The sewing slot now applies the coupled soft block, then the original hard
-projections in input order. This makes mixed hard/soft ordering explicit; it
-changes their finite-iteration interaction. All-hard order/arithmetic, hard scalar
-history remain unchanged; the subsequent contact treatment is described below.
+The sewing slot applies the soft updates, then the hard projections in input
+order with their scalar history. This order determines how mixed hard and soft
+rows interact across a finite number of iterations. Contact follows sewing.
 No targets, closure speed, stiffness, time step, substeps or outer
 iteration limits change. No fully coupled sewing/contact equilibrium is claimed.
 
 For N vertices, S input stitches and R=3*S_zero+S_positive<=3*S soft rows,
-workspace is O(N+R), with one retained Vec3 history per node. One sweep performs
-at most32 matrix products and17 complete objective scans. Bounded internal
-checkpoint count is at most71*N+166*R+19*S+48 (at most71*N+517*S+48).
+workspace is O(N+R), with one retained Vec3 history per node. The independent
+update uses linear passes over nodes and springs. One sweep of the shared
+solver performs at most32 matrix products and17 complete objective scans.
+Its internal checkpoint count is at most71*N+166*R+19*S+48
+(at most71*N+517*S+48).
 The original cancellation callback is polled at entry, every64th checkpoint,
 and immediately before each successful return or x/p_s copy: at most63 skipped
-checkpoints and at most2+floor(bound/64) calls. Allocation/copying remain
-uninterruptible, so this is no wall-time latency guarantee. There is no Cancelled
-return after the accepted copy. Histories/workspaces remain local to each
-whole-Cloth transaction; cancellation/errors preserve all accepted persistent fields.
+checkpoints and at most2+floor(bound/64) calls within the shared solve. The
+caller also checks cancellation before publishing the combined result. Masks,
+allocation and copying are linear work outside the checkpoint count.
+Histories and workspaces belong to each whole-Cloth transaction. Cancellation
+and errors preserve all accepted persistent fields.
 
 The earlier local vector-history algorithm repaired rotating-direction local
 stationarity, and its .01kg, h=.1s positive+zero two-spring component keeps its
