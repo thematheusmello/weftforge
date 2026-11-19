@@ -1,3 +1,19 @@
+# Debian native keyboard check — 19 November 2026
+
+The Debian 13.7 ARM64 package showed **Commands Ctrl+K** in its top bar.
+Ctrl+K opened the command palette and Escape restored the same workspace image
+byte for byte. The editable shirt retained its exact bytes. The studio, Xvfb
+and the owned guest shut down normally. The packaged CLI reproduced the
+validated OBJ, SVG and GLB exports.
+
+The first launch exited while connecting to X11. The same packaged binaries
+passed with the guest login environment, `Xvfb -noreset` and an explicit Xlib
+readiness check. The report keeps the first error and the successful retry.
+[Workspace](parity/reports/artifacts/linux-shortcut-20261119/workspace.png) · [Command palette](parity/reports/artifacts/linux-shortcut-20261119/palette-open.png) · [Native report](parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json).
+
+Native Windows keyboard checks, broader Linux platform coverage and signing
+remain open. GitHub Actions and automated Pages deployments stay disabled.
+
 # Command search shortcuts — 19 November 2026
 
 The top bar and Edit menu show ⌘K on macOS and Ctrl+K on Linux and Windows.
@@ -9,7 +25,7 @@ validated Harbor GLBs byte for byte, before and after one manual step.
 
 Parallel workspace capture tests use separate temporary directories after a
 clock-based collision. All 499 workspace tests and 100 repeated capture tests
-passed. Native Linux and Windows keyboard checks remain open.
+passed.
 
 # Debian ARM64 packaging — 19 November 2026
 

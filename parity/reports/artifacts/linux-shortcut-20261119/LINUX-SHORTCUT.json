@@ -1,0 +1,117 @@
+{
+  "application_source_commit": "6935598176fe7d8a42c7a44fdaa05421e7ebee9a",
+  "application_source_tree": "0de31ae3e55089e8d4afba18739bcc3616c845d4",
+  "captures": {
+    "palette-dismissed.png": {
+      "sha256": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3",
+      "size_px": [
+        1640,
+        1000
+      ],
+      "window_ppm_sha256": "f65f7410d5ac17942fb77b0655a2e0e5ca614e4fe19e01234172bb72d0012208"
+    },
+    "palette-open.png": {
+      "sha256": "84d47b117248218bbe94d8c85abfc7d42b4068868fcd5625c5e2f5523c53d9d2",
+      "size_px": [
+        1640,
+        1000
+      ],
+      "window_ppm_sha256": "9180c72683654bcc49dc2b2e1d3768bf9ec74fe6d38d8ac9a059afb964794ad8"
+    },
+    "workspace.png": {
+      "sha256": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3",
+      "size_px": [
+        1640,
+        1000
+      ],
+      "window_ppm_sha256": "f65f7410d5ac17942fb77b0655a2e0e5ca614e4fe19e01234172bb72d0012208"
+    }
+  },
+  "cli_outputs_sha256": {
+    "inspect.json": "e2865b75a738d2f0d35fa06237742938420df7ef0e977fe1b66fcf245c6c2461",
+    "original-shirt.weftforge": "4dd6b23e0e3d7cbefcb92fd6a1d53bb7d36f8e45f1ee4a3887fab826c051981b",
+    "patterns.svg": "680487ebdb939454ad3c82ca9390916af78d871f7b19e0066f5740f7c52df472",
+    "rest.glb": "4c8295c7a5d5ef53f2f89716b56faccd60d2331bef3a75d0bd660f0a648e9771",
+    "rest.obj": "ead7b6b43b2aac01bfdefaeef9adc44ceb42a2892941d80076aad25d2662e1a7"
+  },
+  "display": "Xvfb X11 with Mesa llvmpipe software Vulkan",
+  "first_startup_failure": {
+    "cause_observed": "Winit XOpenDisplay returned null",
+    "studio_stderr_sha256": "db9fe2b77c490af351eff65a44ccde98f96a75b39555147d9b2c72f7043a4bef"
+  },
+  "fixture_unchanged_after_normal_close": true,
+  "independent_visual_review_confirmed": true,
+  "keyboard_transport": "XTEST synthetic X11 server input",
+  "keystrokes": [
+    [
+      "Control_L",
+      "down"
+    ],
+    [
+      "k",
+      "down"
+    ],
+    [
+      "k",
+      "up"
+    ],
+    [
+      "Control_L",
+      "up"
+    ],
+    [
+      "Escape",
+      "down"
+    ],
+    [
+      "Escape",
+      "up"
+    ]
+  ],
+  "kind": "implementation_only",
+  "launched_studio_sha256": "692dfd00892364e439a360769b15f56a027ad3fb6718d5ac26a9792d0b060a6b",
+  "package_reused_from_prior_exact_source_build": true,
+  "package_sha256": {
+    "LICENSE-APACHE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "LICENSE-MIT": "5a79a5be6e18069ea095bcb13f724f90cee6a70b1fd6b5e2b1f505f050c25b0d",
+    "README.md": "54e48e761a35889075e2f0b90d15fbb3781faf7e03dc99ef00d0bb692655c1a4",
+    "THIRD_PARTY.md": "86d65f258938c55ed36d3a621222ef5124e348f5519d01eab8f61db540a4876e",
+    "licenses/OFL-Inter.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+    "licenses/OFL-JetBrainsMono.txt": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+    "weftforge": "692dfd00892364e439a360769b15f56a027ad3fb6718d5ac26a9792d0b060a6b",
+    "weftforge-cli": "5063aa9b05b899fd02423cdb8cc64dd7e2d5f3f9468e65158c91d194f0f81677"
+  },
+  "packaging_command": [
+    "cargo",
+    "xtask",
+    "package"
+  ],
+  "platform": [
+    "Debian 13.7",
+    "Linux 6.12.117+deb13-cloud-arm64 aarch64"
+  ],
+  "post_case_cleanup": {
+    "guest": "stopped",
+    "guest_process_ids_sha256": "b80dcc0a409015cedf9e7ccdf327db3a7b53812a349ff35318c3dfbbb15f60a2",
+    "owned_hostagent_absent": true,
+    "runtime_cleanup_sha256": "8116804a32c75ecc5821a871714355206016356293c1c3d55da2d6792bc9eed9",
+    "studio_exit": 0,
+    "vm_cleanup_sha256": "7ef32d49c8b3bcb7a6ecbfed12652ce4f989c8cd6f5a4b5012a3d18741e6dd98",
+    "xvfb": "stopped"
+  },
+  "prior_evidence_files_rechecked": 166,
+  "recovery_changes": [
+    "runuser guest login identity",
+    "Xvfb -noreset",
+    "Xlib readiness after Vulkan"
+  ],
+  "rust_toolchain": "1.94.1",
+  "source_delta_sha256": "2eef511bfece2807446c18305a164b8fd9e7e0f9fde6435d3ef8cb79cee99348",
+  "studio_close": "WM_DELETE_WINDOW, exit 0",
+  "tracked_source_blobs_verified": 19923,
+  "visually_reviewed": {
+    "palette-dismissed.png": "Command palette closed after Escape",
+    "palette-open.png": "Command search and Search commands visible after Ctrl+K",
+    "workspace.png": "Commands Ctrl+K visible in the toolbar and command palette closed"
+  }
+}

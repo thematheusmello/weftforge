@@ -59,6 +59,12 @@ and wrote rest GLB, OBJ and SVG. The source-bound report links the native frame,
 unchanged editable file, independent export checks and package replay.
 [Debian ARM64 package evidence](../parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json).
 
+The current Debian ARM64 keyboard check used XTEST input to open Command search
+with Ctrl+K and close it with Escape. All three native frames and the original
+startup failure are recorded. The successful run used `Xvfb -noreset`, a normal
+guest login environment and an Xlib readiness check after the Vulkan probe.
+[Current Debian keyboard check](../parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json).
+
 ## Bounded straight-cut authoring and restart
 
 Runtime `19b1e88245dc627cfec8164f4924b335fe44853d` passed formatting,

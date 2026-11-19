@@ -1,0 +1,11 @@
+{
+  "id": "UI-LINUX-X11-SHORTCUT-001",
+  "status": "implementation_only",
+  "initial_conditions": "Packaged Debian ARM64 studio on the original shirt, focused X11 window with Vulkan software rendering.",
+  "actions": [
+    "Observe the rendered toolbar.",
+    "Send Ctrl+K and Escape to the focused X11 window using XTEST. Capture each visible state.",
+    "Close the native window normally and compare the editable file digest."
+  ],
+  "expected_outcomes": "The toolbar shows Ctrl+K. The palette appears after Ctrl+K and disappears after Escape. The normal close exits successfully and preserves the editable file."
+}
