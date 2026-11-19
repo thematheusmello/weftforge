@@ -50615,7 +50615,8 @@
       "reference_observation_status": "unobserved",
       "evidence_ids": [
         "spec/features/FILE-004-glb-static-export.md",
-        "parity/reports/WF-20261119-NATIVE-GLB-STATIC-001.json"
+        "parity/reports/WF-20261119-NATIVE-GLB-STATIC-001.json",
+        "parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json"
       ],
       "scenarios": [
         {
@@ -50667,6 +50668,26 @@
             "parity/reports/artifacts/static-glb-20261119/NATIVE-VERIFICATION.json": "1c5868464cb6f47b1aacd56b6a8f75badb59ae26756625c5e58a7f49d72587af"
           },
           "path": "parity/reports/WF-20261119-NATIVE-GLB-STATIC-001.json"
+        },
+        {
+          "id": "WF-20261119-LINUX-ARM64-PACKAGE-001",
+          "commit": "9b1ba284c2df614021aa457b899636ba52d29033",
+          "timestamp": "2026-11-19T01:42:49Z",
+          "platform": "Debian GNU/Linux 13.7 ARM64, X11/Xvfb, Vulkan llvmpipe",
+          "artifact_hashes": {
+            "parity/reports/artifacts/linux-arm64-package-20261119/CROSS-PLATFORM-EXPORT.json": "ea7e632cd0ce3a50d68cb671bda9b792534e7095053ec5b233f450e2df644764",
+            "parity/reports/artifacts/linux-arm64-package-20261119/Khronos-validation.json": "43e6404e3a5e683d0482a65015d01c674e7372a204bbe82dd910815f71721a2a",
+            "parity/reports/artifacts/linux-arm64-package-20261119/LINUX-SMOKE.json": "890b53cb9b06e1f502490a33a6ac65512aa5ce746b6aabd82571694e249de0a4",
+            "parity/reports/artifacts/linux-arm64-package-20261119/PACKAGE-REPLAY.json": "66e559e664ea622abf9ba72a179cfccf7d0d31e8fafd5c3061d22f7618c1f4b3",
+            "parity/reports/artifacts/linux-arm64-package-20261119/SVG-VERIFICATION.json": "0fd2b8fcbbe2670263ba9cb4e62733fa3d0f37a5cf9d5ccf665f33109faeb541",
+            "parity/reports/artifacts/linux-arm64-package-20261119/glb-obj-comparison.json": "aa7502472b24fb6f92acc659824837926ba1415f8b05c210c6c4ea4f4eb9cf0e",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/original-shirt.weftforge": "4dd6b23e0e3d7cbefcb92fd6a1d53bb7d36f8e45f1ee4a3887fab826c051981b",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/patterns.svg": "680487ebdb939454ad3c82ca9390916af78d871f7b19e0066f5740f7c52df472",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/rest.glb": "4c8295c7a5d5ef53f2f89716b56faccd60d2331bef3a75d0bd660f0a648e9771",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/rest.obj": "ead7b6b43b2aac01bfdefaeef9adc44ceb42a2892941d80076aad25d2662e1a7",
+            "parity/reports/artifacts/linux-arm64-package-20261119/workspace.png": "e81b8868ac1d01c90da96af122712a1c8b44ffa6876949881339cf318088a13b"
+          },
+          "path": "parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json"
         }
       ],
       "known_gaps": [
@@ -61384,8 +61405,20 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
-      "scenarios": [],
+      "evidence_ids": [
+        "parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json"
+      ],
+      "scenarios": [
+        {
+          "id": "APP-LINUX-ARM64-PACKAGE-001",
+          "path": "parity/scenarios/APP-LINUX-ARM64-PACKAGE-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/original-shirt.weftforge": "4dd6b23e0e3d7cbefcb92fd6a1d53bb7d36f8e45f1ee4a3887fab826c051981b"
+          },
+          "initial_conditions": "Debian 13.7 ARM64 with X11 and Vulkan software rendering, an original two-panel shirt and an isolated runtime network namespace.",
+          "expected_outcomes": "Both executables match Cargo; the studio displays the shirt and closes cleanly; the one-step CLI run stays finite; the editable file is preserved and rest GLB matches OBJ geometry with zero validator errors or warnings."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -61407,15 +61440,37 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261119-LINUX-ARM64-PACKAGE-001",
+          "commit": "9b1ba284c2df614021aa457b899636ba52d29033",
+          "timestamp": "2026-11-19T01:42:49Z",
+          "platform": "Debian GNU/Linux 13.7 ARM64, X11/Xvfb, Vulkan llvmpipe",
+          "artifact_hashes": {
+            "parity/reports/artifacts/linux-arm64-package-20261119/CROSS-PLATFORM-EXPORT.json": "ea7e632cd0ce3a50d68cb671bda9b792534e7095053ec5b233f450e2df644764",
+            "parity/reports/artifacts/linux-arm64-package-20261119/Khronos-validation.json": "43e6404e3a5e683d0482a65015d01c674e7372a204bbe82dd910815f71721a2a",
+            "parity/reports/artifacts/linux-arm64-package-20261119/LINUX-SMOKE.json": "890b53cb9b06e1f502490a33a6ac65512aa5ce746b6aabd82571694e249de0a4",
+            "parity/reports/artifacts/linux-arm64-package-20261119/PACKAGE-REPLAY.json": "66e559e664ea622abf9ba72a179cfccf7d0d31e8fafd5c3061d22f7618c1f4b3",
+            "parity/reports/artifacts/linux-arm64-package-20261119/SVG-VERIFICATION.json": "0fd2b8fcbbe2670263ba9cb4e62733fa3d0f37a5cf9d5ccf665f33109faeb541",
+            "parity/reports/artifacts/linux-arm64-package-20261119/glb-obj-comparison.json": "aa7502472b24fb6f92acc659824837926ba1415f8b05c210c6c4ea4f4eb9cf0e",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/original-shirt.weftforge": "4dd6b23e0e3d7cbefcb92fd6a1d53bb7d36f8e45f1ee4a3887fab826c051981b",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/patterns.svg": "680487ebdb939454ad3c82ca9390916af78d871f7b19e0066f5740f7c52df472",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/rest.glb": "4c8295c7a5d5ef53f2f89716b56faccd60d2331bef3a75d0bd660f0a648e9771",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/rest.obj": "ead7b6b43b2aac01bfdefaeef9adc44ceb42a2892941d80076aad25d2662e1a7",
+            "parity/reports/artifacts/linux-arm64-package-20261119/workspace.png": "e81b8868ac1d01c90da96af122712a1c8b44ffa6876949881339cf318088a13b"
+          },
+          "path": "parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json"
+        }
+      ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "The unsigned ARM64 package ran on Debian 13.7 under X11/Vulkan software rendering. Windows, Linux x86-64, Wayland, GPU hardware, platform accessibility, signing and redistributable release acceptance remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "APP-003",

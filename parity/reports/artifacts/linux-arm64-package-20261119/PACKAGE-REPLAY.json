@@ -1,0 +1,81 @@
+{
+  "application_source_commit": "9b1ba284c2df614021aa457b899636ba52d29033",
+  "application_source_tree": "0cc2f0a0442ad4321e774ec10ab06ad82ca5b1e4",
+  "build_network_mode": "Cargo offline",
+  "created_new_archive": false,
+  "disk_at_start": {
+    "guest_available_df": "6.7G",
+    "host_available_bytes": 10550046720
+  },
+  "executables_match_previous_package_by_cmp": true,
+  "guest_driver": "Lima v2.3.0 VZ, Virtualization.framework on Apple Silicon",
+  "guest_source_binding": {
+    "changed_source_paths": [
+      "STATUS.md",
+      "scripts/check_exports.py",
+      "scripts/test_exports.py",
+      "xtask/src/main.rs"
+    ],
+    "checkout_and_cargo_target_device_inode_unchanged": true,
+    "previous_source_commit": "c1fd58f5a3ade3f3e3186429d42e26e53e91b7fc",
+    "production_packaging_source_before_test_module_byte_identical": true,
+    "public_delta_sha256": "839233f789a2601fe58045deb25607616b06ac888fa4a944920142624148dab1",
+    "public_source_manifest_sha256": "9218e68a7159f532ad45198421df0eaf0138bf83261990c25228724807cf0a5d",
+    "tracked_entries_verified": 19907
+  },
+  "kind": "implementation_only",
+  "native_runtime_case": {
+    "application_source_commit": "c1fd58f5a3ade3f3e3186429d42e26e53e91b7fc",
+    "application_source_tree": "aec241f6a9bdea8b054e6f7131791745d4ea4768",
+    "case_binding_sha256": "890b53cb9b06e1f502490a33a6ac65512aa5ce746b6aabd82571694e249de0a4",
+    "display": "Xvfb X11 with Mesa llvmpipe software Vulkan",
+    "replayed_native_launch": false
+  },
+  "notices_match_previous_package_by_sha256": {
+    "LICENSE-APACHE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "LICENSE-MIT": "5a79a5be6e18069ea095bcb13f724f90cee6a70b1fd6b5e2b1f505f050c25b0d",
+    "README.md": "54e48e761a35889075e2f0b90d15fbb3781faf7e03dc99ef00d0bb692655c1a4",
+    "THIRD_PARTY.md": "86d65f258938c55ed36d3a621222ef5124e348f5519d01eab8f61db540a4876e",
+    "licenses/OFL-Inter.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+    "licenses/OFL-JetBrainsMono.txt": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697"
+  },
+  "package_sha256sums_sha256": "94fd99b19e213ead382d7d8f97858b64eb54a4e4129e683de23573e68d404e5d",
+  "packaged_executables": {
+    "weftforge": {
+      "bytes": 27527104,
+      "format": "ELF64 little endian AArch64",
+      "guest_mode_octal": "775",
+      "highest_referenced_glibc_symbol_version": "GLIBC_2.39",
+      "matches_cargo_release_binary_by_cmp": true,
+      "sha256": "a2a0ec9d8f3c8ce134e8e50f828ce3c0b1ec841629c8741c91b7b563e45d6c9a"
+    },
+    "weftforge-cli": {
+      "bytes": 3300928,
+      "format": "ELF64 little endian AArch64",
+      "guest_mode_octal": "775",
+      "highest_referenced_glibc_symbol_version": "GLIBC_2.35",
+      "matches_cargo_release_binary_by_cmp": true,
+      "sha256": "5063aa9b05b899fd02423cdb8cc64dd7e2d5f3f9468e65158c91d194f0f81677"
+    }
+  },
+  "packaging_command": [
+    "cargo",
+    "xtask",
+    "package"
+  ],
+  "packaging_exit_code": 0,
+  "platform": "Debian GNU/Linux 13.7 aarch64, Linux 6.12.117+deb13-cloud-arm64",
+  "post_case_cleanup": {
+    "guest_instance": "w",
+    "guest_status": "Stopped",
+    "owned_hostagent_absent": true,
+    "owned_hostagent_pid": 87247,
+    "stop_log_sha256": "7c0bdb77b665d1eb6218ed2bd143ffaea4aad9ff04c674e1d3b0c67e17bec24b"
+  },
+  "previous_evidence_files_rechecked_before_and_after": 107,
+  "previous_evidence_inventory_sha256": "30f059ee8a03a284f5d3484268f9e79f013f464dec3101b333792df45c38ff74",
+  "previous_package_rechecked_after_rebuild": true,
+  "recorded_at_utc": "2026-11-19T01:42:49+00:00",
+  "rust_toolchain": "1.94.1",
+  "scope": "Debian ARM64 offline package replay and comparison to the physically exercised Linux package"
+}

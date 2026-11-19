@@ -1,0 +1,12 @@
+{
+  "id": "APP-LINUX-ARM64-PACKAGE-001",
+  "status": "implementation_only",
+  "initial_conditions": "Debian 13.7 ARM64 with X11 and Vulkan software rendering, an original two-panel shirt and an isolated runtime network namespace.",
+  "actions": [
+    "Build and package the studio and CLI with cargo xtask package. Compare the copied executables and notices to their sources.",
+    "Create and inspect the original shirt, run one CPU step and export OBJ, SVG and GLB with the packaged CLI.",
+    "Open and close the packaged studio on the original shirt, retain a workspace frame and check the editable file digest.",
+    "Compare GLB geometry with independently parsed OBJ and validate the GLB with Khronos Validator."
+  ],
+  "expected_outcomes": "Both executables match Cargo; the studio displays the shirt and closes cleanly; the one-step CLI run stays finite; the editable file is preserved and rest GLB matches OBJ geometry with zero validator errors or warnings."
+}

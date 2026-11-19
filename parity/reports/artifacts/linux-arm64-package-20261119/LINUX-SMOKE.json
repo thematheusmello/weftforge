@@ -1,0 +1,136 @@
+{
+  "kind": "implementation_only",
+  "scope": "Native Linux aarch64 package refresh, isolated offline CLI export and X11/Vulkan software launch and close",
+  "application_source_commit": "c1fd58f5a3ade3f3e3186429d42e26e53e91b7fc",
+  "application_source_tree": "aec241f6a9bdea8b054e6f7131791745d4ea4768",
+  "source_hashes": {
+    "Cargo.lock": "70661ff2dbb345e8aa0e2c326f8d76408ecdc107e84e7d812899af311c3b92d4",
+    "xtask/src/main.rs": "af6a791e66f7a76b666d8f11822b915044e52987ae6330d9afdb49d36fd55251",
+    "apps/weftforge/src/main.rs": "62640bdbdd2edef85c3ffc928e32c157b810471e8e2d0441a76c26a05901358e",
+    "apps/weftforge-cli/src/main.rs": "869c1574b87bf55a46a9c1bd555059d6cfb838145d493200f46c908d397c5d87",
+    "crates/weftforge-core/src/persistence/gltf.rs": "0321fd57349c8a6f91fc0a688343fc99495f1772e8c6b30acec133733cfae332",
+    "parity/reports/artifacts/static-glb-20261119/compare_glb.py": "114fb76fda345974b6123d41eb8c5ff795f5fd023e34cbc3d8b5d90bd265fbeb",
+    "scripts/check_exports.py": "18272fdf98572677d63dfdda88d47e6d089e2a6bf51461cb102170dc1557b7a2"
+  },
+  "guest_source_binding": {
+    "previous_source_commit": "f7279e1d9af5647e77de527a7da7c61385320ef9",
+    "current_tracked_entries_verified": 19907,
+    "changed_source_entries": 23,
+    "public_delta_sha256": "8696653ca7b5b151dae7647f38c1f691e6f95afe5915cf9f72186b50ebc46db7",
+    "public_source_manifest_sha256": "5d2598c7096bd2dc78973e99a47ad091197d93e43f846f4be97b6ed3587853a9",
+    "checkout_and_cargo_target_device_inode_unchanged": true,
+    "previous_package_notices_and_executables_rechecked_after_rebuild": true
+  },
+  "platform": "Debian GNU/Linux 13.7 aarch64, Linux 6.12.117+deb13-cloud-arm64",
+  "guest_driver": "Lima v2.3.0 VZ, Virtualization.framework on Apple Silicon",
+  "packaging_command": [
+    "cargo",
+    "xtask",
+    "package"
+  ],
+  "packaging_exit_code": 0,
+  "rust_toolchain": "1.94.1 aarch64-unknown-linux-gnu",
+  "build_network_mode": "Cargo offline reusing existing cached dependencies",
+  "packaged_executables": {
+    "weftforge": {
+      "sha256": "a2a0ec9d8f3c8ce134e8e50f828ce3c0b1ec841629c8741c91b7b563e45d6c9a",
+      "bytes": 27527104,
+      "format": "ELF64 little endian AArch64",
+      "guest_mode_octal": "775",
+      "matches_cargo_release_binary_by_cmp": true,
+      "highest_referenced_glibc_symbol_version": "GLIBC_2.39"
+    },
+    "weftforge-cli": {
+      "sha256": "5063aa9b05b899fd02423cdb8cc64dd7e2d5f3f9468e65158c91d194f0f81677",
+      "bytes": 3300928,
+      "format": "ELF64 little endian AArch64",
+      "guest_mode_octal": "775",
+      "matches_cargo_release_binary_by_cmp": true,
+      "highest_referenced_glibc_symbol_version": "GLIBC_2.35"
+    }
+  },
+  "notices_verified_by_cmp": {
+    "README.md": "54e48e761a35889075e2f0b90d15fbb3781faf7e03dc99ef00d0bb692655c1a4",
+    "LICENSE-APACHE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "LICENSE-MIT": "5a79a5be6e18069ea095bcb13f724f90cee6a70b1fd6b5e2b1f505f050c25b0d",
+    "THIRD_PARTY.md": "86d65f258938c55ed36d3a621222ef5124e348f5519d01eab8f61db540a4876e",
+    "licenses/OFL-Inter.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+    "licenses/OFL-JetBrainsMono.txt": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697"
+  },
+  "package_archive": {
+    "name": "weftforge-0.1.0-linux-aarch64-debian13-c1fd58f5.tar.gz",
+    "sha256": "1286aff66fa61579a897da8c27f294675be978bf3b4f7782aed1aba549f386b8",
+    "verified_members": 8,
+    "unsigned": true
+  },
+  "runtime": {
+    "isolated_network_namespace": "Only loopback, no IPv4 routes or external IPv6 interfaces",
+    "project": {
+      "sha256": "4dd6b23e0e3d7cbefcb92fd6a1d53bb7d36f8e45f1ee4a3887fab826c051981b",
+      "revision": 13,
+      "pieces": 2,
+      "seams": 8,
+      "vertices": 134,
+      "triangles": 196,
+      "unchanged_bytes": true
+    },
+    "cli_one_step_finite": true,
+    "native_window": {
+      "mapped": true,
+      "x11_window_pid_matches_executable": true,
+      "caption": "WeftForge",
+      "pixel_capture": "workspace.png",
+      "dimensions_px": [
+        1640,
+        1000
+      ],
+      "capture_sha256": "e81b8868ac1d01c90da96af122712a1c8b44ffa6876949881339cf318088a13b",
+      "pixel_exact_to_x11_frame": true,
+      "renderer": "Vulkan Mesa llvmpipe LLVM 19.1.7 CPU under Xvfb",
+      "first_capture_pixel_sha256_matches": true,
+      "process_exit_code_after_WM_DELETE_WINDOW": 0
+    },
+    "glb_rest_export": {
+      "file": "runtime/rest.glb",
+      "sha256": "4c8295c7a5d5ef53f2f89716b56faccd60d2331bef3a75d0bd660f0a648e9771",
+      "bytes": 8808,
+      "comparison_file": "glb-obj-comparison.json",
+      "comparison_sha256": "aa7502472b24fb6f92acc659824837926ba1415f8b05c210c6c4ea4f4eb9cf0e",
+      "independent_obj_and_editable_project_geometry_comparison": "passed",
+      "max_position_difference_metres": 5.906610125851243e-08,
+      "winding_indices_preserved": true,
+      "khronos_report": "Khronos-validation.json",
+      "khronos_report_sha256": "43e6404e3a5e683d0482a65015d01c674e7372a204bbe82dd910815f71721a2a",
+      "khronos_version": "2.0.0-dev.3.10",
+      "errors": 0,
+      "warnings": 0,
+      "infos": 2
+    },
+    "svg_sha256": "680487ebdb939454ad3c82ca9390916af78d871f7b19e0066f5740f7c52df472",
+    "retained_unmodified_export_checker_result": {
+      "exit_code": 1,
+      "assertion": "original shirt page bounds changed",
+      "expected_legacy_viewbox": [
+        -530,
+        -1560,
+        2260,
+        1560
+      ],
+      "actual_viewbox": [
+        -530,
+        -1560,
+        2260,
+        540
+      ]
+    }
+  },
+  "post_case_cleanup": {
+    "studio_and_xvfb_processes_absent": true,
+    "guest_stopped": true,
+    "owned_host_agent_pid_absent": true
+  },
+  "previous_case_manifest_sha256": "a4d3bb5a0da83b4a4c7aaba1876e1d287fea2c5b376acc4a0643b5474e69d692",
+  "previous_evidence_files_rechecked": 52,
+  "remaining": "Linux x86_64, Wayland, hardware GPU and broader distro/desktop workflows, Windows native launch, signing and complete release acceptance",
+  "recorded_at_utc": "2026-11-19T01:29:50+00:00"
+}

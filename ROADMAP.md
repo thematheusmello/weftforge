@@ -13,7 +13,7 @@ Complete garment fitting, distribution and end-to-end acceptance remain in
 progress. See [current status](STATUS.md) for tested builds, known failures and
 remaining work.
 
-## Current execution order — 18 November 2026
+## Current execution order — 19 November 2026
 
 The registry currently contains 56 broad contracts: 43 partial and 13 planned.
 None is fully implemented or reference verified, and no delivery gate is accepted.
@@ -87,6 +87,10 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    recovery, packaging, documentation, assets/licenses and reproducible releases.
    The Apple Silicon package now uses the executables selected by Cargo and
    has a local launch and CLI smoke check with a separate build directory.
+   The Debian 13.7 ARM64 package launched offline under X11 with Vulkan software
+   rendering. Its CLI completed one simulation step and exported the original
+   shirt in OBJ, SVG and GLB.
+   [Debian ARM64 package check](parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json).
    Keep GitHub Actions disabled throughout development. Re-enable it only after
    the complete project is finished, as the user requested.
 

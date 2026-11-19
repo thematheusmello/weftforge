@@ -1,0 +1,36 @@
+{
+  "data_source_commit": "c1fd58f5a3ade3f3e3186429d42e26e53e91b7fc",
+  "checker_commit": "1b799967ed6bad6992abbb6406aced758906f137",
+  "checker_sha256": "b8b26ac149b34fb77319e234e8fbfa2b32032c83190f5cdca178688def6cce7f",
+  "archive_fixture_and_exports": {
+    "runtime/original-shirt.weftforge": "4dd6b23e0e3d7cbefcb92fd6a1d53bb7d36f8e45f1ee4a3887fab826c051981b",
+    "runtime/rest.obj": "ead7b6b43b2aac01bfdefaeef9adc44ceb42a2892941d80076aad25d2662e1a7",
+    "runtime/patterns.svg": "680487ebdb939454ad3c82ca9390916af78d871f7b19e0066f5740f7c52df472"
+  },
+  "exit": 0,
+  "stdout": "Independent OBJ/SVG checks passed: 134 vertices, 196 triangles, 2 closed patterns; metres/mm, Y-up, UV, normals, piece groups.",
+  "physical_width_mm": 2260,
+  "physical_height_mm": 540,
+  "view_box_mm": [
+    -530,
+    -1560,
+    2260,
+    540
+  ],
+  "retained_previous_result": {
+    "exit_code": 1,
+    "assertion": "original shirt page bounds changed",
+    "expected_legacy_viewbox": [
+      -530,
+      -1560,
+      2260,
+      1560
+    ],
+    "actual_viewbox": [
+      -530,
+      -1560,
+      2260,
+      540
+    ]
+  }
+}

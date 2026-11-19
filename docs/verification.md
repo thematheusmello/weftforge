@@ -31,7 +31,7 @@ Core tests also use independent `tobj`. This does not prove material assignments
 animated export, editable SVG import or the empty-project desktop workflow.
 
 The regression shirt starts 0.44 m apart in Z around an original capsule
-mannequin. It has 152 vertices and 232 triangles at 0.12 m target resolution.
+mannequin. It has 134 vertices and 196 triangles at 0.12 m target resolution.
 Its eight oriented seams produce 30 weighted stitch samples. Geometry is tested
 at 0.12/0.07/0.035 m with physical area, conformity and positive incident mass.
 The first integration exposed roundoff-zero ear-clipping faces; regression and
@@ -42,6 +42,22 @@ still fail the declared criteria. A separate relaxed shirt passes the explicit
 60-step gravity-off assembly plus 120-step gravity-on fitting protocol at 8
 substeps/32 iterations. See physics.md, STATUS.md and attributable run reports.
 Elementary cloth tests do not prove garment fitting quality.
+
+## Debian ARM64 package smoke
+
+Run `cargo xtask package` in the checkout. The task copies the Cargo-reported
+studio and CLI executables and six notices to `target/package` on Linux. The
+Debian 13.7 ARM64 guest used glibc 2.41, `libx11-6`, `libxcursor1`,
+`libxkbcommon-x11-0`, `libvulkan1`, `mesa-vulkan-drivers` and `xvfb`. The studio
+loads Xcursor dynamically, so a successful linker-dependency listing alone can
+miss that runtime dependency.
+
+The unsigned binaries ran in a loopback-only network namespace. The studio
+drew a 1640 × 1000 workspace and exited after a normal X11 window close. The
+packaged CLI created and inspected the editable shirt, performed one CPU step,
+and wrote rest GLB, OBJ and SVG. The source-bound report links the native frame,
+unchanged editable file, independent export checks and package replay.
+[Debian ARM64 package evidence](../parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json).
 
 ## Bounded straight-cut authoring and restart
 
