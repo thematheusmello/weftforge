@@ -1,3 +1,19 @@
+# Configurable physical-scale pattern PNG — 19 November 2026
+
+File and Command search open a 2D crop, paper size, orientation and density
+dialog. The Apple Silicon studio switched A4 from 210 × 297 mm to
+297 × 210 mm, fitted the original patterns and saved both modes at
+127 pixels per inch. Cancelling the file chooser kept the settings. The
+two 4345 × 3615 exports matched the CLI bytes. Independent decoding
+checked the 5000 pixels per metre density, 48 boundary samples and the
+optional internal line and notch. The native project retained its bytes.
+[Native report](parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json) · [Studio preview](docs/studio-preview.md).
+
+Formatting, 507 workspace tests, strict Clippy and the studio and CLI
+builds passed. Text, fabric artwork, JPEG snapshots, printer measurements
+and full Harbor fit remain open. GitHub Actions and automated Pages
+deployments stay disabled.
+
 # Actual-size pattern PDF — 19 November 2026
 
 File and Command search export tiled A4 and US Letter pattern PDFs.

@@ -1,5 +1,12 @@
 # Native studio preview
 
+## Export a physical-scale 2D image
+
+The native crop dialog fits the authored patterns or uses a paper size.
+The tested 127 pixel-per-inch images contain the same outlines and hole.
+The full image also contains the internal line and notch.
+[All marks](../parity/reports/artifacts/pattern-png-20261119/all-marks.png) · [Contours only](../parity/reports/artifacts/pattern-png-20261119/contours-only.png) · [Independent check](../parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json).
+
 ## Print actual-size patterns
 
 File and Command search export A4 or US Letter pattern PDFs. This original

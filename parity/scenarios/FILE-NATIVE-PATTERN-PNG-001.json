@@ -1,0 +1,15 @@
+{
+  "id": "FILE-NATIVE-PATTERN-PNG-001",
+  "status": "implementation_only",
+  "initial_conditions": "The two original revision 2 patterns are opened in the Apple Silicon studio.",
+  "actions": [
+    "Check that the File PNG action is disabled when the project is empty.",
+    "Open the original revision 2 project with the curved Juniper and holed Basin patterns.",
+    "Open Save 2D pattern PNG in File. Select A4, check 210 by 297 mm, swap the sides and then fit the patterns.",
+    "Enter 127 pixels per inch. Check the 4345 by 3615 pixel fit and save with all layers enabled.",
+    "Open the action through Command search with Command-K, Tab and Return.",
+    "Enter the same density and disable internal lines and notches. Cancel the Save dialog and check the settings remain.",
+    "Save the contour-only image. Check both captures against the CLI bytes and independently decode their density and authored geometry."
+  ],
+  "expected_outcomes": "Both entry points save the 869 by 723 mm crop at 5000 pixels per metre. The files match CLI controls and contain the expected outlines and enabled marks. Cancelling retains settings and the project retains its bytes."
+}
