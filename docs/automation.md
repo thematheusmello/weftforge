@@ -59,7 +59,7 @@ its input. Concurrent desktop/file writers are not coordinated by this adapter.
 
 The official specifications were checked on 2026-11-13. The adapter supports the
 current **2026-07-28** request metadata profile and the **2025-11-25** legacy
-initialization profile. They share the thirteen tools below. Only `tools: {}` is
+initialization profile. They share the fourteen tools below. Only `tools: {}` is
 advertised; no resources, prompts, subscriptions, tasks, logging, sampling, or
 elicitation capabilities are advertised.
 
@@ -123,6 +123,7 @@ are rejected. The tool names and arguments are:
 | `project_export_dxf` | `input`, `output` | Paths, `source_revision`, `kind: "authored_dxf"`, `length_unit: "mm"`, pattern U/V to XY axes, and boundary-only `scope` |
 | `project_export_pdf` | `input`, `output`, `paper` (`a4` or `letter`) | Paths, `source_revision`, `kind: "pattern_pdf"`, `paper`, `scale: 1` and `length_unit: "mm"` |
 | `project_export_pattern_png` | `input`, `output`, `options` | Paths, `source_revision`, `kind: "pattern_png"`, raster `size_px` and export options |
+| `project_export_pattern_jpeg` | `input`, `output`, `options` | Paths, `source_revision`, `kind: "pattern_jpeg"`, raster `size_px`, `effective_pixels_per_inch` and export options |
 
 Results include a text block containing the same JSON for older clients.
 Inspection returns authoritative authored state without building a mesh.
@@ -144,6 +145,9 @@ contours, internal lines and notches. Set `grainline` to `true` in `options`
 to draw arrows in the authored warp directions. The response includes
 `grainline` when it is enabled.
 [Pattern PNG profile](../spec/features/FILE-005-pattern-png.md).
+The JPEG tool takes the same options and rounds the requested density to
+whole pixels per inch for the raster grid and JFIF metadata.
+[Pattern JPEG profile](../spec/features/FILE-005-pattern-jpeg.md).
 Each successful execute creates a single document revision through
 `Editor::execute(Command::Transaction(commands))`, then uses native atomic save
 and recovery handling. Commands may refer to stable IDs returned by inspection.

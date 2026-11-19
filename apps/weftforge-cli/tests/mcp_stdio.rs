@@ -13,7 +13,7 @@ use std::{
 };
 use weftforge_core::{Command, Editor, Project, recovery_path};
 
-const MCP_TOOL_COUNT: usize = 13;
+const MCP_TOOL_COUNT: usize = 14;
 
 struct Server {
     child: Child,
@@ -3326,11 +3326,11 @@ fn pattern_png_cli_and_mcp_share_density_crop_and_validate_before_writing() {
     let request = json!({"crop_m":[[-0.01,-0.01],[0.11,0.09]],"pixels_per_inch":127,
                          "contours":true,"internal_lines":false,"notches":false});
     fs::write(&options, serde_json::to_vec(&request).unwrap()).unwrap();
-    let export_cli = || {
+    let export_cli = |command: &str, output: &Path| {
         let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
-            .arg("export-pattern-png")
+            .arg(command)
             .arg(&input)
-            .arg(&cli_image)
+            .arg(output)
             .arg(&options)
             .output()
             .unwrap();
@@ -3339,9 +3339,9 @@ fn pattern_png_cli_and_mcp_share_density_crop_and_validate_before_writing() {
             "{}",
             String::from_utf8_lossy(&cli.stderr)
         );
-        fs::read(&cli_image).unwrap()
+        fs::read(output).unwrap()
     };
-    let expected = export_cli();
+    let expected = export_cli("export-pattern-png", &cli_image);
     let mut server = Server::start();
     server.initialize("2025-11-25");
     let response = server.call(
@@ -3355,7 +3355,7 @@ fn pattern_png_cli_and_mcp_share_density_crop_and_validate_before_writing() {
     let mut grainline = request.clone();
     grainline["grainline"] = json!(true);
     fs::write(&options, serde_json::to_vec(&grainline).unwrap()).unwrap();
-    let enabled = export_cli();
+    let enabled = export_cli("export-pattern-png", &cli_image);
     assert_ne!(enabled, expected);
     let response = server.call(
         "project_export_pattern_png",
@@ -3371,6 +3371,35 @@ fn pattern_png_cli_and_mcp_share_density_crop_and_validate_before_writing() {
         json!({"input":input,"output":mcp_image,"options":invalid}),
     ));
     assert_eq!(fs::read(mcp_image).unwrap(), enabled);
+
+    let cli_jpeg = directory.path("cli.jpg");
+    let mcp_jpeg = directory.path("mcp.jpeg");
+    let mut jpeg = grainline;
+    jpeg["crop_m"] = json!([[-1., 0.], [1., 0.2]]);
+    jpeg["pixels_per_inch"] = json!(72.4);
+    fs::write(&options, serde_json::to_vec(&jpeg).unwrap()).unwrap();
+    let expected_jpeg = export_cli("export-pattern-jpeg", &cli_jpeg);
+    let response = server.call(
+        "project_export_pattern_jpeg",
+        json!({"input":input,"output":mcp_jpeg,"options":jpeg}),
+    );
+    let result = success(&response);
+    assert_eq!(result["kind"], "pattern_jpeg");
+    assert_eq!(result["size_px"], json!([5669, 567]));
+    assert_eq!(result["effective_pixels_per_inch"], 72);
+    assert_eq!(result["options"], jpeg);
+    assert!(expected_jpeg.starts_with(&[0xff, 0xd8]));
+    assert_eq!(fs::read(&mcp_jpeg).unwrap(), expected_jpeg);
+    tool_error(&server.call(
+        "project_export_pattern_jpeg",
+        json!({"input":input,"output":input,"options":jpeg}),
+    ));
+    jpeg["pixels_per_inch"] = json!(0.4);
+    tool_error(&server.call(
+        "project_export_pattern_jpeg",
+        json!({"input":input,"output":mcp_jpeg,"options":jpeg}),
+    ));
+    assert_eq!(fs::read(mcp_jpeg).unwrap(), expected_jpeg);
     assert_eq!(fs::read(input).unwrap(), source);
 }
 

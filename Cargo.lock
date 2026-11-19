@@ -1532,6 +1532,8 @@ dependencies = [
  "num-traits",
  "png",
  "tiff",
+ "zune-core",
+ "zune-jpeg",
 ]
 
 [[package]]
@@ -3561,6 +3563,7 @@ name = "weftforge-core"
 version = "0.1.0"
 dependencies = [
  "earcutr",
+ "image",
  "png",
  "quick-xml",
  "serde",

@@ -1,5 +1,7 @@
 use super::{StagedExport, export_path_guard};
 use crate::{Error, Project, Result, ensure};
+use image::ExtendedColorType;
+use image::codecs::jpeg::{JpegEncoder, PixelDensity};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 use std::io::{self, Write};
@@ -9,7 +11,7 @@ use tiny_skia::{IntSize, LineCap, Paint, PathBuilder, Pixmap, Stroke, Transform}
 const METRES_PER_INCH: f64 = 0.0254;
 const MAX_SIDE: u32 = 16_384;
 const MAX_PIXELS: u64 = 32_000_000;
-const MAX_PNG_BYTES: usize = 80 * 1024 * 1024;
+const MAX_RASTER_BYTES: usize = 80 * 1024 * 1024;
 const MAX_STROKE_WORK: u64 = 64_000_000;
 const SKIA_TILE_SIDE: u32 = 8191;
 const MAX_PROJECTED_COORDINATE: f64 = 1_048_576.0;
@@ -48,27 +50,64 @@ impl PatternSnapshotOptions {
         Ok(ppm as u32)
     }
 
-    fn grid(self) -> Result<([u32; 2], u32)> {
-        let [min, max] = self.crop_m;
+    /// Whole square-pixel density recorded in the JPEG JFIF header.
+    pub fn jpeg_pixels_per_inch(self) -> Result<u16> {
+        let dpi = self.pixels_per_inch.round();
         ensure(
-            min.into_iter().chain(max).all(f64::is_finite)
-                && (0..2).all(|axis| min[axis] < max[axis]),
-            "Pattern PNG crop needs finite, increasing X and Y bounds",
+            (1.0..=f64::from(u16::MAX)).contains(&dpi),
+            "Pattern JPEG density must round to between 1 and 65535 pixels per inch",
         )?;
-        let ppm = self.pixels_per_metre()?;
-        let size = std::array::from_fn(|axis| ((max[axis] - min[axis]) * f64::from(ppm)).round());
-        ensure(
-            size.iter()
-                .all(|side| (1.0..=f64::from(MAX_SIDE)).contains(side)),
-            "Pattern PNG width and height must be between 1 and 16384 pixels",
-        )?;
-        let size = size.map(|side| side as u32);
-        ensure(
-            u64::from(size[0]) * u64::from(size[1]) <= MAX_PIXELS,
-            "Pattern PNG exceeds the 32 megapixel limit",
-        )?;
-        Ok((size, ppm))
+        Ok(dpi as u16)
     }
+
+    /// Rounded pixel width and height at the JPEG's stored whole PPI.
+    pub fn jpeg_dimensions(self) -> Result<[u32; 2]> {
+        self.jpeg_grid().map(|(dimensions, _, _)| dimensions)
+    }
+
+    fn crop_extent(self, format_name: &str) -> Result<[f64; 2]> {
+        let [min, max] = self.crop_m;
+        if !min.into_iter().chain(max).all(f64::is_finite)
+            || (0..2).any(|axis| min[axis] >= max[axis])
+        {
+            return Err(Error(format!(
+                "Pattern {format_name} crop needs finite, increasing X and Y bounds"
+            )));
+        }
+        Ok(std::array::from_fn(|axis| max[axis] - min[axis]))
+    }
+
+    fn grid(self) -> Result<([u32; 2], u32)> {
+        let extent = self.crop_extent("PNG")?;
+        let ppm = self.pixels_per_metre()?;
+        Ok((raster_dimensions(extent, f64::from(ppm), "PNG")?, ppm))
+    }
+
+    fn jpeg_grid(self) -> Result<([u32; 2], u16, f64)> {
+        let extent = self.crop_extent("JPEG")?;
+        let dpi = self.jpeg_pixels_per_inch()?;
+        let ppm = f64::from(dpi) / METRES_PER_INCH;
+        Ok((raster_dimensions(extent, ppm, "JPEG")?, dpi, ppm))
+    }
+}
+
+fn raster_dimensions(extent: [f64; 2], ppm: f64, format_name: &str) -> Result<[u32; 2]> {
+    let size = extent.map(|side| (side * ppm).round());
+    if !size
+        .iter()
+        .all(|side| (1.0..=f64::from(MAX_SIDE)).contains(side))
+    {
+        return Err(Error(format!(
+            "Pattern {format_name} width and height must be between 1 and 16384 pixels"
+        )));
+    }
+    let size = size.map(|side| side as u32);
+    if u64::from(size[0]) * u64::from(size[1]) > MAX_PIXELS {
+        return Err(Error(format!(
+            "Pattern {format_name} exceeds the 32 megapixel limit"
+        )));
+    }
+    Ok(size)
 }
 
 impl Project {
@@ -108,7 +147,7 @@ impl Project {
         let (size, ppm) = options.grid()?;
         export_path_guard(path)?;
         self.validate()?;
-        let pixmap = rasterize(self, options, size, ppm)?;
+        let pixmap = rasterize(self, options, size, f64::from(ppm), "PNG")?;
         StagedExport::write(path, &encode_png(&pixmap, ppm)?)
     }
 
@@ -120,9 +159,33 @@ impl Project {
     ) -> Result<()> {
         self.stage_pattern_png(path, options)?.commit()
     }
+
+    /// Prepares a physical-scale grayscale JPEG for commit.
+    pub fn stage_pattern_jpeg(
+        &self,
+        path: impl AsRef<Path>,
+        options: PatternSnapshotOptions,
+    ) -> Result<StagedExport> {
+        let path = path.as_ref();
+        let (size, dpi, ppm) = options.jpeg_grid()?;
+        export_path_guard(path)?;
+        self.validate()?;
+        let pixmap = rasterize(self, options, size, ppm, "JPEG")?;
+        StagedExport::write(path, &encode_jpeg(pixmap, dpi)?)
+    }
+
+    /// Exports a physical-scale JPEG without changing the editable project.
+    pub fn export_pattern_jpeg(
+        &self,
+        path: impl AsRef<Path>,
+        options: PatternSnapshotOptions,
+    ) -> Result<()> {
+        self.stage_pattern_jpeg(path, options)?.commit()
+    }
 }
 
 struct Strokes {
+    format_name: &'static str,
     origin_m: [f64; 2],
     size: [u32; 2],
     ppm: f64,
@@ -173,13 +236,16 @@ impl Strokes {
             return Ok(());
         }
         // Bound the f64-to-f32 conversion error to 1/16 px, including off-canvas controls.
-        ensure(
-            points
-                .iter()
-                .flatten()
-                .all(|value| value.abs() <= MAX_PROJECTED_COORDINATE),
-            "Pattern PNG crop and density exceed raster coordinate precision",
-        )?;
+        if !points
+            .iter()
+            .flatten()
+            .all(|value| value.abs() <= MAX_PROJECTED_COORDINATE)
+        {
+            return Err(Error(format!(
+                "Pattern {} crop and density exceed raster coordinate precision",
+                self.format_name
+            )));
+        }
         // Bound pixel visits by control polygon length, with overhead for tiny-skia subdivisions.
         let length: u64 = points
             .windows(2)
@@ -189,10 +255,12 @@ impl Strokes {
             .sum();
         let overhead = if controls.is_some() { 4096 } else { 8 };
         self.work += (length + overhead) * self.tiles;
-        ensure(
-            self.work <= MAX_STROKE_WORK,
-            "Pattern PNG exceeds the raster stroke work limit",
-        )?;
+        if self.work > MAX_STROKE_WORK {
+            return Err(Error(format!(
+                "Pattern {} exceeds the raster stroke work limit",
+                self.format_name
+            )));
+        }
         let [[x0, y0], [x1, y1], [x2, y2], [x3, y3]] =
             points.map(|point| point.map(|value| value as f32));
         self.path.move_to(x0, y0);
@@ -209,13 +277,15 @@ fn rasterize(
     project: &Project,
     options: PatternSnapshotOptions,
     [width, height]: [u32; 2],
-    ppm: u32,
+    ppm: f64,
+    format_name: &'static str,
 ) -> Result<Pixmap> {
     let [[left, _], [_, top]] = options.crop_m;
     let mut strokes = Strokes {
+        format_name,
         origin_m: [left, top],
         size: [width, height],
-        ppm: f64::from(ppm),
+        ppm,
         tiles: u64::from(width.div_ceil(SKIA_TILE_SIDE) * height.div_ceil(SKIA_TILE_SIDE)),
         work: 0,
         path: PathBuilder::new(),
@@ -258,14 +328,16 @@ fn rasterize(
     }
     let bytes = width as usize * height as usize * 4;
     let mut pixels = Vec::new();
-    pixels
-        .try_reserve_exact(bytes)
-        .map_err(|error| Error(format!("Could not allocate pattern PNG pixels: {error}")))?;
+    pixels.try_reserve_exact(bytes).map_err(|error| {
+        Error(format!(
+            "Could not allocate pattern {format_name} pixels: {error}"
+        ))
+    })?;
     pixels.resize(bytes, 255);
     let size =
         IntSize::from_wh(width, height).ok_or_else(|| Error("Invalid raster size".into()))?;
-    let mut pixmap =
-        Pixmap::from_vec(pixels, size).ok_or_else(|| Error("Invalid pattern PNG buffer".into()))?;
+    let mut pixmap = Pixmap::from_vec(pixels, size)
+        .ok_or_else(|| Error(format!("Invalid pattern {format_name} buffer")))?;
     if let Some(path) = strokes.path.finish() {
         let stroke = Stroke {
             width: 1.0,
@@ -283,24 +355,36 @@ fn rasterize(
     Ok(pixmap)
 }
 
-#[derive(Default)]
-struct PngBuffer(Vec<u8>);
+struct RasterBuffer {
+    format_name: &'static str,
+    bytes: Vec<u8>,
+}
 
-impl Write for PngBuffer {
-    fn write(&mut self, data: &[u8]) -> io::Result<usize> {
-        let length = self.0.len() + data.len();
-        if length > MAX_PNG_BYTES {
-            return Err(io::Error::other(
-                "Pattern PNG exceeds the 80 MiB file limit",
-            ));
+impl RasterBuffer {
+    fn new(format_name: &'static str) -> Self {
+        Self {
+            format_name,
+            bytes: Vec::new(),
         }
-        if length > self.0.capacity() {
-            let capacity = length.max(self.0.capacity() * 2).min(MAX_PNG_BYTES);
-            self.0
-                .try_reserve_exact(capacity - self.0.len())
+    }
+}
+
+impl Write for RasterBuffer {
+    fn write(&mut self, data: &[u8]) -> io::Result<usize> {
+        let length = self.bytes.len() + data.len();
+        if length > MAX_RASTER_BYTES {
+            return Err(io::Error::other(format!(
+                "Pattern {} exceeds the 80 MiB file limit",
+                self.format_name
+            )));
+        }
+        if length > self.bytes.capacity() {
+            let capacity = length.max(self.bytes.capacity() * 2).min(MAX_RASTER_BYTES);
+            self.bytes
+                .try_reserve_exact(capacity - self.bytes.len())
                 .map_err(io::Error::other)?;
         }
-        self.0.extend_from_slice(data);
+        self.bytes.extend_from_slice(data);
         Ok(data.len())
     }
 
@@ -311,7 +395,7 @@ impl Write for PngBuffer {
 
 fn encode_png(pixmap: &Pixmap, ppm: u32) -> Result<Vec<u8>> {
     let png_error = |error| Error(format!("Could not encode pattern PNG: {error}"));
-    let mut bytes = PngBuffer::default();
+    let mut bytes = RasterBuffer::new("PNG");
     let mut encoder = png::Encoder::new(&mut bytes, pixmap.width(), pixmap.height());
     encoder.set_color(png::ColorType::Rgba);
     encoder.set_depth(png::BitDepth::Eight);
@@ -327,7 +411,27 @@ fn encode_png(pixmap: &Pixmap, ppm: u32) -> Result<Vec<u8>> {
     stream.write_all(pixmap.data())?;
     stream.finish().map_err(png_error)?;
     writer.finish().map_err(png_error)?;
-    Ok(bytes.0)
+    Ok(bytes.bytes)
+}
+
+fn encode_jpeg(pixmap: Pixmap, dpi: u16) -> Result<Vec<u8>> {
+    let (width, height) = (pixmap.width(), pixmap.height());
+    // The opaque raster is neutral grayscale, so compact one color channel in place.
+    let mut luma = pixmap.take();
+    let samples = luma.len() / 4;
+    for (destination, source) in (0..luma.len()).step_by(4).enumerate() {
+        luma[destination] = luma[source];
+    }
+    luma.truncate(samples);
+    let mut bytes = RasterBuffer::new("JPEG");
+    {
+        let mut encoder = JpegEncoder::new_with_quality(&mut bytes, 100);
+        encoder.set_pixel_density(PixelDensity::dpi(dpi));
+        encoder
+            .encode(&luma, width, height, ExtendedColorType::L8)
+            .map_err(|error| Error(format!("Could not encode pattern JPEG: {error}")))?;
+    }
+    Ok(bytes.bytes)
 }
 
 #[cfg(test)]
@@ -337,6 +441,84 @@ mod tests {
     use std::fs;
     use std::io::Cursor;
     use std::sync::atomic::Ordering;
+
+    #[test]
+    fn pattern_jpeg_uses_the_declared_jfif_grid_and_stages_before_replacing() {
+        let mut editor = crate::Editor::default();
+        editor
+            .execute(Command::AddRectangle {
+                name: "Original JPEG sample".into(),
+                origin: [-0.15, 0.03],
+                width: 0.2,
+                height: 0.1,
+            })
+            .unwrap();
+        let project = editor.project;
+        let source = project.to_json().unwrap();
+        let options = PatternSnapshotOptions {
+            crop_m: [[-1., 0.], [1., 0.2]],
+            pixels_per_inch: 72.,
+            contours: true,
+            internal_lines: false,
+            notches: false,
+            grainline: false,
+        };
+        // A two-metre side spans 5669.291... pixels at 72 PPI and 5670 on the PNG grid.
+        assert_eq!(options.dimensions().unwrap(), [5670, 567]);
+        assert_eq!(options.jpeg_dimensions().unwrap(), [5669, 567]);
+        let fractional = PatternSnapshotOptions {
+            pixels_per_inch: 72.4,
+            ..options
+        };
+        assert_eq!(fractional.jpeg_pixels_per_inch().unwrap(), 72);
+        assert_eq!(fractional.jpeg_dimensions().unwrap(), [5669, 567]);
+
+        let dir = std::env::temp_dir().join(format!(
+            "weftforge-pattern-jpeg-{}-{}",
+            std::process::id(),
+            super::super::TEMP_ID.fetch_add(1, Ordering::Relaxed),
+        ));
+        fs::create_dir(&dir).unwrap();
+        let output = dir.join("pattern.jpg");
+        fs::write(&output, b"previous JPEG").unwrap();
+        for pixels_per_inch in [0.49, 65_535.5, f64::NAN] {
+            let invalid = PatternSnapshotOptions {
+                pixels_per_inch,
+                ..options
+            };
+            assert!(project.export_pattern_jpeg(&output, invalid).is_err());
+            assert_eq!(fs::read(&output).unwrap(), b"previous JPEG");
+        }
+        let staged = project.stage_pattern_jpeg(&output, options).unwrap();
+        assert_eq!(fs::read(&output).unwrap(), b"previous JPEG");
+        staged.commit().unwrap();
+
+        let jpeg = fs::read(&output).unwrap();
+        assert!(jpeg.starts_with(&[0xff, 0xd8]) && jpeg.ends_with(&[0xff, 0xd9]));
+        let be16 =
+            |bytes: &[u8], pos: usize| u16::from_be_bytes(bytes[pos..pos + 2].try_into().unwrap());
+        let segment = |at: usize| {
+            assert_eq!(jpeg[at], 0xff);
+            let end = at + 2 + usize::from(be16(&jpeg, at + 2));
+            (jpeg[at + 1], &jpeg[at + 4..end], end)
+        };
+        let (marker, jfif, mut at) = segment(2);
+        assert_eq!(marker, 0xe0);
+        assert_eq!(&jfif[..8], b"JFIF\0\x01\x02\x01");
+        assert_eq!([be16(jfif, 8), be16(jfif, 10)], [72, 72]);
+        let frame = loop {
+            let (marker, data, next) = segment(at);
+            if marker == 0xc0 {
+                break data;
+            }
+            assert_ne!(marker, 0xda, "SOF0 must precede the scan");
+            at = next;
+        };
+        assert_eq!([frame[0], frame[5]], [8, 1], "8-bit grayscale");
+        assert_eq!([be16(frame, 3), be16(frame, 1)], [5669, 567]);
+        assert_eq!(project.to_json().unwrap(), source);
+        fs::remove_dir_all(&dir).unwrap();
+    }
 
     #[test]
     fn pattern_png_grainline_rotates_with_authored_angle_and_is_opt_in() {
@@ -359,7 +541,7 @@ mod tests {
         let draw = |project: &Project, options: PatternSnapshotOptions| {
             let (size, ppm) = options.grid().unwrap();
             assert_eq!((size, ppm), ([170, 135], 1000));
-            rasterize(project, options, size, ppm).unwrap()
+            rasterize(project, options, size, f64::from(ppm), "PNG").unwrap()
         };
         let ink = |image: &Pixmap, x, y| image.pixel(x, y).unwrap().red() < 255;
         let blank = draw(&editor.project, omitted);
