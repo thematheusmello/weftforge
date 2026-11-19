@@ -35,7 +35,8 @@
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json",
         "parity/reports/WF-20261118-WORKSPACE-PNG-INTEGRATED-SOURCE-001.json",
         "parity/reports/WF-20261119-NATIVE-FRAME-ALL-001.json",
-        "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json"
+        "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
       ],
       "scenarios": [
         {
@@ -3798,6 +3799,22 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
           },
           "path": "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-VISIBILITY-001",
+          "commit": "b305cabf553411400bd342d46532a0d61f398d55",
+          "timestamp": "2026-11-19T03:57:27.255085Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-pattern-visibility-20261119/all-patterns.png": "be014dc8f2e4dd29a56c4743ad61ddd8457e8e12b72501585d1c7925ffafdde1",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/front-hidden.png": "306aece63c550515df55ae37bad2734db403e125a9f48ca3b4f1e452e3aab22d",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/front-isolated.png": "e4519dace640d21cf6e316f26108fb629f1f875ff9281745e52445d33ae116bd",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/NATIVE-VISIBILITY.json": "80fb42d687cb0e917faa42e3173a48efa1f8f612ee0ca6ddae36b97cc1fd5f01",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/POST-CASE-CLEANUP.json": "fe9a837ccd6dff6685fe6216c20c939eb6cb07db932d186857adf2d9e1a6f23e",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
         }
       ],
       "known_gaps": [
@@ -3846,7 +3863,8 @@
         "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json",
         "parity/reports/WF-20261118-CONTACT-RECOVERY-D-TOOLING-001.json",
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-SOURCE-001.json",
-        "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json"
+        "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
       ],
       "scenarios": [
         {
@@ -4933,6 +4951,22 @@
             "parity/reports/artifacts/workspace-png-integrated-source-20261118/ROOT-INSTALLATION-REVIEW-001.json": "e762c3197a401f6ca79eb35b7345de22ffbc5bf650fd5763c377ca879481e738"
           },
           "path": "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-VISIBILITY-001",
+          "commit": "b305cabf553411400bd342d46532a0d61f398d55",
+          "timestamp": "2026-11-19T03:57:27.255085Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-pattern-visibility-20261119/all-patterns.png": "be014dc8f2e4dd29a56c4743ad61ddd8457e8e12b72501585d1c7925ffafdde1",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/front-hidden.png": "306aece63c550515df55ae37bad2734db403e125a9f48ca3b4f1e452e3aab22d",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/front-isolated.png": "e4519dace640d21cf6e316f26108fb629f1f875ff9281745e52445d33ae116bd",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/NATIVE-VISIBILITY.json": "80fb42d687cb0e917faa42e3173a48efa1f8f612ee0ca6ddae36b97cc1fd5f01",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/POST-CASE-CLEANUP.json": "fe9a837ccd6dff6685fe6216c20c939eb6cb07db932d186857adf2d9e1a6f23e",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
         }
       ],
       "known_gaps": [
@@ -4949,7 +4983,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "UI-003",
@@ -6019,7 +6053,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/UI-003-original-position-snapping.md": "0d19a5cfa9886757390b735137171a2c9c88beb2f7f5fe8d8eb47c475d948ce7"
       }
@@ -34167,14 +34201,17 @@
       "id": "FIT-002",
       "category": "FIT",
       "title": "Pins grabbing and layers",
-      "required_reference_behavior": "Interactive cloth grab, authored pins, temporary constraints, outfits and layer controls.",
+      "required_reference_behavior": "Interactive cloth grab, authored pins, temporary constraints, outfits and layer controls, and coherent garment visibility and isolation.",
       "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
       "source_links": [
         "https://support.marvelousdesigner.com/",
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "spec/features/FIT-002-pattern-visibility.md",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
+      ],
       "scenarios": [
         {
           "id": "CONTACT-LAYER-001",
@@ -34184,6 +34221,15 @@
           },
           "initial_conditions": "Original shirt+jacket around analytic avatar and ground; tolerances declared before execution.",
           "expected_outcomes": "Inner layer responds physically; record penetration, seam and strain residuals, no disabled self-contact."
+        },
+        {
+          "id": "FIT-NATIVE-PATTERN-VISIBILITY-001",
+          "path": "parity/scenarios/FIT-NATIVE-PATTERN-VISIBILITY-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
+          },
+          "initial_conditions": "The original Harbor revision 23 opened in the current Apple Silicon studio with both patterns framed.",
+          "expected_outcomes": "Both views reflect Hide and Isolate. Each hidden Scene row remains labeled. Show all and reopening restore visibility. The editable file and complete GLB keep their original bytes."
         }
       ],
       "comparison_criteria": {
@@ -34198,22 +34244,44 @@
         "FIT-001",
         "SIM-003"
       ],
-      "implementation_locations": [],
+      "implementation_locations": [
+        "apps/weftforge/src/main.rs"
+      ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/2"
       ],
       "prs": [],
-      "implementation_status": "planned",
+      "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-VISIBILITY-001",
+          "commit": "b305cabf553411400bd342d46532a0d61f398d55",
+          "timestamp": "2026-11-19T03:57:27.255085Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-pattern-visibility-20261119/all-patterns.png": "be014dc8f2e4dd29a56c4743ad61ddd8457e8e12b72501585d1c7925ffafdde1",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/front-hidden.png": "306aece63c550515df55ae37bad2734db403e125a9f48ca3b4f1e452e3aab22d",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/front-isolated.png": "e4519dace640d21cf6e316f26108fb629f1f875ff9281745e52445d33ae116bd",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/NATIVE-VISIBILITY.json": "80fb42d687cb0e917faa42e3173a48efa1f8f612ee0ca6ddae36b97cc1fd5f01",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/POST-CASE-CLEANUP.json": "fe9a837ccd6dff6685fe6216c20c939eb6cb07db932d186857adf2d9e1a6f23e",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
+        }
+      ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Temporary pattern visibility is checked in both native views. Avatar and per-view display scopes, pins, cloth grabbing, outfit layers and reference execution remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "missing"
+      "freshness": "current",
+      "contract_documents": {
+        "spec/features/FIT-002-pattern-visibility.md": "05c3323a620ecf89387d4ff74ad3b9cfc9e3a6306082df5354ae3924d3cb0579"
+      }
     },
     {
       "id": "FIT-003",
@@ -47214,7 +47282,8 @@
       "evidence_ids": [
         "parity/reports/WF-20261118-WORKSPACE-PNG-INTEGRATED-SOURCE-001.json",
         "parity/reports/WF-20261119-NATIVE-FRAME-ALL-001.json",
-        "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json"
+        "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
       ],
       "scenarios": [
         {
@@ -47413,6 +47482,22 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
           },
           "path": "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-VISIBILITY-001",
+          "commit": "b305cabf553411400bd342d46532a0d61f398d55",
+          "timestamp": "2026-11-19T03:57:27.255085Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-pattern-visibility-20261119/all-patterns.png": "be014dc8f2e4dd29a56c4743ad61ddd8457e8e12b72501585d1c7925ffafdde1",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/front-hidden.png": "306aece63c550515df55ae37bad2734db403e125a9f48ca3b4f1e452e3aab22d",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/front-isolated.png": "e4519dace640d21cf6e316f26108fb629f1f875ff9281745e52445d33ae116bd",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/NATIVE-VISIBILITY.json": "80fb42d687cb0e917faa42e3173a48efa1f8f612ee0ca6ddae36b97cc1fd5f01",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/POST-CASE-CLEANUP.json": "fe9a837ccd6dff6685fe6216c20c939eb6cb07db932d186857adf2d9e1a6f23e",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
         }
       ],
       "known_gaps": [
@@ -50804,7 +50889,8 @@
         "parity/reports/WF-20261119-PLATFORM-COMMAND-SHORTCUT-001.json",
         "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json",
         "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json",
-        "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json"
+        "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
       ],
       "scenarios": [
         {
@@ -50960,6 +51046,22 @@
             "parity/reports/artifacts/debian-arm64-json-gltf-20261119/LINUX-GLTF.json": "cc908fe170863cfab08ec4dd7ddd4f377faf5a027825285bcde1f09e527c802c"
           },
           "path": "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-VISIBILITY-001",
+          "commit": "b305cabf553411400bd342d46532a0d61f398d55",
+          "timestamp": "2026-11-19T03:57:27.255085Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-pattern-visibility-20261119/all-patterns.png": "be014dc8f2e4dd29a56c4743ad61ddd8457e8e12b72501585d1c7925ffafdde1",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/front-hidden.png": "306aece63c550515df55ae37bad2734db403e125a9f48ca3b4f1e452e3aab22d",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/front-isolated.png": "e4519dace640d21cf6e316f26108fb629f1f875ff9281745e52445d33ae116bd",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/NATIVE-VISIBILITY.json": "80fb42d687cb0e917faa42e3173a48efa1f8f612ee0ca6ddae36b97cc1fd5f01",
+            "parity/reports/artifacts/native-pattern-visibility-20261119/POST-CASE-CLEANUP.json": "fe9a837ccd6dff6685fe6216c20c939eb6cb07db932d186857adf2d9e1a6f23e",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
         }
       ],
       "known_gaps": [
@@ -61792,7 +61894,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "APP-003",
