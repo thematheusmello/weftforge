@@ -1,3 +1,19 @@
+# Notices in unsigned packages — 19 November 2026
+
+The packager collects the runtime Cargo notice files it can attribute
+to the emitted libraries. The release folder records executable and notice
+hashes and flags missing texts. The standalone macOS app carries the project,
+font and collected Cargo notices. A retry restores the previous package after
+an interrupted promotion. Fixtures checked those paths, notice bytes and
+recovery on Apple Silicon.
+[Packager source check](parity/reports/WF-20261119-PACKAGER-NOTICES-001.json) · [Package instructions](docs/verification.md#unsigned-package-notices).
+
+Formatting, 514 workspace tests, strict Clippy and the studio and CLI
+builds passed. The next package check needs an actual release build, enough
+local storage, and review of its unresolved notice entries. Windows, Linux
+desktop save, full Harbor fit and reference comparisons remain open. GitHub
+Actions and automated Pages deployments stay disabled.
+
 # Move patterns in 3D — 19 November 2026
 
 In **3D Garment**, **Move pattern** drags the selected rest pattern along

@@ -117,5 +117,6 @@
     "vendor/earcutr",
     "spec/features/FIT-001-native-placement.md"
   ],
-  "freshness": "current"
+  "freshness": "stale",
+  "freshness_reason": "The package notice tooling adds xtask dependencies to the scoped workspace lockfile. The original native 3D placement results and images retain their source attribution."
 }

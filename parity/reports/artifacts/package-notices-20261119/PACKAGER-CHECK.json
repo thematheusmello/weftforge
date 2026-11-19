@@ -1,0 +1,69 @@
+{
+  "source_commit": "4ac2cc5ebc9600df9d45d43ad213235cad608ec7",
+  "source_tree": "0e81d7c38539a589416ceb618d101a4c77cc3e5b",
+  "scope": "Apple Silicon development build and integrated xtask package fixtures",
+  "workspace_tests": 514,
+  "checks": {
+    "fmt": {
+      "argv": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "exit": 0,
+      "duration_s": 0.9712712499313056
+    },
+    "studio-cli-build": {
+      "argv": [
+        "cargo",
+        "build",
+        "-p",
+        "weftforge",
+        "-p",
+        "weftforge-cli"
+      ],
+      "exit": 0,
+      "duration_s": 0.5267987919505686
+    },
+    "workspace": {
+      "argv": [
+        "cargo",
+        "test",
+        "--workspace"
+      ],
+      "exit": 0,
+      "duration_s": 162.01539895799942
+    },
+    "clippy": {
+      "argv": [
+        "cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit": 0,
+      "duration_s": 1.1396435420028865
+    }
+  },
+  "packager_tests": [
+    "packages_reported_executables_even_when_default_target_contains_stale_binaries",
+    "failed_or_incomplete_build_reports_do_not_copy_any_files",
+    "packages_only_target_runtime_notices_and_preserves_previous_package_on_notice_failure",
+    "retries_interrupted_package_promotion_and_serializes_builds"
+  ],
+  "assertions": [
+    "Select the executables reported by Cargo and ignore stale default-target binaries.",
+    "Collect runtime library notice files with source attribution and per-file SHA-256 while excluding dev, build and proc-macro-only dependencies.",
+    "Carry the exact selected project, font and Cargo notice bytes in the standalone app's Resources.",
+    "Keep the prior output on invalid build output or missing declared notice. Recover an interrupted promotion and reject a concurrent packager."
+  ],
+  "open": [
+    "Run the new packager with an actual release build and compare the resulting paths and executable hashes.",
+    "Resolve missing upstream notices for the actual emitted library set, audit OS runtime dependencies, and complete signed platform checks."
+  ],
+  "checked_utc": "2026-11-19T08:45:52.643048Z"
+}
