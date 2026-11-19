@@ -1,3 +1,19 @@
+# Standard 3D viewpoints — 19 November 2026
+
+View and Command search offer Front, Back, Left, Right, Top, Bottom and Default
+orbit. Long results scroll below the search field. A single result stays compact.
+
+The native Apple Silicon case opened Front from View and Top through keyboard
+search. Both changed the 3D canvas while the 2D and Properties pixels matched
+the default view. Default orbit reproduced the original workspace PNG byte for
+byte. The saved project and the complete GLB exported in Top view matched their
+prior hashes. The native visibility controls also restored both patterns.
+[Native camera report](parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json) · [Current studio](docs/studio-preview.md).
+
+Formatting, 502 workspace tests, strict Clippy and the studio and CLI builds
+passed. Custom views, garment focus, the complete Harbor fit and reference
+checks remain open. GitHub Actions and automated Pages deployments are disabled.
+
 # Pattern visibility — 19 November 2026
 
 Scene now offers Hide selected, Isolate selected and Show all. Both canvases

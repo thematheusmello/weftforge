@@ -1,0 +1,14 @@
+{
+  "id": "UI-NATIVE-STANDARD-3D-VIEWS-001",
+  "status": "implementation_only",
+  "initial_conditions": "The saved Harbor revision 23 on the Apple Silicon studio, default orbit and both patterns framed.",
+  "actions": [
+    "Open Harbor revision 23, use Frame all and capture the startup orbit.",
+    "Choose Front view in View and capture the workspace.",
+    "Open Command search with Command-K. Scroll the full list and check that its query stays visible. Type Top view.",
+    "Check the compact single result, use Tab and Return, then capture the Top view.",
+    "Export GLB while Top view is active. Restore Default orbit view and capture the same workspace.",
+    "Hide Harbor front in Scene and use Show all to restore both pieces."
+  ],
+  "expected_outcomes": "Front and Top change only 3D canvas pixels. Default orbit restores the whole workspace PNG. Search results scroll separately from the query. The editable project and GLB retain their bytes."
+}

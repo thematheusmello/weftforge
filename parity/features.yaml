@@ -36,7 +36,9 @@
         "parity/reports/WF-20261118-WORKSPACE-PNG-INTEGRATED-SOURCE-001.json",
         "parity/reports/WF-20261119-NATIVE-FRAME-ALL-001.json",
         "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json",
+        "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json",
+        "spec/features/UI-001-standard-viewpoints.md"
       ],
       "scenarios": [
         {
@@ -123,6 +125,15 @@
           },
           "initial_conditions": "Harbor revision 23 in the Apple Silicon studio at 1640 \u00d7 1000 pixels.",
           "expected_outcomes": "Both outlines are visible after Frame all. The 3D and Properties pixels, rest state, revision and editable bytes are preserved."
+        },
+        {
+          "id": "UI-NATIVE-STANDARD-3D-VIEWS-001",
+          "path": "parity/scenarios/UI-NATIVE-STANDARD-3D-VIEWS-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
+          },
+          "initial_conditions": "The saved Harbor revision 23 on the Apple Silicon studio, default orbit and both patterns framed.",
+          "expected_outcomes": "Front and Top change only 3D canvas pixels. Default orbit restores the whole workspace PNG. Search results scroll separately from the query. The editable project and GLB retain their bytes."
         }
       ],
       "comparison_criteria": {
@@ -3815,6 +3826,22 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001",
+          "commit": "7f85908c6b7daf0be3594831f74f2a250b15d276",
+          "timestamp": "2026-11-19T04:23:23.981317Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-standard-camera-views-20261119/default-orbit.png": "8605190a87b4b34abb719cee2f4270bf332a4e6741f887b3a0b63512fa2a1a66",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/front.png": "a852fa5dd1d82c335c2cd87f64d44894fadefcd3ab1379a59d2b31449f25b48a",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/top.png": "465dc95d4aac308478c489a24c1e671a87b51f35a0164b8135ab9cd656860f63",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/NATIVE-CAMERA.json": "cfc30d51fb551621013d93e6cad1d634596781c07fc39c3b96d9e5f79511fb04",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/POST-CASE-CLEANUP.json": "ce87492ce7b64cbaf6d315758c9181fe93aee016852976ca249af78b319aeef5",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
         }
       ],
       "known_gaps": [
@@ -3831,7 +3858,8 @@
         "At actual f6144bce, the constructor retains numeric helpers/ranges/field order and shared authoring paths while aligning Width/Height/Position X/Y metre labels and accessibility associations. Source checks pass 459/32, formatting, strict Clippy and native/CLI builds across two separately bound invocations; the first disk-floor stop and 59 partial ok lines remain failed/incomplete. Native constructor appearance, full workflow, contact quality, reference, full feature and platform acceptance remain open. The isolated failed contact-recovery prototype is not part of this source.",
         "Actual a70c0df0 clean xtask and optimized native/CLI builds passed as separate D invocations. The 472-test source sequence belongs to f30c588d; unchanged source91 are explicit equivalence only. Native workflow and full feature/reference acceptance remain pending; runtime numerical quality is separately failed.",
         "Native File-menu PNG P003 saved and independently decoded 1640 \u00d7 1000 on the H renderer. The visible document revision, rest state and project bytes were unchanged. Previous P001/P002 harness stops remain recorded. Full workspace, lighting, other backends, cross-platform and reference acceptance are still open.",
-        "Frame all has an original Harbor native toolbar and workspace capture check at one window size. Broader viewport, selection, layout and reference workflows remain open."
+        "Frame all has an original Harbor native toolbar and workspace capture check at one window size. Broader viewport, selection, layout and reference workflows remain open.",
+        "Standard 3D views have source and bounded native checks. Garment focus, custom cameras and matching reference behavior remain open."
       ],
       "contradictions": [],
       "blockers": [
@@ -3839,7 +3867,8 @@
       ],
       "freshness": "current",
       "contract_documents": {
-        "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b"
+        "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b",
+        "spec/features/UI-001-standard-viewpoints.md": "904ae35c58a9ecf1e3da3c1a25098a1d1d255cd8776ab630d62991737e4f720a"
       }
     },
     {
@@ -3864,7 +3893,8 @@
         "parity/reports/WF-20261118-CONTACT-RECOVERY-D-TOOLING-001.json",
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-SOURCE-001.json",
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json",
+        "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
       ],
       "scenarios": [
         {
@@ -4967,6 +4997,22 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001",
+          "commit": "7f85908c6b7daf0be3594831f74f2a250b15d276",
+          "timestamp": "2026-11-19T04:23:23.981317Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-standard-camera-views-20261119/default-orbit.png": "8605190a87b4b34abb719cee2f4270bf332a4e6741f887b3a0b63512fa2a1a66",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/front.png": "a852fa5dd1d82c335c2cd87f64d44894fadefcd3ab1379a59d2b31449f25b48a",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/top.png": "465dc95d4aac308478c489a24c1e671a87b51f35a0164b8135ab9cd656860f63",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/NATIVE-CAMERA.json": "cfc30d51fb551621013d93e6cad1d634596781c07fc39c3b96d9e5f79511fb04",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/POST-CASE-CLEANUP.json": "ce87492ce7b64cbaf6d315758c9181fe93aee016852976ca249af78b319aeef5",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
         }
       ],
       "known_gaps": [
@@ -5005,7 +5051,8 @@
         "parity/reports/WF-20261119-PLATFORM-COMMAND-SHORTCUT-001.json",
         "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json",
         "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json",
-        "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json"
+        "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json",
+        "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
       ],
       "scenarios": [
         {
@@ -6038,6 +6085,22 @@
             "parity/reports/artifacts/debian-arm64-json-gltf-20261119/LINUX-GLTF.json": "cc908fe170863cfab08ec4dd7ddd4f377faf5a027825285bcde1f09e527c802c"
           },
           "path": "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001",
+          "commit": "7f85908c6b7daf0be3594831f74f2a250b15d276",
+          "timestamp": "2026-11-19T04:23:23.981317Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-standard-camera-views-20261119/default-orbit.png": "8605190a87b4b34abb719cee2f4270bf332a4e6741f887b3a0b63512fa2a1a66",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/front.png": "a852fa5dd1d82c335c2cd87f64d44894fadefcd3ab1379a59d2b31449f25b48a",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/top.png": "465dc95d4aac308478c489a24c1e671a87b51f35a0164b8135ab9cd656860f63",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/NATIVE-CAMERA.json": "cfc30d51fb551621013d93e6cad1d634596781c07fc39c3b96d9e5f79511fb04",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/POST-CASE-CLEANUP.json": "ce87492ce7b64cbaf6d315758c9181fe93aee016852976ca249af78b319aeef5",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
         }
       ],
       "known_gaps": [
@@ -6053,7 +6116,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/UI-003-original-position-snapping.md": "0d19a5cfa9886757390b735137171a2c9c88beb2f7f5fe8d8eb47c475d948ce7"
       }
@@ -34210,7 +34273,8 @@
       "reference_observation_status": "unobserved",
       "evidence_ids": [
         "spec/features/FIT-002-pattern-visibility.md",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json",
+        "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
       ],
       "scenarios": [
         {
@@ -34269,6 +34333,22 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001",
+          "commit": "7f85908c6b7daf0be3594831f74f2a250b15d276",
+          "timestamp": "2026-11-19T04:23:23.981317Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-standard-camera-views-20261119/default-orbit.png": "8605190a87b4b34abb719cee2f4270bf332a4e6741f887b3a0b63512fa2a1a66",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/front.png": "a852fa5dd1d82c335c2cd87f64d44894fadefcd3ab1379a59d2b31449f25b48a",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/top.png": "465dc95d4aac308478c489a24c1e671a87b51f35a0164b8135ab9cd656860f63",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/NATIVE-CAMERA.json": "cfc30d51fb551621013d93e6cad1d634596781c07fc39c3b96d9e5f79511fb04",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/POST-CASE-CLEANUP.json": "ce87492ce7b64cbaf6d315758c9181fe93aee016852976ca249af78b319aeef5",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
         }
       ],
       "known_gaps": [
@@ -47283,7 +47363,8 @@
         "parity/reports/WF-20261118-WORKSPACE-PNG-INTEGRATED-SOURCE-001.json",
         "parity/reports/WF-20261119-NATIVE-FRAME-ALL-001.json",
         "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json",
+        "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
       ],
       "scenarios": [
         {
@@ -47498,6 +47579,22 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001",
+          "commit": "7f85908c6b7daf0be3594831f74f2a250b15d276",
+          "timestamp": "2026-11-19T04:23:23.981317Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-standard-camera-views-20261119/default-orbit.png": "8605190a87b4b34abb719cee2f4270bf332a4e6741f887b3a0b63512fa2a1a66",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/front.png": "a852fa5dd1d82c335c2cd87f64d44894fadefcd3ab1379a59d2b31449f25b48a",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/top.png": "465dc95d4aac308478c489a24c1e671a87b51f35a0164b8135ab9cd656860f63",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/NATIVE-CAMERA.json": "cfc30d51fb551621013d93e6cad1d634596781c07fc39c3b96d9e5f79511fb04",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/POST-CASE-CLEANUP.json": "ce87492ce7b64cbaf6d315758c9181fe93aee016852976ca249af78b319aeef5",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
         }
       ],
       "known_gaps": [
@@ -50890,7 +50987,8 @@
         "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json",
         "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json",
         "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json",
+        "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
       ],
       "scenarios": [
         {
@@ -51062,6 +51160,22 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001",
+          "commit": "7f85908c6b7daf0be3594831f74f2a250b15d276",
+          "timestamp": "2026-11-19T04:23:23.981317Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-standard-camera-views-20261119/default-orbit.png": "8605190a87b4b34abb719cee2f4270bf332a4e6741f887b3a0b63512fa2a1a66",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/front.png": "a852fa5dd1d82c335c2cd87f64d44894fadefcd3ab1379a59d2b31449f25b48a",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/top.png": "465dc95d4aac308478c489a24c1e671a87b51f35a0164b8135ab9cd656860f63",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/NATIVE-CAMERA.json": "cfc30d51fb551621013d93e6cad1d634596781c07fc39c3b96d9e5f79511fb04",
+            "parity/reports/artifacts/native-standard-camera-views-20261119/POST-CASE-CLEANUP.json": "ce87492ce7b64cbaf6d315758c9181fe93aee016852976ca249af78b319aeef5",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
         }
       ],
       "known_gaps": [

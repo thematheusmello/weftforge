@@ -1,5 +1,18 @@
 # WeftForge current-source addendum
 
+## Standard 3D viewpoints
+
+Source `7f85908c6b7daf0be3594831f74f2a250b15d276` adds seven camera controls in View and Command search.
+`viewpoints` covers the six axis directions and the default orbit. The result
+list scrolls below the visible query. The edit and simulation states keep
+their existing behavior.
+
+This update re-pins 222 existing occurrences and adds six. The previous
+source map is available at `0e764e88f212df28ee5e2f55ad8030a8d5571f4e`. Runtime results appear in the feature
+registry. Custom cameras, garment focus and reference behavior remain open.
+
+# WeftForge current-source addendum
+
 ## Pattern visibility in both canvases
 
 Source `b305cabf553411400bd342d46532a0d61f398d55` adds Hide selected, Isolate selected and Show all to Scene.

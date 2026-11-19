@@ -1,8 +1,18 @@
 # Native studio preview
 
+## Harbor in standard 3D views
+
+The current native app offers six axis-aligned views and Default orbit. In
+this case the Front and Top commands changed the 3D pane. Both patterns and
+the Properties pane retained their captured pixels. Default orbit restored
+the same full workspace image.
+[Front view](../parity/reports/artifacts/native-standard-camera-views-20261119/front.png) · [Top view](../parity/reports/artifacts/native-standard-camera-views-20261119/top.png) · [Native report](../parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json).
+
+![The current Apple Silicon studio with both Harbor patterns and default 3D orbit](../parity/reports/artifacts/native-standard-camera-views-20261119/default-orbit.png)
+
 ## Harbor pattern visibility
 
-The current Apple Silicon studio opened Harbor at revision 23. Scene can
+The Apple Silicon visibility build opened Harbor at revision 23. Scene can
 hide the selected pattern, isolate it, or restore all patterns. The second
 capture shows the front framed on its own. Its hidden back still has a labeled
 Scene row. Saving and mesh export include all pieces.

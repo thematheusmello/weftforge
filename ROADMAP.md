@@ -42,6 +42,10 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    observed both actions, restored visibility, and exported the complete GLB
    from the hidden view while preserving the editable project.
    [Native visibility case](parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json).
+   View and Command search offer six standard 3D orientations. The native
+   check switched to Front and Top, scrolled a long command list and restored
+   the exact default orbit capture. Custom cameras and garment focus remain.
+   [Native viewpoint case](parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json).
    Command search has a named, auto-focused query and keyboard execution. The
    native macOS check reopened the Harbor document and exported its workspace
    preview using the palette.

@@ -1,0 +1,104 @@
+{
+  "source_commit": "7f85908c6b7daf0be3594831f74f2a250b15d276",
+  "source_tree": "5fb73d7ea2b9c560f48003d31de88ba40a14b9e9",
+  "studio_sha256": "2e2146cf5ec56d97aed4891382cfdaf4a93669637afed8ea30f23790792f4d97",
+  "platform": "Apple Silicon macOS",
+  "fixture": "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge",
+  "fixture_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+  "project_revision": 23,
+  "geometry": {
+    "pieces": 2,
+    "vertices": 654,
+    "triangles": 1172
+  },
+  "actions": [
+    "Open Harbor revision 23, use Frame all and capture the startup orbit.",
+    "Choose Front view in View and capture the workspace.",
+    "Open Command search with Command-K. Scroll the full list and check that its query stays visible. Type Top view.",
+    "Check the compact single result, use Tab and Return, then capture the Top view.",
+    "Export GLB while Top view is active. Restore Default orbit view and capture the same workspace.",
+    "Hide Harbor front in Scene and use Show all to restore both pieces."
+  ],
+  "captures": {
+    "default-orbit": {
+      "path": "parity/reports/artifacts/native-standard-camera-views-20261119/default-orbit.png",
+      "sha256": "8605190a87b4b34abb719cee2f4270bf332a4e6741f887b3a0b63512fa2a1a66",
+      "bytes": 218183
+    },
+    "front": {
+      "path": "parity/reports/artifacts/native-standard-camera-views-20261119/front.png",
+      "sha256": "a852fa5dd1d82c335c2cd87f64d44894fadefcd3ab1379a59d2b31449f25b48a",
+      "bytes": 197140
+    },
+    "top": {
+      "path": "parity/reports/artifacts/native-standard-camera-views-20261119/top.png",
+      "sha256": "465dc95d4aac308478c489a24c1e671a87b51f35a0164b8135ab9cd656860f63",
+      "bytes": 164846
+    },
+    "restored": {
+      "path": "parity/reports/artifacts/native-standard-camera-views-20261119/default-orbit.png",
+      "sha256": "8605190a87b4b34abb719cee2f4270bf332a4e6741f887b3a0b63512fa2a1a66",
+      "bytes": 218183
+    }
+  },
+  "rgba_size_px": [
+    1640,
+    1000
+  ],
+  "comparison_regions_half_open_px": {
+    "2D": [
+      46,
+      117,
+      697,
+      944
+    ],
+    "3D": [
+      697,
+      117,
+      1349,
+      944
+    ],
+    "Properties": [
+      1349,
+      117,
+      1640,
+      944
+    ]
+  },
+  "changed_rgb_pixels": {
+    "front": {
+      "2D": 0,
+      "3D": 51252,
+      "Properties": 0
+    },
+    "top": {
+      "2D": 0,
+      "3D": 114808,
+      "Properties": 0
+    },
+    "restored": {
+      "2D": 0,
+      "3D": 0,
+      "Properties": 0
+    }
+  },
+  "restored_workspace_exact": true,
+  "project_bytes_preserved": true,
+  "visibility_regression_on_current_app": true,
+  "glb_from_top": {
+    "identical_full_glb": "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb",
+    "sha256": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
+  },
+  "palette_layout": {
+    "first_candidate": "556b86ceeb2e644b0bbe2cf2b823ca93a7320e0e",
+    "first_observation": "The single-result window retained excess height when the entire palette scrolled.",
+    "current_observation": "The results scroll below the visible query. A single result fits in a compact panel.",
+    "default_front_and_top_pngs_match_first_run": true
+  },
+  "local_checks": {
+    "workspace_tests_passed": 502,
+    "all_seven_commands_tested_in_both_routes": true,
+    "strict_clippy_passed": true
+  },
+  "checked_utc": "2026-11-19T04:23:23.981317Z"
+}
