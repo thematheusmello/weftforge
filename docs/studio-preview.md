@@ -1,5 +1,13 @@
 # Native studio preview
 
+## Apple Silicon release workspace
+
+The local release bundle reopened the saved Harbor placement with both 2D
+patterns and eight seams. The 3D view shows the translated front pattern.
+[Release check](../parity/reports/WF-20261119-APPLE-SILICON-PACKAGE-NOTICES-001.json).
+
+![WeftForge's Apple Silicon release with both Harbor patterns and the moved front placement](../parity/reports/artifacts/apple-silicon-package-notices-20261119/release-workspace.png)
+
 ## Move a pattern in the 3D viewport
 
 Harbor's front pattern moved 320 mm right and 180 mm up in Front view

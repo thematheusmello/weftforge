@@ -1,3 +1,17 @@
+# Apple Silicon release package — 19 November 2026
+
+The offline release package opened Harbor revision 26 in the native
+studio. Its packaged CLI read the two edited patterns and eight seams
+and reproduced both pattern JPEGs byte for byte. The document kept its
+saved hash and the test studio closed. The standalone app carried exact
+copies of the package's project, font and Cargo notices.
+[Release report](parity/reports/WF-20261119-APPLE-SILICON-PACKAGE-NOTICES-001.json) · [Release workspace](parity/reports/artifacts/apple-silicon-package-notices-20261119/release-workspace.png).
+
+The audit verified the executables and 258 notice files against the
+manifest. Of 165 emitted third-party libraries, 31 still need upstream
+code license texts. Linux desktop save, Windows and signed distribution
+remain open. GitHub Actions and automated Pages deployments stay disabled.
+
 # Notices in unsigned packages — 19 November 2026
 
 The packager collects the runtime Cargo notice files it can attribute
