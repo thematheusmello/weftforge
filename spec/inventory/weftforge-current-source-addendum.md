@@ -1,5 +1,19 @@
 # WeftForge current-source addendum
 
+## Embedded JSON glTF export
+
+Source `8721469c10771624d3042b92d6f91c294ed04efc` writes the same static scenes to GLB and JSON glTF.
+`gltf-interchange` maps File, Command search, CLI and MCP to their writers.
+`project_export_gltf` brings the stateless tool list to eleven. The 37 Rust
+variants and 36 nontransaction authoring schemas remain the same.
+
+This update re-pins 243 occurrences, including the CLI match arm shared by
+`export-glb` and `export-gltf`, and adds four occurrences. The previous source
+map is available at `44552840f50fe6b9c2b2da99e17cce8d38666a94`. The feature registry records separate runtime
+evidence. glTF import, animation and reference comparison remain open.
+
+# WeftForge current-source addendum
+
 ## Platform shortcut labels
 
 Source `54456690c60b44696c7d0da551211dab179a329d` uses ⌘K on macOS and Ctrl+K on Linux and Windows

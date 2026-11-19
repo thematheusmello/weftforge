@@ -124,5 +124,6 @@
     "xtask",
     "scripts/check_exports.py"
   ],
-  "freshness": "current"
+  "freshness": "stale",
+  "freshness_reason": "The checked Debian package predates JSON glTF. The current changed executable requires a new package and native Linux check."
 }

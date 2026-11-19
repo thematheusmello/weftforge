@@ -1,5 +1,15 @@
 # Native studio preview
 
+## Harbor on the JSON glTF build
+
+The Apple Silicon studio opened Harbor revision 23, framed both patterns and
+saved this 1640 × 1000 workspace image from **File → Save workspace PNG…**.
+The same build exported the rest surface from File and the advanced surface
+from Command search after one manual step.
+[Native check](../parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json).
+
+![The current WeftForge studio with Harbor's two patterns, 3D rest arrangement and Properties panel](../parity/reports/artifacts/static-gltf-json-20261119/harbor-framed-workspace.png)
+
 ## Harbor with both patterns in view
 
 The Apple Silicon studio reopened Harbor revision 23 and used **Frame all**
