@@ -1,6 +1,7 @@
 use eframe::egui::{self, Color32, Pos2, Rect, Sense, Stroke, Vec2};
 use std::{
     collections::{BTreeMap, BTreeSet},
+    f32::consts::{FRAC_PI_2, PI},
     fs,
     path::{Path, PathBuf},
     sync::{
@@ -19,6 +20,18 @@ use weftforge_sim::{Cloth, MaterialAxis, SimulationError, StepSettings};
 
 mod capture;
 use capture::{RenderedFrame, WorkspaceCapture};
+
+const DEFAULT_ORBIT: [f32; 2] = [-0.45, 0.12];
+// Views are named for the side of the Y-up garment facing the camera.
+const CAMERA_VIEWS: [(&str, [f32; 2]); 7] = [
+    ("Front view", [0., 0.]),
+    ("Back view", [PI, 0.]),
+    ("Left view", [FRAC_PI_2, 0.]),
+    ("Right view", [-FRAC_PI_2, 0.]),
+    ("Top view", [0., FRAC_PI_2]),
+    ("Bottom view", [0., -FRAC_PI_2]),
+    ("Default orbit view", DEFAULT_ORBIT),
+];
 
 #[derive(Clone, Copy, PartialEq)]
 enum Tool {
@@ -1118,8 +1131,8 @@ impl Studio {
             message: "Empty project · draw a pattern or enter dimensions in metres.".into(),
             center: [0., 1.],
             scale: 260.,
-            yaw: -0.45,
-            pitch: 0.12,
+            yaw: DEFAULT_ORBIT[0],
+            pitch: DEFAULT_ORBIT[1],
             camera_scale: 270.,
             wireframe: false,
             settings: StepSettings::default(),
@@ -2598,6 +2611,12 @@ impl Studio {
             let (response, menu) = egui::menu::MenuButton::new("View").ui(ui, |ui| {
                 self.frame_patterns_button(ui);
                 ui.checkbox(&mut self.wireframe, "Wireframe");
+                ui.separator();
+                for (label, angles) in CAMERA_VIEWS {
+                    if self.camera_view_button(ui, label, angles) {
+                        ui.close();
+                    }
+                }
             });
             self.retain_inspector_input(&response, menu.is_some());
             let (response, menu) = egui::menu::MenuButton::new("Help").ui(ui, |ui| {
@@ -3864,6 +3883,17 @@ impl Studio {
                 self.message = "All patterns visible.".into();
             }
         }
+    }
+    fn camera_view_button(&mut self, ui: &mut egui::Ui, label: &str, angles: [f32; 2]) -> bool {
+        let focused = self.inspector_focus(ui.ctx());
+        let response = ui.button(label);
+        self.retain_inspector_input(&response, false);
+        if response.clicked() {
+            finish_numeric_action(ui.ctx(), focused, false);
+            [self.yaw, self.pitch] = angles;
+            ui.ctx().request_repaint();
+        }
+        response.clicked()
     }
     fn frame_patterns_button(&self, ui: &mut egui::Ui) {
         let focused = self.inspector_focus(ui.ctx());
@@ -6716,7 +6746,7 @@ impl Studio {
         if response.dragged() {
             let d = ui.input(|i| i.pointer.delta());
             self.yaw += d.x * 0.008;
-            self.pitch = (self.pitch + d.y * 0.008).clamp(-1.4, 1.4);
+            self.pitch = (self.pitch + d.y * 0.008).clamp(-FRAC_PI_2, FRAC_PI_2);
         }
         if response.hovered() {
             self.camera_scale = (self.camera_scale
@@ -7179,93 +7209,120 @@ impl eframe::App for Studio {
                         )
                         .labelled_by(label.id);
                     });
-                    for label in [
-                        "New Empty",
-                        "Save project",
-                        "Open project",
-                        "Import SVG…",
-                        "Import DXF…",
-                        "Recover project",
-                        "Export OBJ",
-                        "Export GLB",
-                        "Export glTF",
-                        "Export SVG",
-                        "Export DXF",
-                        "Save workspace PNG…",
-                        "Undo",
-                        "Redo",
-                        "Reset simulation",
-                        "Select",
-                        "Transform pattern",
-                        "Polygon",
-                        "Rectangle",
-                        "Internal line",
-                        "Cut piece",
-                        "Add hole…",
-                        "Offset outline…",
-                        "Add ellipse",
-                        "Sew edges",
-                        "Free sewing",
-                        "M:N sewing",
-                    ] {
-                        if !label.to_lowercase().contains(&self.query.to_lowercase()) {
-                            continue;
-                        }
-                        let clicked = match label {
-                            "New Empty" => self.new_empty_button(ui),
-                            "Import SVG…" => self.import_button(ui, PatternFormat::Svg, label),
-                            "Import DXF…" => self.import_button(ui, PatternFormat::Dxf, label),
-                            "Export OBJ" => self.export_button(ui, ExportFormat::Obj, label),
-                            "Export GLB" => self.export_button(ui, ExportFormat::Glb, label),
-                            "Export glTF" => self.export_button(ui, ExportFormat::Gltf, label),
-                            "Export SVG" => self.export_button(ui, ExportFormat::Svg, label),
-                            "Export DXF" => self.export_button(ui, ExportFormat::Dxf, label),
-                            "Save workspace PNG…" => self.workspace_png_button(ui),
-                            "Add hole…" => self.add_hole_button(ui).clicked(),
-                            "Offset outline…" => self.outline_offset_button(ui).clicked(),
-                            _ => ui.button(label).clicked(),
-                        };
-                        if clicked {
-                            match label {
-                                "New Empty" => {}
-                                "Save project" => self.save(false),
-                                "Open project" => self.choose_open(),
-                                "Import SVG…" | "Import DXF…" => {}
-                                "Recover project" => {
-                                    self.refresh_recovery();
-                                    self.show_recovery = true;
+                    egui::ScrollArea::vertical()
+                        .max_height((ctx.content_rect().height() * 0.65).min(540.))
+                        .show(ui, |ui| {
+                            let query = self.query.to_lowercase();
+                            for label in [
+                                "New Empty",
+                                "Save project",
+                                "Open project",
+                                "Import SVG…",
+                                "Import DXF…",
+                                "Recover project",
+                                "Export OBJ",
+                                "Export GLB",
+                                "Export glTF",
+                                "Export SVG",
+                                "Export DXF",
+                                "Save workspace PNG…",
+                                "Undo",
+                                "Redo",
+                                "Reset simulation",
+                                "Select",
+                                "Transform pattern",
+                                "Polygon",
+                                "Rectangle",
+                                "Internal line",
+                                "Cut piece",
+                                "Add hole…",
+                                "Offset outline…",
+                                "Add ellipse",
+                                "Sew edges",
+                                "Free sewing",
+                                "M:N sewing",
+                            ] {
+                                if !label.to_lowercase().contains(&query) {
+                                    continue;
                                 }
-                                "Export OBJ" | "Export GLB" | "Export glTF" | "Export SVG"
-                                | "Export DXF" => {}
-                                "Save workspace PNG…" => {}
-                                "Undo" => self.history(&ctx, false),
-                                "Redo" => self.history(&ctx, true),
-                                "Reset simulation" => {
-                                    self.reset_simulation();
+                                let clicked = match label {
+                                    "New Empty" => self.new_empty_button(ui),
+                                    "Import SVG…" => {
+                                        self.import_button(ui, PatternFormat::Svg, label)
+                                    }
+                                    "Import DXF…" => {
+                                        self.import_button(ui, PatternFormat::Dxf, label)
+                                    }
+                                    "Export OBJ" => {
+                                        self.export_button(ui, ExportFormat::Obj, label)
+                                    }
+                                    "Export GLB" => {
+                                        self.export_button(ui, ExportFormat::Glb, label)
+                                    }
+                                    "Export glTF" => {
+                                        self.export_button(ui, ExportFormat::Gltf, label)
+                                    }
+                                    "Export SVG" => {
+                                        self.export_button(ui, ExportFormat::Svg, label)
+                                    }
+                                    "Export DXF" => {
+                                        self.export_button(ui, ExportFormat::Dxf, label)
+                                    }
+                                    "Save workspace PNG…" => self.workspace_png_button(ui),
+                                    "Add hole…" => self.add_hole_button(ui).clicked(),
+                                    "Offset outline…" => self.outline_offset_button(ui).clicked(),
+                                    _ => ui.button(label).clicked(),
+                                };
+                                if clicked {
+                                    match label {
+                                        "New Empty" => {}
+                                        "Save project" => self.save(false),
+                                        "Open project" => self.choose_open(),
+                                        "Import SVG…" | "Import DXF…" => {}
+                                        "Recover project" => {
+                                            self.refresh_recovery();
+                                            self.show_recovery = true;
+                                        }
+                                        "Export OBJ" | "Export GLB" | "Export glTF"
+                                        | "Export SVG" | "Export DXF" => {}
+                                        "Save workspace PNG…" => {}
+                                        "Undo" => self.history(&ctx, false),
+                                        "Redo" => self.history(&ctx, true),
+                                        "Reset simulation" => {
+                                            self.reset_simulation();
+                                        }
+                                        "Select" => self.set_tool(Tool::Select),
+                                        "Transform pattern" => self.set_tool(Tool::Transform),
+                                        "Polygon" => self.set_tool(Tool::Polygon),
+                                        "Rectangle" => self.set_tool(Tool::Rectangle),
+                                        "Internal line" => self.set_tool(Tool::InternalLine),
+                                        "Cut piece" => {
+                                            self.begin_cut_piece(&ctx);
+                                        }
+                                        "Add hole…" => self.open_hole(&ctx),
+                                        "Offset outline…" => self.open_outline_offset(&ctx),
+                                        "Add ellipse" => {
+                                            let focused = self.inspector_focus(&ctx);
+                                            self.add_ellipse(&ctx, focused);
+                                        }
+                                        "Sew edges" => self.set_tool(Tool::Sew),
+                                        "Free sewing" => self.set_tool(Tool::FreeSewing),
+                                        "M:N sewing" => self.set_tool(Tool::SewingPaths),
+                                        _ => {}
+                                    }
+                                    self.search = false;
+                                    self.search_input = None;
                                 }
-                                "Select" => self.set_tool(Tool::Select),
-                                "Transform pattern" => self.set_tool(Tool::Transform),
-                                "Polygon" => self.set_tool(Tool::Polygon),
-                                "Rectangle" => self.set_tool(Tool::Rectangle),
-                                "Internal line" => self.set_tool(Tool::InternalLine),
-                                "Cut piece" => {
-                                    self.begin_cut_piece(&ctx);
-                                }
-                                "Add hole…" => self.open_hole(&ctx),
-                                "Offset outline…" => self.open_outline_offset(&ctx),
-                                "Add ellipse" => {
-                                    let focused = self.inspector_focus(&ctx);
-                                    self.add_ellipse(&ctx, focused);
-                                }
-                                "Sew edges" => self.set_tool(Tool::Sew),
-                                "Free sewing" => self.set_tool(Tool::FreeSewing),
-                                "M:N sewing" => self.set_tool(Tool::SewingPaths),
-                                _ => {}
                             }
-                            self.search = false;
-                            self.search_input = None;
-                        }
-                    }
+                            for (label, angles) in CAMERA_VIEWS {
+                                if self.search
+                                    && label.to_lowercase().contains(&query)
+                                    && self.camera_view_button(ui, label, angles)
+                                {
+                                    self.close_command_search(&ctx);
+                                }
+                            }
+                        });
                 });
             if !open {
                 self.close_command_search(&ctx);
@@ -9769,6 +9826,133 @@ mod contextual_properties_tests {
                     }),
                 "missing Edit menu command for {os:?}"
             );
+        }
+    }
+
+    #[test]
+    fn standard_camera_views_use_y_up_axes_and_preserve_the_scene() {
+        let (ctx, mut app) = fixture();
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Hidden panel".into(),
+                origin: [2., 1.],
+                width: 0.3,
+                height: 0.6,
+            })
+            .unwrap();
+        app.hidden_pieces
+            .insert(app.editor.project.pieces.last().unwrap().id);
+        let hidden = app.hidden_pieces.clone();
+        let mesh = Arc::new(app.editor.project.mesh().unwrap());
+        let cloth =
+            Arc::new(weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap());
+        app.mesh = Some(mesh.clone());
+        app.cloth = Some(cloth.clone());
+        app.camera_scale = 412.;
+        app.center = [0.13, 0.77];
+        app.scale = 213.;
+        app.set_tool(Tool::Polygon);
+        app.polygon = vec![[0., 0.], [0.1, 0.]];
+        let gesture = app.polygon.clone();
+        let selection = (app.selected, app.selected_curve);
+        let before = format!("{:?}", app.editor);
+
+        let output = frame(&ctx, &mut app, 1000., vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![action(numeric(&output, 0.4), Action::Focus, None)],
+        );
+        frame(&ctx, &mut app, 1000., vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("1e-".into()),
+            ],
+        );
+        let focus = numeric_focus(&ctx).unwrap();
+        let caret = egui::TextEdit::load_state(&ctx, focus)
+            .unwrap()
+            .cursor
+            .char_range();
+        app.draft.as_mut().unwrap().dimensions.as_mut().unwrap()[1] = 0.65;
+        let draft = app.draft.as_ref().unwrap().commands(&app.editor.project);
+
+        let choose = |app: &mut Studio, search, label: &str| {
+            let id = if search {
+                app.open_command_search(&ctx);
+                app.query = label.to_ascii_lowercase();
+                frame(&ctx, app, 1000., vec![]);
+                let output = frame(&ctx, app, 1000., vec![]);
+                super::tests::command_search_action(&output, label)
+            } else {
+                button(&click(&ctx, app, "View"), label)
+            };
+            frame(&ctx, app, 1000., vec![action(id, Action::Click, None)]);
+            frame(&ctx, app, 1000., vec![]);
+            assert!(!app.search);
+        };
+        let rect = Rect::from_min_size(Pos2::ZERO, Vec2::new(1200., 1000.));
+        let center = [0., 1., 0.];
+        // One metre along X, Y and Z, in (screen right, screen down, depth) order.
+        let axes = [
+            ("Front view", [[1., 0., 0.], [0., -1., 0.], [0., 0., 1.]]),
+            ("Back view", [[-1., 0., 0.], [0., -1., 0.], [0., 0., -1.]]),
+            ("Left view", [[0., 0., -1.], [0., -1., 0.], [1., 0., 0.]]),
+            ("Right view", [[0., 0., 1.], [0., -1., 0.], [-1., 0., 0.]]),
+            ("Top view", [[1., 0., 0.], [0., 0., 1.], [0., 1., 0.]]),
+            ("Bottom view", [[1., 0., 0.], [0., 0., -1.], [0., -1., 0.]]),
+        ];
+        for search in [false, true] {
+            for (label, axes) in axes {
+                choose(&mut app, search, label);
+                let (origin, depth_origin) = app.project3(center, rect);
+                for (axis, expected) in axes.into_iter().enumerate() {
+                    let mut point = center;
+                    point[axis] += 1.;
+                    let (screen, depth) = app.project3(point, rect);
+                    let projected = (screen - origin) / app.camera_scale;
+                    let actual = [projected.x, projected.y, depth - depth_origin];
+                    for (measured, expected) in actual.into_iter().zip(expected) {
+                        assert!(
+                            (measured - expected).abs() <= 1.0e-6,
+                            "{label}, axis {axis}: {actual:?}"
+                        );
+                    }
+                }
+            }
+            choose(&mut app, search, "Default orbit view");
+            assert_eq!([app.yaw, app.pitch], [-0.45, 0.12]);
+            assert_eq!(app.camera_scale, 412.);
+            assert_eq!((app.center, app.scale), ([0.13, 0.77], 213.));
+            assert_eq!(app.hidden_pieces, hidden);
+            assert_eq!((app.selected, app.selected_curve), selection);
+            assert!(app.tool == Tool::Polygon && app.polygon == gesture);
+            assert_eq!(
+                app.draft.as_ref().unwrap().commands(&app.editor.project),
+                draft
+            );
+            assert_eq!(numeric_focus(&ctx), Some(focus));
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(focus))
+                    .as_deref(),
+                Some("1e-")
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, focus)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert!(!app.dirty && !app.needs_mesh && app.job.is_none());
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+            assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
         }
     }
 
