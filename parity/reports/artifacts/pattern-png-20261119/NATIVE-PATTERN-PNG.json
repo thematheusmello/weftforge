@@ -1,0 +1,72 @@
+{
+  "source_commit": "36a9be49097a53f1da4dc0c74062f553ff3194b7",
+  "source_tree": "48f02d0a31a8f7bff408701fcc684dc9c17b604a",
+  "studio_sha256": "c78d637afe3c85a8fcb6f6f526b54572ef9a5c6ee171f219a4a7015cccabd282",
+  "cli_sha256": "d4eedffdc8d702ba37e5d7249edeae7dfbcbed7368afdf0ff6d76a2881ef385e",
+  "platform": "Apple Silicon macOS",
+  "fixture": "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge",
+  "fixture_sha256": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83",
+  "revision": 2,
+  "actions": [
+    "Check that the File PNG action is disabled when the project is empty.",
+    "Open the original revision 2 project with the curved Juniper and holed Basin patterns.",
+    "Open Save 2D pattern PNG in File. Select A4, check 210 by 297 mm, swap the sides and then fit the patterns.",
+    "Enter 127 pixels per inch. Check the 4345 by 3615 pixel fit and save with all layers enabled.",
+    "Open the action through Command search with Command-K, Tab and Return.",
+    "Enter the same density and disable internal lines and notches. Cancel the Save dialog and check the settings remain.",
+    "Save the contour-only image. Check both captures against the CLI bytes and independently decode their density and authored geometry."
+  ],
+  "crop_mm": [
+    [
+      -422,
+      -281
+    ],
+    [
+      447,
+      442
+    ]
+  ],
+  "paper_preset_mm": [
+    [
+      210,
+      297
+    ],
+    [
+      297,
+      210
+    ]
+  ],
+  "density_pixels_per_metre": 5000,
+  "images": [
+    {
+      "mode": "all-marks",
+      "sha256": "60890950b49e413b4fcd21a151d31b1b3a0098723c4e58fb8eff7e052a6a92e4",
+      "bytes": 89646,
+      "size_px": [
+        4345,
+        3615
+      ],
+      "ppm": 5000,
+      "outline_samples": 48,
+      "details_shown": true
+    },
+    {
+      "mode": "contours-only",
+      "sha256": "71a55f625a5b5422002911664a8315d959e96a22a6dd5a4c56724f4d9389e062",
+      "bytes": 83694,
+      "size_px": [
+        4345,
+        3615
+      ],
+      "ppm": 5000,
+      "outline_samples": 48,
+      "details_shown": false
+    }
+  ],
+  "project_retained": true,
+  "local_checks": {
+    "workspace_tests": 507,
+    "strict_clippy": true
+  },
+  "checked_utc": "2026-11-19T05:52:07.912517Z"
+}

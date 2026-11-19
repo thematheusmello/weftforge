@@ -1,5 +1,19 @@
 # WeftForge current-source addendum
 
+## Pattern PNG crop and scale
+
+Source `36a9be49097a53f1da4dc0c74062f553ff3194b7` maps `pattern-snapshot-print` to a configurable pattern
+PNG crop with paper sizes, millimetre dimensions and pixel density.
+Raster geometry uses editable contours, holes and optional marks. The
+worker stages output from the current source revision. The typed
+`project_export_pattern_png` tool brings the MCP count to thirteen.
+
+The update re-pins 289 earlier occurrences and adds ten. The previous
+addendum is at `29a1d0f9b17838d2229e90eeb0d36234784df55b`. The format and automation document pins include
+both physical-scale export routes.
+
+# WeftForge current-source addendum
+
 ## Actual-size pattern PDF
 
 Source `89b2c27924f9a9c7546a274334c212fe269c1d46` maps `pattern-snapshot-print` to A4 and US Letter

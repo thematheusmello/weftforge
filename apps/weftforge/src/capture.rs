@@ -4,7 +4,7 @@ use std::{
     sync::{Arc, mpsc},
     time::{Duration, Instant},
 };
-use weftforge_core::StagedExport;
+use weftforge_core::{PatternSnapshotOptions, Project, StagedExport};
 
 const MAX_SIDE: usize = 16_384;
 const MAX_PIXELS: usize = 16_777_216;
@@ -26,10 +26,28 @@ struct Request {
     deadline: Instant,
 }
 
+struct SaveRequest {
+    path: PathBuf,
+    revision: u64,
+    size: [usize; 2],
+    name: &'static str,
+}
+
+impl Request {
+    fn into_save(self, size: [usize; 2]) -> SaveRequest {
+        SaveRequest {
+            path: self.path,
+            revision: self.revision,
+            size,
+            name: "workspace PNG",
+        }
+    }
+}
+
 enum State {
     Waiting(Request),
     Saving {
-        request: Request,
+        request: SaveRequest,
         receiver: mpsc::Receiver<Result<StagedExport, String>>,
         cancelled: bool,
     },
@@ -64,7 +82,7 @@ impl WorkspaceCapture {
         path: PathBuf,
     ) -> Result<(), String> {
         if self.busy() {
-            return Err("Wait for the current workspace PNG save to finish.".into());
+            return Err("Wait for the current PNG save to finish.".into());
         }
         if !self.supported || ctx.viewport_id() != egui::ViewportId::ROOT {
             return Err("Workspace capture is unavailable on this renderer.".into());
@@ -145,22 +163,78 @@ impl WorkspaceCapture {
             return Some("Workspace capture discarded: the window size changed.".into());
         }
         let path = request.path.clone();
+        let result = self.stage(ctx, request.into_save(size), move || {
+            encode_png(&image).and_then(|bytes| {
+                StagedExport::write(path, &bytes).map_err(|error| error.to_string())
+            })
+        });
+        Some(result.unwrap_or_else(|error| error))
+    }
+
+    pub fn start_pattern(
+        &mut self,
+        ctx: &egui::Context,
+        project: &Project,
+        source: Option<&Path>,
+        path: PathBuf,
+        options: PatternSnapshotOptions,
+    ) -> Result<String, String> {
+        if self.busy() {
+            return Err("Wait for the current PNG save to finish.".into());
+        }
+        if !path
+            .extension()
+            .is_some_and(|ext| ext.eq_ignore_ascii_case("png"))
+        {
+            return Err("Choose a .png destination for the pattern image.".into());
+        }
+        super::export_path_guard(source, &path)?;
+        let size = options
+            .dimensions()
+            .map_err(|error| error.to_string())?
+            .map(|dimension| dimension as usize);
+        let request = SaveRequest {
+            path: path.clone(),
+            revision: project.revision,
+            size,
+            name: "2D pattern PNG",
+        };
+        let project = project.clone();
+        self.stage(ctx, request, move || {
+            project
+                .stage_pattern_png(path, options)
+                .map_err(|error| error.to_string())
+        })
+    }
+
+    fn stage(
+        &mut self,
+        ctx: &egui::Context,
+        request: SaveRequest,
+        prepare: impl FnOnce() -> Result<StagedExport, String> + Send + 'static,
+    ) -> Result<String, String> {
         let ctx = ctx.clone();
         let (sender, receiver) = mpsc::channel();
-        if let Err(error) = std::thread::Builder::new().spawn(move || {
-            let result = encode_png(&image)
-                .and_then(|bytes| StagedExport::write(path, &bytes).map_err(|e| e.to_string()));
-            let _ = sender.send(result);
-            ctx.request_repaint();
-        }) {
-            return Some(format!("Workspace PNG worker could not start: {error}"));
-        }
+        std::thread::Builder::new()
+            .spawn(move || {
+                let _ = sender.send(prepare());
+                ctx.request_repaint();
+            })
+            .map_err(|error| format!("Could not start the {} worker. {error}", request.name))?;
+        let message = format!("Saving {}… Escape cancels.", request.name);
         self.state = Some(State::Saving {
             request,
             receiver,
             cancelled: false,
         });
-        Some("Saving workspace PNG… Escape cancels.".into())
+        Ok(message)
+    }
+
+    pub fn name(&self) -> &'static str {
+        match &self.state {
+            Some(State::Saving { request, .. }) => request.name,
+            _ => "workspace PNG",
+        }
     }
 
     // Commit after this pass's authoring, cancellation and document lifecycle actions.
@@ -195,37 +269,38 @@ impl WorkspaceCapture {
                 cancelled,
             } => {
                 let obsolete = request.revision != frame.revision;
+                let name = request.name;
                 match receiver.try_recv() {
                     Ok(Err(error)) => Some(format!(
-                        "Workspace PNG save failed; previous file retained: {error}"
+                        "Failed to save {name}. Previous file retained. {error}"
                     )),
                     Ok(Ok(staged)) => {
                         if obsolete || cancelled {
                             drop(staged);
                             Some(if obsolete {
-                                "Workspace PNG discarded: the document changed; previous file retained."
-                                    .into()
+                                format!(
+                                    "Discarded {name} because the document changed. Previous file retained."
+                                )
                             } else {
-                                "Workspace PNG cancelled; previous file retained.".into()
+                                format!("Cancelled {name}. Previous file retained.")
                             })
                         } else {
                             let result = super::export_path_guard(project, &request.path)
                                 .and_then(|()| staged.commit().map_err(|e| e.to_string()));
                             Some(match result {
                                 Ok(()) => {
-                                    let (_, [width, height]) =
-                                        request.captured.expect("admitted rendered frame");
-                                    format!("Saved workspace PNG · {width} × {height} px.")
+                                    let [width, height] = request.size;
+                                    format!("Saved {name} · {width} × {height} px.")
                                 }
                                 Err(error) => format!(
-                                    "Workspace PNG save failed; previous file retained: {error}"
+                                    "Failed to save {name}. Previous file retained. {error}"
                                 ),
                             })
                         }
                     }
-                    Err(mpsc::TryRecvError::Disconnected) => {
-                        Some("Workspace PNG worker stopped; previous file retained.".into())
-                    }
+                    Err(mpsc::TryRecvError::Disconnected) => Some(format!(
+                        "The {name} worker stopped. Previous file retained."
+                    )),
                     Err(mpsc::TryRecvError::Empty) => {
                         self.state = Some(State::Saving {
                             request,
@@ -359,6 +434,59 @@ mod tests {
                 egui::Color32::from_rgba_premultiplied(16, 32, 48, 128),
             ],
         )
+    }
+
+    #[test]
+    fn pattern_worker_commits_current_geometry_and_discards_late_results() {
+        let directory = Directory::new();
+        let path = directory.0.join("patterns.png");
+        let mut editor = weftforge_core::Editor::default();
+        editor
+            .execute(weftforge_core::Command::AddRectangle {
+                name: "Front".into(),
+                origin: [0.0, 0.0],
+                width: 0.04,
+                height: 0.06,
+            })
+            .unwrap();
+        let project = editor.project;
+        let options = PatternSnapshotOptions {
+            crop_m: [[0.0, 0.0], [0.05, 0.08]],
+            pixels_per_inch: 63.5,
+            contours: true,
+            internal_lines: true,
+            notches: true,
+        };
+        let control = directory.0.join("control.png");
+        project.export_pattern_png(&control, options).unwrap();
+        let expected = fs::read(control).unwrap();
+        let ctx = egui::Context::default();
+        let mut capture = WorkspaceCapture::default();
+        for (cancel, stale) in [(true, false), (false, true), (false, false)] {
+            fs::write(&path, b"previous output").unwrap();
+            capture
+                .start_pattern(&ctx, &project, None, path.clone(), options)
+                .unwrap();
+            if cancel {
+                assert!(capture.cancel());
+            }
+            let display_revision = project.revision + u64::from(stale);
+            let deadline = Instant::now() + Duration::from_secs(5);
+            while capture.busy() {
+                advance(&ctx, &mut capture, display_revision, vec![]);
+                assert!(Instant::now() < deadline, "pattern worker did not finish");
+                std::thread::yield_now();
+            }
+            assert_eq!(
+                &fs::read(&path).unwrap(),
+                if cancel || stale {
+                    b"previous output".as_slice()
+                } else {
+                    &expected
+                }
+            );
+            assert_eq!(fs::read_dir(&directory.0).unwrap().count(), 2);
+        }
     }
 
     #[test]
@@ -539,7 +667,7 @@ mod tests {
                     .ok()
                     .unwrap();
                 capture.state = Some(State::Saving {
-                    request,
+                    request: request.into_save([2, 2]),
                     receiver,
                     cancelled: false,
                 });
@@ -610,7 +738,7 @@ mod tests {
         };
         let (sender, receiver) = mpsc::channel();
         capture.state = Some(State::Saving {
-            request,
+            request: request.into_save([2, 2]),
             receiver,
             cancelled: false,
         });
@@ -855,13 +983,12 @@ mod tests {
             app.workspace_capture
                 .start(&ctx, before.revision, None, path.clone())
                 .unwrap();
-            let Some(State::Waiting(mut request)) = app.workspace_capture.state.take() else {
+            let Some(State::Waiting(request)) = app.workspace_capture.state.take() else {
                 unreachable!()
             };
-            request.captured = Some((stamp(&ctx, before.revision), [1640, 1800]));
             let (sender, receiver) = mpsc::channel();
             app.workspace_capture.state = Some(State::Saving {
-                request,
+                request: request.into_save([1640, 1800]),
                 receiver,
                 cancelled: false,
             });

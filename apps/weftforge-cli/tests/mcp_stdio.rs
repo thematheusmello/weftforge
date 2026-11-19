@@ -13,7 +13,7 @@ use std::{
 };
 use weftforge_core::{Command, Editor, Project, recovery_path};
 
-const MCP_TOOL_COUNT: usize = 12;
+const MCP_TOOL_COUNT: usize = 13;
 
 struct Server {
     child: Child,
@@ -3303,6 +3303,58 @@ fn straight_holes_keep_closed_discovery_shared_ids_and_atomic_refusal() {
     assert_eq!(Project::load(&path).unwrap(), expected.project);
     assert_eq!(fs::read(recovery_path(&path)).unwrap(), primary);
     server.finish();
+}
+
+#[test]
+fn pattern_png_cli_and_mcp_share_density_crop_and_validate_before_writing() {
+    let directory = Directory::new();
+    let input = directory.path("pattern.weftforge");
+    let options = directory.path("options.json");
+    let cli_image = directory.path("cli.png");
+    let mcp_image = directory.path("mcp.png");
+    let mut editor = Editor::default();
+    editor
+        .execute(Command::AddRectangle {
+            name: "Front".into(),
+            origin: [0., 0.],
+            width: 0.1,
+            height: 0.08,
+        })
+        .unwrap();
+    editor.project.save(&input).unwrap();
+    let source = fs::read(&input).unwrap();
+    let request = json!({"crop_m":[[-0.01,-0.01],[0.11,0.09]],"pixels_per_inch":127,
+                         "contours":true,"internal_lines":false,"notches":false});
+    fs::write(&options, serde_json::to_vec(&request).unwrap()).unwrap();
+    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+        .arg("export-pattern-png")
+        .arg(&input)
+        .arg(&cli_image)
+        .arg(&options)
+        .output()
+        .unwrap();
+    assert!(
+        cli.status.success(),
+        "{}",
+        String::from_utf8_lossy(&cli.stderr)
+    );
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let response = server.call(
+        "project_export_pattern_png",
+        json!({"input":input,"output":mcp_image,"options":request}),
+    );
+    assert_eq!(success(&response)["size_px"], json!([600, 500]));
+    let expected = fs::read(&cli_image).unwrap();
+    assert_eq!(fs::read(&mcp_image).unwrap(), expected);
+    let mut invalid = request;
+    invalid["crop_m"] = json!([[0., 0.], [0., 1.]]);
+    tool_error(&server.call(
+        "project_export_pattern_png",
+        json!({"input":input,"output":mcp_image,"options":invalid}),
+    ));
+    assert_eq!(fs::read(mcp_image).unwrap(), expected);
+    assert_eq!(fs::read(input).unwrap(), source);
 }
 
 #[test]

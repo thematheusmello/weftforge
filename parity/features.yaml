@@ -5101,7 +5101,8 @@
         "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json",
         "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json",
         "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json"
       ],
       "scenarios": [
         {
@@ -6207,6 +6208,24 @@
             "parity/reports/artifacts/pattern-print-pdf-20261119/POST-CASE-CLEANUP.json": "3b867c583c431f42f6aedeaa328694fe3e6d68cd282dba73a817e1a8b32672b5"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-PNG-001",
+          "commit": "36a9be49097a53f1da4dc0c74062f553ff3194b7",
+          "timestamp": "2026-11-19T05:52:07.912517Z",
+          "platform": "Apple Silicon macOS native studio and independent PNG decoder",
+          "artifact_hashes": {
+            "parity/reports/artifacts/pattern-png-20261119/verify_pattern_png.py": "a5ace1facbc616abc40f1ec5c88b1df7bc23a7c1c036a2d74c759d7d72caf319",
+            "parity/reports/artifacts/pattern-png-20261119/INDEPENDENT-RESULT.json": "ef5d747acd413e6b1356ae42055fb93c69d41b9bfbc3f1cb21186da8b88a4eb9",
+            "parity/reports/artifacts/pattern-png-20261119/all-marks.png": "60890950b49e413b4fcd21a151d31b1b3a0098723c4e58fb8eff7e052a6a92e4",
+            "parity/reports/artifacts/pattern-png-20261119/all-marks.json": "9bab3e6196b198c8f3423959da032487a46be1b689c760b55f67398afa5a8dcd",
+            "parity/reports/artifacts/pattern-png-20261119/contours-only.png": "71a55f625a5b5422002911664a8315d959e96a22a6dd5a4c56724f4d9389e062",
+            "parity/reports/artifacts/pattern-png-20261119/contours-only.json": "85b51a507adc34af8b26c2f82fafa37cb14adc2d9dfb2fc6764906a11e88d01f",
+            "parity/reports/artifacts/pattern-png-20261119/NATIVE-PATTERN-PNG.json": "9f56f306d197e16b2d896a24fe3c84e9d39be889f2615ea003b4df11a7fff3bd",
+            "parity/reports/artifacts/pattern-png-20261119/POST-CASE-CLEANUP.json": "f2fa1297260e12c888e6bf20d76d95dd17955b4aa9a48658ee4bf9a8de9c765e",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json"
         }
       ],
       "known_gaps": [
@@ -6262,7 +6281,8 @@
         "parity/reports/WF-20261118-CONTACT-RECOVERY-D-TOOLING-001.json",
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-SOURCE-001.json",
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json"
       ],
       "scenarios": [
         {
@@ -11471,6 +11491,24 @@
             "parity/reports/artifacts/pattern-print-pdf-20261119/POST-CASE-CLEANUP.json": "3b867c583c431f42f6aedeaa328694fe3e6d68cd282dba73a817e1a8b32672b5"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-PNG-001",
+          "commit": "36a9be49097a53f1da4dc0c74062f553ff3194b7",
+          "timestamp": "2026-11-19T05:52:07.912517Z",
+          "platform": "Apple Silicon macOS native studio and independent PNG decoder",
+          "artifact_hashes": {
+            "parity/reports/artifacts/pattern-png-20261119/verify_pattern_png.py": "a5ace1facbc616abc40f1ec5c88b1df7bc23a7c1c036a2d74c759d7d72caf319",
+            "parity/reports/artifacts/pattern-png-20261119/INDEPENDENT-RESULT.json": "ef5d747acd413e6b1356ae42055fb93c69d41b9bfbc3f1cb21186da8b88a4eb9",
+            "parity/reports/artifacts/pattern-png-20261119/all-marks.png": "60890950b49e413b4fcd21a151d31b1b3a0098723c4e58fb8eff7e052a6a92e4",
+            "parity/reports/artifacts/pattern-png-20261119/all-marks.json": "9bab3e6196b198c8f3423959da032487a46be1b689c760b55f67398afa5a8dcd",
+            "parity/reports/artifacts/pattern-png-20261119/contours-only.png": "71a55f625a5b5422002911664a8315d959e96a22a6dd5a4c56724f4d9389e062",
+            "parity/reports/artifacts/pattern-png-20261119/contours-only.json": "85b51a507adc34af8b26c2f82fafa37cb14adc2d9dfb2fc6764906a11e88d01f",
+            "parity/reports/artifacts/pattern-png-20261119/NATIVE-PATTERN-PNG.json": "9f56f306d197e16b2d896a24fe3c84e9d39be889f2615ea003b4df11a7fff3bd",
+            "parity/reports/artifacts/pattern-png-20261119/POST-CASE-CLEANUP.json": "f2fa1297260e12c888e6bf20d76d95dd17955b4aa9a48658ee4bf9a8de9c765e",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json"
         }
       ],
       "known_gaps": [
@@ -51413,7 +51451,9 @@
         "parity/reports/artifacts/straight-hole-20261116/PUBLICATION-CURRENT-003.json",
         "parity/reports/WF-20261117-NATIVE-NOTCH-N006-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json",
-        "spec/features/FILE-005-pattern-print-pdf.md"
+        "spec/features/FILE-005-pattern-print-pdf.md",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json",
+        "spec/features/FILE-005-pattern-png.md"
       ],
       "scenarios": [
         {
@@ -51471,6 +51511,15 @@
           },
           "initial_conditions": "Native revision 2 with one curved and marked pattern and one straight holed pattern on Apple Silicon.",
           "expected_outcomes": "File and keyboard exports write six sheets for A4 and Letter with a 100 mm square, actual-size vector patterns and aligned 10 mm overlaps. Saved project bytes match their original."
+        },
+        {
+          "id": "FILE-NATIVE-PATTERN-PNG-001",
+          "path": "parity/scenarios/FILE-NATIVE-PATTERN-PNG-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
+          },
+          "initial_conditions": "The two original revision 2 patterns are opened in the Apple Silicon studio.",
+          "expected_outcomes": "Both entry points save the 869 by 723 mm crop at 5000 pixels per metre. The files match CLI controls and contain the expected outlines and enabled marks. Cancelling retains settings and the project retains its bytes."
         }
       ],
       "comparison_criteria": {
@@ -51492,7 +51541,9 @@
         "apps/weftforge-cli/src/mcp.rs",
         "crates/weftforge-core/src/persistence/svg.rs",
         "crates/weftforge-core/src/persistence/dxf_import.rs",
-        "crates/weftforge-core/src/persistence/pdf.rs"
+        "crates/weftforge-core/src/persistence/pdf.rs",
+        "crates/weftforge-core/src/persistence/pattern_png.rs",
+        "apps/weftforge/src/pattern_snapshot.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/6"
@@ -56468,6 +56519,24 @@
             "parity/reports/artifacts/pattern-print-pdf-20261119/POST-CASE-CLEANUP.json": "3b867c583c431f42f6aedeaa328694fe3e6d68cd282dba73a817e1a8b32672b5"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-PNG-001",
+          "commit": "36a9be49097a53f1da4dc0c74062f553ff3194b7",
+          "timestamp": "2026-11-19T05:52:07.912517Z",
+          "platform": "Apple Silicon macOS native studio and independent PNG decoder",
+          "artifact_hashes": {
+            "parity/reports/artifacts/pattern-png-20261119/verify_pattern_png.py": "a5ace1facbc616abc40f1ec5c88b1df7bc23a7c1c036a2d74c759d7d72caf319",
+            "parity/reports/artifacts/pattern-png-20261119/INDEPENDENT-RESULT.json": "ef5d747acd413e6b1356ae42055fb93c69d41b9bfbc3f1cb21186da8b88a4eb9",
+            "parity/reports/artifacts/pattern-png-20261119/all-marks.png": "60890950b49e413b4fcd21a151d31b1b3a0098723c4e58fb8eff7e052a6a92e4",
+            "parity/reports/artifacts/pattern-png-20261119/all-marks.json": "9bab3e6196b198c8f3423959da032487a46be1b689c760b55f67398afa5a8dcd",
+            "parity/reports/artifacts/pattern-png-20261119/contours-only.png": "71a55f625a5b5422002911664a8315d959e96a22a6dd5a4c56724f4d9389e062",
+            "parity/reports/artifacts/pattern-png-20261119/contours-only.json": "85b51a507adc34af8b26c2f82fafa37cb14adc2d9dfb2fc6764906a11e88d01f",
+            "parity/reports/artifacts/pattern-png-20261119/NATIVE-PATTERN-PNG.json": "9f56f306d197e16b2d896a24fe3c84e9d39be889f2615ea003b4df11a7fff3bd",
+            "parity/reports/artifacts/pattern-png-20261119/POST-CASE-CLEANUP.json": "f2fa1297260e12c888e6bf20d76d95dd17955b4aa9a48658ee4bf9a8de9c765e",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json"
         }
       ],
       "known_gaps": [
@@ -56477,7 +56546,8 @@
         "Historical32f9 bounded explicit-mm SVG import/native history/control edit/export/exact restart persistence passes independent v3 checks. Only exterior M/L/C/Z boundaries and names; DXF import and full SVG/garment interchange remain unsupported.",
         "Source76be bounded DXF import has four headless geometry/export passes, fourteen retention negatives, four exact MCP inspections and a nine-checkpoint native file/export pass. The full native plan remains unaccepted: explicit print disclosure and old Redo-after-Cancel proof are missing, and temporary autosave/recovery persistence occurred. Full DXF/CAD/apparel, printing, all persistence failures and reference comparison remain open.",
         "WF-20261116-HOLE-EXPORT-001 is a current947/source74 bounded annular export subset only: actual historical accepted H1R5 compatibility reopen, one edit/native-v5 save, OBJ.0768m2/one component/two boundary loops/Euler0/metre positions+UV/Y-up, tight240x360mm compound-evenodd SVG and planned hole-DXF refusal with both sentinels unchanged. Old source73 H2 sole5457 grade remains FAILED/unaccepted; original H3 actor postguard remains FAILED/exit1, qualified only by separate direct root audit and UI acceptance. No current947 empty creation, hole SVG import/roundtrip, print margins, full CAD/apparel interoperability, native physics or reference acceptance.",
-        "A4 and US Letter native and CLI PDFs have an independent digital scale, geometry and tiling check. Printer measurement, configurable 1:1 raster snapshots, wider paper presets and current reference behavior remain open."
+        "A4 and US Letter native and CLI PDFs have an independent digital scale, geometry and tiling check. Printer measurement, configurable 1:1 raster snapshots, wider paper presets and current reference behavior remain open.",
+        "Native and CLI 1:1 raster crops with independently decoded density and layer toggles are checked. Artwork, labels, grainline and measurements in snapshots, JPEG, wider presets, printer measurement and reference execution remain open."
       ],
       "contradictions": [],
       "blockers": [
@@ -56487,7 +56557,8 @@
       "contract_documents": {
         "spec/features/FILE-005-dxf-pattern-export.md": "b0373181a6ae79c148aa154c0c2269956c2fed3587b5c6d0aef929108e11dd73",
         "spec/features/FILE-005-dxf-pattern-import.md": "06cff6f3d1a6d62fceeb93e94a2037f28136b69adfa5507b8a780e8864b0512b",
-        "spec/features/FILE-005-pattern-print-pdf.md": "af7dc40486229050157831fa7bb422dcd7b875675ff25660b92e479df924169d"
+        "spec/features/FILE-005-pattern-print-pdf.md": "af7dc40486229050157831fa7bb422dcd7b875675ff25660b92e479df924169d",
+        "spec/features/FILE-005-pattern-png.md": "e60165a61e45536d2f16c293357675c82cf5dff1feb9ee4a73b04af4aad60458"
       }
     },
     {
@@ -56600,7 +56671,8 @@
         "parity/reports/WF-20261116-RECTANGLE-SOURCE-001.json",
         "parity/reports/WF-20261116-RECTANGLE-NATIVE-001.json",
         "parity/reports/artifacts/rectangle-gesture-20261116/SELECTED-PUBLIC-MANIFEST-001.json",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json"
       ],
       "scenarios": [
         {
@@ -62151,6 +62223,24 @@
             "parity/reports/artifacts/pattern-print-pdf-20261119/POST-CASE-CLEANUP.json": "3b867c583c431f42f6aedeaa328694fe3e6d68cd282dba73a817e1a8b32672b5"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-PNG-001",
+          "commit": "36a9be49097a53f1da4dc0c74062f553ff3194b7",
+          "timestamp": "2026-11-19T05:52:07.912517Z",
+          "platform": "Apple Silicon macOS native studio and independent PNG decoder",
+          "artifact_hashes": {
+            "parity/reports/artifacts/pattern-png-20261119/verify_pattern_png.py": "a5ace1facbc616abc40f1ec5c88b1df7bc23a7c1c036a2d74c759d7d72caf319",
+            "parity/reports/artifacts/pattern-png-20261119/INDEPENDENT-RESULT.json": "ef5d747acd413e6b1356ae42055fb93c69d41b9bfbc3f1cb21186da8b88a4eb9",
+            "parity/reports/artifacts/pattern-png-20261119/all-marks.png": "60890950b49e413b4fcd21a151d31b1b3a0098723c4e58fb8eff7e052a6a92e4",
+            "parity/reports/artifacts/pattern-png-20261119/all-marks.json": "9bab3e6196b198c8f3423959da032487a46be1b689c760b55f67398afa5a8dcd",
+            "parity/reports/artifacts/pattern-png-20261119/contours-only.png": "71a55f625a5b5422002911664a8315d959e96a22a6dd5a4c56724f4d9389e062",
+            "parity/reports/artifacts/pattern-png-20261119/contours-only.json": "85b51a507adc34af8b26c2f82fafa37cb14adc2d9dfb2fc6764906a11e88d01f",
+            "parity/reports/artifacts/pattern-png-20261119/NATIVE-PATTERN-PNG.json": "9f56f306d197e16b2d896a24fe3c84e9d39be889f2615ea003b4df11a7fff3bd",
+            "parity/reports/artifacts/pattern-png-20261119/POST-CASE-CLEANUP.json": "f2fa1297260e12c888e6bf20d76d95dd17955b4aa9a48658ee4bf9a8de9c765e",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json"
         }
       ],
       "known_gaps": [
