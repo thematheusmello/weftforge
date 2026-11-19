@@ -1,3 +1,19 @@
+# Pattern inspector accessibility — 19 November 2026
+
+The Pattern name field and nine Arrangement controls now expose distinct names
+and units to assistive technology. The source check found all nine controls
+with equal numeric values in both the 248-point and 292-point inspector docks.
+Formatting, 496 workspace tests and strict Clippy passed.
+
+The Apple Silicon app reopened Harbor at revision 23 and selected the front
+panel. The native accessibility tree exposed its width, height, translation,
+rotation and warp angle. The app saved a 1640 × 1000 workspace PNG and closed.
+Independent checks verified the PNG and the original project bytes.
+[Harbor arrangement preview](parity/reports/artifacts/pattern-arrangement-accessibility-20261119/workspace.png) · [Native observation](parity/reports/artifacts/pattern-arrangement-accessibility-20261119/NATIVE-OBSERVATION.json).
+
+The complete Harbor fit, Windows and Linux native checks and distribution
+signing remain open. GitHub Actions and automated Pages deployments stay disabled.
+
 # First failing fit state — 18 November 2026
 
 The `first_quality_failure` field in `fit` and `fit-benchmark` contains the

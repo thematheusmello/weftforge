@@ -1,0 +1,122 @@
+{
+  "kind": "native_implementation_observation",
+  "platform": "macOS Apple Silicon",
+  "source": {
+    "base_commit": "cd1da4e6ce43677997107c3717544fcbb16315a1",
+    "changed_path": "apps/weftforge/src/main.rs",
+    "sha256": "15b0733820b133b0a95fc5849bc6bdf95837207a88e01df318e6d1337b44d938"
+  },
+  "build": {
+    "profile": "debug",
+    "binary_sha256": "163bf8aa1033d8d8e166e4bc46e324470cc99b1b436020bd00fefa166a41c401",
+    "format": "Mach-O 64-bit executable arm64"
+  },
+  "project": {
+    "original_tracked_fixture": "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge",
+    "opened_copy": "Harbor-Arrangement.weftforge",
+    "sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+    "revision": 23,
+    "selected_piece": "Harbor front",
+    "selected_id": 2,
+    "pieces": 2,
+    "seams": 8,
+    "vertices": 654,
+    "retained_exact": true,
+    "no_project_sidecars": true
+  },
+  "native_controls": {
+    "empty_constructor": {
+      "accessible_name": "Pattern name",
+      "value": "Pattern 1",
+      "role": "text field"
+    },
+    "selected_pattern": [
+      {
+        "accessible_name": "Pattern width m",
+        "value": "1.320",
+        "role": "stepper"
+      },
+      {
+        "accessible_name": "Pattern height m",
+        "value": "0.640",
+        "role": "stepper"
+      },
+      {
+        "accessible_name": "Translation X m",
+        "value": "0.72",
+        "role": "stepper"
+      },
+      {
+        "accessible_name": "Translation Y m",
+        "value": "0.00",
+        "role": "stepper"
+      },
+      {
+        "accessible_name": "Translation Z m",
+        "value": "0.24",
+        "role": "stepper"
+      },
+      {
+        "accessible_name": "Rotation X radians",
+        "value": "0.00",
+        "role": "stepper"
+      },
+      {
+        "accessible_name": "Rotation Y radians",
+        "value": "0.00",
+        "role": "stepper"
+      },
+      {
+        "accessible_name": "Rotation Z radians",
+        "value": "0.00",
+        "role": "stepper"
+      },
+      {
+        "accessible_name": "Warp angle radians",
+        "value": "1.5708",
+        "role": "stepper"
+      }
+    ]
+  },
+  "capture": {
+    "route": "Commands toolbar, search Save workspace PNG, Tab and Return",
+    "reported_status": "Saved workspace PNG · 1640 × 1000 px.",
+    "original_basename": "workspaceHarbor-arrangement.png",
+    "artifact": "workspace.png",
+    "sha256": "37b9eded829d89bf87e0929b813a38e7faf9cf4a224031a35a0c4511ead92bba",
+    "bytes": 247070,
+    "width": 1640,
+    "height": 1000,
+    "png_chunks": [
+      "IHDR",
+      "sRGB",
+      "IDAT",
+      "IEND"
+    ],
+    "independently_verified_crc_and_pixel_stream": true
+  },
+  "source_checks": {
+    "fmt": true,
+    "workspace_tests": 496,
+    "failed": 0,
+    "ignored": 0,
+    "strict_all_targets_clippy": true,
+    "equal_value_accesskit": {
+      "distinct_named_controls": 9,
+      "equal_value": 0.4,
+      "properties_dock_widths_points": [
+        248,
+        292
+      ],
+      "available_viewport_widths_points": [
+        1000,
+        1640
+      ]
+    }
+  },
+  "process_cleanup": {
+    "bundle_closed_after_command_q": true,
+    "pids_present_after_check": 0
+  },
+  "checked_utc": "2026-11-19T00:34:36.259836+00:00"
+}
