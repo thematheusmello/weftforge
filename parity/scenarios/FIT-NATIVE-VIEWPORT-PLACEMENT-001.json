@@ -1,0 +1,15 @@
+{
+  "id": "FIT-NATIVE-VIEWPORT-PLACEMENT-001",
+  "status": "implementation_only",
+  "initial_conditions": "Apple Silicon opens the original Harbor revision 23 with two patterns and eight seams in the rest arrangement. Set Front view and 10 mm Snap.",
+  "actions": [
+    "Open the original Harbor document, use Frame all, select its front pattern, and choose Front view.",
+    "Frame the visible garment, zoom out slightly, and enable Move pattern with the 10 mm Snap setting.",
+    "Save the original workspace PNG. The first native drag immediately after the capture kept revision 23.",
+    "Drag the front from logical window point 930, 612 to 1034, 553 and save the editable revision 24 and the new workspace PNG.",
+    "Undo, save revision 25, redo, and save revision 26.",
+    "Reopen the saved revision 26 and select Harbor front. Inspect the restored arrangement values.",
+    "Open the revision 25 test snapshot. Recreate the same view and repeat the first drag path from 1010, 570 to 1082, 519. This path moved the pattern to X 0.94 m and Y 0.16 m in one revision."
+  ],
+  "expected_outcomes": "A front-pattern drag changes only that pattern's translation and one revision. Undo restores the original, Redo restores the new translation, and the saved document reopens with the moved placement. The 2D canvas pixels agree before and after the edit."
+}

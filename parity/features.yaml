@@ -40,7 +40,8 @@
         "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json",
         "spec/features/UI-001-standard-viewpoints.md",
         "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json",
-        "spec/features/UI-001-frame-garment.md"
+        "spec/features/UI-001-frame-garment.md",
+        "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json"
       ],
       "scenarios": [
         {
@@ -3870,6 +3871,25 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
           },
           "path": "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001",
+          "commit": "7de4b5764449c3a35266ed22819134cb20f9e5a6",
+          "timestamp": "2026-11-19T08:23:00.209023Z",
+          "platform": "Apple Silicon macOS native studio and independent editable-project and PNG check",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-viewport-placement-20261119/before.png": "d0d8b7bdea2acaff6aadf9857eeaefdec4afd8806a8b053ccd35317dc2d97a5b",
+            "parity/reports/artifacts/native-viewport-placement-20261119/drag.weftforge": "3c8a073ca4962d63366125d077c401c1f32a9c78d6fd8a5b473514118518e682",
+            "parity/reports/artifacts/native-viewport-placement-20261119/RESULT.json": "7629658f785db5fa4e9d30e5e83a0355ad36ca21dcd6c1a5000e3d4e01b74efa",
+            "parity/reports/artifacts/native-viewport-placement-20261119/after.png": "d8ad7bde8ad30e8ac13ed63eab7b4882105140caa196710f47ebe9be539b5bc9",
+            "parity/reports/artifacts/native-viewport-placement-20261119/undo.weftforge": "3a107e5e72dac5af73cf7db810d79e72a8b9110b67c8e9714fb2b85efa92316b",
+            "parity/reports/artifacts/native-viewport-placement-20261119/redo.weftforge": "3a8b146d9a579096266211c5f93b547623c1b674df24bfe0a52232d0abe6fd64",
+            "parity/reports/artifacts/native-viewport-placement-20261119/check_placement.py": "c8918c420b0e6baf0b1c94c75b59223bec2485983fa4ec23f2a857fab1fbdaaa",
+            "parity/reports/artifacts/native-viewport-placement-20261119/NATIVE-PLACEMENT.json": "288b6b3527d61bf34957f7bc0c19b34fd754ee511f0b1d64e2be035d6c4c25e0",
+            "parity/reports/artifacts/native-viewport-placement-20261119/POST-CASE-CLEANUP.json": "12ba9e5f1e03d84fb5c34c2d2db929fe757f10da7b4568bf84b49934334d96cc"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json"
         }
       ],
       "known_gaps": [
@@ -3893,7 +3913,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b",
         "spec/features/UI-001-standard-viewpoints.md": "904ae35c58a9ecf1e3da3c1a25098a1d1d255cd8776ab630d62991737e4f720a",
@@ -3924,7 +3944,8 @@
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json",
         "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json",
-        "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
+        "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json",
+        "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json"
       ],
       "scenarios": [
         {
@@ -5060,6 +5081,25 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
           },
           "path": "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001",
+          "commit": "7de4b5764449c3a35266ed22819134cb20f9e5a6",
+          "timestamp": "2026-11-19T08:23:00.209023Z",
+          "platform": "Apple Silicon macOS native studio and independent editable-project and PNG check",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-viewport-placement-20261119/before.png": "d0d8b7bdea2acaff6aadf9857eeaefdec4afd8806a8b053ccd35317dc2d97a5b",
+            "parity/reports/artifacts/native-viewport-placement-20261119/drag.weftforge": "3c8a073ca4962d63366125d077c401c1f32a9c78d6fd8a5b473514118518e682",
+            "parity/reports/artifacts/native-viewport-placement-20261119/RESULT.json": "7629658f785db5fa4e9d30e5e83a0355ad36ca21dcd6c1a5000e3d4e01b74efa",
+            "parity/reports/artifacts/native-viewport-placement-20261119/after.png": "d8ad7bde8ad30e8ac13ed63eab7b4882105140caa196710f47ebe9be539b5bc9",
+            "parity/reports/artifacts/native-viewport-placement-20261119/undo.weftforge": "3a107e5e72dac5af73cf7db810d79e72a8b9110b67c8e9714fb2b85efa92316b",
+            "parity/reports/artifacts/native-viewport-placement-20261119/redo.weftforge": "3a8b146d9a579096266211c5f93b547623c1b674df24bfe0a52232d0abe6fd64",
+            "parity/reports/artifacts/native-viewport-placement-20261119/check_placement.py": "c8918c420b0e6baf0b1c94c75b59223bec2485983fa4ec23f2a857fab1fbdaaa",
+            "parity/reports/artifacts/native-viewport-placement-20261119/NATIVE-PLACEMENT.json": "288b6b3527d61bf34957f7bc0c19b34fd754ee511f0b1d64e2be035d6c4c25e0",
+            "parity/reports/artifacts/native-viewport-placement-20261119/POST-CASE-CLEANUP.json": "12ba9e5f1e03d84fb5c34c2d2db929fe757f10da7b4568bf84b49934334d96cc"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json"
         }
       ],
       "known_gaps": [
@@ -5076,7 +5116,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "UI-003",
@@ -6305,7 +6345,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/UI-003-original-position-snapping.md": "0d19a5cfa9886757390b735137171a2c9c88beb2f7f5fe8d8eb47c475d948ce7"
       }
@@ -6349,7 +6389,8 @@
         "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-GRAINLINE-001.json",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-JPEG-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-JPEG-001.json",
+        "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json"
       ],
       "scenarios": [
         {
@@ -11637,6 +11678,25 @@
             "parity/reports/artifacts/pattern-png-grainline-20261119/with-grainline.json": "80d3ec15aa139038fdffb79193aa6b86674a16c477a6e78dfbbfbebedafa7e94"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-JPEG-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001",
+          "commit": "7de4b5764449c3a35266ed22819134cb20f9e5a6",
+          "timestamp": "2026-11-19T08:23:00.209023Z",
+          "platform": "Apple Silicon macOS native studio and independent editable-project and PNG check",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-viewport-placement-20261119/before.png": "d0d8b7bdea2acaff6aadf9857eeaefdec4afd8806a8b053ccd35317dc2d97a5b",
+            "parity/reports/artifacts/native-viewport-placement-20261119/drag.weftforge": "3c8a073ca4962d63366125d077c401c1f32a9c78d6fd8a5b473514118518e682",
+            "parity/reports/artifacts/native-viewport-placement-20261119/RESULT.json": "7629658f785db5fa4e9d30e5e83a0355ad36ca21dcd6c1a5000e3d4e01b74efa",
+            "parity/reports/artifacts/native-viewport-placement-20261119/after.png": "d8ad7bde8ad30e8ac13ed63eab7b4882105140caa196710f47ebe9be539b5bc9",
+            "parity/reports/artifacts/native-viewport-placement-20261119/undo.weftforge": "3a107e5e72dac5af73cf7db810d79e72a8b9110b67c8e9714fb2b85efa92316b",
+            "parity/reports/artifacts/native-viewport-placement-20261119/redo.weftforge": "3a8b146d9a579096266211c5f93b547623c1b674df24bfe0a52232d0abe6fd64",
+            "parity/reports/artifacts/native-viewport-placement-20261119/check_placement.py": "c8918c420b0e6baf0b1c94c75b59223bec2485983fa4ec23f2a857fab1fbdaaa",
+            "parity/reports/artifacts/native-viewport-placement-20261119/NATIVE-PLACEMENT.json": "288b6b3527d61bf34957f7bc0c19b34fd754ee511f0b1d64e2be035d6c4c25e0",
+            "parity/reports/artifacts/native-viewport-placement-20261119/POST-CASE-CLEANUP.json": "12ba9e5f1e03d84fb5c34c2d2db929fe757f10da7b4568bf84b49934334d96cc"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json"
         }
       ],
       "known_gaps": [
@@ -34300,7 +34360,10 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json",
+        "spec/features/FIT-001-native-placement.md"
+      ],
       "scenarios": [
         {
           "id": "UI-SHIRT-CANDIDATE-001",
@@ -34320,6 +34383,15 @@
           "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
           "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
           "path": "parity/scenarios/UI-HARBOR-001.json"
+        },
+        {
+          "id": "FIT-NATIVE-VIEWPORT-PLACEMENT-001",
+          "path": "parity/scenarios/FIT-NATIVE-VIEWPORT-PLACEMENT-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
+          },
+          "initial_conditions": "Apple Silicon opens the original Harbor revision 23 with two patterns and eight seams in the rest arrangement. Set Front view and 10 mm Snap.",
+          "expected_outcomes": "A front-pattern drag changes only that pattern's translation and one revision. Undo restores the original, Redo restores the new translation, and the saved document reopens with the moved placement. The 2D canvas pixels agree before and after the edit."
         }
       ],
       "comparison_criteria": {
@@ -34334,7 +34406,8 @@
         "FILE-003"
       ],
       "implementation_locations": [
-        "crates/weftforge-core/src/lib.rs"
+        "crates/weftforge-core/src/lib.rs",
+        "apps/weftforge/src/main.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/2"
@@ -34561,17 +34634,40 @@
             "parity/reports/artifacts/harbor-publication-20261114/xtask.public.log": "01adf358a30c66130670687b1c442b4fd0179a51dd45c195e90b9360bc5ac0fd"
           },
           "path": "parity/reports/WF-20261114-HARBOR-AUTHORING-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001",
+          "commit": "7de4b5764449c3a35266ed22819134cb20f9e5a6",
+          "timestamp": "2026-11-19T08:23:00.209023Z",
+          "platform": "Apple Silicon macOS native studio and independent editable-project and PNG check",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-viewport-placement-20261119/before.png": "d0d8b7bdea2acaff6aadf9857eeaefdec4afd8806a8b053ccd35317dc2d97a5b",
+            "parity/reports/artifacts/native-viewport-placement-20261119/drag.weftforge": "3c8a073ca4962d63366125d077c401c1f32a9c78d6fd8a5b473514118518e682",
+            "parity/reports/artifacts/native-viewport-placement-20261119/RESULT.json": "7629658f785db5fa4e9d30e5e83a0355ad36ca21dcd6c1a5000e3d4e01b74efa",
+            "parity/reports/artifacts/native-viewport-placement-20261119/after.png": "d8ad7bde8ad30e8ac13ed63eab7b4882105140caa196710f47ebe9be539b5bc9",
+            "parity/reports/artifacts/native-viewport-placement-20261119/undo.weftforge": "3a107e5e72dac5af73cf7db810d79e72a8b9110b67c8e9714fb2b85efa92316b",
+            "parity/reports/artifacts/native-viewport-placement-20261119/redo.weftforge": "3a8b146d9a579096266211c5f93b547623c1b674df24bfe0a52232d0abe6fd64",
+            "parity/reports/artifacts/native-viewport-placement-20261119/check_placement.py": "c8918c420b0e6baf0b1c94c75b59223bec2485983fa4ec23f2a857fab1fbdaaa",
+            "parity/reports/artifacts/native-viewport-placement-20261119/NATIVE-PLACEMENT.json": "288b6b3527d61bf34957f7bc0c19b34fd754ee511f0b1d64e2be035d6c4c25e0",
+            "parity/reports/artifacts/native-viewport-placement-20261119/POST-CASE-CLEANUP.json": "12ba9e5f1e03d84fb5c34c2d2db929fe757f10da7b4568bf84b49934334d96cc"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity."
+        "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity.",
+        "Native view-plane translation of one rest pattern has a bounded checked workflow. Rotation handles, arrangement aids, avatar assets, and the complete reference behavior remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current",
+      "contract_documents": {
+        "spec/features/FIT-001-native-placement.md": "0f955e8b102d925a0196b774d1a419a9bf849ea606989f78c6b218383dbe6a2c"
+      }
     },
     {
       "id": "FIT-002",
@@ -56793,7 +56889,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/FILE-005-dxf-pattern-export.md": "b0373181a6ae79c148aa154c0c2269956c2fed3587b5c6d0aef929108e11dd73",
         "spec/features/FILE-005-dxf-pattern-import.md": "06cff6f3d1a6d62fceeb93e94a2037f28136b69adfa5507b8a780e8864b0512b",
@@ -62586,7 +62682,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/APP-001-new-empty.md": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
         "spec/features/SEW-002-physical-length.md": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2"
@@ -62738,7 +62834,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "APP-003",

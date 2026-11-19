@@ -4,7 +4,7 @@
   "historical_map_commit": "af79f596f247cc48e709b818bb70a30d1b716580",
   "historical_map_sha256": "9323eb803af6d07d6178fd6e808fd61f87e5da71e3b07ab4b279b3141b11c8ec",
   "historical_source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
-  "source_commit": "f440d126c9094b357deb99b68dd6b01235591a44",
+  "source_commit": "7de4b5764449c3a35266ed22819134cb20f9e5a6",
   "source_pins": [
     {
       "commit": "af79f596f247cc48e709b818bb70a30d1b716580",
@@ -165,6 +165,10 @@
     {
       "commit": "f440d126c9094b357deb99b68dd6b01235591a44",
       "scope": "Physical JPEG crop, declared JFIF grid and native, CLI and MCP exports."
+    },
+    {
+      "commit": "7de4b5764449c3a35266ed22819134cb20f9e5a6",
+      "scope": "Direct native view-plane rest translation using the existing typed placement command."
     }
   ],
   "historical_invariants": {
@@ -315,50 +319,50 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn new_empty_button(",
-          "line": 1539,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 1563,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn new_empty(",
-          "line": 1578,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 1603,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn new_empty_file_route_replaces_clean_document_and_retains_files_and_preferences",
-          "line": 18257,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 18488,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn new_empty_search_route_replaces_clean_document_and_retains_files_and_preferences",
-          "line": 18262,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 18493,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_unfinished_creation_blocks_clean_new_and_escape_abandons_without_history",
-          "line": 24826,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 25057,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_sew_review_resets_on_accepted_lifecycle_changes_and_survives_failed_io_and_new_refusal()",
-          "line": 23528,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 23759,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn discard_stale_hole(",
-          "line": 4382,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4408,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn sewing_section_defaults_follow_accepted_documents_and_preserve_failed_transitions",
-          "line": 12163,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 12394,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -390,182 +394,182 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn menu_bar(",
-          "line": 2626,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2652,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn tool_rail(",
-          "line": 2838,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2864,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn document_tab(",
-          "line": 2868,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2894,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn studio_workspace_keeps_creation_and_transport_visible",
-          "line": 11963,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 12194,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn studio_menus_and_tool_rail_preserve_numeric_drafts_text_and_caret",
-          "line": 12456,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 12687,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_window(",
-          "line": 5291,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5317,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn selected_internal_curve(",
-          "line": 4989,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5015,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_piece_window(",
-          "line": 4859,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4885,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn add_hole_button(",
-          "line": 4327,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4353,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn hole_window(",
-          "line": 4396,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4422,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn workspace_sewing_properties_open_for_the_active_tool_without_authoring",
-          "line": 12077,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 12308,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn native_text_edit<'a>(",
-          "line": 8072,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 8257,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn native_text_set_value_uses_existing_ids_limits_and_scoped_ordinary_editing",
-          "line": 8830,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 9061,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn native_text_set_value_retains_raw_modal_input_and_uses_notch_validation",
-          "line": 23658,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 23889,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn native_text_set_value_noop_and_cancel_preserve_pending_properties",
-          "line": 23739,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 23970,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn native_text_set_value_does_not_blur_or_commit_unrelated_numeric_input",
-          "line": 23808,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 24039,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "enum PropertiesTab {",
           "line": 73,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn suspend_properties_input(",
-          "line": 2570,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2596,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn reconcile_suspended_properties(",
-          "line": 1265,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 1288,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn clear_numeric_input(",
-          "line": 8035,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 8220,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn discard_suspended_inputs(",
-          "line": 8025,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 8210,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn tabs_and_contextual_groups_reach_real_controls_without_authoring(",
-          "line": 10685,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 10916,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn tab_switches_suspend_numeric_focus_and_restore_raw_text_caret_and_draft_on_refocus(",
-          "line": 10813,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 11044,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn collapsing_the_edited_context_preserves_input_without_holding_hidden_focus(",
-          "line": 10981,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 11212,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn unfinished_hidden_input_refuses_other_commits_then_joins_one_valid_transaction(",
-          "line": 11042,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 11273,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn refocus_and_paste_in_one_frame_uses_the_retained_input_without_overwriting_the_new_edit(",
-          "line": 11157,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 11388,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn refused_new_empty_and_failed_load_keep_hidden_input_but_accepted_same_identity_load_drops_it(",
-          "line": 11325,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 11556,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn explicit_sewing_row_invalidation_retires_hidden_input_before_same_frame_authoring(",
-          "line": 11400,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 11631,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn sewing_draft_discard_preserves_surviving_rows_and_unrelated_input(",
-          "line": 11574,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 11805,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn workspace_png_button(",
-          "line": 1425,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 1449,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/capture.rs",
@@ -591,8 +595,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn studio_workspace_keeps_creation_and_transport_visible",
-          "line": 11963,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 12194,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -614,20 +618,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn studio_style(",
-          "line": 8695,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 8926,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn tool_button(",
-          "line": 7773,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 7958,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn pane_heading(",
-          "line": 7681,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 7866,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -647,20 +651,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn menu_bar(",
-          "line": 2626,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2652,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Internal line: select an owner, then click start/end or enter precise endpoints.",
-          "line": 2748,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2774,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Add hole\u2026: select an owner, then review a numeric rectangular opening.",
-          "line": 2750,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2776,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -688,80 +692,80 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn select(",
-          "line": 1634,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 1659,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_cross_piece_refusal_retains_staged_or_invalid_raw_text_caret_and_redo",
-          "line": 21808,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 22039,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_scene_row_selection_preserves_staged_and_raw_edits_through_real_ui_actions",
-          "line": 21866,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 22097,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn select_curve(",
-          "line": 1675,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 1700,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn selected_boundary_curve(",
-          "line": 4996,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5022,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_review_coincident_endpoints_drag_only_the_selected_later_annotation",
-          "line": 25211,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 25442,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_cross_piece_selection_and_incomplete_source_text_are_retained",
-          "line": 24726,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 24957,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_piece_pick(",
-          "line": 8557,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 8742,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_two_picks_review_exact_apply_history_and_reopened_child_edit_are_independent()",
-          "line": 23021,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 23252,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn selected_hole(",
-          "line": 4773,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4799,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn hole_edges_pick_and_drag_as_boundaries_but_never_enter_sewing_or_cut()",
-          "line": 26765,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 26996,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn scene_row(",
-          "line": 7715,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 7900,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn scene_hierarchy_rows_select_real_pattern_annotations_and_holes",
-          "line": 12360,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 12591,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -801,8 +805,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn add_ellipse(",
-          "line": 1304,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 1328,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/ellipse.rs",
@@ -813,8 +817,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn ellipse_accessible_button_and_search_commit_once_and_preserve_failed_drafts",
-          "line": 14668,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 14899,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -860,14 +864,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_window(",
-          "line": 5457,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5483,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn apply_transform(",
-          "line": 5436,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5462,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/pattern_transform.rs",
@@ -878,8 +882,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_pointer_translation_and_rotation_capture_original_geometry_and_snap_once",
-          "line": 21311,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 21542,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/src/document.rs",
@@ -942,8 +946,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_window(",
-          "line": 5457,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5483,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/internal_lines.rs",
@@ -983,43 +987,43 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "enum PositionSnap {",
           "line": 88,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn position_snap_control(",
-          "line": 3916,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3942,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule",
-          "line": 12895,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 13126,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn position_snapping_inline_choices_preserve_unfinished_numeric_text_and_caret",
-          "line": 13237,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 13468,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_search_rail_and_snapped_two_click_creation_are_atomic",
-          "line": 24182,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 24413,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_picker_restricts_owner_projects_unsnapped_and_refuses_vertices_extensions_and_multiple_hits()",
-          "line": 22807,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 23038,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn rectangle_canvas_drag_captures_snap_and_alt_at_the_press()",
-          "line": 27446,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 27677,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -1041,7 +1045,7 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "enum PositionSnap {",
           "line": 88,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -1068,14 +1072,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn frame_patterns_button(",
-          "line": 4033,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4059,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn frame_patterns(",
-          "line": 4050,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4076,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -1118,14 +1122,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn choose_import(",
-          "line": 2055,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2081,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn pattern_import_window(",
-          "line": 2099,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2125,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/src/persistence/svg.rs",
@@ -1142,14 +1146,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn chooser_modal_import_commits_pending_edits_and_all_pieces_as_one_undo",
-          "line": 19118,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 19349,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Compound pattern boundaries include holes; hole-aware SVG reimport is not yet supported. Internal annotations stay in the native project.",
-          "line": 1408,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 1432,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/src/persistence.rs",
@@ -1227,13 +1231,13 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "const PATTERN_PDF_A4:",
           "line": 32,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "ExportFormat::Pdf(paper) => project.export_pattern_pdf(path, paper),",
-          "line": 2220,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2246,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/src/persistence/pdf.rs",
@@ -1263,7 +1267,7 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "const PATTERN_PNG_ACTION:",
           "line": 30,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/pattern_snapshot.rs",
@@ -1310,8 +1314,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "let [min, max] = snapshot.crop_m();",
-          "line": 6744,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 6736,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/src/persistence/pattern_png.rs",
@@ -1341,7 +1345,7 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "const PATTERN_JPEG_ACTION:",
           "line": 31,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/pattern_snapshot.rs",
@@ -1540,8 +1544,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_length_heading(",
-          "line": 941,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 960,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge-cli/src/main.rs",
@@ -1558,8 +1562,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_lengths_are_formatted_cached_and_ignore_drafts_preview_and_simulation",
-          "line": 25345,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 25576,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/src/document.rs",
@@ -1576,8 +1580,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "hole_endpoints: selected_curve",
-          "line": 799,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 818,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -1613,8 +1617,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_length_heading(",
-          "line": 941,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 960,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge-cli/src/main.rs",
@@ -1631,8 +1635,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_lengths_are_formatted_cached_and_ignore_drafts_preview_and_simulation",
-          "line": 25345,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 25576,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/src/document.rs",
@@ -1649,8 +1653,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "hole_endpoints: selected_curve",
-          "line": 799,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 818,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -1686,8 +1690,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_length_heading(",
-          "line": 941,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 960,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge-cli/src/main.rs",
@@ -1704,8 +1708,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_lengths_are_formatted_cached_and_ignore_drafts_preview_and_simulation",
-          "line": 25345,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 25576,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/src/document.rs",
@@ -1722,14 +1726,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "hole_endpoints: selected_curve",
-          "line": 799,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 818,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "let lengths=project.seam_lengths(seam.id)",
-          "line": 4916,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4942,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -1786,20 +1790,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_window(",
-          "line": 4154,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4180,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_failure_and_cancel_retain_raw_text_carets_redo_and_accepted_state",
-          "line": 20124,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 20355,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_new_empty_refuses_pending_a_and_b_without_dropping_or_committing_them",
-          "line": 20313,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 20544,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/sewing_groups.rs",
@@ -1876,20 +1880,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_window(",
-          "line": 4154,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4180,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_failure_and_cancel_retain_raw_text_carets_redo_and_accepted_state",
-          "line": 20124,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 20355,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_new_empty_refuses_pending_a_and_b_without_dropping_or_committing_them",
-          "line": 20313,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 20544,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/sewing_groups.rs",
@@ -1956,50 +1960,50 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn apply_inspector_action(",
-          "line": 1234,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 1257,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_new_empty_refuses_pending_a_and_b_without_dropping_or_committing_them",
-          "line": 20313,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 20544,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn apply_internal_line(",
-          "line": 5235,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5261,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_review_compound_endpoints_and_staged_grain_commit_one_revision_and_undo",
-          "line": 24950,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 25181,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_review_accepted_drag_commits_source_boundary_control_and_endpoint_once",
-          "line": 25187,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 25418,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_opening_return_without_draft_only_opens_review()",
-          "line": 22927,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 23158,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_opening_return_after_first_anchor_only_opens_review()",
-          "line": 22932,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 23163,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_failed_modal_input_retains_caret_and_shields_background_until_cancel_escape_or_backdrop()",
-          "line": 23220,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 23451,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/cut_piece.rs",
@@ -2016,14 +2020,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn hole_menu_search_inspector_opening_return_reviews_then_one_later_apply_commits()",
-          "line": 26525,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 26756,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn hole_stale_sources_and_history_load_reset_lifecycles_cannot_publish_preview()",
-          "line": 26826,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 27057,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/cut_piece.rs",
@@ -2034,62 +2038,62 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_sew_checkbox_keyboard_toggles_do_not_apply()",
-          "line": 22720,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 22951,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_sew_apply_history_save_reopen_and_seam_removal_keep_both_pieces()",
-          "line": 22751,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 22982,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn coalesced_endpoint_drag_commits_once_before_any_later_hover",
-          "line": 27109,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 27340,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn coalesced_endpoint_drag_invalid_release_preserves_project_history_and_redo",
-          "line": 27169,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 27400,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn coalesced_endpoint_drag_rejects_blocked_outside_click_and_ambiguous_input",
-          "line": 27190,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 27421,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn rectangle_canvas_drag_coalesced_uses_original_press_and_final_release()",
-          "line": 27407,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 27638,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn rectangle_canvas_drag_multiframe_uses_original_press_and_final_release()",
-          "line": 27426,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 27657,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn rectangle_canvas_drag_respects_blocking_ownership_and_ambiguous_input()",
-          "line": 27487,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 27718,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn rectangle_canvas_drag_interruptions_do_not_rearm_after_release()",
-          "line": 27599,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 27830,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn rectangle_canvas_drag_commits_pending_properties_once_or_preserves_rejected_input()",
-          "line": 27653,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 27884,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -2121,20 +2125,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn simulation_bar(",
-          "line": 2930,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2956,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn task_details(",
-          "line": 3020,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3046,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn task_progress_correlates_real_workers_and_retains_unaccepted_snapshots",
-          "line": 16828,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 17059,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-sim/src/contact.rs",
@@ -2404,14 +2408,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn status_bar(",
-          "line": 2890,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2916,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn task_details(",
-          "line": 3020,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3046,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-sim/src/contact.rs",
@@ -2422,20 +2426,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Internal annotations: {} retained, {} moved.",
-          "line": 4962,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4988,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn physical_mesh_properties(",
-          "line": 3848,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3874,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn actual_pinned_mass_and_rest_area_follow_applied_revision(",
-          "line": 9354,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 9585,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -2463,8 +2467,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "if let Some(peak) = diagnostics.peak_strain",
-          "line": 3883,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3909,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "spec/features/SIM-005-strain-attribution.md",
@@ -2492,8 +2496,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "let creation=egui::CollapsingHeader::new(egui::RichText::new(\"Create pattern\")",
-          "line": 3547,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3573,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/src/document.rs",
@@ -2523,32 +2527,32 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn length_mm(",
-          "line": 913,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 932,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_window(",
-          "line": 4154,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4180,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_window(",
-          "line": 5457,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5483,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_window(",
-          "line": 5291,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5317,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Dimensionless decimal t; position snapping does not change these boundary addresses.",
-          "line": 4895,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4921,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -2571,32 +2575,32 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "egui::Window::new(\"Command search\")",
-          "line": 7415,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 7600,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "let global_shortcuts = !authoring_modal",
-          "line": 7159,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 7344,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "if self.tool == Tool::Select",
-          "line": 7255,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 7440,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn selected_internal_curve(",
-          "line": 4989,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5015,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn open_cut_piece(",
-          "line": 4815,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4841,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -2672,14 +2676,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_window(",
-          "line": 5291,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5317,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_search_rail_and_snapped_two_click_creation_are_atomic",
-          "line": 24182,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 24413,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/internal_lines.rs",
@@ -2750,20 +2754,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "struct HoleDraft {",
-          "line": 548,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 567,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn open_hole(",
-          "line": 4336,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4362,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn hole_window(",
-          "line": 4396,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4422,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "spec/features/PAT-006-straight-hole.md",
@@ -2786,14 +2790,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn open_notch(",
-          "line": 5003,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5029,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn apply_notch(",
-          "line": 5062,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5088,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/notches.rs",
@@ -2907,8 +2911,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_sew_apply_history_save_reopen_and_seam_removal_keep_both_pieces()",
-          "line": 22751,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 22982,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -2948,14 +2952,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "\"Delete owner piece\"",
-          "line": 3528,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3554,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_picking_delete_and_boundary_tools_keep_roles_separate",
-          "line": 24592,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 24823,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/cut_piece.rs",
@@ -2972,8 +2976,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "let response=ui.button(\"Remove hole\");",
-          "line": 3397,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3423,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -3003,26 +3007,26 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "struct InternalLineDraft {",
-          "line": 453,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 472,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_edit(",
-          "line": 5139,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5165,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn apply_internal_line(",
-          "line": 5235,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5261,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_review_rejected_drag_retains_boundary_draft_raw_caret_redo_and_outputs",
-          "line": 25192,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 25423,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/cut_piece.rs",
@@ -3033,14 +3037,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "if let (Some(curve), Some(endpoints)) = (original_curve, self.hole_endpoints)",
-          "line": 851,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 870,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn hole_corner_numeric_edit_split_join_and_removal_keep_stable_identity_and_one_history_entry()",
-          "line": 26707,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 26938,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/holes.rs",
@@ -3051,32 +3055,32 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn point_drag_release_commits_final_movement_after_a_snapped_noop_preview",
-          "line": 27010,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 27241,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn point_drag_release_commits_beyond_the_previous_changed_preview",
-          "line": 27033,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 27264,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn point_drag_release_rejects_an_invalid_final_position_without_committing_the_preview",
-          "line": 27055,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 27286,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn coalesced_endpoint_drag_captures_snap_bypass_from_the_press",
-          "line": 27295,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 27526,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn point_drag_release_position_precedes_later_hover_in_a_recognized_drag",
-          "line": 27311,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 27542,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -3106,8 +3110,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "if internal {",
-          "line": 3371,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3397,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/internal_lines.rs",
@@ -3294,8 +3298,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn selected_boundary_curve(",
-          "line": 4996,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5022,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/internal_lines.rs",
@@ -3350,8 +3354,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn selected_boundary_curve(",
-          "line": 4996,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5022,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/internal_lines.rs",
@@ -3374,20 +3378,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Sew cut edges",
-          "line": 4896,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4922,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "egui::CollapsingHeader::new(egui::RichText::new(\"Sewing\").small().strong())",
-          "line": 3605,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3631,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn sewing_section_pointer_toggle_preserves_numeric_draft_text_and_caret",
-          "line": 12238,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 12469,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -3418,8 +3422,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn selected_boundary_curve(",
-          "line": 4996,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5022,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/internal_lines.rs",
@@ -3461,20 +3465,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "for id in &piece.internal_curves {",
-          "line": 5848,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5874,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Internal annotations \u00b7 owned by this pattern",
-          "line": 3339,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3365,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_picking_delete_and_boundary_tools_keep_roles_separate",
-          "line": 24592,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 24823,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -3553,20 +3557,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_piece_pick(",
-          "line": 8557,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 8742,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_piece_window(",
-          "line": 4859,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4885,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_two_picks_review_exact_apply_history_and_reopened_child_edit_are_independent()",
-          "line": 23021,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 23252,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/cut_piece.rs",
@@ -3589,8 +3593,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Cut piece does not yet support patterns with holes.",
-          "line": 8567,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 8752,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/src/document.rs",
@@ -3613,8 +3617,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Sew cut edges",
-          "line": 4896,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4922,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/tests/cut_piece.rs",
@@ -3774,20 +3778,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn open_outline_offset(",
-          "line": 4500,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4526,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn current_outline_offset_job(",
-          "line": 4591,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4617,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn outline_offset_window(",
-          "line": 4685,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4711,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "spec/features/PAT-009-material-outline-offset.md",
@@ -3985,8 +3989,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn choose_workspace_png_path(",
-          "line": 8475,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 8660,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4031,8 +4035,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "if self.export_button(ui, ExportFormat::Glb",
-          "line": 2661,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2687,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "crates/weftforge-core/src/persistence/gltf.rs",
@@ -4049,8 +4053,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "if self.export_button(ui, ExportFormat::Gltf",
-          "line": 2664,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2690,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4076,26 +4080,26 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn scene_visibility_buttons(",
-          "line": 3946,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3972,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn visible_pieces<",
-          "line": 7699,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 7884,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": ".filter(|triangle| !self.hidden_pieces.contains(&mesh.piece_ids[triangle[0]]))",
-          "line": 7008,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 7186,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn scene_visibility_filters_both_canvases_and_preserves_construction(",
-          "line": 20540,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 20771,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4120,51 +4124,142 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "const CAMERA_VIEWS:",
           "line": 35,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn camera_view_button(",
-          "line": 4006,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4032,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": ".max_height((ctx.content_rect().height() * 0.65).min(540.))",
-          "line": 7439,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 7624,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn standard_camera_views_use_y_up_axes_and_preserve_the_scene(",
-          "line": 10264,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 10495,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn frame_garment_button(",
-          "line": 4017,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4043,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn garment_surface(",
-          "line": 6885,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 6877,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn fit_garment(",
-          "line": 6913,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 6915,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn frame_garment_fits_visible_rest_and_accepted_positions_without_editing(",
-          "line": 10092,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 10323,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
+    },
+    {
+      "group_id": "arrangement",
+      "reason": "Map direct rest-pattern placement through the shared authoring command.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "ui_garment",
+        "ui_properties",
+        "commands"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "struct PlacementDrag {",
+          "line": 442,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn garment_piece_at(",
+          "line": 6957,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn move_pattern_in_garment(",
+          "line": 6992,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "egui::Checkbox::new(&mut self.move_in_3d, \"Move pattern\")",
+          "line": 7119,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
+        }
+      ],
+      "current": {
+        "candidate_behavior": "Numeric world-axis translation and Euler rotation share SetPlacement with the 3D Move pattern drag. The drag previews a selected visible rest pattern and commits its translation in one history transaction.",
+        "missing_functionality": [
+          "Rotational handles, multiselection, rest arrangement presets, symmetry, wrap and re-drape workflows remain open.",
+          "Reference input geometry, editing semantics, and arrangement round trips require separate trials."
+        ]
+      }
+    },
+    {
+      "group_id": "gizmos",
+      "reason": "Map direct rest-pattern placement through the shared authoring command.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "ui_garment",
+        "ui_properties",
+        "commands"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "struct PlacementDrag {",
+          "line": 442,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn garment_piece_at(",
+          "line": 6957,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn move_pattern_in_garment(",
+          "line": 6992,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "egui::Checkbox::new(&mut self.move_in_3d, \"Move pattern\")",
+          "line": 7119,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
+        }
+      ],
+      "current": {
+        "candidate_behavior": "An explicit native mode offers direct view-plane translation for the selected rest pattern. The gesture rounds authored displacement using Snap captured at press and Alt or Option bypasses it.",
+        "missing_functionality": [
+          "Axis-constrained and local-space handles, rotation rings, gizmo sizing, and reference comparisons remain open."
+        ]
+      }
     }
   ],
   "ui_surfaces": [
@@ -4195,8 +4290,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn menu_bar(",
-          "line": 2626,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2652,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4225,20 +4320,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "egui::Window::new(\"Command search\")",
-          "line": 7415,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 7600,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn open_outline_offset(",
-          "line": 4500,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4526,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn command_search_label(",
-          "line": 7673,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 7858,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4262,8 +4357,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn menu_bar(",
-          "line": 2626,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2652,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4294,8 +4389,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn tool_rail(",
-          "line": 2838,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2864,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4327,8 +4422,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn toolbar(",
-          "line": 2787,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2813,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4352,8 +4447,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn status_bar(",
-          "line": 2890,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2916,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4403,14 +4498,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn inspector(",
-          "line": 3081,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3107,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn open_outline_offset(",
-          "line": 4500,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4526,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4438,8 +4533,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "let creation=egui::CollapsingHeader::new(egui::RichText::new(\"Create pattern\")",
-          "line": 3547,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3573,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4467,8 +4562,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "pane_heading(ui,\"Ordered sewing groups\")",
-          "line": 3645,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3671,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4488,8 +4583,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn rectangle_window(",
-          "line": 5591,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5617,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4511,8 +4606,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_window(",
-          "line": 5457,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5483,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4536,8 +4631,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_window(",
-          "line": 4154,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4180,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4560,8 +4655,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn sewing_group_window(",
-          "line": 6803,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 6795,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4584,8 +4679,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn pattern_import_window(",
-          "line": 2099,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2125,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4607,8 +4702,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn recovery_window(",
-          "line": 2348,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2374,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4643,8 +4738,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn patterns(",
-          "line": 5656,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5682,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4670,8 +4765,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn simulation_bar(",
-          "line": 2930,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2956,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4696,8 +4791,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "ui.make_persistent_id(\"mesh-settings\")",
-          "line": 3712,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3738,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4718,8 +4813,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "egui::menu::MenuButton::new(\"Create 2D\")",
-          "line": 2688,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2714,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4744,8 +4839,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_window(",
-          "line": 5291,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5317,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4777,32 +4872,32 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_piece_window(",
-          "line": 4859,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4885,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "struct CutDraft {",
-          "line": 531,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 550,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn open_cut_piece(",
-          "line": 4815,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4841,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Sew cut edges",
-          "line": 4896,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4922,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_sew_option_refreshes_only_preview_and_keeps_raw_parameters_and_caret()",
-          "line": 22617,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 22848,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4828,20 +4923,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn open_hole(",
-          "line": 4336,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4362,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn hole_window(",
-          "line": 4396,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4422,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn hole_invalid_text_outside_apply_and_all_cancel_routes_preserve_caret_editor_and_outputs()",
-          "line": 26579,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 26810,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4865,26 +4960,26 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn outline_offset_window(",
-          "line": 4685,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4711,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn outline_offset_routes_preview_cancel_and_apply_use_real_cloth_and_one_history_action()",
-          "line": 25947,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 26178,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn outline_offset_invalid_width_keeps_raw_text_caret_and_blocks_modal_background_actions()",
-          "line": 26044,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 26275,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn outline_offset_cancellation_stale_revision_selection_and_replaced_requests_cannot_publish()",
-          "line": 26211,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 26442,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4908,8 +5003,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn notch_window(",
-          "line": 5101,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 5127,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4932,13 +5027,13 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "enum PropertiesTab {",
           "line": 73,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn inspector(",
-          "line": 3081,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3107,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4956,14 +5051,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "if self.export_button(ui, ExportFormat::Glb",
-          "line": 2661,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2687,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "if self.export_button(ui, ExportFormat::Gltf",
-          "line": 2664,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2690,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -4982,8 +5077,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn scene_visibility_buttons(",
-          "line": 3946,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 3972,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -5005,14 +5100,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn camera_view_button(",
-          "line": 4006,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4032,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": ".max_height((ctx.content_rect().height() * 0.65).min(540.))",
-          "line": 7439,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 7624,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -5028,8 +5123,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn frame_garment_button(",
-          "line": 4017,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 4043,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -5047,13 +5142,13 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "const PATTERN_PDF_A4:",
           "line": 32,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "ExportFormat::Pdf(paper) => project.export_pattern_pdf(path, paper),",
-          "line": 2220,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 2246,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     },
@@ -5085,7 +5180,7 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "const PATTERN_PNG_ACTION:",
           "line": 30,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/pattern_snapshot.rs",
@@ -5108,8 +5203,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "let [min, max] = snapshot.crop_m();",
-          "line": 6744,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "line": 6736,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/pattern_snapshot.rs",
@@ -5121,13 +5216,54 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "const PATTERN_JPEG_ACTION:",
           "line": 31,
-          "sha256": "fa919370db82f84849e6e788beeca6729c142435ae3ff510102c73154cecdebf"
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         },
         {
           "path": "apps/weftforge/src/pattern_snapshot.rs",
           "anchor": "ui.label(format!(\"Recorded density {ppi} pixels per inch\"))",
           "line": 270,
           "sha256": "dc343d6495323901df3b19def03fd1127bfd559f74d346261036feca3daf48cc"
+        }
+      ]
+    },
+    {
+      "surface": "3D Garment rest-pattern placement",
+      "controls": [
+        "Move pattern",
+        "Snap and Alt / Option bypass",
+        "Escape cancels",
+        "Right or middle drag orbits"
+      ],
+      "group_ids": [
+        "arrangement",
+        "gizmos",
+        "grid-snap",
+        "selection"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "struct PlacementDrag {",
+          "line": 442,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn garment_piece_at(",
+          "line": 6957,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn move_pattern_in_garment(",
+          "line": 6992,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "egui::Checkbox::new(&mut self.move_in_3d, \"Move pattern\")",
+          "line": 7119,
+          "sha256": "b0ca9ad48ff374d9cb42dc36f1c72689d29c9b3a10207594b52e9c126361f7d9"
         }
       ]
     }
@@ -5292,6 +5428,11 @@
       "path": "spec/features/FILE-005-pattern-jpeg.md",
       "sha256": "ab1a987c63fec5a12c1a467358aa6373f7e55b70defe6a613ce73195489c2d3c",
       "scope": "Whole-JFIF-density grayscale JPEG, physical crop and staged native, CLI and MCP exports."
+    },
+    {
+      "path": "spec/features/FIT-001-native-placement.md",
+      "sha256": "0f955e8b102d925a0196b774d1a419a9bf849ea606989f78c6b218383dbe6a2c",
+      "scope": "Original native view-plane placement, cancellation, displacement snap and document history."
     }
   ],
   "limits": [
@@ -5320,81 +5461,88 @@
     "H map preparation performs no Cargo, source test, model/native/reference workflow or project checker. G and prior proof identities/outcomes remain separately attributed; the original shutdown finding and its source correction are not rewritten as runtime evidence. Core/solver remain free of GUI/PNG dependencies; no typed authoring command, schema, tool or document format is added."
   ],
   "source_update_origin": {
-    "previous_addendum_commit": "50f0a2a716fbd9c0fc508c05f9ef722e806aff10",
-    "previous_source_commit": "0df44c4f23db77efbc30b1881e6f6b28cc9b48bd",
-    "previous_addendum_sha256": "39fb56ed31c0859b2951bd07734939e9bbe9dbe83ced3221e46372dc9f865b5a",
-    "previous_markdown_sha256": "e4e7531d89c98ba93640966270402f1fad9d536b2bcb42e75db9a4b3ec174990",
+    "previous_addendum_commit": "23632d09a90cd1b9071eb1884325b20ec4bea53b",
+    "previous_source_commit": "f440d126c9094b357deb99b68dd6b01235591a44",
+    "previous_addendum_sha256": "968602f91c641f38788f408c38cec7b6b1e14ce2cfd5049d2d2cc6220735402d",
+    "previous_markdown_sha256": "01262c8dbe68224287bdf165060b82eb1c041158b8c1da1f1cc4627e94f34cdd",
     "previous_source_update_origin": {
-      "previous_addendum_commit": "c7801bb1cb694ead6778b6cd9e81d78f58a1fc3b",
-      "previous_source_commit": "d06b224b504a9c6c76b2b288d14c1ea0a845ed3b",
-      "previous_addendum_sha256": "f7d499c371d68d88791510929c4739dbb1e9174de98b0763bbfb1418626e61db",
-      "previous_markdown_sha256": "b5acd6721d7cf550118ad13bbdec3f25eff33fdb088138f252dc344739d9e267",
+      "previous_addendum_commit": "50f0a2a716fbd9c0fc508c05f9ef722e806aff10",
+      "previous_source_commit": "0df44c4f23db77efbc30b1881e6f6b28cc9b48bd",
+      "previous_addendum_sha256": "39fb56ed31c0859b2951bd07734939e9bbe9dbe83ced3221e46372dc9f865b5a",
+      "previous_markdown_sha256": "e4e7531d89c98ba93640966270402f1fad9d536b2bcb42e75db9a4b3ec174990",
       "previous_source_update_origin": {
-        "previous_addendum_commit": "8d157cbb73467ecdc98f78be70e8b971eb4f909f",
-        "previous_source_commit": "36a9be49097a53f1da4dc0c74062f553ff3194b7",
-        "previous_addendum_sha256": "04abfb3f0e6c80113dff6da48f2de5015dfa10c57f2a87160e695958f2bc9827",
-        "previous_markdown_sha256": "13a650e9e94110c1e01cfd1c8b1ef3c78aaffbf8c1e71a39f57bf520944c139b",
+        "previous_addendum_commit": "c7801bb1cb694ead6778b6cd9e81d78f58a1fc3b",
+        "previous_source_commit": "d06b224b504a9c6c76b2b288d14c1ea0a845ed3b",
+        "previous_addendum_sha256": "f7d499c371d68d88791510929c4739dbb1e9174de98b0763bbfb1418626e61db",
+        "previous_markdown_sha256": "b5acd6721d7cf550118ad13bbdec3f25eff33fdb088138f252dc344739d9e267",
         "previous_source_update_origin": {
-          "previous_addendum_commit": "29a1d0f9b17838d2229e90eeb0d36234784df55b",
-          "previous_source_commit": "89b2c27924f9a9c7546a274334c212fe269c1d46",
-          "previous_addendum_sha256": "436278a15254bf9152b840e20ae3bd266d749e28e57d73b8c573970f7336523f",
-          "previous_markdown_sha256": "b4d780604e152dbdc7ba4645b9fc4eedfd8796aff492f7907c8495d51a32bfea",
+          "previous_addendum_commit": "8d157cbb73467ecdc98f78be70e8b971eb4f909f",
+          "previous_source_commit": "36a9be49097a53f1da4dc0c74062f553ff3194b7",
+          "previous_addendum_sha256": "04abfb3f0e6c80113dff6da48f2de5015dfa10c57f2a87160e695958f2bc9827",
+          "previous_markdown_sha256": "13a650e9e94110c1e01cfd1c8b1ef3c78aaffbf8c1e71a39f57bf520944c139b",
           "previous_source_update_origin": {
-            "previous_addendum_commit": "2b8adb902aa93171feef7543d59c6722debd6d66",
-            "previous_source_commit": "d71577fe9015b278d9e66e070b2d97140a03328d",
-            "previous_addendum_sha256": "9f7989fd9c098015c1c732f8774231e59bf48fda951681369c03ea415a18674a",
-            "previous_markdown_sha256": "d2a0d5ce9e4d681918c2e347b4565f01b65f41e8bdf7c9bf3754a57b31a097df",
+            "previous_addendum_commit": "29a1d0f9b17838d2229e90eeb0d36234784df55b",
+            "previous_source_commit": "89b2c27924f9a9c7546a274334c212fe269c1d46",
+            "previous_addendum_sha256": "436278a15254bf9152b840e20ae3bd266d749e28e57d73b8c573970f7336523f",
+            "previous_markdown_sha256": "b4d780604e152dbdc7ba4645b9fc4eedfd8796aff492f7907c8495d51a32bfea",
             "previous_source_update_origin": {
-              "previous_addendum_commit": "a1d780c1fc1c8b61a922b487a64d560065bf0eed",
-              "previous_source_commit": "7f85908c6b7daf0be3594831f74f2a250b15d276",
-              "previous_addendum_sha256": "33eef531cd229b6dd54d63788fe9a10a9b06740cde4c83ffab4c210fd6411c76",
-              "previous_markdown_sha256": "d3e99d7ddd6ba2354f7220490c315397e506841f8ce3ecee87508c7516ee7150",
+              "previous_addendum_commit": "2b8adb902aa93171feef7543d59c6722debd6d66",
+              "previous_source_commit": "d71577fe9015b278d9e66e070b2d97140a03328d",
+              "previous_addendum_sha256": "9f7989fd9c098015c1c732f8774231e59bf48fda951681369c03ea415a18674a",
+              "previous_markdown_sha256": "d2a0d5ce9e4d681918c2e347b4565f01b65f41e8bdf7c9bf3754a57b31a097df",
               "previous_source_update_origin": {
-                "previous_addendum_commit": "0e764e88f212df28ee5e2f55ad8030a8d5571f4e",
-                "previous_source_commit": "b305cabf553411400bd342d46532a0d61f398d55",
-                "previous_addendum_sha256": "bb14bb01ade0c6b954d7b06cbe599b22357f03ace3cee37a651279dd44bc5cf5",
-                "previous_markdown_sha256": "6893ed1d76364e8d4c968605592952fbded01f087679917864e5ba985d529a88",
+                "previous_addendum_commit": "a1d780c1fc1c8b61a922b487a64d560065bf0eed",
+                "previous_source_commit": "7f85908c6b7daf0be3594831f74f2a250b15d276",
+                "previous_addendum_sha256": "33eef531cd229b6dd54d63788fe9a10a9b06740cde4c83ffab4c210fd6411c76",
+                "previous_markdown_sha256": "d3e99d7ddd6ba2354f7220490c315397e506841f8ce3ecee87508c7516ee7150",
                 "previous_source_update_origin": {
-                  "previous_addendum_commit": "d4255e16896e96841dffa67f7b03cfa60d2b4b5a",
-                  "previous_source_commit": "8721469c10771624d3042b92d6f91c294ed04efc",
-                  "previous_addendum_sha256": "884a9cedfb98a6eea6f07b86ba40d17f93019ed2840de8c641991d284a32114d",
-                  "previous_markdown_sha256": "6c359f9dfa47dbcaae80299211a036917e0f9b5b0351c589b7fcdf5010c54d27",
+                  "previous_addendum_commit": "0e764e88f212df28ee5e2f55ad8030a8d5571f4e",
+                  "previous_source_commit": "b305cabf553411400bd342d46532a0d61f398d55",
+                  "previous_addendum_sha256": "bb14bb01ade0c6b954d7b06cbe599b22357f03ace3cee37a651279dd44bc5cf5",
+                  "previous_markdown_sha256": "6893ed1d76364e8d4c968605592952fbded01f087679917864e5ba985d529a88",
                   "previous_source_update_origin": {
-                    "previous_addendum_commit": "44552840f50fe6b9c2b2da99e17cce8d38666a94",
-                    "previous_addendum_sha256": "bb47b8ba7bc957ce8565b54e2bc6bf3e6b6d6f979c930a1e0ae4304f2dc15c02",
-                    "previous_markdown_sha256": "875e46c1eff750e38a390db52ca353d5ebecc4a76588fedd739819ec52364151",
-                    "previous_source_commit": "54456690c60b44696c7d0da551211dab179a329d",
+                    "previous_addendum_commit": "d4255e16896e96841dffa67f7b03cfa60d2b4b5a",
+                    "previous_source_commit": "8721469c10771624d3042b92d6f91c294ed04efc",
+                    "previous_addendum_sha256": "884a9cedfb98a6eea6f07b86ba40d17f93019ed2840de8c641991d284a32114d",
+                    "previous_markdown_sha256": "6c359f9dfa47dbcaae80299211a036917e0f9b5b0351c589b7fcdf5010c54d27",
                     "previous_source_update_origin": {
-                      "previous_addendum_commit": "117179d2ee31deeecb8a9fb57881a097da77500d",
-                      "previous_addendum_sha256": "c5f77c2bec0c941eef4f71e7e4856fd317d175055c6555fa0c469dbc06294556",
-                      "previous_markdown_sha256": "0c179dd2db384497daafbd072380db17b0a90f81da95d39df568564e95647d49",
-                      "previous_source_commit": "8929468332af68574ef33f2f305d33b276f8f5e7",
+                      "previous_addendum_commit": "44552840f50fe6b9c2b2da99e17cce8d38666a94",
+                      "previous_addendum_sha256": "bb47b8ba7bc957ce8565b54e2bc6bf3e6b6d6f979c930a1e0ae4304f2dc15c02",
+                      "previous_markdown_sha256": "875e46c1eff750e38a390db52ca353d5ebecc4a76588fedd739819ec52364151",
+                      "previous_source_commit": "54456690c60b44696c7d0da551211dab179a329d",
                       "previous_source_update_origin": {
-                        "previous_addendum_commit": "f7279e1d9af5647e77de527a7da7c61385320ef9",
-                        "previous_addendum_sha256": "d9dac67486c1f797a4d261b77084d69e5cdb18f6678e059e536cf4055fb152e8",
-                        "previous_markdown_sha256": "0e5276ad1322b3a0f1bd1442bf443722b73db6df529b298a52a93e662f9d646e",
-                        "previous_source_commit": "9a3b70b752868ece9340dc80fe5228e12a52aea1",
-                        "preservation_rule": "Keep all 457 prior literal source occurrences and the historical catalog. Re-pin matching occurrences and the two updated format documents to the tested source. Append five GLB occurrences. Keep previous outcomes and indexed source versions. The previous source-update origin stays in the preceding root-level record."
+                        "previous_addendum_commit": "117179d2ee31deeecb8a9fb57881a097da77500d",
+                        "previous_addendum_sha256": "c5f77c2bec0c941eef4f71e7e4856fd317d175055c6555fa0c469dbc06294556",
+                        "previous_markdown_sha256": "0c179dd2db384497daafbd072380db17b0a90f81da95d39df568564e95647d49",
+                        "previous_source_commit": "8929468332af68574ef33f2f305d33b276f8f5e7",
+                        "previous_source_update_origin": {
+                          "previous_addendum_commit": "f7279e1d9af5647e77de527a7da7c61385320ef9",
+                          "previous_addendum_sha256": "d9dac67486c1f797a4d261b77084d69e5cdb18f6678e059e536cf4055fb152e8",
+                          "previous_markdown_sha256": "0e5276ad1322b3a0f1bd1442bf443722b73db6df529b298a52a93e662f9d646e",
+                          "previous_source_commit": "9a3b70b752868ece9340dc80fe5228e12a52aea1",
+                          "preservation_rule": "Keep all 457 prior literal source occurrences and the historical catalog. Re-pin matching occurrences and the two updated format documents to the tested source. Append five GLB occurrences. Keep previous outcomes and indexed source versions. The previous source-update origin stays in the preceding root-level record."
+                        },
+                        "preservation_rule": "Retain historical groups, snapshots and literal anchors. Re-pin the changed app source and add the shared shortcut label anchor."
                       },
-                      "preservation_rule": "Retain historical groups, snapshots and literal anchors. Re-pin the changed app source and add the shared shortcut label anchor."
+                      "preservation_rule": "Keep the full historical catalog and preceding anchors. The old CLI export-glb match arm now also matches export-gltf. Re-pin changed source and reviewed format documents. Add four source occurrences for JSON glTF."
                     },
-                    "preservation_rule": "Keep the full historical catalog and preceding anchors. The old CLI export-glb match arm now also matches export-gltf. Re-pin changed source and reviewed format documents. Add four source occurrences for JSON glTF."
+                    "preservation_rule": "Preserve the historical catalog and preceding anchors. Repin changed desktop paths and append the live visibility group, Scene controls and reviewed contract."
                   },
-                  "preservation_rule": "Preserve the historical catalog and preceding anchors. Repin changed desktop paths and append the live visibility group, Scene controls and reviewed contract."
+                  "preservation_rule": "Keep the historical catalog and earlier anchors. Re-pin the desktop source and add the standard 3D orientation and command-search occurrences."
                 },
-                "preservation_rule": "Keep the historical catalog and earlier anchors. Re-pin the desktop source and add the standard 3D orientation and command-search occurrences."
+                "preservation_rule": "Keep the historical catalog and camera anchors. Re-pin the desktop source and map Frame garment."
               },
-              "preservation_rule": "Keep the historical catalog and camera anchors. Re-pin the desktop source and map Frame garment."
+              "preservation_rule": "Keep the historical catalog and previous occurrences. Re-pin current sources and map tiled PDF."
             },
-            "preservation_rule": "Keep the historical catalog and previous occurrences. Re-pin current sources and map tiled PDF."
+            "preservation_rule": "Preserve the archived map and authoring commands. Re-pin source and add the configurable 2D pattern PNG."
           },
-          "preservation_rule": "Preserve the archived map and authoring commands. Re-pin source and add the configurable 2D pattern PNG."
+          "preservation_rule": "Preserve the archived map and typed command surface. Re-pin the crop dialog, panel outline and density source."
         },
-        "preservation_rule": "Preserve the archived map and typed command surface. Re-pin the crop dialog, panel outline and density source."
+        "preservation_rule": "Preserve the archived map and typed commands. Pin the optional grainline in the crop dialog, writer and adapter."
       },
-      "preservation_rule": "Preserve the archived map and typed commands. Pin the optional grainline in the crop dialog, writer and adapter."
+      "preservation_rule": "Preserve the archived map and authoring commands. Update the shared crop surface and add JPEG export."
     },
-    "preservation_rule": "Preserve the archived map and authoring commands. Update the shared crop surface and add JPEG export."
+    "preservation_rule": "Preserve the archived catalog crosswalk and shared authoring commands. Add the direct native rest-placement gesture."
   },
   "previous_source_update_origin": {
     "previous_addendum_commit": "7e56a324c5a2b4c731d019caedc752caf08e7310",
