@@ -52,6 +52,11 @@ target's collected runtime Cargo dependencies and lists missing upstream
 license texts. On macOS the standalone app carries the project, font and
 collected Cargo notices inside `Contents/Resources/licenses`.
 
+When an emitted crates.io package matches the local catalog's version and
+revision, packaging checks and copies the pinned upstream texts offline.
+The manifest links each selected text to its upstream revision and keeps
+declaration-only entries open when the code license text is unavailable.
+
 Review the unresolved entries and the target's system dependencies
 before distributing a build. Signing and platform runtime checks are
 separate release steps.
