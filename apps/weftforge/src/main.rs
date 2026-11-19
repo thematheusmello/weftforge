@@ -92,6 +92,7 @@ impl PositionSnap {
 enum ExportFormat {
     Obj,
     Glb,
+    Gltf,
     Svg,
     Dxf,
 }
@@ -1366,7 +1367,7 @@ impl Studio {
         let response = ui.button(label).on_hover_text(match format {
             ExportFormat::Svg => "Compound pattern boundaries include holes; hole-aware SVG reimport is not yet supported. Internal annotations stay in the native project.",
             ExportFormat::Dxf => "Exterior boundaries only; projects with holes are refused. Internal annotations stay in the native project.",
-            ExportFormat::Obj | ExportFormat::Glb => "Rest/current cloth surface only; no annotation line primitives. Save the native project to keep editable internal lines.",
+            ExportFormat::Obj | ExportFormat::Glb | ExportFormat::Gltf => "Rest/current cloth surface only; no annotation line primitives. Save the native project to keep editable internal lines.",
         });
         let clicked = response.clicked();
         if response.is_pointer_button_down_on() || clicked {
@@ -2076,9 +2077,14 @@ impl Studio {
             match format {
                 ExportFormat::Svg => project.export_svg(path),
                 ExportFormat::Dxf => project.export_dxf(path),
-                ExportFormat::Obj | ExportFormat::Glb => {
+                ExportFormat::Obj | ExportFormat::Glb | ExportFormat::Gltf => {
                     if candidate.is_some() {
-                        let name = if matches!(format, ExportFormat::Obj) { "OBJ" } else { "GLB" };
+                        let name = match format {
+                            ExportFormat::Obj => "OBJ",
+                            ExportFormat::Glb => "GLB",
+                            ExportFormat::Gltf => "glTF",
+                            _ => unreachable!(),
+                        };
                         return Err(format!("Finish pending edits with Tab, wait for the rest mesh, then retry {name} export. Pending edits were retained."));
                     }
                     let mesh = self.mesh.as_ref().ok_or("Create a pattern first.")?;
@@ -2089,10 +2095,11 @@ impl Studio {
                     if let Some(state) = &self.cloth {
                         output.positions = state.positions().to_vec();
                     }
-                    if matches!(format, ExportFormat::Glb) {
-                        output.export_glb(project, path)
-                    } else {
-                        output.export_obj(path)
+                    match format {
+                        ExportFormat::Obj => output.export_obj(path),
+                        ExportFormat::Glb => output.export_glb(project, path),
+                        ExportFormat::Gltf => output.export_gltf(project, path),
+                        _ => unreachable!(),
                     }
                 }
             }.map_err(|error| error.to_string())?;
@@ -2115,6 +2122,7 @@ impl Studio {
                 ExportFormat::Svg => "Exported SVG boundaries and notches in millimetres; holes/notches cannot yet be reimported. Internal lines stay in .weftforge.".into(),
                 ExportFormat::Obj => "Exported OBJ cloth surface in metres; internal lines and authored notches stay in .weftforge.".into(),
                 ExportFormat::Glb => "Exported static GLB cloth surface in metres.".into(),
+                ExportFormat::Gltf => "Exported static glTF cloth surface in metres.".into(),
             },
             Err(error) => error,
         };
@@ -2509,6 +2517,9 @@ impl Studio {
                     ui.close();
                 }
                 if self.export_button(ui, ExportFormat::Glb, "Export GLB") {
+                    ui.close();
+                }
+                if self.export_button(ui, ExportFormat::Gltf, "Export glTF") {
                     ui.close();
                 }
                 if self.export_button(ui, ExportFormat::Svg, "Export SVG") {
@@ -7061,6 +7072,7 @@ impl eframe::App for Studio {
                         "Recover project",
                         "Export OBJ",
                         "Export GLB",
+                        "Export glTF",
                         "Export SVG",
                         "Export DXF",
                         "Save workspace PNG…",
@@ -7089,6 +7101,7 @@ impl eframe::App for Studio {
                             "Import DXF…" => self.import_button(ui, PatternFormat::Dxf, label),
                             "Export OBJ" => self.export_button(ui, ExportFormat::Obj, label),
                             "Export GLB" => self.export_button(ui, ExportFormat::Glb, label),
+                            "Export glTF" => self.export_button(ui, ExportFormat::Gltf, label),
                             "Export SVG" => self.export_button(ui, ExportFormat::Svg, label),
                             "Export DXF" => self.export_button(ui, ExportFormat::Dxf, label),
                             "Save workspace PNG…" => self.workspace_png_button(ui),
@@ -7106,7 +7119,8 @@ impl eframe::App for Studio {
                                     self.refresh_recovery();
                                     self.show_recovery = true;
                                 }
-                                "Export OBJ" | "Export GLB" | "Export SVG" | "Export DXF" => {}
+                                "Export OBJ" | "Export GLB" | "Export glTF" | "Export SVG"
+                                | "Export DXF" => {}
                                 "Save workspace PNG…" => {}
                                 "Undo" => self.history(&ctx, false),
                                 "Redo" => self.history(&ctx, true),
@@ -8004,6 +8018,7 @@ fn choose_export_path(_ctx: &egui::Context, format: ExportFormat) -> Option<Path
     let ext = match format {
         ExportFormat::Obj => "obj",
         ExportFormat::Glb => "glb",
+        ExportFormat::Gltf => "gltf",
         ExportFormat::Svg => "svg",
         ExportFormat::Dxf => "dxf",
     };
@@ -13224,6 +13239,7 @@ mod tests {
             (ExportFormat::Svg, "Export SVG"),
             (ExportFormat::Obj, "Export OBJ"),
             (ExportFormat::Glb, "Export GLB"),
+            (ExportFormat::Gltf, "Export glTF"),
         ] {
             for outcome in ["cancel", "protected", "write", "invalid", "success"] {
                 for input in [
@@ -13408,7 +13424,10 @@ mod tests {
                         frame(&ctx, &mut app, events);
                     }
                     let written = outcome == "success"
-                        && !matches!(format, ExportFormat::Obj | ExportFormat::Glb);
+                        && !matches!(
+                            format,
+                            ExportFormat::Obj | ExportFormat::Glb | ExportFormat::Gltf
+                        );
                     if written {
                         let mut expected = before.clone();
                         expected.execute(Command::Transaction(pending)).unwrap();
@@ -13503,10 +13522,10 @@ mod tests {
     }
 
     #[test]
-    fn glb_export_routes_file_and_search_to_rest_or_current_surface() {
+    fn gltf_exports_route_file_and_search_to_rest_or_current_surface() {
         use egui::accesskit::Action;
         let directory = std::env::temp_dir().join(format!(
-            "weftforge-export-glb-ui-{}-{}",
+            "weftforge-export-gltf-ui-{}-{}",
             std::process::id(),
             SystemTime::now()
                 .duration_since(UNIX_EPOCH)
@@ -13529,7 +13548,12 @@ mod tests {
         let before = app.editor.clone();
         let mesh = Arc::new(before.project.mesh().unwrap());
         app.mesh = Some(mesh.clone());
-        for search in [false, true] {
+        for (format, label, extension, search) in [
+            (ExportFormat::Glb, "Export GLB", "glb", false),
+            (ExportFormat::Glb, "Export GLB", "glb", true),
+            (ExportFormat::Gltf, "Export glTF", "gltf", false),
+            (ExportFormat::Gltf, "Export glTF", "gltf", true),
+        ] {
             let mut rest = Vec::new();
             for draped in [false, true] {
                 if draped {
@@ -13541,17 +13565,26 @@ mod tests {
                 } else {
                     app.cloth = None;
                 }
-                let path = directory.join(if draped { "draped.glb" } else { "rest.glb" });
-                let expected_path = directory.join("expected.glb");
+                let name = if draped { "draped" } else { "rest" };
+                let path = directory.join(format!("{name}.{extension}"));
+                let expected_path = directory.join(format!("expected.{extension}"));
                 let mut expected = (*mesh).clone();
                 if let Some(cloth) = &app.cloth {
                     expected.positions = cloth.positions().to_vec();
                 }
-                expected
-                    .export_glb(&before.project, &expected_path)
-                    .unwrap();
+                match format {
+                    ExportFormat::Glb => expected.export_glb(&before.project, &expected_path),
+                    ExportFormat::Gltf => expected.export_gltf(&before.project, &expected_path),
+                    _ => unreachable!(),
+                }
+                .unwrap();
                 let expected_bytes = fs::read(&expected_path).unwrap();
-                assert_eq!(&expected_bytes[..4], b"glTF");
+                if matches!(format, ExportFormat::Glb) {
+                    assert_eq!(&expected_bytes[..4], b"glTF");
+                } else {
+                    let scene: serde_json::Value = serde_json::from_slice(&expected_bytes).unwrap();
+                    assert_eq!(scene["asset"]["version"], "2.0");
+                }
                 if draped {
                     assert_ne!(expected_bytes, rest);
                 } else {
@@ -13560,10 +13593,10 @@ mod tests {
                 let output = native_frame(&ctx, &mut app, 1000., vec![]);
                 let export = if search {
                     app.open_command_search(&ctx);
-                    app.query = "Export GLB".into();
+                    app.query = label.into();
                     native_frame(&ctx, &mut app, 1000., vec![]);
                     let output = native_frame(&ctx, &mut app, 1000., vec![]);
-                    command_search_action(&output, "Export GLB")
+                    command_search_action(&output, label)
                 } else {
                     native_frame(
                         &ctx,
@@ -13576,7 +13609,7 @@ mod tests {
                         )],
                     );
                     let output = native_frame(&ctx, &mut app, 1000., vec![]);
-                    native_button(&output, "Export GLB")
+                    native_button(&output, label)
                 };
                 ctx.data_mut(|data| {
                     data.insert_temp(egui::Id::new("test-export-destination"), Some(path.clone()))
@@ -13588,19 +13621,25 @@ mod tests {
                     vec![native_action(export, Action::Click, None)],
                 );
                 assert_eq!(fs::read(&path).unwrap(), expected_bytes);
-                assert!(app.message.starts_with("Exported static GLB"));
+                let format_name = label.trim_start_matches("Export ");
+                assert_eq!(
+                    app.message,
+                    format!("Exported static {format_name} cloth surface in metres.")
+                );
                 assert!(!app.search && !app.dirty && !app.needs_mesh && app.job.is_none());
                 assert_eq!(format!("{:?}", app.editor), format!("{before:?}"));
                 assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
             }
         }
-        let path = directory.join("rest.glb");
-        let retained = fs::read(&path).unwrap();
         let mut stale = (*mesh).clone();
         stale.doc_revision -= 1;
         app.mesh = Some(Arc::new(stale));
-        assert!(!app.export_to_path(&ctx, ExportFormat::Glb, Some(&path), None));
-        assert_eq!(fs::read(&path).unwrap(), retained);
+        for (format, extension) in [(ExportFormat::Glb, "glb"), (ExportFormat::Gltf, "gltf")] {
+            let path = directory.join(format!("rest.{extension}"));
+            let retained = fs::read(&path).unwrap();
+            assert!(!app.export_to_path(&ctx, format, Some(&path), None));
+            assert_eq!(fs::read(path).unwrap(), retained);
+        }
         assert_eq!(format!("{:?}", app.editor), format!("{before:?}"));
         fs::remove_dir_all(directory).unwrap();
     }
