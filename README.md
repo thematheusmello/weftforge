@@ -36,7 +36,8 @@ DXF accepts a bounded R2000 `LINE`/clamped cubic `SPLINE` profile.
 Imported boundaries remain editable. **Frame all** fits the visible outlines in
 the 2D view and preserves pending numeric edits. The Scene dock can temporarily
 hide or isolate patterns across both canvases. View and Command search offer
-six standard 3D directions and a return to the default orbit. Rectangle,
+six standard 3D directions, a return to the default orbit, and **Frame garment**
+for the visible 3D cloth. Rectangle,
 polygon and editable four-cubic ellipse construction feed the same Rust
 document engine as the CLI. The core retains straight/cubic boundaries, oriented seam intervals,
 ordered M:N sewing groups, authored warp direction per piece, separate warp/weft

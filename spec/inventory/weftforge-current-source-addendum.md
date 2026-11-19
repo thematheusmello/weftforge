@@ -1,5 +1,18 @@
 # WeftForge current-source addendum
 
+## Frame garment
+
+Source `d71577fe9015b278d9e66e070b2d97140a03328d` maps **Frame garment** in View and Command search.
+The command centers the current visible cloth at the existing viewing angle
+and fits it in the 3D canvas with a margin. The viewport uses accepted
+simulation positions when available and the rest mesh otherwise.
+
+This update re-pins 228 existing occurrences and adds five. The
+previous source map is available at `a1d780c1fc1c8b61a922b487a64d560065bf0eed`. The feature registry
+records which behavior has native evidence.
+
+# WeftForge current-source addendum
+
 ## Standard 3D viewpoints
 
 Source `7f85908c6b7daf0be3594831f74f2a250b15d276` adds seven camera controls in View and Command search.

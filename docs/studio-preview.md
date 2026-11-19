@@ -1,5 +1,15 @@
 # Native studio preview
 
+## Frame the 3D garment
+
+**Frame garment** in View fitted the visible rest cloth inside the 3D
+canvas. After one accepted manual step, the same command in Command search
+fitted the isolated Harbor front. The 2D and Properties panes kept their
+pixels across each frame action.
+[Clipped rest view](../parity/reports/artifacts/native-frame-garment-20261119/rest-before.png) · [Fitted rest view](../parity/reports/artifacts/native-frame-garment-20261119/rest-framed.png) · [Native report](../parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json).
+
+![Harbor front framed in the native 3D canvas after one manual step](../parity/reports/artifacts/native-frame-garment-20261119/current-framed.png)
+
 ## Harbor in standard 3D views
 
 The current native app offers six axis-aligned views and Default orbit. In

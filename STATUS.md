@@ -1,3 +1,18 @@
+# Frame garment in 3D — 19 November 2026
+
+**Frame garment** centers the visible cloth at the current viewing angle.
+The Apple Silicon studio fitted Harbor's two rest pieces from View, then
+fitted the isolated front from Command search after one accepted manual
+step. Each fit restored the clipped cloth with margins. The 2D canvas and
+Properties pixels matched across both frame actions. The saved project and
+full one-step GLB retained their bytes. The test window closed normally.
+[Native report](parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json) · [Studio preview](docs/studio-preview.md).
+
+Formatting, 503 workspace tests, strict Clippy and the studio and CLI builds
+passed. Next work covers printable patterns, full Harbor fit, custom cameras
+and reference checks. GitHub Actions and automated Pages deployments stay
+disabled.
+
 # Standard 3D viewpoints — 19 November 2026
 
 View and Command search offer Front, Back, Left, Right, Top, Bottom and Default

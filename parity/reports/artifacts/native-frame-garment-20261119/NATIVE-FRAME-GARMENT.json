@@ -1,0 +1,130 @@
+{
+  "source_commit": "d71577fe9015b278d9e66e070b2d97140a03328d",
+  "source_tree": "9f167fc893f6e077e073cc922052454017446b7c",
+  "studio_sha256": "c628e8be7bfa9411ffd83d5dde6d5ed3f35aacdddb08671df5010d70068ae331",
+  "platform": "Apple Silicon macOS",
+  "fixture": "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge",
+  "fixture_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+  "project_revision": 23,
+  "geometry": {
+    "pieces": 2,
+    "vertices": 654,
+    "triangles": 1172
+  },
+  "actions": [
+    "Open Harbor revision 23 and use Frame all in 2D.",
+    "Zoom into the 3D rest arrangement until it clips. Save a workspace PNG.",
+    "Choose Frame garment in View and save the fitted rest arrangement.",
+    "Select Harbor front in Scene, use Isolate selected and complete one manual Step while Harbor back is hidden.",
+    "Zoom into the accepted 3D surface until it clips and save a workspace PNG.",
+    "Press Command-K, enter Frame garment, then activate the single result with Tab and Return. Save the fitted workspace.",
+    "Export GLB while Harbor back is hidden and compare it with the prior full one-step export."
+  ],
+  "accepted_manual_steps": 1,
+  "displayed_elapsed_seconds": 0.017,
+  "visible_piece_id_after_isolate": 2,
+  "hidden_piece_id": 31,
+  "captures": {
+    "rest-before": {
+      "path": "parity/reports/artifacts/native-frame-garment-20261119/rest-before.png",
+      "sha256": "8fb5e70ad58e7dad516fa5fc347c3e87aac3c7c05b7f8b9419bf53fe98a28e71",
+      "bytes": 180853,
+      "cloth_bounds": [
+        0,
+        0,
+        650,
+        508
+      ]
+    },
+    "rest-framed": {
+      "path": "parity/reports/artifacts/native-frame-garment-20261119/rest-framed.png",
+      "sha256": "52133e60fbff89878be1a885dc949f6b97b38dbb31dc083f4a1a15a4ca409660",
+      "bytes": 227420,
+      "cloth_bounds": [
+        27,
+        228,
+        622,
+        536
+      ]
+    },
+    "current-before": {
+      "path": "parity/reports/artifacts/native-frame-garment-20261119/current-before.png",
+      "sha256": "b21eb8cba9136bcea321ee1aef9c07c19be45f33dc09140b90bdf1594bc98e6f",
+      "bytes": 349735,
+      "cloth_bounds": [
+        0,
+        0,
+        650,
+        795
+      ]
+    },
+    "current-framed": {
+      "path": "parity/reports/artifacts/native-frame-garment-20261119/current-framed.png",
+      "sha256": "2fbaa7a0ad7bd6fea7e7974b667e7512a3544d15053977dfbc1c4e8b45587b0b",
+      "bytes": 294349,
+      "cloth_bounds": [
+        27,
+        214,
+        622,
+        549
+      ]
+    }
+  },
+  "rgba_srgb_size_px": [
+    1640,
+    1000
+  ],
+  "cloth_mask": {
+    "region_half_open_px": [
+      698,
+      149,
+      1348,
+      976
+    ],
+    "threshold": "B > R + 32 and G > R + 20",
+    "bounds_relative_to_region": true
+  },
+  "comparison_regions_half_open_px": {
+    "2D": [
+      46,
+      117,
+      697,
+      944
+    ],
+    "3D": [
+      697,
+      117,
+      1349,
+      944
+    ],
+    "Properties": [
+      1349,
+      117,
+      1640,
+      944
+    ]
+  },
+  "changed_rgb_pixels": {
+    "rest": {
+      "2D": 0,
+      "3D": 356208,
+      "Properties": 0
+    },
+    "current": {
+      "2D": 0,
+      "3D": 480279,
+      "Properties": 0
+    }
+  },
+  "project_bytes_preserved": true,
+  "glb_after_frame": {
+    "identical_full_glb": "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb",
+    "sha256": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
+  },
+  "local_checks": {
+    "workspace_tests_passed": 503,
+    "different_viewport_sizes_in_source_test": true,
+    "strict_clippy_passed": true
+  },
+  "checked_utc": "2026-11-19T04:53:45.832459Z"
+}
