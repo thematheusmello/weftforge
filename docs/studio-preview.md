@@ -1,5 +1,15 @@
 # Native studio preview
 
+## Move a pattern in the 3D viewport
+
+Harbor's front pattern moved 320 mm right and 180 mm up in Front view
+with 10 mm Snap. Its placement was saved with the same editable 2D
+patterns and eight seams. The 2D canvas pixels matched before and
+after the move.
+[Before](../parity/reports/artifacts/native-viewport-placement-20261119/before.png) · [Native check](../parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json).
+
+![WeftForge with Harbor's two 2D patterns and its front piece moved in the 3D view](../parity/reports/artifacts/native-viewport-placement-20261119/after.png)
+
 ## Pattern JPEG at a physical scale
 
 The native JPEG dialog shows the density it will write to the file.

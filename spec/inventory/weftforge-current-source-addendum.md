@@ -1,5 +1,15 @@
 # WeftForge current-source addendum
 
+## Direct pattern placement in 3D
+
+Source `7de4b5764449c3a35266ed22819134cb20f9e5a6` adds **Move pattern** to the native 3D pane. The
+`arrangement` and `gizmos` groups cover view-plane translation for a
+selected visible rest pattern, captured snapping and release-to-commit.
+The gesture shares the existing `SetPlacement` command with numeric
+Arrangement. The update re-pins 243 native source anchors.
+
+# WeftForge current-source addendum
+
 ## Pattern JPEG export
 
 Source `f440d126c9094b357deb99b68dd6b01235591a44` maps `pattern-snapshot-print` to a grayscale JPEG

@@ -1,3 +1,20 @@
+# Move patterns in 3D — 19 November 2026
+
+In **3D Garment**, **Move pattern** drags the selected rest pattern along
+the view plane. On Apple Silicon a Harbor front drag moved the pattern
+320 mm right and 180 mm up in one revision. Undo and Redo restored the
+two arrangements, and the saved translation reopened at revision 26.
+The eight authored seams and both 2D patterns stayed exact. The 2D
+canvas pixels also matched. The first native attempt after saving a
+PNG kept its revision. Repeating that pointer path after reopening
+worked. The test studio closed.
+[Native check](parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json) · [Studio preview](docs/studio-preview.md).
+
+Formatting, 512 workspace tests, strict Clippy and both builds passed.
+On-viewport rotation, avatar arrangement aids, package notice collection,
+full Harbor fit and reference comparisons remain open. GitHub Actions
+and automated Pages deployments stay disabled.
+
 # Debian ARM64 pattern JPEG package — 19 November 2026
 
 The offline release build produced the unsigned studio and CLI on Debian
