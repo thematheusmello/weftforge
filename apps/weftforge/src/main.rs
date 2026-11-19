@@ -3267,18 +3267,54 @@ impl Studio {
                 if self.properties_tab == PropertiesTab::Pattern {
                 pane_heading(ui,"Arrangement");
                 if let Some(dimensions)=&mut draft.dimensions {
-                    ui.horizontal(|ui| { ui.label("Size m"); for value in dimensions { commit|=numeric_commit(&ui.add(numeric_value(ui,value).speed(0.005))); } });
+                    ui.horizontal(|ui| {
+                        ui.label("Size m");
+                        for (label, value) in ["Pattern width m", "Pattern height m"]
+                            .into_iter()
+                            .zip(dimensions)
+                        {
+                            let response = ui.add(numeric_value(ui, value).speed(0.005));
+                            ui.ctx().accesskit_node_builder(response.id, |node| node.set_label(label));
+                            commit |= numeric_commit(&response);
+                        }
+                    });
                 }
                 if let Some(placement)=&mut draft.placement {
                     ui.label("Arrange X / Y / Z m");
-                    ui.horizontal(|ui| { for value in &mut placement.translation { commit|=numeric_commit(&ui.add(numeric_value(ui,value).speed(0.01))); } });
+                    ui.horizontal(|ui| {
+                        for (label, value) in [
+                            "Translation X m",
+                            "Translation Y m",
+                            "Translation Z m",
+                        ]
+                        .into_iter()
+                        .zip(&mut placement.translation)
+                        {
+                            let response = ui.add(numeric_value(ui, value).speed(0.01));
+                            ui.ctx().accesskit_node_builder(response.id, |node| node.set_label(label));
+                            commit |= numeric_commit(&response);
+                        }
+                    });
                     ui.label("Rotate X / Y / Z radians");
-                    ui.horizontal(|ui| { for value in &mut placement.rotation { commit|=numeric_commit(&ui.add(numeric_value(ui,value).speed(0.02))); } });
+                    ui.horizontal(|ui| {
+                        for (label, value) in [
+                            "Rotation X radians",
+                            "Rotation Y radians",
+                            "Rotation Z radians",
+                        ]
+                        .into_iter()
+                        .zip(&mut placement.rotation)
+                        {
+                            let response = ui.add(numeric_value(ui, value).speed(0.02));
+                            ui.ctx().accesskit_node_builder(response.id, |node| node.set_label(label));
+                            commit |= numeric_commit(&response);
+                        }
+                    });
                 }
                 if let Some(angle)=&mut draft.grain_angle {
-                    ui.label("Warp angle radians");
+                    let label=ui.label("Warp angle radians");
                     ui.small("0 = +U (right); positive turns toward +V (up).");
-                    commit|=numeric_commit(&ui.add(numeric_value(ui,angle).speed(0.02)));
+                    commit|=numeric_commit(&ui.add(numeric_value(ui,angle).speed(0.02)).labelled_by(label.id));
                 }
                 }
                 if self.properties_tab == PropertiesTab::Fabric {
@@ -3325,7 +3361,7 @@ impl Studio {
                 .show_unindented(ui,|ui| {
             // Explicit scopes keep auto-ID edit buffers stable as dynamic rows appear.
             ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("creation")),|ui| {
-            ui.label("Pattern name"); native_text_edit(ui,&mut self.name,None,usize::MAX,|edit|edit);
+            let label=ui.label("Pattern name"); native_text_edit(ui,&mut self.name,None,usize::MAX,|edit|edit).labelled_by(label.id);
             egui::Grid::new("creation-fields").num_columns(2).min_col_width(96.0).show(ui, |ui| {
                 ui.spacing_mut().interact_size.x = 96.0;
                 for (label, value) in ["Width m", "Height m"].into_iter().zip(&mut self.size) {
@@ -9675,6 +9711,141 @@ mod contextual_properties_tests {
         );
         app.cancel();
         fs::remove_dir_all(dir).unwrap();
+    }
+
+    #[test]
+    fn pattern_fields_have_unique_accessible_names_and_fit_the_narrow_dock() {
+        fn named(
+            node: &egui::accesskit::Node,
+            nodes: &[(NodeId, egui::accesskit::Node)],
+            name: &str,
+        ) -> bool {
+            node.label() == Some(name)
+                || node.labelled_by().iter().any(|label| {
+                    nodes.iter().any(|(id, node)| {
+                        id == label && (node.label() == Some(name) || node.value() == Some(name))
+                    })
+                })
+        }
+        fn fits(node: &egui::accesskit::Node, dock: Rect) {
+            let bounds = node.bounds().unwrap();
+            assert!(
+                bounds.x0 >= f64::from(dock.left()) && bounds.x1 <= f64::from(dock.right()),
+                "outside dock {dock:?}: {bounds:?}"
+            );
+            assert!(
+                bounds.y0 >= f64::from(dock.top()) && bounds.y1 <= f64::from(dock.bottom()),
+                "outside dock {dock:?}: {bounds:?}"
+            );
+        }
+        for (width, dock_width) in [(1000., 248.), (1640., 292.)] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            studio_style(&ctx);
+            ctx.all_styles_mut(|style| style.animation_time = 0.);
+            let mut app = Studio::empty();
+            app.session_autosave = None;
+            let draw = |app: &mut Studio| {
+                ctx.run_ui(
+                    egui::RawInput {
+                        screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(width, 1000.))),
+                        ..Default::default()
+                    },
+                    |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+                )
+            };
+            let before = format!("{:?}", app.editor);
+            draw(&mut app);
+            let output = draw(&mut app);
+            let dock =
+                egui::containers::panel::PanelState::load(&ctx, egui::Id::new("studio-properties"))
+                    .unwrap()
+                    .outer_rect;
+            assert_eq!(dock.width(), dock_width);
+            let nodes = &output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes;
+            let names: Vec<_> = nodes
+                .iter()
+                .filter(|(_, node)| {
+                    node.role() == egui::accesskit::Role::TextInput
+                        && named(node, nodes, "Pattern name")
+                })
+                .collect();
+            assert_eq!(names.len(), 1);
+            assert_eq!(names[0].1.value(), Some("Pattern 1"));
+            fits(&names[0].1, dock);
+            assert_eq!(format!("{:?}", app.editor), before);
+
+            app.editor
+                .execute(Command::AddRectangle {
+                    name: "Equal values".into(),
+                    origin: [0.; 2],
+                    width: 0.4,
+                    height: 0.4,
+                })
+                .unwrap();
+            let piece = app.editor.project.pieces[0].id;
+            app.editor
+                .execute(Command::SetPlacement {
+                    piece,
+                    placement: weftforge_core::Placement {
+                        translation: [0.4; 3],
+                        rotation: [0.4; 3],
+                    },
+                })
+                .unwrap();
+            app.editor
+                .execute(Command::SetGrain { piece, angle: 0.4 })
+                .unwrap();
+            app.editor
+                .execute(Command::SetResolution { metres: 0.08 })
+                .unwrap();
+            assert!(app.editor.undo());
+            app.selected = Some(piece);
+            let before = format!("{:?}", app.editor);
+            draw(&mut app);
+            let output = draw(&mut app);
+            let nodes = &output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes;
+            let mut fields = Vec::new();
+            for name in [
+                "Pattern width m",
+                "Pattern height m",
+                "Translation X m",
+                "Translation Y m",
+                "Translation Z m",
+                "Rotation X radians",
+                "Rotation Y radians",
+                "Rotation Z radians",
+                "Warp angle radians",
+            ] {
+                let matches: Vec<_> = nodes
+                    .iter()
+                    .filter(|(_, node)| {
+                        node.numeric_value().is_some()
+                            && !node.is_disabled()
+                            && named(node, nodes, name)
+                    })
+                    .collect();
+                assert_eq!(matches.len(), 1, "unique field {name}");
+                assert_eq!(matches[0].1.numeric_value(), Some(0.4), "{name}");
+                assert!(matches[0].1.supports_action(Action::Focus));
+                assert!(!fields.contains(&matches[0].0), "distinct target {name}");
+                fields.push(matches[0].0);
+                fits(&matches[0].1, dock);
+            }
+            assert_eq!(fields.len(), 9);
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert!(!app.dirty && !app.needs_mesh && app.job.is_none() && app.editor.can_redo());
+        }
     }
 
     #[test]
