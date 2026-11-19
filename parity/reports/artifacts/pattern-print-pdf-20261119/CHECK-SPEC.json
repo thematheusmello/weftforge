@@ -1,0 +1,121 @@
+{
+  "fixture_sha256": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83",
+  "native_version": 6,
+  "revision": 2,
+  "units": {
+    "points_per_inch": 72,
+    "millimetres_per_inch": 25.4
+  },
+  "pypdf_abs_pt_tolerance": 0.0001,
+  "poppler_box_abs_pt_tolerance": 0.012,
+  "layout_mm": {
+    "content_inset_x": 10,
+    "content_inset_y": 20,
+    "overlap": 10,
+    "form_ink_margin": 1,
+    "cross_arm": 1.5,
+    "cross_gutter": 3,
+    "calibration_edge": 100
+  },
+  "paper_mm": {
+    "a4": [
+      210,
+      297
+    ],
+    "letter": [
+      215.9,
+      279.4
+    ]
+  },
+  "header_print_scaling": "/None",
+  "pages": 6,
+  "pieces": [
+    {
+      "id": 2,
+      "name": "Juniper α",
+      "rows": 2,
+      "columns": 2,
+      "outline_start_index": 1,
+      "exterior_mm": [
+        [
+          115,
+          -275
+        ],
+        [
+          445,
+          175
+        ]
+      ],
+      "printed_art_mm": [
+        [
+          115,
+          -279
+        ],
+        [
+          445,
+          175
+        ]
+      ],
+      "form_origin_mm": [
+        114,
+        176
+      ],
+      "form_extent_mm": [
+        332,
+        456
+      ],
+      "cubic_controls_mm": [
+        [
+          345,
+          195
+        ],
+        [
+          215,
+          195
+        ]
+      ],
+      "notch_length_mm": 8,
+      "internal_length_mm": 150
+    },
+    {
+      "id": 11,
+      "name": "Basin β",
+      "rows": 1,
+      "columns": 1,
+      "outline_start_index": 5,
+      "exterior_mm": [
+        [
+          -420,
+          285
+        ],
+        [
+          -302,
+          440
+        ]
+      ],
+      "printed_art_mm": [
+        [
+          -420,
+          285
+        ],
+        [
+          -302,
+          440
+        ]
+      ],
+      "form_origin_mm": [
+        -421,
+        441
+      ],
+      "form_extent_mm": [
+        120,
+        157
+      ],
+      "hole_size_mm": [
+        40,
+        35
+      ]
+    }
+  ],
+  "proof_scope": "Digital PDF unit geometry, transforms, guides and rendering. Physical printer and driver scaling are independent checks."
+}

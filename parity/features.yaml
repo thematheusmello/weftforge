@@ -3893,7 +3893,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b",
         "spec/features/UI-001-standard-viewpoints.md": "904ae35c58a9ecf1e3da3c1a25098a1d1d255cd8776ab630d62991737e4f720a",
@@ -5076,7 +5076,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "UI-003",
@@ -5100,7 +5100,8 @@
         "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json",
         "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json",
         "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json",
-        "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
+        "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json"
       ],
       "scenarios": [
         {
@@ -6166,6 +6167,46 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
           },
           "path": "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-PDF-001",
+          "commit": "89b2c27924f9a9c7546a274334c212fe269c1d46",
+          "timestamp": "2026-11-19T05:20:54.435739Z",
+          "platform": "Apple Silicon macOS native studio, pypdf and Poppler",
+          "artifact_hashes": {
+            "parity/reports/artifacts/pattern-print-pdf-20261119/INDEPENDENT.md": "d97f3bdbf95c627903994c66e0f0a21fb2cab8b5f1287ba186c874a9ba77c7d5",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/CHECK-SPEC.json": "c0986ae308055f483746f8dc8ab82579fd81805749d1207942439eac19ceec6f",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/check_pattern_pdf.py": "20619e7bba55160abcf7b3e9fd2e5c0f4cd12eacd494214fb24e101d36331a22",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/FIXTURE.json": "601b5761b4e8ad16000dba963b85f7477716cf9f7721131f2455ffbee0f7a331",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/01-pieces.json": "1d903d48fb4c6d94623a5c67c95aa3285761bd6e06cb8bd1647c721ed574769c",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/02-details.json": "1f4257ad907ee3365db982c50223e9165746ef55cee6b201c5859e81b57769bd",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/A4-CHECK.json": "b36b48d1e507f33878d99369fd7e71d6526692912c2aaaf6624018a01ace9c3c",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/CLI-RUN.json": "a8c4e9ecff3716466a4609479848f5d491c734cd28b5e284bf04f2ef7114e690",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/LETTER-CHECK.json": "ce315165a98f0f95bcdd00d33a0d76398b56b5289144d323b3abb06990a8a0e8",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/NEGATIVE-CHECKS.json": "9a7dc73c66f9b54b7bea27f163e6e7d41949c5ffc50bd0b21580a679dede4760",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/a4-overview.png": "88147b9538bcfa875f21aeecf0d8a4d9135bafcada3229c977f326f20d2876ce",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/cli-a4.pdf": "d98a0172f0a2f1c581787721ac5a069ddc35609d8ff1faa6d01be1808427a2a4",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/cli-letter.pdf": "58db7df79c5ee9abcd969741b639fd98a7b4c7995ef014731c2c4123a35fc728",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/letter-overview.png": "947915b2db3c7a592e438e580b67889f66f37694e9a45e0e7d17d9d865fc84b5",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-1.png": "21c093caa09881ed85098816bec378dcd7fd29fe8c1db124c350363ab0d458ec",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-2.png": "9b8068b745f2bfd64032c45cdf61e855ac0845b12bbec4f0e9ca5f32bf75de61",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-3.png": "7b0967e819443a7bb0f03178240d841547e9458de0c80d7e12df32b02cc1f054",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-4.png": "3fb2a9001d42cf244add23a48ac732a0df04a19c4571b438e340bba2e6c8d2ef",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-5.png": "831cc668630812363939b42e40017393b855295ba9a54f33f105c42d1698c489",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-6.png": "6b322ee23bdcc70cec3a5f2a29a886ead642a56e16890dc751bc97dc079bf67d",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-1.png": "09f3609820094c503fa7f6a3b414ca2455b6d445151efdeae4e55f05e33266a0",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-2.png": "49de25e04d5d7871cde51a5ec1d8c17b3db8ddb4f8ef680c1f1e02faa075e66d",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-3.png": "fba4c67713e925117b5410e3b4596a297fb67cb8370105f34d1f921b48a74d09",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-4.png": "ac18c600cba83b3f860da05d3149416b9b45ae3295ff72a2aa457532d4ac1453",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-5.png": "ec63c86b8af30bf8b7698dfeb76dab94b00f5c8203e47b64e38ef6e1ac4f835e",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-6.png": "ecbd90843fa3e96e64598ddf7bd3e791523fe6e830463bccff01c2a86fc26f4b",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/FINAL-PROOF.json": "a2603db3efb305b03ab590ea1eede0de716fcfea95376d1fda67e862891ee1e8",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/runtime-build-to-verified-tests.patch": "3062b27e9a23d7519023d5c6302fc9d3a79beb4208b72f7c59a058f75af75ff7",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/NATIVE-PATTERN-PDF.json": "89606ae52fd482e3a7f89b1f035dbfb93bf780b97925941c57cd474bb384c696",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/POST-CASE-CLEANUP.json": "3b867c583c431f42f6aedeaa328694fe3e6d68cd282dba73a817e1a8b32672b5"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json"
         }
       ],
       "known_gaps": [
@@ -6220,7 +6261,8 @@
         "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json",
         "parity/reports/WF-20261118-CONTACT-RECOVERY-D-TOOLING-001.json",
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-SOURCE-001.json",
-        "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json"
+        "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json"
       ],
       "scenarios": [
         {
@@ -11389,6 +11431,46 @@
             "parity/reports/artifacts/native-harbor-workflow-20261118/undo.weftforge": "972be11ddb06d5beb3abb0b401fe0be15b398d202d3ecf57f81c3104540f049e"
           },
           "path": "parity/reports/WF-20261118-HARBOR-NATIVE-AUTHORING-REOPEN-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-PDF-001",
+          "commit": "89b2c27924f9a9c7546a274334c212fe269c1d46",
+          "timestamp": "2026-11-19T05:20:54.435739Z",
+          "platform": "Apple Silicon macOS native studio, pypdf and Poppler",
+          "artifact_hashes": {
+            "parity/reports/artifacts/pattern-print-pdf-20261119/INDEPENDENT.md": "d97f3bdbf95c627903994c66e0f0a21fb2cab8b5f1287ba186c874a9ba77c7d5",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/CHECK-SPEC.json": "c0986ae308055f483746f8dc8ab82579fd81805749d1207942439eac19ceec6f",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/check_pattern_pdf.py": "20619e7bba55160abcf7b3e9fd2e5c0f4cd12eacd494214fb24e101d36331a22",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/FIXTURE.json": "601b5761b4e8ad16000dba963b85f7477716cf9f7721131f2455ffbee0f7a331",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/01-pieces.json": "1d903d48fb4c6d94623a5c67c95aa3285761bd6e06cb8bd1647c721ed574769c",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/02-details.json": "1f4257ad907ee3365db982c50223e9165746ef55cee6b201c5859e81b57769bd",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/A4-CHECK.json": "b36b48d1e507f33878d99369fd7e71d6526692912c2aaaf6624018a01ace9c3c",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/CLI-RUN.json": "a8c4e9ecff3716466a4609479848f5d491c734cd28b5e284bf04f2ef7114e690",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/LETTER-CHECK.json": "ce315165a98f0f95bcdd00d33a0d76398b56b5289144d323b3abb06990a8a0e8",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/NEGATIVE-CHECKS.json": "9a7dc73c66f9b54b7bea27f163e6e7d41949c5ffc50bd0b21580a679dede4760",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/a4-overview.png": "88147b9538bcfa875f21aeecf0d8a4d9135bafcada3229c977f326f20d2876ce",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/cli-a4.pdf": "d98a0172f0a2f1c581787721ac5a069ddc35609d8ff1faa6d01be1808427a2a4",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/cli-letter.pdf": "58db7df79c5ee9abcd969741b639fd98a7b4c7995ef014731c2c4123a35fc728",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/letter-overview.png": "947915b2db3c7a592e438e580b67889f66f37694e9a45e0e7d17d9d865fc84b5",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-1.png": "21c093caa09881ed85098816bec378dcd7fd29fe8c1db124c350363ab0d458ec",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-2.png": "9b8068b745f2bfd64032c45cdf61e855ac0845b12bbec4f0e9ca5f32bf75de61",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-3.png": "7b0967e819443a7bb0f03178240d841547e9458de0c80d7e12df32b02cc1f054",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-4.png": "3fb2a9001d42cf244add23a48ac732a0df04a19c4571b438e340bba2e6c8d2ef",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-5.png": "831cc668630812363939b42e40017393b855295ba9a54f33f105c42d1698c489",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-6.png": "6b322ee23bdcc70cec3a5f2a29a886ead642a56e16890dc751bc97dc079bf67d",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-1.png": "09f3609820094c503fa7f6a3b414ca2455b6d445151efdeae4e55f05e33266a0",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-2.png": "49de25e04d5d7871cde51a5ec1d8c17b3db8ddb4f8ef680c1f1e02faa075e66d",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-3.png": "fba4c67713e925117b5410e3b4596a297fb67cb8370105f34d1f921b48a74d09",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-4.png": "ac18c600cba83b3f860da05d3149416b9b45ae3295ff72a2aa457532d4ac1453",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-5.png": "ec63c86b8af30bf8b7698dfeb76dab94b00f5c8203e47b64e38ef6e1ac4f835e",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-6.png": "ecbd90843fa3e96e64598ddf7bd3e791523fe6e830463bccff01c2a86fc26f4b",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/FINAL-PROOF.json": "a2603db3efb305b03ab590ea1eede0de716fcfea95376d1fda67e862891ee1e8",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/runtime-build-to-verified-tests.patch": "3062b27e9a23d7519023d5c6302fc9d3a79beb4208b72f7c59a058f75af75ff7",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/NATIVE-PATTERN-PDF.json": "89606ae52fd482e3a7f89b1f035dbfb93bf780b97925941c57cd474bb384c696",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/POST-CASE-CLEANUP.json": "3b867c583c431f42f6aedeaa328694fe3e6d68cd282dba73a817e1a8b32672b5"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json"
         }
       ],
       "known_gaps": [
@@ -11412,7 +11494,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/PAT-004-piece-rigid-transform.md": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
         "spec/features/PAT-004-native-transform-selection.md": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
@@ -34441,7 +34523,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/FIT-002-pattern-visibility.md": "05c3323a620ecf89387d4ff74ad3b9cfc9e3a6306082df5354ae3924d3cb0579"
       }
@@ -47707,7 +47789,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "ANIM-001",
@@ -51305,7 +51387,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/FILE-004-glb-static-export.md": "a30bb3e5576861f221737734fb0bd2f1806153d3aa52497f93061ea12bb0b8df"
       }
@@ -51329,7 +51411,9 @@
         "spec/features/FILE-005-dxf-pattern-import.md",
         "parity/reports/WF-20261116-HOLE-EXPORT-001.json",
         "parity/reports/artifacts/straight-hole-20261116/PUBLICATION-CURRENT-003.json",
-        "parity/reports/WF-20261117-NATIVE-NOTCH-N006-001.json"
+        "parity/reports/WF-20261117-NATIVE-NOTCH-N006-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json",
+        "spec/features/FILE-005-pattern-print-pdf.md"
       ],
       "scenarios": [
         {
@@ -51378,6 +51462,15 @@
           "initial_conditions": "Untouched baseline revision1/allocator11 and original R2000 drawing on one identified bound source/binary pair. Opening creates no Undo history. Dedicated native and headless successor cases require separate prospective bindings; prior failed cases remain unchanged.",
           "expected_outcomes": "Unchanged native geometry/history/export and adapter criteria must be met within the frozen tolerances. Every full native action criterion requires runtime observation. A scoped component pass does not establish explicit printing disclosure, an unexercised old Redo branch or zero background persistence. Source-qualified observations and gaps are separate.",
           "path": "parity/scenarios/FILE-DXF-STUDIO-001.json"
+        },
+        {
+          "id": "FILE-NATIVE-PATTERN-PDF-001",
+          "path": "parity/scenarios/FILE-NATIVE-PATTERN-PDF-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
+          },
+          "initial_conditions": "Native revision 2 with one curved and marked pattern and one straight holed pattern on Apple Silicon.",
+          "expected_outcomes": "File and keyboard exports write six sheets for A4 and Letter with a 100 mm square, actual-size vector patterns and aligned 10 mm overlaps. Saved project bytes match their original."
         }
       ],
       "comparison_criteria": {
@@ -51398,7 +51491,8 @@
         "apps/weftforge-cli/src/main.rs",
         "apps/weftforge-cli/src/mcp.rs",
         "crates/weftforge-core/src/persistence/svg.rs",
-        "crates/weftforge-core/src/persistence/dxf_import.rs"
+        "crates/weftforge-core/src/persistence/dxf_import.rs",
+        "crates/weftforge-core/src/persistence/pdf.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/6"
@@ -56334,6 +56428,46 @@
             "parity/reports/artifacts/native-harbor-workflow-20261118/undo.weftforge": "972be11ddb06d5beb3abb0b401fe0be15b398d202d3ecf57f81c3104540f049e"
           },
           "path": "parity/reports/WF-20261118-HARBOR-NATIVE-AUTHORING-REOPEN-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-PDF-001",
+          "commit": "89b2c27924f9a9c7546a274334c212fe269c1d46",
+          "timestamp": "2026-11-19T05:20:54.435739Z",
+          "platform": "Apple Silicon macOS native studio, pypdf and Poppler",
+          "artifact_hashes": {
+            "parity/reports/artifacts/pattern-print-pdf-20261119/INDEPENDENT.md": "d97f3bdbf95c627903994c66e0f0a21fb2cab8b5f1287ba186c874a9ba77c7d5",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/CHECK-SPEC.json": "c0986ae308055f483746f8dc8ab82579fd81805749d1207942439eac19ceec6f",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/check_pattern_pdf.py": "20619e7bba55160abcf7b3e9fd2e5c0f4cd12eacd494214fb24e101d36331a22",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/FIXTURE.json": "601b5761b4e8ad16000dba963b85f7477716cf9f7721131f2455ffbee0f7a331",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/01-pieces.json": "1d903d48fb4c6d94623a5c67c95aa3285761bd6e06cb8bd1647c721ed574769c",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/02-details.json": "1f4257ad907ee3365db982c50223e9165746ef55cee6b201c5859e81b57769bd",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/A4-CHECK.json": "b36b48d1e507f33878d99369fd7e71d6526692912c2aaaf6624018a01ace9c3c",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/CLI-RUN.json": "a8c4e9ecff3716466a4609479848f5d491c734cd28b5e284bf04f2ef7114e690",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/LETTER-CHECK.json": "ce315165a98f0f95bcdd00d33a0d76398b56b5289144d323b3abb06990a8a0e8",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/NEGATIVE-CHECKS.json": "9a7dc73c66f9b54b7bea27f163e6e7d41949c5ffc50bd0b21580a679dede4760",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/a4-overview.png": "88147b9538bcfa875f21aeecf0d8a4d9135bafcada3229c977f326f20d2876ce",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/cli-a4.pdf": "d98a0172f0a2f1c581787721ac5a069ddc35609d8ff1faa6d01be1808427a2a4",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/cli-letter.pdf": "58db7df79c5ee9abcd969741b639fd98a7b4c7995ef014731c2c4123a35fc728",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/letter-overview.png": "947915b2db3c7a592e438e580b67889f66f37694e9a45e0e7d17d9d865fc84b5",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-1.png": "21c093caa09881ed85098816bec378dcd7fd29fe8c1db124c350363ab0d458ec",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-2.png": "9b8068b745f2bfd64032c45cdf61e855ac0845b12bbec4f0e9ca5f32bf75de61",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-3.png": "7b0967e819443a7bb0f03178240d841547e9458de0c80d7e12df32b02cc1f054",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-4.png": "3fb2a9001d42cf244add23a48ac732a0df04a19c4571b438e340bba2e6c8d2ef",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-5.png": "831cc668630812363939b42e40017393b855295ba9a54f33f105c42d1698c489",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-6.png": "6b322ee23bdcc70cec3a5f2a29a886ead642a56e16890dc751bc97dc079bf67d",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-1.png": "09f3609820094c503fa7f6a3b414ca2455b6d445151efdeae4e55f05e33266a0",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-2.png": "49de25e04d5d7871cde51a5ec1d8c17b3db8ddb4f8ef680c1f1e02faa075e66d",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-3.png": "fba4c67713e925117b5410e3b4596a297fb67cb8370105f34d1f921b48a74d09",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-4.png": "ac18c600cba83b3f860da05d3149416b9b45ae3295ff72a2aa457532d4ac1453",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-5.png": "ec63c86b8af30bf8b7698dfeb76dab94b00f5c8203e47b64e38ef6e1ac4f835e",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-6.png": "ecbd90843fa3e96e64598ddf7bd3e791523fe6e830463bccff01c2a86fc26f4b",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/FINAL-PROOF.json": "a2603db3efb305b03ab590ea1eede0de716fcfea95376d1fda67e862891ee1e8",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/runtime-build-to-verified-tests.patch": "3062b27e9a23d7519023d5c6302fc9d3a79beb4208b72f7c59a058f75af75ff7",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/NATIVE-PATTERN-PDF.json": "89606ae52fd482e3a7f89b1f035dbfb93bf780b97925941c57cd474bb384c696",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/POST-CASE-CLEANUP.json": "3b867c583c431f42f6aedeaa328694fe3e6d68cd282dba73a817e1a8b32672b5"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json"
         }
       ],
       "known_gaps": [
@@ -56342,16 +56476,18 @@
         "Bounded editable SVG import has focused core/CLI/MCP/native-handler and independent consumer checks; full integrated gates and actual native chooser/import/edit/undo/save acceptance remain pending. No complete SVG/reference/printing claim.",
         "Historical32f9 bounded explicit-mm SVG import/native history/control edit/export/exact restart persistence passes independent v3 checks. Only exterior M/L/C/Z boundaries and names; DXF import and full SVG/garment interchange remain unsupported.",
         "Source76be bounded DXF import has four headless geometry/export passes, fourteen retention negatives, four exact MCP inspections and a nine-checkpoint native file/export pass. The full native plan remains unaccepted: explicit print disclosure and old Redo-after-Cancel proof are missing, and temporary autosave/recovery persistence occurred. Full DXF/CAD/apparel, printing, all persistence failures and reference comparison remain open.",
-        "WF-20261116-HOLE-EXPORT-001 is a current947/source74 bounded annular export subset only: actual historical accepted H1R5 compatibility reopen, one edit/native-v5 save, OBJ.0768m2/one component/two boundary loops/Euler0/metre positions+UV/Y-up, tight240x360mm compound-evenodd SVG and planned hole-DXF refusal with both sentinels unchanged. Old source73 H2 sole5457 grade remains FAILED/unaccepted; original H3 actor postguard remains FAILED/exit1, qualified only by separate direct root audit and UI acceptance. No current947 empty creation, hole SVG import/roundtrip, print margins, full CAD/apparel interoperability, native physics or reference acceptance."
+        "WF-20261116-HOLE-EXPORT-001 is a current947/source74 bounded annular export subset only: actual historical accepted H1R5 compatibility reopen, one edit/native-v5 save, OBJ.0768m2/one component/two boundary loops/Euler0/metre positions+UV/Y-up, tight240x360mm compound-evenodd SVG and planned hole-DXF refusal with both sentinels unchanged. Old source73 H2 sole5457 grade remains FAILED/unaccepted; original H3 actor postguard remains FAILED/exit1, qualified only by separate direct root audit and UI acceptance. No current947 empty creation, hole SVG import/roundtrip, print margins, full CAD/apparel interoperability, native physics or reference acceptance.",
+        "A4 and US Letter native and CLI PDFs have an independent digital scale, geometry and tiling check. Printer measurement, configurable 1:1 raster snapshots, wider paper presets and current reference behavior remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/FILE-005-dxf-pattern-export.md": "b0373181a6ae79c148aa154c0c2269956c2fed3587b5c6d0aef929108e11dd73",
-        "spec/features/FILE-005-dxf-pattern-import.md": "06cff6f3d1a6d62fceeb93e94a2037f28136b69adfa5507b8a780e8864b0512b"
+        "spec/features/FILE-005-dxf-pattern-import.md": "06cff6f3d1a6d62fceeb93e94a2037f28136b69adfa5507b8a780e8864b0512b",
+        "spec/features/FILE-005-pattern-print-pdf.md": "af7dc40486229050157831fa7bb422dcd7b875675ff25660b92e479df924169d"
       }
     },
     {
@@ -56463,7 +56599,8 @@
         "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-METADATA-001.json",
         "parity/reports/WF-20261116-RECTANGLE-SOURCE-001.json",
         "parity/reports/WF-20261116-RECTANGLE-NATIVE-001.json",
-        "parity/reports/artifacts/rectangle-gesture-20261116/SELECTED-PUBLIC-MANIFEST-001.json"
+        "parity/reports/artifacts/rectangle-gesture-20261116/SELECTED-PUBLIC-MANIFEST-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json"
       ],
       "scenarios": [
         {
@@ -61974,6 +62111,46 @@
             "parity/reports/artifacts/rectangle-gesture-20261116/PUBLICATION-CURRENT.json": "e18287dc78546c250f2c68e3ac178ad929fcab399915e958f8981da8df6af3a3"
           },
           "path": "parity/reports/WF-20261116-RECTANGLE-NATIVE-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-PDF-001",
+          "commit": "89b2c27924f9a9c7546a274334c212fe269c1d46",
+          "timestamp": "2026-11-19T05:20:54.435739Z",
+          "platform": "Apple Silicon macOS native studio, pypdf and Poppler",
+          "artifact_hashes": {
+            "parity/reports/artifacts/pattern-print-pdf-20261119/INDEPENDENT.md": "d97f3bdbf95c627903994c66e0f0a21fb2cab8b5f1287ba186c874a9ba77c7d5",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/CHECK-SPEC.json": "c0986ae308055f483746f8dc8ab82579fd81805749d1207942439eac19ceec6f",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/check_pattern_pdf.py": "20619e7bba55160abcf7b3e9fd2e5c0f4cd12eacd494214fb24e101d36331a22",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/FIXTURE.json": "601b5761b4e8ad16000dba963b85f7477716cf9f7721131f2455ffbee0f7a331",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/01-pieces.json": "1d903d48fb4c6d94623a5c67c95aa3285761bd6e06cb8bd1647c721ed574769c",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/02-details.json": "1f4257ad907ee3365db982c50223e9165746ef55cee6b201c5859e81b57769bd",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/A4-CHECK.json": "b36b48d1e507f33878d99369fd7e71d6526692912c2aaaf6624018a01ace9c3c",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/CLI-RUN.json": "a8c4e9ecff3716466a4609479848f5d491c734cd28b5e284bf04f2ef7114e690",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/LETTER-CHECK.json": "ce315165a98f0f95bcdd00d33a0d76398b56b5289144d323b3abb06990a8a0e8",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/NEGATIVE-CHECKS.json": "9a7dc73c66f9b54b7bea27f163e6e7d41949c5ffc50bd0b21580a679dede4760",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/a4-overview.png": "88147b9538bcfa875f21aeecf0d8a4d9135bafcada3229c977f326f20d2876ce",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/cli-a4.pdf": "d98a0172f0a2f1c581787721ac5a069ddc35609d8ff1faa6d01be1808427a2a4",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/cli-letter.pdf": "58db7df79c5ee9abcd969741b639fd98a7b4c7995ef014731c2c4123a35fc728",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/letter-overview.png": "947915b2db3c7a592e438e580b67889f66f37694e9a45e0e7d17d9d865fc84b5",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-1.png": "21c093caa09881ed85098816bec378dcd7fd29fe8c1db124c350363ab0d458ec",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-2.png": "9b8068b745f2bfd64032c45cdf61e855ac0845b12bbec4f0e9ca5f32bf75de61",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-3.png": "7b0967e819443a7bb0f03178240d841547e9458de0c80d7e12df32b02cc1f054",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-4.png": "3fb2a9001d42cf244add23a48ac732a0df04a19c4571b438e340bba2e6c8d2ef",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-5.png": "831cc668630812363939b42e40017393b855295ba9a54f33f105c42d1698c489",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/a4-page-6.png": "6b322ee23bdcc70cec3a5f2a29a886ead642a56e16890dc751bc97dc079bf67d",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-1.png": "09f3609820094c503fa7f6a3b414ca2455b6d445151efdeae4e55f05e33266a0",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-2.png": "49de25e04d5d7871cde51a5ec1d8c17b3db8ddb4f8ef680c1f1e02faa075e66d",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-3.png": "fba4c67713e925117b5410e3b4596a297fb67cb8370105f34d1f921b48a74d09",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-4.png": "ac18c600cba83b3f860da05d3149416b9b45ae3295ff72a2aa457532d4ac1453",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-5.png": "ec63c86b8af30bf8b7698dfeb76dab94b00f5c8203e47b64e38ef6e1ac4f835e",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/rendered/letter-page-6.png": "ecbd90843fa3e96e64598ddf7bd3e791523fe6e830463bccff01c2a86fc26f4b",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/FINAL-PROOF.json": "a2603db3efb305b03ab590ea1eede0de716fcfea95376d1fda67e862891ee1e8",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/runtime-build-to-verified-tests.patch": "3062b27e9a23d7519023d5c6302fc9d3a79beb4208b72f7c59a058f75af75ff7",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/NATIVE-PATTERN-PDF.json": "89606ae52fd482e3a7f89b1f035dbfb93bf780b97925941c57cd474bb384c696",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/POST-CASE-CLEANUP.json": "3b867c583c431f42f6aedeaa328694fe3e6d68cd282dba73a817e1a8b32672b5"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json"
         }
       ],
       "known_gaps": [
@@ -61995,7 +62172,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/APP-001-new-empty.md": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
         "spec/features/SEW-002-physical-length.md": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2"

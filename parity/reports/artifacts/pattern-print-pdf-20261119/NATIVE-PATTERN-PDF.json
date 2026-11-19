@@ -1,0 +1,52 @@
+{
+  "source_commit": "89b2c27924f9a9c7546a274334c212fe269c1d46",
+  "source_tree": "40911825222b23bd410653553e199c10494952db",
+  "studio_sha256": "c59a41fc835bd29549351ec1e2de13fc75c59f70405af8c25798e74c9ff9b2e1",
+  "cli_sha256": "f3e2251e57d70d3b926319279155771ed5c22015eebc95d5346636cb4a64bbaa",
+  "platform": "Apple Silicon macOS",
+  "fixture_sha256": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83",
+  "project_revision": 2,
+  "state_preserved": true,
+  "actions": [
+    "Start with an empty native project and inspect both disabled PDF actions in File.",
+    "Open the authored revision 2 fixture containing Juniper #2 and Basin #11.",
+    "Choose the A4 PDF from File and save to a new destination.",
+    "Press Command-K, search for the US Letter pattern PDF and activate it with Tab and Return. Save to a different destination.",
+    "Open the A4 export dialog again and cancel. Confirm revision 2 is still active.",
+    "Compare the two native files with CLI exports and independently check PDF geometry and page rendering using pypdf and Poppler."
+  ],
+  "outputs": {
+    "a4": {
+      "sha256": "d98a0172f0a2f1c581787721ac5a069ddc35609d8ff1faa6d01be1808427a2a4",
+      "overview": "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/a4-overview.png",
+      "pdf": "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/cli-a4.pdf",
+      "paper_mm": [
+        210,
+        297
+      ],
+      "pages": 6,
+      "native_cli_byte_equal": true
+    },
+    "letter": {
+      "sha256": "58db7df79c5ee9abcd969741b639fd98a7b4c7995ef014731c2c4123a35fc728",
+      "overview": "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/letter-overview.png",
+      "pdf": "parity/reports/artifacts/pattern-print-pdf-20261119/final-control/cli-letter.pdf",
+      "paper_mm": [
+        215.9,
+        279.4
+      ],
+      "pages": 6,
+      "native_cli_byte_equal": true
+    }
+  },
+  "physical_printer_executed": false,
+  "local_checks": {
+    "workspace_tests_passed": 504,
+    "strict_clippy_passed": true,
+    "initial_workspace_outcome": "A protocol lifecycle test still expected 11 tools. The test now checks the shared 12-tool expectation and the full suite passes.",
+    "tracked_change_after_runtime_build": "Only the MCP integration test changed. Both executable hashes match the build at the verified source.",
+    "runtime_to_verified_test_patch": "parity/reports/artifacts/pattern-print-pdf-20261119/runtime-build-to-verified-tests.patch",
+    "runtime_build_tree": "0e869f73825e5602dcf5a2bfaf47f67c2c3119a8"
+  },
+  "checked_utc": "2026-11-19T05:20:54.435739Z"
+}

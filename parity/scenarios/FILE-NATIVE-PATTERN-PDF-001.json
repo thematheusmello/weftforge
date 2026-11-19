@@ -1,0 +1,14 @@
+{
+  "id": "FILE-NATIVE-PATTERN-PDF-001",
+  "status": "implementation_only",
+  "initial_conditions": "Native revision 2 with one curved and marked pattern and one straight holed pattern on Apple Silicon.",
+  "actions": [
+    "Start with an empty native project and inspect both disabled PDF actions in File.",
+    "Open the authored revision 2 fixture containing Juniper #2 and Basin #11.",
+    "Choose the A4 PDF from File and save to a new destination.",
+    "Press Command-K, search for the US Letter pattern PDF and activate it with Tab and Return. Save to a different destination.",
+    "Open the A4 export dialog again and cancel. Confirm revision 2 is still active.",
+    "Compare the two native files with CLI exports and independently check PDF geometry and page rendering using pypdf and Poppler."
+  ],
+  "expected_outcomes": "File and keyboard exports write six sheets for A4 and Letter with a 100 mm square, actual-size vector patterns and aligned 10 mm overlaps. Saved project bytes match their original."
+}

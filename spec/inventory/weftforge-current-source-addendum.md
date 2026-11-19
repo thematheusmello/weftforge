@@ -1,5 +1,19 @@
 # WeftForge current-source addendum
 
+## Actual-size pattern PDF
+
+Source `89b2c27924f9a9c7546a274334c212fe269c1d46` maps `pattern-snapshot-print` to A4 and US Letter
+vector PDFs. The writer uses authored 2D curves, overlaps across tiles and
+includes a 100 mm scale page. Local MCP tool `project_export_pdf` brings
+the count to twelve. The 37 Rust variants and 36 schema commands are unchanged.
+The format and automation document pins include the PDF routes.
+
+This update re-pins 271 earlier source occurrences and adds eight.
+The previous addendum is at `2b8adb902aa93171feef7543d59c6722debd6d66`. The feature registry records the
+independent scope and the open printer and reference checks.
+
+# WeftForge current-source addendum
+
 ## Frame garment
 
 Source `d71577fe9015b278d9e66e070b2d97140a03328d` maps **Frame garment** in View and Command search.

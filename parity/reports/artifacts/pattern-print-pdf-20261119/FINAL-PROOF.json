@@ -1,0 +1,161 @@
+{
+  "source_commit": "38bb905ecbdc79ec59d642305f899d0a994a3c5f",
+  "source_tree": "0e869f73825e5602dcf5a2bfaf47f67c2c3119a8",
+  "cli_executable_sha256": "f3e2251e57d70d3b926319279155771ed5c22015eebc95d5346636cb4a64bbaa",
+  "macos_app_executable_sha256": "c59a41fc835bd29549351ec1e2de13fc75c59f70405af8c25798e74c9ff9b2e1",
+  "native_project_version": 6,
+  "native_project_revision": 2,
+  "input_sha256": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83",
+  "input_retained": true,
+  "acceptance_spec_sha256": "c0986ae308055f483746f8dc8ab82579fd81805749d1207942439eac19ceec6f",
+  "poppler": "pdfinfo version 26.03.0",
+  "pypdf": "6.15.0",
+  "papers": {
+    "a4": {
+      "desktop_entry": "desktop File menu",
+      "pages": 6,
+      "paper_mm": [
+        210,
+        297
+      ],
+      "bytes": 7574,
+      "pdf_sha256": "d98a0172f0a2f1c581787721ac5a069ddc35609d8ff1faa6d01be1808427a2a4",
+      "cli_and_native_byte_identical": true,
+      "check": "final-control/A4-CHECK.json",
+      "visual_preview": "final-control/a4-overview.png",
+      "visual_review": "passed all 6 pages"
+    },
+    "letter": {
+      "desktop_entry": "desktop keyboard command search",
+      "pages": 6,
+      "paper_mm": [
+        215.9,
+        279.4
+      ],
+      "bytes": 7574,
+      "pdf_sha256": "58db7df79c5ee9abcd969741b639fd98a7b4c7995ef014731c2c4123a35fc728",
+      "cli_and_native_byte_identical": true,
+      "check": "final-control/LETTER-CHECK.json",
+      "visual_preview": "final-control/letter-overview.png",
+      "visual_review": "passed all 6 pages"
+    }
+  },
+  "validation": [
+    "A4 and Letter physical PDF page boxes and unit transforms",
+    "Analytic original contour, cubic controls, 40 x 35 mm hole, 8 mm notch and 150 mm annotation",
+    "Calibration square geometry, clipping, 10 mm overlap, coincident registration and outlines",
+    "PDF scaling preference, readable text and rendered page placement",
+    "Rejection of altered print scaling and non-unit tile matrix"
+  ],
+  "physical_printer_check": "pending",
+  "files": {
+    "INDEPENDENT.md": {
+      "sha256": "d97f3bdbf95c627903994c66e0f0a21fb2cab8b5f1287ba186c874a9ba77c7d5",
+      "bytes": 2550
+    },
+    "CHECK-SPEC.json": {
+      "sha256": "c0986ae308055f483746f8dc8ab82579fd81805749d1207942439eac19ceec6f",
+      "bytes": 2074
+    },
+    "check_pattern_pdf.py": {
+      "sha256": "20619e7bba55160abcf7b3e9fd2e5c0f4cd12eacd494214fb24e101d36331a22",
+      "bytes": 16532
+    },
+    "FIXTURE.json": {
+      "sha256": "601b5761b4e8ad16000dba963b85f7477716cf9f7721131f2455ffbee0f7a331",
+      "bytes": 1831
+    },
+    "01-pieces.json": {
+      "sha256": "1d903d48fb4c6d94623a5c67c95aa3285761bd6e06cb8bd1647c721ed574769c",
+      "bytes": 372
+    },
+    "02-details.json": {
+      "sha256": "1f4257ad907ee3365db982c50223e9165746ef55cee6b201c5859e81b57769bd",
+      "bytes": 1381
+    },
+    "print-original.weftforge": {
+      "sha256": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83",
+      "bytes": 6158
+    },
+    "final-control/A4-CHECK.json": {
+      "sha256": "b36b48d1e507f33878d99369fd7e71d6526692912c2aaaf6624018a01ace9c3c",
+      "bytes": 2845
+    },
+    "final-control/CLI-RUN.json": {
+      "sha256": "a8c4e9ecff3716466a4609479848f5d491c734cd28b5e284bf04f2ef7114e690",
+      "bytes": 1027
+    },
+    "final-control/LETTER-CHECK.json": {
+      "sha256": "ce315165a98f0f95bcdd00d33a0d76398b56b5289144d323b3abb06990a8a0e8",
+      "bytes": 2880
+    },
+    "final-control/NEGATIVE-CHECKS.json": {
+      "sha256": "9a7dc73c66f9b54b7bea27f163e6e7d41949c5ffc50bd0b21580a679dede4760",
+      "bytes": 234
+    },
+    "final-control/a4-overview.png": {
+      "sha256": "88147b9538bcfa875f21aeecf0d8a4d9135bafcada3229c977f326f20d2876ce",
+      "bytes": 32815
+    },
+    "final-control/cli-a4.pdf": {
+      "sha256": "d98a0172f0a2f1c581787721ac5a069ddc35609d8ff1faa6d01be1808427a2a4",
+      "bytes": 7574
+    },
+    "final-control/cli-letter.pdf": {
+      "sha256": "58db7df79c5ee9abcd969741b639fd98a7b4c7995ef014731c2c4123a35fc728",
+      "bytes": 7574
+    },
+    "final-control/letter-overview.png": {
+      "sha256": "947915b2db3c7a592e438e580b67889f66f37694e9a45e0e7d17d9d865fc84b5",
+      "bytes": 31760
+    },
+    "final-control/rendered/a4-page-1.png": {
+      "sha256": "21c093caa09881ed85098816bec378dcd7fd29fe8c1db124c350363ab0d458ec",
+      "bytes": 12480
+    },
+    "final-control/rendered/a4-page-2.png": {
+      "sha256": "9b8068b745f2bfd64032c45cdf61e855ac0845b12bbec4f0e9ca5f32bf75de61",
+      "bytes": 11020
+    },
+    "final-control/rendered/a4-page-3.png": {
+      "sha256": "7b0967e819443a7bb0f03178240d841547e9458de0c80d7e12df32b02cc1f054",
+      "bytes": 11870
+    },
+    "final-control/rendered/a4-page-4.png": {
+      "sha256": "3fb2a9001d42cf244add23a48ac732a0df04a19c4571b438e340bba2e6c8d2ef",
+      "bytes": 9613
+    },
+    "final-control/rendered/a4-page-5.png": {
+      "sha256": "831cc668630812363939b42e40017393b855295ba9a54f33f105c42d1698c489",
+      "bytes": 9728
+    },
+    "final-control/rendered/a4-page-6.png": {
+      "sha256": "6b322ee23bdcc70cec3a5f2a29a886ead642a56e16890dc751bc97dc079bf67d",
+      "bytes": 8141
+    },
+    "final-control/rendered/letter-page-1.png": {
+      "sha256": "09f3609820094c503fa7f6a3b414ca2455b6d445151efdeae4e55f05e33266a0",
+      "bytes": 12394
+    },
+    "final-control/rendered/letter-page-2.png": {
+      "sha256": "49de25e04d5d7871cde51a5ec1d8c17b3db8ddb4f8ef680c1f1e02faa075e66d",
+      "bytes": 10964
+    },
+    "final-control/rendered/letter-page-3.png": {
+      "sha256": "fba4c67713e925117b5410e3b4596a297fb67cb8370105f34d1f921b48a74d09",
+      "bytes": 11283
+    },
+    "final-control/rendered/letter-page-4.png": {
+      "sha256": "ac18c600cba83b3f860da05d3149416b9b45ae3295ff72a2aa457532d4ac1453",
+      "bytes": 9678
+    },
+    "final-control/rendered/letter-page-5.png": {
+      "sha256": "ec63c86b8af30bf8b7698dfeb76dab94b00f5c8203e47b64e38ef6e1ac4f835e",
+      "bytes": 10226
+    },
+    "final-control/rendered/letter-page-6.png": {
+      "sha256": "ecbd90843fa3e96e64598ddf7bd3e791523fe6e830463bccff01c2a86fc26f4b",
+      "bytes": 8028
+    }
+  }
+}

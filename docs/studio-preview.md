@@ -1,5 +1,15 @@
 # Native studio preview
 
+## Print actual-size patterns
+
+File and Command search export A4 or US Letter pattern PDFs. This original
+fixture spans four sheets for its curved pattern and one for the holed
+pattern. The first sheet contains the scale check. Each PDF has vector paths
+and matching crosses for its 10 mm overlaps.
+[A4 PDF](../parity/reports/artifacts/pattern-print-pdf-20261119/final-control/cli-a4.pdf) · [US Letter PDF](../parity/reports/artifacts/pattern-print-pdf-20261119/final-control/cli-letter.pdf) · [Independent check](../parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json).
+
+![Six rendered A4 pages showing the calibration square, a tiled curved pattern and a separate holed pattern](../parity/reports/artifacts/pattern-print-pdf-20261119/final-control/a4-overview.png)
+
 ## Frame the 3D garment
 
 **Frame garment** in View fitted the visible rest cloth inside the 3D

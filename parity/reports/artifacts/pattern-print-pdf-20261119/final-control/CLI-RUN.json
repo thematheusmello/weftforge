@@ -1,0 +1,36 @@
+{
+  "source_commit": "38bb905ecbdc79ec59d642305f899d0a994a3c5f",
+  "tree": "0e869f73825e5602dcf5a2bfaf47f67c2c3119a8",
+  "executable_sha256": "f3e2251e57d70d3b926319279155771ed5c22015eebc95d5346636cb4a64bbaa",
+  "fixture_sha256": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83",
+  "fixture_retained": true,
+  "same_a4_as_earlier_candidate": true,
+  "runs": {
+    "a4": {
+      "argv": [
+        "export-pdf",
+        "print-original.weftforge",
+        "final-control/cli-a4.pdf",
+        "a4"
+      ],
+      "exit": 0,
+      "pdf_sha256": "d98a0172f0a2f1c581787721ac5a069ddc35609d8ff1faa6d01be1808427a2a4",
+      "bytes": 7574,
+      "stdout": "",
+      "stderr": ""
+    },
+    "letter": {
+      "argv": [
+        "export-pdf",
+        "print-original.weftforge",
+        "final-control/cli-letter.pdf",
+        "letter"
+      ],
+      "exit": 0,
+      "pdf_sha256": "58db7df79c5ee9abcd969741b639fd98a7b4c7995ef014731c2c4123a35fc728",
+      "bytes": 7574,
+      "stdout": "",
+      "stderr": ""
+    }
+  }
+}
