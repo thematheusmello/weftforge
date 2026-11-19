@@ -1,5 +1,19 @@
 # WeftForge current-source addendum
 
+## Static GLB export
+
+Source `8929468332af68574ef33f2f305d33b276f8f5e7` maps named static cloth meshes to the File menu, Command search,
+CLI and MCP. `gltf-interchange` records this bounded writer. The standalone
+`project_export_glb` tool brings the file tool list to ten. The typed authoring
+schema still defines 36 nontransaction commands.
+
+The map carries forward 457 literal source occurrences, updates 247 pins,
+and adds five occurrences for GLB. The previous addendum is at `f7279e1d9af5647e77de527a7da7c61385320ef9` for
+source `9a3b70b752868ece9340dc80fe5228e12a52aea1`. Import, animation and reference qualification
+remain open. The registry records runtime evidence separately.
+
+# WeftForge current-source addendum
+
 ## Fabric accessibility names
 
 Source `9a3b70b752868ece9340dc80fe5228e12a52aea1` associates the four Fabric stepper fields with their

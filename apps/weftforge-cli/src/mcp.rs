@@ -399,6 +399,7 @@ fn call(line: &[u8]) -> Result<Value, String> {
             | "project_import_dxf"
             | "project_export_svg"
             | "project_export_obj"
+            | "project_export_glb"
             | "project_export_dxf"
     ) {
         return Err(format!("Unknown tool: {}", header.name));
@@ -459,7 +460,8 @@ fn call(line: &[u8]) -> Result<Value, String> {
                     Path::new(&args.dxf),
                 )
             }
-            "project_export_svg" | "project_export_obj" | "project_export_dxf" => {
+            "project_export_svg" | "project_export_obj" | "project_export_glb"
+            | "project_export_dxf" => {
                 let args: FileArgs = arguments(line)?;
                 super::distinct(&args.input, &args.output)?;
                 let project = Project::load(Path::new(&args.input))?;
@@ -471,6 +473,12 @@ fn call(line: &[u8]) -> Result<Value, String> {
                     "project_export_dxf" => {
                         project.export_dxf(Path::new(&args.output))?;
                         ("authored_dxf", "mm", "pattern U = +X, V = +Y; Z = 0")
+                    }
+                    "project_export_glb" => {
+                        project
+                            .mesh()?
+                            .export_glb(&project, Path::new(&args.output))?;
+                        ("rest_glb", "m", "Y")
                     }
                     _ => {
                         project.mesh()?.export_obj(Path::new(&args.output))?;
@@ -801,6 +809,7 @@ fn tools() -> Vec<Value> {
         ("project_import_dxf", "Add the bounded FILE-005-v1 R2000 ASCII DXF LINE/clamped cubic SPLINE exterior patterns as one editable transaction. Require millimetres and exact closed ordered WF_PIECE layer contours; preserve WCS X/Y layout as U/V without inversion. Layer names become names with fresh IDs, first material and default 3D placement. Unsupported drawing content fails the entire import; source DXF is preserved.", object(json!({"input":path,"output":path,"dxf":path}), &["input","output","dxf"]), false),
         ("project_export_svg", "Export one compound evenodd path per piece with closed exterior and hole subpaths, plus authored perpendicular notch markers, at physical millimetre scale with inverted SVG Y. Internal lines are omitted; holes and notch line elements cannot yet be reimported. Refuse replacement of the source or native project destinations.", files.clone(), false),
         ("project_export_obj", "Build and export the actual rest surface, including holes, in metres, Y-up, with material-space metre UVs and source revision; no simulation or annotation line primitives. Refuse replacement of the source or native project destinations.", files.clone(), false),
+        ("project_export_glb", "Build and export the actual rest surface as one static glTF 2.0 binary, in metres and Y-up, with named pieces, per-piece fabric tint, normals and UVs. Refuse replacement of source or native project destinations.", files.clone(), false),
         ("project_export_dxf", "Export authored exterior pattern boundaries as R2000 DXF LINE/SPLINE geometry in millimetres, without 3D placement. DXF v1 refuses any project with holes or authored notches before writing output. Internal lines are omitted; sewing, materials, grain and editable annotations require the native project. Refuse replacement of source or native project destinations.", files, false),
     ].into_iter().map(|(name,description,input,read_only)|json!({"name":name,"description":description,"inputSchema":input,"annotations":{"readOnlyHint":read_only,"destructiveHint":!read_only,"openWorldHint":false}})).collect()
 }

@@ -1,0 +1,183 @@
+{
+  "source_commit": "8929468332af68574ef33f2f305d33b276f8f5e7",
+  "platform": "macOS Apple Silicon, native debug build",
+  "studio_binary_sha256": "ae2d7741acee3d8e703bf89b4cd2b0fb316683af7348db27ca47a1e448918af2",
+  "cli_binary_sha256": "e863e5419ae64c7339d646eea9b65e005afe4f1c9f26d885b48ab4154bdfab1b",
+  "fixture_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+  "source_revision": 23,
+  "fixture_bytes_retained": true,
+  "workspace_tests": 498,
+  "scoped_checks": {
+    "fmt": true,
+    "strict_clippy": true,
+    "application_and_cli_build": true
+  },
+  "executable_routes": [
+    {
+      "surface": "rest",
+      "native_route": "File > Export GLB",
+      "artifact": "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb",
+      "comparison_obj": "parity/reports/artifacts/native-harbor-simulated-obj-20261118/artifacts/rest.obj",
+      "exact_cli_glb_match": true,
+      "independent_comparison": {
+        "fixture_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+        "glb_sha256": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a",
+        "comparison_obj_sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+        "source_revision": 23,
+        "pieces": {
+          "2": "Harbor front",
+          "31": "Harbor back"
+        },
+        "materials": 1,
+        "vertices": 654,
+        "triangles": 1172,
+        "maximum_rounding": {
+          "position_metres": 6.064686513757874e-08,
+          "normal": 0.0,
+          "uv": 7.516650728322354e-08
+        },
+        "winding_indices_preserved": true
+      },
+      "khronos_validator": {
+        "uri": "rest-Harbor.glb",
+        "mimeType": "model/gltf-binary",
+        "validatorVersion": "2.0.0-dev.3.10",
+        "validatedAt": "2026-11-19T01:06:28.715Z",
+        "issues": {
+          "numErrors": 0,
+          "numWarnings": 0,
+          "numInfos": 2,
+          "numHints": 0,
+          "messages": [
+            {
+              "code": "UNUSED_OBJECT",
+              "message": "This object may be unused.",
+              "severity": 2,
+              "pointer": "/meshes/0/primitives/0/attributes/TEXCOORD_0"
+            },
+            {
+              "code": "UNUSED_OBJECT",
+              "message": "This object may be unused.",
+              "severity": 2,
+              "pointer": "/meshes/1/primitives/0/attributes/TEXCOORD_0"
+            }
+          ],
+          "truncated": false
+        },
+        "info": {
+          "version": "2.0",
+          "generator": "WeftForge",
+          "resources": [
+            {
+              "pointer": "/buffers/0",
+              "mimeType": "application/gltf-buffer",
+              "storage": "glb",
+              "byteLength": 34992
+            }
+          ],
+          "animationCount": 0,
+          "materialCount": 1,
+          "hasMorphTargets": false,
+          "hasSkins": false,
+          "hasTextures": false,
+          "hasDefaultScene": true,
+          "drawCallCount": 2,
+          "totalVertexCount": 654,
+          "totalTriangleCount": 1172,
+          "maxUVs": 1,
+          "maxInfluences": 0,
+          "maxAttributes": 3
+        }
+      }
+    },
+    {
+      "surface": "stepped",
+      "native_route": "Command search > Export GLB after one Manual step",
+      "artifact": "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb",
+      "comparison_obj": "parity/reports/artifacts/native-harbor-simulated-obj-20261118/artifacts/simulated.obj",
+      "exact_cli_glb_match": true,
+      "independent_comparison": {
+        "fixture_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+        "glb_sha256": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7",
+        "comparison_obj_sha256": "4215795bfc9dc802e1394cb0e5ddd555279e924dce4419d05ac22ac1270ce283",
+        "source_revision": 23,
+        "pieces": {
+          "2": "Harbor front",
+          "31": "Harbor back"
+        },
+        "materials": 1,
+        "vertices": 654,
+        "triangles": 1172,
+        "maximum_rounding": {
+          "position_metres": 6.123400468809668e-08,
+          "normal": 2.9565880998960462e-08,
+          "uv": 7.516650728322354e-08
+        },
+        "winding_indices_preserved": true
+      },
+      "khronos_validator": {
+        "uri": "stepped-Harbor.glb",
+        "mimeType": "model/gltf-binary",
+        "validatorVersion": "2.0.0-dev.3.10",
+        "validatedAt": "2026-11-19T01:06:28.924Z",
+        "issues": {
+          "numErrors": 0,
+          "numWarnings": 0,
+          "numInfos": 2,
+          "numHints": 0,
+          "messages": [
+            {
+              "code": "UNUSED_OBJECT",
+              "message": "This object may be unused.",
+              "severity": 2,
+              "pointer": "/meshes/0/primitives/0/attributes/TEXCOORD_0"
+            },
+            {
+              "code": "UNUSED_OBJECT",
+              "message": "This object may be unused.",
+              "severity": 2,
+              "pointer": "/meshes/1/primitives/0/attributes/TEXCOORD_0"
+            }
+          ],
+          "truncated": false
+        },
+        "info": {
+          "version": "2.0",
+          "generator": "WeftForge",
+          "resources": [
+            {
+              "pointer": "/buffers/0",
+              "mimeType": "application/gltf-buffer",
+              "storage": "glb",
+              "byteLength": 34992
+            }
+          ],
+          "animationCount": 0,
+          "materialCount": 1,
+          "hasMorphTargets": false,
+          "hasSkins": false,
+          "hasTextures": false,
+          "hasDefaultScene": true,
+          "drawCallCount": 2,
+          "totalVertexCount": 654,
+          "totalTriangleCount": 1172,
+          "maxUVs": 1,
+          "maxInfluences": 0,
+          "maxAttributes": 3
+        }
+      }
+    }
+  ],
+  "manual_step": {
+    "steps": 1,
+    "display_time_seconds": 0.017,
+    "moved_vertices": 654,
+    "max_movement_m": 0.0045514178133941536
+  },
+  "owned_window_closed": true,
+  "external_validator": {
+    "name": "Khronos glTF Validator",
+    "version": "2.0.0-dev.3.10"
+  },
+  "checked_utc": "2026-11-19T01:10:41.822085Z"
+}

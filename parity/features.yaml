@@ -50608,11 +50608,26 @@
       "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
       "source_links": [
         "https://support.marvelousdesigner.com/",
-        "https://www.marvelousdesigner.com/products/releases"
+        "https://www.marvelousdesigner.com/products/releases",
+        "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+        "https://support.marvelousdesigner.com/hc/en-us/articles/55686813557913-glTG-2-0-glTF-GLB-File-ver-2026-0"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
-      "scenarios": [],
+      "evidence_ids": [
+        "spec/features/FILE-004-glb-static-export.md",
+        "parity/reports/WF-20261119-NATIVE-GLB-STATIC-001.json"
+      ],
+      "scenarios": [
+        {
+          "id": "FILE-GLB-STATIC-001",
+          "path": "parity/scenarios/FILE-GLB-STATIC-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
+          },
+          "initial_conditions": "Harbor revision 23, two original pieces, eight seams and distinct output paths.",
+          "expected_outcomes": "Two named surfaces, 654 vertices, 1172 triangles, unchanged authoring bytes, and zero Khronos errors and warnings per file; index equality and OBJ position agreement within 1e-6 m."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -50624,22 +50639,48 @@
       "dependencies": [
         "FILE-003"
       ],
-      "implementation_locations": [],
+      "implementation_locations": [
+        "crates/weftforge-core/src/persistence/gltf.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/src/mcp.rs",
+        "apps/weftforge/src/main.rs"
+      ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/6"
       ],
       "prs": [],
-      "implementation_status": "planned",
+      "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261119-NATIVE-GLB-STATIC-001",
+          "commit": "8929468332af68574ef33f2f305d33b276f8f5e7",
+          "timestamp": "2026-11-19T01:10:41.822085Z",
+          "platform": "macOS Apple Silicon, native desktop and CLI",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/artifacts/rest.obj": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/artifacts/simulated.obj": "4215795bfc9dc802e1394cb0e5ddd555279e924dce4419d05ac22ac1270ce283",
+            "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a",
+            "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7",
+            "parity/reports/artifacts/static-glb-20261119/compare_glb.py": "114fb76fda345974b6123d41eb8c5ff795f5fd023e34cbc3d8b5d90bd265fbeb",
+            "parity/reports/artifacts/static-glb-20261119/NATIVE-VERIFICATION.json": "1c5868464cb6f47b1aacd56b6a8f75badb59ae26756625c5e58a7f49d72587af"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-GLB-STATIC-001.json"
+        }
+      ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Static binary glTF output is checked from the desktop and CLI. Import, JSON glTF, textures, animation, avatar and higher-level authoring interoperability remain open.",
+        "Reference comparison of the full interchange behavior remains unobserved."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "missing"
+      "freshness": "current",
+      "contract_documents": {
+        "spec/features/FILE-004-glb-static-export.md": "1bea8eea48f8d42c1f4324f89e89b21260a32a09b0d90c5f92676c318e1262ab"
+      }
     },
     {
       "id": "FILE-005",
