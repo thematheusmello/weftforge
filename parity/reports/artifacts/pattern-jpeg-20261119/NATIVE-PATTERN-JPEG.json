@@ -1,0 +1,63 @@
+{
+  "source_commit": "f440d126c9094b357deb99b68dd6b01235591a44",
+  "source_tree": "d07f4b99da7b9dbe4991b2604c2230692dc122cf",
+  "platform": "Apple Silicon macOS",
+  "studio_sha256": "27441a5b5834ad63c4b2fd4247bd2b7e7e3ed1b080d88980bc19c9060acf6a82",
+  "cli_sha256": "3e173d6c741ca5a71e03084216cf887d002f2bc74ad56349f6ceb0c271fd89cd",
+  "fixture": "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge",
+  "fixture_sha256": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+  "revision": 3,
+  "actions": [
+    "Observe that File disables both pattern raster commands in an empty studio.",
+    "Open the original revision 3 fixture and use Frame all.",
+    "In the File JPEG dialog, use the 869 by 723 mm fitted crop, enter 127 PPI and enable Grainline.",
+    "Save the native 4345 by 3615 JPEG as fit.jpg.",
+    "Open the action from Command search with Command-K, query, Tab and Return.",
+    "Set the crop to 2000 by 200 mm with Left U \u22121000 mm and Bottom V 275 mm. Enter 72.4 PPI and enable Grainline.",
+    "Observe 72 PPI recorded density and 5669 by 567 pixels. Check the 5669.3 px width field and switch back to 2000 mm.",
+    "Cancel the native chooser and verify the crop and density persist. Save two-metre.jpeg.",
+    "Compare native, CLI and MCP JPEG bytes. Read JFIF density and baseline-frame dimensions independently, then decode and check authored marks."
+  ],
+  "images": [
+    {
+      "name": "fit",
+      "file": "fit.jpg",
+      "size_px": [
+        4345,
+        3615
+      ],
+      "jfif_ppi": 127,
+      "physical_side_error_px": [
+        0.0,
+        0.0
+      ],
+      "outline_samples": 180,
+      "mark_samples": 6,
+      "sha256": "2c23889fa3438ca261d30869d60f72daecdf5ea3e8aa9a374f6be2189629fa04",
+      "bytes": 245454
+    },
+    {
+      "name": "two-metre",
+      "file": "two-metre.jpeg",
+      "size_px": [
+        5669,
+        567
+      ],
+      "jfif_ppi": 72,
+      "physical_side_error_px": [
+        0.29133858267716534,
+        0.07086614173228346
+      ],
+      "outline_samples": 120,
+      "mark_samples": 4,
+      "sha256": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb",
+      "bytes": 45112
+    }
+  ],
+  "project_retained": true,
+  "local_checks": {
+    "workspace_tests": 511,
+    "strict_clippy": true
+  },
+  "checked_utc": "2026-11-19T07:14:57.078897Z"
+}

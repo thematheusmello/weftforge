@@ -127,5 +127,6 @@
     "docs/dependencies.json",
     "THIRD_PARTY.md"
   ],
-  "freshness": "current"
+  "freshness": "stale",
+  "freshness_reason": "The added JPEG route changes the scoped raster, studio and adapter source. The original Grainline checks retain their original build attribution."
 }

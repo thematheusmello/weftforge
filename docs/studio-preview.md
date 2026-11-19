@@ -1,5 +1,12 @@
 # Native studio preview
 
+## Pattern JPEG at a physical scale
+
+The native JPEG dialog shows the density it will write to the file.
+The fitted crop contains both original patterns, the hole, the notch,
+the internal line and the rotated warp arrow. The 2 m crop uses 72 PPI.
+[Fitted JPEG](../parity/reports/artifacts/pattern-jpeg-20261119/fit.jpg) · [Two-metre JPEG](../parity/reports/artifacts/pattern-jpeg-20261119/two-metre.jpeg) · [Independent check](../parity/reports/WF-20261119-NATIVE-PATTERN-JPEG-001.json).
+
 ## Show the authored grainline
 
 The **Grainline** option adds a warp arrow from the centre of the piece's
