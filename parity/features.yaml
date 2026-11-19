@@ -38,7 +38,9 @@
         "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json",
         "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json",
-        "spec/features/UI-001-standard-viewpoints.md"
+        "spec/features/UI-001-standard-viewpoints.md",
+        "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json",
+        "spec/features/UI-001-frame-garment.md"
       ],
       "scenarios": [
         {
@@ -134,6 +136,15 @@
           },
           "initial_conditions": "The saved Harbor revision 23 on the Apple Silicon studio, default orbit and both patterns framed.",
           "expected_outcomes": "Front and Top change only 3D canvas pixels. Default orbit restores the whole workspace PNG. Search results scroll separately from the query. The editable project and GLB retain their bytes."
+        },
+        {
+          "id": "UI-NATIVE-FRAME-GARMENT-001",
+          "path": "parity/scenarios/UI-NATIVE-FRAME-GARMENT-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
+          },
+          "initial_conditions": "The saved Harbor revision 23 on the Apple Silicon studio with both editable patterns and its default rest arrangement.",
+          "expected_outcomes": "The View and Command search routes fit the clipped 3D cloth with a margin. The 2D canvas and Properties pixels, editable bytes and complete one-step GLB are preserved."
         }
       ],
       "comparison_criteria": {
@@ -3842,6 +3853,23 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
           },
           "path": "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-FRAME-GARMENT-001",
+          "commit": "d71577fe9015b278d9e66e070b2d97140a03328d",
+          "timestamp": "2026-11-19T04:53:45.832459Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-frame-garment-20261119/rest-before.png": "8fb5e70ad58e7dad516fa5fc347c3e87aac3c7c05b7f8b9419bf53fe98a28e71",
+            "parity/reports/artifacts/native-frame-garment-20261119/rest-framed.png": "52133e60fbff89878be1a885dc949f6b97b38dbb31dc083f4a1a15a4ca409660",
+            "parity/reports/artifacts/native-frame-garment-20261119/current-before.png": "b21eb8cba9136bcea321ee1aef9c07c19be45f33dc09140b90bdf1594bc98e6f",
+            "parity/reports/artifacts/native-frame-garment-20261119/current-framed.png": "2fbaa7a0ad7bd6fea7e7974b667e7512a3544d15053977dfbc1c4e8b45587b0b",
+            "parity/reports/artifacts/native-frame-garment-20261119/NATIVE-FRAME-GARMENT.json": "4b0481da491a8056b6b26a881f42c1a7c1d0507bcfd820cc1e416866ef4f3704",
+            "parity/reports/artifacts/native-frame-garment-20261119/POST-CASE-CLEANUP.json": "06f442719769e8a1bc998f29b9e08fe38586967b5a917990f669ad978336dd5b",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
         }
       ],
       "known_gaps": [
@@ -3859,7 +3887,7 @@
         "Actual a70c0df0 clean xtask and optimized native/CLI builds passed as separate D invocations. The 472-test source sequence belongs to f30c588d; unchanged source91 are explicit equivalence only. Native workflow and full feature/reference acceptance remain pending; runtime numerical quality is separately failed.",
         "Native File-menu PNG P003 saved and independently decoded 1640 \u00d7 1000 on the H renderer. The visible document revision, rest state and project bytes were unchanged. Previous P001/P002 harness stops remain recorded. Full workspace, lighting, other backends, cross-platform and reference acceptance are still open.",
         "Frame all has an original Harbor native toolbar and workspace capture check at one window size. Broader viewport, selection, layout and reference workflows remain open.",
-        "Standard 3D views have source and bounded native checks. Garment focus, custom cameras and matching reference behavior remain open."
+        "Standard 3D views and visible-garment framing have separate bounded native checks. Custom cameras, pan and reference behavior remain open."
       ],
       "contradictions": [],
       "blockers": [
@@ -3868,7 +3896,8 @@
       "freshness": "current",
       "contract_documents": {
         "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b",
-        "spec/features/UI-001-standard-viewpoints.md": "904ae35c58a9ecf1e3da3c1a25098a1d1d255cd8776ab630d62991737e4f720a"
+        "spec/features/UI-001-standard-viewpoints.md": "904ae35c58a9ecf1e3da3c1a25098a1d1d255cd8776ab630d62991737e4f720a",
+        "spec/features/UI-001-frame-garment.md": "cf54be8f65691b1f945bd0ef542067e9e489f5cf6058dbf1dd4319587811979b"
       }
     },
     {
@@ -3894,7 +3923,8 @@
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-SOURCE-001.json",
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json",
-        "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
+        "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json",
+        "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
       ],
       "scenarios": [
         {
@@ -5013,6 +5043,23 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
           },
           "path": "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-FRAME-GARMENT-001",
+          "commit": "d71577fe9015b278d9e66e070b2d97140a03328d",
+          "timestamp": "2026-11-19T04:53:45.832459Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-frame-garment-20261119/rest-before.png": "8fb5e70ad58e7dad516fa5fc347c3e87aac3c7c05b7f8b9419bf53fe98a28e71",
+            "parity/reports/artifacts/native-frame-garment-20261119/rest-framed.png": "52133e60fbff89878be1a885dc949f6b97b38dbb31dc083f4a1a15a4ca409660",
+            "parity/reports/artifacts/native-frame-garment-20261119/current-before.png": "b21eb8cba9136bcea321ee1aef9c07c19be45f33dc09140b90bdf1594bc98e6f",
+            "parity/reports/artifacts/native-frame-garment-20261119/current-framed.png": "2fbaa7a0ad7bd6fea7e7974b667e7512a3544d15053977dfbc1c4e8b45587b0b",
+            "parity/reports/artifacts/native-frame-garment-20261119/NATIVE-FRAME-GARMENT.json": "4b0481da491a8056b6b26a881f42c1a7c1d0507bcfd820cc1e416866ef4f3704",
+            "parity/reports/artifacts/native-frame-garment-20261119/POST-CASE-CLEANUP.json": "06f442719769e8a1bc998f29b9e08fe38586967b5a917990f669ad978336dd5b",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
         }
       ],
       "known_gaps": [
@@ -5052,7 +5099,8 @@
         "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json",
         "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json",
         "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json",
-        "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
+        "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json",
+        "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
       ],
       "scenarios": [
         {
@@ -6101,6 +6149,23 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
           },
           "path": "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-FRAME-GARMENT-001",
+          "commit": "d71577fe9015b278d9e66e070b2d97140a03328d",
+          "timestamp": "2026-11-19T04:53:45.832459Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-frame-garment-20261119/rest-before.png": "8fb5e70ad58e7dad516fa5fc347c3e87aac3c7c05b7f8b9419bf53fe98a28e71",
+            "parity/reports/artifacts/native-frame-garment-20261119/rest-framed.png": "52133e60fbff89878be1a885dc949f6b97b38dbb31dc083f4a1a15a4ca409660",
+            "parity/reports/artifacts/native-frame-garment-20261119/current-before.png": "b21eb8cba9136bcea321ee1aef9c07c19be45f33dc09140b90bdf1594bc98e6f",
+            "parity/reports/artifacts/native-frame-garment-20261119/current-framed.png": "2fbaa7a0ad7bd6fea7e7974b667e7512a3544d15053977dfbc1c4e8b45587b0b",
+            "parity/reports/artifacts/native-frame-garment-20261119/NATIVE-FRAME-GARMENT.json": "4b0481da491a8056b6b26a881f42c1a7c1d0507bcfd820cc1e416866ef4f3704",
+            "parity/reports/artifacts/native-frame-garment-20261119/POST-CASE-CLEANUP.json": "06f442719769e8a1bc998f29b9e08fe38586967b5a917990f669ad978336dd5b",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
         }
       ],
       "known_gaps": [
@@ -34274,7 +34339,8 @@
       "evidence_ids": [
         "spec/features/FIT-002-pattern-visibility.md",
         "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json",
-        "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
+        "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json",
+        "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
       ],
       "scenarios": [
         {
@@ -34349,6 +34415,23 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
           },
           "path": "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-FRAME-GARMENT-001",
+          "commit": "d71577fe9015b278d9e66e070b2d97140a03328d",
+          "timestamp": "2026-11-19T04:53:45.832459Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-frame-garment-20261119/rest-before.png": "8fb5e70ad58e7dad516fa5fc347c3e87aac3c7c05b7f8b9419bf53fe98a28e71",
+            "parity/reports/artifacts/native-frame-garment-20261119/rest-framed.png": "52133e60fbff89878be1a885dc949f6b97b38dbb31dc083f4a1a15a4ca409660",
+            "parity/reports/artifacts/native-frame-garment-20261119/current-before.png": "b21eb8cba9136bcea321ee1aef9c07c19be45f33dc09140b90bdf1594bc98e6f",
+            "parity/reports/artifacts/native-frame-garment-20261119/current-framed.png": "2fbaa7a0ad7bd6fea7e7974b667e7512a3544d15053977dfbc1c4e8b45587b0b",
+            "parity/reports/artifacts/native-frame-garment-20261119/NATIVE-FRAME-GARMENT.json": "4b0481da491a8056b6b26a881f42c1a7c1d0507bcfd820cc1e416866ef4f3704",
+            "parity/reports/artifacts/native-frame-garment-20261119/POST-CASE-CLEANUP.json": "06f442719769e8a1bc998f29b9e08fe38586967b5a917990f669ad978336dd5b",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
         }
       ],
       "known_gaps": [
@@ -47364,7 +47447,8 @@
         "parity/reports/WF-20261119-NATIVE-FRAME-ALL-001.json",
         "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json",
-        "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
+        "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json",
+        "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
       ],
       "scenarios": [
         {
@@ -47595,6 +47679,23 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
           },
           "path": "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-FRAME-GARMENT-001",
+          "commit": "d71577fe9015b278d9e66e070b2d97140a03328d",
+          "timestamp": "2026-11-19T04:53:45.832459Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-frame-garment-20261119/rest-before.png": "8fb5e70ad58e7dad516fa5fc347c3e87aac3c7c05b7f8b9419bf53fe98a28e71",
+            "parity/reports/artifacts/native-frame-garment-20261119/rest-framed.png": "52133e60fbff89878be1a885dc949f6b97b38dbb31dc083f4a1a15a4ca409660",
+            "parity/reports/artifacts/native-frame-garment-20261119/current-before.png": "b21eb8cba9136bcea321ee1aef9c07c19be45f33dc09140b90bdf1594bc98e6f",
+            "parity/reports/artifacts/native-frame-garment-20261119/current-framed.png": "2fbaa7a0ad7bd6fea7e7974b667e7512a3544d15053977dfbc1c4e8b45587b0b",
+            "parity/reports/artifacts/native-frame-garment-20261119/NATIVE-FRAME-GARMENT.json": "4b0481da491a8056b6b26a881f42c1a7c1d0507bcfd820cc1e416866ef4f3704",
+            "parity/reports/artifacts/native-frame-garment-20261119/POST-CASE-CLEANUP.json": "06f442719769e8a1bc998f29b9e08fe38586967b5a917990f669ad978336dd5b",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
         }
       ],
       "known_gaps": [
@@ -50988,7 +51089,8 @@
         "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json",
         "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json",
-        "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
+        "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json",
+        "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
       ],
       "scenarios": [
         {
@@ -51176,6 +51278,23 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a"
           },
           "path": "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-FRAME-GARMENT-001",
+          "commit": "d71577fe9015b278d9e66e070b2d97140a03328d",
+          "timestamp": "2026-11-19T04:53:45.832459Z",
+          "platform": "Apple Silicon macOS native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-frame-garment-20261119/rest-before.png": "8fb5e70ad58e7dad516fa5fc347c3e87aac3c7c05b7f8b9419bf53fe98a28e71",
+            "parity/reports/artifacts/native-frame-garment-20261119/rest-framed.png": "52133e60fbff89878be1a885dc949f6b97b38dbb31dc083f4a1a15a4ca409660",
+            "parity/reports/artifacts/native-frame-garment-20261119/current-before.png": "b21eb8cba9136bcea321ee1aef9c07c19be45f33dc09140b90bdf1594bc98e6f",
+            "parity/reports/artifacts/native-frame-garment-20261119/current-framed.png": "2fbaa7a0ad7bd6fea7e7974b667e7512a3544d15053977dfbc1c4e8b45587b0b",
+            "parity/reports/artifacts/native-frame-garment-20261119/NATIVE-FRAME-GARMENT.json": "4b0481da491a8056b6b26a881f42c1a7c1d0507bcfd820cc1e416866ef4f3704",
+            "parity/reports/artifacts/native-frame-garment-20261119/POST-CASE-CLEANUP.json": "06f442719769e8a1bc998f29b9e08fe38586967b5a917990f669ad978336dd5b",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
         }
       ],
       "known_gaps": [
