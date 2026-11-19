@@ -3,14 +3,17 @@
 **Save 2D pattern PNG…** in File and Command search opens a crop and density
 dialog. Fit the editable patterns, choose a paper preset or enter arbitrary
 dimensions. Width and height can be swapped around the crop centre. The
-dialog reports pixel dimensions and lets the user toggle outlines and holes,
-internal lines and notch marks.
+2D pane outlines the crop while the dialog is open. The dialog reports
+pixel dimensions and lets the user toggle outlines and holes, internal
+lines and notch marks.
 
 The crop uses the lower-left and upper-right material coordinates. The CLI
-and MCP use metres, and the desktop displays millimetres. The writer rounds
-pixels per inch divided by 0.0254 to an integer pixels-per-metre value. Both
-axes use that density for drawing and the PNG pHYs chunk. Raster X increases
-with pattern U. Raster Y increases downward from the crop's maximum V.
+and MCP use metres. In the desktop dialog, choose millimetres, centimetres,
+inches or pixels for the dimensions and origin. Switching units keeps the
+physical crop fixed. The writer rounds pixels per inch divided by 0.0254
+to an integer pixels-per-metre value. Both axes use that density for the
+pixel fields, drawing and the PNG pHYs chunk. Raster X increases with
+pattern U. Raster Y increases downward from the crop's maximum V.
 
 The image uses opaque white and antialiased black marks. It preserves
 physical dimensions to within half a pixel of crop rounding per side.
