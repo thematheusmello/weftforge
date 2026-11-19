@@ -2474,6 +2474,7 @@ impl Studio {
     }
 
     fn menu_bar(&mut self, ui: &mut egui::Ui) {
+        let commands = command_search_label(ui.ctx());
         egui::MenuBar::new().ui(ui, |ui| {
             let (response, menu) = egui::menu::MenuButton::new("File").ui(ui, |ui| {
                 if self.new_empty_button(ui) {
@@ -2554,7 +2555,7 @@ impl Studio {
                     self.open_outline_offset(ui.ctx());
                     ui.close();
                 }
-                if ui.button("Commands ⌘K").clicked() {
+                if ui.button(commands).clicked() {
                     self.open_command_search(ui.ctx());
                     ui.close();
                 }
@@ -2583,7 +2584,7 @@ impl Studio {
             });
             self.retain_inspector_input(&response, menu.is_some());
             ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
-                let response = ui.button("Commands ⌘K");
+                let response = ui.button(commands);
                 self.retain_inspector_input(&response, false);
                 if response.clicked() {
                     self.open_command_search(ui.ctx());
@@ -7224,6 +7225,14 @@ impl eframe::App for Studio {
         }
     }
 }
+fn command_search_label(ctx: &egui::Context) -> &'static str {
+    if ctx.os().is_mac() {
+        "Commands ⌘K"
+    } else {
+        "Commands Ctrl+K"
+    }
+}
+
 fn pane_heading(ui: &mut egui::Ui, title: &str) -> egui::Response {
     egui::Frame::new()
         .fill(Color32::from_gray(43))
@@ -9255,7 +9264,8 @@ mod contextual_properties_tests {
                 let polygon = app.polygon.clone();
                 let output = frame(&ctx, &mut app, 1000., vec![]);
                 let width = numeric(&output, 0.4);
-                let commands = button(&output, "Commands ⌘K");
+                let label = command_search_label(&ctx);
+                let commands = button(&output, label);
                 frame(
                     &ctx,
                     &mut app,
@@ -9326,9 +9336,7 @@ mod contextual_properties_tests {
                             .unwrap()
                             .nodes
                             .iter()
-                            .find(|(id, node)| {
-                                *id != commands && node.label() == Some("Commands ⌘K")
-                            })
+                            .find(|(id, node)| *id != commands && node.label() == Some(label))
                             .expect("Edit menu Commands entry")
                             .0;
                         frame(
@@ -9540,7 +9548,11 @@ mod contextual_properties_tests {
             &ctx,
             &mut app,
             1000.,
-            vec![action(button(&output, "Commands ⌘K"), Action::Focus, None)],
+            vec![action(
+                button(&output, command_search_label(&ctx)),
+                Action::Focus,
+                None,
+            )],
         );
         frame(
             &ctx,
@@ -9567,6 +9579,54 @@ mod contextual_properties_tests {
             vec![key(egui::Key::K, egui::Modifiers::COMMAND)],
         );
         assert!(!app.search);
+    }
+
+    #[test]
+    fn command_search_labels_and_shortcut_follow_the_platform() {
+        use egui::{Modifiers, os::OperatingSystem};
+
+        for (os, label, platform_modifier) in [
+            (OperatingSystem::Mac, "Commands ⌘K", Modifiers::MAC_CMD),
+            (OperatingSystem::Nix, "Commands Ctrl+K", Modifiers::CTRL),
+            (OperatingSystem::Windows, "Commands Ctrl+K", Modifiers::CTRL),
+        ] {
+            let (ctx, mut app) = fixture();
+            ctx.set_os(os);
+            let output = frame(&ctx, &mut app, 1000., vec![]);
+            let toolbar_command = button(&output, label);
+            frame(
+                &ctx,
+                &mut app,
+                1000.,
+                vec![key(egui::Key::K, Modifiers::COMMAND | platform_modifier)],
+            );
+            assert!(app.search, "keyboard shortcut for {os:?}");
+            frame(
+                &ctx,
+                &mut app,
+                1000.,
+                vec![key(egui::Key::Escape, Modifiers::NONE)],
+            );
+            assert!(!app.search);
+
+            let output = click(&ctx, &mut app, "Edit");
+            assert!(
+                output
+                    .platform_output
+                    .accesskit_update
+                    .as_ref()
+                    .unwrap()
+                    .nodes
+                    .iter()
+                    .any(|(id, node)| {
+                        *id != toolbar_command
+                            && node.label() == Some(label)
+                            && node.supports_action(Action::Click)
+                            && !node.is_disabled()
+                    }),
+                "missing Edit menu command for {os:?}"
+            );
+        }
     }
 
     #[test]
@@ -16681,7 +16741,7 @@ mod tests {
             click(&ctx, &mut app, &output, "Select / edit");
             assert!(app.sewing_draft.a.is_empty());
             let output = frame(&ctx, &mut app, vec![]);
-            let output = click(&ctx, &mut app, &output, "Commands ⌘K");
+            let output = click(&ctx, &mut app, &output, command_search_label(&ctx));
             click(&ctx, &mut app, &output, "M:N sewing");
             assert!(app.tool == Tool::SewingPaths);
             boundary_click(&ctx, &mut app, curves[0]);

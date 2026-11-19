@@ -122,5 +122,6 @@
     "vendor/earcutr",
     "xtask"
   ],
-  "freshness": "current"
+  "freshness": "stale",
+  "freshness_reason": "The scoped app source changed in 0830b834 and 54456690. The retained Debian launch and package replay are still bound to their original source and executable hashes."
 }

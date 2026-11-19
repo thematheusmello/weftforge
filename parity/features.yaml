@@ -4919,7 +4919,8 @@
         "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json",
         "parity/reports/WF-20261118-CONTACT-RECOVERY-D-TOOLING-001.json",
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-SOURCE-001.json",
-        "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json"
+        "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json",
+        "parity/reports/WF-20261119-PLATFORM-COMMAND-SHORTCUT-001.json"
       ],
       "scenarios": [
         {
@@ -4930,6 +4931,15 @@
           },
           "initial_conditions": "Fresh owned no-argument nativeEmpty revision0; nativeXfocus/selection/raw/value barriers mandatory before typing. Separate visualpreview may load the alreadypublicoriginalHarbor readonly.",
           "expected_outcomes": "Only after every frozen focus/raw/value/samepixel barrier succeeds may the two named nativeoutputs be saved and independently graded to the fixedgeometry/tolerances. A missing observation or mismatch stops; previouscases never receive later credit."
+        },
+        {
+          "id": "UI-COMMAND-SHORTCUT-PLATFORM-001",
+          "path": "parity/scenarios/UI-COMMAND-SHORTCUT-PLATFORM-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
+          },
+          "initial_conditions": "Harbor revision 23 in the native macOS studio; fixed simulated macOS, Linux and Windows input contexts.",
+          "expected_outcomes": "Accessible platform shortcut labels, keyboard-open and Escape-dismiss behavior, and unchanged editable project bytes."
         }
       ],
       "comparison_criteria": {
@@ -5860,6 +5870,19 @@
             "parity/reports/artifacts/workspace-png-integrated-source-20261118/ROOT-INSTALLATION-REVIEW-001.json": "e762c3197a401f6ca79eb35b7345de22ffbc5bf650fd5763c377ca879481e738"
           },
           "path": "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json"
+        },
+        {
+          "id": "WF-20261119-PLATFORM-COMMAND-SHORTCUT-001",
+          "commit": "54456690c60b44696c7d0da551211dab179a329d",
+          "timestamp": "2026-11-19T02:05:08.165705Z",
+          "platform": "macOS Apple Silicon native studio; OS label and key simulation for macOS/Linux/Windows",
+          "artifact_hashes": {
+            "parity/reports/artifacts/platform-shortcut-labels-20261119/NATIVE-SHORTCUT.json": "2c913da9a1c792fd6323143da91545f414b82c8b142725738a88f0f454ee373d",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a",
+            "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
+          },
+          "path": "parity/reports/WF-20261119-PLATFORM-COMMAND-SHORTCUT-001.json"
         }
       ],
       "known_gaps": [
@@ -5868,13 +5891,14 @@
         "Contextual property tabs/input retirement have separately attributed source-only guards through actual997: original166pass belongs351; a66 ownsfmt/Clippy/nativebuild but zerotests. RealDown cacheRED then eightfocusedpointer/keyboardGREEN are retained. Fullsource scope is stale after combinedSIMchange; N008over-bound preview adds no workflowcredit. Native/reference/highDPI/fullcontract coverage remainsopen.",
         "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This was the source checkpoint at publication; its declared full scope is now stale after the constructor change, with original outcomes unchanged. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen.",
         "At actual f6144bce, the constructor retains numeric helpers/ranges/field order and shared authoring paths while aligning Width/Height/Position X/Y metre labels and accessibility associations. Source checks pass 459/32, formatting, strict Clippy and native/CLI builds across two separately bound invocations; the first disk-floor stop and 59 partial ok lines remain failed/incomplete. Native constructor appearance, full workflow, contact quality, reference, full feature and platform acceptance remain open. The isolated failed contact-recovery prototype is not part of this source.",
-        "Actual a70c0df0 clean xtask and optimized native/CLI builds passed as separate D invocations. The 472-test source sequence belongs to f30c588d; unchanged source91 are explicit equivalence only. Native workflow and full feature/reference acceptance remain pending; runtime numerical quality is separately failed."
+        "Actual a70c0df0 clean xtask and optimized native/CLI builds passed as separate D invocations. The 472-test source sequence belongs to f30c588d; unchanged source91 are explicit equivalence only. Native workflow and full feature/reference acceptance remain pending; runtime numerical quality is separately failed.",
+        "Command search label and behavior have native Apple Silicon and simulated macOS/Linux/Windows checks. Native Linux and Windows keyboard, customizable shortcuts and full reference behavior remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/UI-003-original-position-snapping.md": "0d19a5cfa9886757390b735137171a2c9c88beb2f7f5fe8d8eb47c475d948ce7"
       }
@@ -50616,7 +50640,8 @@
       "evidence_ids": [
         "spec/features/FILE-004-glb-static-export.md",
         "parity/reports/WF-20261119-NATIVE-GLB-STATIC-001.json",
-        "parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json"
+        "parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json",
+        "parity/reports/WF-20261119-PLATFORM-COMMAND-SHORTCUT-001.json"
       ],
       "scenarios": [
         {
@@ -50688,6 +50713,19 @@
             "parity/reports/artifacts/linux-arm64-package-20261119/workspace.png": "e81b8868ac1d01c90da96af122712a1c8b44ffa6876949881339cf318088a13b"
           },
           "path": "parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json"
+        },
+        {
+          "id": "WF-20261119-PLATFORM-COMMAND-SHORTCUT-001",
+          "commit": "54456690c60b44696c7d0da551211dab179a329d",
+          "timestamp": "2026-11-19T02:05:08.165705Z",
+          "platform": "macOS Apple Silicon native studio; OS label and key simulation for macOS/Linux/Windows",
+          "artifact_hashes": {
+            "parity/reports/artifacts/platform-shortcut-labels-20261119/NATIVE-SHORTCUT.json": "2c913da9a1c792fd6323143da91545f414b82c8b142725738a88f0f454ee373d",
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a",
+            "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
+          },
+          "path": "parity/reports/WF-20261119-PLATFORM-COMMAND-SHORTCUT-001.json"
         }
       ],
       "known_gaps": [
@@ -61464,13 +61502,14 @@
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "The unsigned ARM64 package ran on Debian 13.7 under X11/Vulkan software rendering. Windows, Linux x86-64, Wayland, GPU hardware, platform accessibility, signing and redistributable release acceptance remain open."
+        "The unsigned ARM64 package ran on Debian 13.7 under X11/Vulkan software rendering. Windows, Linux x86-64, Wayland, GPU hardware, platform accessibility, signing and redistributable release acceptance remain open.",
+        "The recorded Debian package predates the platform shortcut label change. A native Linux keyboard check on the updated build remains open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "APP-003",

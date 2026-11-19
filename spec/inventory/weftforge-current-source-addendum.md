@@ -1,5 +1,17 @@
 # WeftForge current-source addendum
 
+## Platform shortcut labels
+
+Source `54456690c60b44696c7d0da551211dab179a329d` uses ⌘K on macOS and Ctrl+K on Linux and Windows
+in the Edit menu and the top bar. The existing Command search keyboard binding
+uses the platform command modifier.
+
+The previous addendum is available at `117179d2ee31deeecb8a9fb57881a097da77500d`. This update re-pins 226
+app anchors and adds the shared label selector. Runtime evidence is in the
+feature registry.
+
+# WeftForge current-source addendum
+
 ## Static GLB export
 
 Source `8929468332af68574ef33f2f305d33b276f8f5e7` maps named static cloth meshes to the File menu, Command search,
