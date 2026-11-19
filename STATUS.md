@@ -1,3 +1,23 @@
+# Debian ARM64 packaging — 19 November 2026
+
+The packaged Debian 13.7 ARM64 studio opened the original two-panel shirt
+offline under X11 and Mesa Vulkan software rendering. It drew the 2D and 3D
+workspace and closed normally. The packaged CLI completed one finite CPU step
+and exported OBJ, SVG and GLB. The editable project bytes were preserved.
+
+The macOS and Linux CLIs produced byte-identical rest OBJ and GLB for that
+project. Independent parsing confirmed 134 vertices and 196 triangles with
+the same winding. Khronos Validator reported zero errors and warnings.
+The corrected checker also verified the Linux OBJ and 1:1 SVG outputs.
+Packaging `9b1ba284` reproduced both executables byte for byte from the
+native `c1fd58f5` test, and all six notices matched.
+
+[Linux workspace capture](parity/reports/artifacts/linux-arm64-package-20261119/workspace.png) · [Scoped package report](parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json).
+
+Windows, Linux x86-64, Wayland, hardware GPU rendering, wider accessibility
+coverage and signing remain open. GitHub Actions and automated Pages deployments
+stay disabled.
+
 # Original shirt export verification — 19 November 2026
 
 The independent scenario checker now expects the original shirt's tight SVG
