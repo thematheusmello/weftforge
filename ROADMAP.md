@@ -15,7 +15,7 @@ remaining work.
 
 ## Current execution order — 18 November 2026
 
-The registry currently contains 56 broad contracts: 42 partial and 14 planned.
+The registry currently contains 56 broad contracts: 43 partial and 13 planned.
 None is fully implemented or reference verified, and no delivery gate is accepted.
 Discovery is incomplete, so these 56 contracts are not a final product denominator.
 

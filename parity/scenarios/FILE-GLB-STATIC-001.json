@@ -1,0 +1,11 @@
+{
+  "id": "FILE-GLB-STATIC-001",
+  "status": "implementation_only",
+  "initial_conditions": "Harbor revision 23, two original pieces, eight seams and distinct output paths.",
+  "actions": [
+    "Open the saved Harbor construction and use File > Export GLB.",
+    "Take one Manual step and export the current surface through Command search.",
+    "Check both outputs with Khronos Validator and compare the independent OBJ parse and native project."
+  ],
+  "expected_outcomes": "Two named surfaces, 654 vertices, 1172 triangles, unchanged authoring bytes, and zero Khronos errors and warnings per file; index equality and OBJ position agreement within 1e-6 m."
+}

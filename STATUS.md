@@ -1,3 +1,22 @@
+# Static GLB export — 19 November 2026
+
+The File menu and Command search export a static GLB of the rest or current
+cloth surface. The CLI and MCP can also export its rest surface. A `.glb`
+output selects GLB for CLI simulation and for a successful fit.
+
+The Apple Silicon studio opened Harbor revision 23 and exported before and
+after one manual step. Each file retained two named meshes, 654 vertices,
+1172 triangles, fabric tint, normals and physical-scale UVs. All vertices
+moved after the step, by up to 4.55 mm. The GLBs matched the same CLI exports
+byte for byte, and the original editable project bytes were preserved.
+Khronos Validator reported zero errors and warnings for both files.
+[Static export observation](parity/reports/WF-20261119-NATIVE-GLB-STATIC-001.json).
+
+Formatting, 498 workspace tests, strict Clippy and the native/CLI build passed.
+GLB import, JSON glTF, animation and reference comparison remain open. The
+Harbor fit limit and remaining distribution checks remain open. GitHub Actions
+and automated Pages deployments stay disabled.
+
 # Pattern inspector accessibility — 19 November 2026
 
 The Pattern name field and nine Arrangement controls now expose distinct names
