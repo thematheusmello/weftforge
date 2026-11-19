@@ -121,8 +121,8 @@ ongoing work.
 Version 6 `.weftforge` JSON uses a strict schema for supported editable
 construction, including ordered sewing groups and piece-owned straight internal
 annotations, holes and notches. The reader supports explicit version 1–5 migrations;
-older apps cannot open v6. OBJ mesh export and bounded SVG/DXF pattern import and export
-exist; [format details and gaps](docs/file-formats.md)
+older apps cannot open v6. OBJ and static GLB mesh export and bounded SVG/DXF
+pattern import and export are available. The [format details](docs/file-formats.md)
 explain what survives each path. Simulation frames/settings, imported avatars,
 textures, animation, advanced construction and third-party project formats
 remain planned. The 3D preview is basic shaded geometry;
@@ -151,6 +151,7 @@ cargo run --release -p weftforge-cli -- inspect garment.weftforge
 cargo run --release -p weftforge-cli -- export-svg garment.weftforge patterns.svg
 cargo run --release -p weftforge-cli -- export-dxf garment.weftforge patterns.dxf
 cargo run --release -p weftforge-cli -- export-obj garment.weftforge garment.obj
+cargo run --release -p weftforge-cli -- export-glb garment.weftforge garment.glb
 ```
 
 For local stateless MCP file authoring, run `weftforge-cli mcp`. See

@@ -59,7 +59,7 @@ fn run() -> Result<()> {
     let args: Vec<_> = std::env::args().skip(1).collect();
     match args.first().map(String::as_str) {
         None | Some("--help" | "-h" | "help") => println!(
-            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\nlengths PROJECT interval CURVE_ID T0 T1   authored/rest length, unrounded SI JSON\nlengths PROJECT seam SEAM_ID\nlengths PROJECT sewing-group GROUP_ID\ninspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)\nexecute INPUT OUTPUT COMMANDS.json      one atomic shared command array\nimport-svg INPUT OUTPUT PATTERNS.svg   editable single contours in physical mm; refuses compound holes\nimport-dxf INPUT OUTPUT PATTERNS.dxf   bounded R2000 LINE/cubic boundaries in mm\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT   four editable cubic spans\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj          actual rest surface with holes; metres, Y-up; no annotation markers\nexport-svg PROJECT OUTPUT.svg          outlines and authored notch markers; mm, inverted Y\nexport-dxf PROJECT OUTPUT.dxf          exterior boundaries in mm; refuses projects with holes or authored notches\nsimulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
+            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\nlengths PROJECT interval CURVE_ID T0 T1   authored/rest length, unrounded SI JSON\nlengths PROJECT seam SEAM_ID\nlengths PROJECT sewing-group GROUP_ID\ninspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)\nexecute INPUT OUTPUT COMMANDS.json      one atomic shared command array\nimport-svg INPUT OUTPUT PATTERNS.svg   editable single contours in physical mm; refuses compound holes\nimport-dxf INPUT OUTPUT PATTERNS.dxf   bounded R2000 LINE/cubic boundaries in mm\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT   four editable cubic spans\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj          actual rest surface with holes; metres, Y-up; no annotation markers\nexport-glb PROJECT OUTPUT.glb          static rest surface, named pieces and fabric tint\nexport-svg PROJECT OUTPUT.svg          outlines and authored notch markers; mm, inverted Y\nexport-dxf PROJECT OUTPUT.dxf          exterior boundaries in mm; refuses projects with holes or authored notches\nsimulate PROJECT OUTPUT.obj|.glb STEPS f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj|.glb           same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
         ),
         Some("mcp") => {
             count(&args, 1)?;
@@ -271,6 +271,12 @@ fn run() -> Result<()> {
                 .mesh()?
                 .export_obj(Path::new(&args[2]))?;
         }
+        Some("export-glb") => {
+            count(&args, 3)?;
+            distinct(&args[1], &args[2])?;
+            let project = Project::load(Path::new(&args[1]))?;
+            project.mesh()?.export_glb(&project, Path::new(&args[2]))?;
+        }
         Some("export-svg") => {
             count(&args, 3)?;
             distinct(&args[1], &args[2])?;
@@ -306,7 +312,7 @@ fn run() -> Result<()> {
             if !benchmark {
                 distinct(&args[1], &args[2])?;
                 mesh.positions = cloth.positions().to_vec();
-                mesh.export_obj(Path::new(&args[2]))?;
+                export_surface(&p, &mesh, Path::new(&args[2]))?;
             }
             println!(
                 "{}",
@@ -324,7 +330,7 @@ fn run() -> Result<()> {
             let project = Project::load(Path::new(&args[1]))?;
             let (mesh, mut report, passed) = fit(&project)?;
             if !benchmark && passed {
-                mesh.export_obj(Path::new(&args[2]))?;
+                export_surface(&project, &mesh, Path::new(&args[2]))?;
                 report["export_written"] = serde_json::json!(true);
             }
             println!("{}", serde_json::to_string_pretty(&report)?);
@@ -340,6 +346,19 @@ fn run() -> Result<()> {
             Project::recover(Path::new(&args[1]))?.save(Path::new(&args[2]))?;
         }
         Some(other) => return Err(format!("unknown command {other}; run --help").into()),
+    }
+    Ok(())
+}
+
+fn export_surface(project: &Project, mesh: &Mesh, path: &Path) -> Result<()> {
+    if path
+        .extension()
+        .and_then(|extension| extension.to_str())
+        .is_some_and(|extension| extension.eq_ignore_ascii_case("glb"))
+    {
+        mesh.export_glb(project, path)?;
+    } else {
+        mesh.export_obj(path)?;
     }
     Ok(())
 }

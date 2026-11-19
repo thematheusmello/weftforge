@@ -19,7 +19,8 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 | `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1–v6 model | Static authoring | Dirty named documents only; no automatic recovery UI |
 | OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups; no annotation lines or MTL/textures |
 | SVG | Bounded additive import of one-contour paths | Yes, compound outlines with holes and physical notch markers | Editable exterior boundaries and names on import | Static 2D | Explicit mm and uniform viewBox; holes/notches cannot yet be reimported; sewing/materials/internal lines/print tiling unsupported |
-| glTF/GLB | No | No | None yet | None yet | Planned validated avatar/mesh/animation workflows |
+| Binary glTF 2.0 (`.glb`) | No | Yes | Mesh only | Static | Named pieces, fabric tint, normals and physical-scale UVs from a rest or current surface |
+| JSON glTF (`.gltf`) | No | No | None yet | None yet | Planned avatar, mesh and animation workflows |
 | DXF R2000 | Bounded additive import | Yes, projects without holes or authored notches | Editable exterior boundaries with layer names | Static 2D | Holed/notched projects refuse before staging. Strict existing ASCII `LINE`/clamped cubic `SPLINE` profile, mm and `WF_PIECE` layers; no sewing, materials, grain, internal lines, 3D placement, apparel conventions or print layout |
 | Animation/cache formats | No | No | None yet | None yet | Timeline, frame caches and export not implemented |
 | Marvelous Designer `.zprj` / `.zpac` | No | No | None | None | Separate FILE-006 research/compatibility workstream |
@@ -263,6 +264,22 @@ thickness, texture images, material library, skeleton, animation, or editable
 curves or internal annotation line primitives are encoded. Native saving retains
 editable annotations. OBJ itself has no authoritative unit field: its metre
 convention is stated in the comment and this documentation.
+
+**Export GLB** writes the same rest or current desktop surface as one binary
+glTF 2.0 file. The CLI `export-glb` and MCP `project_export_glb` write the
+rest surface. CLI `simulate` accepts `.glb` for its advanced output and `fit`
+accepts it when all fit checks pass. Each piece becomes a named mesh with its
+assigned fabric tint. The file stores float32 positions in metres with Y up,
+indexed triangles, winding-derived vertex normals and `TEXCOORD_0` as `(U, -V)`
+with one UV unit per metre. Negating V follows glTF's downward texture axis.
+The stored linear RGB tint becomes the material base color on a thin,
+double-sided, nonmetallic surface. Stable piece and material IDs and the source
+revision are retained as strings in glTF `extras`.
+
+GLB export stages the file before replacing its destination. A stale mesh or
+a triangle that collapses in float32 returns an error. Avatar geometry, texture
+maps, animation, thickness, welding and editable construction require other
+workflows. [Khronos glTF 2.0 specification](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html).
 
 Rigid 2D `transform_piece` layout edits therefore change SVG/DXF construction
 and OBJ UV coordinates while compensating placement to preserve the continuous

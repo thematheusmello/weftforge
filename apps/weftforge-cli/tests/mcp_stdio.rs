@@ -211,7 +211,7 @@ fn check_cut_command(kind: &str, modern: bool) {
     };
     let listed = server.request("tools/list", profile_params(json!({})));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 9);
+    assert_eq!(tools.len(), 10);
     let variants = tools
         .iter()
         .find(|tool| tool["name"] == "project_execute")
@@ -705,13 +705,14 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
     let directory = Directory::new();
     let project_path = directory.path("original.weftforge");
     let obj = directory.path("rest.obj");
+    let glb = directory.path("rest.glb");
     let svg = directory.path("patterns.svg");
     let dxf = directory.path("patterns.dxf");
     let mut server = Server::start();
     server.initialize("2025-11-25");
     let listed = server.request("tools/list", json!({}));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 9);
+    assert_eq!(tools.len(), 10);
     assert!(
         tools
             .iter()
@@ -781,6 +782,30 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
     );
     check_rectangle_exports(&obj, &svg);
     let source_bytes = fs::read(&project_path).unwrap();
+    let exported = server.call(
+        "project_export_glb",
+        json!({"input":project_path,"output":glb}),
+    );
+    let exported = success(&exported);
+    assert_eq!(exported["source_revision"], 1);
+    assert_eq!(exported["kind"], "rest_glb");
+    assert_eq!(exported["length_unit"], "m");
+    assert_eq!(exported["up"], "Y");
+    let cli_glb = directory.path("cli-rest.glb");
+    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+        .arg("export-glb")
+        .arg(&project_path)
+        .arg(&cli_glb)
+        .output()
+        .unwrap();
+    assert!(
+        cli.status.success(),
+        "{}",
+        String::from_utf8_lossy(&cli.stderr)
+    );
+    let glb_bytes = fs::read(&glb).unwrap();
+    assert_eq!(glb_bytes, fs::read(cli_glb).unwrap());
+    assert_eq!(&glb_bytes[..8], b"glTF\x02\x00\x00\x00");
     let exported = server.call(
         "project_export_dxf",
         json!({"input":project_path,"output":dxf}),
@@ -1081,7 +1106,7 @@ fn physical_length_sewing_schema_and_cli_mcp_use_the_shared_candidate_transactio
     server.initialize("2025-11-25");
     let listed = server.request("tools/list", json!({}));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 9);
+    assert_eq!(tools.len(), 10);
     let variants = tools
         .iter()
         .find(|tool| tool["name"] == "project_execute")
@@ -1506,7 +1531,7 @@ fn stdio_transform_schema_cli_equivalence_and_strict_atomic_failures() {
     server.initialize("2025-11-25");
     let listed = server.request("tools/list", json!({}));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 9);
+    assert_eq!(tools.len(), 10);
     let variant = tools
         .iter()
         .find(|tool| tool["name"] == "project_execute")
@@ -1740,6 +1765,7 @@ fn stdio_errors_preserve_input_output_and_recovery_and_allow_retry() {
         for tool in [
             "project_export_svg",
             "project_export_obj",
+            "project_export_glb",
             "project_export_dxf",
         ] {
             tool_error(&server.call(tool, json!({"input":input,"output":destination})));
@@ -2122,7 +2148,7 @@ fn stdio_validates_protocol_lifecycle_modern_metadata_and_line_bounds() {
         json!(["2026-07-28"])
     );
     let listed = server.request("tools/list", json!({"_meta":modern_metadata("2026-07-28")}));
-    assert_eq!(listed["result"]["tools"].as_array().unwrap().len(), 9);
+    assert_eq!(listed["result"]["tools"].as_array().unwrap().len(), 10);
     assert_eq!(listed["result"]["cacheScope"], "public");
     assert_eq!(listed["result"]["ttlMs"], 0);
     success(&server.request("tools/call", json!({"_meta":modern_metadata("2026-07-28"),"name":"project_create","arguments":{"output":path}})));
@@ -2520,7 +2546,7 @@ fn authored_notches_share_closed_typed_commands_across_cli_and_both_mcp_profiles
         };
         let listed = server.request("tools/list", profile(json!({})));
         let tools = listed["result"]["tools"].as_array().unwrap();
-        assert_eq!(tools.len(), 9);
+        assert_eq!(tools.len(), 10);
         let variants = tools
             .iter()
             .find(|tool| tool["name"] == "project_execute")
@@ -2668,7 +2694,7 @@ fn internal_annotations_share_closed_schema_cli_and_mcp_transactions_without_new
     server.initialize("2025-11-25");
     let listed = server.request("tools/list", json!({}));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 9);
+    assert_eq!(tools.len(), 10);
     let variants = tools
         .iter()
         .find(|tool| tool["name"] == "project_execute")
@@ -2870,7 +2896,7 @@ fn outline_offsets_share_closed_schemas_material_domain_and_atomic_files() {
     server.initialize("2025-11-25");
     let listed = server.request("tools/list", json!({}));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 9);
+    assert_eq!(tools.len(), 10);
     let execute = tools
         .iter()
         .find(|tool| tool["name"] == "project_execute")
@@ -3049,7 +3075,7 @@ fn straight_holes_keep_closed_discovery_shared_ids_and_atomic_refusal() {
     server.initialize("2025-11-25");
     let listed = server.request("tools/list", json!({}));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 9);
+    assert_eq!(tools.len(), 10);
     let execute = tools
         .iter()
         .find(|tool| tool["name"] == "project_execute")
