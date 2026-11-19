@@ -4970,7 +4970,8 @@
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json",
         "parity/reports/WF-20261119-PLATFORM-COMMAND-SHORTCUT-001.json",
         "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json",
-        "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json"
+        "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json",
+        "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json"
       ],
       "scenarios": [
         {
@@ -5984,6 +5985,25 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
           },
           "path": "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json"
+        },
+        {
+          "id": "WF-20261119-DEBIAN-ARM64-GLTF-001",
+          "commit": "8721469c10771624d3042b92d6f91c294ed04efc",
+          "timestamp": "2026-11-19T03:39:25.239443Z",
+          "platform": "Debian 13.7 ARM64 X11, Vulkan Mesa llvmpipe",
+          "artifact_hashes": {
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/original-shirt.weftforge": "4dd6b23e0e3d7cbefcb92fd6a1d53bb7d36f8e45f1ee4a3887fab826c051981b",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/rest.obj": "ead7b6b43b2aac01bfdefaeef9adc44ceb42a2892941d80076aad25d2662e1a7",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/rest.glb": "4c8295c7a5d5ef53f2f89716b56faccd60d2331bef3a75d0bd660f0a648e9771",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/patterns.svg": "680487ebdb939454ad3c82ca9390916af78d871f7b19e0066f5740f7c52df472",
+            "parity/reports/artifacts/linux-shortcut-20261119/palette-dismissed.png": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3",
+            "parity/reports/artifacts/linux-shortcut-20261119/workspace.png": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3",
+            "parity/reports/artifacts/debian-arm64-json-gltf-20261119/palette-open.png": "86a34811a6a433a9e16e7144f4439bd99ef95dc143f2bec35bbf1b32f8370a01",
+            "parity/reports/artifacts/debian-arm64-json-gltf-20261119/rest.gltf": "026d37265ad8144ffe5995c15f3d84605ec2b7b88152bfd0b1926e5549e62305",
+            "parity/reports/artifacts/debian-arm64-json-gltf-20261119/POST-CASE-CLEANUP.json": "b7006b1e37cab8877728bdf0f8f9f6a990354cfec11a469559be7dbb345703d0",
+            "parity/reports/artifacts/debian-arm64-json-gltf-20261119/LINUX-GLTF.json": "cc908fe170863cfab08ec4dd7ddd4f377faf5a027825285bcde1f09e527c802c"
+          },
+          "path": "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json"
         }
       ],
       "known_gaps": [
@@ -50783,7 +50803,8 @@
         "parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json",
         "parity/reports/WF-20261119-PLATFORM-COMMAND-SHORTCUT-001.json",
         "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json",
-        "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json"
+        "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json",
+        "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json"
       ],
       "scenarios": [
         {
@@ -50920,6 +50941,25 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
           },
           "path": "parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json"
+        },
+        {
+          "id": "WF-20261119-DEBIAN-ARM64-GLTF-001",
+          "commit": "8721469c10771624d3042b92d6f91c294ed04efc",
+          "timestamp": "2026-11-19T03:39:25.239443Z",
+          "platform": "Debian 13.7 ARM64 X11, Vulkan Mesa llvmpipe",
+          "artifact_hashes": {
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/original-shirt.weftforge": "4dd6b23e0e3d7cbefcb92fd6a1d53bb7d36f8e45f1ee4a3887fab826c051981b",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/rest.obj": "ead7b6b43b2aac01bfdefaeef9adc44ceb42a2892941d80076aad25d2662e1a7",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/rest.glb": "4c8295c7a5d5ef53f2f89716b56faccd60d2331bef3a75d0bd660f0a648e9771",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/patterns.svg": "680487ebdb939454ad3c82ca9390916af78d871f7b19e0066f5740f7c52df472",
+            "parity/reports/artifacts/linux-shortcut-20261119/palette-dismissed.png": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3",
+            "parity/reports/artifacts/linux-shortcut-20261119/workspace.png": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3",
+            "parity/reports/artifacts/debian-arm64-json-gltf-20261119/palette-open.png": "86a34811a6a433a9e16e7144f4439bd99ef95dc143f2bec35bbf1b32f8370a01",
+            "parity/reports/artifacts/debian-arm64-json-gltf-20261119/rest.gltf": "026d37265ad8144ffe5995c15f3d84605ec2b7b88152bfd0b1926e5549e62305",
+            "parity/reports/artifacts/debian-arm64-json-gltf-20261119/POST-CASE-CLEANUP.json": "b7006b1e37cab8877728bdf0f8f9f6a990354cfec11a469559be7dbb345703d0",
+            "parity/reports/artifacts/debian-arm64-json-gltf-20261119/LINUX-GLTF.json": "cc908fe170863cfab08ec4dd7ddd4f377faf5a027825285bcde1f09e527c802c"
+          },
+          "path": "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json"
         }
       ],
       "known_gaps": [
@@ -61639,7 +61679,8 @@
       "reference_observation_status": "unobserved",
       "evidence_ids": [
         "parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json",
-        "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json"
+        "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json",
+        "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json"
       ],
       "scenarios": [
         {
@@ -61650,6 +61691,15 @@
           },
           "initial_conditions": "Debian 13.7 ARM64 with X11 and Vulkan software rendering, an original two-panel shirt and an isolated runtime network namespace.",
           "expected_outcomes": "Both executables match Cargo; the studio displays the shirt and closes cleanly; the one-step CLI run stays finite; the editable file is preserved and rest GLB matches OBJ geometry with zero validator errors or warnings."
+        },
+        {
+          "id": "APP-DEBIAN-GLTF-001",
+          "path": "parity/scenarios/APP-DEBIAN-GLTF-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/original-shirt.weftforge": "4dd6b23e0e3d7cbefcb92fd6a1d53bb7d36f8e45f1ee4a3887fab826c051981b"
+          },
+          "initial_conditions": "The exact offline Debian ARM64 package and original two-panel shirt under X11 with Mesa llvmpipe.",
+          "expected_outcomes": "Ctrl+K shows the palette and Export glTF; Escape restores identical workspace bytes. CLI JSON glTF matches macOS and the GLB geometry, and the fixture bytes are preserved."
         }
       ],
       "comparison_criteria": {
@@ -61712,6 +61762,25 @@
             "parity/reports/artifacts/linux-shortcut-20261119/workspace.png": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3"
           },
           "path": "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json"
+        },
+        {
+          "id": "WF-20261119-DEBIAN-ARM64-GLTF-001",
+          "commit": "8721469c10771624d3042b92d6f91c294ed04efc",
+          "timestamp": "2026-11-19T03:39:25.239443Z",
+          "platform": "Debian 13.7 ARM64 X11, Vulkan Mesa llvmpipe",
+          "artifact_hashes": {
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/original-shirt.weftforge": "4dd6b23e0e3d7cbefcb92fd6a1d53bb7d36f8e45f1ee4a3887fab826c051981b",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/rest.obj": "ead7b6b43b2aac01bfdefaeef9adc44ceb42a2892941d80076aad25d2662e1a7",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/rest.glb": "4c8295c7a5d5ef53f2f89716b56faccd60d2331bef3a75d0bd660f0a648e9771",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/patterns.svg": "680487ebdb939454ad3c82ca9390916af78d871f7b19e0066f5740f7c52df472",
+            "parity/reports/artifacts/linux-shortcut-20261119/palette-dismissed.png": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3",
+            "parity/reports/artifacts/linux-shortcut-20261119/workspace.png": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3",
+            "parity/reports/artifacts/debian-arm64-json-gltf-20261119/palette-open.png": "86a34811a6a433a9e16e7144f4439bd99ef95dc143f2bec35bbf1b32f8370a01",
+            "parity/reports/artifacts/debian-arm64-json-gltf-20261119/rest.gltf": "026d37265ad8144ffe5995c15f3d84605ec2b7b88152bfd0b1926e5549e62305",
+            "parity/reports/artifacts/debian-arm64-json-gltf-20261119/POST-CASE-CLEANUP.json": "b7006b1e37cab8877728bdf0f8f9f6a990354cfec11a469559be7dbb345703d0",
+            "parity/reports/artifacts/debian-arm64-json-gltf-20261119/LINUX-GLTF.json": "cc908fe170863cfab08ec4dd7ddd4f377faf5a027825285bcde1f09e527c802c"
+          },
+          "path": "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json"
         }
       ],
       "known_gaps": [
@@ -61723,7 +61792,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "APP-003",

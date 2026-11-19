@@ -1,3 +1,19 @@
+# Debian ARM64 JSON glTF check — 19 November 2026
+
+The current unsigned Debian 13.7 ARM64 package opened the original two-panel
+shirt using X11 and Mesa software Vulkan. Ctrl+K opened Command search with
+**Export glTF** visible. Escape restored the same workspace image byte for
+byte. The studio, Xvfb and the owned guest closed normally.
+
+The packaged CLI’s single-file glTF matched the macOS CLI byte for byte.
+Independent decoding matched the GLB scene and its mesh data. Khronos Validator
+reported zero errors and warnings for the two named meshes, 134 vertices and
+196 triangles. The original editable file also matched its saved hash.
+[Debian evidence](parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json) · [Command search preview](parity/reports/artifacts/debian-arm64-json-gltf-20261119/palette-open.png).
+
+Windows, Linux x86-64, Wayland, hardware GPU rendering and signing still need
+their own checks. GitHub Actions and automated Pages deployments are disabled.
+
 # Embedded JSON glTF export — 19 November 2026
 
 The File menu and Command search now export a single `.gltf` file with an
@@ -14,8 +30,8 @@ byte-identical and the studio closed normally.
 [Native and CLI evidence](parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json) · [Current studio preview](docs/studio-preview.md).
 
 Formatting, 500 workspace tests, strict Clippy and the studio and CLI builds
-passed. Next checks cover the changed Debian package, the complete Harbor fit,
-and comparison with the reference workflow. Import, avatars, textures and
+passed. Next checks cover the complete Harbor fit and comparison with the
+reference workflow. Import, avatars, textures and
 animation remain open. GitHub Actions and automated Pages stay disabled.
 
 # Harbor Frame all preview — 19 November 2026

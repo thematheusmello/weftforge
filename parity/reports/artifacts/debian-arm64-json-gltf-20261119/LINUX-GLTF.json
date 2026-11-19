@@ -1,0 +1,182 @@
+{
+  "application_source_commit": "8721469c10771624d3042b92d6f91c294ed04efc",
+  "application_source_tree": "71d24d20ba24e17b88e49405d7e09f8800254915",
+  "build_network_mode": "Cargo offline",
+  "cli_outputs_sha256": {
+    "inspect.json": "e2865b75a738d2f0d35fa06237742938420df7ef0e977fe1b66fcf245c6c2461",
+    "original-shirt.weftforge": "4dd6b23e0e3d7cbefcb92fd6a1d53bb7d36f8e45f1ee4a3887fab826c051981b",
+    "patterns.svg": "680487ebdb939454ad3c82ca9390916af78d871f7b19e0066f5740f7c52df472",
+    "rest.glb": "4c8295c7a5d5ef53f2f89716b56faccd60d2331bef3a75d0bd660f0a648e9771",
+    "rest.gltf": "026d37265ad8144ffe5995c15f3d84605ec2b7b88152bfd0b1926e5549e62305",
+    "rest.obj": "ead7b6b43b2aac01bfdefaeef9adc44ceb42a2892941d80076aad25d2662e1a7"
+  },
+  "display": "Xvfb X11 with Mesa llvmpipe software Vulkan",
+  "fixture_unchanged_after_normal_close": true,
+  "keyboard_transport": "XTEST synthetic X11 server input",
+  "keystrokes": [
+    [
+      "Control_L",
+      "down"
+    ],
+    [
+      "k",
+      "down"
+    ],
+    [
+      "k",
+      "up"
+    ],
+    [
+      "Control_L",
+      "up"
+    ],
+    [
+      "Escape",
+      "down"
+    ],
+    [
+      "Escape",
+      "up"
+    ]
+  ],
+  "launched_studio_sha256": "b62b48e2cfb61fece990de8b3f7e3603614299e8e62591861d9aa6b8400647b8",
+  "package_sha256": {
+    "LICENSE-APACHE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "LICENSE-MIT": "5a79a5be6e18069ea095bcb13f724f90cee6a70b1fd6b5e2b1f505f050c25b0d",
+    "README.md": "256ffd76fcf454e023f931492219b23390cecb51508bd6eb52c66115851bed65",
+    "THIRD_PARTY.md": "86d65f258938c55ed36d3a621222ef5124e348f5519d01eab8f61db540a4876e",
+    "licenses/OFL-Inter.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+    "licenses/OFL-JetBrainsMono.txt": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+    "weftforge": "b62b48e2cfb61fece990de8b3f7e3603614299e8e62591861d9aa6b8400647b8",
+    "weftforge-cli": "bb195996a30789640de561fe336497b4d03befe877923cdcd7e295b4a2bd33dc"
+  },
+  "packaging_command": [
+    "cargo",
+    "xtask",
+    "package"
+  ],
+  "platform": [
+    "Debian 13.7",
+    "Linux 6.12.117+deb13-cloud-arm64 aarch64"
+  ],
+  "rust_toolchain": "1.94.1",
+  "static_gltf_compatibility": {
+    "asset_version": "2.0",
+    "binary_buffer_bytes": 6640,
+    "binary_buffer_sha256": "0119754ffe80b7f3ce9d675ec0792e4ca53924fb912ae358f4f761c6e3ecc772",
+    "geometry_matches_current_glb": true,
+    "glb_sha256": "4c8295c7a5d5ef53f2f89716b56faccd60d2331bef3a75d0bd660f0a648e9771",
+    "gltf_sha256": "026d37265ad8144ffe5995c15f3d84605ec2b7b88152bfd0b1926e5549e62305",
+    "pieces": [
+      "Shirt front",
+      "Shirt back"
+    ],
+    "triangles": 196,
+    "vertices": 134
+  },
+  "studio_close": "WM_DELETE_WINDOW, exit 0",
+  "tracked_source_blobs_verified": 19934,
+  "visually_reviewed": {
+    "palette-dismissed.png": "Command palette closed after Escape",
+    "palette-open.png": "Command search, Search commands and Export glTF visible after Ctrl+K",
+    "workspace.png": "Commands Ctrl+K visible in the toolbar and command palette closed"
+  },
+  "x11_readiness_after_vulkan": true,
+  "captures": {
+    "palette-dismissed.png": {
+      "sha256": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3",
+      "size_px": [
+        1640,
+        1000
+      ],
+      "window_ppm_sha256": "f65f7410d5ac17942fb77b0655a2e0e5ca614e4fe19e01234172bb72d0012208",
+      "artifact": "parity/reports/artifacts/linux-shortcut-20261119/palette-dismissed.png"
+    },
+    "palette-open.png": {
+      "sha256": "86a34811a6a433a9e16e7144f4439bd99ef95dc143f2bec35bbf1b32f8370a01",
+      "size_px": [
+        1640,
+        1000
+      ],
+      "window_ppm_sha256": "cc9af895a4618aba69023c3d62c0a7380216caf547e7910cd1bd7319874a8d64",
+      "artifact": "parity/reports/artifacts/debian-arm64-json-gltf-20261119/palette-open.png"
+    },
+    "workspace.png": {
+      "sha256": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3",
+      "size_px": [
+        1640,
+        1000
+      ],
+      "window_ppm_sha256": "f65f7410d5ac17942fb77b0655a2e0e5ca614e4fe19e01234172bb72d0012208",
+      "artifact": "parity/reports/artifacts/linux-shortcut-20261119/workspace.png"
+    }
+  },
+  "fixture": "parity/reports/artifacts/linux-arm64-package-20261119/runtime/original-shirt.weftforge",
+  "artifact": "parity/reports/artifacts/debian-arm64-json-gltf-20261119/rest.gltf",
+  "independent_comparison_to_glb": {
+    "json_sha256": "026d37265ad8144ffe5995c15f3d84605ec2b7b88152bfd0b1926e5549e62305",
+    "glb_sha256": "4c8295c7a5d5ef53f2f89716b56faccd60d2331bef3a75d0bd660f0a648e9771",
+    "binary_bytes": 6640,
+    "binary_sha256": "0119754ffe80b7f3ce9d675ec0792e4ca53924fb912ae358f4f761c6e3ecc772",
+    "same_geometry_and_appearance": true,
+    "pieces": [
+      "Shirt front",
+      "Shirt back"
+    ]
+  },
+  "khronos_validator": {
+    "uri": "rest.gltf",
+    "mimeType": "model/gltf+json",
+    "validatorVersion": "2.0.0-dev.3.10",
+    "validatedAt": "2026-11-19T03:37:15.732Z",
+    "issues": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 2,
+      "numHints": 0,
+      "messages": [
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/meshes/0/primitives/0/attributes/TEXCOORD_0"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/meshes/1/primitives/0/attributes/TEXCOORD_0"
+        }
+      ],
+      "truncated": false
+    },
+    "info": {
+      "version": "2.0",
+      "generator": "WeftForge",
+      "resources": [
+        {
+          "pointer": "/buffers/0",
+          "mimeType": "application/gltf-buffer",
+          "storage": "data-uri",
+          "byteLength": 6640
+        }
+      ],
+      "animationCount": 0,
+      "materialCount": 1,
+      "hasMorphTargets": false,
+      "hasSkins": false,
+      "hasTextures": false,
+      "hasDefaultScene": true,
+      "drawCallCount": 2,
+      "totalVertexCount": 134,
+      "totalTriangleCount": 196,
+      "maxUVs": 1,
+      "maxInfluences": 0,
+      "maxAttributes": 3
+    }
+  },
+  "macos_cli_export_bytes_equal": true,
+  "macos_cli_source": "8721469c10771624d3042b92d6f91c294ed04efc",
+  "scope": "Unsigned ARM64 Debian package, X11 software Vulkan, one original rest scene, native keyboard palette test and CLI export.",
+  "verified_at_utc": "2026-11-19T03:39:25.239443Z"
+}

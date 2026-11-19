@@ -96,9 +96,10 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    shirt in OBJ, SVG and GLB.
    [Debian ARM64 package check](parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json).
    The updated package shows Ctrl+K and opens and closes Command search with
-   native X11 keyboard input on the earlier build. Repeat that check and verify
-   JSON glTF on the current Debian package.
-   [Previous Debian check](parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json).
+   native X11 keyboard input. The current package also shows Export glTF in
+   the palette and its CLI writes the same JSON glTF as macOS for the original
+   shirt. Windows, Linux x86-64, Wayland, hardware GPU and signing checks remain.
+   [Current Debian package check](parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json).
    Keep GitHub Actions disabled throughout development. Re-enable it only after
    the complete project is finished, as the user requested.
 
