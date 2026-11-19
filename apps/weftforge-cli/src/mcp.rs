@@ -4,7 +4,7 @@ use serde::{Deserialize, Deserializer, Serialize, de::DeserializeOwned, de::Igno
 use serde_json::{Map, Value, json};
 use std::io::{self, BufRead, Read, Write};
 use std::path::Path;
-use weftforge_core::{Command, Project};
+use weftforge_core::{Command, PrintPaper, Project};
 
 const MODERN_VERSION: &str = "2026-07-28";
 const LEGACY_VERSION: &str = "2025-11-25";
@@ -163,6 +163,14 @@ struct CreateArgs {
 struct FileArgs {
     input: String,
     output: String,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct PdfArgs {
+    input: String,
+    output: String,
+    paper: PrintPaper,
 }
 
 #[derive(Deserialize)]
@@ -402,6 +410,7 @@ fn call(line: &[u8]) -> Result<Value, String> {
             | "project_export_glb"
             | "project_export_gltf"
             | "project_export_dxf"
+            | "project_export_pdf"
     ) {
         return Err(format!("Unknown tool: {}", header.name));
     }
@@ -459,6 +468,16 @@ fn call(line: &[u8]) -> Result<Value, String> {
                     Path::new(&args.input),
                     Path::new(&args.output),
                     Path::new(&args.dxf),
+                )
+            }
+            "project_export_pdf" => {
+                let args: PdfArgs = arguments(line)?;
+                super::distinct(&args.input, &args.output)?;
+                let project = Project::load(Path::new(&args.input))?;
+                project.export_pattern_pdf(Path::new(&args.output), args.paper)?;
+                Ok(
+                    json!({"input":args.input,"output":args.output,"source_revision":project.revision,
+                    "kind":"pattern_pdf","paper":args.paper,"scale":1,"length_unit":"mm"}),
                 )
             }
             "project_export_svg"
@@ -822,5 +841,6 @@ fn tools() -> Vec<Value> {
         ("project_export_glb", "Build and export the actual rest surface as one static glTF 2.0 binary, in metres and Y-up, with named pieces, per-piece fabric tint, normals and UVs. Refuse replacement of source or native project destinations.", files.clone(), false),
         ("project_export_gltf", "Build and export the actual rest surface as one static glTF 2.0 JSON document with an embedded buffer, in metres and Y-up, with named pieces, per-piece fabric tint, normals and UVs. Refuse replacement of source or native project destinations.", files.clone(), false),
         ("project_export_dxf", "Export authored exterior pattern boundaries as R2000 DXF LINE/SPLINE geometry in millimetres, without 3D placement. DXF v1 refuses any project with holes or authored notches before writing output. Internal lines are omitted; sewing, materials, grain and editable annotations require the native project. Refuse replacement of source or native project destinations.", files, false),
+        ("project_export_pdf", "Export 1:1 pattern outlines, holes, straight annotations and notch markers to a tiled vector PDF. Includes a 100 mm scale check. Print at Actual size. Refuse replacement of source or native project destinations.", object(json!({"input":path,"output":path,"paper":{"type":"string","enum":["a4","letter"]}}), &["input","output","paper"]), false),
     ].into_iter().map(|(name,description,input,read_only)|json!({"name":name,"description":description,"inputSchema":input,"annotations":{"readOnlyHint":read_only,"destructiveHint":!read_only,"openWorldHint":false}})).collect()
 }
