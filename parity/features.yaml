@@ -33,7 +33,8 @@
         "parity/reports/WF-20261118-NATIVE-CONSTRUCTOR-VISUAL-P005-001.json",
         "parity/reports/WF-20261118-NATIVE-CONSTRUCTOR-HARNESS-STOPS-001.json",
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json",
-        "parity/reports/WF-20261118-WORKSPACE-PNG-INTEGRATED-SOURCE-001.json"
+        "parity/reports/WF-20261118-WORKSPACE-PNG-INTEGRATED-SOURCE-001.json",
+        "parity/reports/WF-20261119-NATIVE-FRAME-ALL-001.json"
       ],
       "scenarios": [
         {
@@ -111,6 +112,15 @@
           },
           "initial_conditions": "Actual native macOS app, read-only original Harbor sample, paused in its rest arrangement. Choose a fresh owned PNG file destination.",
           "expected_outcomes": "A decodable RGBA8 PNG of the native client, with sRGB as its only ancillary chunk. Its dimensions match the actual app confirmation. Editable project bytes, visible revision and rest state stay unchanged. The native child exits normally."
+        },
+        {
+          "id": "UI-NATIVE-FRAME-ALL-001",
+          "path": "parity/scenarios/UI-NATIVE-FRAME-ALL-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
+          },
+          "initial_conditions": "Harbor revision 23 in the Apple Silicon studio at 1640 \u00d7 1000 pixels.",
+          "expected_outcomes": "Both outlines are visible after Frame all. The 3D and Properties pixels, rest state, revision and editable bytes are preserved."
         }
       ],
       "comparison_criteria": {
@@ -3751,6 +3761,19 @@
             "parity/reports/artifacts/native-harbor-workflow-20261118/undo.weftforge": "972be11ddb06d5beb3abb0b401fe0be15b398d202d3ecf57f81c3104540f049e"
           },
           "path": "parity/reports/WF-20261118-HARBOR-NATIVE-AUTHORING-REOPEN-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-FRAME-ALL-001",
+          "commit": "d675e1a12d2f3019b15056021e2719d02ed260da",
+          "timestamp": "2026-11-19T02:48:26.805027Z",
+          "platform": "macOS Apple Silicon native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-frame-all-20261119/NATIVE-FRAME.json": "278aa111995b0635d7bbfe28c5de487a5e8ff56ef3a65183d8f568debc2bddc4",
+            "parity/reports/artifacts/native-frame-all-20261119/before-frame-all.png": "6ff218d18221754419d439f0deb518cc951cc04fcac0d0ce6116ce1ba38c1876",
+            "parity/reports/artifacts/native-frame-all-20261119/after-frame-all.png": "36427436c784f12c4fec6477b3a0cfc66c192e40c6e8636d07e637e1d34586de"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-FRAME-ALL-001.json"
         }
       ],
       "known_gaps": [
@@ -3766,13 +3789,14 @@
         "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This was the source checkpoint at publication; its declared full scope is now stale after the constructor change, with original outcomes unchanged. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen.",
         "At actual f6144bce, the constructor retains numeric helpers/ranges/field order and shared authoring paths while aligning Width/Height/Position X/Y metre labels and accessibility associations. Source checks pass 459/32, formatting, strict Clippy and native/CLI builds across two separately bound invocations; the first disk-floor stop and 59 partial ok lines remain failed/incomplete. Native constructor appearance, full workflow, contact quality, reference, full feature and platform acceptance remain open. The isolated failed contact-recovery prototype is not part of this source.",
         "Actual a70c0df0 clean xtask and optimized native/CLI builds passed as separate D invocations. The 472-test source sequence belongs to f30c588d; unchanged source91 are explicit equivalence only. Native workflow and full feature/reference acceptance remain pending; runtime numerical quality is separately failed.",
-        "Native File-menu PNG P003 saved and independently decoded 1640 \u00d7 1000 on the H renderer. The visible document revision, rest state and project bytes were unchanged. Previous P001/P002 harness stops remain recorded. Full workspace, lighting, other backends, cross-platform and reference acceptance are still open."
+        "Native File-menu PNG P003 saved and independently decoded 1640 \u00d7 1000 on the H renderer. The visible document revision, rest state and project bytes were unchanged. Previous P001/P002 harness stops remain recorded. Full workspace, lighting, other backends, cross-platform and reference acceptance are still open.",
+        "Frame all has an original Harbor native toolbar and workspace capture check at one window size. Broader viewport, selection, layout and reference workflows remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b"
       }
@@ -47120,7 +47144,8 @@
       ],
       "reference_observation_status": "unobserved",
       "evidence_ids": [
-        "parity/reports/WF-20261118-WORKSPACE-PNG-INTEGRATED-SOURCE-001.json"
+        "parity/reports/WF-20261118-WORKSPACE-PNG-INTEGRATED-SOURCE-001.json",
+        "parity/reports/WF-20261119-NATIVE-FRAME-ALL-001.json"
       ],
       "scenarios": [
         {
@@ -47283,17 +47308,31 @@
             "parity/reports/artifacts/native-harbor-fabric-20261118/workspace.png": "22495011e70f47d903b5cde8ffd70af4aec24224ec6c403d9dec66f06147d0fb"
           },
           "path": "parity/reports/WF-20261118-HARBOR-NATIVE-FABRIC-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-FRAME-ALL-001",
+          "commit": "d675e1a12d2f3019b15056021e2719d02ed260da",
+          "timestamp": "2026-11-19T02:48:26.805027Z",
+          "platform": "macOS Apple Silicon native studio",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-frame-all-20261119/NATIVE-FRAME.json": "278aa111995b0635d7bbfe28c5de487a5e8ff56ef3a65183d8f568debc2bddc4",
+            "parity/reports/artifacts/native-frame-all-20261119/before-frame-all.png": "6ff218d18221754419d439f0deb518cc951cc04fcac0d0ce6116ce1ba38c1876",
+            "parity/reports/artifacts/native-frame-all-20261119/after-frame-all.png": "36427436c784f12c4fec6477b3a0cfc66c192e40c6e8636d07e637e1d34586de"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-FRAME-ALL-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "Native File-menu PNG P003 saved and independently decoded 1640 \u00d7 1000 on the H renderer. The visible document revision, rest state and project bytes were unchanged. Previous P001/P002 harness stops remain recorded. Full workspace, lighting, other backends, cross-platform and reference acceptance are still open."
+        "Native File-menu PNG P003 saved and independently decoded 1640 \u00d7 1000 on the H renderer. The visible document revision, rest state and project bytes were unchanged. Previous P001/P002 harness stops remain recorded. Full workspace, lighting, other backends, cross-platform and reference acceptance are still open.",
+        "Native workspace PNG captures after Frame all verify preserved 3D pixels and standard sRGB metadata. Full rendering, lighting and presentation contracts remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "ANIM-001",

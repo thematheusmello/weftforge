@@ -1,3 +1,12 @@
+# Harbor Frame all preview — 19 November 2026
+
+The Apple Silicon studio reopened Harbor revision 23 and saved two
+1640 × 1000 PNGs from the File menu. **Frame all** brought both complete
+pattern outlines into view. Independent decoding found 95,256 changed RGB
+pixels, all inside the 2D canvas. The 3D and Properties pixels matched exactly.
+The editable file was preserved and the studio closed normally.
+[Framed workspace](parity/reports/artifacts/native-frame-all-20261119/after-frame-all.png) · [Native report](parity/reports/WF-20261119-NATIVE-FRAME-ALL-001.json).
+
 # Debian native keyboard check — 19 November 2026
 
 The Debian 13.7 ARM64 package showed **Commands Ctrl+K** in its top bar.
