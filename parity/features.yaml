@@ -62705,7 +62705,8 @@
         "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json",
         "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json",
         "parity/reports/WF-20261119-PACKAGER-NOTICES-001.json",
-        "parity/reports/WF-20261119-APPLE-SILICON-PACKAGE-NOTICES-001.json"
+        "parity/reports/WF-20261119-APPLE-SILICON-PACKAGE-NOTICES-001.json",
+        "parity/reports/WF-20261119-APPLE-SILICON-PINNED-CARGO-NOTICES-001.json"
       ],
       "scenarios": [
         {
@@ -62857,6 +62858,20 @@
             "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.json": "00d5ffb9d6becbbab9b9c9b56ed7f40dfc6c73f3b897e0ec9d7179bc328aaf50"
           },
           "path": "parity/reports/WF-20261119-APPLE-SILICON-PACKAGE-NOTICES-001.json"
+        },
+        {
+          "id": "WF-20261119-APPLE-SILICON-PINNED-CARGO-NOTICES-001",
+          "commit": "ce906dd547c2ef1f9648a5a5f9f292374a141a73",
+          "timestamp": "2026-11-19T09:22:17.844911Z",
+          "platform": "Apple Silicon macOS offline package with independent notice and executable hash audit",
+          "artifact_hashes": {
+            "parity/reports/artifacts/apple-silicon-pinned-cargo-notices-20261119/LICENSE-MANIFEST.json": "973bbe0ae18368683dc2f3d91d217f004ecba438d8151f9fadecc9897ab96337",
+            "parity/reports/artifacts/apple-silicon-pinned-cargo-notices-20261119/CATALOG-FILE-CHECK.json": "e9b41f415c8b679f12879ee579b55bbf1569e82a1d370906d33381ebf947740c",
+            "parity/reports/artifacts/apple-silicon-pinned-cargo-notices-20261119/check_catalog_package.py": "0d0ce0e6812be676abe96ca745988546b2e03200dd023c7293dfde44039235cc",
+            "parity/reports/artifacts/apple-silicon-pinned-cargo-notices-20261119/PACKAGER-RUN.json": "1c5fb64b0de9e8d33e59ef736073dee0f46f5449f500ed2b82e0980fdc9c6c98",
+            "parity/reports/artifacts/apple-silicon-package-notices-20261119/LICENSE-MANIFEST.json": "df72769eafcf473b099b035ad85017f49577ff978ef3a595f3f45cb4356d9588"
+          },
+          "path": "parity/reports/WF-20261119-APPLE-SILICON-PINNED-CARGO-NOTICES-001.json"
         }
       ],
       "known_gaps": [
@@ -62865,7 +62880,8 @@
         "The updated ARM64 Debian package has a native X11 Ctrl+K and Escape smoke check with software rendering. Full platform accessibility, Windows and signed cross-platform builds remain open.",
         "The exact offline Debian 13.7 ARM64 JPEG package launched under X11/Vulkan software rendering and agreed with Apple Silicon on the two packaged CLI/MCP JPEG exports. The native Linux save chooser, hardware GPU, Windows, signing and complete distribution notices remain open.",
         "Source fixtures check target-scoped notice collection, standalone app notice paths, executable hashes and interrupted staging recovery. Actual release notice closure, platform audits and signing remain open.",
-        "The actual Apple Silicon release bundle opened Harbor. All recorded binary and 258 notice file hashes passed, and the packaged CLI reproduced both prior JPEGs. Resolve the 31 flagged runtime notices, audit platform runtimes and finish signed builds."
+        "The actual Apple Silicon release bundle opened Harbor. All recorded binary and 258 notice file hashes passed, and the packaged CLI reproduced both prior JPEGs. Resolve the 31 flagged runtime notices, audit platform runtimes and finish signed builds.",
+        "A second offline Apple Silicon package retained all runtime libraries and executable bytes. Ten pinned files supply 18 missing code licenses. Eleven declaration-only and two absent code texts remain open, along with other platform audits and signing."
       ],
       "contradictions": [],
       "blockers": [

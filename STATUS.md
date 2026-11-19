@@ -1,3 +1,19 @@
+# Pinned license texts in the Apple Silicon package — 19 November 2026
+
+An offline rebuild included ten verified upstream texts for 29 of the 165
+emitted libraries. The code license entries awaiting text fell from 31 to 13.
+Eleven libraries carry their upstream licensing declarations and two lack
+dedicated texts at the pinned revisions. The audit checked all 268 Cargo
+notice files and the standalone app copies. Both packaged executables
+matched the previously launched release byte for byte.
+[Package audit](parity/reports/WF-20261119-APPLE-SILICON-PINNED-CARGO-NOTICES-001.json).
+
+Formatting, 514 workspace tests, strict Clippy and the release packager
+passed. A fixture corrupted a required text without changing its size and
+the previous package stayed in place. Review the 13 outstanding notices
+and validate native Linux and Windows desktop workflows. Signing remains
+open. GitHub Actions and automated Pages deployments stay disabled.
+
 # Apple Silicon release package — 19 November 2026
 
 The offline release package opened Harbor revision 26 in the native
