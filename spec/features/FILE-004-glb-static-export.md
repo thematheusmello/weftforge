@@ -1,9 +1,15 @@
-# FILE-004 static GLB export
+# FILE-004 static glTF exports
 
 The desktop File menu and Command search export the current cloth surface as
 binary glTF 2.0. Before simulation, they use the arranged rest mesh. The CLI
 `export-glb` and MCP `project_export_glb` export the rest surface. CLI
 `simulate` and a successful `fit` use GLB when the output extension is `.glb`.
+
+**Export glTF**, CLI `export-gltf` and MCP `project_export_gltf` use the same
+scene and geometry as GLB. The JSON form contains one embedded Base64 buffer
+with media type `application/octet-stream`. Desktop exports select the rest or
+current surface. CLI and MCP export the rest mesh, with `.gltf` also available
+for CLI simulation and successful fitting output.
 
 Each authored piece becomes a named mesh and scene node. Positions use metres
 and Y up, and triangle winding and material assignments follow the selected
@@ -26,7 +32,12 @@ Require index equality, unit normals within `1e-6` and position error below
 `1e-6` m after float32 conversion. The advanced output must contain moved
 vertices and preserve the editable project bytes.
 
-GLB import, JSON glTF, avatars, rigging, textures, animation, thickness and
+Decode the JSON glTF buffer independently and compare it to the GLB binary
+chunk. The JSON scene must match after removal of the embedded buffer URI.
+Validate both native outputs and retain exact bytes for the original editable
+project. Both containers share the same stale-mesh and float32 checks.
+
+glTF import, avatars, rigging, textures, animation, thickness and
 welding remain open. This WeftForge implementation check leaves the reference
 runtime comparison open.
 

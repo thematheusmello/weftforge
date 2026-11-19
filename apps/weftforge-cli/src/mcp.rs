@@ -400,6 +400,7 @@ fn call(line: &[u8]) -> Result<Value, String> {
             | "project_export_svg"
             | "project_export_obj"
             | "project_export_glb"
+            | "project_export_gltf"
             | "project_export_dxf"
     ) {
         return Err(format!("Unknown tool: {}", header.name));
@@ -460,7 +461,10 @@ fn call(line: &[u8]) -> Result<Value, String> {
                     Path::new(&args.dxf),
                 )
             }
-            "project_export_svg" | "project_export_obj" | "project_export_glb"
+            "project_export_svg"
+            | "project_export_obj"
+            | "project_export_glb"
+            | "project_export_gltf"
             | "project_export_dxf" => {
                 let args: FileArgs = arguments(line)?;
                 super::distinct(&args.input, &args.output)?;
@@ -479,6 +483,12 @@ fn call(line: &[u8]) -> Result<Value, String> {
                             .mesh()?
                             .export_glb(&project, Path::new(&args.output))?;
                         ("rest_glb", "m", "Y")
+                    }
+                    "project_export_gltf" => {
+                        project
+                            .mesh()?
+                            .export_gltf(&project, Path::new(&args.output))?;
+                        ("rest_gltf", "m", "Y")
                     }
                     _ => {
                         project.mesh()?.export_obj(Path::new(&args.output))?;
@@ -810,6 +820,7 @@ fn tools() -> Vec<Value> {
         ("project_export_svg", "Export one compound evenodd path per piece with closed exterior and hole subpaths, plus authored perpendicular notch markers, at physical millimetre scale with inverted SVG Y. Internal lines are omitted; holes and notch line elements cannot yet be reimported. Refuse replacement of the source or native project destinations.", files.clone(), false),
         ("project_export_obj", "Build and export the actual rest surface, including holes, in metres, Y-up, with material-space metre UVs and source revision; no simulation or annotation line primitives. Refuse replacement of the source or native project destinations.", files.clone(), false),
         ("project_export_glb", "Build and export the actual rest surface as one static glTF 2.0 binary, in metres and Y-up, with named pieces, per-piece fabric tint, normals and UVs. Refuse replacement of source or native project destinations.", files.clone(), false),
+        ("project_export_gltf", "Build and export the actual rest surface as one static glTF 2.0 JSON document with an embedded buffer, in metres and Y-up, with named pieces, per-piece fabric tint, normals and UVs. Refuse replacement of source or native project destinations.", files.clone(), false),
         ("project_export_dxf", "Export authored exterior pattern boundaries as R2000 DXF LINE/SPLINE geometry in millimetres, without 3D placement. DXF v1 refuses any project with holes or authored notches before writing output. Internal lines are omitted; sewing, materials, grain and editable annotations require the native project. Refuse replacement of source or native project destinations.", files, false),
     ].into_iter().map(|(name,description,input,read_only)|json!({"name":name,"description":description,"inputSchema":input,"annotations":{"readOnlyHint":read_only,"destructiveHint":!read_only,"openWorldHint":false}})).collect()
 }

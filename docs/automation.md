@@ -59,7 +59,7 @@ its input. Concurrent desktop/file writers are not coordinated by this adapter.
 
 The official specifications were checked on 2026-11-13. The adapter supports the
 current **2026-07-28** request metadata profile and the **2025-11-25** legacy
-initialization profile. They share the ten tools below. Only `tools: {}` is
+initialization profile. They share the eleven tools below. Only `tools: {}` is
 advertised; no resources, prompts, subscriptions, tasks, logging, sampling, or
 elicitation capabilities are advertised.
 
@@ -119,6 +119,7 @@ are rejected. The tool names and arguments are:
 | `project_export_svg` | `input`, `output` | Paths, `source_revision`, `kind: "authored_svg"`, `length_unit: "mm"`, pattern/SVG axis convention |
 | `project_export_obj` | `input`, `output` | Paths, `source_revision`, `kind: "rest_obj"`, `length_unit: "m"`, `up: "Y"` |
 | `project_export_glb` | `input`, `output` | Paths, `source_revision`, `kind: "rest_glb"`, `length_unit: "m"`, `up: "Y"` |
+| `project_export_gltf` | `input`, `output` | Paths, `source_revision`, `kind: "rest_gltf"`, `length_unit: "m"`, `up: "Y"` |
 | `project_export_dxf` | `input`, `output` | Paths, `source_revision`, `kind: "authored_dxf"`, `length_unit: "mm"`, pattern U/V to XY axes, and boundary-only `scope` |
 
 Results include a text block containing the same JSON for older clients.
@@ -127,8 +128,9 @@ Its `project` uses the native writer's JSON number representation, including f32
 display colors and f64 authored values. For v6 files written by this version,
 parsed inspection and saved-project values agree exactly without changing stored
 numeric precision. Legacy-file inspection returns the migrated current model.
-GLB exports the static rest surface as one binary glTF file with named pieces,
-assigned fabric tints, normals and physical-scale UVs. See [format details](file-formats.md#export-semantics).
+The GLB and JSON glTF tools export the same static rest surface with named
+pieces, assigned fabric tints, normals and physical-scale UVs. The JSON file
+contains its mesh buffer in a data URL. [Format details](file-formats.md#export-semantics).
 DXF exports authored exterior curves from projects without holes or notches, independently of mesh resolution
 or 3D placement. Its [R2000 profile](../spec/features/FILE-005-dxf-pattern-export.md)
 preserves straight/cubic geometry and stable piece layers. Sewing, materials,

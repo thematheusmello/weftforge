@@ -1,3 +1,23 @@
+# Embedded JSON glTF export — 19 November 2026
+
+The File menu and Command search now export a single `.gltf` file with an
+embedded mesh buffer. CLI and MCP export the rest surface. CLI simulation and
+successful fitting select JSON glTF or GLB from the destination extension.
+
+On Apple Silicon, Harbor revision 23 produced byte-identical native and CLI
+JSON exports before and after one manual step. Both decoded scenes and mesh
+buffers matched the previously validated GLBs. Each Harbor export contains two
+named meshes, 654 vertices and 1172 triangles. A separate single-panel fit
+control passed all 181 states and wrote its `.gltf`. Khronos Validator found
+zero errors and warnings across the three files. The editable project stayed
+byte-identical and the studio closed normally.
+[Native and CLI evidence](parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json) · [Current studio preview](docs/studio-preview.md).
+
+Formatting, 500 workspace tests, strict Clippy and the studio and CLI builds
+passed. Next checks cover the changed Debian package, the complete Harbor fit,
+and comparison with the reference workflow. Import, avatars, textures and
+animation remain open. GitHub Actions and automated Pages stay disabled.
+
 # Harbor Frame all preview — 19 November 2026
 
 The Apple Silicon studio reopened Harbor revision 23 and saved two

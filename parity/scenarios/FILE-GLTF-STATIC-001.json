@@ -1,0 +1,12 @@
+{
+  "id": "FILE-GLTF-STATIC-001",
+  "status": "implementation_only",
+  "initial_conditions": "Harbor revision 23 in the native studio, distinct JSON/GLB destinations and a separate single-panel fit control.",
+  "actions": [
+    "Open Harbor and use File > Export glTF.",
+    "Press Step once, open Command search with Command-K, type Export glTF, and use Tab and Return.",
+    "Compare each saved glTF with the CLI and previously checked GLB. Validate all JSON outputs with the Khronos validator.",
+    "Run the standard fit and export for the independent single horizontal panel."
+  ],
+  "expected_outcomes": "Both Harbor JSON exports match the CLI and contain the same scene and decoded buffer as the checked GLBs. The original project bytes are retained. The control exports after all 181 states pass."
+}

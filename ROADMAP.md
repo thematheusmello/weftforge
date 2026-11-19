@@ -77,6 +77,10 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    recorded reference case.
    [Native Fabric case](parity/reports/WF-20261118-HARBOR-NATIVE-FABRIC-001.json).
    [Native simulated OBJ case](parity/reports/WF-20261118-HARBOR-NATIVE-SIMULATED-OBJ-001.json).
+   The current studio also exports the rest and stepped Harbor surfaces as
+   embedded JSON glTF. Both matched the validated GLB scene and mesh data.
+   A separate single-panel fit checked the successful JSON output route.
+   [Native glTF case](parity/reports/WF-20261119-NATIVE-GLTF-JSON-001.json).
 4. Work through Gates 2–4 below: professional editing/construction and fitting,
    fabric/contact robustness, avatars/animation/materials/rendering and output.
    Run reference discovery and comparison alongside implementation throughout.
@@ -92,7 +96,9 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    shirt in OBJ, SVG and GLB.
    [Debian ARM64 package check](parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json).
    The updated package shows Ctrl+K and opens and closes Command search with
-   native X11 keyboard input. [Current Debian check](parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json).
+   native X11 keyboard input on the earlier build. Repeat that check and verify
+   JSON glTF on the current Debian package.
+   [Previous Debian check](parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json).
    Keep GitHub Actions disabled throughout development. Re-enable it only after
    the complete project is finished, as the user requested.
 
