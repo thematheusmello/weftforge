@@ -4920,7 +4920,8 @@
         "parity/reports/WF-20261118-CONTACT-RECOVERY-D-TOOLING-001.json",
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-SOURCE-001.json",
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json",
-        "parity/reports/WF-20261119-PLATFORM-COMMAND-SHORTCUT-001.json"
+        "parity/reports/WF-20261119-PLATFORM-COMMAND-SHORTCUT-001.json",
+        "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json"
       ],
       "scenarios": [
         {
@@ -4940,6 +4941,15 @@
           },
           "initial_conditions": "Harbor revision 23 in the native macOS studio; fixed simulated macOS, Linux and Windows input contexts.",
           "expected_outcomes": "Accessible platform shortcut labels, keyboard-open and Escape-dismiss behavior, and unchanged editable project bytes."
+        },
+        {
+          "id": "UI-LINUX-X11-SHORTCUT-001",
+          "path": "parity/scenarios/UI-LINUX-X11-SHORTCUT-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/original-shirt.weftforge": "4dd6b23e0e3d7cbefcb92fd6a1d53bb7d36f8e45f1ee4a3887fab826c051981b"
+          },
+          "initial_conditions": "Packaged Debian ARM64 studio on the original shirt, focused X11 window with Vulkan software rendering.",
+          "expected_outcomes": "The toolbar shows Ctrl+K. The palette appears after Ctrl+K and disappears after Escape. The normal close exits successfully and preserves the editable file."
         }
       ],
       "comparison_criteria": {
@@ -5883,6 +5893,25 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
           },
           "path": "parity/reports/WF-20261119-PLATFORM-COMMAND-SHORTCUT-001.json"
+        },
+        {
+          "id": "WF-20261119-LINUX-NATIVE-SHORTCUT-001",
+          "commit": "6935598176fe7d8a42c7a44fdaa05421e7ebee9a",
+          "timestamp": "2026-11-19T02:27:12.391337Z",
+          "platform": "Debian 13.7 ARM64 X11, Vulkan Mesa llvmpipe",
+          "artifact_hashes": {
+            "parity/reports/artifacts/linux-arm64-package-20261119/Khronos-validation.json": "43e6404e3a5e683d0482a65015d01c674e7372a204bbe82dd910815f71721a2a",
+            "parity/reports/artifacts/linux-arm64-package-20261119/glb-obj-comparison.json": "aa7502472b24fb6f92acc659824837926ba1415f8b05c210c6c4ea4f4eb9cf0e",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/original-shirt.weftforge": "4dd6b23e0e3d7cbefcb92fd6a1d53bb7d36f8e45f1ee4a3887fab826c051981b",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/patterns.svg": "680487ebdb939454ad3c82ca9390916af78d871f7b19e0066f5740f7c52df472",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/rest.glb": "4c8295c7a5d5ef53f2f89716b56faccd60d2331bef3a75d0bd660f0a648e9771",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/rest.obj": "ead7b6b43b2aac01bfdefaeef9adc44ceb42a2892941d80076aad25d2662e1a7",
+            "parity/reports/artifacts/linux-shortcut-20261119/LINUX-SHORTCUT.json": "b308c8b9cf3a4e5e20161e3c9ff98f3b95bd7ef76e1881abbd6886eff788b0a1",
+            "parity/reports/artifacts/linux-shortcut-20261119/palette-dismissed.png": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3",
+            "parity/reports/artifacts/linux-shortcut-20261119/palette-open.png": "84d47b117248218bbe94d8c85abfc7d42b4068868fcd5625c5e2f5523c53d9d2",
+            "parity/reports/artifacts/linux-shortcut-20261119/workspace.png": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3"
+          },
+          "path": "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json"
         }
       ],
       "known_gaps": [
@@ -5892,7 +5921,7 @@
         "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This was the source checkpoint at publication; its declared full scope is now stale after the constructor change, with original outcomes unchanged. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen.",
         "At actual f6144bce, the constructor retains numeric helpers/ranges/field order and shared authoring paths while aligning Width/Height/Position X/Y metre labels and accessibility associations. Source checks pass 459/32, formatting, strict Clippy and native/CLI builds across two separately bound invocations; the first disk-floor stop and 59 partial ok lines remain failed/incomplete. Native constructor appearance, full workflow, contact quality, reference, full feature and platform acceptance remain open. The isolated failed contact-recovery prototype is not part of this source.",
         "Actual a70c0df0 clean xtask and optimized native/CLI builds passed as separate D invocations. The 472-test source sequence belongs to f30c588d; unchanged source91 are explicit equivalence only. Native workflow and full feature/reference acceptance remain pending; runtime numerical quality is separately failed.",
-        "Command search label and behavior have native Apple Silicon and simulated macOS/Linux/Windows checks. Native Linux and Windows keyboard, customizable shortcuts and full reference behavior remain open."
+        "Command search has native macOS and Debian ARM64 X11 shortcut checks and interface tests for macOS, Linux and Windows. Native Windows keyboard, customizable shortcuts and the complete reference contract remain open."
       ],
       "contradictions": [],
       "blockers": [
@@ -50641,7 +50670,8 @@
         "spec/features/FILE-004-glb-static-export.md",
         "parity/reports/WF-20261119-NATIVE-GLB-STATIC-001.json",
         "parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json",
-        "parity/reports/WF-20261119-PLATFORM-COMMAND-SHORTCUT-001.json"
+        "parity/reports/WF-20261119-PLATFORM-COMMAND-SHORTCUT-001.json",
+        "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json"
       ],
       "scenarios": [
         {
@@ -50726,6 +50756,25 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
           },
           "path": "parity/reports/WF-20261119-PLATFORM-COMMAND-SHORTCUT-001.json"
+        },
+        {
+          "id": "WF-20261119-LINUX-NATIVE-SHORTCUT-001",
+          "commit": "6935598176fe7d8a42c7a44fdaa05421e7ebee9a",
+          "timestamp": "2026-11-19T02:27:12.391337Z",
+          "platform": "Debian 13.7 ARM64 X11, Vulkan Mesa llvmpipe",
+          "artifact_hashes": {
+            "parity/reports/artifacts/linux-arm64-package-20261119/Khronos-validation.json": "43e6404e3a5e683d0482a65015d01c674e7372a204bbe82dd910815f71721a2a",
+            "parity/reports/artifacts/linux-arm64-package-20261119/glb-obj-comparison.json": "aa7502472b24fb6f92acc659824837926ba1415f8b05c210c6c4ea4f4eb9cf0e",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/original-shirt.weftforge": "4dd6b23e0e3d7cbefcb92fd6a1d53bb7d36f8e45f1ee4a3887fab826c051981b",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/patterns.svg": "680487ebdb939454ad3c82ca9390916af78d871f7b19e0066f5740f7c52df472",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/rest.glb": "4c8295c7a5d5ef53f2f89716b56faccd60d2331bef3a75d0bd660f0a648e9771",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/rest.obj": "ead7b6b43b2aac01bfdefaeef9adc44ceb42a2892941d80076aad25d2662e1a7",
+            "parity/reports/artifacts/linux-shortcut-20261119/LINUX-SHORTCUT.json": "b308c8b9cf3a4e5e20161e3c9ff98f3b95bd7ef76e1881abbd6886eff788b0a1",
+            "parity/reports/artifacts/linux-shortcut-20261119/palette-dismissed.png": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3",
+            "parity/reports/artifacts/linux-shortcut-20261119/palette-open.png": "84d47b117248218bbe94d8c85abfc7d42b4068868fcd5625c5e2f5523c53d9d2",
+            "parity/reports/artifacts/linux-shortcut-20261119/workspace.png": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3"
+          },
+          "path": "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json"
         }
       ],
       "known_gaps": [
@@ -61444,7 +61493,8 @@
       ],
       "reference_observation_status": "unobserved",
       "evidence_ids": [
-        "parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json"
+        "parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json",
+        "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json"
       ],
       "scenarios": [
         {
@@ -61498,18 +61548,37 @@
             "parity/reports/artifacts/linux-arm64-package-20261119/workspace.png": "e81b8868ac1d01c90da96af122712a1c8b44ffa6876949881339cf318088a13b"
           },
           "path": "parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json"
+        },
+        {
+          "id": "WF-20261119-LINUX-NATIVE-SHORTCUT-001",
+          "commit": "6935598176fe7d8a42c7a44fdaa05421e7ebee9a",
+          "timestamp": "2026-11-19T02:27:12.391337Z",
+          "platform": "Debian 13.7 ARM64 X11, Vulkan Mesa llvmpipe",
+          "artifact_hashes": {
+            "parity/reports/artifacts/linux-arm64-package-20261119/Khronos-validation.json": "43e6404e3a5e683d0482a65015d01c674e7372a204bbe82dd910815f71721a2a",
+            "parity/reports/artifacts/linux-arm64-package-20261119/glb-obj-comparison.json": "aa7502472b24fb6f92acc659824837926ba1415f8b05c210c6c4ea4f4eb9cf0e",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/original-shirt.weftforge": "4dd6b23e0e3d7cbefcb92fd6a1d53bb7d36f8e45f1ee4a3887fab826c051981b",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/patterns.svg": "680487ebdb939454ad3c82ca9390916af78d871f7b19e0066f5740f7c52df472",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/rest.glb": "4c8295c7a5d5ef53f2f89716b56faccd60d2331bef3a75d0bd660f0a648e9771",
+            "parity/reports/artifacts/linux-arm64-package-20261119/runtime/rest.obj": "ead7b6b43b2aac01bfdefaeef9adc44ceb42a2892941d80076aad25d2662e1a7",
+            "parity/reports/artifacts/linux-shortcut-20261119/LINUX-SHORTCUT.json": "b308c8b9cf3a4e5e20161e3c9ff98f3b95bd7ef76e1881abbd6886eff788b0a1",
+            "parity/reports/artifacts/linux-shortcut-20261119/palette-dismissed.png": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3",
+            "parity/reports/artifacts/linux-shortcut-20261119/palette-open.png": "84d47b117248218bbe94d8c85abfc7d42b4068868fcd5625c5e2f5523c53d9d2",
+            "parity/reports/artifacts/linux-shortcut-20261119/workspace.png": "d680f3ddaefdbe4f0136f59a8ab37ccb0a22a0f5ce909671da0921e7f5d125b3"
+          },
+          "path": "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "The unsigned ARM64 package ran on Debian 13.7 under X11/Vulkan software rendering. Windows, Linux x86-64, Wayland, GPU hardware, platform accessibility, signing and redistributable release acceptance remain open.",
-        "The recorded Debian package predates the platform shortcut label change. A native Linux keyboard check on the updated build remains open."
+        "The updated ARM64 Debian package has a native X11 Ctrl+K and Escape smoke check with software rendering. Full platform accessibility, Windows and signed cross-platform builds remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "APP-003",
