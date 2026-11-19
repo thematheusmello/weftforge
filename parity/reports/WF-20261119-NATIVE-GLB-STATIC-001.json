@@ -112,5 +112,6 @@
     "docs/file-formats.md",
     "spec/features/FILE-004-glb-static-export.md"
   ],
-  "freshness": "current"
+  "freshness": "stale",
+  "freshness_reason": "The scoped app source changed in 0830b834 and 54456690. The original output proof remains attributable to its own build. WF-20261119-PLATFORM-COMMAND-SHORTCUT-001 verifies the same two GLB exports on the updated build."
 }

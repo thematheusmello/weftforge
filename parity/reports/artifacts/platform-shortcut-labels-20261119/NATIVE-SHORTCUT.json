@@ -1,0 +1,54 @@
+{
+  "checked_source_commit": "54456690c60b44696c7d0da551211dab179a329d",
+  "native_execution_source_commit": "0830b834e6b7510f50fb134270e57af84fddc56c",
+  "executables_rebuilt_and_compared_byte_for_byte": true,
+  "studio_sha256": "89cdec8b0f5a62454621f8b7b57847909af6311e3d2a2dc48a69c184b827a914",
+  "cli_sha256": "e863e5419ae64c7339d646eea9b65e005afe4f1c9f26d885b48ab4154bdfab1b",
+  "platform": "Apple Silicon macOS",
+  "input": "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge",
+  "input_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+  "editable_revision": 23,
+  "vertices": 654,
+  "input_preserved": true,
+  "native_observations": {
+    "toolbar_accessible_label": "Commands \u2318K",
+    "edit_menu_display_label": "Commands \u2318K",
+    "command_k": "Opened Command search with focus in its query.",
+    "escape": "Dismissed the palette before the Edit menu was opened.",
+    "step": "One completed Manual step at gravity -9.81 m/s\u00b2 with 0.017 s displayed.",
+    "exports": {
+      "rest": {
+        "artifact": "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb",
+        "bytes": 37188,
+        "sha256": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a",
+        "native_matches_existing_validated_glb": true,
+        "action": "File > Export GLB"
+      },
+      "stepped": {
+        "artifact": "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb",
+        "bytes": 37188,
+        "sha256": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7",
+        "native_matches_existing_validated_glb": true,
+        "action": "Step, then Command+K, type Export GLB, Tab, Return"
+      }
+    },
+    "save_note": "An overwrite prompt was cancelled. Fresh destinations were used; the prior rest export digest was confirmed."
+  },
+  "source_checks": {
+    "workspace_tests_passed": 499,
+    "strict_all_targets_clippy": "passed",
+    "fmt": "passed",
+    "simulated_context_os": [
+      "macOS",
+      "Linux",
+      "Windows"
+    ],
+    "simulated_toolbar_edit_labels_and_key_route": "passed",
+    "parallel_capture_tests_passed": 100
+  },
+  "post_case_cleanup": {
+    "command_q": true,
+    "owned_process_absent": true
+  },
+  "recorded_at_utc": "2026-11-19T02:05:08.165705Z"
+}

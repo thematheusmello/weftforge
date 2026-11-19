@@ -1,0 +1,10 @@
+{
+  "id": "UI-COMMAND-SHORTCUT-PLATFORM-001",
+  "status": "implementation_only",
+  "initial_conditions": "Harbor revision 23 in the native macOS studio; fixed simulated macOS, Linux and Windows input contexts.",
+  "actions": [
+    "Observe the native toolbar and Edit menu. Open Command search using the OS command modifier and K, and dismiss using Escape.",
+    "Verify the toolbar and menu accessibility labels and keyboard behavior in each simulated OS context."
+  ],
+  "expected_outcomes": "Accessible platform shortcut labels, keyboard-open and Escape-dismiss behavior, and unchanged editable project bytes."
+}

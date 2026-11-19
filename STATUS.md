@@ -1,3 +1,16 @@
+# Command search shortcuts — 19 November 2026
+
+The top bar and Edit menu show ⌘K on macOS and Ctrl+K on Linux and Windows.
+The application tests checked both accessibility labels and keyboard activation
+in all three OS contexts. The Apple Silicon studio opened search with ⌘K and
+dismissed it with Escape. Its File menu and keyboard search reproduced the two
+validated Harbor GLBs byte for byte, before and after one manual step.
+[Native shortcut and GLB check](parity/reports/WF-20261119-PLATFORM-COMMAND-SHORTCUT-001.json).
+
+Parallel workspace capture tests use separate temporary directories after a
+clock-based collision. All 499 workspace tests and 100 repeated capture tests
+passed. Native Linux and Windows keyboard checks remain open.
+
 # Debian ARM64 packaging — 19 November 2026
 
 The packaged Debian 13.7 ARM64 studio opened the original two-panel shirt
