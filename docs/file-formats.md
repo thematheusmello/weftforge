@@ -23,7 +23,7 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 | JSON glTF 2.0 (`.gltf`) | No | Yes, embedded buffer | Mesh only | Static | Single JSON file with the same named meshes, fabric tints, normals and UVs as binary glTF |
 | DXF R2000 | Bounded additive import | Yes, projects without holes or authored notches | Editable exterior boundaries with layer names | Static 2D | Holed/notched projects refuse before staging. Strict existing ASCII `LINE`/clamped cubic `SPLINE` profile, mm and `WF_PIECE` layers; no sewing, materials, grain, internal lines, 3D placement, apparel conventions or print layout |
 | Pattern PDF 1.7 | — | A4 and US Letter tiles at 1:1 | Authored curves and marks as vector paths | Static 2D print | Piece IDs and bookmarks, 10 mm overlap, 100 mm scale check; editable relationships stay in the project |
-| Pattern PNG | — | Physical crop with pixel density | Rasterized authored curves and marks | Static 2D | White paper, optional contours, internal lines and notches, integer pixels/metre metadata |
+| Pattern PNG | — | Physical crop with pixel density | Rasterized authored curves and marks | Static 2D | White paper, optional contours, internal lines, notches and grainline, integer pixels/metre metadata |
 | Animation/cache formats | No | No | None yet | None yet | Timeline, frame caches and export not implemented |
 | Marvelous Designer `.zprj` / `.zpac` | No | No | None | None | Separate FILE-006 research/compatibility workstream |
 
@@ -403,8 +403,10 @@ or set the crop in millimetres, centimetres, inches or pixels. The crop
 outline appears in the 2D pane. Choose the pixel density and the geometry
 to show. The dialog reports the resulting pixel dimensions. Pixel fields
 use the same integer density in pixels per metre that the image stores.
+Enable **Grainline** to draw an arrow in each piece's authored warp direction.
 
-The CLI reads the same typed options from a JSON file.
+The CLI reads the same typed options from a JSON file. The optional
+`grainline` switch defaults to off.
 
 ```bash
 weftforge-cli export-pattern-png garment.weftforge patterns.png snapshot.json
@@ -416,7 +418,8 @@ weftforge-cli export-pattern-png garment.weftforge patterns.png snapshot.json
   "pixels_per_inch": 150,
   "contours": true,
   "internal_lines": true,
-  "notches": true
+  "notches": true,
+  "grainline": true
 }
 ```
 

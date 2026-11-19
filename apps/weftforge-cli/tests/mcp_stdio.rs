@@ -3326,18 +3326,22 @@ fn pattern_png_cli_and_mcp_share_density_crop_and_validate_before_writing() {
     let request = json!({"crop_m":[[-0.01,-0.01],[0.11,0.09]],"pixels_per_inch":127,
                          "contours":true,"internal_lines":false,"notches":false});
     fs::write(&options, serde_json::to_vec(&request).unwrap()).unwrap();
-    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
-        .arg("export-pattern-png")
-        .arg(&input)
-        .arg(&cli_image)
-        .arg(&options)
-        .output()
-        .unwrap();
-    assert!(
-        cli.status.success(),
-        "{}",
-        String::from_utf8_lossy(&cli.stderr)
-    );
+    let export_cli = || {
+        let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+            .arg("export-pattern-png")
+            .arg(&input)
+            .arg(&cli_image)
+            .arg(&options)
+            .output()
+            .unwrap();
+        assert!(
+            cli.status.success(),
+            "{}",
+            String::from_utf8_lossy(&cli.stderr)
+        );
+        fs::read(&cli_image).unwrap()
+    };
+    let expected = export_cli();
     let mut server = Server::start();
     server.initialize("2025-11-25");
     let response = server.call(
@@ -3345,15 +3349,28 @@ fn pattern_png_cli_and_mcp_share_density_crop_and_validate_before_writing() {
         json!({"input":input,"output":mcp_image,"options":request}),
     );
     assert_eq!(success(&response)["size_px"], json!([600, 500]));
-    let expected = fs::read(&cli_image).unwrap();
+    assert!(success(&response)["options"].get("grainline").is_none());
     assert_eq!(fs::read(&mcp_image).unwrap(), expected);
+
+    let mut grainline = request.clone();
+    grainline["grainline"] = json!(true);
+    fs::write(&options, serde_json::to_vec(&grainline).unwrap()).unwrap();
+    let enabled = export_cli();
+    assert_ne!(enabled, expected);
+    let response = server.call(
+        "project_export_pattern_png",
+        json!({"input":input,"output":mcp_image,"options":grainline}),
+    );
+    assert_eq!(success(&response)["options"]["grainline"], true);
+    assert_eq!(fs::read(&mcp_image).unwrap(), enabled);
+
     let mut invalid = request;
     invalid["crop_m"] = json!([[0., 0.], [0., 1.]]);
     tool_error(&server.call(
         "project_export_pattern_png",
         json!({"input":input,"output":mcp_image,"options":invalid}),
     ));
-    assert_eq!(fs::read(mcp_image).unwrap(), expected);
+    assert_eq!(fs::read(mcp_image).unwrap(), enabled);
     assert_eq!(fs::read(input).unwrap(), source);
 }
 

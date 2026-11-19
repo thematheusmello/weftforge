@@ -122,7 +122,7 @@ are rejected. The tool names and arguments are:
 | `project_export_gltf` | `input`, `output` | Paths, `source_revision`, `kind: "rest_gltf"`, `length_unit: "m"`, `up: "Y"` |
 | `project_export_dxf` | `input`, `output` | Paths, `source_revision`, `kind: "authored_dxf"`, `length_unit: "mm"`, pattern U/V to XY axes, and boundary-only `scope` |
 | `project_export_pdf` | `input`, `output`, `paper` (`a4` or `letter`) | Paths, `source_revision`, `kind: "pattern_pdf"`, `paper`, `scale: 1` and `length_unit: "mm"` |
-| `project_export_pattern_png` | `input`, `output`, `options` | Paths, `source_revision`, `kind: "pattern_png"`, raster `size_px` and the supplied options |
+| `project_export_pattern_png` | `input`, `output`, `options` | Paths, `source_revision`, `kind: "pattern_png"`, raster `size_px` and export options |
 
 Results include a text block containing the same JSON for older clients.
 Inspection returns authoritative authored state without building a mesh.
@@ -140,7 +140,10 @@ grain, internal annotations, drape and native editing relationships require the 
 The PDF tool writes tiled sheets from editable curves and includes a scale
 check page. [Pattern PDF profile](../spec/features/FILE-005-pattern-print-pdf.md).
 The pattern PNG tool accepts metre bounds, pixels per inch and switches for
-contours, internal lines and notches. [Pattern PNG profile](../spec/features/FILE-005-pattern-png.md).
+contours, internal lines and notches. Set `grainline` to `true` in `options`
+to draw arrows in the authored warp directions. The response includes
+`grainline` when it is enabled.
+[Pattern PNG profile](../spec/features/FILE-005-pattern-png.md).
 Each successful execute creates a single document revision through
 `Editor::execute(Command::Transaction(commands))`, then uses native atomic save
 and recovery handling. Commands may refer to stable IDs returned by inspection.
