@@ -1,6 +1,6 @@
 use eframe::egui::{self, Color32, Pos2, Rect, Sense, Stroke, Vec2};
 use std::{
-    collections::BTreeMap,
+    collections::{BTreeMap, BTreeSet},
     fs,
     path::{Path, PathBuf},
     sync::{
@@ -11,8 +11,8 @@ use std::{
     time::{Duration, Instant, SystemTime, UNIX_EPOCH},
 };
 use weftforge_core::{
-    Command, Curve, CurveInterval, DxfPatternImport, Editor, Id, Material, Mesh, Notch, Placement,
-    PreparedOutlineOffset, Project, SewingDirection, SewingGroup, SewingSideByLength,
+    Command, Curve, CurveInterval, DxfPatternImport, Editor, Id, Material, Mesh, Notch, Piece,
+    Placement, PreparedOutlineOffset, Project, SewingDirection, SewingGroup, SewingSideByLength,
     SvgPatternImport,
 };
 use weftforge_sim::{Cloth, MaterialAxis, SimulationError, StepSettings};
@@ -985,6 +985,7 @@ struct Studio {
     playing: bool,
     selected: Option<Id>,
     selected_curve: Option<Id>,
+    hidden_pieces: BTreeSet<Id>,
     split_t: f64,
     tool: Tool,
     position_snap: PositionSnap,
@@ -1081,6 +1082,7 @@ impl Studio {
             playing: false,
             selected: None,
             selected_curve: None,
+            hidden_pieces: BTreeSet::new(),
             split_t: 0.5,
             tool: Tool::Select,
             position_snap: PositionSnap::Mm10,
@@ -1437,21 +1439,8 @@ impl Studio {
         clicked
     }
 
-    fn new_empty(&mut self, ctx: &egui::Context, focused: Option<egui::Id>) {
-        let pending_text = focused
-            .and_then(|id| ctx.data_mut(|data| data.get_temp::<String>(id)))
-            .is_some_and(|text| {
-                text.trim()
-                    .parse::<f64>()
-                    .ok()
-                    .is_none_or(|value| !value.is_finite())
-            });
-        let pending_commands = self
-            .draft
-            .as_ref()
-            .filter(|draft| draft.revision == self.editor.project.revision)
-            .is_some_and(|draft| !draft.commands(&self.editor.project).is_empty());
-        let gesture = !self.polygon.is_empty()
+    fn has_construction_gesture(&self) -> bool {
+        !self.polygon.is_empty()
             || self.seam_start.is_some()
             || !self.sewing_draft.a.is_empty()
             || !self.sewing_draft.b.is_empty()
@@ -1469,11 +1458,27 @@ impl Studio {
             || self.outline_offset.is_some()
             || self.free_sewing.is_some()
             || self.sewing_edit.is_some()
-            || self.pattern_import.is_some();
+            || self.pattern_import.is_some()
+    }
+
+    fn new_empty(&mut self, ctx: &egui::Context, focused: Option<egui::Id>) {
+        let pending_text = focused
+            .and_then(|id| ctx.data_mut(|data| data.get_temp::<String>(id)))
+            .is_some_and(|text| {
+                text.trim()
+                    .parse::<f64>()
+                    .ok()
+                    .is_none_or(|value| !value.is_finite())
+            });
+        let pending_commands = self
+            .draft
+            .as_ref()
+            .filter(|draft| draft.revision == self.editor.project.revision)
+            .is_some_and(|draft| !draft.commands(&self.editor.project).is_empty());
         let refusal = if pending_text || pending_commands || self.has_unfinished_properties_input()
         {
             Some("Apply or cancel the current property edit, then save before creating New Empty.")
-        } else if gesture {
+        } else if self.has_construction_gesture() {
             Some("Finish or cancel the current construction gesture before creating New Empty.")
         } else if self.dirty {
             Some("Save current edits before creating New Empty.")
@@ -1491,6 +1496,7 @@ impl Studio {
         self.job = None;
         self.last_job = None;
         self.editor = Editor::default();
+        self.hidden_pieces.clear();
         self.path = None;
         self.dirty = false;
         self.discard_on_exit = false;
@@ -1511,6 +1517,9 @@ impl Studio {
     }
 
     fn select(&mut self, ctx: &egui::Context, selected: Option<Id>) -> bool {
+        if selected.is_some_and(|id| self.hidden_pieces.contains(&id)) {
+            return false;
+        }
         if self.selected != selected {
             self.cancel_outline_offset(ctx);
         }
@@ -1550,6 +1559,9 @@ impl Studio {
     }
     fn select_curve(&mut self, ctx: &egui::Context, selected: Option<(Id, Id)>) {
         let piece = selected.map(|(piece, _)| piece);
+        if piece.is_some_and(|id| self.hidden_pieces.contains(&id)) {
+            return;
+        }
         let curve = selected.map(|(_, curve)| curve);
         if self.selected != piece || self.selected_curve != curve {
             self.cancel_outline_offset(ctx);
@@ -1658,6 +1670,16 @@ impl Studio {
             values: BTreeMap::new(),
         };
         self.needs_mesh = !self.editor.project.pieces.is_empty();
+        if !self.hidden_pieces.is_empty() {
+            self.hidden_pieces = self
+                .editor
+                .project
+                .pieces
+                .iter()
+                .map(|piece| piece.id)
+                .filter(|id| self.hidden_pieces.contains(id))
+                .collect();
+        }
         if !self.needs_mesh {
             self.mesh = None;
             self.reset_simulation();
@@ -1871,6 +1893,7 @@ impl Studio {
         match Project::load(&path).and_then(Editor::new) {
             Ok(editor) => {
                 self.editor = editor;
+                self.hidden_pieces.clear();
                 self.path = if recovered { None } else { Some(path) };
                 self.dirty = recovered;
                 self.selected = None;
@@ -2947,6 +2970,7 @@ impl Studio {
             .show(ui, |ui| {
                 pane_heading(ui, "Scene");
                 egui::Frame::new().inner_margin(6).show(ui, |ui| {
+                    self.scene_visibility_buttons(ui);
                     ui.weak(format!(
                         "{} pattern pieces",
                         self.editor.project.pieces.len()
@@ -2963,10 +2987,15 @@ impl Studio {
                                     egui::UiBuilder::new()
                                         .id(ui.make_persistent_id(("piece-row", piece.id))),
                                     |ui| {
+                                        let hidden = self.hidden_pieces.contains(&piece.id);
+                                        if hidden {
+                                            ui.disable();
+                                        }
+                                        let prefix = if hidden { "Hidden · " } else { "" };
                                         let selected = self.selected == Some(piece.id);
                                         let response = scene_row(
                                             ui,
-                                            &format!("{} · #{}", piece.name, piece.id),
+                                            &format!("{prefix}{} · #{}", piece.name, piece.id),
                                             selected,
                                             SceneItem::Pattern,
                                         )
@@ -3483,8 +3512,8 @@ impl Studio {
                     ui.small("Click boundaries in traversal order; next span uses the A/B interval above and B direction setting. Enter confirms a side; Delete removes the latest span; Escape cancels.");
                     let selecting_b=draft.selecting_b;
                     let b_range=if self.reversed { [self.intervals[1][1],self.intervals[1][0]] } else { self.intervals[1] };
-                    draft.numeric_fields[0]=sewing_span_controls(ui,&self.editor.project,"A",&mut draft.a,self.selected_curve,(!selecting_b).then_some(self.intervals[0]));
-                    draft.numeric_fields[1]=sewing_span_controls(ui,&self.editor.project,"B",&mut draft.b,self.selected_curve,selecting_b.then_some(b_range));
+                    draft.numeric_fields[0]=sewing_span_controls(ui,&self.editor.project,&self.hidden_pieces,"A",&mut draft.a,self.selected_curve,(!selecting_b).then_some(self.intervals[0]));
+                    draft.numeric_fields[1]=sewing_span_controls(ui,&self.editor.project,&self.hidden_pieces,"B",&mut draft.b,self.selected_curve,selecting_b.then_some(b_range));
                     ui.horizontal(|ui| {
                         confirm_side=ui.button(if selecting_b { "Create sewing group (Enter)" } else { "Confirm A (Enter)" }).clicked();
                         if ui.small_button("Delete last").clicked() { self.delete_sewing_span(); }
@@ -3776,10 +3805,72 @@ impl Studio {
             }
         });
     }
+    fn scene_visibility_buttons(&mut self, ui: &mut egui::Ui) {
+        let focused = self.inspector_focus(ui.ctx());
+        let mut request = None;
+        ui.horizontal_wrapped(|ui| {
+            for (label, action) in [
+                ("Hide selected", self.selected.map(SceneVisibility::Hide)),
+                (
+                    "Isolate selected",
+                    self.selected.map(SceneVisibility::Isolate),
+                ),
+                (
+                    "Show all",
+                    (!self.hidden_pieces.is_empty()).then_some(SceneVisibility::ShowAll),
+                ),
+            ] {
+                let response = ui.add_enabled(action.is_some(), egui::Button::new(label).small());
+                self.retain_inspector_input(&response, false);
+                if response.clicked() {
+                    request = request.take().or(action);
+                }
+            }
+        });
+        let Some(request) = request else { return };
+        finish_numeric_action(ui.ctx(), focused, false);
+        if !matches!(request, SceneVisibility::ShowAll) && self.has_construction_gesture() {
+            self.message =
+                "Finish or cancel the construction gesture before hiding patterns.".into();
+            return;
+        }
+        match request {
+            SceneVisibility::Hide(id) => {
+                if !self.allow_piece_selection(ui.ctx()) {
+                    self.message =
+                        "Apply or cancel the property edit before hiding this pattern.".into();
+                    return;
+                }
+                self.hidden_pieces.insert(id);
+                self.selected = None;
+                self.selected_curve = None;
+                self.draft = None;
+                finish_numeric_action(ui.ctx(), focused, true);
+                self.message = "Pattern hidden. Use Show all to restore it.".into();
+            }
+            SceneVisibility::Isolate(id) => {
+                self.hidden_pieces = self
+                    .editor
+                    .project
+                    .pieces
+                    .iter()
+                    .map(|piece| piece.id)
+                    .filter(|&other| other != id)
+                    .collect();
+                self.message = "Selected pattern isolated.".into();
+            }
+            SceneVisibility::ShowAll => {
+                self.hidden_pieces.clear();
+                self.message = "All patterns visible.".into();
+            }
+        }
+    }
     fn frame_patterns_button(&self, ui: &mut egui::Ui) {
         let focused = self.inspector_focus(ui.ctx());
         let response = ui.add_enabled(
-            !self.editor.project.pieces.is_empty(),
+            visible_pieces(&self.editor.project, &self.hidden_pieces)
+                .next()
+                .is_some(),
             egui::Button::new("Frame all").small(),
         );
         if response.is_pointer_button_down_on() || response.clicked() {
@@ -3801,7 +3892,7 @@ impl Studio {
         };
         let mut min = [f64::INFINITY; 2];
         let mut max = [f64::NEG_INFINITY; 2];
-        for piece in &self.editor.project.pieces {
+        for piece in visible_pieces(&self.editor.project, &self.hidden_pieces) {
             let Ok([piece_min, piece_max]) = self.editor.project.piece_bounds(piece.id) else {
                 return;
             };
@@ -3843,10 +3934,7 @@ impl Studio {
     fn begin_free_sewing(&mut self, ctx: &egui::Context) {
         if self.free_sewing.is_none() {
             let curve = self.selected_boundary_curve().or_else(|| {
-                self.editor
-                    .project
-                    .pieces
-                    .iter()
+                visible_pieces(&self.editor.project, &self.hidden_pieces)
                     .find_map(|piece| piece.boundary.first().copied())
             });
             self.free_sewing = Some(FreeSewingDraft {
@@ -3938,7 +4026,7 @@ impl Studio {
                             }),
                         )
                         .show_ui(ui, |ui| {
-                            for piece in &self.editor.project.pieces {
+                            for piece in visible_pieces(&self.editor.project, &self.hidden_pieces) {
                                 for (boundary, curve) in piece.boundary.iter().enumerate() {
                                     ui.selectable_value(
                                         &mut side.curve,
@@ -5527,7 +5615,7 @@ impl Studio {
         let mut boundary_nearest = None;
         let mut boundary_distance = 12_f32;
         let notch_segments = doc.notch_segments().unwrap_or_default();
-        for piece in &doc.pieces {
+        for piece in visible_pieces(&doc, &self.hidden_pieces) {
             let selected = self.selected == Some(piece.id);
             let color = if selected {
                 Color32::from_rgb(92, 163, 225)
@@ -5671,7 +5759,18 @@ impl Studio {
                 );
             }
         }
-        for seam in &doc.seams {
+        let hidden_curves: BTreeSet<_> = doc
+            .pieces
+            .iter()
+            .filter(|piece| self.hidden_pieces.contains(&piece.id))
+            .flat_map(|piece| piece.construction_curves().copied())
+            .collect();
+        let visible_pair = |a, b| !hidden_curves.contains(&a) && !hidden_curves.contains(&b);
+        for seam in doc
+            .seams
+            .iter()
+            .filter(|seam| visible_pair(seam.a.curve, seam.b.curve))
+        {
             let endpoint = |i: &CurveInterval, fraction| {
                 doc.curve(i.curve)
                     .and_then(|c| c.evaluate(&doc, i.parameter(fraction)).ok())
@@ -5696,6 +5795,13 @@ impl Studio {
                 &self.editor.project
             };
             for geometry in &mesh.sewing_groups {
+                if geometry
+                    .portions
+                    .iter()
+                    .any(|portion| !visible_pair(portion.a.curve, portion.b.curve))
+                {
+                    continue;
+                }
                 for portion in &geometry.portions {
                     for (interval, color) in [
                         (&portion.a, Color32::from_rgb(100, 200, 255)),
@@ -6130,9 +6236,16 @@ impl Studio {
                 .selected_internal_curve()
                 .and_then(|curve| doc.curve(curve))
                 .map(|curve| [curve.start, curve.end]);
+            let hidden_points: BTreeSet<_> = doc
+                .curves
+                .iter()
+                .filter(|curve| hidden_curves.contains(&curve.id))
+                .flat_map(|curve| [curve.start, curve.end])
+                .collect();
             let point = doc
                 .points
                 .iter()
+                .filter(|point| !hidden_points.contains(&point.id))
                 .filter_map(|point| {
                     let d = self.to_screen(point.position, r).distance(press);
                     (d < 12.).then_some((
@@ -6144,7 +6257,7 @@ impl Studio {
                 .min_by(|a, b| a.1.total_cmp(&b.1).then(b.2.cmp(&a.2)))
                 .map(|p| p.0);
             if let Some(point) = point {
-                let owner = doc.pieces.iter().find_map(|piece| {
+                let owner = visible_pieces(&doc, &self.hidden_pieces).find_map(|piece| {
                     piece.construction_curves().find_map(|curve| {
                         doc.curve(*curve)
                             .filter(|curve| curve.start == point || curve.end == point)
@@ -6201,19 +6314,19 @@ impl Studio {
                     .point(point)
                     .is_some_and(|point| point.position != position)
                 {
-                    let target = self.editor.project.pieces.iter().find_map(|piece| {
-                        piece
-                            .internal_curves
-                            .iter()
-                            .chain(piece.holes.iter().flat_map(|hole| &hole.boundary))
-                            .find(|id| {
-                                self.editor
-                                    .project
-                                    .curve(**id)
-                                    .is_some_and(|curve| curve.start == point || curve.end == point)
-                            })
-                            .map(|curve| (piece.id, *curve))
-                    });
+                    let target = visible_pieces(&self.editor.project, &self.hidden_pieces)
+                        .find_map(|piece| {
+                            piece
+                                .internal_curves
+                                .iter()
+                                .chain(piece.holes.iter().flat_map(|hole| &hole.boundary))
+                                .find(|id| {
+                                    self.editor.project.curve(**id).is_some_and(|curve| {
+                                        curve.start == point || curve.end == point
+                                    })
+                                })
+                                .map(|curve| (piece.id, *curve))
+                        });
                     if self.apply_inspector_action(
                         ui.ctx(),
                         Command::MovePoint { point, position },
@@ -6335,6 +6448,7 @@ impl Studio {
                     if let Some(pointer) = free_pointer
                         && let Some((curve, t)) = free_sewing_pick(
                             &doc,
+                            &self.hidden_pieces,
                             pointer,
                             12. / self.scale as f64,
                             self.selected_curve,
@@ -6428,6 +6542,7 @@ impl Studio {
             let side = &draft.sides[usize::from(draft.selecting_b)];
             let end = free_sewing_pick(
                 &doc,
+                &self.hidden_pieces,
                 pointer,
                 12. / self.scale as f64,
                 self.selected_curve,
@@ -6520,8 +6635,8 @@ impl Studio {
             ui.small("Pairing uses normalized total authored arc length. Each span keeps its own curve parameter endpoints and direction; gaps add no length.");
             egui::ScrollArea::vertical().id_salt("group-fields").max_height(420.).show(ui, |ui| {
                 let b_fields=ui.columns(2, |columns| {
-                    sewing_span_controls(&mut columns[0], &self.editor.project, "A", &mut edit.group.a, self.selected_curve, Some([0.,1.]));
-                    sewing_span_controls(&mut columns[1], &self.editor.project, "B", &mut edit.group.b, self.selected_curve, Some([0.,1.]))
+                    sewing_span_controls(&mut columns[0], &self.editor.project, &self.hidden_pieces, "A", &mut edit.group.a, self.selected_curve, Some([0.,1.]));
+                    sewing_span_controls(&mut columns[1], &self.editor.project, &self.hidden_pieces, "B", &mut edit.group.b, self.selected_curve, Some([0.,1.]))
                 });
                 if ui.button("Reverse B order and directions").clicked() {
                     clear_numeric_fields(ctx,&b_fields);
@@ -6638,6 +6753,7 @@ impl Studio {
             let mut triangles: Vec<_> = mesh
                 .triangles
                 .iter()
+                .filter(|triangle| !self.hidden_pieces.contains(&mesh.piece_ids[triangle[0]]))
                 .map(|t| {
                     let p = t.map(|i| self.project3(positions[i], r));
                     (t, p, p.iter().map(|v| v.1).sum::<f32>() / 3.)
@@ -7259,6 +7375,22 @@ fn pane_heading(ui: &mut egui::Ui, title: &str) -> egui::Response {
         .inner
 }
 
+enum SceneVisibility {
+    Hide(Id),
+    Isolate(Id),
+    ShowAll,
+}
+
+fn visible_pieces<'a>(
+    project: &'a Project,
+    hidden_pieces: &'a BTreeSet<Id>,
+) -> impl Iterator<Item = &'a Piece> {
+    project
+        .pieces
+        .iter()
+        .filter(|piece| !hidden_pieces.contains(&piece.id))
+}
+
 enum SceneItem {
     Pattern,
     InternalLine,
@@ -7465,6 +7597,7 @@ fn reverse_sewing_side(spans: &mut [CurveInterval]) {
 fn sewing_span_controls(
     ui: &mut egui::Ui,
     project: &Project,
+    hidden_pieces: &BTreeSet<Id>,
     side: &str,
     spans: &mut Vec<CurveInterval>,
     selected_curve: Option<Id>,
@@ -7485,7 +7618,7 @@ fn sewing_span_controls(
                         .selected_text(format!("Curve #{}", interval.curve))
                         .width(110.)
                         .show_ui(ui, |ui| {
-                            for piece in &project.pieces {
+                            for piece in visible_pieces(project, hidden_pieces) {
                                 for (boundary, curve) in piece.boundary.iter().enumerate() {
                                     ui.selectable_value(
                                         &mut interval.curve,
@@ -7549,15 +7682,11 @@ fn sewing_span_controls(
         if let Some([t0, t1]) = append_range {
             let curve = selected_curve
                 .filter(|curve| {
-                    project
-                        .pieces
-                        .iter()
+                    visible_pieces(project, hidden_pieces)
                         .any(|piece| piece.boundary.contains(curve))
                 })
                 .or_else(|| {
-                    project
-                        .pieces
-                        .iter()
+                    visible_pieces(project, hidden_pieces)
                         .find_map(|piece| piece.boundary.first().copied())
                 });
             if ui
@@ -8046,14 +8175,13 @@ fn segment_distance(p: Pos2, a: Pos2, b: Pos2) -> f32 {
 }
 fn free_sewing_pick(
     project: &Project,
+    hidden_pieces: &BTreeSet<Id>,
     pointer: [f64; 2],
     radius: f64,
     selected: Option<Id>,
     only: Option<Id>,
 ) -> Option<(Id, f64)> {
-    let mut boundaries: Vec<_> = project
-        .pieces
-        .iter()
+    let mut boundaries: Vec<_> = visible_pieces(project, hidden_pieces)
         .flat_map(|piece| piece.boundary.iter().copied())
         .filter(|curve| only.is_none_or(|only| *curve == only))
         .collect();
@@ -18792,20 +18920,42 @@ mod physical_sewing_tests {
         let closing = app.editor.project.pieces[0].boundary[3];
         let b = app.editor.project.pieces[1].boundary[0];
         assert_eq!(
-            free_sewing_pick(&app.editor.project, [0., 0.], 0.012, None, None),
+            free_sewing_pick(
+                &app.editor.project,
+                &app.hidden_pieces,
+                [0., 0.],
+                0.012,
+                None,
+                None
+            ),
             Some((a, 0.))
         );
         assert_eq!(
-            free_sewing_pick(&app.editor.project, [0., 0.], 0.012, Some(closing), None),
+            free_sewing_pick(
+                &app.editor.project,
+                &app.hidden_pieces,
+                [0., 0.],
+                0.012,
+                Some(closing),
+                None
+            ),
             Some((closing, 1.))
         );
         assert_eq!(
-            free_sewing_pick(&app.editor.project, [0.001, 0.0001], 0.012, None, None),
+            free_sewing_pick(
+                &app.editor.project,
+                &app.hidden_pieces,
+                [0.001, 0.0001],
+                0.012,
+                None,
+                None
+            ),
             Some((a, 0.))
         );
         let line_t = 0.713_271_828_182_845;
         let (_, projected) = free_sewing_pick(
             &app.editor.project,
+            &app.hidden_pieces,
             [0.4 + 0.2 * line_t, 0.0001],
             0.012,
             None,
@@ -18820,9 +18970,27 @@ mod physical_sewing_tests {
         );
         let u = 0.371_828_182_845;
         let point = std::array::from_fn(|axis| p[axis] + u * (q[axis] - p[axis]));
-        let (_, t) = free_sewing_pick(&app.editor.project, point, 0.012, None, Some(a)).unwrap();
+        let (_, t) = free_sewing_pick(
+            &app.editor.project,
+            &app.hidden_pieces,
+            point,
+            0.012,
+            None,
+            Some(a),
+        )
+        .unwrap();
         assert!((t - (11. + u) / 24.).abs() < 1e-14);
-        assert!(free_sewing_pick(&app.editor.project, [3., 3.], 0.012, None, None).is_none());
+        assert!(
+            free_sewing_pick(
+                &app.editor.project,
+                &app.hidden_pieces,
+                [3., 3.],
+                0.012,
+                None,
+                None
+            )
+            .is_none()
+        );
         // Coincident pieces retain authored order unless a boundary is explicitly selected.
         app.editor
             .execute(Command::AddRectangle {
@@ -18834,11 +19002,25 @@ mod physical_sewing_tests {
             .unwrap();
         let c = app.editor.project.pieces[2].boundary[0];
         assert_eq!(
-            free_sewing_pick(&app.editor.project, [0.4, 0.], 0.012, None, None),
+            free_sewing_pick(
+                &app.editor.project,
+                &app.hidden_pieces,
+                [0.4, 0.],
+                0.012,
+                None,
+                None
+            ),
             Some((b, 0.))
         );
         assert_eq!(
-            free_sewing_pick(&app.editor.project, [0.4, 0.], 0.012, Some(c), None),
+            free_sewing_pick(
+                &app.editor.project,
+                &app.hidden_pieces,
+                [0.4, 0.],
+                0.012,
+                Some(c),
+                None
+            ),
             Some((c, 0.))
         );
     }
@@ -19722,6 +19904,196 @@ mod pattern_framing_tests {
                 }
             }
         }
+    }
+
+    #[test]
+    fn scene_visibility_filters_both_canvases_and_preserves_construction() {
+        use super::native_idle_numeric_tests::{action, button};
+
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        let size = [1640., 1000.];
+        for (name, x) in [("Left panel", -0.8), ("Right panel", 0.4)] {
+            app.editor
+                .execute(Command::AddRectangle {
+                    name: name.into(),
+                    origin: [x, 0.9],
+                    width: 0.4,
+                    height: 0.6,
+                })
+                .unwrap();
+        }
+        app.editor
+            .execute(Command::SetMannequin {
+                mannequin: weftforge_core::Mannequin {
+                    capsules: Vec::new(),
+                },
+            })
+            .unwrap();
+        let [left, right] = std::array::from_fn(|i| app.editor.project.pieces[i].id);
+        let [a, b] = std::array::from_fn(|i| CurveInterval {
+            curve: app.editor.project.pieces[i].boundary[0],
+            t0: 0.,
+            t1: 1.,
+        });
+        app.editor
+            .execute(Command::AddSeam {
+                name: "Both panels".into(),
+                a,
+                b,
+                correspondence: vec![[0., 0.], [1., 1.]],
+            })
+            .unwrap();
+        app.editor
+            .execute(Command::SetResolution { metres: 0.08 })
+            .unwrap();
+        assert!(app.editor.undo());
+        let before = format!("{:?}", app.editor);
+        let mesh = Arc::new(app.editor.project.mesh().unwrap());
+        let cloth =
+            Arc::new(weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap());
+        app.mesh = Some(mesh.clone());
+        app.cloth = Some(cloth.clone());
+
+        let click = |app: &mut Studio, label: &str| {
+            let output = frame(&ctx, app, size, vec![]);
+            frame(
+                &ctx,
+                app,
+                size,
+                vec![action(button(&output, label), Action::Click, None)],
+            )
+        };
+        let pointer = |app: &mut Studio, start, end| {
+            let button = |pos, pressed| egui::Event::PointerButton {
+                pos,
+                button: egui::PointerButton::Primary,
+                pressed,
+                modifiers: egui::Modifiers::NONE,
+            };
+            frame(
+                &ctx,
+                app,
+                size,
+                vec![egui::Event::PointerMoved(start), button(start, true)],
+            );
+            if start != end {
+                frame(&ctx, app, size, vec![egui::Event::PointerMoved(end)]);
+            }
+            frame(&ctx, app, size, vec![button(end, false)]);
+        };
+        let paint = |output: &egui::FullOutput, name: &str| {
+            output.shapes.iter().any(|shape| matches!(&shape.shape, egui::Shape::Text(text) if text.galley.text() == name))
+        };
+        let guide = |output: &egui::FullOutput| {
+            output.shapes.iter().any(|shape| matches!(&shape.shape, egui::Shape::LineSegment { stroke, .. } if stroke.color == Color32::from_rgb(245, 175, 87)))
+        };
+
+        let both = click(&mut app, &format!("Left panel · #{left}"));
+        assert!(guide(&both) && paint(&both, "Left panel") && paint(&both, "Right panel"));
+        let pattern = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+        let garment = ctx.read_response(app.garment_canvas.unwrap()).unwrap().rect;
+        let count_faces = |output: &egui::FullOutput| {
+            output.shapes.iter().filter(|shape| matches!(&shape.shape, egui::Shape::Path(path) if path.fill != Color32::TRANSPARENT
+                && path.points.len() == 3 && path.points.iter().all(|p| garment.contains(*p)))).count()
+        };
+        assert_eq!(count_faces(&both), mesh.triangles.len());
+        let triangle = mesh
+            .triangles
+            .iter()
+            .find(|t| mesh.piece_ids[t[0]] == left)
+            .unwrap();
+        let [p, q, r] = triangle.map(|index| app.project3(cloth.positions()[index], garment).0);
+        let point_3d = p + ((q - p) + (r - p)) / 3.;
+        let left_curve = app.editor.project.curve(a.curve).unwrap();
+        let left_edge = left_curve.evaluate(&app.editor.project, 0.5).unwrap();
+        let point_2d = app.to_screen(left_edge, pattern);
+        let endpoint = left_curve.evaluate(&app.editor.project, 0.).unwrap();
+        let endpoint_2d = app.to_screen(endpoint, pattern);
+        assert!(pattern.contains(point_2d) && garment.contains(point_3d));
+
+        app.draft.as_mut().unwrap().dimensions.as_mut().unwrap()[0] = 0.45;
+        let pending = app.draft.as_ref().unwrap().commands(&app.editor.project);
+        click(&mut app, "Hide selected");
+        assert!(app.hidden_pieces.is_empty());
+        assert_eq!(
+            app.draft.as_ref().unwrap().commands(&app.editor.project),
+            pending
+        );
+        assert_eq!(format!("{:?}", app.editor), before);
+        app.draft = None;
+
+        let hidden = click(&mut app, "Hide selected");
+        let row = format!("Hidden · Left panel · #{left}");
+        assert!(
+            hidden
+                .platform_output
+                .accesskit_update
+                .unwrap()
+                .nodes
+                .iter()
+                .any(|(_, node)| { node.label() == Some(row.as_str()) && node.is_disabled() })
+        );
+        let hidden = frame(&ctx, &mut app, size, vec![]);
+        assert_eq!(app.hidden_pieces, BTreeSet::from([left]));
+        assert!(!guide(&hidden) && !paint(&hidden, "Left panel") && paint(&hidden, "Right panel"));
+        assert_eq!(
+            count_faces(&hidden),
+            mesh.triangles
+                .iter()
+                .filter(|t| mesh.piece_ids[t[0]] == right)
+                .count()
+        );
+        pointer(&mut app, point_2d, point_2d);
+        pointer(&mut app, point_3d, point_3d);
+        pointer(&mut app, endpoint_2d, endpoint_2d + Vec2::new(22., 9.));
+        assert!(app.selected.is_none() && app.selected_curve.is_none());
+        assert!(
+            free_sewing_pick(
+                &app.editor.project,
+                &app.hidden_pieces,
+                left_edge,
+                0.01,
+                None,
+                None
+            )
+            .is_none()
+        );
+
+        let restored = click(&mut app, "Show all");
+        assert!(guide(&restored) && paint(&restored, "Left panel"));
+        assert_eq!(count_faces(&restored), mesh.triangles.len());
+        pointer(&mut app, point_2d, point_2d);
+        assert_eq!(
+            (app.selected, app.selected_curve),
+            (Some(left), Some(a.curve))
+        );
+        pointer(&mut app, point_3d, point_3d);
+        assert_eq!(app.selected, Some(left));
+        click(&mut app, "Isolate selected");
+        assert_eq!(app.hidden_pieces, BTreeSet::from([right]));
+        assert_eq!(app.selected, Some(left));
+        click(&mut app, "Frame all");
+        let [min, max] = app.editor.project.piece_bounds(left).unwrap();
+        assert_eq!(
+            app.center,
+            std::array::from_fn(|axis| (min[axis] + max[axis]) * 0.5)
+        );
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert!(app.editor.can_redo() && !app.dirty && !app.needs_mesh && app.job.is_none());
+        assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+        assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+
+        let directory = super::tests::exit_test_directory("scene-visibility");
+        let path = directory.join("panels.weftforge");
+        app.editor.project.save(&path).unwrap();
+        app.load_document(directory.join("missing.weftforge"), false);
+        assert_eq!(app.hidden_pieces, BTreeSet::from([right]));
+        app.load_document(path, false);
+        assert!(app.hidden_pieces.is_empty() && app.selected.is_none());
+        fs::remove_dir_all(directory).unwrap();
     }
 
     #[test]
@@ -21853,7 +22225,14 @@ mod cut_piece_tests {
         );
         assert!(cut_piece_pick(&app.editor.project, 2, [1.12, 0.005], 0.012).is_err());
         assert_eq!(
-            free_sewing_pick(&app.editor.project, [0., 0.], 0.012, None, None),
+            free_sewing_pick(
+                &app.editor.project,
+                &app.hidden_pieces,
+                [0., 0.],
+                0.012,
+                None,
+                None
+            ),
             Some((7, 0.))
         );
     }
@@ -25766,7 +26145,14 @@ mod hole_tests {
         assert_eq!(app.selected_boundary_curve(), None);
         assert_eq!(app.selected_hole(), Some(11));
         assert_eq!(
-            free_sewing_pick(&app.editor.project, [0.08, 0.18], 0.012, Some(16), None),
+            free_sewing_pick(
+                &app.editor.project,
+                &app.hidden_pieces,
+                [0.08, 0.18],
+                0.012,
+                Some(16),
+                None
+            ),
             None
         );
         assert!(

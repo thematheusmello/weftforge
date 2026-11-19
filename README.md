@@ -33,8 +33,9 @@ and undo/redo. **Import SVG…** and **Import DXF…** add supported closed
 straight/cubic pattern boundaries at physical millimetre scale, with a review
 before importing. SVG requires explicit dimensions and a uniform viewBox;
 DXF accepts a bounded R2000 `LINE`/clamped cubic `SPLINE` profile.
-Imported boundaries remain editable; **Frame all** fits authored outlines in the
-2D view while preserving pending numeric edits. Rectangle, polygon and editable
+Imported boundaries remain editable. **Frame all** fits the visible outlines in
+the 2D view and preserves pending numeric edits. The Scene dock can temporarily
+hide or isolate patterns across both canvases. Rectangle, polygon and editable
 four-cubic ellipse construction feed the same Rust document engine as the CLI. The core retains straight/cubic boundaries, oriented seam intervals,
 ordered M:N sewing groups, authored warp direction per piece, separate warp/weft
 physical stiffness, placement and derived meshes. Groups pair cumulative authored
