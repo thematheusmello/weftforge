@@ -5,7 +5,7 @@ dialog. Fit the editable patterns, choose a paper preset or enter arbitrary
 dimensions. Width and height can be swapped around the crop centre. The
 2D pane outlines the crop while the dialog is open. The dialog reports
 pixel dimensions and lets the user toggle outlines and holes, internal
-lines and notch marks.
+lines, notch marks and grainlines.
 
 The crop uses the lower-left and upper-right material coordinates. The CLI
 and MCP use metres. In the desktop dialog, choose millimetres, centimetres,
@@ -20,6 +20,10 @@ physical dimensions to within half a pixel of crop rounding per side.
 Dimensions up to 16384 pixels per side and 32 million total pixels are
 supported within the raster's stroke budget and 80 MiB output bound.
 The stored density lets consumers recover the physical dimensions.
+
+When **Grainline** is enabled, each arrow starts at the centre of the
+piece's exterior bounds and points in its authored warp direction, as in
+the 2D pane. The CLI and MCP `grainline` option defaults to `false`.
 
 The desktop uses a background worker. Cancelling or changing the source
 document discards an outstanding result before replacing the destination.

@@ -54,6 +54,7 @@ pub(super) struct PatternSnapshotDialog {
     contours: bool,
     internal_lines: bool,
     notches: bool,
+    grainline: bool,
 }
 
 pub(super) enum SnapshotAction {
@@ -85,6 +86,7 @@ impl PatternSnapshotDialog {
             contours: true,
             internal_lines: true,
             notches: true,
+            grainline: false,
         };
         for dpi in [300., 150.] {
             dialog.dpi = dpi;
@@ -114,6 +116,7 @@ impl PatternSnapshotDialog {
             contours: self.contours,
             internal_lines: self.internal_lines,
             notches: self.notches,
+            grainline: self.grainline,
         }
     }
 
@@ -216,6 +219,7 @@ impl PatternSnapshotDialog {
                     ui.checkbox(&mut self.contours, "Outlines and holes");
                     ui.checkbox(&mut self.internal_lines, "Internal lines");
                     ui.checkbox(&mut self.notches, "Notches");
+                    ui.checkbox(&mut self.grainline, "Grainline");
                 });
                 let options = self.options();
                 let dimensions = options.dimensions();

@@ -456,6 +456,7 @@ mod tests {
             contours: true,
             internal_lines: true,
             notches: true,
+            grainline: false,
         };
         let control = directory.0.join("control.png");
         project.export_pattern_png(&control, options).unwrap();

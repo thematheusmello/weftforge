@@ -5103,7 +5103,8 @@
         "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-GRAINLINE-001.json"
       ],
       "scenarios": [
         {
@@ -6245,6 +6246,27 @@
             "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-GRAINLINE-001",
+          "commit": "0df44c4f23db77efbc30b1881e6f6b28cc9b48bd",
+          "timestamp": "2026-11-19T06:43:20.769417Z",
+          "platform": "Apple Silicon macOS native studio and independent PNG decoder",
+          "artifact_hashes": {
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/FIXTURE.json": "4db3263db86a9db535333e7c08e8e414be224e488641b51742b65869879a0943",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/verify_grainline.py": "cba549d8e3c6cc769a093908b6df3057a77ead38a9fecec18bcb9629612071e3",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/RESULT.json": "c4f2c5224d67ae62a77d9b079b6490ca07b63317174e09c32ed0f83bcf6cd3e3",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/without-grainline.json": "18459ccbf8b8a8b22c19d183f90cb09bf890eb46c3a9df1f1a8da8fe17680c6f",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/with-grainline.json": "80d3ec15aa139038fdffb79193aa6b86674a16c477a6e78dfbbfbebedafa7e94",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/without-grainline.png": "1408d33fe80926b243e50408dcf3bdd90664824b5869c7e08406aee01a9ecab9",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/with-grainline.png": "be3bc5865408b8cdc2c903675f2248fc25e9214d7edf02f6e706b8df67d01e8a",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/NATIVE-GRAINLINE.json": "29f477d7cd63f7cf4fcfcc6e88703610b929d8c873e09c864109aacb694d20ef",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/POST-CASE-CLEANUP.json": "c2ec221b0f1617c57c125882f96e959039960ab49f6ae159c52e7501106e6b98",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83",
+            "parity/reports/artifacts/pattern-crop-units-20261119/physical.png": "1408d33fe80926b243e50408dcf3bdd90664824b5869c7e08406aee01a9ecab9"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-GRAINLINE-001.json"
         }
       ],
       "known_gaps": [
@@ -6302,7 +6324,8 @@
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-GRAINLINE-001.json"
       ],
       "scenarios": [
         {
@@ -11547,6 +11570,27 @@
             "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-GRAINLINE-001",
+          "commit": "0df44c4f23db77efbc30b1881e6f6b28cc9b48bd",
+          "timestamp": "2026-11-19T06:43:20.769417Z",
+          "platform": "Apple Silicon macOS native studio and independent PNG decoder",
+          "artifact_hashes": {
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/FIXTURE.json": "4db3263db86a9db535333e7c08e8e414be224e488641b51742b65869879a0943",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/verify_grainline.py": "cba549d8e3c6cc769a093908b6df3057a77ead38a9fecec18bcb9629612071e3",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/RESULT.json": "c4f2c5224d67ae62a77d9b079b6490ca07b63317174e09c32ed0f83bcf6cd3e3",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/without-grainline.json": "18459ccbf8b8a8b22c19d183f90cb09bf890eb46c3a9df1f1a8da8fe17680c6f",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/with-grainline.json": "80d3ec15aa139038fdffb79193aa6b86674a16c477a6e78dfbbfbebedafa7e94",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/without-grainline.png": "1408d33fe80926b243e50408dcf3bdd90664824b5869c7e08406aee01a9ecab9",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/with-grainline.png": "be3bc5865408b8cdc2c903675f2248fc25e9214d7edf02f6e706b8df67d01e8a",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/NATIVE-GRAINLINE.json": "29f477d7cd63f7cf4fcfcc6e88703610b929d8c873e09c864109aacb694d20ef",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/POST-CASE-CLEANUP.json": "c2ec221b0f1617c57c125882f96e959039960ab49f6ae159c52e7501106e6b98",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83",
+            "parity/reports/artifacts/pattern-crop-units-20261119/physical.png": "1408d33fe80926b243e50408dcf3bdd90664824b5869c7e08406aee01a9ecab9"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-GRAINLINE-001.json"
         }
       ],
       "known_gaps": [
@@ -51492,7 +51536,8 @@
         "spec/features/FILE-005-pattern-print-pdf.md",
         "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json",
         "spec/features/FILE-005-pattern-png.md",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-GRAINLINE-001.json"
       ],
       "scenarios": [
         {
@@ -51568,6 +51613,15 @@
           },
           "initial_conditions": "The Apple Silicon studio has the two original revision 2 patterns open.",
           "expected_outcomes": "Switching four display units leaves the original crop at 1654 by 2067 pixels. A width edit in pixels increases only width to 1680. Both native files match CLI controls at 11812 pixels per metre. The project retains its bytes."
+        },
+        {
+          "id": "FILE-NATIVE-PATTERN-GRAINLINE-001",
+          "path": "parity/scenarios/FILE-NATIVE-PATTERN-GRAINLINE-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c"
+          },
+          "initial_conditions": "The original revision 3 fixture has Basin's authored warp rotated by pi/2.",
+          "expected_outcomes": "The 1654 by 2067 PNG at 11812 pixels per metre matches the earlier crop with Grainline off. Turning it on only adds Basin's upward warp arrow and leaves the editable project intact. Both files match the CLI."
         }
       ],
       "comparison_criteria": {
@@ -56603,6 +56657,27 @@
             "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-GRAINLINE-001",
+          "commit": "0df44c4f23db77efbc30b1881e6f6b28cc9b48bd",
+          "timestamp": "2026-11-19T06:43:20.769417Z",
+          "platform": "Apple Silicon macOS native studio and independent PNG decoder",
+          "artifact_hashes": {
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/FIXTURE.json": "4db3263db86a9db535333e7c08e8e414be224e488641b51742b65869879a0943",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/verify_grainline.py": "cba549d8e3c6cc769a093908b6df3057a77ead38a9fecec18bcb9629612071e3",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/RESULT.json": "c4f2c5224d67ae62a77d9b079b6490ca07b63317174e09c32ed0f83bcf6cd3e3",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/without-grainline.json": "18459ccbf8b8a8b22c19d183f90cb09bf890eb46c3a9df1f1a8da8fe17680c6f",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/with-grainline.json": "80d3ec15aa139038fdffb79193aa6b86674a16c477a6e78dfbbfbebedafa7e94",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/without-grainline.png": "1408d33fe80926b243e50408dcf3bdd90664824b5869c7e08406aee01a9ecab9",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/with-grainline.png": "be3bc5865408b8cdc2c903675f2248fc25e9214d7edf02f6e706b8df67d01e8a",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/NATIVE-GRAINLINE.json": "29f477d7cd63f7cf4fcfcc6e88703610b929d8c873e09c864109aacb694d20ef",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/POST-CASE-CLEANUP.json": "c2ec221b0f1617c57c125882f96e959039960ab49f6ae159c52e7501106e6b98",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83",
+            "parity/reports/artifacts/pattern-crop-units-20261119/physical.png": "1408d33fe80926b243e50408dcf3bdd90664824b5869c7e08406aee01a9ecab9"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-GRAINLINE-001.json"
         }
       ],
       "known_gaps": [
@@ -56613,7 +56688,7 @@
         "Source76be bounded DXF import has four headless geometry/export passes, fourteen retention negatives, four exact MCP inspections and a nine-checkpoint native file/export pass. The full native plan remains unaccepted: explicit print disclosure and old Redo-after-Cancel proof are missing, and temporary autosave/recovery persistence occurred. Full DXF/CAD/apparel, printing, all persistence failures and reference comparison remain open.",
         "WF-20261116-HOLE-EXPORT-001 is a current947/source74 bounded annular export subset only: actual historical accepted H1R5 compatibility reopen, one edit/native-v5 save, OBJ.0768m2/one component/two boundary loops/Euler0/metre positions+UV/Y-up, tight240x360mm compound-evenodd SVG and planned hole-DXF refusal with both sentinels unchanged. Old source73 H2 sole5457 grade remains FAILED/unaccepted; original H3 actor postguard remains FAILED/exit1, qualified only by separate direct root audit and UI acceptance. No current947 empty creation, hole SVG import/roundtrip, print margins, full CAD/apparel interoperability, native physics or reference acceptance.",
         "A4 and US Letter native and CLI PDFs have an independent digital scale, geometry and tiling check. Printer measurement, configurable 1:1 raster snapshots, wider paper presets and current reference behavior remain open.",
-        "Native and CLI 1:1 raster crops have independently decoded density, layer toggles and crop units checks. Artwork, labels, grainline and measurements in snapshots, JPEG, wider presets, printer measurement and reference execution remain open."
+        "Native and CLI raster crops have independent scale, layer toggle, crop unit and warp-angle checks. Artwork, labels and measurements in snapshots, JPEG, wider presets, printer measurement and reference execution remain open."
       ],
       "contradictions": [],
       "blockers": [
@@ -56624,7 +56699,7 @@
         "spec/features/FILE-005-dxf-pattern-export.md": "b0373181a6ae79c148aa154c0c2269956c2fed3587b5c6d0aef929108e11dd73",
         "spec/features/FILE-005-dxf-pattern-import.md": "06cff6f3d1a6d62fceeb93e94a2037f28136b69adfa5507b8a780e8864b0512b",
         "spec/features/FILE-005-pattern-print-pdf.md": "af7dc40486229050157831fa7bb422dcd7b875675ff25660b92e479df924169d",
-        "spec/features/FILE-005-pattern-png.md": "583b1550614bc21a3c117b0a0957fad661f2194898f53c1fe4e6431ad18b5e65"
+        "spec/features/FILE-005-pattern-png.md": "6cc99fbb8fcc4c68ef22cf9f8c3b6f80640b6c74d1127741a27b0303de27dfac"
       }
     },
     {
@@ -56739,7 +56814,8 @@
         "parity/reports/artifacts/rectangle-gesture-20261116/SELECTED-PUBLIC-MANIFEST-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-GRAINLINE-001.json"
       ],
       "scenarios": [
         {
@@ -62326,6 +62402,27 @@
             "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-GRAINLINE-001",
+          "commit": "0df44c4f23db77efbc30b1881e6f6b28cc9b48bd",
+          "timestamp": "2026-11-19T06:43:20.769417Z",
+          "platform": "Apple Silicon macOS native studio and independent PNG decoder",
+          "artifact_hashes": {
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/FIXTURE.json": "4db3263db86a9db535333e7c08e8e414be224e488641b51742b65869879a0943",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/verify_grainline.py": "cba549d8e3c6cc769a093908b6df3057a77ead38a9fecec18bcb9629612071e3",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/RESULT.json": "c4f2c5224d67ae62a77d9b079b6490ca07b63317174e09c32ed0f83bcf6cd3e3",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/without-grainline.json": "18459ccbf8b8a8b22c19d183f90cb09bf890eb46c3a9df1f1a8da8fe17680c6f",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/with-grainline.json": "80d3ec15aa139038fdffb79193aa6b86674a16c477a6e78dfbbfbebedafa7e94",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/without-grainline.png": "1408d33fe80926b243e50408dcf3bdd90664824b5869c7e08406aee01a9ecab9",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/with-grainline.png": "be3bc5865408b8cdc2c903675f2248fc25e9214d7edf02f6e706b8df67d01e8a",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/NATIVE-GRAINLINE.json": "29f477d7cd63f7cf4fcfcc6e88703610b929d8c873e09c864109aacb694d20ef",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/POST-CASE-CLEANUP.json": "c2ec221b0f1617c57c125882f96e959039960ab49f6ae159c52e7501106e6b98",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83",
+            "parity/reports/artifacts/pattern-crop-units-20261119/physical.png": "1408d33fe80926b243e50408dcf3bdd90664824b5869c7e08406aee01a9ecab9"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-GRAINLINE-001.json"
         }
       ],
       "known_gaps": [

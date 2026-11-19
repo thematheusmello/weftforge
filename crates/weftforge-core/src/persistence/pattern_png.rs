@@ -24,6 +24,12 @@ pub struct PatternSnapshotOptions {
     pub contours: bool,
     pub internal_lines: bool,
     pub notches: bool,
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub grainline: bool,
+}
+
+fn is_false(value: &bool) -> bool {
+    !*value
 }
 
 impl PatternSnapshotOptions {
@@ -126,6 +132,30 @@ struct Strokes {
 }
 
 impl Strokes {
+    fn add_grainline(
+        &mut self,
+        [[left, bottom], [right, top]]: [[f64; 2]; 2],
+        angle: f64,
+    ) -> Result<()> {
+        let center = [(left + right) * 0.5, (bottom + top) * 0.5];
+        let length = ((right - left).min(top - bottom) * 0.25).min(0.1);
+        let (sin, cos) = angle.sin_cos();
+        let tip = [center[0] + length * cos, center[1] + length * sin];
+        self.add([center, tip], None)?;
+        // Match the studio's arrowhead in material space before the raster Y flip.
+        let (wing_sin, wing_cos) = (std::f64::consts::TAU / 10.).sin_cos();
+        let back = length * 0.25 * wing_cos;
+        let side = length * 0.25 * wing_sin;
+        for offset in [-side, side] {
+            let end = [
+                tip[0] - back * cos - offset * sin,
+                tip[1] - back * sin + offset * cos,
+            ];
+            self.add([tip, end], None)?;
+        }
+        Ok(())
+    }
+
     fn add(&mut self, [a, b]: [[f64; 2]; 2], controls: Option<[[f64; 2]; 2]>) -> Result<()> {
         let [c, d] = controls.unwrap_or([a, b]);
         let points = [a, c, d, b].map(|[x, y]| {
@@ -221,6 +251,11 @@ fn rasterize(
             strokes.add(segment, None)?;
         }
     }
+    if options.grainline {
+        for piece in &project.pieces {
+            strokes.add_grainline(project.piece_bounds(piece.id)?, piece.grain_angle)?;
+        }
+    }
     let bytes = width as usize * height as usize * 4;
     let mut pixels = Vec::new();
     pixels
@@ -304,6 +339,58 @@ mod tests {
     use std::sync::atomic::Ordering;
 
     #[test]
+    fn pattern_png_grainline_rotates_with_authored_angle_and_is_opt_in() {
+        let mut editor = crate::Editor::default();
+        editor
+            .execute(Command::AddRectangle {
+                name: "Original grain sample".into(),
+                origin: [-0.03, -0.02],
+                width: 0.12,
+                height: 0.08,
+            })
+            .unwrap();
+        let legacy = br#"{"crop_m":[[-0.05,-0.04],[0.12,0.095]],"pixels_per_inch":25.4,"contours":false,"internal_lines":false,"notches":false}"#;
+        let omitted: PatternSnapshotOptions = serde_json::from_slice(legacy).unwrap();
+        assert_eq!(serde_json::to_vec(&omitted).unwrap(), legacy);
+        let mut enabled_options = serde_json::to_value(omitted).unwrap();
+        enabled_options["grainline"] = serde_json::Value::Bool(true);
+        let enabled: PatternSnapshotOptions = serde_json::from_value(enabled_options).unwrap();
+        assert!(enabled.grainline);
+        let draw = |project: &Project, options: PatternSnapshotOptions| {
+            let (size, ppm) = options.grid().unwrap();
+            assert_eq!((size, ppm), ([170, 135], 1000));
+            rasterize(project, options, size, ppm).unwrap()
+        };
+        let ink = |image: &Pixmap, x, y| image.pixel(x, y).unwrap().red() < 255;
+        let blank = draw(&editor.project, omitted);
+        assert!(blank.data().iter().all(|sample| *sample == 255));
+        let unrotated = draw(&editor.project, enabled);
+        assert!(ink(&unrotated, 90, 75));
+        assert!(!ink(&unrotated, 80, 65));
+
+        editor
+            .execute(Command::SetGrain {
+                piece: editor.project.pieces[0].id,
+                angle: std::f64::consts::FRAC_PI_2,
+            })
+            .unwrap();
+        let rotated = draw(&editor.project, enabled);
+        assert!(
+            ink(&rotated, 80, 65),
+            "rotated shaft points up from the bounds centre"
+        );
+        assert!(
+            ink(&rotated, 77, 58) && ink(&rotated, 82, 58),
+            "both arrowhead wings"
+        );
+        assert!(!ink(&rotated, 90, 75) && !ink(&rotated, 80, 85));
+        assert_eq!(
+            encode_png(&draw(&editor.project, omitted), 1000).unwrap(),
+            encode_png(&blank, 1000).unwrap()
+        );
+    }
+
+    #[test]
     fn pattern_png_uses_declared_scale_and_crops_y_up_without_replacing_on_failure() {
         let mut editor = crate::Editor::default();
         editor
@@ -357,6 +444,7 @@ mod tests {
             contours: true,
             internal_lines: true,
             notches: true,
+            grainline: false,
         };
         for invalid in [
             PatternSnapshotOptions {

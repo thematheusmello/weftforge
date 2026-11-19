@@ -1,5 +1,12 @@
 # Native studio preview
 
+## Show the authored grainline
+
+The **Grainline** option adds a warp arrow from the centre of the piece's
+bounds. Basin's saved 90° warp angle points upward. The two native PNGs
+share the same crop and scale and match the CLI outputs.
+[Without grainline](../parity/reports/artifacts/pattern-png-grainline-20261119/without-grainline.png) · [With grainline](../parity/reports/artifacts/pattern-png-grainline-20261119/with-grainline.png) · [Independent check](../parity/reports/WF-20261119-NATIVE-PATTERN-GRAINLINE-001.json).
+
 ## Edit the crop in four units
 
 Choose millimetres, centimetres, inches or pixels. The 2D pane outlines

@@ -1,0 +1,14 @@
+{
+  "id": "FILE-NATIVE-PATTERN-GRAINLINE-001",
+  "status": "implementation_only",
+  "initial_conditions": "The original revision 3 fixture has Basin's authored warp rotated by pi/2.",
+  "actions": [
+    "Create the original revision 3 fixture by setting Basin's authored warp to pi/2 on the revision 2 print fixture.",
+    "Open the saved fixture in the Apple Silicon studio and frame the original patterns.",
+    "Open the pattern PNG action from File. Crop Basin to 140 by 175 mm at Left U \u2212430 mm and Bottom V 275 mm.",
+    "Enter 300.012101 pixels per inch, leave the field with Tab and save with Grainline unchecked.",
+    "Open the same action from Command search. Set the same crop and density, enable Grainline and save.",
+    "Compare both native files to fresh CLI results. Decode the upward shaft, both wings and the full changed-pixel bounds."
+  ],
+  "expected_outcomes": "The 1654 by 2067 PNG at 11812 pixels per metre matches the earlier crop with Grainline off. Turning it on only adds Basin's upward warp arrow and leaves the editable project intact. Both files match the CLI."
+}

@@ -4,7 +4,7 @@
   "historical_map_commit": "af79f596f247cc48e709b818bb70a30d1b716580",
   "historical_map_sha256": "9323eb803af6d07d6178fd6e808fd61f87e5da71e3b07ab4b279b3141b11c8ec",
   "historical_source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
-  "source_commit": "d06b224b504a9c6c76b2b288d14c1ea0a845ed3b",
+  "source_commit": "0df44c4f23db77efbc30b1881e6f6b28cc9b48bd",
   "source_pins": [
     {
       "commit": "af79f596f247cc48e709b818bb70a30d1b716580",
@@ -157,6 +157,10 @@
     {
       "commit": "d06b224b504a9c6c76b2b288d14c1ea0a845ed3b",
       "scope": "Four crop units, visible 2D crop outlines and the encoded density."
+    },
+    {
+      "commit": "0df44c4f23db77efbc30b1881e6f6b28cc9b48bd",
+      "scope": "Opt-in authored warp arrows in physical-scale pattern PNG."
     }
   ],
   "historical_invariants": {
@@ -561,8 +565,8 @@
         {
           "path": "apps/weftforge/src/capture.rs",
           "anchor": "fn file_and_palette_capture_routes_retain_pending_text_history_and_accepted_display(",
-          "line": 774,
-          "sha256": "316e6477a5169f7daed6be662af7db725f87a9ed2a3d1ae63139ace19471377a"
+          "line": 775,
+          "sha256": "4291dc2e940e6ef0ddcd17910ee92c58a4def7fd3949d7631140c0675350be60"
         }
       ]
     },
@@ -1072,7 +1076,7 @@
     },
     {
       "group_id": "pattern-snapshot-print",
-      "reason": "Map the pattern PNG crop outline and display units with the existing print and interchange routes.",
+      "reason": "Map the optional grainline across studio, CLI and MCP with the existing crop and density.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -1093,7 +1097,7 @@
         "mcp_tests"
       ],
       "current": {
-        "candidate_behavior": "Existing SVG and boundary-only R2000 DXF exports remain. Additive Import SVG/Import DXF File/search routes now choose a bounded source and show count, physical scale, origin/layout and omitted content before Import/Cancel. Shared ImportSvgPatterns/ImportDxfPatterns validate editable exterior lines/cubics and names with fresh IDs/default material/placement, then combine all pieces and pending inspector edits in one transaction. SVG requires explicit physical mm dimensions and uniform viewBox scale, mapping display Y to authored -Y; the strict DXF writer profile maps WCS X/Y to U/V without inversion. CLI import-svg/import-dxf, dedicated MCP file tools and command arrays reuse the same implementation. This FILE-005 engineering bucket does not invent a reference import catalog entry or equate import with printing. Strict v5 native saving retains internal annotations and editable holes. SVG emits one explicit evenodd compound path per piece with exterior/hole closed subpaths in physical mm and inverted Y; OBJ emits the actual rest/current annular cloth surface in metre/Y-up coordinates without annotation line primitives. DXF v1 refuses an entire holed project before staging; destination and recovery remain subject to the existing safe-IO guards. Native export help/messages, CLI help and MCP descriptions explicitly disclose the omission. Bounded SVG/DXF imports initialize empty internal and holes arrays; they do not import annotation roles or holes. Current SVG import explicitly refuses compound hole paths, so the new export is not a supported hole round trip. A supported hole-free straight cut saves as two ordinary v5 pieces. SVG and supported hole-free DXF export both closed exterior boundaries, including independent chord copies; OBJ emits the separate piece surfaces. This source relationship does not qualify an external/native round trip. The shared SVG canvas now unions all analytic exterior curve bounds, including cubic extrema, at the absolute authored origin. A one-metre blank canvas remains only for an empty project. This removes blank padding from the former 0\u20131 m seed/control hull; clipping was not observed in the failed old native case. Millimetre scale, inverted Y, compound path data, guards and staged write remain unchanged. Three focused source definitions cover negative/large-offset/multipiece layouts, true cubic extrema and the empty fallback; they do not establish print margins, native exports or reference behavior. At integrated 8aa, the preceding native-v5 description is historical. Native v6 retains notches; SVG includes physical-scale perpendicular I-marker lines and unions their ends into bounds. DXF refuses authored notches before staging. OBJ remains mesh-only, and notch SVG import/printing/full CAD roundtrip remain open. The A4 and US Letter PDF paths print digital outlines, holes, notches and annotations at 1:1 with a calibration square and overlapping tile registration. File, Command search, CLI and local MCP share the validated PDF writer. File and Command search add a millimetre crop, paper sizes, orientation, pixel density and geometry switches for 1:1 pattern PNG. The staged renderer saves matching revision pixels, and CLI and MCP use the same typed options. A right-side dialog outlines the crop in 2D and edits its dimensions and origin in mm, cm, inches or pixels. The canonical crop stays fixed across unit changes. The pixel fields and PNG writer share the rounded density.",
+        "candidate_behavior": "Existing SVG and boundary-only R2000 DXF exports remain. Additive Import SVG/Import DXF File/search routes now choose a bounded source and show count, physical scale, origin/layout and omitted content before Import/Cancel. Shared ImportSvgPatterns/ImportDxfPatterns validate editable exterior lines/cubics and names with fresh IDs/default material/placement, then combine all pieces and pending inspector edits in one transaction. SVG requires explicit physical mm dimensions and uniform viewBox scale, mapping display Y to authored -Y; the strict DXF writer profile maps WCS X/Y to U/V without inversion. CLI import-svg/import-dxf, dedicated MCP file tools and command arrays reuse the same implementation. This FILE-005 engineering bucket does not invent a reference import catalog entry or equate import with printing. Strict v5 native saving retains internal annotations and editable holes. SVG emits one explicit evenodd compound path per piece with exterior/hole closed subpaths in physical mm and inverted Y; OBJ emits the actual rest/current annular cloth surface in metre/Y-up coordinates without annotation line primitives. DXF v1 refuses an entire holed project before staging; destination and recovery remain subject to the existing safe-IO guards. Native export help/messages, CLI help and MCP descriptions explicitly disclose the omission. Bounded SVG/DXF imports initialize empty internal and holes arrays; they do not import annotation roles or holes. Current SVG import explicitly refuses compound hole paths, so the new export is not a supported hole round trip. A supported hole-free straight cut saves as two ordinary v5 pieces. SVG and supported hole-free DXF export both closed exterior boundaries, including independent chord copies; OBJ emits the separate piece surfaces. This source relationship does not qualify an external/native round trip. The shared SVG canvas now unions all analytic exterior curve bounds, including cubic extrema, at the absolute authored origin. A one-metre blank canvas remains only for an empty project. This removes blank padding from the former 0\u20131 m seed/control hull; clipping was not observed in the failed old native case. Millimetre scale, inverted Y, compound path data, guards and staged write remain unchanged. Three focused source definitions cover negative/large-offset/multipiece layouts, true cubic extrema and the empty fallback; they do not establish print margins, native exports or reference behavior. At integrated 8aa, the preceding native-v5 description is historical. Native v6 retains notches; SVG includes physical-scale perpendicular I-marker lines and unions their ends into bounds. DXF refuses authored notches before staging. OBJ remains mesh-only, and notch SVG import/printing/full CAD roundtrip remain open. The A4 and US Letter PDF paths print digital outlines, holes, notches and annotations at 1:1 with a calibration square and overlapping tile registration. File, Command search, CLI and local MCP share the validated PDF writer. File and Command search add a millimetre crop, paper sizes, orientation, pixel density and geometry switches for 1:1 pattern PNG. The staged renderer saves matching revision pixels, and CLI and MCP use the same typed options. A right-side dialog outlines the crop in 2D and edits its dimensions and origin in mm, cm, inches or pixels. The canonical crop stays fixed across unit changes. The pixel fields and PNG writer share the rounded density. The Grainline switch draws arrows from the analytic exterior-bounds centres in the pieces' authored warp directions. It defaults off in the studio, CLI and MCP. The renderer applies the crop and stroke limits to the grainline segments.",
         "missing_functionality": [
           "General SVG/CAD compatibility, apparel conventions, hole-aware SVG/DXF import/export profiles, internal features, sewing/material/arrangement round trip, printer calibration, raster artwork and presentation controls and reference semantics remain open.",
           "Native save retains the primary on failed replacement under inherited guarantees; recovery may already have advanced to the prior valid primary. Primary and recovery are not one atomic two-file transaction. Actual chooser/modal/edit/history/reopen qualification comes only from registry/reports.",
@@ -1248,7 +1252,7 @@
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "\"project_export_pdf\" => {",
           "line": 493,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge/src/main.rs",
@@ -1260,25 +1264,25 @@
           "path": "apps/weftforge/src/pattern_snapshot.rs",
           "anchor": "pub(super) struct PatternSnapshotDialog",
           "line": 47,
-          "sha256": "608d6c60250fa07ff449e35468df2d9310372394d4ad45bac3b4ea1ee07ccc84"
+          "sha256": "f0f006d7f783cb765a67ffa4571d85ec23dc5b73656d082c4735c06b537d3033"
         },
         {
           "path": "apps/weftforge/src/capture.rs",
           "anchor": "pub fn start_pattern(",
           "line": 174,
-          "sha256": "316e6477a5169f7daed6be662af7db725f87a9ed2a3d1ae63139ace19471377a"
+          "sha256": "4291dc2e940e6ef0ddcd17910ee92c58a4def7fd3949d7631140c0675350be60"
         },
         {
           "path": "crates/weftforge-core/src/persistence/pattern_png.rs",
           "anchor": "pub fn stage_pattern_png(",
-          "line": 96,
-          "sha256": "2c6fe8e355fc70e7a0c1b8b6467fa4366a5178ef7d77b08d168ff84d2c99110c"
+          "line": 102,
+          "sha256": "2f48759c1386375d02cb906fc8e9f5790bcbf93d4cbf4e367c2fe9853441fc79"
         },
         {
           "path": "crates/weftforge-core/src/persistence/pattern_png.rs",
           "anchor": "encoder.set_pixel_dims",
-          "line": 284,
-          "sha256": "2c6fe8e355fc70e7a0c1b8b6467fa4366a5178ef7d77b08d168ff84d2c99110c"
+          "line": 319,
+          "sha256": "2f48759c1386375d02cb906fc8e9f5790bcbf93d4cbf4e367c2fe9853441fc79"
         },
         {
           "path": "apps/weftforge-cli/src/main.rs",
@@ -1290,13 +1294,13 @@
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "\"project_export_pattern_png\" => {",
           "line": 482,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge/src/pattern_snapshot.rs",
           "anchor": "ComboBox::from_id_salt(\"pattern-snapshot-units\")",
-          "line": 162,
-          "sha256": "608d6c60250fa07ff449e35468df2d9310372394d4ad45bac3b4ea1ee07ccc84"
+          "line": 165,
+          "sha256": "f0f006d7f783cb765a67ffa4571d85ec23dc5b73656d082c4735c06b537d3033"
         },
         {
           "path": "apps/weftforge/src/main.rs",
@@ -1307,8 +1311,26 @@
         {
           "path": "crates/weftforge-core/src/persistence/pattern_png.rs",
           "anchor": "pub fn pixels_per_metre(self) -> Result<u32>",
-          "line": 36,
-          "sha256": "2c6fe8e355fc70e7a0c1b8b6467fa4366a5178ef7d77b08d168ff84d2c99110c"
+          "line": 42,
+          "sha256": "2f48759c1386375d02cb906fc8e9f5790bcbf93d4cbf4e367c2fe9853441fc79"
+        },
+        {
+          "path": "apps/weftforge/src/pattern_snapshot.rs",
+          "anchor": "ui.checkbox(&mut self.grainline, \"Grainline\")",
+          "line": 222,
+          "sha256": "f0f006d7f783cb765a67ffa4571d85ec23dc5b73656d082c4735c06b537d3033"
+        },
+        {
+          "path": "crates/weftforge-core/src/persistence/pattern_png.rs",
+          "anchor": "fn add_grainline(",
+          "line": 135,
+          "sha256": "2f48759c1386375d02cb906fc8e9f5790bcbf93d4cbf4e367c2fe9853441fc79"
+        },
+        {
+          "path": "apps/weftforge-cli/src/mcp.rs",
+          "anchor": "\"grainline\":{\"type\":\"boolean\",\"default\":false}",
+          "line": 858,
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         }
       ]
     },
@@ -1369,31 +1391,31 @@
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "fn command_schema()",
           "line": 585,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "fn tools()",
           "line": 849,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "docs/automation.md",
           "anchor": "The supported shared commands are",
-          "line": 164,
-          "sha256": "730128523c7eea3fc8d101aa20c8d86fe4dd15ba1e386766cce158e938f2fad0"
+          "line": 167,
+          "sha256": "55fb279df8dc9c9f81b6767ae3e5c156fbd2a06ef278a764019e0daf68ab94a9"
         },
         {
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "\"add_internal_segment\"",
           "line": 709,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "\"remove_internal_curve\"",
           "line": 718,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge-cli/src/main.rs",
@@ -1405,31 +1427,31 @@
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "\"cut_piece\"",
           "line": 751,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge-cli/tests/mcp_stdio.rs",
           "anchor": "fn straight_cut_commands_share_closed_schemas_profiles_and_atomic_saves()",
           "line": 159,
-          "sha256": "c46997fb18eefb32acd906da9f9f3adc99a603ef6951bdea97a3dc2afeed723a"
+          "sha256": "ba5d5ffb3e38516d9b3b272ff90f3680a73965090007e9f16de391e96d6a2542"
         },
         {
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "\"add_hole\"",
           "line": 691,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "\"remove_hole\"",
           "line": 701,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge-cli/tests/mcp_stdio.rs",
           "anchor": "fn straight_holes_keep_closed_discovery_shared_ids_and_atomic_refusal()",
           "line": 3105,
-          "sha256": "c46997fb18eefb32acd906da9f9f3adc99a603ef6951bdea97a3dc2afeed723a"
+          "sha256": "ba5d5ffb3e38516d9b3b272ff90f3680a73965090007e9f16de391e96d6a2542"
         },
         {
           "path": "apps/weftforge-cli/tests/holes.rs",
@@ -1441,19 +1463,19 @@
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "\"cut_and_sew\"",
           "line": 752,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "\"offset_outline\"",
           "line": 754,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge-cli/tests/mcp_stdio.rs",
           "anchor": "fn outline_offsets_share_closed_schemas_material_domain_and_atomic_files()",
           "line": 2908,
-          "sha256": "c46997fb18eefb32acd906da9f9f3adc99a603ef6951bdea97a3dc2afeed723a"
+          "sha256": "ba5d5ffb3e38516d9b3b272ff90f3680a73965090007e9f16de391e96d6a2542"
         }
       ]
     },
@@ -1502,7 +1524,7 @@
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "fn length_query_schema()",
           "line": 568,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge/src/main.rs",
@@ -1575,7 +1597,7 @@
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "fn length_query_schema()",
           "line": 568,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge/src/main.rs",
@@ -1648,7 +1670,7 @@
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "fn length_query_schema()",
           "line": 568,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge/src/main.rs",
@@ -3497,7 +3519,7 @@
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "\"cut_piece\"",
           "line": 751,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge/src/main.rs",
@@ -3557,7 +3579,7 @@
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "\"cut_and_sew\"",
           "line": 752,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge/src/main.rs",
@@ -3712,13 +3734,13 @@
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "\"offset_outline\"",
           "line": 754,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge-cli/tests/mcp_stdio.rs",
           "anchor": "fn outline_offsets_share_closed_schemas_material_domain_and_atomic_files()",
           "line": 2908,
-          "sha256": "c46997fb18eefb32acd906da9f9f3adc99a603ef6951bdea97a3dc2afeed723a"
+          "sha256": "ba5d5ffb3e38516d9b3b272ff90f3680a73965090007e9f16de391e96d6a2542"
         },
         {
           "path": "apps/weftforge/src/main.rs",
@@ -3857,67 +3879,67 @@
           "path": "apps/weftforge/src/capture.rs",
           "anchor": "pub(super) struct WorkspaceCapture {",
           "line": 57,
-          "sha256": "316e6477a5169f7daed6be662af7db725f87a9ed2a3d1ae63139ace19471377a"
+          "sha256": "4291dc2e940e6ef0ddcd17910ee92c58a4def7fd3949d7631140c0675350be60"
         },
         {
           "path": "apps/weftforge/src/capture.rs",
           "anchor": "pub fn start(",
           "line": 77,
-          "sha256": "316e6477a5169f7daed6be662af7db725f87a9ed2a3d1ae63139ace19471377a"
+          "sha256": "4291dc2e940e6ef0ddcd17910ee92c58a4def7fd3949d7631140c0675350be60"
         },
         {
           "path": "apps/weftforge/src/capture.rs",
           "anchor": "pub fn receive(",
           "line": 127,
-          "sha256": "316e6477a5169f7daed6be662af7db725f87a9ed2a3d1ae63139ace19471377a"
+          "sha256": "4291dc2e940e6ef0ddcd17910ee92c58a4def7fd3949d7631140c0675350be60"
         },
         {
           "path": "apps/weftforge/src/capture.rs",
           "anchor": "pub fn finish_frame(",
           "line": 241,
-          "sha256": "316e6477a5169f7daed6be662af7db725f87a9ed2a3d1ae63139ace19471377a"
+          "sha256": "4291dc2e940e6ef0ddcd17910ee92c58a4def7fd3949d7631140c0675350be60"
         },
         {
           "path": "apps/weftforge/src/capture.rs",
           "anchor": "pub fn cancel(",
           "line": 112,
-          "sha256": "316e6477a5169f7daed6be662af7db725f87a9ed2a3d1ae63139ace19471377a"
+          "sha256": "4291dc2e940e6ef0ddcd17910ee92c58a4def7fd3949d7631140c0675350be60"
         },
         {
           "path": "apps/weftforge/src/capture.rs",
           "anchor": "pub fn shutdown(",
           "line": 321,
-          "sha256": "316e6477a5169f7daed6be662af7db725f87a9ed2a3d1ae63139ace19471377a"
+          "sha256": "4291dc2e940e6ef0ddcd17910ee92c58a4def7fd3949d7631140c0675350be60"
         },
         {
           "path": "apps/weftforge/src/capture.rs",
           "anchor": "fn encode_png(",
           "line": 367,
-          "sha256": "316e6477a5169f7daed6be662af7db725f87a9ed2a3d1ae63139ace19471377a"
+          "sha256": "4291dc2e940e6ef0ddcd17910ee92c58a4def7fd3949d7631140c0675350be60"
         },
         {
           "path": "apps/weftforge/src/capture.rs",
           "anchor": "fn png_retains_native_pixels_orientation_alpha_and_only_standard_srgb_metadata(",
-          "line": 493,
-          "sha256": "316e6477a5169f7daed6be662af7db725f87a9ed2a3d1ae63139ace19471377a"
+          "line": 494,
+          "sha256": "4291dc2e940e6ef0ddcd17910ee92c58a4def7fd3949d7631140c0675350be60"
         },
         {
           "path": "apps/weftforge/src/capture.rs",
           "anchor": "fn capture_admission_and_late_commit_guards_preserve_the_previous_file(",
-          "line": 586,
-          "sha256": "316e6477a5169f7daed6be662af7db725f87a9ed2a3d1ae63139ace19471377a"
+          "line": 587,
+          "sha256": "4291dc2e940e6ef0ddcd17910ee92c58a4def7fd3949d7631140c0675350be60"
         },
         {
           "path": "apps/weftforge/src/capture.rs",
           "anchor": "fn shutdown_releases_a_live_worker_without_waiting_and_drops_its_late_result(",
-          "line": 725,
-          "sha256": "316e6477a5169f7daed6be662af7db725f87a9ed2a3d1ae63139ace19471377a"
+          "line": 726,
+          "sha256": "4291dc2e940e6ef0ddcd17910ee92c58a4def7fd3949d7631140c0675350be60"
         },
         {
           "path": "apps/weftforge/src/capture.rs",
           "anchor": "fn successful_same_revision_document_lifecycle_and_reset_invalidate_capture(",
-          "line": 1046,
-          "sha256": "316e6477a5169f7daed6be662af7db725f87a9ed2a3d1ae63139ace19471377a"
+          "line": 1047,
+          "sha256": "4291dc2e940e6ef0ddcd17910ee92c58a4def7fd3949d7631140c0675350be60"
         },
         {
           "path": "crates/weftforge-core/src/persistence.rs",
@@ -3975,7 +3997,7 @@
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "\"project_export_glb\" => {",
           "line": 520,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge/src/main.rs",
@@ -3993,7 +4015,7 @@
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "\"project_export_gltf\" => {",
           "line": 526,
-          "sha256": "0b2604d898bd3068548e2728fde609915bce5d2229a4f9f7b492c5f2cb6431d7"
+          "sha256": "81b918429f16dfb625d12b3654d6bfed1825cabac77f9873c28f8eb50ebff0b6"
         },
         {
           "path": "apps/weftforge/src/main.rs",
@@ -5021,6 +5043,7 @@
         "Outlines and holes",
         "Internal lines",
         "Notches",
+        "Grainline",
         "Save PNG\u2026"
       ],
       "group_ids": [
@@ -5037,25 +5060,31 @@
           "path": "apps/weftforge/src/pattern_snapshot.rs",
           "anchor": "pub(super) struct PatternSnapshotDialog",
           "line": 47,
-          "sha256": "608d6c60250fa07ff449e35468df2d9310372394d4ad45bac3b4ea1ee07ccc84"
+          "sha256": "f0f006d7f783cb765a67ffa4571d85ec23dc5b73656d082c4735c06b537d3033"
         },
         {
           "path": "apps/weftforge/src/capture.rs",
           "anchor": "pub fn start_pattern(",
           "line": 174,
-          "sha256": "316e6477a5169f7daed6be662af7db725f87a9ed2a3d1ae63139ace19471377a"
+          "sha256": "4291dc2e940e6ef0ddcd17910ee92c58a4def7fd3949d7631140c0675350be60"
         },
         {
           "path": "apps/weftforge/src/pattern_snapshot.rs",
           "anchor": "ComboBox::from_id_salt(\"pattern-snapshot-units\")",
-          "line": 162,
-          "sha256": "608d6c60250fa07ff449e35468df2d9310372394d4ad45bac3b4ea1ee07ccc84"
+          "line": 165,
+          "sha256": "f0f006d7f783cb765a67ffa4571d85ec23dc5b73656d082c4735c06b537d3033"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "let [min, max] = snapshot.crop_m();",
           "line": 6729,
           "sha256": "ef60b4272f878c286b63686f23f109c9690b7d15c281d852089f2ad99ed3dc17"
+        },
+        {
+          "path": "apps/weftforge/src/pattern_snapshot.rs",
+          "anchor": "ui.checkbox(&mut self.grainline, \"Grainline\")",
+          "line": 222,
+          "sha256": "f0f006d7f783cb765a67ffa4571d85ec23dc5b73656d082c4735c06b537d3033"
         }
       ]
     }
@@ -5138,8 +5167,8 @@
     },
     {
       "path": "docs/automation.md",
-      "sha256": "730128523c7eea3fc8d101aa20c8d86fe4dd15ba1e386766cce158e938f2fad0",
-      "scope": "Shared authoring and thirteen stateless tools. Includes pattern PDF, physical-crop PNG and mesh output."
+      "sha256": "55fb279df8dc9c9f81b6767ae3e5c156fbd2a06ef278a764019e0daf68ab94a9",
+      "scope": "Shared authoring and thirteen stateless tools, including physical-crop PNG with optional grainline."
     },
     {
       "path": "spec/features/PAT-006-internal-segments.md",
@@ -5153,8 +5182,8 @@
     },
     {
       "path": "docs/file-formats.md",
-      "sha256": "689308f0bf16705a6d0c39e8c2ae018f31880c27fa00e78008b4656f68e489ba",
-      "scope": "Native projects, bounded SVG and DXF, static meshes, vector PDF and physical-crop PNG with four desktop units."
+      "sha256": "c30dc777810aeb1db85dd3242b7498629d679c625e14df67063c48761f3e51e2",
+      "scope": "Native projects, bounded SVG and DXF, static meshes, vector PDF and physical-crop PNG with grainline."
     },
     {
       "path": "spec/features/PAT-006-straight-cut.md",
@@ -5213,8 +5242,8 @@
     },
     {
       "path": "spec/features/FILE-005-pattern-png.md",
-      "sha256": "583b1550614bc21a3c117b0a0957fad661f2194898f53c1fe4e6431ad18b5e65",
-      "scope": "Crop outline, unit conversions, density metadata, staged desktop export and typed CLI and MCP routes."
+      "sha256": "6cc99fbb8fcc4c68ef22cf9f8c3b6f80640b6c74d1127741a27b0303de27dfac",
+      "scope": "Physical crop, encoded density, default geometry and opt-in authored warp arrows."
     }
   ],
   "limits": [
@@ -5243,67 +5272,74 @@
     "H map preparation performs no Cargo, source test, model/native/reference workflow or project checker. G and prior proof identities/outcomes remain separately attributed; the original shutdown finding and its source correction are not rewritten as runtime evidence. Core/solver remain free of GUI/PNG dependencies; no typed authoring command, schema, tool or document format is added."
   ],
   "source_update_origin": {
-    "previous_addendum_commit": "8d157cbb73467ecdc98f78be70e8b971eb4f909f",
-    "previous_source_commit": "36a9be49097a53f1da4dc0c74062f553ff3194b7",
-    "previous_addendum_sha256": "04abfb3f0e6c80113dff6da48f2de5015dfa10c57f2a87160e695958f2bc9827",
-    "previous_markdown_sha256": "13a650e9e94110c1e01cfd1c8b1ef3c78aaffbf8c1e71a39f57bf520944c139b",
+    "previous_addendum_commit": "c7801bb1cb694ead6778b6cd9e81d78f58a1fc3b",
+    "previous_source_commit": "d06b224b504a9c6c76b2b288d14c1ea0a845ed3b",
+    "previous_addendum_sha256": "f7d499c371d68d88791510929c4739dbb1e9174de98b0763bbfb1418626e61db",
+    "previous_markdown_sha256": "b5acd6721d7cf550118ad13bbdec3f25eff33fdb088138f252dc344739d9e267",
     "previous_source_update_origin": {
-      "previous_addendum_commit": "29a1d0f9b17838d2229e90eeb0d36234784df55b",
-      "previous_source_commit": "89b2c27924f9a9c7546a274334c212fe269c1d46",
-      "previous_addendum_sha256": "436278a15254bf9152b840e20ae3bd266d749e28e57d73b8c573970f7336523f",
-      "previous_markdown_sha256": "b4d780604e152dbdc7ba4645b9fc4eedfd8796aff492f7907c8495d51a32bfea",
+      "previous_addendum_commit": "8d157cbb73467ecdc98f78be70e8b971eb4f909f",
+      "previous_source_commit": "36a9be49097a53f1da4dc0c74062f553ff3194b7",
+      "previous_addendum_sha256": "04abfb3f0e6c80113dff6da48f2de5015dfa10c57f2a87160e695958f2bc9827",
+      "previous_markdown_sha256": "13a650e9e94110c1e01cfd1c8b1ef3c78aaffbf8c1e71a39f57bf520944c139b",
       "previous_source_update_origin": {
-        "previous_addendum_commit": "2b8adb902aa93171feef7543d59c6722debd6d66",
-        "previous_source_commit": "d71577fe9015b278d9e66e070b2d97140a03328d",
-        "previous_addendum_sha256": "9f7989fd9c098015c1c732f8774231e59bf48fda951681369c03ea415a18674a",
-        "previous_markdown_sha256": "d2a0d5ce9e4d681918c2e347b4565f01b65f41e8bdf7c9bf3754a57b31a097df",
+        "previous_addendum_commit": "29a1d0f9b17838d2229e90eeb0d36234784df55b",
+        "previous_source_commit": "89b2c27924f9a9c7546a274334c212fe269c1d46",
+        "previous_addendum_sha256": "436278a15254bf9152b840e20ae3bd266d749e28e57d73b8c573970f7336523f",
+        "previous_markdown_sha256": "b4d780604e152dbdc7ba4645b9fc4eedfd8796aff492f7907c8495d51a32bfea",
         "previous_source_update_origin": {
-          "previous_addendum_commit": "a1d780c1fc1c8b61a922b487a64d560065bf0eed",
-          "previous_source_commit": "7f85908c6b7daf0be3594831f74f2a250b15d276",
-          "previous_addendum_sha256": "33eef531cd229b6dd54d63788fe9a10a9b06740cde4c83ffab4c210fd6411c76",
-          "previous_markdown_sha256": "d3e99d7ddd6ba2354f7220490c315397e506841f8ce3ecee87508c7516ee7150",
+          "previous_addendum_commit": "2b8adb902aa93171feef7543d59c6722debd6d66",
+          "previous_source_commit": "d71577fe9015b278d9e66e070b2d97140a03328d",
+          "previous_addendum_sha256": "9f7989fd9c098015c1c732f8774231e59bf48fda951681369c03ea415a18674a",
+          "previous_markdown_sha256": "d2a0d5ce9e4d681918c2e347b4565f01b65f41e8bdf7c9bf3754a57b31a097df",
           "previous_source_update_origin": {
-            "previous_addendum_commit": "0e764e88f212df28ee5e2f55ad8030a8d5571f4e",
-            "previous_source_commit": "b305cabf553411400bd342d46532a0d61f398d55",
-            "previous_addendum_sha256": "bb14bb01ade0c6b954d7b06cbe599b22357f03ace3cee37a651279dd44bc5cf5",
-            "previous_markdown_sha256": "6893ed1d76364e8d4c968605592952fbded01f087679917864e5ba985d529a88",
+            "previous_addendum_commit": "a1d780c1fc1c8b61a922b487a64d560065bf0eed",
+            "previous_source_commit": "7f85908c6b7daf0be3594831f74f2a250b15d276",
+            "previous_addendum_sha256": "33eef531cd229b6dd54d63788fe9a10a9b06740cde4c83ffab4c210fd6411c76",
+            "previous_markdown_sha256": "d3e99d7ddd6ba2354f7220490c315397e506841f8ce3ecee87508c7516ee7150",
             "previous_source_update_origin": {
-              "previous_addendum_commit": "d4255e16896e96841dffa67f7b03cfa60d2b4b5a",
-              "previous_source_commit": "8721469c10771624d3042b92d6f91c294ed04efc",
-              "previous_addendum_sha256": "884a9cedfb98a6eea6f07b86ba40d17f93019ed2840de8c641991d284a32114d",
-              "previous_markdown_sha256": "6c359f9dfa47dbcaae80299211a036917e0f9b5b0351c589b7fcdf5010c54d27",
+              "previous_addendum_commit": "0e764e88f212df28ee5e2f55ad8030a8d5571f4e",
+              "previous_source_commit": "b305cabf553411400bd342d46532a0d61f398d55",
+              "previous_addendum_sha256": "bb14bb01ade0c6b954d7b06cbe599b22357f03ace3cee37a651279dd44bc5cf5",
+              "previous_markdown_sha256": "6893ed1d76364e8d4c968605592952fbded01f087679917864e5ba985d529a88",
               "previous_source_update_origin": {
-                "previous_addendum_commit": "44552840f50fe6b9c2b2da99e17cce8d38666a94",
-                "previous_addendum_sha256": "bb47b8ba7bc957ce8565b54e2bc6bf3e6b6d6f979c930a1e0ae4304f2dc15c02",
-                "previous_markdown_sha256": "875e46c1eff750e38a390db52ca353d5ebecc4a76588fedd739819ec52364151",
-                "previous_source_commit": "54456690c60b44696c7d0da551211dab179a329d",
+                "previous_addendum_commit": "d4255e16896e96841dffa67f7b03cfa60d2b4b5a",
+                "previous_source_commit": "8721469c10771624d3042b92d6f91c294ed04efc",
+                "previous_addendum_sha256": "884a9cedfb98a6eea6f07b86ba40d17f93019ed2840de8c641991d284a32114d",
+                "previous_markdown_sha256": "6c359f9dfa47dbcaae80299211a036917e0f9b5b0351c589b7fcdf5010c54d27",
                 "previous_source_update_origin": {
-                  "previous_addendum_commit": "117179d2ee31deeecb8a9fb57881a097da77500d",
-                  "previous_addendum_sha256": "c5f77c2bec0c941eef4f71e7e4856fd317d175055c6555fa0c469dbc06294556",
-                  "previous_markdown_sha256": "0c179dd2db384497daafbd072380db17b0a90f81da95d39df568564e95647d49",
-                  "previous_source_commit": "8929468332af68574ef33f2f305d33b276f8f5e7",
+                  "previous_addendum_commit": "44552840f50fe6b9c2b2da99e17cce8d38666a94",
+                  "previous_addendum_sha256": "bb47b8ba7bc957ce8565b54e2bc6bf3e6b6d6f979c930a1e0ae4304f2dc15c02",
+                  "previous_markdown_sha256": "875e46c1eff750e38a390db52ca353d5ebecc4a76588fedd739819ec52364151",
+                  "previous_source_commit": "54456690c60b44696c7d0da551211dab179a329d",
                   "previous_source_update_origin": {
-                    "previous_addendum_commit": "f7279e1d9af5647e77de527a7da7c61385320ef9",
-                    "previous_addendum_sha256": "d9dac67486c1f797a4d261b77084d69e5cdb18f6678e059e536cf4055fb152e8",
-                    "previous_markdown_sha256": "0e5276ad1322b3a0f1bd1442bf443722b73db6df529b298a52a93e662f9d646e",
-                    "previous_source_commit": "9a3b70b752868ece9340dc80fe5228e12a52aea1",
-                    "preservation_rule": "Keep all 457 prior literal source occurrences and the historical catalog. Re-pin matching occurrences and the two updated format documents to the tested source. Append five GLB occurrences. Keep previous outcomes and indexed source versions. The previous source-update origin stays in the preceding root-level record."
+                    "previous_addendum_commit": "117179d2ee31deeecb8a9fb57881a097da77500d",
+                    "previous_addendum_sha256": "c5f77c2bec0c941eef4f71e7e4856fd317d175055c6555fa0c469dbc06294556",
+                    "previous_markdown_sha256": "0c179dd2db384497daafbd072380db17b0a90f81da95d39df568564e95647d49",
+                    "previous_source_commit": "8929468332af68574ef33f2f305d33b276f8f5e7",
+                    "previous_source_update_origin": {
+                      "previous_addendum_commit": "f7279e1d9af5647e77de527a7da7c61385320ef9",
+                      "previous_addendum_sha256": "d9dac67486c1f797a4d261b77084d69e5cdb18f6678e059e536cf4055fb152e8",
+                      "previous_markdown_sha256": "0e5276ad1322b3a0f1bd1442bf443722b73db6df529b298a52a93e662f9d646e",
+                      "previous_source_commit": "9a3b70b752868ece9340dc80fe5228e12a52aea1",
+                      "preservation_rule": "Keep all 457 prior literal source occurrences and the historical catalog. Re-pin matching occurrences and the two updated format documents to the tested source. Append five GLB occurrences. Keep previous outcomes and indexed source versions. The previous source-update origin stays in the preceding root-level record."
+                    },
+                    "preservation_rule": "Retain historical groups, snapshots and literal anchors. Re-pin the changed app source and add the shared shortcut label anchor."
                   },
-                  "preservation_rule": "Retain historical groups, snapshots and literal anchors. Re-pin the changed app source and add the shared shortcut label anchor."
+                  "preservation_rule": "Keep the full historical catalog and preceding anchors. The old CLI export-glb match arm now also matches export-gltf. Re-pin changed source and reviewed format documents. Add four source occurrences for JSON glTF."
                 },
-                "preservation_rule": "Keep the full historical catalog and preceding anchors. The old CLI export-glb match arm now also matches export-gltf. Re-pin changed source and reviewed format documents. Add four source occurrences for JSON glTF."
+                "preservation_rule": "Preserve the historical catalog and preceding anchors. Repin changed desktop paths and append the live visibility group, Scene controls and reviewed contract."
               },
-              "preservation_rule": "Preserve the historical catalog and preceding anchors. Repin changed desktop paths and append the live visibility group, Scene controls and reviewed contract."
+              "preservation_rule": "Keep the historical catalog and earlier anchors. Re-pin the desktop source and add the standard 3D orientation and command-search occurrences."
             },
-            "preservation_rule": "Keep the historical catalog and earlier anchors. Re-pin the desktop source and add the standard 3D orientation and command-search occurrences."
+            "preservation_rule": "Keep the historical catalog and camera anchors. Re-pin the desktop source and map Frame garment."
           },
-          "preservation_rule": "Keep the historical catalog and camera anchors. Re-pin the desktop source and map Frame garment."
+          "preservation_rule": "Keep the historical catalog and previous occurrences. Re-pin current sources and map tiled PDF."
         },
-        "preservation_rule": "Keep the historical catalog and previous occurrences. Re-pin current sources and map tiled PDF."
+        "preservation_rule": "Preserve the archived map and authoring commands. Re-pin source and add the configurable 2D pattern PNG."
       },
-      "preservation_rule": "Preserve the archived map and authoring commands. Re-pin source and add the configurable 2D pattern PNG."
+      "preservation_rule": "Preserve the archived map and typed command surface. Re-pin the crop dialog, panel outline and density source."
     },
-    "preservation_rule": "Preserve the archived map and typed command surface. Re-pin the crop dialog, panel outline and density source."
+    "preservation_rule": "Preserve the archived map and typed commands. Pin the optional grainline in the crop dialog, writer and adapter."
   },
   "previous_source_update_origin": {
     "previous_addendum_commit": "7e56a324c5a2b4c731d019caedc752caf08e7310",

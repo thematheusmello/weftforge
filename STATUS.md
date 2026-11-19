@@ -1,3 +1,18 @@
+# Grainlines in pattern PNG — 19 November 2026
+
+**Grainline** adds an arrow in each piece's authored warp direction.
+On Apple Silicon, the 1,654 × 2,067 image with the option off matched the
+earlier crop byte for byte. Enabling it drew Basin's upward arrow and
+changed 980 pixels. An independent reader confirmed two shaft probes,
+both arrowhead wings and unchanged density. Both native PNGs matched
+the CLI bytes. The project kept its hash and the test app closed.
+[Native report](parity/reports/WF-20261119-NATIVE-PATTERN-GRAINLINE-001.json) · [Studio preview](docs/studio-preview.md).
+
+Formatting, 510 workspace tests, strict Clippy and both builds passed.
+Artwork, labels, measurements and JPEG remain open for pattern snapshots.
+Printer measurement, full Harbor fit and reference comparison remain open.
+GitHub Actions and automated Pages deployments stay disabled.
+
 # Pattern PNG crop units — 19 November 2026
 
 The 2D pane outlines the PNG crop while the dialog is open. In the Apple
