@@ -167,7 +167,7 @@ struct FileArgs {
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
-struct PatternPngArgs {
+struct PatternSnapshotArgs {
     input: String,
     output: String,
     options: PatternSnapshotOptions,
@@ -420,6 +420,7 @@ fn call(line: &[u8]) -> Result<Value, String> {
             | "project_export_dxf"
             | "project_export_pdf"
             | "project_export_pattern_png"
+            | "project_export_pattern_jpeg"
     ) {
         return Err(format!("Unknown tool: {}", header.name));
     }
@@ -479,10 +480,18 @@ fn call(line: &[u8]) -> Result<Value, String> {
                     Path::new(&args.dxf),
                 )
             }
-            "project_export_pattern_png" => {
-                let args: PatternPngArgs = arguments(line)?;
+            "project_export_pattern_png" | "project_export_pattern_jpeg" => {
+                let args: PatternSnapshotArgs = arguments(line)?;
                 super::distinct(&args.input, &args.output)?;
                 let project = Project::load(Path::new(&args.input))?;
+                if header.name == "project_export_pattern_jpeg" {
+                    let dimensions = args.options.jpeg_dimensions()?;
+                    let density = args.options.jpeg_pixels_per_inch()?;
+                    project.export_pattern_jpeg(Path::new(&args.output), args.options)?;
+                    return Ok(json!({"input":args.input,"output":args.output,
+                        "source_revision":project.revision,"kind":"pattern_jpeg","size_px":dimensions,
+                        "effective_pixels_per_inch":density,"options":args.options}));
+                }
                 let dimensions = args.options.dimensions()?;
                 project.export_pattern_png(Path::new(&args.output), args.options)?;
                 Ok(
@@ -864,6 +873,10 @@ fn tools() -> Vec<Value> {
             "notches",
         ],
     );
+    let snapshot = object(
+        json!({"input":path,"output":path,"options":snapshot_options}),
+        &["input", "output", "options"],
+    );
     [
         ("project_inspect", "Load a validated native project; return every authored object and stable relationship in SI units, without building a mesh.", object(json!({"path":path}), &["path"]), true),
         ("project_lengths", "Read authored/rest interval, legacy seam or ordered sewing-group lengths in unrounded SI metres, with source revision and signed B minus A. No mesh, simulation, history or file writes.", object(json!({"path":path,"query":length_query_schema()}), &["path","query"]), true),
@@ -877,6 +890,7 @@ fn tools() -> Vec<Value> {
         ("project_export_gltf", "Build and export the actual rest surface as one static glTF 2.0 JSON document with an embedded buffer, in metres and Y-up, with named pieces, per-piece fabric tint, normals and UVs. Refuse replacement of source or native project destinations.", files.clone(), false),
         ("project_export_dxf", "Export authored exterior pattern boundaries as R2000 DXF LINE/SPLINE geometry in millimetres, without 3D placement. DXF v1 refuses any project with holes or authored notches before writing output. Internal lines are omitted; sewing, materials, grain and editable annotations require the native project. Refuse replacement of source or native project destinations.", files, false),
         ("project_export_pdf", "Export 1:1 pattern outlines, holes, straight annotations and notch markers to a tiled vector PDF. Includes a 100 mm scale check. Print at Actual size. Refuse replacement of source or native project destinations.", object(json!({"input":path,"output":path,"paper":{"type":"string","enum":["a4","letter"]}}), &["input","output","paper"]), false),
-        ("project_export_pattern_png", "Save a physical 2D pattern crop with PNG density metadata. Crop bounds use material-space metres, followed by pixels per inch and explicit outline, internal line and notch switches. The optional grainline switch includes authored warp arrows. Refuse replacement of source or native project destinations.", object(json!({"input":path,"output":path,"options":snapshot_options}), &["input","output","options"]), false),
+        ("project_export_pattern_png", "Save a physical 2D pattern crop with PNG density metadata. Crop bounds use material-space metres, followed by pixels per inch and explicit outline, internal line and notch switches. The optional grainline switch includes authored warp arrows. Refuse replacement of source or native project destinations.", snapshot.clone(), false),
+        ("project_export_pattern_jpeg", "Save a physical 2D pattern crop as grayscale JPEG. Crop bounds use material-space metres. The nearest whole pixels per inch sets the grid and JFIF density, and the response reports that density. Use the same layer switches as pattern PNG. Refuse replacement of source or native project destinations.", snapshot, false),
     ].into_iter().map(|(name,description,input,read_only)|json!({"name":name,"description":description,"inputSchema":input,"annotations":{"readOnlyHint":read_only,"destructiveHint":!read_only,"openWorldHint":false}})).collect()
 }

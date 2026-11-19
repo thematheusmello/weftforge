@@ -17,6 +17,10 @@ Pinned versions and full declared expressions are in the manifest and inventory.
 Pattern PNG export uses png (MIT OR Apache-2.0), tiny-skia and tiny-skia-path
 (BSD-3-Clause), arrayref (BSD-2-Clause), and strict-num (MIT). The rasterizer
 operates on the CPU without a windowing or graphics driver dependency.
+Pattern JPEG export uses the grayscale encoder in image 0.25.10
+(MIT OR Apache-2.0). Its JPEG feature resolves zune-core and zune-jpeg
+(MIT OR Apache-2.0 OR Zlib) for decoding. The dependency inventory lists
+all three packages and their declared licenses.
 The ISC-licensed earcutr 0.5.0 source is vendored with cooperative cancellation
 hooks. Its original license, source provenance and checksums are retained in
 [`vendor/earcutr`](vendor/earcutr/UPSTREAM.md).

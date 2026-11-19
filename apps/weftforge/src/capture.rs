@@ -1,3 +1,4 @@
+use super::pattern_snapshot::SnapshotFormat;
 use eframe::{egui, wgpu};
 use std::{
     path::{Path, PathBuf},
@@ -82,7 +83,7 @@ impl WorkspaceCapture {
         path: PathBuf,
     ) -> Result<(), String> {
         if self.busy() {
-            return Err("Wait for the current PNG save to finish.".into());
+            return Err("Wait for the current image save to finish.".into());
         }
         if !self.supported || ctx.viewport_id() != egui::ViewportId::ROOT {
             return Err("Workspace capture is unavailable on this renderer.".into());
@@ -177,33 +178,45 @@ impl WorkspaceCapture {
         project: &Project,
         source: Option<&Path>,
         path: PathBuf,
+        format: SnapshotFormat,
         options: PatternSnapshotOptions,
     ) -> Result<String, String> {
         if self.busy() {
-            return Err("Wait for the current PNG save to finish.".into());
+            return Err("Wait for the current image save to finish.".into());
         }
-        if !path
-            .extension()
-            .is_some_and(|ext| ext.eq_ignore_ascii_case("png"))
-        {
-            return Err("Choose a .png destination for the pattern image.".into());
+        if !path.extension().is_some_and(|ext| {
+            format
+                .extensions()
+                .iter()
+                .any(|accepted| ext.eq_ignore_ascii_case(accepted))
+        }) {
+            return Err(match format {
+                SnapshotFormat::Png => "Choose a .png destination for the pattern image.",
+                SnapshotFormat::Jpeg => "Choose a .jpg or .jpeg destination for the pattern image.",
+            }
+            .into());
         }
         super::export_path_guard(source, &path)?;
-        let size = options
-            .dimensions()
+        let size = format
+            .dimensions(options)
             .map_err(|error| error.to_string())?
             .map(|dimension| dimension as usize);
         let request = SaveRequest {
             path: path.clone(),
             revision: project.revision,
             size,
-            name: "2D pattern PNG",
+            name: match format {
+                SnapshotFormat::Png => "2D pattern PNG",
+                SnapshotFormat::Jpeg => "2D pattern JPEG",
+            },
         };
         let project = project.clone();
         self.stage(ctx, request, move || {
-            project
-                .stage_pattern_png(path, options)
-                .map_err(|error| error.to_string())
+            match format {
+                SnapshotFormat::Png => project.stage_pattern_png(path, options),
+                SnapshotFormat::Jpeg => project.stage_pattern_jpeg(path, options),
+            }
+            .map_err(|error| error.to_string())
         })
     }
 
@@ -438,8 +451,6 @@ mod tests {
 
     #[test]
     fn pattern_worker_commits_current_geometry_and_discards_late_results() {
-        let directory = Directory::new();
-        let path = directory.0.join("patterns.png");
         let mut editor = weftforge_core::Editor::default();
         editor
             .execute(weftforge_core::Command::AddRectangle {
@@ -458,35 +469,43 @@ mod tests {
             notches: true,
             grainline: false,
         };
-        let control = directory.0.join("control.png");
-        project.export_pattern_png(&control, options).unwrap();
-        let expected = fs::read(control).unwrap();
         let ctx = egui::Context::default();
         let mut capture = WorkspaceCapture::default();
-        for (cancel, stale) in [(true, false), (false, true), (false, false)] {
-            fs::write(&path, b"previous output").unwrap();
-            capture
-                .start_pattern(&ctx, &project, None, path.clone(), options)
-                .unwrap();
-            if cancel {
-                assert!(capture.cancel());
+        for (format, extension) in [(SnapshotFormat::Png, "png"), (SnapshotFormat::Jpeg, "jpeg")] {
+            let directory = Directory::new();
+            let path = directory.0.join("patterns").with_extension(extension);
+            let control = directory.0.join("control").with_extension(extension);
+            match format {
+                SnapshotFormat::Png => project.export_pattern_png(&control, options),
+                SnapshotFormat::Jpeg => project.export_pattern_jpeg(&control, options),
             }
-            let display_revision = project.revision + u64::from(stale);
-            let deadline = Instant::now() + Duration::from_secs(5);
-            while capture.busy() {
-                advance(&ctx, &mut capture, display_revision, vec![]);
-                assert!(Instant::now() < deadline, "pattern worker did not finish");
-                std::thread::yield_now();
-            }
-            assert_eq!(
-                &fs::read(&path).unwrap(),
-                if cancel || stale {
-                    b"previous output".as_slice()
-                } else {
-                    &expected
+            .unwrap();
+            let expected = fs::read(control).unwrap();
+            for (cancel, stale) in [(true, false), (false, true), (false, false)] {
+                fs::write(&path, b"previous output").unwrap();
+                capture
+                    .start_pattern(&ctx, &project, None, path.clone(), format, options)
+                    .unwrap();
+                if cancel {
+                    assert!(capture.cancel());
                 }
-            );
-            assert_eq!(fs::read_dir(&directory.0).unwrap().count(), 2);
+                let display_revision = project.revision + u64::from(stale);
+                let deadline = Instant::now() + Duration::from_secs(5);
+                while capture.busy() {
+                    advance(&ctx, &mut capture, display_revision, vec![]);
+                    assert!(Instant::now() < deadline, "pattern worker did not finish");
+                    std::thread::yield_now();
+                }
+                assert_eq!(
+                    &fs::read(&path).unwrap(),
+                    if cancel || stale {
+                        b"previous output".as_slice()
+                    } else {
+                        &expected
+                    }
+                );
+                assert_eq!(fs::read_dir(&directory.0).unwrap().count(), 2);
+            }
         }
     }
 

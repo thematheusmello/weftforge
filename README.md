@@ -128,8 +128,8 @@ annotations, holes and notches. The reader supports explicit version 1–5 migra
 Older apps cannot open v6. OBJ, GLB and embedded JSON glTF mesh export and
 bounded SVG/DXF pattern import and export are available. File and Command
 search export 1:1 tiled pattern PDFs for A4 or US Letter. Each PDF includes
-a 100 mm test square. **Save 2D pattern PNG…** sets a crop and pixel density
-in physical units. The
+a 100 mm test square. **Save 2D pattern PNG…** and **Save 2D pattern JPEG…**
+set a crop and pixel density in physical units. The
 [format details](docs/file-formats.md) explain what survives each path.
 Simulation frames/settings, imported avatars,
 textures, animation, advanced construction and third-party project formats

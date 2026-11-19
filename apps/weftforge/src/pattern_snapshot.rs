@@ -13,6 +13,35 @@ const PAPER_SIZES_MM: [(&str, [f64; 2]); 7] = [
 ];
 const ARTWORK_PADDING_MM: f64 = 2.;
 
+#[derive(Clone, Copy)]
+pub(super) enum SnapshotFormat {
+    Png,
+    Jpeg,
+}
+
+impl SnapshotFormat {
+    pub fn name(self) -> &'static str {
+        match self {
+            Self::Png => "PNG",
+            Self::Jpeg => "JPEG",
+        }
+    }
+
+    pub fn extensions(self) -> &'static [&'static str] {
+        match self {
+            Self::Png => &["png"],
+            Self::Jpeg => &["jpg", "jpeg"],
+        }
+    }
+
+    pub fn dimensions(self, options: PatternSnapshotOptions) -> weftforge_core::Result<[u32; 2]> {
+        match self {
+            Self::Png => options.dimensions(),
+            Self::Jpeg => options.jpeg_dimensions(),
+        }
+    }
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 enum DisplayUnit {
     Millimetres,
@@ -31,20 +60,27 @@ impl DisplayUnit {
         }
     }
 
-    fn millimetres(self, options: PatternSnapshotOptions) -> Option<f64> {
+    fn millimetres(self, options: PatternSnapshotOptions, format: SnapshotFormat) -> Option<f64> {
         match self {
             Self::Millimetres => Some(1.),
             Self::Centimetres => Some(10.),
             Self::Inches => Some(25.4),
-            Self::Pixels => options
-                .pixels_per_metre()
-                .ok()
-                .map(|ppm| 1000. / f64::from(ppm)),
+            Self::Pixels => match format {
+                SnapshotFormat::Png => options
+                    .pixels_per_metre()
+                    .ok()
+                    .map(|ppm| 1000. / f64::from(ppm)),
+                SnapshotFormat::Jpeg => options
+                    .jpeg_pixels_per_inch()
+                    .ok()
+                    .map(|ppi| 25.4 / f64::from(ppi)),
+            },
         }
     }
 }
 
 pub(super) struct PatternSnapshotDialog {
+    pub format: SnapshotFormat,
     revision: u64,
     artwork_mm: [[f64; 2]; 2],
     unit: DisplayUnit,
@@ -63,7 +99,7 @@ pub(super) enum SnapshotAction {
 }
 
 impl PatternSnapshotDialog {
-    pub fn new(revision: u64, [[u0, v0], [u1, v1]]: [[f64; 2]; 2]) -> Self {
+    pub fn new(format: SnapshotFormat, revision: u64, [[u0, v0], [u1, v1]]: [[f64; 2]; 2]) -> Self {
         let artwork_mm = [
             [
                 u0 * 1000. - ARTWORK_PADDING_MM,
@@ -77,6 +113,7 @@ impl PatternSnapshotDialog {
         let origin_mm = artwork_mm[0];
         let size_mm = std::array::from_fn(|axis| artwork_mm[1][axis] - artwork_mm[0][axis]);
         let mut dialog = Self {
+            format,
             revision,
             artwork_mm,
             unit: DisplayUnit::Millimetres,
@@ -90,7 +127,7 @@ impl PatternSnapshotDialog {
         };
         for dpi in [300., 150.] {
             dialog.dpi = dpi;
-            if dialog.options().dimensions().is_ok() {
+            if format.dimensions(dialog.options()).is_ok() {
                 return dialog;
             }
         }
@@ -141,7 +178,7 @@ impl PatternSnapshotDialog {
             .area(area)
             .backdrop_color(Color32::from_black_alpha(48))
             .show(ctx, |ui| {
-                ui.heading("Save 2D pattern PNG");
+                ui.heading(format!("Save 2D pattern {}", self.format.name()));
                 ui.horizontal(|ui| {
                     ComboBox::from_id_salt("pattern-snapshot-paper")
                         .selected_text("Paper size")
@@ -183,7 +220,7 @@ impl PatternSnapshotDialog {
                         .labelled_by(label.id);
                 });
                 let unit = self.unit;
-                let millimetres = unit.millimetres(self.options());
+                let millimetres = unit.millimetres(self.options(), self.format);
                 Grid::new("pattern-snapshot-fields")
                     .num_columns(2)
                     .show(ui, |ui| {
@@ -222,13 +259,21 @@ impl PatternSnapshotDialog {
                     ui.checkbox(&mut self.grainline, "Grainline");
                 });
                 let options = self.options();
-                let dimensions = options.dimensions();
+                let dimensions = self.format.dimensions(options);
                 match &dimensions {
                     Ok([width, height]) => ui.label(format!("{width} × {height} px")),
                     Err(error) => ui.label(error.to_string()),
                 };
+                if matches!(self.format, SnapshotFormat::Jpeg)
+                    && let Ok(ppi) = options.jpeg_pixels_per_inch()
+                {
+                    ui.label(format!("Recorded density {ppi} pixels per inch"));
+                }
                 ui.horizontal(|ui| {
-                    let save = ui.add_enabled(dimensions.is_ok(), Button::new("Save PNG…"));
+                    let save = ui.add_enabled(
+                        dimensions.is_ok(),
+                        Button::new(format!("Save {}…", self.format.name())),
+                    );
                     if save.clicked() {
                         Some(SnapshotAction::Export(options))
                     } else if ui.button("Cancel").clicked() {
@@ -319,7 +364,8 @@ mod tests {
 
     #[test]
     fn display_units_keep_crop_and_use_encoded_density() {
-        let mut setup = PatternSnapshotDialog::new(4, [[-0.1, 0.05], [0.25, 0.2]]);
+        let mut setup =
+            PatternSnapshotDialog::new(SnapshotFormat::Png, 4, [[-0.1, 0.05], [0.25, 0.2]]);
         setup.dpi = 300.012101;
         assert_eq!(setup.options().pixels_per_metre().unwrap(), 11812);
         let options = setup.options();
@@ -331,10 +377,22 @@ mod tests {
         ] {
             setup.unit = unit;
             assert_eq!(setup.options(), options);
-            assert_eq!(setup.unit.millimetres(options), Some(scale));
+            assert_eq!(
+                setup.unit.millimetres(options, SnapshotFormat::Png),
+                Some(scale)
+            );
         }
+        assert_eq!(
+            DisplayUnit::Pixels.millimetres(options, SnapshotFormat::Jpeg),
+            Some(25.4 / 300.)
+        );
         setup.dpi = 0.;
-        assert_eq!(DisplayUnit::Pixels.millimetres(setup.options()), None);
+        for format in [SnapshotFormat::Png, SnapshotFormat::Jpeg] {
+            assert_eq!(
+                DisplayUnit::Pixels.millimetres(setup.options(), format),
+                None
+            );
+        }
         assert_eq!(setup.crop_m(), options.crop_m);
     }
 }

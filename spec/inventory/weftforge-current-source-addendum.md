@@ -1,5 +1,17 @@
 # WeftForge current-source addendum
 
+## Pattern JPEG export
+
+Source `f440d126c9094b357deb99b68dd6b01235591a44` maps `pattern-snapshot-print` to a grayscale JPEG
+with whole PPI in JFIF. The desktop crop preview uses the effective
+density for pixel fields. The CLI and fourteenth MCP tool share the
+validated crop and layers. The PNG route keeps its pixels-per-metre
+grid. This update re-pins 298 source occurrences and checks the
+format, automation and JPEG profile documents. The previous addendum is
+at `50f0a2a716fbd9c0fc508c05f9ef722e806aff10`.
+
+# WeftForge current-source addendum
+
 ## Pattern PNG grainline
 
 Source `0df44c4f23db77efbc30b1881e6f6b28cc9b48bd` adds the **Grainline** switch to

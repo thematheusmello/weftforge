@@ -24,6 +24,7 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 | DXF R2000 | Bounded additive import | Yes, projects without holes or authored notches | Editable exterior boundaries with layer names | Static 2D | Holed/notched projects refuse before staging. Strict existing ASCII `LINE`/clamped cubic `SPLINE` profile, mm and `WF_PIECE` layers; no sewing, materials, grain, internal lines, 3D placement, apparel conventions or print layout |
 | Pattern PDF 1.7 | — | A4 and US Letter tiles at 1:1 | Authored curves and marks as vector paths | Static 2D print | Piece IDs and bookmarks, 10 mm overlap, 100 mm scale check; editable relationships stay in the project |
 | Pattern PNG | — | Physical crop with pixel density | Rasterized authored curves and marks | Static 2D | White paper, optional contours, internal lines, notches and grainline, integer pixels/metre metadata |
+| Pattern JPEG | — | Physical crop with pixel density | Rasterized authored curves and marks | Static 2D | Lossy grayscale, the same layers as PNG, whole pixels/inch in JFIF |
 | Animation/cache formats | No | No | None yet | None yet | Timeline, frame caches and export not implemented |
 | Marvelous Designer `.zprj` / `.zpac` | No | No | None | None | Separate FILE-006 research/compatibility workstream |
 
@@ -424,6 +425,24 @@ weftforge-cli export-pattern-png garment.weftforge patterns.png snapshot.json
 ```
 
 [Pattern PNG profile](../spec/features/FILE-005-pattern-png.md).
+
+### Pattern JPEG
+
+Choose **Save 2D pattern JPEG…** from File or Command search. The dialog
+uses the same crop controls and layers and shows the recorded density. JPEG
+rounds the requested pixels per inch to a whole number before calculating
+the image dimensions. A reader using the stored JFIF density recovers each
+side of the crop within half a pixel. JPEG compresses the grayscale lines
+and marks at quality 100 with lossy encoding.
+
+```bash
+weftforge-cli export-pattern-jpeg garment.weftforge patterns.jpg snapshot.json
+```
+
+Use the same options file as for PNG. A 2 m crop at 72 pixels per inch
+is 5,669 pixels wide in JPEG. Its PNG counterpart is 5,670 pixels wide
+because PNG stores whole pixels per metre.
+[Pattern JPEG profile](../spec/features/FILE-005-pattern-jpeg.md).
 
 Future formats must specify what they preserve and reject unsupported important
 data explicitly. They must not accept a familiar extension without decoding it,

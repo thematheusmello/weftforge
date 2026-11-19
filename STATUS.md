@@ -1,3 +1,19 @@
+# Physical-scale pattern JPEG — 19 November 2026
+
+File and Command search open a JPEG crop with the pattern layers and
+recorded density. The Apple Silicon studio saved a 4,345 × 3,615 image
+at 127 PPI and a 5,669 × 567 image at 72 PPI. The 2 m crop used 72.4 PPI
+as input and retained its settings after cancelling the file chooser.
+Both native images matched fresh CLI and MCP bytes. The independent
+decoder checked the curved and straight contours, hole, notch, internal
+line and rotated warp arrow. Two earlier PNGs reproduced exactly.
+[Native report](parity/reports/WF-20261119-NATIVE-PATTERN-JPEG-001.json) · [Studio preview](docs/studio-preview.md).
+
+Formatting, 511 workspace tests, strict Clippy and both builds passed.
+Artwork, labels, measurements and physical printer testing remain open.
+The Harbor fit and reference comparison are still pending.
+GitHub Actions and automated Pages deployments stay disabled.
+
 # Grainlines in pattern PNG — 19 November 2026
 
 **Grainline** adds an arrow in each piece's authored warp direction.
