@@ -51585,7 +51585,8 @@
         "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-GRAINLINE-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-JPEG-001.json",
-        "spec/features/FILE-005-pattern-jpeg.md"
+        "spec/features/FILE-005-pattern-jpeg.md",
+        "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json"
       ],
       "scenarios": [
         {
@@ -56757,6 +56758,24 @@
             "parity/reports/artifacts/pattern-png-grainline-20261119/with-grainline.json": "80d3ec15aa139038fdffb79193aa6b86674a16c477a6e78dfbbfbebedafa7e94"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-JPEG-001.json"
+        },
+        {
+          "id": "WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001",
+          "commit": "f440d126c9094b357deb99b68dd6b01235591a44",
+          "timestamp": "2026-11-19T07:47:17.310356Z",
+          "platform": "Debian 13.7 ARM64 packaged studio on X11 and Vulkan Mesa llvmpipe",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-arm64-jpeg-20261119/DEBIAN-JPEG.json": "0754e34dec5a072278823bbe91bbd74e952b07ca58f46f8e02eb1de619f5a597",
+            "parity/reports/artifacts/debian-arm64-jpeg-20261119/PACKAGE-SHA256SUMS": "fe23f2eb18910eb6c1decac15e73bfba25badc20f71f50496649d86a9d72b145",
+            "parity/reports/artifacts/debian-arm64-jpeg-20261119/POST-CASE-CLEANUP.json": "d54aab86ff643c858df9232fe6c9a82f2a52603adc7b1dc05ed38d111ea2fe9e",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/pattern-jpeg-20261119/verify_pattern_jpeg.py": "500b3ec47efc917730ae9fe4737857dd9c86194e5d40d0c8a56c78fcdfe92b0e",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.jpg": "2c23889fa3438ca261d30869d60f72daecdf5ea3e8aa9a374f6be2189629fa04",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.json": "d10487fa7c77392150d7620c8dd558a0dae02d3ea4d7c4c776e98cb5f2c8cc46",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.jpeg": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.json": "00d5ffb9d6becbbab9b9c9b56ed7f40dfc6c73f3b897e0ec9d7179bc328aaf50"
+          },
+          "path": "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json"
         }
       ],
       "known_gaps": [
@@ -56767,7 +56786,8 @@
         "Source76be bounded DXF import has four headless geometry/export passes, fourteen retention negatives, four exact MCP inspections and a nine-checkpoint native file/export pass. The full native plan remains unaccepted: explicit print disclosure and old Redo-after-Cancel proof are missing, and temporary autosave/recovery persistence occurred. Full DXF/CAD/apparel, printing, all persistence failures and reference comparison remain open.",
         "WF-20261116-HOLE-EXPORT-001 is a current947/source74 bounded annular export subset only: actual historical accepted H1R5 compatibility reopen, one edit/native-v5 save, OBJ.0768m2/one component/two boundary loops/Euler0/metre positions+UV/Y-up, tight240x360mm compound-evenodd SVG and planned hole-DXF refusal with both sentinels unchanged. Old source73 H2 sole5457 grade remains FAILED/unaccepted; original H3 actor postguard remains FAILED/exit1, qualified only by separate direct root audit and UI acceptance. No current947 empty creation, hole SVG import/roundtrip, print margins, full CAD/apparel interoperability, native physics or reference acceptance.",
         "A4 and US Letter native and CLI PDFs have an independent digital scale, geometry and tiling check. Printer measurement, configurable 1:1 raster snapshots, wider paper presets and current reference behavior remain open.",
-        "Native PNG and JPEG crops have independent scale, layer, crop unit and warp-angle checks. Artwork, labels and measurements in snapshots, wider presets, printer measurement and reference execution remain open."
+        "Native PNG and JPEG crops have independent scale, layer, crop unit and warp-angle checks. Artwork, labels and measurements in snapshots, wider presets, printer measurement and reference execution remain open.",
+        "Debian ARM64 packaged CLI and MCP reproduce both Apple Silicon JPEGs. Linux interactive JPEG save, physical print and reference comparison remain open."
       ],
       "contradictions": [],
       "blockers": [
@@ -56896,7 +56916,8 @@
         "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-GRAINLINE-001.json",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-JPEG-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-JPEG-001.json",
+        "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json"
       ],
       "scenarios": [
         {
@@ -62526,6 +62547,24 @@
             "parity/reports/artifacts/pattern-png-grainline-20261119/with-grainline.json": "80d3ec15aa139038fdffb79193aa6b86674a16c477a6e78dfbbfbebedafa7e94"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-JPEG-001.json"
+        },
+        {
+          "id": "WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001",
+          "commit": "f440d126c9094b357deb99b68dd6b01235591a44",
+          "timestamp": "2026-11-19T07:47:17.310356Z",
+          "platform": "Debian 13.7 ARM64 packaged studio on X11 and Vulkan Mesa llvmpipe",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-arm64-jpeg-20261119/DEBIAN-JPEG.json": "0754e34dec5a072278823bbe91bbd74e952b07ca58f46f8e02eb1de619f5a597",
+            "parity/reports/artifacts/debian-arm64-jpeg-20261119/PACKAGE-SHA256SUMS": "fe23f2eb18910eb6c1decac15e73bfba25badc20f71f50496649d86a9d72b145",
+            "parity/reports/artifacts/debian-arm64-jpeg-20261119/POST-CASE-CLEANUP.json": "d54aab86ff643c858df9232fe6c9a82f2a52603adc7b1dc05ed38d111ea2fe9e",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/pattern-jpeg-20261119/verify_pattern_jpeg.py": "500b3ec47efc917730ae9fe4737857dd9c86194e5d40d0c8a56c78fcdfe92b0e",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.jpg": "2c23889fa3438ca261d30869d60f72daecdf5ea3e8aa9a374f6be2189629fa04",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.json": "d10487fa7c77392150d7620c8dd558a0dae02d3ea4d7c4c776e98cb5f2c8cc46",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.jpeg": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.json": "00d5ffb9d6becbbab9b9c9b56ed7f40dfc6c73f3b897e0ec9d7179bc328aaf50"
+          },
+          "path": "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json"
         }
       ],
       "known_gaps": [
@@ -62567,7 +62606,8 @@
       "evidence_ids": [
         "parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json",
         "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json",
-        "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json"
+        "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json",
+        "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json"
       ],
       "scenarios": [
         {
@@ -62668,18 +62708,37 @@
             "parity/reports/artifacts/debian-arm64-json-gltf-20261119/LINUX-GLTF.json": "cc908fe170863cfab08ec4dd7ddd4f377faf5a027825285bcde1f09e527c802c"
           },
           "path": "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json"
+        },
+        {
+          "id": "WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001",
+          "commit": "f440d126c9094b357deb99b68dd6b01235591a44",
+          "timestamp": "2026-11-19T07:47:17.310356Z",
+          "platform": "Debian 13.7 ARM64 packaged studio on X11 and Vulkan Mesa llvmpipe",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-arm64-jpeg-20261119/DEBIAN-JPEG.json": "0754e34dec5a072278823bbe91bbd74e952b07ca58f46f8e02eb1de619f5a597",
+            "parity/reports/artifacts/debian-arm64-jpeg-20261119/PACKAGE-SHA256SUMS": "fe23f2eb18910eb6c1decac15e73bfba25badc20f71f50496649d86a9d72b145",
+            "parity/reports/artifacts/debian-arm64-jpeg-20261119/POST-CASE-CLEANUP.json": "d54aab86ff643c858df9232fe6c9a82f2a52603adc7b1dc05ed38d111ea2fe9e",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/pattern-jpeg-20261119/verify_pattern_jpeg.py": "500b3ec47efc917730ae9fe4737857dd9c86194e5d40d0c8a56c78fcdfe92b0e",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.jpg": "2c23889fa3438ca261d30869d60f72daecdf5ea3e8aa9a374f6be2189629fa04",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.json": "d10487fa7c77392150d7620c8dd558a0dae02d3ea4d7c4c776e98cb5f2c8cc46",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.jpeg": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.json": "00d5ffb9d6becbbab9b9c9b56ed7f40dfc6c73f3b897e0ec9d7179bc328aaf50"
+          },
+          "path": "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "The unsigned ARM64 package ran on Debian 13.7 under X11/Vulkan software rendering. Windows, Linux x86-64, Wayland, GPU hardware, platform accessibility, signing and redistributable release acceptance remain open.",
-        "The updated ARM64 Debian package has a native X11 Ctrl+K and Escape smoke check with software rendering. Full platform accessibility, Windows and signed cross-platform builds remain open."
+        "The updated ARM64 Debian package has a native X11 Ctrl+K and Escape smoke check with software rendering. Full platform accessibility, Windows and signed cross-platform builds remain open.",
+        "The exact offline Debian 13.7 ARM64 JPEG package launched under X11/Vulkan software rendering and agreed with Apple Silicon on the two packaged CLI/MCP JPEG exports. The native Linux save chooser, hardware GPU, Windows, signing and complete distribution notices remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "APP-003",

@@ -1,3 +1,19 @@
+# Debian ARM64 pattern JPEG package — 19 November 2026
+
+The offline release build produced the unsigned studio and CLI on Debian
+13.7 ARM64. The packaged studio launched with the original revision 3
+fixture under X11 and Vulkan software rendering. Both packaged CLI and
+MCP JPEG exports matched the Apple Silicon files byte for byte. The
+independent decoder checked the JFIF density, dimensions and authored
+marks. An invalid MCP density preserved the prior image and the editable
+project kept its hash. The studio, Xvfb and VM stopped after the check.
+[Debian package report](parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json).
+
+Linux interactive save still needs a desktop portal and a native check.
+Complete packaged dependency notices, Windows runtime verification,
+physical printing and full Harbor fit remain open. GitHub Actions and
+automated Pages deployments are disabled.
+
 # Physical-scale pattern JPEG — 19 November 2026
 
 File and Command search open a JPEG crop with the pattern layers and
