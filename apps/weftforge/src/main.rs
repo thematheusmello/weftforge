@@ -22,6 +22,9 @@ mod capture;
 use capture::{RenderedFrame, WorkspaceCapture};
 
 const DEFAULT_ORBIT: [f32; 2] = [-0.45, 0.12];
+const MIN_CAMERA_SCALE: f32 = 60.;
+const MAX_CAMERA_SCALE: f32 = 1500.;
+const FRAME_GARMENT: &str = "Frame garment";
 // Views are named for the side of the Y-up garment facing the camera.
 const CAMERA_VIEWS: [(&str, [f32; 2]); 7] = [
     ("Front view", [0., 0.]),
@@ -982,6 +985,12 @@ struct PatternImportDraft {
     error: Option<String>,
 }
 
+#[derive(Clone, Copy, Debug, PartialEq)]
+struct GarmentFrame {
+    target: [f64; 3],
+    scale: f32,
+}
+
 struct Studio {
     editor: Editor,
     mesh: Option<Arc<Mesh>>,
@@ -1037,6 +1046,8 @@ struct Studio {
     yaw: f32,
     pitch: f32,
     camera_scale: f32,
+    garment_frame: Option<GarmentFrame>,
+    frame_garment_requested: bool,
     wireframe: bool,
     settings: StepSettings,
     autosave: Instant,
@@ -1134,6 +1145,8 @@ impl Studio {
             yaw: DEFAULT_ORBIT[0],
             pitch: DEFAULT_ORBIT[1],
             camera_scale: 270.,
+            garment_frame: None,
+            frame_garment_requested: false,
             wireframe: false,
             settings: StepSettings::default(),
             autosave: Instant::now(),
@@ -1510,6 +1523,7 @@ impl Studio {
         self.last_job = None;
         self.editor = Editor::default();
         self.hidden_pieces.clear();
+        self.clear_garment_frame();
         self.path = None;
         self.dirty = false;
         self.discard_on_exit = false;
@@ -1907,6 +1921,7 @@ impl Studio {
             Ok(editor) => {
                 self.editor = editor;
                 self.hidden_pieces.clear();
+                self.clear_garment_frame();
                 self.path = if recovered { None } else { Some(path) };
                 self.dirty = recovered;
                 self.selected = None;
@@ -2610,6 +2625,9 @@ impl Studio {
             self.retain_inspector_input(&response, menu.is_some());
             let (response, menu) = egui::menu::MenuButton::new("View").ui(ui, |ui| {
                 self.frame_patterns_button(ui);
+                if self.frame_garment_button(ui) {
+                    ui.close();
+                }
                 ui.checkbox(&mut self.wireframe, "Wireframe");
                 ui.separator();
                 for (label, angles) in CAMERA_VIEWS {
@@ -3894,6 +3912,22 @@ impl Studio {
             ui.ctx().request_repaint();
         }
         response.clicked()
+    }
+    fn frame_garment_button(&mut self, ui: &mut egui::Ui) -> bool {
+        let focused = self.inspector_focus(ui.ctx());
+        let enabled = self
+            .garment_canvas
+            .and_then(|id| ui.ctx().read_response(id))
+            .is_some_and(|canvas| self.fit_garment(canvas.rect).is_some());
+        let response = ui.add_enabled(enabled, egui::Button::new(FRAME_GARMENT));
+        self.retain_inspector_input(&response, false);
+        let clicked = enabled && response.clicked();
+        if clicked {
+            finish_numeric_action(ui.ctx(), focused, false);
+            self.frame_garment_requested = true;
+            ui.ctx().request_repaint();
+        }
+        clicked
     }
     fn frame_patterns_button(&self, ui: &mut egui::Ui) {
         let focused = self.inspector_focus(ui.ctx());
@@ -6727,15 +6761,88 @@ impl Studio {
         }
         self.sewing_edit = Some(edit);
     }
-    fn project3(&self, p: [f64; 3], r: Rect) -> (Pos2, f32) {
-        let [x, y, z] = [p[0] as f32, p[1] as f32 - 1., p[2] as f32];
+    fn clear_garment_frame(&mut self) {
+        self.frame_garment_requested = false;
+        if self.garment_frame.take().is_some() {
+            self.camera_scale = self.camera_scale.max(MIN_CAMERA_SCALE);
+        }
+    }
+
+    fn garment_surface(&self) -> Option<(&Mesh, &[[f64; 3]])> {
+        let mesh = self
+            .mesh
+            .as_deref()
+            .filter(|mesh| mesh.doc_revision == self.editor.project.revision)?;
+        let positions = self
+            .cloth
+            .as_ref()
+            .map_or(mesh.positions.as_slice(), |state| state.positions());
+        (positions.len() == mesh.piece_ids.len()).then_some((mesh, positions))
+    }
+
+    fn camera_space(&self, [x, y, z]: [f32; 3]) -> [f32; 3] {
         let a = self.yaw.cos() * x + self.yaw.sin() * z;
         let z = -self.yaw.sin() * x + self.yaw.cos() * z;
         let b = self.pitch.cos() * y - self.pitch.sin() * z;
-        (
-            r.center() + Vec2::new(a, -b) * self.camera_scale,
-            self.pitch.sin() * y + self.pitch.cos() * z,
-        )
+        [a, -b, self.pitch.sin() * y + self.pitch.cos() * z]
+    }
+
+    fn project3(&self, p: [f64; 3], r: Rect) -> (Pos2, f32) {
+        let relative = self.garment_frame.map_or_else(
+            || [p[0] as f32, p[1] as f32 - 1., p[2] as f32],
+            |frame| std::array::from_fn(|axis| (p[axis] - frame.target[axis]) as f32),
+        );
+        let [x, y, depth] = self.camera_space(relative);
+        (r.center() + Vec2::new(x, y) * self.camera_scale, depth)
+    }
+
+    fn fit_garment(&self, rect: Rect) -> Option<GarmentFrame> {
+        let inset = rect.shrink(28.);
+        if !inset.is_finite() || inset.width() <= 0. || inset.height() <= 0. {
+            return None;
+        }
+        let (mesh, positions) = self.garment_surface()?;
+        if mesh.triangles.is_empty() {
+            return None;
+        }
+        // Validated meshes use every vertex in a face of that vertex's piece.
+        let mut visible = positions
+            .iter()
+            .zip(&mesh.piece_ids)
+            .filter_map(|(point, piece)| (!self.hidden_pieces.contains(piece)).then_some(*point));
+        let origin = visible.next()?;
+        let mut low = [0_f32; 3];
+        let mut high = [0_f32; 3];
+        for point in visible {
+            let relative = std::array::from_fn(|axis| (point[axis] - origin[axis]) as f32);
+            let projected = self.camera_space(relative);
+            if !projected.iter().all(|coordinate| coordinate.is_finite()) {
+                return None;
+            }
+            for axis in 0..3 {
+                low[axis] = low[axis].min(projected[axis]);
+                high[axis] = high[axis].max(projected[axis]);
+            }
+        }
+        let size = Vec2::new(high[0] - low[0], high[1] - low[1]);
+        if size == Vec2::ZERO || !size.is_finite() {
+            return None;
+        }
+        let scale = (inset.width() / size.x)
+            .min(inset.height() / size.y)
+            .min(MAX_CAMERA_SCALE);
+        let [right, down, depth] = std::array::from_fn(|axis| low[axis].midpoint(high[axis]));
+        // Undo pitch and yaw so a later orbit uses the same world-space target.
+        let y = -down * self.pitch.cos() + depth * self.pitch.sin();
+        let z = down * self.pitch.sin() + depth * self.pitch.cos();
+        let offset = [
+            right * self.yaw.cos() - z * self.yaw.sin(),
+            y,
+            right * self.yaw.sin() + z * self.yaw.cos(),
+        ];
+        let target = std::array::from_fn(|axis| origin[axis] + f64::from(offset[axis]));
+        (scale.is_finite() && scale > 0. && target.iter().all(|coordinate| coordinate.is_finite()))
+            .then_some(GarmentFrame { target, scale })
     }
     fn garment(&mut self, ui: &mut egui::Ui) {
         pane_heading(ui, "3D Garment").on_hover_text("Y up · metres. Drag to orbit; scroll to zoom; click a triangle to select its pattern piece.");
@@ -6749,9 +6856,18 @@ impl Studio {
             self.pitch = (self.pitch + d.y * 0.008).clamp(-FRAC_PI_2, FRAC_PI_2);
         }
         if response.hovered() {
+            let min_scale = self
+                .garment_frame
+                .map_or(MIN_CAMERA_SCALE, |frame| frame.scale.min(MIN_CAMERA_SCALE));
             self.camera_scale = (self.camera_scale
                 * (ui.input(|i| i.smooth_scroll_delta.y) * 0.001).exp())
-            .clamp(60., 1500.);
+            .clamp(min_scale, MAX_CAMERA_SCALE);
+        }
+        if std::mem::take(&mut self.frame_garment_requested)
+            && let Some(frame) = self.fit_garment(r)
+        {
+            self.camera_scale = frame.scale;
+            self.garment_frame = Some(frame);
         }
         for i in -10..=10 {
             let p = i as f64 * 0.1;
@@ -6771,15 +6887,7 @@ impl Studio {
             painter.circle_filled(a, radius, c);
             painter.circle_filled(b, radius, c);
         }
-        if let Some(mesh) = self
-            .mesh
-            .as_ref()
-            .filter(|mesh| mesh.doc_revision == self.editor.project.revision)
-        {
-            let positions = self
-                .cloth
-                .as_ref()
-                .map_or(mesh.positions.as_slice(), |s| s.positions());
+        if let Some((mesh, positions)) = self.garment_surface() {
             let mut triangles: Vec<_> = mesh
                 .triangles
                 .iter()
@@ -7313,6 +7421,12 @@ impl eframe::App for Studio {
                                     self.search = false;
                                     self.search_input = None;
                                 }
+                            }
+                            if self.search
+                                && FRAME_GARMENT.to_ascii_lowercase().contains(&query)
+                                && self.frame_garment_button(ui)
+                            {
+                                self.close_command_search(&ctx);
                             }
                             for (label, angles) in CAMERA_VIEWS {
                                 if self.search
@@ -9827,6 +9941,178 @@ mod contextual_properties_tests {
                 "missing Edit menu command for {os:?}"
             );
         }
+    }
+
+    #[test]
+    fn frame_garment_fits_visible_rest_and_accepted_positions_without_editing() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        studio_style(&ctx);
+        ctx.all_styles_mut(|style| style.animation_time = 0.);
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        let empty = click(&ctx, &mut app, "View");
+        assert!(
+            empty
+                .platform_output
+                .accesskit_update
+                .unwrap()
+                .nodes
+                .iter()
+                .any(|(_, node)| { node.label() == Some("Frame garment") && node.is_disabled() })
+        );
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+        );
+        assert!(app.garment_frame.is_none());
+        assert_eq!(app.camera_scale, 270.);
+
+        for origin in [[14., 10.], [38., 36.], [-45., 70.]] {
+            app.editor
+                .execute(Command::AddRectangle {
+                    name: format!("Original panel {}", origin[0]),
+                    origin,
+                    width: 0.375,
+                    height: 0.6,
+                })
+                .unwrap();
+        }
+        app.editor
+            .execute(Command::SetResolution { metres: 0.08 })
+            .unwrap();
+        assert!(app.editor.undo());
+        app.selected = Some(app.editor.project.pieces[0].id);
+        app.hidden_pieces.insert(app.editor.project.pieces[2].id);
+        let hidden = app.hidden_pieces.clone();
+        let selection = (app.selected, app.selected_curve);
+        let mesh = Arc::new(app.editor.project.mesh().unwrap());
+        let mut cloth =
+            weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap();
+        cloth.step(Default::default(), || false).unwrap();
+        assert_ne!(cloth.positions(), mesh.positions);
+        let cloth = Arc::new(cloth);
+        app.mesh = Some(mesh.clone());
+        app.yaw = 0.35;
+        app.pitch = 0.22;
+        app.camera_scale = 412.;
+        app.center = [0.13, 0.77];
+        app.scale = 213.;
+        let before = format!("{:?}", app.editor);
+
+        let output = frame(&ctx, &mut app, 1000., vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![action(numeric(&output, 0.375), Action::Focus, None)],
+        );
+        frame(&ctx, &mut app, 1000., vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("1e-".into()),
+            ],
+        );
+        let focus = numeric_focus(&ctx).unwrap();
+        let caret = egui::TextEdit::load_state(&ctx, focus)
+            .unwrap()
+            .cursor
+            .char_range();
+        app.draft.as_mut().unwrap().dimensions.as_mut().unwrap()[1] = 0.65;
+        let pending = app.draft.as_ref().unwrap().commands(&app.editor.project);
+
+        let mut rest_frame = None;
+        for search in [false, true] {
+            app.cloth = search.then(|| cloth.clone());
+            let id = if search {
+                app.open_command_search(&ctx);
+                app.query = "frame garment".into();
+                frame(&ctx, &mut app, 1000., vec![]);
+                let output = frame(&ctx, &mut app, 1000., vec![]);
+                super::tests::command_search_action(&output, "Frame garment")
+            } else {
+                button(&click(&ctx, &mut app, "View"), "Frame garment")
+            };
+            // Resize between showing the View action and activating it.
+            let height = if search { 1000. } else { 650. };
+            frame(
+                &ctx,
+                &mut app,
+                height,
+                vec![action(id, Action::Click, None)],
+            );
+            frame(&ctx, &mut app, height, vec![]);
+            let canvas = ctx.read_response(app.garment_canvas.unwrap()).unwrap().rect;
+            let inset = canvas.shrink(28.);
+            let mut fitted_bounds = Rect::NOTHING;
+            let positions = if search {
+                cloth.positions()
+            } else {
+                mesh.positions.as_slice()
+            };
+            for (&point, piece) in positions.iter().zip(&mesh.piece_ids) {
+                if !hidden.contains(piece) {
+                    fitted_bounds.extend_with(app.project3(point, canvas).0);
+                }
+            }
+            assert!(inset.expand(0.002).contains_rect(fitted_bounds));
+            assert!((fitted_bounds.center() - canvas.center()).length() <= 0.002);
+            assert!(
+                (fitted_bounds.width() - inset.width()).abs() <= 0.002
+                    || (fitted_bounds.height() - inset.height()).abs() <= 0.002
+            );
+            let fitted = app.garment_frame.unwrap();
+            assert!(fitted.scale < MIN_CAMERA_SCALE);
+            if search {
+                assert_ne!(rest_frame.unwrap(), fitted.target);
+                assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+            } else {
+                rest_frame = Some(fitted.target);
+                assert!(app.cloth.is_none());
+            }
+            frame(
+                &ctx,
+                &mut app,
+                height,
+                vec![egui::Event::PointerMoved(canvas.center())],
+            );
+            assert_eq!(app.camera_scale, fitted.scale);
+            assert_eq!([app.yaw, app.pitch], [0.35, 0.22]);
+            assert_eq!((app.center, app.scale), ([0.13, 0.77], 213.));
+            assert_eq!((app.selected, app.selected_curve), selection);
+            assert_eq!(app.hidden_pieces, hidden);
+            assert_eq!(
+                app.draft.as_ref().unwrap().commands(&app.editor.project),
+                pending
+            );
+            assert_eq!(numeric_focus(&ctx), Some(focus));
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(focus))
+                    .as_deref(),
+                Some("1e-")
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, focus)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+            assert!(!app.search && !app.dirty && !app.needs_mesh && app.job.is_none());
+        }
+
+        assert!(app.fit_garment(Rect::ZERO).is_none());
+        let canvas = ctx.read_response(app.garment_canvas.unwrap()).unwrap().rect;
+        app.hidden_pieces.extend(mesh.piece_ids.iter().copied());
+        assert!(app.fit_garment(canvas).is_none());
     }
 
     #[test]
