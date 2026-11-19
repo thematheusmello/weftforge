@@ -10,6 +10,9 @@ from Command search after one manual step.
 
 ![The current WeftForge studio with Harbor's two patterns, 3D rest arrangement and Properties panel](../parity/reports/artifacts/static-gltf-json-20261119/harbor-framed-workspace.png)
 
+The current Debian ARM64 package shows **Export glTF** in Command search after
+Ctrl+K. [Debian Command search preview](../parity/reports/artifacts/debian-arm64-json-gltf-20261119/palette-open.png).
+
 ## Harbor with both patterns in view
 
 The Apple Silicon studio reopened Harbor revision 23 and used **Frame all**
