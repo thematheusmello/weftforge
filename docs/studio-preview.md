@@ -1,5 +1,13 @@
 # Native studio preview
 
+## Edit the crop in four units
+
+Choose millimetres, centimetres, inches or pixels. The 2D pane outlines
+the crop beside the export dialog. The two native images below match CLI
+exports at 11,812 pixels per metre. Setting width to 1,680 pixels keeps
+the original 1,654 columns and adds 26 white columns on the right.
+[Physical crop](../parity/reports/artifacts/pattern-crop-units-20261119/physical.png) · [Width edited in pixels](../parity/reports/artifacts/pattern-crop-units-20261119/pixel-edit.png) · [Independent check](../parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json).
+
 ## Export a physical-scale 2D image
 
 The native crop dialog fits the authored patterns or uses a paper size.

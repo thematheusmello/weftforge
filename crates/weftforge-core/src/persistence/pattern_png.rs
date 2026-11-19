@@ -32,6 +32,16 @@ impl PatternSnapshotOptions {
         self.grid().map(|(dimensions, _)| dimensions)
     }
 
+    /// Square-pixel density stored in the PNG pHYs chunk.
+    pub fn pixels_per_metre(self) -> Result<u32> {
+        let ppm = (self.pixels_per_inch / METRES_PER_INCH).round();
+        ensure(
+            (1.0..=f64::from(u32::MAX)).contains(&ppm),
+            "Pattern PNG density must round to between 1 and 4294967295 pixels per metre",
+        )?;
+        Ok(ppm as u32)
+    }
+
     fn grid(self) -> Result<([u32; 2], u32)> {
         let [min, max] = self.crop_m;
         ensure(
@@ -39,12 +49,8 @@ impl PatternSnapshotOptions {
                 && (0..2).all(|axis| min[axis] < max[axis]),
             "Pattern PNG crop needs finite, increasing X and Y bounds",
         )?;
-        let ppm = (self.pixels_per_inch / METRES_PER_INCH).round();
-        ensure(
-            (1.0..=f64::from(u32::MAX)).contains(&ppm),
-            "Pattern PNG density must round to between 1 and 4294967295 pixels per metre",
-        )?;
-        let size = std::array::from_fn(|axis| ((max[axis] - min[axis]) * ppm).round());
+        let ppm = self.pixels_per_metre()?;
+        let size = std::array::from_fn(|axis| ((max[axis] - min[axis]) * f64::from(ppm)).round());
         ensure(
             size.iter()
                 .all(|side| (1.0..=f64::from(MAX_SIDE)).contains(side)),
@@ -55,7 +61,7 @@ impl PatternSnapshotOptions {
             u64::from(size[0]) * u64::from(size[1]) <= MAX_PIXELS,
             "Pattern PNG exceeds the 32 megapixel limit",
         )?;
-        Ok((size, ppm as u32))
+        Ok((size, ppm))
     }
 }
 

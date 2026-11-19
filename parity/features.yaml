@@ -5102,7 +5102,8 @@
         "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json",
         "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json"
       ],
       "scenarios": [
         {
@@ -6226,6 +6227,24 @@
             "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-CROP-UNITS-001",
+          "commit": "d06b224b504a9c6c76b2b288d14c1ea0a845ed3b",
+          "timestamp": "2026-11-19T06:23:13.688932Z",
+          "platform": "Apple Silicon macOS native studio and independent PNG decoder",
+          "artifact_hashes": {
+            "parity/reports/artifacts/pattern-crop-units-20261119/verify_crop_units.py": "3c00fff79f016b6c1432f763ec8ad969e5b89d764e4eefabf269e86eef41ebe0",
+            "parity/reports/artifacts/pattern-crop-units-20261119/RESULT.json": "9857d7143e27de0be8303f75821623a4278988d29adbc0846faac35f31b84097",
+            "parity/reports/artifacts/pattern-crop-units-20261119/physical.json": "18459ccbf8b8a8b22c19d183f90cb09bf890eb46c3a9df1f1a8da8fe17680c6f",
+            "parity/reports/artifacts/pattern-crop-units-20261119/pixel-edit.json": "ab39f01ec450149885739e091ffa19a27e8884c1fb51b85bf9639cf7a163ec1b",
+            "parity/reports/artifacts/pattern-crop-units-20261119/physical.png": "1408d33fe80926b243e50408dcf3bdd90664824b5869c7e08406aee01a9ecab9",
+            "parity/reports/artifacts/pattern-crop-units-20261119/pixel-edit.png": "ab44a6841b9cdb7ca15cf3b60a3ef6d0a323a03bc16882069fb374e250571ae8",
+            "parity/reports/artifacts/pattern-crop-units-20261119/NATIVE-CROP-UNITS.json": "a8aa883ffcb55b45ef9f3a736979804c7487c78e8256052af3b42bdf62416ad0",
+            "parity/reports/artifacts/pattern-crop-units-20261119/POST-CASE-CLEANUP.json": "6d8a4ed315d9e73c850a291403d4c3022f664745583a53e06ee26f1480e8a813",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json"
         }
       ],
       "known_gaps": [
@@ -6282,7 +6301,8 @@
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-SOURCE-001.json",
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json"
       ],
       "scenarios": [
         {
@@ -11509,6 +11529,24 @@
             "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-CROP-UNITS-001",
+          "commit": "d06b224b504a9c6c76b2b288d14c1ea0a845ed3b",
+          "timestamp": "2026-11-19T06:23:13.688932Z",
+          "platform": "Apple Silicon macOS native studio and independent PNG decoder",
+          "artifact_hashes": {
+            "parity/reports/artifacts/pattern-crop-units-20261119/verify_crop_units.py": "3c00fff79f016b6c1432f763ec8ad969e5b89d764e4eefabf269e86eef41ebe0",
+            "parity/reports/artifacts/pattern-crop-units-20261119/RESULT.json": "9857d7143e27de0be8303f75821623a4278988d29adbc0846faac35f31b84097",
+            "parity/reports/artifacts/pattern-crop-units-20261119/physical.json": "18459ccbf8b8a8b22c19d183f90cb09bf890eb46c3a9df1f1a8da8fe17680c6f",
+            "parity/reports/artifacts/pattern-crop-units-20261119/pixel-edit.json": "ab39f01ec450149885739e091ffa19a27e8884c1fb51b85bf9639cf7a163ec1b",
+            "parity/reports/artifacts/pattern-crop-units-20261119/physical.png": "1408d33fe80926b243e50408dcf3bdd90664824b5869c7e08406aee01a9ecab9",
+            "parity/reports/artifacts/pattern-crop-units-20261119/pixel-edit.png": "ab44a6841b9cdb7ca15cf3b60a3ef6d0a323a03bc16882069fb374e250571ae8",
+            "parity/reports/artifacts/pattern-crop-units-20261119/NATIVE-CROP-UNITS.json": "a8aa883ffcb55b45ef9f3a736979804c7487c78e8256052af3b42bdf62416ad0",
+            "parity/reports/artifacts/pattern-crop-units-20261119/POST-CASE-CLEANUP.json": "6d8a4ed315d9e73c850a291403d4c3022f664745583a53e06ee26f1480e8a813",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json"
         }
       ],
       "known_gaps": [
@@ -51453,7 +51491,8 @@
         "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json",
         "spec/features/FILE-005-pattern-print-pdf.md",
         "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json",
-        "spec/features/FILE-005-pattern-png.md"
+        "spec/features/FILE-005-pattern-png.md",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json"
       ],
       "scenarios": [
         {
@@ -51520,6 +51559,15 @@
           },
           "initial_conditions": "The two original revision 2 patterns are opened in the Apple Silicon studio.",
           "expected_outcomes": "Both entry points save the 869 by 723 mm crop at 5000 pixels per metre. The files match CLI controls and contain the expected outlines and enabled marks. Cancelling retains settings and the project retains its bytes."
+        },
+        {
+          "id": "FILE-NATIVE-PATTERN-CROP-UNITS-001",
+          "path": "parity/scenarios/FILE-NATIVE-PATTERN-CROP-UNITS-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
+          },
+          "initial_conditions": "The Apple Silicon studio has the two original revision 2 patterns open.",
+          "expected_outcomes": "Switching four display units leaves the original crop at 1654 by 2067 pixels. A width edit in pixels increases only width to 1680. Both native files match CLI controls at 11812 pixels per metre. The project retains its bytes."
         }
       ],
       "comparison_criteria": {
@@ -56537,6 +56585,24 @@
             "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-CROP-UNITS-001",
+          "commit": "d06b224b504a9c6c76b2b288d14c1ea0a845ed3b",
+          "timestamp": "2026-11-19T06:23:13.688932Z",
+          "platform": "Apple Silicon macOS native studio and independent PNG decoder",
+          "artifact_hashes": {
+            "parity/reports/artifacts/pattern-crop-units-20261119/verify_crop_units.py": "3c00fff79f016b6c1432f763ec8ad969e5b89d764e4eefabf269e86eef41ebe0",
+            "parity/reports/artifacts/pattern-crop-units-20261119/RESULT.json": "9857d7143e27de0be8303f75821623a4278988d29adbc0846faac35f31b84097",
+            "parity/reports/artifacts/pattern-crop-units-20261119/physical.json": "18459ccbf8b8a8b22c19d183f90cb09bf890eb46c3a9df1f1a8da8fe17680c6f",
+            "parity/reports/artifacts/pattern-crop-units-20261119/pixel-edit.json": "ab39f01ec450149885739e091ffa19a27e8884c1fb51b85bf9639cf7a163ec1b",
+            "parity/reports/artifacts/pattern-crop-units-20261119/physical.png": "1408d33fe80926b243e50408dcf3bdd90664824b5869c7e08406aee01a9ecab9",
+            "parity/reports/artifacts/pattern-crop-units-20261119/pixel-edit.png": "ab44a6841b9cdb7ca15cf3b60a3ef6d0a323a03bc16882069fb374e250571ae8",
+            "parity/reports/artifacts/pattern-crop-units-20261119/NATIVE-CROP-UNITS.json": "a8aa883ffcb55b45ef9f3a736979804c7487c78e8256052af3b42bdf62416ad0",
+            "parity/reports/artifacts/pattern-crop-units-20261119/POST-CASE-CLEANUP.json": "6d8a4ed315d9e73c850a291403d4c3022f664745583a53e06ee26f1480e8a813",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json"
         }
       ],
       "known_gaps": [
@@ -56547,7 +56613,7 @@
         "Source76be bounded DXF import has four headless geometry/export passes, fourteen retention negatives, four exact MCP inspections and a nine-checkpoint native file/export pass. The full native plan remains unaccepted: explicit print disclosure and old Redo-after-Cancel proof are missing, and temporary autosave/recovery persistence occurred. Full DXF/CAD/apparel, printing, all persistence failures and reference comparison remain open.",
         "WF-20261116-HOLE-EXPORT-001 is a current947/source74 bounded annular export subset only: actual historical accepted H1R5 compatibility reopen, one edit/native-v5 save, OBJ.0768m2/one component/two boundary loops/Euler0/metre positions+UV/Y-up, tight240x360mm compound-evenodd SVG and planned hole-DXF refusal with both sentinels unchanged. Old source73 H2 sole5457 grade remains FAILED/unaccepted; original H3 actor postguard remains FAILED/exit1, qualified only by separate direct root audit and UI acceptance. No current947 empty creation, hole SVG import/roundtrip, print margins, full CAD/apparel interoperability, native physics or reference acceptance.",
         "A4 and US Letter native and CLI PDFs have an independent digital scale, geometry and tiling check. Printer measurement, configurable 1:1 raster snapshots, wider paper presets and current reference behavior remain open.",
-        "Native and CLI 1:1 raster crops with independently decoded density and layer toggles are checked. Artwork, labels, grainline and measurements in snapshots, JPEG, wider presets, printer measurement and reference execution remain open."
+        "Native and CLI 1:1 raster crops have independently decoded density, layer toggles and crop units checks. Artwork, labels, grainline and measurements in snapshots, JPEG, wider presets, printer measurement and reference execution remain open."
       ],
       "contradictions": [],
       "blockers": [
@@ -56558,7 +56624,7 @@
         "spec/features/FILE-005-dxf-pattern-export.md": "b0373181a6ae79c148aa154c0c2269956c2fed3587b5c6d0aef929108e11dd73",
         "spec/features/FILE-005-dxf-pattern-import.md": "06cff6f3d1a6d62fceeb93e94a2037f28136b69adfa5507b8a780e8864b0512b",
         "spec/features/FILE-005-pattern-print-pdf.md": "af7dc40486229050157831fa7bb422dcd7b875675ff25660b92e479df924169d",
-        "spec/features/FILE-005-pattern-png.md": "e60165a61e45536d2f16c293357675c82cf5dff1feb9ee4a73b04af4aad60458"
+        "spec/features/FILE-005-pattern-png.md": "583b1550614bc21a3c117b0a0957fad661f2194898f53c1fe4e6431ad18b5e65"
       }
     },
     {
@@ -56672,7 +56738,8 @@
         "parity/reports/WF-20261116-RECTANGLE-NATIVE-001.json",
         "parity/reports/artifacts/rectangle-gesture-20261116/SELECTED-PUBLIC-MANIFEST-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json",
-        "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json"
+        "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json",
+        "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json"
       ],
       "scenarios": [
         {
@@ -62241,6 +62308,24 @@
             "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
           },
           "path": "parity/reports/WF-20261119-NATIVE-PATTERN-PNG-001.json"
+        },
+        {
+          "id": "WF-20261119-NATIVE-PATTERN-CROP-UNITS-001",
+          "commit": "d06b224b504a9c6c76b2b288d14c1ea0a845ed3b",
+          "timestamp": "2026-11-19T06:23:13.688932Z",
+          "platform": "Apple Silicon macOS native studio and independent PNG decoder",
+          "artifact_hashes": {
+            "parity/reports/artifacts/pattern-crop-units-20261119/verify_crop_units.py": "3c00fff79f016b6c1432f763ec8ad969e5b89d764e4eefabf269e86eef41ebe0",
+            "parity/reports/artifacts/pattern-crop-units-20261119/RESULT.json": "9857d7143e27de0be8303f75821623a4278988d29adbc0846faac35f31b84097",
+            "parity/reports/artifacts/pattern-crop-units-20261119/physical.json": "18459ccbf8b8a8b22c19d183f90cb09bf890eb46c3a9df1f1a8da8fe17680c6f",
+            "parity/reports/artifacts/pattern-crop-units-20261119/pixel-edit.json": "ab39f01ec450149885739e091ffa19a27e8884c1fb51b85bf9639cf7a163ec1b",
+            "parity/reports/artifacts/pattern-crop-units-20261119/physical.png": "1408d33fe80926b243e50408dcf3bdd90664824b5869c7e08406aee01a9ecab9",
+            "parity/reports/artifacts/pattern-crop-units-20261119/pixel-edit.png": "ab44a6841b9cdb7ca15cf3b60a3ef6d0a323a03bc16882069fb374e250571ae8",
+            "parity/reports/artifacts/pattern-crop-units-20261119/NATIVE-CROP-UNITS.json": "a8aa883ffcb55b45ef9f3a736979804c7487c78e8256052af3b42bdf62416ad0",
+            "parity/reports/artifacts/pattern-crop-units-20261119/POST-CASE-CLEANUP.json": "6d8a4ed315d9e73c850a291403d4c3022f664745583a53e06ee26f1480e8a813",
+            "parity/reports/artifacts/pattern-print-pdf-20261119/print-original.weftforge": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83"
+          },
+          "path": "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json"
         }
       ],
       "known_gaps": [

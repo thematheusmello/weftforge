@@ -5647,6 +5647,7 @@ impl Studio {
         self.discard_stale_free_sewing();
         self.refresh_free_sewing();
         let gesture_paused = self.search
+            || self.pattern_snapshot.is_some()
             || self.notch.is_some()
             || egui::Popup::is_any_open(ui.ctx())
             || ui
@@ -6722,6 +6723,18 @@ impl Studio {
                 });
             } else {
                 self.message = "Right-click the chosen boundary, or open Create Sewing Line for exact controls.".into();
+            }
+        }
+        if let Some(snapshot) = &self.pattern_snapshot {
+            let [min, max] = snapshot.crop_m();
+            let crop = Rect::from_two_pos(self.to_screen(min, r), self.to_screen(max, r));
+            if min[0] < max[0] && min[1] < max[1] && crop.is_finite() && crop.intersects(r) {
+                painter.rect_stroke(
+                    crop,
+                    0.,
+                    Stroke::new(2., Color32::LIGHT_BLUE),
+                    egui::StrokeKind::Inside,
+                );
             }
         }
     }

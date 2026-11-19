@@ -399,9 +399,10 @@ overlap. Paper output depends on the PDF viewer and printer settings.
 ### Pattern PNG
 
 Choose **Save 2D pattern PNG…** from File or Command search. Fit the patterns
-or set the crop in millimetres. Choose the pixel density and the geometry
-to show. The preview reports the resulting pixel dimensions. The image
-stores its density in pixels per metre.
+or set the crop in millimetres, centimetres, inches or pixels. The crop
+outline appears in the 2D pane. Choose the pixel density and the geometry
+to show. The dialog reports the resulting pixel dimensions. Pixel fields
+use the same integer density in pixels per metre that the image stores.
 
 The CLI reads the same typed options from a JSON file.
 
