@@ -1,0 +1,130 @@
+{
+  "source_commit": "f440d126c9094b357deb99b68dd6b01235591a44",
+  "source_tree": "d07f4b99da7b9dbe4991b2604c2230692dc122cf",
+  "previous_linux_source": "8721469c10771624d3042b92d6f91c294ed04efc",
+  "verified_source_blobs": 20049,
+  "source_delta_changed": 140,
+  "source_delta_removed": 0,
+  "platform": [
+    "13.7",
+    "Linux 6.12.117+deb13-cloud-arm64 aarch64"
+  ],
+  "vm": "Lima 2.3.0 VZ ARM64",
+  "rust": "1.94.1",
+  "release_build": "3m 32s",
+  "package": {
+    "README.md": "1b3238babb4f11969faa62480c340de5ce0b89eef190db252b7f6d9a9e142361",
+    "LICENSE-APACHE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "LICENSE-MIT": "5a79a5be6e18069ea095bcb13f724f90cee6a70b1fd6b5e2b1f505f050c25b0d",
+    "THIRD_PARTY.md": "259823230db3ea93481d87e4a1750745e2d5b00a17ddc36ad57f531738a8dd0a",
+    "licenses/OFL-Inter.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+    "licenses/OFL-JetBrainsMono.txt": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+    "weftforge": "2b4d2c06716531a148939af46794d98c25ac7b21bdc9073a9feb53ecc559711d",
+    "weftforge-cli": "cb10739398def20b454910fbd88eb99d8445dd90ef33fe7b1b2f621e5d87abec"
+  },
+  "package_scope": "Unsigned lab package. Upstream notice sidecar verified. Full stock distribution notices remain open.",
+  "licenses": {
+    "verified_upstream_license_texts": 12,
+    "scope": [
+      "arrayref-0.3.9",
+      "image-0.25.10",
+      "strict-num-0.1.1",
+      "tiny-skia-0.12.0",
+      "tiny-skia-path-0.12.0",
+      "zune-core-0.5.3",
+      "zune-jpeg-0.5.15"
+    ]
+  },
+  "offline_cache_files_seeded": 8,
+  "offline_cache_bytes": 379082,
+  "offline_cargo_fetch_confirmed": true,
+  "network_namespace": "loopback only for package and runtime",
+  "storage": {
+    "host_admission_kib": 2911176,
+    "host": {
+      "initial_kib": 2916892,
+      "low_kib": 2509808,
+      "last_kib": 2564440,
+      "initial_to_low_drop_kib": 407084,
+      "samples": 110
+    },
+    "guest": {
+      "initial_kib": 6789692,
+      "low_kib": 6529336,
+      "last_kib": 6539256,
+      "initial_to_low_drop_kib": 260356,
+      "samples": 108
+    },
+    "target_growth_kib": 212332,
+    "host_vm_disk_allocated_growth_bytes": 276013056
+  },
+  "native_startup": {
+    "packaged_sha256": "2b4d2c06716531a148939af46794d98c25ac7b21bdc9073a9feb53ecc559711d",
+    "map_state": "IsViewable",
+    "renderer": "Xvfb X11 Mesa llvmpipe Vulkan"
+  },
+  "project_sha256": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+  "project_revision": 3,
+  "project_retained": true,
+  "packaged_mcp_invalid_density_preserved_output": true,
+  "independent_check": {
+    "checker_sha256": "500b3ec47efc917730ae9fe4737857dd9c86194e5d40d0c8a56c78fcdfe92b0e",
+    "decoder": "Pillow 12.3.0",
+    "scope": "Raw JFIF and SOF0 dimensions, physical crop and authored linework."
+  },
+  "macos_evidence_commit": "927912482af4b5a02dd1e98e8b8ee20d863be3ee",
+  "outputs": [
+    {
+      "name": "fit",
+      "file": "fit.jpg",
+      "size_px": [
+        4345,
+        3615
+      ],
+      "jfif_ppi": 127,
+      "physical_side_error_px": [
+        0.0,
+        0.0
+      ],
+      "outline_samples": 180,
+      "mark_samples": 6,
+      "sha256": "2c23889fa3438ca261d30869d60f72daecdf5ea3e8aa9a374f6be2189629fa04",
+      "bytes": 245454,
+      "linux_cli_mcp_byte_identical": true,
+      "macos_native_byte_identical": true
+    },
+    {
+      "name": "two-metre",
+      "file": "two-metre.jpeg",
+      "size_px": [
+        5669,
+        567
+      ],
+      "jfif_ppi": 72,
+      "physical_side_error_px": [
+        0.29133858267716534,
+        0.07086614173228346
+      ],
+      "outline_samples": 120,
+      "mark_samples": 4,
+      "sha256": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb",
+      "bytes": 45112,
+      "linux_cli_mcp_byte_identical": true,
+      "macos_native_byte_identical": true
+    }
+  ],
+  "open": [
+    "Linux native interactive chooser/save",
+    "Windows native verification",
+    "Physical print",
+    "Complete packaged upstream notices",
+    "Reference execution"
+  ],
+  "tested_actions": [
+    "Rebuild the exact committed source with cargo xtask package on Debian 13.7 ARM64 using the local Cargo cache.",
+    "Launch the packaged studio on the tracked original revision 3 fixture and confirm the mapped native window and its executable hash.",
+    "Export both admitted JPEG crops from the packaged CLI and independently from the packaged MCP server.",
+    "Compare both command outputs with the earlier Apple Silicon images and read JFIF density and authored marks independently.",
+    "Submit an invalid MCP density and check the previous JPEG and editable project remain intact."
+  ]
+}

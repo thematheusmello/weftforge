@@ -65,6 +65,15 @@ startup failure are recorded. The successful run used `Xvfb -noreset`, a normal
 guest login environment and an Xlib readiness check after the Vulkan probe.
 [Current Debian keyboard check](../parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json).
 
+The JPEG build used the same Debian 13.7 ARM64 guest and compiled from its
+local Cargo cache. The packaged studio opened the original revision 3
+patterns. The CLI and MCP reproduced the 4,345 × 3,615 and 5,669 × 567
+Apple Silicon JPEGs. Independent marker and image checks confirmed the
+declared scale and geometry. The program exited on a scoped SIGTERM
+after the startup and command checks. The native Linux save chooser and
+complete packaged notices remain open.
+[Debian JPEG report](../parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json).
+
 ## Bounded straight-cut authoring and restart
 
 Runtime `19b1e88245dc627cfec8164f4924b335fe44853d` passed formatting,
