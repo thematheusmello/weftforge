@@ -1,5 +1,17 @@
 # WeftForge current-source addendum
 
+## Pattern PNG crop units
+
+Source `d06b224b504a9c6c76b2b288d14c1ea0a845ed3b` maps `pattern-snapshot-print` to millimetres,
+centimetres, inches and pixels. The crop outline appears in the 2D pane
+while a right-side dialog shows its bounds. Pixel fields use the same
+integer pixels-per-metre value as the PNG writer. CLI and MCP retain the
+metre-based options. The source map re-pins 243 earlier anchor
+occurrences and checks the revised format and contract documents. The
+previous addendum is at `8d157cbb73467ecdc98f78be70e8b971eb4f909f`.
+
+# WeftForge current-source addendum
+
 ## Pattern PNG crop and scale
 
 Source `36a9be49097a53f1da4dc0c74062f553ff3194b7` maps `pattern-snapshot-print` to a configurable pattern

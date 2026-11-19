@@ -1,0 +1,16 @@
+{
+  "id": "FILE-NATIVE-PATTERN-CROP-UNITS-001",
+  "status": "implementation_only",
+  "initial_conditions": "The Apple Silicon studio has the two original revision 2 patterns open.",
+  "actions": [
+    "Open the original revision 2 project with Juniper and Basin and use Frame all.",
+    "Open Save 2D pattern PNG from File. Set 140 by 175 mm, Left U to \u2212430 mm and Bottom V to 275 mm.",
+    "Enter 300.012101 pixels per inch and leave the density field using Tab.",
+    "Switch from mm through cm, in and px back to mm. Each choice dismisses the menu and the pixel dimensions stay at 1654 by 2067.",
+    "Observe the crop outline enclosing Basin and its hole in the 2D pane while the dialog sits on the right. Save the physical crop PNG.",
+    "Open the same action from Command search with Command-K, query, Tab and Return. Set the same physical bounds and density.",
+    "Switch to px, enter 1680 as width and leave the field using Tab. Save the second PNG.",
+    "Compare both files with fresh CLI bytes. Independently decode the exact density, dimensions and original contours."
+  ],
+  "expected_outcomes": "Switching four display units leaves the original crop at 1654 by 2067 pixels. A width edit in pixels increases only width to 1680. Both native files match CLI controls at 11812 pixels per metre. The project retains its bytes."
+}

@@ -1,3 +1,20 @@
+# Pattern PNG crop units — 19 November 2026
+
+The 2D pane outlines the PNG crop while the dialog is open. In the Apple
+Silicon studio, switching mm, cm, inches and pixels kept the original
+140 × 175 mm crop. At 300.012101 pixels per inch both files recorded
+11,812 pixels per metre. Setting width to 1,680 pixels added 26 white
+columns. The shared crop pixels, including Basin's boundary and hole,
+were identical. Both native images matched the CLI bytes and the saved
+project kept its hash. The test app closed normally.
+[Native report](parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json) · [Studio preview](docs/studio-preview.md).
+
+Formatting, 509 workspace tests, strict Clippy and the studio and CLI
+builds passed. The next pattern snapshot work covers artwork, grainline
+and measurements. Printer measurement, full Harbor fit and reference
+comparison remain open. GitHub Actions and automated Pages deployments
+stay disabled.
+
 # Configurable physical-scale pattern PNG — 19 November 2026
 
 File and Command search open a 2D crop, paper size, orientation and density
