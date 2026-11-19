@@ -1,0 +1,38 @@
+{
+  "source_commit": "0df44c4f23db77efbc30b1881e6f6b28cc9b48bd",
+  "source_tree": "14464200ced63e880c4f940641441733a156148a",
+  "platform": "Apple Silicon macOS",
+  "studio_sha256": "81a4655ed494934a48f1a606b72c557041a136ea7c54bda90fd73636a2fa222f",
+  "cli_sha256": "1889f707e2b52c63fa6753f6502b160a7aaa0844fe8bbf8e10757e69b528e9f9",
+  "fixture": "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge",
+  "fixture_sha256": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+  "revision": 3,
+  "actions": [
+    "Create the original revision 3 fixture by setting Basin's authored warp to pi/2 on the revision 2 print fixture.",
+    "Open the saved fixture in the Apple Silicon studio and frame the original patterns.",
+    "Open the pattern PNG action from File. Crop Basin to 140 by 175 mm at Left U \u2212430 mm and Bottom V 275 mm.",
+    "Enter 300.012101 pixels per inch, leave the field with Tab and save with Grainline unchecked.",
+    "Open the same action from Command search. Set the same crop and density, enable Grainline and save.",
+    "Compare both native files to fresh CLI results. Decode the upward shaft, both wings and the full changed-pixel bounds."
+  ],
+  "default_grainline": false,
+  "enabled_grainline": true,
+  "images": [
+    {
+      "mode": "without-grainline",
+      "sha256": "1408d33fe80926b243e50408dcf3bdd90664824b5869c7e08406aee01a9ecab9",
+      "bytes": 18844
+    },
+    {
+      "mode": "with-grainline",
+      "sha256": "be3bc5865408b8cdc2c903675f2248fc25e9214d7edf02f6e706b8df67d01e8a",
+      "bytes": 20831
+    }
+  ],
+  "project_retained": true,
+  "local_checks": {
+    "workspace_tests": 510,
+    "strict_clippy": true
+  },
+  "checked_utc": "2026-11-19T06:43:20.769417Z"
+}

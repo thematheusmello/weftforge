@@ -1,5 +1,16 @@
 # WeftForge current-source addendum
 
+## Pattern PNG grainline
+
+Source `0df44c4f23db77efbc30b1881e6f6b28cc9b48bd` adds the **Grainline** switch to
+`pattern-snapshot-print`. It draws arrows in the authored warp direction
+with the same crop and pixel density. Desktop, CLI and MCP share the flag.
+Omitting it uses the existing PNG path and JSON shape. The update re-pins
+45 earlier anchor occurrences and updates the format, automation
+and contract document pins. The previous addendum is at `c7801bb1cb694ead6778b6cd9e81d78f58a1fc3b`.
+
+# WeftForge current-source addendum
+
 ## Pattern PNG crop units
 
 Source `d06b224b504a9c6c76b2b288d14c1ea0a845ed3b` maps `pattern-snapshot-print` to millimetres,
