@@ -43,10 +43,23 @@ still fail the declared criteria. A separate relaxed shirt passes the explicit
 substeps/32 iterations. See physics.md, STATUS.md and attributable run reports.
 Elementary cloth tests do not prove garment fitting quality.
 
+## Unsigned package notices
+
+`cargo xtask package` stages the Cargo-reported studio and CLI before
+publishing to `target/package`. The `licenses/manifest.json` file records
+SHA-256 hashes for the executables and notice texts. It identifies the
+target's collected runtime Cargo dependencies and lists missing upstream
+license texts. On macOS the standalone app carries the project, font and
+collected Cargo notices inside `Contents/Resources/licenses`.
+
+Review the unresolved entries and the target's system dependencies
+before distributing a build. Signing and platform runtime checks are
+separate release steps.
+
 ## Debian ARM64 package smoke
 
-Run `cargo xtask package` in the checkout. The task copies the Cargo-reported
-studio and CLI executables and six notices to `target/package` on Linux. The
+The earlier `cargo xtask package` run copied the Cargo-reported studio and
+CLI executables and six notices to `target/package` on Linux. The
 Debian 13.7 ARM64 guest used glibc 2.41, `libx11-6`, `libxcursor1`,
 `libxkbcommon-x11-0`, `libvulkan1`, `mesa-vulkan-drivers` and `xvfb`. The studio
 loads Xcursor dynamically, so a successful linker-dependency listing alone can
