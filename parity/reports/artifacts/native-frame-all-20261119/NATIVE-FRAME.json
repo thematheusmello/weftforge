@@ -1,0 +1,75 @@
+{
+  "checked_source_commit": "d675e1a12d2f3019b15056021e2719d02ed260da",
+  "code_source_commit": "54456690c60b44696c7d0da551211dab179a329d",
+  "platform": "Native Apple Silicon macOS",
+  "studio_sha256": "89cdec8b0f5a62454621f8b7b57847909af6311e3d2a2dc48a69c184b827a914",
+  "fixture": "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge",
+  "fixture_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+  "editable_revision": 23,
+  "pieces": 2,
+  "seams": 8,
+  "rest_vertices": 654,
+  "observed_actions": [
+    "Open the saved Harbor file on launch",
+    "File > Save workspace PNG\u2026",
+    "Click Frame all in the top toolbar",
+    "File > Save workspace PNG\u2026"
+  ],
+  "native_observations": {
+    "before": "The original view clips exterior edges in the 2D pane.",
+    "after": "Both named outlines are completely visible inside the 2D pane.",
+    "display_state": "Rest arrangement before and after",
+    "capture_success": "1640 \u00d7 1000 px each"
+  },
+  "captures": {
+    "before": {
+      "path": "parity/reports/artifacts/native-frame-all-20261119/before-frame-all.png",
+      "sha256": "6ff218d18221754419d439f0deb518cc951cc04fcac0d0ce6116ce1ba38c1876",
+      "bytes": 213029,
+      "dimensions_px": [
+        1640,
+        1000
+      ],
+      "chunks": {
+        "IDAT": 1,
+        "IEND": 1,
+        "IHDR": 1,
+        "sRGB": 1
+      }
+    },
+    "after": {
+      "path": "parity/reports/artifacts/native-frame-all-20261119/after-frame-all.png",
+      "sha256": "36427436c784f12c4fec6477b3a0cfc66c192e40c6e8636d07e637e1d34586de",
+      "bytes": 216978,
+      "dimensions_px": [
+        1640,
+        1000
+      ],
+      "chunks": {
+        "IDAT": 1,
+        "IEND": 1,
+        "IHDR": 1,
+        "sRGB": 1
+      }
+    }
+  },
+  "independent_pixel_check": {
+    "changed_rgb_pixels": 95256,
+    "bounding_box_half_open_px": [
+      46,
+      117,
+      697,
+      944
+    ],
+    "all_rgb_pixels_outside_bbox_equal": true,
+    "all_alpha_pixels_equal": true,
+    "three_d_pane_and_properties_pixel_equal": true
+  },
+  "project_bytes_preserved": true,
+  "post_case_cleanup": {
+    "command_q": true,
+    "test_process_absent": true
+  },
+  "scope": "One native window size and one saved original project.",
+  "recorded_at_utc": "2026-11-19T02:48:26.805027Z"
+}

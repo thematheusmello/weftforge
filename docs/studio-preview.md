@@ -1,5 +1,14 @@
 # Native studio preview
 
+## Harbor with both patterns in view
+
+The Apple Silicon studio reopened Harbor revision 23 and used **Frame all**
+to bring both outlines into the 2D pane. The 3D rest arrangement and Properties
+view matched pixel for pixel across the two native captures.
+[Before framing](../parity/reports/artifacts/native-frame-all-20261119/before-frame-all.png) · [Native check](../parity/reports/WF-20261119-NATIVE-FRAME-ALL-001.json).
+
+![Both Harbor pattern outlines in the 2D pane beside the 3D rest arrangement](../parity/reports/artifacts/native-frame-all-20261119/after-frame-all.png)
+
 ## Harbor patterns and seam layout
 
 The native studio saved this view after reopening the two Harbor pieces and

@@ -1,0 +1,12 @@
+{
+  "id": "UI-NATIVE-FRAME-ALL-001",
+  "status": "implementation_only",
+  "initial_conditions": "Harbor revision 23 in the Apple Silicon studio at 1640 \u00d7 1000 pixels.",
+  "actions": [
+    "Open the saved Harbor file on launch",
+    "File > Save workspace PNG\u2026",
+    "Click Frame all in the top toolbar",
+    "File > Save workspace PNG\u2026"
+  ],
+  "expected_outcomes": "Both outlines are visible after Frame all. The 3D and Properties pixels, rest state, revision and editable bytes are preserved."
+}
