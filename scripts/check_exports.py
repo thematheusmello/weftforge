@@ -19,8 +19,8 @@ def check_svg(svg_path):
     assert len(viewbox)==4 and all(math.isfinite(v) for v in physical+viewbox),'invalid SVG dimensions'
     assert all(v>0 for v in physical+viewbox[2:]),'SVG dimensions must be positive'
     assert all(abs(a-b)<1e-6 for a,b in zip(physical,viewbox[2:])),'SVG must map one user unit to one physical millimetre (1:1)'
-    # The original fixture's page includes the origin; pattern bounds exclude that margin.
-    assert all(abs(a-b)<1e-6 for a,b in zip(viewbox,[-530.,-1560.,2260.,1560.])),'original shirt page bounds changed'
+    # The original fixture's page tightly encloses its authored exterior bounds.
+    assert all(abs(a-b)<1e-6 for a,b in zip(viewbox,[-530.,-1560.,2260.,540.])),'original shirt page bounds changed'
     assert all('transform' not in node.attrib and 'style' not in node.attrib for node in svg.iter()),'unhandled SVG transform/style'
     assert not svg.findall('.//{http://www.w3.org/2000/svg}style'),'unhandled SVG stylesheet'
     paths=svg.findall('.//{http://www.w3.org/2000/svg}path')

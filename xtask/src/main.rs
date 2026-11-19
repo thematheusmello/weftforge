@@ -263,16 +263,20 @@ fn workspace_root(start: &Path) -> Result<&Path> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::sync::atomic::{AtomicUsize, Ordering};
 
     fn package_fixture() -> PathBuf {
+        static NEXT_FIXTURE: AtomicUsize = AtomicUsize::new(0);
         let root = std::env::temp_dir().join(format!(
-            "weftforge-xtask-package-{}-{}",
+            "weftforge-xtask-package-{}-{}-{}",
             std::process::id(),
             std::time::SystemTime::now()
                 .duration_since(std::time::UNIX_EPOCH)
                 .unwrap()
-                .as_nanos()
+                .as_nanos(),
+            NEXT_FIXTURE.fetch_add(1, Ordering::Relaxed)
         ));
+        fs::create_dir(&root).unwrap();
         fs::create_dir_all(root.join("target/release")).unwrap();
         fs::create_dir_all(root.join("isolated output")).unwrap();
         fs::create_dir_all(root.join("apps/weftforge/assets/fonts")).unwrap();
