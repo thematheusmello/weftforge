@@ -1,0 +1,57 @@
+{
+  "target": "aarch64-apple-darwin",
+  "manifest_sha256": "df72769eafcf473b099b035ad85017f49577ff978ef3a595f3f45cb4356d9588",
+  "executables": [
+    {
+      "path": "weftforge",
+      "size_bytes": 17098240,
+      "sha256": "6fab3aa3e407344fc1c8cb361dab3e11f67a3dab9476b61aa3288499246fe005"
+    },
+    {
+      "path": "weftforge-cli",
+      "size_bytes": 3567280,
+      "sha256": "75e6918b3228c5e7df68fc934ba84ea0c328f010a85b9375908b83e505ae1680"
+    },
+    {
+      "path": "WeftForge.app/Contents/MacOS/weftforge",
+      "size_bytes": 17098240,
+      "sha256": "6fab3aa3e407344fc1c8cb361dab3e11f67a3dab9476b61aa3288499246fe005"
+    }
+  ],
+  "verified_cargo_notice_files": 258,
+  "emitted_third_party_libraries": 165,
+  "unresolved_library_notices": [
+    "accesskit@0.24.1",
+    "accesskit_consumer@0.38.0",
+    "accesskit_macos@0.26.3",
+    "accesskit_winit@0.32.2",
+    "block2@0.5.1",
+    "block2@0.6.2",
+    "dispatch2@0.3.1",
+    "dispatch@0.2.0",
+    "ecolor@0.35.0",
+    "eframe@0.35.0",
+    "egui-wgpu@0.35.0",
+    "egui-winit@0.35.0",
+    "egui@0.35.0",
+    "emath@0.35.0",
+    "epaint@0.35.0",
+    "epaint_default_fonts@0.35.0",
+    "hexf-parse@0.2.1",
+    "objc-sys@0.3.5",
+    "objc2-app-kit@0.2.2",
+    "objc2-app-kit@0.3.2",
+    "objc2-core-foundation@0.3.2",
+    "objc2-core-graphics@0.3.2",
+    "objc2-encode@4.1.0",
+    "objc2-foundation@0.2.2",
+    "objc2-foundation@0.3.2",
+    "objc2-metal@0.3.2",
+    "objc2-quartz-core@0.3.2",
+    "objc2-uniform-type-identifiers@0.3.2",
+    "objc2@0.5.3",
+    "objc2@0.6.5",
+    "profiling@1.0.18"
+  ],
+  "standalone_copied_notice_bytes_exact": true
+}

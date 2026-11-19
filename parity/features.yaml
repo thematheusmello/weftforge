@@ -3913,7 +3913,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b",
         "spec/features/UI-001-standard-viewpoints.md": "904ae35c58a9ecf1e3da3c1a25098a1d1d255cd8776ab630d62991737e4f720a",
@@ -5116,7 +5116,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "UI-003",
@@ -11720,7 +11720,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/PAT-004-piece-rigid-transform.md": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
         "spec/features/PAT-004-native-transform-selection.md": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
@@ -34664,7 +34664,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/FIT-001-native-placement.md": "0f955e8b102d925a0196b774d1a419a9bf849ea606989f78c6b218383dbe6a2c"
       }
@@ -62703,7 +62703,9 @@
         "parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json",
         "parity/reports/WF-20261119-LINUX-NATIVE-SHORTCUT-001.json",
         "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json",
-        "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json"
+        "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json",
+        "parity/reports/WF-20261119-PACKAGER-NOTICES-001.json",
+        "parity/reports/WF-20261119-APPLE-SILICON-PACKAGE-NOTICES-001.json"
       ],
       "scenarios": [
         {
@@ -62738,7 +62740,8 @@
       ],
       "implementation_locations": [
         "apps/weftforge/src/main.rs",
-        "xtask/src/main.rs"
+        "xtask/src/main.rs",
+        "xtask/src/package_notices.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/7"
@@ -62822,19 +62825,53 @@
             "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.json": "00d5ffb9d6becbbab9b9c9b56ed7f40dfc6c73f3b897e0ec9d7179bc328aaf50"
           },
           "path": "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json"
+        },
+        {
+          "id": "WF-20261119-PACKAGER-NOTICES-001",
+          "commit": "4ac2cc5ebc9600df9d45d43ad213235cad608ec7",
+          "timestamp": "2026-11-19T08:45:52.643048Z",
+          "platform": "Apple Silicon macOS xtask fixture and workspace source checks",
+          "artifact_hashes": {
+            "parity/reports/artifacts/package-notices-20261119/PACKAGER-CHECK.json": "fff25ee283cf63a14d38a7f6938f41ba31e8b2e454dc635d519ca38dc70ea4c0"
+          },
+          "path": "parity/reports/WF-20261119-PACKAGER-NOTICES-001.json"
+        },
+        {
+          "id": "WF-20261119-APPLE-SILICON-PACKAGE-NOTICES-001",
+          "commit": "b0ae453caadd7a0249e5d471276a54934a7810ba",
+          "timestamp": "2026-11-19T08:56:45.178855Z",
+          "platform": "Apple Silicon macOS unsigned release bundle and packaged CLI",
+          "artifact_hashes": {
+            "parity/reports/artifacts/apple-silicon-package-notices-20261119/LICENSE-MANIFEST.json": "df72769eafcf473b099b035ad85017f49577ff978ef3a595f3f45cb4356d9588",
+            "parity/reports/artifacts/apple-silicon-package-notices-20261119/check_release.py": "b1108de77f89ad681b576fb45a74b0e0fa78537f070a6d92b87e6549d945127d",
+            "parity/reports/artifacts/apple-silicon-package-notices-20261119/FILE-CHECK.json": "274e6a2aaa127575a19707cde763829900f72609b21b7b6e0b94431d41c94d74",
+            "parity/reports/artifacts/apple-silicon-package-notices-20261119/CLI-CHECK.json": "6f0e3b69e8d66f120d721ee7125b05b1c0d9a15a96cf45f11fabaa17ba52f803",
+            "parity/reports/artifacts/apple-silicon-package-notices-20261119/release-workspace.png": "4add30302f3b6c18347f853e9f612bbd3369cafa1c116141e6e516bc75034871",
+            "parity/reports/artifacts/apple-silicon-package-notices-20261119/NATIVE-RELEASE.json": "a0fdb6e0292394e32eb9d75c065a3ce903ce5e4f3391ce627a51aced9d0fba59",
+            "parity/reports/artifacts/apple-silicon-package-notices-20261119/POST-CASE-CLEANUP.json": "6922b87504fcd842a27c30e1167c28622cec6e376d51342118d69038bc10702d",
+            "parity/reports/artifacts/native-viewport-placement-20261119/redo.weftforge": "3a8b146d9a579096266211c5f93b547623c1b674df24bfe0a52232d0abe6fd64",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.jpg": "2c23889fa3438ca261d30869d60f72daecdf5ea3e8aa9a374f6be2189629fa04",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.jpeg": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.json": "d10487fa7c77392150d7620c8dd558a0dae02d3ea4d7c4c776e98cb5f2c8cc46",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.json": "00d5ffb9d6becbbab9b9c9b56ed7f40dfc6c73f3b897e0ec9d7179bc328aaf50"
+          },
+          "path": "parity/reports/WF-20261119-APPLE-SILICON-PACKAGE-NOTICES-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "The unsigned ARM64 package ran on Debian 13.7 under X11/Vulkan software rendering. Windows, Linux x86-64, Wayland, GPU hardware, platform accessibility, signing and redistributable release acceptance remain open.",
         "The updated ARM64 Debian package has a native X11 Ctrl+K and Escape smoke check with software rendering. Full platform accessibility, Windows and signed cross-platform builds remain open.",
-        "The exact offline Debian 13.7 ARM64 JPEG package launched under X11/Vulkan software rendering and agreed with Apple Silicon on the two packaged CLI/MCP JPEG exports. The native Linux save chooser, hardware GPU, Windows, signing and complete distribution notices remain open."
+        "The exact offline Debian 13.7 ARM64 JPEG package launched under X11/Vulkan software rendering and agreed with Apple Silicon on the two packaged CLI/MCP JPEG exports. The native Linux save chooser, hardware GPU, Windows, signing and complete distribution notices remain open.",
+        "Source fixtures check target-scoped notice collection, standalone app notice paths, executable hashes and interrupted staging recovery. Actual release notice closure, platform audits and signing remain open.",
+        "The actual Apple Silicon release bundle opened Harbor. All recorded binary and 258 notice file hashes passed, and the packaged CLI reproduced both prior JPEGs. Resolve the 31 flagged runtime notices, audit platform runtimes and finish signed builds."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "APP-003",

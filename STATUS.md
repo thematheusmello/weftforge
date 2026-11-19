@@ -1,3 +1,33 @@
+# Apple Silicon release package — 19 November 2026
+
+The offline release package opened Harbor revision 26 in the native
+studio. Its packaged CLI read the two edited patterns and eight seams
+and reproduced both pattern JPEGs byte for byte. The document kept its
+saved hash and the test studio closed. The standalone app carried exact
+copies of the package's project, font and Cargo notices.
+[Release report](parity/reports/WF-20261119-APPLE-SILICON-PACKAGE-NOTICES-001.json) · [Release workspace](parity/reports/artifacts/apple-silicon-package-notices-20261119/release-workspace.png).
+
+The audit verified the executables and 258 notice files against the
+manifest. Of 165 emitted third-party libraries, 31 still need upstream
+code license texts. Linux desktop save, Windows and signed distribution
+remain open. GitHub Actions and automated Pages deployments stay disabled.
+
+# Notices in unsigned packages — 19 November 2026
+
+The packager collects the runtime Cargo notice files it can attribute
+to the emitted libraries. The release folder records executable and notice
+hashes and flags missing texts. The standalone macOS app carries the project,
+font and collected Cargo notices. A retry restores the previous package after
+an interrupted promotion. Fixtures checked those paths, notice bytes and
+recovery on Apple Silicon.
+[Packager source check](parity/reports/WF-20261119-PACKAGER-NOTICES-001.json) · [Package instructions](docs/verification.md#unsigned-package-notices).
+
+Formatting, 514 workspace tests, strict Clippy and the studio and CLI
+builds passed. The next package check needs an actual release build, enough
+local storage, and review of its unresolved notice entries. Windows, Linux
+desktop save, full Harbor fit and reference comparisons remain open. GitHub
+Actions and automated Pages deployments stay disabled.
+
 # Move patterns in 3D — 19 November 2026
 
 In **3D Garment**, **Move pattern** drags the selected rest pattern along
