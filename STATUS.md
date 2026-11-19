@@ -1,3 +1,19 @@
+# Actual-size pattern PDF — 19 November 2026
+
+File and Command search export tiled A4 and US Letter pattern PDFs.
+An Apple Silicon run wrote the two original patterns at revision 2 and
+left the native file exact. Both six-page documents were byte-identical
+to CLI exports. The independent pypdf and Poppler checks confirmed paper
+dimensions, the 100 mm calibration square, 10 mm overlap and registration,
+cubic curves, the hole, notch and internal line. The app closed normally.
+[Native and independent report](parity/reports/WF-20261119-NATIVE-PATTERN-PDF-001.json) · [Rendered sheets](docs/studio-preview.md).
+
+Formatting, 504 workspace tests, strict Clippy and the studio and CLI
+builds passed. The initial protocol check still expected eleven MCP tools.
+The updated test uses the shared twelve-tool expectation. Physical printer
+measurement, configurable raster snapshots and complete Harbor fit remain
+open. GitHub Actions and automated Pages deployments stay disabled.
+
 # Frame garment in 3D — 19 November 2026
 
 **Frame garment** centers the visible cloth at the current viewing angle.

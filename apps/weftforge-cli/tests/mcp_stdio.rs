@@ -13,6 +13,8 @@ use std::{
 };
 use weftforge_core::{Command, Editor, Project, recovery_path};
 
+const MCP_TOOL_COUNT: usize = 12;
+
 struct Server {
     child: Child,
     input: Option<ChildStdin>,
@@ -211,7 +213,7 @@ fn check_cut_command(kind: &str, modern: bool) {
     };
     let listed = server.request("tools/list", profile_params(json!({})));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 11);
+    assert_eq!(tools.len(), MCP_TOOL_COUNT);
     let variants = tools
         .iter()
         .find(|tool| tool["name"] == "project_execute")
@@ -711,7 +713,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
     server.initialize("2025-11-25");
     let listed = server.request("tools/list", json!({}));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 11);
+    assert_eq!(tools.len(), MCP_TOOL_COUNT);
     assert!(
         tools
             .iter()
@@ -1142,7 +1144,7 @@ fn physical_length_sewing_schema_and_cli_mcp_use_the_shared_candidate_transactio
     server.initialize("2025-11-25");
     let listed = server.request("tools/list", json!({}));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 11);
+    assert_eq!(tools.len(), MCP_TOOL_COUNT);
     let variants = tools
         .iter()
         .find(|tool| tool["name"] == "project_execute")
@@ -1567,7 +1569,7 @@ fn stdio_transform_schema_cli_equivalence_and_strict_atomic_failures() {
     server.initialize("2025-11-25");
     let listed = server.request("tools/list", json!({}));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 11);
+    assert_eq!(tools.len(), MCP_TOOL_COUNT);
     let variant = tools
         .iter()
         .find(|tool| tool["name"] == "project_execute")
@@ -2185,7 +2187,10 @@ fn stdio_validates_protocol_lifecycle_modern_metadata_and_line_bounds() {
         json!(["2026-07-28"])
     );
     let listed = server.request("tools/list", json!({"_meta":modern_metadata("2026-07-28")}));
-    assert_eq!(listed["result"]["tools"].as_array().unwrap().len(), 11);
+    assert_eq!(
+        listed["result"]["tools"].as_array().unwrap().len(),
+        MCP_TOOL_COUNT
+    );
     assert_eq!(listed["result"]["cacheScope"], "public");
     assert_eq!(listed["result"]["ttlMs"], 0);
     success(&server.request("tools/call", json!({"_meta":modern_metadata("2026-07-28"),"name":"project_create","arguments":{"output":path}})));
@@ -2583,7 +2588,7 @@ fn authored_notches_share_closed_typed_commands_across_cli_and_both_mcp_profiles
         };
         let listed = server.request("tools/list", profile(json!({})));
         let tools = listed["result"]["tools"].as_array().unwrap();
-        assert_eq!(tools.len(), 11);
+        assert_eq!(tools.len(), MCP_TOOL_COUNT);
         let variants = tools
             .iter()
             .find(|tool| tool["name"] == "project_execute")
@@ -2731,7 +2736,7 @@ fn internal_annotations_share_closed_schema_cli_and_mcp_transactions_without_new
     server.initialize("2025-11-25");
     let listed = server.request("tools/list", json!({}));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 11);
+    assert_eq!(tools.len(), MCP_TOOL_COUNT);
     let variants = tools
         .iter()
         .find(|tool| tool["name"] == "project_execute")
@@ -2933,7 +2938,7 @@ fn outline_offsets_share_closed_schemas_material_domain_and_atomic_files() {
     server.initialize("2025-11-25");
     let listed = server.request("tools/list", json!({}));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 11);
+    assert_eq!(tools.len(), MCP_TOOL_COUNT);
     let execute = tools
         .iter()
         .find(|tool| tool["name"] == "project_execute")
@@ -3112,7 +3117,7 @@ fn straight_holes_keep_closed_discovery_shared_ids_and_atomic_refusal() {
     server.initialize("2025-11-25");
     let listed = server.request("tools/list", json!({}));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 11);
+    assert_eq!(tools.len(), MCP_TOOL_COUNT);
     let execute = tools
         .iter()
         .find(|tool| tool["name"] == "project_execute")
@@ -3298,4 +3303,91 @@ fn straight_holes_keep_closed_discovery_shared_ids_and_atomic_refusal() {
     assert_eq!(Project::load(&path).unwrap(), expected.project);
     assert_eq!(fs::read(recovery_path(&path)).unwrap(), primary);
     server.finish();
+}
+
+#[test]
+fn pattern_pdf_cli_and_mcp_write_the_same_tiled_document_and_preserve_paths() {
+    let directory = Directory::new();
+    let input = directory.path("pattern.weftforge");
+    let cli_pdf = directory.path("cli.pdf");
+    let mcp_pdf = directory.path("mcp.pdf");
+    let mut editor = Editor::default();
+    editor
+        .execute(Command::AddRectangle {
+            name: "Front".into(),
+            origin: [20., -30.],
+            width: 0.3,
+            height: 0.28,
+        })
+        .unwrap();
+    editor.project.save(&input).unwrap();
+    let original = fs::read(&input).unwrap();
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let tools = server.request("tools/list", json!({}));
+    let pdf = tools["result"]["tools"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|tool| tool["name"] == "project_export_pdf")
+        .unwrap();
+    assert_eq!(pdf["inputSchema"]["additionalProperties"], false);
+    assert_eq!(
+        pdf["inputSchema"]["properties"]["paper"]["enum"],
+        json!(["a4", "letter"])
+    );
+    for paper in ["a4", "letter"] {
+        let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+            .arg("export-pdf")
+            .arg(&input)
+            .arg(&cli_pdf)
+            .arg(paper)
+            .output()
+            .unwrap();
+        assert!(
+            cli.status.success(),
+            "{}",
+            String::from_utf8_lossy(&cli.stderr)
+        );
+        let result = server.call(
+            "project_export_pdf",
+            json!({"input":input,"output":mcp_pdf,"paper":paper}),
+        );
+        assert_eq!(success(&result)["paper"], paper);
+        let expected = fs::read(&cli_pdf).unwrap();
+        assert_eq!(expected, fs::read(&mcp_pdf).unwrap());
+        let pdf_text = std::str::from_utf8(&expected).unwrap();
+        assert!(pdf_text.starts_with("%PDF-1.7"));
+        assert!(pdf_text.contains("/Type /Pages /Count 5"));
+        assert!(pdf_text.contains("/PrintScaling /None"));
+        assert!(pdf_text.contains("283.464567 283.464567 re S"));
+        assert_eq!(pdf_text.matches("/Subtype /Form").count(), 1);
+        tool_error(&server.call(
+            "project_export_pdf",
+            json!({"input":input,"output":mcp_pdf,"paper":"a3"}),
+        ));
+        tool_error(&server.call(
+            "project_export_pdf",
+            json!({"input":input,"output":input,"paper":paper}),
+        ));
+        assert_eq!(fs::read(&mcp_pdf).unwrap(), expected);
+        assert_eq!(fs::read(&input).unwrap(), original);
+    }
+    let oversized = directory.path("oversized.weftforge");
+    let mut large = Editor::default();
+    large
+        .execute(Command::AddRectangle {
+            name: "Oversized".into(),
+            origin: [0., 0.],
+            width: 20.,
+            height: 20.,
+        })
+        .unwrap();
+    large.project.save(&oversized).unwrap();
+    let preserved = fs::read(&mcp_pdf).unwrap();
+    tool_error(&server.call(
+        "project_export_pdf",
+        json!({"input":oversized,"output":mcp_pdf,"paper":"a4"}),
+    ));
+    assert_eq!(fs::read(&mcp_pdf).unwrap(), preserved);
 }

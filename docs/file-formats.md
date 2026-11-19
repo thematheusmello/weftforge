@@ -22,6 +22,7 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 | Binary glTF 2.0 (`.glb`) | No | Yes | Mesh only | Static | Named pieces, fabric tint, normals and physical-scale UVs from a rest or current surface |
 | JSON glTF 2.0 (`.gltf`) | No | Yes, embedded buffer | Mesh only | Static | Single JSON file with the same named meshes, fabric tints, normals and UVs as binary glTF |
 | DXF R2000 | Bounded additive import | Yes, projects without holes or authored notches | Editable exterior boundaries with layer names | Static 2D | Holed/notched projects refuse before staging. Strict existing ASCII `LINE`/clamped cubic `SPLINE` profile, mm and `WF_PIECE` layers; no sewing, materials, grain, internal lines, 3D placement, apparel conventions or print layout |
+| Pattern PDF 1.7 | — | A4 and US Letter tiles at 1:1 | Authored curves and marks as vector paths | Static 2D print | Piece IDs and bookmarks, 10 mm overlap, 100 mm scale check; editable relationships stay in the project |
 | Animation/cache formats | No | No | None yet | None yet | Timeline, frame caches and export not implemented |
 | Marvelous Designer `.zprj` / `.zpac` | No | No | None | None | Separate FILE-006 research/compatibility workstream |
 
@@ -373,6 +374,26 @@ mention printing, and temporary edits reached background autosave sidecars while
 original input primaries stayed unchanged. This does not establish every frozen
 native-plan criterion, full persistence acceptance, general DXF/CAD or apparel
 interchange, printing or reference parity.
+
+### Pattern PDF
+
+Choose **Export pattern PDF (A4)** or **Export pattern PDF (US Letter)**
+from File or Command search. The CLI uses `a4` or `letter`.
+
+```bash
+weftforge-cli export-pdf garment.weftforge patterns.pdf a4
+```
+
+Each piece gets its own 1:1 sheet grid with matching marks in each 10 mm
+overlap. Exterior and hole contours retain their straight or cubic authored
+curves. Perpendicular notch markers are solid, internal lines are dashed,
+and the PDF bookmarks use the original piece names.
+
+Print page one at **Actual size** on the selected paper and measure both
+sides of the 100 mm square. Print the remaining pages with those settings.
+Join each piece's rows and columns using the matching crosses in the
+overlap. Paper output depends on the PDF viewer and printer settings.
+[Pattern PDF profile](../spec/features/FILE-005-pattern-print-pdf.md).
 
 Future formats must specify what they preserve and reject unsupported important
 data explicitly. They must not accept a familiar extension without decoding it,

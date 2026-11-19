@@ -13,8 +13,8 @@ use std::{
 };
 use weftforge_core::{
     Command, Curve, CurveInterval, DxfPatternImport, Editor, Id, Material, Mesh, Notch, Piece,
-    Placement, PreparedOutlineOffset, Project, SewingDirection, SewingGroup, SewingSideByLength,
-    SvgPatternImport,
+    Placement, PreparedOutlineOffset, PrintPaper, Project, SewingDirection, SewingGroup,
+    SewingSideByLength, SvgPatternImport,
 };
 use weftforge_sim::{Cloth, MaterialAxis, SimulationError, StepSettings};
 
@@ -25,6 +25,8 @@ const DEFAULT_ORBIT: [f32; 2] = [-0.45, 0.12];
 const MIN_CAMERA_SCALE: f32 = 60.;
 const MAX_CAMERA_SCALE: f32 = 1500.;
 const FRAME_GARMENT: &str = "Frame garment";
+const PATTERN_PDF_A4: &str = "Export pattern PDF (A4)";
+const PATTERN_PDF_LETTER: &str = "Export pattern PDF (US Letter)";
 // Views are named for the side of the Y-up garment facing the camera.
 const CAMERA_VIEWS: [(&str, [f32; 2]); 7] = [
     ("Front view", [0., 0.]),
@@ -111,6 +113,7 @@ enum ExportFormat {
     Gltf,
     Svg,
     Dxf,
+    Pdf(PrintPaper),
 }
 #[derive(Clone, Copy, Debug, PartialEq)]
 enum JobKind {
@@ -1392,7 +1395,10 @@ impl Studio {
     }
     fn export_button(&self, ui: &mut egui::Ui, format: ExportFormat, label: &str) -> bool {
         let focused = self.inspector_focus(ui.ctx());
-        let response = ui.button(label).on_hover_text(match format {
+        let enabled =
+            !matches!(format, ExportFormat::Pdf(_)) || !self.editor.project.pieces.is_empty();
+        let response = ui.add_enabled(enabled, egui::Button::new(label)).on_hover_text(match format {
+            ExportFormat::Pdf(_) => "Tiled 1:1 pattern sheets with a 100 mm scale square. Print at Actual size.",
             ExportFormat::Svg => "Compound pattern boundaries include holes; hole-aware SVG reimport is not yet supported. Internal annotations stay in the native project.",
             ExportFormat::Dxf => "Exterior boundaries only; projects with holes are refused. Internal annotations stay in the native project.",
             ExportFormat::Obj | ExportFormat::Glb | ExportFormat::Gltf => "Rest/current cloth surface only; no annotation line primitives. Save the native project to keep editable internal lines.",
@@ -2128,6 +2134,7 @@ impl Studio {
             match format {
                 ExportFormat::Svg => project.export_svg(path),
                 ExportFormat::Dxf => project.export_dxf(path),
+                ExportFormat::Pdf(paper) => project.export_pattern_pdf(path, paper),
                 ExportFormat::Obj | ExportFormat::Glb | ExportFormat::Gltf => {
                     if candidate.is_some() {
                         let name = match format {
@@ -2169,6 +2176,7 @@ impl Studio {
         self.message = match result {
             Ok(false) => "Export cancelled; pending edits retained.".into(),
             Ok(true) => match format {
+                ExportFormat::Pdf(_) => "Exported tiled pattern PDF. Print the scale check at Actual size.".into(),
                 ExportFormat::Dxf => "Exported exterior DXF boundaries in millimetres; internal annotations, sewing and materials stay in .weftforge.".into(),
                 ExportFormat::Svg => "Exported SVG boundaries and notches in millimetres; holes/notches cannot yet be reimported. Internal lines stay in .weftforge.".into(),
                 ExportFormat::Obj => "Exported OBJ cloth surface in metres; internal lines and authored notches stay in .weftforge.".into(),
@@ -2578,6 +2586,11 @@ impl Studio {
                 }
                 if self.export_button(ui, ExportFormat::Dxf, "Export DXF") {
                     ui.close();
+                }
+                for (label, paper) in [(PATTERN_PDF_A4, PrintPaper::A4), (PATTERN_PDF_LETTER, PrintPaper::Letter)] {
+                    if self.export_button(ui, ExportFormat::Pdf(paper), label) {
+                        ui.close();
+                    }
                 }
                 if self.workspace_png_button(ui) {
                     ui.close();
@@ -7333,6 +7346,8 @@ impl eframe::App for Studio {
                                 "Export glTF",
                                 "Export SVG",
                                 "Export DXF",
+                                PATTERN_PDF_A4,
+                                PATTERN_PDF_LETTER,
                                 "Save workspace PNG…",
                                 "Undo",
                                 "Redo",
@@ -7376,6 +7391,16 @@ impl eframe::App for Studio {
                                     "Export DXF" => {
                                         self.export_button(ui, ExportFormat::Dxf, label)
                                     }
+                                    PATTERN_PDF_A4 => self.export_button(
+                                        ui,
+                                        ExportFormat::Pdf(PrintPaper::A4),
+                                        label,
+                                    ),
+                                    PATTERN_PDF_LETTER => self.export_button(
+                                        ui,
+                                        ExportFormat::Pdf(PrintPaper::Letter),
+                                        label,
+                                    ),
                                     "Save workspace PNG…" => self.workspace_png_button(ui),
                                     "Add hole…" => self.add_hole_button(ui).clicked(),
                                     "Offset outline…" => self.outline_offset_button(ui).clicked(),
@@ -7392,7 +7417,8 @@ impl eframe::App for Studio {
                                             self.show_recovery = true;
                                         }
                                         "Export OBJ" | "Export GLB" | "Export glTF"
-                                        | "Export SVG" | "Export DXF" => {}
+                                        | "Export SVG" | "Export DXF" | PATTERN_PDF_A4
+                                        | PATTERN_PDF_LETTER => {}
                                         "Save workspace PNG…" => {}
                                         "Undo" => self.history(&ctx, false),
                                         "Redo" => self.history(&ctx, true),
@@ -8321,6 +8347,7 @@ fn choose_export_path(_ctx: &egui::Context, format: ExportFormat) -> Option<Path
         ExportFormat::Gltf => "gltf",
         ExportFormat::Svg => "svg",
         ExportFormat::Dxf => "dxf",
+        ExportFormat::Pdf(_) => "pdf",
     };
     rfd::FileDialog::new()
         .add_filter(ext, &[ext])
@@ -13838,6 +13865,7 @@ mod tests {
             (ExportFormat::Obj, "Export OBJ"),
             (ExportFormat::Glb, "Export GLB"),
             (ExportFormat::Gltf, "Export glTF"),
+            (ExportFormat::Pdf(PrintPaper::A4), PATTERN_PDF_A4),
         ] {
             for outcome in ["cancel", "protected", "write", "invalid", "success"] {
                 for input in [
@@ -13849,8 +13877,10 @@ mod tests {
                     "search",
                     "search_pointer",
                 ] {
-                    if !matches!(format, ExportFormat::Dxf | ExportFormat::Glb)
-                        && !matches!(input, "ax" | "pointer")
+                    if !matches!(
+                        format,
+                        ExportFormat::Dxf | ExportFormat::Glb | ExportFormat::Pdf(_)
+                    ) && !matches!(input, "ax" | "pointer")
                     {
                         continue;
                     }
@@ -14036,12 +14066,24 @@ mod tests {
                         if let Some((_, id, _)) = &other {
                             assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(*id)), None);
                         }
-                        let bytes = fs::read_to_string(&output).unwrap();
-                        assert!(bytes.contains(if matches!(format, ExportFormat::Dxf) {
-                            "11\n450\n"
-                        } else {
-                            "L 450 "
-                        }));
+                        match format {
+                            ExportFormat::Pdf(paper) => {
+                                let control = directory.0.join("control.pdf");
+                                expected
+                                    .project
+                                    .export_pattern_pdf(&control, paper)
+                                    .unwrap();
+                                assert_eq!(fs::read(&output).unwrap(), fs::read(control).unwrap());
+                            }
+                            _ => {
+                                let bytes = fs::read_to_string(&output).unwrap();
+                                assert!(bytes.contains(if matches!(format, ExportFormat::Dxf) {
+                                    "11\n450\n"
+                                } else {
+                                    "L 450 "
+                                }));
+                            }
+                        }
                         frame(&ctx, &mut app, vec![]);
                         let update = frame(
                             &ctx,

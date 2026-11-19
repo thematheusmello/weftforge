@@ -1,0 +1,104 @@
+{
+  "fixture": "print-original.weftforge",
+  "sha256": "6095f6f4ac7713006025bef167196ad88bd7770e78a8be07784739016b775f83",
+  "native_version": 6,
+  "revision": 2,
+  "piece_ids": [
+    2,
+    11
+  ],
+  "materials": [
+    {
+      "areal_density": 0.18,
+      "bending_stiffness": 0.003,
+      "collision_thickness": 0.003,
+      "color": [
+        0.2199999988079071,
+        0.550000011920929,
+        0.7599999904632568
+      ],
+      "damping": 0.2,
+      "friction": 0.4,
+      "id": 1,
+      "name": "Cotton approximation (uncalibrated)",
+      "shear_stiffness": 100.0,
+      "warp_stiffness": 400.0,
+      "weft_stiffness": 400.0
+    }
+  ],
+  "geometry": {
+    "vertices": 260,
+    "triangles": 359
+  },
+  "cli_sha256": "106d4fa55fff0c652fa37c0bebbfa3e5409a57ec3e25ec0b2349fdb5d6e7033b",
+  "commands": [
+    {
+      "argv": [
+        "new",
+        "empty.weftforge"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "execute",
+        "empty.weftforge",
+        "rectangle-scaffold.weftforge",
+        "01-pieces.json"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "execute",
+        "rectangle-scaffold.weftforge",
+        "print-original.weftforge",
+        "02-details.json"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "inspect",
+        "print-original.weftforge"
+      ],
+      "exit": 0
+    }
+  ],
+  "expected_pdf": {
+    "a4": {
+      "sheet_mm": [
+        210,
+        297
+      ],
+      "pages": 6,
+      "piece_tiles_row_col": [
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "letter": {
+      "sheet_mm": [
+        215.9,
+        279.4
+      ],
+      "pages": 6,
+      "piece_tiles_row_col": [
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  }
+}

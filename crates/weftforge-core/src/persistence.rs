@@ -13,8 +13,10 @@ use std::sync::atomic::{AtomicU64, Ordering};
 mod dxf;
 mod dxf_import;
 mod gltf;
+mod pdf;
 mod svg;
 pub use dxf_import::{DXF_IMPORT_SCOPE, DxfPatternImport, MAX_DXF_BYTES};
+pub use pdf::PrintPaper;
 pub use svg::{MAX_SVG_BYTES, SVG_IMPORT_SCOPE, SvgPatternImport};
 
 #[derive(Debug, Clone)]
