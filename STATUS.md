@@ -1,3 +1,11 @@
+# Original shirt export verification — 19 November 2026
+
+The independent scenario checker now expects the original shirt's tight SVG
+page at 2260 × 540 mm and checks the authored pattern coordinates at 1:1 scale.
+The regression test rejects the former 1560 mm padded page. This updates the
+checker for the existing SVG exporter. The checker also validates the original
+shirt OBJ in metres, including its UVs, normals and piece groups.
+
 # Static GLB export — 19 November 2026
 
 The File menu and Command search export a static GLB of the rest or current
