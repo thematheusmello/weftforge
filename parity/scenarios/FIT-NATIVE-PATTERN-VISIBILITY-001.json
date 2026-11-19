@@ -1,0 +1,13 @@
+{
+  "id": "FIT-NATIVE-PATTERN-VISIBILITY-001",
+  "status": "implementation_only",
+  "initial_conditions": "The original Harbor revision 23 opened in the current Apple Silicon studio with both patterns framed.",
+  "actions": [
+    "Open the saved Harbor project, choose Frame all and save a workspace PNG.",
+    "Select Harbor front in Scene, use Hide selected, and save a workspace PNG.",
+    "Use File > Export GLB while Harbor front is hidden.",
+    "Use Show all, reselect Harbor front, choose Isolate selected, Frame all, and save a workspace PNG.",
+    "Reopen the same saved project and inspect the restored pattern rows."
+  ],
+  "expected_outcomes": "Both views reflect Hide and Isolate. Each hidden Scene row remains labeled. Show all and reopening restore visibility. The editable file and complete GLB keep their original bytes."
+}

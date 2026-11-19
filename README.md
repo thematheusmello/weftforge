@@ -15,7 +15,7 @@ See [current status](STATUS.md), [generated progress](docs/progress.md), [dashbo
 Original sample projects are available in [fixtures](fixtures). See
 [verification](docs/verification.md) for tested workflows and current limits.
 
-![WeftForge’s native workspace with Harbor’s two editable patterns, eight seams and 3D rest arrangement](parity/reports/artifacts/native-harbor-workflow-20261118/Harbor-workspace.png)
+![WeftForge’s native workspace with Harbor’s two editable patterns, eight seams and 3D rest arrangement](parity/reports/artifacts/native-pattern-visibility-20261119/all-patterns.png)
 
 The updated studio uses charcoal surfaces, compact menus, a left tool rail,
 a document tab, paired 2D/3D canvases, Properties and Scene docks, and a slim
@@ -33,8 +33,9 @@ and undo/redo. **Import SVG…** and **Import DXF…** add supported closed
 straight/cubic pattern boundaries at physical millimetre scale, with a review
 before importing. SVG requires explicit dimensions and a uniform viewBox;
 DXF accepts a bounded R2000 `LINE`/clamped cubic `SPLINE` profile.
-Imported boundaries remain editable; **Frame all** fits authored outlines in the
-2D view while preserving pending numeric edits. Rectangle, polygon and editable
+Imported boundaries remain editable. **Frame all** fits the visible outlines in
+the 2D view and preserves pending numeric edits. The Scene dock can temporarily
+hide or isolate patterns across both canvases. Rectangle, polygon and editable
 four-cubic ellipse construction feed the same Rust document engine as the CLI. The core retains straight/cubic boundaries, oriented seam intervals,
 ordered M:N sewing groups, authored warp direction per piece, separate warp/weft
 physical stiffness, placement and derived meshes. Groups pair cumulative authored
@@ -44,7 +45,7 @@ maps; legacy single seams retain their curve-parameter correspondence.
 **File → Save workspace PNG…** exports the native-size 2D and 3D workspace
 image. The capture above came from the reopened Harbor project on macOS.
 Its saved construction stayed unchanged during export.
-[Native capture check](parity/reports/WF-20261118-HARBOR-NATIVE-AUTHORING-REOPEN-001.json).
+[Native capture and visibility check](parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json).
 
 **Free sewing** creates partial boundary pairs from exact Start t, direction
 and a Length in millimetres. Confirming A keeps a pending preview; confirming B

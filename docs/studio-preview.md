@@ -1,5 +1,17 @@
 # Native studio preview
 
+## Harbor pattern visibility
+
+The current Apple Silicon studio opened Harbor at revision 23. Scene can
+hide the selected pattern, isolate it, or restore all patterns. The second
+capture shows the front framed on its own. Its hidden back still has a labeled
+Scene row. Saving and mesh export include all pieces.
+[Front hidden](../parity/reports/artifacts/native-pattern-visibility-20261119/front-hidden.png) · [Native check](../parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json).
+
+![Both Harbor patterns in the native studio with the Scene visibility buttons](../parity/reports/artifacts/native-pattern-visibility-20261119/all-patterns.png)
+
+![Harbor front isolated and framed in the 2D and 3D views](../parity/reports/artifacts/native-pattern-visibility-20261119/front-isolated.png)
+
 ## Harbor on the JSON glTF build
 
 The Apple Silicon studio opened Harbor revision 23, framed both patterns and
@@ -10,8 +22,8 @@ from Command search after one manual step.
 
 ![The current WeftForge studio with Harbor's two patterns, 3D rest arrangement and Properties panel](../parity/reports/artifacts/static-gltf-json-20261119/harbor-framed-workspace.png)
 
-The current Debian ARM64 package shows **Export glTF** in Command search after
-Ctrl+K. [Debian Command search preview](../parity/reports/artifacts/debian-arm64-json-gltf-20261119/palette-open.png).
+The Debian ARM64 package from that build shows **Export glTF** in Command
+search after Ctrl+K. [Debian Command search preview](../parity/reports/artifacts/debian-arm64-json-gltf-20261119/palette-open.png).
 
 ## Harbor with both patterns in view
 

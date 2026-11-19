@@ -1,7 +1,24 @@
+# Pattern visibility — 19 November 2026
+
+Scene now offers Hide selected, Isolate selected and Show all. Both canvases
+and their picking follow the visible patterns. Frame all fits the visible 2D
+outlines, and the Scene retains labeled rows for hidden pieces.
+
+The Apple Silicon studio reopened Harbor revision 23 and captured all pieces,
+the front hidden, and the front framed in isolation. The full GLB exported
+while the front was hidden matched the original checked GLB byte for byte.
+Show all and reopening restored visibility. The editable file kept its saved
+hash and the studio closed normally.
+[Native report](parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json) · [Studio preview](docs/studio-preview.md).
+
+Formatting, all 501 workspace tests, strict Clippy and the studio and CLI
+builds passed. The complete Harbor fit, reference visibility behavior, pins
+and interacting layers still need verification and implementation work.
+
 # Debian ARM64 JSON glTF check — 19 November 2026
 
-The current unsigned Debian 13.7 ARM64 package opened the original two-panel
-shirt using X11 and Mesa software Vulkan. Ctrl+K opened Command search with
+The unsigned Debian 13.7 ARM64 package from the JSON glTF build opened the
+original two-panel shirt using X11 and Mesa software Vulkan. Ctrl+K opened Command search with
 **Export glTF** visible. Escape restored the same workspace image byte for
 byte. The studio, Xvfb and the owned guest closed normally.
 

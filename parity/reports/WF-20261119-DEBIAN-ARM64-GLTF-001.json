@@ -124,5 +124,6 @@
     "xtask",
     "scripts/check_exports.py"
   ],
-  "freshness": "current"
+  "freshness": "stale",
+  "freshness_reason": "The tested Debian binary predates the Scene visibility changes. The exact runtime evidence remains historical."
 }

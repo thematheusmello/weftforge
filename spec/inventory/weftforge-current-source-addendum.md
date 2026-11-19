@@ -1,5 +1,19 @@
 # WeftForge current-source addendum
 
+## Pattern visibility in both canvases
+
+Source `b305cabf553411400bd342d46532a0d61f398d55` adds Hide selected, Isolate selected and Show all to Scene.
+The `visibility-isolation` group covers both visible canvases, picking and
+framing. The authored patterns, mesh export and solver retain all pieces.
+The historical catalog and shared authoring schemas keep their existing scope.
+
+This update re-pins 217 existing source occurrences and adds five for
+visibility. The earlier overlay is available at `d4255e16896e96841dffa67f7b03cfa60d2b4b5a`. The feature
+registry records runtime evidence. Avatar, per-view and reference behavior
+remain open.
+
+# WeftForge current-source addendum
+
 ## Embedded JSON glTF export
 
 Source `8721469c10771624d3042b92d6f91c294ed04efc` writes the same static scenes to GLB and JSON glTF.

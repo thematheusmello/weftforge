@@ -1,0 +1,99 @@
+{
+  "source_commit": "b305cabf553411400bd342d46532a0d61f398d55",
+  "source_tree": "e7a578d0b81c872da859ca5f09a03d81f46dcc4e",
+  "studio_sha256": "eb44890823ead08dea04f33b6fbd0c883c5854bd4f055a39f009995d6339b724",
+  "platform": "Apple Silicon macOS native debug build",
+  "fixture": "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge",
+  "fixture_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+  "project_revision": 23,
+  "original_piece_count": 2,
+  "original_seam_count": 8,
+  "rest_mesh_vertices": 654,
+  "actions": [
+    "Open the saved Harbor project, choose Frame all and save a workspace PNG.",
+    "Select Harbor front in Scene, use Hide selected, and save a workspace PNG.",
+    "Use File > Export GLB while Harbor front is hidden.",
+    "Use Show all, reselect Harbor front, choose Isolate selected, Frame all, and save a workspace PNG.",
+    "Reopen the same saved project and inspect the restored pattern rows."
+  ],
+  "captures": {
+    "all-patterns": "parity/reports/artifacts/native-pattern-visibility-20261119/all-patterns.png",
+    "front-hidden": "parity/reports/artifacts/native-pattern-visibility-20261119/front-hidden.png",
+    "front-isolated": "parity/reports/artifacts/native-pattern-visibility-20261119/front-isolated.png"
+  },
+  "workspace_capture_pixels": [
+    1640,
+    1000
+  ],
+  "workspace_capture_colorspace": "sRGB",
+  "native_state": {
+    "hide_label": "Hidden \u00b7 Harbor front \u00b7 #2",
+    "hide_clears_selection": true,
+    "show_all_restores_rows": true,
+    "isolate_label": "Hidden \u00b7 Harbor back \u00b7 #31",
+    "isolate_keeps_front_selected": true,
+    "frame_all_fit_the_visible_outline": true,
+    "reopen_resets_visibility": true,
+    "rest_arrangement_remained_at_revision_23": true
+  },
+  "independent_pixel_differences_against_all_patterns": {
+    "front-hidden": {
+      "pattern_2d": {
+        "changed_rgb_pixels": 5552,
+        "bounding_box_half_open_px": [
+          70,
+          457,
+          669,
+          604
+        ]
+      },
+      "garment_3d": {
+        "changed_rgb_pixels": 21178,
+        "bounding_box_half_open_px": [
+          834,
+          372,
+          1155,
+          555
+        ]
+      }
+    },
+    "front-isolated": {
+      "pattern_2d": {
+        "changed_rgb_pixels": 81535,
+        "bounding_box_half_open_px": [
+          46,
+          117,
+          697,
+          944
+        ]
+      },
+      "garment_3d": {
+        "changed_rgb_pixels": 33472,
+        "bounding_box_half_open_px": [
+          833,
+          358,
+          1212,
+          554
+        ]
+      }
+    }
+  },
+  "original_project_bytes_preserved": true,
+  "glb_from_hidden_view": {
+    "identical_checked_full_rest_glb": "parity/reports/artifacts/static-glb-20261119/harbor-rest.glb",
+    "sha256": "85235593b29fca5e86456532455e91a69cbc6fb3d973f20e654068687195297a",
+    "retained_meshes": [
+      "Harbor front",
+      "Harbor back"
+    ],
+    "triangle_count": 1172
+  },
+  "focused_checks": [
+    "Both paint and pick paths, hidden boundary picking, applied guides and visible frame bounds",
+    "Pending property preservation, identity of mesh and simulation, and history",
+    "Failed and successful loads"
+  ],
+  "workspace_tests_passed": 501,
+  "strict_clippy_pass": true,
+  "checked_utc": "2026-11-19T03:57:27.255085Z"
+}

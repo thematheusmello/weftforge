@@ -15,7 +15,7 @@ remaining work.
 
 ## Current execution order — 19 November 2026
 
-The registry currently contains 56 broad contracts: 43 partial and 13 planned.
+The registry currently contains 56 broad contracts: 44 partial and 12 planned.
 None is fully implemented or reference verified, and no delivery gate is accepted.
 Discovery is incomplete, so these 56 contracts are not a final product denominator.
 
@@ -38,6 +38,10 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    The four Fabric numeric fields expose individual names and SI units in the
    native macOS accessibility tree.
    [Fabric accessibility case](parity/reports/WF-20261118-FABRIC-ACCESSIBLE-NAMES-001.json).
+   Scene can hide or isolate patterns across both canvases. The native check
+   observed both actions, restored visibility, and exported the complete GLB
+   from the hidden view while preserving the editable project.
+   [Native visibility case](parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json).
    Command search has a named, auto-focused query and keyboard execution. The
    native macOS check reopened the Harbor document and exported its workspace
    preview using the palette.
@@ -96,10 +100,11 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    shirt in OBJ, SVG and GLB.
    [Debian ARM64 package check](parity/reports/WF-20261119-LINUX-ARM64-PACKAGE-001.json).
    The updated package shows Ctrl+K and opens and closes Command search with
-   native X11 keyboard input. The current package also shows Export glTF in
+   native X11 keyboard input. The JSON glTF package also shows Export glTF in
    the palette and its CLI writes the same JSON glTF as macOS for the original
-   shirt. Windows, Linux x86-64, Wayland, hardware GPU and signing checks remain.
-   [Current Debian package check](parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json).
+   shirt. Check the changed visibility build on Linux as well. Windows,
+   Linux x86-64, Wayland, hardware GPU and signing checks remain.
+   [Debian JSON glTF package check](parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json).
    Keep GitHub Actions disabled throughout development. Re-enable it only after
    the complete project is finished, as the user requested.
 
