@@ -14,8 +14,9 @@ pub use document::*;
 pub use geometry::*;
 pub use offset::*;
 pub use persistence::{
-    DXF_IMPORT_SCOPE, DxfPatternImport, FORMAT_VERSION, MAX_DXF_BYTES, MAX_SVG_BYTES, PrintPaper,
-    SVG_IMPORT_SCOPE, StagedExport, SvgPatternImport, recovery_path,
+    DXF_IMPORT_SCOPE, DxfPatternImport, FORMAT_VERSION, MAX_DXF_BYTES, MAX_SVG_BYTES,
+    PatternSnapshotOptions, PrintPaper, SVG_IMPORT_SCOPE, StagedExport, SvgPatternImport,
+    recovery_path,
 };
 pub use sewing::*;
 

@@ -20,11 +20,14 @@ use weftforge_sim::{Cloth, MaterialAxis, SimulationError, StepSettings};
 
 mod capture;
 use capture::{RenderedFrame, WorkspaceCapture};
+mod pattern_snapshot;
+use pattern_snapshot::{PatternSnapshotDialog, SnapshotAction};
 
 const DEFAULT_ORBIT: [f32; 2] = [-0.45, 0.12];
 const MIN_CAMERA_SCALE: f32 = 60.;
 const MAX_CAMERA_SCALE: f32 = 1500.;
 const FRAME_GARMENT: &str = "Frame garment";
+const PATTERN_PNG_ACTION: &str = "Save 2D pattern PNG…";
 const PATTERN_PDF_A4: &str = "Export pattern PDF (A4)";
 const PATTERN_PDF_LETTER: &str = "Export pattern PDF (US Letter)";
 // Views are named for the side of the Y-up garment facing the camera.
@@ -1057,6 +1060,7 @@ struct Studio {
     session_autosave: Option<PathBuf>,
     autosave_job: Option<AutosaveJob>,
     workspace_capture: WorkspaceCapture,
+    pattern_snapshot: Option<PatternSnapshotDialog>,
     show_recovery: bool,
     recovery_files: Vec<PathBuf>,
     dirty: bool,
@@ -1156,6 +1160,7 @@ impl Studio {
             session_autosave,
             autosave_job: None,
             workspace_capture: WorkspaceCapture::default(),
+            pattern_snapshot: None,
             show_recovery: false,
             recovery_files: Vec::new(),
             dirty: false,
@@ -1438,6 +1443,70 @@ impl Studio {
         }
         clicked
     }
+    fn pattern_png_button(&mut self, ui: &mut egui::Ui) -> bool {
+        let focused = self.inspector_focus(ui.ctx());
+        let button = ui
+            .add_enabled(
+                !self.editor.project.pieces.is_empty() && !self.workspace_capture.busy(),
+                egui::Button::new(PATTERN_PNG_ACTION),
+            )
+            .on_hover_text("Save the authored 2D patterns with physical dimensions and density.");
+        self.retain_inspector_input(&button, false);
+        let clicked = button.clicked();
+        if button.is_pointer_button_down_on() || clicked {
+            finish_numeric_action(ui.ctx(), focused, false);
+        }
+        if clicked {
+            match self.editor.project.pattern_snapshot_bounds() {
+                Ok(bounds) => {
+                    self.pattern_snapshot = Some(PatternSnapshotDialog::new(
+                        self.editor.project.revision,
+                        bounds,
+                    ));
+                }
+                Err(error) => self.message = error.to_string(),
+            }
+        }
+        clicked
+    }
+
+    fn pattern_png_window(&mut self, ctx: &egui::Context) {
+        let Some(mut setup) = self.pattern_snapshot.take() else {
+            return;
+        };
+        if !setup.current(self.editor.project.revision) {
+            return;
+        }
+        match setup.show(ctx) {
+            None => self.pattern_snapshot = Some(setup),
+            Some(SnapshotAction::Cancel) => {
+                self.message = "Cancelled the 2D pattern PNG. Pending edits retained.".into();
+            }
+            Some(SnapshotAction::Export(options)) => {
+                let path = rfd::FileDialog::new()
+                    .add_filter("PNG image", &["png"])
+                    .set_file_name("patterns.png")
+                    .save_file();
+                self.message = match path {
+                    Some(path) => self
+                        .workspace_capture
+                        .start_pattern(
+                            ctx,
+                            &self.editor.project,
+                            self.path.as_deref(),
+                            path,
+                            options,
+                        )
+                        .unwrap_or_else(|error| error),
+                    None => {
+                        self.pattern_snapshot = Some(setup);
+                        "Cancelled the file chooser. Pattern export settings retained.".into()
+                    }
+                };
+            }
+        }
+    }
+
     fn import_button(&self, ui: &mut egui::Ui, format: PatternFormat, label: &str) -> bool {
         let focused = self.inspector_focus(ui.ctx());
         let response = ui.button(label);
@@ -1678,6 +1747,7 @@ impl Studio {
         self.cloth = None;
     }
     fn rebuild(&mut self) {
+        self.pattern_snapshot = None;
         // Also invalidate buffers when a replacement document reuses the same revision and IDs.
         self.suspended_properties.extend(self.search_input.take());
         for (_, input) in &mut self.suspended_properties {
@@ -2591,6 +2661,9 @@ impl Studio {
                     if self.export_button(ui, ExportFormat::Pdf(paper), label) {
                         ui.close();
                     }
+                }
+                if self.pattern_png_button(ui) {
+                    ui.close();
                 }
                 if self.workspace_png_button(ui) {
                     ui.close();
@@ -7013,7 +7086,10 @@ impl eframe::App for Studio {
         if ctx.input(|input| input.key_pressed(egui::Key::Escape))
             && self.workspace_capture.cancel()
         {
-            self.message = "Workspace PNG cancelled; previous file retained.".into();
+            self.message = format!(
+                "Cancelled {}. Previous file retained.",
+                self.workspace_capture.name()
+            );
         }
         if let Some(message) = self
             .workspace_capture
@@ -7037,7 +7113,8 @@ impl eframe::App for Studio {
             || self.outline_offset.is_some()
             || self.free_sewing.as_ref().is_some_and(|draft| draft.modal)
             || self.sewing_edit.is_some()
-            || self.pattern_import.is_some();
+            || self.pattern_import.is_some()
+            || self.pattern_snapshot.is_some();
         if self.search && self.search_focus && !authoring_modal {
             ctx.memory_mut(|memory| memory.request_focus(egui::Id::new("command-search-query")));
         }
@@ -7348,6 +7425,7 @@ impl eframe::App for Studio {
                                 "Export DXF",
                                 PATTERN_PDF_A4,
                                 PATTERN_PDF_LETTER,
+                                PATTERN_PNG_ACTION,
                                 "Save workspace PNG…",
                                 "Undo",
                                 "Redo",
@@ -7401,6 +7479,7 @@ impl eframe::App for Studio {
                                         ExportFormat::Pdf(PrintPaper::Letter),
                                         label,
                                     ),
+                                    PATTERN_PNG_ACTION => self.pattern_png_button(ui),
                                     "Save workspace PNG…" => self.workspace_png_button(ui),
                                     "Add hole…" => self.add_hole_button(ui).clicked(),
                                     "Offset outline…" => self.outline_offset_button(ui).clicked(),
@@ -7419,7 +7498,7 @@ impl eframe::App for Studio {
                                         "Export OBJ" | "Export GLB" | "Export glTF"
                                         | "Export SVG" | "Export DXF" | PATTERN_PDF_A4
                                         | PATTERN_PDF_LETTER => {}
-                                        "Save workspace PNG…" => {}
+                                        "Save workspace PNG…" | PATTERN_PNG_ACTION => {}
                                         "Undo" => self.history(&ctx, false),
                                         "Redo" => self.history(&ctx, true),
                                         "Reset simulation" => {
@@ -7482,6 +7561,7 @@ impl eframe::App for Studio {
         self.free_sewing_window(&ctx);
         self.sewing_group_window(&ctx);
         self.pattern_import_window(&ctx);
+        self.pattern_png_window(&ctx);
         if let Some((_, Some(format), focused)) = ctx
             .data_mut(|data| {
                 data.remove_temp::<(u64, Option<ExportFormat>, Option<egui::Id>)>(egui::Id::new(

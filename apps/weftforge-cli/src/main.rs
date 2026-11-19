@@ -7,8 +7,8 @@ use std::{
     time::Instant,
 };
 use weftforge_core::{
-    Command, CurveInterval, DxfPatternImport, Editor, Mesh, Placement, PrintPaper, Project,
-    SvgPatternImport,
+    Command, CurveInterval, DxfPatternImport, Editor, Mesh, PatternSnapshotOptions, Placement,
+    PrintPaper, Project, SvgPatternImport,
 };
 use weftforge_sim::{Diagnostics, StepSettings};
 mod mcp;
@@ -60,7 +60,7 @@ fn run() -> Result<()> {
     let args: Vec<_> = std::env::args().skip(1).collect();
     match args.first().map(String::as_str) {
         None | Some("--help" | "-h" | "help") => println!(
-            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\nlengths PROJECT interval CURVE_ID T0 T1   authored/rest length, unrounded SI JSON\nlengths PROJECT seam SEAM_ID\nlengths PROJECT sewing-group GROUP_ID\ninspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)\nexecute INPUT OUTPUT COMMANDS.json      one atomic shared command array\nimport-svg INPUT OUTPUT PATTERNS.svg   editable single contours in physical mm; refuses compound holes\nimport-dxf INPUT OUTPUT PATTERNS.dxf   bounded R2000 LINE/cubic boundaries in mm\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT   four editable cubic spans\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj          actual rest surface with holes; metres, Y-up; no annotation markers\nexport-glb PROJECT OUTPUT.glb          static rest surface, named pieces and fabric tint\nexport-gltf PROJECT OUTPUT.gltf        the same static rest surface as JSON with an embedded buffer\nexport-svg PROJECT OUTPUT.svg          outlines and authored notch markers; mm, inverted Y\nexport-dxf PROJECT OUTPUT.dxf          exterior boundaries in mm; refuses projects with holes or authored notches\nexport-pdf PROJECT OUTPUT.pdf a4|letter  1:1 pattern tiles with a 100 mm scale check\nsimulate PROJECT OUTPUT.obj|.glb|.gltf STEPS f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj|.glb|.gltf           same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
+            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\nlengths PROJECT interval CURVE_ID T0 T1   authored/rest length, unrounded SI JSON\nlengths PROJECT seam SEAM_ID\nlengths PROJECT sewing-group GROUP_ID\ninspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)\nexecute INPUT OUTPUT COMMANDS.json      one atomic shared command array\nimport-svg INPUT OUTPUT PATTERNS.svg   editable single contours in physical mm; refuses compound holes\nimport-dxf INPUT OUTPUT PATTERNS.dxf   bounded R2000 LINE/cubic boundaries in mm\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT   four editable cubic spans\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj          actual rest surface with holes; metres, Y-up; no annotation markers\nexport-glb PROJECT OUTPUT.glb          static rest surface, named pieces and fabric tint\nexport-gltf PROJECT OUTPUT.gltf        the same static rest surface as JSON with an embedded buffer\nexport-svg PROJECT OUTPUT.svg          outlines and authored notch markers; mm, inverted Y\nexport-dxf PROJECT OUTPUT.dxf          exterior boundaries in mm; refuses projects with holes or authored notches\nexport-pdf PROJECT OUTPUT.pdf a4|letter  1:1 pattern tiles with a 100 mm scale check\nexport-pattern-png PROJECT OUTPUT.png OPTIONS.json  physical 2D crop and density\nsimulate PROJECT OUTPUT.obj|.glb|.gltf STEPS f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj|.glb|.gltf           same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
         ),
         Some("mcp") => {
             count(&args, 1)?;
@@ -308,6 +308,20 @@ fn run() -> Result<()> {
                 _ => return Err("Paper must be a4 or letter".into()),
             };
             Project::load(Path::new(&args[1]))?.export_pattern_pdf(Path::new(&args[2]), paper)?;
+        }
+        Some("export-pattern-png") => {
+            count(&args, 4)?;
+            distinct(&args[1], &args[2])?;
+            distinct(&args[3], &args[2])?;
+            let mut bytes = Vec::new();
+            File::open(&args[3])?
+                .take(MAX_COMMAND_BYTES + 1)
+                .read_to_end(&mut bytes)?;
+            if bytes.len() as u64 > MAX_COMMAND_BYTES {
+                return Err("Pattern PNG options exceed 1 MiB".into());
+            }
+            let options: PatternSnapshotOptions = serde_json::from_slice(&bytes)?;
+            Project::load(Path::new(&args[1]))?.export_pattern_png(Path::new(&args[2]), options)?;
         }
         Some("simulate" | "benchmark") => {
             let benchmark = args[0] == "benchmark";

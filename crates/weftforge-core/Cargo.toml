@@ -10,6 +10,8 @@ serde.workspace = true
 serde_json.workspace = true
 earcutr.workspace = true
 quick-xml = "=0.41.0"
+png = "=0.18.1"
+tiny-skia = { version = "=0.12.0", default-features = false, features = ["std"] }
 weftforge-sim = { path = "../weftforge-sim" }
 
 [dev-dependencies]

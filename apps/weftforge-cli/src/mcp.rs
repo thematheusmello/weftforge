@@ -4,7 +4,7 @@ use serde::{Deserialize, Deserializer, Serialize, de::DeserializeOwned, de::Igno
 use serde_json::{Map, Value, json};
 use std::io::{self, BufRead, Read, Write};
 use std::path::Path;
-use weftforge_core::{Command, PrintPaper, Project};
+use weftforge_core::{Command, PatternSnapshotOptions, PrintPaper, Project};
 
 const MODERN_VERSION: &str = "2026-07-28";
 const LEGACY_VERSION: &str = "2025-11-25";
@@ -163,6 +163,14 @@ struct CreateArgs {
 struct FileArgs {
     input: String,
     output: String,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct PatternPngArgs {
+    input: String,
+    output: String,
+    options: PatternSnapshotOptions,
 }
 
 #[derive(Deserialize)]
@@ -411,6 +419,7 @@ fn call(line: &[u8]) -> Result<Value, String> {
             | "project_export_gltf"
             | "project_export_dxf"
             | "project_export_pdf"
+            | "project_export_pattern_png"
     ) {
         return Err(format!("Unknown tool: {}", header.name));
     }
@@ -468,6 +477,17 @@ fn call(line: &[u8]) -> Result<Value, String> {
                     Path::new(&args.input),
                     Path::new(&args.output),
                     Path::new(&args.dxf),
+                )
+            }
+            "project_export_pattern_png" => {
+                let args: PatternPngArgs = arguments(line)?;
+                super::distinct(&args.input, &args.output)?;
+                let project = Project::load(Path::new(&args.input))?;
+                let dimensions = args.options.dimensions()?;
+                project.export_pattern_png(Path::new(&args.output), args.options)?;
+                Ok(
+                    json!({"input":args.input,"output":args.output,"source_revision":project.revision,
+                    "kind":"pattern_png","size_px":dimensions,"options":args.options}),
                 )
             }
             "project_export_pdf" => {
@@ -829,6 +849,20 @@ fn command_schema() -> Value {
 fn tools() -> Vec<Value> {
     let path = json!({"type":"string","minLength":1});
     let files = object(json!({"input":path,"output":path}), &["input", "output"]);
+    let coordinate_pair =
+        json!({"type":"array","minItems":2,"maxItems":2,"items":{"type":"number"}});
+    let snapshot_options = object(
+        json!({"crop_m":{"type":"array","minItems":2,"maxItems":2,"items":coordinate_pair},
+            "pixels_per_inch":{"type":"number","exclusiveMinimum":0},
+            "contours":{"type":"boolean"},"internal_lines":{"type":"boolean"},"notches":{"type":"boolean"}}),
+        &[
+            "crop_m",
+            "pixels_per_inch",
+            "contours",
+            "internal_lines",
+            "notches",
+        ],
+    );
     [
         ("project_inspect", "Load a validated native project; return every authored object and stable relationship in SI units, without building a mesh.", object(json!({"path":path}), &["path"]), true),
         ("project_lengths", "Read authored/rest interval, legacy seam or ordered sewing-group lengths in unrounded SI metres, with source revision and signed B minus A. No mesh, simulation, history or file writes.", object(json!({"path":path,"query":length_query_schema()}), &["path","query"]), true),
@@ -842,5 +876,6 @@ fn tools() -> Vec<Value> {
         ("project_export_gltf", "Build and export the actual rest surface as one static glTF 2.0 JSON document with an embedded buffer, in metres and Y-up, with named pieces, per-piece fabric tint, normals and UVs. Refuse replacement of source or native project destinations.", files.clone(), false),
         ("project_export_dxf", "Export authored exterior pattern boundaries as R2000 DXF LINE/SPLINE geometry in millimetres, without 3D placement. DXF v1 refuses any project with holes or authored notches before writing output. Internal lines are omitted; sewing, materials, grain and editable annotations require the native project. Refuse replacement of source or native project destinations.", files, false),
         ("project_export_pdf", "Export 1:1 pattern outlines, holes, straight annotations and notch markers to a tiled vector PDF. Includes a 100 mm scale check. Print at Actual size. Refuse replacement of source or native project destinations.", object(json!({"input":path,"output":path,"paper":{"type":"string","enum":["a4","letter"]}}), &["input","output","paper"]), false),
+        ("project_export_pattern_png", "Save a physical 2D pattern crop with PNG density metadata. Crop bounds use material-space metres, followed by pixels per inch and explicit outline, internal line and notch switches. Refuse replacement of source or native project destinations.", object(json!({"input":path,"output":path,"options":snapshot_options}), &["input","output","options"]), false),
     ].into_iter().map(|(name,description,input,read_only)|json!({"name":name,"description":description,"inputSchema":input,"annotations":{"readOnlyHint":read_only,"destructiveHint":!read_only,"openWorldHint":false}})).collect()
 }

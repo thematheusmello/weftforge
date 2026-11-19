@@ -128,7 +128,8 @@ annotations, holes and notches. The reader supports explicit version 1–5 migra
 Older apps cannot open v6. OBJ, GLB and embedded JSON glTF mesh export and
 bounded SVG/DXF pattern import and export are available. File and Command
 search export 1:1 tiled pattern PDFs for A4 or US Letter. Each PDF includes
-a 100 mm test square. The
+a 100 mm test square. **Save 2D pattern PNG…** sets a crop and pixel density
+in physical units. The
 [format details](docs/file-formats.md) explain what survives each path.
 Simulation frames/settings, imported avatars,
 textures, animation, advanced construction and third-party project formats
@@ -158,6 +159,7 @@ cargo run --release -p weftforge-cli -- inspect garment.weftforge
 cargo run --release -p weftforge-cli -- export-svg garment.weftforge patterns.svg
 cargo run --release -p weftforge-cli -- export-dxf garment.weftforge patterns.dxf
 cargo run --release -p weftforge-cli -- export-pdf garment.weftforge patterns.pdf a4
+cargo run --release -p weftforge-cli -- export-pattern-png garment.weftforge patterns.png snapshot.json
 cargo run --release -p weftforge-cli -- export-obj garment.weftforge garment.obj
 cargo run --release -p weftforge-cli -- export-glb garment.weftforge garment.glb
 cargo run --release -p weftforge-cli -- export-gltf garment.weftforge garment.gltf
