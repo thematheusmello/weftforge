@@ -150,3 +150,56 @@ fn authored_grain_rotates_real_cpu_response_while_color_preserves_physics() {
         .unwrap();
     assert_eq!(loaded_positions(&editor.project), rotated);
 }
+
+#[test]
+fn fabric_copy_refuses_unknown_source_exhausted_ids_and_object_limits_atomically() {
+    let mut editor = panel();
+    let piece = editor.project.pieces[0].id;
+    let source = editor.project.materials[0].clone();
+    assert!(
+        editor
+            .project
+            .copy_material_assignment(u64::MAX, source.clone())
+            .is_err()
+    );
+    let mut wrong = source.clone();
+    wrong.id = u64::MAX;
+    assert!(
+        editor
+            .project
+            .copy_material_assignment(piece, wrong)
+            .is_err()
+    );
+    for full in [false, true] {
+        let mut candidate = editor.project.clone();
+        if full {
+            let used = candidate.points.len()
+                + candidate.curves.len()
+                + candidate.pieces.len()
+                + candidate.materials.len();
+            candidate
+                .materials
+                .extend((0..weftforge_core::MAX_OBJECTS - used).map(|i| {
+                    let mut m = source.clone();
+                    m.id = 100 + i as u64;
+                    m
+                }));
+        }
+        let mut value = serde_json::to_value(candidate).unwrap();
+        value["next_id"] = (if full {
+            100 + weftforge_core::MAX_OBJECTS as u64
+        } else {
+            u64::MAX
+        })
+        .into();
+        editor = Editor::new(serde_json::from_value(value).unwrap()).unwrap();
+        let before = editor.project.clone();
+        let command = editor
+            .project
+            .copy_material_assignment(piece, source.clone())
+            .unwrap();
+        assert!(editor.execute(command).is_err());
+        assert_eq!(editor.project, before);
+        assert!(!editor.can_undo() && !editor.can_redo());
+    }
+}

@@ -1,3 +1,13 @@
+# Fabric assignment for an active pattern — 20 November 2026
+
+The Fabric inspector shows the assigned material by name. Choose an existing
+project fabric, rename it, or make a named independent copy for the active
+pattern. Focused tests cover all authored properties, shared materials,
+multi-selection, one-step history, invalid names, ID and object limits,
+unfinished numeric input, cancellation and stale dialogs. The native
+two-panel save and reopen check is pending.
+[Fabric assignment](spec/features/MAT-001-active-pattern-fabric.md).
+
 # Arrange several patterns together — 20 November 2026
 
 Select multiple visible patterns in the Scene or either viewport. Move them
