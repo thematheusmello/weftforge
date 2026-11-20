@@ -52309,7 +52309,8 @@
         "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json",
         "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json",
         "spec/features/FILE-005-svg-cutout-import.md",
-        "parity/reports/WF-20261120-NATIVE-SVG-CUTOUT-001.json"
+        "parity/reports/WF-20261120-NATIVE-SVG-CUTOUT-001.json",
+        "parity/reports/WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001.json"
       ],
       "scenarios": [
         {
@@ -52423,6 +52424,15 @@
           },
           "initial_conditions": "An empty native project at revision 0 and a 240 \u00d7 360 mm pocket SVG. Its two absolute straight subpaths use evenodd fill, with the inner loop first.",
           "expected_outcomes": "Import creates one piece with one hole. Undo returns to an empty project and Redo restores the 46-vertex rest mesh. A 20 mm corner edit after reopening preserves both boundaries\u2019 identities. Polygon, OBJ and UV material areas change from 0.0768 to 0.0756 m\u00b2. Both rest surfaces are connected and have two boundary loops. CLI and MCP reproduce the import and preserve the destination and recovery on rejection."
+        },
+        {
+          "id": "APP-DEBIAN-WAYLAND-SVG-CUTOUT-001",
+          "path": "parity/scenarios/APP-DEBIAN-WAYLAND-SVG-CUTOUT-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket facing.svg": "aad05487f4fb94eadd5f4a8f7edd3b289287e95b7b44a7687a59b12716692358"
+          },
+          "initial_conditions": "A freshly built unsigned Debian ARM64 package, an empty native Wayland studio and the original 240 \u00d7 360 mm pocket SVG.",
+          "expected_outcomes": "The native GTK import, Undo/Redo, two saves, reopens and 20 mm hole edit preserve the expected revisions and boundaries. Both OBJ and editable files match the macOS case. The release package retains all 234 emitted Cargo notices."
         }
       ],
       "comparison_criteria": {
@@ -57574,6 +57584,45 @@
             "parity/scenarios/FILE-NATIVE-SVG-CUTOUT-001.json": "b82526f27c987720b15d2ad84985344e5f5e099c90fe9454900dd84502562a59"
           },
           "path": "parity/reports/WF-20261120-NATIVE-SVG-CUTOUT-001.json"
+        },
+        {
+          "id": "WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001",
+          "commit": "4b7d30318b1a2c4cc6db4dc95fe64de346cc37ef",
+          "timestamp": "2026-11-20T17:26:26Z",
+          "platform": "Debian 13.7 ARM64, offline unsigned release, Sway headless Wayland with GTK portal, software Vulkan, packaged CLI and stdio MCP",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/ADAPTERS.json": "9cb66740dea15e23738cf6a23e42cccc59d6f160de9e47970670669ac1617006",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/CLEANUP.json": "ea065fdfa7a11b46e54da4c6eeb6ed7f9b48323096b812afbf96009c86ab03d1",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/GEOMETRY.json": "5449e49e7877582cb2f20a087153bdd10ebc09e5d4b2a4f97f404891ed4fe9eb",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/OFFLINE-PACKAGE.json": "53ee9b76728660b3c4cc72dd9164e11b0980d42d07585c364d5c123cec2085dc",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/PACKAGE-READBACK.json": "f8f77e4ac46cf8ca346076423e3220fe3b289bd11174f17381009903134fa620",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/PACKAGE-SHA256SUMS": "6162f6f52fa1406d9fde237efdbca8d6becd6df42669e5d45d9edfa90cd5f8e9",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/Pocket edited.obj": "9a2cb18203d5815ebe6e10734781641d5e7402f9175d9d9d02cbbb7e7d0d0ea2",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/Pocket edited.png": "eccd08177f90de0c76b1b65536585605fd5c9c8f31070b5c0edb82fe93a92ed8",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/Pocket edited.weftforge": "003746b6228815e621964abe6b1d0a5e01a52abe31c3f758bbdabbb0c0d3ac92",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/Pocket imported.obj": "1079b5dbe75f7cbe29332323b8adc855b9d86d5bdc72320ad907bf2351068c41",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/Pocket imported.png": "ebf8cf48fa54993fbe45cd5f7a290e930d2ca12a2b308c2945f9043102ebd1ba",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/Pocket imported.weftforge": "e07016a0fa5a0ba74de16fe754d4a1f5975cab0f31d60d43e1e0f497ce947a0c",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/WAYLAND.json": "4936bc3f58db3802fa4883e951a57ae6620c01b3b999848aad4fba9f46603c61",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/check_case.py": "6af1452a2fb175fa514a4c4b04d2017e9a933671d07dee0a621754b2811dfa9f",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/gtk-save.png": "45be89b425e808347a090c06a5882d2d35637a27853d5c9761f2d3a4c88a156a",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/import-review.png": "c0d07761fed92afa2953ff4478adff8788ff1a2f884f3547a4ec838ceec2853c",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/manifest.json": "19dfd7cdd16f230af2835b13f3e30f56ff902aa86fe0035112552cd6163919e9",
+            "parity/scenarios/APP-DEBIAN-WAYLAND-SVG-CUTOUT-001.json": "4d79acaa4a3bf6170a388d1aa49a69a6eb23c6e25a3d465307e353bb1da0919d",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket facing.svg": "aad05487f4fb94eadd5f4a8f7edd3b289287e95b7b44a7687a59b12716692358",
+            "parity/reports/artifacts/native-svg-cutout-20261120/GEOMETRY.json": "5449e49e7877582cb2f20a087153bdd10ebc09e5d4b2a4f97f404891ed4fe9eb",
+            "parity/reports/artifacts/native-svg-cutout-20261120/ADAPTERS.json": "5ede76ee662f8a1ded9602b7cf7cdd00bb5b0c2c9f2906365a5f085c942d7708",
+            "parity/reports/artifacts/native-svg-cutout-20261120/check_cutout.py": "0cd5a9c8537658e438348123fa64e16a0b7e7d215760854fcfe5cf0ace3f7321",
+            "parity/reports/artifacts/native-svg-cutout-20261120/check_cutout_adapters.py": "48625d62eb48614c740001f86a23af588c5a81ed0e9341c84485762dfba84f57",
+            "parity/reports/artifacts/debian-arm64-cargo-notices-20261120/check_notices.py": "e27bc0bd03422d40253196b14cad173ca725fed5de08bdc76a55d9fab197d6dc",
+            "parity/reports/artifacts/debian-arm64-cargo-notices-20261120/manifest.json": "d4f0c2c36dbb9fab54ab7b3d6f4a3366ce5048e405a3c3cc6d4e708bda21ae5e",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/manifest.json": "54d4224528c44fa974075eeb660ccceff2377e0d405dc74002d48af7518d412e",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket imported.weftforge": "e07016a0fa5a0ba74de16fe754d4a1f5975cab0f31d60d43e1e0f497ce947a0c",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.weftforge": "003746b6228815e621964abe6b1d0a5e01a52abe31c3f758bbdabbb0c0d3ac92",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket imported.obj": "1079b5dbe75f7cbe29332323b8adc855b9d86d5bdc72320ad907bf2351068c41",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.obj": "9a2cb18203d5815ebe6e10734781641d5e7402f9175d9d9d02cbbb7e7d0d0ea2"
+          },
+          "path": "parity/reports/WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001.json"
         }
       ],
       "known_gaps": [
@@ -63456,7 +63505,8 @@
         "parity/reports/WF-20261119-APPLE-SILICON-PINNED-CARGO-NOTICES-001.json",
         "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001.json",
         "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json",
-        "parity/reports/WF-20261120-DEBIAN-ARM64-CARGO-NOTICES-001.json"
+        "parity/reports/WF-20261120-DEBIAN-ARM64-CARGO-NOTICES-001.json",
+        "parity/reports/WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001.json"
       ],
       "scenarios": [
         {
@@ -63496,6 +63546,15 @@
           },
           "initial_conditions": "The previous Debian ARM64 release has seven unresolved entries among 234 emitted Cargo crates, and the exact locked archives are cached.",
           "expected_outcomes": "The offline package includes matching license files and provenance for all seven, its package ledger verifies every file, and the previous package retains all original digests."
+        },
+        {
+          "id": "APP-DEBIAN-WAYLAND-SVG-CUTOUT-001",
+          "path": "parity/scenarios/APP-DEBIAN-WAYLAND-SVG-CUTOUT-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket facing.svg": "aad05487f4fb94eadd5f4a8f7edd3b289287e95b7b44a7687a59b12716692358"
+          },
+          "initial_conditions": "A freshly built unsigned Debian ARM64 package, an empty native Wayland studio and the original 240 \u00d7 360 mm pocket SVG.",
+          "expected_outcomes": "The native GTK import, Undo/Redo, two saves, reopens and 20 mm hole edit preserve the expected revisions and boundaries. Both OBJ and editable files match the macOS case. The release package retains all 234 emitted Cargo notices."
         }
       ],
       "comparison_criteria": {
@@ -63708,6 +63767,45 @@
             "parity/reports/artifacts/debian-native-save-jpeg-20261120/manifest.json": "54d4224528c44fa974075eeb660ccceff2377e0d405dc74002d48af7518d412e"
           },
           "path": "parity/reports/WF-20261120-DEBIAN-ARM64-CARGO-NOTICES-001.json"
+        },
+        {
+          "id": "WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001",
+          "commit": "4b7d30318b1a2c4cc6db4dc95fe64de346cc37ef",
+          "timestamp": "2026-11-20T17:26:26Z",
+          "platform": "Debian 13.7 ARM64, offline unsigned release, Sway headless Wayland with GTK portal, software Vulkan, packaged CLI and stdio MCP",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/ADAPTERS.json": "9cb66740dea15e23738cf6a23e42cccc59d6f160de9e47970670669ac1617006",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/CLEANUP.json": "ea065fdfa7a11b46e54da4c6eeb6ed7f9b48323096b812afbf96009c86ab03d1",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/GEOMETRY.json": "5449e49e7877582cb2f20a087153bdd10ebc09e5d4b2a4f97f404891ed4fe9eb",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/OFFLINE-PACKAGE.json": "53ee9b76728660b3c4cc72dd9164e11b0980d42d07585c364d5c123cec2085dc",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/PACKAGE-READBACK.json": "f8f77e4ac46cf8ca346076423e3220fe3b289bd11174f17381009903134fa620",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/PACKAGE-SHA256SUMS": "6162f6f52fa1406d9fde237efdbca8d6becd6df42669e5d45d9edfa90cd5f8e9",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/Pocket edited.obj": "9a2cb18203d5815ebe6e10734781641d5e7402f9175d9d9d02cbbb7e7d0d0ea2",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/Pocket edited.png": "eccd08177f90de0c76b1b65536585605fd5c9c8f31070b5c0edb82fe93a92ed8",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/Pocket edited.weftforge": "003746b6228815e621964abe6b1d0a5e01a52abe31c3f758bbdabbb0c0d3ac92",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/Pocket imported.obj": "1079b5dbe75f7cbe29332323b8adc855b9d86d5bdc72320ad907bf2351068c41",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/Pocket imported.png": "ebf8cf48fa54993fbe45cd5f7a290e930d2ca12a2b308c2945f9043102ebd1ba",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/Pocket imported.weftforge": "e07016a0fa5a0ba74de16fe754d4a1f5975cab0f31d60d43e1e0f497ce947a0c",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/WAYLAND.json": "4936bc3f58db3802fa4883e951a57ae6620c01b3b999848aad4fba9f46603c61",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/check_case.py": "6af1452a2fb175fa514a4c4b04d2017e9a933671d07dee0a621754b2811dfa9f",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/gtk-save.png": "45be89b425e808347a090c06a5882d2d35637a27853d5c9761f2d3a4c88a156a",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/import-review.png": "c0d07761fed92afa2953ff4478adff8788ff1a2f884f3547a4ec838ceec2853c",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/manifest.json": "19dfd7cdd16f230af2835b13f3e30f56ff902aa86fe0035112552cd6163919e9",
+            "parity/scenarios/APP-DEBIAN-WAYLAND-SVG-CUTOUT-001.json": "4d79acaa4a3bf6170a388d1aa49a69a6eb23c6e25a3d465307e353bb1da0919d",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket facing.svg": "aad05487f4fb94eadd5f4a8f7edd3b289287e95b7b44a7687a59b12716692358",
+            "parity/reports/artifacts/native-svg-cutout-20261120/GEOMETRY.json": "5449e49e7877582cb2f20a087153bdd10ebc09e5d4b2a4f97f404891ed4fe9eb",
+            "parity/reports/artifacts/native-svg-cutout-20261120/ADAPTERS.json": "5ede76ee662f8a1ded9602b7cf7cdd00bb5b0c2c9f2906365a5f085c942d7708",
+            "parity/reports/artifacts/native-svg-cutout-20261120/check_cutout.py": "0cd5a9c8537658e438348123fa64e16a0b7e7d215760854fcfe5cf0ace3f7321",
+            "parity/reports/artifacts/native-svg-cutout-20261120/check_cutout_adapters.py": "48625d62eb48614c740001f86a23af588c5a81ed0e9341c84485762dfba84f57",
+            "parity/reports/artifacts/debian-arm64-cargo-notices-20261120/check_notices.py": "e27bc0bd03422d40253196b14cad173ca725fed5de08bdc76a55d9fab197d6dc",
+            "parity/reports/artifacts/debian-arm64-cargo-notices-20261120/manifest.json": "d4f0c2c36dbb9fab54ab7b3d6f4a3366ce5048e405a3c3cc6d4e708bda21ae5e",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/manifest.json": "54d4224528c44fa974075eeb660ccceff2377e0d405dc74002d48af7518d412e",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket imported.weftforge": "e07016a0fa5a0ba74de16fe754d4a1f5975cab0f31d60d43e1e0f497ce947a0c",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.weftforge": "003746b6228815e621964abe6b1d0a5e01a52abe31c3f758bbdabbb0c0d3ac92",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket imported.obj": "1079b5dbe75f7cbe29332323b8adc855b9d86d5bdc72320ad907bf2351068c41",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.obj": "9a2cb18203d5815ebe6e10734781641d5e7402f9175d9d9d02cbbb7e7d0d0ea2"
+          },
+          "path": "parity/reports/WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001.json"
         }
       ],
       "known_gaps": [

@@ -1,0 +1,57 @@
+{
+  "executable_sha256": "d4a4b8f745e4e2a7d5a07a76ac9764229f2da8144c656923e333331b1df6e45a",
+  "mcp_profile": "2026-07-28",
+  "frozen_inputs_preserved": true,
+  "adapters": {
+    "cli": {
+      "revision": 1,
+      "pieces_imported": 1,
+      "holes_imported": 1,
+      "metres_per_user_unit": 0.001,
+      "complete_native_document_equal_except_revision": true,
+      "native_obj_byte_equal": true,
+      "primary_sha256": "e7fbcba44157438cba7122890f90a6b597aa19ae579943dc8dc674677c52bfbf",
+      "recovery_sha256": "aa46a14b28c0209991c9339c37ce96902cb695d92bf7a1c7a6ade898315b1a73",
+      "obj_sha256": "1079b5dbe75f7cbe29332323b8adc855b9d86d5bdc72320ad907bf2351068c41",
+      "rejections": {
+        "incomplete_xml": {
+          "reason": "weftforge-cli: SVG document is incomplete",
+          "primary_and_recovery_byte_equal": true
+        },
+        "same_nonzero_winding": {
+          "reason": "weftforge-cli: A nonzero SVG cutout needs oppositely wound contours",
+          "primary_and_recovery_byte_equal": true
+        },
+        "later_cutout_outside": {
+          "reason": "weftforge-cli: Straight domain segment crosses, touches or is too close to a boundary",
+          "primary_and_recovery_byte_equal": true
+        }
+      }
+    },
+    "mcp": {
+      "revision": 1,
+      "pieces_imported": 1,
+      "holes_imported": 1,
+      "metres_per_user_unit": 0.001,
+      "complete_native_document_equal_except_revision": true,
+      "native_obj_byte_equal": true,
+      "primary_sha256": "e7fbcba44157438cba7122890f90a6b597aa19ae579943dc8dc674677c52bfbf",
+      "recovery_sha256": "aa46a14b28c0209991c9339c37ce96902cb695d92bf7a1c7a6ade898315b1a73",
+      "obj_sha256": "1079b5dbe75f7cbe29332323b8adc855b9d86d5bdc72320ad907bf2351068c41",
+      "rejections": {
+        "incomplete_xml": {
+          "reason": "{\"error\":\"SVG document is incomplete\"}",
+          "primary_and_recovery_byte_equal": true
+        },
+        "same_nonzero_winding": {
+          "reason": "{\"error\":\"A nonzero SVG cutout needs oppositely wound contours\"}",
+          "primary_and_recovery_byte_equal": true
+        },
+        "later_cutout_outside": {
+          "reason": "{\"error\":\"Straight domain segment crosses, touches or is too close to a boundary\"}",
+          "primary_and_recovery_byte_equal": true
+        }
+      }
+    }
+  }
+}

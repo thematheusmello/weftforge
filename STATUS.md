@@ -8,6 +8,20 @@ nonactive drag target, a tilted local axis, preservation of a third piece,
 history and atomic refusal. The native Harbor case moved both pieces 200 mm right and 100 mm up, then rotated them 89.71° around the active front’s Local Z axis. Undo and Redo restored both saved arrangements. Reopening reset selection. The largest independent position error across 28 authored vertices and both origins was 5.0 × 10⁻¹⁶ m.
 [Native group check](parity/reports/WF-20261120-NATIVE-GROUP-ARRANGEMENT-001.json) · [Group arrangement](spec/features/FIT-001-group-arrangement.md).
 
+# Debian Wayland SVG cutout workflow — 20 November 2026
+
+The Debian 13.7 ARM64 package built from `4b7d3031` imported the pocket through the
+GTK chooser, undid and redid the import, and saved the editable project.
+A fresh studio reopened it. Dragging one corner 20 mm changed the material
+area from 0.0768 to 0.0756 m². The edited file reopened with that cutout.
+Both editable saves and both OBJ exports matched the macOS files byte for
+byte. Sway reported native Wayland surfaces for both studio processes and
+the GTK chooser. The test used a virtual output and software Vulkan.
+The subsequent group-arrangement change modified the studio and document
+source. Rebuild that version to refresh the Linux result. Physical GPU testing
+and the system-library notice inventory remain open.
+[Debian Wayland report](parity/reports/WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001.json) · [Reopened workspace](parity/reports/artifacts/debian-wayland-svg-cutout-20261120/Pocket%20edited.png) · [Independent readback](parity/reports/artifacts/debian-wayland-svg-cutout-20261120/check_case.py).
+
 # Editable cutouts in SVG drawings — 20 November 2026
 
 The shared SVG import now restores a polygon and its straight-sided cutout
@@ -42,8 +56,8 @@ other targets and the system-library notice inventory remain open.
 [Debian package audit](parity/reports/WF-20261120-DEBIAN-ARM64-CARGO-NOTICES-001.json) · [Independent reader](parity/reports/artifacts/debian-arm64-cargo-notices-20261120/check_notices.py).
 [Package verification](docs/verification.md) · [Catalog](vendor/cargo-notices/index.json).
 
-The audited ARM64 package predates editable SVG cutout import. Rebuild
-and check the package on the combined source to refresh its release evidence.
+The subsequent Wayland package includes editable SVG cutouts. Its new
+425-file audit also verified the earlier package against its original ledger.
 
 # Solid garment faces at grazing angles — 20 November 2026
 

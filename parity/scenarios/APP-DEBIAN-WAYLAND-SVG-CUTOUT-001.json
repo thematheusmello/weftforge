@@ -1,0 +1,12 @@
+{
+  "id": "APP-DEBIAN-WAYLAND-SVG-CUTOUT-001",
+  "status": "implementation_only",
+  "initial_conditions": "A freshly built unsigned Debian ARM64 package, an empty native Wayland studio and the original 240 \u00d7 360 mm pocket SVG.",
+  "actions": [
+    "Build the combined source offline. Verify the existing and new package ledgers and all emitted Cargo notices.",
+    "Start the packaged studio in a Wayland compositor with Xwayland disabled and a native GTK file chooser.",
+    "Import, undo, redo, save and export the pocket. Close it and reopen in a fresh studio. Move the corner 20 mm left. Save the edited project and export its OBJ.",
+    "Clear and reopen the edited project, then save its workspace PNG. Reopen and capture the imported state. Replay independent geometry and both packaged adapters, retain the frozen inputs and close the guest."
+  ],
+  "expected_outcomes": "The native GTK import, Undo/Redo, two saves, reopens and 20 mm hole edit preserve the expected revisions and boundaries. Both OBJ and editable files match the macOS case. The release package retains all 234 emitted Cargo notices."
+}
