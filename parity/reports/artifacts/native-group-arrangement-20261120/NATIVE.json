@@ -1,0 +1,85 @@
+{
+  "source_commit": "58e7b7be6c840beeb1ba3d7e367ca882917d34c7",
+  "source_tree": "ad1b71849335cc4f38572d1de9e535ffde6bf3ef",
+  "integrated_scoped_sources_identical": "dd0dd54c42724bbd0d02018a43442302e2b7a84a",
+  "release_executable_sha256": "b30bb65e3cc17546860c7569791f1acd5a5d5faa68c0b2c3fcb2fd959a559d38",
+  "fixture_sha256": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c",
+  "platform": "Apple Silicon macOS native Metal studio, locked release build",
+  "observations_recorded_utc": "2026-11-20T17:17:50Z",
+  "scene_selection": {
+    "pieces": [
+      31,
+      2
+    ],
+    "active_piece": 2,
+    "method": "Select Harbor back, enable Select multiple, then select Harbor front in the Scene. Both piece rows, 2D outlines and 3D wire edges show the selection."
+  },
+  "camera": "Front, 270 screen points per metre with 10 mm snapping",
+  "group_move": {
+    "from_window_points": [
+      984,
+      576
+    ],
+    "to_window_points": [
+      1038,
+      549
+    ],
+    "before_revision": 24,
+    "after_revision": 25,
+    "saved": "translated.weftforge"
+  },
+  "group_rotation": {
+    "axis": "Local Z of Harbor front",
+    "active_prior_world_x_radians": 0.8037662784821297,
+    "pivot": "Mean of both placed pattern bounds centers",
+    "from_window_points": [
+      1107,
+      486
+    ],
+    "to_window_points": [
+      1077,
+      456
+    ],
+    "before_revision": 25,
+    "after_revision": 26,
+    "saved": "rotated.weftforge"
+  },
+  "history": {
+    "undo_revision": 27,
+    "redo_revision": 28,
+    "two_selected_after_each": true
+  },
+  "linked_selection_after_redo": [
+    {
+      "canvas": "2D Pattern",
+      "window_point": [
+        180,
+        545
+      ],
+      "deselected": 2,
+      "remaining": [
+        31
+      ]
+    },
+    {
+      "canvas": "3D Garment",
+      "window_point": [
+        1112,
+        360
+      ],
+      "deselected": 31,
+      "remaining": []
+    }
+  ],
+  "reopen": {
+    "procedure": "Reselect both patterns. File > New Empty, then open the saved revision 28 project through the native file chooser.",
+    "empty_revision": 0,
+    "reopened_revision": 28,
+    "reopened_pieces": 2,
+    "reopened_seams": 8,
+    "reopened_rest_vertices": 654,
+    "reopened_selected_count": 0,
+    "reopened_select_multiple": false
+  },
+  "limits": "This native case covers view-plane translation and active-pattern Local Z rotation in the front camera. Rotation about the other axes is covered separately by source tests. Persistent groups, constrained translation and complete reference arrangement behavior remain open."
+}

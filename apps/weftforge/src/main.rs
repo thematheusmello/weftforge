@@ -493,7 +493,7 @@ impl RotationAxis {
 
 #[derive(Clone, Copy)]
 struct RotationDial {
-    pivot: [f64; 2],
+    pivot: [f64; 3],
     center: Pos2,
     axis: [f64; 3],
 }
@@ -534,20 +534,20 @@ enum PlacementMotion {
 struct PlacementDrag {
     origin: Pos2,
     point: Pos2,
-    original: Placement,
+    originals: BTreeMap<Id, Placement>,
     motion: PlacementMotion,
     input: RetainedInspectorInput,
 }
 
 impl PlacementDrag {
-    fn placement(&self) -> Option<(Id, Placement)> {
+    fn placements(&self) -> Option<BTreeMap<Id, Placement>> {
         let delta = |p: Pos2, origin: Pos2| {
             [
                 f64::from(p.x) - f64::from(origin.x),
                 f64::from(p.y) - f64::from(origin.y),
             ]
         };
-        let mut placement = self.original;
+        let mut placements = self.originals.clone();
         match self.motion {
             PlacementMotion::Move {
                 world_per_point,
@@ -560,9 +560,11 @@ impl PlacementDrag {
                 if offset == [0.; 3] {
                     return None;
                 }
-                for (coordinate, offset) in placement.translation.iter_mut().zip(offset) {
-                    if offset != 0. {
-                        *coordinate += offset;
+                for placement in placements.values_mut() {
+                    for (coordinate, offset) in placement.translation.iter_mut().zip(offset) {
+                        if offset != 0. {
+                            *coordinate += offset;
+                        }
                     }
                 }
             }
@@ -579,10 +581,12 @@ impl PlacementDrag {
                 if angle == 0. || !angle.is_finite() {
                     return None;
                 }
-                placement = placement.rotated_about(dial.pivot, dial.axis, angle);
+                for placement in placements.values_mut() {
+                    *placement = placement.rotated_about_world(dial.pivot, dial.axis, angle);
+                }
             }
         }
-        Some((self.input.selected?, placement))
+        Some(placements)
     }
 }
 
@@ -1161,6 +1165,9 @@ struct Studio {
     playing: bool,
     selected: Option<Id>,
     selected_curve: Option<Id>,
+    // The inspector and local axes belong to the active pattern in `selected`.
+    additional_pieces: BTreeSet<Id>,
+    extend_selection: bool,
     hidden_pieces: BTreeSet<Id>,
     split_t: f64,
     tool: Tool,
@@ -1264,6 +1271,8 @@ impl Studio {
             playing: false,
             selected: None,
             selected_curve: None,
+            additional_pieces: BTreeSet::new(),
+            extend_selection: false,
             hidden_pieces: BTreeSet::new(),
             split_t: 0.5,
             tool: Tool::Select,
@@ -1770,6 +1779,8 @@ impl Studio {
         self.path = None;
         self.dirty = false;
         self.discard_on_exit = false;
+        self.additional_pieces.clear();
+        self.extend_selection = false;
         self.selected = None;
         self.selected_curve = None;
         self.reset_gestures();
@@ -1786,7 +1797,56 @@ impl Studio {
         finish_numeric_action(ctx, focused, true);
     }
 
+    fn piece_selected(&self, id: Id) -> bool {
+        self.selected == Some(id) || self.additional_pieces.contains(&id)
+    }
+
+    fn selection_ids(&self) -> impl Iterator<Item = Id> + '_ {
+        self.selected
+            .into_iter()
+            .chain(self.additional_pieces.iter().copied())
+    }
+
+    fn extending_selection(&self, ctx: &egui::Context) -> bool {
+        self.extend_selection || ctx.input(|input| input.modifiers.shift)
+    }
+
+    fn pick_piece(&mut self, ctx: &egui::Context, id: Id) {
+        if !self.extending_selection(ctx) {
+            self.select(ctx, Some(id));
+            return;
+        }
+        if self.hidden_pieces.contains(&id)
+            || self.editor.project.piece(id).is_none()
+            || !self.allow_piece_selection(ctx)
+        {
+            return;
+        }
+        self.cancel_placement_drag(ctx);
+        if self.has_construction_gesture() {
+            self.message = "Finish or cancel the construction gesture before changing the arrangement selection.".into();
+            return;
+        }
+        if self.selected == Some(id) {
+            self.selected = self.additional_pieces.pop_first();
+        } else if !self.additional_pieces.remove(&id) {
+            self.additional_pieces.extend(self.selected);
+            self.selected = Some(id);
+        }
+        self.selected_curve = None;
+        self.draft = None;
+    }
+
     fn select(&mut self, ctx: &egui::Context, selected: Option<Id>) -> bool {
+        if self.select_active(ctx, selected) {
+            self.additional_pieces.clear();
+            true
+        } else {
+            false
+        }
+    }
+
+    fn select_active(&mut self, ctx: &egui::Context, selected: Option<Id>) -> bool {
         if selected.is_some_and(|id| self.hidden_pieces.contains(&id)) {
             return false;
         }
@@ -1801,7 +1861,6 @@ impl Studio {
             if self.selected == selected {
                 return true;
             }
-            // shortcut: one staged piece at a time; add cross-piece staging only with multiselection.
             if !self.allow_piece_selection(ctx) {
                 return false;
             }
@@ -1862,7 +1921,12 @@ impl Studio {
         {
             return;
         }
-        if (self.selected != piece || self.selected_curve != curve) && self.commit_draft() {
+        if (self.selected != piece
+            || self.selected_curve != curve
+            || !self.additional_pieces.is_empty())
+            && self.commit_draft()
+        {
+            self.additional_pieces.clear();
             self.internal_line = None;
             self.notch = None;
             self.cut_piece = None;
@@ -1956,11 +2020,14 @@ impl Studio {
             self.mesh = None;
             self.reset_simulation();
         }
+        self.additional_pieces.retain(|id| {
+            self.editor.project.piece(*id).is_some() && !self.hidden_pieces.contains(id)
+        });
         if self
             .selected
             .is_some_and(|id| self.editor.project.piece(id).is_none())
         {
-            self.selected = None;
+            self.selected = self.additional_pieces.pop_first();
         }
         if self.selected_curve.is_some_and(|curve| {
             !self
@@ -2169,6 +2236,8 @@ impl Studio {
                 self.clear_garment_frame();
                 self.path = if recovered { None } else { Some(path) };
                 self.dirty = recovered;
+                self.additional_pieces.clear();
+                self.extend_selection = false;
                 self.selected = None;
                 self.selected_curve = None;
                 self.reset_gestures();
@@ -3275,10 +3344,15 @@ impl Studio {
                 pane_heading(ui, "Scene");
                 egui::Frame::new().inner_margin(6).show(ui, |ui| {
                     self.scene_visibility_buttons(ui);
-                    ui.weak(format!(
-                        "{} pattern pieces",
-                        self.editor.project.pieces.len()
-                    ));
+                    ui.horizontal_wrapped(|ui| {
+                        ui.checkbox(&mut self.extend_selection, "Select multiple")
+                            .on_hover_text("Click patterns to add or remove them. Shift-click also works in the Scene and both views.");
+                        ui.weak(format!("{} selected", self.selection_ids().count()));
+                    });
+                    if !self.additional_pieces.is_empty()
+                        && let Some(active) = self.selected.and_then(|id| self.editor.project.piece(id)) {
+                        ui.small(format!("Active: {} · properties and local axes", active.name));
+                    }
                     if self.editor.project.pieces.is_empty() {
                         ui.add_space(8.0);
                         ui.small("Create a pattern in 2D to see it here.");
@@ -3296,7 +3370,7 @@ impl Studio {
                                             ui.disable();
                                         }
                                         let prefix = if hidden { "Hidden · " } else { "" };
-                                        let selected = self.selected == Some(piece.id);
+                                        let selected = self.piece_selected(piece.id);
                                         let response = scene_row(
                                             ui,
                                             &format!("{prefix}{} · #{}", piece.name, piece.id),
@@ -3312,7 +3386,7 @@ impl Studio {
                                             self.retain_inspector_input(&response, false);
                                         }
                                         if response.clicked() {
-                                            self.select(ui.ctx(), Some(piece.id));
+                                            self.pick_piece(ui.ctx(), piece.id);
                                         }
                                         for curve in &piece.internal_curves {
                                             let response = scene_row(
@@ -4115,10 +4189,13 @@ impl Studio {
         let mut request = None;
         ui.horizontal_wrapped(|ui| {
             for (label, action) in [
-                ("Hide selected", self.selected.map(SceneVisibility::Hide)),
+                (
+                    "Hide selected",
+                    self.selected.map(|_| SceneVisibility::Hide),
+                ),
                 (
                     "Isolate selected",
-                    self.selected.map(SceneVisibility::Isolate),
+                    self.selected.map(|_| SceneVisibility::Isolate),
                 ),
                 (
                     "Show all",
@@ -4140,29 +4217,29 @@ impl Studio {
             return;
         }
         match request {
-            SceneVisibility::Hide(id) => {
+            SceneVisibility::Hide => {
                 if !self.allow_piece_selection(ui.ctx()) {
                     self.message =
                         "Apply or cancel the property edit before hiding this pattern.".into();
                     return;
                 }
-                self.hidden_pieces.insert(id);
-                self.selected = None;
+                self.hidden_pieces.extend(self.selected.take());
+                self.hidden_pieces.append(&mut self.additional_pieces);
                 self.selected_curve = None;
                 self.draft = None;
                 finish_numeric_action(ui.ctx(), focused, true);
-                self.message = "Pattern hidden. Use Show all to restore it.".into();
+                self.message = "Selection hidden. Use Show all to restore it.".into();
             }
-            SceneVisibility::Isolate(id) => {
+            SceneVisibility::Isolate => {
                 self.hidden_pieces = self
                     .editor
                     .project
                     .pieces
                     .iter()
                     .map(|piece| piece.id)
-                    .filter(|&other| other != id)
+                    .filter(|&other| !self.piece_selected(other))
                     .collect();
-                self.message = "Selected pattern isolated.".into();
+                self.message = "Selection isolated.".into();
             }
             SceneVisibility::ShowAll => {
                 self.hidden_pieces.clear();
@@ -5132,6 +5209,7 @@ impl Studio {
                             retained.internal_curves.len(),
                             new.internal_curves.len()
                         );
+                        self.additional_pieces.clear();
                         self.selected = Some(new_id);
                         self.selected_curve = None;
                         self.set_tool(Tool::Select);
@@ -5949,7 +6027,7 @@ impl Studio {
         let mut boundary_distance = 12_f32;
         let notch_segments = doc.notch_segments().unwrap_or_default();
         for piece in visible_pieces(&doc, &self.hidden_pieces) {
-            let selected = self.selected == Some(piece.id);
+            let selected = self.piece_selected(piece.id);
             let color = if selected {
                 Color32::from_rgb(92, 163, 225)
             } else {
@@ -6524,6 +6602,7 @@ impl Studio {
         if (response.drag_started_by(egui::PointerButton::Primary)
             || completed_canvas_drag.is_some())
             && self.tool == Tool::Select
+            && !self.extending_selection(ui.ctx())
             && let Some(p) = completed_canvas_drag.map(|(press, _)| press).or(pointer)
         {
             self.drag_snap = completed_canvas_drag.map_or(snap, |(_, snap)| snap);
@@ -6632,6 +6711,7 @@ impl Studio {
                         focused,
                     ) && let Some((piece, curve)) = target
                     {
+                        self.additional_pieces.clear();
                         self.selected = Some(piece);
                         self.selected_curve = Some(curve);
                     }
@@ -6681,6 +6761,24 @@ impl Studio {
         }
         if response.clicked() {
             match self.tool {
+                Tool::Select if self.extending_selection(ui.ctx()) => {
+                    let body = || {
+                        let p = pointer?;
+                        let mesh = self
+                            .mesh
+                            .as_ref()
+                            .filter(|m| m.doc_revision == doc.revision)?;
+                        mesh.triangles.iter().rev().find_map(|tri| {
+                            let id = mesh.piece_ids[tri[0]];
+                            (!self.hidden_pieces.contains(&id)
+                                && point_in_triangle(p, tri.map(|i| self.to_screen(mesh.uv[i], r))))
+                            .then_some(id)
+                        })
+                    };
+                    if let Some(id) = nearest.map(|(id, _)| id).or_else(body) {
+                        self.pick_piece(ui.ctx(), id);
+                    }
+                }
                 Tool::Select => self.select_curve(ui.ctx(), nearest),
                 Tool::Transform => {
                     if let Some((piece, _)) = nearest.filter(|(piece, curve)| {
@@ -7134,11 +7232,20 @@ impl Studio {
     fn rotation_dial(&self, rect: Rect) -> Option<RotationDial> {
         let piece = self.editor.project.piece(self.selected?)?;
         let original = self.arrangement_placement(piece);
-        let [min, max] = self.editor.project.piece_bounds(piece.id).ok()?;
-        let pivot = std::array::from_fn(|i| min[i].midpoint(max[i]));
+        let mut pivot = [0.; 3];
+        for (index, id) in self.selection_ids().enumerate() {
+            let member = self.editor.project.piece(id)?;
+            let [min, max] = self.editor.project.piece_bounds(id).ok()?;
+            let center = self
+                .arrangement_placement(member)
+                .transform(std::array::from_fn(|i| min[i].midpoint(max[i])));
+            for i in 0..3 {
+                pivot[i] += (center[i] - pivot[i]) / (index + 1) as f64;
+            }
+        }
         Some(RotationDial {
             pivot,
-            center: self.project3(original.transform(pivot), rect).0,
+            center: self.project3(pivot, rect).0,
             axis: self.rotation_axis.direction(
                 original,
                 f64::from(self.yaw),
@@ -7157,7 +7264,11 @@ impl Studio {
         let ctx = ui.ctx();
         if let Some(drag) = &self.placement_drag
             && (drag.input.revision != self.editor.project.revision
-                || drag.input.selected != self.selected)
+                || drag.input.selected != self.selected
+                || drag.originals.len() != self.selection_ids().count()
+                || !self.selection_ids().all(|id| {
+                    drag.originals.contains_key(&id) && !self.hidden_pieces.contains(&id)
+                }))
         {
             self.placement_drag = None;
         }
@@ -7170,9 +7281,6 @@ impl Studio {
         let button = egui::PointerButton::Primary;
         let mut coalesced_release = None;
         if self.placement_drag.is_none() {
-            let Some(piece) = self.selected.and_then(|id| self.editor.project.piece(id)) else {
-                return;
-            };
             let events = pointer_button_events(ui);
             let completed = coalesced_canvas_drag(ui, response, &events);
             let press =
@@ -7188,7 +7296,9 @@ impl Studio {
                     });
             let Some((press, alt)) = press.filter(|(press, _)| {
                 dial.is_some_and(|dial| dial.on_rim(*press))
-                    || self.garment_piece_at(*press, response.rect) == Some(piece.id)
+                    || self
+                        .garment_piece_at(*press, response.rect)
+                        .is_some_and(|id| self.piece_selected(id))
             }) else {
                 return;
             };
@@ -7206,7 +7316,16 @@ impl Studio {
                 input.close_without_commit(ctx);
                 return;
             }
-            let original = self.arrangement_placement(piece);
+            let originals: Option<BTreeMap<_, _>> = self
+                .selection_ids()
+                .map(|id| {
+                    let piece = self.editor.project.piece(id)?;
+                    Some((id, self.arrangement_placement(piece)))
+                })
+                .collect();
+            let Some(originals) = originals.filter(|members| !members.is_empty()) else {
+                return;
+            };
             let motion = match mode {
                 PlacementMode::Move => {
                     let scale = f64::from(self.camera_scale);
@@ -7232,7 +7351,7 @@ impl Studio {
             self.placement_drag = Some(PlacementDrag {
                 origin: press,
                 point: press,
-                original,
+                originals,
                 motion,
                 input,
             });
@@ -7258,11 +7377,15 @@ impl Studio {
         });
         if let Some(point) = release {
             drag.point = point;
-            if let Some((piece, placement)) = drag.placement() {
+            if let Some(placements) = drag.placements() {
+                let commands = placements
+                    .into_iter()
+                    .map(|(piece, placement)| Command::SetPlacement { piece, placement })
+                    .collect();
                 drag.input.restore(ctx);
                 if self.apply_inspector_action(
                     ctx,
-                    Command::SetPlacement { piece, placement },
+                    Command::Transaction(commands),
                     drag.input.focus,
                 ) {
                     return;
@@ -7285,9 +7408,10 @@ impl Studio {
     }
 
     fn garment(&mut self, ui: &mut egui::Ui) {
-        let ready_to_place = self
-            .selected
-            .is_some_and(|id| !self.hidden_pieces.contains(&id))
+        let ready_to_place = self.selected.is_some()
+            && self.selection_ids().all(|id| {
+                !self.hidden_pieces.contains(&id) && self.editor.project.piece(id).is_some()
+            })
             && self
                 .cloth
                 .as_ref()
@@ -7306,12 +7430,12 @@ impl Studio {
                 (
                     PlacementMode::Move,
                     "Move pattern",
-                    "Drag the selected rest pattern along the view plane. Alt / Option bypasses snap.",
+                    "Drag a selected rest pattern to move the selection along the view plane. Alt / Option bypasses snap.",
                 ),
                 (
                     PlacementMode::Rotate,
                     "Rotate pattern",
-                    "Drag the dial or selected rest pattern around its center. Counterclockwise gives a positive rotation about the selected axis.",
+                    "Drag the dial or a selected rest pattern around the shared center. Local axes follow the active pattern. Counterclockwise gives a positive rotation about the selected axis.",
                 ),
             ] {
                 let mut active = self.placement_mode == Some(mode);
@@ -7383,7 +7507,7 @@ impl Studio {
         let preview_placement = self
             .placement_drag
             .as_ref()
-            .and_then(PlacementDrag::placement);
+            .and_then(PlacementDrag::placements);
         for i in -10..=10 {
             let p = i as f64 * 0.1;
             for (a, b) in [([-1., 0., p], [1., 0., p]), ([p, 0., -1.], [p, 0., 1.])] {
@@ -7410,8 +7534,9 @@ impl Studio {
                 .filter(|triangle| !self.hidden_pieces.contains(&mesh.piece_ids[triangle[0]]))
                 .map(|triangle| {
                     let id = mesh.piece_ids[triangle[0]];
-                    let vertices = if let Some((piece, placement)) = preview_placement
-                        && piece == id
+                    let vertices = if let Some(placement) = preview_placement
+                        .as_ref()
+                        .and_then(|placements| placements.get(&id))
                     {
                         triangle.map(|index| placement.transform(mesh.uv[index]))
                     } else {
@@ -7444,7 +7569,7 @@ impl Studio {
                 if pick.is_some_and(|pointer| point_in_triangle(pointer, points)) {
                     picked = Some(id);
                 }
-                let stroke = if self.wireframe || self.selected == Some(id) {
+                let stroke = if self.wireframe || self.piece_selected(id) {
                     Stroke::new(0.5, Color32::from_rgb(112, 161, 208))
                 } else {
                     Stroke::NONE
@@ -7461,8 +7586,8 @@ impl Studio {
                 }
             }
         }
-        if picked.is_some() {
-            self.select(ui.ctx(), picked);
+        if let Some(id) = picked {
+            self.pick_piece(ui.ctx(), id);
         } else if let Some(dial) = dial
             && self.garment_surface().is_some()
         {
@@ -8116,8 +8241,8 @@ fn pane_heading(ui: &mut egui::Ui, title: &str) -> egui::Response {
 }
 
 enum SceneVisibility {
-    Hide(Id),
-    Isolate(Id),
+    Hide,
+    Isolate,
     ShowAll,
 }
 
@@ -28306,6 +28431,172 @@ mod placement_drag_tests {
     use super::*;
 
     #[test]
+    fn group_arrangement_uses_one_rigid_turn_and_one_history_entry() {
+        use super::pattern_transform_tests::{frame, pointer_frame};
+        let ctx = egui::Context::default();
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        for (name, x) in [("Front", -0.2), ("Back", 0.2), ("Sleeve", 0.6)] {
+            app.editor
+                .execute(Command::AddRectangle {
+                    name: name.into(),
+                    origin: [x, 0.8],
+                    width: 0.2,
+                    height: 0.2,
+                })
+                .unwrap();
+        }
+        let ids: Vec<_> = app.editor.project.pieces.iter().map(|p| p.id).collect();
+        let quarter = std::f64::consts::FRAC_PI_2;
+        app.editor
+            .execute(Command::SetPlacement {
+                piece: ids[1],
+                placement: Placement {
+                    translation: [0.15, 0.85, 0.1],
+                    rotation: [quarter, 0., 0.],
+                },
+            })
+            .unwrap();
+        let before = app.editor.project.clone();
+        app.mesh = Some(Arc::new(before.mesh().unwrap()));
+        app.select(&ctx, Some(ids[0]));
+        app.extend_selection = true;
+        app.pick_piece(&ctx, ids[1]);
+        assert_eq!(app.selected, Some(ids[1]));
+        assert!(app.piece_selected(ids[0]) && !app.piece_selected(ids[2]));
+        app.yaw = 0.;
+        app.pitch = 0.;
+        app.camera_scale = 200.;
+        app.placement_mode = Some(PlacementMode::Rotate);
+        app.rotation_axis = RotationAxis::Local(2);
+        frame(&ctx, &mut app, vec![]);
+        let rect = ctx.read_response(app.garment_canvas.unwrap()).unwrap().rect;
+        let dial = app.rotation_dial(rect).unwrap();
+        let centers = [
+            before.pieces[0].placement.transform([-0.1, 0.9]),
+            before.pieces[1].placement.transform([0.3, 0.9]),
+        ];
+        let pivot: [f64; 3] = std::array::from_fn(|i| centers[0][i].midpoint(centers[1][i]));
+        assert!(
+            pivot
+                .iter()
+                .zip(dial.pivot)
+                .all(|(p, q)| (p - q).abs() < 1e-12)
+        );
+        let start = dial.center + Vec2::X * RotationDial::RADIUS;
+        let end = dial.center - Vec2::Y * RotationDial::RADIUS;
+        pointer_frame(&ctx, &mut app, start, Some(true), false);
+        pointer_frame(&ctx, &mut app, end, None, false);
+        let preview = app.placement_drag.as_ref().unwrap().placements().unwrap();
+        assert_eq!(preview.len(), 2);
+        // The active back's +Z is world -Y. A positive quarter turn sends
+        // each (x,z) offset around the group pivot to (-z,x).
+        for piece in &before.pieces[..2] {
+            for uv in [[0., 0.], [1., 0.], [0., 1.]] {
+                let [x, y, z] = piece.placement.transform(uv);
+                let expected = [pivot[0] - (z - pivot[2]), y, pivot[2] + x - pivot[0]];
+                assert!(
+                    preview[&piece.id]
+                        .transform(uv)
+                        .iter()
+                        .zip(expected)
+                        .all(|(a, b)| (a - b).abs() < 1e-10)
+                );
+            }
+        }
+        assert_eq!(app.editor.project, before);
+        pointer_frame(&ctx, &mut app, end, Some(false), false);
+        let mut after = before.clone();
+        after.revision += 1;
+        for p in &mut after.pieces[..2] {
+            p.placement = preview[&p.id];
+        }
+        assert_eq!(app.editor.project, after);
+        app.history(&ctx, false);
+        let mut restored = before.clone();
+        restored.revision = after.revision + 1;
+        assert_eq!(app.editor.project, restored);
+        app.history(&ctx, true);
+        after.revision = restored.revision + 1;
+        assert_eq!(app.editor.project, after);
+        assert!(app.piece_selected(ids[0]) && app.piece_selected(ids[1]));
+        app.mesh = Some(Arc::new(after.mesh().unwrap()));
+        frame(&ctx, &mut app, vec![]);
+        pointer_frame(&ctx, &mut app, start, Some(true), false);
+        assert!(app.placement_drag.is_some());
+        // A membership change cancels a captured gesture without authoring.
+        app.pick_piece(&ctx, ids[1]);
+        assert_eq!(app.selected, Some(ids[0]));
+        assert!(app.placement_drag.is_none());
+        pointer_frame(&ctx, &mut app, end, Some(false), false);
+        assert_eq!(app.editor.project, after);
+    }
+
+    #[test]
+    fn group_move_accepts_any_member_and_refuses_invalid_placement_atomically() {
+        use super::pattern_transform_tests::{frame, pointer_frame};
+        let ctx = egui::Context::default();
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        for (name, x) in [("Handle", -0.25), ("Active", -0.55), ("Separate", 0.5)] {
+            app.editor
+                .execute(Command::AddRectangle {
+                    name: name.into(),
+                    origin: [x, 0.8],
+                    width: 0.2,
+                    height: 0.2,
+                })
+                .unwrap();
+        }
+        let ids: Vec<_> = app.editor.project.pieces.iter().map(|p| p.id).collect();
+        app.select(&ctx, Some(ids[0]));
+        app.extend_selection = true;
+        app.pick_piece(&ctx, ids[1]);
+        app.placement_mode = Some(PlacementMode::Move);
+        app.position_snap = PositionSnap::Off;
+        app.yaw = 0.;
+        app.pitch = 0.;
+        app.camera_scale = 200.;
+        for refused in [false, true] {
+            if refused {
+                let mut placement = app.editor.project.pieces[1].placement;
+                placement.translation[0] = 999.99;
+                app.editor
+                    .execute(Command::SetPlacement {
+                        piece: ids[1],
+                        placement,
+                    })
+                    .unwrap();
+            }
+            let before = app.editor.project.clone();
+            let history = format!("{:?}", app.editor);
+            app.mesh = Some(Arc::new(before.mesh().unwrap()));
+            frame(&ctx, &mut app, vec![]);
+            let rect = ctx.read_response(app.garment_canvas.unwrap()).unwrap().rect;
+            let start = app
+                .project3(before.pieces[0].placement.transform([-0.15, 0.9]), rect)
+                .0;
+            assert_eq!(app.garment_piece_at(start, rect), Some(ids[0]));
+            let end = start + Vec2::new(20., -10.);
+            pointer_frame(&ctx, &mut app, start, Some(true), false);
+            pointer_frame(&ctx, &mut app, end, None, false);
+            assert_eq!(app.editor.project, before);
+            pointer_frame(&ctx, &mut app, end, Some(false), false);
+            if refused {
+                assert_eq!(app.editor.project, before);
+                assert_eq!(format!("{:?}", app.editor), history);
+            } else {
+                let mut expected = before.clone();
+                expected.revision += 1;
+                for p in &mut expected.pieces[..2] {
+                    p.placement.translation = [0.1, 0.05, 0.];
+                }
+                assert_eq!(app.editor.project, expected);
+            }
+        }
+    }
+
+    #[test]
     fn garment_drag_previews_and_commits_only_the_selected_rest_placement() {
         let ctx = egui::Context::default();
         let mut app = Studio::empty();
@@ -28359,7 +28650,7 @@ mod placement_drag_tests {
 
         begin(&mut app);
         let drag = app.placement_drag.as_ref().expect("selected pattern drag");
-        assert_eq!(drag.placement().unwrap().1.translation, [0.1, 0.08, 0.]);
+        assert_eq!(drag.placements().unwrap()[&id].translation, [0.1, 0.08, 0.]);
         assert_eq!(app.editor.project, initial);
         frame(
             &mut app,
@@ -28535,7 +28826,15 @@ mod placement_drag_tests {
         };
 
         begin(&mut app);
-        let (preview_id, preview) = app.placement_drag.as_ref().unwrap().placement().unwrap();
+        let (preview_id, preview) = app
+            .placement_drag
+            .as_ref()
+            .unwrap()
+            .placements()
+            .unwrap()
+            .into_iter()
+            .next()
+            .unwrap();
         assert_eq!(preview_id, id);
         assert_position(preview.transform(pivot), world_pivot);
         assert_position(
@@ -28681,7 +28980,15 @@ mod placement_drag_tests {
             let before = app.editor.project.clone();
             pointer_frame(&ctx, &mut app, start, Some(true), false);
             pointer_frame(&ctx, &mut app, end, None, false);
-            let (_, preview) = app.placement_drag.as_ref().unwrap().placement().unwrap();
+            let (_, preview) = app
+                .placement_drag
+                .as_ref()
+                .unwrap()
+                .placements()
+                .unwrap()
+                .into_iter()
+                .next()
+                .unwrap();
             assert_eq!(app.editor.project, before);
             let (j, k) = ((fixed + 1) % 3, (fixed + 2) % 3);
             for point in [pivot, [0.1, 0.2], [0.3, 0.2]] {
