@@ -46,7 +46,9 @@
         "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json",
         "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json",
         "spec/features/UI-001-projected-garment-faces.md",
-        "parity/reports/WF-20261120-NATIVE-PROJECTED-GARMENT-FACES-001.json"
+        "parity/reports/WF-20261120-NATIVE-PROJECTED-GARMENT-FACES-001.json",
+        "spec/features/FIT-001-group-arrangement.md",
+        "parity/reports/WF-20261120-NATIVE-GROUP-ARRANGEMENT-001.json"
       ],
       "scenarios": [
         {
@@ -160,6 +162,15 @@
           },
           "initial_conditions": "Open a fresh copy of the saved revision 25 Harbor with the 50 mm front hem extension at the default camera in the 1640 by 1000 native studio.",
           "expected_outcomes": "After 60 assembly and 120 drape steps, the native OBJ matches the prior geometry byte for byte. Material pixels lie within two pixels of the projected surface, and the saved construction stays unchanged."
+        },
+        {
+          "id": "FIT-NATIVE-GROUP-ARRANGEMENT-001",
+          "path": "parity/scenarios/FIT-NATIVE-GROUP-ARRANGEMENT-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c"
+          },
+          "initial_conditions": "Open the two-piece Harbor project at revision 24 with its front already rotated 0.8037662785 radians about World X. Use Front view and 10 mm snap.",
+          "expected_outcomes": "Both members translate by [0.2, 0.1, 0] m and rotate about the same fixed world pivot. Undo and Redo restore the complete adjacent documents. Reopening retains both placements and starts with an empty selection."
         }
       ],
       "comparison_criteria": {
@@ -3980,6 +3991,27 @@
             "parity/scenarios/UI-NATIVE-PROJECTED-GARMENT-FACES-001.json": "bd611c7fb190b399fdc3a81402842386773131499c030a65a9fd4f79c97063fc"
           },
           "path": "parity/reports/WF-20261120-NATIVE-PROJECTED-GARMENT-FACES-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-GROUP-ARRANGEMENT-001",
+          "commit": "58e7b7be6c840beeb1ba3d7e367ca882917d34c7",
+          "timestamp": "2026-11-20T17:17:50Z",
+          "platform": "Apple Silicon native Metal group move and local-axis rotation, saved documents and independent transform replay",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c",
+            "parity/scenarios/FIT-NATIVE-GROUP-ARRANGEMENT-001.json": "8fea1ac33afdae14e61d312827447b7fd01ef0e7099f64787c5674c4449f85f0",
+            "parity/reports/artifacts/native-group-arrangement-20261120/CLEANUP.json": "cd923172df2a31180c002d484d267465fb3d41782b9ed125cf7c580db522f9d8",
+            "parity/reports/artifacts/native-group-arrangement-20261120/NATIVE.json": "1baa3c92110f1515bd7fc79ba7da8213294a1f68584ee46a3d1cf8f194b64353",
+            "parity/reports/artifacts/native-group-arrangement-20261120/RESULT.json": "f6151053503ea47b28b6681098ba117de239fd288f933014df00c431fe328abc",
+            "parity/reports/artifacts/native-group-arrangement-20261120/check_group.py": "318bb8398bcfe5978471982510c7f1bb4b7828a6bb31c9991cb4070f6508d48c",
+            "parity/reports/artifacts/native-group-arrangement-20261120/group-after-turn.png": "101b4de2eb0fdb6c35e239523e4ade8f677ac779d46e9a964a3864ac22b061ad",
+            "parity/reports/artifacts/native-group-arrangement-20261120/group-before-turn.png": "17b565b0490f1d2d68de18736abd2160b25a72382e33ab14cbaea089acb5dbb9",
+            "parity/reports/artifacts/native-group-arrangement-20261120/redo.weftforge": "cc7728e92dc7a993964e1f7f80a02abe0eb046c65f25cf2c54ec3794cdf6d2e6",
+            "parity/reports/artifacts/native-group-arrangement-20261120/rotated.weftforge": "03310d47614cf96036181b047769943b6644e9969cded7f2d754e4ea2777def9",
+            "parity/reports/artifacts/native-group-arrangement-20261120/translated.weftforge": "c2de1e6feed0461030f9216c32ab11e5c26a500d6465c0a4cbfe2e6e9d2f242e",
+            "parity/reports/artifacts/native-group-arrangement-20261120/undo.weftforge": "4f68e2f60456e3f0c80a833746175a2ee8c01129518f190c55d82d8da8e91c2e"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-GROUP-ARRANGEMENT-001.json"
         }
       ],
       "known_gaps": [
@@ -3997,18 +4029,20 @@
         "Actual a70c0df0 clean xtask and optimized native/CLI builds passed as separate D invocations. The 472-test source sequence belongs to f30c588d; unchanged source91 are explicit equivalence only. Native workflow and full feature/reference acceptance remain pending; runtime numerical quality is separately failed.",
         "Native File-menu PNG P003 saved and independently decoded 1640 \u00d7 1000 on the H renderer. The visible document revision, rest state and project bytes were unchanged. Previous P001/P002 harness stops remain recorded. Full workspace, lighting, other backends, cross-platform and reference acceptance are still open.",
         "Frame all has an original Harbor native toolbar and workspace capture check at one window size. Broader viewport, selection, layout and reference workflows remain open.",
-        "Standard 3D views and visible-garment framing have separate bounded native checks. Custom cameras, pan and reference behavior remain open."
+        "Standard 3D views and visible-garment framing have separate bounded native checks. Custom cameras, pan and reference behavior remain open.",
+        "Native two-pattern translation and active-piece local rotation have saved-geometry checks. Persistent groups, axis-constrained translation, other multi-pattern native axes and reference arrangement comparison remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b",
         "spec/features/UI-001-standard-viewpoints.md": "904ae35c58a9ecf1e3da3c1a25098a1d1d255cd8776ab630d62991737e4f720a",
         "spec/features/UI-001-frame-garment.md": "cf54be8f65691b1f945bd0ef542067e9e489f5cf6058dbf1dd4319587811979b",
-        "spec/features/UI-001-projected-garment-faces.md": "5df91592cb5545a8cfe232f979a45e67da134745c3f7ee34cbafbdab6cdc304f"
+        "spec/features/UI-001-projected-garment-faces.md": "5df91592cb5545a8cfe232f979a45e67da134745c3f7ee34cbafbdab6cdc304f",
+        "spec/features/FIT-001-group-arrangement.md": "91d61d6e14e9b3e5a25bc505d81630454a126352e12d5182009f78a917348c6b"
       }
     },
     {
@@ -4039,7 +4073,9 @@
         "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json",
         "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json",
         "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json",
-        "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json"
+        "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json",
+        "spec/features/FIT-001-group-arrangement.md",
+        "parity/reports/WF-20261120-NATIVE-GROUP-ARRANGEMENT-001.json"
       ],
       "scenarios": [
         {
@@ -4069,6 +4105,15 @@
           },
           "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
           "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        },
+        {
+          "id": "FIT-NATIVE-GROUP-ARRANGEMENT-001",
+          "path": "parity/scenarios/FIT-NATIVE-GROUP-ARRANGEMENT-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c"
+          },
+          "initial_conditions": "Open the two-piece Harbor project at revision 24 with its front already rotated 0.8037662785 radians about World X. Use Front view and 10 mm snap.",
+          "expected_outcomes": "Both members translate by [0.2, 0.1, 0] m and rotate about the same fixed world pivot. Undo and Redo restore the complete adjacent documents. Reopening retains both placements and starts with an empty selection."
         }
       ],
       "comparison_criteria": {
@@ -5251,6 +5296,27 @@
             "parity/reports/artifacts/native-split-placement-release-20261120/split-release.weftforge": "db24f74e8e33f0625ad47661c5349961bd2ab871fb166a21857b85d98e8df900"
           },
           "path": "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-GROUP-ARRANGEMENT-001",
+          "commit": "58e7b7be6c840beeb1ba3d7e367ca882917d34c7",
+          "timestamp": "2026-11-20T17:17:50Z",
+          "platform": "Apple Silicon native Metal group move and local-axis rotation, saved documents and independent transform replay",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c",
+            "parity/scenarios/FIT-NATIVE-GROUP-ARRANGEMENT-001.json": "8fea1ac33afdae14e61d312827447b7fd01ef0e7099f64787c5674c4449f85f0",
+            "parity/reports/artifacts/native-group-arrangement-20261120/CLEANUP.json": "cd923172df2a31180c002d484d267465fb3d41782b9ed125cf7c580db522f9d8",
+            "parity/reports/artifacts/native-group-arrangement-20261120/NATIVE.json": "1baa3c92110f1515bd7fc79ba7da8213294a1f68584ee46a3d1cf8f194b64353",
+            "parity/reports/artifacts/native-group-arrangement-20261120/RESULT.json": "f6151053503ea47b28b6681098ba117de239fd288f933014df00c431fe328abc",
+            "parity/reports/artifacts/native-group-arrangement-20261120/check_group.py": "318bb8398bcfe5978471982510c7f1bb4b7828a6bb31c9991cb4070f6508d48c",
+            "parity/reports/artifacts/native-group-arrangement-20261120/group-after-turn.png": "101b4de2eb0fdb6c35e239523e4ade8f677ac779d46e9a964a3864ac22b061ad",
+            "parity/reports/artifacts/native-group-arrangement-20261120/group-before-turn.png": "17b565b0490f1d2d68de18736abd2160b25a72382e33ab14cbaea089acb5dbb9",
+            "parity/reports/artifacts/native-group-arrangement-20261120/redo.weftforge": "cc7728e92dc7a993964e1f7f80a02abe0eb046c65f25cf2c54ec3794cdf6d2e6",
+            "parity/reports/artifacts/native-group-arrangement-20261120/rotated.weftforge": "03310d47614cf96036181b047769943b6644e9969cded7f2d754e4ea2777def9",
+            "parity/reports/artifacts/native-group-arrangement-20261120/translated.weftforge": "c2de1e6feed0461030f9216c32ab11e5c26a500d6465c0a4cbfe2e6e9d2f242e",
+            "parity/reports/artifacts/native-group-arrangement-20261120/undo.weftforge": "4f68e2f60456e3f0c80a833746175a2ee8c01129518f190c55d82d8da8e91c2e"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-GROUP-ARRANGEMENT-001.json"
         }
       ],
       "known_gaps": [
@@ -5261,13 +5327,17 @@
         "Contextual property tabs/input retirement have separately attributed source-only guards through actual997: original166pass belongs351; a66 ownsfmt/Clippy/nativebuild but zerotests. RealDown cacheRED then eightfocusedpointer/keyboardGREEN are retained. Fullsource scope is stale after combinedSIMchange; N008over-bound preview adds no workflowcredit. Native/reference/highDPI/fullcontract coverage remainsopen.",
         "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This was the source checkpoint at publication; its declared full scope is now stale after the constructor change, with original outcomes unchanged. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen.",
         "At actual f6144bce, the constructor retains numeric helpers/ranges/field order and shared authoring paths while aligning Width/Height/Position X/Y metre labels and accessibility associations. Source checks pass 459/32, formatting, strict Clippy and native/CLI builds across two separately bound invocations; the first disk-floor stop and 59 partial ok lines remain failed/incomplete. Native constructor appearance, full workflow, contact quality, reference, full feature and platform acceptance remain open. The isolated failed contact-recovery prototype is not part of this source.",
-        "Actual a70c0df0 clean xtask and optimized native/CLI builds passed as separate D invocations. The 472-test source sequence belongs to f30c588d; unchanged source91 are explicit equivalence only. Native workflow and full feature/reference acceptance remain pending; runtime numerical quality is separately failed."
+        "Actual a70c0df0 clean xtask and optimized native/CLI builds passed as separate D invocations. The 472-test source sequence belongs to f30c588d; unchanged source91 are explicit equivalence only. Native workflow and full feature/reference acceptance remain pending; runtime numerical quality is separately failed.",
+        "Native two-pattern translation and active-piece local rotation have saved-geometry checks. Persistent groups, axis-constrained translation, other multi-pattern native axes and reference arrangement comparison remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current",
+      "contract_documents": {
+        "spec/features/FIT-001-group-arrangement.md": "91d61d6e14e9b3e5a25bc505d81630454a126352e12d5182009f78a917348c6b"
+      }
     },
     {
       "id": "UI-003",
@@ -6544,7 +6614,9 @@
         "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json",
         "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json",
         "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json",
-        "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json"
+        "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json",
+        "spec/features/FIT-001-group-arrangement.md",
+        "parity/reports/WF-20261120-NATIVE-GROUP-ARRANGEMENT-001.json"
       ],
       "scenarios": [
         {
@@ -6658,6 +6730,15 @@
           },
           "initial_conditions": "Original fresh empty native launch; ad7/source65/nativea733, no preauthored launch input. Prospective v2 A protocol; B\u2013E outside report coverage.",
           "expected_outcomes": "Bounded unit-square/straight-line/refusal/modal/caret/one compound edit/history/six native v4 saves/quit. Root accepted A003 only; caps175+1/1200 and one frozen saved grade. No New/Recover/restart/full automation/reference credit."
+        },
+        {
+          "id": "FIT-NATIVE-GROUP-ARRANGEMENT-001",
+          "path": "parity/scenarios/FIT-NATIVE-GROUP-ARRANGEMENT-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c"
+          },
+          "initial_conditions": "Open the two-piece Harbor project at revision 24 with its front already rotated 0.8037662785 radians about World X. Use Front view and 10 mm snap.",
+          "expected_outcomes": "Both members translate by [0.2, 0.1, 0] m and rotate about the same fixed world pivot. Undo and Redo restore the complete adjacent documents. Reopening retains both placements and starts with an empty selection."
         }
       ],
       "comparison_criteria": {
@@ -11908,6 +11989,27 @@
             "parity/reports/artifacts/native-split-placement-release-20261120/split-release.weftforge": "db24f74e8e33f0625ad47661c5349961bd2ab871fb166a21857b85d98e8df900"
           },
           "path": "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-GROUP-ARRANGEMENT-001",
+          "commit": "58e7b7be6c840beeb1ba3d7e367ca882917d34c7",
+          "timestamp": "2026-11-20T17:17:50Z",
+          "platform": "Apple Silicon native Metal group move and local-axis rotation, saved documents and independent transform replay",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c",
+            "parity/scenarios/FIT-NATIVE-GROUP-ARRANGEMENT-001.json": "8fea1ac33afdae14e61d312827447b7fd01ef0e7099f64787c5674c4449f85f0",
+            "parity/reports/artifacts/native-group-arrangement-20261120/CLEANUP.json": "cd923172df2a31180c002d484d267465fb3d41782b9ed125cf7c580db522f9d8",
+            "parity/reports/artifacts/native-group-arrangement-20261120/NATIVE.json": "1baa3c92110f1515bd7fc79ba7da8213294a1f68584ee46a3d1cf8f194b64353",
+            "parity/reports/artifacts/native-group-arrangement-20261120/RESULT.json": "f6151053503ea47b28b6681098ba117de239fd288f933014df00c431fe328abc",
+            "parity/reports/artifacts/native-group-arrangement-20261120/check_group.py": "318bb8398bcfe5978471982510c7f1bb4b7828a6bb31c9991cb4070f6508d48c",
+            "parity/reports/artifacts/native-group-arrangement-20261120/group-after-turn.png": "101b4de2eb0fdb6c35e239523e4ade8f677ac779d46e9a964a3864ac22b061ad",
+            "parity/reports/artifacts/native-group-arrangement-20261120/group-before-turn.png": "17b565b0490f1d2d68de18736abd2160b25a72382e33ab14cbaea089acb5dbb9",
+            "parity/reports/artifacts/native-group-arrangement-20261120/redo.weftforge": "cc7728e92dc7a993964e1f7f80a02abe0eb046c65f25cf2c54ec3794cdf6d2e6",
+            "parity/reports/artifacts/native-group-arrangement-20261120/rotated.weftforge": "03310d47614cf96036181b047769943b6644e9969cded7f2d754e4ea2777def9",
+            "parity/reports/artifacts/native-group-arrangement-20261120/translated.weftforge": "c2de1e6feed0461030f9216c32ab11e5c26a500d6465c0a4cbfe2e6e9d2f242e",
+            "parity/reports/artifacts/native-group-arrangement-20261120/undo.weftforge": "4f68e2f60456e3f0c80a833746175a2ee8c01129518f190c55d82d8da8e91c2e"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-GROUP-ARRANGEMENT-001.json"
         }
       ],
       "known_gaps": [
@@ -11925,17 +12027,19 @@
         "Contextual property tabs/input retirement have separately attributed source-only guards through actual997: original166pass belongs351; a66 ownsfmt/Clippy/nativebuild but zerotests. RealDown cacheRED then eightfocusedpointer/keyboardGREEN are retained. Fullsource scope is stale after combinedSIMchange; N008over-bound preview adds no workflowcredit. Native/reference/highDPI/fullcontract coverage remainsopen.",
         "Actualcombined12ecsource checks pass459/32,formatting/strictClippy andnativeCLIbuild across twoinvocations; original buildmonitorBrokenPipe retained, no passedtests repeated. This was the source checkpoint at publication; its declared full scope is now stale after the constructor change, with original outcomes unchanged. Fullgarment16.063338%strain failure, nativecurrentworkflow, calibration, completefeature/reference/platform readiness remainopen.",
         "At actual f6144bce, the constructor retains numeric helpers/ranges/field order and shared authoring paths while aligning Width/Height/Position X/Y metre labels and accessibility associations. Source checks pass 459/32, formatting, strict Clippy and native/CLI builds across two separately bound invocations; the first disk-floor stop and 59 partial ok lines remain failed/incomplete. Native constructor appearance, full workflow, contact quality, reference, full feature and platform acceptance remain open. The isolated failed contact-recovery prototype is not part of this source.",
-        "Actual a70c0df0 clean xtask and optimized native/CLI builds passed as separate D invocations. The 472-test source sequence belongs to f30c588d; unchanged source91 are explicit equivalence only. Native workflow and full feature/reference acceptance remain pending; runtime numerical quality is separately failed."
+        "Actual a70c0df0 clean xtask and optimized native/CLI builds passed as separate D invocations. The 472-test source sequence belongs to f30c588d; unchanged source91 are explicit equivalence only. Native workflow and full feature/reference acceptance remain pending; runtime numerical quality is separately failed.",
+        "Native two-pattern translation and active-piece local rotation have saved-geometry checks. Persistent groups, axis-constrained translation, other multi-pattern native axes and reference arrangement comparison remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/PAT-004-piece-rigid-transform.md": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
         "spec/features/PAT-004-native-transform-selection.md": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
-        "spec/features/SEW-002-physical-length.md": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2"
+        "spec/features/SEW-002-physical-length.md": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+        "spec/features/FIT-001-group-arrangement.md": "91d61d6e14e9b3e5a25bc505d81630454a126352e12d5182009f78a917348c6b"
       }
     },
     {
@@ -34578,7 +34682,9 @@
         "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json",
         "spec/features/FIT-001-viewport-rotation-axes.md",
         "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json",
-        "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json"
+        "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json",
+        "spec/features/FIT-001-group-arrangement.md",
+        "parity/reports/WF-20261120-NATIVE-GROUP-ARRANGEMENT-001.json"
       ],
       "scenarios": [
         {
@@ -34635,6 +34741,15 @@
           },
           "initial_conditions": "A fresh Harbor revision 23 contains two editable pieces and eight seams. Harbor front is selected in Front view, with Rotate pattern and World X enabled.",
           "expected_outcomes": "The release advances one document revision after an owned dial press, including a release sharing its input frame with the first significant pointer movement. Undo and Redo restore the complete editable placements."
+        },
+        {
+          "id": "FIT-NATIVE-GROUP-ARRANGEMENT-001",
+          "path": "parity/scenarios/FIT-NATIVE-GROUP-ARRANGEMENT-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c"
+          },
+          "initial_conditions": "Open the two-piece Harbor project at revision 24 with its front already rotated 0.8037662785 radians about World X. Use Front view and 10 mm snap.",
+          "expected_outcomes": "Both members translate by [0.2, 0.1, 0] m and rotate about the same fixed world pivot. Undo and Redo restore the complete adjacent documents. Reopening retains both placements and starts with an empty selection."
         }
       ],
       "comparison_criteria": {
@@ -34953,23 +35068,46 @@
             "parity/reports/artifacts/native-split-placement-release-20261120/split-release.weftforge": "db24f74e8e33f0625ad47661c5349961bd2ab871fb166a21857b85d98e8df900"
           },
           "path": "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-GROUP-ARRANGEMENT-001",
+          "commit": "58e7b7be6c840beeb1ba3d7e367ca882917d34c7",
+          "timestamp": "2026-11-20T17:17:50Z",
+          "platform": "Apple Silicon native Metal group move and local-axis rotation, saved documents and independent transform replay",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c",
+            "parity/scenarios/FIT-NATIVE-GROUP-ARRANGEMENT-001.json": "8fea1ac33afdae14e61d312827447b7fd01ef0e7099f64787c5674c4449f85f0",
+            "parity/reports/artifacts/native-group-arrangement-20261120/CLEANUP.json": "cd923172df2a31180c002d484d267465fb3d41782b9ed125cf7c580db522f9d8",
+            "parity/reports/artifacts/native-group-arrangement-20261120/NATIVE.json": "1baa3c92110f1515bd7fc79ba7da8213294a1f68584ee46a3d1cf8f194b64353",
+            "parity/reports/artifacts/native-group-arrangement-20261120/RESULT.json": "f6151053503ea47b28b6681098ba117de239fd288f933014df00c431fe328abc",
+            "parity/reports/artifacts/native-group-arrangement-20261120/check_group.py": "318bb8398bcfe5978471982510c7f1bb4b7828a6bb31c9991cb4070f6508d48c",
+            "parity/reports/artifacts/native-group-arrangement-20261120/group-after-turn.png": "101b4de2eb0fdb6c35e239523e4ade8f677ac779d46e9a964a3864ac22b061ad",
+            "parity/reports/artifacts/native-group-arrangement-20261120/group-before-turn.png": "17b565b0490f1d2d68de18736abd2160b25a72382e33ab14cbaea089acb5dbb9",
+            "parity/reports/artifacts/native-group-arrangement-20261120/redo.weftforge": "cc7728e92dc7a993964e1f7f80a02abe0eb046c65f25cf2c54ec3794cdf6d2e6",
+            "parity/reports/artifacts/native-group-arrangement-20261120/rotated.weftforge": "03310d47614cf96036181b047769943b6644e9969cded7f2d754e4ea2777def9",
+            "parity/reports/artifacts/native-group-arrangement-20261120/translated.weftforge": "c2de1e6feed0461030f9216c32ab11e5c26a500d6465c0a4cbfe2e6e9d2f242e",
+            "parity/reports/artifacts/native-group-arrangement-20261120/undo.weftforge": "4f68e2f60456e3f0c80a833746175a2ee8c01129518f190c55d82d8da8e91c2e"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-GROUP-ARRANGEMENT-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity.",
         "Native view-plane translation of one rest pattern has a bounded checked workflow. Rotation handles, arrangement aids, avatar assets, and the complete reference behavior remain open.",
-        "The earlier Front-view and World X runs each observed a missed drag. The split-release trace reproduced one missed World X input when the first movement and release shared the frame after an owned press. The corrected instrumented Harbor run accepted that sequence. Timing in other historical runs, further native axis combinations, avatar arrangement and independent reference comparison remain open."
+        "The earlier Front-view and World X runs each observed a missed drag. The split-release trace reproduced one missed World X input when the first movement and release shared the frame after an owned press. The corrected instrumented Harbor run accepted that sequence. Timing in other historical runs, further native axis combinations, avatar arrangement and independent reference comparison remain open.",
+        "Native two-pattern translation and active-piece local rotation have saved-geometry checks. Persistent groups, axis-constrained translation, other multi-pattern native axes and reference arrangement comparison remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/FIT-001-native-placement.md": "0f955e8b102d925a0196b774d1a419a9bf849ea606989f78c6b218383dbe6a2c",
         "spec/features/FIT-001-viewport-rotation.md": "ea2b9a4dd8924cb7f1c6cb056dfcaa2a11843b28e9833f8b1030f6d08c98b3d0",
-        "spec/features/FIT-001-viewport-rotation-axes.md": "cbaf479ea5b7c840217c20e5001a4d692b1c10c2aadfbabf4ed09da3366852c4"
+        "spec/features/FIT-001-viewport-rotation-axes.md": "cbaf479ea5b7c840217c20e5001a4d692b1c10c2aadfbabf4ed09da3366852c4",
+        "spec/features/FIT-001-group-arrangement.md": "91d61d6e14e9b3e5a25bc505d81630454a126352e12d5182009f78a917348c6b"
       }
     },
     {

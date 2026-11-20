@@ -5,8 +5,8 @@ together in the view plane or turn them around the mean of their placed
 bounds centers. The active pattern supplies the local axes. Each release is
 one undoable placement transaction. The source regressions exercise a
 nonactive drag target, a tilted local axis, preservation of a third piece,
-history and atomic refusal. A native save-and-reopen case is pending.
-[Group arrangement](spec/features/FIT-001-group-arrangement.md).
+history and atomic refusal. The native Harbor case moved both pieces 200 mm right and 100 mm up, then rotated them 89.71° around the active front’s Local Z axis. Undo and Redo restored both saved arrangements. Reopening reset selection. The largest independent position error across 28 authored vertices and both origins was 5.0 × 10⁻¹⁶ m.
+[Native group check](parity/reports/WF-20261120-NATIVE-GROUP-ARRANGEMENT-001.json) · [Group arrangement](spec/features/FIT-001-group-arrangement.md).
 
 # Editable cutouts in SVG drawings — 20 November 2026
 
