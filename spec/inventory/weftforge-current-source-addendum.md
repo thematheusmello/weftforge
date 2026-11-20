@@ -1,5 +1,9 @@
 # WeftForge current-source addendum
 
+## Captured placement release
+
+Source `3767926bb2cd608c5054a9801d4931b579146778` preserves the original pointer ownership when the primary release arrives with the first significant motion. The `arrangement` and `gizmos` source groups retain the shared SetPlacement command.
+
 ## World and local rotation axes
 
 Source `afdea5999423dd5c9952f20ff5e3d5f26c169751` adds the viewport rotation dial to the

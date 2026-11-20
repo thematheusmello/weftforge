@@ -164,5 +164,6 @@
     "vendor/cargo-notices",
     "spec/features/FILE-001-project-workflow.md"
   ],
-  "freshness": "current"
+  "freshness": "stale",
+  "freshness_reason": "The tested Debian ARM64 package was built from afdea599. The studio's placement input handler later changed in 3767926b. The captured native chooser, saved project, JPEGs, package readback and CLI/MCP comparisons retain their original tested-source attribution."
 }

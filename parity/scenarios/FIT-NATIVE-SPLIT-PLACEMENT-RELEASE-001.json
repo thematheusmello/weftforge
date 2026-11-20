@@ -1,0 +1,11 @@
+{
+  "id": "FIT-NATIVE-SPLIT-PLACEMENT-RELEASE-001",
+  "status": "implementation_only",
+  "initial_conditions": "A fresh Harbor revision 23 contains two editable pieces and eight seams. Harbor front is selected in Front view, with Rotate pattern and World X enabled.",
+  "actions": [
+    "Open a fresh revision 23 two-piece Harbor fixture. Select Harbor front in Front view, enable Rotate pattern and choose World X.",
+    "Drag the right-hand dial knob from (1053, 513) to (1044, 491) in native window points. Repeat the same drag. The fixed pivot remains visible at the same screen position.",
+    "Read each application revision. In the corrected run, save both turns, then Undo and save, and Redo and save."
+  ],
+  "expected_outcomes": "The release advances one document revision after an owned dial press, including a release sharing its input frame with the first significant pointer movement. Undo and Redo restore the complete editable placements."
+}

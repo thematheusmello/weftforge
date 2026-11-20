@@ -1,3 +1,23 @@
+# Captured 3D placement release — 20 November 2026
+
+A pattern now accepts the release when macOS delivers its first movement
+past the click threshold and the primary-button release in the same frame
+after an owned press. The regression also exercises movement below the
+click threshold, focus loss, Escape, Undo and complete single-frame input.
+
+The native trace captured the same down, movement and release in the original
+and corrected Apple Silicon builds. The original discarded the captured press.
+The corrected build committed revision 25. Undo and Redo restored the full
+documents. Checking the fixed pivot and 14 outline vertices gave a maximum
+position error of 2.49 × 10⁻¹⁶ m. The native observations used private event
+observers. The production source passed all 516 workspace tests, formatting
+and strict Clippy. The historical World X and Local Z report is stale on this
+handler. [Native split-release report](parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json).
+
+Next, exercise the remaining axis choices on native platforms and compare
+the arrangement controls with the reference. Native multiselection and
+avatar arrangement remain open.
+
 # Debian ARM64 native project and JPEG saves — 20 November 2026
 
 The afdea599 Linux package saved an editable project and both pattern
@@ -13,6 +33,8 @@ The offline build packaged 234 emitted libraries. All 417 package files
 passed a second read after shutdown. Seven library license texts remain
 unresolved. Exercise Wayland and a physical Linux GPU, and test the
 Windows package. GitHub Actions and automated Pages remain disabled.
+
+The placement input change in 3767926b made this package report stale on the current source. A new Debian package run is needed to refresh it.
 
 # World and local pattern rotation — 20 November 2026
 
@@ -31,8 +53,8 @@ values. The studio and CLI built, and formatting, 516 workspace tests and
 strict Clippy passed. [Native dial report](parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json) · [Studio preview](docs/studio-preview.md).
 
 The first dial drag after choosing World X kept revision 23. Repeating it
-committed revision 24. Investigate that first input and exercise the other
-axis choices in the native studio. Avatar arrangement and reference
+committed revision 24. The split-release investigation above explains one reproduced input schedule.
+Exercise the remaining axis choices in the native studio. Avatar arrangement and reference
 comparison remain open.
 
 # Rotate a pattern in the 3D view — 20 November 2026
