@@ -1,3 +1,15 @@
+# World and local pattern rotation — 20 November 2026
+
+Select a visible rest pattern and enable **Rotate pattern**. The 3D view
+shows a dial around its center. Choose **View**, a world axis or a
+pattern-local axis, then drag the rim. A quarter turn of the dial turns the
+piece through the same angle, including when the chosen axis is edge-on.
+[Rotation axes](spec/features/FIT-001-viewport-rotation-axes.md).
+
+Three focused tests passed, covering the existing move and view-axis tools,
+world and local rotation, and a dial drag that starts outside the mesh.
+Native world/local editing, saved placement and platform checks are pending.
+
 # Rotate a pattern in the 3D view — 20 November 2026
 
 **Rotate pattern** turns the selected rest pattern around the center of its
