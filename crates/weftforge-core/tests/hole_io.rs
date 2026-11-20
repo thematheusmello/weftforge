@@ -156,7 +156,7 @@ fn v5_save_recovery_and_early_validation_preserve_exact_files() {
 }
 
 #[test]
-fn svg_is_one_evenodd_compound_path_in_mm_and_current_import_refuses_it_atomically() {
+fn svg_cutout_round_trips_at_physical_scale_as_one_editable_transaction() {
     let directory = Directory::new();
     let path = directory.0.join("annulus.svg");
     let mut editor = annulus();
@@ -199,20 +199,27 @@ fn svg_is_one_evenodd_compound_path_in_mm_and_current_import_refuses_it_atomical
             160., -120., 80., -120.,
         ]
     );
-    let error = SvgPatternImport::load(&path).unwrap_err();
-    assert!(
-        error
-            .0
-            .contains("compound paths with holes are unsupported"),
-        "{error}"
-    );
-    let before = editor.project.clone();
-    assert!(
-        editor
-            .execute(Command::ImportSvgPatterns { svg: svg.clone() })
-            .is_err()
-    );
-    assert_eq!(editor.project, before);
+    let mut imported = Editor::default();
+    let empty = imported.project.clone();
+    imported
+        .execute(SvgPatternImport::load(&path).unwrap().command())
+        .unwrap();
+    let mut restored = imported.project.clone();
+    assert_eq!(restored.pieces.len(), 1);
+    assert_eq!(restored.pieces[0].holes.len(), 1);
+    assert_eq!(restored.pieces[0].name, editor.project.pieces[0].name);
+    let round_trip = directory.0.join("reexport.svg");
+    restored.export_svg(&round_trip).unwrap();
+    assert_eq!(fs::read_to_string(round_trip).unwrap(), svg);
+    assert!(imported.undo());
+    assert_eq!(imported.project.pieces, empty.pieces);
+    assert_eq!(imported.project.points, empty.points);
+    assert_eq!(imported.project.curves, empty.curves);
+    assert!(!imported.undo());
+    assert!(imported.redo());
+    assert_eq!(imported.project.revision, restored.revision + 2);
+    restored.revision = imported.project.revision;
+    assert_eq!(imported.project, restored);
     assert_eq!(fs::read_to_string(&path).unwrap(), svg);
 }
 

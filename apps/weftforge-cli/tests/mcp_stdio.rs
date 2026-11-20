@@ -3203,10 +3203,20 @@ fn straight_holes_keep_closed_discovery_shared_ids_and_atomic_refusal() {
     assert_eq!(svg_text.matches("<path ").count(), 1);
     assert!(svg_text.contains("fill-rule=\"evenodd\""));
     let primary = fs::read(&path).unwrap();
-    tool_error(&server.call(
+    let imported = directory.path("reimported.weftforge");
+    let result = server.call(
         "project_import_svg",
-        json!({"input":path,"output":path,"svg":svg}),
-    ));
+        json!({"input":path,"output":imported,"svg":svg}),
+    );
+    assert_eq!(success(&result)["pieces_imported"], 1);
+    assert_eq!(success(&result)["holes_imported"], 1);
+    let reloaded = Project::load(imported).unwrap();
+    assert_eq!(reloaded.pieces.len(), 2);
+    assert_eq!(reloaded.pieces[1].holes.len(), 1);
+    assert_ne!(
+        reloaded.pieces[1].holes[0].id,
+        reloaded.pieces[0].holes[0].id
+    );
     assert_eq!(fs::read(&path).unwrap(), primary);
     assert_eq!(fs::read(recovery_path(&path)).unwrap(), original);
     let dxf = directory.path("retained.dxf");

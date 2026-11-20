@@ -1,3 +1,16 @@
+# Editable cutouts in SVG drawings — 20 November 2026
+
+The shared SVG import now restores a polygon and its straight-sided cutout
+as one editable piece. The native review displays the cutout count. Both
+subpath orders work, and cutouts follow the drawing's fill rule. Touching or
+disjoint subpaths reject the transaction. Tests cover physical scale, full
+SVG re-export, one-step Undo/Redo and the CLI and MCP file operations.
+
+Next, import an opening in the native studio, save and reopen its editable
+construction, and independently measure the exported surface before and
+after moving one of the inner corners.
+[Import profile](spec/features/FILE-005-svg-cutout-import.md).
+
 # Solid garment faces at grazing angles — 20 November 2026
 
 The 3D view now fills each garment face directly between its three projected

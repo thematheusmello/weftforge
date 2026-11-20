@@ -522,3 +522,75 @@ fn shared_command_serde_is_strict_and_preserves_original_svg_bytes() {
         assert!(serde_json::from_str::<Command>(json).is_err());
     }
 }
+
+#[test]
+fn cutout_import_respects_svg_winding_subpath_order_and_atomic_rejection() {
+    let outer = "M0 0L100 0 100 100 0 100Z";
+    let inner = "M20 20L60 20 60 60 20 60Z";
+    let reversed = "M20 20L20 60 60 60 60 20Z";
+    let with_rule = |paths: &str, rule: &str| {
+        drawing(paths).replace("<path ", &format!("<path fill-rule=\"{rule}\" "))
+    };
+    for data in [
+        with_rule(&format!("{outer}{inner}"), "evenodd"),
+        with_rule(&format!("{inner}{outer}"), "evenodd"),
+        with_rule(&format!("{reversed}{outer}"), "nonzero"),
+        drawing(&format!("{outer}{reversed}")),
+    ] {
+        let mut editor = Editor::default();
+        editor.execute(import(data)).unwrap();
+        let piece = &editor.project.pieces[0];
+        assert_eq!(piece.boundary.len(), 4);
+        assert_eq!(piece.holes.len(), 1);
+        assert_eq!(piece.holes[0].boundary.len(), 4);
+        assert_eq!(
+            editor
+                .project
+                .point(editor.project.curve(piece.boundary[0]).unwrap().start)
+                .unwrap()
+                .position,
+            [0., 0.]
+        );
+        assert_eq!(
+            editor
+                .project
+                .point(
+                    editor
+                        .project
+                        .curve(piece.holes[0].boundary[0])
+                        .unwrap()
+                        .start
+                )
+                .unwrap()
+                .position,
+            [0.02, -0.02]
+        );
+    }
+
+    let mut editor = Editor::default();
+    editor.execute(import(drawing(outer))).unwrap();
+    editor.execute(import(drawing(inner))).unwrap();
+    assert!(editor.undo());
+    let before = editor.project.clone();
+    let before_history = history(&editor);
+    for data in [
+        drawing(&format!("{outer}{inner}")),
+        with_rule(&format!("{outer}{inner}{reversed}"), "evenodd"),
+        with_rule(&format!("{outer}M0 20L50 20 50 60 0 60Z"), "evenodd"),
+        with_rule(&format!("{outer}M120 20L160 20 160 60 120 60Z"), "evenodd"),
+        with_rule(&format!("{outer}M20 20L60 20 130 60 20 60Z"), "evenodd"),
+        with_rule(
+            &format!("{outer}M20 20C22 21 50 24 60 20L60 60 20 60Z"),
+            "evenodd",
+        ),
+        with_rule(
+            &format!("M0 0C20 0 80 0 100 0L100 100 0 100Z{inner}"),
+            "evenodd",
+        ),
+    ] {
+        let two_pieces = data.replace("<path ", &format!("<path d=\"{outer}\"/><path "));
+        assert!(editor.execute(import(two_pieces)).is_err());
+        assert_eq!(editor.project, before);
+        assert_eq!(history(&editor), before_history);
+    }
+}

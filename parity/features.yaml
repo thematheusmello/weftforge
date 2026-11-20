@@ -4003,7 +4003,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b",
         "spec/features/UI-001-standard-viewpoints.md": "904ae35c58a9ecf1e3da3c1a25098a1d1d255cd8776ab630d62991737e4f720a",
@@ -52166,7 +52166,8 @@
         "parity/reports/WF-20261119-NATIVE-PATTERN-JPEG-001.json",
         "spec/features/FILE-005-pattern-jpeg.md",
         "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json",
-        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json"
+        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json",
+        "spec/features/FILE-005-svg-cutout-import.md"
       ],
       "scenarios": [
         {
@@ -57409,7 +57410,8 @@
         "WF-20261116-HOLE-EXPORT-001 is a current947/source74 bounded annular export subset only: actual historical accepted H1R5 compatibility reopen, one edit/native-v5 save, OBJ.0768m2/one component/two boundary loops/Euler0/metre positions+UV/Y-up, tight240x360mm compound-evenodd SVG and planned hole-DXF refusal with both sentinels unchanged. Old source73 H2 sole5457 grade remains FAILED/unaccepted; original H3 actor postguard remains FAILED/exit1, qualified only by separate direct root audit and UI acceptance. No current947 empty creation, hole SVG import/roundtrip, print margins, full CAD/apparel interoperability, native physics or reference acceptance.",
         "A4 and US Letter native and CLI PDFs have an independent digital scale, geometry and tiling check. Printer measurement, configurable 1:1 raster snapshots, wider paper presets and current reference behavior remain open.",
         "Native PNG and JPEG crops have independent scale, layer, crop unit and warp-angle checks. Artwork, labels and measurements in snapshots, wider presets, printer measurement and reference execution remain open.",
-        "Debian ARM64 packaged CLI and MCP reproduce both Apple Silicon JPEGs. The afdea599 Linux studio saved both JPEGs through GTK. Physical printing, Wayland and reference comparison remain open."
+        "Debian ARM64 packaged CLI and MCP reproduce both Apple Silicon JPEGs. The afdea599 Linux studio saved both JPEGs through GTK. Physical printing, Wayland and reference comparison remain open.",
+        "The editable SVG cutout profile covers one straight-sided hole in a polygon. Multiple holes, curved cutouts, notch-marker import and the full interchange comparison remain open."
       ],
       "contradictions": [],
       "blockers": [
@@ -57421,7 +57423,8 @@
         "spec/features/FILE-005-dxf-pattern-import.md": "06cff6f3d1a6d62fceeb93e94a2037f28136b69adfa5507b8a780e8864b0512b",
         "spec/features/FILE-005-pattern-print-pdf.md": "af7dc40486229050157831fa7bb422dcd7b875675ff25660b92e479df924169d",
         "spec/features/FILE-005-pattern-png.md": "6cc99fbb8fcc4c68ef22cf9f8c3b6f80640b6c74d1127741a27b0303de27dfac",
-        "spec/features/FILE-005-pattern-jpeg.md": "ab1a987c63fec5a12c1a467358aa6373f7e55b70defe6a613ce73195489c2d3c"
+        "spec/features/FILE-005-pattern-jpeg.md": "ab1a987c63fec5a12c1a467358aa6373f7e55b70defe6a613ce73195489c2d3c",
+        "spec/features/FILE-005-svg-cutout-import.md": "dab8ddc1cb73637693980bf3da5f404bca3b5b139592025f5fb1fc952ceccf61"
       }
     },
     {

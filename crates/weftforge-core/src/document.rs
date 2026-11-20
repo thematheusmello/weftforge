@@ -983,13 +983,20 @@ impl Project {
             self.apply(
                 Command::AddPolygon {
                     name: pattern.name,
-                    vertices: pattern.vertices,
+                    vertices: pattern.exterior.vertices,
                 },
                 cut_work,
             )?;
-            for (curve, controls) in self.curves[first_curve..].iter_mut().zip(pattern.controls) {
+            for (curve, controls) in self.curves[first_curve..]
+                .iter_mut()
+                .zip(pattern.exterior.controls)
+            {
                 cut_work.charge_request()?;
                 curve.controls = controls;
+            }
+            if let Some(vertices) = pattern.hole {
+                let piece = self.pieces.last().expect("AddPolygon appended a piece").id;
+                self.apply(Command::AddHole { piece, vertices }, cut_work)?;
             }
         }
         Ok(())

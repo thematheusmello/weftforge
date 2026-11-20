@@ -18,7 +18,7 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 | `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1–v6 model | Static authoring | One prior saved document; no silent fallback |
 | `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1–v6 model | Static authoring | Dirty named documents only; no automatic recovery UI |
 | OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups; no annotation lines or MTL/textures |
-| SVG | Bounded additive import of one-contour paths | Yes, compound outlines with holes and physical notch markers | Editable exterior boundaries and names on import | Static 2D | Explicit mm and uniform viewBox; holes/notches cannot yet be reimported; sewing/materials/internal lines/print tiling unsupported |
+| SVG | Additive import of closed patterns with an optional polygonal cutout | Yes, compound outlines with holes and physical notch markers | Editable boundaries, cutouts and names on import | Static 2D | Explicit mm and uniform viewBox; drawings with notch markers cannot yet be reimported; sewing/materials/internal lines/print tiling unsupported |
 | Binary glTF 2.0 (`.glb`) | No | Yes | Mesh only | Static | Named pieces, fabric tint, normals and physical-scale UVs from a rest or current surface |
 | JSON glTF 2.0 (`.gltf`) | No | Yes, embedded buffer | Mesh only | Static | Single JSON file with the same named meshes, fabric tints, normals and UVs as binary glTF |
 | DXF R2000 | Bounded additive import | Yes, projects without holes or authored notches | Editable exterior boundaries with layer names | Static 2D | Holed/notched projects refuse before staging. Strict existing ASCII `LINE`/clamped cubic `SPLINE` profile, mm and `WF_PIECE` layers; no sewing, materials, grain, internal lines, 3D placement, apparel conventions or print layout |
@@ -125,7 +125,7 @@ stay inside the exterior with strict clearance; annotations remain outside the
 closed hole. IDs survive corner edits, split/join, resize and transform. The
 derived mesh is one annular surface with two free boundary loops, and cloth mass
 uses its actual material area. SVG writes both loops as one evenodd compound path;
-the current SVG importer refuses this path. The current DXF profile refuses any
+the SVG importer restores both editable loops. The current DXF profile refuses any
 holed project before staging. Curved/multiple holes, internal-shape conversion,
 hole sewing and cutting through a hole remain unsupported. See the
 [hole contract](../spec/features/PAT-006-straight-hole.md).
@@ -305,13 +305,18 @@ Choose **Import SVG…** in the desktop toolbar or command search to add editabl
 exterior patterns, or run `weftforge-cli import-svg INPUT OUTPUT PATTERNS.svg`.
 The [bounded SVG import profile](../spec/features/FILE-005-svg-pattern-import.md)
 requires physical `mm` width/height and a uniformly scaled `viewBox`; it accepts
-direct, closed single-contour paths using absolute `M/L/C/Z` commands. Straight
+direct closed paths using absolute `M/L/C/Z` commands. Straight
 and cubic construction, names and relative layout survive as editable objects.
+A polygon can contain one [editable cutout](../spec/features/FILE-005-svg-cutout-import.md). Subpaths can appear in either
+order. Under `evenodd` either winding works. Under `nonzero` (the default),
+the hole must wind opposite the exterior. Both loops must pass the native
+containment and clearance checks.
 The drawing's user-space origin is retained, without subtracting the viewBox
 minimum; SVG Y is inverted into upward pattern V. The native summary shows the
 physical scale before applying all pieces and pending edits as one undo step.
 Missing/other units, transforms, CSS, unsupported geometry/path commands, open
-or compound contours, DTDs and external resources reject the whole import.
+contours, touching or disjoint subpaths, multiple or curved cutouts, DTDs and
+external resources reject the whole import.
 Import is limited to 1 MiB, 64 pieces and 4096 total spans; native validation and
 its bounded cubic contour predicate still apply. Appearance, descriptions,
 sewing, grain, internal details and simulation are omitted explicitly. Imported
