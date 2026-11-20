@@ -88,9 +88,17 @@ local Cargo cache. The packaged studio opened the original revision 3
 patterns. The CLI and MCP reproduced the 4,345 × 3,615 and 5,669 × 567
 Apple Silicon JPEGs. Independent marker and image checks confirmed the
 declared scale and geometry. The program exited on a scoped SIGTERM
-after the startup and command checks. The native Linux save chooser and
-complete packaged notices remain open.
+after the startup and command checks.
 [Debian JPEG report](../parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json).
+
+The afdea599 Debian ARM64 package used the GTK chooser for project Save As
+and two pattern JPEGs. The saved project preserved every byte. The JPEGs
+matched the Apple Silicon artwork at 127 and 72 PPI and fresh packaged
+Linux CLI and MCP outputs. Recheck the captured geometry and package
+manifest records with
+`python3 parity/reports/artifacts/debian-native-save-jpeg-20261120/check_package_and_exports.py`.
+Seven Linux dependency notices, Wayland and physical GPU tests remain open.
+[Debian native package report](../parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json).
 
 ## Bounded straight-cut authoring and restart
 

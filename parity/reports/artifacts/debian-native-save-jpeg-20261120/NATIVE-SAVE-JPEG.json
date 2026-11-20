@@ -1,0 +1,105 @@
+{
+  "case": "Debian native project Save As and two pattern JPEGs from the offline packaged studio",
+  "source_commit": "afdea5999423dd5c9952f20ff5e3d5f26c169751",
+  "source_tree": "1ba334d8a5b28782f291d78a20d2a460a1098c63",
+  "previous_source": "f440d126c9094b357deb99b68dd6b01235591a44",
+  "platform": "Debian 13.7 aarch64, kernel 6.12.117+deb13-cloud-arm64, Xvfb X11 with Mesa llvmpipe Vulkan",
+  "source_preparation": {
+    "all_source_entries_verified": 20124,
+    "delta_paths": 91,
+    "delta_sha256": "af3d3ad87f47d9af689649e77eede6c5d23d2a5ca1296ef99b3765321ccca97d",
+    "new_locked_crates_seeded": 7,
+    "registry_bytes_seeded": 454899,
+    "cargo": "1.94.1",
+    "build_network": "loopback only, Cargo offline",
+    "build_target_reused_in_place": true,
+    "apt_package_delta": 0
+  },
+  "executables": {
+    "weftforge": "917fabcad5f1cbb3e2891017d1e49bc1bdd6deb7ce9739b3f0bafd6ab7e0540a",
+    "weftforge-cli": "996593e4ee8eae77f11f7dd7d8469d3e4a77f99e9fe1bd303569501e12d826bc"
+  },
+  "package_manifest_sha256": "54d4224528c44fa974075eeb660ccceff2377e0d405dc74002d48af7518d412e",
+  "manifest_file_records_checked": 415,
+  "actual_package_files": 417,
+  "emitted_libraries": 234,
+  "libraries_with_unresolved_notices": 7,
+  "portal": {
+    "api": "org.freedesktop.portal.FileChooser",
+    "version": 4,
+    "frontend": "xdg-desktop-portal 1.20.3+ds-1",
+    "backend": "xdg-desktop-portal-gtk 1.15.3-1",
+    "events": [
+      {
+        "operation": "SaveFile",
+        "client_pid": 3409,
+        "request_utc": "2026-11-20T15:37:07.835778Z",
+        "response_utc": "2026-11-20T15:37:28.906246Z",
+        "response_code": 0,
+        "selected_basename": "current-source.weftforge"
+      },
+      {
+        "operation": "SaveFile",
+        "client_pid": 3409,
+        "request_utc": "2026-11-20T15:38:19.255534Z",
+        "response_utc": "2026-11-20T15:38:35.952348Z",
+        "response_code": 0,
+        "selected_basename": "fit.jpg"
+      },
+      {
+        "operation": "SaveFile",
+        "client_pid": 3409,
+        "request_utc": "2026-11-20T15:39:40.578450Z",
+        "response_utc": "2026-11-20T15:39:41.444175Z",
+        "response_code": 2,
+        "selected_basename": null
+      },
+      {
+        "operation": "SaveFile",
+        "client_pid": 3409,
+        "request_utc": "2026-11-20T15:39:55.492507Z",
+        "response_utc": "2026-11-20T15:40:18.046203Z",
+        "response_code": 0,
+        "selected_basename": "two-metre.jpeg"
+      }
+    ]
+  },
+  "actions": [
+    "Load the disposable revision 3 Juniper and Basin project in the packaged studio and frame the artwork.",
+    "Use File → Save as…, type current-source.weftforge in GTK and accept. The saved copy uses a different inode and matches the original project byte for byte.",
+    "Open File → Save 2D pattern JPEG…. Use the fitted 869 × 723 mm crop, 127 PPI and Grainline. Accept the GTK file dialog.",
+    "Open the JPEG dialog again. Set a 2,000 × 200 mm crop at U −1,000 and V 275 mm with Grainline and 72.4 requested PPI. Observe 72 PPI recorded.",
+    "Dismiss the GTK chooser with Escape. The backend returned code 2 with no URI. Verify retained crop, density, mark options and 5,669 × 567 dimensions, then reopen the chooser and save two-metre.jpeg."
+  ],
+  "written_project": {
+    "sha256": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+    "bytes": 6173,
+    "envelope_version": 6,
+    "revision": 3,
+    "patterns": [
+      "Juniper α",
+      "Basin β"
+    ],
+    "rest_vertices": 260,
+    "rest_triangles": 359,
+    "seams": 0,
+    "whole_document_equal": true,
+    "distinct_file": true
+  },
+  "x11_input": "XTEST 2.2 input directed to the mapped app and GTK windows on a private virtual display",
+  "capture_sha256": {
+    "project-named.png": "428a7b7cd266b4736868bdb83b0060cb7da422fe91de32bfcf6cf838799c50d7",
+    "project-saved.png": "fc2b6b4a34a072fb65a72eed28ac838b42ecd792251642877dcaf8224b2d7b25",
+    "fit-options.png": "02c3953d2203df1dcfc624851ad663ea8e59ad54946e8512959853e1721ea382",
+    "cancel-restored.png": "82f6761cd70ea6ef4f00d17996170d40a4f01df023c175694c55358fe72d2f88",
+    "wide-saved.png": "b8819c761d1a092b910467e620ef811007eff04939764623637ee56cf3e91963"
+  },
+  "readback": [
+    "The packaged CLI parsed the saved construction. Independent JSON and whole-file readback matched the source fixture.",
+    "The native JPEGs matched fresh current-build CLI and MCP outputs as well as the prior accepted Apple Silicon native output bytes. The independent geometry checker decoded both native JPEGs."
+  ],
+  "remaining": [
+    "Wayland, a physical Linux GPU, screen-reader operation, Windows, signed distribution and unresolved third-party notices."
+  ],
+  "checked_utc": "2026-11-20T15:40:18.046203Z"
+}
