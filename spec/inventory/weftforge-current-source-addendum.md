@@ -1,5 +1,11 @@
 # WeftForge current-source addendum
 
+## Direct pattern rotation in 3D
+
+Source `578520600521d378f9c1fc6a83f81ec9931ee07e` extends `arrangement` and `gizmos` with a camera-relative
+turn around the selected pattern’s bounds center. Move and Rotate share the
+existing `SetPlacement` command.
+
 ## Direct pattern placement in 3D
 
 Source `7de4b5764449c3a35266ed22819134cb20f9e5a6` adds **Move pattern** to the native 3D pane. The

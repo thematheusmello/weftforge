@@ -9,8 +9,11 @@ captured when the drag begins.
 The studio and CLI built locally. Formatting, 515 workspace tests and strict
 Clippy passed. The rotation test covers a tilted pattern with a cubic edge,
 both pointer-release paths, cancellation, Undo and unchanged seam ownership.
-The native Harbor case still needs its saved files and restored placement
-checked independently. Local-axis handles and avatar arrangement remain open.
+Harbor front turned 89.875° and reopened at revision 26. An independent
+check found a pivot error of 2.22 × 10⁻¹⁶ m and identical 2D canvas pixels.
+The first drag after a PNG save kept revision 23. The repeated gesture
+committed revision 24. Local-axis handles and avatar arrangement remain open.
+[Native rotation check](parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json) · [Studio preview](docs/studio-preview.md).
 
 # Pinned license texts in the Apple Silicon package — 19 November 2026
 

@@ -1,5 +1,14 @@
 # Native studio preview
 
+## Rotate a pattern in the 3D viewport
+
+Harbor front turned 89.875° around its center in Front view. The editable
+pattern outlines and all eight seams stayed in place. Undo restored the
+original arrangement, and the redone rotation reopened at revision 26.
+[Before](../parity/reports/artifacts/native-viewport-rotation-20261120/before.png) · [Native test](../parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json).
+
+![WeftForge with both flat Harbor patterns and the rotated front in the 3D viewport](../parity/reports/artifacts/native-viewport-rotation-20261120/after.png)
+
 ## Apple Silicon release workspace
 
 The local release bundle reopened the saved Harbor placement with both 2D
