@@ -1,0 +1,27 @@
+{
+  "platform": "27.2 macOS arm64",
+  "source_commit": "087123cfcd0ea48001716006bcb8f32ce8aa2fa8",
+  "native_executable_sha256": "06feefb73450f24deca6c4626d6e52f409624af234bd16079981d61484dc9f21",
+  "method": "Interactive native WeftForge window, macOS Open and Save panels, egui menus, command search, inspector and built-in workspace PNG capture. A private application bundle hard-linked the verified executable for macOS application selection.",
+  "pocket_import": [
+    "Started with Untitled.weftforge, revision 0, 0 pieces. Used File > Import garment OBJ\u2026 and selected Pocket in millimetres.obj.",
+    "Before choosing a unit, the review displayed Millimetres, Centimetres, Metres and Inches. Import was disabled. Choosing Millimetres reported 1 OBJ unit = 1 mm, Y up, 1 exterior contour, 2 cutouts and 1 assigned fabric. Import became enabled.",
+    "Import committed revision 1 with 1 piece, 0 seams, 0 groups and 47 vertices. Undo returned to 0 pieces and 0 vertices at revision 2. Redo restored 1 piece and 47 vertices at revision 3.",
+    "Saved Pocket restored.weftforge, exported Pocket native.obj, reopened Pocket restored.weftforge at revision 3, used Frame all and saved Pocket workspace.png."
+  ],
+  "unsupported_input": [
+    "With Pocket restored.weftforge open at revision 3, opened Import garment OBJ\u2026 from Commands and chose native-projected-faces-20261120/draped.obj. Choosing Metres reported OBJ garment requires a planar, uniformly scaled UV-to-XYZ mapping. Import remained disabled.",
+    "Cancel reported OBJ import cancelled; pending edits retained. The open pocket still had 1 piece, 0 seams, 0 groups, 47 vertices at revision 3. Saved separately as Pocket after refusal.weftforge."
+  ],
+  "harbor_import": [
+    "Used File > New Empty. Typed Import garment into Commands and chose Import garment OBJ\u2026. Selected native-obj-fabrics-20261120/Harbor.obj. Import was disabled before selecting Metres. Review then reported 1 OBJ unit = 1000 mm, Y up, 2 exterior contours, 0 cutouts and 2 assigned fabrics.",
+    "Import committed revision 1 with 2 pieces, 0 seams, 0 groups and 654 vertices. Scene showed piece_2 (#4) and piece_31 (#33). In Fabric properties the assignment for piece_31 was fabric_68_Terracotta_linen. Selecting piece_2 showed fabric_1_Cotton_approximation_uncalibrated.",
+    "Used Frame all. Saved Harbor imported.weftforge and exported Harbor native.obj. Saved Harbor workspace.png with piece_2 selected. The native capture showed separate blue and terracotta 2D patterns and their separated 3D planes."
+  ],
+  "pocket_corner_edit": [
+    "Reopened Pocket restored.weftforge. Selected Hole #12 in Scene. Curve #17 exposed vertex #14 at U 0.080 m, V 0.240 m. Double-clicked the U field, typed 0.060 and pressed Return. Revision 4 had 44 vertices. The rebuilt cutout sloped at its left edge.",
+    "Saved Pocket edited corner.weftforge and exported Pocket edited corner.obj. Undo returned vertex #14 to U 0.080 m at revision 5 with 47 vertices. Redo restored U 0.060 m at revision 6 with 44 vertices. Saved Pocket edited redo.weftforge.",
+    "Reopened the revision-4 Pocket edited corner.weftforge. Hole #12 showed #14 at (0.060, 0.240) m, curve #17 applied length 121.655 mm, and pattern width 0.240 m and height 0.360 m. Framed and saved Pocket edited workspace.png."
+  ],
+  "scope": "Measurements and input/output digests in NATIVE-MEASUREMENTS.json. Evidence covers WeftForge and original fixtures on the named macOS platform/build."
+}

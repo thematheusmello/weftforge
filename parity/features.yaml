@@ -17859,7 +17859,8 @@
         "parity/reports/WF-20261120-MULTIPLE-CUTOUTS-001.json",
         "spec/features/PAT-006-multiple-cutouts.md",
         "parity/reports/WF-20261120-INTEGRATED-MULTIPLE-CUTOUTS-001.json",
-        "parity/reports/WF-20261120-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json"
+        "parity/reports/WF-20261120-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json",
+        "parity/reports/WF-20261120-NATIVE-EDITABLE-OBJ-001.json"
       ],
       "scenarios": [
         {
@@ -17882,6 +17883,17 @@
           },
           "initial_conditions": "An empty release studio on Debian 13.7 ARM64, a headless Sway Wayland output, the GTK file chooser, two original SVG fixtures and a single-hole editable pocket.",
           "expected_outcomes": "Undo and Redo restore the empty and imported states. Moving one corner preserves the other opening. Both OBJ meshes have three boundary loops and net areas of 0.0756 and 0.0744 m\u00b2. A rejected overlap preserves the last editable bytes. Adding the second opening in the inspector preserves all prior IDs."
+        },
+        {
+          "id": "FILE-OBJ-EDITABLE-001",
+          "path": "parity/scenarios/FILE-OBJ-EDITABLE-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/editable-garment-obj-20261120/inputs/Pocket in millimetres.obj": "2c068bf5a34fb0cec320b36a74638780b021f59c9fd0ad4d5671c390b22b9a1b",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.obj": "9a2cb18203d5815ebe6e10734781641d5e7402f9175d9d9d02cbbb7e7d0d0ea2"
+          },
+          "initial_conditions": "Start with an empty project and original flat meshes. The two-slot pocket uses millimetres and Harbor uses metres.",
+          "expected_outcomes": "The pocket retains two editable openings, 0.240 \u00d7 0.360 m dimensions, 0.0756 m\u00b2 material area and a 1.74 m boundary. Moving one cutout corner by 20 mm reduces the area to 0.0744 m\u00b2. Harbor retains its two colors and placed panel outlines."
         }
       ],
       "comparison_criteria": {
@@ -26172,6 +26184,51 @@
             "parity/scenarios/PAT-MULTIPLE-CUTOUTS-001.json": "d61c78f4525b97d4fea9be1ca571529b69de8933cf77bd9024f7a30c57e928b9",
             "parity/reports/artifacts/multiple-cutouts-20261120/INTEGRATED-ADAPTERS.json": "254d88f077b73e074f21350d7d58c988ba7af3cb9ca97fe7301d97439532c713"
           }
+        },
+        {
+          "id": "WF-20261120-NATIVE-EDITABLE-OBJ-001",
+          "commit": "a79bd6db00fe70c7c187b263685f59c23564a36c",
+          "timestamp": "2026-11-20T19:42:55Z",
+          "platform": "Apple Silicon macOS studio, release CLI, official stdio MCP SDK and independent boundary measurements",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/Imported.obj": "8de2bd3bf0ac881f99589e84e1e20c6fc0992eaca171b0b975435c41427dd57d",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/editable-garment-obj-20261120/INTEGRATED-READBACK.json": "4fb87961ec6ddafdc3d11a37ae2d13a28a4c39fe4e2ed184fc5f4136439a4170",
+            "parity/reports/artifacts/editable-garment-obj-20261120/SDK.json": "6ce76b1e2e4c19028fd779bb0ef6488c196a360d190d38a978ce104a378722a3",
+            "parity/reports/artifacts/editable-garment-obj-20261120/check_native.py": "2ad572f0882b20ae48db5e761814f90baf96cf42e38e985e1817e1dcfe55bcab",
+            "parity/reports/artifacts/editable-garment-obj-20261120/check_sdk.py": "a69ce42498758115069966b7035cb1fbb7b8b54bb611e88835d82b0e1d2fa129",
+            "parity/reports/artifacts/editable-garment-obj-20261120/inputs/Pocket in millimetres.obj": "2c068bf5a34fb0cec320b36a74638780b021f59c9fd0ad4d5671c390b22b9a1b",
+            "parity/reports/artifacts/editable-garment-obj-20261120/inputs/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/CLEANUP.json": "3f646e151474b815b0feb74e7c5d5fde0c4554598fbc674148381ca1e40f224f",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/Combined pocket workspace.png": "a3a861b92319059137ed8a56dd524f20ff846a493d4a9c988f246e107e385118",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/Combined pocket.obj": "acf5b5f10f0e982613371467edd648e2e17806a0782a4b718afd859d65c3aea9",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/Combined pocket.weftforge": "38b871a3e9b433c033a275131c3e5dd99d95e9a4bbd85a5db85b8811450f7642",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/NATIVE.json": "8b150ae81a719fce29ea5506569cdf21d36901ae30dc2b95a84c74bbf705328b",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/weftforge-fabrics-5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c.mtl": "5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Harbor imported.weftforge": "d74a056c5244fa5d32a213702222bf6dc554a9a608e96057f78938e34d42df1e",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Harbor native.obj": "45c58b52b6e5c0dc185a1c276f5c563d4529aaa0ab9a3aee8b1bc0315c9b07ce",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Harbor workspace.png": "5ce00acbceabf4d2aaf3f2fb62fce66f1c605221bcf797cc77ce5271e6db14f1",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/NATIVE-MEASUREMENTS.json": "af636d6ed6440a2f71b0b831555a85a48fed14e31dfb06d3ad6d77bc995d62e3",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/NATIVE-SESSION.json": "260870bdcb949eaf56825fe4135c8feed836f5db70a4cdd206a4ebe35b538a2c",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/POST-CASE-CLEANUP.json": "a6fe3e77555dce8d2362d85cb03ad01494b231ba157eaf8558084c272ec01db5",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket after refusal.weftforge": "c83aba56b1f0c471cdecda60bcf662feaa374600eaafc0b9415158295263f9fe",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket edited corner.obj": "65e76e7f2e2fbed04d330c02609a361df8c4aaa7f85df191d28c9b63c3e56af7",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket edited corner.weftforge": "ec98f5138174f6e20ec1bf856eb9261d1d0caacb992488ffe345d4cb99781df9",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket edited redo.weftforge": "170ce68f60d97aa9667c2783f2cfb597835dcc77ab67b6e4a93398807f6ada75",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket edited workspace.png": "68e9948777acee350bb3d3a2dcdad3894d30872841989f900dc976cd6a5016d0",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket native.obj": "acf5b5f10f0e982613371467edd648e2e17806a0782a4b718afd859d65c3aea9",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket restored.weftforge": "c83aba56b1f0c471cdecda60bcf662feaa374600eaafc0b9415158295263f9fe",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket workspace.png": "5fd43145a4a7c5e9cfc8368de06e2494f956b03169bd9865533f9e245fd4a85f",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/weftforge-fabrics-5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c.mtl": "5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/weftforge-fabrics-80c3709947a8404fb43d1e8084c55ef32af3c733a0d21b8afb971d9f7fc6ee95.mtl": "80c3709947a8404fb43d1e8084c55ef32af3c733a0d21b8afb971d9f7fc6ee95",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_fabrics.py": "ad37fdedf2d6bb93c8960c3059c41edbbb4bbcd60f2db79fcf573909d388d9dd",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/reports/artifacts/native-projected-faces-20261120/draped.obj": "8cec02e8988d1a37d5797e63f6de77df509ca5a7a6604fb4c8ba91aefc8eb466",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.obj": "9a2cb18203d5815ebe6e10734781641d5e7402f9175d9d9d02cbbb7e7d0d0ea2",
+            "parity/scenarios/FILE-OBJ-EDITABLE-001.json": "0267f3ea0c16b427e2124961485dad5656b533fdab7c1d338aa18bda5cbeec3d"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-EDITABLE-OBJ-001.json"
         }
       ],
       "known_gaps": [
@@ -26190,7 +26247,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/PAT-006-straight-cut.md": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c"
       }
@@ -48363,7 +48420,8 @@
         "spec/features/MAT-001-active-pattern-fabric.md",
         "parity/reports/WF-20261120-NATIVE-FABRIC-ASSIGNMENT-001.json",
         "parity/reports/WF-20261120-NATIVE-OBJ-FABRICS-001.json",
-        "parity/reports/WF-20261120-NATIVE-SELECTED-OBJ-001.json"
+        "parity/reports/WF-20261120-NATIVE-SELECTED-OBJ-001.json",
+        "parity/reports/WF-20261120-NATIVE-EDITABLE-OBJ-001.json"
       ],
       "scenarios": [
         {
@@ -48402,6 +48460,17 @@
           },
           "initial_conditions": "Load the original Harbor garment at revision 24 with two patterns, eight authored seams, a blue cotton front and a terracotta back.",
           "expected_outcomes": "One selected panel exports 327 vertices and 586 triangles with its own UVs, normals, group and fabric. The two-panel rest selection reproduces the full OBJ and MTL. The same selected back matches the corresponding faces of the full draped surface. Both adapters reproduce the native rest selection and preserve existing files on invalid input."
+        },
+        {
+          "id": "FILE-OBJ-EDITABLE-001",
+          "path": "parity/scenarios/FILE-OBJ-EDITABLE-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/editable-garment-obj-20261120/inputs/Pocket in millimetres.obj": "2c068bf5a34fb0cec320b36a74638780b021f59c9fd0ad4d5671c390b22b9a1b",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.obj": "9a2cb18203d5815ebe6e10734781641d5e7402f9175d9d9d02cbbb7e7d0d0ea2"
+          },
+          "initial_conditions": "Start with an empty project and original flat meshes. The two-slot pocket uses millimetres and Harbor uses metres.",
+          "expected_outcomes": "The pocket retains two editable openings, 0.240 \u00d7 0.360 m dimensions, 0.0756 m\u00b2 material area and a 1.74 m boundary. Moving one cutout corner by 20 mm reduces the area to 0.0744 m\u00b2. Harbor retains its two colors and placed panel outlines."
         }
       ],
       "comparison_criteria": {
@@ -48555,6 +48624,51 @@
             "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784"
           },
           "path": "parity/reports/WF-20261120-NATIVE-SELECTED-OBJ-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-EDITABLE-OBJ-001",
+          "commit": "a79bd6db00fe70c7c187b263685f59c23564a36c",
+          "timestamp": "2026-11-20T19:42:55Z",
+          "platform": "Apple Silicon macOS studio, release CLI, official stdio MCP SDK and independent boundary measurements",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/Imported.obj": "8de2bd3bf0ac881f99589e84e1e20c6fc0992eaca171b0b975435c41427dd57d",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/editable-garment-obj-20261120/INTEGRATED-READBACK.json": "4fb87961ec6ddafdc3d11a37ae2d13a28a4c39fe4e2ed184fc5f4136439a4170",
+            "parity/reports/artifacts/editable-garment-obj-20261120/SDK.json": "6ce76b1e2e4c19028fd779bb0ef6488c196a360d190d38a978ce104a378722a3",
+            "parity/reports/artifacts/editable-garment-obj-20261120/check_native.py": "2ad572f0882b20ae48db5e761814f90baf96cf42e38e985e1817e1dcfe55bcab",
+            "parity/reports/artifacts/editable-garment-obj-20261120/check_sdk.py": "a69ce42498758115069966b7035cb1fbb7b8b54bb611e88835d82b0e1d2fa129",
+            "parity/reports/artifacts/editable-garment-obj-20261120/inputs/Pocket in millimetres.obj": "2c068bf5a34fb0cec320b36a74638780b021f59c9fd0ad4d5671c390b22b9a1b",
+            "parity/reports/artifacts/editable-garment-obj-20261120/inputs/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/CLEANUP.json": "3f646e151474b815b0feb74e7c5d5fde0c4554598fbc674148381ca1e40f224f",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/Combined pocket workspace.png": "a3a861b92319059137ed8a56dd524f20ff846a493d4a9c988f246e107e385118",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/Combined pocket.obj": "acf5b5f10f0e982613371467edd648e2e17806a0782a4b718afd859d65c3aea9",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/Combined pocket.weftforge": "38b871a3e9b433c033a275131c3e5dd99d95e9a4bbd85a5db85b8811450f7642",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/NATIVE.json": "8b150ae81a719fce29ea5506569cdf21d36901ae30dc2b95a84c74bbf705328b",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/weftforge-fabrics-5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c.mtl": "5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Harbor imported.weftforge": "d74a056c5244fa5d32a213702222bf6dc554a9a608e96057f78938e34d42df1e",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Harbor native.obj": "45c58b52b6e5c0dc185a1c276f5c563d4529aaa0ab9a3aee8b1bc0315c9b07ce",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Harbor workspace.png": "5ce00acbceabf4d2aaf3f2fb62fce66f1c605221bcf797cc77ce5271e6db14f1",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/NATIVE-MEASUREMENTS.json": "af636d6ed6440a2f71b0b831555a85a48fed14e31dfb06d3ad6d77bc995d62e3",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/NATIVE-SESSION.json": "260870bdcb949eaf56825fe4135c8feed836f5db70a4cdd206a4ebe35b538a2c",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/POST-CASE-CLEANUP.json": "a6fe3e77555dce8d2362d85cb03ad01494b231ba157eaf8558084c272ec01db5",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket after refusal.weftforge": "c83aba56b1f0c471cdecda60bcf662feaa374600eaafc0b9415158295263f9fe",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket edited corner.obj": "65e76e7f2e2fbed04d330c02609a361df8c4aaa7f85df191d28c9b63c3e56af7",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket edited corner.weftforge": "ec98f5138174f6e20ec1bf856eb9261d1d0caacb992488ffe345d4cb99781df9",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket edited redo.weftforge": "170ce68f60d97aa9667c2783f2cfb597835dcc77ab67b6e4a93398807f6ada75",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket edited workspace.png": "68e9948777acee350bb3d3a2dcdad3894d30872841989f900dc976cd6a5016d0",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket native.obj": "acf5b5f10f0e982613371467edd648e2e17806a0782a4b718afd859d65c3aea9",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket restored.weftforge": "c83aba56b1f0c471cdecda60bcf662feaa374600eaafc0b9415158295263f9fe",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket workspace.png": "5fd43145a4a7c5e9cfc8368de06e2494f956b03169bd9865533f9e245fd4a85f",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/weftforge-fabrics-5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c.mtl": "5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/weftforge-fabrics-80c3709947a8404fb43d1e8084c55ef32af3c733a0d21b8afb971d9f7fc6ee95.mtl": "80c3709947a8404fb43d1e8084c55ef32af3c733a0d21b8afb971d9f7fc6ee95",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_fabrics.py": "ad37fdedf2d6bb93c8960c3059c41edbbb4bbcd60f2db79fcf573909d388d9dd",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/reports/artifacts/native-projected-faces-20261120/draped.obj": "8cec02e8988d1a37d5797e63f6de77df509ca5a7a6604fb4c8ba91aefc8eb466",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.obj": "9a2cb18203d5815ebe6e10734781641d5e7402f9175d9d9d02cbbb7e7d0d0ea2",
+            "parity/scenarios/FILE-OBJ-EDITABLE-001.json": "0267f3ea0c16b427e2124961485dad5656b533fdab7c1d338aa18bda5cbeec3d"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-EDITABLE-OBJ-001.json"
         }
       ],
       "known_gaps": [
@@ -51616,7 +51730,9 @@
         "spec/features/FILE-003-obj-fabrics.md",
         "parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json",
         "parity/reports/WF-20261120-NATIVE-SELECTED-OBJ-001.json",
-        "spec/observations/REF-FILE-003-OBJ-SELECTED-001.json"
+        "spec/observations/REF-FILE-003-OBJ-SELECTED-001.json",
+        "parity/reports/WF-20261120-NATIVE-EDITABLE-OBJ-001.json",
+        "parity/reports/WF-20261120-EDITABLE-OBJ-REFERENCE-RETURN-001.json"
       ],
       "scenarios": [
         {
@@ -51696,6 +51812,26 @@
           },
           "initial_conditions": "Load the original Harbor garment at revision 24 with two patterns, eight authored seams, a blue cotton front and a terracotta back.",
           "expected_outcomes": "One selected panel exports 327 vertices and 586 triangles with its own UVs, normals, group and fabric. The two-panel rest selection reproduces the full OBJ and MTL. The same selected back matches the corresponding faces of the full draped surface. Both adapters reproduce the native rest selection and preserve existing files on invalid input."
+        },
+        {
+          "id": "FILE-OBJ-EDITABLE-001",
+          "path": "parity/scenarios/FILE-OBJ-EDITABLE-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/editable-garment-obj-20261120/inputs/Pocket in millimetres.obj": "2c068bf5a34fb0cec320b36a74638780b021f59c9fd0ad4d5671c390b22b9a1b",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.obj": "9a2cb18203d5815ebe6e10734781641d5e7402f9175d9d9d02cbbb7e7d0d0ea2"
+          },
+          "initial_conditions": "Start with an empty project and original flat meshes. The two-slot pocket uses millimetres and Harbor uses metres.",
+          "expected_outcomes": "The pocket retains two editable openings, 0.240 \u00d7 0.360 m dimensions, 0.0756 m\u00b2 material area and a 1.74 m boundary. Moving one cutout corner by 20 mm reduces the area to 0.0744 m\u00b2. Harbor retains its two colors and placed panel outlines."
+        },
+        {
+          "id": "FILE-OBJ-RETURN-001",
+          "path": "parity/scenarios/FILE-OBJ-RETURN-001.json",
+          "fixture_hashes": {
+            "spec/observations/REF-FILE-003-OBJ-SELECTED-001.json": "49fb7cace6cf2c57f9be183790b139c26d097226f32d6bf85691755ad1d0966d"
+          },
+          "initial_conditions": "Use the retained reference re-export from the earlier selected Harbor observation. Start with an existing project and recovery file.",
+          "expected_outcomes": "A successful reverse import would recover one colored editable panel at the recorded scale. The reader refused the actual returned geometry and preserved both existing files."
         }
       ],
       "comparison_criteria": {
@@ -51714,7 +51850,11 @@
         "crates/weftforge-core/src/persistence/obj.rs",
         "apps/weftforge/src/main.rs",
         "apps/weftforge-cli/src/main.rs",
-        "apps/weftforge-cli/src/mcp.rs"
+        "apps/weftforge-cli/src/mcp.rs",
+        "crates/weftforge-core/src/persistence/obj_import.rs",
+        "crates/weftforge-core/tests/obj_import.rs",
+        "crates/weftforge-core/src/document.rs",
+        "apps/weftforge/src/garment_obj.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/6"
@@ -52423,22 +52563,84 @@
             "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784"
           },
           "path": "parity/reports/WF-20261120-NATIVE-SELECTED-OBJ-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-EDITABLE-OBJ-001",
+          "commit": "a79bd6db00fe70c7c187b263685f59c23564a36c",
+          "timestamp": "2026-11-20T19:42:55Z",
+          "platform": "Apple Silicon macOS studio, release CLI, official stdio MCP SDK and independent boundary measurements",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/Imported.obj": "8de2bd3bf0ac881f99589e84e1e20c6fc0992eaca171b0b975435c41427dd57d",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/editable-garment-obj-20261120/INTEGRATED-READBACK.json": "4fb87961ec6ddafdc3d11a37ae2d13a28a4c39fe4e2ed184fc5f4136439a4170",
+            "parity/reports/artifacts/editable-garment-obj-20261120/SDK.json": "6ce76b1e2e4c19028fd779bb0ef6488c196a360d190d38a978ce104a378722a3",
+            "parity/reports/artifacts/editable-garment-obj-20261120/check_native.py": "2ad572f0882b20ae48db5e761814f90baf96cf42e38e985e1817e1dcfe55bcab",
+            "parity/reports/artifacts/editable-garment-obj-20261120/check_sdk.py": "a69ce42498758115069966b7035cb1fbb7b8b54bb611e88835d82b0e1d2fa129",
+            "parity/reports/artifacts/editable-garment-obj-20261120/inputs/Pocket in millimetres.obj": "2c068bf5a34fb0cec320b36a74638780b021f59c9fd0ad4d5671c390b22b9a1b",
+            "parity/reports/artifacts/editable-garment-obj-20261120/inputs/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/CLEANUP.json": "3f646e151474b815b0feb74e7c5d5fde0c4554598fbc674148381ca1e40f224f",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/Combined pocket workspace.png": "a3a861b92319059137ed8a56dd524f20ff846a493d4a9c988f246e107e385118",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/Combined pocket.obj": "acf5b5f10f0e982613371467edd648e2e17806a0782a4b718afd859d65c3aea9",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/Combined pocket.weftforge": "38b871a3e9b433c033a275131c3e5dd99d95e9a4bbd85a5db85b8811450f7642",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/NATIVE.json": "8b150ae81a719fce29ea5506569cdf21d36901ae30dc2b95a84c74bbf705328b",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/weftforge-fabrics-5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c.mtl": "5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Harbor imported.weftforge": "d74a056c5244fa5d32a213702222bf6dc554a9a608e96057f78938e34d42df1e",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Harbor native.obj": "45c58b52b6e5c0dc185a1c276f5c563d4529aaa0ab9a3aee8b1bc0315c9b07ce",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Harbor workspace.png": "5ce00acbceabf4d2aaf3f2fb62fce66f1c605221bcf797cc77ce5271e6db14f1",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/NATIVE-MEASUREMENTS.json": "af636d6ed6440a2f71b0b831555a85a48fed14e31dfb06d3ad6d77bc995d62e3",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/NATIVE-SESSION.json": "260870bdcb949eaf56825fe4135c8feed836f5db70a4cdd206a4ebe35b538a2c",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/POST-CASE-CLEANUP.json": "a6fe3e77555dce8d2362d85cb03ad01494b231ba157eaf8558084c272ec01db5",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket after refusal.weftforge": "c83aba56b1f0c471cdecda60bcf662feaa374600eaafc0b9415158295263f9fe",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket edited corner.obj": "65e76e7f2e2fbed04d330c02609a361df8c4aaa7f85df191d28c9b63c3e56af7",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket edited corner.weftforge": "ec98f5138174f6e20ec1bf856eb9261d1d0caacb992488ffe345d4cb99781df9",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket edited redo.weftforge": "170ce68f60d97aa9667c2783f2cfb597835dcc77ab67b6e4a93398807f6ada75",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket edited workspace.png": "68e9948777acee350bb3d3a2dcdad3894d30872841989f900dc976cd6a5016d0",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket native.obj": "acf5b5f10f0e982613371467edd648e2e17806a0782a4b718afd859d65c3aea9",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket restored.weftforge": "c83aba56b1f0c471cdecda60bcf662feaa374600eaafc0b9415158295263f9fe",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket workspace.png": "5fd43145a4a7c5e9cfc8368de06e2494f956b03169bd9865533f9e245fd4a85f",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/weftforge-fabrics-5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c.mtl": "5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/weftforge-fabrics-80c3709947a8404fb43d1e8084c55ef32af3c733a0d21b8afb971d9f7fc6ee95.mtl": "80c3709947a8404fb43d1e8084c55ef32af3c733a0d21b8afb971d9f7fc6ee95",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_fabrics.py": "ad37fdedf2d6bb93c8960c3059c41edbbb4bbcd60f2db79fcf573909d388d9dd",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/reports/artifacts/native-projected-faces-20261120/draped.obj": "8cec02e8988d1a37d5797e63f6de77df509ca5a7a6604fb4c8ba91aefc8eb466",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.obj": "9a2cb18203d5815ebe6e10734781641d5e7402f9175d9d9d02cbbb7e7d0d0ea2",
+            "parity/scenarios/FILE-OBJ-EDITABLE-001.json": "0267f3ea0c16b427e2124961485dad5656b533fdab7c1d338aa18bda5cbeec3d"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-EDITABLE-OBJ-001.json"
+        },
+        {
+          "id": "WF-20261120-EDITABLE-OBJ-REFERENCE-RETURN-001",
+          "commit": "a79bd6db00fe70c7c187b263685f59c23564a36c",
+          "timestamp": "2026-11-20T19:42:55Z",
+          "platform": "Apple Silicon macOS release CLI reading the previously returned selected panel",
+          "artifact_hashes": {
+            "parity/reports/artifacts/editable-garment-obj-20261120/REFERENCE-RETURN.json": "511428db96798c0e88c0673e24b3b433eb71cc7337282780ecc24553bef9180e",
+            "parity/scenarios/FILE-OBJ-RETURN-001.json": "72582700f2bb31297c2b9db3260f8e887713730b34dcad5feda51b037f3e623e",
+            "spec/observations/REF-FILE-003-OBJ-SELECTED-001.json": "49fb7cace6cf2c57f9be183790b139c26d097226f32d6bf85691755ad1d0966d"
+          },
+          "path": "parity/reports/WF-20261120-EDITABLE-OBJ-REFERENCE-RETURN-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "OBJ export carries groups, UVs, normals and static diffuse fabric colors. Avatar or garment OBJ import and texture transfer remain open.",
+        "OBJ export carries groups, UVs, normals and static diffuse fabric colors. Avatar import, draped garment reconstruction and texture transfer remain open.",
         "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity.",
         "One reference OBJ-to-garment UV trace and re-export preserved a planar cutout, dimensions and material area. The reference remeshed it and changed the UV coordinate range and group/material records. The later two-piece case records flat rest geometry and diffuse colors. Avatar and reverse-import comparisons remain open.",
         "One reviewed two-fabric reference return preserved RGB and per-fabric area within 4.92 \u00d7 10\u207b\u2078 m\u00b2. It remeshed the surface and emitted no group records. Draped interoperability, editable construction and broader reference parity remain open.",
         "The two-fabric draped OBJ replays global strain from saved positions, rest UVs, groups and diffuse library. The previous rest interchange report retains its original source scope.",
-        "The selected-panel case covers native rest and draped export and explicit rest selections in both adapters. One independently returned reference selection retained terracotta and its physical area. Textures, animation, welding options, bidirectional garment import and full numerical reference comparison remain open."
+        "The selected-panel case covers native rest and draped export and explicit rest selections in both adapters. One independently returned reference selection retained terracotta and its physical area. Textures, animation, welding options, bidirectional garment import and full numerical reference comparison remain open.",
+        "Editable flat garments import in the studio, CLI and MCP. A previously returned 5,304-triangle panel failed the rigid-chart check. Its maximum measured material-to-surface residual was 10.95 \u00b5m. Drape reconstruction, sewing and curve recovery, avatars and broader interoperability remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "current",
+      "contract_documents": {
+        "spec/features/FILE-003-editable-obj-import.md": "ba401cc1ea1794f3c100e39bf8cbec8564a04e5b65d17e7eb1a30dcb52d54a5e",
+        "spec/features/FILE-003-obj-fabrics.md": "bb0aaba839269cf2599d8fece7cb9b8f6d68a809fe00d6b0bfdc0add10eea21f"
+      }
     },
     {
       "id": "FILE-004",

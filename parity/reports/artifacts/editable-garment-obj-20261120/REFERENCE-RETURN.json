@@ -1,0 +1,21 @@
+{
+  "source_commit": "a79bd6db00fe70c7c187b263685f59c23564a36c",
+  "platform": "Apple Silicon macOS, release CLI",
+  "cli_sha256": "09ae24693db1b235264d77ad37a402b41adcbee82345afe3be0b03883a1d523e",
+  "observation": "REF-FILE-003-OBJ-SELECTED-001",
+  "returned_obj_sha256": "d2bf606496c19f9f6737adb79ad3c58de07f997df4eccea4076fdd55f1893da9",
+  "returned_mtl_sha256": "b693034fe0b3de3adc568abc3c13aefd412b8de4e2e98be95c876da80074da5a",
+  "attempted_scale_metres_per_unit": 1,
+  "input_vertex_uv_pairs": 2760,
+  "input_triangles": 5304,
+  "result": "failed_to_reconstruct_reference_return",
+  "exit_code": 1,
+  "diagnostic": "weftforge-cli: OBJ garment requires a planar, uniformly scaled UV-to-XYZ mapping",
+  "prior_primary_and_recovery_hashes_preserved": true,
+  "xy_similarity_fit_to_material_coordinates": {
+    "method": "Centre paired texture and XYZ coordinates. Fit a single in-plane scale and rotation by least squares. Include out-of-plane deviations from mean Z in the Euclidean residual.",
+    "rms_residual_m": 3.5655469425979796e-07,
+    "maximum_residual_m": 1.0949070167292783e-05
+  },
+  "timestamp": "2026-11-20T19:38:27.129637+00:00"
+}

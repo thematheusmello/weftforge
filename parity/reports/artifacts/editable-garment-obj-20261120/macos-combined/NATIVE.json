@@ -1,0 +1,93 @@
+{
+  "case": "Independent native pocket import, save, reopen, export and workspace capture on the combined source build",
+  "source_commit": "a79bd6db00fe70c7c187b263685f59c23564a36c",
+  "source_tree": "b65ea8676e3d09346d352c215ddac32487b05312",
+  "gui": {
+    "name": "weftforge",
+    "sha256": "06feefb73450f24deca6c4626d6e52f409624af234bd16079981d61484dc9f21",
+    "architecture": "arm64",
+    "profile": "debug",
+    "os": "macOS 27.2 (26B123)",
+    "bundle_selection": "WeftForge Combined OBJ Review",
+    "process_id": 10479
+  },
+  "session_start_utc": "2026-11-20T19:38:10.935759+00:00",
+  "runtime_observed_utc": "2026-11-20T19:38:22.382718+00:00",
+  "evidence_frozen_utc": "2026-11-20T19:39:44.540844+00:00",
+  "source_files": [
+    {
+      "file": "Pocket in millimetres.obj",
+      "sha256": "2c068bf5a34fb0cec320b36a74638780b021f59c9fd0ad4d5671c390b22b9a1b",
+      "bytes": 10033
+    },
+    {
+      "file": "weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl",
+      "sha256": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+      "bytes": 135
+    }
+  ],
+  "result_files": [
+    {
+      "file": "Combined pocket.weftforge",
+      "sha256": "38b871a3e9b433c033a275131c3e5dd99d95e9a4bbd85a5db85b8811450f7642",
+      "bytes": 5587
+    },
+    {
+      "file": "Combined pocket.obj",
+      "sha256": "acf5b5f10f0e982613371467edd648e2e17806a0782a4b718afd859d65c3aea9",
+      "bytes": 9901
+    },
+    {
+      "file": "weftforge-fabrics-5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c.mtl",
+      "sha256": "5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c",
+      "bytes": 151
+    },
+    {
+      "file": "Combined pocket workspace.png",
+      "sha256": "a3a861b92319059137ed8a56dd524f20ff846a493d4a9c988f246e107e385118",
+      "bytes": 166693
+    }
+  ],
+  "native_interaction": [
+    "Started with an empty revision-0 project. File > Import garment OBJ\u2026 opened the original two-cutout pocket fixture with physical vertex positions expressed in millimetres.",
+    "No unit was selected and Import was disabled. Choosing Millimetres showed 1 OBJ unit = 1 mm, Y up, 1 exterior contour, 2 cutouts and 1 assigned fabric. Import was enabled.",
+    "Import committed revision 1 with 1 piece, 0 seams, 0 groups and 47 rest vertices. The Scene showed piece_2 (#3), Hole #12 and Hole #21.",
+    "Used Frame all, saved Combined pocket.weftforge, reopened it at revision 1, framed it and exported Combined pocket.obj with its companion MTL.",
+    "Selected Hole #21 in the reopened Pattern inspector. Both holes showed four edges. The inspector reported pattern width 0.240 m and height 0.360 m. Saved Combined pocket workspace.png with the smaller aperture selected; the native status reported 1640 \u00d7 1000 px."
+  ],
+  "measurements": {
+    "dimensions_m": [
+      0.24,
+      0.36
+    ],
+    "editable_holes": [
+      {
+        "id": 12,
+        "straight_edges": 4
+      },
+      {
+        "id": 21,
+        "straight_edges": 4
+      }
+    ],
+    "native_obj_surface": {
+      "groups": [
+        "piece_3"
+      ],
+      "triangles": 64,
+      "diffuse_rgb": [
+        0.22,
+        0.55,
+        0.76
+      ],
+      "area_m2": 0.0756,
+      "boundary_m": 1.74
+    },
+    "workspace_px": [
+      1640,
+      1000
+    ]
+  },
+  "comparison": "The native revision-1 project, native rest OBJ and its MTL matched the earlier independent CLI output byte-for-byte.",
+  "historical_run": "The earlier two-fabric, draped refusal and editable-corner undo/redo cases ran separately on 087123cfcd0ea48001716006bcb8f32ce8aa2fa8. This receipt records a fresh GUI process from the combined checkout. Both compiled GUI files share the recorded digest."
+}

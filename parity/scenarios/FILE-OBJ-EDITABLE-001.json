@@ -1,0 +1,15 @@
+{
+  "id": "FILE-OBJ-EDITABLE-001",
+  "status": "implementation_only",
+  "initial_conditions": "Start with an empty project and original flat meshes. The two-slot pocket uses millimetres and Harbor uses metres.",
+  "actions": [
+    "Import the two-slot mesh through the combined native studio, choose millimetres, save and reopen the project, select a cutout and export OBJ.",
+    "Replay the earlier physical corner edit and two-fabric Harbor import against the integrated release CLI.",
+    "Exercise file and inline imports through the official MCP SDK and verify destination files after rejection."
+  ],
+  "expected_outcomes": "The pocket retains two editable openings, 0.240 \u00d7 0.360 m dimensions, 0.0756 m\u00b2 material area and a 1.74 m boundary. Moving one cutout corner by 20 mm reduces the area to 0.0744 m\u00b2. Harbor retains its two colors and placed panel outlines.",
+  "replay": [
+    "python3 check_native.py PATH_TO_RELEASE_CLI",
+    "python3 check_sdk.py PATH_TO_RELEASE_CLI REPOSITORY NEW_CASE_DIRECTORY"
+  ]
+}

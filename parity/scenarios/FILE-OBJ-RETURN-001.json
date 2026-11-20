@@ -1,0 +1,13 @@
+{
+  "id": "FILE-OBJ-RETURN-001",
+  "status": "implementation_only",
+  "initial_conditions": "Use the retained reference re-export from the earlier selected Harbor observation. Start with an existing project and recovery file.",
+  "actions": [
+    "Import the returned panel at metre scale. Check primary and recovery digests.",
+    "Fit the original UV and XYZ positions to an in-plane similarity transform and measure world-space residuals."
+  ],
+  "expected_outcomes": "A successful reverse import would recover one colored editable panel at the recorded scale. The reader refused the actual returned geometry and preserved both existing files.",
+  "replay": [
+    "The private returned OBJ and MTL are identified by digest in the published observation."
+  ]
+}

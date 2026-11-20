@@ -1,5 +1,14 @@
 # Native studio preview
 
+## Editing an imported OBJ pattern
+
+The 240 × 360 mm pocket has two editable openings. After reopening the
+project, the second opening is selected in Scene. Harbor’s two imported
+panels preserve their separate fabrics and world positions.
+[Native measurements](../parity/reports/WF-20261120-NATIVE-EDITABLE-OBJ-001.json).
+
+![Native pocket with its second opening selected](../parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/Combined%20pocket%20workspace.png)
+
 ## Exporting a selected Harbor panel
 
 The scene has one selected panel. The full garment stays visible while the
