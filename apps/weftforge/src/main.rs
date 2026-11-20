@@ -439,22 +439,80 @@ impl TransformDraft {
     }
 }
 
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum PlacementMode {
+    Move,
+    Rotate,
+}
+
+enum PlacementMotion {
+    Move {
+        world_per_point: [[f64; 3]; 2],
+        snap: PositionSnap,
+    },
+    Rotate {
+        pivot: [f64; 2],
+        screen_pivot: Pos2,
+        axis: [f64; 3],
+    },
+}
+
 struct PlacementDrag {
     origin: Pos2,
-    world_per_point: [[f64; 3]; 2],
-    offset: [f64; 3],
-    snap: PositionSnap,
+    point: Pos2,
+    original: Placement,
+    motion: PlacementMotion,
     input: RetainedInspectorInput,
 }
 
 impl PlacementDrag {
-    fn update(&mut self, point: Pos2) {
-        let x = f64::from(point.x) - f64::from(self.origin.x);
-        let y = f64::from(point.y) - f64::from(self.origin.y);
-        self.offset = std::array::from_fn(|axis| {
-            self.snap
-                .apply(x * self.world_per_point[0][axis] + y * self.world_per_point[1][axis])
-        });
+    fn placement(&self) -> Option<(Id, Placement)> {
+        let delta = |p: Pos2, origin: Pos2| {
+            [
+                f64::from(p.x) - f64::from(origin.x),
+                f64::from(p.y) - f64::from(origin.y),
+            ]
+        };
+        let mut placement = self.original;
+        match self.motion {
+            PlacementMotion::Move {
+                world_per_point,
+                snap,
+            } => {
+                let [x, y] = delta(self.point, self.origin);
+                let offset = std::array::from_fn(|axis| {
+                    snap.apply(x * world_per_point[0][axis] + y * world_per_point[1][axis])
+                });
+                if offset == [0.; 3] {
+                    return None;
+                }
+                for (coordinate, offset) in placement.translation.iter_mut().zip(offset) {
+                    if offset != 0. {
+                        *coordinate += offset;
+                    }
+                }
+            }
+            PlacementMotion::Rotate {
+                pivot,
+                screen_pivot,
+                axis,
+            } => {
+                let start = delta(self.origin, screen_pivot);
+                let end = delta(self.point, screen_pivot);
+                if start == [0.; 2] || end == [0.; 2] {
+                    return None;
+                }
+                let [ax, ay] = start;
+                let [bx, by] = end;
+                // Screen Y increases down while positive rotation about view depth turns up.
+                let angle = (ay * bx - ax * by).atan2(ax * bx + ay * by);
+                if angle == 0. || !angle.is_finite() {
+                    return None;
+                }
+                placement = placement.rotated_about(pivot, axis, angle);
+            }
+        }
+        Some((self.input.selected?, placement))
     }
 }
 
@@ -1041,7 +1099,7 @@ struct Studio {
     polygon: Vec<[f64; 2]>,
     pattern_canvas: Option<egui::Id>,
     garment_canvas: Option<egui::Id>,
-    move_in_3d: bool,
+    placement_mode: Option<PlacementMode>,
     placement_drag: Option<PlacementDrag>,
     drag_start: Option<[f64; 2]>,
     rectangle: Option<RectangleDraft>,
@@ -1143,7 +1201,7 @@ impl Studio {
             polygon: vec![],
             pattern_canvas: None,
             garment_canvas: None,
-            move_in_3d: false,
+            placement_mode: None,
             placement_drag: None,
             drag_start: None,
             rectangle: None,
@@ -3264,6 +3322,7 @@ impl Studio {
             || self.outline_offset.is_some()
             || self.transform.is_some()
             || self.transform_gesture.is_some()
+            || self.placement_drag.is_some()
             || self.drag_point.is_some()
             || self.drag_start.is_some()
             || ((self.tool == Tool::Transform
@@ -6971,25 +7030,21 @@ impl Studio {
             .map(|(id, _)| id)
     }
 
-    fn translated_placement(&self, drag: &PlacementDrag) -> Option<(Id, Placement)> {
-        let piece = self.editor.project.piece(drag.input.selected?)?;
-        let mut placement = self
-            .draft
-            .as_ref()
-            .filter(|draft| {
-                draft.revision == drag.input.revision && draft.selected == Some(piece.id)
-            })
-            .and_then(|draft| draft.placement)
-            .unwrap_or(piece.placement);
-        for (coordinate, offset) in placement.translation.iter_mut().zip(drag.offset) {
-            if offset != 0. {
-                *coordinate += offset;
-            }
+    fn cancel_placement_drag(&mut self, ctx: &egui::Context) {
+        if let Some(drag) = self.placement_drag.take()
+            && drag.input.revision == self.editor.project.revision
+            && drag.input.selected == self.selected
+        {
+            drag.input.close_without_commit(ctx);
         }
-        Some((piece.id, placement))
     }
 
-    fn move_pattern_in_garment(&mut self, ui: &egui::Ui, response: &egui::Response, enabled: bool) {
+    fn place_pattern_in_garment(
+        &mut self,
+        ui: &egui::Ui,
+        response: &egui::Response,
+        mode: Option<PlacementMode>,
+    ) {
         let ctx = ui.ctx();
         if let Some(drag) = &self.placement_drag
             && (drag.input.revision != self.editor.project.revision
@@ -6999,15 +7054,16 @@ impl Studio {
         }
         let cancelled = self.placement_drag.is_some()
             && ctx.input_mut(|input| input.consume_key(egui::Modifiers::NONE, egui::Key::Escape));
-        if !enabled || !ui.is_enabled() || cancelled {
-            if let Some(drag) = self.placement_drag.take() {
-                drag.input.close_without_commit(ctx);
-            }
+        let Some(mode) = mode.filter(|_| ui.is_enabled() && !cancelled) else {
+            self.cancel_placement_drag(ctx);
             return;
-        }
+        };
         let button = egui::PointerButton::Primary;
         let mut coalesced_release = None;
         if self.placement_drag.is_none() {
+            let Some(piece) = self.selected.and_then(|id| self.editor.project.piece(id)) else {
+                return;
+            };
             let events = pointer_button_events(ui);
             let completed = coalesced_canvas_drag(ui, response, &events);
             let press =
@@ -7021,9 +7077,9 @@ impl Studio {
                         }
                         _ => None,
                     });
-            let Some((press, alt)) = press
-                .filter(|(press, _)| self.garment_piece_at(*press, response.rect) == self.selected)
-            else {
+            let Some((press, alt)) = press.filter(|(press, _)| {
+                self.garment_piece_at(*press, response.rect) == Some(piece.id)
+            }) else {
                 return;
             };
             let input = self.free_sewing_input(ctx);
@@ -7035,25 +7091,56 @@ impl Studio {
                         .is_none_or(|value| !value.is_finite())
                 })
             {
-                self.message = "Finish the current property edit before moving the pattern.".into();
+                self.message =
+                    "Finish the current property edit before arranging the pattern.".into();
                 input.close_without_commit(ctx);
                 return;
             }
-            let scale = f64::from(self.camera_scale);
-            let world_per_point = [[1., 0., 0.], [0., 1., 0.]].map(|direction| {
-                self.view_to_world(direction)
-                    .map(|coordinate| f64::from(coordinate) / scale)
-            });
-            let snap = if alt {
-                PositionSnap::Off
-            } else {
-                self.position_snap
+            let original = self
+                .draft
+                .as_ref()
+                .filter(|draft| {
+                    draft.revision == input.revision && draft.selected == Some(piece.id)
+                })
+                .and_then(|draft| draft.placement)
+                .unwrap_or(piece.placement);
+            let motion = match mode {
+                PlacementMode::Move => {
+                    let scale = f64::from(self.camera_scale);
+                    let world_per_point = [[1., 0., 0.], [0., 1., 0.]].map(|direction| {
+                        self.view_to_world(direction)
+                            .map(|coordinate| f64::from(coordinate) / scale)
+                    });
+                    let snap = if alt {
+                        PositionSnap::Off
+                    } else {
+                        self.position_snap
+                    };
+                    PlacementMotion::Move {
+                        world_per_point,
+                        snap,
+                    }
+                }
+                PlacementMode::Rotate => {
+                    let Ok([min, max]) = self.editor.project.piece_bounds(piece.id) else {
+                        return;
+                    };
+                    let pivot = std::array::from_fn(|i| min[i].midpoint(max[i]));
+                    let screen_pivot = self.project3(original.transform(pivot), response.rect).0;
+                    let (sy, cy) = f64::from(self.yaw).sin_cos();
+                    let (sp, cp) = f64::from(self.pitch).sin_cos();
+                    PlacementMotion::Rotate {
+                        pivot,
+                        screen_pivot,
+                        axis: [-sy * cp, sp, cy * cp],
+                    }
+                }
             };
             self.placement_drag = Some(PlacementDrag {
                 origin: press,
-                world_per_point,
-                offset: [0.; 3],
-                snap,
+                point: press,
+                original,
+                motion,
                 input,
             });
             coalesced_release = completed.map(|(_, release, _)| release);
@@ -7061,37 +7148,47 @@ impl Studio {
         let Some(mut drag) = self.placement_drag.take() else {
             return;
         };
-        let released = coalesced_release.is_some() || response.drag_stopped_by(button);
-        if (released || response.dragged_by(button))
-            && let Some(point) = coalesced_release
-                .or_else(|| response.interact_pointer_pos())
-                .or_else(|| ui.input(|input| input.pointer.latest_pos()))
-        {
-            drag.update(point);
-        }
-        if released
-            && drag.offset != [0.; 3]
-            && let Some((piece, placement)) = self.translated_placement(&drag)
-        {
-            drag.input.restore(ctx);
-            if !self.apply_inspector_action(
-                ctx,
-                Command::SetPlacement { piece, placement },
-                drag.input.focus,
-            ) {
-                drag.input.close_without_commit(ctx);
+        let release = if coalesced_release.is_some() {
+            coalesced_release
+        } else if response.drag_stopped_by(button) {
+            pointer_button_events(ui)
+                .into_iter()
+                .find_map(|(point, pressed_button, pressed, _)| {
+                    (pressed_button == button && !pressed).then_some(point)
+                })
+        } else {
+            None
+        };
+        if let Some(point) = release {
+            drag.point = point;
+            if let Some((piece, placement)) = drag.placement() {
+                drag.input.restore(ctx);
+                if self.apply_inspector_action(
+                    ctx,
+                    Command::SetPlacement { piece, placement },
+                    drag.input.focus,
+                ) {
+                    return;
+                }
             }
         } else if response.is_pointer_button_down_on()
             && ui.input(|input| input.pointer.primary_down())
         {
+            if response.dragged_by(button)
+                && let Some(point) = response
+                    .interact_pointer_pos()
+                    .or_else(|| ui.input(|input| input.pointer.latest_pos()))
+            {
+                drag.point = point;
+            }
             self.placement_drag = Some(drag);
-        } else {
-            drag.input.close_without_commit(ctx);
+            return;
         }
+        drag.input.close_without_commit(ctx);
     }
 
     fn garment(&mut self, ui: &mut egui::Ui) {
-        let ready_to_move = self
+        let ready_to_place = self
             .selected
             .is_some_and(|id| !self.hidden_pieces.contains(&id))
             && self
@@ -7107,28 +7204,39 @@ impl Studio {
             && self.pattern_snapshot.is_none()
             && !egui::Popup::is_any_open(ui.ctx());
         pane_heading(ui, "3D Garment").on_hover_text("Y up · metres. Right drag to orbit; scroll to zoom; click a triangle to select its pattern piece.");
-        let move_hint = if ready_to_move {
-            "Drag the selected rest pattern along the view plane. Alt / Option bypasses snap."
-        } else {
-            "Select a visible pattern and return to the rest arrangement to move it."
-        };
         ui.horizontal(|ui| {
-            let toggle = ui
-                .add_enabled(
-                    ready_to_move || self.move_in_3d,
-                    egui::Checkbox::new(&mut self.move_in_3d, "Move pattern"),
-                )
-                .on_hover_text(move_hint)
-                .on_disabled_hover_text(move_hint);
-            self.retain_inspector_input(&toggle, false);
+            for (mode, label, hint) in [
+                (
+                    PlacementMode::Move,
+                    "Move pattern",
+                    "Drag the selected rest pattern along the view plane. Alt / Option bypasses snap.",
+                ),
+                (
+                    PlacementMode::Rotate,
+                    "Rotate pattern",
+                    "Drag the selected rest pattern around its center in the view plane.",
+                ),
+            ] {
+                let mut active = self.placement_mode == Some(mode);
+                let toggle = ui
+                    .add_enabled(ready_to_place || active, egui::Checkbox::new(&mut active, label))
+                    .on_hover_text(hint)
+                    .on_disabled_hover_text("Select a visible pattern and return to the rest arrangement.");
+                self.retain_inspector_input(&toggle, false);
+                if toggle.changed() {
+                    self.cancel_placement_drag(ui.ctx());
+                    self.placement_mode = active.then_some(mode);
+                    ui.ctx().request_repaint();
+                }
+            }
         });
-        let moving = self.move_in_3d && ready_to_move;
+        let mode = self.placement_mode.filter(|_| ready_to_place);
         let (response, painter) = ui.allocate_painter(ui.available_size(), Sense::click_and_drag());
         self.garment_canvas = Some(response.id);
         let r = response.rect;
         painter.rect_filled(r, 0., Color32::from_gray(37));
         if self.placement_drag.is_none()
-            && ((!moving && response.dragged())
+            && ((mode.is_none() && response.dragged())
                 || response.dragged_by(egui::PointerButton::Secondary)
                 || response.dragged_by(egui::PointerButton::Middle))
         {
@@ -7150,16 +7258,15 @@ impl Studio {
             self.camera_scale = frame.scale;
             self.garment_frame = Some(frame);
         }
-        self.move_pattern_in_garment(ui, &response, moving);
+        self.place_pattern_in_garment(ui, &response, mode);
         let pick = response
             .clicked()
             .then(|| response.interact_pointer_pos())
             .flatten();
-        let moving_placement = self
+        let preview_placement = self
             .placement_drag
             .as_ref()
-            .filter(|drag| drag.offset != [0.; 3])
-            .and_then(|drag| self.translated_placement(drag));
+            .and_then(PlacementDrag::placement);
         for i in -10..=10 {
             let p = i as f64 * 0.1;
             for (a, b) in [([-1., 0., p], [1., 0., p]), ([p, 0., -1.], [p, 0., 1.])] {
@@ -7186,7 +7293,7 @@ impl Studio {
                 .filter(|triangle| !self.hidden_pieces.contains(&mesh.piece_ids[triangle[0]]))
                 .map(|triangle| {
                     let id = mesh.piece_ids[triangle[0]];
-                    let vertices = if let Some((piece, placement)) = moving_placement
+                    let vertices = if let Some((piece, placement)) = preview_placement
                         && piece == id
                     {
                         triangle.map(|index| placement.transform(mesh.uv[index]))
@@ -7342,6 +7449,12 @@ impl eframe::App for Studio {
             }
         }
         let global_shortcuts = !authoring_modal && !egui::Popup::is_any_open(&ctx);
+        if global_shortcuts
+            && self.placement_drag.is_some()
+            && ctx.input_mut(|input| input.consume_key(egui::Modifiers::NONE, egui::Key::Escape))
+        {
+            self.cancel_placement_drag(&ctx);
+        }
         if global_shortcuts
             && self.cut_piece.is_some()
             && ctx.input_mut(|input| input.consume_key(egui::Modifiers::NONE, egui::Key::Escape))
@@ -27994,7 +28107,7 @@ mod placement_drag_tests {
         app.pitch = 0.;
         app.camera_scale = 200.;
         app.position_snap = PositionSnap::Mm10;
-        app.move_in_3d = true;
+        app.placement_mode = Some(PlacementMode::Move);
         let frame = |app: &mut Studio, events| {
             let _ = ctx.run_ui(
                 egui::RawInput {
@@ -28025,10 +28138,7 @@ mod placement_drag_tests {
 
         begin(&mut app);
         let drag = app.placement_drag.as_ref().expect("selected pattern drag");
-        assert_eq!(
-            app.translated_placement(drag).unwrap().1.translation,
-            [0.1, 0.08, 0.]
-        );
+        assert_eq!(drag.placement().unwrap().1.translation, [0.1, 0.08, 0.]);
         assert_eq!(app.editor.project, initial);
         frame(
             &mut app,
@@ -28088,5 +28198,180 @@ mod placement_drag_tests {
             [13. / 200., 0., 0.]
         );
         assert!(app.placement_drag.is_none());
+    }
+
+    #[test]
+    fn garment_rotation_anchors_curved_bounds_and_rotates_rest_vertices_about_the_view_normal() {
+        use super::pattern_transform_tests::{action, button, frame, key};
+        use egui::accesskit::Action;
+
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        for (name, origin) in [("Curved", [0.125, 0.625]), ("Other", [-0.875, 0.625])] {
+            app.editor
+                .execute(Command::AddRectangle {
+                    name: name.into(),
+                    origin,
+                    width: 0.5,
+                    height: 0.5,
+                })
+                .unwrap();
+        }
+        let [piece, other] = app.editor.project.pieces.as_slice() else {
+            unreachable!();
+        };
+        let id = piece.id;
+        let original = Placement {
+            translation: [0.11, -0.08, 0.22],
+            rotation: [0.37, -0.58, 0.24],
+        };
+        for command in [
+            Command::SetCurveControls {
+                curve: piece.boundary[2],
+                controls: Some([[0.5, 1.375], [0.25, 1.375]]),
+            },
+            Command::SetPlacement {
+                piece: id,
+                placement: original,
+            },
+            Command::AddSeam {
+                name: "Lower edges".into(),
+                a: CurveInterval::full(piece.boundary[0]),
+                b: CurveInterval::reversed(other.boundary[0]),
+                correspondence: vec![[0., 0.], [1., 1.]],
+            },
+        ] {
+            app.editor.execute(command).unwrap();
+        }
+        let initial = app.editor.project.clone();
+        let history = format!("{:?}", app.editor);
+        let rest = Arc::new(initial.mesh().unwrap());
+        app.mesh = Some(rest.clone());
+        app.selected = Some(id);
+        [app.yaw, app.pitch] = [0.57, -0.38];
+        app.camera_scale = 250.;
+
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(
+                button(&output, "Rotate pattern"),
+                Action::Click,
+                None,
+            )],
+        );
+        assert!(app.placement_mode == Some(PlacementMode::Rotate));
+        let rect = ctx.read_response(app.garment_canvas.unwrap()).unwrap().rect;
+        // The cubic rises 0.1875 m above the endpoints at t = 0.5.
+        let pivot = [0.375, 0.96875];
+        let world_pivot = original.transform(pivot);
+        let center = app.project3(world_pivot, rect).0;
+        let start = center + Vec2::new(30., 0.);
+        let end = center - Vec2::new(0., 30.);
+        let later = center - Vec2::new(30., 0.);
+        assert_eq!(app.garment_piece_at(start, rect), Some(id));
+        let pointer = |pos, pressed| egui::Event::PointerButton {
+            pos,
+            button: egui::PointerButton::Primary,
+            pressed,
+            modifiers: egui::Modifiers::NONE,
+        };
+        let begin = |app: &mut Studio| {
+            frame(
+                &ctx,
+                app,
+                vec![egui::Event::PointerMoved(start), pointer(start, true)],
+            );
+            frame(&ctx, app, vec![egui::Event::PointerMoved(end)]);
+        };
+
+        let (sy, cy) = f64::from(app.yaw).sin_cos();
+        let (sp, cp) = f64::from(app.pitch).sin_cos();
+        let right = [cy, 0., sy];
+        let up = [sy * sp, cp, -cy * sp];
+        let depth = [-sy * cp, sp, cy * cp];
+        let quarter_turn = |point: [f64; 3]| -> [f64; 3] {
+            let offset: [f64; 3] = std::array::from_fn(|i| point[i] - world_pivot[i]);
+            let [u, v, w] = [right, up, depth].map(|axis| {
+                axis.into_iter()
+                    .zip(offset)
+                    .map(|(a, b)| a * b)
+                    .sum::<f64>()
+            });
+            std::array::from_fn(|i| world_pivot[i] - v * right[i] + u * up[i] + w * depth[i])
+        };
+        let assert_position = |actual: [f64; 3], expected: [f64; 3]| {
+            assert!(
+                actual
+                    .iter()
+                    .zip(expected)
+                    .all(|(a, b)| (a - b).abs() < 1e-10),
+                "expected {expected:?}, got {actual:?}"
+            );
+        };
+
+        begin(&mut app);
+        let (preview_id, preview) = app.placement_drag.as_ref().unwrap().placement().unwrap();
+        assert_eq!(preview_id, id);
+        assert_position(preview.transform(pivot), world_pivot);
+        assert_position(
+            preview.transform([0.625, 0.625]),
+            quarter_turn(original.transform([0.625, 0.625])),
+        );
+        assert_eq!(app.editor.project, initial);
+        assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &rest));
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+        );
+        frame(&ctx, &mut app, vec![pointer(end, false)]);
+        assert!(app.placement_drag.is_none() && !app.dirty);
+        assert_eq!(format!("{:?}", app.editor), history);
+
+        for coalesced in [false, true] {
+            frame(&ctx, &mut app, vec![egui::Event::PointerMoved(start)]);
+            let revision = app.editor.project.revision;
+            let mut events = vec![];
+            if coalesced {
+                events.extend([pointer(start, true), egui::Event::PointerMoved(end)]);
+            } else {
+                begin(&mut app);
+            }
+            events.extend([pointer(end, false), egui::Event::PointerMoved(later)]);
+            frame(&ctx, &mut app, events);
+            let mut expected = initial.clone();
+            expected.revision = revision + 1;
+            expected.pieces[0].placement = preview;
+            assert!(app.placement_drag.is_none() && app.garment_surface().is_none());
+            assert_eq!(app.editor.project, expected);
+            let mesh = app.editor.project.mesh().unwrap();
+            assert_eq!(mesh.doc_revision, revision + 1);
+            assert_eq!(mesh.piece_ids, rest.piece_ids);
+            assert_eq!(mesh.uv, rest.uv);
+            assert_eq!(mesh.triangles, rest.triangles);
+            assert_eq!(mesh.stitches, rest.stitches);
+            for ((actual, before), owner) in mesh
+                .positions
+                .iter()
+                .zip(&rest.positions)
+                .zip(&rest.piece_ids)
+            {
+                if *owner == id {
+                    assert_position(*actual, quarter_turn(*before));
+                } else {
+                    assert_eq!(actual, before);
+                }
+            }
+            assert!(app.editor.undo() && app.editor.can_redo());
+            expected = initial.clone();
+            expected.revision = app.editor.project.revision;
+            assert_eq!(app.editor.project, expected);
+            app.mesh = Some(Arc::new(expected.mesh().unwrap()));
+        }
+        assert_eq!([app.yaw, app.pitch], [0.57, -0.38]);
     }
 }

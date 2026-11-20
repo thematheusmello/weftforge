@@ -34362,7 +34362,8 @@
       "reference_observation_status": "unobserved",
       "evidence_ids": [
         "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json",
-        "spec/features/FIT-001-native-placement.md"
+        "spec/features/FIT-001-native-placement.md",
+        "spec/features/FIT-001-viewport-rotation.md"
       ],
       "scenarios": [
         {
@@ -34666,7 +34667,8 @@
       ],
       "freshness": "stale",
       "contract_documents": {
-        "spec/features/FIT-001-native-placement.md": "0f955e8b102d925a0196b774d1a419a9bf849ea606989f78c6b218383dbe6a2c"
+        "spec/features/FIT-001-native-placement.md": "0f955e8b102d925a0196b774d1a419a9bf849ea606989f78c6b218383dbe6a2c",
+        "spec/features/FIT-001-viewport-rotation.md": "ea2b9a4dd8924cb7f1c6cb056dfcaa2a11843b28e9833f8b1030f6d08c98b3d0"
       }
     },
     {
@@ -62887,7 +62889,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "APP-003",

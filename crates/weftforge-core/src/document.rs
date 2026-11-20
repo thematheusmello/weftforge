@@ -120,6 +120,31 @@ impl Placement {
         ]
     }
 
+    /// Rotate in radians around a unit world-space axis through a pattern-space pivot.
+    pub fn rotated_about(self, pivot: [f64; 2], unit_axis: [f64; 3], angle: f64) -> Self {
+        if angle == 0. {
+            return self;
+        }
+        let basis = Self {
+            translation: [0.; 3],
+            ..self
+        };
+        let (sin, cos) = angle.sin_cos();
+        let [a, b, c] = unit_axis;
+        let [u, v] = [[1., 0.], [0., 1.]].map(|point| {
+            let direction = basis.transform(point);
+            let [x, y, z] = direction;
+            let cross = [b * z - c * y, c * x - a * z, a * y - b * x];
+            let along = (a * x + b * y + c * z) * (1. - cos);
+            std::array::from_fn(|i| cos * direction[i] + sin * cross[i] + along * unit_axis[i])
+        });
+        let mut result = Self::from_rotation_basis(u, v);
+        let old_pivot = self.transform(pivot);
+        let new_pivot = result.transform(pivot);
+        result.translation = std::array::from_fn(|i| old_pivot[i] - new_pivot[i]);
+        result
+    }
+
     fn compensate_pattern_transform(
         self,
         translation: [f64; 2],
@@ -148,6 +173,14 @@ impl Placement {
         let (sin, cos) = angle.sin_cos();
         let u: [f64; 3] = std::array::from_fn(|i| cos * old_u[i] - sin * old_v[i]);
         let v: [f64; 3] = std::array::from_fn(|i| sin * old_u[i] + cos * old_v[i]);
+        let mut result = Self::from_rotation_basis(u, v);
+        let old_pivot = self.transform(pivot);
+        let new_pivot = result.transform(std::array::from_fn(|i| pivot[i] + translation[i]));
+        result.translation = std::array::from_fn(|i| old_pivot[i] - new_pivot[i]);
+        result
+    }
+
+    fn from_rotation_basis(u: [f64; 3], v: [f64; 3]) -> Self {
         let w: [f64; 3] = std::array::from_fn(|i| {
             u[(i + 1) % 3] * v[(i + 2) % 3] - u[(i + 2) % 3] * v[(i + 1) % 3]
         });
@@ -162,14 +195,10 @@ impl Placement {
         } else {
             (0.0, (-v[0]).atan2(v[1]))
         };
-        let mut result = Self {
+        Self {
             rotation: [x, (-u[2]).atan2(cos_y), z],
             translation: [0.; 3],
-        };
-        let old_pivot = self.transform(pivot);
-        let new_pivot = result.transform(std::array::from_fn(|i| pivot[i] + translation[i]));
-        result.translation = std::array::from_fn(|i| old_pivot[i] - new_pivot[i]);
-        result
+        }
     }
 }
 
