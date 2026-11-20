@@ -509,6 +509,22 @@ impl Project {
     pub fn material(&self, id: Id) -> Option<&Material> {
         self.materials.iter().find(|item| item.id == id)
     }
+    /// Submit this pair in order on this revision, before any other ID allocation.
+    /// The editor's high-water mark also accounts for IDs retained after an Undo.
+    pub fn copy_material_assignment(&self, piece: Id, material: Material) -> Result<Command> {
+        ensure(
+            self.piece(piece).is_some_and(|p| p.material == material.id),
+            "The pattern's assigned fabric changed",
+        )?;
+        Ok(Command::Transaction(vec![
+            Command::AddMaterial { material },
+            Command::SetMaterial {
+                piece,
+                material: self.next_id,
+            },
+        ]))
+    }
+
     pub fn notch(&self, id: Id) -> Option<&Notch> {
         self.pieces
             .iter()

@@ -4036,7 +4036,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b",
         "spec/features/UI-001-standard-viewpoints.md": "904ae35c58a9ecf1e3da3c1a25098a1d1d255cd8776ab630d62991737e4f720a",
@@ -5334,7 +5334,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/FIT-001-group-arrangement.md": "91d61d6e14e9b3e5a25bc505d81630454a126352e12d5182009f78a917348c6b"
       }
@@ -12034,7 +12034,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/PAT-004-piece-rigid-transform.md": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
         "spec/features/PAT-004-native-transform-selection.md": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
@@ -35102,7 +35102,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/FIT-001-native-placement.md": "0f955e8b102d925a0196b774d1a419a9bf849ea606989f78c6b218383dbe6a2c",
         "spec/features/FIT-001-viewport-rotation.md": "ea2b9a4dd8924cb7f1c6cb056dfcaa2a11843b28e9833f8b1030f6d08c98b3d0",
@@ -48196,7 +48196,10 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "spec/features/MAT-001-active-pattern-fabric.md",
+        "parity/reports/WF-20261120-NATIVE-FABRIC-ASSIGNMENT-001.json"
+      ],
       "scenarios": [
         {
           "id": "UI-GRAIN-001",
@@ -48206,6 +48209,15 @@
           },
           "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
           "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        },
+        {
+          "id": "MAT-NATIVE-ACTIVE-FABRIC-001",
+          "path": "parity/scenarios/MAT-NATIVE-ACTIVE-FABRIC-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c"
+          },
+          "initial_conditions": "Open the supplied two-panel Harbor project at revision 24. Both patterns use authored Cotton material #1 at 0.18 kg/m\u00b2.",
+          "expected_outcomes": "One new material #68 retains every physical and appearance field on creation. Editing the back copy leaves front and material #1 intact. Assigning the existing copy changes only the front assignment. Undo and Redo restore every saved field except revision."
         }
       ],
       "comparison_criteria": {
@@ -48281,16 +48293,42 @@
             "parity/reports/artifacts/fabric-accessible-names-20261118/optimized-build.json": "a9bbf1377a2d6d279b625bfd9c563b2b78e6cb56e2284af716b38a1144ff1121"
           },
           "path": "parity/reports/WF-20261118-FABRIC-ACCESSIBLE-NAMES-001.json"
+        },
+        {
+          "path": "parity/reports/WF-20261120-NATIVE-FABRIC-ASSIGNMENT-001.json",
+          "id": "WF-20261120-NATIVE-FABRIC-ASSIGNMENT-001",
+          "commit": "1b7312cca375bfca1b3ab067690a646726af5447",
+          "timestamp": "2026-11-20T17:50:53Z",
+          "platform": "Apple Silicon macOS native Metal Fabric inspector and full saved-project replay",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c",
+            "parity/scenarios/MAT-NATIVE-ACTIVE-FABRIC-001.json": "cd6e0aab47bc0bbc5df833d443cc4dc267c861a201b10cd0e24e4c1868dd8b31",
+            "parity/reports/artifacts/native-fabric-assignment-20261120/CLEANUP.json": "a4f70db0bbdae197a9b60e55d665b7cf5bf810bc717d772eebf0e8c397fecd28",
+            "parity/reports/artifacts/native-fabric-assignment-20261120/NATIVE.json": "f9d02654c05963b5ce38483012b7d1d4b76c362e3d35593c442ee84c4097638d",
+            "parity/reports/artifacts/native-fabric-assignment-20261120/RESULT.json": "11ff81ffdf568b8a3e2eebfc87ed08183875cf6bd51f467bcf9bbe5da1285c74",
+            "parity/reports/artifacts/native-fabric-assignment-20261120/assigned.weftforge": "7da3de0727e96508a8b924e92709f4b39d059e3821be8523d7bf554e7ec50e7a",
+            "parity/reports/artifacts/native-fabric-assignment-20261120/check_fabrics.py": "6fa38a340e768861eba7d57bbc18c512421d63ed37ff1ff3b1f725911dfc4f39",
+            "parity/reports/artifacts/native-fabric-assignment-20261120/copied.weftforge": "68353fcbdb276b77a6b58b0b1c4fd8fb598847dbb13915646cc46fe9b2660ddd",
+            "parity/reports/artifacts/native-fabric-assignment-20261120/harbor-independent.png": "eeda687f85cc7765de047bb5099c59548a9dd8f1df04c90aa2257e532aa348b9",
+            "parity/reports/artifacts/native-fabric-assignment-20261120/independent.weftforge": "7783930396d618ecab2f35d7701c5ea916cd3977719cc91ab9a47e9fd89fd2a7",
+            "parity/reports/artifacts/native-fabric-assignment-20261120/redo.weftforge": "7249ecc66057e0169468dbb78aa8d26f442069ca7ba579faada62e5675cd2971",
+            "parity/reports/artifacts/native-fabric-assignment-20261120/renamed.weftforge": "60447e68a6a997bc444aa921326a2658b6a59220a828ba89a2e7f5c4a7764faf",
+            "parity/reports/artifacts/native-fabric-assignment-20261120/undo.weftforge": "6eeb7cd7b60e078fc4330eb0d05e9c7acd2cfdbd83041356c4e4b389109ef1bf"
+          }
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "The native picker covers whole active patterns using project-local fabric records. Regional assignment, an external fabric library, measured presets and reference comparison remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current",
+      "contract_documents": {
+        "spec/features/MAT-001-active-pattern-fabric.md": "8d899c486edabfead74ad43fded8302ed346b77bf083e4a271df30a5fb9a8659"
+      }
     },
     {
       "id": "MAT-002",

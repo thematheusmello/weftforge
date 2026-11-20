@@ -919,6 +919,15 @@ struct OrderedSewingDraft {
     numeric_fields: [Vec<egui::Id>; 2],
 }
 
+struct FabricNameEdit {
+    material: Id,
+    name: String,
+    copy: bool,
+    input: RetainedInspectorInput,
+    epoch: u64,
+    error: Option<String>,
+}
+
 struct SewingGroupEdit {
     group: SewingGroup,
     focus: Option<egui::Id>,
@@ -1197,6 +1206,7 @@ struct Studio {
     sewing_draft: OrderedSewingDraft,
     free_sewing: Option<FreeSewingDraft>,
     sewing_edit: Option<SewingGroupEdit>,
+    fabric_name: Option<FabricNameEdit>,
     reset_sewing_properties: bool,
     reversed: bool,
     intervals: [[f64; 2]; 2],
@@ -1302,6 +1312,7 @@ impl Studio {
             sewing_draft: OrderedSewingDraft::default(),
             free_sewing: None,
             sewing_edit: None,
+            fabric_name: None,
             reset_sewing_properties: true,
             reversed: true,
             intervals: [[0., 1.]; 2],
@@ -1442,6 +1453,7 @@ impl Studio {
 
     fn reset_gestures(&mut self) {
         self.placement_drag = None;
+        self.fabric_name = None;
         for fields in &self.sewing_draft.numeric_fields {
             discard_suspended_inputs(&mut self.suspended_properties, fields);
         }
@@ -1735,6 +1747,7 @@ impl Studio {
             || self.hole.is_some()
             || self.outline_offset.is_some()
             || self.free_sewing.is_some()
+            || self.fabric_name.is_some()
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some()
     }
@@ -2585,7 +2598,7 @@ impl Studio {
             return;
         }
         let mut open = true;
-        egui::Window::new("Recover editable construction").enabled(self.rectangle.is_none() && self.transform.is_none() && self.sewing_edit.is_none() && self.pattern_import.is_none() && !self.free_sewing.as_ref().is_some_and(|draft| draft.modal) && !self.cut_piece.as_ref().is_some_and(|draft|draft.modal) && self.hole.is_none() && self.outline_offset.is_none()).open(&mut open).default_width(520.0).show(ctx,|ui| {
+        egui::Window::new("Recover editable construction").enabled(self.rectangle.is_none() && self.transform.is_none() && self.sewing_edit.is_none() && self.fabric_name.is_none() && self.pattern_import.is_none() && !self.free_sewing.as_ref().is_some_and(|draft| draft.modal) && !self.cut_piece.as_ref().is_some_and(|draft|draft.modal) && self.hole.is_none() && self.outline_offset.is_none()).open(&mut open).default_width(520.0).show(ctx,|ui| {
             ui.label("Recovery opens a copy. Save current edits before replacing the document.");
             ui.horizontal(|ui| {
                 if ui.button("Refresh").clicked() { self.refresh_recovery(); }
@@ -3513,6 +3526,7 @@ impl Studio {
                     }))
             || self.tool == Tool::SewingPaths
             || self.tool == Tool::FreeSewing
+            || self.fabric_name.is_some()
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some()
             || ui
@@ -3600,6 +3614,8 @@ impl Studio {
             let mut remove_notch=None;
             let mut remove_hole=None;
             let mut remove_piece=None;
+            let mut assign_fabric=None;
+            let mut edit_fabric_name=None;
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
                 if self.properties_tab == PropertiesTab::Pattern {
                 let response=self.outline_offset_button(ui);
@@ -3752,7 +3768,31 @@ impl Studio {
                 if let Some(material)=&mut draft.material {
                     pane_heading(ui,"Fabric");
                     let count=self.editor.project.pieces.iter().filter(|piece|piece.material==material.id).count();
-                    ui.label(format!("Shared fabric · {count} pieces")); ui.small("Changes affect every assigned piece. Uncalibrated approximation.");
+                    let label=ui.label("Assigned fabric");
+                    let picker=egui::ComboBox::from_id_salt(("assigned-fabric",piece.id))
+                        .width(ui.available_width()).truncate()
+                        .selected_text(&material.name)
+                        .show_ui(ui,|ui| {
+                            for option in &self.editor.project.materials {
+                                let row=ui.selectable_label(option.id==material.id,format!("{} · #{}",option.name,option.id));
+                                self.retain_inspector_input(&row,false);
+                                if row.clicked() { if option.id!=material.id { assign_fabric=Some(option.id); } ui.close(); }
+                            }
+                        });
+                    let open=picker.inner.is_some();
+                    let button=picker.response.labelled_by(label.id);
+                    self.retain_inspector_input(&button,open);
+                    acting|=open || button.is_pointer_button_down_on() || button.clicked();
+                    ui.horizontal_wrapped(|ui| {
+                        for (copy,label) in [(false,"Rename fabric…"),(true,"Copy for this pattern…")] {
+                            let button=ui.button(label);
+                            self.retain_inspector_input(&button,false);
+                            acting|=button.is_pointer_button_down_on() || button.clicked();
+                            if button.clicked() { edit_fabric_name=Some(copy); }
+                        }
+                    });
+                    let noun=if count==1 {"pattern"} else {"patterns"};
+                    ui.small(format!("Assigned to {count} {noun}. Edits affect every assigned pattern. Uncalibrated approximation."));
                     let label=ui.label("Mass/area kg/m²"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.areal_density).speed(0.01).range(0.001..=100.0).clamp_existing_to_range(false)).labelled_by(label.id));
                     let label=ui.label("Warp stiffness N/m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.warp_stiffness).speed(10.0).range(0.0..=1.0e8).clamp_existing_to_range(false)).labelled_by(label.id));
                     let label=ui.label("Weft stiffness N/m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.weft_stiffness).speed(10.0).range(0.0..=1.0e8).clamp_existing_to_range(false)).labelled_by(label.id));
@@ -3968,6 +4008,20 @@ impl Studio {
             if let Some(curve)=edit_internal { self.open_internal_line(ui.ctx(),Some(curve)); }
             if create_notch { self.open_notch(ui.ctx(),None); }
             if let Some(notch)=edit_notch { self.open_notch(ui.ctx(),Some(notch)); }
+            if let Some(target)=assign_fabric {
+                acting=true;
+                if let Some(input)=self.fabric_input(ui.ctx()) && let Some(piece)=input.selected {
+                    let pending=self.draft.as_ref().and_then(|draft|draft.material.as_ref())
+                        .is_some_and(|material|self.editor.project.material(material.id)!=Some(material));
+                    if pending {
+                        self.message="Finish the current fabric property edit before assigning a different fabric.".into();
+                        input.close_without_commit(ui.ctx());
+                    } else {
+                        self.apply_inspector_action(ui.ctx(),Command::SetMaterial{piece,material:target},input.focus);
+                    }
+                }
+            }
+            if let Some(copy)=edit_fabric_name { self.begin_fabric_name(ui.ctx(),copy); }
             if let Some(notch)=remove_notch { acting=true; self.apply_inspector_action(ui.ctx(),Command::RemoveNotch { notch },action_focus); }
             if let Some(curve)=remove_internal { acting=true; self.apply_inspector_action(ui.ctx(),Command::RemoveInternalCurve { curve },action_focus); }
             if let Some(hole)=remove_hole { acting=true; self.apply_inspector_action(ui.ctx(),Command::RemoveHole { hole },action_focus); }
@@ -4764,6 +4818,7 @@ impl Studio {
             || self.cut_piece.is_some()
             || self.hole.is_some()
             || self.free_sewing.is_some()
+            || self.fabric_name.is_some()
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some()
             || self.drag_point.is_some()
@@ -7031,6 +7086,151 @@ impl Studio {
         painter.add(egui::Shape::line(points, Stroke::new(2., color)));
     }
 
+    fn fabric_input(&mut self, ctx: &egui::Context) -> Option<RetainedInspectorInput> {
+        let input = self.free_sewing_input(ctx);
+        if self.has_construction_gesture()
+            || input
+                .selected
+                .is_none_or(|id| self.hidden_pieces.contains(&id))
+        {
+            self.message = "Finish the current gesture and select a visible pattern before changing its fabric.".into();
+        } else if self.has_unfinished_properties_input()
+            || input.text.as_ref().is_some_and(|(raw, _)| {
+                raw.trim()
+                    .parse::<f64>()
+                    .ok()
+                    .is_none_or(|value| !value.is_finite())
+            })
+        {
+            self.message = "Finish the current numeric edit before changing fabric.".into();
+        } else {
+            return Some(input);
+        }
+        input.close_without_commit(ctx);
+        None
+    }
+
+    fn begin_fabric_name(&mut self, ctx: &egui::Context, copy: bool) {
+        let Some(input) = self.fabric_input(ctx) else {
+            return;
+        };
+        let Some(material) = input
+            .selected
+            .and_then(|id| self.editor.project.piece(id))
+            .and_then(|p| self.editor.project.material(p.material))
+        else {
+            return;
+        };
+        let name = if copy {
+            let suffix = " copy";
+            let end = material.name.floor_char_boundary(256 - suffix.len());
+            format!("{}{suffix}", &material.name[..end])
+        } else {
+            material.name.clone()
+        };
+        self.fabric_name = Some(FabricNameEdit {
+            material: material.id,
+            name,
+            copy,
+            input,
+            epoch: ctx.cumulative_frame_nr(),
+            error: None,
+        });
+    }
+
+    fn fabric_name_window(&mut self, ctx: &egui::Context) {
+        let Some(mut edit) = self.fabric_name.take() else {
+            return;
+        };
+        let Some(piece) = self.selected.and_then(|id| self.editor.project.piece(id)) else {
+            return;
+        };
+        if edit.input.revision != self.editor.project.revision
+            || edit.input.selected != Some(piece.id)
+            || piece.material != edit.material
+            || self.hidden_pieces.contains(&piece.id)
+        {
+            self.message = "The fabric edit expired because the selected pattern changed.".into();
+            return;
+        }
+        let piece_id = piece.id;
+        let (mut apply, mut cancel) = (false, false);
+        let modal = egui::Modal::new(egui::Id::new(("fabric-name", edit.epoch))).show(ctx, |ui| {
+            ui.set_width(330.);
+            ui.heading(if edit.copy {
+                "Copy fabric for this pattern"
+            } else {
+                "Rename assigned fabric"
+            });
+            ui.label(if edit.copy {
+                format!("Only {} will use the new fabric.", piece.name)
+            } else {
+                "Every assigned pattern will display the new name.".into()
+            });
+            let label = ui.label("Fabric name");
+            native_text_edit(ui, &mut edit.name, None, 256, |text| {
+                text.desired_width(f32::INFINITY)
+            })
+            .labelled_by(label.id);
+            if let Some(message) = &edit.error {
+                ui.colored_label(Color32::LIGHT_RED, message);
+            }
+            ui.horizontal(|ui| {
+                apply = ui
+                    .button(if edit.copy {
+                        "Create and assign copy"
+                    } else {
+                        "Apply fabric name"
+                    })
+                    .clicked();
+                cancel = ui.button("Cancel fabric edit").clicked();
+            });
+        });
+        if cancel || modal.should_close() {
+            edit.input.close_without_commit(ctx);
+            return;
+        }
+        if apply {
+            let saved = self
+                .editor
+                .project
+                .material(edit.material)
+                .expect("validated piece material");
+            let staged = self.draft.as_mut().and_then(|draft| draft.material.take());
+            let mut material = staged.as_ref().unwrap_or(saved).clone();
+            material.name.clone_from(&edit.name);
+            if !edit.copy && material == *saved && staged.as_ref().is_none_or(|m| m == saved) {
+                if let Some(draft) = &mut self.draft {
+                    draft.material = staged;
+                }
+                edit.input.close_without_commit(ctx);
+                return;
+            }
+            let command = if edit.copy {
+                self.editor
+                    .project
+                    .copy_material_assignment(piece_id, material)
+            } else {
+                Ok(Command::UpdateMaterial { material })
+            };
+            edit.input.restore(ctx);
+            // A pending fabric change belongs on the copy. Keep the shared original intact.
+            edit.error = match command {
+                Ok(command) => {
+                    if self.apply_inspector_action(ctx, command, edit.input.focus) {
+                        return;
+                    }
+                    Some(self.message.clone())
+                }
+                Err(error) => Some(error.to_string()),
+            };
+            if let Some(draft) = &mut self.draft {
+                draft.material = staged;
+            }
+        }
+        self.fabric_name = Some(edit);
+    }
+
     fn sewing_group_window(&mut self, ctx: &egui::Context) {
         let Some(mut edit) = self.sewing_edit.take() else {
             return;
@@ -7684,6 +7884,7 @@ impl eframe::App for Studio {
             || self.hole.is_some()
             || self.outline_offset.is_some()
             || self.free_sewing.as_ref().is_some_and(|draft| draft.modal)
+            || self.fabric_name.is_some()
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some()
             || self.pattern_snapshot.is_some();
@@ -8148,6 +8349,7 @@ impl eframe::App for Studio {
         self.outline_offset_window(&ctx);
         self.free_sewing_window(&ctx);
         self.sewing_group_window(&ctx);
+        self.fabric_name_window(&ctx);
         self.pattern_import_window(&ctx);
         self.pattern_snapshot_window(&ctx);
         if let Some((_, Some(format), focused)) = ctx
@@ -28414,6 +28616,255 @@ mod rectangle_drag_tests {
                 }
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod fabric_picker_tests {
+    use super::native_idle_numeric_tests::{action, frame};
+    use super::*;
+    use egui::accesskit::{Action, ActionData, Role};
+
+    fn click(ctx: &egui::Context, app: &mut Studio, label: &str) {
+        let out = frame(ctx, app, 1000., vec![]);
+        let event = inspector_click(&out, label);
+        frame(ctx, app, 1000., vec![event]);
+        frame(ctx, app, 1000., vec![]);
+    }
+
+    fn assign(ctx: &egui::Context, app: &mut Studio, id: Id) {
+        let out = frame(ctx, app, 1000., vec![]);
+        let nodes = &out.platform_output.accesskit_update.unwrap().nodes;
+        let combo = nodes
+            .iter()
+            .find(|(_, n)| n.role() == Role::ComboBox && !n.is_disabled())
+            .expect("fabric picker")
+            .0;
+        frame(ctx, app, 1000., vec![action(combo, Action::Click, None)]);
+        let label = format!("{} · #{id}", app.editor.project.material(id).unwrap().name);
+        click(ctx, app, &label);
+    }
+
+    fn name(ctx: &egui::Context, app: &mut Studio, value: &str) {
+        let out = frame(ctx, app, 1000., vec![]);
+        let nodes = &out.platform_output.accesskit_update.unwrap().nodes;
+        let id = nodes
+            .iter()
+            .find(|(_, node)| node.role() == Role::TextInput && !node.is_disabled())
+            .expect("fabric name input")
+            .0;
+        frame(
+            ctx,
+            app,
+            1000.,
+            vec![action(
+                id,
+                Action::SetValue,
+                Some(ActionData::Value(value.into())),
+            )],
+        );
+    }
+
+    fn fixture() -> (egui::Context, Studio, Id, Id, Id) {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        studio_style(&ctx);
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        for (name, x) in [("Front", 0.), ("Back", 0.6)] {
+            app.editor
+                .execute(Command::AddRectangle {
+                    name: name.into(),
+                    origin: [x, 0.],
+                    width: 0.2,
+                    height: 0.4,
+                })
+                .unwrap();
+        }
+        let cloth = Material {
+            name: "Silk".into(),
+            color: [0.2, 0.9, 0.5],
+            friction: 0.61,
+            damping: 0.15,
+            collision_thickness: 0.0035,
+            shear_stiffness: 78.,
+            ..Default::default()
+        };
+        app.editor
+            .execute(Command::AddMaterial { material: cloth })
+            .unwrap();
+        let id = app.editor.project.materials.last().unwrap().id;
+        let (front, back) = (
+            app.editor.project.pieces[0].id,
+            app.editor.project.pieces[1].id,
+        );
+        app.editor
+            .execute(Command::SetMaterial {
+                piece: front,
+                material: id,
+            })
+            .unwrap();
+        app.editor = Editor::new(app.editor.project.clone()).unwrap();
+        app.selected = Some(back);
+        app.additional_pieces.insert(front);
+        app.properties_tab = PropertiesTab::Fabric;
+        (ctx, app, front, back, id)
+    }
+
+    #[test]
+    fn fabric_picker_assign_copy_rename_and_history_preserve_other_patterns_and_all_properties() {
+        let (ctx, mut app, front, back, silk) = fixture();
+        let start = app.editor.project.clone();
+        assign(&ctx, &mut app, silk);
+        let shared = app.editor.project.clone();
+        assert_eq!(shared.revision, start.revision + 1);
+        assert_eq!(shared.piece(back).unwrap().material, silk);
+        assert_eq!(shared.materials, start.materials);
+        // Choosing the current row must not dirty history.
+        assign(&ctx, &mut app, silk);
+        assert_eq!(app.editor.project, shared);
+        click(&ctx, &mut app, "Copy for this pattern…");
+        name(&ctx, &mut app, "Back silk");
+        click(&ctx, &mut app, "Create and assign copy");
+        let copied = app.editor.project.clone();
+        let id = copied.piece(back).unwrap().material;
+        assert_ne!(id, silk);
+        assert_eq!(copied.revision, shared.revision + 1);
+        let mut expected = shared.material(silk).unwrap().clone();
+        expected.id = id;
+        expected.name = "Back silk".into();
+        assert_eq!(copied.material(id), Some(&expected));
+        assert_eq!(copied.material(silk), shared.material(silk));
+        assert_eq!(copied.piece(front), shared.piece(front));
+        click(&ctx, &mut app, "Rename fabric…");
+        name(&ctx, &mut app, "Back silk lining");
+        click(&ctx, &mut app, "Apply fabric name");
+        assert_eq!(
+            app.editor.project.material(id).unwrap().name,
+            "Back silk lining"
+        );
+        assert_eq!(app.editor.project.material(silk), shared.material(silk));
+        for original in [&copied, &shared, &start] {
+            app.history(&ctx, false);
+            assert_eq!(app.editor.project.materials, original.materials);
+            assert_eq!(app.editor.project.pieces, original.pieces);
+        }
+        app.history(&ctx, true);
+        app.history(&ctx, true);
+        assert_eq!(app.editor.project.materials, copied.materials);
+        assert_eq!(app.editor.project.pieces, copied.pieces);
+        // An Undo branch retains the allocator high-water mark.
+        app.history(&ctx, false);
+        click(&ctx, &mut app, "Copy for this pattern…");
+        click(&ctx, &mut app, "Create and assign copy");
+        assert!(app.editor.project.piece(back).unwrap().material > id);
+        assert!(!app.editor.can_redo());
+    }
+
+    #[test]
+    fn fabric_picker_refuses_unfinished_properties_and_shields_modal_history() {
+        use super::pattern_transform_tests::key;
+        let (ctx, mut app, _, _, target) = fixture();
+        let original = app.editor.project.clone();
+        let out = frame(&ctx, &mut app, 1000., vec![]);
+        let density = out
+            .platform_output
+            .accesskit_update
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| node.numeric_value() == Some(original.materials[0].areal_density))
+            .unwrap()
+            .0;
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![action(density, Action::Focus, None)],
+        );
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("1e-".into()),
+            ],
+        );
+        let focus = numeric_focus(&ctx).expect("real numeric field focused");
+        click(&ctx, &mut app, "Copy for this pattern…");
+        assert!(app.fabric_name.is_none());
+        assert_eq!(
+            ctx.data_mut(|d| d.get_temp::<String>(focus)).as_deref(),
+            Some("1e-")
+        );
+        assert_eq!(app.editor.project, original);
+        assign(&ctx, &mut app, target);
+        assert_eq!(app.editor.project, original);
+        assert_eq!(
+            ctx.data_mut(|d| d.get_temp::<String>(focus)).as_deref(),
+            Some("1e-")
+        );
+        let (ctx, mut app, _, _, _) = fixture();
+        click(&ctx, &mut app, "Copy for this pattern…");
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![key(egui::Key::Z, egui::Modifiers::COMMAND)],
+        );
+        assert!(app.fabric_name.is_some());
+        frame(
+            &ctx,
+            &mut app,
+            1000.,
+            vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+        );
+        assert!(app.fabric_name.is_none());
+        assert_eq!(app.editor.project, original);
+    }
+
+    #[test]
+    fn fabric_picker_cancel_invalid_name_stale_revision_and_staged_copy_keep_the_shared_original() {
+        let (ctx, mut app, front, back, _) = fixture();
+        let original = app.editor.project.clone();
+        click(&ctx, &mut app, "Copy for this pattern…");
+        for invalid in [" ".to_owned(), "é".repeat(129)] {
+            name(&ctx, &mut app, &invalid);
+            click(&ctx, &mut app, "Create and assign copy");
+            assert!(app.fabric_name.as_ref().unwrap().error.is_some());
+            assert_eq!(app.editor.project, original);
+        }
+        click(&ctx, &mut app, "Cancel fabric edit");
+        assert!(app.fabric_name.is_none());
+        assert_eq!(app.editor.project, original);
+        click(&ctx, &mut app, "Rename fabric…");
+        app.editor
+            .execute(Command::SetGrain {
+                piece: front,
+                angle: 0.3,
+            })
+            .unwrap();
+        frame(&ctx, &mut app, 1000., vec![]);
+        assert!(app.fabric_name.is_none());
+        assert_eq!(app.editor.project.materials, original.materials);
+        frame(&ctx, &mut app, 1000., vec![]);
+        app.draft
+            .as_mut()
+            .unwrap()
+            .material
+            .as_mut()
+            .unwrap()
+            .areal_density = 0.27;
+        click(&ctx, &mut app, "Copy for this pattern…");
+        click(&ctx, &mut app, "Create and assign copy");
+        let id = app.editor.project.piece(back).unwrap().material;
+        assert_eq!(app.editor.project.material(id).unwrap().areal_density, 0.27);
+        assert_eq!(app.editor.project.materials[0], original.materials[0]);
+        assert_eq!(
+            app.editor.project.piece(front).unwrap().material,
+            original.piece(front).unwrap().material
+        );
     }
 }
 
