@@ -1,0 +1,15 @@
+{
+  "id": "FILE-SELECTED-OBJ-001",
+  "status": "implementation_only",
+  "initial_conditions": "Load the original Harbor garment at revision 24 with two patterns, eight authored seams, a blue cotton front and a terracotta back.",
+  "actions": [
+    "Select Harbor back from Scene. Search for Export selected OBJ and write the rest surface. Enable Select multiple and select both panels, then export both through File.",
+    "Return to the back selection. Assemble the garment with gravity off for 60 steps and drape for 120. Export both the selected back and the full current garment, then save the workspace image.",
+    "Replay the selected and full geometry with the standalone corner-by-corner OBJ checker and Apple Model I/O. Re-export rest surfaces through CLI and MCP, checking invalid selections and protected destinations."
+  ],
+  "expected_outcomes": "One selected panel exports 327 vertices and 586 triangles with its own UVs, normals, group and fabric. The two-panel rest selection reproduces the full OBJ and MTL. The same selected back matches the corresponding faces of the full draped surface. Both adapters reproduce the native rest selection and preserve existing files on invalid input.",
+  "replay": [
+    "Run check_selection.py with the complete and selected OBJ paths. Optionally provide --cli PATH --project PROJECT to repeat the rest exports.",
+    "Run the earlier two-fabric check_modelio.swift on each selected output on macOS."
+  ]
+}

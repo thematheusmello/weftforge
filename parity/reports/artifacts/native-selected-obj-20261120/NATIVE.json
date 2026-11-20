@@ -1,0 +1,82 @@
+{
+  "commit": "dfdd91100c9825796eadb46c95e478ed2caabcaf",
+  "tree": "7c6689418742114326636d25f4642ec18034187f",
+  "binary": "00d72ef06032a6dd4c2ef30520dab4ac7ea1510339dfd2857eab01f7c3a61469",
+  "release_cli": "39b90527ef4b87caff94908a1b3e910610c5bfbcdc1c60c12ad53264b160e644",
+  "input": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+  "start": "2026-11-20T19:10:00.744609+00:00",
+  "revision": 24,
+  "patterns": 2,
+  "seams": 8,
+  "selected_rest_and_drape_ids": [
+    31
+  ],
+  "two_panel_rest_selection_order": [
+    31,
+    2
+  ],
+  "both_rest_obj_sha256": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+  "rest_selection_entry": "Command search for Select, then Export selected OBJ with Harbor back selected",
+  "both_selection_entry": "File > Export selected OBJ after extending the scene selection to both panels",
+  "draped_selection_entry": "File > Export selected OBJ; File > Export OBJ on the same accepted drape",
+  "accepted_assembly_steps": 60,
+  "accepted_drape_steps": 120,
+  "simulated_seconds": 3.0,
+  "displayed_assembly_remaining_m": 0.0,
+  "source_preserved_after_close": true,
+  "retained_workspace_png_dimensions": [
+    1640,
+    1000
+  ],
+  "hashes_match_pre_keyboard_order_run": true,
+  "comparison_geometry": {
+    "triangle_corners_per_selected_output": 1758,
+    "all_corner_positions_normals_uv_match_whole": true,
+    "vertex_count": 327,
+    "drape_vertices_moved_over_10_um": 327,
+    "max_material_point_displacement_m": 0.2763520534551249,
+    "rest": {
+      "positions": 327,
+      "uvs": 327,
+      "normals": 327,
+      "triangles": 586,
+      "materials": {
+        "fabric_68_Terracotta_linen": {
+          "groups": [
+            "piece_31"
+          ],
+          "triangles": 586,
+          "diffuse_rgb": [
+            0.78,
+            0.25,
+            0.12
+          ],
+          "area_m2": 0.5923,
+          "boundary_m": 4.083146221782354
+        }
+      }
+    },
+    "draped": {
+      "positions": 327,
+      "uvs": 327,
+      "normals": 327,
+      "triangles": 586,
+      "materials": {
+        "fabric_68_Terracotta_linen": {
+          "groups": [
+            "piece_31"
+          ],
+          "triangles": 586,
+          "diffuse_rgb": [
+            0.78,
+            0.25,
+            0.12
+          ],
+          "area_m2": 0.5974306876520666,
+          "boundary_m": 4.1389217298570635
+        }
+      }
+    }
+  },
+  "closed_at_utc": "2026-11-20T19:18:59.323418+00:00"
+}
