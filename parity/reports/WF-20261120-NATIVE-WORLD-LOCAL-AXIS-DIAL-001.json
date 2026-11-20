@@ -121,5 +121,6 @@
     "spec/features/FIT-001-viewport-rotation.md",
     "spec/features/FIT-001-viewport-rotation-axes.md"
   ],
-  "freshness": "current"
+  "freshness": "stale",
+  "freshness_reason": "The studio placement handler changed to recognize a captured press followed by movement and release in one frame. The earlier World X and Local Z run retains its original result, saved projects, workspace capture and first-drag observation."
 }

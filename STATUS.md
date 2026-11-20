@@ -1,3 +1,15 @@
+# Captured 3D placement release — 20 November 2026
+
+A pattern now accepts the release when macOS delivers its first movement
+past the click threshold and the primary-button release in the same frame
+after an owned press. The regression also exercises movement below the
+click threshold, focus loss, Escape, Undo and complete single-frame input.
+
+The historical World X and Local Z report is stale on this changed handler.
+Its original native files remain available. Register the separately captured
+AppKit and egui event comparison, then verify the saved projects and combined
+source from a clean checkout. [Previous native dial report](parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json).
+
 # World and local pattern rotation — 20 November 2026
 
 Select a visible rest pattern and enable **Rotate pattern**. The 3D view
@@ -15,8 +27,8 @@ values. The studio and CLI built, and formatting, 516 workspace tests and
 strict Clippy passed. [Native dial report](parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json) · [Studio preview](docs/studio-preview.md).
 
 The first dial drag after choosing World X kept revision 23. Repeating it
-committed revision 24. Investigate that first input and exercise the other
-axis choices in the native studio. Avatar arrangement and reference
+committed revision 24. The split-release investigation above explains one reproduced input schedule.
+Exercise the remaining axis choices in the native studio. Avatar arrangement and reference
 comparison remain open.
 
 # Rotate a pattern in the 3D view — 20 November 2026
