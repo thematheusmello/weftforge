@@ -1,0 +1,37 @@
+{
+  "source_commit": "ce906dd547c2ef1f9648a5a5f9f292374a141a73",
+  "source_tree": "783b691c5991dd3b9613151b714d7f4ebb8bce49",
+  "target": "aarch64-apple-darwin",
+  "command": [
+    "cargo",
+    "xtask",
+    "package"
+  ],
+  "offline": true,
+  "clean_at_start": true,
+  "workspace_tests": 514,
+  "strict_clippy_pass": true,
+  "rebuild_exit": 0,
+  "rebuild_seconds": 3.3425551671534777,
+  "release_cli_and_studio_hashes_equal_to_prior_smoke": [
+    {
+      "path": "weftforge",
+      "size_bytes": 17098240,
+      "sha256": "6fab3aa3e407344fc1c8cb361dab3e11f67a3dab9476b61aa3288499246fe005"
+    },
+    {
+      "path": "weftforge-cli",
+      "size_bytes": 3567280,
+      "sha256": "75e6918b3228c5e7df68fc934ba84ea0c328f010a85b9375908b83e505ae1680"
+    },
+    {
+      "path": "WeftForge.app/Contents/MacOS/weftforge",
+      "size_bytes": 17098240,
+      "sha256": "6fab3aa3e407344fc1c8cb361dab3e11f67a3dab9476b61aa3288499246fe005"
+    }
+  ],
+  "release_artifact_check": "Actual package, independent size and SHA-256 of all package and standalone Cargo notices",
+  "corrupted_selected_text_fixture": "Preserved prior package after a digest mismatch at equal text length",
+  "remaining_notice_scope": "Eleven libraries have upstream declarations and two have no dedicated text at the pinned revision",
+  "checked_utc": "2026-11-19T09:22:17.844911Z"
+}

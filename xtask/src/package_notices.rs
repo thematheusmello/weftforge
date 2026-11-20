@@ -9,6 +9,9 @@ use std::{
     process::Command,
 };
 
+pub(super) const UPSTREAM_CATALOG: &str = "vendor/cargo-notices";
+pub(super) const CRATES_IO: &str = "registry+https://github.com/rust-lang/crates.io-index";
+
 #[derive(Deserialize)]
 struct Workspace {
     target_directory: PathBuf,
@@ -174,11 +177,19 @@ impl NoticePlan {
     }
 
     pub(super) fn write(&self, package: &Path, artifacts: &[PathBuf]) -> Result<usize> {
+        let catalog: Vec<PinnedGroup> = serde_json::from_reader(File::open(
+            self.workspace.join(UPSTREAM_CATALOG).join("index.json"),
+        )?)?;
         let directory = package.join("licenses/cargo");
         fs::create_dir(&directory)?;
         let mut crates = Vec::new();
         for dependency in &self.packages {
-            crates.push(crate_notices(&self.workspace, package, dependency)?);
+            crates.push(crate_notices(
+                &self.workspace,
+                package,
+                dependency,
+                &catalog,
+            )?);
         }
         let unresolved = crates
             .iter()
@@ -242,6 +253,46 @@ struct FileRecord {
     path: String,
     size_bytes: u64,
     sha256: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    upstream: Option<UpstreamAttribution>,
+}
+
+#[derive(Deserialize)]
+struct PinnedGroup {
+    project: String,
+    crates: Vec<PinnedCrate>,
+    documents: Vec<PinnedText>,
+}
+
+#[derive(Deserialize)]
+struct PinnedCrate {
+    name: String,
+    version: String,
+    vcs_info_sha256: String,
+}
+
+#[derive(Deserialize)]
+struct PinnedText {
+    sha256: String,
+    size_bytes: u64,
+    #[serde(flatten)]
+    attribution: UpstreamAttribution,
+}
+
+#[derive(Clone, Deserialize, Serialize)]
+struct UpstreamAttribution {
+    name: String,
+    url: String,
+    kind: UpstreamKind,
+}
+
+#[derive(Clone, Copy, Deserialize, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "snake_case")]
+enum UpstreamKind {
+    CodeLicense,
+    LicenseDeclaration,
+    ThirdPartyLicense,
+    Attribution,
 }
 
 fn portable_path(path: &Path) -> Result<String> {
@@ -269,7 +320,82 @@ fn file_record(base: &Path, relative: &Path) -> Result<FileRecord> {
         path: portable_path(relative)?,
         size_bytes,
         sha256: format!("{:x}", hasher.finalize()),
+        upstream: None,
     })
+}
+
+fn catalog_path_component(value: &str) -> bool {
+    !matches!(value, "" | "." | "..")
+        && value
+            .bytes()
+            .all(|byte| byte.is_ascii_alphanumeric() || b"-_.".contains(&byte))
+}
+
+fn pinned_notices(
+    workspace: &Path,
+    package: &Path,
+    crate_root: &Path,
+    dependency: &CargoPackage,
+    catalog: &[PinnedGroup],
+) -> Result<Vec<FileRecord>> {
+    if dependency.source.as_deref() != Some(CRATES_IO) {
+        return Ok(Vec::new());
+    }
+    let Some((group, pin)) = catalog.iter().find_map(|group| {
+        group
+            .crates
+            .iter()
+            .find(|pin| pin.name == dependency.name && pin.version == dependency.version)
+            .map(|pin| (group, pin))
+    }) else {
+        return Ok(Vec::new());
+    };
+    let vcs = Path::new(".cargo_vcs_info.json");
+    if !crate_root.join(vcs).is_file()
+        || file_record(crate_root, vcs)?.sha256 != pin.vcs_info_sha256
+    {
+        return Ok(Vec::new());
+    }
+    let texts = workspace.join(UPSTREAM_CATALOG).join("texts");
+    let mut staged = Vec::new();
+    for text in &group.documents {
+        if !catalog_path_component(&group.project)
+            || !catalog_path_component(&text.attribution.name)
+            || text.sha256.len() != 64
+            || !text.sha256.bytes().all(|byte| byte.is_ascii_hexdigit())
+            || text.size_bytes == 0
+        {
+            return Err("Invalid pinned Cargo notice catalog entry".into());
+        }
+        let directory = Path::new("licenses/cargo/upstream")
+            .join(&group.project)
+            .join(&text.sha256);
+        let path = directory.join(&text.attribution.name);
+        let output = package.join(&path);
+        if !output.exists() {
+            let source = texts.join(format!("{}.txt", text.sha256));
+            if fs::metadata(&source)?.len() != text.size_bytes {
+                return Err(format!(
+                    "Size mismatch for pinned Cargo notice {}",
+                    text.attribution.url
+                )
+                .into());
+            }
+            fs::create_dir_all(package.join(directory))?;
+            fs::copy(source, output)?;
+        }
+        let mut record = file_record(package, &path)?;
+        if record.sha256 != text.sha256 || record.size_bytes != text.size_bytes {
+            return Err(format!(
+                "Digest mismatch for pinned Cargo notice {}",
+                text.attribution.url
+            )
+            .into());
+        }
+        record.upstream = Some(text.attribution.clone());
+        staged.push(record);
+    }
+    Ok(staged)
 }
 
 fn notice_kind(name: &str) -> Option<bool> {
@@ -317,6 +443,7 @@ fn crate_notices<'a>(
     workspace: &Path,
     package: &Path,
     dependency: &'a CargoPackage,
+    catalog: &[PinnedGroup],
 ) -> Result<CrateNotice<'a>> {
     let root = dependency
         .manifest_path
@@ -373,9 +500,17 @@ fn crate_notices<'a>(
             files.push(record);
         }
     }
+    let pinned = pinned_notices(workspace, package, &root, dependency, catalog)?;
+    has_license_text |= pinned.iter().any(|file| {
+        file.upstream
+            .as_ref()
+            .is_some_and(|notice| notice.kind == UpstreamKind::CodeLicense)
+    });
+    files.extend(pinned);
     let mut unresolved = Vec::new();
     if !has_license_text {
-        unresolved.push("No upstream license text was found in the package's notice files.");
+        unresolved
+            .push("No code license text was found in the crate or the pinned notice catalog.");
     }
     if dependency.license.as_deref().is_none_or(str::is_empty) && dependency.license_file.is_none()
     {

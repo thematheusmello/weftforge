@@ -427,6 +427,9 @@ mod tests {
         fs::create_dir_all(root.join("target/release")).unwrap();
         fs::create_dir_all(root.join("isolated output")).unwrap();
         fs::create_dir_all(root.join("apps/weftforge/assets/fonts")).unwrap();
+        let catalog = root.join(package_notices::UPSTREAM_CATALOG);
+        fs::create_dir_all(&catalog).unwrap();
+        fs::write(catalog.join("index.json"), b"[]").unwrap();
         for name in [
             "README.md",
             "LICENSE-MIT",
@@ -602,6 +605,7 @@ mod tests {
         ];
         for (name, edge, kind) in [
             ("runtime", None, Some("lib")),
+            ("runtime-pinned", None, Some("lib")),
             ("unresolved", None, Some("lib")),
             ("dev-only", Some("dev"), Some("lib")),
             ("build-only", Some("build"), Some("lib")),
@@ -610,7 +614,14 @@ mod tests {
         ] {
             let directory = root.join("crates").join(name);
             fs::create_dir_all(&directory).unwrap();
-            if name != "unresolved" {
+            let registry = matches!(name, "runtime-pinned" | "unresolved" | "not-emitted");
+            if registry {
+                fs::write(
+                    directory.join(".cargo_vcs_info.json"),
+                    b"pinned fixture revision",
+                )
+                .unwrap();
+            } else {
                 fs::write(directory.join("LICENSE-MIT"), format!("license for {name}")).unwrap();
             }
             graph["packages"]
@@ -619,6 +630,7 @@ mod tests {
                 .push(serde_json::json!({
                     "id": name, "name": name, "version": "1.2.3",
                     "authors": ["Original author"], "license": "MIT",
+                    "source": registry.then_some(package_notices::CRATES_IO),
                     "repository": "https://example.invalid/original",
                     "manifest_path": directory.join("Cargo.toml")
                 }));
@@ -643,6 +655,35 @@ mod tests {
         }
         fs::write(root.join("crates/runtime/NOTICE.txt"), b"original notice").unwrap();
         graph["packages"][2]["license_file"] = serde_json::json!("license.declared");
+        let full_text = b"verified fixture code license";
+        let full_digest = "cc4c992b586131273edf726c61c6b55ef517ddde7dc55a7954486758fe1a8d8b";
+        let declaration = b"verified fixture license declaration";
+        let declaration_digest = "15e3c516a6656a94cfefdcda754316d10fe3ce358c60b86cc7c253fdb0281284";
+        let absent_digest = "11".repeat(32);
+        let groups: Vec<_> = [
+            ("runtime-pinned", "LICENSE.txt", "code_license", full_digest, full_text.len()),
+            ("unresolved", "DECLARATION.txt", "license_declaration", declaration_digest, declaration.len()),
+            ("not-emitted", "STALE.txt", "code_license", &absent_digest, 1),
+        ]
+        .into_iter()
+        .map(|(crate_name, name, kind, sha256, size_bytes)| serde_json::json!({
+            "project": "fixture",
+            "crates": [{"name": crate_name, "version": "1.2.3",
+                "vcs_info_sha256": "60724c651fbd7eebba39e253b178661a4b438db2473d61278a1964af2b98ffd6"}],
+            "documents": [{"name": name, "kind": kind, "sha256": sha256, "size_bytes": size_bytes,
+                "url": format!("https://example.invalid/pinned/{name}")}],
+        }))
+        .collect();
+        let catalog = root.join(package_notices::UPSTREAM_CATALOG);
+        fs::write(
+            catalog.join("index.json"),
+            serde_json::to_vec(&groups).unwrap(),
+        )
+        .unwrap();
+        let texts = catalog.join("texts");
+        fs::create_dir_all(&texts).unwrap();
+        let full_blob = texts.join(format!("{full_digest}.txt"));
+        fs::write(texts.join(format!("{declaration_digest}.txt")), declaration).unwrap();
         let result = || {
             let mut stage = PackageStage::new(&root)?;
             package_build(&root, &mut stage, &messages(&reported), true, |build| {
@@ -665,6 +706,19 @@ mod tests {
             b"declared license",
         )
         .unwrap();
+        fs::write(&full_blob, b"verified fixture code licensE").unwrap();
+        assert!(
+            result()
+                .unwrap_err()
+                .to_string()
+                .contains("Digest mismatch for pinned Cargo notice")
+        );
+        assert_eq!(
+            fs::read(dest.join("weftforge")).unwrap(),
+            b"previous studio"
+        );
+        assert_eq!(fs::read_dir(&dest).unwrap().count(), 1);
+        fs::write(full_blob, full_text).unwrap();
         result().unwrap();
         assert_eq!(
             fs::read(dest.join("weftforge")).unwrap(),
@@ -680,12 +734,24 @@ mod tests {
             "ee2a2a38aaa2a2dc30a7407bedca34680d3759289417d994dc0cd721e2e61f45"
         );
         let crates = manifest["crates"].as_array().unwrap();
-        assert_eq!(crates.len(), 2);
+        assert_eq!(crates.len(), 3);
         assert_eq!(crates[0]["name"], "runtime");
         assert_eq!(crates[0]["authors"], serde_json::json!(["Original author"]));
         assert_eq!(crates[0]["files"].as_array().unwrap().len(), 3);
-        assert_eq!(crates[1]["name"], "unresolved");
-        assert_eq!(crates[1]["unresolved"].as_array().unwrap().len(), 1);
+        assert_eq!(crates[1]["name"], "runtime-pinned");
+        assert_eq!(crates[1]["unresolved"], serde_json::json!([]));
+        let pinned = &crates[1]["files"][0];
+        assert_eq!(
+            pinned["upstream"]["url"],
+            "https://example.invalid/pinned/LICENSE.txt"
+        );
+        assert_eq!(pinned["sha256"], full_digest);
+        assert_eq!(crates[2]["name"], "unresolved");
+        assert_eq!(crates[2]["unresolved"].as_array().unwrap().len(), 1);
+        assert_eq!(
+            crates[2]["files"][0]["upstream"]["kind"],
+            "license_declaration"
+        );
         assert_eq!(
             fs::read(dest.join("licenses/cargo/runtime-1.2.3/NOTICE.txt")).unwrap(),
             b"original notice"
@@ -701,6 +767,12 @@ mod tests {
         ] {
             assert_eq!(fs::read(bundled.join(path)).unwrap(), text.as_bytes());
         }
+        let pinned_path = pinned["path"]
+            .as_str()
+            .unwrap()
+            .strip_prefix("licenses/")
+            .unwrap();
+        assert_eq!(fs::read(bundled.join(pinned_path)).unwrap(), full_text);
         assert!(!bundled.join("manifest.json").exists());
         assert!(!root.join("target/.package-staging").exists());
         fs::remove_dir_all(root).unwrap();

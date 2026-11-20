@@ -6,8 +6,10 @@ and original-shirt fixture are authored for this project under the same terms.
 See [dependencies.json](docs/dependencies.json) for all Cargo.lock package license
 declarations, including build-time and platform-specific packages. The unsigned
 packager records collected runtime Cargo notices and unresolved entries in
-`licenses/manifest.json`. Complete distribution review covers the final emitted
-libraries and platform runtimes.
+`licenses/manifest.json`. The offline notice catalog supplies upstream texts
+when the emitted crate's version and revision match. The manifest records
+their pinned upstream sources. Complete distribution review covers the final
+emitted libraries and platform runtimes.
 
 Notable components: egui/eframe/wgpu (MIT OR Apache-2.0), serde/serde_json
 (MIT OR Apache-2.0), earcutr (ISC), rfd (MIT), and tobj (MIT, test-only).
