@@ -17857,7 +17857,8 @@
         "parity/reports/artifacts/straight-hole-20261116/PUBLICATION-CURRENT-003.json",
         "parity/reports/artifacts/cut-and-sew-20261116/PUBLICATION-CURRENT.json",
         "parity/reports/WF-20261120-MULTIPLE-CUTOUTS-001.json",
-        "spec/features/PAT-006-multiple-cutouts.md"
+        "spec/features/PAT-006-multiple-cutouts.md",
+        "parity/reports/WF-20261120-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json"
       ],
       "scenarios": [
         {
@@ -17869,6 +17870,17 @@
           },
           "initial_conditions": "Start from an empty project and an original 240 by 360 mm pocket outline with two disjoint rectangular slots. One SVG places an opening before the exterior subpath. A second fixture has overlapping slots.",
           "expected_outcomes": "Both adapters retain two openings in a single editable piece and produce identical native, OBJ, MTL and SVG files. The reimported drawing reproduces the editable project. Overlap refusal preserves the existing primary and recovery files. The material area is 0.0756 m\u00b2 and the OBJ has one exterior and two inner boundary loops."
+        },
+        {
+          "id": "APP-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001",
+          "path": "parity/scenarios/APP-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket two slots.svg": "73bd718abf0701ffe0fa59c565aa2de6197ec832333f4f8632c4130357e43839",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Overlapping slots.svg": "d3ab15d039ceab3ae866be920cfb6b53e13fe710ed57d1da0246f838bcbcf6a5",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket imported.weftforge": "e07016a0fa5a0ba74de16fe754d4a1f5975cab0f31d60d43e1e0f497ce947a0c"
+          },
+          "initial_conditions": "An empty release studio on Debian 13.7 ARM64, a headless Sway Wayland output, the GTK file chooser, two original SVG fixtures and a single-hole editable pocket.",
+          "expected_outcomes": "Undo and Redo restore the empty and imported states. Moving one corner preserves the other opening. Both OBJ meshes have three boundary loops and net areas of 0.0756 and 0.0744 m\u00b2. A rejected overlap preserves the last editable bytes. Adding the second opening in the inspector preserves all prior IDs."
         }
       ],
       "comparison_criteria": {
@@ -52473,7 +52485,8 @@
         "parity/reports/WF-20261120-NATIVE-SVG-CUTOUT-001.json",
         "parity/reports/WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001.json",
         "parity/reports/WF-20261120-MULTIPLE-CUTOUTS-001.json",
-        "spec/features/PAT-006-multiple-cutouts.md"
+        "spec/features/PAT-006-multiple-cutouts.md",
+        "parity/reports/WF-20261120-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json"
       ],
       "scenarios": [
         {
@@ -52606,6 +52619,17 @@
           },
           "initial_conditions": "Start from an empty project and an original 240 by 360 mm pocket outline with two disjoint rectangular slots. One SVG places an opening before the exterior subpath. A second fixture has overlapping slots.",
           "expected_outcomes": "Both adapters retain two openings in a single editable piece and produce identical native, OBJ, MTL and SVG files. The reimported drawing reproduces the editable project. Overlap refusal preserves the existing primary and recovery files. The material area is 0.0756 m\u00b2 and the OBJ has one exterior and two inner boundary loops."
+        },
+        {
+          "id": "APP-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001",
+          "path": "parity/scenarios/APP-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket two slots.svg": "73bd718abf0701ffe0fa59c565aa2de6197ec832333f4f8632c4130357e43839",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Overlapping slots.svg": "d3ab15d039ceab3ae866be920cfb6b53e13fe710ed57d1da0246f838bcbcf6a5",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket imported.weftforge": "e07016a0fa5a0ba74de16fe754d4a1f5975cab0f31d60d43e1e0f497ce947a0c"
+          },
+          "initial_conditions": "An empty release studio on Debian 13.7 ARM64, a headless Sway Wayland output, the GTK file chooser, two original SVG fixtures and a single-hole editable pocket.",
+          "expected_outcomes": "Undo and Redo restore the empty and imported states. Moving one corner preserves the other opening. Both OBJ meshes have three boundary loops and net areas of 0.0756 and 0.0744 m\u00b2. A rejected overlap preserves the last editable bytes. Adding the second opening in the inspector preserves all prior IDs."
         }
       ],
       "comparison_criteria": {
@@ -63699,7 +63723,8 @@
         "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001.json",
         "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json",
         "parity/reports/WF-20261120-DEBIAN-ARM64-CARGO-NOTICES-001.json",
-        "parity/reports/WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001.json"
+        "parity/reports/WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001.json",
+        "parity/reports/WF-20261120-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json"
       ],
       "scenarios": [
         {
@@ -63748,6 +63773,17 @@
           },
           "initial_conditions": "A freshly built unsigned Debian ARM64 package, an empty native Wayland studio and the original 240 \u00d7 360 mm pocket SVG.",
           "expected_outcomes": "The native GTK import, Undo/Redo, two saves, reopens and 20 mm hole edit preserve the expected revisions and boundaries. Both OBJ and editable files match the macOS case. The release package retains all 234 emitted Cargo notices."
+        },
+        {
+          "id": "APP-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001",
+          "path": "parity/scenarios/APP-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket two slots.svg": "73bd718abf0701ffe0fa59c565aa2de6197ec832333f4f8632c4130357e43839",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Overlapping slots.svg": "d3ab15d039ceab3ae866be920cfb6b53e13fe710ed57d1da0246f838bcbcf6a5",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket imported.weftforge": "e07016a0fa5a0ba74de16fe754d4a1f5975cab0f31d60d43e1e0f497ce947a0c"
+          },
+          "initial_conditions": "An empty release studio on Debian 13.7 ARM64, a headless Sway Wayland output, the GTK file chooser, two original SVG fixtures and a single-hole editable pocket.",
+          "expected_outcomes": "Undo and Redo restore the empty and imported states. Moving one corner preserves the other opening. Both OBJ meshes have three boundary loops and net areas of 0.0756 and 0.0744 m\u00b2. A rejected overlap preserves the last editable bytes. Adding the second opening in the inspector preserves all prior IDs."
         }
       ],
       "comparison_criteria": {
@@ -63999,6 +64035,51 @@
             "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.obj": "9a2cb18203d5815ebe6e10734781641d5e7402f9175d9d9d02cbbb7e7d0d0ea2"
           },
           "path": "parity/reports/WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001.json"
+        },
+        {
+          "id": "WF-20261120-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001",
+          "commit": "cb76dd0fb032b84c4ba3be913c4833117e54762f",
+          "timestamp": "2026-11-20T18:38:53Z",
+          "platform": "Debian 13.7 ARM64, offline unsigned native studio package, Sway Wayland and GTK portal, software Vulkan",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/CLEANUP.json": "48615ed1c820b1601aef25de60e469b80e0e9d42054e679b17f67acf334e73e2",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/Edited.obj": "a615101a6502bfae3d9c3f9735d10f9bfa1bcc56cb845bba8f85be204f6da547",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/Edited.weftforge": "9955c6b8c3cf0fb6a794f8973e3d80c93b30be06e42043ed6ac5d038af4429bb",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/GEOMETRY.json": "4de644302266be654031d6d392e75ee468d6af971f8ad22f1057524dab1aee1f",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/Imported.obj": "8de2bd3bf0ac881f99589e84e1e20c6fc0992eaca171b0b975435c41427dd57d",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/Imported.weftforge": "2d57b7eec47725e77445410b45b0d985ada9d3d2647f8722ed9a0e64b35b3ff0",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/Inspector.obj": "8de2bd3bf0ac881f99589e84e1e20c6fc0992eaca171b0b975435c41427dd57d",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/Inspector.weftforge": "126f2ebcefb78eba21df8441b3929bdd14d847483837c7a6e2aa178fca9e551d",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/InspectorRedo.weftforge": "a6ee90f41f84fed752ddf31396db4ec48fa9d28e45bbd8104ebc642b7c844d0d",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/OFFLINE-PACKAGE.json": "58d3a9a19d94387cc9a16c46a30d29ac156ac1edf8bd4238bfdde7bf7bdadc67",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/PACKAGE-READBACK.json": "7b5b24957b6cff6b8a7e784265aa4998385aa139f056dd85b8536dc5448a9e6f",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/PACKAGE-SHA256SUMS": "857a584e2a4f525ae125ffe77d63d95693a45507f116c21e9e1100349056697c",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/Refused.weftforge": "9955c6b8c3cf0fb6a794f8973e3d80c93b30be06e42043ed6ac5d038af4429bb",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/WAYLAND.json": "27f3efdf7986cca0aebc3b82740a608e92dec29f085086f6f2480927ffb2d44d",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/audit_package.py": "296e7a8c47e506f3366d159bfa0ad7d4876dba74ffafc2eb50479fb17038bbda",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/check_slots.py": "e75e1f58c62bcf616e887c37df3c5990a2a20d20fc354051b6cf0dccd6f44edc",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/edited-reopened.png": "1f07783ce27a991dc40dec518664e9efcb318d60e8855909baad32533f74eada",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/import-redo.png": "5e990ea1d91263094de4074ad6d4237874f570aa9c5fda6cc46ec097fc483e05",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/import-review.png": "6beb6ed965d2ddcdc1e76c60ed8767b4a4b4995aaa89bfa74a89143237713dc6",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/import-undo.png": "100aed1a1a7f1068a7b6a8a46ec3c89aa1f6acea3b452bced20c5d41138cdb54",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/inspector-preview.png": "47a7002084ba03a485eb35d39519369df76d050bf957fd30cff957e6f856fc17",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/inspector-redo.png": "a2a57c7f3655c6794c232357a21fe934e720d184a5a4351065c536ca880b3892",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/inspector-undo.png": "0a2fa651d03cc0b1626d91e9ca39f3a95db69b44bf8205a76e6db41d73d35b05",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/manifest.json": "2225186e11bef30a187bccade4c3ead6a085ea8402a62daf61c87969c24ba94c",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/overlap-refused.png": "2c4817f8515540cfa23457f18db1c7e668fa0a3c845085003f00b9e3860ac29c",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/replay.py": "d094b57ffcc7b3f246dc06e3d6edffc5adadbdf421015ce92c38b6d4e0d3e5fe",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/workspace-edited.png": "d583f752d661617e24a3c4701d9af74b526e797e58b01c98a23eee1507b508c8",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/workspace-imported.png": "00f2cccf94f36b657a49220e5d242fa3ab3939ae17e8ce38409d8d8385e13d69",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket two slots.svg": "73bd718abf0701ffe0fa59c565aa2de6197ec832333f4f8632c4130357e43839",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Overlapping slots.svg": "d3ab15d039ceab3ae866be920cfb6b53e13fe710ed57d1da0246f838bcbcf6a5",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket imported.weftforge": "e07016a0fa5a0ba74de16fe754d4a1f5975cab0f31d60d43e1e0f497ce947a0c",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket.obj": "8de2bd3bf0ac881f99589e84e1e20c6fc0992eaca171b0b975435c41427dd57d",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket.weftforge": "c769ce99f5d9a4340ad3d89f66fcf74b9343fac0f4201bba0281516e0149e151",
+            "parity/scenarios/APP-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json": "716c6e68f3f1527b7237bc6731392d83caa4e5539aabd151b735b5ecf3b7da7b",
+            "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/manifest.json": "19dfd7cdd16f230af2835b13f3e30f56ff902aa86fe0035112552cd6163919e9"
+          },
+          "path": "parity/reports/WF-20261120-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json"
         }
       ],
       "known_gaps": [
@@ -64014,7 +64095,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "APP-003",

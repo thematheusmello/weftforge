@@ -1,0 +1,53 @@
+{
+  "tested_commit": "cb76dd0fb032b84c4ba3be913c4833117e54762f",
+  "tested_tree": "ae5136c426e99474efa62d7aedd5eea3d64ddfc7",
+  "platform": "Debian 13.7 ARM64",
+  "toolchain": "rustc 1.94.1, Cargo 1.94.1, aarch64-unknown-linux-gnu",
+  "source": {
+    "previous_commit": "4b7d30318b1a2c4cc6db4dc95fe64de346cc37ef",
+    "added_files": 72,
+    "modified_files": 31,
+    "removed_files": 0,
+    "committed_files_checked_in_guest": 20308,
+    "delta_git_archive_sha256": "1bb8644be2f502e777938b2c1398f1722c145567ccb2aca757f1b1cae2ed3fc5",
+    "source_and_compiled_cache_kept_at_original_paths": true
+  },
+  "build": {
+    "network": "Loopback-only namespace with Cargo offline, running as an unprivileged guest user.",
+    "commands": [
+      "cargo fetch --locked --offline --target aarch64-unknown-linux-gnu",
+      "cargo xtask package"
+    ],
+    "initial_result": "The first offline fetch stopped at a missing tempfile archive. Two missing locked sources were copied from an existing Cargo download cache and checked against Cargo.lock. The retry succeeded.",
+    "verified_locked_source_archives": {
+      "getrandom-0.4.3.crate": "300e883d756b2e4ec94e02791f39b04b522276138852cfc41d9fb7e904106099",
+      "tempfile-3.27.0.crate": "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
+    },
+    "new_apt_packages": 0,
+    "release_build_seconds": 87,
+    "signed": false
+  },
+  "package": {
+    "target": "aarch64-unknown-linux-gnu",
+    "verified_files": 443,
+    "verified_distinct_manifest_paths": 441,
+    "emitted_cargo_crates": 243,
+    "unresolved_cargo_notices": [],
+    "executables": {
+      "weftforge": "0e0f210d2b7836551bd3a53573bb7e24b4cdd93ba8d1cd351839812760530181",
+      "weftforge-cli": "c594fdb47340ffa1ca77c19c06d82193d26a72fe3af4d4b8364e4a435e11805c"
+    },
+    "manifest_sha256": "2225186e11bef30a187bccade4c3ead6a085ea8402a62daf61c87969c24ba94c",
+    "ledger_sha256": "857a584e2a4f525ae125ffe77d63d95693a45507f116c21e9e1100349056697c"
+  },
+  "staged_elf64_aarch64_binaries_match_release_output": true,
+  "all_ldd_paths_resolved": true,
+  "earlier_package_manifest_sha256": "19dfd7cdd16f230af2835b13f3e30f56ff902aa86fe0035112552cd6163919e9",
+  "earlier_files_verified_before_and_after_build_and_at_case_closure": 425,
+  "space_kib": {
+    "guest_before": 5945696,
+    "guest_after_build": 5814272,
+    "guest_before_shutdown": 5807664
+  },
+  "scope": "The independent guest audit read each staged file. Cargo notice completeness covers the emitted Cargo dependency set. System-library redistribution, release signing and physical GPU coverage are open."
+}

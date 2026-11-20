@@ -1,0 +1,13 @@
+{
+  "id": "APP-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001",
+  "status": "implementation_only",
+  "initial_conditions": "An empty release studio on Debian 13.7 ARM64, a headless Sway Wayland output, the GTK file chooser, two original SVG fixtures and a single-hole editable pocket.",
+  "actions": [
+    "Build the pinned unsigned release offline on Debian ARM64 and independently read every package file. Retain and recheck the earlier package.",
+    "Import the two-slot SVG into the empty studio through GTK. Undo and Redo. Save the project and export the rest OBJ and workspace PNG.",
+    "Open the saved project in a fresh studio. Move the upper-left point of the large slot 20 mm left. Save and export. Import the overlapping fixture and retain the refusal. Save again, clear and reopen the edited file.",
+    "In a third process, open the single-hole file and create the second rectangular hole in the inspector at (15, 20) mm with a size of 30 \u00d7 40 mm. Apply, save, export, Undo, Redo and save. Close all test processes and shut down the guest.",
+    "Run python3 -B parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/replay.py to compare each saved field, the exported geometry and the retained package and display records."
+  ],
+  "expected_outcomes": "Undo and Redo restore the empty and imported states. Moving one corner preserves the other opening. Both OBJ meshes have three boundary loops and net areas of 0.0756 and 0.0744 m\u00b2. A rejected overlap preserves the last editable bytes. Adding the second opening in the inspector preserves all prior IDs."
+}

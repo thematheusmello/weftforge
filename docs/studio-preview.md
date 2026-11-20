@@ -15,6 +15,15 @@ The longer Harbor front drapes around the mannequin. Each face now ends at its p
 
 ![Native WeftForge studio showing the longer Harbor shirt after assembly and drape](../parity/reports/artifacts/native-projected-faces-20261120/draped.png)
 
+## Two editable openings
+
+This 240 × 360 mm pocket is open in the Debian studio after a save and reopen.
+Moving the upper-left corner of the larger slot 20 mm left changed the material
+area from 0.0756 to 0.0744 m² and preserved the smaller slot. The inspector
+also created the smaller opening from its dimensions. [Inspector preview](../parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/inspector-preview.png).
+
+![Debian studio with two openings in the pocket pattern and its garment mesh](../parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/edited-reopened.png)
+
 ## An editable pocket opening
 
 The SVG imports as a 240 × 360 mm pocket facing with a rectangular opening.
