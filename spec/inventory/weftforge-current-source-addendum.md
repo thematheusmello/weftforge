@@ -1,5 +1,9 @@
 # WeftForge current-source addendum
 
+## Solid garment faces
+
+Source `29c679968398d453cbb087526c48ee6a293d04e8` draws the three projected vertices of every cloth face in depth order. The `wireframe` and `selection` canvas controls keep their per-face edge overlays.
+
 ## Captured placement release
 
 Source `3767926bb2cd608c5054a9801d4931b579146778` preserves the original pointer ownership when the primary release arrives with the first significant motion. The `arrangement` and `gizmos` source groups retain the shared SetPlacement command.

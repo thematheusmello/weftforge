@@ -7439,11 +7439,7 @@ impl Studio {
                 } else {
                     Stroke::NONE
                 };
-                painter.add(egui::Shape::convex_polygon(
-                    points.to_vec(),
-                    color,
-                    Stroke::NONE,
-                ));
+                painter.add(garment_face(points, color));
                 if stroke != Stroke::NONE {
                     for segment in [
                         [points[0], points[1]],
@@ -9154,6 +9150,18 @@ fn unreported_canvas_drag(
         && ui.clip_rect().contains(press)
         && ctx.layer_id_at(press) == Some(response.layer_id)
         && press.distance(release) > ctx.options(|options| options.input_options.max_click_dist)
+}
+
+fn garment_face(points: [Pos2; 3], color: Color32) -> egui::Shape {
+    // A filled path feathers its corners. At grazing angles its miter can run
+    // thousands of points beyond the cloth. Rasterize the projected face directly.
+    egui::Shape::mesh(egui::Mesh {
+        vertices: points
+            .map(|point| egui::epaint::Vertex::untextured(point, color))
+            .into(),
+        indices: vec![0, 1, 2],
+        ..Default::default()
+    })
 }
 
 fn point_in_triangle(p: Pos2, t: [Pos2; 3]) -> bool {
@@ -21022,6 +21030,51 @@ mod pattern_framing_tests {
     }
 
     #[test]
+    fn edge_on_garment_faces_tessellate_inside_their_projected_vertices() {
+        // Faces 192 and 1067 from the native extended-hem drape, in screen points.
+        let faces = [
+            [
+                Pos2::new(957.9305, 510.6088),
+                Pos2::new(957.93506, 519.90625),
+                Pos2::new(957.93243, 516.5249),
+            ],
+            [
+                Pos2::new(1166.0906, 474.66852),
+                Pos2::new(1174.1671, 484.61646),
+                Pos2::new(1167.9058, 476.93427),
+            ],
+        ];
+        let color = Color32::from_rgb(31, 77, 107);
+        for pixels_per_point in [1., 2.] {
+            let mut tessellator = egui::epaint::tessellator::Tessellator::new(
+                pixels_per_point,
+                Default::default(),
+                [1, 1],
+                vec![],
+            );
+            for [a, b, c] in faces {
+                for points in [[a, b, c], [c, b, a]] {
+                    let mut mesh = egui::Mesh::default();
+                    tessellator.tessellate_shape(garment_face(points, color), &mut mesh);
+                    let bounds = Rect::from_points(&points);
+                    assert!(
+                        mesh.vertices
+                            .iter()
+                            .all(|vertex| bounds.contains(vertex.pos)),
+                        "projected {bounds:?}, tessellated {:?}",
+                        mesh.calc_bounds(),
+                    );
+                    let triangles: Vec<_> = mesh.triangles().collect();
+                    assert_eq!(triangles.len(), 1);
+                    let vertices = triangles[0].map(|index| mesh.vertices[index as usize]);
+                    assert_eq!(vertices.map(|vertex| vertex.pos), points);
+                    assert!(vertices.iter().all(|vertex| vertex.color == color));
+                }
+            }
+        }
+    }
+
+    #[test]
     fn scene_visibility_filters_both_canvases_and_preserves_construction() {
         use super::native_idle_numeric_tests::{action, button};
 
@@ -21111,8 +21164,16 @@ mod pattern_framing_tests {
         let pattern = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
         let garment = ctx.read_response(app.garment_canvas.unwrap()).unwrap().rect;
         let count_faces = |output: &egui::FullOutput| {
-            output.shapes.iter().filter(|shape| matches!(&shape.shape, egui::Shape::Path(path) if path.fill != Color32::TRANSPARENT
-                && path.points.len() == 3 && path.points.iter().all(|p| garment.contains(*p)))).count()
+            output
+                .shapes
+                .iter()
+                .filter(|shape| {
+                    let egui::Shape::Mesh(mesh) = &shape.shape else {
+                        return false;
+                    };
+                    mesh.indices.len() == 3 && mesh.vertices.iter().all(|v| garment.contains(v.pos))
+                })
+                .count()
         };
         assert_eq!(count_faces(&both), mesh.triangles.len());
         let triangle = mesh

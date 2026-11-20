@@ -1,0 +1,11 @@
+{
+  "id": "UI-NATIVE-PROJECTED-GARMENT-FACES-001",
+  "status": "implementation_only",
+  "initial_conditions": "Open a fresh copy of the saved revision 25 Harbor with the 50 mm front hem extension at the default camera in the 1640 by 1000 native studio.",
+  "actions": [
+    "Use Assemble with gravity off for 60 steps.",
+    "Use Drape for 120 steps, then export the native OBJ and save a workspace PNG.",
+    "Compare the saved meshes and independently classify material pixels against the projected silhouette."
+  ],
+  "expected_outcomes": "After 60 assembly and 120 drape steps, the native OBJ matches the prior geometry byte for byte. Material pixels lie within two pixels of the projected surface, and the saved construction stays unchanged."
+}

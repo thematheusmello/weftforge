@@ -1,0 +1,56 @@
+{
+  "source_commit": "29c679968398d453cbb087526c48ee6a293d04e8",
+  "source_tree": "586db6ff00a5fbe5a6b3654b6a067ea905f00c34",
+  "studio_source_sha256": "db0a69216f708bf60424499f03a7ab41dcb99181df55a276ec96cef3c902c134",
+  "studio_sha256": "08c0799f1441811d0a61ab417c9d608b778cad9f6479778adfdf9a9005cc78c6",
+  "release_command": "cargo build --offline --locked --release -p weftforge",
+  "platform": "Apple Silicon macOS, native Metal release studio",
+  "completed_utc": "2026-11-20T16:31:03.165938Z",
+  "editable_input_sha256": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef",
+  "input_revision": 25,
+  "native_pieces": 2,
+  "native_seams": 8,
+  "native_vertices": 644,
+  "predecessor_native_source": "3074da243d22d0ad78397c4f3455a78dba996627",
+  "native_controls": [
+    "Open a fresh copy of the lengthened Harbor at its rest arrangement.",
+    "Select Simulation properties and run Assemble with gravity off for 60 steps.",
+    "Run 120 Drape steps under gravity of -9.81 m/s\u00b2.",
+    "Choose File, Export OBJ.",
+    "Choose File, Save workspace PNG."
+  ],
+  "phase_endpoints": {
+    "assembly": {
+      "native_time_s": 1.0,
+      "native_ms_per_step": 1344.6,
+      "peak_material_strain_percent": 16.17,
+      "seam_gap_m": 0.0006,
+      "assembly_remaining_m": 0.0
+    },
+    "drape": {
+      "native_time_s": 3.0,
+      "native_ms_per_step": 1271.2,
+      "peak_material_strain_percent": 16.1,
+      "seam_gap_m": 0.0006,
+      "contact_error_m": 0.0,
+      "uncertain_capsule_pairs": 0,
+      "assembly_remaining_m": 0.0
+    }
+  },
+  "native_obj_sha256": "8cec02e8988d1a37d5797e63f6de77df509ca5a7a6604fb4c8ba91aefc8eb466",
+  "native_png_sha256": "98a4a27f7e2fc38f18f2a5321ce302cbdb6d75df629a4506dd07f2e7d34ec078",
+  "editable_input_readback_sha256": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef",
+  "fill_regression": {
+    "old_face_192_projected_vertical_bounds_points": [
+      510.6,
+      519.9
+    ],
+    "old_face_192_epaint_vertical_bounds_points": [
+      -5654.0,
+      6675.2
+    ],
+    "source_test": "edge_on_garment_faces_tessellate_inside_their_projected_vertices",
+    "source_test_covers": "Both windings of faces 192 and 1067 at one and two pixels per point preserve the three exact face vertices and their shaded color."
+  },
+  "limits": "The extended shirt exceeds the 15% strain limit. The result covers the native rendered surface and saved geometry in this camera and drape."
+}
