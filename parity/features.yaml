@@ -17857,7 +17857,8 @@
         "parity/reports/artifacts/straight-hole-20261116/PUBLICATION-CURRENT-003.json",
         "parity/reports/artifacts/cut-and-sew-20261116/PUBLICATION-CURRENT.json",
         "parity/reports/WF-20261120-MULTIPLE-CUTOUTS-001.json",
-        "spec/features/PAT-006-multiple-cutouts.md"
+        "spec/features/PAT-006-multiple-cutouts.md",
+        "parity/reports/WF-20261120-INTEGRATED-MULTIPLE-CUTOUTS-001.json"
       ],
       "scenarios": [
         {
@@ -26138,6 +26139,27 @@
             "parity/scenarios/PAT-MULTIPLE-CUTOUTS-001.json": "d61c78f4525b97d4fea9be1ca571529b69de8933cf77bd9024f7a30c57e928b9"
           },
           "path": "parity/reports/WF-20261120-MULTIPLE-CUTOUTS-001.json"
+        },
+        {
+          "path": "parity/reports/WF-20261120-INTEGRATED-MULTIPLE-CUTOUTS-001.json",
+          "id": "WF-20261120-INTEGRATED-MULTIPLE-CUTOUTS-001",
+          "commit": "a50aa0fa3b639a59e198e47069c7fe00552b250a",
+          "timestamp": "2026-11-20T19:01:45Z",
+          "platform": "Apple Silicon macOS release CLI, stdio MCP, Apple Model I/O and standalone mesh measurements",
+          "artifact_hashes": {
+            "parity/reports/artifacts/multiple-cutouts-20261120/ADAPTERS.json": "55f404bd26c13aba32818c9fa9d829ecd90f35a2d7b6e4f3e7f978a6edf849cd",
+            "parity/reports/artifacts/multiple-cutouts-20261120/APPLE-MODEL-IO.json": "2bca011634bfc6afe48004054d924956a8c78bb7527622a974d2eebf11853b40",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Overlapping slots.svg": "d3ab15d039ceab3ae866be920cfb6b53e13fe710ed57d1da0246f838bcbcf6a5",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket two slots.svg": "73bd718abf0701ffe0fa59c565aa2de6197ec832333f4f8632c4130357e43839",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket.obj": "8de2bd3bf0ac881f99589e84e1e20c6fc0992eaca171b0b975435c41427dd57d",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket.weftforge": "c769ce99f5d9a4340ad3d89f66fcf74b9343fac0f4201bba0281516e0149e151",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Roundtrip.svg": "c9059d1fee47d62ddabce602f6043f8e4f35daec2ca749132a6211138583973c",
+            "parity/reports/artifacts/multiple-cutouts-20261120/check_modelio.swift": "f9c848fa4e3af7a25d52dc4097686d95ed0b16ca67969ba4f89823ec63a0194c",
+            "parity/reports/artifacts/multiple-cutouts-20261120/check_roundtrip.py": "4f2442f6b74fc5036527ede1897ce6e5278372b859c733f5bd7619a1e3869596",
+            "parity/reports/artifacts/multiple-cutouts-20261120/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/scenarios/PAT-MULTIPLE-CUTOUTS-001.json": "d61c78f4525b97d4fea9be1ca571529b69de8933cf77bd9024f7a30c57e928b9",
+            "parity/reports/artifacts/multiple-cutouts-20261120/INTEGRATED-ADAPTERS.json": "254d88f077b73e074f21350d7d58c988ba7af3cb9ca97fe7301d97439532c713"
+          }
         }
       ],
       "known_gaps": [
@@ -26156,7 +26178,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/PAT-006-straight-cut.md": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c"
       }
@@ -52609,7 +52631,8 @@
         "parity/reports/WF-20261120-NATIVE-SVG-CUTOUT-001.json",
         "parity/reports/WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001.json",
         "parity/reports/WF-20261120-MULTIPLE-CUTOUTS-001.json",
-        "spec/features/PAT-006-multiple-cutouts.md"
+        "spec/features/PAT-006-multiple-cutouts.md",
+        "parity/reports/WF-20261120-INTEGRATED-MULTIPLE-CUTOUTS-001.json"
       ],
       "scenarios": [
         {
@@ -57952,6 +57975,27 @@
             "parity/scenarios/PAT-MULTIPLE-CUTOUTS-001.json": "d61c78f4525b97d4fea9be1ca571529b69de8933cf77bd9024f7a30c57e928b9"
           },
           "path": "parity/reports/WF-20261120-MULTIPLE-CUTOUTS-001.json"
+        },
+        {
+          "path": "parity/reports/WF-20261120-INTEGRATED-MULTIPLE-CUTOUTS-001.json",
+          "id": "WF-20261120-INTEGRATED-MULTIPLE-CUTOUTS-001",
+          "commit": "a50aa0fa3b639a59e198e47069c7fe00552b250a",
+          "timestamp": "2026-11-20T19:01:45Z",
+          "platform": "Apple Silicon macOS release CLI, stdio MCP, Apple Model I/O and standalone mesh measurements",
+          "artifact_hashes": {
+            "parity/reports/artifacts/multiple-cutouts-20261120/ADAPTERS.json": "55f404bd26c13aba32818c9fa9d829ecd90f35a2d7b6e4f3e7f978a6edf849cd",
+            "parity/reports/artifacts/multiple-cutouts-20261120/APPLE-MODEL-IO.json": "2bca011634bfc6afe48004054d924956a8c78bb7527622a974d2eebf11853b40",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Overlapping slots.svg": "d3ab15d039ceab3ae866be920cfb6b53e13fe710ed57d1da0246f838bcbcf6a5",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket two slots.svg": "73bd718abf0701ffe0fa59c565aa2de6197ec832333f4f8632c4130357e43839",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket.obj": "8de2bd3bf0ac881f99589e84e1e20c6fc0992eaca171b0b975435c41427dd57d",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket.weftforge": "c769ce99f5d9a4340ad3d89f66fcf74b9343fac0f4201bba0281516e0149e151",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Roundtrip.svg": "c9059d1fee47d62ddabce602f6043f8e4f35daec2ca749132a6211138583973c",
+            "parity/reports/artifacts/multiple-cutouts-20261120/check_modelio.swift": "f9c848fa4e3af7a25d52dc4097686d95ed0b16ca67969ba4f89823ec63a0194c",
+            "parity/reports/artifacts/multiple-cutouts-20261120/check_roundtrip.py": "4f2442f6b74fc5036527ede1897ce6e5278372b859c733f5bd7619a1e3869596",
+            "parity/reports/artifacts/multiple-cutouts-20261120/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/scenarios/PAT-MULTIPLE-CUTOUTS-001.json": "d61c78f4525b97d4fea9be1ca571529b69de8933cf77bd9024f7a30c57e928b9",
+            "parity/reports/artifacts/multiple-cutouts-20261120/INTEGRATED-ADAPTERS.json": "254d88f077b73e074f21350d7d58c988ba7af3cb9ca97fe7301d97439532c713"
+          }
         }
       ],
       "known_gaps": [
@@ -57970,7 +58014,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/FILE-005-dxf-pattern-export.md": "b0373181a6ae79c148aa154c0c2269956c2fed3587b5c6d0aef929108e11dd73",
         "spec/features/FILE-005-dxf-pattern-import.md": "06cff6f3d1a6d62fceeb93e94a2037f28136b69adfa5507b8a780e8864b0512b",

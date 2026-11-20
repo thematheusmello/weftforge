@@ -10,6 +10,7 @@ overlapping pattern and preserved the existing primary and recovery files.
 The pocket mesh had 47 vertices, 64 triangles, three boundary loops and
 0.0756 m² of material. Apple Model I/O measured 0.0756000019 m².
 Curved cutouts, nested islands and cutting across an opening remain open.
+The combined strain-map and cutout release reproduced both adapter outputs and the Apple mesh measurement. [Integrated adapter check](parity/reports/WF-20261120-INTEGRATED-MULTIPLE-CUTOUTS-001.json).
 [Replay the case](parity/scenarios/PAT-MULTIPLE-CUTOUTS-001.json) · [Source and artifact identities](parity/reports/WF-20261120-MULTIPLE-CUTOUTS-001.json).
 
 # Global garment strain map — 20 November 2026
