@@ -3,6 +3,18 @@
     "project": "accesskit",
     "crates": [
       {
+        "name": "accesskit_consumer",
+        "version": "0.35.0",
+        "vcs_info_sha256": "69a52bb7de7c5e3eae272900d0d184f3b7bddd698dceefc6c65c230c7e0ebafe",
+        "lock_sha256": "53cf47daed85312e763fbf85ceca136e0d7abc68e0a7e12abe11f48172bc3b10"
+      },
+      {
+        "name": "accesskit_windows",
+        "version": "0.32.1",
+        "vcs_info_sha256": "bd5e7014b4864fcc6fa975631e66c7b3bc13d61e6d203d9a16c5e58653581a81",
+        "lock_sha256": "eff7009f1a532e917d66970a1e80c965140c6cfbbabbdde3d64e5431e6c78e21"
+      },
+      {
         "name": "accesskit_winit",
         "version": "0.32.2",
         "vcs_info_sha256": "f92f05495977de786f4e9ec0bc7752b9c8d2859a65985fc816c6f7d5e675479f",
@@ -611,6 +623,26 @@
         "url": "https://raw.githubusercontent.com/KhronosGroup/SPIRV-Headers/04f10f650d514df88b76d25e83db360142c7b174/LICENSE",
         "sha256": "ea43b1de38a6f90c488800d66dec1ed671e68cda530266bc96951fb5b6307613",
         "size_bytes": 23503
+      }
+    ]
+  },
+  {
+    "project": "clipboard-win",
+    "crates": [
+      {
+        "name": "clipboard-win",
+        "version": "5.4.3",
+        "vcs_info_sha256": "abbb69879c49a36e2de75731e161ad0bfe625cae54a595367d7389404f209557",
+        "lock_sha256": "052af7878466feccda12ba7a6a67d019d712f296809559b47c12c8cc196d3a9a"
+      }
+    ],
+    "documents": [
+      {
+        "name": "LICENSE",
+        "kind": "code_license",
+        "url": "https://raw.githubusercontent.com/DoumanAsh/clipboard-win/ed27008ae5d1f10cfbb266de039f0fb35fd05a56/LICENSE",
+        "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+        "size_bytes": 1338
       }
     ]
   }

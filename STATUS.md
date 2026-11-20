@@ -43,6 +43,15 @@ It had 706 triangles and a different UV range. Next, check a multi-piece
 garment and its material assignments.
 [Reference OBJ round trip](spec/observations/REF-FILE-003-OBJ-CUTOUT-001.json).
 
+# Windows x64 cross-package — 20 November 2026
+
+The host packaging command can build the Windows x64 studio and CLI with
+LLVM-MinGW. It links libunwind statically and includes its license. The Cargo
+notice catalog now covers the Windows AccessKit consumer and platform crates
+and clipboard-win. The next Windows checks are a native CLI launch, studio
+render and editable project save/reopen on a Windows machine.
+[Build command and platform checks](docs/verification.md#windows-x64-cross-package).
+
 # Debian ARM64 Cargo license texts — 20 November 2026
 
 The offline notice catalog now covers the seven crates that lacked a code
