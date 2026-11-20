@@ -117,7 +117,7 @@ are rejected. The tool names and arguments are:
 | `project_import_svg` | `input`, `output`, `svg` | Added `pieces_imported` and `holes_imported`, new `revision`, `metres_per_user_unit`, preserved-origin convention and explicit construction-only `scope` |
 | `project_import_dxf` | `input`, `output`, `dxf` | Added `pieces_imported`, new `revision`, `metres_per_user_unit: 0.001`, preserved WCS X/Y origin/layout convention and explicit construction-only `scope` |
 | `project_export_svg` | `input`, `output` | Paths, `source_revision`, `kind: "authored_svg"`, `length_unit: "mm"`, pattern/SVG axis convention |
-| `project_export_obj` | `input`, `output` | Paths, `source_revision`, `kind: "rest_obj"`, `length_unit: "m"`, `up: "Y"`, and companion `material_library` path (null for an empty surface) |
+| `project_export_obj` | `input`, `output`, optional `pieces` array of distinct pattern IDs | Paths, `source_revision`, `kind: "rest_obj"`, `length_unit: "m"`, `up: "Y"`, and companion `material_library` path (null for an empty surface) |
 | `project_export_glb` | `input`, `output` | Paths, `source_revision`, `kind: "rest_glb"`, `length_unit: "m"`, `up: "Y"` |
 | `project_export_gltf` | `input`, `output` | Paths, `source_revision`, `kind: "rest_gltf"`, `length_unit: "m"`, `up: "Y"` |
 | `project_export_dxf` | `input`, `output` | Paths, `source_revision`, `kind: "authored_dxf"`, `length_unit: "mm"`, pattern U/V to XY axes, and boundary-only `scope` |

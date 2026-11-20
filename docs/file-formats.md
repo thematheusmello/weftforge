@@ -257,7 +257,7 @@ fallback from a corrupt primary to an older version.
 ## Export semantics
 
 OBJ uses arranged rest geometry, or current simulated positions when exporting
-from an active desktop simulation. CLI `export-obj` exports the rest mesh;
+from an active desktop simulation. **Export selected OBJ** writes the active panel and additional selected panels, including their assigned fabrics. CLI `export-obj` accepts optional trailing pattern IDs for the same subset of the rest mesh;
 `simulate PROJECT OUTPUT.obj STEPS` writes the advanced solver positions. Vertex
 coordinates are metres with Y up. `vt` values retain material-space metres and
 may lie outside `[0,1]`; `vn` values are computed vertex normals. Faces are
