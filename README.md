@@ -126,7 +126,7 @@ Version 6 `.weftforge` JSON uses a strict schema for supported editable
 construction, including ordered sewing groups and piece-owned straight internal
 annotations, holes and notches. The reader supports explicit version 1–5 migrations.
 Older apps cannot open v6. OBJ, GLB and embedded JSON glTF mesh export and
-bounded SVG/DXF pattern import and export are available. File and Command
+bounded SVG/DXF pattern import and export are available. To share an OBJ with its fabric colors, include the companion MTL file from the same folder. File and Command
 search export 1:1 tiled pattern PDFs for A4 or US Letter. Each PDF includes
 a 100 mm test square. **Save 2D pattern PNG…** and **Save 2D pattern JPEG…**
 set a crop and pixel density in physical units. The

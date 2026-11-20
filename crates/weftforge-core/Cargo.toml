@@ -9,6 +9,8 @@ license.workspace = true
 serde.workspace = true
 serde_json.workspace = true
 earcutr.workspace = true
+sha2 = "=0.10.9"
+tempfile = "=3.27.0"
 quick-xml = "=0.41.0"
 png = "=0.18.1"
 image = { version = "=0.25.10", default-features = false, features = ["jpeg"] }

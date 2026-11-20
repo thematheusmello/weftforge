@@ -1,6 +1,5 @@
 use crate::{
-    Curve, Error, Id, Mannequin, Material, Mesh, Piece, Placement, Point, Project, Result, Seam,
-    ensure,
+    Curve, Error, Id, Mannequin, Material, Piece, Placement, Point, Project, Result, Seam, ensure,
 };
 use serde::{Deserialize, Serialize};
 use std::ffi::OsString;
@@ -13,6 +12,7 @@ use std::sync::atomic::{AtomicU64, Ordering};
 mod dxf;
 mod dxf_import;
 mod gltf;
+mod obj;
 mod pattern_png;
 mod pdf;
 mod svg;
@@ -546,38 +546,6 @@ impl Project {
         )?;
         let dxf = dxf::render(self)?;
         StagedFile::write(path.as_ref(), dxf.as_bytes())?.replace(path.as_ref())
-    }
-}
-
-impl Mesh {
-    /// Exports triangle geometry only; authored annotations such as notches have no mesh effect.
-    pub fn export_obj(&self, path: impl AsRef<Path>) -> Result<()> {
-        export_path_guard(path.as_ref())?;
-        self.validate()?;
-        let normals = self.normals()?;
-        let mut obj =
-            String::from("# WeftForge OBJ: metres; Y up; material UV coordinates in metres\n");
-        for [x, y, z] in &self.positions {
-            writeln!(obj, "v {x:.17} {y:.17} {z:.17}").expect("Writing a String cannot fail");
-        }
-        for [u, v] in &self.uv {
-            writeln!(obj, "vt {u:.17} {v:.17}").expect("Writing a String cannot fail");
-        }
-        for [x, y, z] in normals {
-            writeln!(obj, "vn {x:.17} {y:.17} {z:.17}").expect("Writing a String cannot fail");
-        }
-        let mut last_piece = None;
-        for triangle in &self.triangles {
-            let piece = self.piece_ids[triangle[0]];
-            if last_piece != Some(piece) {
-                writeln!(obj, "g piece_{piece}").expect("Writing a String cannot fail");
-                last_piece = Some(piece);
-            }
-            let [a, b, c] = triangle.map(|v| v + 1);
-            writeln!(obj, "f {a}/{a}/{a} {b}/{b}/{b} {c}/{c}/{c}")
-                .expect("Writing a String cannot fail");
-        }
-        StagedFile::write(path.as_ref(), obj.as_bytes())?.replace(path.as_ref())
     }
 }
 

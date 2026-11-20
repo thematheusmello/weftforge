@@ -2403,7 +2403,7 @@ impl Studio {
                         output.positions = state.positions().to_vec();
                     }
                     match format {
-                        ExportFormat::Obj => output.export_obj(path),
+                        ExportFormat::Obj => output.export_obj_with_materials(project, path).map(|_| ()),
                         ExportFormat::Glb => output.export_glb(project, path),
                         ExportFormat::Gltf => output.export_gltf(project, path),
                         _ => unreachable!(),
@@ -2428,7 +2428,7 @@ impl Studio {
                 ExportFormat::Pdf(_) => "Exported tiled pattern PDF. Print the scale check at Actual size.".into(),
                 ExportFormat::Dxf => "Exported exterior DXF boundaries in millimetres; internal annotations, sewing and materials stay in .weftforge.".into(),
                 ExportFormat::Svg => "Exported SVG boundaries and notches in millimetres. Cutouts can be reimported on drawings without notch marks.".into(),
-                ExportFormat::Obj => "Exported OBJ cloth surface in metres; internal lines and authored notches stay in .weftforge.".into(),
+                ExportFormat::Obj => "Exported the OBJ cloth surface and its companion MTL fabric colors. Keep both files together.".into(),
                 ExportFormat::Glb => "Exported static GLB cloth surface in metres.".into(),
                 ExportFormat::Gltf => "Exported static glTF cloth surface in metres.".into(),
             },
@@ -2915,7 +2915,7 @@ impl Studio {
                 ui.label("Cut piece: select an owner and two straight boundaries, then review the independent pieces.");
                 ui.label("Add hole…: select an owner, then review a numeric rectangular opening. Hole boundaries remain editable.");
                 ui.label("Offset outline…: review a whole-piece material change, then Apply once. Cancel leaves the cloth unchanged.");
-                ui.label("SVG preserves straight-sided cutouts. DXF requires pieces without holes. OBJ exports cloth surfaces. Save the native project to keep internal annotations.");
+                ui.label("SVG preserves straight-sided cutouts. DXF requires pieces without holes. OBJ exports cloth surfaces with a companion MTL fabric library. Save the native project to keep internal annotations.");
                 ui.label("3D: drag to orbit; scroll to zoom.");
                 ui.label("Space plays or pauses simulation.");
                 ui.label("Enter confirms polygon or sewing; Escape cancels.");
@@ -14939,8 +14939,17 @@ mod tests {
             let path = directory.join(if draped { "draped.obj" } else { "rest.obj" });
             app.draft = Some(InspectorDraft::new(&before, None, None));
             assert!(app.export_to_path(&ctx, ExportFormat::Obj, Some(&path), None));
-            let positions: Vec<[f64; 3]> = fs::read_to_string(&path)
-                .unwrap()
+            let obj = fs::read_to_string(&path).unwrap();
+            let library = obj
+                .lines()
+                .find_map(|line| line.strip_prefix("mtllib "))
+                .unwrap();
+            assert!(
+                fs::read_to_string(directory.join(library))
+                    .unwrap()
+                    .contains("Kd 0.22 0.55 0.76")
+            );
+            let positions: Vec<[f64; 3]> = obj
                 .lines()
                 .filter_map(|line| line.strip_prefix("v "))
                 .map(|line| {

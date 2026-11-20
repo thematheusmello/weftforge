@@ -517,6 +517,7 @@ fn call(line: &[u8]) -> Result<Value, String> {
                 let args: FileArgs = arguments(line)?;
                 super::distinct(&args.input, &args.output)?;
                 let project = Project::load(Path::new(&args.input))?;
+                let mut material_library = None;
                 let (kind, unit, up) = match header.name.as_str() {
                     "project_export_svg" => {
                         project.export_svg(Path::new(&args.output))?;
@@ -539,12 +540,17 @@ fn call(line: &[u8]) -> Result<Value, String> {
                         ("rest_gltf", "m", "Y")
                     }
                     _ => {
-                        project.mesh()?.export_obj(Path::new(&args.output))?;
+                        material_library = project
+                            .mesh()?
+                            .export_obj_with_materials(&project, Path::new(&args.output))?;
                         ("rest_obj", "m", "Y")
                     }
                 };
                 let mut result = json!({"input":args.input,"output":args.output,"source_revision":project.revision,
                     "kind":kind,"length_unit":unit,"up":up});
+                if header.name == "project_export_obj" {
+                    result["material_library"] = json!(material_library);
+                }
                 if header.name == "project_export_dxf" {
                     result["scope"] = json!(
                         "Exterior pattern boundaries only; sewing, materials, grain and 3D placements require the native project."
@@ -885,7 +891,7 @@ fn tools() -> Vec<Value> {
         ("project_import_svg", "Add closed straight/cubic SVG exterior patterns as one editable transaction. Compound paths can represent straight-sided holes, one per polygon. Require physical mm width/height and a uniform viewBox scale; retain the SVG user-space origin and invert Y. Import names with first material/default 3D placement; omit appearance, sewing, grain and simulation. Unsupported content fails the entire import; source SVG is preserved.", object(json!({"input":path,"output":path,"svg":path}), &["input","output","svg"]), false),
         ("project_import_dxf", "Add the bounded FILE-005-v1 R2000 ASCII DXF LINE/clamped cubic SPLINE exterior patterns as one editable transaction. Require millimetres and exact closed ordered WF_PIECE layer contours; preserve WCS X/Y layout as U/V without inversion. Layer names become names with fresh IDs, first material and default 3D placement. Unsupported drawing content fails the entire import; source DXF is preserved.", object(json!({"input":path,"output":path,"dxf":path}), &["input","output","dxf"]), false),
         ("project_export_svg", "Export one compound evenodd path per piece with closed exterior and hole subpaths, plus authored perpendicular notch markers, at physical millimetre scale with inverted SVG Y. Internal lines are omitted; straight-sided holes can be reimported. Drawings with notch line elements are refused on import. Refuse replacement of the source or native project destinations.", files.clone(), false),
-        ("project_export_obj", "Build and export the actual rest surface, including holes, in metres, Y-up, with material-space metre UVs and source revision; no simulation or annotation line primitives. Refuse replacement of the source or native project destinations.", files.clone(), false),
+        ("project_export_obj", "Build and export the actual rest surface, including holes, in metres, Y-up, with metre UVs, fabric assignments and a companion MTL color library; no simulation or annotation line primitives. Refuse replacement of the source or native project destinations.", files.clone(), false),
         ("project_export_glb", "Build and export the actual rest surface as one static glTF 2.0 binary, in metres and Y-up, with named pieces, per-piece fabric tint, normals and UVs. Refuse replacement of source or native project destinations.", files.clone(), false),
         ("project_export_gltf", "Build and export the actual rest surface as one static glTF 2.0 JSON document with an embedded buffer, in metres and Y-up, with named pieces, per-piece fabric tint, normals and UVs. Refuse replacement of source or native project destinations.", files.clone(), false),
         ("project_export_dxf", "Export authored exterior pattern boundaries as R2000 DXF LINE/SPLINE geometry in millimetres, without 3D placement. DXF v1 refuses any project with holes or authored notches before writing output. Internal lines are omitted; sewing, materials, grain and editable annotations require the native project. Refuse replacement of source or native project destinations.", files, false),
