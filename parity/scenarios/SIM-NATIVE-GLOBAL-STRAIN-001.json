@@ -1,0 +1,44 @@
+{
+  "id": "SIM-NATIVE-GLOBAL-STRAIN-001",
+  "status": "implementation_only",
+  "initial_conditions": "Open the supplied revision-24 two-fabric Harbor. It has two patterns, eight seams and 654 rest vertices. Use Front view and the native 60-step Assemble and 120-step Drape actions.",
+  "actions": [
+    "Set the global display range during assembly. Read the prior accepted peak during the drape, then frame and export the accepted garment OBJ.",
+    "Capture off, on at 120%, on at 125%, repeat off and repeat on, with two fabrics visible. Compare the independently predicted face colors and both 2D pattern interiors.",
+    "Isolate the front, restore both panels, save, open an empty project and reopen the primary.",
+    "Open the selected Pocket cutout and sample its opening and sloped outline."
+  ],
+  "expected_outcomes": "The display uses per-face principal stretch of the accepted geometry, respects isolated faces and updates the 3D range. Pattern colors and the saved project are identical across the display changes. Opening the saved document restores its rest mesh.",
+  "measurements": {
+    "cutout_open_interior_grid_pixels": 2250,
+    "cutout_antialiased_boundary_rows": 220,
+    "cutout_distinct_intermediate_edge_colors": 67,
+    "identical_full_workspace_pixels_on_repeat": 1640000,
+    "triangles": 1172,
+    "vertices": 654,
+    "revision": 24,
+    "rest_topology_uv_material_library_preserved": true,
+    "document_preserved": true,
+    "range_computed_from_export_percent": [
+      99.93291362331546,
+      118.77055479772432
+    ],
+    "per_piece_max_percent": {
+      "piece_2": 118.73741987668241,
+      "piece_31": 118.77055479772432
+    },
+    "material_colored_2d_pixels": {
+      "Cotton approximation (uncalibrated)": 24383,
+      "Terracotta linen": 24352
+    },
+    "identical_2d_canvas_pixels": 517104,
+    "sampled_visible_faces": 522,
+    "sampled_face_interior_pixels": 5784,
+    "matching_global_120_pixels": 5784,
+    "matching_global_125_pixels": 5784,
+    "off_to_on_changed_pixels": 5784,
+    "120_to_125_changed_pixels": 4868,
+    "off_repeat_identical_pixels": 5784,
+    "on_repeat_identical_pixels": 5784
+  }
+}

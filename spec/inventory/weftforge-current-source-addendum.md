@@ -1,5 +1,9 @@
 # WeftForge current-source addendum
 
+## Global garment strain map
+
+Source `25c337859089b7ce93e6bef998d40dae2f05ae41` adds a global per-face principal-stretch display, editable percentage range and separate authored fabric colors on editable patterns. The reviewed reference observation records controls and display scope. Numerical comparison remains open.
+
 ## Fabric colors in OBJ exports
 
 Source `9c0fe5fd417269c88db38b6f85f9c7bbed6f935e` maps each exported group to one authored fabric and writes a content-addressed MTL for the colors used by that surface. The CLI and MCP share the rest export.
