@@ -1,0 +1,94 @@
+{
+  "source_commit": "4b7d30318b1a2c4cc6db4dc95fe64de346cc37ef",
+  "source_tree": "1b8ee25f1b9eea12de496a3e3bdf909a92735c76",
+  "executable_sha256": "d093abde9ff4ea87394ccb0ac6093609c2356258400121fc6132518bf8313617",
+  "system": "Debian 13.7 / ARM64",
+  "compositor": {
+    "name": "Sway",
+    "package_version": "1.10.1-2",
+    "wlroots_package_version": "0.18.2-3",
+    "renderer": "pixman",
+    "backend": "headless",
+    "xdg_session_type": "wayland",
+    "xwayland": "disabled",
+    "display_environment": "DISPLAY unset",
+    "studio_graphics": "Vulkan with the Mesa lavapipe ICD selected",
+    "output": {
+      "name": "HEADLESS-1",
+      "active": true,
+      "current_mode": {
+        "width": 1640,
+        "height": 1000,
+        "refresh": 60000
+      },
+      "scale": 1.0
+    }
+  },
+  "gtk": {
+    "xdg_desktop_portal": "1.20.3+ds-1",
+    "xdg_desktop_portal_gtk": "1.15.3-1",
+    "backend": "wayland",
+    "FileChooser_interface_version": 4
+  },
+  "surfaces": {
+    "first": [
+      {
+        "app_id": "WeftForge",
+        "shell": "xdg_shell",
+        "pid": 3213,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1640,
+          "height": 1000
+        }
+      }
+    ],
+    "chooser": [
+      {
+        "app_id": "WeftForge",
+        "shell": "xdg_shell",
+        "pid": 3213,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 820,
+          "height": 1000
+        }
+      },
+      {
+        "app_id": "xdg-desktop-portal-gtk",
+        "shell": "xdg_shell",
+        "pid": 2116,
+        "rect": {
+          "x": 820,
+          "y": 0,
+          "width": 820,
+          "height": 1000
+        }
+      }
+    ],
+    "reopened": [
+      {
+        "app_id": "WeftForge",
+        "shell": "xdg_shell",
+        "pid": 3707,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1640,
+          "height": 1000
+        }
+      }
+    ]
+  },
+  "input": "Virtual pointer and keyboard on the compositor seat. File selectors belonged to the GTK portal. Workspace PNGs were saved through the studio File menu.",
+  "observations": [
+    "An empty native project displayed revision 0. File \u2192 Import SVG opened the GTK selector. Its initial typed path did not resolve. Choosing the retained file in the work folder opened the native review with one pattern, one editable cutout and 1 mm per SVG unit.",
+    "Import committed revision 1 with one piece and 46 vertices. Undo restored the empty revision 2. Redo restored the 46-vertex piece at revision 3. GTK Save as and Export OBJ wrote the imported project and rest surface.",
+    "The first studio exited. A new process opened without a document. File \u2192 Open loaded the saved revision 3. Frame all exposed the corner and a single pointer drag on the 10 mm grid moved vertex 13 left by 20 mm. Revision 4 displayed 43 vertices.",
+    "GTK Save as and Export OBJ wrote the edited project and rest surface. New Empty cleared the workspace. Opening the edited project restored revision 4 and the slanted cutout. Frame all and Frame garment exposed the edited contours in 2D and 3D. The studio saved its workspace PNG through GTK.",
+    "Reopening the imported file afterward restored revision 3 and the rectangular opening. The studio saved the imported workspace PNG. Both PNG captures occurred after their respective reopen."
+  ],
+  "limits": "Virtual display and software rendering. Physical displays, GPU drivers, other compositors and other Linux distributions remain untested in this case."
+}
