@@ -1,0 +1,38 @@
+{
+  "source_commit": "4b7d30318b1a2c4cc6db4dc95fe64de346cc37ef",
+  "source_tree": "1b8ee25f1b9eea12de496a3e3bdf909a92735c76",
+  "previous_source": "d564e2de7bd6d224c0753d2b0d96b07eed81eb92",
+  "platform": "Debian 13.7 ARM64",
+  "target": "aarch64-unknown-linux-gnu",
+  "toolchain": "rustc and Cargo 1.94.1",
+  "source_sync": {
+    "git_blobs_checked": 20236,
+    "added_paths": 27,
+    "modified_paths": 22,
+    "removed_paths": 0,
+    "fixed_guest_source_and_target": true
+  },
+  "commands": [
+    "cargo fetch --locked --offline --target aarch64-unknown-linux-gnu",
+    "cargo xtask package"
+  ],
+  "network": "Offline Cargo in a loopback-only network namespace.",
+  "previous_package": {
+    "manifest_sha256": "d4f0c2c36dbb9fab54ab7b3d6f4a3366ce5048e405a3c3cc6d4e708bda21ae5e",
+    "files_verified_before_and_after": 425
+  },
+  "current_package": {
+    "files_read_from_guest_disk": 425,
+    "cargo_crates": 234,
+    "unresolved_cargo_crates": [],
+    "locked_crate_archives_and_vcs_records_rechecked": 7,
+    "manifest_sha256": "19dfd7cdd16f230af2835b13f3e30f56ff902aa86fe0035112552cd6163919e9",
+    "ledger_sha256": "6162f6f52fa1406d9fde237efdbca8d6becd6df42669e5d45d9edfa90cd5f8e9",
+    "executables": {
+      "weftforge": "d093abde9ff4ea87394ccb0ac6093609c2356258400121fc6132518bf8313617",
+      "weftforge-cli": "d4a4b8f745e4e2a7d5a07a76ac9764229f2da8144c656923e333331b1df6e45a"
+    },
+    "elf": "Both packaged ELF64 AArch64 executables matched their release cache output and all ldd paths resolved."
+  },
+  "scope": "Unsigned Debian ARM64 build. Operating-system license inventory and signing remain open."
+}
