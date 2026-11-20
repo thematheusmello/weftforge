@@ -114,7 +114,7 @@ are rejected. The tool names and arguments are:
 | `project_lengths` | `path`, `query` | Applied `source_revision`, `length_unit: "m"`, echoed query, and unrounded authored/rest length(s); pairs include signed `mismatch_b_minus_a_m` |
 | `project_create` | `output` | Saved `output` and `revision`; existing output paths are refused |
 | `project_execute` | `input`, `output`, `commands` | Saved paths, new `revision`, and `commands_applied` |
-| `project_import_svg` | `input`, `output`, `svg` | Added `pieces_imported`, new `revision`, `metres_per_user_unit`, preserved-origin convention and explicit construction-only `scope` |
+| `project_import_svg` | `input`, `output`, `svg` | Added `pieces_imported` and `holes_imported`, new `revision`, `metres_per_user_unit`, preserved-origin convention and explicit construction-only `scope` |
 | `project_import_dxf` | `input`, `output`, `dxf` | Added `pieces_imported`, new `revision`, `metres_per_user_unit: 0.001`, preserved WCS X/Y origin/layout convention and explicit construction-only `scope` |
 | `project_export_svg` | `input`, `output` | Paths, `source_revision`, `kind: "authored_svg"`, `length_unit: "mm"`, pattern/SVG axis convention |
 | `project_export_obj` | `input`, `output` | Paths, `source_revision`, `kind: "rest_obj"`, `length_unit: "m"`, `up: "Y"` |
@@ -309,7 +309,7 @@ joins. One hole per piece is supported; hole curves cannot be sewn, and a holed
 piece cannot be cut. Existing exterior sewing remains attached.
 
 Native v6 preserves both editable loops. SVG exports one compound evenodd path
-per piece, but current SVG import refuses hole subpaths. DXF export refuses a
+per piece. SVG import restores both editable loops in straight-sided polygons. DXF export refuses a
 holed project before staging; OBJ exports its actual annular surface. See the
 [hole contract](../spec/features/PAT-006-straight-hole.md). With `offset_outline`,
 the shared schema has 33 nontransaction alternatives; the core enum includes
@@ -324,7 +324,8 @@ the SVG source cannot alias output or its recovery destination. A failed import
 leaves the existing document and files intact under the native-save guarantees.
 The [SVG profile](../spec/features/FILE-005-svg-pattern-import.md) requires physical
 mm dimensions with uniform viewBox scale and direct closed absolute `M/L/C/Z`
-paths. It preserves editable straight/cubic geometry, names, user-space origin
+paths. A polygon can have one [straight-sided cutout](../spec/features/FILE-005-svg-cutout-import.md).
+It preserves editable straight/cubic geometry, names, user-space origin
 and relative layout, inverting SVG Y into upward pattern V. The response states
 the scale and omitted content; imported pieces use the first fabric and default
 3D placement. Unsupported content rejects the entire drawing. The inline shared
