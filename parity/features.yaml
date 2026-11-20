@@ -48308,7 +48308,8 @@
         "parity/reports/WF-20261116-RECTANGLE-NATIVE-001.json",
         "parity/reports/WF-20261116-RECTANGLE-FILE-SUPPLEMENT-001.json",
         "parity/reports/artifacts/rectangle-gesture-20261116/SELECTED-PUBLIC-MANIFEST-001.json",
-        "parity/reports/WF-20261117-NATIVE-NOTCH-N006-001.json"
+        "parity/reports/WF-20261117-NATIVE-NOTCH-N006-001.json",
+        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001.json"
       ],
       "scenarios": [
         {
@@ -50501,6 +50502,24 @@
             "parity/reports/artifacts/native-harbor-recovery-20261118/interrupted-save-check.json": "9a70452ae16951786b8888e4e360d87a9edc80f110893017489391257c1d5610"
           },
           "path": "parity/reports/WF-20261118-HARBOR-NATIVE-RECOVERY-001.json"
+        },
+        {
+          "id": "WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001",
+          "commit": "f440d126c9094b357deb99b68dd6b01235591a44",
+          "timestamp": "2026-11-20T14:52:34.402109Z",
+          "platform": "Debian 13.7 ARM64 packaged studio, X11, GTK desktop portal and Mesa llvmpipe Vulkan",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-arm64-native-save-20261120/NATIVE-SAVE.json": "e8edce278cbb69c029d589c3f9098767650acb79aa2cafa94647c5808d3cedf2",
+            "parity/reports/artifacts/debian-arm64-native-save-20261120/POST-CASE-CLEANUP.json": "18188e2ea65aab46b79070f770936c011d2072244ef6d3656d7807523c8cc392",
+            "parity/reports/artifacts/debian-arm64-native-save-20261120/check_saved_project.py": "4c479b1c97818585a8299fbf2a60378b5f7fdc532f2a36360d70b67d744eb7b9",
+            "parity/reports/artifacts/debian-arm64-native-save-20261120/chooser.png": "06056c3e9cee9e77016f430d5f277f76e5f8a91922cda4603706385e90f9b0f0",
+            "parity/reports/artifacts/debian-arm64-native-save-20261120/file-menu.png": "7fcadaa0c12283412710ff52ec95c38317d0f907b2f7200e94901ff9d3155153",
+            "parity/reports/artifacts/debian-arm64-native-save-20261120/linux-native-save.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/debian-arm64-native-save-20261120/saved-workspace.png": "e0ef2cfe3370e05be9cbbd8c03b123fc5b6c483f67916c55424a1c4d39c6a5df",
+            "parity/reports/artifacts/debian-arm64-jpeg-20261119/PACKAGE-SHA256SUMS": "fe23f2eb18910eb6c1decac15e73bfba25badc20f71f50496649d86a9d72b145",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c"
+          },
+          "path": "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001.json"
         }
       ],
       "known_gaps": [
@@ -50508,7 +50527,8 @@
         "Strict nativev3 with both seam/group collections and exact supported v1/v2 migration has independent headless checks. Native line-group save/real quit/same-binary relaunch/reopen/resave is exact; broad assets/settings/recovery/native failedIO/platform persistence remains incomplete.",
         "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity.",
         "At actual7d19/integratedae8, source404 gates pass (six new Rectangle regressions; original red covers two). RG001 observes empty creation of one editable400x600mm RectangleR1, one UndoemptyR2/RedoR3, native saves, explicit freshP2 reopenR3 and one10mm point editR4/save. Original whole-case finalization FAILED:1008.460155082983s/900s; UI560.473s/760s and separate cleanup649.864573250059s do not override it. Separate frozen FS001 file-only PASS runs once in0.07889999996405095s with seals unchanged; no timing regrade or UI/lifecycle/reference/physics/full-feature/garment/roadmap acceptance. Three pre-first-app-call recorder errors remain; no app call replay. Only this bounded current scope is added; earlier failures, math31-current scopes and endpoint stales remain exact. Public JPEG copies retain exact encoded scans and color-characterization tags, with only eight ICC display identifier metadata bytes cleared per image. The current public index and redaction journal supersede only nine earlier image hashes/whole-byte wording; private originals and scientific/native/file outcomes remain unchanged.",
-        "The Rectangle source/native/file reports are now stale solely because their original declared physical dependency scope includes changed sim lib.rs at13fb. Exact original reports are archived; original source404 pass, failed900s native finalization and separate file-only pass remain unchanged. Unchanged GUI source does not silently transfer original scoped acceptance."
+        "The Rectangle source/native/file reports are now stale solely because their original declared physical dependency scope includes changed sim lib.rs at13fb. Exact original reports are archived; original source404 pass, failed900s native finalization and separate file-only pass remain unchanged. Unchanged GUI source does not silently transfer original scoped acceptance.",
+        "The Debian ARM64 f440d126 studio saved the revision 3 fixture through the GTK chooser and preserved every editable byte. Repeat on the current package and test cancel, failed persistence and recovery through native workflows."
       ],
       "contradictions": [],
       "blockers": [
@@ -62798,7 +62818,8 @@
         "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json",
         "parity/reports/WF-20261119-PACKAGER-NOTICES-001.json",
         "parity/reports/WF-20261119-APPLE-SILICON-PACKAGE-NOTICES-001.json",
-        "parity/reports/WF-20261119-APPLE-SILICON-PINNED-CARGO-NOTICES-001.json"
+        "parity/reports/WF-20261119-APPLE-SILICON-PINNED-CARGO-NOTICES-001.json",
+        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001.json"
       ],
       "scenarios": [
         {
@@ -62964,13 +62985,31 @@
             "parity/reports/artifacts/apple-silicon-package-notices-20261119/LICENSE-MANIFEST.json": "df72769eafcf473b099b035ad85017f49577ff978ef3a595f3f45cb4356d9588"
           },
           "path": "parity/reports/WF-20261119-APPLE-SILICON-PINNED-CARGO-NOTICES-001.json"
+        },
+        {
+          "id": "WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001",
+          "commit": "f440d126c9094b357deb99b68dd6b01235591a44",
+          "timestamp": "2026-11-20T14:52:34.402109Z",
+          "platform": "Debian 13.7 ARM64 packaged studio, X11, GTK desktop portal and Mesa llvmpipe Vulkan",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-arm64-native-save-20261120/NATIVE-SAVE.json": "e8edce278cbb69c029d589c3f9098767650acb79aa2cafa94647c5808d3cedf2",
+            "parity/reports/artifacts/debian-arm64-native-save-20261120/POST-CASE-CLEANUP.json": "18188e2ea65aab46b79070f770936c011d2072244ef6d3656d7807523c8cc392",
+            "parity/reports/artifacts/debian-arm64-native-save-20261120/check_saved_project.py": "4c479b1c97818585a8299fbf2a60378b5f7fdc532f2a36360d70b67d744eb7b9",
+            "parity/reports/artifacts/debian-arm64-native-save-20261120/chooser.png": "06056c3e9cee9e77016f430d5f277f76e5f8a91922cda4603706385e90f9b0f0",
+            "parity/reports/artifacts/debian-arm64-native-save-20261120/file-menu.png": "7fcadaa0c12283412710ff52ec95c38317d0f907b2f7200e94901ff9d3155153",
+            "parity/reports/artifacts/debian-arm64-native-save-20261120/linux-native-save.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/debian-arm64-native-save-20261120/saved-workspace.png": "e0ef2cfe3370e05be9cbbd8c03b123fc5b6c483f67916c55424a1c4d39c6a5df",
+            "parity/reports/artifacts/debian-arm64-jpeg-20261119/PACKAGE-SHA256SUMS": "fe23f2eb18910eb6c1decac15e73bfba25badc20f71f50496649d86a9d72b145",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c"
+          },
+          "path": "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "The unsigned ARM64 package ran on Debian 13.7 under X11/Vulkan software rendering. Windows, Linux x86-64, Wayland, GPU hardware, platform accessibility, signing and redistributable release acceptance remain open.",
         "The updated ARM64 Debian package has a native X11 Ctrl+K and Escape smoke check with software rendering. Full platform accessibility, Windows and signed cross-platform builds remain open.",
-        "The exact offline Debian 13.7 ARM64 JPEG package launched under X11/Vulkan software rendering and agreed with Apple Silicon on the two packaged CLI/MCP JPEG exports. The native Linux save chooser, hardware GPU, Windows, signing and complete distribution notices remain open.",
+        "The exact offline Debian 13.7 ARM64 JPEG package launched under X11/Vulkan software rendering and agreed with Apple Silicon on the two packaged CLI/MCP JPEG exports. The same package saved a project through the GTK chooser on X11. Repeat on a current Linux package. Hardware GPU, Windows, signing and complete distribution notices remain open.",
         "Source fixtures check target-scoped notice collection, standalone app notice paths, executable hashes and interrupted staging recovery. Actual release notice closure, platform audits and signing remain open.",
         "The actual Apple Silicon release bundle opened Harbor. All recorded binary and 258 notice file hashes passed, and the packaged CLI reproduced both prior JPEGs. Resolve the 31 flagged runtime notices, audit platform runtimes and finish signed builds.",
         "A second offline Apple Silicon package retained all runtime libraries and executable bytes. Ten pinned files supply 18 missing code licenses. Eleven declaration-only and two absent code texts remain open, along with other platform audits and signing."
