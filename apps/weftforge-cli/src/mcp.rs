@@ -167,6 +167,15 @@ struct FileArgs {
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
+struct ObjExportArgs {
+    input: String,
+    output: String,
+    #[serde(default, deserialize_with = "present")]
+    pieces: Option<Vec<weftforge_core::Id>>,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
 struct PatternSnapshotArgs {
     input: String,
     output: String,
@@ -509,15 +518,30 @@ fn call(line: &[u8]) -> Result<Value, String> {
                     "kind":"pattern_pdf","paper":args.paper,"scale":1,"length_unit":"mm"}),
                 )
             }
+            "project_export_obj" => {
+                let args: ObjExportArgs = arguments(line)?;
+                super::distinct(&args.input, &args.output)?;
+                let project = Project::load(Path::new(&args.input))?;
+                let mesh = project.mesh()?;
+                let material_library = match &args.pieces {
+                    Some(pieces) => mesh.export_selected_obj(&project, &args.output, pieces)?,
+                    None => mesh.export_obj_with_materials(&project, &args.output)?,
+                };
+                let mut result = json!({"input":args.input,"output":args.output,"source_revision":project.revision,
+                    "kind":"rest_obj","length_unit":"m","up":"Y"});
+                result["material_library"] = json!(material_library);
+                if let Some(pieces) = args.pieces {
+                    result["pieces"] = json!(pieces);
+                }
+                Ok(result)
+            }
             "project_export_svg"
-            | "project_export_obj"
             | "project_export_glb"
             | "project_export_gltf"
             | "project_export_dxf" => {
                 let args: FileArgs = arguments(line)?;
                 super::distinct(&args.input, &args.output)?;
                 let project = Project::load(Path::new(&args.input))?;
-                let mut material_library = None;
                 let (kind, unit, up) = match header.name.as_str() {
                     "project_export_svg" => {
                         project.export_svg(Path::new(&args.output))?;
@@ -539,18 +563,10 @@ fn call(line: &[u8]) -> Result<Value, String> {
                             .export_gltf(&project, Path::new(&args.output))?;
                         ("rest_gltf", "m", "Y")
                     }
-                    _ => {
-                        material_library = project
-                            .mesh()?
-                            .export_obj_with_materials(&project, Path::new(&args.output))?;
-                        ("rest_obj", "m", "Y")
-                    }
+                    _ => unreachable!(),
                 };
                 let mut result = json!({"input":args.input,"output":args.output,"source_revision":project.revision,
                     "kind":kind,"length_unit":unit,"up":up});
-                if header.name == "project_export_obj" {
-                    result["material_library"] = json!(material_library);
-                }
                 if header.name == "project_export_dxf" {
                     result["scope"] = json!(
                         "Exterior pattern boundaries only; sewing, materials, grain and 3D placements require the native project."
@@ -891,7 +907,7 @@ fn tools() -> Vec<Value> {
         ("project_import_svg", "Add closed straight/cubic SVG exterior patterns as one editable transaction. Compound paths can represent multiple disjoint straight-sided holes per polygon. Require physical mm width/height and a uniform viewBox scale; retain the SVG user-space origin and invert Y. Import names with first material/default 3D placement; omit appearance, sewing, grain and simulation. Unsupported content fails the entire import; source SVG is preserved.", object(json!({"input":path,"output":path,"svg":path}), &["input","output","svg"]), false),
         ("project_import_dxf", "Add the bounded FILE-005-v1 R2000 ASCII DXF LINE/clamped cubic SPLINE exterior patterns as one editable transaction. Require millimetres and exact closed ordered WF_PIECE layer contours; preserve WCS X/Y layout as U/V without inversion. Layer names become names with fresh IDs, first material and default 3D placement. Unsupported drawing content fails the entire import; source DXF is preserved.", object(json!({"input":path,"output":path,"dxf":path}), &["input","output","dxf"]), false),
         ("project_export_svg", "Export one compound evenodd path per piece with closed exterior and hole subpaths, plus authored perpendicular notch markers, at physical millimetre scale with inverted SVG Y. Internal lines are omitted; straight-sided holes can be reimported. Drawings with notch line elements are refused on import. Refuse replacement of the source or native project destinations.", files.clone(), false),
-        ("project_export_obj", "Build and export the actual rest surface, including holes, in metres, Y-up, with metre UVs, fabric assignments and a companion MTL color library; no simulation or annotation line primitives. Refuse replacement of the source or native project destinations.", files.clone(), false),
+        ("project_export_obj", "Build and export the actual rest surface, including holes, in metres, Y-up, with metre UVs, fabric assignments and a companion MTL color library; no simulation or annotation line primitives. Supply a nonempty list of distinct piece IDs to export only those panels and their used fabrics. Refuse replacement of the source or native project destinations.", object(json!({"input":path,"output":path,"pieces":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"integer","minimum":1,"maximum":u64::MAX}}}), &["input","output"]), false),
         ("project_export_glb", "Build and export the actual rest surface as one static glTF 2.0 binary, in metres and Y-up, with named pieces, per-piece fabric tint, normals and UVs. Refuse replacement of source or native project destinations.", files.clone(), false),
         ("project_export_gltf", "Build and export the actual rest surface as one static glTF 2.0 JSON document with an embedded buffer, in metres and Y-up, with named pieces, per-piece fabric tint, normals and UVs. Refuse replacement of source or native project destinations.", files.clone(), false),
         ("project_export_dxf", "Export authored exterior pattern boundaries as R2000 DXF LINE/SPLINE geometry in millimetres, without 3D placement. DXF v1 refuses any project with holes or authored notches before writing output. Internal lines are omitted; sewing, materials, grain and editable annotations require the native project. Refuse replacement of source or native project destinations.", files, false),

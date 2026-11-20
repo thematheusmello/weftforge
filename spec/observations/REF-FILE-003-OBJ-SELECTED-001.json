@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "case_id": "REF-FILE-003-OBJ-SELECTED-001",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "baseline_revision": 1,
+  "baseline_status": "provisional_unfrozen",
+  "product_build": "2026.1.237 (r58920)",
+  "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "observed_utc": "2026-11-20T18:54:20.174997+00:00",
+  "status": "observed_one_way_selected_export",
+  "original_input": "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj",
+  "input_sha256": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+  "procedure": [
+    "Imported the original two-fabric Harbor OBJ as a garment at metre scale, 100%, Y up, with Trace 2D Patterns from UV Map enabled.",
+    "With both imported panels selected, opened File > Export > OBJ (Selected). Expanded the pattern list and unchecked the first of two rows. The two row values became 0 and 1 and Select All Patterns became unchecked.",
+    "Exported one thin, unwelded object at metre scale. Resolved the used material and independently integrated triangle areas and exterior edge lengths. Closed the unsaved scratch garment."
+  ],
+  "input_pieces": 2,
+  "selected_input_piece": 31,
+  "input_panel": {
+    "groups": [
+      "piece_31"
+    ],
+    "triangles": 586,
+    "diffuse_rgb": [
+      0.78,
+      0.25,
+      0.12
+    ],
+    "area_m2": 0.5923,
+    "boundary_m": 4.083146221782354
+  },
+  "returned_surface": {
+    "positions": 2760,
+    "uvs": 2760,
+    "normals": 2760,
+    "triangles": 5304,
+    "materials": {
+      "fabric_68_Terracotta_linen_FRONT_1494": {
+        "groups": [],
+        "triangles": 5304,
+        "diffuse_rgb": [
+          0.78,
+          0.25,
+          0.12
+        ],
+        "area_m2": 0.5923000469574085,
+        "boundary_m": 4.083146223959472
+      }
+    }
+  },
+  "delta_area_m2": 4.6957408406100853e-08,
+  "delta_perimeter_m": 2.177117153223662e-09,
+  "returned_hashes": {
+    "obj": "d2bf606496c19f9f6737adb79ad3c58de07f997df4eccea4076fdd55f1893da9",
+    "mtl": "b693034fe0b3de3adc568abc3c13aefd412b8de4e2e98be95c876da80074da5a"
+  },
+  "limits": [
+    "The reference remeshed the imported garment. The return retained one diffuse fabric and its physical surface. It contained no OBJ group records.",
+    "The reference test changed the export-dialog pattern list after both imported patterns were selected. It does not establish the default list state for a single workspace selection, or draped, textured and animated selections."
+  ]
+}

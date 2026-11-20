@@ -1,5 +1,13 @@
 # Native studio preview
 
+## Exporting a selected Harbor panel
+
+The scene has one selected panel. The full garment stays visible while the
+selected export writes Harbor back with its terracotta fabric.
+[Native export measurements](../parity/reports/WF-20261120-NATIVE-SELECTED-OBJ-001.json).
+
+![Draped Harbor shirt with the terracotta back selected in the studio](../parity/reports/artifacts/native-selected-obj-20261120/Selected%20Harbor.png)
+
 ## Fabric colors in a Harbor OBJ
 
 With Harbor back selected, the Fabric inspector shows Terracotta linen.

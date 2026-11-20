@@ -1,3 +1,19 @@
+# Exporting selected garment panels — 20 November 2026
+
+Select one or more patterns in Scene and choose **Export selected OBJ** in File
+or Command search. Harbor’s terracotta back exported with 327 vertices,
+586 triangles and one material. Selecting both panels reproduced the existing
+whole-garment rest export byte for byte. After 60 assembly steps and 120 drape
+steps, each exported back-panel face had the same positions, UVs and normals
+as its counterpart in the full drape. Apple Model I/O resolved the single
+back-panel material. The CLI and MCP reproduced the native rest export.
+[Native case and measurements](parity/reports/WF-20261120-NATIVE-SELECTED-OBJ-001.json).
+
+The reference studio’s selected OBJ export also returned one terracotta panel.
+It remeshed the back to 5,304 triangles and preserved the area within
+4.70 × 10⁻⁸ m². Editable OBJ garment import, textures and sewing reconstruction
+remain open. [Reviewed reference observation](spec/observations/REF-FILE-003-OBJ-SELECTED-001.json).
+
 # Two editable openings on Debian Wayland — 20 November 2026
 
 The packaged ARM64 studio imported both openings through GTK, restored them

@@ -745,3 +745,5 @@ Every delivered artifact must be tracked and registry/map checks must pass from 
 Multiple editable disjoint cutouts, native Add hole review and SVG subpath order are pinned at `1ebac973a9db3c4b1bdd9fada42bf868c465ccf9`. Every hole retains its own addressed boundary. The source refresh covers `internal-primitives`, `curve-tools`, `project-load-save` and `pattern-snapshot-print`. Runtime and comparison evidence remain in the registry.
 
 The combined source `a50aa0fa3b639a59e198e47069c7fe00552b250a` retains the Global strain display and editable disjoint cutouts. All current anchors are pinned to that tree.
+
+Selected-panel OBJ export is pinned at `dfdd91100c9825796eadb46c95e478ed2caabcaf`. File and Command search export selected rest or draped geometry. The CLI and MCP accept stable pattern IDs for rest geometry. Only fabrics referenced by the exported pieces appear in the companion material library.

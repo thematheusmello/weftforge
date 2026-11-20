@@ -117,6 +117,7 @@ impl PositionSnap {
 #[derive(Clone, Copy)]
 enum ExportFormat {
     Obj,
+    SelectedObj,
     Glb,
     Gltf,
     Svg,
@@ -1584,12 +1585,16 @@ impl Studio {
     }
     fn export_button(&self, ui: &mut egui::Ui, format: ExportFormat, label: &str) -> bool {
         let focused = self.inspector_focus(ui.ctx());
-        let enabled =
-            !matches!(format, ExportFormat::Pdf(_)) || !self.editor.project.pieces.is_empty();
+        let enabled = match format {
+            ExportFormat::SelectedObj => self.selection_ids().next().is_some(),
+            ExportFormat::Pdf(_) => !self.editor.project.pieces.is_empty(),
+            _ => true,
+        };
         let response = ui.add_enabled(enabled, egui::Button::new(label)).on_hover_text(match format {
             ExportFormat::Pdf(_) => "Tiled 1:1 pattern sheets with a 100 mm scale square. Print at Actual size.",
             ExportFormat::Svg => "SVG preserves the exterior and its disjoint straight-sided cutouts. Save the native project to keep internal annotations.",
             ExportFormat::Dxf => "Exterior boundaries only; projects with holes are refused. Internal annotations stay in the native project.",
+            ExportFormat::SelectedObj => "Export the selected panels and their assigned fabric colors.",
             ExportFormat::Obj | ExportFormat::Glb | ExportFormat::Gltf => "Rest/current cloth surface only; no annotation line primitives. Save the native project to keep editable internal lines.",
         });
         let clicked = response.clicked();
@@ -2474,10 +2479,10 @@ impl Studio {
                 ExportFormat::Svg => project.export_svg(path),
                 ExportFormat::Dxf => project.export_dxf(path),
                 ExportFormat::Pdf(paper) => project.export_pattern_pdf(path, paper),
-                ExportFormat::Obj | ExportFormat::Glb | ExportFormat::Gltf => {
+                ExportFormat::Obj | ExportFormat::SelectedObj | ExportFormat::Glb | ExportFormat::Gltf => {
                     if candidate.is_some() {
                         let name = match format {
-                            ExportFormat::Obj => "OBJ",
+                            ExportFormat::Obj | ExportFormat::SelectedObj => "OBJ",
                             ExportFormat::Glb => "GLB",
                             ExportFormat::Gltf => "glTF",
                             _ => unreachable!(),
@@ -2494,6 +2499,7 @@ impl Studio {
                     }
                     match format {
                         ExportFormat::Obj => output.export_obj_with_materials(project, path).map(|_| ()),
+                        ExportFormat::SelectedObj => output.export_selected_obj(project, path, &self.selection_ids().collect::<Vec<_>>()).map(|_| ()),
                         ExportFormat::Glb => output.export_glb(project, path),
                         ExportFormat::Gltf => output.export_gltf(project, path),
                         _ => unreachable!(),
@@ -2518,6 +2524,7 @@ impl Studio {
                 ExportFormat::Pdf(_) => "Exported tiled pattern PDF. Print the scale check at Actual size.".into(),
                 ExportFormat::Dxf => "Exported exterior DXF boundaries in millimetres; internal annotations, sewing and materials stay in .weftforge.".into(),
                 ExportFormat::Svg => "Exported SVG boundaries and notches in millimetres. Cutouts can be reimported on drawings without notch marks.".into(),
+                ExportFormat::SelectedObj => "Exported the selected panels and their fabric colors.".into(),
                 ExportFormat::Obj => "Exported the OBJ cloth surface and its companion MTL fabric colors. Keep both files together.".into(),
                 ExportFormat::Glb => "Exported static GLB cloth surface in metres.".into(),
                 ExportFormat::Gltf => "Exported static glTF cloth surface in metres.".into(),
@@ -2912,6 +2919,9 @@ impl Studio {
                 }
                 ui.separator();
                 if self.export_button(ui, ExportFormat::Obj, "Export OBJ") {
+                    ui.close();
+                }
+                if self.export_button(ui, ExportFormat::SelectedObj, "Export selected OBJ") {
                     ui.close();
                 }
                 if self.export_button(ui, ExportFormat::Glb, "Export GLB") {
@@ -8282,6 +8292,7 @@ impl eframe::App for Studio {
                                 "Redo",
                                 "Reset simulation",
                                 "Select",
+                                "Export selected OBJ",
                                 "Transform pattern",
                                 "Polygon",
                                 "Rectangle",
@@ -8307,6 +8318,9 @@ impl eframe::App for Studio {
                                     }
                                     "Export OBJ" => {
                                         self.export_button(ui, ExportFormat::Obj, label)
+                                    }
+                                    "Export selected OBJ" => {
+                                        self.export_button(ui, ExportFormat::SelectedObj, label)
                                     }
                                     "Export GLB" => {
                                         self.export_button(ui, ExportFormat::Glb, label)
@@ -8353,8 +8367,13 @@ impl eframe::App for Studio {
                                             self.refresh_recovery();
                                             self.show_recovery = true;
                                         }
-                                        "Export OBJ" | "Export GLB" | "Export glTF"
-                                        | "Export SVG" | "Export DXF" | PATTERN_PDF_A4
+                                        "Export OBJ"
+                                        | "Export selected OBJ"
+                                        | "Export GLB"
+                                        | "Export glTF"
+                                        | "Export SVG"
+                                        | "Export DXF"
+                                        | PATTERN_PDF_A4
                                         | PATTERN_PDF_LETTER => {}
                                         "Save workspace PNG…"
                                         | PATTERN_PNG_ACTION
@@ -9289,7 +9308,7 @@ fn choose_export_path(_ctx: &egui::Context, format: ExportFormat) -> Option<Path
         return path;
     }
     let ext = match format {
-        ExportFormat::Obj => "obj",
+        ExportFormat::Obj | ExportFormat::SelectedObj => "obj",
         ExportFormat::Glb => "glb",
         ExportFormat::Gltf => "gltf",
         ExportFormat::Svg => "svg",
@@ -15306,6 +15325,46 @@ mod tests {
             assert_eq!(fs::read(path).unwrap(), retained);
         }
         assert_eq!(format!("{:?}", app.editor), format!("{before:?}"));
+        fs::remove_dir_all(directory).unwrap();
+    }
+
+    #[test]
+    fn selected_obj_uses_active_and_additional_patterns_and_preserves_an_existing_file() {
+        let directory = exit_test_directory("selected-obj");
+        let path = directory.join("panels.obj");
+        let ctx = egui::Context::default();
+        let mut app = Studio::empty();
+        for name in ["Front", "Back", "Cuff"] {
+            app.editor
+                .execute(Command::AddRectangle {
+                    name: name.into(),
+                    origin: [0., 0.],
+                    width: 0.2,
+                    height: 0.4,
+                })
+                .unwrap();
+        }
+        let pieces: Vec<_> = app.editor.project.pieces.iter().map(|p| p.id).collect();
+        app.mesh = Some(Arc::new(app.editor.project.mesh().unwrap()));
+        app.selected = Some(pieces[2]);
+        app.additional_pieces.insert(pieces[1]);
+        assert!(app.export_to_path(&ctx, ExportFormat::SelectedObj, Some(&path), None));
+        let contents = fs::read_to_string(&path).unwrap();
+        let groups: Vec<_> = contents
+            .lines()
+            .filter(|line| line.starts_with("g "))
+            .collect();
+        assert_eq!(
+            groups,
+            [
+                format!("g piece_{}", pieces[1]),
+                format!("g piece_{}", pieces[2])
+            ]
+        );
+        app.selected = None;
+        app.additional_pieces.clear();
+        assert!(!app.export_to_path(&ctx, ExportFormat::SelectedObj, Some(&path), None));
+        assert_eq!(fs::read_to_string(path).unwrap(), contents);
         fs::remove_dir_all(directory).unwrap();
     }
 

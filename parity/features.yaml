@@ -26190,7 +26190,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/PAT-006-straight-cut.md": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c"
       }
@@ -48362,7 +48362,8 @@
       "evidence_ids": [
         "spec/features/MAT-001-active-pattern-fabric.md",
         "parity/reports/WF-20261120-NATIVE-FABRIC-ASSIGNMENT-001.json",
-        "parity/reports/WF-20261120-NATIVE-OBJ-FABRICS-001.json"
+        "parity/reports/WF-20261120-NATIVE-OBJ-FABRICS-001.json",
+        "parity/reports/WF-20261120-NATIVE-SELECTED-OBJ-001.json"
       ],
       "scenarios": [
         {
@@ -48392,6 +48393,15 @@
           },
           "initial_conditions": "Open the revision 24 Harbor project. Cotton #1 is assigned to front #2 and Terracotta linen #68 to back #31. Both panels are in the rest arrangement with eight seam definitions.",
           "expected_outcomes": "Changing the front fabric and undoing preserves both native exports. The single-fabric export uses one material for both groups. The restored export assigns cotton and terracotta separately. All position, UV, normal, group and face records agree. Each panel has 586 triangles and area 0.5923 m\u00b2. The native, CLI and MCP two-fabric outputs agree byte for byte."
+        },
+        {
+          "id": "FILE-SELECTED-OBJ-001",
+          "path": "parity/scenarios/FILE-SELECTED-OBJ-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d"
+          },
+          "initial_conditions": "Load the original Harbor garment at revision 24 with two patterns, eight authored seams, a blue cotton front and a terracotta back.",
+          "expected_outcomes": "One selected panel exports 327 vertices and 586 triangles with its own UVs, normals, group and fabric. The two-panel rest selection reproduces the full OBJ and MTL. The same selected back matches the corresponding faces of the full draped surface. Both adapters reproduce the native rest selection and preserve existing files on invalid input."
         }
       ],
       "comparison_criteria": {
@@ -48519,6 +48529,32 @@
             "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
           },
           "path": "parity/reports/WF-20261120-NATIVE-OBJ-FABRICS-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-SELECTED-OBJ-001",
+          "commit": "dfdd91100c9825796eadb46c95e478ed2caabcaf",
+          "timestamp": "2026-11-20T19:19:39Z",
+          "platform": "Apple Silicon macOS native Metal studio, release CLI, stdio MCP, Apple Model I/O and standalone triangle-corner comparison",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-selected-obj-20261120/Back draped.obj": "6da51835d2e3512c9122519a543887b31c2f1b2e753c1dbd6749f88a9e95b90a",
+            "parity/reports/artifacts/native-selected-obj-20261120/Back rest.obj": "88a371b611bd41396233f1128c173c9e4efd8775bfb4ee31133c6ab57a1c9ba2",
+            "parity/reports/artifacts/native-selected-obj-20261120/Harbor draped.obj": "71a0fc0411020a79a8924cc31318a8fe129eaf17ec1b8ffdee8cacbd55aba124",
+            "parity/reports/artifacts/native-selected-obj-20261120/MODELIO-draped.json": "fde6bc3dc1630e4638794c74e757a05c190daf98f0da66fa92d33987cc1a8b1a",
+            "parity/reports/artifacts/native-selected-obj-20261120/MODELIO-rest.json": "fde6bc3dc1630e4638794c74e757a05c190daf98f0da66fa92d33987cc1a8b1a",
+            "parity/reports/artifacts/native-selected-obj-20261120/NATIVE.json": "0dc353c0c068a01a132c06e328ad4b34e839e42fbf98370842d02655592d1704",
+            "parity/reports/artifacts/native-selected-obj-20261120/Selected Harbor.png": "f17c06b2895689136ee7542edb82a6562b3a25b8bca7ede3bfdc7447ab1bc217",
+            "parity/reports/artifacts/native-selected-obj-20261120/check_selection.py": "1687294e5ab22ecd474db82132b6b79a0b6c86fd275b2ded6ddbd132b6f0643e",
+            "parity/reports/artifacts/native-selected-obj-20261120/weftforge-fabrics-2fcfa550810a22d36ed5ff527b93ab3a28f4b3a183f73130b8ad9fcc151e1ea7.mtl": "2fcfa550810a22d36ed5ff527b93ab3a28f4b3a183f73130b8ad9fcc151e1ea7",
+            "parity/reports/artifacts/native-selected-obj-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/scenarios/FILE-SELECTED-OBJ-001.json": "d732df3860d5b36b43a4ba5fd4dc4edd01d88720eb5fc96bf2182e5c33aea54f",
+            "spec/observations/REF-FILE-003-OBJ-SELECTED-001.json": "49fb7cace6cf2c57f9be183790b139c26d097226f32d6bf85691755ad1d0966d",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_modelio.swift": "a4a121a0e89ac62ed7f16b39059cf8225a5507f52f4eb9c40de23c0a133beff0",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_fabrics.py": "ad37fdedf2d6bb93c8960c3059c41edbbb4bbcd60f2db79fcf573909d388d9dd",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-SELECTED-OBJ-001.json"
         }
       ],
       "known_gaps": [
@@ -48529,7 +48565,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/MAT-001-active-pattern-fabric.md": "8d899c486edabfead74ad43fded8302ed346b77bf083e4a271df30a5fb9a8659"
       }
@@ -51578,7 +51614,9 @@
         "parity/reports/WF-20261120-NATIVE-OBJ-FABRICS-001.json",
         "spec/observations/REF-FILE-003-OBJ-FABRICS-001.json",
         "spec/features/FILE-003-obj-fabrics.md",
-        "parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json"
+        "parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json",
+        "parity/reports/WF-20261120-NATIVE-SELECTED-OBJ-001.json",
+        "spec/observations/REF-FILE-003-OBJ-SELECTED-001.json"
       ],
       "scenarios": [
         {
@@ -51649,6 +51687,15 @@
           },
           "initial_conditions": "Open the supplied revision-24 two-fabric Harbor. It has two patterns, eight seams and 654 rest vertices. Use Front view and the native 60-step Assemble and 120-step Drape actions.",
           "expected_outcomes": "The display uses per-face principal stretch of the accepted geometry, respects isolated faces and updates the 3D range. Pattern colors and the saved project are identical across the display changes. Opening the saved document restores its rest mesh."
+        },
+        {
+          "id": "FILE-SELECTED-OBJ-001",
+          "path": "parity/scenarios/FILE-SELECTED-OBJ-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d"
+          },
+          "initial_conditions": "Load the original Harbor garment at revision 24 with two patterns, eight authored seams, a blue cotton front and a terracotta back.",
+          "expected_outcomes": "One selected panel exports 327 vertices and 586 triangles with its own UVs, normals, group and fabric. The two-panel rest selection reproduces the full OBJ and MTL. The same selected back matches the corresponding faces of the full draped surface. Both adapters reproduce the native rest selection and preserve existing files on invalid input."
         }
       ],
       "comparison_criteria": {
@@ -52350,21 +52397,48 @@
             "parity/reports/artifacts/native-global-strain-20261120/reopened.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
             "parity/reports/artifacts/native-global-strain-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784"
           }
+        },
+        {
+          "id": "WF-20261120-NATIVE-SELECTED-OBJ-001",
+          "commit": "dfdd91100c9825796eadb46c95e478ed2caabcaf",
+          "timestamp": "2026-11-20T19:19:39Z",
+          "platform": "Apple Silicon macOS native Metal studio, release CLI, stdio MCP, Apple Model I/O and standalone triangle-corner comparison",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-selected-obj-20261120/Back draped.obj": "6da51835d2e3512c9122519a543887b31c2f1b2e753c1dbd6749f88a9e95b90a",
+            "parity/reports/artifacts/native-selected-obj-20261120/Back rest.obj": "88a371b611bd41396233f1128c173c9e4efd8775bfb4ee31133c6ab57a1c9ba2",
+            "parity/reports/artifacts/native-selected-obj-20261120/Harbor draped.obj": "71a0fc0411020a79a8924cc31318a8fe129eaf17ec1b8ffdee8cacbd55aba124",
+            "parity/reports/artifacts/native-selected-obj-20261120/MODELIO-draped.json": "fde6bc3dc1630e4638794c74e757a05c190daf98f0da66fa92d33987cc1a8b1a",
+            "parity/reports/artifacts/native-selected-obj-20261120/MODELIO-rest.json": "fde6bc3dc1630e4638794c74e757a05c190daf98f0da66fa92d33987cc1a8b1a",
+            "parity/reports/artifacts/native-selected-obj-20261120/NATIVE.json": "0dc353c0c068a01a132c06e328ad4b34e839e42fbf98370842d02655592d1704",
+            "parity/reports/artifacts/native-selected-obj-20261120/Selected Harbor.png": "f17c06b2895689136ee7542edb82a6562b3a25b8bca7ede3bfdc7447ab1bc217",
+            "parity/reports/artifacts/native-selected-obj-20261120/check_selection.py": "1687294e5ab22ecd474db82132b6b79a0b6c86fd275b2ded6ddbd132b6f0643e",
+            "parity/reports/artifacts/native-selected-obj-20261120/weftforge-fabrics-2fcfa550810a22d36ed5ff527b93ab3a28f4b3a183f73130b8ad9fcc151e1ea7.mtl": "2fcfa550810a22d36ed5ff527b93ab3a28f4b3a183f73130b8ad9fcc151e1ea7",
+            "parity/reports/artifacts/native-selected-obj-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/scenarios/FILE-SELECTED-OBJ-001.json": "d732df3860d5b36b43a4ba5fd4dc4edd01d88720eb5fc96bf2182e5c33aea54f",
+            "spec/observations/REF-FILE-003-OBJ-SELECTED-001.json": "49fb7cace6cf2c57f9be183790b139c26d097226f32d6bf85691755ad1d0966d",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_modelio.swift": "a4a121a0e89ac62ed7f16b39059cf8225a5507f52f4eb9c40de23c0a133beff0",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_fabrics.py": "ad37fdedf2d6bb93c8960c3059c41edbbb4bbcd60f2db79fcf573909d388d9dd",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-SELECTED-OBJ-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "OBJ export carries groups, UVs, normals and static diffuse fabric colors. Avatar or garment OBJ import, selected-only export and texture transfer remain open.",
+        "OBJ export carries groups, UVs, normals and static diffuse fabric colors. Avatar or garment OBJ import and texture transfer remain open.",
         "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity.",
         "One reference OBJ-to-garment UV trace and re-export preserved a planar cutout, dimensions and material area. The reference remeshed it and changed the UV coordinate range and group/material records. The later two-piece case records flat rest geometry and diffuse colors. Avatar and reverse-import comparisons remain open.",
         "One reviewed two-fabric reference return preserved RGB and per-fabric area within 4.92 \u00d7 10\u207b\u2078 m\u00b2. It remeshed the surface and emitted no group records. Draped interoperability, editable construction and broader reference parity remain open.",
-        "The two-fabric draped OBJ replays global strain from saved positions, rest UVs, groups and diffuse library. The previous rest interchange report retains its original source scope."
+        "The two-fabric draped OBJ replays global strain from saved positions, rest UVs, groups and diffuse library. The previous rest interchange report retains its original source scope.",
+        "The selected-panel case covers native rest and draped export and explicit rest selections in both adapters. One independently returned reference selection retained terracotta and its physical area. Textures, animation, welding options, bidirectional garment import and full numerical reference comparison remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "FILE-004",
@@ -58038,7 +58112,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/FILE-005-dxf-pattern-export.md": "b0373181a6ae79c148aa154c0c2269956c2fed3587b5c6d0aef929108e11dd73",
         "spec/features/FILE-005-dxf-pattern-import.md": "06cff6f3d1a6d62fceeb93e94a2037f28136b69adfa5507b8a780e8864b0512b",

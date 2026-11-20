@@ -21,3 +21,18 @@ replacement can leave a complete reusable library beside the previous file.
 
 This profile covers static diffuse colors. Textures, seam welds, editable
 patterns, animation and fabric mechanics require other interchange work.
+
+## Exporting selected panels
+
+File and Command search offer **Export selected OBJ** for the active pattern
+and any additional selected patterns. The regular OBJ action exports the
+whole garment. Both use the latest ready mesh and its current draped positions
+when available. Hidden-state filtering and viewport framing do not change the
+document or the ordinary whole-garment export.
+
+For a rest export, pass one or more stable piece IDs after the destination in
+`export-obj PROJECT OUTPUT.obj [PIECE_ID ...]`. The MCP tool accepts the
+same IDs in its optional `pieces` array. Only geometry, UVs, normals and
+fabrics used by the requested pieces are written. Piece order follows the
+mesh so reversing the requested IDs produces identical files. An empty,
+repeated or unknown ID selection refuses the export before file replacement.

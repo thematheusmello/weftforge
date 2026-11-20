@@ -60,7 +60,7 @@ fn run() -> Result<()> {
     let args: Vec<_> = std::env::args().skip(1).collect();
     match args.first().map(String::as_str) {
         None | Some("--help" | "-h" | "help") => println!(
-            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\nlengths PROJECT interval CURVE_ID T0 T1   authored/rest length, unrounded SI JSON\nlengths PROJECT seam SEAM_ID\nlengths PROJECT sewing-group GROUP_ID\ninspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)\nexecute INPUT OUTPUT COMMANDS.json      one atomic shared command array\nimport-svg INPUT OUTPUT PATTERNS.svg   editable outlines and straight-sided cutouts in physical mm\nimport-dxf INPUT OUTPUT PATTERNS.dxf   bounded R2000 LINE/cubic boundaries in mm\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT   four editable cubic spans\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj          rest surface in metres, Y-up, with a companion MTL fabric library\nexport-glb PROJECT OUTPUT.glb          static rest surface, named pieces and fabric tint\nexport-gltf PROJECT OUTPUT.gltf        the same static rest surface as JSON with an embedded buffer\nexport-svg PROJECT OUTPUT.svg          outlines and authored notch markers; mm, inverted Y\nexport-dxf PROJECT OUTPUT.dxf          exterior boundaries in mm; refuses projects with holes or authored notches\nexport-pdf PROJECT OUTPUT.pdf a4|letter  1:1 pattern tiles with a 100 mm scale check\nexport-pattern-png PROJECT OUTPUT.png OPTIONS.json  physical 2D crop and density\nexport-pattern-jpeg PROJECT OUTPUT.jpg OPTIONS.json  physical 2D crop and whole PPI\nsimulate PROJECT OUTPUT.obj|.glb|.gltf STEPS f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj|.glb|.gltf           same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
+            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\nlengths PROJECT interval CURVE_ID T0 T1   authored/rest length, unrounded SI JSON\nlengths PROJECT seam SEAM_ID\nlengths PROJECT sewing-group GROUP_ID\ninspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)\nexecute INPUT OUTPUT COMMANDS.json      one atomic shared command array\nimport-svg INPUT OUTPUT PATTERNS.svg   editable outlines and straight-sided cutouts in physical mm\nimport-dxf INPUT OUTPUT PATTERNS.dxf   bounded R2000 LINE/cubic boundaries in mm\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT   four editable cubic spans\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj [PIECE_ID ...]          rest surface in metres, Y-up, with a companion MTL fabric library\nexport-glb PROJECT OUTPUT.glb          static rest surface, named pieces and fabric tint\nexport-gltf PROJECT OUTPUT.gltf        the same static rest surface as JSON with an embedded buffer\nexport-svg PROJECT OUTPUT.svg          outlines and authored notch markers; mm, inverted Y\nexport-dxf PROJECT OUTPUT.dxf          exterior boundaries in mm; refuses projects with holes or authored notches\nexport-pdf PROJECT OUTPUT.pdf a4|letter  1:1 pattern tiles with a 100 mm scale check\nexport-pattern-png PROJECT OUTPUT.png OPTIONS.json  physical 2D crop and density\nexport-pattern-jpeg PROJECT OUTPUT.jpg OPTIONS.json  physical 2D crop and whole PPI\nsimulate PROJECT OUTPUT.obj|.glb|.gltf STEPS f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj|.glb|.gltf           same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
         ),
         Some("mcp") => {
             count(&args, 1)?;
@@ -266,12 +266,21 @@ fn run() -> Result<()> {
             editor.project.save(Path::new(&args[2]))?;
         }
         Some("export-obj") => {
-            count(&args, 3)?;
+            if args.len() < 3 {
+                return Err("Usage: export-obj PROJECT OUTPUT.obj [PIECE_ID ...]".into());
+            }
             distinct(&args[1], &args[2])?;
             let project = Project::load(Path::new(&args[1]))?;
-            project
-                .mesh()?
-                .export_obj_with_materials(&project, Path::new(&args[2]))?;
+            let mesh = project.mesh()?;
+            if args.len() == 3 {
+                mesh.export_obj_with_materials(&project, &args[2])?;
+            } else {
+                let pieces = args[3..]
+                    .iter()
+                    .map(|s| s.parse())
+                    .collect::<std::result::Result<Vec<_>, _>>()?;
+                mesh.export_selected_obj(&project, &args[2], &pieces)?;
+            }
         }
         Some("export-glb" | "export-gltf") => {
             count(&args, 3)?;
