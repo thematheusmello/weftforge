@@ -1,5 +1,9 @@
 # WeftForge current-source addendum
 
+## Editable SVG cutouts
+
+Source `fd1b10dc8472ad3150c83e092c79d8280a21384d` restores one polygonal cutout through the shared import command. The native dialog reports the number of cutouts, and CLI and MCP report the imported hole count.
+
 ## Solid garment faces
 
 Source `29c679968398d453cbb087526c48ee6a293d04e8` draws the three projected vertices of every cloth face in depth order. The `wireframe` and `selection` canvas controls keep their per-face edge overlays.

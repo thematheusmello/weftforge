@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "case_id": "REF-FILE-003-OBJ-CUTOUT-001",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "baseline_revision": 1,
+  "baseline_status": "provisional_unfrozen",
+  "product_build": "2026.1.237 (r58920)",
+  "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "observed_utc": "2026-11-20T16:51:02.103723Z",
+  "source_commit": "776c0df3b359f4da0b3e9249731ad6f03299b0d6",
+  "original_input": "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.obj",
+  "status": "observed_native_one_direction",
+  "initial_state": "Empty local garment in the licensed Apple Silicon desktop application.",
+  "import": {
+    "entry": "File > Import (Add) > OBJ to Garment",
+    "default_unit": "mm",
+    "default_scale_percent": 100,
+    "default_trace_2d_patterns_from_uv_map": false,
+    "selected_unit": "m",
+    "selected_scale_percent": 100,
+    "selected_trace_2d_patterns_from_uv_map": true,
+    "object_type": "Garment",
+    "up_axis": "Y",
+    "invert_axes": [
+      false,
+      false,
+      false
+    ],
+    "translation": [
+      0,
+      0,
+      0
+    ]
+  },
+  "after_import": {
+    "observed_2d_pattern": true,
+    "outer_2d_line_length_mm": 1200.0,
+    "outer_3d_line_length_mm": 1200.0
+  },
+  "export": {
+    "entry": "File > Export > OBJ",
+    "unit": "m",
+    "scale_percent": 100,
+    "up_axis": "Y",
+    "thin": true,
+    "single_object": true,
+    "unweld": true,
+    "include_all_patterns": true,
+    "unified_uv": false,
+    "export_xml": false
+  },
+  "measurements": {
+    "input": {
+      "sha256": "9a2cb18203d5815ebe6e10734781641d5e7402f9175d9d9d02cbbb7e7d0d0ea2",
+      "vertices": 43,
+      "triangles": 58,
+      "connected_components": 1,
+      "euler_characteristic": 0,
+      "material_area_m2": 0.0756,
+      "boundary_loops": [
+        {
+          "vertices": 20,
+          "perimeter_m": 1.2,
+          "bounds_xy_m": [
+            [
+              0.0,
+              0.24
+            ],
+            [
+              0.0,
+              0.36
+            ]
+          ]
+        },
+        {
+          "vertices": 8,
+          "perimeter_m": 0.42165525060596437,
+          "bounds_xy_m": [
+            [
+              0.06,
+              0.16
+            ],
+            [
+              0.12,
+              0.24
+            ]
+          ]
+        }
+      ],
+      "uv_bounds": [
+        [
+          0.0,
+          0.24
+        ],
+        [
+          -0.0,
+          0.36
+        ]
+      ],
+      "all_normals_positive_z": true,
+      "group_statements": 1,
+      "usemtl_statements": 0
+    },
+    "returned": {
+      "sha256": "8e4ba65f18f75f3e1b44bf9dcd01ae6a8be5efcf851a97ee7fa3f89ff0459aea",
+      "vertices": 394,
+      "triangles": 706,
+      "connected_components": 1,
+      "euler_characteristic": 0,
+      "material_area_m2": 0.0756,
+      "boundary_loops": [
+        {
+          "vertices": 60,
+          "perimeter_m": 1.2,
+          "bounds_xy_m": [
+            [
+              0.0,
+              0.24
+            ],
+            [
+              0.0,
+              0.36
+            ]
+          ]
+        },
+        {
+          "vertices": 22,
+          "perimeter_m": 0.42165525063862314,
+          "bounds_xy_m": [
+            [
+              0.06,
+              0.16
+            ],
+            [
+              0.12,
+              0.24
+            ]
+          ]
+        }
+      ],
+      "uv_bounds": [
+        [
+          -119.999985,
+          119.999985
+        ],
+        [
+          -180.0,
+          180.000015
+        ]
+      ],
+      "all_normals_positive_z": true,
+      "group_statements": 0,
+      "usemtl_statements": 1
+    }
+  },
+  "interpretation": "The edited opening and material area survived the garment import and re-export. The consumer remeshed the panel, changed the numerical UV domain and group/material representation, and retained positive Z normals.",
+  "rea_observations": [
+    "ev_e920e8feb509d6e772e027c94df2fc98b27d608a5162f2ea5e8a613dde07cfec",
+    "ev_394fac27b266f62105f6257a73b4fc18ef070c531fd882fdf4cd726b17a856ab",
+    "ev_9844dc1fad5ccd3eb8755d36652f8b965ce7414df7739cbf07ca05cc9cd02a83"
+  ],
+  "replay": {
+    "script": "spec/observations/check_cutout_obj_readback.py",
+    "script_sha256": "341e4ae7eaed5786512dd45a6a7f3273a4cfdbc0d54144b987b53ff4a6a46878",
+    "inputs": "Original WeftForge OBJ and an OBJ re-exported with the recorded settings. Raw reference output and UI captures are retained in the private laboratory."
+  },
+  "limits": [
+    "One original planar cutout, one import direction and one set of explicit settings. Avatar import, material fidelity, reverse import into WeftForge and full OBJ interoperability remain open.",
+    "Baseline preferences remain provisional. This observation does not qualify the complete contract."
+  ]
+}

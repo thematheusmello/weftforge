@@ -253,6 +253,9 @@ independently checked animation output.
 - [ ] Complete OBJ and glTF/GLB avatar/mesh workflows, SVG and a precise DXF
   pattern subset, physical-scale printing, animation/cache interchange, and
   further production formats identified by the reference audit.
+  The native pocket case covers one editable SVG cutout through save, reopen,
+  a corner edit and rest-surface export. Curved and multiple cutouts remain open.
+  [Pocket import and edit](parity/reports/WF-20261120-NATIVE-SVG-CUTOUT-001.json).
 - [ ] Keep import/export, editable construction versus mesh-only, static versus
   animated data, supported entities, scale/axes, UVs/normals/material assignments,
   welding/thickness and data-loss behavior explicit in the format matrix.
