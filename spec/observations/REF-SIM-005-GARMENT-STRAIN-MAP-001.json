@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "case_id": "REF-SIM-005-GARMENT-STRAIN-MAP-001",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "baseline_revision": 1,
+  "baseline_status": "provisional_unfrozen",
+  "product_build": "2026.1.237 (r58920)",
+  "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "observed_utc": "2026-11-20T18:20:19.689873+00:00",
+  "original_input": "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj",
+  "input_sha256": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+  "material_library_sha256": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+  "source_commit": "9c0fe5fd417269c88db38b6f85f9c7bbed6f935e",
+  "status": "observed_native_display_and_controls",
+  "initial_state": "Fresh licensed Apple Silicon studio, original two-fabric Harbor OBJ added as a garment at metre scale, 100%, Y-up, with UV tracing enabled. Simulation was paused for display comparisons.",
+  "action": "Display > Garment Fit Maps > Strain Map toggled a floating map-control panel and changed the 3D surface display.",
+  "global": {
+    "initial_percent": 120,
+    "accessibility_lower_bound_percent": 100,
+    "accessibility_upper_bound_percent": 1000,
+    "keyboard_commits_percent": [
+      125,
+      100,
+      1000,
+      120
+    ],
+    "observed_scale": "Eight adjacent cool-to-hot swatches, blue at left and red at right.",
+    "graph_color_options_exercised": [
+      "Gradation",
+      "Section"
+    ],
+    "graph_display_options_exercised": [
+      "Mesh",
+      "Face"
+    ]
+  },
+  "fabric": {
+    "selection": "The Fabric control displayed the two assigned material names with their color swatches, four directional percentages and warning icons.",
+    "displayed_percent_for_all_four_directions_on_both_materials": 120
+  },
+  "repeat_display_samples": {
+    "3d_front": {
+      "pixels": 18000,
+      "changed_on_to_off": 18000,
+      "changed_on_to_on_repeat": 0
+    },
+    "2d_blue": {
+      "pixels": 6000,
+      "changed_on_to_off": 0,
+      "changed_on_to_on_repeat": 0
+    },
+    "2d_terracotta": {
+      "pixels": 4200,
+      "changed_on_to_off": 0,
+      "changed_on_to_on_repeat": 0
+    }
+  },
+  "method": "Sampled the same interior rectangle of the 3D front and the interiors of both editable 2D patterns in on, off and repeat-on workspace captures. Every 3D sample changed on the first toggle and matched on the repeat. Both 2D samples retained every RGB value throughout.",
+  "reference_observation_ids": [
+    "ev_db0ac81761efaeb47db8d4ff82672e81efd18171ab71f057cf3793ca3a83ec67",
+    "ev_e49cd7f25e1511eb7c51db9840ca10c39758abe2b78bc176a574f00a5a8b945e",
+    "ev_603fcd276c4b63849fcd338b58840c87af140921fe0d3ab308fcc2afacce2d12",
+    "ev_86789ee136ec103445301730d3d1d54aee5db77211a73e3c9cac4db04bce7015"
+  ],
+  "limits": [
+    "The native observation establishes controls, accepted range and display scope. The reference strain tensor, color thresholds, interpolation, compression response, response when the interval collapses to 100%, fabric calibration, stress and pressure measurement remain unverified.",
+    "This is a reference observation. It establishes no WeftForge numerical-equivalence or whole-feature verdict."
+  ],
+  "cleanup": "The global range, grading and mesh controls were restored, the overlay toggled off, and the temporary scene closed without saving."
+}

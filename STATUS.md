@@ -12,6 +12,18 @@ The pocket mesh had 47 vertices, 64 triangles, three boundary loops and
 Curved cutouts, nested islands and cutting across an opening remain open.
 [Replay the case](parity/scenarios/PAT-MULTIPLE-CUTOUTS-001.json) · [Source and artifact identities](parity/reports/WF-20261120-MULTIPLE-CUTOUTS-001.json).
 
+# Global garment strain map — 20 November 2026
+
+View and Command search can show a separate global maximum-principal-stretch
+legend on the 3D garment. Its 100–1000% upper range defaults to 120%.
+Current rest UVs keep their original fabric colors on the 2D canvas. Tests
+cover rigid motion, extension, compression, shear, hidden faces, cache
+invalidation, empty surfaces and open cutouts. The accepted two-fabric Harbor drape peaked at 118.77%. Independent OBJ
+analysis reproduced both scale settings at all 5,784 sampled surface pixels;
+517,104 pattern pixels kept their original values. The saved editable
+project reopened byte-identically. The previous extended-hem quality failure
+remains recorded. [Native display and geometry check](parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json). [Global strain map](spec/features/FIT-003-global-strain-map.md).
+
 # Fabric colors in OBJ exports — 20 November 2026
 
 OBJ exports now write a sibling MTL file with the diffuse colors of the
