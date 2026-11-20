@@ -8,7 +8,11 @@ declarations, including build-time and platform-specific packages. The unsigned
 packager records collected runtime Cargo notices and unresolved entries in
 `licenses/manifest.json`. The offline notice catalog supplies upstream texts
 when the emitted crate's version and revision match. The manifest records
-their pinned upstream sources. Complete distribution review covers the final
+their pinned sources. For hexf-parse 0.2.1, the bundle carries the crate’s
+CC0 declaration, the corresponding Debian copyright record and the complete
+CC0 text from Debian base-files. The spirv crate also carries the license
+from its pinned SPIRV-Headers generator input.
+Complete distribution review covers the final
 emitted libraries and platform runtimes.
 
 Notable components: egui/eframe/wgpu (MIT OR Apache-2.0), serde/serde_json

@@ -431,5 +431,187 @@
         "size_bytes": 1066
       }
     ]
+  },
+  {
+    "project": "accesskit",
+    "crates": [
+      {
+        "name": "accesskit_atspi_common",
+        "version": "0.18.1",
+        "vcs_info_sha256": "40438b482b17e22de9bdd3f6116111d0d5be51d3a01293abecefba5b9a272e58",
+        "lock_sha256": "1e8c61bee90b42a772d39d06a740207dc71a4e780004ace1db8d99fb1baaa954"
+      },
+      {
+        "name": "accesskit_consumer",
+        "version": "0.36.0",
+        "vcs_info_sha256": "f3cb67f4d5fcd4ccbd566300f6d1cd578b09a38b8815344415dd5a91d37f5adf",
+        "lock_sha256": "25e0d7e25d06f4dc21d1774d67146e9e80d6789216cbd4d1e88185b0095dba60"
+      },
+      {
+        "name": "accesskit_unix",
+        "version": "0.21.1",
+        "vcs_info_sha256": "d50d0de63665aea0ce0de5d60375c21e5aae620dc71cda6a4e5f177f36bc9f6c",
+        "lock_sha256": "b016ca8db0ea0ea2ceff29a9d6240391492d960716aa471967c00e8cc8cb197c"
+      }
+    ],
+    "documents": [
+      {
+        "name": "AUTHORS",
+        "kind": "attribution",
+        "url": "https://raw.githubusercontent.com/AccessKit/accesskit/f40dfc01a0c0e76de535969f82fb35e19513737d/AUTHORS",
+        "sha256": "3bab8c36f6a85657504aaefb37c7ff34e29b8c917290f3d28a1f0920c992e502",
+        "size_bytes": 346
+      },
+      {
+        "name": "LICENSE-APACHE",
+        "kind": "code_license",
+        "url": "https://raw.githubusercontent.com/AccessKit/accesskit/f40dfc01a0c0e76de535969f82fb35e19513737d/LICENSE-APACHE",
+        "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+        "size_bytes": 9723
+      },
+      {
+        "name": "LICENSE-MIT",
+        "kind": "code_license",
+        "url": "https://raw.githubusercontent.com/AccessKit/accesskit/f40dfc01a0c0e76de535969f82fb35e19513737d/LICENSE-MIT",
+        "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+        "size_bytes": 1023
+      },
+      {
+        "name": "LICENSE.chromium",
+        "kind": "third_party_license",
+        "url": "https://raw.githubusercontent.com/AccessKit/accesskit/f40dfc01a0c0e76de535969f82fb35e19513737d/LICENSE.chromium",
+        "sha256": "845022e0c1db1abb41a6ba4cd3c4b674ec290f3359d9d3c78ae558d4c0ed9308",
+        "size_bytes": 1559
+      }
+    ]
+  },
+  {
+    "project": "gpu-descriptor",
+    "crates": [
+      {
+        "name": "gpu-descriptor",
+        "version": "0.3.2",
+        "vcs_info_sha256": "045201f2caa0bbaa6f031b28a34dbb3097f54bba5fe928c0e0d6b4ef6b7871ba",
+        "lock_sha256": "b89c83349105e3732062a895becfc71a8f921bb71ecbbdd8ff99263e3b53a0ca"
+      }
+    ],
+    "documents": [
+      {
+        "name": "COPYING",
+        "kind": "license_declaration",
+        "url": "https://raw.githubusercontent.com/zakarumych/gpu-descriptor/bb28b4e55b742e0ea3e7a0968e7ee6287ba0e06a/COPYING",
+        "sha256": "f72143f7e9d9fb8bd336b139fa22f825a299591c29f2f7338c5566347b137613",
+        "size_bytes": 352
+      },
+      {
+        "name": "APACHE",
+        "kind": "code_license",
+        "url": "https://raw.githubusercontent.com/zakarumych/gpu-descriptor/bb28b4e55b742e0ea3e7a0968e7ee6287ba0e06a/license/APACHE",
+        "sha256": "6bec8c944a6d4251be50ac86bb4ca360bcce5aea472505dee2800e160bf1cdbf",
+        "size_bytes": 574
+      },
+      {
+        "name": "MIT",
+        "kind": "code_license",
+        "url": "https://raw.githubusercontent.com/zakarumych/gpu-descriptor/bb28b4e55b742e0ea3e7a0968e7ee6287ba0e06a/license/MIT",
+        "sha256": "5226e27d5fbc683db56c52853cdb9d15b69abadb525a60f95c862c2dbd77cdc8",
+        "size_bytes": 1080
+      }
+    ]
+  },
+  {
+    "project": "gpu-descriptor",
+    "crates": [
+      {
+        "name": "gpu-descriptor-types",
+        "version": "0.2.0",
+        "vcs_info_sha256": "c983f24271f15bd818873b0cb75237cae4c895b0b4ebf16a772d21640599fc44",
+        "lock_sha256": "fdf242682df893b86f33a73828fb09ca4b2d3bb6cc95249707fc684d27484b91"
+      }
+    ],
+    "documents": [
+      {
+        "name": "COPYING",
+        "kind": "license_declaration",
+        "url": "https://raw.githubusercontent.com/zakarumych/gpu-descriptor/9f2fb9546591322e7b77ee1e79385e01effd85e4/COPYING",
+        "sha256": "f72143f7e9d9fb8bd336b139fa22f825a299591c29f2f7338c5566347b137613",
+        "size_bytes": 352
+      },
+      {
+        "name": "APACHE",
+        "kind": "code_license",
+        "url": "https://raw.githubusercontent.com/zakarumych/gpu-descriptor/9f2fb9546591322e7b77ee1e79385e01effd85e4/license/APACHE",
+        "sha256": "6bec8c944a6d4251be50ac86bb4ca360bcce5aea472505dee2800e160bf1cdbf",
+        "size_bytes": 574
+      },
+      {
+        "name": "MIT",
+        "kind": "code_license",
+        "url": "https://raw.githubusercontent.com/zakarumych/gpu-descriptor/9f2fb9546591322e7b77ee1e79385e01effd85e4/license/MIT",
+        "sha256": "5226e27d5fbc683db56c52853cdb9d15b69abadb525a60f95c862c2dbd77cdc8",
+        "size_bytes": 1080
+      }
+    ]
+  },
+  {
+    "project": "hexf",
+    "crates": [
+      {
+        "name": "hexf-parse",
+        "version": "0.2.1",
+        "vcs_info_sha256": "7c5579b3abe5e2dcdcba1c845849b7d2f20f028de49fb27437227fd32545aae7",
+        "lock_sha256": "dfa686283ad6dd069f105e5ab091b04c62850d3e4cf5d67debad1933f55023df"
+      }
+    ],
+    "documents": [
+      {
+        "name": "Cargo.toml",
+        "kind": "license_declaration",
+        "url": "https://raw.githubusercontent.com/lifthrasiir/hexf/4225763d744183d720f575ae96d04161b4d08ea0/parse/Cargo.toml",
+        "sha256": "4a56dbdbc12054fd33b7a2634a45cbbe6fe12f5e6f4081002cbfa527f7220c70",
+        "size_bytes": 344
+      },
+      {
+        "name": "debian-copyright",
+        "kind": "attribution",
+        "url": "https://metadata.ftp-master.debian.org/changelogs/main/r/rust-hexf-parse/rust-hexf-parse_0.2.1-1_copyright",
+        "sha256": "49a5d671124d3faafe8b5341b4fab081196d8ad04d44783adefe4b8c19be7bd0",
+        "size_bytes": 566
+      },
+      {
+        "name": "CC0-1.0",
+        "kind": "code_license",
+        "url": "https://sources.debian.org/data/main/b/base-files/13.8%2Bdeb13u7/licenses/CC0-1.0",
+        "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+        "size_bytes": 7048
+      }
+    ]
+  },
+  {
+    "project": "rspirv",
+    "crates": [
+      {
+        "name": "spirv",
+        "version": "0.4.0+sdk-1.4.341.0",
+        "vcs_info_sha256": "d6c805477fb7dd3f7ac6cd6589be6e91acb67f4976954a144278258409b8fa04",
+        "lock_sha256": "d9571ea910ebd84c86af4b3ed27f9dbdc6ad06f17c5f96146b2b671e2976744f"
+      }
+    ],
+    "documents": [
+      {
+        "name": "LICENSE",
+        "kind": "code_license",
+        "url": "https://raw.githubusercontent.com/gfx-rs/rspirv/8afc3d0ac8e158128cd1410bb2e4b4c26ab11bb4/LICENSE",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "size_bytes": 11358
+      },
+      {
+        "name": "SPIRV-Headers-LICENSE",
+        "kind": "third_party_license",
+        "url": "https://raw.githubusercontent.com/KhronosGroup/SPIRV-Headers/04f10f650d514df88b76d25e83db360142c7b174/LICENSE",
+        "sha256": "ea43b1de38a6f90c488800d66dec1ed671e68cda530266bc96951fb5b6307613",
+        "size_bytes": 23503
+      }
+    ]
   }
 ]
