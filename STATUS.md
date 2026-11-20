@@ -4,8 +4,12 @@ The Fabric inspector shows the assigned material by name. Choose an existing
 project fabric, rename it, or make a named independent copy for the active
 pattern. Focused tests cover all authored properties, shared materials,
 multi-selection, one-step history, invalid names, ID and object limits,
-unfinished numeric input, cancellation and stale dialogs. The native
-two-panel save and reopen check is pending.
+unfinished numeric input, cancellation and stale dialogs. In the native Harbor workflow the back copy changed from 0.18 to 0.29 kg/m²
+while the front kept the original cotton. The picker then assigned the same
+copy to the front. Independent replay matched all six complete
+saved documents, including the results of Undo and Redo. Both assignments
+reopened.
+[Native fabric check](parity/reports/WF-20261120-NATIVE-FABRIC-ASSIGNMENT-001.json).
 [Fabric assignment](spec/features/MAT-001-active-pattern-fabric.md).
 
 # Arrange several patterns together — 20 November 2026

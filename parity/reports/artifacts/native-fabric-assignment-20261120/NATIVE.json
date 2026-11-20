@@ -1,0 +1,94 @@
+{
+  "source_commit": "1b7312cca375bfca1b3ab067690a646726af5447",
+  "source_tree": "fa343412910ee57b90d8f84274813ef47ed97b65",
+  "release_executable_sha256": "41c1b79c0e5243c36413ad95f61d22fa5e85812407edbf19397907839f5d5565",
+  "fixture_sha256": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c",
+  "platform": "Apple Silicon macOS, native Metal studio, locked release build",
+  "recorded_utc": "2026-11-20T17:50:53Z",
+  "observations": [
+    {
+      "revision": 24,
+      "action": "Open Harbor, select back in the Scene, then open the Fabric tab.",
+      "assigned": "Cotton approximation (uncalibrated)",
+      "assigned_pattern_count": 2,
+      "areal_density": 0.18
+    },
+    {
+      "revision": 25,
+      "action": "Use Copy for this pattern, enter Harbor lining and choose Create and assign copy. Save.",
+      "assigned": "Harbor lining",
+      "assigned_pattern_count": 1,
+      "snapshot": "copied.weftforge"
+    },
+    {
+      "revision": 26,
+      "action": "Use Rename fabric and apply Harbor twill. Save.",
+      "assigned": "Harbor twill",
+      "snapshot": "renamed.weftforge"
+    },
+    {
+      "revision": 27,
+      "action": "Click the Mass/area numeric field, select its text, enter 0.29 and press Return. Save. Export the native workspace PNG.",
+      "assigned": "Harbor twill",
+      "areal_density": 0.29,
+      "assigned_pattern_count": 1,
+      "snapshot": "independent.weftforge",
+      "image": "harbor-independent.png",
+      "image_size": [
+        1640,
+        1000
+      ]
+    },
+    {
+      "revision": 27,
+      "action": "Select Harbor front. Open Assigned fabric.",
+      "assigned": "Cotton approximation (uncalibrated)",
+      "areal_density": 0.18,
+      "picker_entries": [
+        "Cotton approximation (uncalibrated) \u00b7 #1",
+        "Harbor twill \u00b7 #68"
+      ]
+    },
+    {
+      "revision": 28,
+      "action": "Select existing Harbor twill in the picker and save.",
+      "assigned": "Harbor twill",
+      "areal_density": 0.29,
+      "assigned_pattern_count": 2,
+      "snapshot": "assigned.weftforge"
+    },
+    {
+      "revision": 29,
+      "action": "Click Undo and save.",
+      "assigned": "Cotton approximation (uncalibrated)",
+      "areal_density": 0.18,
+      "assigned_pattern_count": 1,
+      "snapshot": "undo.weftforge"
+    },
+    {
+      "revision": 30,
+      "action": "Click Redo and save.",
+      "assigned": "Harbor twill",
+      "areal_density": 0.29,
+      "assigned_pattern_count": 2,
+      "snapshot": "redo.weftforge"
+    },
+    {
+      "revision": 0,
+      "action": "Choose File > New Empty.",
+      "pieces": 0,
+      "seams": 0,
+      "vertices": 0
+    },
+    {
+      "revision": 30,
+      "action": "Open the saved primary in the native file chooser. Select back and front in turn. Each displays Harbor twill, 0.29 kg/m\u00b2 and two assigned patterns.",
+      "pieces": 2,
+      "seams": 8,
+      "rest_mesh_vertices": 654,
+      "selected_immediately_after_open": 0
+    }
+  ],
+  "input_note": "An initial accessibility value-set on the numeric stepper left the displayed value and revision unchanged. Keyboard text entry followed by Return committed the observed density change.",
+  "scope": "One local two-panel project. No measured fabric calibration, regional material assignment or comparison to reference software."
+}
