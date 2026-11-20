@@ -1,5 +1,11 @@
 # Native studio preview
 
+## Draped garment surface
+
+The longer Harbor front drapes around the mannequin. Each face now ends at its projected vertices, including the nearly edge-on faces on the front and sleeve. [Native comparison](../parity/reports/WF-20261120-NATIVE-PROJECTED-GARMENT-FACES-001.json).
+
+![Native WeftForge studio showing the longer Harbor shirt after assembly and drape](../parity/reports/artifacts/native-projected-faces-20261120/draped.png)
+
 ## A longer front hem after draping
 
 Harbor’s front panel is 50 mm longer in the pattern. After assembly and
@@ -7,7 +13,7 @@ gravity drape, its hem corners hang approximately 18.5 mm lower than on
 the original shirt. The inspector shows 16.10% peak strain on the edited
 front. [Original shirt](../parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/draped.png) · [Native measurements](../parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json).
 
-![Draped Harbor shirt with a longer front panel and live simulation measurements](../parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/draped.png)
+The earlier capture shows the two blue lines from the previous face renderer. [Earlier native capture](../parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/draped.png).
 
 ## World and local rotation in 3D
 

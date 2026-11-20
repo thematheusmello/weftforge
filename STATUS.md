@@ -4,7 +4,11 @@ The 3D view now fills each garment face directly between its three projected
 vertices. The previous renderer extended two nearly edge-on faces of the
 draped Harbor shirt to the viewport borders. The regression reproduces the
 old tessellator overrun and checks the exact new vertices, winding and face
-color at two pixel densities. The native drape replay is pending.
+color at two pixel densities. The native runtime replay reduced material
+pixels outside the measured silhouette from 1,056 to zero. Its 644 vertices
+and 1,150 faces matched the previous native OBJ byte for byte. The longer
+hem still reached 16.10% material strain, above the 15% fit limit.
+[Native comparison](parity/reports/WF-20261120-NATIVE-PROJECTED-GARMENT-FACES-001.json) · [Corrected studio capture](parity/reports/artifacts/native-projected-faces-20261120/draped.png).
 [Projected garment faces](spec/features/UI-001-projected-garment-faces.md).
 
 # Editable hem length through native drape — 20 November 2026

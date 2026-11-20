@@ -45,7 +45,8 @@
         "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json",
         "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json",
         "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json",
-        "spec/features/UI-001-projected-garment-faces.md"
+        "spec/features/UI-001-projected-garment-faces.md",
+        "parity/reports/WF-20261120-NATIVE-PROJECTED-GARMENT-FACES-001.json"
       ],
       "scenarios": [
         {
@@ -150,6 +151,15 @@
           },
           "initial_conditions": "The saved Harbor revision 23 on the Apple Silicon studio with both editable patterns and its default rest arrangement.",
           "expected_outcomes": "The View and Command search routes fit the clipped 3D cloth with a margin. The 2D canvas and Properties pixels, editable bytes and complete one-step GLB are preserved."
+        },
+        {
+          "id": "UI-NATIVE-PROJECTED-GARMENT-FACES-001",
+          "path": "parity/scenarios/UI-NATIVE-PROJECTED-GARMENT-FACES-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/Harbor.weftforge": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef"
+          },
+          "initial_conditions": "Open a fresh copy of the saved revision 25 Harbor with the 50 mm front hem extension at the default camera in the 1640 by 1000 native studio.",
+          "expected_outcomes": "After 60 assembly and 120 drape steps, the native OBJ matches the prior geometry byte for byte. Material pixels lie within two pixels of the projected surface, and the saved construction stays unchanged."
         }
       ],
       "comparison_criteria": {
@@ -3951,6 +3961,25 @@
             "parity/reports/artifacts/native-split-placement-release-20261120/split-release.weftforge": "db24f74e8e33f0625ad47661c5349961bd2ab871fb166a21857b85d98e8df900"
           },
           "path": "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-PROJECTED-GARMENT-FACES-001",
+          "commit": "29c679968398d453cbb087526c48ee6a293d04e8",
+          "timestamp": "2026-11-20T16:31:03.165938Z",
+          "platform": "Apple Silicon native Metal studio, saved native OBJ, PNG and independent silhouette comparison",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-projected-faces-20261120/NATIVE.json": "01d3bdb939ea093d79cc9b7983f646d32295410c87ed48e744d8063cb5334317",
+            "parity/reports/artifacts/native-projected-faces-20261120/POST-CASE-CLEANUP.json": "932b1cdf4937fe6dac5a061077e9d7bfb1ac0c1f13155682ad9d9d32975f2199",
+            "parity/reports/artifacts/native-projected-faces-20261120/SILHOUETTE.json": "71420b56ea5594f890b1c55c03275773807f05f5601dc1b1eba1471f24334e6d",
+            "parity/reports/artifacts/native-projected-faces-20261120/check_silhouette.py": "6636ec5ae9653b23a2b0b2dfd3ac79d952304aa7763b17792d0396329c8eb522",
+            "parity/reports/artifacts/native-projected-faces-20261120/draped.obj": "8cec02e8988d1a37d5797e63f6de77df509ca5a7a6604fb4c8ba91aefc8eb466",
+            "parity/reports/artifacts/native-projected-faces-20261120/draped.png": "98a4a27f7e2fc38f18f2a5321ce302cbdb6d75df629a4506dd07f2e7d34ec078",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/Harbor.weftforge": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/draped.obj": "8cec02e8988d1a37d5797e63f6de77df509ca5a7a6604fb4c8ba91aefc8eb466",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/draped.png": "3605fb9ce7fea89fe6cdccdf8b0c174334c19d2b64afd96672504fc55dcf39c4",
+            "parity/scenarios/UI-NATIVE-PROJECTED-GARMENT-FACES-001.json": "bd611c7fb190b399fdc3a81402842386773131499c030a65a9fd4f79c97063fc"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-PROJECTED-GARMENT-FACES-001.json"
         }
       ],
       "known_gaps": [
@@ -3974,7 +4003,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b",
         "spec/features/UI-001-standard-viewpoints.md": "904ae35c58a9ecf1e3da3c1a25098a1d1d255cd8776ab630d62991737e4f720a",
