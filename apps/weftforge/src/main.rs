@@ -445,16 +445,90 @@ enum PlacementMode {
     Rotate,
 }
 
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum RotationAxis {
+    View,
+    World(usize),
+    Local(usize),
+}
+
+impl RotationAxis {
+    const CHOICES: [(Self, &'static str); 7] = [
+        (Self::View, "View"),
+        (Self::World(0), "World X"),
+        (Self::World(1), "World Y"),
+        (Self::World(2), "World Z"),
+        (Self::Local(0), "Local X"),
+        (Self::Local(1), "Local Y"),
+        (Self::Local(2), "Local Z"),
+    ];
+
+    fn direction(self, placement: Placement, yaw: f64, pitch: f64) -> [f64; 3] {
+        match self {
+            Self::View => {
+                let (sy, cy) = yaw.sin_cos();
+                let (sp, cp) = pitch.sin_cos();
+                [-sy * cp, sp, cy * cp]
+            }
+            Self::World(i) => std::array::from_fn(|j| if i == j { 1. } else { 0. }),
+            Self::Local(i) => {
+                let basis = Placement {
+                    translation: [0.; 3],
+                    ..placement
+                };
+                let [u, v] = [[1., 0.], [0., 1.]].map(|p| basis.transform(p));
+                match i {
+                    0 => u,
+                    1 => v,
+                    _ => [
+                        u[1] * v[2] - u[2] * v[1],
+                        u[2] * v[0] - u[0] * v[2],
+                        u[0] * v[1] - u[1] * v[0],
+                    ],
+                }
+            }
+        }
+    }
+}
+
+#[derive(Clone, Copy)]
+struct RotationDial {
+    pivot: [f64; 2],
+    center: Pos2,
+    axis: [f64; 3],
+}
+
+impl RotationDial {
+    const RADIUS: f32 = 30.;
+
+    fn on_rim(self, point: Pos2) -> bool {
+        (point.distance(self.center) - Self::RADIUS).abs() <= 6.
+    }
+
+    fn paint(self, painter: &egui::Painter, pointer: Option<Pos2>) {
+        let ink = Color32::from_gray(37);
+        let gold = Color32::from_rgb(243, 182, 101);
+        painter.circle_stroke(self.center, Self::RADIUS, Stroke::new(4., ink));
+        painter.circle_stroke(self.center, Self::RADIUS, Stroke::new(1.5, gold));
+        painter.circle_filled(self.center, 4., ink);
+        painter.circle_stroke(self.center, 4., Stroke::new(1.5, gold));
+        let spoke = pointer
+            .map(|pt| pt - self.center)
+            .filter(|v| v.length_sq() >= 1.)
+            .map_or(Vec2::X, |v| v.normalized());
+        let knob = self.center + spoke * Self::RADIUS;
+        painter.line_segment([self.center + spoke * 5., knob], Stroke::new(1., gold));
+        painter.circle_filled(knob, 4., gold);
+        painter.circle_stroke(knob, 4., Stroke::new(1., ink));
+    }
+}
+
 enum PlacementMotion {
     Move {
         world_per_point: [[f64; 3]; 2],
         snap: PositionSnap,
     },
-    Rotate {
-        pivot: [f64; 2],
-        screen_pivot: Pos2,
-        axis: [f64; 3],
-    },
+    Rotate(RotationDial),
 }
 
 struct PlacementDrag {
@@ -492,24 +566,20 @@ impl PlacementDrag {
                     }
                 }
             }
-            PlacementMotion::Rotate {
-                pivot,
-                screen_pivot,
-                axis,
-            } => {
-                let start = delta(self.origin, screen_pivot);
-                let end = delta(self.point, screen_pivot);
+            PlacementMotion::Rotate(dial) => {
+                let start = delta(self.origin, dial.center);
+                let end = delta(self.point, dial.center);
                 if start == [0.; 2] || end == [0.; 2] {
                     return None;
                 }
                 let [ax, ay] = start;
                 let [bx, by] = end;
-                // Screen Y increases down while positive rotation about view depth turns up.
+                // Counterclockwise on the screen applies a positive turn around the chosen axis.
                 let angle = (ay * bx - ax * by).atan2(ax * bx + ay * by);
                 if angle == 0. || !angle.is_finite() {
                     return None;
                 }
-                placement = placement.rotated_about(pivot, axis, angle);
+                placement = placement.rotated_about(dial.pivot, dial.axis, angle);
             }
         }
         Some((self.input.selected?, placement))
@@ -1100,6 +1170,7 @@ struct Studio {
     pattern_canvas: Option<egui::Id>,
     garment_canvas: Option<egui::Id>,
     placement_mode: Option<PlacementMode>,
+    rotation_axis: RotationAxis,
     placement_drag: Option<PlacementDrag>,
     drag_start: Option<[f64; 2]>,
     rectangle: Option<RectangleDraft>,
@@ -1202,6 +1273,7 @@ impl Studio {
             pattern_canvas: None,
             garment_canvas: None,
             placement_mode: None,
+            rotation_axis: RotationAxis::View,
             placement_drag: None,
             drag_start: None,
             rectangle: None,
@@ -7039,11 +7111,38 @@ impl Studio {
         }
     }
 
+    fn arrangement_placement(&self, piece: &Piece) -> Placement {
+        self.draft
+            .as_ref()
+            .filter(|draft| {
+                draft.revision == self.editor.project.revision && draft.selected == Some(piece.id)
+            })
+            .and_then(|draft| draft.placement)
+            .unwrap_or(piece.placement)
+    }
+
+    fn rotation_dial(&self, rect: Rect) -> Option<RotationDial> {
+        let piece = self.editor.project.piece(self.selected?)?;
+        let original = self.arrangement_placement(piece);
+        let [min, max] = self.editor.project.piece_bounds(piece.id).ok()?;
+        let pivot = std::array::from_fn(|i| min[i].midpoint(max[i]));
+        Some(RotationDial {
+            pivot,
+            center: self.project3(original.transform(pivot), rect).0,
+            axis: self.rotation_axis.direction(
+                original,
+                f64::from(self.yaw),
+                f64::from(self.pitch),
+            ),
+        })
+    }
+
     fn place_pattern_in_garment(
         &mut self,
         ui: &egui::Ui,
         response: &egui::Response,
         mode: Option<PlacementMode>,
+        dial: Option<RotationDial>,
     ) {
         let ctx = ui.ctx();
         if let Some(drag) = &self.placement_drag
@@ -7078,7 +7177,8 @@ impl Studio {
                         _ => None,
                     });
             let Some((press, alt)) = press.filter(|(press, _)| {
-                self.garment_piece_at(*press, response.rect) == Some(piece.id)
+                dial.is_some_and(|dial| dial.on_rim(*press))
+                    || self.garment_piece_at(*press, response.rect) == Some(piece.id)
             }) else {
                 return;
             };
@@ -7096,14 +7196,7 @@ impl Studio {
                 input.close_without_commit(ctx);
                 return;
             }
-            let original = self
-                .draft
-                .as_ref()
-                .filter(|draft| {
-                    draft.revision == input.revision && draft.selected == Some(piece.id)
-                })
-                .and_then(|draft| draft.placement)
-                .unwrap_or(piece.placement);
+            let original = self.arrangement_placement(piece);
             let motion = match mode {
                 PlacementMode::Move => {
                     let scale = f64::from(self.camera_scale);
@@ -7122,18 +7215,8 @@ impl Studio {
                     }
                 }
                 PlacementMode::Rotate => {
-                    let Ok([min, max]) = self.editor.project.piece_bounds(piece.id) else {
-                        return;
-                    };
-                    let pivot = std::array::from_fn(|i| min[i].midpoint(max[i]));
-                    let screen_pivot = self.project3(original.transform(pivot), response.rect).0;
-                    let (sy, cy) = f64::from(self.yaw).sin_cos();
-                    let (sp, cp) = f64::from(self.pitch).sin_cos();
-                    PlacementMotion::Rotate {
-                        pivot,
-                        screen_pivot,
-                        axis: [-sy * cp, sp, cy * cp],
-                    }
+                    let Some(dial) = dial else { return };
+                    PlacementMotion::Rotate(dial)
                 }
             };
             self.placement_drag = Some(PlacementDrag {
@@ -7214,7 +7297,7 @@ impl Studio {
                 (
                     PlacementMode::Rotate,
                     "Rotate pattern",
-                    "Drag the selected rest pattern around its center in the view plane.",
+                    "Drag the dial or selected rest pattern around its center. Counterclockwise gives a positive rotation about the selected axis.",
                 ),
             ] {
                 let mut active = self.placement_mode == Some(mode);
@@ -7230,6 +7313,20 @@ impl Studio {
                 }
             }
         });
+        if self.placement_mode == Some(PlacementMode::Rotate) {
+            ui.add_enabled_ui(ready_to_place, |ui| {
+                ui.horizontal_wrapped(|ui| {
+                    ui.label("Rotation axis");
+                    for (axis, label) in RotationAxis::CHOICES {
+                        let response = ui.selectable_value(&mut self.rotation_axis, axis, label);
+                        self.retain_inspector_input(&response, false);
+                        if response.changed() {
+                            self.cancel_placement_drag(ui.ctx());
+                        }
+                    }
+                });
+            });
+        }
         let mode = self.placement_mode.filter(|_| ready_to_place);
         let (response, painter) = ui.allocate_painter(ui.available_size(), Sense::click_and_drag());
         self.garment_canvas = Some(response.id);
@@ -7258,11 +7355,17 @@ impl Studio {
             self.camera_scale = frame.scale;
             self.garment_frame = Some(frame);
         }
-        self.place_pattern_in_garment(ui, &response, mode);
+        let dial = if mode == Some(PlacementMode::Rotate) && ui.is_enabled() {
+            self.rotation_dial(r)
+        } else {
+            None
+        };
+        self.place_pattern_in_garment(ui, &response, mode, dial);
         let pick = response
             .clicked()
             .then(|| response.interact_pointer_pos())
-            .flatten();
+            .flatten()
+            .filter(|point| !dial.is_some_and(|dial| dial.on_rim(*point)));
         let preview_placement = self
             .placement_drag
             .as_ref()
@@ -7350,6 +7453,20 @@ impl Studio {
         }
         if picked.is_some() {
             self.select(ui.ctx(), picked);
+        } else if let Some(dial) = dial
+            && self.garment_surface().is_some()
+        {
+            dial.paint(
+                &painter,
+                self.placement_drag.as_ref().map(|drag| drag.point),
+            );
+            response.widget_info(|| {
+                egui::WidgetInfo::labeled(
+                    egui::WidgetType::Other,
+                    ui.is_enabled(),
+                    "3D pattern rotation dial",
+                )
+            });
         }
         painter.text(
             r.left_top() + Vec2::splat(12.),
@@ -28373,5 +28490,141 @@ mod placement_drag_tests {
             app.mesh = Some(Arc::new(expected.mesh().unwrap()));
         }
         assert_eq!([app.yaw, app.pitch], [0.57, -0.38]);
+    }
+
+    #[test]
+    fn garment_rotation_dial_constrains_world_and_local_axes_even_on_an_edge_on_piece() {
+        use super::pattern_transform_tests::{action, button, frame, pointer_frame};
+        use egui::accesskit::Action;
+
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        for (name, origin) in [("Edge on", [0.1, 0.2]), ("Other", [1., 0.2])] {
+            app.editor
+                .execute(Command::AddRectangle {
+                    name: name.into(),
+                    origin,
+                    width: 0.2,
+                    height: 0.2,
+                })
+                .unwrap();
+        }
+        let id = app.editor.project.pieces[0].id;
+        let quarter = std::f64::consts::FRAC_PI_2;
+        let original = Placement {
+            translation: [0.13, 1.08, -0.27],
+            rotation: [quarter, 0., -quarter],
+        };
+        app.editor
+            .execute(Command::SetPlacement {
+                piece: id,
+                placement: original,
+            })
+            .unwrap();
+        let initial = app.editor.project.clone();
+        let pivot = [0.2, 0.3];
+        let world = original.transform(pivot);
+        app.selected = Some(id);
+        app.yaw = 0.;
+        app.pitch = 0.;
+        app.camera_scale = 200.;
+        app.placement_mode = Some(PlacementMode::Rotate);
+        // These rotations place the pattern U, V and normal along -Y, +Z and -X.
+        for (label, fixed, sign) in [
+            ("World X", 0, 1.),
+            ("World Y", 1, 1.),
+            ("World Z", 2, 1.),
+            ("Local X", 1, -1.),
+            ("Local Y", 2, 1.),
+            ("Local Z", 0, -1.),
+        ] {
+            app.mesh = Some(Arc::new(app.editor.project.mesh().unwrap()));
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(button(&output, label), Action::Click, None)],
+            );
+            let rect = ctx.read_response(app.garment_canvas.unwrap()).unwrap().rect;
+            let center = app.project3(world, rect).0;
+            let start = center + Vec2::X * RotationDial::RADIUS;
+            let end = center - Vec2::Y * RotationDial::RADIUS;
+            assert!(rect.contains(start) && rect.contains(end));
+            assert_eq!(app.garment_piece_at(start, rect), None);
+            let before = app.editor.project.clone();
+            pointer_frame(&ctx, &mut app, start, Some(true), false);
+            pointer_frame(&ctx, &mut app, end, None, false);
+            let (_, preview) = app.placement_drag.as_ref().unwrap().placement().unwrap();
+            assert_eq!(app.editor.project, before);
+            let (j, k) = ((fixed + 1) % 3, (fixed + 2) % 3);
+            for point in [pivot, [0.1, 0.2], [0.3, 0.2]] {
+                let old = original.transform(point);
+                let mut expected = old;
+                expected[j] = world[j] - sign * (old[k] - world[k]);
+                expected[k] = world[k] + sign * (old[j] - world[j]);
+                for (actual, expected) in preview.transform(point).into_iter().zip(expected) {
+                    assert!(
+                        (actual - expected).abs() < 1e-10,
+                        "{label}: {actual} vs {expected}"
+                    );
+                }
+            }
+            pointer_frame(&ctx, &mut app, end, Some(false), false);
+            let mut expected = before;
+            expected.revision += 1;
+            expected.pieces[0].placement = preview;
+            assert_eq!(app.editor.project, expected);
+            assert!(app.placement_drag.is_none());
+            assert!(app.editor.undo());
+            assert_eq!(app.editor.project.pieces, initial.pieces);
+            assert!(app.editor.redo());
+            assert_eq!(app.editor.project.pieces, expected.pieces);
+            assert!(app.editor.undo());
+        }
+
+        app.mesh = Some(Arc::new(app.editor.project.mesh().unwrap()));
+        let revision = app.editor.project.revision;
+        for simulated in [false, true] {
+            if simulated {
+                app.hidden_pieces.clear();
+                let mut cloth = weftforge_core::simulation::create_cloth(
+                    &app.editor.project,
+                    app.mesh.as_ref().unwrap(),
+                )
+                .unwrap();
+                cloth.step(Default::default(), || false).unwrap();
+                app.cloth = Some(Arc::new(cloth));
+            } else {
+                app.hidden_pieces.insert(id);
+            }
+            let output = frame(&ctx, &mut app, vec![]);
+            let nodes = &output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes;
+            assert!(
+                nodes
+                    .iter()
+                    .any(|(_, node)| node.label() == Some("Local Z") && node.is_disabled())
+            );
+            assert!(
+                !nodes
+                    .iter()
+                    .any(|(_, node)| node.label() == Some("3D pattern rotation dial"))
+            );
+            let rect = ctx.read_response(app.garment_canvas.unwrap()).unwrap().rect;
+            let center = app.project3(world, rect).0;
+            let start = center + Vec2::X * RotationDial::RADIUS;
+            let end = center - Vec2::Y * RotationDial::RADIUS;
+            pointer_frame(&ctx, &mut app, start, Some(true), false);
+            pointer_frame(&ctx, &mut app, end, None, false);
+            assert!(app.placement_drag.is_none());
+            pointer_frame(&ctx, &mut app, end, Some(false), false);
+            assert_eq!(app.editor.project.revision, revision);
+        }
     }
 }

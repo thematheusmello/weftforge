@@ -1,5 +1,11 @@
 # WeftForge current-source addendum
 
+## World and local rotation axes
+
+Source `afdea5999423dd5c9952f20ff5e3d5f26c169751` adds the viewport rotation dial to the
+`arrangement` and `gizmos` groups. The seven choices use the camera direction,
+one of three world directions or one of three placed-pattern directions.
+
 ## Direct pattern rotation in 3D
 
 Source `578520600521d378f9c1fc6a83f81ec9931ee07e` extends `arrangement` and `gizmos` with a camera-relative
