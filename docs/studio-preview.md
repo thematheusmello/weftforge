@@ -24,6 +24,13 @@ front. [Original shirt](../parity/reports/artifacts/native-hem-regeneration-2026
 
 The earlier capture shows the two blue lines from the previous face renderer. [Earlier native capture](../parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/draped.png).
 
+## An independent fabric for Harbor back
+
+Harbor back uses its own twill at 0.29 kg/m². Harbor front still uses the
+original cotton at 0.18 kg/m². [Saved fabric comparison](../parity/reports/WF-20261120-NATIVE-FABRIC-ASSIGNMENT-001.json).
+
+![Native Fabric inspector showing Harbor back with its named independent twill](../parity/reports/artifacts/native-fabric-assignment-20261120/harbor-independent.png)
+
 ## Arrange two patterns together
 
 The front and back panels moved together, then turned around their shared pivot.

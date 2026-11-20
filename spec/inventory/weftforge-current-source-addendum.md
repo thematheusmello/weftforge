@@ -1,5 +1,9 @@
 # WeftForge current-source addendum
 
+## Project-local fabric assignment
+
+Source `1b7312cca375bfca1b3ab067690a646726af5447` adds an assigned-name picker, a named independent copy and shared-material renaming to the Fabric inspector.
+
 ## Multi-pattern arrangement
 
 Source `dd0dd54c42724bbd0d02018a43442302e2b7a84a` extends selection across the Scene and both canvases. Multiple rest pieces share one placement transaction and one world-space pivot. The active piece supplies the local axes.

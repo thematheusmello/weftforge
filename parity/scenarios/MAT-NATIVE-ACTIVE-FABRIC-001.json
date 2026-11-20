@@ -1,0 +1,29 @@
+{
+  "id": "MAT-NATIVE-ACTIVE-FABRIC-001",
+  "status": "implementation_only",
+  "initial_conditions": "Open the supplied two-panel Harbor project at revision 24. Both patterns use authored Cotton material #1 at 0.18 kg/m\u00b2.",
+  "actions": [
+    "Select Harbor back, copy its assigned project fabric, enter Harbor lining and save.",
+    "Rename the copy Harbor twill, save, then edit density to 0.29 kg/m\u00b2 and save again.",
+    "Select Harbor front, choose material #68 from the project picker and save. Undo, save, Redo and save.",
+    "Open an empty project, reopen the saved primary and inspect both assignments."
+  ],
+  "expected_outcomes": "One new material #68 retains every physical and appearance field on creation. Editing the back copy leaves front and material #1 intact. Assigning the existing copy changes only the front assignment. Undo and Redo restore every saved field except revision.",
+  "measurements": {
+    "front_piece_id": 2,
+    "back_piece_id": 31,
+    "initial_material_id": 1,
+    "copy_material_id": 68,
+    "revisions": [
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "original_density_kg_per_square_metre": 0.18,
+    "edited_density_kg_per_square_metre": 0.29
+  }
+}
