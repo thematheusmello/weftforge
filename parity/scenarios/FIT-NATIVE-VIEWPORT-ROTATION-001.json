@@ -1,0 +1,13 @@
+{
+  "id": "FIT-NATIVE-VIEWPORT-ROTATION-001",
+  "status": "implementation_only",
+  "initial_conditions": "Harbor revision 23 contains two editable patterns and eight seams. Choose the front pattern in Front view and enable Rotate pattern.",
+  "actions": [
+    "Open a disposable copy of the revision 23 Harbor project. Frame the 2D outlines, select Harbor front and choose Front view.",
+    "Enable Rotate pattern and save the original workspace PNG.",
+    "Drag from window point (1092, 500) to (1023, 431). The first input after closing the save panel kept revision 23. Repeat the same path to commit revision 24.",
+    "Save the editable document and the rotated workspace PNG. Undo, save revision 25, Redo and save revision 26.",
+    "Open a byte-exact copy of the saved revision 26 through the native File dialog, select Harbor front and read its placement."
+  ],
+  "expected_outcomes": "A committed drag advances one revision, holds the 3D center fixed and preserves the authored outlines and seams. Undo and Redo restore both states. The saved rotation reopens in the native studio."
+}

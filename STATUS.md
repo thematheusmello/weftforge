@@ -1,3 +1,20 @@
+# Rotate a pattern in the 3D view — 20 November 2026
+
+**Rotate pattern** turns the selected rest pattern around the center of its
+authored bounds. Dragging previews the new placement and releasing records
+one edit. Escape cancels the gesture. The rotation uses the camera direction
+captured when the drag begins.
+[Rotation controls](spec/features/FIT-001-viewport-rotation.md).
+
+The studio and CLI built locally. Formatting, 515 workspace tests and strict
+Clippy passed. The rotation test covers a tilted pattern with a cubic edge,
+both pointer-release paths, cancellation, Undo and unchanged seam ownership.
+Harbor front turned 89.875° and reopened at revision 26. An independent
+check found a pivot error of 2.22 × 10⁻¹⁶ m and identical 2D canvas pixels.
+The first drag after a PNG save kept revision 23. The repeated gesture
+committed revision 24. Local-axis handles and avatar arrangement remain open.
+[Native rotation check](parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json) · [Studio preview](docs/studio-preview.md).
+
 # Pinned license texts in the Apple Silicon package — 19 November 2026
 
 An offline rebuild included ten verified upstream texts for 29 of the 165

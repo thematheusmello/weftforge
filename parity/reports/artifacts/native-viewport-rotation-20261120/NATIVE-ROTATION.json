@@ -1,0 +1,29 @@
+{
+  "source_commit": "578520600521d378f9c1fc6a83f81ec9931ee07e",
+  "source_tree": "f4e569ac3ebec41d7301067db9fc962ab2c18b6f",
+  "studio_sha256": "d35c13ca9a34d6c8fc04e7f4d673b1c037eef8edae6ec340d0b09de53e3ae318",
+  "platform": "Apple Silicon macOS, native Metal studio",
+  "fixture": "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge",
+  "fixture_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+  "actions": [
+    "Open a disposable copy of the revision 23 Harbor project. Frame the 2D outlines, select Harbor front and choose Front view.",
+    "Enable Rotate pattern and save the original workspace PNG.",
+    "Drag from window point (1092, 500) to (1023, 431). The first input after closing the save panel kept revision 23. Repeat the same path to commit revision 24.",
+    "Save the editable document and the rotated workspace PNG. Undo, save revision 25, Redo and save revision 26.",
+    "Open a byte-exact copy of the saved revision 26 through the native File dialog, select Harbor front and read its placement."
+  ],
+  "initial_project_revision": 23,
+  "first_post_panel_drag_committed": false,
+  "repeated_drag_revision": 24,
+  "reopened_project_revision": 26,
+  "reopened_translation_m_display": [
+    1.2816,
+    1.9972,
+    0.24
+  ],
+  "reopened_rotation_z_rad_display": 1.5686,
+  "workspace_rust_tests": 515,
+  "strict_clippy_pass": true,
+  "source_binding": "The local test bundle contains the studio built from these exact Rust sources.",
+  "checked_utc": "2026-11-20T15:00:22.348378Z"
+}
