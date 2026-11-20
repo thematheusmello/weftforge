@@ -25,7 +25,7 @@ pub use svg::{MAX_SVG_BYTES, SVG_IMPORT_SCOPE, SvgPatternImport};
 pub(crate) struct ImportedPattern {
     pub name: String,
     pub exterior: ImportedContour,
-    pub hole: Option<Vec<[f64; 2]>>,
+    pub holes: Vec<Vec<[f64; 2]>>,
 }
 
 #[derive(Debug, Clone, Default)]

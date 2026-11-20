@@ -1110,3 +1110,49 @@ fn eligible_large_annulus_reports_bounded_mesh_refusal_without_losing_authored_h
     let bytes = editor.project.to_json().unwrap();
     assert_eq!(Project::from_json(&bytes).unwrap(), accepted);
 }
+
+#[test]
+fn disjoint_holes_keep_their_boundaries_mesh_area_and_history() {
+    let mut editor = annulus();
+    let first = editor.project.pieces[0].holes[0].clone();
+    let second = [[0.015, 0.02], [0.045, 0.02], [0.045, 0.06], [0.015, 0.06]];
+    editor.execute(add_hole(second)).unwrap();
+    let ids = editor.project.pieces[0].holes.clone();
+    assert_eq!(ids[0], first);
+    assert_ne!(ids[0].id, ids[1].id);
+    let restored = Project::from_json(&editor.project.to_json().unwrap()).unwrap();
+    assert_eq!(restored.pieces[0].holes, ids);
+    let mesh = restored.mesh().unwrap();
+    let mut total = 0.;
+    for triangle in &mesh.triangles {
+        let face = triangle.map(|i| mesh.uv[i]);
+        total += area(&face).abs();
+        for ring in [HOLE, second] {
+            let mut clip = ring;
+            if area(&clip) < 0. {
+                clip.reverse();
+            }
+            near(area(&intersection(face.to_vec(), &clip)).abs(), 0., 1e-14);
+        }
+    }
+    near(total, 0.24 * 0.36 - 0.08 * 0.12 - 0.03 * 0.04, 1e-12);
+    for invalid in [
+        [[0.02, 0.03], [0.03, 0.03], [0.03, 0.04], [0.02, 0.04]],
+        [[0.01, 0.01], [0.06, 0.01], [0.06, 0.07], [0.01, 0.07]],
+        [[0.04, 0.05], [0.07, 0.05], [0.07, 0.08], [0.04, 0.08]],
+        [
+            [0.0450005, 0.03],
+            [0.06, 0.03],
+            [0.06, 0.04],
+            [0.0450005, 0.04],
+        ],
+    ] {
+        rejected(&mut editor, add_hole(invalid));
+    }
+    editor
+        .execute(Command::RemoveHole { hole: first.id })
+        .unwrap();
+    assert_eq!(editor.project.pieces[0].holes, vec![ids[1].clone()]);
+    assert!(editor.undo());
+    assert_eq!(editor.project.pieces[0].holes, ids);
+}

@@ -14,7 +14,7 @@ use std::{
 pub const MAX_SVG_BYTES: usize = 1024 * 1024;
 const MAX_SVG_PIECES: usize = 64;
 const MAX_SVG_SPANS: usize = 4096;
-pub const SVG_IMPORT_SCOPE: &str = "Imported editable exterior boundaries, names and one straight-sided hole per polygon. Appearance, descriptions, sewing, grain, internal details, allowances, grading and simulation are omitted; new pieces use the first material and default 3D placement.";
+pub const SVG_IMPORT_SCOPE: &str = "Imported editable exterior boundaries, names and disjoint straight-sided cutouts. Appearance, descriptions, sewing, grain, internal details, allowances, grading and simulation are omitted; new pieces use the first material and default 3D placement.";
 
 /// The bounded FILE-005-SVG-import-v1 drawing and its physical scale.
 #[derive(Debug, Clone)]
@@ -32,8 +32,8 @@ impl SvgPatternImport {
     pub fn hole_count(&self) -> usize {
         self.patterns
             .iter()
-            .filter(|pattern| pattern.hole.is_some())
-            .count()
+            .map(|pattern| pattern.holes.len())
+            .sum()
     }
 
     pub fn command(&self) -> Command {
@@ -101,7 +101,7 @@ impl SvgPatternImport {
                             crate::document::validate_name(&name)?;
                             let evenodd = attributes.get("fill-rule").is_some_and(|rule| rule == "evenodd");
                             let pattern = parse_path(name, required(&attributes, "d")?, scale.expect("root scale"), evenodd)?;
-                            total_spans += pattern.exterior.vertices.len() + pattern.hole.as_ref().map_or(0, Vec::len);
+                            total_spans += pattern.exterior.vertices.len() + pattern.holes.iter().map(Vec::len).sum::<usize>();
                             ensure(total_spans <= MAX_SVG_SPANS, "SVG exceeds the 4096-span limit")?;
                             patterns.push(pattern);
                         }
@@ -298,43 +298,50 @@ fn root_scale(attributes: &BTreeMap<String, String>) -> Result<f64> {
 
 fn parse_path(name: String, data: &str, scale: f64, evenodd: bool) -> Result<ImportedPattern> {
     let mut numbers = Numbers::new(data);
-    let mut exterior = contour(&mut numbers, scale)?;
+    let first = contour(&mut numbers, scale)?;
+    let mut total = first.vertices.len();
+    let mut rings = vec![first];
     numbers.skip_whitespace();
-    let hole = if numbers.peek() == Some(b'M') {
-        let mut inner = contour(&mut numbers, scale)?;
+    while numbers.peek() == Some(b'M') {
+        let ring = contour(&mut numbers, scale)?;
+        total += ring.vertices.len();
+        ensure(total <= MAX_SVG_SPANS, "SVG exceeds the 4096-span limit")?;
+        rings.push(ring);
+        numbers.skip_whitespace();
+    }
+    numbers.finish()?;
+    // A single containing exterior has the largest absolute area, regardless
+    // of SVG subpath order. The document checks containment and separation.
+    let outer_index = rings
+        .iter()
+        .enumerate()
+        .map(|(index, ring)| (index, signed_double_area(&ring.vertices).abs()))
+        .max_by(|a, b| a.1.total_cmp(&b.1))
+        .expect("the first contour was parsed")
+        .0;
+    let exterior = rings.remove(outer_index);
+    if !rings.is_empty() {
         ensure(
-            exterior
-                .controls
-                .iter()
-                .chain(&inner.controls)
+            std::iter::once(&exterior)
+                .chain(&rings)
+                .flat_map(|r| &r.controls)
                 .all(Option::is_none),
             "SVG cutouts require straight sides on both the exterior and the hole",
         )?;
-        let exterior_area = signed_double_area(&exterior.vertices);
-        let inner_area = signed_double_area(&inner.vertices);
-        ensure(
-            evenodd || exterior_area.signum() != inner_area.signum(),
-            "A nonzero SVG cutout needs oppositely wound contours",
-        )?;
-        // SVG allows the hole to come first. AddHole checks strict containment
-        // and rejects intersecting, degenerate or disjoint contours atomically.
-        if inner_area.abs() > exterior_area.abs() {
-            std::mem::swap(&mut exterior, &mut inner);
+        if !evenodd {
+            let winding = signed_double_area(&exterior.vertices).signum();
+            ensure(
+                rings
+                    .iter()
+                    .all(|ring| signed_double_area(&ring.vertices).signum() != winding),
+                "A nonzero SVG cutout needs oppositely wound contours",
+            )?;
         }
-        numbers.skip_whitespace();
-        ensure(
-            numbers.peek() != Some(b'M'),
-            "Only one SVG cutout per piece is supported",
-        )?;
-        Some(inner.vertices)
-    } else {
-        None
-    };
-    numbers.finish()?;
+    }
     Ok(ImportedPattern {
         name,
         exterior,
-        hole,
+        holes: rings.into_iter().map(|ring| ring.vertices).collect(),
     })
 }
 

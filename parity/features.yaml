@@ -17855,9 +17855,23 @@
         "spec/features/PAT-006-straight-hole.md",
         "spec/features/SEW-001-cut-and-sew.md",
         "parity/reports/artifacts/straight-hole-20261116/PUBLICATION-CURRENT-003.json",
-        "parity/reports/artifacts/cut-and-sew-20261116/PUBLICATION-CURRENT.json"
+        "parity/reports/artifacts/cut-and-sew-20261116/PUBLICATION-CURRENT.json",
+        "parity/reports/WF-20261120-MULTIPLE-CUTOUTS-001.json",
+        "spec/features/PAT-006-multiple-cutouts.md",
+        "parity/reports/WF-20261120-INTEGRATED-MULTIPLE-CUTOUTS-001.json"
       ],
-      "scenarios": [],
+      "scenarios": [
+        {
+          "id": "PAT-MULTIPLE-CUTOUTS-001",
+          "path": "parity/scenarios/PAT-MULTIPLE-CUTOUTS-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket two slots.svg": "73bd718abf0701ffe0fa59c565aa2de6197ec832333f4f8632c4130357e43839",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Overlapping slots.svg": "d3ab15d039ceab3ae866be920cfb6b53e13fe710ed57d1da0246f838bcbcf6a5"
+          },
+          "initial_conditions": "Start from an empty project and an original 240 by 360 mm pocket outline with two disjoint rectangular slots. One SVG places an opening before the exterior subpath. A second fixture has overlapping slots.",
+          "expected_outcomes": "Both adapters retain two openings in a single editable piece and produce identical native, OBJ, MTL and SVG files. The reimported drawing reproduces the editable project. Overlap refusal preserves the existing primary and recovery files. The material area is 0.0756 m\u00b2 and the OBJ has one exterior and two inner boundary loops."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -26105,16 +26119,58 @@
             "parity/reports/artifacts/cut-and-sew-20261116/runtime-source/xtask/src/main.rs": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709"
           },
           "path": "parity/reports/WF-20261116-CUT-AND-SEW-001.json"
+        },
+        {
+          "id": "WF-20261120-MULTIPLE-CUTOUTS-001",
+          "commit": "1ebac973a9db3c4b1bdd9fada42bf868c465ccf9",
+          "timestamp": "2026-11-20T18:41:39Z",
+          "platform": "Apple Silicon macOS release CLI, stdio MCP, Apple Model I/O and standalone mesh measurements",
+          "artifact_hashes": {
+            "parity/reports/artifacts/multiple-cutouts-20261120/ADAPTERS.json": "55f404bd26c13aba32818c9fa9d829ecd90f35a2d7b6e4f3e7f978a6edf849cd",
+            "parity/reports/artifacts/multiple-cutouts-20261120/APPLE-MODEL-IO.json": "2bca011634bfc6afe48004054d924956a8c78bb7527622a974d2eebf11853b40",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Overlapping slots.svg": "d3ab15d039ceab3ae866be920cfb6b53e13fe710ed57d1da0246f838bcbcf6a5",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket two slots.svg": "73bd718abf0701ffe0fa59c565aa2de6197ec832333f4f8632c4130357e43839",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket.obj": "8de2bd3bf0ac881f99589e84e1e20c6fc0992eaca171b0b975435c41427dd57d",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket.weftforge": "c769ce99f5d9a4340ad3d89f66fcf74b9343fac0f4201bba0281516e0149e151",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Roundtrip.svg": "c9059d1fee47d62ddabce602f6043f8e4f35daec2ca749132a6211138583973c",
+            "parity/reports/artifacts/multiple-cutouts-20261120/check_modelio.swift": "f9c848fa4e3af7a25d52dc4097686d95ed0b16ca67969ba4f89823ec63a0194c",
+            "parity/reports/artifacts/multiple-cutouts-20261120/check_roundtrip.py": "4f2442f6b74fc5036527ede1897ce6e5278372b859c733f5bd7619a1e3869596",
+            "parity/reports/artifacts/multiple-cutouts-20261120/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/scenarios/PAT-MULTIPLE-CUTOUTS-001.json": "d61c78f4525b97d4fea9be1ca571529b69de8933cf77bd9024f7a30c57e928b9"
+          },
+          "path": "parity/reports/WF-20261120-MULTIPLE-CUTOUTS-001.json"
+        },
+        {
+          "path": "parity/reports/WF-20261120-INTEGRATED-MULTIPLE-CUTOUTS-001.json",
+          "id": "WF-20261120-INTEGRATED-MULTIPLE-CUTOUTS-001",
+          "commit": "a50aa0fa3b639a59e198e47069c7fe00552b250a",
+          "timestamp": "2026-11-20T19:01:45Z",
+          "platform": "Apple Silicon macOS release CLI, stdio MCP, Apple Model I/O and standalone mesh measurements",
+          "artifact_hashes": {
+            "parity/reports/artifacts/multiple-cutouts-20261120/ADAPTERS.json": "55f404bd26c13aba32818c9fa9d829ecd90f35a2d7b6e4f3e7f978a6edf849cd",
+            "parity/reports/artifacts/multiple-cutouts-20261120/APPLE-MODEL-IO.json": "2bca011634bfc6afe48004054d924956a8c78bb7527622a974d2eebf11853b40",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Overlapping slots.svg": "d3ab15d039ceab3ae866be920cfb6b53e13fe710ed57d1da0246f838bcbcf6a5",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket two slots.svg": "73bd718abf0701ffe0fa59c565aa2de6197ec832333f4f8632c4130357e43839",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket.obj": "8de2bd3bf0ac881f99589e84e1e20c6fc0992eaca171b0b975435c41427dd57d",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket.weftforge": "c769ce99f5d9a4340ad3d89f66fcf74b9343fac0f4201bba0281516e0149e151",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Roundtrip.svg": "c9059d1fee47d62ddabce602f6043f8e4f35daec2ca749132a6211138583973c",
+            "parity/reports/artifacts/multiple-cutouts-20261120/check_modelio.swift": "f9c848fa4e3af7a25d52dc4097686d95ed0b16ca67969ba4f89823ec63a0194c",
+            "parity/reports/artifacts/multiple-cutouts-20261120/check_roundtrip.py": "4f2442f6b74fc5036527ede1897ce6e5278372b859c733f5bd7619a1e3869596",
+            "parity/reports/artifacts/multiple-cutouts-20261120/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/scenarios/PAT-MULTIPLE-CUTOUTS-001.json": "d61c78f4525b97d4fea9be1ca571529b69de8933cf77bd9024f7a30c57e928b9",
+            "parity/reports/artifacts/multiple-cutouts-20261120/INTEGRATED-ADAPTERS.json": "254d88f077b73e074f21350d7d58c988ba7af3cb9ca97fe7301d97439532c713"
+          }
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "Bounded original straight CutPiece is partial: CUT-R1/R003 and qualified fresh-process CUT-R2/R2-001 cover native review/refusal/cancel/history/save/reopen and one independent child edit only. Whole PAT-006 verification remains not_run and reference behavior unobserved; the implementation-only report grants no completed feature or roadmap gate.",
-        "Historical a021/source73 H1-002 bounded hole creation/edit/history/save is accepted only through WF-20261116-STRAIGHT-HOLE-001 and stays stale on947. H1-001 remains FAILED before geometry grading; H2-001 remains FAILED at sole5457 SVG padded-canvas grade, without accepted exports or repair/regrade. Separate current947/source74 H3 compatibility reopen/edit/save/OBJ/SVG/refused-DXF subset is accepted through WF-20261116-HOLE-EXPORT-001, using only accepted historical H1R5 input; it grants no current empty creation. Sealed5898/source74 S1/S2 CutAndSew off/on preview/refusal/cancel/oneApply/history/save/reopen/seam-removal/independent edit is separately accepted through WF-20261116-CUT-AND-SEW-001 and remains stale on changed947. Slits, curved/vertex/internal-path/simultaneous multiple cuts, linked children, holes beyond one simple straight loop and target sewing/attachment remapping remain open.",
+        "Historical a021/source73 H1-002 bounded hole creation/edit/history/save is accepted only through WF-20261116-STRAIGHT-HOLE-001 and stays stale on947. H1-001 remains FAILED before geometry grading; H2-001 remains FAILED at sole5457 SVG padded-canvas grade, without accepted exports or repair/regrade. Separate current947/source74 H3 compatibility reopen/edit/save/OBJ/SVG/refused-DXF subset is accepted through WF-20261116-HOLE-EXPORT-001, using only accepted historical H1R5 input; it grants no current empty creation. Sealed5898/source74 S1/S2 CutAndSew off/on preview/refusal/cancel/oneApply/history/save/reopen/seam-removal/independent edit is separately accepted through WF-20261116-CUT-AND-SEW-001 and remains stale on changed947. Slits, curved/vertex/internal-path/simultaneous multiple cuts, linked children, curved openings and nested islands and target sewing/attachment remapping remain open.",
         "The native accepted subsets do not cover concave cuts, failed IO, all numeric/work/selection/offset limits, native solver/particle mass or full interoperability. Current947 H3 covers one annular OBJ/compound-SVG export and planned DXF refusal only; hole SVG re-import, print margins/tiling and broader round trips remain open. R240 and supported-L source mesh/fresh-Cloth checks are separate; original and postcutL.005 retains the vertex-cap refusal.",
         "Native saved area*density is analytic material mass, not Cloth particle mass. Runtime proof/history is delegated/retrospective; root post-case exit corroboration stays outside frozen case accounting.",
         "R001 bootstrap and R002 AX-focus stopped with no authoring/saves and retained failed once-only formal grades. F001 is a no-authoring coordinate diagnostic; its 183.527439834 s post-summary upper does not establish the 180 s cap pass.",
-        "H3 original postguarde135 remains FAILED/exit1 with29 permission-string/integer false rows. Separate e3cf direct277-pin and435-raw mode/byte audit plus root/UI review qualifies unchanged boundary without turning that original guard green. Actor435 and canonical363 manifests/retention chains stay distinct; history is retrospective and cleanup separate."
+        "H3 original postguarde135 remains FAILED/exit1 with29 permission-string/integer false rows. Separate e3cf direct277-pin and435-raw mode/byte audit plus root/UI review qualifies unchanged boundary without turning that original guard green. Actor435 and canonical363 manifests/retention chains stay distinct; history is retrospective and cleanup separate.",
+        "Several disjoint straight cutouts retain their construction through native serialization and SVG. Cutting through an opening, curved cutout boundaries, nested islands and reference behavior still need qualification."
       ],
       "contradictions": [
         "CUT-R2/R2-001 retains original extra missing_root_UI_dependency:true despite populated canonical accepted-R003 dependency/grants and prelaunch/FS0003/unchanged-grader checks. Root acceptance is expressly qualified by ROOT-DRAFT-FLAG-CLARIFICATION; no pristine binding, repair or regrade is claimed. Its input-path autosave is retained native R5 output while read-only primary R4 remains exact."
@@ -26122,7 +26178,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/PAT-006-straight-cut.md": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c"
       }
@@ -36004,7 +36060,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/FIT-003-global-strain-map.md": "c51b56330f6d6b6f2a343fe176d4a65b18566aa386b51aa48d43eae36fbd0fd5"
       }
@@ -45540,7 +45596,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/FIT-003-global-strain-map.md": "c51b56330f6d6b6f2a343fe176d4a65b18566aa386b51aa48d43eae36fbd0fd5"
       }
@@ -52296,7 +52352,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FILE-004",
@@ -52573,7 +52629,10 @@
         "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json",
         "spec/features/FILE-005-svg-cutout-import.md",
         "parity/reports/WF-20261120-NATIVE-SVG-CUTOUT-001.json",
-        "parity/reports/WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001.json"
+        "parity/reports/WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001.json",
+        "parity/reports/WF-20261120-MULTIPLE-CUTOUTS-001.json",
+        "spec/features/PAT-006-multiple-cutouts.md",
+        "parity/reports/WF-20261120-INTEGRATED-MULTIPLE-CUTOUTS-001.json"
       ],
       "scenarios": [
         {
@@ -52696,6 +52755,16 @@
           },
           "initial_conditions": "A freshly built unsigned Debian ARM64 package, an empty native Wayland studio and the original 240 \u00d7 360 mm pocket SVG.",
           "expected_outcomes": "The native GTK import, Undo/Redo, two saves, reopens and 20 mm hole edit preserve the expected revisions and boundaries. Both OBJ and editable files match the macOS case. The release package retains all 234 emitted Cargo notices."
+        },
+        {
+          "id": "PAT-MULTIPLE-CUTOUTS-001",
+          "path": "parity/scenarios/PAT-MULTIPLE-CUTOUTS-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket two slots.svg": "73bd718abf0701ffe0fa59c565aa2de6197ec832333f4f8632c4130357e43839",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Overlapping slots.svg": "d3ab15d039ceab3ae866be920cfb6b53e13fe710ed57d1da0246f838bcbcf6a5"
+          },
+          "initial_conditions": "Start from an empty project and an original 240 by 360 mm pocket outline with two disjoint rectangular slots. One SVG places an opening before the exterior subpath. A second fixture has overlapping slots.",
+          "expected_outcomes": "Both adapters retain two openings in a single editable piece and produce identical native, OBJ, MTL and SVG files. The reimported drawing reproduces the editable project. Overlap refusal preserves the existing primary and recovery files. The material area is 0.0756 m\u00b2 and the OBJ has one exterior and two inner boundary loops."
         }
       ],
       "comparison_criteria": {
@@ -57886,6 +57955,47 @@
             "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.obj": "9a2cb18203d5815ebe6e10734781641d5e7402f9175d9d9d02cbbb7e7d0d0ea2"
           },
           "path": "parity/reports/WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001.json"
+        },
+        {
+          "id": "WF-20261120-MULTIPLE-CUTOUTS-001",
+          "commit": "1ebac973a9db3c4b1bdd9fada42bf868c465ccf9",
+          "timestamp": "2026-11-20T18:41:39Z",
+          "platform": "Apple Silicon macOS release CLI, stdio MCP, Apple Model I/O and standalone mesh measurements",
+          "artifact_hashes": {
+            "parity/reports/artifacts/multiple-cutouts-20261120/ADAPTERS.json": "55f404bd26c13aba32818c9fa9d829ecd90f35a2d7b6e4f3e7f978a6edf849cd",
+            "parity/reports/artifacts/multiple-cutouts-20261120/APPLE-MODEL-IO.json": "2bca011634bfc6afe48004054d924956a8c78bb7527622a974d2eebf11853b40",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Overlapping slots.svg": "d3ab15d039ceab3ae866be920cfb6b53e13fe710ed57d1da0246f838bcbcf6a5",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket two slots.svg": "73bd718abf0701ffe0fa59c565aa2de6197ec832333f4f8632c4130357e43839",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket.obj": "8de2bd3bf0ac881f99589e84e1e20c6fc0992eaca171b0b975435c41427dd57d",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket.weftforge": "c769ce99f5d9a4340ad3d89f66fcf74b9343fac0f4201bba0281516e0149e151",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Roundtrip.svg": "c9059d1fee47d62ddabce602f6043f8e4f35daec2ca749132a6211138583973c",
+            "parity/reports/artifacts/multiple-cutouts-20261120/check_modelio.swift": "f9c848fa4e3af7a25d52dc4097686d95ed0b16ca67969ba4f89823ec63a0194c",
+            "parity/reports/artifacts/multiple-cutouts-20261120/check_roundtrip.py": "4f2442f6b74fc5036527ede1897ce6e5278372b859c733f5bd7619a1e3869596",
+            "parity/reports/artifacts/multiple-cutouts-20261120/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/scenarios/PAT-MULTIPLE-CUTOUTS-001.json": "d61c78f4525b97d4fea9be1ca571529b69de8933cf77bd9024f7a30c57e928b9"
+          },
+          "path": "parity/reports/WF-20261120-MULTIPLE-CUTOUTS-001.json"
+        },
+        {
+          "path": "parity/reports/WF-20261120-INTEGRATED-MULTIPLE-CUTOUTS-001.json",
+          "id": "WF-20261120-INTEGRATED-MULTIPLE-CUTOUTS-001",
+          "commit": "a50aa0fa3b639a59e198e47069c7fe00552b250a",
+          "timestamp": "2026-11-20T19:01:45Z",
+          "platform": "Apple Silicon macOS release CLI, stdio MCP, Apple Model I/O and standalone mesh measurements",
+          "artifact_hashes": {
+            "parity/reports/artifacts/multiple-cutouts-20261120/ADAPTERS.json": "55f404bd26c13aba32818c9fa9d829ecd90f35a2d7b6e4f3e7f978a6edf849cd",
+            "parity/reports/artifacts/multiple-cutouts-20261120/APPLE-MODEL-IO.json": "2bca011634bfc6afe48004054d924956a8c78bb7527622a974d2eebf11853b40",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Overlapping slots.svg": "d3ab15d039ceab3ae866be920cfb6b53e13fe710ed57d1da0246f838bcbcf6a5",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket two slots.svg": "73bd718abf0701ffe0fa59c565aa2de6197ec832333f4f8632c4130357e43839",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket.obj": "8de2bd3bf0ac881f99589e84e1e20c6fc0992eaca171b0b975435c41427dd57d",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Pocket.weftforge": "c769ce99f5d9a4340ad3d89f66fcf74b9343fac0f4201bba0281516e0149e151",
+            "parity/reports/artifacts/multiple-cutouts-20261120/Roundtrip.svg": "c9059d1fee47d62ddabce602f6043f8e4f35daec2ca749132a6211138583973c",
+            "parity/reports/artifacts/multiple-cutouts-20261120/check_modelio.swift": "f9c848fa4e3af7a25d52dc4097686d95ed0b16ca67969ba4f89823ec63a0194c",
+            "parity/reports/artifacts/multiple-cutouts-20261120/check_roundtrip.py": "4f2442f6b74fc5036527ede1897ce6e5278372b859c733f5bd7619a1e3869596",
+            "parity/reports/artifacts/multiple-cutouts-20261120/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/scenarios/PAT-MULTIPLE-CUTOUTS-001.json": "d61c78f4525b97d4fea9be1ca571529b69de8933cf77bd9024f7a30c57e928b9",
+            "parity/reports/artifacts/multiple-cutouts-20261120/INTEGRATED-ADAPTERS.json": "254d88f077b73e074f21350d7d58c988ba7af3cb9ca97fe7301d97439532c713"
+          }
         }
       ],
       "known_gaps": [
@@ -57898,13 +58008,13 @@
         "A4 and US Letter native and CLI PDFs have an independent digital scale, geometry and tiling check. Printer measurement, configurable 1:1 raster snapshots, wider paper presets and current reference behavior remain open.",
         "Native PNG and JPEG crops have independent scale, layer, crop unit and warp-angle checks. Artwork, labels and measurements in snapshots, wider presets, printer measurement and reference execution remain open.",
         "Debian ARM64 packaged CLI and MCP reproduce both Apple Silicon JPEGs. The afdea599 Linux studio saved both JPEGs through GTK. Physical printing, Wayland and reference comparison remain open.",
-        "The editable SVG cutout profile covers one straight-sided hole in a polygon. Multiple holes, curved cutouts, notch-marker import and the full interchange comparison remain open."
+        "Editable SVG interchange now covers multiple disjoint straight-sided holes. Curved cutouts, nested islands, notch-marker import and the full interchange comparison remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/FILE-005-dxf-pattern-export.md": "b0373181a6ae79c148aa154c0c2269956c2fed3587b5c6d0aef929108e11dd73",
         "spec/features/FILE-005-dxf-pattern-import.md": "06cff6f3d1a6d62fceeb93e94a2037f28136b69adfa5507b8a780e8864b0512b",

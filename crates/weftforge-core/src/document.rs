@@ -775,10 +775,6 @@ impl Project {
                 "A boundary needs at least three curves",
             )?;
             ensure(
-                piece.holes.len() <= 1,
-                "Only one straight hole per piece is supported",
-            )?;
-            ensure(
                 self.material(piece.material).is_some(),
                 "Piece material is missing",
             )?;
@@ -1014,7 +1010,7 @@ impl Project {
                 cut_work.charge_request()?;
                 curve.controls = controls;
             }
-            if let Some(vertices) = pattern.hole {
+            for vertices in pattern.holes {
                 let piece = self.pieces.last().expect("AddPolygon appended a piece").id;
                 self.apply(Command::AddHole { piece, vertices }, cut_work)?;
             }
@@ -1296,10 +1292,6 @@ impl Project {
                 let owner = self
                     .piece(piece)
                     .ok_or_else(|| Error("Unknown piece".into()))?;
-                ensure(
-                    owner.holes.is_empty(),
-                    "Only one straight hole per piece is supported",
-                )?;
                 ensure(
                     (3..=4096).contains(&vertices.len()),
                     "Hole needs 3 to 4096 vertices",

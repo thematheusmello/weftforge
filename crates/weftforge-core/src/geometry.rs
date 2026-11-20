@@ -727,9 +727,7 @@ pub(crate) fn prepare_hole(
     vertices: &mut [[f64; 2]],
     work: &mut ContainmentWork,
 ) -> Result<()> {
-    let outer = straight_polygon(project, piece, work.request_work())?;
-    let (outer_area, hole_area) = validate_hole_domain(project, piece, &outer, vertices, work)?;
-    if outer_area.signum() == hole_area.signum() {
+    if validate_holes(project, piece, Some(vertices), work)? {
         vertices[1..].reverse();
     }
     Ok(())
@@ -740,36 +738,36 @@ pub(crate) fn validate_holed_piece(
     piece: &Piece,
     work: &mut ContainmentWork,
 ) -> Result<()> {
-    let outer = straight_polygon(project, piece, work.request_work())?;
-    let hole = straight_loop(project, &piece.holes[0].boundary, work.request_work())?;
-    let (outer_area, hole_area) = validate_hole_domain(project, piece, &outer, &hole, work)?;
-    ensure(
-        outer_area.signum() != hole_area.signum(),
-        "Hole must wind opposite its outer boundary",
-    )
+    validate_holes(project, piece, None, work)?;
+    Ok(())
 }
 
-fn validate_hole_domain(
+/// Returns whether the proposed hole needs reversing. Existing document rings
+/// already have a canonical winding, including when reading a saved project.
+fn validate_holes(
     project: &Project,
     piece: &Piece,
-    outer: &[[f64; 2]],
-    hole: &[[f64; 2]],
+    proposed: Option<&[[f64; 2]]>,
     work: &mut ContainmentWork,
-) -> Result<(f64, f64)> {
-    for polygon in [outer, hole] {
+) -> Result<bool> {
+    let outer = straight_polygon(project, piece, work.request_work())?;
+    let existing = piece
+        .holes
+        .iter()
+        .map(|hole| straight_loop(project, &hole.boundary, work.request_work()))
+        .collect::<Result<Vec<_>>>()?;
+    let holes: Vec<_> = existing.iter().map(Vec::as_slice).chain(proposed).collect();
+    let mut scale = 1_f64;
+    for polygon in std::iter::once(outer.as_slice()).chain(holes.iter().copied()) {
         ensure(
             (3..=4096).contains(&polygon.len()),
             "A holed piece needs 3 to 4096 straight edges in each loop",
         )?;
-        for vertex in polygon {
+        for point in polygon {
             work.charge_request()?;
-            crate::document::validate_coordinates(vertex)?;
+            crate::document::validate_coordinates(point)?;
+            scale = point.iter().copied().map(f64::abs).fold(scale, f64::max);
         }
-    }
-    let mut scale = 1_f64;
-    for point in outer.iter().chain(hole) {
-        work.charge_request()?;
-        scale = point.iter().copied().map(f64::abs).fold(scale, f64::max);
     }
     let mut annotations = Vec::new();
     for id in &piece.internal_curves {
@@ -793,40 +791,89 @@ fn validate_hole_domain(
         annotations.push((*id, endpoints));
     }
     let reserve = (256.0 * f64::EPSILON * scale).next_up();
-    let outer_area = validate_straight_loop(outer, reserve, work)?;
-    let hole_area = validate_straight_loop(hole, reserve, work)?;
-    ensure(
-        outer_area.abs() - hole_area.abs() > 1.0e-10,
-        "Hole must leave positive material area",
-    )?;
+    let outer_area = validate_straight_loop(&outer, reserve, work)?;
     let clearance = (INTERNAL_CLEARANCE + reserve).next_up();
-    for i in 0..hole.len() {
+    let annotation_clearance = (INTERNAL_CLEARANCE + INTERNAL_FLATNESS + reserve).next_up();
+    for (id, [a, b]) in &annotations {
         ensure(
-            straight_segment_inside(
-                hole[i],
-                hole[(i + 1) % hole.len()],
-                outer,
-                clearance,
-                reserve,
-                work,
-            )?,
-            "Hole edges must stay wholly inside the exterior with more than 1e-6 metre clearance",
-        )?;
-    }
-    let clearance = (INTERNAL_CLEARANCE + INTERNAL_FLATNESS + reserve).next_up();
-    for (id, [a, b]) in annotations {
-        ensure(
-            straight_segment_inside(a, b, outer, clearance, reserve, work)?,
+            straight_segment_inside(*a, *b, &outer, annotation_clearance, reserve, work)?,
             &format!(
                 "Internal curve {id} must stay strictly inside its owning contour with 1e-6 metre clearance"
             ),
         )?;
-        ensure(
-            !straight_segment_inside(a, b, hole, clearance, reserve, work)?,
-            &format!("Internal curve {id} cannot enter or be surrounded by a hole"),
-        )?;
     }
-    Ok((outer_area, hole_area))
+    let bounds: Vec<_> = holes
+        .iter()
+        .map(|hole| {
+            let mut min = hole[0];
+            let mut max = hole[0];
+            for point in *hole {
+                for axis in 0..2 {
+                    min[axis] = min[axis].min(point[axis]);
+                    max[axis] = max[axis].max(point[axis]);
+                }
+            }
+            (min, max)
+        })
+        .collect();
+    let mut remaining_area = outer_area.abs();
+    let mut reverse_proposed = false;
+    for (index, &hole) in holes.iter().enumerate() {
+        let area = validate_straight_loop(hole, reserve, work)?;
+        remaining_area -= area.abs();
+        let reverse = outer_area.signum() == area.signum();
+        if index == existing.len() {
+            reverse_proposed = reverse;
+        } else {
+            ensure(!reverse, "Hole must wind opposite its outer boundary")?;
+        }
+        for i in 0..hole.len() {
+            let (a, b) = (hole[i], hole[(i + 1) % hole.len()]);
+            ensure(
+                straight_segment_inside(a, b, &outer, clearance, reserve, work)?,
+                "Hole edges must stay wholly inside the exterior with more than 1e-6 metre clearance",
+            )?;
+        }
+        for (prior, &other) in holes[..index].iter().enumerate() {
+            work.step()?;
+            let (min, max) = bounds[index];
+            let (other_min, other_max) = bounds[prior];
+            if (0..2).any(|axis| {
+                min[axis] - other_max[axis] > clearance || other_min[axis] - max[axis] > clearance
+            }) {
+                continue;
+            }
+            for i in 0..hole.len() {
+                ensure(
+                    !straight_segment_inside(
+                        hole[i],
+                        hole[(i + 1) % hole.len()],
+                        other,
+                        clearance,
+                        reserve,
+                        work,
+                    )?,
+                    "Cutouts must have disjoint interiors",
+                )?;
+            }
+            // After excluding crossings, one edge detects a prior ring fully inside this one.
+            ensure(
+                !straight_segment_inside(other[0], other[1], hole, clearance, reserve, work)?,
+                "Cutouts must have disjoint interiors",
+            )?;
+        }
+        for (id, [a, b]) in &annotations {
+            ensure(
+                !straight_segment_inside(*a, *b, hole, annotation_clearance, reserve, work)?,
+                &format!("Internal curve {id} cannot enter or be surrounded by a hole"),
+            )?;
+        }
+    }
+    ensure(
+        remaining_area > 1.0e-10,
+        "Holes must leave positive material area",
+    )?;
+    Ok(reverse_proposed)
 }
 
 fn validate_straight_loop(

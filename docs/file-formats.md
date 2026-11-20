@@ -9,7 +9,7 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 
 | Format | Import/read | Export/write | Editable construction | Static/animated | Current limits |
 | --- | --- | --- | --- | --- | --- |
-| `.weftforge` v6 | Yes | Yes | Patterns, one editable straight hole per piece, straight annotations, authored notches, grain, orthotropy, seams and ordered groups | Static authoring | Required holes/notches/ownership arrays, strict JSON, 16 MiB; no embedded external assets or saved simulation frames |
+| `.weftforge` v6 | Yes | Yes | Patterns, disjoint editable straight cutouts, straight annotations, authored notches, grain, orthotropy, seams and ordered groups | Static authoring | Required holes/notches/ownership arrays, strict JSON, 16 MiB; no embedded external assets or saved simulation frames |
 | `.weftforge` v5 | Yes, explicit migration | No | Patterns, holes, annotations, grain, orthotropy, seams and ordered groups | Static authoring | Preserves all fields; adds empty notch arrays; saving writes v6 |
 | `.weftforge` v4 | Yes, explicit migration | No | Patterns, straight annotations, grain, orthotropy, seams and ordered groups | Static authoring | Preserves all fields; adds empty holes/notches arrays; saving writes v6 |
 | `.weftforge` v3 | Yes, explicit migration | No | Legacy patterns, grain, orthotropy, seams and ordered groups | Static authoring | Preserves all legacy fields; adds empty internal/holes/notches arrays; saving writes v6 |
@@ -18,7 +18,7 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 | `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1–v6 model | Static authoring | One prior saved document; no silent fallback |
 | `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1–v6 model | Static authoring | Dirty named documents only; no automatic recovery UI |
 | OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups and fabric colors in a companion MTL |
-| SVG | Additive import of closed patterns with an optional polygonal cutout | Yes, compound outlines with holes and physical notch markers | Editable boundaries, cutouts and names on import | Static 2D | Explicit mm and uniform viewBox; drawings with notch markers cannot yet be reimported; sewing/materials/internal lines/print tiling unsupported |
+| SVG | Additive import of closed patterns with polygonal cutouts | Yes, compound outlines with holes and physical notch markers | Editable boundaries, cutouts and names on import | Static 2D | Explicit mm and uniform viewBox; drawings with notch markers cannot yet be reimported; sewing/materials/internal lines/print tiling unsupported |
 | Binary glTF 2.0 (`.glb`) | No | Yes | Mesh only | Static | Named pieces, fabric tint, normals and physical-scale UVs from a rest or current surface |
 | JSON glTF 2.0 (`.gltf`) | No | Yes, embedded buffer | Mesh only | Static | Single JSON file with the same named meshes, fabric tints, normals and UVs as binary glTF |
 | DXF R2000 | Bounded additive import | Yes, projects without holes or authored notches | Editable exterior boundaries with layer names | Static 2D | Holed/notched projects refuse before staging. Strict existing ASCII `LINE`/clamped cubic `SPLINE` profile, mm and `WF_PIECE` layers; no sewing, materials, grain, internal lines, 3D placement, apparel conventions or print layout |
@@ -118,17 +118,16 @@ is stored. SVG/DXF export both hole-free closed boundaries and
 OBJ exports the two piece surfaces. The [straight-cut contract](../spec/features/PAT-006-straight-cut.md)
 defines supported construction and refusal rules.
 
-V5 adds one simple straight hole per simple straight owner. A Hole owns its stable
-ID and an ordered closed curve chain, wound opposite the exterior. Its dedicated
-points cannot be shared with another loop, piece or annotation. Whole edges must
-stay inside the exterior with strict clearance; annotations remain outside the
-closed hole. IDs survive corner edits, split/join, resize and transform. The
-derived mesh is one annular surface with two free boundary loops, and cloth mass
-uses its actual material area. SVG writes both loops as one evenodd compound path;
-the SVG importer restores both editable loops. The current DXF profile refuses any
-holed project before staging. Curved/multiple holes, internal-shape conversion,
-hole sewing and cutting through a hole remain unsupported. See the
-[hole contract](../spec/features/PAT-006-straight-hole.md).
+V5 introduced the ordered hole array. A straight-sided piece may now contain
+several disjoint cutouts. Each owns a stable ID, points and ordered curves,
+wound opposite the exterior. Each edge must remain inside the exterior and
+clear of the other holes and annotations. IDs survive corner edits, split/join,
+resize and transform. The physical mesh and cloth mass exclude every cutout.
+SVG writes the exterior and all holes in one compound path. DXF export
+rejects a holed project before staging. Curved cutouts, hole sewing and
+cutting through a hole remain open.
+[Editable cutouts](../spec/features/PAT-006-multiple-cutouts.md).
+
 Future internal cubics, grouping and persistent cut relationships require an
 explicit model decision; the reader never silently discards unsupported data.
 Legacy `seams` store two oriented curve intervals (`curve`, `t0`, `t1`) plus strictly
@@ -311,15 +310,15 @@ The [bounded SVG import profile](../spec/features/FILE-005-svg-pattern-import.md
 requires physical `mm` width/height and a uniformly scaled `viewBox`; it accepts
 direct closed paths using absolute `M/L/C/Z` commands. Straight
 and cubic construction, names and relative layout survive as editable objects.
-A polygon can contain one [editable cutout](../spec/features/FILE-005-svg-cutout-import.md). Subpaths can appear in either
-order. Under `evenodd` either winding works. Under `nonzero` (the default),
-the hole must wind opposite the exterior. Both loops must pass the native
-containment and clearance checks.
+A polygon can contain multiple straight-sided cutouts. The exterior can appear
+anywhere in the subpath order. Under `evenodd`, any winding is accepted.
+Under the default `nonzero` rule, each hole must wind opposite the exterior.
+All cutouts must fit inside a single exterior and have disjoint interiors.
 The drawing's user-space origin is retained, without subtracting the viewBox
 minimum; SVG Y is inverted into upward pattern V. The native summary shows the
 physical scale before applying all pieces and pending edits as one undo step.
 Missing/other units, transforms, CSS, unsupported geometry/path commands, open
-contours, touching or disjoint subpaths, multiple or curved cutouts, DTDs and
+contours, touching or nested cutouts, separate exterior islands, curved cutouts, DTDs and
 external resources reject the whole import.
 Import is limited to 1 MiB, 64 pieces and 4096 total spans; native validation and
 its bounded cubic contour predicate still apply. Appearance, descriptions,
