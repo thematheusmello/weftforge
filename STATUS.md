@@ -18,6 +18,24 @@ Next, exercise the remaining axis choices on native platforms and compare
 the arrangement controls with the reference. Native multiselection and
 avatar arrangement remain open.
 
+# Debian ARM64 native project and JPEG saves — 20 November 2026
+
+The afdea599 Linux package saved an editable project and both pattern
+JPEGs through the GTK chooser on X11. The 6,173-byte project matched the
+original. The 4,345 × 3,615 image recorded 127 PPI and the 5,669 × 567
+image recorded 72 PPI. Pressing Escape in the second crop's chooser
+returned code 2 with no file. The studio kept the requested 72.4 PPI and
+crop settings, and the next save succeeded. Both images matched fresh
+packaged CLI and MCP exports and the earlier Apple Silicon native files.
+[Debian report](parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json) · [JPEG options](parity/reports/artifacts/debian-native-save-jpeg-20261120/fit-options.png).
+
+The offline build packaged 234 emitted libraries. All 417 package files
+passed a second read after shutdown. Seven library license texts remain
+unresolved. Exercise Wayland and a physical Linux GPU, and test the
+Windows package. GitHub Actions and automated Pages remain disabled.
+
+The placement input change in 3767926b made this package report stale on the current source. A new Debian package run is needed to refresh it.
+
 # World and local pattern rotation — 20 November 2026
 
 Select a visible rest pattern and enable **Rotate pattern**. The 3D view

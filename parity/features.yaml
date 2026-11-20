@@ -48489,7 +48489,8 @@
         "parity/reports/WF-20261116-RECTANGLE-FILE-SUPPLEMENT-001.json",
         "parity/reports/artifacts/rectangle-gesture-20261116/SELECTED-PUBLIC-MANIFEST-001.json",
         "parity/reports/WF-20261117-NATIVE-NOTCH-N006-001.json",
-        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001.json"
+        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001.json",
+        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json"
       ],
       "scenarios": [
         {
@@ -48583,6 +48584,17 @@
           "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
           "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
           "path": "parity/scenarios/UI-HARBOR-001.json"
+        },
+        {
+          "id": "APP-DEBIAN-NATIVE-SAVE-JPEG-001",
+          "path": "parity/scenarios/APP-DEBIAN-NATIVE-SAVE-JPEG-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.json": "d10487fa7c77392150d7620c8dd558a0dae02d3ea4d7c4c776e98cb5f2c8cc46",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.json": "00d5ffb9d6becbbab9b9c9b56ed7f40dfc6c73f3b897e0ec9d7179bc328aaf50"
+          },
+          "initial_conditions": "Open a disposable copy of the revision 3 Juniper and Basin project in the packaged Debian ARM64 studio under X11 with the GTK desktop portal.",
+          "expected_outcomes": "Save As creates a distinct editable file with the original bytes. The fitted and two-metre native JPEGs preserve the specified physical scale and artwork, including after dismissing a chooser. Both match fresh packaged CLI and MCP exports."
         }
       ],
       "comparison_criteria": {
@@ -50700,6 +50712,37 @@
             "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c"
           },
           "path": "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001.json"
+        },
+        {
+          "id": "WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001",
+          "commit": "afdea5999423dd5c9952f20ff5e3d5f26c169751",
+          "timestamp": "2026-11-20T15:40:18.046203Z",
+          "platform": "Debian 13.7 ARM64 packaged studio on X11 with GTK FileChooser and Mesa llvmpipe Vulkan",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/CLI-MCP.json": "c91bb1d7585b9f0e311bf9b5d8037161a37ab36131f880e3dbb520bda0fbe9b7",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/JPEG-GEOMETRY.json": "02265ce6c0a676279d1960f9184421fbaf6268d5cf900119f5f90afc4ebc9f90",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/NATIVE-SAVE-JPEG.json": "dfe18ef40491a47767f5694d1ea2d73082f543b43f00a1231f633f0609de3ac8",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/PACKAGE-READBACK.json": "b31e19846b86c66e6d63322a12cb8fd86536c6faa47b34319ac3be76f4c16c75",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/PACKAGE-SHA256SUMS": "07efc07941c5293367ef785e5436653d92ee6615afca8d87057782fcf03afc85",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/POST-CASE-CLEANUP.json": "606e39fb1e1462b30f65325d189f6661de76cde40ad1e322c05856e2c9377f9b",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/cancel-restored.png": "82f6761cd70ea6ef4f00d17996170d40a4f01df023c175694c55358fe72d2f88",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/check_package_and_exports.py": "2dda4a31379772333c5dd7df296e4004fe9069f9c520cb258f9c2e7e2a3a19b0",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/current-source.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/fit-options.png": "02c3953d2203df1dcfc624851ad663ea8e59ad54946e8512959853e1721ea382",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/fit.jpg": "2c23889fa3438ca261d30869d60f72daecdf5ea3e8aa9a374f6be2189629fa04",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/manifest.json": "54d4224528c44fa974075eeb660ccceff2377e0d405dc74002d48af7518d412e",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/project-named.png": "428a7b7cd266b4736868bdb83b0060cb7da422fe91de32bfcf6cf838799c50d7",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/project-saved.png": "fc2b6b4a34a072fb65a72eed28ac838b42ecd792251642877dcaf8224b2d7b25",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/two-metre.jpeg": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/wide-saved.png": "b8819c761d1a092b910467e620ef811007eff04939764623637ee56cf3e91963",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/pattern-jpeg-20261119/verify_pattern_jpeg.py": "500b3ec47efc917730ae9fe4737857dd9c86194e5d40d0c8a56c78fcdfe92b0e",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.json": "d10487fa7c77392150d7620c8dd558a0dae02d3ea4d7c4c776e98cb5f2c8cc46",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.json": "00d5ffb9d6becbbab9b9c9b56ed7f40dfc6c73f3b897e0ec9d7179bc328aaf50",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.jpg": "2c23889fa3438ca261d30869d60f72daecdf5ea3e8aa9a374f6be2189629fa04",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.jpeg": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb"
+          },
+          "path": "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json"
         }
       ],
       "known_gaps": [
@@ -50708,7 +50751,7 @@
         "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity.",
         "At actual7d19/integratedae8, source404 gates pass (six new Rectangle regressions; original red covers two). RG001 observes empty creation of one editable400x600mm RectangleR1, one UndoemptyR2/RedoR3, native saves, explicit freshP2 reopenR3 and one10mm point editR4/save. Original whole-case finalization FAILED:1008.460155082983s/900s; UI560.473s/760s and separate cleanup649.864573250059s do not override it. Separate frozen FS001 file-only PASS runs once in0.07889999996405095s with seals unchanged; no timing regrade or UI/lifecycle/reference/physics/full-feature/garment/roadmap acceptance. Three pre-first-app-call recorder errors remain; no app call replay. Only this bounded current scope is added; earlier failures, math31-current scopes and endpoint stales remain exact. Public JPEG copies retain exact encoded scans and color-characterization tags, with only eight ICC display identifier metadata bytes cleared per image. The current public index and redaction journal supersede only nine earlier image hashes/whole-byte wording; private originals and scientific/native/file outcomes remain unchanged.",
         "The Rectangle source/native/file reports are now stale solely because their original declared physical dependency scope includes changed sim lib.rs at13fb. Exact original reports are archived; original source404 pass, failed900s native finalization and separate file-only pass remain unchanged. Unchanged GUI source does not silently transfer original scoped acceptance.",
-        "The Debian ARM64 f440d126 studio saved the revision 3 fixture through the GTK chooser and preserved every editable byte. Repeat on the current package and test cancel, failed persistence and recovery through native workflows."
+        "The Debian ARM64 f440d126 studio saved the revision 3 fixture through the GTK chooser and preserved every editable byte. The afdea599 package repeated this check. Failed loads, interrupted persistence and recovery still need complete native workflows."
       ],
       "contradictions": [],
       "blockers": [
@@ -51974,7 +52017,8 @@
         "parity/reports/WF-20261119-NATIVE-PATTERN-GRAINLINE-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-JPEG-001.json",
         "spec/features/FILE-005-pattern-jpeg.md",
-        "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json"
+        "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json",
+        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json"
       ],
       "scenarios": [
         {
@@ -52068,6 +52112,17 @@
           },
           "initial_conditions": "The revision 3 original patterns use the saved rotated warp direction for Basin.",
           "expected_outcomes": "The fitted JPEG is 4345 by 3615 at 127 PPI. A 2 m by 200 mm crop requested at 72.4 PPI is 5669 by 567 at a recorded 72 PPI. Native, CLI and MCP JPEGs agree, previous PNG bytes agree, and the project and prior destination retain their bytes on the checked failure paths."
+        },
+        {
+          "id": "APP-DEBIAN-NATIVE-SAVE-JPEG-001",
+          "path": "parity/scenarios/APP-DEBIAN-NATIVE-SAVE-JPEG-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.json": "d10487fa7c77392150d7620c8dd558a0dae02d3ea4d7c4c776e98cb5f2c8cc46",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.json": "00d5ffb9d6becbbab9b9c9b56ed7f40dfc6c73f3b897e0ec9d7179bc328aaf50"
+          },
+          "initial_conditions": "Open a disposable copy of the revision 3 Juniper and Basin project in the packaged Debian ARM64 studio under X11 with the GTK desktop portal.",
+          "expected_outcomes": "Save As creates a distinct editable file with the original bytes. The fitted and two-metre native JPEGs preserve the specified physical scale and artwork, including after dismissing a chooser. Both match fresh packaged CLI and MCP exports."
         }
       ],
       "comparison_criteria": {
@@ -57164,6 +57219,37 @@
             "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.json": "00d5ffb9d6becbbab9b9c9b56ed7f40dfc6c73f3b897e0ec9d7179bc328aaf50"
           },
           "path": "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json"
+        },
+        {
+          "id": "WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001",
+          "commit": "afdea5999423dd5c9952f20ff5e3d5f26c169751",
+          "timestamp": "2026-11-20T15:40:18.046203Z",
+          "platform": "Debian 13.7 ARM64 packaged studio on X11 with GTK FileChooser and Mesa llvmpipe Vulkan",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/CLI-MCP.json": "c91bb1d7585b9f0e311bf9b5d8037161a37ab36131f880e3dbb520bda0fbe9b7",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/JPEG-GEOMETRY.json": "02265ce6c0a676279d1960f9184421fbaf6268d5cf900119f5f90afc4ebc9f90",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/NATIVE-SAVE-JPEG.json": "dfe18ef40491a47767f5694d1ea2d73082f543b43f00a1231f633f0609de3ac8",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/PACKAGE-READBACK.json": "b31e19846b86c66e6d63322a12cb8fd86536c6faa47b34319ac3be76f4c16c75",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/PACKAGE-SHA256SUMS": "07efc07941c5293367ef785e5436653d92ee6615afca8d87057782fcf03afc85",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/POST-CASE-CLEANUP.json": "606e39fb1e1462b30f65325d189f6661de76cde40ad1e322c05856e2c9377f9b",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/cancel-restored.png": "82f6761cd70ea6ef4f00d17996170d40a4f01df023c175694c55358fe72d2f88",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/check_package_and_exports.py": "2dda4a31379772333c5dd7df296e4004fe9069f9c520cb258f9c2e7e2a3a19b0",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/current-source.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/fit-options.png": "02c3953d2203df1dcfc624851ad663ea8e59ad54946e8512959853e1721ea382",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/fit.jpg": "2c23889fa3438ca261d30869d60f72daecdf5ea3e8aa9a374f6be2189629fa04",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/manifest.json": "54d4224528c44fa974075eeb660ccceff2377e0d405dc74002d48af7518d412e",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/project-named.png": "428a7b7cd266b4736868bdb83b0060cb7da422fe91de32bfcf6cf838799c50d7",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/project-saved.png": "fc2b6b4a34a072fb65a72eed28ac838b42ecd792251642877dcaf8224b2d7b25",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/two-metre.jpeg": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/wide-saved.png": "b8819c761d1a092b910467e620ef811007eff04939764623637ee56cf3e91963",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/pattern-jpeg-20261119/verify_pattern_jpeg.py": "500b3ec47efc917730ae9fe4737857dd9c86194e5d40d0c8a56c78fcdfe92b0e",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.json": "d10487fa7c77392150d7620c8dd558a0dae02d3ea4d7c4c776e98cb5f2c8cc46",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.json": "00d5ffb9d6becbbab9b9c9b56ed7f40dfc6c73f3b897e0ec9d7179bc328aaf50",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.jpg": "2c23889fa3438ca261d30869d60f72daecdf5ea3e8aa9a374f6be2189629fa04",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.jpeg": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb"
+          },
+          "path": "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json"
         }
       ],
       "known_gaps": [
@@ -57175,7 +57261,7 @@
         "WF-20261116-HOLE-EXPORT-001 is a current947/source74 bounded annular export subset only: actual historical accepted H1R5 compatibility reopen, one edit/native-v5 save, OBJ.0768m2/one component/two boundary loops/Euler0/metre positions+UV/Y-up, tight240x360mm compound-evenodd SVG and planned hole-DXF refusal with both sentinels unchanged. Old source73 H2 sole5457 grade remains FAILED/unaccepted; original H3 actor postguard remains FAILED/exit1, qualified only by separate direct root audit and UI acceptance. No current947 empty creation, hole SVG import/roundtrip, print margins, full CAD/apparel interoperability, native physics or reference acceptance.",
         "A4 and US Letter native and CLI PDFs have an independent digital scale, geometry and tiling check. Printer measurement, configurable 1:1 raster snapshots, wider paper presets and current reference behavior remain open.",
         "Native PNG and JPEG crops have independent scale, layer, crop unit and warp-angle checks. Artwork, labels and measurements in snapshots, wider presets, printer measurement and reference execution remain open.",
-        "Debian ARM64 packaged CLI and MCP reproduce both Apple Silicon JPEGs. Linux interactive JPEG save, physical print and reference comparison remain open."
+        "Debian ARM64 packaged CLI and MCP reproduce both Apple Silicon JPEGs. The afdea599 Linux studio saved both JPEGs through GTK. Physical printing, Wayland and reference comparison remain open."
       ],
       "contradictions": [],
       "blockers": [
@@ -57305,7 +57391,8 @@
         "parity/reports/WF-20261119-NATIVE-PATTERN-CROP-UNITS-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-GRAINLINE-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-JPEG-001.json",
-        "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json"
+        "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json",
+        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json"
       ],
       "scenarios": [
         {
@@ -57411,6 +57498,17 @@
           },
           "initial_conditions": "Original fresh empty native launch; ad7/source65/nativea733, no preauthored launch input. Prospective v2 A protocol; B\u2013E outside report coverage.",
           "expected_outcomes": "Bounded unit-square/straight-line/refusal/modal/caret/one compound edit/history/six native v4 saves/quit. Root accepted A003 only; caps175+1/1200 and one frozen saved grade. No New/Recover/restart/full automation/reference credit."
+        },
+        {
+          "id": "APP-DEBIAN-NATIVE-SAVE-JPEG-001",
+          "path": "parity/scenarios/APP-DEBIAN-NATIVE-SAVE-JPEG-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.json": "d10487fa7c77392150d7620c8dd558a0dae02d3ea4d7c4c776e98cb5f2c8cc46",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.json": "00d5ffb9d6becbbab9b9c9b56ed7f40dfc6c73f3b897e0ec9d7179bc328aaf50"
+          },
+          "initial_conditions": "Open a disposable copy of the revision 3 Juniper and Basin project in the packaged Debian ARM64 studio under X11 with the GTK desktop portal.",
+          "expected_outcomes": "Save As creates a distinct editable file with the original bytes. The fitted and two-metre native JPEGs preserve the specified physical scale and artwork, including after dismissing a chooser. Both match fresh packaged CLI and MCP exports."
         }
       ],
       "comparison_criteria": {
@@ -62953,6 +63051,37 @@
             "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.json": "00d5ffb9d6becbbab9b9c9b56ed7f40dfc6c73f3b897e0ec9d7179bc328aaf50"
           },
           "path": "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json"
+        },
+        {
+          "id": "WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001",
+          "commit": "afdea5999423dd5c9952f20ff5e3d5f26c169751",
+          "timestamp": "2026-11-20T15:40:18.046203Z",
+          "platform": "Debian 13.7 ARM64 packaged studio on X11 with GTK FileChooser and Mesa llvmpipe Vulkan",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/CLI-MCP.json": "c91bb1d7585b9f0e311bf9b5d8037161a37ab36131f880e3dbb520bda0fbe9b7",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/JPEG-GEOMETRY.json": "02265ce6c0a676279d1960f9184421fbaf6268d5cf900119f5f90afc4ebc9f90",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/NATIVE-SAVE-JPEG.json": "dfe18ef40491a47767f5694d1ea2d73082f543b43f00a1231f633f0609de3ac8",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/PACKAGE-READBACK.json": "b31e19846b86c66e6d63322a12cb8fd86536c6faa47b34319ac3be76f4c16c75",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/PACKAGE-SHA256SUMS": "07efc07941c5293367ef785e5436653d92ee6615afca8d87057782fcf03afc85",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/POST-CASE-CLEANUP.json": "606e39fb1e1462b30f65325d189f6661de76cde40ad1e322c05856e2c9377f9b",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/cancel-restored.png": "82f6761cd70ea6ef4f00d17996170d40a4f01df023c175694c55358fe72d2f88",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/check_package_and_exports.py": "2dda4a31379772333c5dd7df296e4004fe9069f9c520cb258f9c2e7e2a3a19b0",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/current-source.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/fit-options.png": "02c3953d2203df1dcfc624851ad663ea8e59ad54946e8512959853e1721ea382",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/fit.jpg": "2c23889fa3438ca261d30869d60f72daecdf5ea3e8aa9a374f6be2189629fa04",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/manifest.json": "54d4224528c44fa974075eeb660ccceff2377e0d405dc74002d48af7518d412e",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/project-named.png": "428a7b7cd266b4736868bdb83b0060cb7da422fe91de32bfcf6cf838799c50d7",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/project-saved.png": "fc2b6b4a34a072fb65a72eed28ac838b42ecd792251642877dcaf8224b2d7b25",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/two-metre.jpeg": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/wide-saved.png": "b8819c761d1a092b910467e620ef811007eff04939764623637ee56cf3e91963",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/pattern-jpeg-20261119/verify_pattern_jpeg.py": "500b3ec47efc917730ae9fe4737857dd9c86194e5d40d0c8a56c78fcdfe92b0e",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.json": "d10487fa7c77392150d7620c8dd558a0dae02d3ea4d7c4c776e98cb5f2c8cc46",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.json": "00d5ffb9d6becbbab9b9c9b56ed7f40dfc6c73f3b897e0ec9d7179bc328aaf50",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.jpg": "2c23889fa3438ca261d30869d60f72daecdf5ea3e8aa9a374f6be2189629fa04",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.jpeg": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb"
+          },
+          "path": "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json"
         }
       ],
       "known_gaps": [
@@ -62999,7 +63128,8 @@
         "parity/reports/WF-20261119-PACKAGER-NOTICES-001.json",
         "parity/reports/WF-20261119-APPLE-SILICON-PACKAGE-NOTICES-001.json",
         "parity/reports/WF-20261119-APPLE-SILICON-PINNED-CARGO-NOTICES-001.json",
-        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001.json"
+        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001.json",
+        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json"
       ],
       "scenarios": [
         {
@@ -63019,6 +63149,17 @@
           },
           "initial_conditions": "The exact offline Debian ARM64 package and original two-panel shirt under X11 with Mesa llvmpipe.",
           "expected_outcomes": "Ctrl+K shows the palette and Export glTF; Escape restores identical workspace bytes. CLI JSON glTF matches macOS and the GLB geometry, and the fixture bytes are preserved."
+        },
+        {
+          "id": "APP-DEBIAN-NATIVE-SAVE-JPEG-001",
+          "path": "parity/scenarios/APP-DEBIAN-NATIVE-SAVE-JPEG-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.json": "d10487fa7c77392150d7620c8dd558a0dae02d3ea4d7c4c776e98cb5f2c8cc46",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.json": "00d5ffb9d6becbbab9b9c9b56ed7f40dfc6c73f3b897e0ec9d7179bc328aaf50"
+          },
+          "initial_conditions": "Open a disposable copy of the revision 3 Juniper and Basin project in the packaged Debian ARM64 studio under X11 with the GTK desktop portal.",
+          "expected_outcomes": "Save As creates a distinct editable file with the original bytes. The fitted and two-metre native JPEGs preserve the specified physical scale and artwork, including after dismissing a chooser. Both match fresh packaged CLI and MCP exports."
         }
       ],
       "comparison_criteria": {
@@ -63183,13 +63324,44 @@
             "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c"
           },
           "path": "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001.json"
+        },
+        {
+          "id": "WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001",
+          "commit": "afdea5999423dd5c9952f20ff5e3d5f26c169751",
+          "timestamp": "2026-11-20T15:40:18.046203Z",
+          "platform": "Debian 13.7 ARM64 packaged studio on X11 with GTK FileChooser and Mesa llvmpipe Vulkan",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/CLI-MCP.json": "c91bb1d7585b9f0e311bf9b5d8037161a37ab36131f880e3dbb520bda0fbe9b7",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/JPEG-GEOMETRY.json": "02265ce6c0a676279d1960f9184421fbaf6268d5cf900119f5f90afc4ebc9f90",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/NATIVE-SAVE-JPEG.json": "dfe18ef40491a47767f5694d1ea2d73082f543b43f00a1231f633f0609de3ac8",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/PACKAGE-READBACK.json": "b31e19846b86c66e6d63322a12cb8fd86536c6faa47b34319ac3be76f4c16c75",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/PACKAGE-SHA256SUMS": "07efc07941c5293367ef785e5436653d92ee6615afca8d87057782fcf03afc85",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/POST-CASE-CLEANUP.json": "606e39fb1e1462b30f65325d189f6661de76cde40ad1e322c05856e2c9377f9b",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/cancel-restored.png": "82f6761cd70ea6ef4f00d17996170d40a4f01df023c175694c55358fe72d2f88",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/check_package_and_exports.py": "2dda4a31379772333c5dd7df296e4004fe9069f9c520cb258f9c2e7e2a3a19b0",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/current-source.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/fit-options.png": "02c3953d2203df1dcfc624851ad663ea8e59ad54946e8512959853e1721ea382",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/fit.jpg": "2c23889fa3438ca261d30869d60f72daecdf5ea3e8aa9a374f6be2189629fa04",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/manifest.json": "54d4224528c44fa974075eeb660ccceff2377e0d405dc74002d48af7518d412e",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/project-named.png": "428a7b7cd266b4736868bdb83b0060cb7da422fe91de32bfcf6cf838799c50d7",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/project-saved.png": "fc2b6b4a34a072fb65a72eed28ac838b42ecd792251642877dcaf8224b2d7b25",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/two-metre.jpeg": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/wide-saved.png": "b8819c761d1a092b910467e620ef811007eff04939764623637ee56cf3e91963",
+            "parity/reports/artifacts/pattern-png-grainline-20261119/rotated-basin.weftforge": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+            "parity/reports/artifacts/pattern-jpeg-20261119/verify_pattern_jpeg.py": "500b3ec47efc917730ae9fe4737857dd9c86194e5d40d0c8a56c78fcdfe92b0e",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.json": "d10487fa7c77392150d7620c8dd558a0dae02d3ea4d7c4c776e98cb5f2c8cc46",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.json": "00d5ffb9d6becbbab9b9c9b56ed7f40dfc6c73f3b897e0ec9d7179bc328aaf50",
+            "parity/reports/artifacts/pattern-jpeg-20261119/fit.jpg": "2c23889fa3438ca261d30869d60f72daecdf5ea3e8aa9a374f6be2189629fa04",
+            "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.jpeg": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb"
+          },
+          "path": "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "The unsigned ARM64 package ran on Debian 13.7 under X11/Vulkan software rendering. Windows, Linux x86-64, Wayland, GPU hardware, platform accessibility, signing and redistributable release acceptance remain open.",
         "The updated ARM64 Debian package has a native X11 Ctrl+K and Escape smoke check with software rendering. Full platform accessibility, Windows and signed cross-platform builds remain open.",
-        "The exact offline Debian 13.7 ARM64 JPEG package launched under X11/Vulkan software rendering and agreed with Apple Silicon on the two packaged CLI/MCP JPEG exports. The same package saved a project through the GTK chooser on X11. Repeat on a current Linux package. Hardware GPU, Windows, signing and complete distribution notices remain open.",
+        "The exact offline Debian 13.7 ARM64 JPEG package launched under X11/Vulkan software rendering and agreed with Apple Silicon on the two packaged CLI/MCP JPEG exports. The same package saved a project through the GTK chooser on X11. The afdea599 package saved the editable project and both pattern JPEGs through GTK. Seven Linux library notice entries, hardware GPU, Windows and signing remain open.",
         "Source fixtures check target-scoped notice collection, standalone app notice paths, executable hashes and interrupted staging recovery. Actual release notice closure, platform audits and signing remain open.",
         "The actual Apple Silicon release bundle opened Harbor. All recorded binary and 258 notice file hashes passed, and the packaged CLI reproduced both prior JPEGs. Resolve the 31 flagged runtime notices, audit platform runtimes and finish signed builds.",
         "A second offline Apple Silicon package retained all runtime libraries and executable bytes. Ten pinned files supply 18 missing code licenses. Eleven declaration-only and two absent code texts remain open, along with other platform audits and signing."

@@ -1,0 +1,13 @@
+{
+  "id": "APP-DEBIAN-NATIVE-SAVE-JPEG-001",
+  "status": "implementation_only",
+  "initial_conditions": "Open a disposable copy of the revision 3 Juniper and Basin project in the packaged Debian ARM64 studio under X11 with the GTK desktop portal.",
+  "actions": [
+    "Load the disposable revision 3 Juniper and Basin project in the packaged studio and frame the artwork.",
+    "Use File \u2192 Save as\u2026, type current-source.weftforge in GTK and accept. The saved copy uses a different inode and matches the original project byte for byte.",
+    "Open File \u2192 Save 2D pattern JPEG\u2026. Use the fitted 869 \u00d7 723 mm crop, 127 PPI and Grainline. Accept the GTK file dialog.",
+    "Open the JPEG dialog again. Set a 2,000 \u00d7 200 mm crop at U \u22121,000 and V 275 mm with Grainline and 72.4 requested PPI. Observe 72 PPI recorded.",
+    "Dismiss the GTK chooser with Escape. The backend returned code 2 with no URI. Verify retained crop, density, mark options and 5,669 \u00d7 567 dimensions, then reopen the chooser and save two-metre.jpeg."
+  ],
+  "expected_outcomes": "Save As creates a distinct editable file with the original bytes. The fitted and two-metre native JPEGs preserve the specified physical scale and artwork, including after dismissing a chooser. Both match fresh packaged CLI and MCP exports."
+}
