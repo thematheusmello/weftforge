@@ -1,5 +1,9 @@
 # WeftForge current-source addendum
 
+## Fabric colors in OBJ exports
+
+Source `9c0fe5fd417269c88db38b6f85f9c7bbed6f935e` maps each exported group to one authored fabric and writes a content-addressed MTL for the colors used by that surface. The CLI and MCP share the rest export.
+
 ## Project-local fabric assignment
 
 Source `1b7312cca375bfca1b3ab067690a646726af5447` adds an assigned-name picker, a named independent copy and shared-material renaming to the Fabric inspector.

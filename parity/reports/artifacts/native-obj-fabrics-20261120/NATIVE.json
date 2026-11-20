@@ -1,0 +1,19 @@
+{
+  "source_commit": "9c0fe5fd417269c88db38b6f85f9c7bbed6f935e",
+  "tree": "33d2b766a2041adf50548049b3f290fb855dcc01",
+  "studio_sha256": "1de69a72523a0cd82aac71fd63e6150330708f0eb8e9d14aaa0a68dac23fd5bb",
+  "cli_sha256": "bcef51f487d0e57f69bb7c5984c6ccb63b3fd4cf2adf70a6875471a64b971e0f",
+  "input_sha256": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+  "started": "2026-11-20T17:54:49.964591+00:00",
+  "platform": "Apple Silicon macOS native Metal workspace",
+  "initial_state": "Harbor revision 24, two pieces, eight seams, 654 rest vertices",
+  "observations": [
+    "The assigned fabric on Harbor front was Cotton approximation (uncalibrated). The picker listed Cotton #1 and Terracotta linen #68.",
+    "Selecting Terracotta linen for the front created revision 25. File > Export OBJ wrote All terracotta.obj and its single-fabric library.",
+    "Undo restored the front cotton assignment at revision 26. File > Export OBJ wrote Harbor.obj alongside the earlier export and both libraries.",
+    "Save as wrote Restored Harbor.weftforge. Selecting the back displayed Terracotta linen. Frame all and Frame garment were applied. File > Save workspace PNG produced a 1640 by 1000 workspace image.",
+    "The test app closed. Independent readback verified both documents differ only in revision."
+  ],
+  "single_fabric_obj_sha256": "e90c9c2407936e3d9db618142a4e0a2a7e6911a536b0243376dcf090c075695a",
+  "two_fabric_obj_sha256": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445"
+}

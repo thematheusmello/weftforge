@@ -1,0 +1,122 @@
+{
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "baseline_revision": 1,
+  "baseline_status": "provisional_unfrozen",
+  "product_build": "2026.1.237 (r58920)",
+  "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "id": "REF-FILE-003-OBJ-FABRICS-001",
+  "observed_utc": "2026-11-20T17:45:26.290559+00:00",
+  "source_commit": "249b87e47039d5d7b06292956525d6189db5b60a",
+  "status": "observed_native_one_direction",
+  "original_input": "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj",
+  "original_input_sha256": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+  "initial_state": "Empty local garment in the licensed desktop studio.",
+  "import_settings": {
+    "entry": "File > Import (Add) > OBJ to Garment",
+    "unit": "m",
+    "scale_percent": 100,
+    "trace_2d_patterns_from_uv": true,
+    "object_type": "Garment",
+    "up_axis": "Y",
+    "axis_inversions": [
+      false,
+      false,
+      false
+    ]
+  },
+  "native_properties": {
+    "selected_pattern_fabric": "fabric_68_Terracotta_linen"
+  },
+  "export_settings": {
+    "entry": "File > Export > OBJ",
+    "unit": "m",
+    "scale_percent": 100,
+    "up_axis": "Y",
+    "single_object": true,
+    "unweld": true,
+    "thin": true,
+    "unified_uv": false
+  },
+  "measurements": {
+    "input": [
+      654,
+      1172
+    ],
+    "returned": [
+      5523,
+      10614
+    ],
+    "by_assigned_fabric": {
+      "fabric_1_Cotton_approximation_uncalibrated": {
+        "input": {
+          "area_m2": 0.5923,
+          "boundary_m": 4.083146221782354,
+          "diffuse_rgb": [
+            0.22,
+            0.55,
+            0.76
+          ],
+          "groups": [
+            "piece_2"
+          ],
+          "triangles": 586
+        },
+        "returned": {
+          "groups": [],
+          "triangles": 5310,
+          "diffuse_rgb": [
+            0.22,
+            0.55,
+            0.76
+          ],
+          "area_m2": 0.592300025411,
+          "boundary_m": 4.083146222333021
+        },
+        "area_delta_m2": 2.541099997088736e-08,
+        "perimeter_delta_m": 5.506661793219791e-10
+      },
+      "fabric_68_Terracotta_linen": {
+        "input": {
+          "area_m2": 0.5923,
+          "boundary_m": 4.083146221782354,
+          "diffuse_rgb": [
+            0.78,
+            0.25,
+            0.12
+          ],
+          "groups": [
+            "piece_31"
+          ],
+          "triangles": 586
+        },
+        "returned": {
+          "groups": [],
+          "triangles": 5304,
+          "diffuse_rgb": [
+            0.78,
+            0.25,
+            0.12
+          ],
+          "area_m2": 0.5923000491004085,
+          "boundary_m": 4.083146223959472
+        },
+        "area_delta_m2": 4.9100408405777785e-08,
+        "perimeter_delta_m": 2.177117153223662e-09
+      }
+    }
+  },
+  "reference_output_sha256": {
+    "obj": "28f77bdae7159e3cdc1c6769de500b22f280c0bc78acd7ece07682bdad058787",
+    "mtl": "fbed97d19b02e1cdf17fe0edf5ed9d2efa0a0e1b222299a6908a9559f0562e92"
+  },
+  "evidence_ids": [
+    "ev_6c814e8a14618cb81c040c9b8f820ea7a09c6d2c9cac27a97bee5b48c860a2c9",
+    "ev_f3f6eb90cc13e7594b010dea5d611426a7e4e1715de6f04941bbba50115415c0",
+    "ev_2de9f9202aa8a3eb53a1e70cc363cad6d1c7f80a6060d9c0f2c59bfa1d24248f"
+  ],
+  "limits": [
+    "One two-fabric flat rest arrangement, opened and re-exported at metre scale with UV tracing.",
+    "The returned file split faces by the same RGB assignments and supplied new material names with suffixes. Its triangulation changed and it emitted no OBJ group records.",
+    "Reverse import into WeftForge, texture transfer, avatar import and general compatibility remain open."
+  ]
+}

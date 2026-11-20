@@ -1,5 +1,14 @@
 # Native studio preview
 
+## Fabric colors in a Harbor OBJ
+
+With Harbor back selected, the Fabric inspector shows Terracotta linen.
+The blue cotton front and terracotta back each export as a separate OBJ
+group, with their diffuse colors in the companion MTL.
+[Exported files and measurements](../parity/reports/WF-20261120-NATIVE-OBJ-FABRICS-001.json).
+
+![Harbor front in cotton blue and back in terracotta with the back fabric selected](../parity/reports/artifacts/native-obj-fabrics-20261120/Harbor%20fabrics.png)
+
 ## Draped garment surface
 
 The longer Harbor front drapes around the mannequin. Each face now ends at its projected vertices, including the nearly edge-on faces on the front and sleeve. [Native comparison](../parity/reports/WF-20261120-NATIVE-PROJECTED-GARMENT-FACES-001.json).

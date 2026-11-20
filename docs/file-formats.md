@@ -17,7 +17,7 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 | `.weftforge` v1 | Yes, explicit migration | No | Original supported model | Static authoring | Old stretch maps to both axes; grain defaults to zero; saving writes v6; round-trip numeric decoding; tested native I/O subset |
 | `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1–v6 model | Static authoring | One prior saved document; no silent fallback |
 | `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1–v6 model | Static authoring | Dirty named documents only; no automatic recovery UI |
-| OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups; no annotation lines or MTL/textures |
+| OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups and fabric colors in a companion MTL |
 | SVG | Additive import of closed patterns with an optional polygonal cutout | Yes, compound outlines with holes and physical notch markers | Editable boundaries, cutouts and names on import | Static 2D | Explicit mm and uniform viewBox; drawings with notch markers cannot yet be reimported; sewing/materials/internal lines/print tiling unsupported |
 | Binary glTF 2.0 (`.glb`) | No | Yes | Mesh only | Static | Named pieces, fabric tint, normals and physical-scale UVs from a rest or current surface |
 | JSON glTF 2.0 (`.gltf`) | No | Yes, embedded buffer | Mesh only | Static | Single JSON file with the same named meshes, fabric tints, normals and UVs as binary glTF |
@@ -110,7 +110,7 @@ mesh/solver effect. Native geometry edits preserve or explicitly refuse its
 relationship; see the [notch contract](../spec/features/PAT-006-authored-notches.md).
 SVG retains physical-scale markers and includes them in its view bounds; the
 bounded importer refuses notch line elements. DXF refuses authored notches before
-replacing output. OBJ contains triangle geometry only.
+replacing output. OBJ contains triangulated cloth and its fabric assignments.
 Straight topological cuts use two ordinary pieces, independent boundary
 points/curves and explicit annotation ownership. The resulting exterior chords
 are ordinary editable edges. No cut object or persistent cross-cut relationship
@@ -262,8 +262,12 @@ from an active desktop simulation. CLI `export-obj` exports the rest mesh;
 `simulate PROJECT OUTPUT.obj STEPS` writes the advanced solver positions. Vertex
 coordinates are metres with Y up. `vt` values retain material-space metres and
 may lie outside `[0,1]`; `vn` values are computed vertex normals. Faces are
-triangles and `g piece_ID` names separate pieces. No seam welding, rendered
-thickness, texture images, material library, skeleton, animation, or editable
+triangles and `g piece_ID` names separate pieces. Each group selects its fabric
+with `usemtl`. The companion `weftforge-fabrics-<digest>.mtl` stores each used
+fabric’s diffuse RGB color and its authored name. Keep the two files together.
+Several OBJs can share a library. Changing a fabric creates a different library
+so earlier exports keep their colors. An empty export needs no library.
+No seam welding, rendered thickness, texture images, skeleton, animation, or editable
 curves or internal annotation line primitives are encoded. Native saving retains
 editable annotations. OBJ itself has no authoritative unit field: its metre
 convention is stated in the comment and this documentation.

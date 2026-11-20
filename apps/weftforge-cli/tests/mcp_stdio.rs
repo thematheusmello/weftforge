@@ -647,6 +647,7 @@ fn check_rectangle_exports(obj: &Path, svg: &Path) {
     assert!((span(&points, 0) - 600.).abs() < 1e-8);
     assert!((span(&points, 1) - 800.).abs() < 1e-8);
     assert!(svg.ends_with("</svg>\n"));
+    let folder = obj.parent().unwrap();
     let obj = fs::read_to_string(obj).unwrap();
     assert!(obj.starts_with("# WeftForge OBJ: metres; Y up;"));
     let mut vertices = Vec::new();
@@ -654,9 +655,27 @@ fn check_rectangle_exports(obj: &Path, svg: &Path) {
     let mut normals = Vec::new();
     let mut faces = Vec::new();
     let mut groups = 0;
+    let mut fabric = None;
+    let mut assigned = false;
     for line in obj.lines().filter(|line| !line.starts_with('#')) {
         let (kind, data) = line.split_once(' ').unwrap();
         match kind {
+            "mtllib" => {
+                assert!(fabric.is_none() && !data.contains(['/', '\\']));
+                let mtl = fs::read_to_string(folder.join(data)).unwrap();
+                assert!(mtl.lines().any(|line| line == "Kd 0.22 0.55 0.76"));
+                fabric = Some(
+                    mtl.lines()
+                        .find_map(|line| line.strip_prefix("newmtl "))
+                        .unwrap()
+                        .to_owned(),
+                );
+            }
+            "usemtl" => {
+                assert!(!assigned && faces.is_empty());
+                assert_eq!(fabric.as_deref(), Some(data));
+                assigned = true;
+            }
             "v" => vertices.push(numbers(data)),
             "vt" => uv.push(numbers(data)),
             "vn" => normals.push(numbers(data)),
@@ -678,6 +697,7 @@ fn check_rectangle_exports(obj: &Path, svg: &Path) {
         }
     }
     assert!(!vertices.is_empty() && !uv.is_empty() && !normals.is_empty() && !faces.is_empty());
+    assert!(assigned);
     assert_eq!(groups, 1);
     assert!(
         vertices
@@ -3197,6 +3217,17 @@ fn straight_holes_keep_closed_discovery_shared_ids_and_atomic_refusal() {
     for (tool, output) in [("project_export_obj", &obj), ("project_export_svg", &svg)] {
         let result = server.call(tool, json!({"input":path,"output":output}));
         assert_eq!(success(&result)["source_revision"], 2);
+        if tool == "project_export_obj" {
+            let library = success(&result)["material_library"]
+                .as_str()
+                .unwrap()
+                .to_owned();
+            assert!(
+                fs::read_to_string(library)
+                    .unwrap()
+                    .contains("newmtl fabric_1")
+            );
+        }
     }
     assert!(fs::read_to_string(&obj).unwrap().contains("g piece_2\n"));
     let svg_text = fs::read_to_string(&svg).unwrap();

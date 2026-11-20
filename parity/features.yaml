@@ -48198,7 +48198,8 @@
       "reference_observation_status": "unobserved",
       "evidence_ids": [
         "spec/features/MAT-001-active-pattern-fabric.md",
-        "parity/reports/WF-20261120-NATIVE-FABRIC-ASSIGNMENT-001.json"
+        "parity/reports/WF-20261120-NATIVE-FABRIC-ASSIGNMENT-001.json",
+        "parity/reports/WF-20261120-NATIVE-OBJ-FABRICS-001.json"
       ],
       "scenarios": [
         {
@@ -48218,6 +48219,16 @@
           },
           "initial_conditions": "Open the supplied two-panel Harbor project at revision 24. Both patterns use authored Cotton material #1 at 0.18 kg/m\u00b2.",
           "expected_outcomes": "One new material #68 retains every physical and appearance field on creation. Editing the back copy leaves front and material #1 intact. Assigning the existing copy changes only the front assignment. Undo and Redo restore every saved field except revision."
+        },
+        {
+          "id": "FILE-NATIVE-OBJ-FABRICS-001",
+          "path": "parity/scenarios/FILE-NATIVE-OBJ-FABRICS-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
+          },
+          "initial_conditions": "Open the revision 24 Harbor project. Cotton #1 is assigned to front #2 and Terracotta linen #68 to back #31. Both panels are in the rest arrangement with eight seam definitions.",
+          "expected_outcomes": "Changing the front fabric and undoing preserves both native exports. The single-fabric export uses one material for both groups. The restored export assigns cotton and terracotta separately. All position, UV, normal, group and face records agree. Each panel has 586 triangles and area 0.5923 m\u00b2. The native, CLI and MCP two-fabric outputs agree byte for byte."
         }
       ],
       "comparison_criteria": {
@@ -48315,6 +48326,36 @@
             "parity/reports/artifacts/native-fabric-assignment-20261120/renamed.weftforge": "60447e68a6a997bc444aa921326a2658b6a59220a828ba89a2e7f5c4a7764faf",
             "parity/reports/artifacts/native-fabric-assignment-20261120/undo.weftforge": "6eeb7cd7b60e078fc4330eb0d05e9c7acd2cfdbd83041356c4e4b389109ef1bf"
           }
+        },
+        {
+          "id": "WF-20261120-NATIVE-OBJ-FABRICS-001",
+          "commit": "9c0fe5fd417269c88db38b6f85f9c7bbed6f935e",
+          "timestamp": "2026-11-20T18:06:18Z",
+          "platform": "Apple Silicon macOS native Metal studio, release CLI and stdio MCP, Apple Model I/O and independent OBJ/MTL measurements",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-obj-fabrics-20261120/ADAPTERS.json": "43b7190f022fdd7c0116c0db1e3b11ae85c2b2027bf6a8fa615873fc0388ca8f",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/All terracotta.obj": "e90c9c2407936e3d9db618142a4e0a2a7e6911a536b0243376dcf090c075695a",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/CLEANUP.json": "24607fc54b81d332305702ea9a7d5f8de4c37400668a9fead06ff39ce84d1b2b",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/GEOMETRY.json": "1526f6aa55ba51a6c03fa205a36cb5d0c8e7ce51786892061b406235a7772bb0",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor fabrics.png": "9df02403bacfa079bcb73d5af36c3c509838d13c1623a7650c349a5abed0144c",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/MODELIO-single.json": "bbf14f4a4d3196da8c9e7940156fd19908caa1e48dd986371387213b4f8a1721",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/MODELIO-two.json": "e9ea4d4a68b215b0fa24e9ed62222d0f473c40d72183c60b6c0f777131812bfc",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/NATIVE.json": "306d8cf85d08167ca01f5af342a7477ba3958fefa2ba0dd1dee80c3dcb5a4c43",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Restored Harbor.weftforge": "44eae25fd5e3e288d273e830cc19c80c9b059646a0a06606386860af73b603f4",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_exports.py": "33f288398fcfd23dbf61528826435fbac4353e40c333464c201b5c1a97053565",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_fabrics.py": "ad37fdedf2d6bb93c8960c3059c41edbbb4bbcd60f2db79fcf573909d388d9dd",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_modelio.swift": "a4a121a0e89ac62ed7f16b39059cf8225a5507f52f4eb9c40de23c0a133beff0",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/two-fabrics.json": "48ad911c4260bd59cd8f59fa106d1980b58b3b7d7a6a73bd3b460c7984e9bfe9",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-2fcfa550810a22d36ed5ff527b93ab3a28f4b3a183f73130b8ad9fcc151e1ea7.mtl": "2fcfa550810a22d36ed5ff527b93ab3a28f4b3a183f73130b8ad9fcc151e1ea7",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/scenarios/FILE-NATIVE-OBJ-FABRICS-001.json": "086e7dc4437101b3369989039f37f841595d4cb1c16b7f5f0282ba94d55cd3a7",
+            "spec/observations/REF-FILE-003-OBJ-FABRICS-001.json": "d76fa7402ff830997d099e508e2c27931fa2953954c8cc76e608116ac085014c",
+            "spec/observations/check_obj_fabrics_readback.py": "38b7c2df439ee50985ef5b5b018cff02c2c8a89f65f2a0584b4a98fe2c55223c",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-OBJ-FABRICS-001.json"
         }
       ],
       "known_gaps": [
@@ -51370,7 +51411,10 @@
       ],
       "reference_observation_status": "observed",
       "evidence_ids": [
-        "spec/observations/REF-FILE-003-OBJ-CUTOUT-001.json"
+        "spec/observations/REF-FILE-003-OBJ-CUTOUT-001.json",
+        "parity/reports/WF-20261120-NATIVE-OBJ-FABRICS-001.json",
+        "spec/observations/REF-FILE-003-OBJ-FABRICS-001.json",
+        "spec/features/FILE-003-obj-fabrics.md"
       ],
       "scenarios": [
         {
@@ -51419,6 +51463,16 @@
           "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
           "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
           "path": "parity/scenarios/UI-HARBOR-001.json"
+        },
+        {
+          "id": "FILE-NATIVE-OBJ-FABRICS-001",
+          "path": "parity/scenarios/FILE-NATIVE-OBJ-FABRICS-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
+          },
+          "initial_conditions": "Open the revision 24 Harbor project. Cotton #1 is assigned to front #2 and Terracotta linen #68 to back #31. Both panels are in the rest arrangement with eight seam definitions.",
+          "expected_outcomes": "Changing the front fabric and undoing preserves both native exports. The single-fabric export uses one material for both groups. The restored export assigns cotton and terracotta separately. All position, UV, normal, group and face records agree. Each panel has 586 triangles and area 0.5923 m\u00b2. The native, CLI and MCP two-fabric outputs agree byte for byte."
         }
       ],
       "comparison_criteria": {
@@ -51433,7 +51487,11 @@
         "PAT-011"
       ],
       "implementation_locations": [
-        "crates/weftforge-core/src/lib.rs"
+        "crates/weftforge-core/src/lib.rs",
+        "crates/weftforge-core/src/persistence/obj.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/src/mcp.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/6"
@@ -52059,19 +52117,50 @@
             "parity/reports/artifacts/native-harbor-simulated-obj-20261118/SOURCE-BINARY.json": "04f794dc21631c8273015b6e3a2be0f7e8a60579852bbe43abf85afa09b2d77c"
           },
           "path": "parity/reports/WF-20261118-HARBOR-NATIVE-SIMULATED-OBJ-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-OBJ-FABRICS-001",
+          "commit": "9c0fe5fd417269c88db38b6f85f9c7bbed6f935e",
+          "timestamp": "2026-11-20T18:06:18Z",
+          "platform": "Apple Silicon macOS native Metal studio, release CLI and stdio MCP, Apple Model I/O and independent OBJ/MTL measurements",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-obj-fabrics-20261120/ADAPTERS.json": "43b7190f022fdd7c0116c0db1e3b11ae85c2b2027bf6a8fa615873fc0388ca8f",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/All terracotta.obj": "e90c9c2407936e3d9db618142a4e0a2a7e6911a536b0243376dcf090c075695a",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/CLEANUP.json": "24607fc54b81d332305702ea9a7d5f8de4c37400668a9fead06ff39ce84d1b2b",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/GEOMETRY.json": "1526f6aa55ba51a6c03fa205a36cb5d0c8e7ce51786892061b406235a7772bb0",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor fabrics.png": "9df02403bacfa079bcb73d5af36c3c509838d13c1623a7650c349a5abed0144c",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/MODELIO-single.json": "bbf14f4a4d3196da8c9e7940156fd19908caa1e48dd986371387213b4f8a1721",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/MODELIO-two.json": "e9ea4d4a68b215b0fa24e9ed62222d0f473c40d72183c60b6c0f777131812bfc",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/NATIVE.json": "306d8cf85d08167ca01f5af342a7477ba3958fefa2ba0dd1dee80c3dcb5a4c43",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Restored Harbor.weftforge": "44eae25fd5e3e288d273e830cc19c80c9b059646a0a06606386860af73b603f4",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_exports.py": "33f288398fcfd23dbf61528826435fbac4353e40c333464c201b5c1a97053565",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_fabrics.py": "ad37fdedf2d6bb93c8960c3059c41edbbb4bbcd60f2db79fcf573909d388d9dd",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_modelio.swift": "a4a121a0e89ac62ed7f16b39059cf8225a5507f52f4eb9c40de23c0a133beff0",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/two-fabrics.json": "48ad911c4260bd59cd8f59fa106d1980b58b3b7d7a6a73bd3b460c7984e9bfe9",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-2fcfa550810a22d36ed5ff527b93ab3a28f4b3a183f73130b8ad9fcc151e1ea7.mtl": "2fcfa550810a22d36ed5ff527b93ab3a28f4b3a183f73130b8ad9fcc151e1ea7",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/scenarios/FILE-NATIVE-OBJ-FABRICS-001.json": "086e7dc4437101b3369989039f37f841595d4cb1c16b7f5f0282ba94d55cd3a7",
+            "spec/observations/REF-FILE-003-OBJ-FABRICS-001.json": "d76fa7402ff830997d099e508e2c27931fa2953954c8cc76e608116ac085014c",
+            "spec/observations/check_obj_fabrics_readback.py": "38b7c2df439ee50985ef5b5b018cff02c2c8a89f65f2a0584b4a98fe2c55223c",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-OBJ-FABRICS-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "Current export has geometry/UV/normals/piece groups; avatar import and material assignments missing.",
+        "OBJ export carries groups, UVs, normals and static diffuse fabric colors. Avatar or garment OBJ import, selected-only export and texture transfer remain open.",
         "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity.",
-        "One reference OBJ-to-garment UV trace and re-export preserved a planar cutout, dimensions and material area. The reference remeshed it and changed the UV coordinate range and group/material records. Avatar, multi-piece, material and reverse-import comparisons remain open."
+        "One reference OBJ-to-garment UV trace and re-export preserved a planar cutout, dimensions and material area. The reference remeshed it and changed the UV coordinate range and group/material records. The later two-piece case records flat rest geometry and diffuse colors. Avatar and reverse-import comparisons remain open.",
+        "One reviewed two-fabric reference return preserved RGB and per-fabric area within 4.92 \u00d7 10\u207b\u2078 m\u00b2. It remeshed the surface and emitted no group records. Draped interoperability, editable construction and broader reference parity remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "FILE-004",

@@ -1,3 +1,20 @@
+# Fabric colors in OBJ exports — 20 November 2026
+
+OBJ exports now write a sibling MTL file with the diffuse colors of the
+fabrics used by the garment. Harbor’s front and back each exported 586
+triangles and 0.5923 m². Changing the front to terracotta produced a
+single-fabric pair. Undo restored the cotton front and wrote a second
+pair alongside it. Both remained readable. Apple Model I/O resolved the
+material on each panel and the packaged CLI and MCP reproduced the
+native two-fabric files byte for byte.
+[Native export and measurements](parity/reports/WF-20261120-NATIVE-OBJ-FABRICS-001.json) · [Reproduce the exports](parity/reports/artifacts/native-obj-fabrics-20261120/check_exports.py).
+
+The reference studio imported that two-fabric OBJ at metre scale with UV
+tracing. Its return preserved both diffuse colors and each fabric’s area
+within 4.92 × 10⁻⁸ m². It produced 10,614 triangles and omitted the OBJ
+group records. Reverse import, textures and draped-garment interchange
+remain open. [Reviewed reference observation](spec/observations/REF-FILE-003-OBJ-FABRICS-001.json).
+
 # Fabric assignment for an active pattern — 20 November 2026
 
 The Fabric inspector shows the assigned material by name. Choose an existing
@@ -53,8 +70,8 @@ Curved openings and multiple cutouts per piece remain open.
 
 The reference studio imported the edited OBJ at metre scale with UV tracing.
 The returned surface retained both boundary loops and 0.0756 m² of material.
-It had 706 triangles and a different UV range. Next, check a multi-piece
-garment and its material assignments.
+It had 706 triangles and a different UV range. The later Harbor test
+covered two fabric assignments on a flat two-piece garment.
 [Reference OBJ round trip](spec/observations/REF-FILE-003-OBJ-CUTOUT-001.json).
 
 # Windows x64 cross-package — 20 November 2026
