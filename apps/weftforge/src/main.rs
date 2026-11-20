@@ -19,6 +19,8 @@ use weftforge_core::{
 use weftforge_sim::{Cloth, MaterialAxis, SimulationError, StepSettings};
 
 mod capture;
+mod garment_obj;
+use garment_obj::{GarmentObjReview, IMPORT_OBJ};
 mod pattern_fill;
 use capture::{RenderedFrame, WorkspaceCapture};
 use pattern_fill::{PatternFill, fabric_color};
@@ -1112,42 +1114,49 @@ fn applied_length_heading(ui: &mut egui::Ui, revision: u64) {
 enum PatternFormat {
     Svg,
     Dxf,
+    Obj,
 }
 impl PatternFormat {
     fn name(self) -> &'static str {
         match self {
             Self::Svg => "SVG",
             Self::Dxf => "DXF",
+            Self::Obj => "OBJ",
         }
     }
 }
 enum ImportedDrawing {
     Svg(SvgPatternImport),
     Dxf(DxfPatternImport),
+    Obj(GarmentObjReview),
 }
 impl ImportedDrawing {
     fn format(&self) -> PatternFormat {
         match self {
             Self::Svg(_) => PatternFormat::Svg,
             Self::Dxf(_) => PatternFormat::Dxf,
+            Self::Obj(_) => PatternFormat::Obj,
         }
     }
     fn piece_count(&self) -> usize {
         match self {
             Self::Svg(drawing) => drawing.piece_count(),
             Self::Dxf(drawing) => drawing.piece_count(),
+            Self::Obj(review) => review.ready().map_or(0, |drawing| drawing.piece_count()),
         }
     }
-    fn command(&self) -> Command {
+    fn command(&self) -> Option<Command> {
         match self {
-            Self::Svg(drawing) => drawing.command(),
-            Self::Dxf(drawing) => drawing.command(),
+            Self::Svg(drawing) => Some(drawing.command()),
+            Self::Dxf(drawing) => Some(drawing.command()),
+            Self::Obj(review) => Some(review.ready()?.command()),
         }
     }
     fn scope(&self) -> &'static str {
         match self {
             Self::Svg(_) => weftforge_core::SVG_IMPORT_SCOPE,
             Self::Dxf(_) => weftforge_core::DXF_IMPORT_SCOPE,
+            Self::Obj(_) => weftforge_core::OBJ_IMPORT_SCOPE,
         }
     }
 }
@@ -1207,6 +1216,7 @@ struct Studio {
     drag_input: Option<RetainedInspectorInput>,
     drag_piece: Option<Id>,
     pattern_import: Option<PatternImportDraft>,
+    obj_preview_worker: Option<std::thread::JoinHandle<()>>,
     drag_point: Option<Id>,
     preview: Option<[f64; 2]>,
     seam_start: Option<Id>,
@@ -1315,6 +1325,7 @@ impl Studio {
             drag_input: None,
             drag_piece: None,
             pattern_import: None,
+            obj_preview_worker: None,
             drag_point: None,
             preview: None,
             seam_start: None,
@@ -2323,6 +2334,9 @@ impl Studio {
             .map(|path| match format {
                 PatternFormat::Svg => SvgPatternImport::load(path).map(ImportedDrawing::Svg),
                 PatternFormat::Dxf => DxfPatternImport::load(path).map(ImportedDrawing::Dxf),
+                PatternFormat::Obj => {
+                    Ok(ImportedDrawing::Obj(GarmentObjReview::new(path.to_owned())))
+                }
             })
             .transpose();
         let prepared = matches!(result, Ok(Some(_)));
@@ -2355,42 +2369,44 @@ impl Studio {
         let mut cancel = false;
         let response = egui::Modal::new(egui::Id::new("import-patterns")).show(ctx, |ui| {
             ui.set_width(480.);
-            ui.heading(format!(
-                "Import {} patterns",
-                import.drawing.format().name()
-            ));
-            let count = import.drawing.piece_count();
-            let noun = if count == 1 { "pattern" } else { "patterns" };
-            ui.label(format!("Add {count} editable {noun} to this project."));
-            if let ImportedDrawing::Svg(drawing) = &import.drawing {
-                match drawing.hole_count() {
-                    0 => {}
-                    1 => {
-                        ui.label("Includes 1 editable cutout.");
-                    }
-                    holes => {
-                        ui.label(format!("Includes {holes} editable cutouts."));
+            let ready = if let ImportedDrawing::Obj(review) = &mut import.drawing {
+                if review.show(ui, &mut self.obj_preview_worker) {
+                    import.error = None;
+                }
+                review.ready().is_some()
+            } else {
+                ui.heading(format!(
+                    "Import {} patterns",
+                    import.drawing.format().name()
+                ));
+                let count = import.drawing.piece_count();
+                let noun = if count == 1 { "pattern" } else { "patterns" };
+                ui.label(format!("Add {count} editable {noun} to this project."));
+                if let ImportedDrawing::Svg(drawing) = &import.drawing {
+                    match drawing.hole_count() {
+                        0 => {}
+                        1 => {
+                            ui.label("Includes 1 editable cutout.");
+                        }
+                        holes => {
+                            ui.label(format!("Includes {holes} editable cutouts."));
+                        }
                     }
                 }
-            }
-            ui.label(match &import.drawing {
-                ImportedDrawing::Svg(drawing) => format!(
-                    "Physical scale: {} mm per SVG unit.",
-                    drawing.metres_per_unit * 1000.0
-                ),
-                ImportedDrawing::Dxf(_) => {
-                    "Physical scale: 1 mm per DXF unit ($INSUNITS=4).".into()
+                if let ImportedDrawing::Svg(drawing) = &import.drawing {
+                    ui.label(format!("Physical scale: {} mm per SVG unit.", drawing.metres_per_unit * 1000.0));
+                } else {
+                    ui.label("Physical scale: 1 mm per DXF unit ($INSUNITS=4).");
                 }
-            });
-            ui.label(
-                "Keep the drawing's coordinate origin and piece layout; pattern Y points upward.",
-            );
+                ui.label("Keep the drawing's coordinate origin and piece layout; pattern Y points upward.");
+                true
+            };
             ui.label(import.drawing.scope());
             if let Some(error) = &import.error {
                 ui.colored_label(Color32::LIGHT_RED, error);
             }
             ui.horizontal(|ui| {
-                accept = ui.button("Import").clicked();
+                accept = ui.add_enabled(ready, egui::Button::new("Import")).clicked();
                 cancel = ui.button("Cancel").clicked();
             });
         });
@@ -2402,8 +2418,8 @@ impl Studio {
             );
             return;
         }
-        if accept {
-            if self.apply_inspector_action(ctx, import.drawing.command(), import.focused) {
+        if accept && let Some(command) = import.drawing.command() {
+            if self.apply_inspector_action(ctx, command, import.focused) {
                 self.reset_gestures();
                 self.select(ctx, self.editor.project.pieces.last().map(|piece| piece.id));
                 self.message = format!(
@@ -2901,6 +2917,9 @@ impl Studio {
                     ui.close();
                 }
                 if self.import_button(ui, PatternFormat::Dxf, "Import DXF…") {
+                    ui.close();
+                }
+                if self.import_button(ui, PatternFormat::Obj, IMPORT_OBJ) {
                     ui.close();
                 }
                 ui.separator();
@@ -8277,6 +8296,7 @@ impl eframe::App for Studio {
                                 "Open project",
                                 "Import SVG…",
                                 "Import DXF…",
+                                IMPORT_OBJ,
                                 "Recover project",
                                 "Export OBJ",
                                 "Export GLB",
@@ -8310,6 +8330,7 @@ impl eframe::App for Studio {
                                 }
                                 let clicked = match label {
                                     "New Empty" => self.new_empty_button(ui),
+                                    IMPORT_OBJ => self.import_button(ui, PatternFormat::Obj, label),
                                     "Import SVG…" => {
                                         self.import_button(ui, PatternFormat::Svg, label)
                                     }
@@ -8362,7 +8383,7 @@ impl eframe::App for Studio {
                                         "New Empty" => {}
                                         "Save project" => self.save(false),
                                         "Open project" => self.choose_open(),
-                                        "Import SVG…" | "Import DXF…" => {}
+                                        "Import SVG…" | "Import DXF…" | IMPORT_OBJ => {}
                                         "Recover project" => {
                                             self.refresh_recovery();
                                             self.show_recovery = true;
@@ -9294,6 +9315,7 @@ fn choose_pattern_import_path(_ctx: &egui::Context, format: PatternFormat) -> Op
     let extension = match format {
         PatternFormat::Svg => "svg",
         PatternFormat::Dxf => "dxf",
+        PatternFormat::Obj => "obj",
     };
     rfd::FileDialog::new()
         .add_filter(format!("{} patterns", format.name()), &[extension])
@@ -19615,6 +19637,9 @@ mod pattern_import_tests {
         "../../../crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf"
     );
 
+    const POCKET: &[u8] = include_bytes!(
+        "../../../parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.obj"
+    );
     fn frame(ctx: &egui::Context, app: &mut Studio, events: Vec<egui::Event>) -> egui::FullOutput {
         app.needs_mesh = false;
         ctx.run_ui(
@@ -19667,7 +19692,7 @@ mod pattern_import_tests {
     fn click(ctx: &egui::Context, app: &mut Studio, label: &str) -> egui::FullOutput {
         frame(ctx, app, vec![]);
         let mut output = frame(ctx, app, vec![]);
-        if matches!(label, "Import SVG…" | "Import DXF…") {
+        if matches!(label, "Import SVG…" | "Import DXF…" | IMPORT_OBJ) {
             let file = button(&output, "File");
             frame(ctx, app, vec![action(file, Action::Click, None)]);
             output = frame(ctx, app, vec![]);
@@ -19700,8 +19725,9 @@ mod pattern_import_tests {
     }
     fn source(format: PatternFormat) -> PathBuf {
         static NEXT: AtomicU64 = AtomicU64::new(0);
+        let ext = format.name().to_ascii_lowercase();
         let path = std::env::temp_dir().join(format!(
-            "weftforge-native-svg-{}-{}-{}.svg",
+            "weftforge-native-{ext}-{}-{}-{}.{ext}",
             std::process::id(),
             SystemTime::now()
                 .duration_since(UNIX_EPOCH)
@@ -19714,10 +19740,163 @@ mod pattern_import_tests {
             match format {
                 PatternFormat::Svg => ORIGINAL,
                 PatternFormat::Dxf => DXF_ORIGINAL,
+                PatternFormat::Obj => POCKET,
             },
         )
         .unwrap();
         path
+    }
+
+    fn wait_for_text(ctx: &egui::Context, app: &mut Studio, text: &str) -> egui::FullOutput {
+        let start = Instant::now();
+        loop {
+            let frame = frame(ctx, app, vec![]);
+            if frame
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .any(|(_, n)| {
+                    [n.value(), n.label()]
+                        .into_iter()
+                        .flatten()
+                        .any(|s| s.contains(text))
+                })
+            {
+                return frame;
+            }
+            assert!(
+                start.elapsed() < Duration::from_secs(8),
+                "missing OBJ preview text {text}"
+            );
+            std::thread::yield_now();
+        }
+    }
+
+    #[test]
+    fn garment_obj_review_uses_selected_units_and_imports_exact_reviewed_bytes_in_one_undo() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture();
+        let before = app.editor.project.clone();
+        let path = source(PatternFormat::Obj);
+        ctx.data_mut(|d| {
+            d.insert_temp(egui::Id::new("test-obj-import-source"), Some(path.clone()))
+        });
+        let output = click(&ctx, &mut app, IMPORT_OBJ);
+        assert!(
+            output
+                .platform_output
+                .accesskit_update
+                .unwrap()
+                .nodes
+                .iter()
+                .any(|(_, n)| n.label() == Some("Import") && n.is_disabled())
+        );
+        click(&ctx, &mut app, "Centimetres");
+        wait_for_text(
+            &ctx,
+            &mut app,
+            "1 exterior contour · 1 cutout · 0 assigned fabrics",
+        );
+        click(&ctx, &mut app, "Metres");
+        let output = wait_for_text(
+            &ctx,
+            &mut app,
+            "1 exterior contour · 1 cutout · 0 assigned fabrics",
+        );
+        assert!(
+            output
+                .platform_output
+                .accesskit_update
+                .unwrap()
+                .nodes
+                .iter()
+                .any(|(_, n)| n
+                    .value()
+                    .is_some_and(|s| s.contains("1 OBJ unit = 1000 mm")))
+        );
+        assert_eq!(app.editor.project, before);
+        fs::write(&path, b"this changes the source after review").unwrap();
+        click(&ctx, &mut app, "Import");
+        assert!(app.pattern_import.is_none());
+        assert_eq!(app.editor.project.revision, before.revision + 1);
+        assert_eq!(app.editor.project.pieces[0].grain_angle, 0.375);
+        let pocket = &app.editor.project.pieces[1];
+        assert_eq!(pocket.holes.len(), 1);
+        let [min, max] = app.editor.project.piece_bounds(pocket.id).unwrap();
+        assert!((max[0] - min[0] - 0.24).abs() < 1e-9 && (max[1] - min[1] - 0.36).abs() < 1e-9);
+        assert_eq!(app.selected, Some(pocket.id));
+        app.history(&ctx, false);
+        assert_eq!(app.editor.project.pieces, before.pieces);
+        assert_eq!(app.editor.project.points, before.points);
+        fs::remove_file(path).unwrap();
+    }
+
+    #[test]
+    fn garment_obj_search_allows_unit_correction_and_cancel_preserves_pending_input() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture();
+        let before = app.editor.project.clone();
+        let path = source(PatternFormat::Obj);
+        // The same pocket, placed 2 m away, expressed in millimetres.
+        let mut millimetres = String::new();
+        for line in std::str::from_utf8(POCKET).unwrap().lines() {
+            if let Some(coords) = line.strip_prefix("v ") {
+                let p: Vec<f64> = coords
+                    .split_whitespace()
+                    .map(|n| n.parse().unwrap())
+                    .collect();
+                millimetres.push_str(&format!(
+                    "v {} {} {}\n",
+                    2000. + 1000. * p[0],
+                    1000. * p[1],
+                    1000. * p[2]
+                ));
+            } else {
+                millimetres.push_str(line);
+                millimetres.push('\n');
+            }
+        }
+        fs::write(&path, millimetres).unwrap();
+        ctx.data_mut(|d| {
+            d.insert_temp(egui::Id::new("test-obj-import-source"), Some(path.clone()))
+        });
+        app.search = true;
+        app.query = "garment OBJ".into();
+        frame(&ctx, &mut app, vec![]);
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(button(&output, IMPORT_OBJ), Action::Click, None)],
+        );
+        click(&ctx, &mut app, "Metres");
+        let output = wait_for_text(&ctx, &mut app, "1000 metres");
+        assert!(
+            output
+                .platform_output
+                .accesskit_update
+                .unwrap()
+                .nodes
+                .iter()
+                .any(|(_, n)| n.label() == Some("Import") && n.is_disabled())
+        );
+        click(&ctx, &mut app, "Millimetres");
+        wait_for_text(
+            &ctx,
+            &mut app,
+            "1 exterior contour · 1 cutout · 0 assigned fabrics",
+        );
+        click(&ctx, &mut app, "Cancel");
+        assert!(app.pattern_import.is_none());
+        assert_eq!(app.editor.project, before);
+        assert_eq!(app.draft.as_ref().unwrap().grain_angle, Some(0.375));
+        assert!(app.editor.can_redo());
+        fs::remove_file(path).unwrap();
     }
 
     #[test]
@@ -19878,9 +20057,7 @@ mod pattern_import_tests {
                     PatternFormat::Svg => {
                         ImportedDrawing::Svg(SvgPatternImport::from_bytes(ORIGINAL).unwrap())
                     }
-                    PatternFormat::Dxf => {
-                        ImportedDrawing::Dxf(DxfPatternImport::from_bytes(DXF_ORIGINAL).unwrap())
-                    }
+                    _ => ImportedDrawing::Dxf(DxfPatternImport::from_bytes(DXF_ORIGINAL).unwrap()),
                 },
                 focused: None,
                 error: None,
@@ -19902,11 +20079,11 @@ mod pattern_import_tests {
             for label in [
                 match format {
                     PatternFormat::Svg => "Import SVG patterns",
-                    PatternFormat::Dxf => "Import DXF patterns",
+                    _ => "Import DXF patterns",
                 },
                 match format {
                     PatternFormat::Svg => "Physical scale: 2 mm per SVG unit.",
-                    PatternFormat::Dxf => "Physical scale: 1 mm per DXF unit ($INSUNITS=4).",
+                    _ => "Physical scale: 1 mm per DXF unit ($INSUNITS=4).",
                 },
                 "Import",
                 "Cancel",
@@ -20150,7 +20327,7 @@ mod pattern_import_tests {
                     .any(|(_, node)| node.value().is_some_and(|label| label.contains(
                         match format {
                             PatternFormat::Svg => "Physical scale: 2 mm per SVG unit",
-                            PatternFormat::Dxf => "Physical scale: 1 mm per DXF unit",
+                            _ => "Physical scale: 1 mm per DXF unit",
                         }
                     )))
             );
@@ -20164,14 +20341,14 @@ mod pattern_import_tests {
                 app.editor.project.pieces[1].name,
                 match format {
                     PatternFormat::Svg => "Original & curved front",
-                    PatternFormat::Dxf => "WF_PIECE_17",
+                    _ => "WF_PIECE_17",
                 }
             );
             assert_eq!(
                 app.editor.project.points[4].position,
                 match format {
                     PatternFormat::Svg => [-0.16, 0.32],
-                    PatternFormat::Dxf => [-0.25, 0.15],
+                    _ => [-0.25, 0.15],
                 }
             );
             assert_eq!(app.editor.project.pieces[0].grain_angle, 0.375);
@@ -20189,7 +20366,7 @@ mod pattern_import_tests {
                 fs::read(&path).unwrap(),
                 match format {
                     PatternFormat::Svg => ORIGINAL,
-                    PatternFormat::Dxf => DXF_ORIGINAL,
+                    _ => DXF_ORIGINAL,
                 }
             );
             app.history(&ctx, false);
@@ -20223,7 +20400,7 @@ mod pattern_import_tests {
                 &path,
                 match format {
                     PatternFormat::Svg => ORIGINAL,
-                    PatternFormat::Dxf => DXF_ORIGINAL,
+                    _ => DXF_ORIGINAL,
                 },
             )
             .unwrap();
@@ -20259,7 +20436,7 @@ mod pattern_import_tests {
                 fs::read(&path).unwrap(),
                 match format {
                     PatternFormat::Svg => ORIGINAL,
-                    PatternFormat::Dxf => DXF_ORIGINAL,
+                    _ => DXF_ORIGINAL,
                 }
             );
             click(&ctx, &mut app, "Cancel");

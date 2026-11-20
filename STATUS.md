@@ -1,3 +1,23 @@
+# Importing editable garment OBJ files — 20 November 2026
+
+The studio, CLI and MCP import flat triangular garment meshes. Each traced
+panel retains its physical placement, editable boundary and cutouts. A sibling
+MTL supplies fabric names and diffuse colors.
+
+The two-slot pocket saved and reopened on macOS at 240 × 360 mm. Its native
+project, OBJ and MTL matched the release CLI byte for byte. On the earlier
+studio build a 20 mm cutout-corner edit changed the area from 0.0756 to
+0.0744 m² and survived Undo, Redo and reopening. The blue and terracotta
+Harbor panels each retained 0.5923 m². The official MCP SDK reproduced the
+CLI projects for Harbor and the pocket.
+[Workflow and measurements](parity/reports/WF-20261120-NATIVE-EDITABLE-OBJ-001.json) · [Supported geometry](spec/features/FILE-003-editable-obj-import.md).
+
+One previously returned Harbor panel failed reverse import. The maximum
+material-to-surface residual was 10.95 µm. The existing project and recovery
+file retained their original hashes. Draped garments, avatars, sewing
+reconstruction and full interchange verification remain open.
+[Failed reverse import](parity/reports/WF-20261120-EDITABLE-OBJ-REFERENCE-RETURN-001.json).
+
 # Exporting selected garment panels — 20 November 2026
 
 Select one or more patterns in Scene and choose **Export selected OBJ** in File

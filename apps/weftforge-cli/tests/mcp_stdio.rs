@@ -13,7 +13,8 @@ use std::{
 };
 use weftforge_core::{Command, Editor, Project, recovery_path};
 
-const MCP_TOOL_COUNT: usize = 14;
+const MCP_TOOL_COUNT: usize = 15;
+const MCP_COMMAND_COUNT: usize = 37;
 
 struct Server {
     child: Child,
@@ -220,7 +221,7 @@ fn check_cut_command(kind: &str, modern: bool) {
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 36);
+    assert_eq!(variants.len(), MCP_COMMAND_COUNT);
     let execute = tools
         .iter()
         .find(|tool| tool["name"] == "project_execute")
@@ -748,7 +749,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
             .as_array()
             .unwrap()
             .len(),
-        36
+        MCP_COMMAND_COUNT
     );
     success(&server.call("project_create", json!({"output":project_path})));
     let initial = server.call("project_inspect", json!({"path":project_path}));
@@ -946,7 +947,7 @@ fn sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constrai
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 36);
+    assert_eq!(variants.len(), MCP_COMMAND_COUNT);
     for name in [
         "add_sewing_group",
         "update_sewing_group",
@@ -1171,7 +1172,7 @@ fn physical_length_sewing_schema_and_cli_mcp_use_the_shared_candidate_transactio
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 36);
+    assert_eq!(variants.len(), MCP_COMMAND_COUNT);
     let variant = variants
         .iter()
         .find(|variant| variant["properties"]["type"]["const"] == "add_sewing_by_length")
@@ -2615,7 +2616,7 @@ fn authored_notches_share_closed_typed_commands_across_cli_and_both_mcp_profiles
             .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
             .as_array()
             .unwrap();
-        assert_eq!(variants.len(), 36);
+        assert_eq!(variants.len(), MCP_COMMAND_COUNT);
         for (name, required) in [
             ("add_notch", json!(["piece", "curve", "t", "length"])),
             ("update_notch", json!(["notch"])),
@@ -2763,7 +2764,7 @@ fn internal_annotations_share_closed_schema_cli_and_mcp_transactions_without_new
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 36);
+    assert_eq!(variants.len(), MCP_COMMAND_COUNT);
     for (name, required, id_field) in [
         (
             "add_internal_segment",
@@ -2966,7 +2967,7 @@ fn outline_offsets_share_closed_schemas_material_domain_and_atomic_files() {
     let variants = execute["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 36);
+    assert_eq!(variants.len(), MCP_COMMAND_COUNT);
     let matches = variants
         .iter()
         .filter(|variant| variant["properties"]["type"]["const"] == "offset_outline")
@@ -3146,7 +3147,7 @@ fn straight_holes_keep_closed_discovery_shared_ids_and_atomic_refusal() {
     assert_eq!(commands["minItems"], 1);
     assert_eq!(commands["maxItems"], 1024);
     let variants = commands["items"]["oneOf"].as_array().unwrap();
-    assert_eq!(variants.len(), 36);
+    assert_eq!(variants.len(), MCP_COMMAND_COUNT);
     for (name, required, id) in [
         ("add_hole", json!(["piece", "vertices"]), "piece"),
         ("remove_hole", json!(["hole"]), "hole"),
@@ -3529,4 +3530,135 @@ fn pattern_pdf_cli_and_mcp_write_the_same_tiled_document_and_preserve_paths() {
         json!({"input":oversized,"output":mcp_pdf,"paper":"a4"}),
     ));
     assert_eq!(fs::read(&mcp_pdf).unwrap(), preserved);
+}
+
+#[test]
+fn obj_import_cli_and_mcp_trace_a_scaled_panel_and_preserve_sources_on_failure() {
+    const OBJ: &str = "mtllib swatch.mtl\ng Panel\nv 0 0 0\nv 240 0 0\nv 240 360 0\nv 0 360 0\nvt 0 0\nvt 240 0\nvt 240 360\nvt 0 360\nusemtl Linen\nf 1/1 2/2 3/3\nf 1/1 3/3 4/4\n";
+    const MTL: &str = "newmtl Linen\nKd 0.8 0.3 0.1\n";
+    let directory = Directory::new();
+    let input = directory.path("input.weftforge");
+    let output = directory.path("imported.weftforge");
+    let obj = directory.path("Panel.obj");
+    let mtl = directory.path("swatch.mtl");
+    Project::default().save(&input).unwrap();
+    Project::default().save(&output).unwrap();
+    fs::write(&obj, OBJ).unwrap();
+    fs::write(&mtl, MTL).unwrap();
+
+    let binary = env!("CARGO_BIN_EXE_weftforge-cli");
+    let help = Process::new(binary).arg("--help").output().unwrap();
+    assert!(help.status.success());
+    assert!(
+        String::from_utf8(help.stdout)
+            .unwrap()
+            .contains("import-obj INPUT OUTPUT GARMENT.obj METRES_PER_UNIT")
+    );
+    let cli = |out: &Path, scale: &str| {
+        Process::new(binary)
+            .arg("import-obj")
+            .arg(&input)
+            .arg(out)
+            .arg(&obj)
+            .arg(scale)
+            .output()
+            .unwrap()
+    };
+    let result = cli(&output, "0.001");
+    assert!(
+        result.status.success(),
+        "{}",
+        String::from_utf8_lossy(&result.stderr)
+    );
+    let receipt: Value = serde_json::from_slice(&result.stdout).unwrap();
+    assert_eq!(receipt["revision"], 1);
+    assert_eq!(receipt["pieces_imported"], 1);
+    assert_eq!(receipt["holes_imported"], 0);
+    assert_eq!(receipt["materials_imported"], 1);
+    assert_eq!(receipt["metres_per_unit"], 0.001);
+    assert_eq!(receipt["material_library"], json!(mtl));
+    let imported = Project::load(&output).unwrap();
+    let bounds = imported.piece_bounds(imported.pieces[0].id).unwrap();
+    assert!((bounds[1][0] - bounds[0][0] - 0.24).abs() < 1e-12);
+    assert!((bounds[1][1] - bounds[0][1] - 0.36).abs() < 1e-12);
+
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let list = server.request("tools/list", json!({}));
+    let tools = list["result"]["tools"].as_array().unwrap();
+    let schema = |name| &tools.iter().find(|t| t["name"] == name).unwrap()["inputSchema"];
+    let file = schema("project_import_obj");
+    assert_eq!(
+        file["required"],
+        json!(["input", "output", "obj", "metres_per_unit"])
+    );
+    assert_eq!(file["additionalProperties"], false);
+    assert_eq!(file["properties"]["metres_per_unit"]["exclusiveMinimum"], 0);
+    let variants = schema("project_execute")["properties"]["commands"]["items"]["oneOf"]
+        .as_array()
+        .unwrap();
+    let inline_schema = &variants
+        .iter()
+        .find(|v| v["properties"]["type"]["const"] == "import_obj_patterns")
+        .unwrap()["properties"]["data"];
+    assert_eq!(inline_schema["required"], json!(["obj", "metres_per_unit"]));
+    assert_eq!(inline_schema["additionalProperties"], false);
+    assert_eq!(
+        inline_schema["properties"]["obj"]["maxLength"],
+        weftforge_core::MAX_OBJ_BYTES
+    );
+    assert_eq!(
+        inline_schema["properties"]["mtl"]["maxLength"],
+        weftforge_core::MAX_MTL_BYTES
+    );
+    let dest = directory.path("mcp.weftforge");
+    let args = json!({"input":input,"output":dest,"obj":obj,"metres_per_unit":0.001});
+    let result = server.call("project_import_obj", args.clone());
+    assert_eq!(success(&result)["material_library"], json!(mtl));
+    assert_eq!(fs::read(&dest).unwrap(), fs::read(&output).unwrap());
+    let command =
+        json!({"type":"import_obj_patterns","data":{"obj":OBJ,"mtl":MTL,"metres_per_unit":0.001}});
+    let batch = |commands| json!({"input":input,"output":dest,"commands":commands});
+    success(&server.call("project_execute", batch(json!([command]))));
+    let primary = fs::read(&dest).unwrap();
+    let recovery = fs::read(recovery_path(&dest)).unwrap();
+    assert_eq!(primary, fs::read(&output).unwrap());
+    tool_error(&server.call(
+        "project_execute",
+        batch(json!([command,{"type":"move_point","data":{"point":0,"position":[0,0]}}])),
+    ));
+    for invalid in [
+        json!({"input":input,"output":dest,"obj":obj}),
+        json!({"input":input,"output":dest,"obj":obj,"metres_per_unit":0}),
+        json!({"input":input,"output":dest,"obj":obj,"metres_per_unit":0.001,"mtl":"unexpected"}),
+    ] {
+        tool_error(&server.call("project_import_obj", invalid));
+    }
+    assert!(!cli(&dest, "NaN").status.success());
+    assert!(!cli(&mtl, "0.001").status.success());
+    assert!(!cli(&obj, "0.001").status.success());
+    assert_eq!(fs::read(&mtl).unwrap(), MTL.as_bytes());
+    assert_eq!(fs::read(&obj).unwrap(), OBJ.as_bytes());
+    #[cfg(unix)]
+    {
+        let alias = directory.path("protected.weftforge");
+        Project::default().save(&alias).unwrap();
+        std::os::unix::fs::symlink(&mtl, recovery_path(&alias)).unwrap();
+        assert!(!cli(&alias, "0.001").status.success());
+        assert!(
+            fs::symlink_metadata(recovery_path(&alias))
+                .unwrap()
+                .is_symlink()
+        );
+    }
+    fs::write(&mtl, "newmtl Other\nKd 0 0 0\n").unwrap();
+    tool_error(&server.call("project_import_obj", args.clone()));
+    fs::remove_file(&mtl).unwrap();
+    assert!(!cli(&dest, "0.001").status.success());
+    tool_error(&server.call("project_import_obj", args));
+    assert_eq!(fs::read(&dest).unwrap(), primary);
+    assert_eq!(fs::read(recovery_path(&dest)).unwrap(), recovery);
+    assert_eq!(fs::read(&obj).unwrap(), OBJ.as_bytes());
+    assert_eq!(Project::load(&input).unwrap(), Project::default());
+    server.finish();
 }

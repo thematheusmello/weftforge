@@ -1,0 +1,140 @@
+{
+  "gui_source_commit": "087123cfcd0ea48001716006bcb8f32ce8aa2fa8",
+  "gui_sha256": "06feefb73450f24deca6c4626d6e52f409624af234bd16079981d61484dc9f21",
+  "snapshot_file_sha256": {
+    "Harbor imported.weftforge": "d74a056c5244fa5d32a213702222bf6dc554a9a608e96057f78938e34d42df1e",
+    "Harbor native.obj": "45c58b52b6e5c0dc185a1c276f5c563d4529aaa0ab9a3aee8b1bc0315c9b07ce",
+    "Harbor workspace.png": "5ce00acbceabf4d2aaf3f2fb62fce66f1c605221bcf797cc77ce5271e6db14f1",
+    "Pocket after refusal.weftforge": "c83aba56b1f0c471cdecda60bcf662feaa374600eaafc0b9415158295263f9fe",
+    "Pocket edited corner.obj": "65e76e7f2e2fbed04d330c02609a361df8c4aaa7f85df191d28c9b63c3e56af7",
+    "Pocket edited corner.weftforge": "ec98f5138174f6e20ec1bf856eb9261d1d0caacb992488ffe345d4cb99781df9",
+    "Pocket edited redo.weftforge": "170ce68f60d97aa9667c2783f2cfb597835dcc77ab67b6e4a93398807f6ada75",
+    "Pocket edited workspace.png": "68e9948777acee350bb3d3a2dcdad3894d30872841989f900dc976cd6a5016d0",
+    "Pocket native.obj": "acf5b5f10f0e982613371467edd648e2e17806a0782a4b718afd859d65c3aea9",
+    "Pocket restored.weftforge": "c83aba56b1f0c471cdecda60bcf662feaa374600eaafc0b9415158295263f9fe",
+    "Pocket workspace.png": "5fd43145a4a7c5e9cfc8368de06e2494f956b03169bd9865533f9e245fd4a85f",
+    "weftforge-fabrics-5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c.mtl": "5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c",
+    "weftforge-fabrics-80c3709947a8404fb43d1e8084c55ef32af3c733a0d21b8afb971d9f7fc6ee95.mtl": "80c3709947a8404fb43d1e8084c55ef32af3c733a0d21b8afb971d9f7fc6ee95"
+  },
+  "input_sha256": {
+    "Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+    "draped.obj": "8cec02e8988d1a37d5797e63f6de77df509ca5a7a6604fb4c8ba91aefc8eb466",
+    "Pocket in millimetres.obj": "2c068bf5a34fb0cec320b36a74638780b021f59c9fd0ad4d5671c390b22b9a1b"
+  },
+  "pocket": {
+    "dimensions_m": [
+      0.24,
+      0.36
+    ],
+    "holes": 2,
+    "restored": {
+      "groups": [
+        "piece_3"
+      ],
+      "triangles": 64,
+      "diffuse_rgb": [
+        0.22,
+        0.55,
+        0.76
+      ],
+      "area_m2": 0.0756,
+      "boundary_m": 1.74
+    },
+    "edited": {
+      "groups": [
+        "piece_3"
+      ],
+      "triangles": 58,
+      "diffuse_rgb": [
+        0.22,
+        0.55,
+        0.76
+      ],
+      "area_m2": 0.0744,
+      "boundary_m": 1.7616552506059644
+    },
+    "retained_after_cancel_byte_equal": true,
+    "edited_and_redone_equal_except_revision": true
+  },
+  "harbor": [
+    {
+      "obj_group": "piece_2",
+      "assigned_mtl_name": "fabric_1_Cotton_approximation_uncalibrated",
+      "imported_piece_id": 4,
+      "placement": {
+        "translation": [
+          0.72,
+          -1.1102230246251565e-16,
+          0.24
+        ],
+        "rotation": [
+          0.0,
+          -0.0,
+          -5.551115123125784e-17
+        ]
+      },
+      "rgb": [
+        0.22,
+        0.55,
+        0.76
+      ],
+      "boundary_vertices": 66,
+      "xyz_boundary_vertex_bidirectional_max_m": 2.482534153247273e-16,
+      "area_m2": 0.5923000000000002,
+      "boundary_m": 4.083146221782355,
+      "triangles": 586
+    },
+    {
+      "obj_group": "piece_31",
+      "assigned_mtl_name": "fabric_68_Terracotta_linen",
+      "imported_piece_id": 33,
+      "placement": {
+        "translation": [
+          -0.72,
+          0.0,
+          -0.24
+        ],
+        "rotation": [
+          0.0,
+          -0.0,
+          -5.551115123125784e-17
+        ]
+      },
+      "rgb": [
+        0.78,
+        0.25,
+        0.12
+      ],
+      "boundary_vertices": 66,
+      "xyz_boundary_vertex_bidirectional_max_m": 1.249000902703301e-16,
+      "area_m2": 0.5923,
+      "boundary_m": 4.083146221782354,
+      "triangles": 586
+    }
+  ],
+  "cli": {
+    "release_cli_sha256": "09ae24693db1b235264d77ad37a402b41adcbee82345afe3be0b03883a1d523e",
+    "pocket_cli_revision_1_sha256": "38b871a3e9b433c033a275131c3e5dd99d95e9a4bbd85a5db85b8811450f7642",
+    "pocket_native_revision_3_identical_except_revision": true,
+    "pocket_export_byte_equal": true,
+    "edited_project_and_export_byte_equal": true,
+    "harbor_project_and_export_byte_equal": true,
+    "all_exported_mtl_byte_equal": true
+  },
+  "workspace_png_dimensions": {
+    "Harbor workspace.png": [
+      1640,
+      1000
+    ],
+    "Pocket edited workspace.png": [
+      1640,
+      1000
+    ],
+    "Pocket workspace.png": [
+      1640,
+      1000
+    ]
+  },
+  "combined_native_commit": "a79bd6db00fe70c7c187b263685f59c23564a36c",
+  "combined_native_project_matches_cli": true
+}

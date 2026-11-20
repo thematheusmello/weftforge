@@ -184,7 +184,7 @@ impl Placement {
         result
     }
 
-    fn from_rotation_basis(u: [f64; 3], v: [f64; 3]) -> Self {
+    pub(crate) fn from_rotation_basis(u: [f64; 3], v: [f64; 3]) -> Self {
         let w: [f64; 3] = std::array::from_fn(|i| {
             u[(i + 1) % 3] * v[(i + 2) % 3] - u[(i + 2) % 3] * v[(i + 1) % 3]
         });
@@ -1174,6 +1174,48 @@ impl Project {
     ) -> Result<()> {
         cut_work.charge_request()?;
         match command {
+            Command::ImportObjPatterns {
+                obj,
+                mtl,
+                metres_per_unit,
+            } => {
+                let imported = crate::ObjPatternImport::from_bytes(
+                    obj.as_bytes(),
+                    mtl.as_deref().map(str::as_bytes),
+                    metres_per_unit,
+                )?;
+                let mut material_ids = BTreeMap::new();
+                for (name, color) in imported.materials {
+                    self.apply(
+                        Command::AddMaterial {
+                            material: Material {
+                                name: name.clone(),
+                                color,
+                                ..Material::default()
+                            },
+                        },
+                        cut_work,
+                    )?;
+                    material_ids.insert(
+                        name,
+                        self.materials
+                            .last()
+                            .expect("AddMaterial appended a material")
+                            .id,
+                    );
+                }
+                for (pattern, placement, fabric) in imported.patterns {
+                    self.import_patterns(vec![pattern], cut_work)?;
+                    let piece = self
+                        .pieces
+                        .last_mut()
+                        .expect("import_patterns appended a piece");
+                    piece.placement = placement;
+                    if let Some(name) = fabric {
+                        piece.material = material_ids[&name];
+                    }
+                }
+            }
             Command::ImportSvgPatterns { svg } => {
                 let imported = crate::SvgPatternImport::from_bytes(svg.as_bytes())?;
                 self.import_patterns(imported.patterns, cut_work)?;
@@ -2277,6 +2319,11 @@ pub(crate) fn validate_coordinates<const N: usize>(point: &[f64; N]) -> Result<(
     deny_unknown_fields
 )]
 pub enum Command {
+    ImportObjPatterns {
+        obj: String,
+        mtl: Option<String>,
+        metres_per_unit: f64,
+    },
     ImportSvgPatterns {
         svg: String,
     },
