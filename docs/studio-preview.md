@@ -24,6 +24,14 @@ front. [Original shirt](../parity/reports/artifacts/native-hem-regeneration-2026
 
 The earlier capture shows the two blue lines from the previous face renderer. [Earlier native capture](../parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/draped.png).
 
+## Arrange two patterns together
+
+The front and back panels moved together, then turned around their shared pivot.
+Both blue Scene rows identify the members. Harbor front supplies the local axis.
+[Saved transform measurements](../parity/reports/WF-20261120-NATIVE-GROUP-ARRANGEMENT-001.json).
+
+![Two selected Harbor patterns after a group turn around the active front's tilted Local Z axis](../parity/reports/artifacts/native-group-arrangement-20261120/group-after-turn.png)
+
 ## World and local rotation in 3D
 
 The gold dial turns Harbor front around its selected axis. Here **Local Z**

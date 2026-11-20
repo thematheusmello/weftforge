@@ -122,6 +122,11 @@ impl Placement {
 
     /// Rotate in radians around a unit world-space axis through a pattern-space pivot.
     pub fn rotated_about(self, pivot: [f64; 2], unit_axis: [f64; 3], angle: f64) -> Self {
+        self.rotated_about_world(self.transform(pivot), unit_axis, angle)
+    }
+
+    /// Rotate the entire placed plane about a fixed point and unit axis in world space.
+    pub fn rotated_about_world(self, pivot: [f64; 3], unit_axis: [f64; 3], angle: f64) -> Self {
         if angle == 0. {
             return self;
         }
@@ -131,17 +136,16 @@ impl Placement {
         };
         let (sin, cos) = angle.sin_cos();
         let [a, b, c] = unit_axis;
-        let [u, v] = [[1., 0.], [0., 1.]].map(|point| {
-            let direction = basis.transform(point);
+        let rotate = |direction: [f64; 3]| {
             let [x, y, z] = direction;
             let cross = [b * z - c * y, c * x - a * z, a * y - b * x];
             let along = (a * x + b * y + c * z) * (1. - cos);
             std::array::from_fn(|i| cos * direction[i] + sin * cross[i] + along * unit_axis[i])
-        });
+        };
+        let [u, v] = [[1., 0.], [0., 1.]].map(|point| rotate(basis.transform(point)));
         let mut result = Self::from_rotation_basis(u, v);
-        let old_pivot = self.transform(pivot);
-        let new_pivot = result.transform(pivot);
-        result.translation = std::array::from_fn(|i| old_pivot[i] - new_pivot[i]);
+        let offset = rotate(std::array::from_fn(|i| self.translation[i] - pivot[i]));
+        result.translation = std::array::from_fn(|i| pivot[i] + offset[i]);
         result
     }
 

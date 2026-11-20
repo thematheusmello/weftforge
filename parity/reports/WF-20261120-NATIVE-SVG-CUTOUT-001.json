@@ -122,5 +122,6 @@
     "spec/features/FILE-005-svg-pattern-import.md",
     "spec/features/FILE-005-svg-cutout-import.md"
   ],
-  "freshness": "current"
+  "freshness": "stale",
+  "freshness_reason": "The native SVG cutout run used its recorded release build. Multi-pattern scene selection and group placement subsequently changed the studio and core source within its registered scope. Its saved projects and meshes retain their measured result."
 }
