@@ -1,0 +1,53 @@
+{
+  "source_commit": "afdea5999423dd5c9952f20ff5e3d5f26c169751",
+  "source_tree": "1ba334d8a5b28782f291d78a20d2a460a1098c63",
+  "studio_sha256": "71e5080ef9afa39344b01c0e4138af1ba6b066de224636472417e40bd1362878",
+  "studio_source_sha256": "017f4896a3c5e10ab97db867e7f607716a51f9811474989ff7f8f9969fbf8f78",
+  "build_provenance": "The arm64 debug executable was built offline in the owning checkout with the feature patch applied before its source commit. The committed studio source, Cargo.lock, core placement source and feature contract match the hashes recorded at build. The named native bundle and build target have identical executable bytes.",
+  "platform": "Native Metal studio, Apple Silicon macOS",
+  "original_fixture": "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge",
+  "original_fixture_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+  "copied_input_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+  "actions": [
+    "Launch the named native app with a disposable copy of the original Harbor project at revision 23. Frame the 2D patterns, select Harbor front in Scene, choose Front view and enable Rotate pattern.",
+    "Choose World X. Drag the visible dial from native window point (1053, 513) to (1044, 491). The first attempt followed by Save stayed at revision 23. Repeat the same drag, observe revision 24 and Save. Freeze world-x.weftforge.",
+    "Choose Local Z on the rotated front. Drag the same right dial knob to (1023, 483), reaching revision 25. Save and freeze local-z.weftforge.",
+    "Undo and Save revision 26. Redo and Save revision 27. Freeze both documents.",
+    "Export workspace.png from File. The studio reported a 1640 \u00d7 1000 pixel workspace PNG. Open the byte-exact saved redo.weftforge copy through the native File dialog. Select Harbor front and inspect all six Arrangement fields."
+  ],
+  "first_world_x_drag_revision": 23,
+  "first_world_x_drag_commit": false,
+  "world_x_repeat_commit_revision": 24,
+  "local_z_commit_revision": 25,
+  "undo_revision": 26,
+  "redo_revision": 27,
+  "reopened_file": "redo.weftforge",
+  "reopened_sha256": "b19d4859fe32bb3e301878cf71377e340335ac6a1e7e1c60c53591f9ddd3df6d",
+  "reopened_revision": 27,
+  "reopened_selected": "Harbor front \u00b7 #2",
+  "reopened_rest_mesh_vertices": 654,
+  "reopened_seams": 8,
+  "reopened_pieces": 2,
+  "reopened_translation_m_display": [
+    1.2836,
+    1.7752,
+    0.7537
+  ],
+  "reopened_rotation_radians_display": [
+    0.0052,
+    -0.8038,
+    1.5635
+  ],
+  "limitations": [
+    "The native case exercised World X followed by Local Z. Other axis combinations belong to implementation test coverage.",
+    "The first world-axis drag produced no revision. Its cause is undetermined.",
+    "Native results describe WeftForge behavior. Reference equivalence remains unverified."
+  ],
+  "recorded_utc": "2026-11-20T15:23:00.655462+00:00",
+  "before_first_world_x_drag": {
+    "action": "Clicked the World X chooser at native window point (848, 185). The drag and Command-S followed in the same CUA call. The resulting workspace showed World X selected, revision 23 and a successful save.",
+    "preceded_by_native_file_panel": false,
+    "foreground_ownership_sampled": false,
+    "cause": "Undetermined."
+  }
+}

@@ -1,5 +1,15 @@
 # Native studio preview
 
+## World and local rotation in 3D
+
+The gold dial turns Harbor front around its selected axis. Here **Local Z**
+follows the front’s tilted normal after a 46.052° turn around **World X**.
+The flat patterns stay editable in the 2D view. Undo and Redo restored both
+arrangements, and the second turn reopened at revision 27.
+[Native dial check](../parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json).
+
+![Harbor front selected with the gold rotation dial and Local Z active](../parity/reports/artifacts/native-axis-dial-20261120/workspace.png)
+
 ## Rotate a pattern in the 3D viewport
 
 Harbor front turned 89.875° around its center in Front view. The editable

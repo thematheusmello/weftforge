@@ -6,9 +6,18 @@ pattern-local axis, then drag the rim. A quarter turn of the dial turns the
 piece through the same angle, including when the chosen axis is edge-on.
 [Rotation axes](spec/features/FIT-001-viewport-rotation-axes.md).
 
-Three focused tests passed, covering the existing move and view-axis tools,
-world and local rotation, and a dial drag that starts outside the mesh.
-Native world/local editing, saved placement and platform checks are pending.
+Harbor front turned 46.052° around World X and then 89.710° around its
+local Z axis on Apple Silicon. The second turn followed the tilted pattern
+normal. Both turns held the pivot fixed within 10⁻¹² m. Undo restored the
+first turn, Redo restored the second, and revision 27 reopened with all six
+placement values. The other pattern and all eight seams kept their authored
+values. The studio and CLI built, and formatting, 516 workspace tests and
+strict Clippy passed. [Native dial report](parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json) · [Studio preview](docs/studio-preview.md).
+
+The first dial drag after choosing World X kept revision 23. Repeating it
+committed revision 24. Investigate that first input and exercise the other
+axis choices in the native studio. Avatar arrangement and reference
+comparison remain open.
 
 # Rotate a pattern in the 3D view — 20 November 2026
 

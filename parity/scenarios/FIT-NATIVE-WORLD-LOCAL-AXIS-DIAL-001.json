@@ -1,0 +1,13 @@
+{
+  "id": "FIT-NATIVE-WORLD-LOCAL-AXIS-DIAL-001",
+  "status": "implementation_only",
+  "initial_conditions": "Harbor revision 23 contains two editable patterns and eight seams. Select Harbor front in Front view and enable Rotate pattern.",
+  "actions": [
+    "Launch the named native app with a disposable copy of the original Harbor project at revision 23. Frame the 2D patterns, select Harbor front in Scene, choose Front view and enable Rotate pattern.",
+    "Choose World X. Drag the visible dial from native window point (1053, 513) to (1044, 491). The first attempt followed by Save stayed at revision 23. Repeat the same drag, observe revision 24 and Save. Freeze world-x.weftforge.",
+    "Choose Local Z on the rotated front. Drag the same right dial knob to (1023, 483), reaching revision 25. Save and freeze local-z.weftforge.",
+    "Undo and Save revision 26. Redo and Save revision 27. Freeze both documents.",
+    "Export workspace.png from File. The studio reported a 1640 \u00d7 1000 pixel workspace PNG. Open the byte-exact saved redo.weftforge copy through the native File dialog. Select Harbor front and inspect all six Arrangement fields."
+  ],
+  "expected_outcomes": "World X rotates the front about the fixed pivot. Local Z uses the resulting pattern normal. Each accepted drag adds one revision, Undo restores the first turn and Redo restores the second. The complete editable document and the six placement fields survive saving and reopening."
+}

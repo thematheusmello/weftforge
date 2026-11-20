@@ -42,7 +42,8 @@
         "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json",
         "spec/features/UI-001-frame-garment.md",
         "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json",
-        "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json"
+        "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json",
+        "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json"
       ],
       "scenarios": [
         {
@@ -3910,6 +3911,25 @@
             "parity/reports/artifacts/native-viewport-rotation-20261120/undo.weftforge": "3a107e5e72dac5af73cf7db810d79e72a8b9110b67c8e9714fb2b85efa92316b"
           },
           "path": "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001",
+          "commit": "afdea5999423dd5c9952f20ff5e3d5f26c169751",
+          "timestamp": "2026-11-20T15:23:00.655462Z",
+          "platform": "Apple Silicon native Metal studio with independent editable-project, axis, pivot and history checks",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-axis-dial-20261120/NATIVE-AXIS-DIAL.json": "842f3573fc0bd76bcf82094abcdcc5d84797a6c62f4122addc0590c790791fb2",
+            "parity/reports/artifacts/native-axis-dial-20261120/POST-CASE-CLEANUP.json": "8a740c88d567a869e26cb3d099fc92ad94e09c2aa924a169a6850bd644d0f547",
+            "parity/reports/artifacts/native-axis-dial-20261120/RESULT.json": "76af7ebaf9b38c3fb71f21857656cc1e3417fd8289337d16654e0710479c503e",
+            "parity/reports/artifacts/native-axis-dial-20261120/check_axis_dial.py": "75690b0fc4a0be710adc5597ca0c1b16da2d3abe7eb93f6cfc6413bab61e4d4b",
+            "parity/reports/artifacts/native-axis-dial-20261120/local-z.weftforge": "a25f71d15c9ddf014764e37a235d30dedfa2f3631a6651e6e29ad51fa1e8f85e",
+            "parity/reports/artifacts/native-axis-dial-20261120/redo.weftforge": "b19d4859fe32bb3e301878cf71377e340335ac6a1e7e1c60c53591f9ddd3df6d",
+            "parity/reports/artifacts/native-axis-dial-20261120/undo.weftforge": "7f3315f034f47f3a8c8d44bb41793d81adef3acfbd757c0716bea1cd8320f43f",
+            "parity/reports/artifacts/native-axis-dial-20261120/workspace.png": "f09dce3866a03cb117bdd71038da6966f0151cf2eb433e8cd5a621e7c7660fd5",
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json"
         }
       ],
       "known_gaps": [
@@ -3933,7 +3953,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b",
         "spec/features/UI-001-standard-viewpoints.md": "904ae35c58a9ecf1e3da3c1a25098a1d1d255cd8776ab630d62991737e4f720a",
@@ -3966,7 +3986,8 @@
         "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json",
         "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json",
         "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json",
-        "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json"
+        "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json",
+        "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json"
       ],
       "scenarios": [
         {
@@ -5140,6 +5161,25 @@
             "parity/reports/artifacts/native-viewport-rotation-20261120/undo.weftforge": "3a107e5e72dac5af73cf7db810d79e72a8b9110b67c8e9714fb2b85efa92316b"
           },
           "path": "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001",
+          "commit": "afdea5999423dd5c9952f20ff5e3d5f26c169751",
+          "timestamp": "2026-11-20T15:23:00.655462Z",
+          "platform": "Apple Silicon native Metal studio with independent editable-project, axis, pivot and history checks",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-axis-dial-20261120/NATIVE-AXIS-DIAL.json": "842f3573fc0bd76bcf82094abcdcc5d84797a6c62f4122addc0590c790791fb2",
+            "parity/reports/artifacts/native-axis-dial-20261120/POST-CASE-CLEANUP.json": "8a740c88d567a869e26cb3d099fc92ad94e09c2aa924a169a6850bd644d0f547",
+            "parity/reports/artifacts/native-axis-dial-20261120/RESULT.json": "76af7ebaf9b38c3fb71f21857656cc1e3417fd8289337d16654e0710479c503e",
+            "parity/reports/artifacts/native-axis-dial-20261120/check_axis_dial.py": "75690b0fc4a0be710adc5597ca0c1b16da2d3abe7eb93f6cfc6413bab61e4d4b",
+            "parity/reports/artifacts/native-axis-dial-20261120/local-z.weftforge": "a25f71d15c9ddf014764e37a235d30dedfa2f3631a6651e6e29ad51fa1e8f85e",
+            "parity/reports/artifacts/native-axis-dial-20261120/redo.weftforge": "b19d4859fe32bb3e301878cf71377e340335ac6a1e7e1c60c53591f9ddd3df6d",
+            "parity/reports/artifacts/native-axis-dial-20261120/undo.weftforge": "7f3315f034f47f3a8c8d44bb41793d81adef3acfbd757c0716bea1cd8320f43f",
+            "parity/reports/artifacts/native-axis-dial-20261120/workspace.png": "f09dce3866a03cb117bdd71038da6966f0151cf2eb433e8cd5a621e7c7660fd5",
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json"
         }
       ],
       "known_gaps": [
@@ -5156,7 +5196,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "UI-003",
@@ -6431,7 +6471,8 @@
         "parity/reports/WF-20261119-NATIVE-PATTERN-GRAINLINE-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-JPEG-001.json",
         "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json",
-        "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json"
+        "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json",
+        "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json"
       ],
       "scenarios": [
         {
@@ -11757,6 +11798,25 @@
             "parity/reports/artifacts/native-viewport-rotation-20261120/undo.weftforge": "3a107e5e72dac5af73cf7db810d79e72a8b9110b67c8e9714fb2b85efa92316b"
           },
           "path": "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001",
+          "commit": "afdea5999423dd5c9952f20ff5e3d5f26c169751",
+          "timestamp": "2026-11-20T15:23:00.655462Z",
+          "platform": "Apple Silicon native Metal studio with independent editable-project, axis, pivot and history checks",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-axis-dial-20261120/NATIVE-AXIS-DIAL.json": "842f3573fc0bd76bcf82094abcdcc5d84797a6c62f4122addc0590c790791fb2",
+            "parity/reports/artifacts/native-axis-dial-20261120/POST-CASE-CLEANUP.json": "8a740c88d567a869e26cb3d099fc92ad94e09c2aa924a169a6850bd644d0f547",
+            "parity/reports/artifacts/native-axis-dial-20261120/RESULT.json": "76af7ebaf9b38c3fb71f21857656cc1e3417fd8289337d16654e0710479c503e",
+            "parity/reports/artifacts/native-axis-dial-20261120/check_axis_dial.py": "75690b0fc4a0be710adc5597ca0c1b16da2d3abe7eb93f6cfc6413bab61e4d4b",
+            "parity/reports/artifacts/native-axis-dial-20261120/local-z.weftforge": "a25f71d15c9ddf014764e37a235d30dedfa2f3631a6651e6e29ad51fa1e8f85e",
+            "parity/reports/artifacts/native-axis-dial-20261120/redo.weftforge": "b19d4859fe32bb3e301878cf71377e340335ac6a1e7e1c60c53591f9ddd3df6d",
+            "parity/reports/artifacts/native-axis-dial-20261120/undo.weftforge": "7f3315f034f47f3a8c8d44bb41793d81adef3acfbd757c0716bea1cd8320f43f",
+            "parity/reports/artifacts/native-axis-dial-20261120/workspace.png": "f09dce3866a03cb117bdd71038da6966f0151cf2eb433e8cd5a621e7c7660fd5",
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json"
         }
       ],
       "known_gaps": [
@@ -11780,7 +11840,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/PAT-004-piece-rigid-transform.md": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
         "spec/features/PAT-004-native-transform-selection.md": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
@@ -34425,7 +34485,8 @@
         "spec/features/FIT-001-native-placement.md",
         "spec/features/FIT-001-viewport-rotation.md",
         "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json",
-        "spec/features/FIT-001-viewport-rotation-axes.md"
+        "spec/features/FIT-001-viewport-rotation-axes.md",
+        "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json"
       ],
       "scenarios": [
         {
@@ -34464,6 +34525,15 @@
           },
           "initial_conditions": "Harbor revision 23 contains two editable patterns and eight seams. Choose the front pattern in Front view and enable Rotate pattern.",
           "expected_outcomes": "A committed drag advances one revision, holds the 3D center fixed and preserves the authored outlines and seams. Undo and Redo restore both states. The saved rotation reopens in the native studio."
+        },
+        {
+          "id": "FIT-NATIVE-WORLD-LOCAL-AXIS-DIAL-001",
+          "path": "parity/scenarios/FIT-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
+          },
+          "initial_conditions": "Harbor revision 23 contains two editable patterns and eight seams. Select Harbor front in Front view and enable Rotate pattern.",
+          "expected_outcomes": "World X rotates the front about the fixed pivot. Local Z uses the resulting pattern normal. Each accepted drag adds one revision, Undo restores the first turn and Redo restores the second. The complete editable document and the six placement fields survive saving and reopening."
         }
       ],
       "comparison_criteria": {
@@ -34744,19 +34814,38 @@
             "parity/reports/artifacts/native-viewport-rotation-20261120/undo.weftforge": "3a107e5e72dac5af73cf7db810d79e72a8b9110b67c8e9714fb2b85efa92316b"
           },
           "path": "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001",
+          "commit": "afdea5999423dd5c9952f20ff5e3d5f26c169751",
+          "timestamp": "2026-11-20T15:23:00.655462Z",
+          "platform": "Apple Silicon native Metal studio with independent editable-project, axis, pivot and history checks",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-axis-dial-20261120/NATIVE-AXIS-DIAL.json": "842f3573fc0bd76bcf82094abcdcc5d84797a6c62f4122addc0590c790791fb2",
+            "parity/reports/artifacts/native-axis-dial-20261120/POST-CASE-CLEANUP.json": "8a740c88d567a869e26cb3d099fc92ad94e09c2aa924a169a6850bd644d0f547",
+            "parity/reports/artifacts/native-axis-dial-20261120/RESULT.json": "76af7ebaf9b38c3fb71f21857656cc1e3417fd8289337d16654e0710479c503e",
+            "parity/reports/artifacts/native-axis-dial-20261120/check_axis_dial.py": "75690b0fc4a0be710adc5597ca0c1b16da2d3abe7eb93f6cfc6413bab61e4d4b",
+            "parity/reports/artifacts/native-axis-dial-20261120/local-z.weftforge": "a25f71d15c9ddf014764e37a235d30dedfa2f3631a6651e6e29ad51fa1e8f85e",
+            "parity/reports/artifacts/native-axis-dial-20261120/redo.weftforge": "b19d4859fe32bb3e301878cf71377e340335ac6a1e7e1c60c53591f9ddd3df6d",
+            "parity/reports/artifacts/native-axis-dial-20261120/undo.weftforge": "7f3315f034f47f3a8c8d44bb41793d81adef3acfbd757c0716bea1cd8320f43f",
+            "parity/reports/artifacts/native-axis-dial-20261120/workspace.png": "f09dce3866a03cb117bdd71038da6966f0151cf2eb433e8cd5a621e7c7660fd5",
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity.",
         "Native view-plane translation of one rest pattern has a bounded checked workflow. Rotation handles, arrangement aids, avatar assets, and the complete reference behavior remain open.",
-        "The native Front view rotated one pattern around its bounds center. The first drag following an OS save panel kept the current revision. Local and world axis handles, avatar arrangement and reference runtime comparisons remain open."
+        "The native Front view rotated one pattern around its bounds center. The first drag following an OS save panel kept the current revision. A later native run exercised World X followed by Local Z. The first dial drag after World X selection kept revision 23, then the repeated drag committed. The cause, remaining native axis combinations, avatar arrangement and reference comparison remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/FIT-001-native-placement.md": "0f955e8b102d925a0196b774d1a419a9bf849ea606989f78c6b218383dbe6a2c",
         "spec/features/FIT-001-viewport-rotation.md": "ea2b9a4dd8924cb7f1c6cb056dfcaa2a11843b28e9833f8b1030f6d08c98b3d0",
