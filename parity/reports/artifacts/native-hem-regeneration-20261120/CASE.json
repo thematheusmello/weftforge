@@ -1,0 +1,13 @@
+{
+  "original": "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge",
+  "original_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+  "source": "afdea5999423dd5c9952f20ff5e3d5f26c169751",
+  "studio_sha256": "71e5080ef9afa39344b01c0e4138af1ba6b066de224636472417e40bd1362878",
+  "same_product_code_at_main": "3074da243d22d0ad78397c4f3455a78dba996627",
+  "frozen_utc": "2026-11-20T15:40:35.209128+00:00",
+  "native_case": "Extend front hem height from .64 m to .69 m by lowering points 3 and 4 equally, retaining original horizontal hem, other 26 authored points, placements and all eight seam records. Use only the native studio to edit, save, reopen, resimulate and export. Keep deviations visible.",
+  "engineering_checks": [
+    "target both V=.91 m within .005 m; U unchanged within .005 m; restored rest points within 2e-6 m in OBJ and material UV; same shared point IDs and curve ends, all eight seams and other authored properties exact",
+    "step both original and edited full garments using the same native one-step control; after reopen expect the edited native simulated export to retain edited rest coordinates via OBJ UV and have at least one displaced world position >1e-6 m vs edited rest. Full draped fit is assessed separately."
+  ]
+}

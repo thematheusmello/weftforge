@@ -1,5 +1,14 @@
 # Native studio preview
 
+## A longer front hem after draping
+
+Harbor’s front panel is 50 mm longer in the pattern. After assembly and
+gravity drape, its hem corners hang approximately 18.5 mm lower than on
+the original shirt. The inspector shows 16.10% peak strain on the edited
+front. [Original shirt](../parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/draped.png) · [Native measurements](../parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json).
+
+![Draped Harbor shirt with a longer front panel and live simulation measurements](../parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/draped.png)
+
 ## World and local rotation in 3D
 
 The gold dial turns Harbor front around its selected axis. Here **Local Z**

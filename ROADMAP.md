@@ -83,6 +83,10 @@ Discovery is incomplete, so these 56 contracts are not a final product denominat
    topology and UVs. Finish complete fit and export a fitted mesh. Repeat the
    integrated empty-document journey on one current build and compare the
    recorded reference case.
+   A native 50 mm front hem edit survived reopening and reached both the
+   assembled and draped garment. The longer front exceeded the strain limit at
+   both phase endpoints. Each complete trajectory first exceeded the strain limit at
+   state 28. [Dimension edit](parity/reports/WF-20261120-HARBOR-HEM-REGENERATION-001.json) · [Drape comparison](parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json).
    [Native Fabric case](parity/reports/WF-20261118-HARBOR-NATIVE-FABRIC-001.json).
    [Native simulated OBJ case](parity/reports/WF-20261118-HARBOR-NATIVE-SIMULATED-OBJ-001.json).
    The current studio also exports the rest and stepped Harbor surfaces as

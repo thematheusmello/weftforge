@@ -1,0 +1,99 @@
+{
+  "front_rest_hem_height_change_m": -0.04999999999999993,
+  "left_right_hem_world_changes_by_phase": {
+    "assembled": [
+      {
+        "y_change_m": -0.0184570259690231,
+        "distance_m": 0.022952553852741902
+      },
+      {
+        "y_change_m": -0.018207932159684415,
+        "distance_m": 0.02300883784519374
+      }
+    ],
+    "draped": [
+      {
+        "y_change_m": -0.018649148037051533,
+        "distance_m": 0.02311956197797146
+      },
+      {
+        "y_change_m": -0.018451316315654,
+        "distance_m": 0.022954591398209392
+      }
+    ]
+  },
+  "phase_endpoint_metrics": {
+    "original_assembled": {
+      "status": "passed",
+      "vertices": 654,
+      "triangles": 1172,
+      "max_material_axis_strain": 0.1386967952353133,
+      "max_seam_gap_m": 0.00048150328840939233,
+      "max_avatar_ground_thickness_error_m": 0.0,
+      "criteria": {
+        "strain_below": 0.15,
+        "seam_gap_below_m": 0.005,
+        "avatar_ground_thickness_error_below_m": 0.002
+      }
+    },
+    "original_draped": {
+      "status": "passed",
+      "vertices": 654,
+      "triangles": 1172,
+      "max_material_axis_strain": 0.14264024616985127,
+      "max_seam_gap_m": 0.0004025962883816015,
+      "max_avatar_ground_thickness_error_m": 0.0,
+      "criteria": {
+        "strain_below": 0.15,
+        "seam_gap_below_m": 0.005,
+        "avatar_ground_thickness_error_below_m": 0.002
+      }
+    },
+    "extended_assembled": {
+      "status": "failed",
+      "vertices": 644,
+      "triangles": 1150,
+      "max_material_axis_strain": 0.16170263278339325,
+      "max_seam_gap_m": 0.0005695210284453712,
+      "max_avatar_ground_thickness_error_m": 0.0,
+      "criteria": {
+        "strain_below": 0.15,
+        "seam_gap_below_m": 0.005,
+        "avatar_ground_thickness_error_below_m": 0.002
+      }
+    },
+    "extended_draped": {
+      "status": "failed",
+      "vertices": 644,
+      "triangles": 1150,
+      "max_material_axis_strain": 0.16096423998543008,
+      "max_seam_gap_m": 0.000645319141958508,
+      "max_avatar_ground_thickness_error_m": 0.0,
+      "criteria": {
+        "strain_below": 0.15,
+        "seam_gap_below_m": 0.005,
+        "avatar_ground_thickness_error_below_m": 0.002
+      }
+    }
+  },
+  "complete_trajectory_checks": {
+    "original": {
+      "checked_states": 181,
+      "first_failed_state": 28,
+      "first_failed_time_s": 0.4666666666666666,
+      "triangle": 6,
+      "piece": "Harbor front",
+      "peak_strain_at_first_failure": 0.15556217779403236,
+      "status": "failed"
+    },
+    "extended": {
+      "checked_states": 181,
+      "first_failed_state": 28,
+      "first_failed_time_s": 0.4666666666666666,
+      "triangle": 6,
+      "piece": "Harbor front",
+      "peak_strain_at_first_failure": 0.163319599695688,
+      "status": "failed"
+    }
+  }
+}

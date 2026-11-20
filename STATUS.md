@@ -1,3 +1,22 @@
+# Editable hem length through native drape — 20 November 2026
+
+Lowering both front hem vertices by 50 mm increased the Harbor front from
+640 to 690 mm. All eight seam records and the other 26 authored points survived.
+The front side seams gained 49.91 mm while their paired back edges kept their
+length. After reopening, one solver step put each hem corner 49.99 mm below its
+counterpart on the original shirt. A second edit saved at revision 26.
+[Native edit and regeneration](parity/reports/WF-20261120-HARBOR-HEM-REGENERATION-001.json).
+
+Both shirts completed 60 assembly steps and 120 gravity drape steps. The
+longer front hung 18.65 mm lower at the left corner and 18.45 mm lower at
+the right. Original peak material strain was 14.26% at the final endpoint.
+The edited garment reached 16.10%, above the 15% limit. Its largest measured
+seam gap was 0.65 mm. Separate checks of all 181 states found the first
+excess at state 28 on both shirts. Front warp reached 15.56% on the original
+and 16.33% on the edit at that state. Trace front triangle 6 through seam
+closure and contact at 0.467 s.
+[Phase endpoint measurements](parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json) · [Draped shirt](parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/draped.png).
+
 # Captured 3D placement release — 20 November 2026
 
 A pattern now accepts the release when macOS delivers its first movement
