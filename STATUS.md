@@ -1,3 +1,17 @@
+# Two editable cutouts in one pattern — 20 November 2026
+
+A straight-sided pattern can now have several disjoint openings. The native
+Add hole tool selects the new opening and Remove hole fills the selected one.
+The release CLI and MCP imported two rectangular slots in a 240 × 360 mm
+pocket. Both exported the same native file, SVG, OBJ and MTL. Reimporting the
+SVG reproduced the editable document byte for byte. Both adapters refused an
+overlapping pattern and preserved the existing primary and recovery files.
+
+The pocket mesh had 47 vertices, 64 triangles, three boundary loops and
+0.0756 m² of material. Apple Model I/O measured 0.0756000019 m².
+Curved cutouts, nested islands and cutting across an opening remain open.
+[Replay the case](parity/scenarios/PAT-MULTIPLE-CUTOUTS-001.json) · [Source and artifact identities](parity/reports/WF-20261120-MULTIPLE-CUTOUTS-001.json).
+
 # Fabric colors in OBJ exports — 20 November 2026
 
 OBJ exports now write a sibling MTL file with the diffuse colors of the

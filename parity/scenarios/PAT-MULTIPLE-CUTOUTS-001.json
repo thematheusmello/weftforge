@@ -1,0 +1,16 @@
+{
+  "id": "PAT-MULTIPLE-CUTOUTS-001",
+  "status": "implementation_only",
+  "initial_conditions": "Start from an empty project and an original 240 by 360 mm pocket outline with two disjoint rectangular slots. One SVG places an opening before the exterior subpath. A second fixture has overlapping slots.",
+  "actions": [
+    "Import the two-slot pattern through the release CLI and stdio MCP. Export OBJ with its sibling material library and an editable SVG through both.",
+    "Reimport the SVG to a fresh document. Compare the two adapter outputs and the original editable file.",
+    "Try the overlapping SVG with a pre-existing destination and recovery sentinel through both adapters. Compare all retained inputs and outputs.",
+    "Measure areas and boundary perimeters using the standalone OBJ reader and load the same file through Apple Model I/O."
+  ],
+  "expected_outcomes": "Both adapters retain two openings in a single editable piece and produce identical native, OBJ, MTL and SVG files. The reimported drawing reproduces the editable project. Overlap refusal preserves the existing primary and recovery files. The material area is 0.0756 m\u00b2 and the OBJ has one exterior and two inner boundary loops.",
+  "replay": [
+    "Run check_roundtrip.py --cli PATH_TO_WEFTFORGE_CLI in the accompanying artifact directory.",
+    "On macOS, run swift check_modelio.swift Pocket.obj in the same directory."
+  ]
+}
