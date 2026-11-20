@@ -24,6 +24,12 @@ pub use svg::{MAX_SVG_BYTES, SVG_IMPORT_SCOPE, SvgPatternImport};
 #[derive(Debug, Clone)]
 pub(crate) struct ImportedPattern {
     pub name: String,
+    pub exterior: ImportedContour,
+    pub hole: Option<Vec<[f64; 2]>>,
+}
+
+#[derive(Debug, Clone, Default)]
+pub(crate) struct ImportedContour {
     pub vertices: Vec<[f64; 2]>,
     pub controls: Vec<Option<[[f64; 2]; 2]>>,
 }
@@ -471,7 +477,7 @@ impl Project {
         let width = (max[0] - min[0]) * 1000.0;
         let height = (max[1] - min[1]) * 1000.0;
         let mut svg = format!(
-            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width}mm\" height=\"{height}mm\" viewBox=\"{} {} {width} {height}\">\n<title>WeftForge editable pattern export</title>\n<desc>Scale: one SVG user unit is one millimetre. Pattern V points upward; SVG Y is inverted. Each piece uses one evenodd path with closed exterior and hole subpaths; internal lines are omitted. Authored notches are physical-scale perpendicular I markers. Compound paths with holes and notch line elements cannot yet be reimported.</desc>\n",
+            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width}mm\" height=\"{height}mm\" viewBox=\"{} {} {width} {height}\">\n<title>WeftForge editable pattern export</title>\n<desc>Scale: one SVG user unit is one millimetre. Pattern V points upward; SVG Y is inverted. Each piece uses one evenodd path with closed exterior and hole subpaths; internal lines are omitted. Authored notches are physical-scale perpendicular I markers. Straight polygon cutouts can be reimported. Drawings with notch line elements cannot yet be reimported.</desc>\n",
             min[0] * 1000.0,
             -max[1] * 1000.0
         );

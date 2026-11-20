@@ -1,4 +1,4 @@
-use super::ImportedPattern;
+use super::{ImportedContour, ImportedPattern};
 use crate::{Command, Error, Result, ensure};
 use quick_xml::{
     Reader, XmlVersion,
@@ -14,7 +14,7 @@ use std::{
 pub const MAX_SVG_BYTES: usize = 1024 * 1024;
 const MAX_SVG_PIECES: usize = 64;
 const MAX_SVG_SPANS: usize = 4096;
-pub const SVG_IMPORT_SCOPE: &str = "Imported editable exterior boundaries and names only; compound paths with holes are unsupported and refused. Appearance, descriptions, sewing, grain, internal details, allowances, grading and simulation are omitted; new pieces use the first material and default 3D placement.";
+pub const SVG_IMPORT_SCOPE: &str = "Imported editable exterior boundaries, names and one straight-sided hole per polygon. Appearance, descriptions, sewing, grain, internal details, allowances, grading and simulation are omitted; new pieces use the first material and default 3D placement.";
 
 /// The bounded FILE-005-SVG-import-v1 drawing and its physical scale.
 #[derive(Debug, Clone)]
@@ -27,6 +27,13 @@ pub struct SvgPatternImport {
 impl SvgPatternImport {
     pub fn piece_count(&self) -> usize {
         self.patterns.len()
+    }
+
+    pub fn hole_count(&self) -> usize {
+        self.patterns
+            .iter()
+            .filter(|pattern| pattern.hole.is_some())
+            .count()
     }
 
     pub fn command(&self) -> Command {
@@ -87,15 +94,15 @@ impl SvgPatternImport {
                                 } else if key == "stroke-width" {
                                     ensure(single_number(value)? >= 0.0, "SVG stroke-width must be nonnegative and unitless; appearance is omitted")?;
                                 } else if key == "fill-rule" {
-                                    ensure(matches!(value.as_str(), "evenodd" | "nonzero"), "SVG fill-rule must be evenodd or nonzero; compound paths with holes are unsupported")?;
+                                    ensure(matches!(value.as_str(), "evenodd" | "nonzero"), "SVG fill-rule must be evenodd or nonzero")?;
                                 }
                             }
                             let name = attributes.get("data-name").or_else(|| attributes.get("id")).cloned().unwrap_or_else(|| format!("SVG pattern {}", patterns.len() + 1));
                             crate::document::validate_name(&name)?;
-                            let mut pattern = parse_path(required(&attributes, "d")?, scale.expect("root scale"))?;
-                            total_spans += pattern.vertices.len();
+                            let evenodd = attributes.get("fill-rule").is_some_and(|rule| rule == "evenodd");
+                            let pattern = parse_path(name, required(&attributes, "d")?, scale.expect("root scale"), evenodd)?;
+                            total_spans += pattern.exterior.vertices.len() + pattern.hole.as_ref().map_or(0, Vec::len);
                             ensure(total_spans <= MAX_SVG_SPANS, "SVG exceeds the 4096-span limit")?;
-                            pattern.name = name;
                             patterns.push(pattern);
                         }
                         (Some("svg" | "path"), "title" | "desc") => check_attributes(&attributes, &[])?,
@@ -289,8 +296,61 @@ fn root_scale(attributes: &BTreeMap<String, String>) -> Result<f64> {
     Ok(scale)
 }
 
-fn parse_path(data: &str, scale: f64) -> Result<ImportedPattern> {
+fn parse_path(name: String, data: &str, scale: f64, evenodd: bool) -> Result<ImportedPattern> {
     let mut numbers = Numbers::new(data);
+    let mut exterior = contour(&mut numbers, scale)?;
+    numbers.skip_whitespace();
+    let hole = if numbers.peek() == Some(b'M') {
+        let mut inner = contour(&mut numbers, scale)?;
+        ensure(
+            exterior
+                .controls
+                .iter()
+                .chain(&inner.controls)
+                .all(Option::is_none),
+            "SVG cutouts require straight sides on both the exterior and the hole",
+        )?;
+        let exterior_area = signed_double_area(&exterior.vertices);
+        let inner_area = signed_double_area(&inner.vertices);
+        ensure(
+            evenodd || exterior_area.signum() != inner_area.signum(),
+            "A nonzero SVG cutout needs oppositely wound contours",
+        )?;
+        // SVG allows the hole to come first. AddHole checks strict containment
+        // and rejects intersecting, degenerate or disjoint contours atomically.
+        if inner_area.abs() > exterior_area.abs() {
+            std::mem::swap(&mut exterior, &mut inner);
+        }
+        numbers.skip_whitespace();
+        ensure(
+            numbers.peek() != Some(b'M'),
+            "Only one SVG cutout per piece is supported",
+        )?;
+        Some(inner.vertices)
+    } else {
+        None
+    };
+    numbers.finish()?;
+    Ok(ImportedPattern {
+        name,
+        exterior,
+        hole,
+    })
+}
+
+fn signed_double_area(vertices: &[[f64; 2]]) -> f64 {
+    let [x, y] = vertices[0];
+    vertices[1..]
+        .windows(2)
+        .map(|pair| {
+            let [ax, ay] = pair[0];
+            let [bx, by] = pair[1];
+            (ax - x) * (by - y) - (ay - y) * (bx - x)
+        })
+        .sum()
+}
+
+fn contour(numbers: &mut Numbers<'_>, scale: f64) -> Result<ImportedContour> {
     ensure(
         numbers.command() == Some(b'M'),
         "SVG path must begin with one absolute M moveto",
@@ -301,12 +361,6 @@ fn parse_path(data: &str, scale: f64) -> Result<ImportedPattern> {
     loop {
         if let Some(next) = numbers.command() {
             if next == b'Z' {
-                numbers.skip_whitespace();
-                ensure(
-                    !matches!(numbers.peek(), Some(b'M' | b'm')),
-                    "SVG compound paths with holes are unsupported; import requires one closed contour per piece",
-                )?;
-                numbers.finish()?;
                 if vertices.last() == vertices.first() {
                     vertices.pop();
                 } else {
@@ -320,15 +374,11 @@ fn parse_path(data: &str, scale: f64) -> Result<ImportedPattern> {
                     controls.len() == vertices.len(),
                     "SVG path has an invalid closed boundary",
                 )?;
-                return Ok(ImportedPattern {
-                    name: String::new(),
-                    vertices,
-                    controls,
-                });
+                return Ok(ImportedContour { vertices, controls });
             }
             ensure(
                 matches!(next, b'L' | b'C'),
-                "SVG supports only one closed contour using absolute M/L/C/Z commands",
+                "SVG contours require absolute M/L/C/Z commands",
             )?;
             command = next;
         }

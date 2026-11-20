@@ -122,8 +122,8 @@ impl DxfPatternImport {
             .iter()
             .map(|name| ImportedPattern {
                 name: (*name).to_owned(),
-                vertices: Vec::new(),
-                controls: Vec::new(),
+                exterior: Default::default(),
+                hole: None,
             })
             .collect();
         let mut endpoints: Vec<Option<[[f64; 2]; 2]>> = vec![None; layers.len()];
@@ -182,13 +182,14 @@ impl DxfPatternImport {
             }
             let first = endpoints[index].map_or(points[0], |[first, _]| first);
             endpoints[index] = Some([first, points[1]]);
-            patterns[index].vertices.push(metres(points[0])?);
-            patterns[index].controls.push(controls);
+            patterns[index].exterior.vertices.push(metres(points[0])?);
+            patterns[index].exterior.controls.push(controls);
         }
         ensure(!patterns.is_empty(), "DXF contains no pattern layers")?;
         for (pattern, ends) in patterns.iter().zip(endpoints) {
             ensure(
-                pattern.vertices.len() >= 3 && ends.is_some_and(|[first, end]| first == end),
+                pattern.exterior.vertices.len() >= 3
+                    && ends.is_some_and(|[first, end]| first == end),
                 "Every DXF piece layer needs one closed contour with at least three spans",
             )?;
         }

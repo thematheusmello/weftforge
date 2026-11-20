@@ -1,0 +1,80 @@
+{
+  "case": "Native SVG pocket cutout import and saved corner edit",
+  "observations_recorded_utc": "2026-11-20T16:54:27Z",
+  "source_commit": "776c0df3b359f4da0b3e9249731ad6f03299b0d6",
+  "source_tree": "5ab69d21545b6cb7a185b269d75f2317d779bb06",
+  "platform": "Apple Silicon macOS, native WeftForge release studio, Metal viewport",
+  "build_command": "cargo build --release --locked -p weftforge -p weftforge-cli",
+  "studio_executable_sha256": "4c01576e01ea3a075aee8b2c4b9613fff0febb234f0a7618dfa2ccba2511011b",
+  "cli_executable_sha256": "81e9aeaaf6d687a4a6db88b26d22c30d68639a1d3cb696921af04f72032123ca",
+  "initial_revision": 0,
+  "svg": "Pocket facing.svg",
+  "import_review": {
+    "patterns": 1,
+    "editable_cutouts": 1,
+    "millimetres_per_svg_user_unit": 1
+  },
+  "history": [
+    {
+      "action": "Import the drawing",
+      "revision": 1,
+      "pieces": 1,
+      "editable_holes": 1
+    },
+    {
+      "action": "Undo the import",
+      "revision": 2,
+      "pieces": 0
+    },
+    {
+      "action": "Redo the import",
+      "revision": 3,
+      "pieces": 1,
+      "editable_holes": 1,
+      "rest_mesh_vertices": 46
+    }
+  ],
+  "save_and_reopen": {
+    "saved_project": "Pocket imported.weftforge",
+    "saved_mesh": "Pocket imported.obj",
+    "workspace_png": "Pocket imported.png",
+    "workspace_size_pixels": [
+      1640,
+      1000
+    ],
+    "procedure": "Close the saved project. Start from an empty workspace, reopen the saved native project, and use Frame all."
+  },
+  "corner_edit": {
+    "snap_mm": 10,
+    "drag_from_window_points": [
+      285,
+      434
+    ],
+    "drag_to_window_points": [
+      242,
+      434
+    ],
+    "point_id": 13,
+    "from_m": [
+      0.08,
+      0.24
+    ],
+    "to_m": [
+      0.06,
+      0.24
+    ],
+    "revision": 4,
+    "rest_mesh_vertices": 43,
+    "saved_project": "Pocket edited.weftforge",
+    "saved_mesh": "Pocket edited.obj",
+    "workspace_png": "Pocket edited.png",
+    "workspace_size_pixels": [
+      1640,
+      1000
+    ],
+    "capture": "Frame garment and save the workspace PNG."
+  },
+  "geometry_receipt": "GEOMETRY.json",
+  "adapter_receipt": "ADAPTERS.json",
+  "limits": "One straight-sided opening in a planar pocket facing at the recorded physical scale. The two PNGs record the native workspaces. The polygon and rest-surface measurements come from the saved documents and OBJs."
+}

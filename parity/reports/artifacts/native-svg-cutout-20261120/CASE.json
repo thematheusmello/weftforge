@@ -1,0 +1,12 @@
+{
+  "case": "Import an editable pocket opening from a millimetre SVG",
+  "platform": "Apple Silicon macOS native workspace",
+  "input": "Pocket facing.svg",
+  "expectations": [
+    "Start with an empty project. The actual Import SVG dialog shows one pattern, one editable cutout and 1 mm per user unit.",
+    "Import in one transaction. Undo must return to the empty project and Redo must restore the full editable cutout.",
+    "Save the editable project and export the source-independent OBJ. One connected planar material surface must have two boundary loops, Euler characteristic zero and material area 0.0768 square metres.",
+    "Quit, reopen the saved project, edit an inner vertex in the native workspace and save again. The original stable piece, hole and boundary identities must survive. Area change must agree with independently parsed editable coordinates.",
+    "Verify the same SVG through CLI and MCP and a rejected invalid cutout against an existing destination and its recovery."
+  ]
+}

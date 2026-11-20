@@ -1559,7 +1559,7 @@ impl Studio {
             !matches!(format, ExportFormat::Pdf(_)) || !self.editor.project.pieces.is_empty();
         let response = ui.add_enabled(enabled, egui::Button::new(label)).on_hover_text(match format {
             ExportFormat::Pdf(_) => "Tiled 1:1 pattern sheets with a 100 mm scale square. Print at Actual size.",
-            ExportFormat::Svg => "Compound pattern boundaries include holes; hole-aware SVG reimport is not yet supported. Internal annotations stay in the native project.",
+            ExportFormat::Svg => "SVG preserves the exterior and one straight-sided hole per polygon. Save the native project to keep internal annotations.",
             ExportFormat::Dxf => "Exterior boundaries only; projects with holes are refused. Internal annotations stay in the native project.",
             ExportFormat::Obj | ExportFormat::Glb | ExportFormat::Gltf => "Rest/current cloth surface only; no annotation line primitives. Save the native project to keep editable internal lines.",
         });
@@ -2264,10 +2264,20 @@ impl Studio {
                 "Import {} patterns",
                 import.drawing.format().name()
             ));
-            ui.label(format!(
-                "Add {} editable patterns to this project.",
-                import.drawing.piece_count()
-            ));
+            let count = import.drawing.piece_count();
+            let noun = if count == 1 { "pattern" } else { "patterns" };
+            ui.label(format!("Add {count} editable {noun} to this project."));
+            if let ImportedDrawing::Svg(drawing) = &import.drawing {
+                match drawing.hole_count() {
+                    0 => {}
+                    1 => {
+                        ui.label("Includes 1 editable cutout.");
+                    }
+                    holes => {
+                        ui.label(format!("Includes {holes} editable cutouts."));
+                    }
+                }
+            }
             ui.label(match &import.drawing {
                 ImportedDrawing::Svg(drawing) => format!(
                     "Physical scale: {} mm per SVG unit.",
@@ -2417,7 +2427,7 @@ impl Studio {
             Ok(true) => match format {
                 ExportFormat::Pdf(_) => "Exported tiled pattern PDF. Print the scale check at Actual size.".into(),
                 ExportFormat::Dxf => "Exported exterior DXF boundaries in millimetres; internal annotations, sewing and materials stay in .weftforge.".into(),
-                ExportFormat::Svg => "Exported SVG boundaries and notches in millimetres; holes/notches cannot yet be reimported. Internal lines stay in .weftforge.".into(),
+                ExportFormat::Svg => "Exported SVG boundaries and notches in millimetres. Cutouts can be reimported on drawings without notch marks.".into(),
                 ExportFormat::Obj => "Exported OBJ cloth surface in metres; internal lines and authored notches stay in .weftforge.".into(),
                 ExportFormat::Glb => "Exported static GLB cloth surface in metres.".into(),
                 ExportFormat::Gltf => "Exported static glTF cloth surface in metres.".into(),
@@ -2905,7 +2915,7 @@ impl Studio {
                 ui.label("Cut piece: select an owner and two straight boundaries, then review the independent pieces.");
                 ui.label("Add hole…: select an owner, then review a numeric rectangular opening. Hole boundaries remain editable.");
                 ui.label("Offset outline…: review a whole-piece material change, then Apply once. Cancel leaves the cloth unchanged.");
-                ui.label("SVG exports compound boundaries with holes; hole-aware SVG reimport is not yet supported. DXF refuses holes; OBJ exports cloth surfaces. Internal annotations stay in the native project.");
+                ui.label("SVG preserves straight-sided cutouts. DXF requires pieces without holes. OBJ exports cloth surfaces. Save the native project to keep internal annotations.");
                 ui.label("3D: drag to orbit; scroll to zoom.");
                 ui.label("Space plays or pauses simulation.");
                 ui.label("Enter confirms polygon or sewing; Escape cancels.");

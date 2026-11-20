@@ -105,12 +105,22 @@ fn execute_inspect_export_and_remove_share_stable_hole_identity_and_safe_io() {
     );
     let primary = fs::read(&project).unwrap();
     let recovery = fs::read(recovery_path(&project)).unwrap();
-    let import = run("import-svg", &[&project, &project, &svg]);
-    assert!(!import.status.success());
+    let imported = directory.0.join("imported.weftforge");
+    let import = run("import-svg", &[&project, &imported, &svg]);
     assert!(
+        import.status.success(),
+        "{}",
         String::from_utf8_lossy(&import.stderr)
-            .contains("compound paths with holes are unsupported")
     );
+    let round_trip = Project::load(imported).unwrap();
+    assert_eq!(round_trip.pieces.len(), 2);
+    assert_eq!(round_trip.pieces[1].holes.len(), 1);
+    assert_ne!(
+        round_trip.pieces[1].holes[0].id,
+        round_trip.pieces[0].holes[0].id
+    );
+    assert_eq!(fs::read(&project).unwrap(), primary);
+    assert_eq!(fs::read(recovery_path(&project)).unwrap(), recovery);
     for raw in [
         r#"[{"type":"add_hole","data":{"piece":2}}]"#.to_owned(),
         r#"[{"type":"remove_hole","data":{}}]"#.to_owned(),
