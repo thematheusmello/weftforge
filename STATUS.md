@@ -1,3 +1,12 @@
+# Solid garment faces at grazing angles — 20 November 2026
+
+The 3D view now fills each garment face directly between its three projected
+vertices. The previous renderer extended two nearly edge-on faces of the
+draped Harbor shirt to the viewport borders. The regression reproduces the
+old tessellator overrun and checks the exact new vertices, winding and face
+color at two pixel densities. The native drape replay is pending.
+[Projected garment faces](spec/features/UI-001-projected-garment-faces.md).
+
 # Debian ARM64 native project and JPEG saves — 20 November 2026
 
 The afdea599 Linux package saved an editable project and both pattern
