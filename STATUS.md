@@ -4,7 +4,11 @@ The offline notice catalog now covers the seven crates that lacked a code
 license text in the prior Linux package. The catalog pins crate versions,
 archive and VCS metadata digests, upstream documents and their file hashes.
 The hexf-parse entry also includes the Debian copyright record and complete
-CC0 text. The current Linux bundle audit will check all emitted notices.
+CC0 text. A Debian 13.7 ARM64 offline build emitted 234 Cargo crates and
+carried the missing license texts for all seven. The independent reader
+checked all 425 package files and the original 417-file release. Signing,
+other targets and the system-library notice inventory remain open.
+[Debian package audit](parity/reports/WF-20261120-DEBIAN-ARM64-CARGO-NOTICES-001.json) · [Independent reader](parity/reports/artifacts/debian-arm64-cargo-notices-20261120/check_notices.py).
 [Package verification](docs/verification.md) · [Catalog](vendor/cargo-notices/index.json).
 
 # Solid garment faces at grazing angles — 20 November 2026

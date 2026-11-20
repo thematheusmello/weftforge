@@ -1,0 +1,39 @@
+{
+  "source_commit": "d564e2de7bd6d224c0753d2b0d96b07eed81eb92",
+  "source_tree": "8473618c41fa5f51f53a41ba7af5a6daaa28676b",
+  "previous_release_source": "afdea5999423dd5c9952f20ff5e3d5f26c169751",
+  "target": "aarch64-unknown-linux-gnu",
+  "system": "Debian 13.7 ARM64",
+  "rustc": "1.94.1",
+  "cargo": "1.94.1",
+  "package_command": "cargo xtask package",
+  "cargo_environment": "The build and package readback used CARGO_NET_OFFLINE=true in a network namespace containing only loopback.",
+  "source_verification": {
+    "verified_tracked_blobs": 20209,
+    "changed_paths_from_previous_guest_source": 98,
+    "same_guest_checkout_and_cargo_target": true
+  },
+  "earlier_package": {
+    "manifest_sha256": "54d4224528c44fa974075eeb660ccceff2377e0d405dc74002d48af7518d412e",
+    "files_verified_before_and_after": 417
+  },
+  "packaged": {
+    "whole_package_files_read": 425,
+    "distinct_manifest_paths_read": 423,
+    "manifest_sha256": "d4f0c2c36dbb9fab54ab7b3d6f4a3366ce5048e405a3c3cc6d4e708bda21ae5e",
+    "package_ledger_sha256": "1ea71ca2f0c955dd630ac78a872c86a1ff788c49dc33c6fd96eaaa78140ea086",
+    "runtime_cargo_crates": 234,
+    "unresolved_before": 7,
+    "unresolved_after": 0,
+    "previously_open_crate_archives_checked": 7,
+    "new_crate_document_associations": 23,
+    "distinct_documents_for_the_seven_crates": 12,
+    "executables": {
+      "weftforge": "fbd3b363d2f847ab983b04cec6c7dc8f163bbb1d7c95a178e5927227acb160aa",
+      "weftforge-cli": "996593e4ee8eae77f11f7dd7d8469d3e4a77f99e9fe1bd303569501e12d826bc"
+    },
+    "elf_abi": "Both packaged executables matched their release binaries and read as ELF64 AArch64. ldd resolved their shared-library paths."
+  },
+  "closure": "The owned Debian guest stopped after both package readbacks. The previous release remains in the guest evidence directory.",
+  "scope": "This checks the emitted Cargo notices in this unsigned Linux package. The operating-system and driver license inventory, other targets and signing have separate release requirements."
+}

@@ -1,0 +1,141 @@
+{
+  "emitted_crates": {
+    "accesskit_atspi_common": {
+      "repository": "AccessKit/accesskit",
+      "upstream_revision": "f40dfc01a0c0e76de535969f82fb35e19513737d",
+      "name": "accesskit_atspi_common",
+      "version": "0.18.1",
+      "vcs_info_sha256": "40438b482b17e22de9bdd3f6116111d0d5be51d3a01293abecefba5b9a272e58",
+      "lock_sha256": "1e8c61bee90b42a772d39d06a740207dc71a4e780004ace1db8d99fb1baaa954"
+    },
+    "accesskit_consumer": {
+      "repository": "AccessKit/accesskit",
+      "upstream_revision": "f40dfc01a0c0e76de535969f82fb35e19513737d",
+      "name": "accesskit_consumer",
+      "version": "0.36.0",
+      "vcs_info_sha256": "f3cb67f4d5fcd4ccbd566300f6d1cd578b09a38b8815344415dd5a91d37f5adf",
+      "lock_sha256": "25e0d7e25d06f4dc21d1774d67146e9e80d6789216cbd4d1e88185b0095dba60"
+    },
+    "accesskit_unix": {
+      "repository": "AccessKit/accesskit",
+      "upstream_revision": "f40dfc01a0c0e76de535969f82fb35e19513737d",
+      "name": "accesskit_unix",
+      "version": "0.21.1",
+      "vcs_info_sha256": "d50d0de63665aea0ce0de5d60375c21e5aae620dc71cda6a4e5f177f36bc9f6c",
+      "lock_sha256": "b016ca8db0ea0ea2ceff29a9d6240391492d960716aa471967c00e8cc8cb197c"
+    },
+    "gpu-descriptor": {
+      "repository": "zakarumych/gpu-descriptor",
+      "upstream_revision": "bb28b4e55b742e0ea3e7a0968e7ee6287ba0e06a",
+      "name": "gpu-descriptor",
+      "version": "0.3.2",
+      "vcs_info_sha256": "045201f2caa0bbaa6f031b28a34dbb3097f54bba5fe928c0e0d6b4ef6b7871ba",
+      "lock_sha256": "b89c83349105e3732062a895becfc71a8f921bb71ecbbdd8ff99263e3b53a0ca"
+    },
+    "gpu-descriptor-types": {
+      "repository": "zakarumych/gpu-descriptor",
+      "upstream_revision": "9f2fb9546591322e7b77ee1e79385e01effd85e4",
+      "name": "gpu-descriptor-types",
+      "version": "0.2.0",
+      "vcs_info_sha256": "c983f24271f15bd818873b0cb75237cae4c895b0b4ebf16a772d21640599fc44",
+      "lock_sha256": "fdf242682df893b86f33a73828fb09ca4b2d3bb6cc95249707fc684d27484b91"
+    },
+    "hexf-parse": {
+      "repository": "lifthrasiir/hexf",
+      "upstream_revision": "4225763d744183d720f575ae96d04161b4d08ea0",
+      "name": "hexf-parse",
+      "version": "0.2.1",
+      "vcs_info_sha256": "7c5579b3abe5e2dcdcba1c845849b7d2f20f028de49fb27437227fd32545aae7",
+      "lock_sha256": "dfa686283ad6dd069f105e5ab091b04c62850d3e4cf5d67debad1933f55023df"
+    },
+    "spirv": {
+      "repository": "gfx-rs/rspirv",
+      "upstream_revision": "8afc3d0ac8e158128cd1410bb2e4b4c26ab11bb4",
+      "name": "spirv",
+      "version": "0.4.0+sdk-1.4.341.0",
+      "vcs_info_sha256": "d6c805477fb7dd3f7ac6cd6589be6e91acb67f4976954a144278258409b8fa04",
+      "lock_sha256": "d9571ea910ebd84c86af4b3ed27f9dbdc6ad06f17c5f96146b2b671e2976744f"
+    }
+  },
+  "debian_sources": [
+    {
+      "crate": "hexf-parse",
+      "debian_source": "rust-hexf-parse",
+      "debian_version": "0.2.1-1",
+      "debian_manifest_version": "0.2.1",
+      "manifest_license": "CC0-1.0",
+      "same_emitted_version": true,
+      "debian_orig_matches_locked_crate": true,
+      "debian_vcs_info_matches_emitted_crate": true,
+      "copyright_sha256": "49a5d671124d3faafe8b5341b4fab081196d8ad04d44783adefe4b8c19be7bd0",
+      "source_record_url": "https://deb.debian.org/debian/pool/main/r/rust-hexf-parse/rust-hexf-parse_0.2.1-1.dsc",
+      "source_archive_url": "https://deb.debian.org/debian/pool/main/r/rust-hexf-parse/rust-hexf-parse_0.2.1.orig.tar.gz",
+      "source_archive_sha256": "dfa686283ad6dd069f105e5ab091b04c62850d3e4cf5d67debad1933f55023df",
+      "debian_packaging_sha256": "a54dd08f3babc89f3f84c29d5797487d4a251b874f51b7110b1beb48645fec14"
+    },
+    {
+      "crate": "gpu-descriptor",
+      "debian_source": "rust-gpu-descriptor",
+      "debian_version": "0.3.2-1",
+      "debian_manifest_version": "0.3.2",
+      "manifest_license": "MIT OR Apache-2.0",
+      "same_emitted_version": true,
+      "debian_orig_matches_locked_crate": true,
+      "debian_vcs_info_matches_emitted_crate": true,
+      "copyright_sha256": "064709fed4a67a8cf0bedf75fbe925f36b1b155bf299e39ebdf22d4ae7ec97b2",
+      "source_record_url": "https://deb.debian.org/debian/pool/main/r/rust-gpu-descriptor/rust-gpu-descriptor_0.3.2-1.dsc",
+      "source_archive_url": "https://deb.debian.org/debian/pool/main/r/rust-gpu-descriptor/rust-gpu-descriptor_0.3.2.orig.tar.gz",
+      "source_archive_sha256": "b89c83349105e3732062a895becfc71a8f921bb71ecbbdd8ff99263e3b53a0ca",
+      "debian_packaging_sha256": "271d3a264e0c2194602cbf3b07724ae3287aaef134d14b0b7c2d21602680b78a"
+    },
+    {
+      "crate": "gpu-descriptor-types",
+      "debian_source": "rust-gpu-descriptor-types",
+      "debian_version": "0.2.0-1",
+      "debian_manifest_version": "0.2.0",
+      "manifest_license": "MIT OR Apache-2.0",
+      "same_emitted_version": true,
+      "debian_orig_matches_locked_crate": true,
+      "debian_vcs_info_matches_emitted_crate": true,
+      "copyright_sha256": "89ac6d6715a0cf6ef2264f925afdec788b16b3a5bc7bb22ce5697b97976cd7e6",
+      "source_record_url": "https://deb.debian.org/debian/pool/main/r/rust-gpu-descriptor-types/rust-gpu-descriptor-types_0.2.0-1.dsc",
+      "source_archive_url": "https://deb.debian.org/debian/pool/main/r/rust-gpu-descriptor-types/rust-gpu-descriptor-types_0.2.0.orig.tar.gz",
+      "source_archive_sha256": "fdf242682df893b86f33a73828fb09ca4b2d3bb6cc95249707fc684d27484b91",
+      "debian_packaging_sha256": "543a05114b3646d4a6a5ad0952b5edf5d901d56e0bcb4380dfc8b5e7dcb6190f"
+    },
+    {
+      "crate": "spirv",
+      "debian_source": "rust-spirv",
+      "debian_version": "0.4.0-1",
+      "debian_manifest_version": "0.4.0+sdk-1.4.341.0",
+      "manifest_license": "Apache-2.0",
+      "same_emitted_version": true,
+      "debian_orig_matches_locked_crate": true,
+      "debian_vcs_info_matches_emitted_crate": true,
+      "copyright_sha256": "d31180188ed638489ebc852b5bd3bafc19c9fa521f23a3e8c68e610e0ac22571",
+      "source_record_url": "https://deb.debian.org/debian/pool/main/r/rust-spirv/rust-spirv_0.4.0-1.dsc",
+      "source_archive_url": "https://deb.debian.org/debian/pool/main/r/rust-spirv/rust-spirv_0.4.0.orig.tar.gz",
+      "source_archive_sha256": "d9571ea910ebd84c86af4b3ed27f9dbdc6ad06f17c5f96146b2b671e2976744f",
+      "debian_packaging_sha256": "653a7de3f14022882f99887ee9e498122cfae7521f9a2233500c90f0ed16cefc"
+    }
+  ],
+  "cc0_text": {
+    "debian_source_package": "base-files 13.8+deb13u7",
+    "installed_path": "/usr/share/common-licenses/CC0-1.0",
+    "source_record_url": "https://deb.debian.org/debian/pool/main/b/base-files/base-files_13.8+deb13u7.dsc",
+    "source_archive_url": "https://deb.debian.org/debian/pool/main/b/base-files/base-files_13.8+deb13u7.tar.xz",
+    "source_archive_sha256": "be32803b9408ac9aa46b96f68c83ee45e88d04d89854a87999986efc4cb34c69",
+    "member": "base-files/licenses/CC0-1.0",
+    "text_sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+    "debian_copyright_url": "https://metadata.ftp-master.debian.org/changelogs/main/r/rust-hexf-parse/rust-hexf-parse_0.2.1-1_copyright"
+  },
+  "generated_spirv": {
+    "rspirv_repository": "https://github.com/gfx-rs/rspirv",
+    "rspirv_commit": "8afc3d0ac8e158128cd1410bb2e4b4c26ab11bb4",
+    "submodule": "autogen/external/SPIRV-Headers",
+    "submodule_commit": "04f10f650d514df88b76d25e83db360142c7b174",
+    "grammar_url": "https://raw.githubusercontent.com/KhronosGroup/SPIRV-Headers/04f10f650d514df88b76d25e83db360142c7b174/include/spirv/unified1/spirv.core.grammar.json",
+    "grammar_sha256": "508e6677e27b0b58eac8395aa49a90ac1766a8d392c247a0aba7b03f4fdd85b9",
+    "headers_license_sha256": "ea43b1de38a6f90c488800d66dec1ed671e68cda530266bc96951fb5b6307613"
+  }
+}

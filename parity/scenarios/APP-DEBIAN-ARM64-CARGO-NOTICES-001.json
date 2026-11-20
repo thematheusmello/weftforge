@@ -1,0 +1,11 @@
+{
+  "id": "APP-DEBIAN-ARM64-CARGO-NOTICES-001",
+  "status": "implementation_only",
+  "initial_conditions": "The previous Debian ARM64 release has seven unresolved entries among 234 emitted Cargo crates, and the exact locked archives are cached.",
+  "actions": [
+    "Package the current studio and CLI offline on Debian ARM64.",
+    "Read the final package manifest, every staged file, seven locked archive digests and their VCS metadata.",
+    "Compare the earlier package manifest and all earlier file digests."
+  ],
+  "expected_outcomes": "The offline package includes matching license files and provenance for all seven, its package ledger verifies every file, and the previous package retains all original digests."
+}
