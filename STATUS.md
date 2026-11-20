@@ -1,3 +1,21 @@
+# Two editable openings on Debian Wayland — 20 November 2026
+
+The packaged ARM64 studio imported both openings through GTK, restored them
+with Undo and Redo, and reopened the saved pocket in a fresh process. Moving
+one corner 20 mm changed the net material area from 0.0756 to 0.0744 m².
+Independent OBJ readback found three boundary loops in each export. Rejecting
+an overlapping SVG left the edited file byte for byte intact. Adding the same
+second opening through the inspector preserved the first opening’s IDs and
+exported the same OBJ as the direct import. The Debian import and the CLI/MCP
+case also produced identical OBJ bytes and editable content apart from revision.
+[Native report](parity/reports/WF-20261120-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json) · [Reopened edit](parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/edited-reopened.png) · [Independent replay](parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/replay.py).
+
+The unsigned Debian package came from `cb76dd0f`. Its guest audit read
+443 files and found notices for all 243 emitted Cargo crates. The later garment strain shading changed the studio source,
+so this Wayland run is historical on the combined build. All three studio
+processes closed and the guest shut down. Testing used Sway with a virtual
+display and software Vulkan. Physical GPU verification remains open.
+
 # Two editable cutouts in one pattern — 20 November 2026
 
 A straight-sided pattern can now have several disjoint openings. The native

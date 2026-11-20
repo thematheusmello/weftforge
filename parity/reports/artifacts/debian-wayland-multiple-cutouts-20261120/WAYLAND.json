@@ -1,0 +1,114 @@
+{
+  "tested_commit": "cb76dd0fb032b84c4ba3be913c4833117e54762f",
+  "tested_tree": "ae5136c426e99474efa62d7aedd5eea3d64ddfc7",
+  "packaged_studio_sha256": "0e0f210d2b7836551bd3a53573bb7e24b4cdd93ba8d1cd351839812760530181",
+  "platform": "Debian 13.7 ARM64",
+  "display": {
+    "sway": "1.10.1-2",
+    "wlroots": "0.18.2-3",
+    "backend": "headless",
+    "output_pixels": [
+      1640,
+      1000
+    ],
+    "compositor_renderer": "pixman",
+    "studio_renderer": "Vulkan with Mesa lavapipe selected",
+    "mesa_vulkan_drivers": "25.0.7-2+deb13u1",
+    "xwayland": "disabled",
+    "DISPLAY": "unset",
+    "gtk_portal": "1.15.3-1",
+    "FileChooser_interface_version": 4,
+    "input": "Wayland seat virtual pointer and keyboard"
+  },
+  "surfaces": {
+    "import": [
+      {
+        "app_id": "WeftForge",
+        "shell": "xdg_shell",
+        "pid": 4092,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1640,
+          "height": 1000
+        }
+      }
+    ],
+    "gtk_chooser": [
+      {
+        "app_id": "WeftForge",
+        "shell": "xdg_shell",
+        "pid": 4092,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 820,
+          "height": 1000
+        }
+      },
+      {
+        "app_id": "xdg-desktop-portal-gtk",
+        "shell": "xdg_shell",
+        "pid": 1076,
+        "rect": {
+          "x": 820,
+          "y": 0,
+          "width": 820,
+          "height": 1000
+        }
+      }
+    ],
+    "fresh_reopen": [
+      {
+        "app_id": "WeftForge",
+        "shell": "xdg_shell",
+        "pid": 4415,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1640,
+          "height": 1000
+        }
+      }
+    ],
+    "add_hole": [
+      {
+        "app_id": "WeftForge",
+        "shell": "xdg_shell",
+        "pid": 4863,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1640,
+          "height": 1000
+        }
+      }
+    ],
+    "after_add_redo": [
+      {
+        "app_id": "WeftForge",
+        "shell": "xdg_shell",
+        "pid": 4863,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1640,
+          "height": 1000
+        }
+      }
+    ]
+  },
+  "operations": [
+    "Started the packaged studio with an empty revision 0. File \u2192 Import SVG opened the GTK chooser. The native review displayed one editable pattern, two cutouts and 1 mm per SVG unit.",
+    "Import committed revision 1 with one piece and 47 vertices. Undo restored an empty revision 2. Redo restored the piece with both holes and 47 vertices at revision 3. The native menus saved Imported.weftforge, its rest OBJ, material library and workspace PNG.",
+    "Exited the first process. Started a fresh empty studio and used File \u2192 Open to reopen Imported.weftforge. Frame all exposed both holes. A single drag on the 10 mm grid moved point 13 of the large opening from (80, 240) to (60, 240) mm. The native menus saved the edited revision 4 document, OBJ and workspace PNG.",
+    "While the edited project was open, a second SVG import selected the overlapping fixture. Its review counted two cutouts. Import displayed the boundary error. Dismissing the dialog preserved both hole IDs and revision 4. Save as wrote Refused.weftforge with the exact bytes of Edited.weftforge. New empty followed by File \u2192 Open restored the saved edit and both holes.",
+    "A third native process opened the original revision 3 single-hole pocket. Create 2D \u2192 Add hole initially placed the default candidate across the existing opening. Entering origin (15, 20) and size (30, 40) mm produced a valid preview and 0.075600000 m\u00b2. Apply added hole 20 in revision 4 and preserved hole 11. Saving and exporting produced Inspector.weftforge and Inspector.obj. Undo restored one hole at revision 5 and 46 vertices. Redo restored both holes at revision 6 and 47 vertices. Save as retained InspectorRedo.weftforge."
+  ],
+  "rejected_import_message": "Straight domain segment crosses, touches or is too close to a boundary",
+  "capture_methods": {
+    "workspace-imported.png and workspace-edited.png": "PNG exports made with the native File menu. Each captures the 820 \u00d7 1000 studio surface while Sway tiled the GTK chooser beside it.",
+    "other_pngs": "1640 \u00d7 1000 compositor snapshots of the native Wayland output."
+  },
+  "scope": "All three studio processes ran the same packaged executable. The case used a virtual output, software Vulkan and the GTK chooser. No competing studio or physical display was used in this run."
+}
