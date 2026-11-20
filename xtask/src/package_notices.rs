@@ -13,8 +13,10 @@ pub(super) const UPSTREAM_CATALOG: &str = "vendor/cargo-notices";
 pub(super) const CRATES_IO: &str = "registry+https://github.com/rust-lang/crates.io-index";
 
 #[derive(Deserialize)]
-struct Workspace {
-    target_directory: PathBuf,
+pub(super) struct Workspace {
+    pub(super) target_directory: PathBuf,
+    pub(super) build_directory: PathBuf,
+    pub(super) workspace_root: PathBuf,
 }
 
 #[derive(Deserialize)]
@@ -81,6 +83,10 @@ fn metadata(root: &Path, args: &[&str]) -> Result<Vec<u8>> {
     Ok(output.stdout)
 }
 
+pub(super) fn workspace(root: &Path) -> Result<Workspace> {
+    Ok(serde_json::from_slice(&metadata(root, &["--no-deps"])?)?)
+}
+
 fn rustc_host(root: &Path) -> Result<String> {
     let output = Command::new(std::env::var_os("RUSTC").unwrap_or_else(|| "rustc".into()))
         .arg("-vV")
@@ -113,7 +119,7 @@ fn artifact_target(path: &Path, cargo_target: &Path, host: &str) -> Result<Strin
 
 impl NoticePlan {
     pub(super) fn load(root: &Path, build: &BuildArtifacts) -> Result<Self> {
-        let workspace: Workspace = serde_json::from_slice(&metadata(root, &["--no-deps"])?)?;
+        let workspace = workspace(root)?;
         let directory = workspace.target_directory.canonicalize()?;
         let host = rustc_host(root)?;
         let [studio, cli] = &build.binaries;
@@ -195,6 +201,21 @@ impl NoticePlan {
             .iter()
             .filter(|notice| !notice.unresolved.is_empty())
             .count();
+        let mut project_notices = vec![
+            "LICENSE-APACHE",
+            "LICENSE-MIT",
+            "THIRD_PARTY.md",
+            "licenses/OFL-Inter.txt",
+            "licenses/OFL-JetBrainsMono.txt",
+        ];
+        if self.target == super::WINDOWS_GNULLVM {
+            let notice = "licenses/LLVM-libunwind.txt";
+            fs::copy(
+                self.workspace.join("vendor/llvm-libunwind/LICENSE.TXT"),
+                package.join(notice),
+            )?;
+            project_notices.push(notice);
+        }
         let manifest = Manifest {
             version: 1,
             target: &self.target,
@@ -207,16 +228,10 @@ impl NoticePlan {
                 .iter()
                 .map(|path| file_record(package, path))
                 .collect::<Result<_>>()?,
-            project_notices: [
-                "LICENSE-APACHE",
-                "LICENSE-MIT",
-                "THIRD_PARTY.md",
-                "licenses/OFL-Inter.txt",
-                "licenses/OFL-JetBrainsMono.txt",
-            ]
-            .into_iter()
-            .map(|path| file_record(package, Path::new(path)))
-            .collect::<Result<_>>()?,
+            project_notices: project_notices
+                .into_iter()
+                .map(|path| file_record(package, Path::new(path)))
+                .collect::<Result<_>>()?,
             crates,
         };
         let mut file = File::create(package.join("licenses/manifest.json"))?;

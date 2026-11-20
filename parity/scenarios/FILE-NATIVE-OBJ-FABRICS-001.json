@@ -1,0 +1,35 @@
+{
+  "id": "FILE-NATIVE-OBJ-FABRICS-001",
+  "status": "implementation_only",
+  "initial_conditions": "Open the revision 24 Harbor project. Cotton #1 is assigned to front #2 and Terracotta linen #68 to back #31. Both panels are in the rest arrangement with eight seam definitions.",
+  "actions": [
+    "Prepare the two-fabric fixture from the revision 23 original Harbor and two-fabrics.json through the shared execute transaction.",
+    "Open Harbor and use the active front Fabric picker to choose Terracotta linen. Export the OBJ. Undo, export the restored OBJ alongside it, and Save as a separate editable project.",
+    "Select Harbor back, frame both views and save the workspace PNG. Close the studio and compare the original and restored editable documents.",
+    "Replay the two sets of geometry and material libraries, the two Model I/O submeshes in each export, and a fresh CLI and MCP export. Compare the reviewed reference observation to its original two-fabric input."
+  ],
+  "expected_outcomes": "Changing the front fabric and undoing preserves both native exports. The single-fabric export uses one material for both groups. The restored export assigns cotton and terracotta separately. All position, UV, normal, group and face records agree. Each panel has 586 triangles and area 0.5923 m\u00b2. The native, CLI and MCP two-fabric outputs agree byte for byte.",
+  "measurements": {
+    "document_revisions": [
+      24,
+      25,
+      26
+    ],
+    "pieces": 2,
+    "seams": 8,
+    "surface_vertices": 654,
+    "triangles": 1172,
+    "exported_fabric_counts": [
+      1,
+      2
+    ],
+    "triangles_per_piece": 586,
+    "area_per_piece_m2": 0.5923
+  },
+  "replay": [
+    "python3 parity/reports/artifacts/native-obj-fabrics-20261120/check_exports.py",
+    "Run the same checker with --cli PATH_TO_WEFTFORGE_CLI to regenerate the source fixture and repeat both adapters.",
+    "On macOS, run check_modelio.swift on either OBJ and compare the JSON to MODELIO-single.json or MODELIO-two.json.",
+    "The optional reference readback checker takes a separately retained licensed OBJ return and its sibling MTL."
+  ]
+}

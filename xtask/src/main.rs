@@ -110,9 +110,18 @@ fn run() -> Result<()> {
                 "120",
             ],
         ),
-        Some("package") => package(Path::new(".")),
+        Some("package") => {
+            let arguments: Vec<_> = std::env::args().skip(2).collect();
+            match arguments.as_slice() {
+                [] => package(Path::new("."), None),
+                [option, target] if option == "--target" => package(Path::new("."), Some(target)),
+                _ => Err("usage: cargo xtask package [--target TRIPLE]".into()),
+            }
+        }
         _ => {
-            println!("cargo xtask progress | verify | scenario | benchmark | package");
+            println!(
+                "cargo xtask progress | verify | scenario | benchmark | package [--target TRIPLE]"
+            );
             Ok(())
         }
     }
@@ -226,23 +235,44 @@ impl Drop for PackageStage {
     }
 }
 
-fn package(root: &Path) -> Result<()> {
+const WINDOWS_GNULLVM: &str = "x86_64-pc-windows-gnullvm";
+
+fn package(root: &Path, target: Option<&str>) -> Result<()> {
     let mut stage = PackageStage::new(root)?;
-    let output = Command::new("cargo")
-        .args([
-            "build",
-            "--release",
-            "--locked",
-            "--message-format=json-render-diagnostics",
-            "-p",
-            "weftforge",
-            "-p",
-            "weftforge-cli",
-            "--bin",
-            "weftforge",
-            "--bin",
-            "weftforge-cli",
-        ])
+    let mut command = Command::new("cargo");
+    command.args([
+        "build",
+        "--release",
+        "--locked",
+        "--message-format=json-render-diagnostics",
+        "-p",
+        "weftforge",
+        "-p",
+        "weftforge-cli",
+        "--bin",
+        "weftforge",
+        "--bin",
+        "weftforge-cli",
+    ]);
+    if let Some(target) = target {
+        command.args(["--target", target]);
+    }
+    let environment_target = std::env::var("CARGO_BUILD_TARGET").ok();
+    let selected = target.or(environment_target.as_deref());
+    // A host xtask can package a different target, including one selected in Cargo config.
+    if selected.is_none_or(|target| target == WINDOWS_GNULLVM) {
+        windows_package_flags(
+            root,
+            &mut command,
+            selected == Some(WINDOWS_GNULLVM)
+                || cfg!(all(
+                    target_arch = "x86_64",
+                    target_os = "windows",
+                    target_abi = "llvm"
+                )),
+        )?;
+    }
+    let output = command
         .current_dir(root)
         .stderr(Stdio::inherit())
         .output()?;
@@ -253,6 +283,50 @@ fn package(root: &Path) -> Result<()> {
         output.status.success(),
         |build| package_notices::NoticePlan::load(root, build),
     )
+}
+
+fn windows_package_flags(root: &Path, command: &mut Command, windows_selected: bool) -> Result<()> {
+    let workspace = package_notices::workspace(root)?;
+    let cargo_home = std::env::var_os("CARGO_HOME")
+        .map(PathBuf::from)
+        .or_else(|| std::env::home_dir().map(|home| home.join(".cargo")))
+        .ok_or("Cannot locate the Cargo home for package path remapping")?;
+    let mut flags: Vec<String> = [
+        "-Ctarget-feature=+crt-static",
+        "-Clink-arg=-Wl,--no-insert-timestamp",
+        "-Cstrip=symbols",
+    ]
+    .into_iter()
+    .map(str::to_owned)
+    .collect();
+    for (path, label) in [
+        (std::path::absolute(cargo_home)?, "/cargo"),
+        (workspace.workspace_root, "/weftforge"),
+        (workspace.target_directory, "/target"),
+        (workspace.build_directory, "/build"),
+    ] {
+        flags.push(format!(
+            "--remap-path-prefix={}={label}",
+            path.to_str().ok_or("Non-UTF-8 package source path")?
+        ));
+    }
+    // Explicit environment flags take precedence over Cargo's target configuration.
+    let inherited = std::env::var("CARGO_ENCODED_RUSTFLAGS").or_else(|_| {
+        std::env::var("RUSTFLAGS")
+            .map(|raw| raw.split_whitespace().collect::<Vec<_>>().join("\x1f"))
+    });
+    if windows_selected && let Ok(inherited) = inherited {
+        if !inherited.is_empty() {
+            flags.insert(0, inherited);
+        }
+        command.env("CARGO_ENCODED_RUSTFLAGS", flags.join("\x1f"));
+    } else {
+        command.arg("--config").arg(format!(
+            "target.{WINDOWS_GNULLVM}.rustflags={}",
+            serde_json::to_string(&flags)?
+        ));
+    }
+    Ok(())
 }
 
 fn reported_build(stdout: &[u8], succeeded: bool) -> Result<BuildArtifacts> {
