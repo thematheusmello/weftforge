@@ -1,0 +1,43 @@
+{
+  "checker_sha256": "500b3ec47efc917730ae9fe4737857dd9c86194e5d40d0c8a56c78fcdfe92b0e",
+  "checker": "Independent JFIF, frame, dimensions and authored-mark readback using the tracked verifier.",
+  "project_sha256": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+  "outputs": [
+    {
+      "name": "fit",
+      "file": "fit.jpg",
+      "size_px": [
+        4345,
+        3615
+      ],
+      "jfif_ppi": 127,
+      "physical_side_error_px": [
+        0.0,
+        0.0
+      ],
+      "outline_samples": 180,
+      "mark_samples": 6,
+      "sha256": "2c23889fa3438ca261d30869d60f72daecdf5ea3e8aa9a374f6be2189629fa04",
+      "bytes": 245454
+    },
+    {
+      "name": "two-metre",
+      "file": "two-metre.jpeg",
+      "size_px": [
+        5669,
+        567
+      ],
+      "jfif_ppi": 72,
+      "physical_side_error_px": [
+        0.29133858267716534,
+        0.07086614173228346
+      ],
+      "outline_samples": 120,
+      "mark_samples": 4,
+      "sha256": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb",
+      "bytes": 45112
+    }
+  ],
+  "actual_linux_native_equals_current_linux_cli_and_mcp": true,
+  "actual_linux_native_equals_prior_apple_silicon_native": true
+}
