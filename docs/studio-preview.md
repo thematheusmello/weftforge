@@ -15,6 +15,15 @@ The longer Harbor front drapes around the mannequin. Each face now ends at its p
 
 ![Native WeftForge studio showing the longer Harbor shirt after assembly and drape](../parity/reports/artifacts/native-projected-faces-20261120/draped.png)
 
+## Where the Harbor garment stretches
+
+The draped front and back reached 118.74% and 118.77% of rest length in
+their most extended directions. The 3D map uses a 120% upper range while
+the two editable 2D patterns show their authored fabrics.
+[Native geometry and pixel replay](../parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json).
+
+![Two-fabric Harbor patterns and the draped garment with its global strain legend](../parity/reports/artifacts/native-global-strain-20261120/map-on.png)
+
 ## Two editable openings
 
 This 240 × 360 mm pocket is open in the Debian studio after a save and reopen.

@@ -1,0 +1,101 @@
+{
+  "draped_peak_percent": 118.77,
+  "canvas_bounds_px": [
+    698,
+    143,
+    1348,
+    944
+  ],
+  "excluded_overlay_rects_px": [
+    [
+      697,
+      164,
+      945,
+      377
+    ]
+  ],
+  "isolated_front_peak_percent": 118.74,
+  "source_commit": "25c337859089b7ce93e6bef998d40dae2f05ae41",
+  "source_tree": "c7974bd1942aeeb34f4145607d09c4f2c0bd1bfa",
+  "locked_release_binary_sha256": "47df7be52910e8ad9925454ffccd47481ec612ed63bd703eb495c40c36c3d812",
+  "platform": "Apple Silicon macOS, native Metal release studio",
+  "camera": "Front view and Frame garment after the accepted drape. The inset fit uses 28 px on each side. Canvas bounds are measured on the 1640 \u00d7 1000 workspace PNG; the overlay exclusion includes its shadow.",
+  "actions": [
+    {
+      "action": "Open a disposable copy of the two-fabric Harbor, Frame all, choose Front view and start Assemble (gravity off).",
+      "revision": 24,
+      "pieces": 2,
+      "seams": 8,
+      "vertices": 654
+    },
+    {
+      "action": "Choose View > Strain map. Under the pending assembly, type the range values and commit each with Return.",
+      "initial_upper_percent": 120,
+      "rest_visible_peak_percent": 100,
+      "typed_upper_percent": [
+        100,
+        125,
+        1000,
+        120
+      ]
+    },
+    {
+      "action": "Read accepted assembly, then start Drape. The map continues to show the accepted assembly while draping.",
+      "assembly_steps": 60,
+      "accepted_time_seconds": 1.0,
+      "accepted_peak_percent": 118.28,
+      "pending_drape_step_samples": [
+        0,
+        19,
+        64,
+        106,
+        117
+      ]
+    },
+    {
+      "action": "Read the accepted drape. Frame garment and use File > Export OBJ.",
+      "drape_steps": 120,
+      "accepted_time_seconds": 3.0,
+      "visible_faces": 1172,
+      "visible_peak_percent": 118.77,
+      "revision": 24,
+      "output": "draped.obj",
+      "diffuse_library": "weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl"
+    },
+    {
+      "action": "Toggle the map off, export the workspace, turn it on and export again. Enter 125%, export, restore 120%, then repeat both off and on captures.",
+      "workspace_sequence": [
+        "map-off.png",
+        "map-on.png",
+        "map-125.png",
+        "map-off-repeat.png",
+        "map-on-repeat.png"
+      ],
+      "revision": 24
+    },
+    {
+      "action": "Select Harbor front in Scene and isolate it. Show all again.",
+      "isolated_faces": 586,
+      "isolated_peak_percent": 118.74,
+      "all_faces": 1172,
+      "all_peak_percent": 118.77
+    },
+    {
+      "action": "Save the editable project. Choose New Empty, observe Current surface unavailable at revision 0, then reopen the saved primary through the native chooser and save again.",
+      "reopened_revision": 24,
+      "reopened_rest_peak_percent": 100.0,
+      "reopened_faces": 1172,
+      "output": "reopened.weftforge"
+    },
+    {
+      "action": "Open the edited Pocket fixture. Turn off the map, Frame all, select the pattern and export the workspace to inspect the sloped cutout.",
+      "revision": 4,
+      "mesh_vertices": 43,
+      "output": "cutout.png"
+    }
+  ],
+  "limits": [
+    "Global maximum principal stretch per face; continuous original display colors. The separate historical fitting grade uses its own 15% material-axis test.",
+    "One two-fabric drape and one selected cutout on this workstation. Dark and outline-similar authored colors are exercised by source tests. Numerical comparison with a reference solver, graph-style modes, fabric calibration, stress and pressure remain open."
+  ]
+}

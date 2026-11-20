@@ -2,6 +2,40 @@
 use crate::{Mesh, Piece, Project, Result};
 use weftforge_sim::{Cloth, ClothInput, Collider, Diagnostics, Material, Stitch, WeightedPoint};
 
+/// Largest length ratio in the triangle over all rest-space directions.
+/// Rest coordinates are physical metres. A rigid motion gives one.
+pub fn maximum_principal_stretch(uv: [[f64; 2]; 3], x: [[f64; 3]; 3]) -> Option<f64> {
+    let [a, b] = [1, 2].map(|j| [uv[j][0] - uv[0][0], uv[j][1] - uv[0][1]]);
+    let rest_scale = a.into_iter().chain(b).map(f64::abs).fold(0., f64::max);
+    if rest_scale == 0. || !rest_scale.is_finite() {
+        return None;
+    }
+    let [a, b] = [a, b].map(|edge| edge.map(|v| v / rest_scale));
+    let det = a[0] * b[1] - a[1] * b[0];
+    if det == 0. || !det.is_finite() {
+        return None;
+    }
+    let [p, q] =
+        [1, 2].map(|j| std::array::from_fn::<_, 3, _>(|k| (x[j][k] - x[0][k]) / rest_scale));
+    // Columns of the surface deformation gradient Ds * Dm^-1.
+    let mut u: [f64; 3] = std::array::from_fn(|k| (p[k] * b[1] - q[k] * a[1]) / det);
+    let mut v: [f64; 3] = std::array::from_fn(|k| (q[k] * a[0] - p[k] * b[0]) / det);
+    if !u.iter().chain(&v).all(|n| n.is_finite()) {
+        return None;
+    }
+    let scale = u.into_iter().chain(v).map(f64::abs).fold(0., f64::max);
+    if scale == 0. {
+        return Some(0.);
+    }
+    u = u.map(|n| n / scale);
+    v = v.map(|n| n / scale);
+    let dot = |a: [f64; 3], b: [f64; 3]| a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+    // Largest eigenvalue of FᵀF. Its off-diagonal term includes shear.
+    let (uu, vv, uv) = (dot(u, u), dot(v, v), dot(u, v));
+    let stretch = scale * ((uu + vv + (uu - vv).hypot(2. * uv)) * 0.5).sqrt();
+    stretch.is_finite().then_some(stretch)
+}
+
 /// Resolves current solver triangle attribution to editable construction.
 pub fn peak_strain_piece<'a>(
     project: &'a Project,
@@ -158,6 +192,39 @@ fn create_cloth_context(
 mod tests {
     use super::*;
     use crate::{Command, Editor};
+    #[test]
+    fn principal_stretch_handles_oblique_rest_rigid_motion_shear_and_invalid_faces() {
+        let uv = [[1.3, -2.0], [1.7, -1.9], [1.65, -0.8]];
+        for (sx, shear, sy, expected) in [
+            (1., 0., 1., 1.),
+            (1.2, 0., 0.85, 1.2),
+            (0.5, 0., 0.75, 0.75),
+            (1., 1., 1., (1. + 5_f64.sqrt()) / 2.),
+        ] {
+            // Map to a tilted plane in 3D with translation and rotate its Y axis.
+            let x = uv.map(|[u, v]| {
+                [
+                    4. + sx * u + shear * v,
+                    7. + 0.6 * sy * v,
+                    -2. + 0.8 * sy * v,
+                ]
+            });
+            assert!((maximum_principal_stretch(uv, x).unwrap() - expected).abs() < 1e-13);
+            assert!(
+                (maximum_principal_stretch([uv[2], uv[1], uv[0]], [x[2], x[1], x[0]]).unwrap()
+                    - expected)
+                    .abs()
+                    < 1e-13
+            );
+        }
+        assert_eq!(maximum_principal_stretch(uv, [[2.; 3]; 3]), Some(0.));
+        assert_eq!(
+            maximum_principal_stretch([[0., 0.], [1., 1.], [2., 2.]], [[2.; 3]; 3]),
+            None
+        );
+        assert_eq!(maximum_principal_stretch(uv, [[f64::NAN; 3]; 3]), None);
+    }
+
     #[test]
     fn strain_attribution_resolves_current_piece_and_rejects_stale_indices() {
         let mut editor = Editor::default();

@@ -1,5 +1,9 @@
 # WeftForge current-source addendum
 
+## Global garment strain map
+
+Source `25c337859089b7ce93e6bef998d40dae2f05ae41` adds a global per-face principal-stretch display, editable percentage range and separate authored fabric colors on editable patterns. The reviewed reference observation records controls and display scope. Numerical comparison remains open.
+
 ## Fabric colors in OBJ exports
 
 Source `9c0fe5fd417269c88db38b6f85f9c7bbed6f935e` maps each exported group to one authored fabric and writes a content-addressed MTL for the colors used by that surface. The CLI and MCP share the rest export.
@@ -739,3 +743,5 @@ This endpoint overlay preserves the exact preceding160562d map at48e3264 and all
 Every delivered artifact must be tracked and registry/map checks must pass from a clean checkout before publication. Root owns clean committed verification and remote publication. This map adds no source/product/native/reference execution or full-feature acceptance. Actions stays disabled and the existing static Pages site is preserved.
 
 Multiple editable disjoint cutouts, native Add hole review and SVG subpath order are pinned at `1ebac973a9db3c4b1bdd9fada42bf868c465ccf9`. Every hole retains its own addressed boundary. The source refresh covers `internal-primitives`, `curve-tools`, `project-load-save` and `pattern-snapshot-print`. Runtime and comparison evidence remain in the registry.
+
+The combined source `a50aa0fa3b639a59e198e47069c7fe00552b250a` retains the Global strain display and editable disjoint cutouts. All current anchors are pinned to that tree.

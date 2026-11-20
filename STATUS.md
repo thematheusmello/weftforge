@@ -11,8 +11,8 @@ case also produced identical OBJ bytes and editable content apart from revision.
 [Native report](parity/reports/WF-20261120-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json) · [Reopened edit](parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/edited-reopened.png) · [Independent replay](parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/replay.py).
 
 The unsigned Debian package came from `cb76dd0f`. Its guest audit read
-443 files and found notices for all 243 emitted Cargo crates. The native
-studio sources match the subsequent help-text update. All three studio
+443 files and found notices for all 243 emitted Cargo crates. The later garment strain shading changed the studio source,
+so this Wayland run is historical on the combined build. All three studio
 processes closed and the guest shut down. Testing used Sway with a virtual
 display and software Vulkan. Physical GPU verification remains open.
 
@@ -28,7 +28,20 @@ overlapping pattern and preserved the existing primary and recovery files.
 The pocket mesh had 47 vertices, 64 triangles, three boundary loops and
 0.0756 m² of material. Apple Model I/O measured 0.0756000019 m².
 Curved cutouts, nested islands and cutting across an opening remain open.
+The combined strain-map and cutout release reproduced both adapter outputs and the Apple mesh measurement. [Integrated adapter check](parity/reports/WF-20261120-INTEGRATED-MULTIPLE-CUTOUTS-001.json).
 [Replay the case](parity/scenarios/PAT-MULTIPLE-CUTOUTS-001.json) · [Source and artifact identities](parity/reports/WF-20261120-MULTIPLE-CUTOUTS-001.json).
+
+# Global garment strain map — 20 November 2026
+
+View and Command search can show a separate global maximum-principal-stretch
+legend on the 3D garment. Its 100–1000% upper range defaults to 120%.
+Current rest UVs keep their original fabric colors on the 2D canvas. Tests
+cover rigid motion, extension, compression, shear, hidden faces, cache
+invalidation, empty surfaces and open cutouts. The accepted two-fabric Harbor drape peaked at 118.77%. Independent OBJ
+analysis reproduced both scale settings at all 5,784 sampled surface pixels;
+517,104 pattern pixels kept their original values. The saved editable
+project reopened byte-identically. The previous extended-hem quality failure
+remains recorded. [Native display and geometry check](parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json). [Global strain map](spec/features/FIT-003-global-strain-map.md).
 
 # Fabric colors in OBJ exports — 20 November 2026
 

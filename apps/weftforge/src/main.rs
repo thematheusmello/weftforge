@@ -19,9 +19,13 @@ use weftforge_core::{
 use weftforge_sim::{Cloth, MaterialAxis, SimulationError, StepSettings};
 
 mod capture;
+mod pattern_fill;
 use capture::{RenderedFrame, WorkspaceCapture};
+use pattern_fill::{PatternFill, fabric_color};
 mod pattern_snapshot;
+mod strain_map;
 use pattern_snapshot::{PatternSnapshotDialog, SnapshotAction, SnapshotFormat};
+use strain_map::{STRAIN_MAP, StrainMap};
 
 const DEFAULT_ORBIT: [f32; 2] = [-0.45, 0.12];
 const MIN_CAMERA_SCALE: f32 = 60.;
@@ -1161,6 +1165,8 @@ struct GarmentFrame {
 struct Studio {
     editor: Editor,
     mesh: Option<Arc<Mesh>>,
+    strain_map: StrainMap,
+    pattern_fill: Option<PatternFill>,
     cloth: Option<Arc<Cloth>>,
     job: Option<Job>,
     last_job: Option<FinishedJob>,
@@ -1268,6 +1274,8 @@ impl Studio {
         let mut app = Self {
             editor: Editor::new(Project::default()).expect("valid empty project"),
             mesh: None,
+            strain_map: StrainMap::default(),
+            pattern_fill: None,
             cloth: None,
             job: None,
             last_job: None,
@@ -2978,6 +2986,7 @@ impl Studio {
                     ui.close();
                 }
                 ui.checkbox(&mut self.wireframe, "Wireframe");
+                if self.strain_map_button(ui) { ui.close(); }
                 ui.separator();
                 for (label, angles) in CAMERA_VIEWS {
                     if self.camera_view_button(ui, label, angles) {
@@ -6074,9 +6083,46 @@ impl Studio {
         let mut distance = 12_f32;
         let mut boundary_nearest = None;
         let mut boundary_distance = 12_f32;
+        let fill_current = self.transform_gesture.is_none()
+            && self.preview.is_none()
+            && self
+                .free_sewing
+                .as_ref()
+                .is_none_or(|draft| draft.preview.is_none())
+            && self
+                .mesh
+                .as_ref()
+                .is_some_and(|m| m.doc_revision == doc.revision);
+        if fill_current && let Some(mesh) = &self.mesh {
+            let view = (r.center(), self.center, self.scale);
+            if self
+                .pattern_fill
+                .as_ref()
+                .is_none_or(|cache| !cache.matches(mesh, view, &self.hidden_pieces))
+            {
+                self.pattern_fill = Some(PatternFill::new(
+                    mesh,
+                    &doc,
+                    view,
+                    &self.hidden_pieces,
+                    |uv| self.to_screen(uv, r),
+                ));
+            }
+            painter.add(egui::Shape::mesh(
+                self.pattern_fill.as_ref().unwrap().surface.clone(),
+            ));
+        } else {
+            self.pattern_fill = None;
+        }
         let notch_segments = doc.notch_segments().unwrap_or_default();
         for piece in visible_pieces(&doc, &self.hidden_pieces) {
             let selected = self.piece_selected(piece.id);
+            let halo = fill_current
+                .then(|| {
+                    doc.material(piece.material)
+                        .map(|m| strain_map::edge_color(fabric_color(m.color)))
+                })
+                .flatten();
             let color = if selected {
                 Color32::from_rgb(92, 163, 225)
             } else {
@@ -6101,6 +6147,17 @@ impl Studio {
                                     nearest = Some((piece.id, *id));
                                 }
                             }
+                        }
+                        if let Some(halo) = halo {
+                            let width = if self.selected_curve == Some(*id) {
+                                6.
+                            } else if selected {
+                                4.5
+                            } else {
+                                3.
+                            };
+                            painter
+                                .add(egui::Shape::line(samples.clone(), Stroke::new(width, halo)));
                         }
                         painter.add(egui::Shape::line(
                             samples,
@@ -7319,6 +7376,13 @@ impl Studio {
         (positions.len() == mesh.piece_ids.len()).then_some((mesh, positions))
     }
 
+    fn strain_map_button(&mut self, ui: &mut egui::Ui) -> bool {
+        let response=ui.checkbox(&mut self.strain_map.enabled,STRAIN_MAP)
+            .on_hover_text("Color 3D faces by maximum principal stretch. The 2D patterns keep their fabric colors.");
+        self.retain_inspector_input(&response, false);
+        response.changed()
+    }
+
     fn camera_space(&self, [x, y, z]: [f32; 3]) -> [f32; 3] {
         let a = self.yaw.cos() * x + self.yaw.sin() * z;
         let z = -self.yaw.sin() * x + self.yaw.cos() * z;
@@ -7720,13 +7784,20 @@ impl Studio {
             painter.circle_filled(a, radius, c);
             painter.circle_filled(b, radius, c);
         }
+        self.strain_map.refresh(
+            self.editor.project.revision,
+            self.mesh.as_ref(),
+            self.cloth.as_ref(),
+        );
+        self.strain_map.panel(ui, r, &self.hidden_pieces);
         let mut picked = None;
         if let Some((mesh, positions)) = self.garment_surface() {
             let mut triangles: Vec<_> = mesh
                 .triangles
                 .iter()
-                .filter(|triangle| !self.hidden_pieces.contains(&mesh.piece_ids[triangle[0]]))
-                .map(|triangle| {
+                .enumerate()
+                .filter(|(_, triangle)| !self.hidden_pieces.contains(&mesh.piece_ids[triangle[0]]))
+                .map(|(face, triangle)| {
                     let id = mesh.piece_ids[triangle[0]];
                     let vertices = if let Some(placement) = preview_placement
                         .as_ref()
@@ -7737,34 +7808,40 @@ impl Studio {
                         triangle.map(|index| positions[index])
                     };
                     let points = vertices.map(|point| self.project3(point, r));
+                    let color = self.strain_map.face_color(face).unwrap_or_else(|| {
+                        let rgb = self
+                            .editor
+                            .project
+                            .piece(id)
+                            .and_then(|p| self.editor.project.material(p.material))
+                            .map_or([0.3, 0.7, 0.65], |m| m.color);
+                        let light = triangle_light(vertices);
+                        let [r, g, b] = rgb.map(|v| (v * light * 255.) as u8);
+                        Color32::from_rgb(r, g, b)
+                    });
                     (
                         id,
                         points,
                         points.iter().map(|point| point.1).sum::<f32>() / 3.,
-                        triangle_light(vertices),
+                        color,
                     )
                 })
                 .collect();
             triangles.sort_by(|a, b| a.2.total_cmp(&b.2));
-            for (id, p, _, light) in triangles {
-                let rgb = self
-                    .editor
-                    .project
-                    .piece(id)
-                    .and_then(|p| self.editor.project.material(p.material))
-                    .map_or([0.3, 0.7, 0.65], |m| m.color);
-
-                let color = Color32::from_rgb(
-                    (rgb[0] * light * 255.) as u8,
-                    (rgb[1] * light * 255.) as u8,
-                    (rgb[2] * light * 255.) as u8,
-                );
+            for (id, p, _, color) in triangles {
                 let points = p.map(|p| p.0);
                 if pick.is_some_and(|pointer| point_in_triangle(pointer, points)) {
                     picked = Some(id);
                 }
                 let stroke = if self.wireframe || self.piece_selected(id) {
-                    Stroke::new(0.5, Color32::from_rgb(112, 161, 208))
+                    Stroke::new(
+                        0.5,
+                        if self.strain_map.enabled {
+                            strain_map::edge_color(color)
+                        } else {
+                            Color32::from_rgb(112, 161, 208)
+                        },
+                    )
                 } else {
                     Stroke::NONE
                 };
@@ -8313,6 +8390,12 @@ impl eframe::App for Studio {
                             if self.search
                                 && FRAME_GARMENT.to_ascii_lowercase().contains(&query)
                                 && self.frame_garment_button(ui)
+                            {
+                                self.close_command_search(&ctx);
+                            }
+                            if self.search
+                                && STRAIN_MAP.to_lowercase().contains(&query)
+                                && self.strain_map_button(ui)
                             {
                                 self.close_command_search(&ctx);
                             }
