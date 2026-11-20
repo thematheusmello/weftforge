@@ -63277,7 +63277,8 @@
         "parity/reports/WF-20261119-APPLE-SILICON-PACKAGE-NOTICES-001.json",
         "parity/reports/WF-20261119-APPLE-SILICON-PINNED-CARGO-NOTICES-001.json",
         "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001.json",
-        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json"
+        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json",
+        "parity/reports/WF-20261120-DEBIAN-ARM64-CARGO-NOTICES-001.json"
       ],
       "scenarios": [
         {
@@ -63308,6 +63309,15 @@
           },
           "initial_conditions": "Open a disposable copy of the revision 3 Juniper and Basin project in the packaged Debian ARM64 studio under X11 with the GTK desktop portal.",
           "expected_outcomes": "Save As creates a distinct editable file with the original bytes. The fitted and two-metre native JPEGs preserve the specified physical scale and artwork, including after dismissing a chooser. Both match fresh packaged CLI and MCP exports."
+        },
+        {
+          "id": "APP-DEBIAN-ARM64-CARGO-NOTICES-001",
+          "path": "parity/scenarios/APP-DEBIAN-ARM64-CARGO-NOTICES-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/manifest.json": "54d4224528c44fa974075eeb660ccceff2377e0d405dc74002d48af7518d412e"
+          },
+          "initial_conditions": "The previous Debian ARM64 release has seven unresolved entries among 234 emitted Cargo crates, and the exact locked archives are cached.",
+          "expected_outcomes": "The offline package includes matching license files and provenance for all seven, its package ledger verifies every file, and the previous package retains all original digests."
         }
       ],
       "comparison_criteria": {
@@ -63503,6 +63513,23 @@
             "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.jpeg": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb"
           },
           "path": "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json"
+        },
+        {
+          "id": "WF-20261120-DEBIAN-ARM64-CARGO-NOTICES-001",
+          "commit": "d564e2de7bd6d224c0753d2b0d96b07eed81eb92",
+          "timestamp": "2026-11-20T17:00:48.763853Z",
+          "platform": "Debian 13.7 ARM64 with independent offline Cargo package and notice readback",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-arm64-cargo-notices-20261120/OFFLINE-PACKAGE.json": "8913a485551bbd997aa81eb26a9b460d801eae27f37bcdcbb83af3d99284537d",
+            "parity/reports/artifacts/debian-arm64-cargo-notices-20261120/PACKAGE-SHA256SUMS": "1ea71ca2f0c955dd630ac78a872c86a1ff788c49dc33c6fd96eaaa78140ea086",
+            "parity/reports/artifacts/debian-arm64-cargo-notices-20261120/RESULT.json": "ab7427199d7bbbc0bf356f3383d1aa09ef6853b0e2db981e73052d605043cf31",
+            "parity/reports/artifacts/debian-arm64-cargo-notices-20261120/SOURCES.json": "d5da5e6a3519e8db86c597234a15ee0f93b523c832c0c14540a2f6ef0534302c",
+            "parity/reports/artifacts/debian-arm64-cargo-notices-20261120/check_notices.py": "e27bc0bd03422d40253196b14cad173ca725fed5de08bdc76a55d9fab197d6dc",
+            "parity/reports/artifacts/debian-arm64-cargo-notices-20261120/manifest.json": "d4f0c2c36dbb9fab54ab7b3d6f4a3366ce5048e405a3c3cc6d4e708bda21ae5e",
+            "parity/scenarios/APP-DEBIAN-ARM64-CARGO-NOTICES-001.json": "5c0e4c7f3d96f1f74318f65c39c48cd16147a84d28c7a32c652f29424b7f4ca6",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/manifest.json": "54d4224528c44fa974075eeb660ccceff2377e0d405dc74002d48af7518d412e"
+          },
+          "path": "parity/reports/WF-20261120-DEBIAN-ARM64-CARGO-NOTICES-001.json"
         }
       ],
       "known_gaps": [
@@ -63518,7 +63545,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "APP-003",
