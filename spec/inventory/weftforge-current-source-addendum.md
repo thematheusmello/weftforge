@@ -1,5 +1,9 @@
 # WeftForge current-source addendum
 
+## Global garment strain map
+
+Source `25c337859089b7ce93e6bef998d40dae2f05ae41` adds a global per-face principal-stretch display, editable percentage range and separate authored fabric colors on editable patterns. The reviewed reference observation records controls and display scope. Numerical comparison remains open.
+
 ## Fabric colors in OBJ exports
 
 Source `9c0fe5fd417269c88db38b6f85f9c7bbed6f935e` maps each exported group to one authored fabric and writes a content-addressed MTL for the colors used by that surface. The CLI and MCP share the rest export.
@@ -737,5 +741,3 @@ The preceding 4f80 JSON/Markdown remain exact at a433806 with 39 rows/23 surface
 This endpoint overlay preserves the exact preceding160562d map at48e3264 and all prior scopes. It changes no Command variant/schema/tool/format/dependency, Rectangle/Transform/middle-pan recognition, full offset, solver or garment behavior. Headless definitions and static anchors are not native/reference acceptance; current endpoint/D003/file results and lifecycle/disk-write qualifications belong solely to separately attributed reports. Frozen E001/D001/D002 and the trace47 historical diagnostic remain unreplayed/unregraded; no trace47 code is included.
 
 Every delivered artifact must be tracked and registry/map checks must pass from a clean checkout before publication. Root owns clean committed verification and remote publication. This map adds no source/product/native/reference execution or full-feature acceptance. Actions stays disabled and the existing static Pages site is preserved.
-
-Multiple editable disjoint cutouts, native Add hole review and SVG subpath order are pinned at `1ebac973a9db3c4b1bdd9fada42bf868c465ccf9`. Every hole retains its own addressed boundary. The source refresh covers `internal-primitives`, `curve-tools`, `project-load-save` and `pattern-snapshot-print`. Runtime and comparison evidence remain in the registry.

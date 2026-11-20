@@ -26156,7 +26156,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/PAT-006-straight-cut.md": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c"
       }
@@ -35278,7 +35278,9 @@
       "reference_observation_status": "unobserved",
       "evidence_ids": [
         "parity/reports/WF-20261120-HARBOR-HEM-REGENERATION-001.json",
-        "parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json"
+        "parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json",
+        "spec/features/FIT-003-global-strain-map.md",
+        "parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json"
       ],
       "scenarios": [
         {
@@ -35353,6 +35355,18 @@
           "fixture_hashes": {
             "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
           }
+        },
+        {
+          "id": "SIM-NATIVE-GLOBAL-STRAIN-001",
+          "path": "parity/scenarios/SIM-NATIVE-GLOBAL-STRAIN-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.weftforge": "003746b6228815e621964abe6b1d0a5e01a52abe31c3f758bbdabbb0c0d3ac92"
+          },
+          "initial_conditions": "Open the supplied revision-24 two-fabric Harbor. It has two patterns, eight seams and 654 rest vertices. Use Front view and the native 60-step Assemble and 120-step Drape actions.",
+          "expected_outcomes": "The display uses per-face principal stretch of the accepted geometry, respects isolated faces and updates the 3D range. Pattern colors and the saved project are identical across the display changes. Opening the saved document restores its rest mesh."
         }
       ],
       "comparison_criteria": {
@@ -35369,7 +35383,9 @@
         "SIM-001"
       ],
       "implementation_locations": [
-        "crates/weftforge-core/src/lib.rs"
+        "crates/weftforge-core/src/lib.rs",
+        "apps/weftforge/src/strain_map.rs",
+        "apps/weftforge/src/pattern_fill.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/2",
@@ -35980,6 +35996,33 @@
             "scripts/check_drape.py": "789752b2503a14a8637c833ff6867e9a659dbf7313fd01f41b92b1626d4cb7d6"
           },
           "path": "parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json"
+        },
+        {
+          "path": "parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json",
+          "id": "WF-20261120-NATIVE-GLOBAL-STRAIN-001",
+          "commit": "25c337859089b7ce93e6bef998d40dae2f05ae41",
+          "timestamp": "2026-11-20T18:37:12Z",
+          "platform": "Apple Silicon macOS native Metal studio, exported draped OBJ and workspace PNG replay",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.weftforge": "003746b6228815e621964abe6b1d0a5e01a52abe31c3f758bbdabbb0c0d3ac92",
+            "parity/scenarios/SIM-NATIVE-GLOBAL-STRAIN-001.json": "9350dc5c7121b66435cbea05a24caa388a62c1b55e14e0cac29ac75babd4ca9f",
+            "parity/reports/artifacts/native-global-strain-20261120/CLEANUP.json": "2e1f09bfbfc1a9971f775951bc111810473663b3867aa15dc4c67d7d81b6c62f",
+            "parity/reports/artifacts/native-global-strain-20261120/NATIVE.json": "47b554e8d2ef1c6dacfc6b865f46e26385606d072ec71a26dc229b8f48fddf0c",
+            "parity/reports/artifacts/native-global-strain-20261120/RESULT.json": "989d04123848a0998203958fc060e2de1eaad872af97570a9198a392024a3e12",
+            "parity/reports/artifacts/native-global-strain-20261120/check_strain.py": "5f64c4e13b927b700eb18e70b041c67d2eed763f35944e6bdd50d17978e87f39",
+            "parity/reports/artifacts/native-global-strain-20261120/cutout.png": "fa5af1a996bf5e764272827934c69af8190bfc357e612354f7dda3bc5ea50245",
+            "parity/reports/artifacts/native-global-strain-20261120/draped.obj": "71a0fc0411020a79a8924cc31318a8fe129eaf17ec1b8ffdee8cacbd55aba124",
+            "parity/reports/artifacts/native-global-strain-20261120/map-125.png": "2a9ec14201afabfedc5c0babcf948a20077feef12c68dfdbd19abd19eedb3be8",
+            "parity/reports/artifacts/native-global-strain-20261120/map-off-repeat.png": "9e9ad75e0aed33831b09eadb6d358bc426b5bec6709339df8ed0631265662e19",
+            "parity/reports/artifacts/native-global-strain-20261120/map-off.png": "9e9ad75e0aed33831b09eadb6d358bc426b5bec6709339df8ed0631265662e19",
+            "parity/reports/artifacts/native-global-strain-20261120/map-on-repeat.png": "075851ba0f335b7641babc48bc80fa70665f58c15622b792a3c75b0ce5d4c244",
+            "parity/reports/artifacts/native-global-strain-20261120/map-on.png": "075851ba0f335b7641babc48bc80fa70665f58c15622b792a3c75b0ce5d4c244",
+            "parity/reports/artifacts/native-global-strain-20261120/reopened.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/reports/artifacts/native-global-strain-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784"
+          }
         }
       ],
       "known_gaps": [
@@ -35988,13 +36031,17 @@
         "Full-path e342471 refinement retains failed strain screens:26.9303%control,27.1686%8/64,26.6987%16/32 at3s. At1s beforegravity,16/32 differs by0.005777 strain and11.087mm nodal displacement. No equilibrium/calibration/convergence conclusion is established.",
         "Current3eddef original control fails unchanged strain screen:24.1185%after1s assembly,32.3519%after3s. Fixed zero-G continuation reaches32.1699%and still evolves. No-avatar probe is causal only, quality null; full force balance/convergence/calibration remain unknown.",
         "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity.",
-        "The 50 mm Harbor front hem edit survived reopening, simulation and a second edit. The longer garment reached 16.17% strain after assembly and 16.10% after drape, above the 15% limit. The matching CLI checked all 181 states on each construction. Both first exceeded the strain limit at state 28."
+        "The 50 mm Harbor front hem edit survived reopening, simulation and a second edit. The longer garment reached 16.17% strain after assembly and 16.10% after drape, above the 15% limit. The matching CLI checked all 181 states on each construction. Both first exceeded the strain limit at state 28.",
+        "Displaying current accepted maximum-principal-stretch faces preserves the existing historical regeneration and extended-hem fitting outcomes. Numerical fitting equivalence remains open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "stale",
+      "contract_documents": {
+        "spec/features/FIT-003-global-strain-map.md": "c51b56330f6d6b6f2a343fe176d4a65b18566aa386b51aa48d43eae36fbd0fd5"
+      }
     },
     {
       "id": "FIT-004",
@@ -43989,7 +44036,7 @@
         "https://support.marvelousdesigner.com/",
         "https://www.marvelousdesigner.com/products/releases"
       ],
-      "reference_observation_status": "unobserved",
+      "reference_observation_status": "observed",
       "evidence_ids": [
         "spec/features/SIM-005-strain-attribution.md",
         "parity/reports/WF-20261115-DIAGNOSTIC-STATIC-001.json",
@@ -44001,7 +44048,10 @@
         "parity/reports/WF-20261118-CONTACT-RECOVERY-D-TOOLING-001.json",
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-SOURCE-001.json",
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json",
-        "parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json"
+        "parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json",
+        "spec/features/FIT-003-global-strain-map.md",
+        "spec/observations/REF-SIM-005-GARMENT-STRAIN-MAP-001.json",
+        "parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json"
       ],
       "scenarios": [
         {
@@ -44050,6 +44100,18 @@
           "initial_conditions": "Original Harbor base revision20 then height revision17, unchanged authoring/arrangement/materials/mesh/capsules/ground/self-contact, no pins or ellipsoids, fresh zero velocities. One prospectively authorized attempt per case on one exact identified source; no retry, tuning, third case, reset or continuation.",
           "expected_outcomes": "Pass only when the complete fixed saved-state protocol satisfies every declared physical, completed-fit, diagnostic, attribution, capture and resource criterion. Initial open arrangement seams are excluded only from completed-fit seam/target criteria; transient strain/contact failures remain failures. Observations belong in source-qualified reports, never in these prospective criteria.",
           "path": "parity/scenarios/SIM-CLOSED-STITCH-HARBOR-001.json"
+        },
+        {
+          "id": "SIM-NATIVE-GLOBAL-STRAIN-001",
+          "path": "parity/scenarios/SIM-NATIVE-GLOBAL-STRAIN-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.weftforge": "003746b6228815e621964abe6b1d0a5e01a52abe31c3f758bbdabbb0c0d3ac92"
+          },
+          "initial_conditions": "Open the supplied revision-24 two-fabric Harbor. It has two patterns, eight seams and 654 rest vertices. Use Front view and the native 60-step Assemble and 120-step Drape actions.",
+          "expected_outcomes": "The display uses per-face principal stretch of the accepted geometry, respects isolated faces and updates the 3D range. Pattern colors and the saved project are identical across the display changes. Opening the saved document restores its rest mesh."
         }
       ],
       "comparison_criteria": {
@@ -44067,7 +44129,9 @@
         "crates/weftforge-sim/src/lib.rs",
         "crates/weftforge-core/src/simulation.rs",
         "apps/weftforge/src/main.rs",
-        "apps/weftforge-cli/src/main.rs"
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge/src/strain_map.rs",
+        "apps/weftforge/src/pattern_fill.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/4",
@@ -45464,6 +45528,33 @@
             "scripts/check_drape.py": "789752b2503a14a8637c833ff6867e9a659dbf7313fd01f41b92b1626d4cb7d6"
           },
           "path": "parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json"
+        },
+        {
+          "path": "parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json",
+          "id": "WF-20261120-NATIVE-GLOBAL-STRAIN-001",
+          "commit": "25c337859089b7ce93e6bef998d40dae2f05ae41",
+          "timestamp": "2026-11-20T18:37:12Z",
+          "platform": "Apple Silicon macOS native Metal studio, exported draped OBJ and workspace PNG replay",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.weftforge": "003746b6228815e621964abe6b1d0a5e01a52abe31c3f758bbdabbb0c0d3ac92",
+            "parity/scenarios/SIM-NATIVE-GLOBAL-STRAIN-001.json": "9350dc5c7121b66435cbea05a24caa388a62c1b55e14e0cac29ac75babd4ca9f",
+            "parity/reports/artifacts/native-global-strain-20261120/CLEANUP.json": "2e1f09bfbfc1a9971f775951bc111810473663b3867aa15dc4c67d7d81b6c62f",
+            "parity/reports/artifacts/native-global-strain-20261120/NATIVE.json": "47b554e8d2ef1c6dacfc6b865f46e26385606d072ec71a26dc229b8f48fddf0c",
+            "parity/reports/artifacts/native-global-strain-20261120/RESULT.json": "989d04123848a0998203958fc060e2de1eaad872af97570a9198a392024a3e12",
+            "parity/reports/artifacts/native-global-strain-20261120/check_strain.py": "5f64c4e13b927b700eb18e70b041c67d2eed763f35944e6bdd50d17978e87f39",
+            "parity/reports/artifacts/native-global-strain-20261120/cutout.png": "fa5af1a996bf5e764272827934c69af8190bfc357e612354f7dda3bc5ea50245",
+            "parity/reports/artifacts/native-global-strain-20261120/draped.obj": "71a0fc0411020a79a8924cc31318a8fe129eaf17ec1b8ffdee8cacbd55aba124",
+            "parity/reports/artifacts/native-global-strain-20261120/map-125.png": "2a9ec14201afabfedc5c0babcf948a20077feef12c68dfdbd19abd19eedb3be8",
+            "parity/reports/artifacts/native-global-strain-20261120/map-off-repeat.png": "9e9ad75e0aed33831b09eadb6d358bc426b5bec6709339df8ed0631265662e19",
+            "parity/reports/artifacts/native-global-strain-20261120/map-off.png": "9e9ad75e0aed33831b09eadb6d358bc426b5bec6709339df8ed0631265662e19",
+            "parity/reports/artifacts/native-global-strain-20261120/map-on-repeat.png": "075851ba0f335b7641babc48bc80fa70665f58c15622b792a3c75b0ce5d4c244",
+            "parity/reports/artifacts/native-global-strain-20261120/map-on.png": "075851ba0f335b7641babc48bc80fa70665f58c15622b792a3c75b0ce5d4c244",
+            "parity/reports/artifacts/native-global-strain-20261120/reopened.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/reports/artifacts/native-global-strain-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784"
+          }
         }
       ],
       "known_gaps": [
@@ -45476,13 +45567,17 @@
         "The source2e full-scope Harbor report is stale after DXF authoring/adapter changes. All solver-crate bytes and original physical results are unchanged; no physics was rerun. Current-source full native simulation controls and reference acceptance remain unverified.",
         "Cross-reference only: the new actual 96 headless Harbor evaluator records complete independent strain/seam/contact attribution without disagreement or blocked diagnostic, while strict strain fails 28\u201337. This supplies no current GUI/CLI diagnostic feature verification; existing SIM-005 status/freshness and full scope remain unchanged.",
         "Actual13fb/integrated8fe material groups change the independent two-face component from RED4.266274346685227e-7m/2.7341292831298387e-3N to first GREEN5.683890753411727e-18m/1.0747913121812962e-14N at unchanged1e-8m/1e-6N bounds; source407 gates pass. One new full Harbor A8 case is operationally accepted251.83977058297023s/420s with all181 states independently analyzed, but STRICT QUALITY FAILED strain frames28..40, peak21.96202527055029percent at frame29/triangle214/piece2/weft. Final14.03608985percent does not override trajectory failure. Initial seam/target failures0..28 remain; all finite/contact/uncertainty screens pass and completed-fit seam from exactzero29 passes. V1 build-only monitor failure and V2 correction/build remain separate. Fresh producer receipts qualify inherited saved-state/new_garment_execution:false wording. No replay/regrade/native/reference/full-feature/physics/garment/roadmap acceptance.",
-        "Actual a70c0df0 clean xtask and optimized native/CLI builds passed as separate D invocations. The 472-test source sequence belongs to f30c588d; unchanged source91 are explicit equivalence only. Native workflow and full feature/reference acceptance remain pending; runtime numerical quality is separately failed."
+        "Actual a70c0df0 clean xtask and optimized native/CLI builds passed as separate D invocations. The 472-test source sequence belongs to f30c588d; unchanged source91 are explicit equivalence only. Native workflow and full feature/reference acceptance remain pending; runtime numerical quality is separately failed.",
+        "The dedicated reference observation establishes Global/Fabric controls, graph choices, numeric range and display scope. The global face map has an original physical definition and palette. A reference strain tensor, fabric calibration, graph-style response, stress and pressure remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "stale",
+      "contract_documents": {
+        "spec/features/FIT-003-global-strain-map.md": "c51b56330f6d6b6f2a343fe176d4a65b18566aa386b51aa48d43eae36fbd0fd5"
+      }
     },
     {
       "id": "SIM-006",
@@ -51448,7 +51543,8 @@
         "spec/observations/REF-FILE-003-OBJ-CUTOUT-001.json",
         "parity/reports/WF-20261120-NATIVE-OBJ-FABRICS-001.json",
         "spec/observations/REF-FILE-003-OBJ-FABRICS-001.json",
-        "spec/features/FILE-003-obj-fabrics.md"
+        "spec/features/FILE-003-obj-fabrics.md",
+        "parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json"
       ],
       "scenarios": [
         {
@@ -51507,6 +51603,18 @@
           },
           "initial_conditions": "Open the revision 24 Harbor project. Cotton #1 is assigned to front #2 and Terracotta linen #68 to back #31. Both panels are in the rest arrangement with eight seam definitions.",
           "expected_outcomes": "Changing the front fabric and undoing preserves both native exports. The single-fabric export uses one material for both groups. The restored export assigns cotton and terracotta separately. All position, UV, normal, group and face records agree. Each panel has 586 triangles and area 0.5923 m\u00b2. The native, CLI and MCP two-fabric outputs agree byte for byte."
+        },
+        {
+          "id": "SIM-NATIVE-GLOBAL-STRAIN-001",
+          "path": "parity/scenarios/SIM-NATIVE-GLOBAL-STRAIN-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.weftforge": "003746b6228815e621964abe6b1d0a5e01a52abe31c3f758bbdabbb0c0d3ac92"
+          },
+          "initial_conditions": "Open the supplied revision-24 two-fabric Harbor. It has two patterns, eight seams and 654 rest vertices. Use Front view and the native 60-step Assemble and 120-step Drape actions.",
+          "expected_outcomes": "The display uses per-face principal stretch of the accepted geometry, respects isolated faces and updates the 3D range. Pattern colors and the saved project are identical across the display changes. Opening the saved document restores its rest mesh."
         }
       ],
       "comparison_criteria": {
@@ -52181,6 +52289,33 @@
             "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
           },
           "path": "parity/reports/WF-20261120-NATIVE-OBJ-FABRICS-001.json"
+        },
+        {
+          "path": "parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json",
+          "id": "WF-20261120-NATIVE-GLOBAL-STRAIN-001",
+          "commit": "25c337859089b7ce93e6bef998d40dae2f05ae41",
+          "timestamp": "2026-11-20T18:37:12Z",
+          "platform": "Apple Silicon macOS native Metal studio, exported draped OBJ and workspace PNG replay",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.weftforge": "003746b6228815e621964abe6b1d0a5e01a52abe31c3f758bbdabbb0c0d3ac92",
+            "parity/scenarios/SIM-NATIVE-GLOBAL-STRAIN-001.json": "9350dc5c7121b66435cbea05a24caa388a62c1b55e14e0cac29ac75babd4ca9f",
+            "parity/reports/artifacts/native-global-strain-20261120/CLEANUP.json": "2e1f09bfbfc1a9971f775951bc111810473663b3867aa15dc4c67d7d81b6c62f",
+            "parity/reports/artifacts/native-global-strain-20261120/NATIVE.json": "47b554e8d2ef1c6dacfc6b865f46e26385606d072ec71a26dc229b8f48fddf0c",
+            "parity/reports/artifacts/native-global-strain-20261120/RESULT.json": "989d04123848a0998203958fc060e2de1eaad872af97570a9198a392024a3e12",
+            "parity/reports/artifacts/native-global-strain-20261120/check_strain.py": "5f64c4e13b927b700eb18e70b041c67d2eed763f35944e6bdd50d17978e87f39",
+            "parity/reports/artifacts/native-global-strain-20261120/cutout.png": "fa5af1a996bf5e764272827934c69af8190bfc357e612354f7dda3bc5ea50245",
+            "parity/reports/artifacts/native-global-strain-20261120/draped.obj": "71a0fc0411020a79a8924cc31318a8fe129eaf17ec1b8ffdee8cacbd55aba124",
+            "parity/reports/artifacts/native-global-strain-20261120/map-125.png": "2a9ec14201afabfedc5c0babcf948a20077feef12c68dfdbd19abd19eedb3be8",
+            "parity/reports/artifacts/native-global-strain-20261120/map-off-repeat.png": "9e9ad75e0aed33831b09eadb6d358bc426b5bec6709339df8ed0631265662e19",
+            "parity/reports/artifacts/native-global-strain-20261120/map-off.png": "9e9ad75e0aed33831b09eadb6d358bc426b5bec6709339df8ed0631265662e19",
+            "parity/reports/artifacts/native-global-strain-20261120/map-on-repeat.png": "075851ba0f335b7641babc48bc80fa70665f58c15622b792a3c75b0ce5d4c244",
+            "parity/reports/artifacts/native-global-strain-20261120/map-on.png": "075851ba0f335b7641babc48bc80fa70665f58c15622b792a3c75b0ce5d4c244",
+            "parity/reports/artifacts/native-global-strain-20261120/reopened.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/reports/artifacts/native-global-strain-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784"
+          }
         }
       ],
       "known_gaps": [
@@ -52188,7 +52323,8 @@
         "OBJ export carries groups, UVs, normals and static diffuse fabric colors. Avatar or garment OBJ import, selected-only export and texture transfer remain open.",
         "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity.",
         "One reference OBJ-to-garment UV trace and re-export preserved a planar cutout, dimensions and material area. The reference remeshed it and changed the UV coordinate range and group/material records. The later two-piece case records flat rest geometry and diffuse colors. Avatar and reverse-import comparisons remain open.",
-        "One reviewed two-fabric reference return preserved RGB and per-fabric area within 4.92 \u00d7 10\u207b\u2078 m\u00b2. It remeshed the surface and emitted no group records. Draped interoperability, editable construction and broader reference parity remain open."
+        "One reviewed two-fabric reference return preserved RGB and per-fabric area within 4.92 \u00d7 10\u207b\u2078 m\u00b2. It remeshed the surface and emitted no group records. Draped interoperability, editable construction and broader reference parity remain open.",
+        "The two-fabric draped OBJ replays global strain from saved positions, rest UVs, groups and diffuse library. The previous rest interchange report retains its original source scope."
       ],
       "contradictions": [],
       "blockers": [
@@ -57834,7 +57970,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/FILE-005-dxf-pattern-export.md": "b0373181a6ae79c148aa154c0c2269956c2fed3587b5c6d0aef929108e11dd73",
         "spec/features/FILE-005-dxf-pattern-import.md": "06cff6f3d1a6d62fceeb93e94a2037f28136b69adfa5507b8a780e8864b0512b",
