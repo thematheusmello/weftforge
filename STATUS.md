@@ -1,3 +1,13 @@
+# Arrange several patterns together — 20 November 2026
+
+Select multiple visible patterns in the Scene or either viewport. Move them
+together in the view plane or turn them around the mean of their placed
+bounds centers. The active pattern supplies the local axes. Each release is
+one undoable placement transaction. The source regressions exercise a
+nonactive drag target, a tilted local axis, preservation of a third piece,
+history and atomic refusal. A native save-and-reopen case is pending.
+[Group arrangement](spec/features/FIT-001-group-arrangement.md).
+
 # Editable cutouts in SVG drawings — 20 November 2026
 
 The shared SVG import now restores a polygon and its straight-sided cutout
