@@ -1,0 +1,63 @@
+{
+  "id": "FILE-NATIVE-SVG-CUTOUT-001",
+  "status": "implementation_only",
+  "initial_conditions": "An empty native project at revision 0 and a 240 \u00d7 360 mm pocket SVG. Its two absolute straight subpaths use evenodd fill, with the inner loop first.",
+  "actions": [
+    "Open the SVG import review and read the pattern count, cutout count and physical scale.",
+    "Import once, Undo, then Redo. Save the project and export its rest OBJ and workspace PNG.",
+    "Close the project. In a fresh workspace, reopen the saved project, use Frame all, then drag the upper-left hole corner left on the 10 mm snap grid.",
+    "Save and export the edited project and OBJ. Use Frame garment and save the workspace PNG.",
+    "Replay both native documents and meshes. Import the same SVG through the release CLI and current stdio MCP. Reject incomplete XML, a nonzero same-winding pair, and a crossing hole after a valid path."
+  ],
+  "expected_outcomes": "Import creates one piece with one hole. Undo returns to an empty project and Redo restores the 46-vertex rest mesh. A 20 mm corner edit after reopening preserves both boundaries\u2019 identities. Polygon, OBJ and UV material areas change from 0.0768 to 0.0756 m\u00b2. Both rest surfaces are connected and have two boundary loops. CLI and MCP reproduce the import and preserve the destination and recovery on rejection.",
+  "typed_commands": {
+    "import": {
+      "type": "import_svg_patterns",
+      "data": {
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"240mm\" height=\"360mm\" viewBox=\"0 -360 240 360\">\n  <title>Pocket facing with rectangular opening</title>\n  <path data-name=\"Pocket facing\" fill-rule=\"evenodd\" d=\"M80 -120 L160 -120 160 -240 80 -240 Z M0 0 L240 0 240 -360 0 -360 Z\"/>\n</svg>\n"
+      }
+    },
+    "corner_edit": {
+      "type": "move_point",
+      "data": {
+        "point": 13,
+        "position": [
+          0.06,
+          0.24
+        ]
+      }
+    }
+  },
+  "measurements": {
+    "native_revisions": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "millimetres_per_user_unit": 1,
+    "piece_id": 2,
+    "hole_id": 11,
+    "outer_area_m2": 0.0864,
+    "hole_area_m2": [
+      0.0096,
+      0.0108
+    ],
+    "material_area_m2": [
+      0.0768,
+      0.0756
+    ],
+    "mesh_vertices": [
+      46,
+      43
+    ],
+    "mesh_triangles": [
+      64,
+      58
+    ],
+    "boundary_loops": 2,
+    "euler_characteristic": 0,
+    "mcp_protocol_version": "2026-07-28"
+  }
+}

@@ -6,6 +6,15 @@ The longer Harbor front drapes around the mannequin. Each face now ends at its p
 
 ![Native WeftForge studio showing the longer Harbor shirt after assembly and drape](../parity/reports/artifacts/native-projected-faces-20261120/draped.png)
 
+## An editable pocket opening
+
+The SVG imports as a 240 × 360 mm pocket facing with a rectangular opening.
+After reopening the saved project, moving one inner corner 20 mm left enlarged the
+opening by 12 cm². Both exported meshes retain one continuous surface around it.
+[Imported workspace](../parity/reports/artifacts/native-svg-cutout-20261120/Pocket%20imported.png) · [Native measurements](../parity/reports/WF-20261120-NATIVE-SVG-CUTOUT-001.json).
+
+![Edited pocket facing with the opening visible in both the pattern and the framed rest surface](../parity/reports/artifacts/native-svg-cutout-20261120/Pocket%20edited.png)
+
 ## A longer front hem after draping
 
 Harbor’s front panel is 50 mm longer in the pattern. After assembly and

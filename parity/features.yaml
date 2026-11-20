@@ -51192,8 +51192,10 @@
         "https://support.marvelousdesigner.com/",
         "https://www.marvelousdesigner.com/products/releases"
       ],
-      "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "reference_observation_status": "observed",
+      "evidence_ids": [
+        "spec/observations/REF-FILE-003-OBJ-CUTOUT-001.json"
+      ],
       "scenarios": [
         {
           "id": "EXPORT-INDEPENDENT-001",
@@ -51886,7 +51888,8 @@
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "Current export has geometry/UV/normals/piece groups; avatar import and material assignments missing.",
-        "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity."
+        "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity.",
+        "One reference OBJ-to-garment UV trace and re-export preserved a planar cutout, dimensions and material area. The reference remeshed it and changed the UV coordinate range and group/material records. Avatar, multi-piece, material and reverse-import comparisons remain open."
       ],
       "contradictions": [],
       "blockers": [
@@ -52167,7 +52170,8 @@
         "spec/features/FILE-005-pattern-jpeg.md",
         "parity/reports/WF-20261119-DEBIAN-ARM64-PATTERN-JPEG-001.json",
         "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json",
-        "spec/features/FILE-005-svg-cutout-import.md"
+        "spec/features/FILE-005-svg-cutout-import.md",
+        "parity/reports/WF-20261120-NATIVE-SVG-CUTOUT-001.json"
       ],
       "scenarios": [
         {
@@ -52272,6 +52276,15 @@
           },
           "initial_conditions": "Open a disposable copy of the revision 3 Juniper and Basin project in the packaged Debian ARM64 studio under X11 with the GTK desktop portal.",
           "expected_outcomes": "Save As creates a distinct editable file with the original bytes. The fitted and two-metre native JPEGs preserve the specified physical scale and artwork, including after dismissing a chooser. Both match fresh packaged CLI and MCP exports."
+        },
+        {
+          "id": "FILE-NATIVE-SVG-CUTOUT-001",
+          "path": "parity/scenarios/FILE-NATIVE-SVG-CUTOUT-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket facing.svg": "aad05487f4fb94eadd5f4a8f7edd3b289287e95b7b44a7687a59b12716692358"
+          },
+          "initial_conditions": "An empty native project at revision 0 and a 240 \u00d7 360 mm pocket SVG. Its two absolute straight subpaths use evenodd fill, with the inner loop first.",
+          "expected_outcomes": "Import creates one piece with one hole. Undo returns to an empty project and Redo restores the 46-vertex rest mesh. A 20 mm corner edit after reopening preserves both boundaries\u2019 identities. Polygon, OBJ and UV material areas change from 0.0768 to 0.0756 m\u00b2. Both rest surfaces are connected and have two boundary loops. CLI and MCP reproduce the import and preserve the destination and recovery on rejection."
         }
       ],
       "comparison_criteria": {
@@ -57399,6 +57412,30 @@
             "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.jpeg": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb"
           },
           "path": "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-SVG-CUTOUT-001",
+          "commit": "776c0df3b359f4da0b3e9249731ad6f03299b0d6",
+          "timestamp": "2026-11-20T16:54:27Z",
+          "platform": "Apple Silicon macOS native release studio, editable saves, rest OBJ and UV geometry, release CLI and stdio MCP",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-svg-cutout-20261120/ADAPTERS.json": "5ede76ee662f8a1ded9602b7cf7cdd00bb5b0c2c9f2906365a5f085c942d7708",
+            "parity/reports/artifacts/native-svg-cutout-20261120/CASE.json": "99df484a8e980c000de507e5fa2dfc4dcee11454ff6b3265643487a0ca7e7981",
+            "parity/reports/artifacts/native-svg-cutout-20261120/CLEANUP.json": "f3a4fe53fbfefb2d76abdedbafbdebd4a96612b2e4dd9ecb7efac69e98c3bb4c",
+            "parity/reports/artifacts/native-svg-cutout-20261120/GEOMETRY.json": "5449e49e7877582cb2f20a087153bdd10ebc09e5d4b2a4f97f404891ed4fe9eb",
+            "parity/reports/artifacts/native-svg-cutout-20261120/NATIVE.json": "dafba32b33e6dc0a560274e279f4bf3144c3480ece7989890468e668bc1a9d30",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.obj": "9a2cb18203d5815ebe6e10734781641d5e7402f9175d9d9d02cbbb7e7d0d0ea2",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.png": "4ebfc34c0ecf6b15fba7332a74a67c1449342e003b26bf9434aee02dfeb4ea6f",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket edited.weftforge": "003746b6228815e621964abe6b1d0a5e01a52abe31c3f758bbdabbb0c0d3ac92",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket facing.svg": "aad05487f4fb94eadd5f4a8f7edd3b289287e95b7b44a7687a59b12716692358",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket imported.obj": "1079b5dbe75f7cbe29332323b8adc855b9d86d5bdc72320ad907bf2351068c41",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket imported.png": "ceee03c386b1be328301f3454b34edd08f4ce1a5d097c2c7634d7f2550667d55",
+            "parity/reports/artifacts/native-svg-cutout-20261120/Pocket imported.weftforge": "e07016a0fa5a0ba74de16fe754d4a1f5975cab0f31d60d43e1e0f497ce947a0c",
+            "parity/reports/artifacts/native-svg-cutout-20261120/check_cutout.py": "0cd5a9c8537658e438348123fa64e16a0b7e7d215760854fcfe5cf0ace3f7321",
+            "parity/reports/artifacts/native-svg-cutout-20261120/check_cutout_adapters.py": "48625d62eb48614c740001f86a23af588c5a81ed0e9341c84485762dfba84f57",
+            "parity/scenarios/FILE-NATIVE-SVG-CUTOUT-001.json": "b82526f27c987720b15d2ad84985344e5f5e099c90fe9454900dd84502562a59"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-SVG-CUTOUT-001.json"
         }
       ],
       "known_gaps": [
@@ -63280,7 +63317,8 @@
         "parity/reports/WF-20261119-APPLE-SILICON-PACKAGE-NOTICES-001.json",
         "parity/reports/WF-20261119-APPLE-SILICON-PINNED-CARGO-NOTICES-001.json",
         "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001.json",
-        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json"
+        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json",
+        "parity/reports/WF-20261120-DEBIAN-ARM64-CARGO-NOTICES-001.json"
       ],
       "scenarios": [
         {
@@ -63311,6 +63349,15 @@
           },
           "initial_conditions": "Open a disposable copy of the revision 3 Juniper and Basin project in the packaged Debian ARM64 studio under X11 with the GTK desktop portal.",
           "expected_outcomes": "Save As creates a distinct editable file with the original bytes. The fitted and two-metre native JPEGs preserve the specified physical scale and artwork, including after dismissing a chooser. Both match fresh packaged CLI and MCP exports."
+        },
+        {
+          "id": "APP-DEBIAN-ARM64-CARGO-NOTICES-001",
+          "path": "parity/scenarios/APP-DEBIAN-ARM64-CARGO-NOTICES-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/manifest.json": "54d4224528c44fa974075eeb660ccceff2377e0d405dc74002d48af7518d412e"
+          },
+          "initial_conditions": "The previous Debian ARM64 release has seven unresolved entries among 234 emitted Cargo crates, and the exact locked archives are cached.",
+          "expected_outcomes": "The offline package includes matching license files and provenance for all seven, its package ledger verifies every file, and the previous package retains all original digests."
         }
       ],
       "comparison_criteria": {
@@ -63506,6 +63553,23 @@
             "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.jpeg": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb"
           },
           "path": "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json"
+        },
+        {
+          "id": "WF-20261120-DEBIAN-ARM64-CARGO-NOTICES-001",
+          "commit": "d564e2de7bd6d224c0753d2b0d96b07eed81eb92",
+          "timestamp": "2026-11-20T17:00:48.763853Z",
+          "platform": "Debian 13.7 ARM64 with independent offline Cargo package and notice readback",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-arm64-cargo-notices-20261120/OFFLINE-PACKAGE.json": "8913a485551bbd997aa81eb26a9b460d801eae27f37bcdcbb83af3d99284537d",
+            "parity/reports/artifacts/debian-arm64-cargo-notices-20261120/PACKAGE-SHA256SUMS": "1ea71ca2f0c955dd630ac78a872c86a1ff788c49dc33c6fd96eaaa78140ea086",
+            "parity/reports/artifacts/debian-arm64-cargo-notices-20261120/RESULT.json": "ab7427199d7bbbc0bf356f3383d1aa09ef6853b0e2db981e73052d605043cf31",
+            "parity/reports/artifacts/debian-arm64-cargo-notices-20261120/SOURCES.json": "d5da5e6a3519e8db86c597234a15ee0f93b523c832c0c14540a2f6ef0534302c",
+            "parity/reports/artifacts/debian-arm64-cargo-notices-20261120/check_notices.py": "e27bc0bd03422d40253196b14cad173ca725fed5de08bdc76a55d9fab197d6dc",
+            "parity/reports/artifacts/debian-arm64-cargo-notices-20261120/manifest.json": "d4f0c2c36dbb9fab54ab7b3d6f4a3366ce5048e405a3c3cc6d4e708bda21ae5e",
+            "parity/scenarios/APP-DEBIAN-ARM64-CARGO-NOTICES-001.json": "5c0e4c7f3d96f1f74318f65c39c48cd16147a84d28c7a32c652f29424b7f4ca6",
+            "parity/reports/artifacts/debian-native-save-jpeg-20261120/manifest.json": "54d4224528c44fa974075eeb660ccceff2377e0d405dc74002d48af7518d412e"
+          },
+          "path": "parity/reports/WF-20261120-DEBIAN-ARM64-CARGO-NOTICES-001.json"
         }
       ],
       "known_gaps": [

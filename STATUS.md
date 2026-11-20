@@ -16,10 +16,34 @@ subpath orders work, and cutouts follow the drawing's fill rule. Touching or
 disjoint subpaths reject the transaction. Tests cover physical scale, full
 SVG re-export, one-step Undo/Redo and the CLI and MCP file operations.
 
-Next, import an opening in the native studio, save and reopen its editable
-construction, and independently measure the exported surface before and
-after moving one of the inner corners.
-[Import profile](spec/features/FILE-005-svg-cutout-import.md).
+In the native pocket case, Undo returned to the empty project and Redo restored
+the cutout. After reopening, a 20 mm corner edit enlarged the hole from
+96 to 108 cm². Polygon, OBJ and UV measurements agreed. The release CLI
+and stdio MCP reproduced the import and preserved both files on rejection.
+Curved openings and multiple cutouts per piece remain open.
+[Native import and edit](parity/reports/WF-20261120-NATIVE-SVG-CUTOUT-001.json) · [Import profile](spec/features/FILE-005-svg-cutout-import.md).
+
+The reference studio imported the edited OBJ at metre scale with UV tracing.
+The returned surface retained both boundary loops and 0.0756 m² of material.
+It had 706 triangles and a different UV range. Next, check a multi-piece
+garment and its material assignments.
+[Reference OBJ round trip](spec/observations/REF-FILE-003-OBJ-CUTOUT-001.json).
+
+# Debian ARM64 Cargo license texts — 20 November 2026
+
+The offline notice catalog now covers the seven crates that lacked a code
+license text in the prior Linux package. The catalog pins crate versions,
+archive and VCS metadata digests, upstream documents and their file hashes.
+The hexf-parse entry also includes the Debian copyright record and complete
+CC0 text. A Debian 13.7 ARM64 offline build emitted 234 Cargo crates and
+carried the missing license texts for all seven. The independent reader
+checked all 425 package files and the original 417-file release. Signing,
+other targets and the system-library notice inventory remain open.
+[Debian package audit](parity/reports/WF-20261120-DEBIAN-ARM64-CARGO-NOTICES-001.json) · [Independent reader](parity/reports/artifacts/debian-arm64-cargo-notices-20261120/check_notices.py).
+[Package verification](docs/verification.md) · [Catalog](vendor/cargo-notices/index.json).
+
+The audited ARM64 package predates editable SVG cutout import. Rebuild
+and check the package on the combined source to refresh its release evidence.
 
 # Solid garment faces at grazing angles — 20 November 2026
 

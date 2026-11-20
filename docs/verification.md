@@ -57,6 +57,13 @@ revision, packaging checks and copies the pinned upstream texts offline.
 The manifest links each selected text to its upstream revision and keeps
 declaration-only entries open when the code license text is unavailable.
 
+The Debian ARM64 Cargo catalog covers accesskit_atspi_common 0.18.1,
+accesskit_consumer 0.36.0 and accesskit_unix 0.21.1, gpu-descriptor 0.3.2, gpu-descriptor-types 0.2.0,
+hexf-parse 0.2.1 and spirv 0.4.0+sdk-1.4.341.0. For hexf-parse, the
+published crate declares CC0 and its matching Debian copyright record
+identifies the full text in base-files. Check each catalog document’s
+SHA-256 against the actual package. [Catalog and source URLs](../vendor/cargo-notices/index.json).
+
 Review the unresolved entries and the target's system dependencies
 before distributing a build. Signing and platform runtime checks are
 separate release steps.
