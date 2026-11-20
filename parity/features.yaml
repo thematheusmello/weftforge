@@ -35073,7 +35073,10 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "parity/reports/WF-20261120-HARBOR-HEM-REGENERATION-001.json",
+        "parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json"
+      ],
       "scenarios": [
         {
           "id": "UI-SHIRT-001",
@@ -35138,6 +35141,15 @@
           "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
           "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
           "path": "parity/scenarios/UI-HARBOR-001.json"
+        },
+        {
+          "id": "FIT-NATIVE-HEM-REGENERATION-001",
+          "initial_conditions": "Two-piece Harbor, revision 23 with eight seams. Both material panels measure 640 mm in height.",
+          "expected_outcomes": "The regenerated front is 690 mm high. The back, seams and other authored fields survive exactly. Edited UVs reach the simulated surfaces. Evaluate both garments against the established 15% strain, 5 mm seam and 2 mm avatar/ground vertex limits.",
+          "path": "parity/scenarios/FIT-NATIVE-HEM-REGENERATION-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
+          }
         }
       ],
       "comparison_criteria": {
@@ -35702,6 +35714,69 @@
             "parity/reports/artifacts/native-harbor-fabric-20261118/workspace.png": "22495011e70f47d903b5cde8ffd70af4aec24224ec6c403d9dec66f06147d0fb"
           },
           "path": "parity/reports/WF-20261118-HARBOR-NATIVE-FABRIC-001.json"
+        },
+        {
+          "id": "WF-20261120-HARBOR-HEM-REGENERATION-001",
+          "commit": "afdea5999423dd5c9952f20ff5e3d5f26c169751",
+          "timestamp": "2026-11-20T16:12:30.494377Z",
+          "platform": "Apple Silicon macOS, native Metal studio, independently parsed construction and OBJ",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/compare_glb.py": "114fb76fda345974b6123d41eb8c5ff795f5fd023e34cbc3d8b5d90bd265fbeb",
+            "parity/scenarios/FIT-NATIVE-HEM-REGENERATION-001.json": "3a6e8d65342b62414d283ba4e8746ab1c1d46dfbc8cc08790dd89175b61074d3",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/CASE.json": "517ff530346d06083d57122e2cf964b949489cf75d1ebe6388c6fcb9c50a4bcb",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/NATIVE.json": "20c3f1596599116b27a1907ab1e9d291c4dc30981eee28c03abd5a7b14ae30fe",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/CLEANUP.json": "3838ad861bc5d1c08edecee6953d2eece2c8b6bc3c65c42828b85d416764ac5a",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/Harbor hem.weftforge": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/reopened-edit.weftforge": "e487e1eca05f25e82ad4c8567b9f744ea0291c807bbc4048606c7c94501e460e",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/original-step.obj": "4215795bfc9dc802e1394cb0e5ddd555279e924dce4419d05ac22ac1270ce283",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/edited-rest.obj": "f7a61151439327c5c117b5d16d5ed575b49015f8b89eef1f96abd8e95304b78f",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/reopened-step.obj": "43997b5b0435cf01af3924874d49f804a551b7a95e671d6b86c5a0cd299f6b05",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/reopened-workspace.png": "f7320b323d75f52eb524a4dfa47a1eebce7d97ac6a3dd7b95bbca541ec7f744a",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/check_hem.py": "516614965973519252feca647edb0c44edbe9fda86afca5f009ee410021824e9",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/EVALUATION.json": "afe4cf180405c067369366f5aae8121d86cd659c875731b6660d67a89183a0ff"
+          },
+          "path": "parity/reports/WF-20261120-HARBOR-HEM-REGENERATION-001.json"
+        },
+        {
+          "id": "WF-20261120-HARBOR-HEM-DRAPE-001",
+          "commit": "3074da243d22d0ad78397c4f3455a78dba996627",
+          "timestamp": "2026-11-20T16:08:54.417569Z",
+          "platform": "Apple Silicon macOS, native Metal studio, independently parsed construction and OBJ",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/compare_glb.py": "114fb76fda345974b6123d41eb8c5ff795f5fd023e34cbc3d8b5d90bd265fbeb",
+            "parity/scenarios/FIT-NATIVE-HEM-REGENERATION-001.json": "3a6e8d65342b62414d283ba4e8746ab1c1d46dfbc8cc08790dd89175b61074d3",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/CASE.json": "517ff530346d06083d57122e2cf964b949489cf75d1ebe6388c6fcb9c50a4bcb",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/NATIVE.json": "20c3f1596599116b27a1907ab1e9d291c4dc30981eee28c03abd5a7b14ae30fe",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/CLEANUP.json": "3838ad861bc5d1c08edecee6953d2eece2c8b6bc3c65c42828b85d416764ac5a",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/Harbor hem.weftforge": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/reopened-edit.weftforge": "e487e1eca05f25e82ad4c8567b9f744ea0291c807bbc4048606c7c94501e460e",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/original-step.obj": "4215795bfc9dc802e1394cb0e5ddd555279e924dce4419d05ac22ac1270ce283",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/edited-rest.obj": "f7a61151439327c5c117b5d16d5ed575b49015f8b89eef1f96abd8e95304b78f",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/reopened-step.obj": "43997b5b0435cf01af3924874d49f804a551b7a95e671d6b86c5a0cd299f6b05",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/reopened-workspace.png": "f7320b323d75f52eb524a4dfa47a1eebce7d97ac6a3dd7b95bbca541ec7f744a",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/check_hem.py": "516614965973519252feca647edb0c44edbe9fda86afca5f009ee410021824e9",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/EVALUATION.json": "afe4cf180405c067369366f5aae8121d86cd659c875731b6660d67a89183a0ff",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/check_draped_hem.py": "c14dcb5017bef318733a40c5770ae6645a36819c6018d40992db366c7093184c",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/PROTOCOL.json": "af147b7e9458346153f90629982fdee8371db072f64a88ba6ea5feb7e37ba52c",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/NATIVE.json": "2f282405dcaed063834a7f20c0f5bfe4caac6a2692b85d5476a629795f39290d",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/EVALUATION.json": "d82498aacf1dd96b68a83dcfde23890f385db60da7d5b86b97999b761ab76d04",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/TRAJECTORIES.json": "26b40ee7b767e6f474a2c8be243ea34b8faebd106da528be80b879de885d5fd3",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/TRAJECTORY-PROTOCOL.json": "f54e4df166fe9d341d455db00b3b7984662e29c1e0118cb3f0e3e10224387891",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/assembled.obj": "56713f47b537ca9e3b4efc591cd55fd2e7016b5fe5f3ab77e200b1a053aec69e",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/draped.obj": "c3258b0cfed1eebf49371eb450e2724a25e890a47134b75342ec0bf4bf0230a3",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/draped.png": "95ebacb7012729b494b783a942b5b09fb437bf396a914c0ea1f7bfd3575868d7",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/trajectory.json": "7934611792787a9d2c07fd3340e175da8c4b284baac41effde03473a7f5940e2",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/Harbor.weftforge": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/assembled.obj": "624a24e0875213f9482086c957c2c4e98c9b7462b2fd09e267fbb6eb76332d10",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/draped.obj": "8cec02e8988d1a37d5797e63f6de77df509ca5a7a6604fb4c8ba91aefc8eb466",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/draped.png": "3605fb9ce7fea89fe6cdccdf8b0c174334c19d2b64afd96672504fc55dcf39c4",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/trajectory.json": "c7901edee0c87305be0577a9a67bff141d6bc14c3be495a35f5abbe77d101a21",
+            "scripts/check_drape.py": "789752b2503a14a8637c833ff6867e9a659dbf7313fd01f41b92b1626d4cb7d6"
+          },
+          "path": "parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json"
         }
       ],
       "known_gaps": [
@@ -35709,7 +35784,8 @@
         "Native anisotropic shirt: strain0.26930346 >0.15; seam5.55e-6m and avatar/ground error0 pass. No tolerance or material substitution was made.",
         "Full-path e342471 refinement retains failed strain screens:26.9303%control,27.1686%8/64,26.6987%16/32 at3s. At1s beforegravity,16/32 differs by0.005777 strain and11.087mm nodal displacement. No equilibrium/calibration/convergence conclusion is established.",
         "Current3eddef original control fails unchanged strain screen:24.1185%after1s assembly,32.3519%after3s. Fixed zero-G continuation reaches32.1699%and still evolves. No-avatar probe is causal only, quality null; full force balance/convergence/calibration remain unknown.",
-        "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity."
+        "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity.",
+        "The 50 mm Harbor front hem edit survived reopening, simulation and a second edit. The longer garment reached 16.17% strain after assembly and 16.10% after drape, above the 15% limit. The matching CLI checked all 181 states on each construction. Both first exceeded the strain limit at state 28."
       ],
       "contradictions": [],
       "blockers": [
@@ -43721,7 +43797,8 @@
         "parity/reports/WF-20261118-CONTACT-RECOVERY-INTEGRATED-SOURCE-001.json",
         "parity/reports/WF-20261118-CONTACT-RECOVERY-D-TOOLING-001.json",
         "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-SOURCE-001.json",
-        "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json"
+        "parity/reports/WF-20261118-CAPSULE-SUPPORTING-PLANE-G-TOOLING-001.json",
+        "parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json"
       ],
       "scenarios": [
         {
@@ -45144,6 +45221,46 @@
             "parity/reports/artifacts/native-harbor-job-control-20261118/closure.json": "71e0077b770ec8de56a4e57c8ceb464ae4d89da0765181d492f7746875ed4057"
           },
           "path": "parity/reports/WF-20261118-HARBOR-NATIVE-JOB-CONTROL-001.json"
+        },
+        {
+          "id": "WF-20261120-HARBOR-HEM-DRAPE-001",
+          "commit": "3074da243d22d0ad78397c4f3455a78dba996627",
+          "timestamp": "2026-11-20T16:08:54.417569Z",
+          "platform": "Apple Silicon macOS, native Metal studio, independently parsed construction and OBJ",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/static-glb-20261119/compare_glb.py": "114fb76fda345974b6123d41eb8c5ff795f5fd023e34cbc3d8b5d90bd265fbeb",
+            "parity/scenarios/FIT-NATIVE-HEM-REGENERATION-001.json": "3a6e8d65342b62414d283ba4e8746ab1c1d46dfbc8cc08790dd89175b61074d3",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/CASE.json": "517ff530346d06083d57122e2cf964b949489cf75d1ebe6388c6fcb9c50a4bcb",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/NATIVE.json": "20c3f1596599116b27a1907ab1e9d291c4dc30981eee28c03abd5a7b14ae30fe",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/CLEANUP.json": "3838ad861bc5d1c08edecee6953d2eece2c8b6bc3c65c42828b85d416764ac5a",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/Harbor hem.weftforge": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/reopened-edit.weftforge": "e487e1eca05f25e82ad4c8567b9f744ea0291c807bbc4048606c7c94501e460e",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/original-step.obj": "4215795bfc9dc802e1394cb0e5ddd555279e924dce4419d05ac22ac1270ce283",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/edited-rest.obj": "f7a61151439327c5c117b5d16d5ed575b49015f8b89eef1f96abd8e95304b78f",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/reopened-step.obj": "43997b5b0435cf01af3924874d49f804a551b7a95e671d6b86c5a0cd299f6b05",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/reopened-workspace.png": "f7320b323d75f52eb524a4dfa47a1eebce7d97ac6a3dd7b95bbca541ec7f744a",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/check_hem.py": "516614965973519252feca647edb0c44edbe9fda86afca5f009ee410021824e9",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/EVALUATION.json": "afe4cf180405c067369366f5aae8121d86cd659c875731b6660d67a89183a0ff",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/check_draped_hem.py": "c14dcb5017bef318733a40c5770ae6645a36819c6018d40992db366c7093184c",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/PROTOCOL.json": "af147b7e9458346153f90629982fdee8371db072f64a88ba6ea5feb7e37ba52c",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/NATIVE.json": "2f282405dcaed063834a7f20c0f5bfe4caac6a2692b85d5476a629795f39290d",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/EVALUATION.json": "d82498aacf1dd96b68a83dcfde23890f385db60da7d5b86b97999b761ab76d04",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/TRAJECTORIES.json": "26b40ee7b767e6f474a2c8be243ea34b8faebd106da528be80b879de885d5fd3",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/TRAJECTORY-PROTOCOL.json": "f54e4df166fe9d341d455db00b3b7984662e29c1e0118cb3f0e3e10224387891",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/assembled.obj": "56713f47b537ca9e3b4efc591cd55fd2e7016b5fe5f3ab77e200b1a053aec69e",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/draped.obj": "c3258b0cfed1eebf49371eb450e2724a25e890a47134b75342ec0bf4bf0230a3",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/draped.png": "95ebacb7012729b494b783a942b5b09fb437bf396a914c0ea1f7bfd3575868d7",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/trajectory.json": "7934611792787a9d2c07fd3340e175da8c4b284baac41effde03473a7f5940e2",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/Harbor.weftforge": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/assembled.obj": "624a24e0875213f9482086c957c2c4e98c9b7462b2fd09e267fbb6eb76332d10",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/draped.obj": "8cec02e8988d1a37d5797e63f6de77df509ca5a7a6604fb4c8ba91aefc8eb466",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/draped.png": "3605fb9ce7fea89fe6cdccdf8b0c174334c19d2b64afd96672504fc55dcf39c4",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/trajectory.json": "c7901edee0c87305be0577a9a67bff141d6bc14c3be495a35f5abbe77d101a21",
+            "scripts/check_drape.py": "789752b2503a14a8637c833ff6867e9a659dbf7313fd01f41b92b1626d4cb7d6"
+          },
+          "path": "parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json"
         }
       ],
       "known_gaps": [

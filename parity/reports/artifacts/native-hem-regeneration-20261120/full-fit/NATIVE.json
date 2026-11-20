@@ -1,0 +1,82 @@
+{
+  "source_commit": "3074da243d22d0ad78397c4f3455a78dba996627",
+  "source_tree": "657c3b79b6db3dd3dfab93e341cd8249a37959a2",
+  "source_equal_to_manual_step_studio": true,
+  "release_studio_sha256": "2c0d9639cce7fc08db645c6532692f048f046fd8cafae69ff5e56f6ceae6117f",
+  "build_command": [
+    "cargo",
+    "build",
+    "--offline",
+    "--locked",
+    "--release",
+    "-p",
+    "weftforge"
+  ],
+  "platform": "Apple Silicon, native Metal release studio",
+  "observation": "Two native studios opened separate disposable copies of the original and the edited Harbor. Each completed all 60 assembly steps without gravity and all 120 drape steps with gravity. Each saved its own native OBJ at both endpoints and its workspace PNG after drape. All editable input bytes remained unchanged. Wall measurements are from concurrent local jobs.",
+  "solver": {
+    "seconds_per_step": 0.016666666666666666,
+    "substeps": 8,
+    "iterations": 32,
+    "assembly_steps": 60,
+    "drape_steps": 120,
+    "drape_gravity_m_per_s2": [
+      0,
+      -9.81,
+      0
+    ]
+  },
+  "phase_endpoints": {
+    "original_assembled": {
+      "native_simulated_seconds": 1.0,
+      "native_reported_ms_per_step": 1281.4,
+      "native_peak_material_strain_percent": 13.87,
+      "native_display_seam_gap_m": 0.0005,
+      "native_display_contact_error_m": 0.0,
+      "native_uncertain_capsule_pairs": 0,
+      "native_assembly_remaining_m": 0.0,
+      "peak_axis": "warp",
+      "peak_piece": "Harbor back"
+    },
+    "original_draped": {
+      "native_simulated_seconds": 3.0,
+      "native_reported_ms_per_step": 1378.9,
+      "native_peak_material_strain_percent": 14.26,
+      "native_display_seam_gap_m": 0.0004,
+      "native_display_contact_error_m": 0.0,
+      "native_uncertain_capsule_pairs": 0,
+      "native_assembly_remaining_m": 0.0,
+      "peak_axis": "warp",
+      "peak_piece": "Harbor front",
+      "native_initial_intersections": 0,
+      "native_initial_overlap_corrections": 0
+    },
+    "extended_assembled": {
+      "native_simulated_seconds": 1.0,
+      "native_reported_ms_per_step": 1299.9,
+      "native_peak_material_strain_percent": 16.17,
+      "native_display_seam_gap_m": 0.0006,
+      "native_display_contact_error_m": 0.0,
+      "native_uncertain_capsule_pairs": 0,
+      "native_assembly_remaining_m": 0.0,
+      "peak_axis": "warp",
+      "peak_piece": "Harbor front"
+    },
+    "extended_draped": {
+      "native_simulated_seconds": 3.0,
+      "native_reported_ms_per_step": 1224.4,
+      "native_peak_material_strain_percent": 16.1,
+      "native_display_seam_gap_m": 0.0006,
+      "native_display_contact_error_m": 0.0,
+      "native_uncertain_capsule_pairs": 0,
+      "native_assembly_remaining_m": 0.0,
+      "peak_axis": "warp",
+      "peak_piece": "Harbor front",
+      "native_initial_intersections": 0,
+      "native_initial_overlap_corrections": 0
+    }
+  },
+  "owned_studio_windows_after": 0,
+  "owned_studio_processes_after": 0,
+  "limits": "Only the phase endpoints were exported. This run does not establish compliance at every intermediate frame or equivalence to a reference application."
+}

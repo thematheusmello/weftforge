@@ -1,0 +1,21 @@
+{
+  "platform": "Apple Silicon, macOS, native Metal studio",
+  "studio_git_commit": "afdea5999423dd5c9952f20ff5e3d5f26c169751",
+  "studio_sha256": "71e5080ef9afa39344b01c0e4138af1ba6b066de224636472417e40bd1362878",
+  "fixture": "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge",
+  "fixture_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+  "source_file_before_revision": 23,
+  "actions": [
+    "Opened a disposable copy of the original two-piece Harbor project using File > Open. The native studio reported 654 rest vertices and eight seams.",
+    "Stepped once with the native Step control and exported the original simulated OBJ. The status showed 0.017 s of simulated time. Reset restored the editable arrangement.",
+    "With 10 mm snap, dragged the two front hem endpoints down by 50 mm. The rebuilt mesh had 641 vertices at revision 24 then 644 at revision 25. Saved the editable project and exported its rest OBJ.",
+    "Closed the verified window, launched a fresh studio displaying an empty revision 0 workspace, and opened the saved revision 25 garment. The rebuilt mesh had 644 vertices and eight seams.",
+    "Stepped once in the reopened project and exported the native current OBJ and workspace PNG. The status showed 0.017 s.",
+    "Reset the garment, moved the left front hem endpoint back to its original location, and used File > Save as to keep that revision 26 in a separate editable project. Closed the studio."
+  ],
+  "native_manual_step_wall_ms": {
+    "original": 4131.6,
+    "reopened_edited": 3908.5
+  },
+  "measurement_scope": "One manual solver step per construction. Compare editable dimensions, relationships, both OBJ surfaces and repeat editability. Complete assembly and gravity drape are separate runs."
+}
