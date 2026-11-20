@@ -44,6 +44,11 @@ Windows uses Win32/D3D and platform drivers; Linux uses windowing, GPU, D-Bus
 and portal libraries. No browser, Electron, JavaScript frontend, Python service,
 Blender subprocess or proprietary SDK is required to run the product.
 
+Windows x64 GNU/LLVM packages statically link LLVM libunwind. Its full
+license and attributions ship in `licenses/LLVM-libunwind.txt`. The checked
+LLVM-MinGW 20261117 toolchain uses LLVM revision
+`5b10d2d74929eae78912771222c9855af97496f4`. [Upstream libunwind license](https://github.com/llvm/llvm-project/blob/5b10d2d74929eae78912771222c9855af97496f4/libunwind/LICENSE.TXT).
+
 Development and research tools include REA, Node, Python/jsonschema and
 independent export checkers. Cargo tests use tobj as an independent OBJ consumer.
 The packager uses sha2 for its SHA-256 manifest.

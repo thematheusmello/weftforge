@@ -68,6 +68,24 @@ Review the unresolved entries and the target's system dependencies
 before distributing a build. Signing and platform runtime checks are
 separate release steps.
 
+## Windows x64 cross-package
+
+Install the Rust `x86_64-pc-windows-gnullvm` standard library for the
+repository toolchain and put LLVM-MinGW’s `bin` on `PATH`. Run the packaging
+command from the host checkout.
+
+```sh
+CARGO_TARGET_X86_64_PC_WINDOWS_GNULLVM_LINKER=x86_64-w64-mingw32-clang \
+  cargo xtask package --target x86_64-pc-windows-gnullvm
+```
+
+The target build links its unwind runtime statically, strips symbols, remaps
+the registry, workspace and generated source paths, and clears PE timestamps.
+The manifest covers both executables, the Cargo notices and the copied
+libunwind license. The two executables and their notices are staged together
+in `target/package`. A native Windows CLI and desktop launch, GPU rendering,
+file round trip and signing are separate release checks.
+
 ## Debian ARM64 package smoke
 
 The earlier `cargo xtask package` run copied the Cargo-reported studio and
