@@ -15,6 +15,18 @@ The first drag after a PNG save kept revision 23. The repeated gesture
 committed revision 24. Local-axis handles and avatar arrangement remain open.
 [Native rotation check](parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json) · [Studio preview](docs/studio-preview.md).
 
+# Debian ARM64 native project Save As — 20 November 2026
+
+The packaged studio opened the two-pattern revision 3 fixture. Choosing
+**File → Save as…** opened the GTK dialog on X11. Typing a new filename
+and pressing Enter saved a second file. Its 6,173 bytes matched the original.
+The packaged CLI read both named patterns, and the studio closed normally.
+[Debian native save report](parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001.json) · [Named chooser](parity/reports/artifacts/debian-arm64-native-save-20261120/chooser.png) · [Saved workspace](parity/reports/artifacts/debian-arm64-native-save-20261120/saved-workspace.png).
+
+This check used release build `f440d126`. Repeat the workflow on a current
+Linux package and exercise the pattern JPEG dialog. Windows verification,
+Wayland and release signing remain open.
+
 # Pinned license texts in the Apple Silicon package — 19 November 2026
 
 An offline rebuild included ten verified upstream texts for 29 of the 165

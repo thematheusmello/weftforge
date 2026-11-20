@@ -1,0 +1,100 @@
+{
+  "case": "Native File menu Save as on the Debian ARM64 packaged studio",
+  "source_commit": "f440d126c9094b357deb99b68dd6b01235591a44",
+  "source_tree": "d07f4b99da7b9dbe4991b2604c2230692dc122cf",
+  "tested_studio_sha256": "2b4d2c06716531a148939af46794d98c25ac7b21bdc9073a9feb53ecc559711d",
+  "tested_cli_sha256": "cb10739398def20b454910fbd88eb99d8445dd90ef33fe7b1b2f621e5d87abec",
+  "prior_package_manifest_sha256": "fe23f2eb18910eb6c1decac15e73bfba25badc20f71f50496649d86a9d72b145",
+  "platform": {
+    "os": "Debian 13.7",
+    "kernel": "6.12.117+deb13-cloud-arm64",
+    "architecture": "aarch64",
+    "renderer": "Xvfb X11 and Mesa llvmpipe Vulkan",
+    "runtime_network": "Private namespace with loopback only and no outbound routes"
+  },
+  "portal": {
+    "frontend": "xdg-desktop-portal 1.20.3+ds-1",
+    "backend": "xdg-desktop-portal-gtk 1.15.3-1",
+    "FileChooser_version": 4,
+    "tool_install": {
+      "new_packages": 113,
+      "download_bytes": 36013876,
+      "upgrades": 0,
+      "removals": 0,
+      "verified_cached_signatures_and_archive_digests": "APT used the retained signed repository indexes. The 113 downloaded package hashes and sizes matched the metadata before offline install."
+    }
+  },
+  "interaction": {
+    "loaded": "Disposable copy of rotated-basin.weftforge named original.weftforge",
+    "inputs": [
+      "XTEST 2.2 0x400002 focused click ['20', '10']",
+      "XTEST 2.2 0x400002 focused click ['54', '180']",
+      "XTEST 2.2 0x200007 focused keys ['Control_L', 'a']",
+      "XTEST 2.2 0x200007 focused type ['linux-native-save.weftforge']",
+      "XTEST 2.2 0x200007 focused keys ['Return']"
+    ],
+    "studio_window": "0x400002",
+    "studio_pid": 4762,
+    "chooser_window": "0x200007",
+    "chooser_pid": 4756,
+    "chooser_WM_CLASS": "xdg-desktop-portal-gtk",
+    "chooser_size_px": [
+      1096,
+      822
+    ],
+    "workspace_size_px": [
+      1640,
+      1000
+    ],
+    "portal_request": {
+      "operation": "org.freedesktop.portal.FileChooser.SaveFile",
+      "sender": ":1.8",
+      "client_pid": 4762,
+      "utc": "2026-11-20T14:51:52.736486+00:00"
+    },
+    "backend_request": {
+      "operation": "org.freedesktop.impl.portal.FileChooser.SaveFile",
+      "utc": "2026-11-20T14:51:52.737530+00:00"
+    },
+    "portal_response": {
+      "status": 0,
+      "utc": "2026-11-20T14:52:34.402109+00:00",
+      "local_file_basename": "linux-native-save.weftforge",
+      "same_request": true
+    },
+    "post_save_caption": "linux-native-save.weftforge",
+    "post_save_status": "Saved editable project atomically.",
+    "chooser_closed": true
+  },
+  "independent_readback": {
+    "source_and_output_inodes_differ": true,
+    "original_protected_fixture_sha256": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+    "loaded_copy_sha256": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+    "saved_file_sha256": "ec089f3d2ca96fc6e7ce4f097a2abfad0ef078ebda4fdbcf7b544fc764dd2b0c",
+    "bytes": 6173,
+    "whole_document_byte_identity": true,
+    "envelope_version": 6,
+    "revision": 3,
+    "patterns": [
+      "Juniper α",
+      "Basin β"
+    ],
+    "points": 14,
+    "curves": 13,
+    "seams": 0,
+    "rest_vertices": 260,
+    "rest_triangles": 359,
+    "units": "m",
+    "up": "Y",
+    "checker": "Independent JSON parsing and comparison of the full project, plus a separate inspect run with the packaged CLI."
+  },
+  "capture_sha256": {
+    "chooser.png": "06056c3e9cee9e77016f430d5f277f76e5f8a91922cda4603706385e90f9b0f0",
+    "file-menu.png": "7fcadaa0c12283412710ff52ec95c38317d0f907b2f7200e94901ff9d3155153",
+    "saved-workspace.png": "e0ef2cfe3370e05be9cbbd8c03b123fc5b6c483f67916c55424a1c4d39c6a5df"
+  },
+  "limits": [
+    "This run exercised one native project Save as workflow on the named packaged build. The case used synthetic XTEST input on a virtual X11 display.",
+    "Wayland, Linux screen-reader use, native JPEG dialogs, current-source Linux distribution and full cross-platform release remain open."
+  ]
+}
