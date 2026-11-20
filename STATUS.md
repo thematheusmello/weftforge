@@ -5,10 +5,18 @@ past the click threshold and the primary-button release in the same frame
 after an owned press. The regression also exercises movement below the
 click threshold, focus loss, Escape, Undo and complete single-frame input.
 
-The historical World X and Local Z report is stale on this changed handler.
-Its original native files remain available. Register the separately captured
-AppKit and egui event comparison, then verify the saved projects and combined
-source from a clean checkout. [Previous native dial report](parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json).
+The native trace captured the same down, movement and release in the original
+and corrected Apple Silicon builds. The original discarded the captured press.
+The corrected build committed revision 25. Undo and Redo restored the full
+documents. Checking the fixed pivot and 14 outline vertices gave a maximum
+position error of 2.49 × 10⁻¹⁶ m. The native observations used private event
+observers. The production source passed all 516 workspace tests, formatting
+and strict Clippy. The historical World X and Local Z report is stale on this
+handler. [Native split-release report](parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json).
+
+Next, exercise the remaining axis choices on native platforms and compare
+the arrangement controls with the reference. Native multiselection and
+avatar arrangement remain open.
 
 # World and local pattern rotation — 20 November 2026
 

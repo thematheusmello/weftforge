@@ -1,0 +1,21 @@
+{
+  "baseline_runtime_source": "3074da243d22d0ad78397c4f3455a78dba996627",
+  "corrected_runtime_source": "3767926bb2cd608c5054a9801d4931b579146778",
+  "corrected_production_main_rs_sha256": "dccbaa1bc626c061b4ebec6663dfc943b58d281cd248f0ee44387eebeff75b28",
+  "platform": "Apple Silicon macOS, native studio, Metal viewport",
+  "ordinary_baseline_executable_sha256": "71e5080ef9afa39344b01c0e4138af1ba6b066de224636472417e40bd1362878",
+  "observed_instrumented_baseline_executable_sha256": "bf63693ffef765dcecb6972b9fabc59036a12e1094e8371a9cb508e5959f78d4",
+  "observed_instrumented_corrected_executable_sha256": "b42d2da652419f3b95be5ccb9bca5d46aefb442498873ffc9e7eb6e02f8e4766",
+  "instrumentation_scope": "Both native trace binaries used the same gated event observers. AppKit recorded local pointer events in the test window. An eframe raw input hook and studio observations recorded egui event order, canvas ownership and document revision. The corrected trace added the production placement handler change. The published Rust source excludes these observers.",
+  "clean_binary_controls": "Three fresh Harbor copies on the unmodified native binary produced revision sequences 23/24/25 after normal launch, 23/23/24 after an explicit title-bar click, and 23/24/24 after a native workspace PNG save. At all six gesture boundaries macOS reported the studio foreground, its WeftForge window focused, and World X and Rotate pattern active. These runs identify missed attempts. Only the instrumented observations record their frame-level cause.",
+  "actions": [
+    "Open a fresh revision 23 two-piece Harbor fixture. Select Harbor front in Front view, enable Rotate pattern and choose World X.",
+    "Drag the right-hand dial knob from (1053, 513) to (1044, 491) in native window points. Repeat the same drag. The fixed pivot remains visible at the same screen position.",
+    "Read each application revision. In the corrected run, save both turns, then Undo and save, and Redo and save."
+  ],
+  "trace_outcome": "Baseline frames 78 and 79 delivered down, then movement and up. The first frame armed the placement. The second did not emit an egui drag-stop and cleared the capture without a revision. The baseline repeat arrived within frame 102 and committed. Corrected frame 113 committed the single-frame input. Corrected frames 139 and 140 delivered the same two-frame event sequence as the failed baseline and committed revision 25.",
+  "regression": "placement_drag_tests::garment_rotation_anchors_curved_bounds_and_rotates_rest_vertices_about_the_view_normal",
+  "regression_outcome": "The two-frame regression failed against the original handler. The corrected production handler passed the single-, two- and three-frame cases, fixed-pivot geometry, Escape, focus loss, sub-threshold click and Undo checks.",
+  "limits": "This case covers the captured World X gesture on Harbor and adjacent undoable placements. Event scheduling varied. The observations identify the application-level release condition for the traced failure. Other missed inputs can have different causes. Reference comparison and complete arrangement behavior remain open.",
+  "checked_utc": "2026-11-20T15:40:29.219778+00:00"
+}

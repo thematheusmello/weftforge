@@ -43,7 +43,8 @@
         "spec/features/UI-001-frame-garment.md",
         "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json",
         "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json",
-        "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json"
+        "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json",
+        "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json"
       ],
       "scenarios": [
         {
@@ -3930,6 +3931,25 @@
             "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c"
           },
           "path": "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001",
+          "commit": "3767926bb2cd608c5054a9801d4931b579146778",
+          "timestamp": "2026-11-20T15:40:29.219778Z",
+          "platform": "Apple Silicon native studio with private event observers, saved Harbor placement replay and production Rust release regressions",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c",
+            "parity/reports/artifacts/native-axis-dial-20261120/undo.weftforge": "7f3315f034f47f3a8c8d44bb41793d81adef3acfbd757c0716bea1cd8320f43f",
+            "parity/reports/artifacts/native-split-placement-release-20261120/FRAMES.json": "e80b219222d4de0f015ed2a810aa7451db77ebc237e29f9691bc1e546976f9d1",
+            "parity/reports/artifacts/native-split-placement-release-20261120/NATIVE-RELEASE.json": "2cde0ccf829e9b959fabc8729c8bfc1cdfdaa2d126f61de2b431d9d74ffe904e",
+            "parity/reports/artifacts/native-split-placement-release-20261120/POST-CASE-CLEANUP.json": "1fa202bb8426fdf98812216aaf957113f49b6c65fdac3c32410df3cc4354d8e4",
+            "parity/reports/artifacts/native-split-placement-release-20261120/RESULT.json": "7c1dd4d75cd6e155be78f06b1de8f4170220f492e7e4151ec02cf44da9f7194e",
+            "parity/reports/artifacts/native-split-placement-release-20261120/check_release.py": "69dc5adea2a2213cbf66a8ebd1ad9281f458d1d46c99533ed438ce5c547aa3cf",
+            "parity/reports/artifacts/native-split-placement-release-20261120/redo.weftforge": "75cf3d2eacc20c4d86b344de629b8211dc3632832d711a5faf4983436c53691b",
+            "parity/reports/artifacts/native-split-placement-release-20261120/split-release.weftforge": "db24f74e8e33f0625ad47661c5349961bd2ab871fb166a21857b85d98e8df900"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json"
         }
       ],
       "known_gaps": [
@@ -3953,7 +3973,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b",
         "spec/features/UI-001-standard-viewpoints.md": "904ae35c58a9ecf1e3da3c1a25098a1d1d255cd8776ab630d62991737e4f720a",
@@ -3987,7 +4007,8 @@
         "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json",
         "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json",
         "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json",
-        "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json"
+        "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json",
+        "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json"
       ],
       "scenarios": [
         {
@@ -5180,6 +5201,25 @@
             "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c"
           },
           "path": "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001",
+          "commit": "3767926bb2cd608c5054a9801d4931b579146778",
+          "timestamp": "2026-11-20T15:40:29.219778Z",
+          "platform": "Apple Silicon native studio with private event observers, saved Harbor placement replay and production Rust release regressions",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c",
+            "parity/reports/artifacts/native-axis-dial-20261120/undo.weftforge": "7f3315f034f47f3a8c8d44bb41793d81adef3acfbd757c0716bea1cd8320f43f",
+            "parity/reports/artifacts/native-split-placement-release-20261120/FRAMES.json": "e80b219222d4de0f015ed2a810aa7451db77ebc237e29f9691bc1e546976f9d1",
+            "parity/reports/artifacts/native-split-placement-release-20261120/NATIVE-RELEASE.json": "2cde0ccf829e9b959fabc8729c8bfc1cdfdaa2d126f61de2b431d9d74ffe904e",
+            "parity/reports/artifacts/native-split-placement-release-20261120/POST-CASE-CLEANUP.json": "1fa202bb8426fdf98812216aaf957113f49b6c65fdac3c32410df3cc4354d8e4",
+            "parity/reports/artifacts/native-split-placement-release-20261120/RESULT.json": "7c1dd4d75cd6e155be78f06b1de8f4170220f492e7e4151ec02cf44da9f7194e",
+            "parity/reports/artifacts/native-split-placement-release-20261120/check_release.py": "69dc5adea2a2213cbf66a8ebd1ad9281f458d1d46c99533ed438ce5c547aa3cf",
+            "parity/reports/artifacts/native-split-placement-release-20261120/redo.weftforge": "75cf3d2eacc20c4d86b344de629b8211dc3632832d711a5faf4983436c53691b",
+            "parity/reports/artifacts/native-split-placement-release-20261120/split-release.weftforge": "db24f74e8e33f0625ad47661c5349961bd2ab871fb166a21857b85d98e8df900"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json"
         }
       ],
       "known_gaps": [
@@ -5196,7 +5236,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "UI-003",
@@ -6472,7 +6512,8 @@
         "parity/reports/WF-20261119-NATIVE-PATTERN-JPEG-001.json",
         "parity/reports/WF-20261119-NATIVE-VIEWPORT-PLACEMENT-001.json",
         "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json",
-        "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json"
+        "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json",
+        "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json"
       ],
       "scenarios": [
         {
@@ -11817,6 +11858,25 @@
             "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c"
           },
           "path": "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001",
+          "commit": "3767926bb2cd608c5054a9801d4931b579146778",
+          "timestamp": "2026-11-20T15:40:29.219778Z",
+          "platform": "Apple Silicon native studio with private event observers, saved Harbor placement replay and production Rust release regressions",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c",
+            "parity/reports/artifacts/native-axis-dial-20261120/undo.weftforge": "7f3315f034f47f3a8c8d44bb41793d81adef3acfbd757c0716bea1cd8320f43f",
+            "parity/reports/artifacts/native-split-placement-release-20261120/FRAMES.json": "e80b219222d4de0f015ed2a810aa7451db77ebc237e29f9691bc1e546976f9d1",
+            "parity/reports/artifacts/native-split-placement-release-20261120/NATIVE-RELEASE.json": "2cde0ccf829e9b959fabc8729c8bfc1cdfdaa2d126f61de2b431d9d74ffe904e",
+            "parity/reports/artifacts/native-split-placement-release-20261120/POST-CASE-CLEANUP.json": "1fa202bb8426fdf98812216aaf957113f49b6c65fdac3c32410df3cc4354d8e4",
+            "parity/reports/artifacts/native-split-placement-release-20261120/RESULT.json": "7c1dd4d75cd6e155be78f06b1de8f4170220f492e7e4151ec02cf44da9f7194e",
+            "parity/reports/artifacts/native-split-placement-release-20261120/check_release.py": "69dc5adea2a2213cbf66a8ebd1ad9281f458d1d46c99533ed438ce5c547aa3cf",
+            "parity/reports/artifacts/native-split-placement-release-20261120/redo.weftforge": "75cf3d2eacc20c4d86b344de629b8211dc3632832d711a5faf4983436c53691b",
+            "parity/reports/artifacts/native-split-placement-release-20261120/split-release.weftforge": "db24f74e8e33f0625ad47661c5349961bd2ab871fb166a21857b85d98e8df900"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json"
         }
       ],
       "known_gaps": [
@@ -11840,7 +11900,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/PAT-004-piece-rigid-transform.md": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
         "spec/features/PAT-004-native-transform-selection.md": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
@@ -34486,7 +34546,8 @@
         "spec/features/FIT-001-viewport-rotation.md",
         "parity/reports/WF-20261120-NATIVE-VIEWPORT-ROTATION-001.json",
         "spec/features/FIT-001-viewport-rotation-axes.md",
-        "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json"
+        "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json",
+        "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json"
       ],
       "scenarios": [
         {
@@ -34534,6 +34595,15 @@
           },
           "initial_conditions": "Harbor revision 23 contains two editable patterns and eight seams. Select Harbor front in Front view and enable Rotate pattern.",
           "expected_outcomes": "World X rotates the front about the fixed pivot. Local Z uses the resulting pattern normal. Each accepted drag adds one revision, Undo restores the first turn and Redo restores the second. The complete editable document and the six placement fields survive saving and reopening."
+        },
+        {
+          "id": "FIT-NATIVE-SPLIT-PLACEMENT-RELEASE-001",
+          "path": "parity/scenarios/FIT-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
+          },
+          "initial_conditions": "A fresh Harbor revision 23 contains two editable pieces and eight seams. Harbor front is selected in Front view, with Rotate pattern and World X enabled.",
+          "expected_outcomes": "The release advances one document revision after an owned dial press, including a release sharing its input frame with the first significant pointer movement. Undo and Redo restore the complete editable placements."
         }
       ],
       "comparison_criteria": {
@@ -34833,19 +34903,38 @@
             "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c"
           },
           "path": "parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json"
+        },
+        {
+          "id": "WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001",
+          "commit": "3767926bb2cd608c5054a9801d4931b579146778",
+          "timestamp": "2026-11-20T15:40:29.219778Z",
+          "platform": "Apple Silicon native studio with private event observers, saved Harbor placement replay and production Rust release regressions",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-simulated-obj-20261118/inputs/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-axis-dial-20261120/world-x.weftforge": "a4fe5d57f2277222ea50a7cd23f5c1b166b78b538fe17fc5d7e7f3d6d142087c",
+            "parity/reports/artifacts/native-axis-dial-20261120/undo.weftforge": "7f3315f034f47f3a8c8d44bb41793d81adef3acfbd757c0716bea1cd8320f43f",
+            "parity/reports/artifacts/native-split-placement-release-20261120/FRAMES.json": "e80b219222d4de0f015ed2a810aa7451db77ebc237e29f9691bc1e546976f9d1",
+            "parity/reports/artifacts/native-split-placement-release-20261120/NATIVE-RELEASE.json": "2cde0ccf829e9b959fabc8729c8bfc1cdfdaa2d126f61de2b431d9d74ffe904e",
+            "parity/reports/artifacts/native-split-placement-release-20261120/POST-CASE-CLEANUP.json": "1fa202bb8426fdf98812216aaf957113f49b6c65fdac3c32410df3cc4354d8e4",
+            "parity/reports/artifacts/native-split-placement-release-20261120/RESULT.json": "7c1dd4d75cd6e155be78f06b1de8f4170220f492e7e4151ec02cf44da9f7194e",
+            "parity/reports/artifacts/native-split-placement-release-20261120/check_release.py": "69dc5adea2a2213cbf66a8ebd1ad9281f458d1d46c99533ed438ce5c547aa3cf",
+            "parity/reports/artifacts/native-split-placement-release-20261120/redo.weftforge": "75cf3d2eacc20c4d86b344de629b8211dc3632832d711a5faf4983436c53691b",
+            "parity/reports/artifacts/native-split-placement-release-20261120/split-release.weftforge": "db24f74e8e33f0625ad47661c5349961bd2ab871fb166a21857b85d98e8df900"
+          },
+          "path": "parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity.",
         "Native view-plane translation of one rest pattern has a bounded checked workflow. Rotation handles, arrangement aids, avatar assets, and the complete reference behavior remain open.",
-        "The native Front view rotated one pattern around its bounds center. The first drag following an OS save panel kept the current revision. A later native run exercised World X followed by Local Z. The first dial drag after World X selection kept revision 23, then the repeated drag committed. The cause, remaining native axis combinations, avatar arrangement and reference comparison remain open."
+        "The earlier Front-view and World X runs each observed a missed drag. The split-release trace reproduced one missed World X input when the first movement and release shared the frame after an owned press. The corrected instrumented Harbor run accepted that sequence. Timing in other historical runs, further native axis combinations, avatar arrangement and independent reference comparison remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/FIT-001-native-placement.md": "0f955e8b102d925a0196b774d1a419a9bf849ea606989f78c6b218383dbe6a2c",
         "spec/features/FIT-001-viewport-rotation.md": "ea2b9a4dd8924cb7f1c6cb056dfcaa2a11843b28e9833f8b1030f6d08c98b3d0",
