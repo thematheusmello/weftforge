@@ -594,3 +594,30 @@ fn cutout_import_respects_svg_winding_subpath_order_and_atomic_rejection() {
         assert_eq!(history(&editor), before_history);
     }
 }
+
+#[test]
+fn three_svg_subpaths_restore_both_cutouts_in_source_order() {
+    let outer = "M0 0L100 0 100 100 0 100Z";
+    let a = "M10 10L10 20 20 20 20 10Z";
+    let b = "M60 50L60 70 85 70 85 50Z";
+    for rings in [[outer, a, b], [a, outer, b], [a, b, outer]] {
+        let data = drawing(&rings.concat());
+        let mut editor = Editor::default();
+        editor.execute(import(data)).unwrap();
+        let piece = &editor.project.pieces[0];
+        let starts: Vec<_> = piece
+            .holes
+            .iter()
+            .map(|h| {
+                editor
+                    .project
+                    .point(editor.project.curve(h.boundary[0]).unwrap().start)
+                    .unwrap()
+                    .position
+            })
+            .collect();
+        assert_eq!(starts, [[0.01, -0.01], [0.06, -0.05]]);
+        assert!(editor.undo() && editor.project.pieces.is_empty());
+        assert!(editor.redo() && editor.project.pieces[0].holes.len() == 2);
+    }
+}

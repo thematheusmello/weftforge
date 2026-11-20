@@ -51,21 +51,14 @@ refuse until the notches are explicitly removed. SVG retains physical-scale
 markers; DXF refuses them before replacing output. The [notch contract](../spec/features/PAT-006-authored-notches.md)
 separates these engineering decisions from unverified reference behavior.
 
-Each piece also owns a required `holes` array. The first supported increment permits
-one simple straight hole in a simple straight exterior, with a stable Hole ID and
-an oppositely wound closed chain of ordinary Curve/Point IDs. Shared boundary-loop
-traversal keeps rendering, picking, split/join, resize, transform and removal
-consistent. Annotations must remain outside the closed hole. Sewing still accepts
-only exterior curves; cutting a holed piece refuses. The
-[hole contract](../spec/features/PAT-006-straight-hole.md) defines validation,
-clearance, work limits and the unsupported curved/multiple-hole cases.
-
-Meshing passes both sampled loops and their actual vertex offsets to earcut.
-Collinear recovery restores authored contour edges even when the hole bridge
-already uses their intermediate vertex. Refinement preserves both free boundaries;
-the existing triangle-area masses and two-face bending operate on the annulus.
-SVG writes one compound evenodd outline per piece; its current importer rejects
-hole subpaths. The current DXF profile refuses holed projects before staging.
+Each piece owns an ordered `holes` array. Every opening in a straight-sided
+pattern has a stable ID and an oppositely wound boundary of ordinary curves
+and points. The mesh samples all loops and passes their vertex offsets to
+earcut. Refinement retains each opening. Cloth mass uses the actual material
+area. Internal markings must clear every opening. SVG export and import
+preserve disjoint straight cutouts. DXF export rejects holed projects before
+staging. Hole sewing, curved cutouts and cutting through holes remain open.
+[Editable cutouts](../spec/features/PAT-006-multiple-cutouts.md).
 
 Annotation validation establishes whole-segment separation from a certified
 curved-contour polyline, independently of mesh resolution: 1e-6 m clearance,

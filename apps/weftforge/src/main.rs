@@ -1580,7 +1580,7 @@ impl Studio {
             !matches!(format, ExportFormat::Pdf(_)) || !self.editor.project.pieces.is_empty();
         let response = ui.add_enabled(enabled, egui::Button::new(label)).on_hover_text(match format {
             ExportFormat::Pdf(_) => "Tiled 1:1 pattern sheets with a 100 mm scale square. Print at Actual size.",
-            ExportFormat::Svg => "SVG preserves the exterior and one straight-sided hole per polygon. Save the native project to keep internal annotations.",
+            ExportFormat::Svg => "SVG preserves the exterior and its disjoint straight-sided cutouts. Save the native project to keep internal annotations.",
             ExportFormat::Dxf => "Exterior boundaries only; projects with holes are refused. Internal annotations stay in the native project.",
             ExportFormat::Obj | ExportFormat::Glb | ExportFormat::Gltf => "Rest/current cloth surface only; no annotation line primitives. Save the native project to keep editable internal lines.",
         });
@@ -4626,7 +4626,7 @@ impl Studio {
         let eligible = self
             .selected
             .and_then(|id| self.editor.project.piece(id))
-            .is_some_and(|piece| piece.holes.is_empty());
+            .is_some();
         let response = ui.add_enabled(eligible, egui::Button::new("Add hole…"));
         self.retain_inspector_input(&response, false);
         response
@@ -4639,10 +4639,6 @@ impl Studio {
             self.message = "Select an owner pattern before adding a hole.".into();
             return;
         };
-        if !piece.holes.is_empty() {
-            self.message = "This increment supports one hole per pattern.".into();
-            return;
-        }
         let piece = piece.id;
         let Ok([min, max]) = self.editor.project.piece_bounds(piece) else {
             return;
@@ -4682,11 +4678,7 @@ impl Studio {
             draft.revision != self.editor.project.revision
                 || self.selected != Some(draft.piece)
                 || self.tool != Tool::Select
-                || !self
-                    .editor
-                    .project
-                    .piece(draft.piece)
-                    .is_some_and(|piece| piece.holes.is_empty())
+                || self.editor.project.piece(draft.piece).is_none()
         }) {
             self.hole = None;
         }
@@ -4759,12 +4751,14 @@ impl Studio {
             match command {
                 Ok(command) if self.allow_piece_selection(ctx) => {
                     if self.apply_command(command) {
-                        let hole = &self
+                        let hole = self
                             .editor
                             .project
                             .piece(draft.piece)
                             .expect("accepted hole owner")
-                            .holes[0];
+                            .holes
+                            .last()
+                            .expect("AddHole appended a hole");
                         self.selected_curve = Some(hole.boundary[0]);
                         self.message = format!(
                             "Added editable Hole #{}; owner piece #{} retained.",
@@ -27465,6 +27459,25 @@ mod hole_tests {
             assert_eq!(app.editor.project.points, original.points);
             assert_eq!(app.editor.project.curves, original.curves);
         }
+    }
+
+    #[test]
+    fn second_hole_review_selects_the_new_boundary_and_preserves_the_first() {
+        let (ctx, mut app) = fixture();
+        app.open_hole(&ctx);
+        frame(&ctx, &mut app, vec![]);
+        click(&ctx, &mut app, "Apply hole");
+        let first = app.editor.project.pieces[0].holes[0].clone();
+        app.open_hole(&ctx);
+        app.hole.as_mut().unwrap().fields = ["0.015", "0.02", "0.03", "0.04"].map(str::to_owned);
+        frame(&ctx, &mut app, vec![]);
+        click(&ctx, &mut app, "Apply hole");
+        let holes = &app.editor.project.pieces[0].holes;
+        assert_eq!(holes.len(), 2);
+        assert_eq!(holes[0], first);
+        assert_eq!(app.selected_hole(), Some(holes[1].id));
+        assert!(app.editor.undo());
+        assert_eq!(app.editor.project.pieces[0].holes, vec![first]);
     }
 
     #[test]

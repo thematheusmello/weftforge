@@ -123,7 +123,7 @@ impl DxfPatternImport {
             .map(|name| ImportedPattern {
                 name: (*name).to_owned(),
                 exterior: Default::default(),
-                hole: None,
+                holes: Vec::new(),
             })
             .collect();
         let mut endpoints: Vec<Option<[[f64; 2]; 2]>> = vec![None; layers.len()];

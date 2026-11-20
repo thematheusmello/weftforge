@@ -292,8 +292,8 @@ or extra fields reject without saving. Earlier commands in a failing array also
 remain unapplied. Persistent seam allowances, selected-edge offsets and retaining
 the old outline as internal construction remain future work.
 
-`add_hole` creates one straight closed hole in a hole-free straight owner;
-`remove_hole` fills it by its stable Hole ID:
+`add_hole` adds a straight closed cutout to a straight-sided pattern.
+`remove_hole` fills the opening identified by its stable Hole ID.
 
 ```json
 {"type":"add_hole","data":{"piece":2,"vertices":[[0.08,0.12],[0.08,0.24],[0.16,0.24],[0.16,0.12]]}}
@@ -305,12 +305,12 @@ existing IDs first. Vertices contain 3–4096 finite metre pairs within ±1000;
 the loop must remain wholly inside the exterior with the contract's strict
 clearance. Input winding is normalized while preserving the first vertex.
 The new Hole ID survives corner edits and split/join, including last-to-first
-joins. One hole per piece is supported; hole curves cannot be sewn, and a holed
+joins. Each cutout must also clear the others. Hole curves cannot be sewn, and a holed
 piece cannot be cut. Existing exterior sewing remains attached.
 
-Native v6 preserves both editable loops. SVG exports one compound evenodd path
-per piece. SVG import restores both editable loops in straight-sided polygons. DXF export refuses a
-holed project before staging; OBJ exports its actual annular surface. See the
+Native v6 preserves all editable loops. SVG exports one compound evenodd path
+per piece. SVG import restores the exterior and every disjoint straight-sided cutout. DXF export refuses a
+holed project before staging; OBJ exports its physical surface with the openings. See the
 [hole contract](../spec/features/PAT-006-straight-hole.md). With `offset_outline`,
 the shared schema has 33 nontransaction alternatives; the core enum includes
 Transaction as its 34th variant. No CLI verb or MCP tool was added.
@@ -324,7 +324,7 @@ the SVG source cannot alias output or its recovery destination. A failed import
 leaves the existing document and files intact under the native-save guarantees.
 The [SVG profile](../spec/features/FILE-005-svg-pattern-import.md) requires physical
 mm dimensions with uniform viewBox scale and direct closed absolute `M/L/C/Z`
-paths. A polygon can have one [straight-sided cutout](../spec/features/FILE-005-svg-cutout-import.md).
+paths. A polygon can have multiple [straight-sided cutouts](../spec/features/PAT-006-multiple-cutouts.md).
 It preserves editable straight/cubic geometry, names, user-space origin
 and relative layout, inverting SVG Y into upward pattern V. The response states
 the scale and omitted content; imported pieces use the first fabric and default
