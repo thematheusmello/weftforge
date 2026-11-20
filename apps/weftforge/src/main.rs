@@ -7231,17 +7231,21 @@ impl Studio {
         let Some(mut drag) = self.placement_drag.take() else {
             return;
         };
-        let release = if coalesced_release.is_some() {
-            coalesced_release
-        } else if response.drag_stopped_by(button) {
-            pointer_button_events(ui)
-                .into_iter()
-                .find_map(|(point, pressed_button, pressed, _)| {
-                    (pressed_button == button && !pressed).then_some(point)
-                })
-        } else {
-            None
-        };
+        let release = coalesced_release.or_else(|| {
+            let buttons = pointer_button_events(ui);
+            if response.drag_stopped_by(button) {
+                return buttons
+                    .into_iter()
+                    .find_map(|(point, pressed_button, pressed, _)| {
+                        (pressed_button == button && !pressed).then_some(point)
+                    });
+            }
+            // A captured press can be followed by movement and release in one frame.
+            let [(point, egui::PointerButton::Primary, false, _)] = buttons.as_slice() else {
+                return None;
+            };
+            unreported_canvas_drag(ui, response, drag.origin, *point).then_some(*point)
+        });
         if let Some(point) = release {
             drag.point = point;
             if let Some((piece, placement)) = drag.placement() {
@@ -9114,18 +9118,38 @@ fn coalesced_canvas_drag(
     else {
         return None;
     };
+    unreported_canvas_drag(ui, response, *press, *release).then_some((
+        *press,
+        *release,
+        modifiers.alt,
+    ))
+}
+
+fn unreported_canvas_drag(
+    ui: &egui::Ui,
+    response: &egui::Response,
+    press: Pos2,
+    release: Pos2,
+) -> bool {
     let ctx = ui.ctx();
-    (ui.is_enabled()
+    ui.is_enabled()
+        && ui.input(|input| {
+            input.focused
+                && !input
+                    .raw
+                    .events
+                    .iter()
+                    .any(|event| matches!(event, egui::Event::WindowFocused(false)))
+        })
         && !response.clicked()
         && ctx.drag_started_id().is_none()
         && ctx.dragged_id().is_none()
         && ctx.drag_stopped_id().is_none()
         && !ui.input(|input| input.pointer.any_down() || input.key_pressed(egui::Key::Escape))
-        && response.rect.contains(*press)
-        && ui.clip_rect().contains(*press)
-        && ctx.layer_id_at(*press) == Some(response.layer_id)
-        && press.distance(*release) > ctx.options(|options| options.input_options.max_click_dist))
-    .then_some((*press, *release, modifiers.alt))
+        && response.rect.contains(press)
+        && ui.clip_rect().contains(press)
+        && ctx.layer_id_at(press) == Some(response.layer_id)
+        && press.distance(release) > ctx.options(|options| options.input_options.max_click_dist)
 }
 
 fn garment_face(points: [Pos2; 3], color: Color32) -> egui::Shape {
@@ -28510,14 +28534,35 @@ mod placement_drag_tests {
         assert!(app.placement_drag.is_none() && !app.dirty);
         assert_eq!(format!("{:?}", app.editor), history);
 
-        for coalesced in [false, true] {
+        for (release, lost_focus) in [(start + Vec2::new(0., 1.), false), (end, true)] {
+            frame(
+                &ctx,
+                &mut app,
+                vec![egui::Event::PointerMoved(start), pointer(start, true)],
+            );
+            assert!(app.placement_drag.is_some());
+            let mut events = vec![egui::Event::PointerMoved(release)];
+            if lost_focus {
+                events.push(egui::Event::WindowFocused(false));
+            }
+            events.push(pointer(release, false));
+            frame(&ctx, &mut app, events);
+            assert!(app.placement_drag.is_none());
+            assert_eq!(app.editor.project, initial);
+        }
+
+        for input_frames in 1..=3 {
             frame(&ctx, &mut app, vec![egui::Event::PointerMoved(start)]);
             let revision = app.editor.project.revision;
             let mut events = vec![];
-            if coalesced {
-                events.extend([pointer(start, true), egui::Event::PointerMoved(end)]);
-            } else {
-                begin(&mut app);
+            match input_frames {
+                1 => events.extend([pointer(start, true), egui::Event::PointerMoved(end)]),
+                2 => {
+                    frame(&ctx, &mut app, vec![pointer(start, true)]);
+                    assert!(app.placement_drag.is_some());
+                    events.push(egui::Event::PointerMoved(end));
+                }
+                _ => begin(&mut app),
             }
             events.extend([pointer(end, false), egui::Event::PointerMoved(later)]);
             frame(&ctx, &mut app, events);

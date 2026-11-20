@@ -1,0 +1,10 @@
+{
+  "id": "FIT-NATIVE-HEM-REGENERATION-001",
+  "initial_conditions": "Two-piece Harbor, revision 23 with eight seams. Both material panels measure 640 mm in height.",
+  "actions": [
+    "Step and export the original shirt. Lower both front hem vertices 50 mm. Save, close, reopen and step the changed shirt, then edit its left hem vertex again.",
+    "Run original and edited constructions through 60 native assembly steps and 120 gravity drape steps. Export both phase endpoints."
+  ],
+  "expected_outcomes": "The regenerated front is 690 mm high. The back, seams and other authored fields survive exactly. Edited UVs reach the simulated surfaces. Evaluate both garments against the established 15% strain, 5 mm seam and 2 mm avatar/ground vertex limits.",
+  "scope": "Independent WeftForge native behavior. Physics grades cover the four saved endpoints."
+}

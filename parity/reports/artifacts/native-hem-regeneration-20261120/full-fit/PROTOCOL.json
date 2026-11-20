@@ -1,0 +1,10 @@
+{
+  "purpose": "Run both original and lengthened Harbor through the complete native assembly and gravity drape, and compare saved surfaces by their authored UV hem endpoints.",
+  "inputs": {
+    "original_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+    "edited_sha256": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef"
+  },
+  "source": "3074da243d22d0ad78397c4f3455a78dba996627",
+  "execution": "Two fresh native release instances built from the same source. Open exact garment at rest, run Assemble 60 steps without gravity then Drape 120 steps under gravity. Record each actual native phase completion, time, diagnostics, save both physical surfaces and close. Parallel execution may affect wall time.",
+  "graded": "Keep the established 15% strain limit and existing seam/contact/recovery checks. Report unavailable or failing metrics separately. Compare world position at the same two authored hem endpoints across both outputs; sewn cloth may redistribute the rest change."
+}

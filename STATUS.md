@@ -7,6 +7,45 @@ old tessellator overrun and checks the exact new vertices, winding and face
 color at two pixel densities. The native drape replay is pending.
 [Projected garment faces](spec/features/UI-001-projected-garment-faces.md).
 
+# Editable hem length through native drape — 20 November 2026
+
+Lowering both front hem vertices by 50 mm increased the Harbor front from
+640 to 690 mm. All eight seam records and the other 26 authored points survived.
+The front side seams gained 49.91 mm while their paired back edges kept their
+length. After reopening, one solver step put each hem corner 49.99 mm below its
+counterpart on the original shirt. A second edit saved at revision 26.
+[Native edit and regeneration](parity/reports/WF-20261120-HARBOR-HEM-REGENERATION-001.json).
+
+Both shirts completed 60 assembly steps and 120 gravity drape steps. The
+longer front hung 18.65 mm lower at the left corner and 18.45 mm lower at
+the right. Original peak material strain was 14.26% at the final endpoint.
+The edited garment reached 16.10%, above the 15% limit. Its largest measured
+seam gap was 0.65 mm. Separate checks of all 181 states found the first
+excess at state 28 on both shirts. Front warp reached 15.56% on the original
+and 16.33% on the edit at that state. Trace front triangle 6 through seam
+closure and contact at 0.467 s.
+[Phase endpoint measurements](parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json) · [Draped shirt](parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/draped.png).
+
+# Captured 3D placement release — 20 November 2026
+
+A pattern now accepts the release when macOS delivers its first movement
+past the click threshold and the primary-button release in the same frame
+after an owned press. The regression also exercises movement below the
+click threshold, focus loss, Escape, Undo and complete single-frame input.
+
+The native trace captured the same down, movement and release in the original
+and corrected Apple Silicon builds. The original discarded the captured press.
+The corrected build committed revision 25. Undo and Redo restored the full
+documents. Checking the fixed pivot and 14 outline vertices gave a maximum
+position error of 2.49 × 10⁻¹⁶ m. The native observations used private event
+observers. The production source passed all 516 workspace tests, formatting
+and strict Clippy. The historical World X and Local Z report is stale on this
+handler. [Native split-release report](parity/reports/WF-20261120-NATIVE-SPLIT-PLACEMENT-RELEASE-001.json).
+
+Next, exercise the remaining axis choices on native platforms and compare
+the arrangement controls with the reference. Native multiselection and
+avatar arrangement remain open.
+
 # Debian ARM64 native project and JPEG saves — 20 November 2026
 
 The afdea599 Linux package saved an editable project and both pattern
@@ -22,6 +61,8 @@ The offline build packaged 234 emitted libraries. All 417 package files
 passed a second read after shutdown. Seven library license texts remain
 unresolved. Exercise Wayland and a physical Linux GPU, and test the
 Windows package. GitHub Actions and automated Pages remain disabled.
+
+The placement input change in 3767926b made this package report stale on the current source. A new Debian package run is needed to refresh it.
 
 # World and local pattern rotation — 20 November 2026
 
@@ -40,8 +81,8 @@ values. The studio and CLI built, and formatting, 516 workspace tests and
 strict Clippy passed. [Native dial report](parity/reports/WF-20261120-NATIVE-WORLD-LOCAL-AXIS-DIAL-001.json) · [Studio preview](docs/studio-preview.md).
 
 The first dial drag after choosing World X kept revision 23. Repeating it
-committed revision 24. Investigate that first input and exercise the other
-axis choices in the native studio. Avatar arrangement and reference
+committed revision 24. The split-release investigation above explains one reproduced input schedule.
+Exercise the remaining axis choices in the native studio. Avatar arrangement and reference
 comparison remain open.
 
 # Rotate a pattern in the 3D view — 20 November 2026

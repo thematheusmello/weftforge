@@ -122,5 +122,5 @@
     "spec/features/FIT-001-viewport-rotation-axes.md"
   ],
   "freshness": "stale",
-  "freshness_reason": "The tested executable predates the change to projected garment face rendering in the native studio."
+  "freshness_reason": "The studio placement handler changed to recognize a captured press followed by movement and release in one frame. The earlier World X and Local Z run retains its original result, saved projects, workspace capture and first-drag observation."
 }
