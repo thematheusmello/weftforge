@@ -1,5 +1,9 @@
 # WeftForge current-source addendum
 
+## Multi-pattern arrangement
+
+Source `dd0dd54c42724bbd0d02018a43442302e2b7a84a` extends selection across the Scene and both canvases. Multiple rest pieces share one placement transaction and one world-space pivot. The active piece supplies the local axes.
+
 ## Editable SVG cutouts
 
 Source `fd1b10dc8472ad3150c83e092c79d8280a21384d` restores one polygonal cutout through the shared import command. The native dialog reports the number of cutouts, and CLI and MCP report the imported hole count.

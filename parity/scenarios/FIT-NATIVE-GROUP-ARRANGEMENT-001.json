@@ -1,0 +1,31 @@
+{
+  "id": "FIT-NATIVE-GROUP-ARRANGEMENT-001",
+  "status": "implementation_only",
+  "initial_conditions": "Open the two-piece Harbor project at revision 24 with its front already rotated 0.8037662785 radians about World X. Use Front view and 10 mm snap.",
+  "actions": [
+    "Select both Scene rows with Harbor front active. Drag a selected pattern 54 screen points right and 27 points up. Save the project.",
+    "Choose Local Z and drag the common dial counterclockwise through approximately one quarter turn. Save, Undo, save, Redo and save.",
+    "Toggle front membership in the 2D pattern and back membership in the 3D garment. Start a new empty project and reopen the saved Harbor."
+  ],
+  "expected_outcomes": "Both members translate by [0.2, 0.1, 0] m and rotate about the same fixed world pivot. Undo and Redo restore the complete adjacent documents. Reopening retains both placements and starts with an empty selection.",
+  "measurements": {
+    "active_piece_id": 2,
+    "member_ids": [
+      2,
+      31
+    ],
+    "revisions": [
+      24,
+      25,
+      26,
+      27,
+      28
+    ],
+    "pivot_m": [
+      0.2,
+      1.38,
+      0.0
+    ],
+    "rest_boundary_vertices": 28
+  }
+}
