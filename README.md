@@ -33,6 +33,12 @@ and undo/redo. **Import SVG…** and **Import DXF…** add supported closed
 straight/cubic pattern boundaries at physical millimetre scale, with a review
 before importing. SVG requires explicit dimensions and a uniform viewBox;
 DXF accepts a bounded R2000 `LINE`/clamped cubic `SPLINE` profile.
+
+**Import garment OBJ…** traces flat triangle meshes into editable panels and
+cutouts. Choose the OBJ’s units before importing. The panels keep their 3D
+placements, and a sibling MTL supplies fabric names and colors.
+[Garment OBJ import](spec/features/FILE-003-editable-obj-import.md)
+
 Imported boundaries remain editable. **Frame all** fits the visible outlines in
 the 2D view and preserves pending numeric edits. The Scene dock can temporarily
 hide or isolate patterns across both canvases. View and Command search offer
@@ -125,8 +131,9 @@ ongoing work.
 Version 6 `.weftforge` JSON uses a strict schema for supported editable
 construction, including ordered sewing groups and piece-owned straight internal
 annotations, holes and notches. The reader supports explicit version 1–5 migrations.
-Older apps cannot open v6. OBJ, GLB and embedded JSON glTF mesh export and
-bounded SVG/DXF pattern import and export are available. To share an OBJ with its fabric colors, include the companion MTL file from the same folder. File and Command
+Older apps cannot open v6. The studio exchanges supported SVG, DXF and OBJ
+garments and exports GLB or embedded JSON glTF. Share an OBJ together with its
+companion MTL to retain its fabric colors. File and Command
 search export 1:1 tiled pattern PDFs for A4 or US Letter. Each PDF includes
 a 100 mm test square. **Save 2D pattern PNG…** and **Save 2D pattern JPEG…**
 set a crop and pixel density in physical units. The

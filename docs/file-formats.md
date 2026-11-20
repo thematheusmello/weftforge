@@ -17,7 +17,7 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 | `.weftforge` v1 | Yes, explicit migration | No | Original supported model | Static authoring | Old stretch maps to both axes; grain defaults to zero; saving writes v6; round-trip numeric decoding; tested native I/O subset |
 | `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1–v6 model | Static authoring | One prior saved document; no silent fallback |
 | `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1–v6 model | Static authoring | Dirty named documents only; no automatic recovery UI |
-| OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups and fabric colors in a companion MTL |
+| OBJ | Flat triangulated garments with UVs and declared source units | Whole garment or selected panels | Imported straight boundaries, cutouts, rigid placements and diffuse fabric assignments | Static | Exports thin triangles in metres. Imported avatars, posed garments, textures and sewing reconstruction remain open. |
 | SVG | Additive import of closed patterns with polygonal cutouts | Yes, compound outlines with holes and physical notch markers | Editable boundaries, cutouts and names on import | Static 2D | Explicit mm and uniform viewBox; drawings with notch markers cannot yet be reimported; sewing/materials/internal lines/print tiling unsupported |
 | Binary glTF 2.0 (`.glb`) | No | Yes | Mesh only | Static | Named pieces, fabric tint, normals and physical-scale UVs from a rest or current surface |
 | JSON glTF 2.0 (`.gltf`) | No | Yes, embedded buffer | Mesh only | Static | Single JSON file with the same named meshes, fabric tints, normals and UVs as binary glTF |
@@ -255,6 +255,11 @@ valid dirty document as an explicit recovery copy (see issue #18 and
 fallback from a corrupt primary to an older version.
 
 ## Export semantics
+
+Choose **Import garment OBJ…** in File or Command search to trace a flat garment.
+Review the source length unit, panel count, cutouts and fabrics before import.
+The file attaches to the open project as one undoable edit. The same operation
+is available through the CLI and MCP. [Supported OBJ geometry and bounds](../spec/features/FILE-003-editable-obj-import.md)
 
 OBJ uses arranged rest geometry, or current simulated positions when exporting
 from an active desktop simulation. **Export selected OBJ** writes the active panel and additional selected panels, including their assigned fabrics. CLI `export-obj` accepts optional trailing pattern IDs for the same subset of the rest mesh;
