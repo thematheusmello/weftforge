@@ -1,3 +1,12 @@
+# Global garment strain map — 20 November 2026
+
+View and Command search can show a separate global maximum-principal-stretch
+legend on the 3D garment. Its 100–1000% upper range defaults to 120%.
+Current rest UVs keep their original fabric colors on the 2D canvas. Tests
+cover rigid motion, extension, compression, shear, hidden faces, cache
+invalidation, empty surfaces and open cutouts. Native drape readback is
+pending. [Global strain map](spec/features/FIT-003-global-strain-map.md).
+
 # Fabric colors in OBJ exports — 20 November 2026
 
 OBJ exports now write a sibling MTL file with the diffuse colors of the
