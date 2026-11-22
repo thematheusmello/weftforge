@@ -1,0 +1,233 @@
+diff --git a/crates/weftforge-core/src/geometry.rs b/crates/weftforge-core/src/geometry.rs
+index 71f38dbb..71fe79c2 100644
+--- a/crates/weftforge-core/src/geometry.rs
++++ b/crates/weftforge-core/src/geometry.rs
+@@ -335,6 +335,7 @@ impl Project {
+             })?;
+         }
+         self.append_sewing_groups(&mut mesh, cancelled, work)?;
++        refine_sewing_corners(self, &mut mesh, cancelled, work)?;
+         check_budget(cancelled, work)?;
+         mesh.validate_context(work)?;
+         check_budget(cancelled, work)?;
+@@ -1390,80 +1391,155 @@ fn refine(
+         if split.is_empty() {
+             return Ok(());
+         }
+-        ensure(
+-            mesh.positions.len() + split.len() <= MAX_MESH_VERTICES,
+-            "Refinement exceeds mesh vertex limit; increase resolution",
+-        )?;
+-        let mut boundary_edges = BTreeMap::new();
+-        let mut samples: BTreeMap<Id, Vec<BoundarySample>> = BTreeMap::new();
+-        for &sample in &mesh.boundary {
++        split_refinement_edges(project, mesh, split, cancelled, work)?;
++    }
++    Err(Error("Refinement did not converge within 20 levels".into()))
++}
++
++// Resolve the first element adjacent to a join between a sewn and a free boundary.
++// Existing seam stations stay on their original, unsplit boundary edges.
++fn refine_sewing_corners(
++    project: &Project,
++    mesh: &mut Mesh,
++    cancelled: &dyn Fn() -> bool,
++    work: Option<&crate::offset::Work<'_>>,
++) -> Result<()> {
++    if mesh.stitches.is_empty() {
++        return Ok(());
++    }
++    let mut sewn_curves = BTreeSet::new();
++    for seam in &project.seams {
++        check_budget(cancelled, work)?;
++        sewn_curves.extend([seam.a.curve, seam.b.curve]);
++    }
++    for group in &project.sewing_groups {
++        for interval in group.a.iter().chain(&group.b) {
+             check_budget(cancelled, work)?;
+-            samples.entry(sample.curve).or_default().push(sample);
++            sewn_curves.insert(interval.curve);
+         }
+-        for list in samples.values_mut() {
+-            earcutr::sort_by_with_control(
+-                list,
+-                |a, b| a.t.total_cmp(&b.t),
+-                || check_budget(cancelled, work),
+-            )?;
+-            for pair in list.windows(2) {
+-                check_budget(cancelled, work)?;
+-                boundary_edges.insert(edge_key(pair[0].vertex, pair[1].vertex), (pair[0], pair[1]));
++    }
++    let mut anchors = vec![false; mesh.uv.len()];
++    for stitch in &mesh.stitches {
++        check_budget(cancelled, work)?;
++        for p in [stitch.a, stitch.b] {
++            if p.vertices[0] == p.vertices[1] || p.weight == 0.0 {
++                anchors[p.vertices[0]] = true;
++            } else if p.weight == 1.0 {
++                anchors[p.vertices[1]] = true;
+             }
+         }
+-        for (&(a, b), vertex) in &mut split {
+-            check_budget(cancelled, work)?;
+-            *vertex = mesh.positions.len();
+-            let piece = mesh.piece_ids[a];
+-            let uv = if let Some((a, b)) = boundary_edges.get(&(a, b)) {
+-                let t = (a.t + b.t) * 0.5;
+-                let curve = project
+-                    .curve(a.curve)
+-                    .ok_or_else(|| Error("Missing boundary curve".into()))?;
+-                mesh.boundary.push(BoundarySample {
+-                    piece,
+-                    curve: curve.id,
+-                    t,
+-                    vertex: *vertex,
+-                });
+-                curve.evaluate(project, t)?
+-            } else {
+-                midpoint(mesh.uv[a], mesh.uv[b])
+-            };
+-            let placement = project
+-                .piece(piece)
+-                .ok_or_else(|| Error("Missing mesh piece".into()))?
+-                .placement;
+-            mesh.positions.push(placement.transform(uv));
+-            mesh.uv.push(uv);
+-            mesh.piece_ids.push(piece);
+-        }
+-        let mut triangles = Vec::with_capacity(mesh.triangles.len() * 2);
+-        for &[a, b, c] in &mesh.triangles {
+-            check_budget(cancelled, work)?;
+-            let ab = split.get(&edge_key(a, b)).copied();
+-            let bc = split.get(&edge_key(b, c)).copied();
+-            let ca = split.get(&edge_key(c, a)).copied();
+-            match (ab, bc, ca) {
+-                (None, None, None) => triangles.push([a, b, c]),
+-                (Some(m), None, None) => triangles.extend([[a, m, c], [m, b, c]]),
+-                (None, Some(m), None) => triangles.extend([[b, m, a], [m, c, a]]),
+-                (None, None, Some(m)) => triangles.extend([[c, m, b], [m, a, b]]),
+-                (Some(m), Some(n), None) => triangles.extend([[b, n, m], [a, m, c], [m, n, c]]),
+-                (None, Some(m), Some(n)) => triangles.extend([[c, n, m], [b, m, a], [m, n, a]]),
+-                (Some(m), None, Some(n)) => triangles.extend([[a, m, n], [c, n, b], [n, m, b]]),
+-                (Some(m), Some(n), Some(p)) => {
+-                    triangles.extend([[a, m, p], [m, b, n], [p, n, c], [m, n, p]])
++    }
++    let mut sewn = vec![false; mesh.uv.len()];
++    let mut free_corner = vec![false; mesh.uv.len()];
++    for s in &mesh.boundary {
++        check_budget(cancelled, work)?;
++        if sewn_curves.contains(&s.curve) {
++            sewn[s.vertex] = true;
++        } else if s.t == 0.0 || s.t == 1.0 {
++            free_corner[s.vertex] = true;
++        }
++    }
++    let mut split = BTreeMap::new();
++    for &[a, b, c] in &mesh.triangles {
++        check_budget(cancelled, work)?;
++        if [a, b, c]
++            .into_iter()
++            .any(|i| anchors[i] && sewn[i] && free_corner[i])
++        {
++            for [x, y] in [[a, b], [b, c], [c, a]] {
++                if !(sewn[x] && sewn[y]) {
++                    enqueue_refinement_edge(&mut split, edge_key(x, y), mesh.piece_ids[x], work)?;
+                 }
+             }
+         }
+-        ensure(
+-            triangles.len() <= MAX_MESH_TRIANGLES,
+-            "Refinement exceeds mesh triangle limit; increase resolution",
++    }
++    if split.is_empty() {
++        return Ok(());
++    }
++    split_refinement_edges(project, mesh, split, cancelled, work)?;
++    improve_triangle_quality(mesh, cancelled, work)
++}
++
++fn split_refinement_edges(
++    project: &Project,
++    mesh: &mut Mesh,
++    mut split: BTreeMap<(usize, usize), usize>,
++    cancelled: &dyn Fn() -> bool,
++    work: Option<&crate::offset::Work<'_>>,
++) -> Result<()> {
++    ensure(
++        mesh.positions.len() + split.len() <= MAX_MESH_VERTICES,
++        "Refinement exceeds mesh vertex limit; increase resolution",
++    )?;
++    let mut boundary_edges = BTreeMap::new();
++    let mut samples: BTreeMap<Id, Vec<BoundarySample>> = BTreeMap::new();
++    for &sample in &mesh.boundary {
++        check_budget(cancelled, work)?;
++        samples.entry(sample.curve).or_default().push(sample);
++    }
++    for list in samples.values_mut() {
++        earcutr::sort_by_with_control(
++            list,
++            |a, b| a.t.total_cmp(&b.t),
++            || check_budget(cancelled, work),
+         )?;
+-        mesh.triangles = triangles;
++        for pair in list.windows(2) {
++            check_budget(cancelled, work)?;
++            boundary_edges.insert(edge_key(pair[0].vertex, pair[1].vertex), (pair[0], pair[1]));
++        }
+     }
+-    Err(Error("Refinement did not converge within 20 levels".into()))
++    for (&(a, b), vertex) in &mut split {
++        check_budget(cancelled, work)?;
++        *vertex = mesh.positions.len();
++        let piece = mesh.piece_ids[a];
++        let uv = if let Some((a, b)) = boundary_edges.get(&(a, b)) {
++            let t = (a.t + b.t) * 0.5;
++            let curve = project
++                .curve(a.curve)
++                .ok_or_else(|| Error("Missing boundary curve".into()))?;
++            mesh.boundary.push(BoundarySample {
++                piece,
++                curve: curve.id,
++                t,
++                vertex: *vertex,
++            });
++            curve.evaluate(project, t)?
++        } else {
++            midpoint(mesh.uv[a], mesh.uv[b])
++        };
++        let placement = project
++            .piece(piece)
++            .ok_or_else(|| Error("Missing mesh piece".into()))?
++            .placement;
++        mesh.positions.push(placement.transform(uv));
++        mesh.uv.push(uv);
++        mesh.piece_ids.push(piece);
++    }
++    let mut triangles = Vec::with_capacity(mesh.triangles.len() * 2);
++    for &[a, b, c] in &mesh.triangles {
++        check_budget(cancelled, work)?;
++        let ab = split.get(&edge_key(a, b)).copied();
++        let bc = split.get(&edge_key(b, c)).copied();
++        let ca = split.get(&edge_key(c, a)).copied();
++        match (ab, bc, ca) {
++            (None, None, None) => triangles.push([a, b, c]),
++            (Some(m), None, None) => triangles.extend([[a, m, c], [m, b, c]]),
++            (None, Some(m), None) => triangles.extend([[b, m, a], [m, c, a]]),
++            (None, None, Some(m)) => triangles.extend([[c, m, b], [m, a, b]]),
++            (Some(m), Some(n), None) => triangles.extend([[b, n, m], [a, m, c], [m, n, c]]),
++            (None, Some(m), Some(n)) => triangles.extend([[c, n, m], [b, m, a], [m, n, a]]),
++            (Some(m), None, Some(n)) => triangles.extend([[a, m, n], [c, n, b], [n, m, b]]),
++            (Some(m), Some(n), Some(p)) => {
++                triangles.extend([[a, m, p], [m, b, n], [p, n, c], [m, n, p]])
++            }
++        }
++    }
++    ensure(
++        triangles.len() <= MAX_MESH_TRIANGLES,
++        "Refinement exceeds mesh triangle limit; increase resolution",
++    )?;
++    mesh.triangles = triangles;
++    Ok(())
+ }
+ 
+ fn enqueue_refinement_edge(

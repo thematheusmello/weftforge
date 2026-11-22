@@ -1,0 +1,65 @@
+{
+  "commit": "210ba6bf8b4f0ecc72839849978149de82719b52",
+  "cases": {
+    "baseline-original.json": {
+      "process": 86216,
+      "binary_sha256": "ff79211edd9624cd4981f6de87ccd9bf99681ac9a267b7ed8cb6e4f80ddffc0b",
+      "fixture_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+      "mode": "benchmark",
+      "start": "2026-11-20T19:35:19.385437+00:00",
+      "exit": 1,
+      "end": "2026-11-20T19:39:01.970883+00:00",
+      "stdout_sha256": "5485239f5ac13f1de908528550141d9b8537c9c5cbc9f5f159c1026143a3cf79"
+    },
+    "baseline-extended.json": {
+      "process": 86217,
+      "binary_sha256": "ff79211edd9624cd4981f6de87ccd9bf99681ac9a267b7ed8cb6e4f80ddffc0b",
+      "fixture_sha256": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef",
+      "mode": "benchmark",
+      "start": "2026-11-20T19:35:19.385872+00:00",
+      "exit": 1,
+      "end": "2026-11-20T19:39:01.944687+00:00",
+      "stdout_sha256": "02221b7479bd9d1740ece5fb67560ab5431cadffc0890e0b3942fb63cd314bf2"
+    },
+    "conditioned-original.json": {
+      "process": 12116,
+      "binary_sha256": "8d0dc2c41adb0222e49e6df2605e53a4d7694f6841d35c327811f72a57e7a239",
+      "fixture_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+      "mode": "benchmark",
+      "start": "2026-11-20T19:38:21.346562+00:00",
+      "exit": 1,
+      "end": "2026-11-20T19:42:06.675418+00:00",
+      "stdout_sha256": "4326d0e6af5c9ed33da3dbde71fd7ee14d652e4ee560b0900f00978edaa77b66"
+    },
+    "conditioned-extended.json": {
+      "process": 12117,
+      "binary_sha256": "8d0dc2c41adb0222e49e6df2605e53a4d7694f6841d35c327811f72a57e7a239",
+      "fixture_sha256": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef",
+      "mode": "benchmark",
+      "start": "2026-11-20T19:38:21.346975+00:00",
+      "exit": 1,
+      "end": "2026-11-20T19:42:05.805194+00:00",
+      "stdout_sha256": "1b69365908da3c8545dabf9ac2e3c84b5a237773b63c38188e81b0f860783a7e"
+    },
+    "corners-original.json": {
+      "process": 31997,
+      "binary_sha256": "ee3b7925c4fac9c408aa9b5e26976957cbd4730fdf8d49583c3503c1fb2d5c20",
+      "fixture_sha256": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+      "mode": "benchmark",
+      "start": "2026-11-20T19:41:21.562531+00:00",
+      "exit": 1,
+      "end": "2026-11-20T19:44:59.889330+00:00",
+      "stdout_sha256": "5124cd3525e4610bee7f1f22e4cd92936f1317738cd9f08efe507ae2d918a900"
+    },
+    "corners-extended.json": {
+      "process": 31993,
+      "binary_sha256": "ee3b7925c4fac9c408aa9b5e26976957cbd4730fdf8d49583c3503c1fb2d5c20",
+      "fixture_sha256": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef",
+      "mode": "benchmark",
+      "start": "2026-11-20T19:41:21.559727+00:00",
+      "exit": 1,
+      "end": "2026-11-20T19:44:57.102080+00:00",
+      "stdout_sha256": "4915a1c0bca226cb6c0070c87e9f1d82c5ee556dd614aea81d5aa87b46f19de6"
+    }
+  }
+}

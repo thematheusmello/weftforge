@@ -1,0 +1,171 @@
+{
+  "architecture": "aarch64",
+  "criteria": {
+    "capsule_surface_uncertain_pairs": 0,
+    "finite": true,
+    "initial_contact_recovery_projections": 0,
+    "max_contact_penetration_below_m": 0.002,
+    "max_seam_gap_below_m": 0.005,
+    "max_seam_gap_scope": "only states with seam_assembly_remaining exactly zero",
+    "max_stretch_error_below": 0.15,
+    "scope": "initial and every successfully completed whole-step state",
+    "seam_assembly_remaining_finite_and_nonnegative": true,
+    "seam_assembly_remaining_m": 0.0,
+    "seam_assembly_remaining_scope": "final state",
+    "state_index_origin": "0 = initial state; n = n successfully completed steps"
+  },
+  "diagnostics": {
+    "capsule_surface_uncertain_pairs": 0,
+    "contacts": 383142,
+    "finite": true,
+    "initial_contact_recovery_projections": 0,
+    "initial_intersections": 0,
+    "kinetic_energy": 0.00007858481391158031,
+    "max_contact_error": 5.373098521804787e-6,
+    "max_seam_error": 0.0010928835088065715,
+    "max_stretch_error": 0.21291130555238458,
+    "peak_strain": {
+      "axis": "warp",
+      "signed_strain": 0.21291130555238458,
+      "triangle": 16
+    },
+    "seam_assembly_remaining": 0.0,
+    "simulation_time": 2.9999999999999942,
+    "step_seconds": 1.212435083
+  },
+  "export_written": false,
+  "first_quality_failure": {
+    "diagnostics": {
+      "capsule_surface_uncertain_pairs": 0,
+      "contacts": 397977,
+      "finite": true,
+      "initial_contact_recovery_projections": 0,
+      "initial_intersections": 0,
+      "kinetic_energy": 0.06422497691579475,
+      "max_contact_error": 6.206006041842294e-7,
+      "max_seam_error": 0.03005711779483728,
+      "max_stretch_error": 0.2087443990798059,
+      "peak_strain": {
+        "axis": "warp",
+        "signed_strain": 0.2087443990798059,
+        "triangle": 650
+      },
+      "seam_assembly_remaining": 0.030000000000001054,
+      "simulation_time": 0.44999999999999996,
+      "step_seconds": 1.2046970830000001
+    },
+    "peak_strain_piece": {
+      "id": 31,
+      "name": "Harbor back"
+    },
+    "state": 27
+  },
+  "first_quality_failure_state": 27,
+  "kind": "implementation_only",
+  "limitations": [
+    "Original analytic avatar and uncalibrated fabrics",
+    "Finite fixture thresholds do not establish general garment quality or reference parity"
+  ],
+  "median_step_seconds": 1.214750834,
+  "memory_bytes": null,
+  "p95_step_seconds": 1.242206334,
+  "peak_strain_piece": {
+    "id": 2,
+    "name": "Harbor front"
+  },
+  "phases": [
+    {
+      "diagnostics": {
+        "capsule_surface_uncertain_pairs": 0,
+        "contacts": 375563,
+        "finite": true,
+        "initial_contact_recovery_projections": 0,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.0005511747575260509,
+        "max_contact_error": 0.00002034576771395291,
+        "max_seam_error": 0.0011713570437877742,
+        "max_stretch_error": 0.2117459603647509,
+        "peak_strain": {
+          "axis": "warp",
+          "signed_strain": 0.2117459603647509,
+          "triangle": 16
+        },
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.0000000000000013,
+        "step_seconds": 1.226033708
+      },
+      "name": "assembly",
+      "peak_strain_piece": {
+        "id": 2,
+        "name": "Harbor front"
+      },
+      "settings": {
+        "dt": 0.016666666666666666,
+        "gravity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "iterations": 32,
+        "seam_closure_speed": 1.0,
+        "substeps": 8
+      },
+      "simulated_seconds": 1.0,
+      "steps_completed": 60,
+      "steps_requested": 60,
+      "wall_seconds": 70.114150375
+    },
+    {
+      "diagnostics": {
+        "capsule_surface_uncertain_pairs": 0,
+        "contacts": 383142,
+        "finite": true,
+        "initial_contact_recovery_projections": 0,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.00007858481391158031,
+        "max_contact_error": 5.373098521804787e-6,
+        "max_seam_error": 0.0010928835088065715,
+        "max_stretch_error": 0.21291130555238458,
+        "peak_strain": {
+          "axis": "warp",
+          "signed_strain": 0.21291130555238458,
+          "triangle": 16
+        },
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.9999999999999942,
+        "step_seconds": 1.212435083
+      },
+      "name": "drape",
+      "peak_strain_piece": {
+        "id": 2,
+        "name": "Harbor front"
+      },
+      "settings": {
+        "dt": 0.016666666666666666,
+        "gravity": [
+          0.0,
+          -9.81,
+          0.0
+        ],
+        "iterations": 32,
+        "seam_closure_speed": 1.0,
+        "substeps": 8
+      },
+      "simulated_seconds": 2.0,
+      "steps_completed": 120,
+      "steps_requested": 120,
+      "wall_seconds": 148.009221875
+    }
+  ],
+  "platform": "macos",
+  "protocol": "explicit-zero-gravity-assembly-then-drape-v1",
+  "quality_states_checked": 181,
+  "simulated_seconds": 2.9999999999999942,
+  "simulated_seconds_per_wall_second": 0.013753683118642003,
+  "solver_error": null,
+  "status": "failed",
+  "triangles": 1268,
+  "vertices": 710,
+  "viewport_frame_seconds": null,
+  "wall_seconds": 218.123390958
+}
