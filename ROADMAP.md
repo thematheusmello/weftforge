@@ -13,11 +13,19 @@ Complete garment fitting, distribution and end-to-end acceptance remain in
 progress. See [current status](STATUS.md) for tested builds, known failures and
 remaining work.
 
-## Current execution order — 19 November 2026
+## Current execution order — 22 November 2026
 
-The registry currently contains 56 broad contracts: 44 partial and 12 planned.
-None is fully implemented or reference verified, and no delivery gate is accepted.
-Discovery is incomplete, so these 56 contracts are not a final product denominator.
+The [live registry](docs/progress.md) tracks implementation and verification
+as discovery continues. All six gates remain open. On native build
+`4b15c2ec`, the operator drafted and sewed a Harbor shirt from an empty
+project, arranged it, fitted it, changed its front height, saved, quit,
+reopened, edited again and exported. Both 400 N/m trajectories first exceeded
+15% strain at frame 28. [Native journey](parity/reports/WF-20261122-HARBOR-STUDIO-WORKFLOW-001.json) · [Fit measurements](parity/reports/WF-20261122-HARBOR-STUDIO-FIT-001.json).
+
+In the separate 520 N/m shoulder study, the recorded local sliding traction
+raises front warp above 15% in both saved substeps. Measure the friction
+coefficient for an identified fabric and contact surface at the recorded loads
+and speeds before changing the fit model. [Shoulder contact controls](parity/reports/artifacts/harbor-shoulder-support-20261122/README.md).
 
 1. Finish the native UI and interaction foundation in the PhotoCraft-inspired
    visual direction: consistent panels/tools/dialogs, linked selection, precise
