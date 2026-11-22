@@ -751,3 +751,7 @@ Selected-panel OBJ export is pinned at `dfdd91100c9825796eadb46c95e478ed2caabcaf
 Editable garment OBJ import is pinned at `a79bd6db00fe70c7c187b263685f59c23564a36c`. The studio reviews source units, panels, cutouts and fabric assignments. The same import runs through the CLI, the stateless MCP file tool and the closed authoring command. This revision exposes 38 Rust variants including Transaction, 37 nontransaction schema alternatives and 15 MCP tools.
 
 Source `bc3772196c0ea8dc206da1836c8f953e5cbedd44` updates the OBJ capability matrix and automation guide for editable flat garments with explicit source units. The importer implementation and its command schema are pinned above.
+
+## Fabric surface finishes
+
+Source `aec4fcb1d4d1cf46fd2712fbffe98defd16fb24f` adds `SetFabricSurface` to the 38 authoring operations and their MCP schema. The studio keeps an accepted pose while changing metallic or roughness. glTF and GLB carry both factors. The updated source groups are `garment-render-style` and `gltf-interchange`.

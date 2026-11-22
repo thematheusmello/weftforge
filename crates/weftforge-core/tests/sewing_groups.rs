@@ -927,7 +927,7 @@ fn strict_v4_and_legacy_v2_keep_authored_values_and_maps_without_reinterpretatio
                 bad["project"]["sewing_groups"][0]["id"] = bad["project"]["seams"][0]["id"].clone()
             }
             3 => bad["project"]["sewing_groups"][0]["a"][0]["t0"] = json!(null),
-            _ => bad["version"] = json!(weftforge_core::FORMAT_VERSION + 1),
+            _ => bad["version"] = json!(weftforge_core::FABRIC_SURFACE_FORMAT_VERSION + 1),
         }
         assert!(Project::from_json(&serde_json::to_vec(&bad).unwrap()).is_err());
     }

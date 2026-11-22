@@ -306,6 +306,30 @@ impl Piece {
     }
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct FabricSurface {
+    pub metallic: f64,
+    pub roughness: f64,
+}
+
+impl Default for FabricSurface {
+    fn default() -> Self {
+        Self {
+            metallic: 0.,
+            roughness: 1.,
+        }
+    }
+}
+
+impl FabricSurface {
+    fn deserialize_present<'de, D: serde::Deserializer<'de>>(
+        de: D,
+    ) -> std::result::Result<Option<Self>, D::Error> {
+        Self::deserialize(de).map(Some)
+    }
+}
+
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Material {
@@ -320,6 +344,12 @@ pub struct Material {
     pub friction: f64,
     pub collision_thickness: f64,
     pub color: [f32; 3],
+    #[serde(
+        default,
+        deserialize_with = "FabricSurface::deserialize_present",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub surface: Option<FabricSurface>,
 }
 
 impl Default for Material {
@@ -336,6 +366,7 @@ impl Default for Material {
             friction: 0.4,
             collision_thickness: 0.003,
             color: [0.22, 0.55, 0.76],
+            surface: None,
         }
     }
 }
@@ -720,6 +751,13 @@ impl Project {
         for material in &self.materials {
             containment_work.charge_request()?;
             validate_name(&material.name)?;
+            if let Some(surface) = material.surface {
+                ensure(
+                    (0.0..=1.0).contains(&surface.metallic)
+                        && (0.0..=1.0).contains(&surface.roughness),
+                    "Fabric metallic and roughness must be finite values in [0, 1]",
+                )?;
+            }
             ensure(
                 material.areal_density.is_finite()
                     && (0.001..=100.0).contains(&material.areal_density),
@@ -1931,12 +1969,29 @@ impl Project {
                 material.id = self.allocate_id()?;
                 self.materials.push(material);
             }
-            Command::UpdateMaterial { material } => {
+            Command::SetFabricSurface {
+                material,
+                metallic,
+                roughness,
+            } => {
+                let target = self
+                    .materials
+                    .iter_mut()
+                    .find(|item| item.id == material)
+                    .ok_or_else(|| Error("Unknown material".into()))?;
+                target.surface = Some(FabricSurface {
+                    metallic,
+                    roughness,
+                });
+            }
+            Command::UpdateMaterial { mut material } => {
                 let target = self
                     .materials
                     .iter_mut()
                     .find(|item| item.id == material.id)
                     .ok_or_else(|| Error("Unknown material".into()))?;
+                // Older command payloads describe only color and mechanics.
+                material.surface = material.surface.or(target.surface);
                 *target = material;
             }
             Command::AddSeam {
@@ -2439,6 +2494,11 @@ pub enum Command {
     UpdateMaterial {
         material: Material,
     },
+    SetFabricSurface {
+        material: Id,
+        metallic: f64,
+        roughness: f64,
+    },
     AddSeam {
         name: String,
         a: CurveInterval,
@@ -2480,11 +2540,39 @@ pub enum Command {
     Transaction(Vec<Command>),
 }
 
+impl Command {
+    fn changes_only_fabric_appearance(&self, project: &Project) -> bool {
+        match self {
+            Self::SetFabricSurface { .. } => true,
+            Self::UpdateMaterial { material } => project.material(material.id).is_some_and(|old| {
+                let mut comparable = material.clone();
+                comparable.color = old.color;
+                comparable.surface = old.surface;
+                comparable == *old
+            }),
+            Self::Transaction(commands) => {
+                !commands.is_empty()
+                    && commands
+                        .iter()
+                        .all(|c| c.changes_only_fabric_appearance(project))
+            }
+            _ => false,
+        }
+    }
+}
+
+#[derive(Debug, Clone)]
+struct HistoryEntry {
+    project: Project,
+    appearance_only: bool,
+}
+
 #[derive(Debug, Clone)]
 pub struct Editor {
     pub project: Project,
-    undo: Vec<Project>,
-    redo: Vec<Project>,
+    undo: Vec<HistoryEntry>,
+    redo: Vec<HistoryEntry>,
+    last_change_appearance_only: bool,
     revision: u64,
 }
 
@@ -2501,6 +2589,7 @@ impl Editor {
         Ok(Self {
             revision: project.revision,
             project,
+            last_change_appearance_only: false,
             undo: Vec::new(),
             redo: Vec::new(),
         })
@@ -2540,6 +2629,7 @@ impl Editor {
                 .collect(),
             _ => BTreeSet::new(),
         };
+        let appearance_only = command.changes_only_fabric_appearance(&self.project);
         let mut next = self.project.clone();
         let not_cancelled = || false;
         let request = crate::offset::Work::new(&not_cancelled);
@@ -2629,12 +2719,21 @@ impl Editor {
             request.check()?;
         }
         self.revision = revision;
-        self.undo.push(std::mem::replace(&mut self.project, next));
+        self.last_change_appearance_only = appearance_only;
+        self.undo.push(HistoryEntry {
+            project: std::mem::replace(&mut self.project, next),
+            appearance_only,
+        });
         if self.undo.len() > 128 {
             self.undo.remove(0);
         }
         self.redo.clear();
         Ok(())
+    }
+
+    /// True after an accepted execute, undo or redo affecting only fabric appearance.
+    pub fn last_change_appearance_only(&self) -> bool {
+        self.last_change_appearance_only
     }
 
     pub fn can_undo(&self) -> bool {
@@ -2656,8 +2755,11 @@ impl Editor {
             "OffsetStalePreparation: revision changed",
         )?;
         self.revision = revision;
-        self.undo
-            .push(std::mem::replace(&mut self.project, prepared.candidate));
+        self.last_change_appearance_only = false;
+        self.undo.push(HistoryEntry {
+            project: std::mem::replace(&mut self.project, prepared.candidate),
+            appearance_only: false,
+        });
         if self.undo.len() > 128 {
             self.undo.remove(0);
         }
@@ -2676,12 +2778,13 @@ impl Editor {
             self.undo.push(previous);
             return false;
         };
-        previous.revision = revision;
+        previous.project.revision = revision;
         self.revision = revision;
         // Never reuse an ID created on an abandoned history branch.
-        previous.next_id = previous.next_id.max(self.project.next_id);
-        self.redo
-            .push(std::mem::replace(&mut self.project, previous));
+        previous.project.next_id = previous.project.next_id.max(self.project.next_id);
+        std::mem::swap(&mut self.project, &mut previous.project);
+        self.last_change_appearance_only = previous.appearance_only;
+        self.redo.push(previous);
         true
     }
 
@@ -2693,10 +2796,12 @@ impl Editor {
             self.redo.push(next);
             return false;
         };
-        next.revision = revision;
+        next.project.revision = revision;
         self.revision = revision;
-        next.next_id = next.next_id.max(self.project.next_id);
-        self.undo.push(std::mem::replace(&mut self.project, next));
+        next.project.next_id = next.project.next_id.max(self.project.next_id);
+        std::mem::swap(&mut self.project, &mut next.project);
+        self.last_change_appearance_only = next.appearance_only;
+        self.undo.push(next);
         true
     }
 }

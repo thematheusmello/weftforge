@@ -146,13 +146,14 @@ fn encode_scene(mesh: &Mesh, project: &Project) -> Result<(Value, Vec<u8>)> {
         let material_index = *fabric_indices.entry(material.id).or_insert_with(|| {
             let index = materials.len();
             let [r, g, b] = material.color;
+            let surface = material.surface.unwrap_or_default();
             materials.push(json!({
                 "name": material.name,
                 "doubleSided": true,
                 "pbrMetallicRoughness": {
                     "baseColorFactor": [r, g, b, 1.],
-                    "metallicFactor": 0.,
-                    "roughnessFactor": 1.,
+                    "metallicFactor": surface.metallic,
+                    "roughnessFactor": surface.roughness,
                 },
                 "extras": {"weftforgeMaterialId": material.id.to_string()},
             }));

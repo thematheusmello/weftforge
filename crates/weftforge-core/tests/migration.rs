@@ -401,7 +401,10 @@ fn version_dispatch_rejects_mixed_schemas_unknown_fields_and_unsupported_version
         let mut bad = document.clone();
         bad["project"]["unknown"] = json!(0);
         reject(&bad);
-        for version in [0, 7, 999] {
+        let mut bad = document.clone();
+        bad["project"]["materials"][0]["surface"] = json!({"metallic": 0.5, "roughness": 0.2});
+        reject(&bad);
+        for version in [0, weftforge_core::FABRIC_SURFACE_FORMAT_VERSION + 1, 999] {
             let mut bad = document.clone();
             bad["version"] = json!(version);
             reject(&bad);
