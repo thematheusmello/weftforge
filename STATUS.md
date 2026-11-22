@@ -1,3 +1,22 @@
+# Apple Silicon package notices — 22 November 2026
+
+The offline package from `3cb8b515` contains 177 emitted Cargo crates.
+Seven retain their pinned release declaration and gain its linked 11,358-byte
+Apache-2.0 text. The readback verified every one of the 298 Cargo notice files
+and five project notices in both the portable directory and standalone app.
+Both executables match the preceding offline build byte for byte.
+[Package manifests, provenance and independent readback](parity/reports/WF-20261122-APPLE-APACHE-NOTICES-001.json).
+
+Five entries remain open. Resolve the historical MIT attribution for block2
+0.6.2, objc2 0.6.5, objc2-encode 4.1.0 and objc2-foundation 0.3.2. Locate a
+release-attributable MIT notice for dispatch 0.2.0. The pinned objc2
+declarations preserve upstream's SDK qualification. Signing and system-library
+review remain separate release work.
+
+
+The posed OBJ sources changed after packaging. Repeat the audit on the
+release candidate to refresh its executable and notice hashes.
+
 # Checking published evidence — 22 November 2026
 
 The publication check rejects a report, artifact, scenario, fixture or reviewed contract that exists only as an untracked or ignored file. Stage new evidence before running `cargo xtask verify`. The history check still validates every recorded path and SHA-256 against its tested commit. It reads each distinct Git blob once per validation, even when many historical runs use the same source.

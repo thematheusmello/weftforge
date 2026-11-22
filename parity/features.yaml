@@ -64717,7 +64717,8 @@
         "parity/reports/WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001.json",
         "parity/reports/WF-20261120-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json",
         "parity/reports/WF-20261120-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json",
-        "parity/reports/WF-20261122-DEBIAN-WAYLAND-POSED-OBJ-001.json"
+        "parity/reports/WF-20261122-DEBIAN-WAYLAND-POSED-OBJ-001.json",
+        "parity/reports/WF-20261122-APPLE-APACHE-NOTICES-001.json"
       ],
       "scenarios": [
         {
@@ -64801,6 +64802,13 @@
           },
           "initial_conditions": "An empty unsigned Debian GNU/Linux 13 aarch64 studio for each of the two original folded swatches and the original two-fabric draped Harbor. Use metres, Y up, and Posed. The hosted Sway session has a 1640 \u00d7 1000 virtual output and CPU Vulkan rendering.",
           "expected_outcomes": "After a fresh process opens the v8 project, expected maximum errors are 1 nm per exported XYZ component and per flat extent and perimeter, and 0.000001 per source diffuse color component. Oriented triangles must match up to cyclic rotation, including multiplicities. All six studio processes must exit cleanly."
+        },
+        {
+          "id": "APP-APPLE-APACHE-NOTICES-001",
+          "path": "parity/scenarios/APP-APPLE-APACHE-NOTICES-001.json",
+          "fixture_hashes": {},
+          "initial_conditions": "An unsigned aarch64-apple-darwin package from the preceding catalog has twelve unresolved Cargo notices. Cargo has all locked archives in its cache.",
+          "expected_outcomes": "Exactly seven newly resolved crates retain their pinned declarations and gain the 11,358-byte Apache-2.0 text linked from those declarations. Five MIT-only entries remain open. Each emitted notice verifies by size and SHA-256 in both copies."
         }
       ],
       "comparison_criteria": {
@@ -65180,6 +65188,21 @@
             "parity/scenarios/APP-DEBIAN-WAYLAND-POSED-OBJ-001.json": "edb611102cff6347df3a270be553bb9e5c563bb6bd19f00ebc52ae80c82a68df"
           },
           "path": "parity/reports/WF-20261122-DEBIAN-WAYLAND-POSED-OBJ-001.json"
+        },
+        {
+          "id": "WF-20261122-APPLE-APACHE-NOTICES-001",
+          "commit": "3cb8b515ec507dfc289549a3c963be63705ee863",
+          "timestamp": "2026-11-22T22:41:51Z",
+          "platform": "Apple Silicon macOS 27.2 (26B123), unsigned offline package and standalone app notice readback",
+          "artifact_hashes": {
+            "parity/reports/artifacts/apple-apache-notices-20261122/AFTER.json": "bccf8e86cf2e966769018b874b931ab5c9a20728143c95ea9de6b2668072ffb6",
+            "parity/reports/artifacts/apple-apache-notices-20261122/BEFORE.json": "7c67afe8633525ceb3323c7f3cd9ba73ce43a3a162d280f3ba36fb69b3e4c673",
+            "parity/reports/artifacts/apple-apache-notices-20261122/PACKAGE.json": "f9ae53560c8498ff28bdfb30b677bd507f052af4640f3a0db22f6bfa01a19b63",
+            "parity/reports/artifacts/apple-apache-notices-20261122/RESULT.json": "513ac127f32e86ec2df9610fa93f2f3a3ce616fa8367f91cdd6b9b0bed2bb0b6",
+            "parity/reports/artifacts/apple-apache-notices-20261122/check_package.py": "1369cfc4f85c18ce99f833aec3d590d70028fc28da5423cf3e340aec7380a353",
+            "parity/scenarios/APP-APPLE-APACHE-NOTICES-001.json": "bb9417270b4ba9712896396c701719c21f3499ea4d6b4cc3e187ad5e4b3e07fb"
+          },
+          "path": "parity/reports/WF-20261122-APPLE-APACHE-NOTICES-001.json"
         }
       ],
       "known_gaps": [
@@ -65190,7 +65213,8 @@
         "Source fixtures check target-scoped notice collection, standalone app notice paths, executable hashes and interrupted staging recovery. Actual release notice closure, platform audits and signing remain open.",
         "The actual Apple Silicon release bundle opened Harbor. All recorded binary and 258 notice file hashes passed, and the packaged CLI reproduced both prior JPEGs. Resolve the 31 flagged runtime notices, audit platform runtimes and finish signed builds.",
         "A second offline Apple Silicon package retained all runtime libraries and executable bytes. Ten pinned files supply 18 missing code licenses. Eleven declaration-only and two absent code texts remain open, along with other platform audits and signing.",
-        "The Debian ARM64 Wayland OBJ workflow used a virtual display and software Vulkan. Physical GPU, other host packages, signing and system-library notice audits remain open."
+        "The Debian ARM64 Wayland OBJ workflow used a virtual display and software Vulkan. Physical GPU, other host packages, signing and system-library notice audits remain open.",
+        "Five Apple Silicon runtime Cargo notices remain open after the seven Apache text selections. Historical MIT attribution, system-library review, hardware qualification on the other targets and signing remain open."
       ],
       "contradictions": [],
       "blockers": [

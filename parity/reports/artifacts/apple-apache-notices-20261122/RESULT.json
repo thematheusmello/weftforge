@@ -1,0 +1,79 @@
+{
+  "target": "aarch64-apple-darwin",
+  "emitted_crates": 177,
+  "cargo_notice_files_in_each_copy": 298,
+  "project_notices_verified_in_each_copy": 5,
+  "executable_records_verified": [
+    {
+      "path": "weftforge",
+      "size_bytes": 17468832,
+      "sha256": "9b17b4795e42c0e52723b06ae5dc727dd3c16d13248d33f753b519eedcf012c9"
+    },
+    {
+      "path": "weftforge-cli",
+      "size_bytes": 3811520,
+      "sha256": "87dfe0aa67646d38720c1721bd022f8e2216c8a71ef9e3bad21f9a5ca1d9fe14"
+    },
+    {
+      "path": "WeftForge.app/Contents/MacOS/weftforge",
+      "size_bytes": 17468832,
+      "sha256": "9b17b4795e42c0e52723b06ae5dc727dd3c16d13248d33f753b519eedcf012c9"
+    }
+  ],
+  "previous_unresolved": 12,
+  "resolved": [
+    "dispatch2@0.3.1",
+    "objc2-app-kit@0.3.2",
+    "objc2-core-foundation@0.3.2",
+    "objc2-core-graphics@0.3.2",
+    "objc2-metal@0.3.2",
+    "objc2-quartz-core@0.3.2",
+    "objc2-uniform-type-identifiers@0.3.2"
+  ],
+  "unresolved": [
+    "block2@0.6.2",
+    "dispatch@0.2.0",
+    "objc2-encode@4.1.0",
+    "objc2-foundation@0.3.2",
+    "objc2@0.6.5"
+  ],
+  "locked_archives": {
+    "dispatch2@0.3.1": {
+      "archive_sha256": "1e0e367e4e7da84520dedcac1901e4da967309406d1e51017ae1abfb97adbd38",
+      "revision": "8852b424193ca41602281b3d7540d7c8ed51e49a",
+      "crate_path": "crates/dispatch2"
+    },
+    "objc2-app-kit@0.3.2": {
+      "archive_sha256": "d49e936b501e5c5bf01fda3a9452ff86dc3ea98ad5f283e1455153142d97518c",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "crate_path": "framework-crates/objc2-app-kit"
+    },
+    "objc2-core-foundation@0.3.2": {
+      "archive_sha256": "2a180dd8642fa45cdb7dd721cd4c11b1cadd4929ce112ebd8b9f5803cc79d536",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "crate_path": "framework-crates/objc2-core-foundation"
+    },
+    "objc2-core-graphics@0.3.2": {
+      "archive_sha256": "e022c9d066895efa1345f8e33e584b9f958da2fd4cd116792e15e07e4720a807",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "crate_path": "framework-crates/objc2-core-graphics"
+    },
+    "objc2-metal@0.3.2": {
+      "archive_sha256": "a0125f776a10d00af4152d74616409f0d4a2053a6f57fa5b7d6aa2854ac04794",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "crate_path": "framework-crates/objc2-metal"
+    },
+    "objc2-quartz-core@0.3.2": {
+      "archive_sha256": "96c1358452b371bf9f104e21ec536d37a650eb10f7ee379fff67d2e08d537f1f",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "crate_path": "framework-crates/objc2-quartz-core"
+    },
+    "objc2-uniform-type-identifiers@0.3.2": {
+      "archive_sha256": "7902ac02859fc1f7045f8b598c63f1ae0cc7efeaa06a9bc9f3d9a3c955974fa4",
+      "revision": "7b1abfd750a2cacaea71d6a56ecfb83cb7de560b",
+      "crate_path": "framework-crates/objc2-uniform-type-identifiers"
+    }
+  },
+  "before_sha256": "7c67afe8633525ceb3323c7f3cd9ba73ce43a3a162d280f3ba36fb69b3e4c673",
+  "after_sha256": "bccf8e86cf2e966769018b874b931ab5c9a20728143c95ea9de6b2668072ffb6"
+}
