@@ -749,3 +749,5 @@ The combined source `a50aa0fa3b639a59e198e47069c7fe00552b250a` retains the Globa
 Selected-panel OBJ export is pinned at `dfdd91100c9825796eadb46c95e478ed2caabcaf`. File and Command search export selected rest or draped geometry. The CLI and MCP accept stable pattern IDs for rest geometry. Only fabrics referenced by the exported pieces appear in the companion material library.
 
 Editable garment OBJ import is pinned at `a79bd6db00fe70c7c187b263685f59c23564a36c`. The studio reviews source units, panels, cutouts and fabric assignments. The same import runs through the CLI, the stateless MCP file tool and the closed authoring command. This revision exposes 38 Rust variants including Transaction, 37 nontransaction schema alternatives and 15 MCP tools.
+
+Source `bc3772196c0ea8dc206da1836c8f953e5cbedd44` updates the OBJ capability matrix and automation guide for editable flat garments with explicit source units. The importer implementation and its command schema are pinned above.

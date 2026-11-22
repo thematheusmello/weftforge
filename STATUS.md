@@ -1,3 +1,21 @@
+# Debian Wayland editable OBJ import — 20 November 2026
+
+The Debian 13.7 ARM64 studio from `a79bd6db` imported a millimetre pocket and
+a metre-scale Harbor shirt. Undo emptied the pocket project. Redo and a fresh
+process restored both editable openings. The exported pocket measured
+240 × 360 mm with 0.0756 m² of fabric. Each Harbor panel retained its color,
+placement and 0.5923 m² area. The two imported projects and their OBJ exports
+matched the retained macOS files byte for byte.
+[Native run and source identities](parity/reports/WF-20261120-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json) · [Independent geometry replay](parity/scenarios/APP-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json).
+
+On 22 November the retained package archive matched its recorded SHA-256.
+Reading all 443 packaged files reproduced the Debian audit, including Cargo
+notices for all 243 emitted crates. All three native processes exited with
+code zero and the guest stopped. This run used a 1640 × 1000 virtual Wayland
+display and software Vulkan. Repeat the import on a physical GPU and audit the
+system-library notices before release. No Debian job is running.
+[Package readback](parity/reports/artifacts/debian-wayland-editable-obj-20261120/PACKAGE-READBACK.json) · [Post-case cleanup](parity/reports/artifacts/debian-wayland-editable-obj-20261120/CLEANUP.json).
+
 # Importing editable garment OBJ files — 20 November 2026
 
 The studio, CLI and MCP import flat triangular garment meshes. Each traced

@@ -1,0 +1,11 @@
+{
+  "id": "APP-DEBIAN-WAYLAND-EDITABLE-OBJ-001",
+  "status": "implementation_only",
+  "initial_conditions": "An empty unsigned studio on Debian ARM64 in a Sway Wayland session. The two-slot pocket is in millimetres and the two-fabric Harbor shirt is in metres.",
+  "actions": [
+    "Use the GTK chooser to select the pocket. Choose millimetres, import and save. Undo, save, redo and save. Reopen in a fresh process and export OBJ.",
+    "Import Harbor into a third empty studio with units set to metres. Save and export OBJ. Close each process and stop the guest.",
+    "From the repository root run python3 -B parity/reports/artifacts/debian-wayland-editable-obj-20261120/check_native.py parity/reports/artifacts/debian-wayland-editable-obj-20261120 . and compare with GEOMETRY.json."
+  ],
+  "expected_outcomes": "Undo restores the empty document. Redo and reopen preserve editable construction. Pocket dimensions are 0.240 \u00d7 0.360 m, area is 0.0756 m\u00b2 and three boundary loops total 1.74 m. The two Harbor panels retain their source positions, colors and 0.5923 m\u00b2 each."
+}
