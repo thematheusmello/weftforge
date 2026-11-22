@@ -1,3 +1,12 @@
+# Integrated Harbor fit replay — 22 November 2026
+
+The packaged `1497cb3e` CLI evaluated all 181 states of each 400 N/m
+native-authored shirt. Both crossed 15% strain at state 28. Every recorded
+physical field matched the earlier run, including the failure diagnostics and
+final state. Gate 1 remains open. The 520 N/m friction experiment below narrows
+the next measurement to sliding traction under the observed loads.
+[Current packaged fit results](parity/reports/WF-20261122-INTEGRATED-HARBOR-FIT-001.json).
+
 # Harbor shoulder sliding contact — 22 November 2026
 
 The 14-node equilibrium on the saved frame-28 predictor places all loaded

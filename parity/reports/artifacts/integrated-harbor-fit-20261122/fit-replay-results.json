@@ -1,0 +1,70 @@
+[
+  {
+    "case": "original",
+    "exit_code": 1,
+    "states": 181,
+    "first_violating_state": 28,
+    "first_failure": {
+      "diagnostics": {
+        "capsule_surface_uncertain_pairs": 0,
+        "contacts": 292741,
+        "finite": true,
+        "initial_contact_recovery_projections": 0,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.03948833215758245,
+        "max_contact_error": 2.5990009199783337e-06,
+        "max_seam_error": 0.014266089986804417,
+        "max_stretch_error": 0.1692535448431558,
+        "peak_strain": {
+          "axis": "warp",
+          "signed_strain": 0.1692535448431558,
+          "triangle": 79
+        },
+        "seam_assembly_remaining": 0.01333333333333439,
+        "simulation_time": 0.4666666666666666,
+        "step_seconds": 1.051520875
+      },
+      "peak_strain_piece": {
+        "id": 2,
+        "name": "Harbor front"
+      },
+      "state": 28
+    },
+    "all_nontiming_fields_match": true,
+    "result_sha256": "a1ce354fdbaffaa6e636cea81e761504dc34f8cf49a165fce58ae1d3f389e123"
+  },
+  {
+    "case": "reopened",
+    "exit_code": 1,
+    "states": 181,
+    "first_violating_state": 28,
+    "first_failure": {
+      "diagnostics": {
+        "capsule_surface_uncertain_pairs": 0,
+        "contacts": 263181,
+        "finite": true,
+        "initial_contact_recovery_projections": 0,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.034120979001010195,
+        "max_contact_error": 0.005112509393965947,
+        "max_seam_error": 0.020395021846802124,
+        "max_stretch_error": 0.7874241062871663,
+        "peak_strain": {
+          "axis": "warp",
+          "signed_strain": 0.7874241062871663,
+          "triangle": 8
+        },
+        "seam_assembly_remaining": 0.014269919589776331,
+        "simulation_time": 0.4666666666666666,
+        "step_seconds": 1.001399625
+      },
+      "peak_strain_piece": {
+        "id": 2,
+        "name": "Harbor front"
+      },
+      "state": 28
+    },
+    "all_nontiming_fields_match": true,
+    "result_sha256": "715df8a9a2fc1ebbc2a61fb08daf9a2a09a6d5418c52290797be2ed938b24070"
+  }
+]

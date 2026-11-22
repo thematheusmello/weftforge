@@ -35479,7 +35479,8 @@
         "parity/reports/WF-20261122-HARBOR-SHOULDER-001.json",
         "parity/reports/WF-20261122-HARBOR-SHOULDER-BALANCE-001.json",
         "parity/reports/WF-20261122-HARBOR-STUDIO-FIT-001.json",
-        "parity/reports/WF-20261122-HARBOR-SHOULDER-SUPPORT-001.json"
+        "parity/reports/WF-20261122-HARBOR-SHOULDER-SUPPORT-001.json",
+        "parity/reports/WF-20261122-INTEGRATED-HARBOR-FIT-001.json"
       ],
       "scenarios": [
         {
@@ -36340,6 +36341,25 @@
             "parity/reports/WF-20261122-HARBOR-SHOULDER-BALANCE-001.json": "cbcdf1a6d671e7c8b5bf6ccd1567f6563cd6906a608de612a0c797e2e78680c7"
           },
           "path": "parity/reports/WF-20261122-HARBOR-SHOULDER-SUPPORT-001.json"
+        },
+        {
+          "id": "WF-20261122-INTEGRATED-HARBOR-FIT-001",
+          "commit": "1497cb3e4537a72c7980fb4d4345b6e8417cb1b6",
+          "timestamp": "2026-11-22T23:04:19.592394Z",
+          "platform": "Apple Silicon macOS, integrated unsigned release CLI",
+          "artifact_hashes": {
+            "parity/reports/artifacts/integrated-harbor-fit-20261122/check_trajectories.py": "42d8c5fb87eee745a636abe7c36337467b04a63dde9ee91ce6e6291d63942fb0",
+            "parity/reports/artifacts/integrated-harbor-fit-20261122/fit-replay-protocol.json": "40d9cf9e13a53d13c31d19fdcf62d88ebc9a85f10045a59a2e82c5bdb806a08a",
+            "parity/reports/artifacts/integrated-harbor-fit-20261122/fit-replay-results.json": "bf610dc751f081cb21b8cb7ca2b51a35272397d64f1cef02baec04e7c4dd83bf",
+            "parity/reports/artifacts/integrated-harbor-fit-20261122/original-fit.json": "a1ce354fdbaffaa6e636cea81e761504dc34f8cf49a165fce58ae1d3f389e123",
+            "parity/reports/artifacts/integrated-harbor-fit-20261122/reopened-fit.json": "715df8a9a2fc1ebbc2a61fb08daf9a2a09a6d5418c52290797be2ed938b24070",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor authored.weftforge": "3c1c65061d1dab686d5d7c9dd54062c54006a2a779b2c38bc4793d6a25cc16ec",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor 670.weftforge": "5336fce20c26adab96a38c2dc67ed57c36c741f0e5c88257ec9cc4e524aa620a",
+            "parity/reports/artifacts/native-harbor-studio-20261122/original-trajectory.json": "f4857cd1dfeb452d1bd3d37a933b7a5ec598cd6efb593a42c242a3cbbd73620d",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-trajectory.json": "fc6c4ede061a8dd839bc669c64efd5d769eeb22a794aa11579bb4e1ce925cdc1",
+            "parity/reports/artifacts/native-harbor-studio-20261122/trajectory-protocol.json": "8fcd56bace73c6b63751950276c43531600e697b9cb7ef4be99fb61587ad89ac"
+          },
+          "path": "parity/reports/WF-20261122-INTEGRATED-HARBOR-FIT-001.json"
         }
       ],
       "known_gaps": [
@@ -36356,7 +36376,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/FIT-003-global-strain-map.md": "c51b56330f6d6b6f2a343fe176d4a65b18566aa386b51aa48d43eae36fbd0fd5"
       }
