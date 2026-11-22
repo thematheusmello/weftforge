@@ -3588,6 +3588,7 @@ impl Studio {
             || self.drag_start.is_some()
             || ((self.tool == Tool::Transform
                 || self.tool == Tool::Select
+                || self.tool == Tool::Sew
                 || self.tool == Tool::Rectangle
                 || self.tool == Tool::InternalLine
                 || self.tool == Tool::CutPiece)
@@ -3599,7 +3600,7 @@ impl Studio {
                     .filter_map(|id| ui.ctx().read_response(id))
                     .any(|response| {
                         ui.input(|input| {
-                            matches!(self.tool, Tool::Select | Tool::Rectangle)
+                            matches!(self.tool, Tool::Select | Tool::Rectangle | Tool::Sew)
                                 .then(|| {
                                     input.raw.events.iter().find_map(|event| match event {
                                         egui::Event::PointerButton {
@@ -6071,7 +6072,12 @@ impl Studio {
         self.pattern_canvas = Some(response.id);
         if matches!(
             self.tool,
-            Tool::FreeSewing | Tool::Select | Tool::Rectangle | Tool::InternalLine | Tool::CutPiece
+            Tool::Sew
+                | Tool::FreeSewing
+                | Tool::Select
+                | Tool::Rectangle
+                | Tool::InternalLine
+                | Tool::CutPiece
         ) {
             self.retain_inspector_input(&response, false);
         }
@@ -6459,6 +6465,31 @@ impl Studio {
                             color,
                         );
                     }
+                }
+            }
+        }
+        if self.tool == Tool::Sew {
+            let hovered = boundary_nearest
+                .filter(|_| response.hovered())
+                .map(|(_, curve)| curve);
+            let first = self.seam_start;
+            for (side, curve, mut label, mut color) in [
+                (0, first.or(hovered), "A", Color32::from_rgb(100, 200, 255)),
+                (
+                    1,
+                    first.and(hovered).filter(|curve| Some(*curve) != first),
+                    "B",
+                    Color32::from_rgb(235, 145, 240),
+                ),
+            ] {
+                if let Some(curve) = curve {
+                    if first == Some(curve) && hovered == first {
+                        label = "A · choose a different edge for B";
+                        color = Color32::LIGHT_RED;
+                    }
+                    let interval = self.sewing_interval(side, curve);
+                    self.paint_sewing_interval(&doc, &painter, &interval, r, color);
+                    self.paint_sewing_label(&doc, &painter, &interval, r, label, color);
                 }
             }
         }
@@ -6991,45 +7022,14 @@ impl Studio {
                 }
                 Tool::Sew => {
                     if let Some((_, curve)) = boundary_nearest {
-                        if let Some(a) = self.seam_start.take() {
-                            let b = if self.reversed {
-                                [self.intervals[1][1], self.intervals[1][0]]
-                            } else {
-                                self.intervals[1]
-                            };
-                            self.execute(Command::AddSeam {
-                                name: format!("Seam {}", doc.seams.len() + 1),
-                                a: CurveInterval {
-                                    curve: a,
-                                    t0: self.intervals[0][0],
-                                    t1: self.intervals[0][1],
-                                },
-                                b: CurveInterval {
-                                    curve,
-                                    t0: b[0],
-                                    t1: b[1],
-                                },
-                                correspondence: vec![[0., 0.], [1., 1.]],
-                            });
-                        } else {
-                            self.seam_start = Some(curve);
-                        }
+                        self.pick_sewing_edge(ui.ctx(), curve);
                     }
                 }
                 Tool::SewingPaths => {
                     if let Some((_, curve)) = boundary_nearest {
+                        let interval =
+                            self.sewing_interval(usize::from(self.sewing_draft.selecting_b), curve);
                         let draft = &mut self.sewing_draft;
-                        let side = usize::from(draft.selecting_b);
-                        let [t0, t1] = self.intervals[side];
-                        let interval = if draft.selecting_b && self.reversed {
-                            CurveInterval {
-                                curve,
-                                t0: t1,
-                                t1: t0,
-                            }
-                        } else {
-                            CurveInterval { curve, t0, t1 }
-                        };
                         if draft.selecting_b {
                             draft.b.push(interval);
                         } else {
@@ -7180,6 +7180,30 @@ impl Studio {
             }
         }
     }
+    fn sewing_interval(&self, side: usize, curve: Id) -> CurveInterval {
+        let [mut t0, mut t1] = self.intervals[side];
+        if side == 1 && self.reversed {
+            std::mem::swap(&mut t0, &mut t1);
+        }
+        CurveInterval { curve, t0, t1 }
+    }
+
+    fn pick_sewing_edge(&mut self, ctx: &egui::Context, curve: Id) {
+        let Some(first) = self.seam_start else {
+            self.seam_start = Some(curve);
+            return;
+        };
+        let command = Command::AddSeam {
+            name: format!("Seam {}", self.editor.project.seams.len() + 1),
+            a: self.sewing_interval(0, first),
+            b: self.sewing_interval(1, curve),
+            correspondence: vec![[0., 0.], [1., 1.]],
+        };
+        if self.apply_inspector_action(ctx, command, self.inspector_focus(ctx)) {
+            self.seam_start = None;
+        }
+    }
+
     fn paint_sewing_label(
         &self,
         project: &Project,
@@ -7221,8 +7245,20 @@ impl Studio {
             })
             .map(|point| self.to_screen(point, rect))
             .collect();
-        if let [.., previous, end] = points.as_slice() {
-            painter.arrow(*previous, *end - *previous, Stroke::new(2., color));
+        // A tessellation segment can be shorter than a pixel on a fitted garment.
+        if let Some(&tip) = points.last()
+            && let Some(&previous) = points
+                .iter()
+                .rev()
+                .find(|point| tip.distance(**point) >= 6.)
+        {
+            let along = (tip - previous).normalized();
+            let base = tip - along * 6.;
+            let wing = along.rot90() * 3.;
+            painter.add(egui::Shape::line(
+                vec![base + wing, tip, base - wing],
+                Stroke::new(2., color),
+            ));
         }
         painter.add(egui::Shape::line(points, Stroke::new(2., color)));
     }
@@ -8720,12 +8756,12 @@ fn tool_button(ui: &mut egui::Ui, tool: Tool, selected: bool) -> egui::Response 
             },
         );
         if selected || response.has_focus() {
-            painter.rect_stroke(
-                rect,
-                2.0,
-                Stroke::new(1.0, Color32::from_rgb(74, 143, 208)),
-                egui::StrokeKind::Inside,
-            );
+            let outline = if response.has_focus() {
+                Stroke::new(2.0, Color32::WHITE)
+            } else {
+                Stroke::new(1.0, Color32::from_rgb(74, 143, 208))
+            };
+            painter.rect_stroke(rect, 2.0, outline, egui::StrokeKind::Inside);
         }
     }
     let c = rect.center();
@@ -18467,6 +18503,37 @@ mod tests {
             actual["next_id"] = expected["next_id"].clone();
             assert_eq!(actual, expected);
         }
+        #[test]
+        fn segment_sewing_retries_second_edge_and_commits_visible_ranges_once() {
+            let ctx = egui::Context::default();
+            let (mut app, curves) = fixture(false);
+            ctx.enable_accesskit();
+            app.select(&ctx, Some(app.editor.project.pieces[0].id));
+            app.set_tool(Tool::Sew);
+            app.intervals = [[0.1, 0.8], [0.2, 0.9]];
+            app.reversed = true;
+            let original = app.editor.project.clone();
+            frame(&ctx, &mut app, vec![]);
+            frame(&ctx, &mut app, vec![]);
+            stage_inspector(&ctx, &mut app);
+            boundary_click(&ctx, &mut app, curves[0]);
+            boundary_click(&ctx, &mut app, curves[0]);
+            assert!(app.message.contains("distinct curves"));
+            assert_eq!(app.seam_start, Some(curves[0]));
+            assert_eq!(app.editor.project, original);
+            assert!(!app.editor.can_undo());
+            boundary_click(&ctx, &mut app, curves[1]);
+            assert_eq!(app.editor.project.resolution, 0.08);
+            assert_eq!(app.editor.project.pieces[0].grain_angle, 0.25);
+            let seam = &app.editor.project.seams[0];
+            assert_eq!((seam.a.curve, seam.a.t0, seam.a.t1), (curves[0], 0.1, 0.8));
+            assert_eq!((seam.b.curve, seam.b.t0, seam.b.t1), (curves[1], 0.9, 0.2));
+            assert!(app.seam_start.is_none());
+            assert!(app.editor.undo());
+            assert_construction(&app.editor.project, &original);
+            assert!(!app.editor.can_undo());
+        }
+
         fn stage_inspector(ctx: &egui::Context, app: &mut Studio) -> (egui::FullOutput, egui::Id) {
             let output = frame(ctx, app, vec![]);
             let grain = numeric(&output, 0.125, 0);

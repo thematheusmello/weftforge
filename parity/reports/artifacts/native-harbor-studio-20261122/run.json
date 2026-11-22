@@ -1,0 +1,20 @@
+{
+  "tested_commit": "4b15c2ec2531b74c63894b4c2efde05ec913de21",
+  "native_executable_sha256": "596e235c6aa0365caafac21c05a9675e17b7627d89ac7033407551d470ed38fc",
+  "build": "cargo build --release -p weftforge -p weftforge-cli",
+  "platform": "27.2 macOS / Apple Silicon / Metal",
+  "workflow": [
+    "Launched without a project. Entered the two 14-point Harbor contours through native numeric controls and set translations and grain. The selected design has 400 N/m warp stiffness.",
+    "Picked the same edge twice. The rejected second click retained A. Selected a different B and completed eight unreversed whole-edge seams in the 2D viewport.",
+    "The first save used an unintended filename in the chooser. Repeated Save as with the intended name. Both new project files were byte-identical.",
+    "An attempted action during the assembly-to-drape transition did not start draping. Wireframe was visible in the later fitted capture. Confirmed assembly completion at 1.000 s, then explicitly started Drape and confirmed 3.000 s before exporting.",
+    "Completed 60 zero-gravity assembly steps and 120 gravity steps. Exported the accepted state to OBJ. Changed front height to 680 mm, saved and quit.",
+    "Launched a fresh process on the saved 680 mm project. Pressed Tab 23 times to reach Polygon on the tool rail, then Return activated it. Set front height to 670 mm, saved, assembled, draped, exported the accepted state, and quit."
+  ],
+  "native_process_ids": [
+    46511,
+    89247
+  ],
+  "workspace_capture": "Window screenshots include the 32-point macOS title bar. The Retina capture uses two physical pixels per logical point. Resizing preserves the current zoom, so the minimum fitted view crops the outer patterns until Frame all is invoked again.",
+  "qualification": "Endpoint measurements only. The earlier and later physical runs and the 520 N/m extended-hem case retain their own fixture identities. The matching CLI checked every quality state separately. The two native exports measure only their accepted endpoints. Full independent trajectory/resource certification remains open."
+}

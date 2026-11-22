@@ -1,5 +1,17 @@
 # Native studio preview
 
+## Sewing and fitting Harbor from an empty document
+
+The blue A and magenta B arrows identify the two spans before the second
+click commits the seam. These two patterns were drafted in the native studio.
+
+![Two Harbor outlines with their paired side-seam intervals and directions highlighted](../parity/reports/artifacts/native-harbor-studio-20261122/sewing-direction.png)
+
+After reopening, the front was edited to 670 mm and fitted again. Its final
+export measured 14.59% peak axis strain. The all-frame test still exceeded
+15% during assembly.
+[Reopened fit](../parity/reports/artifacts/native-harbor-studio-20261122/reopened-fit.png) · [Empty workspace at minimum size on Retina](../parity/reports/artifacts/native-harbor-studio-20261122/empty-minimum-retina.png) · [Measurements](../parity/reports/artifacts/native-harbor-studio-20261122/measurements.json).
+
 ## Editing an imported OBJ pattern
 
 The 240 × 360 mm pocket has two editable openings. After reopening the

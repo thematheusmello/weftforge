@@ -48,7 +48,8 @@
         "spec/features/UI-001-projected-garment-faces.md",
         "parity/reports/WF-20261120-NATIVE-PROJECTED-GARMENT-FACES-001.json",
         "spec/features/FIT-001-group-arrangement.md",
-        "parity/reports/WF-20261120-NATIVE-GROUP-ARRANGEMENT-001.json"
+        "parity/reports/WF-20261120-NATIVE-GROUP-ARRANGEMENT-001.json",
+        "parity/reports/WF-20261122-HARBOR-STUDIO-WORKFLOW-001.json"
       ],
       "scenarios": [
         {
@@ -171,6 +172,15 @@
           },
           "initial_conditions": "Open the two-piece Harbor project at revision 24 with its front already rotated 0.8037662785 radians about World X. Use Front view and 10 mm snap.",
           "expected_outcomes": "Both members translate by [0.2, 0.1, 0] m and rotate about the same fixed world pivot. Undo and Redo restore the complete adjacent documents. Reopening retains both placements and starts with an empty selection."
+        },
+        {
+          "id": "UI-HARBOR-STUDIO-001",
+          "path": "parity/scenarios/UI-HARBOR-STUDIO-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-harbor-workflow-20261118/arranged-and-sewn.weftforge": "3c1c65061d1dab686d5d7c9dd54062c54006a2a779b2c38bc4793d6a25cc16ec"
+          },
+          "initial_conditions": "Empty native project at launch, 400 N/m warp Harbor construction and two 14-point panels. Use the studio at 1000 \u00d7 650 and 1640 \u00d7 1000 logical points.",
+          "expected_outcomes": "Match the original geometry and eight seam records, retain the 680 mm front edit after reopen, edit again and measure the fitted exports against the established strain, seam and contact limits."
         }
       ],
       "comparison_criteria": {
@@ -4012,6 +4022,48 @@
             "parity/reports/artifacts/native-group-arrangement-20261120/undo.weftforge": "4f68e2f60456e3f0c80a833746175a2ee8c01129518f190c55d82d8da8e91c2e"
           },
           "path": "parity/reports/WF-20261120-NATIVE-GROUP-ARRANGEMENT-001.json"
+        },
+        {
+          "id": "WF-20261122-HARBOR-STUDIO-WORKFLOW-001",
+          "commit": "4b15c2ec2531b74c63894b4c2efde05ec913de21",
+          "timestamp": "2026-11-22T21:59:08.944518Z",
+          "platform": "Apple Silicon macOS, native Metal studio and independent OBJ geometry measurement",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor 670.weftforge": "5336fce20c26adab96a38c2dc67ed57c36c741f0e5c88257ec9cc4e524aa620a",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor 680.weftforge": "d77977b982290b3b01056d19e5664a1aa8111b40f4f556c2f99f70e9f6a86b87",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor authored.weftforge": "3c1c65061d1dab686d5d7c9dd54062c54006a2a779b2c38bc4793d6a25cc16ec",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor fitted.obj": "64f3ede47792228f7b13a04ad19e911b4811ed804496d0e00e25196cd70277e9",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor reopened fitted.obj": "eed85b8d3de93b4730e08dd2013f401afb084c5f674b646e0b80ad9a41a475a8",
+            "parity/reports/artifacts/native-harbor-studio-20261122/check_journey.py": "ee6b23f00c5c6ff5fb87e14bde9f79d018465019c1cdff4850d3687772509df5",
+            "parity/reports/artifacts/native-harbor-studio-20261122/cleanup.json": "265f6331836c6241a1e7c9636101c9e3dcfc11777523ce91c68fe677d25c3fc0",
+            "parity/reports/artifacts/native-harbor-studio-20261122/drafting.png": "0495b66e3bf414e6f2c92553af77cb7757f8143e5ec62d9a5dd5eca5fce9562e",
+            "parity/reports/artifacts/native-harbor-studio-20261122/empty-default.png": "cf6338f5842b24d92fdaec68ca68f11a90c5dfadf65216a157d4de661870992c",
+            "parity/reports/artifacts/native-harbor-studio-20261122/empty-minimum-retina.png": "aa857a3b7deb953e0b18310acfff2c8581a5fd3bea69c1286801a2040033f9bb",
+            "parity/reports/artifacts/native-harbor-studio-20261122/empty-minimum.png": "a438906e1541fbc99f48597b973ba51710013b64475bde8fb83bc370f6a297eb",
+            "parity/reports/artifacts/native-harbor-studio-20261122/fitted-default.png": "769697155f9e4d1a3577d5d9b90ef49f2473ccea00c1b6048bac3314dbcc74b0",
+            "parity/reports/artifacts/native-harbor-studio-20261122/fitted-minimum.png": "c5f9735ed682cd10a373228a52a9b467a3271d8a48ac88a57b51712a0960e604",
+            "parity/reports/artifacts/native-harbor-studio-20261122/keyboard-focus.png": "c6dcc0ebc0547a3d32ec60236b6eb37fc03fc8da94baada963451270d0b1ee18",
+            "parity/reports/artifacts/native-harbor-studio-20261122/measurements.json": "37d2e255ec778a0afd1d67a8d2bafa06018364d155e17daa5ac6b824a896b074",
+            "parity/reports/artifacts/native-harbor-studio-20261122/original-trajectory.json": "f4857cd1dfeb452d1bd3d37a933b7a5ec598cd6efb593a42c242a3cbbd73620d",
+            "parity/reports/artifacts/native-harbor-studio-20261122/protocol.txt": "01ebded81faf3131c774885a144bae7efa492d25cc2f26fec13ac61b57edb4d7",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-default.png": "9aed4b7baf01077a0d27397ce14daef61475e152f5af5406d05d29115d99443b",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-fit.png": "994f7b408242648578934917baf648f934c7d18be04c226f4cdd8c2dc9308b2d",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-minimum.png": "a136d9c0547deedd7e6bf8e8a04bca0929db0d29178c8581a7a71d706d11c442",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-trajectory.json": "fc6c4ede061a8dd839bc669c64efd5d769eeb22a794aa11579bb4e1ce925cdc1",
+            "parity/reports/artifacts/native-harbor-studio-20261122/run.json": "e116dd101de65fafc69fd33a8a803b6a1a4af32128fbc1a0346cd4b879d510f5",
+            "parity/reports/artifacts/native-harbor-studio-20261122/sewing-direction.png": "f7e761ac35c34973d91788be2aecf135fe13741822d62162802732f5189755f1",
+            "parity/reports/artifacts/native-harbor-studio-20261122/sewing-refusal.png": "884d8c5b2143034e3794b43336cd27319a0eb71b5cac0ee64336b1e7c55bec61",
+            "parity/reports/artifacts/native-harbor-studio-20261122/trajectory-protocol.json": "8fcd56bace73c6b63751950276c43531600e697b9cb7ef4be99fb61587ad89ac",
+            "parity/reports/artifacts/native-harbor-studio-20261122/trajectory-run.json": "a171dfdb2a0d6cb28ba17da6fcad153e528dc424f7516a8237405cef56d5f4f6",
+            "parity/reports/artifacts/native-harbor-studio-20261122/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/native-harbor-workflow-20261118/arranged-and-sewn.weftforge": "3c1c65061d1dab686d5d7c9dd54062c54006a2a779b2c38bc4793d6a25cc16ec",
+            "parity/scenarios/UI-HARBOR-STUDIO-001.json": "cdab91526cc618bba8f94816dd86413fe0d1951c40631cfadebcf4918867aa49",
+            "scripts/check_drape.py": "789752b2503a14a8637c833ff6867e9a659dbf7313fd01f41b92b1626d4cb7d6",
+            "parity/reports/artifacts/native-harbor-studio-20261122/modelio-original.json": "2c6b2163d01c69563916cb0cace5907fdd9d9c3d55f24e91f1d868935b5d64e3",
+            "parity/reports/artifacts/native-harbor-studio-20261122/modelio-reopened.json": "1f393c175656afc700163eb1079b35e9539fa0468cae8b6606a934f7f882d56c",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_modelio.swift": "a4a121a0e89ac62ed7f16b39059cf8225a5507f52f4eb9c40de23c0a133beff0"
+          },
+          "path": "parity/reports/WF-20261122-HARBOR-STUDIO-WORKFLOW-001.json"
         }
       ],
       "known_gaps": [
@@ -27873,7 +27925,8 @@
         "parity/reports/WF-20261114-ORDERED-SEWING-001.json",
         "parity/reports/WF-20261116-CUT-AND-SEW-001.json",
         "spec/features/SEW-001-cut-and-sew.md",
-        "parity/reports/artifacts/cut-and-sew-20261116/PUBLICATION-CURRENT.json"
+        "parity/reports/artifacts/cut-and-sew-20261116/PUBLICATION-CURRENT.json",
+        "parity/reports/WF-20261122-HARBOR-STUDIO-WORKFLOW-001.json"
       ],
       "scenarios": [
         {
@@ -27958,6 +28011,15 @@
           "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
           "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
           "path": "parity/scenarios/UI-HARBOR-001.json"
+        },
+        {
+          "id": "UI-HARBOR-STUDIO-001",
+          "path": "parity/scenarios/UI-HARBOR-STUDIO-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-harbor-workflow-20261118/arranged-and-sewn.weftforge": "3c1c65061d1dab686d5d7c9dd54062c54006a2a779b2c38bc4793d6a25cc16ec"
+          },
+          "initial_conditions": "Empty native project at launch, 400 N/m warp Harbor construction and two 14-point panels. Use the studio at 1000 \u00d7 650 and 1640 \u00d7 1000 logical points.",
+          "expected_outcomes": "Match the original geometry and eight seam records, retain the 680 mm front edit after reopen, edit again and measure the fitted exports against the established strain, seam and contact limits."
         }
       ],
       "comparison_criteria": {
@@ -30471,6 +30533,48 @@
             "parity/reports/artifacts/native-harbor-workflow-20261118/undo.weftforge": "972be11ddb06d5beb3abb0b401fe0be15b398d202d3ecf57f81c3104540f049e"
           },
           "path": "parity/reports/WF-20261118-HARBOR-NATIVE-AUTHORING-REOPEN-001.json"
+        },
+        {
+          "id": "WF-20261122-HARBOR-STUDIO-WORKFLOW-001",
+          "commit": "4b15c2ec2531b74c63894b4c2efde05ec913de21",
+          "timestamp": "2026-11-22T21:59:08.944518Z",
+          "platform": "Apple Silicon macOS, native Metal studio and independent OBJ geometry measurement",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor 670.weftforge": "5336fce20c26adab96a38c2dc67ed57c36c741f0e5c88257ec9cc4e524aa620a",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor 680.weftforge": "d77977b982290b3b01056d19e5664a1aa8111b40f4f556c2f99f70e9f6a86b87",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor authored.weftforge": "3c1c65061d1dab686d5d7c9dd54062c54006a2a779b2c38bc4793d6a25cc16ec",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor fitted.obj": "64f3ede47792228f7b13a04ad19e911b4811ed804496d0e00e25196cd70277e9",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor reopened fitted.obj": "eed85b8d3de93b4730e08dd2013f401afb084c5f674b646e0b80ad9a41a475a8",
+            "parity/reports/artifacts/native-harbor-studio-20261122/check_journey.py": "ee6b23f00c5c6ff5fb87e14bde9f79d018465019c1cdff4850d3687772509df5",
+            "parity/reports/artifacts/native-harbor-studio-20261122/cleanup.json": "265f6331836c6241a1e7c9636101c9e3dcfc11777523ce91c68fe677d25c3fc0",
+            "parity/reports/artifacts/native-harbor-studio-20261122/drafting.png": "0495b66e3bf414e6f2c92553af77cb7757f8143e5ec62d9a5dd5eca5fce9562e",
+            "parity/reports/artifacts/native-harbor-studio-20261122/empty-default.png": "cf6338f5842b24d92fdaec68ca68f11a90c5dfadf65216a157d4de661870992c",
+            "parity/reports/artifacts/native-harbor-studio-20261122/empty-minimum-retina.png": "aa857a3b7deb953e0b18310acfff2c8581a5fd3bea69c1286801a2040033f9bb",
+            "parity/reports/artifacts/native-harbor-studio-20261122/empty-minimum.png": "a438906e1541fbc99f48597b973ba51710013b64475bde8fb83bc370f6a297eb",
+            "parity/reports/artifacts/native-harbor-studio-20261122/fitted-default.png": "769697155f9e4d1a3577d5d9b90ef49f2473ccea00c1b6048bac3314dbcc74b0",
+            "parity/reports/artifacts/native-harbor-studio-20261122/fitted-minimum.png": "c5f9735ed682cd10a373228a52a9b467a3271d8a48ac88a57b51712a0960e604",
+            "parity/reports/artifacts/native-harbor-studio-20261122/keyboard-focus.png": "c6dcc0ebc0547a3d32ec60236b6eb37fc03fc8da94baada963451270d0b1ee18",
+            "parity/reports/artifacts/native-harbor-studio-20261122/measurements.json": "37d2e255ec778a0afd1d67a8d2bafa06018364d155e17daa5ac6b824a896b074",
+            "parity/reports/artifacts/native-harbor-studio-20261122/original-trajectory.json": "f4857cd1dfeb452d1bd3d37a933b7a5ec598cd6efb593a42c242a3cbbd73620d",
+            "parity/reports/artifacts/native-harbor-studio-20261122/protocol.txt": "01ebded81faf3131c774885a144bae7efa492d25cc2f26fec13ac61b57edb4d7",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-default.png": "9aed4b7baf01077a0d27397ce14daef61475e152f5af5406d05d29115d99443b",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-fit.png": "994f7b408242648578934917baf648f934c7d18be04c226f4cdd8c2dc9308b2d",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-minimum.png": "a136d9c0547deedd7e6bf8e8a04bca0929db0d29178c8581a7a71d706d11c442",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-trajectory.json": "fc6c4ede061a8dd839bc669c64efd5d769eeb22a794aa11579bb4e1ce925cdc1",
+            "parity/reports/artifacts/native-harbor-studio-20261122/run.json": "e116dd101de65fafc69fd33a8a803b6a1a4af32128fbc1a0346cd4b879d510f5",
+            "parity/reports/artifacts/native-harbor-studio-20261122/sewing-direction.png": "f7e761ac35c34973d91788be2aecf135fe13741822d62162802732f5189755f1",
+            "parity/reports/artifacts/native-harbor-studio-20261122/sewing-refusal.png": "884d8c5b2143034e3794b43336cd27319a0eb71b5cac0ee64336b1e7c55bec61",
+            "parity/reports/artifacts/native-harbor-studio-20261122/trajectory-protocol.json": "8fcd56bace73c6b63751950276c43531600e697b9cb7ef4be99fb61587ad89ac",
+            "parity/reports/artifacts/native-harbor-studio-20261122/trajectory-run.json": "a171dfdb2a0d6cb28ba17da6fcad153e528dc424f7516a8237405cef56d5f4f6",
+            "parity/reports/artifacts/native-harbor-studio-20261122/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/native-harbor-workflow-20261118/arranged-and-sewn.weftforge": "3c1c65061d1dab686d5d7c9dd54062c54006a2a779b2c38bc4793d6a25cc16ec",
+            "parity/scenarios/UI-HARBOR-STUDIO-001.json": "cdab91526cc618bba8f94816dd86413fe0d1951c40631cfadebcf4918867aa49",
+            "scripts/check_drape.py": "789752b2503a14a8637c833ff6867e9a659dbf7313fd01f41b92b1626d4cb7d6",
+            "parity/reports/artifacts/native-harbor-studio-20261122/modelio-original.json": "2c6b2163d01c69563916cb0cace5907fdd9d9c3d55f24e91f1d868935b5d64e3",
+            "parity/reports/artifacts/native-harbor-studio-20261122/modelio-reopened.json": "1f393c175656afc700163eb1079b35e9539fa0468cae8b6606a934f7f882d56c",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_modelio.swift": "a4a121a0e89ac62ed7f16b39059cf8225a5507f52f4eb9c40de23c0a133beff0"
+          },
+          "path": "parity/reports/WF-20261122-HARBOR-STUDIO-WORKFLOW-001.json"
         }
       ],
       "known_gaps": [
@@ -35373,7 +35477,8 @@
         "spec/features/FIT-003-global-strain-map.md",
         "parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json",
         "parity/reports/WF-20261122-HARBOR-SHOULDER-001.json",
-        "parity/reports/WF-20261122-HARBOR-SHOULDER-BALANCE-001.json"
+        "parity/reports/WF-20261122-HARBOR-SHOULDER-BALANCE-001.json",
+        "parity/reports/WF-20261122-HARBOR-STUDIO-FIT-001.json"
       ],
       "scenarios": [
         {
@@ -35460,6 +35565,15 @@
           },
           "initial_conditions": "Open the supplied revision-24 two-fabric Harbor. It has two patterns, eight seams and 654 rest vertices. Use Front view and the native 60-step Assemble and 120-step Drape actions.",
           "expected_outcomes": "The display uses per-face principal stretch of the accepted geometry, respects isolated faces and updates the 3D range. Pattern colors and the saved project are identical across the display changes. Opening the saved document restores its rest mesh."
+        },
+        {
+          "id": "UI-HARBOR-STUDIO-001",
+          "path": "parity/scenarios/UI-HARBOR-STUDIO-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-harbor-workflow-20261118/arranged-and-sewn.weftforge": "3c1c65061d1dab686d5d7c9dd54062c54006a2a779b2c38bc4793d6a25cc16ec"
+          },
+          "initial_conditions": "Empty native project at launch, 400 N/m warp Harbor construction and two 14-point panels. Use the studio at 1000 \u00d7 650 and 1640 \u00d7 1000 logical points.",
+          "expected_outcomes": "Match the original geometry and eight seam records, retain the 680 mm front edit after reopen, edit again and measure the fitted exports against the established strain, seam and contact limits."
         }
       ],
       "comparison_criteria": {
@@ -36163,6 +36277,48 @@
             "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/Harbor.weftforge": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef",
             "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
           }
+        },
+        {
+          "id": "WF-20261122-HARBOR-STUDIO-FIT-001",
+          "commit": "4b15c2ec2531b74c63894b4c2efde05ec913de21",
+          "timestamp": "2026-11-22T21:59:08.944518Z",
+          "platform": "Apple Silicon macOS, native Metal studio and independent OBJ geometry measurement",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor 670.weftforge": "5336fce20c26adab96a38c2dc67ed57c36c741f0e5c88257ec9cc4e524aa620a",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor 680.weftforge": "d77977b982290b3b01056d19e5664a1aa8111b40f4f556c2f99f70e9f6a86b87",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor authored.weftforge": "3c1c65061d1dab686d5d7c9dd54062c54006a2a779b2c38bc4793d6a25cc16ec",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor fitted.obj": "64f3ede47792228f7b13a04ad19e911b4811ed804496d0e00e25196cd70277e9",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor reopened fitted.obj": "eed85b8d3de93b4730e08dd2013f401afb084c5f674b646e0b80ad9a41a475a8",
+            "parity/reports/artifacts/native-harbor-studio-20261122/check_journey.py": "ee6b23f00c5c6ff5fb87e14bde9f79d018465019c1cdff4850d3687772509df5",
+            "parity/reports/artifacts/native-harbor-studio-20261122/cleanup.json": "265f6331836c6241a1e7c9636101c9e3dcfc11777523ce91c68fe677d25c3fc0",
+            "parity/reports/artifacts/native-harbor-studio-20261122/drafting.png": "0495b66e3bf414e6f2c92553af77cb7757f8143e5ec62d9a5dd5eca5fce9562e",
+            "parity/reports/artifacts/native-harbor-studio-20261122/empty-default.png": "cf6338f5842b24d92fdaec68ca68f11a90c5dfadf65216a157d4de661870992c",
+            "parity/reports/artifacts/native-harbor-studio-20261122/empty-minimum-retina.png": "aa857a3b7deb953e0b18310acfff2c8581a5fd3bea69c1286801a2040033f9bb",
+            "parity/reports/artifacts/native-harbor-studio-20261122/empty-minimum.png": "a438906e1541fbc99f48597b973ba51710013b64475bde8fb83bc370f6a297eb",
+            "parity/reports/artifacts/native-harbor-studio-20261122/fitted-default.png": "769697155f9e4d1a3577d5d9b90ef49f2473ccea00c1b6048bac3314dbcc74b0",
+            "parity/reports/artifacts/native-harbor-studio-20261122/fitted-minimum.png": "c5f9735ed682cd10a373228a52a9b467a3271d8a48ac88a57b51712a0960e604",
+            "parity/reports/artifacts/native-harbor-studio-20261122/keyboard-focus.png": "c6dcc0ebc0547a3d32ec60236b6eb37fc03fc8da94baada963451270d0b1ee18",
+            "parity/reports/artifacts/native-harbor-studio-20261122/measurements.json": "37d2e255ec778a0afd1d67a8d2bafa06018364d155e17daa5ac6b824a896b074",
+            "parity/reports/artifacts/native-harbor-studio-20261122/original-trajectory.json": "f4857cd1dfeb452d1bd3d37a933b7a5ec598cd6efb593a42c242a3cbbd73620d",
+            "parity/reports/artifacts/native-harbor-studio-20261122/protocol.txt": "01ebded81faf3131c774885a144bae7efa492d25cc2f26fec13ac61b57edb4d7",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-default.png": "9aed4b7baf01077a0d27397ce14daef61475e152f5af5406d05d29115d99443b",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-fit.png": "994f7b408242648578934917baf648f934c7d18be04c226f4cdd8c2dc9308b2d",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-minimum.png": "a136d9c0547deedd7e6bf8e8a04bca0929db0d29178c8581a7a71d706d11c442",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-trajectory.json": "fc6c4ede061a8dd839bc669c64efd5d769eeb22a794aa11579bb4e1ce925cdc1",
+            "parity/reports/artifacts/native-harbor-studio-20261122/run.json": "e116dd101de65fafc69fd33a8a803b6a1a4af32128fbc1a0346cd4b879d510f5",
+            "parity/reports/artifacts/native-harbor-studio-20261122/sewing-direction.png": "f7e761ac35c34973d91788be2aecf135fe13741822d62162802732f5189755f1",
+            "parity/reports/artifacts/native-harbor-studio-20261122/sewing-refusal.png": "884d8c5b2143034e3794b43336cd27319a0eb71b5cac0ee64336b1e7c55bec61",
+            "parity/reports/artifacts/native-harbor-studio-20261122/trajectory-protocol.json": "8fcd56bace73c6b63751950276c43531600e697b9cb7ef4be99fb61587ad89ac",
+            "parity/reports/artifacts/native-harbor-studio-20261122/trajectory-run.json": "a171dfdb2a0d6cb28ba17da6fcad153e528dc424f7516a8237405cef56d5f4f6",
+            "parity/reports/artifacts/native-harbor-studio-20261122/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/native-harbor-workflow-20261118/arranged-and-sewn.weftforge": "3c1c65061d1dab686d5d7c9dd54062c54006a2a779b2c38bc4793d6a25cc16ec",
+            "parity/scenarios/UI-HARBOR-STUDIO-001.json": "cdab91526cc618bba8f94816dd86413fe0d1951c40631cfadebcf4918867aa49",
+            "scripts/check_drape.py": "789752b2503a14a8637c833ff6867e9a659dbf7313fd01f41b92b1626d4cb7d6",
+            "parity/reports/artifacts/native-harbor-studio-20261122/modelio-original.json": "2c6b2163d01c69563916cb0cace5907fdd9d9c3d55f24e91f1d868935b5d64e3",
+            "parity/reports/artifacts/native-harbor-studio-20261122/modelio-reopened.json": "1f393c175656afc700163eb1079b35e9539fa0468cae8b6606a934f7f882d56c",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_modelio.swift": "a4a121a0e89ac62ed7f16b39059cf8225a5507f52f4eb9c40de23c0a133beff0"
+          },
+          "path": "parity/reports/WF-20261122-HARBOR-STUDIO-FIT-001.json"
         }
       ],
       "known_gaps": [
@@ -48864,7 +49020,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/MAT-002-fabric-finish.md": "3c3955ddb8c1d83e7825cc951debc0e163a5755efbdc128950a1f447f8d81ae2"
       }
@@ -49312,7 +49468,8 @@
         "parity/reports/artifacts/rectangle-gesture-20261116/SELECTED-PUBLIC-MANIFEST-001.json",
         "parity/reports/WF-20261117-NATIVE-NOTCH-N006-001.json",
         "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-001.json",
-        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json"
+        "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json",
+        "parity/reports/WF-20261122-HARBOR-STUDIO-WORKFLOW-001.json"
       ],
       "scenarios": [
         {
@@ -49417,6 +49574,15 @@
           },
           "initial_conditions": "Open a disposable copy of the revision 3 Juniper and Basin project in the packaged Debian ARM64 studio under X11 with the GTK desktop portal.",
           "expected_outcomes": "Save As creates a distinct editable file with the original bytes. The fitted and two-metre native JPEGs preserve the specified physical scale and artwork, including after dismissing a chooser. Both match fresh packaged CLI and MCP exports."
+        },
+        {
+          "id": "UI-HARBOR-STUDIO-001",
+          "path": "parity/scenarios/UI-HARBOR-STUDIO-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-harbor-workflow-20261118/arranged-and-sewn.weftforge": "3c1c65061d1dab686d5d7c9dd54062c54006a2a779b2c38bc4793d6a25cc16ec"
+          },
+          "initial_conditions": "Empty native project at launch, 400 N/m warp Harbor construction and two 14-point panels. Use the studio at 1000 \u00d7 650 and 1640 \u00d7 1000 logical points.",
+          "expected_outcomes": "Match the original geometry and eight seam records, retain the 680 mm front edit after reopen, edit again and measure the fitted exports against the established strain, seam and contact limits."
         }
       ],
       "comparison_criteria": {
@@ -51565,6 +51731,48 @@
             "parity/reports/artifacts/pattern-jpeg-20261119/two-metre.jpeg": "4712135988b8dabf942c4212ce34c3b68217ef921f75b76848cf3cec4df816bb"
           },
           "path": "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json"
+        },
+        {
+          "id": "WF-20261122-HARBOR-STUDIO-WORKFLOW-001",
+          "commit": "4b15c2ec2531b74c63894b4c2efde05ec913de21",
+          "timestamp": "2026-11-22T21:59:08.944518Z",
+          "platform": "Apple Silicon macOS, native Metal studio and independent OBJ geometry measurement",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor 670.weftforge": "5336fce20c26adab96a38c2dc67ed57c36c741f0e5c88257ec9cc4e524aa620a",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor 680.weftforge": "d77977b982290b3b01056d19e5664a1aa8111b40f4f556c2f99f70e9f6a86b87",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor authored.weftforge": "3c1c65061d1dab686d5d7c9dd54062c54006a2a779b2c38bc4793d6a25cc16ec",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor fitted.obj": "64f3ede47792228f7b13a04ad19e911b4811ed804496d0e00e25196cd70277e9",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor reopened fitted.obj": "eed85b8d3de93b4730e08dd2013f401afb084c5f674b646e0b80ad9a41a475a8",
+            "parity/reports/artifacts/native-harbor-studio-20261122/check_journey.py": "ee6b23f00c5c6ff5fb87e14bde9f79d018465019c1cdff4850d3687772509df5",
+            "parity/reports/artifacts/native-harbor-studio-20261122/cleanup.json": "265f6331836c6241a1e7c9636101c9e3dcfc11777523ce91c68fe677d25c3fc0",
+            "parity/reports/artifacts/native-harbor-studio-20261122/drafting.png": "0495b66e3bf414e6f2c92553af77cb7757f8143e5ec62d9a5dd5eca5fce9562e",
+            "parity/reports/artifacts/native-harbor-studio-20261122/empty-default.png": "cf6338f5842b24d92fdaec68ca68f11a90c5dfadf65216a157d4de661870992c",
+            "parity/reports/artifacts/native-harbor-studio-20261122/empty-minimum-retina.png": "aa857a3b7deb953e0b18310acfff2c8581a5fd3bea69c1286801a2040033f9bb",
+            "parity/reports/artifacts/native-harbor-studio-20261122/empty-minimum.png": "a438906e1541fbc99f48597b973ba51710013b64475bde8fb83bc370f6a297eb",
+            "parity/reports/artifacts/native-harbor-studio-20261122/fitted-default.png": "769697155f9e4d1a3577d5d9b90ef49f2473ccea00c1b6048bac3314dbcc74b0",
+            "parity/reports/artifacts/native-harbor-studio-20261122/fitted-minimum.png": "c5f9735ed682cd10a373228a52a9b467a3271d8a48ac88a57b51712a0960e604",
+            "parity/reports/artifacts/native-harbor-studio-20261122/keyboard-focus.png": "c6dcc0ebc0547a3d32ec60236b6eb37fc03fc8da94baada963451270d0b1ee18",
+            "parity/reports/artifacts/native-harbor-studio-20261122/measurements.json": "37d2e255ec778a0afd1d67a8d2bafa06018364d155e17daa5ac6b824a896b074",
+            "parity/reports/artifacts/native-harbor-studio-20261122/original-trajectory.json": "f4857cd1dfeb452d1bd3d37a933b7a5ec598cd6efb593a42c242a3cbbd73620d",
+            "parity/reports/artifacts/native-harbor-studio-20261122/protocol.txt": "01ebded81faf3131c774885a144bae7efa492d25cc2f26fec13ac61b57edb4d7",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-default.png": "9aed4b7baf01077a0d27397ce14daef61475e152f5af5406d05d29115d99443b",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-fit.png": "994f7b408242648578934917baf648f934c7d18be04c226f4cdd8c2dc9308b2d",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-minimum.png": "a136d9c0547deedd7e6bf8e8a04bca0929db0d29178c8581a7a71d706d11c442",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-trajectory.json": "fc6c4ede061a8dd839bc669c64efd5d769eeb22a794aa11579bb4e1ce925cdc1",
+            "parity/reports/artifacts/native-harbor-studio-20261122/run.json": "e116dd101de65fafc69fd33a8a803b6a1a4af32128fbc1a0346cd4b879d510f5",
+            "parity/reports/artifacts/native-harbor-studio-20261122/sewing-direction.png": "f7e761ac35c34973d91788be2aecf135fe13741822d62162802732f5189755f1",
+            "parity/reports/artifacts/native-harbor-studio-20261122/sewing-refusal.png": "884d8c5b2143034e3794b43336cd27319a0eb71b5cac0ee64336b1e7c55bec61",
+            "parity/reports/artifacts/native-harbor-studio-20261122/trajectory-protocol.json": "8fcd56bace73c6b63751950276c43531600e697b9cb7ef4be99fb61587ad89ac",
+            "parity/reports/artifacts/native-harbor-studio-20261122/trajectory-run.json": "a171dfdb2a0d6cb28ba17da6fcad153e528dc424f7516a8237405cef56d5f4f6",
+            "parity/reports/artifacts/native-harbor-studio-20261122/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/native-harbor-workflow-20261118/arranged-and-sewn.weftforge": "3c1c65061d1dab686d5d7c9dd54062c54006a2a779b2c38bc4793d6a25cc16ec",
+            "parity/scenarios/UI-HARBOR-STUDIO-001.json": "cdab91526cc618bba8f94816dd86413fe0d1951c40631cfadebcf4918867aa49",
+            "scripts/check_drape.py": "789752b2503a14a8637c833ff6867e9a659dbf7313fd01f41b92b1626d4cb7d6",
+            "parity/reports/artifacts/native-harbor-studio-20261122/modelio-original.json": "2c6b2163d01c69563916cb0cace5907fdd9d9c3d55f24e91f1d868935b5d64e3",
+            "parity/reports/artifacts/native-harbor-studio-20261122/modelio-reopened.json": "1f393c175656afc700163eb1079b35e9539fa0468cae8b6606a934f7f882d56c",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/check_modelio.swift": "a4a121a0e89ac62ed7f16b39059cf8225a5507f52f4eb9c40de23c0a133beff0"
+          },
+          "path": "parity/reports/WF-20261122-HARBOR-STUDIO-WORKFLOW-001.json"
         }
       ],
       "known_gaps": [
@@ -53103,7 +53311,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/FILE-004-glb-static-export.md": "a30bb3e5576861f221737734fb0bd2f1806153d3aa52497f93061ea12bb0b8df",
         "spec/features/MAT-002-fabric-finish.md": "3c3955ddb8c1d83e7825cc951debc0e163a5755efbdc128950a1f447f8d81ae2"

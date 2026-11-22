@@ -1,3 +1,51 @@
+# A Harbor shirt from an empty studio — 22 November 2026
+
+On native Apple Silicon build `4b15c2ec`, the two 14-point patterns, eight
+seams, placements and grain directions matched the original editable Harbor
+project field for field. The operator assembled and draped the shirt, exported
+its surface, changed the front height from 640 to 680 mm, saved and quit.
+A new process reopened the 680 mm front. A second edit to 670 mm survived
+another save, assembly, drape and OBJ export. Both windows closed.
+[Editable construction, screenshots and replay](parity/reports/WF-20261122-HARBOR-STUDIO-WORKFLOW-001.json).
+
+| 400 N/m warp Harbor | Peak axis strain in fitted OBJ | Largest sampled seam gap | First failed state among 181 |
+| --- | ---: | ---: | ---: |
+| Original 640 mm front | 15.65% | 0.575 mm | 28 |
+| Reopened front edited to 670 mm | 14.59% | 0.379 mm | 28 |
+
+The original export contains 654 vertices and 1,172 triangles. The 670 mm
+front regenerated the garment at 620 vertices and 1,104 triangles. Apple
+Model I/O resolved both cotton submeshes in each export and reproduced their
+triangle counts. Independent
+readback measured zero avatar/ground thickness error at the sampled vertices.
+At frame 28, warp extension reached 16.93% on the original and 78.74% on
+the resized shirt. Gate 1 remains open.
+The separate 520 N/m warp experiment lowers the hem by 50 mm and has its own
+inputs and results. [Fit report](parity/reports/WF-20261122-HARBOR-STUDIO-FIT-001.json).
+
+The workspace captures cover the 1640 × 1000 default and 1000 × 650 minimum.
+At the minimum, the Retina display produced 2000 × 1300 content pixels.
+Tab reached Polygon in the left tool rail and Return activated it. The later
+numeric-focus fix has its own pointer regression. Repeat the garment workflow
+after a shoulder correction meets the physical limits on both registered inputs.
+[Workspace gallery](docs/studio-preview.md).
+
+# Segment sewing in the pattern canvas — 22 November 2026
+
+**Sew edges** marks the first and second intervals A and B as the pointer
+moves over the pattern. The arrow follows the interval shown by the Sewing
+inspector, including a reversed B. Clicking the first boundary again identifies
+the invalid second edge and keeps A available for a retry. A successful pair
+and pending inspector edits share one Undo entry. Keyboard focus on a tool
+has a white outline and the active tool retains its blue fill.
+
+The native pointer regression picks the same curve twice, checks the original
+project and Undo history, then pairs two partial edges with B reversed and
+undoes the seam. The next garment check is the empty-document Harbor
+workflow through both fit phases, editable reopen and independently measured
+export. The existing frame-28 strain failures remain open.
+[Garment workflow](parity/scenarios/UI-HARBOR-001.json).
+
 # Harbor shoulder closure — 22 November 2026
 
 On `0a4bc886` both 520 N/m Harbor constructions first exceeded 15% warp
