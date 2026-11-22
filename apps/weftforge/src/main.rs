@@ -19,6 +19,7 @@ use weftforge_core::{
 use weftforge_sim::{Cloth, MaterialAxis, SimulationError, StepSettings};
 
 mod capture;
+mod fabric_surface;
 mod garment_obj;
 use garment_obj::{GarmentObjReview, IMPORT_OBJ};
 mod pattern_fill;
@@ -1057,9 +1058,22 @@ impl InspectorDraft {
                 != original_piece.and_then(|piece| project.material(piece.material))
                 && let Some(material) = &self.material
             {
-                commands.push(Command::UpdateMaterial {
-                    material: material.clone(),
-                });
+                let old = project.material(material.id).expect("selected fabric");
+                let mut comparable = material.clone();
+                comparable.surface = old.surface;
+                if comparable == *old
+                    && let Some(surface) = material.surface
+                {
+                    commands.push(Command::SetFabricSurface {
+                        material: material.id,
+                        metallic: surface.metallic,
+                        roughness: surface.roughness,
+                    });
+                } else {
+                    commands.push(Command::UpdateMaterial {
+                        material: material.clone(),
+                    });
+                }
             }
         }
         if self.resolution != project.resolution {
@@ -1179,6 +1193,8 @@ struct Studio {
     pattern_fill: Option<PatternFill>,
     cloth: Option<Arc<Cloth>>,
     job: Option<Job>,
+    // An active mesh/simulation job can span a contiguous series of appearance-only edits.
+    appearance_job: Option<(u64, u64)>,
     last_job: Option<FinishedJob>,
     needs_mesh: bool,
     pending_batch: Option<SimulationBatch>,
@@ -1289,6 +1305,7 @@ impl Studio {
             pattern_fill: None,
             cloth: None,
             job: None,
+            appearance_job: None,
             last_job: None,
             needs_mesh: false,
             pending_batch: None,
@@ -1387,7 +1404,7 @@ impl Studio {
                         old_groups - self.editor.project.sewing_groups.len()
                     );
                 }
-                self.rebuild();
+                self.refresh_after_edit();
                 true
             }
             Err(error) => {
@@ -2015,7 +2032,36 @@ impl Studio {
         self.last_stage = "Rest arrangement";
         self.cloth = None;
     }
+    fn refresh_after_edit(&mut self) {
+        if !self.editor.last_change_appearance_only() {
+            self.rebuild();
+            return;
+        }
+        let revision = self.editor.project.revision;
+        let previous = revision - 1;
+        // Only the immediately preceding, mechanically identical state is reusable.
+        if let Some(mesh) = self.mesh.as_mut().filter(|m| m.doc_revision == previous) {
+            Arc::make_mut(mesh).doc_revision = revision;
+        }
+        self.appearance_job = self
+            .job
+            .as_ref()
+            .filter(|job| {
+                matches!(job.kind, JobKind::Mesh | JobKind::Simulation)
+                    && (job.revision == previous || self.appearance_job == Some((job.id, previous)))
+            })
+            .map(|job| (job.id, revision));
+        if self.legacy_lengths.revision == previous {
+            self.legacy_lengths.revision = revision;
+        }
+        self.draft = None;
+        self.pattern_fill = None;
+        self.pattern_snapshot = None;
+        self.workspace_capture.cancel();
+        self.message = "Fabric appearance updated.".into();
+    }
     fn rebuild(&mut self) {
+        self.appearance_job = None;
         self.placement_drag = None;
         self.pattern_snapshot = None;
         // Also invalidate buffers when a replacement document reuses the same revision and IDs.
@@ -2183,8 +2229,11 @@ impl Studio {
                         Ok(_) => false,
                         Err(_) => true,
                     });
-            let obsolete = job.revision != self.editor.project.revision || !current_offset;
-            let can_accept = job.accepts(self.editor.project.revision) && current_offset;
+            let revision = self.editor.project.revision;
+            let compatible = self.appearance_job.take() == Some((job.id, revision));
+            let obsolete = (job.revision != revision && !compatible) || !current_offset;
+            let can_accept =
+                current_offset && (job.accepts(revision) || (compatible && !cancel_requested));
             let status = match &result {
                 Err(JobError::Failed(_)) => JobStatus::Failed,
                 Err(JobError::Cancelled) => JobStatus::Cancelled,
@@ -2208,7 +2257,11 @@ impl Studio {
                 obsolete,
             });
             match result {
-                Ok(JobOutput::Mesh(mesh)) if can_accept => {
+                Ok(JobOutput::Mesh(mut mesh)) if can_accept => {
+                    if compatible {
+                        // The job retains its actual input revision in the history.
+                        Arc::make_mut(&mut mesh).doc_revision = revision;
+                    }
                     self.mesh = Some(mesh);
                     self.cloth = None;
                     self.last_stage = "Rest arrangement";
@@ -2496,7 +2549,7 @@ impl Studio {
                 ExportFormat::Dxf => project.export_dxf(path),
                 ExportFormat::Pdf(paper) => project.export_pattern_pdf(path, paper),
                 ExportFormat::Obj | ExportFormat::SelectedObj | ExportFormat::Glb | ExportFormat::Gltf => {
-                    if candidate.is_some() {
+                    if candidate.as_ref().is_some_and(|edit| !edit.last_change_appearance_only()) {
                         let name = match format {
                             ExportFormat::Obj | ExportFormat::SelectedObj => "OBJ",
                             ExportFormat::Glb => "GLB",
@@ -2506,10 +2559,11 @@ impl Studio {
                         return Err(format!("Finish pending edits with Tab, wait for the rest mesh, then retry {name} export. Pending edits were retained."));
                     }
                     let mesh = self.mesh.as_ref().ok_or("Create a pattern first.")?;
-                    if mesh.doc_revision != project.revision {
+                    if mesh.doc_revision != self.editor.project.revision {
                         return Err("The rest mesh is rebuilding; export when it is ready.".into());
                     }
                     let mut output = (**mesh).clone();
+                    output.doc_revision = project.revision;
                     if let Some(state) = &self.cloth {
                         output.positions = state.positions().to_vec();
                     }
@@ -2526,7 +2580,7 @@ impl Studio {
             if let Some(editor) = candidate {
                 self.editor = editor;
                 self.dirty = true;
-                self.rebuild();
+                self.refresh_after_edit();
             } else {
                 self.draft = None;
             }
@@ -2574,7 +2628,7 @@ impl Studio {
             self.editor.undo()
         } {
             self.dirty = true;
-            self.rebuild();
+            self.refresh_after_edit();
         }
     }
     fn refresh_recovery(&mut self) {
@@ -3835,6 +3889,13 @@ impl Studio {
                     let label=ui.label("Warp stiffness N/m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.warp_stiffness).speed(10.0).range(0.0..=1.0e8).clamp_existing_to_range(false)).labelled_by(label.id));
                     let label=ui.label("Weft stiffness N/m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.weft_stiffness).speed(10.0).range(0.0..=1.0e8).clamp_existing_to_range(false)).labelled_by(label.id));
                     let label=ui.label("Bend N·m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.bending_stiffness).speed(0.00001).range(0.0..=1.0e8).clamp_existing_to_range(false)).labelled_by(label.id));
+                    let mut surface=material.surface.unwrap_or_default();
+                    for (label,value) in [("Metallic",&mut surface.metallic),("Roughness",&mut surface.roughness)] {
+                        let label=ui.label(label);
+                        let response=ui.add(numeric_value(ui,value).speed(0.01)).labelled_by(label.id).on_hover_text("Fabric surface factor from 0 to 1");
+                        commit|=numeric_commit(&response);
+                    }
+                    if surface!=material.surface.unwrap_or_default() { material.surface=Some(surface); }
                     // RGB conversion can round unchanged values while drawing the widget.
                     let mut color=material.color;
                     if ui.color_edit_button_rgb(&mut color).changed() { material.color=color; draft.color_pending=true; }
@@ -7821,6 +7882,7 @@ impl Studio {
         self.strain_map.panel(ui, r, &self.hidden_pieces);
         let mut picked = None;
         if let Some((mesh, positions)) = self.garment_surface() {
+            let view = self.view_to_world([0., 0., 1.]).map(f64::from);
             let mut triangles: Vec<_> = mesh
                 .triangles
                 .iter()
@@ -7838,15 +7900,12 @@ impl Studio {
                     };
                     let points = vertices.map(|point| self.project3(point, r));
                     let color = self.strain_map.face_color(face).unwrap_or_else(|| {
-                        let rgb = self
+                        let fabric = self
                             .editor
                             .project
                             .piece(id)
-                            .and_then(|p| self.editor.project.material(p.material))
-                            .map_or([0.3, 0.7, 0.65], |m| m.color);
-                        let light = triangle_light(vertices);
-                        let [r, g, b] = rgb.map(|v| (v * light * 255.) as u8);
-                        Color32::from_rgb(r, g, b)
+                            .and_then(|p| self.editor.project.material(p.material));
+                        fabric_surface::shade(vertices, view, fabric)
                     });
                     (
                         id,
@@ -9628,17 +9687,6 @@ fn point_in_triangle(p: Pos2, t: [Pos2; 3]) -> bool {
     let a = cross(t[1] - p, t[2] - p) / area;
     let b = cross(t[2] - p, t[0] - p) / area;
     a >= 0. && b >= 0. && a + b <= 1.
-}
-fn triangle_light(t: [[f64; 3]; 3]) -> f32 {
-    let a: [f64; 3] = std::array::from_fn(|i| t[1][i] - t[0][i]);
-    let b: [f64; 3] = std::array::from_fn(|i| t[2][i] - t[0][i]);
-    let n = [
-        a[1] * b[2] - a[2] * b[1],
-        a[2] * b[0] - a[0] * b[2],
-        a[0] * b[1] - a[1] * b[0],
-    ];
-    let len = n.iter().map(|v| v * v).sum::<f64>().sqrt().max(1e-12);
-    (0.45 + 0.55 * ((n[0] * 0.3 + n[1] * 0.5 + n[2] * 0.8) / len).abs().min(1.)) as f32
 }
 fn studio_style(ctx: &egui::Context) {
     let mut fonts = egui::FontDefinitions::default();
@@ -29050,6 +29098,167 @@ mod fabric_picker_tests {
         app.additional_pieces.insert(front);
         app.properties_tab = PropertiesTab::Fabric;
         (ctx, app, front, back, id)
+    }
+
+    #[test]
+    fn fabric_surface_inspector_and_history_keep_the_accepted_cloth_pose_and_mesh() {
+        let (ctx, mut app, _, back, _) = fixture();
+        let material = app.editor.project.piece(back).unwrap().material;
+        let mesh = app.editor.project.mesh().unwrap();
+        let mut cloth =
+            weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap();
+        cloth.step(StepSettings::default(), || false).unwrap();
+        let cloth = Arc::new(cloth);
+        app.cloth = Some(cloth.clone());
+        app.mesh = Some(Arc::new(mesh.clone()));
+        app.last_stage = "Drape";
+        // Compare the actual export buffer before and after committing a pending finish.
+        let export_path = std::env::temp_dir().join(format!(
+            "weftforge-finished-drape-{}.gltf",
+            std::process::id()
+        ));
+        let read_scene = || -> serde_json::Value {
+            serde_json::from_slice(&std::fs::read(&export_path).unwrap()).unwrap()
+        };
+        assert_ne!(cloth.positions(), mesh.positions);
+        assert!(app.export_to_path(&ctx, ExportFormat::Gltf, Some(&export_path), None));
+        let matte = read_scene();
+        let before = app.editor.project.revision;
+        super::pattern_transform_tests::set_field(&ctx, &mut app, "Roughness", 1.25);
+        assert!(app.message.contains("Fabric metallic and roughness"));
+        assert_eq!(app.editor.project.revision, before);
+        assert!(
+            app.editor
+                .project
+                .material(material)
+                .unwrap()
+                .surface
+                .is_none()
+        );
+        assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+        super::pattern_transform_tests::set_field(&ctx, &mut app, "Metallic", 0.625);
+        assert!(app.commit_draft());
+        let mut draft = InspectorDraft::new(&app.editor.project, app.selected, None);
+        draft
+            .material
+            .as_mut()
+            .unwrap()
+            .surface
+            .as_mut()
+            .unwrap()
+            .roughness = 0.25;
+        app.draft = Some(draft);
+        assert_eq!(app.editor.project.revision, before + 1);
+        assert!(app.export_to_path(&ctx, ExportFormat::Gltf, Some(&export_path), None));
+        let finished = read_scene();
+        std::fs::remove_file(export_path).unwrap();
+        assert_eq!(finished["buffers"], matte["buffers"]);
+        assert_eq!(finished["meshes"], matte["meshes"]);
+        let edited_material_id = material.to_string();
+        let materials = finished["materials"].as_array().unwrap();
+        assert_eq!(materials.len(), 2);
+        for fabric in materials {
+            let expected = if fabric["extras"]["weftforgeMaterialId"] == edited_material_id {
+                (0.625, 0.25)
+            } else {
+                (0., 1.)
+            };
+            let pbr = &fabric["pbrMetallicRoughness"];
+            assert_eq!(pbr["metallicFactor"], expected.0);
+            assert_eq!(pbr["roughnessFactor"], expected.1);
+        }
+        let reopened = Project::from_json(&app.editor.project.to_json().unwrap()).unwrap();
+        assert_eq!(reopened, app.editor.project);
+        assert!(
+            reopened
+                .materials
+                .iter()
+                .any(|fabric| fabric.surface.is_none())
+        );
+        let finish = app
+            .editor
+            .project
+            .material(material)
+            .unwrap()
+            .surface
+            .unwrap();
+        assert_eq!((finish.metallic, finish.roughness), (0.625, 0.25));
+        assert_eq!(app.editor.project.revision, before + 2);
+        for redo in [false, false, true, true] {
+            let revision = app.editor.project.revision;
+            app.history(&ctx, redo);
+            assert_eq!(app.editor.project.revision, revision + 1);
+            let mut expected = mesh.clone();
+            expected.doc_revision = revision + 1;
+            assert_eq!(app.mesh.as_deref(), Some(&expected));
+            assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+            assert!(app.garment_surface().is_some());
+            assert!(!app.needs_mesh);
+            assert_eq!(app.last_stage, "Drape");
+        }
+        assert_eq!(
+            app.editor.project.material(material).unwrap().surface,
+            Some(finish)
+        );
+        let mut physical = app.editor.project.material(material).unwrap().clone();
+        physical.friction += 0.01;
+        assert!(app.apply_command(Command::UpdateMaterial { material: physical }));
+        assert!(app.needs_mesh && app.garment_surface().is_none());
+    }
+
+    #[test]
+    fn fabric_surface_during_mesh_and_simulation_accepts_only_compatible_jobs_and_keeps_input_revision()
+     {
+        let (ctx, mut app, _, _, _) = fixture();
+        app.needs_mesh = true;
+        app.start_mesh(&ctx);
+        let edit = Command::SetFabricSurface {
+            material: 1,
+            metallic: 0.5,
+            roughness: 0.25,
+        };
+        for kind in [JobKind::Mesh, JobKind::Simulation] {
+            if kind == JobKind::Simulation {
+                app.start_batch(
+                    &ctx,
+                    SimulationBatch {
+                        steps: 1,
+                        settings: StepSettings::default(),
+                        stage: "test",
+                    },
+                );
+            }
+            let input = app.job.as_ref().unwrap().revision;
+            assert!(app.apply_command(edit.clone()) && app.apply_command(edit.clone()));
+            let until = Instant::now() + Duration::from_secs(10);
+            while app.job.is_some() {
+                app.poll();
+                assert!(Instant::now() < until);
+                std::thread::yield_now();
+            }
+            let done = app.last_job.as_ref().unwrap();
+            assert_eq!(
+                (done.kind, done.status, done.revision),
+                (kind, JobStatus::Accepted, input)
+            );
+            assert!(!done.obsolete);
+            assert_eq!(app.mesh.as_ref().unwrap().doc_revision, input + 2);
+        }
+        assert!(app.cloth.as_ref().unwrap().simulation_time() > 0.);
+        app.start_batch(
+            &ctx,
+            SimulationBatch {
+                steps: 1,
+                settings: StepSettings::default(),
+                stage: "test",
+            },
+        );
+        assert!(app.apply_command(edit.clone()));
+        assert!(app.apply_command(Command::SetResolution { metres: 0.09 }));
+        assert!(app.apply_command(edit));
+        assert!(app.appearance_job.is_none());
+        assert!(app.job.as_ref().unwrap().cancel.load(Ordering::Relaxed));
+        assert!(app.garment_surface().is_none());
     }
 
     #[test]

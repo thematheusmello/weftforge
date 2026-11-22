@@ -129,11 +129,11 @@ are rejected. The tool names and arguments are:
 Results include a text block containing the same JSON for older clients.
 Inspection returns authoritative authored state without building a mesh.
 Its `project` uses the native writer's JSON number representation, including f32
-display colors and f64 authored values. For v6 files written by this version,
+display colors and f64 authored values. For v6 and v7 files written by this version,
 parsed inspection and saved-project values agree exactly without changing stored
 numeric precision. Legacy-file inspection returns the migrated current model.
 The GLB and JSON glTF tools export the same static rest surface with named
-pieces, assigned fabric tints, normals and physical-scale UVs. The JSON file
+pieces, fabric base colors, metallic and roughness factors, normals and physical-scale UVs. The JSON file
 contains its mesh buffer in a data URL. [Format details](file-formats.md#export-semantics).
 DXF exports authored exterior curves from projects without holes or notches, independently of mesh resolution
 or 3D placement. Its [R2000 profile](../spec/features/FILE-005-dxf-pattern-export.md)
@@ -169,9 +169,20 @@ The example's newly created default project assigns its first piece ID 2;
 existing projects may assign different IDs. Current-profile calls use the same
 arguments and additionally include the per-request `_meta` shown above.
 
+Set the finish of a shared fabric with the CLI or the same command in an MCP
+`project_execute` transaction. Both factors are unitless numbers in [0, 1].
+
+```sh
+weftforge-cli fabric-surface input.weftforge finished.weftforge 1 0.625 0.25
+```
+
+```json
+{"type":"set_fabric_surface","data":{"material":1,"metallic":0.625,"roughness":0.25}}
+```
+
 The supported shared commands are `import_obj_patterns`, `import_svg_patterns`, `import_dxf_patterns`, `add_polygon`, `add_rectangle`, `add_ellipse`, `add_hole`, `remove_hole`, `add_internal_segment`, `remove_internal_curve`, `add_notch`, `update_notch`, `remove_notch`, `move_point`,
 `set_curve_controls`, `split_curve`, `join_curve`, `cut_piece`, `cut_and_sew`, `offset_outline`, `resize_piece`, `transform_piece`, `set_placement`, `set_grain`,
-`set_material`, `add_material`, `update_material`, `add_seam`, `update_seam`,
+`set_material`, `add_material`, `update_material`, `set_fabric_surface`, `add_seam`, `update_seam`,
 `remove_seam`, `add_sewing_group`, `add_sewing_by_length`, `update_sewing_group`, `remove_sewing_group`,
 `remove_piece`, `set_resolution`, and `set_mannequin`.
 Their exact data fields and nested types are in `tools/list`; the shared core
@@ -465,7 +476,7 @@ with reference numerical/rounding/selection behavior still unobserved.
 lengths. Legacy seam maps retain their original normalized-t meaning. Different
 pieces/disconnected spans are supported; gaps never add sewing length. Group
 identity and map survive supported split/join/remesh operations. The native
-writer saves v6; strict v1/v2/v3/v4/v5 readers preserve legacy data and semantics.
+writer uses v7 when the project has an authored finish, and v6 otherwise. Strict v1/v2/v3/v4/v5 readers preserve legacy data and semantics.
 
 `add_sewing_by_length` creates one ordinary sewing group with one interval per
 side and the normalized physical arc-length map `[[0,0],[1,1]]`:
@@ -500,7 +511,7 @@ weftforge-cli inspect-sewing output.weftforge
 `commands.json` is a strict JSON array of 1–1024 shared commands, at most 1 MiB.
 Nested transactions and duplicate fields are rejected. CLI and MCP use the same
 transaction/save function; a failed command batch never partially replaces its
-output. Inspection reports the authoritative native-v6 source, group lengths,
+output. Inspection reports the authoritative native source, group lengths,
 source-owned proportional portions, rest vertices/UVs/triangles, boundary
 parameters and actual weighted stitches. It builds a rest mesh and performs no
 simulation. Its native source uses native scalar serialization, including f32

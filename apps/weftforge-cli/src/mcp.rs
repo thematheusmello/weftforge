@@ -652,10 +652,15 @@ fn command_schema() -> Value {
         json!({"translation":xyz,"rotation":xyz}),
         &["translation", "rotation"],
     );
+    let factor = json!({"type":"number","minimum":0,"maximum":1});
+    let surface = object(
+        json!({"metallic":factor,"roughness":factor}),
+        &["metallic", "roughness"],
+    );
     let material = object(
         json!({"id":id,"name":text,"areal_density":number,"warp_stiffness":number,
         "weft_stiffness":number,"shear_stiffness":number,"bending_stiffness":number,"damping":number,
-        "friction":number,"collision_thickness":number,"color":xyz}),
+        "friction":number,"collision_thickness":number,"color":xyz,"surface":surface}),
         &[
             "id",
             "name",
@@ -854,6 +859,13 @@ fn command_schema() -> Value {
         (
             "set_material",
             object(json!({"piece":id,"material":id}), &["piece", "material"]),
+        ),
+        (
+            "set_fabric_surface",
+            object(
+                json!({"material":id,"metallic":factor,"roughness":factor}),
+                &["material", "metallic", "roughness"],
+            ),
         ),
         (
             "add_material",
