@@ -113,13 +113,33 @@ def source_paths(report, current=False, commit=None):
     paths = subprocess.check_output(command + report['source_scope'], cwd=ROOT).decode().split('\0')
     return {path for path in paths if path and (not current or (ROOT / path).is_file())}
 
-def validate_sources(report):
+def validate_sources(report, blob_digests=None):
     commit = source_lookup_commit(report)
     subprocess.run(['git', 'cat-file', '-e', commit + '^{commit}'], cwd=ROOT,
                    check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    for path, digest in report['source_hashes'].items():
-        committed = subprocess.check_output(['git', 'show', commit + ':' + path], cwd=ROOT)
-        if hashlib.sha256(committed).hexdigest() != digest:
+    paths = report['source_hashes']
+    for path in paths:
+        public_path(path)
+    tree = subprocess.check_output(
+        ['git', '--literal-pathspecs', 'ls-tree', '-rz', commit, '--', *paths], cwd=ROOT)
+    blobs = {}
+    for entry in tree.split(b'\0'):
+        if entry:
+            metadata, path = entry.split(b'\t', 1)
+            _, kind, oid = metadata.split()
+            if kind == b'blob':
+                blobs[path.decode()] = oid
+    if blob_digests is None:
+        blob_digests = {}
+    for path, expected in paths.items():
+        oid = blobs.get(path)
+        if oid is None:
+            raise ValueError(f"{report['id']}: source missing from tested commit {path}")
+        # Identical Git objects across reports need only one SHA-256 read per validation.
+        if oid not in blob_digests:
+            content = subprocess.check_output(['git', 'cat-file', 'blob', oid], cwd=ROOT)
+            blob_digests[oid] = hashlib.sha256(content).hexdigest()
+        if blob_digests[oid] != expected:
             raise ValueError(f"{report['id']}: source does not match tested commit {path}")
     scoped = source_paths(report, commit=commit)
     if not scoped or not scoped <= report['source_hashes'].keys():
@@ -242,7 +262,18 @@ def qualification_matches_commit(report):
             and report['reference_qualification'] == reference_qualification(
                 report, committed_data, committed_reference, commit=report['commit']))
 
-def validate(data):
+def validate(data, *, require_tracked=False):
+    tracked = None
+    if require_tracked:
+        index = subprocess.check_output(['git', 'ls-files', '--cached', '-z'], cwd=ROOT)
+        tracked = set(index.decode().split('\0'))
+
+    def published(path):
+        resolved = local(path)
+        if tracked is not None and (path not in tracked or resolved.relative_to(ROOT).as_posix() not in tracked):
+            raise ValueError(f'untracked public evidence: {path}')
+        return resolved
+
     schema = read('parity/schema.json')
     jsonschema.Draft202012Validator(schema).validate(data)
     report_schema = jsonschema.Draft202012Validator(schema['$defs']['verification_report'])
@@ -255,21 +286,22 @@ def validate(data):
         for dep in f['dependencies']:
             if dep not in ids or dep == f['id']:
                 raise ValueError(f"{f['id']}: unknown or self dependency {dep}")
+    blob_digests = {}
     reports = {}
     report_paths = {run['path'] for f in data['features'] for run in f['verification_runs']}
     report_paths.update(path.relative_to(ROOT).as_posix() for path in (ROOT / 'parity/reports').glob('*.json'))
     report_ids = set()
     for path in sorted(report_paths):
-        report = json.loads(local(path).read_text())
+        report = json.loads(published(path).read_text())
         report_schema.validate(report)
         if not set(report['feature_ids']) <= by_id.keys():
             raise ValueError(f"{report['id']}: report covers an unknown feature")
         if report['id'] in report_ids:
             raise ValueError(f"duplicate run ID: {report['id']}")
         report_ids.add(report['id'])
-        scoped = validate_sources(report)
+        scoped = validate_sources(report, blob_digests)
         for artifact, digest in report['artifact_hashes'].items():
-            if hashlib.sha256(local(artifact).read_bytes()).hexdigest() != digest:
+            if hashlib.sha256(published(artifact).read_bytes()).hexdigest() != digest:
                 raise ValueError(f"{report['id']}: stale artifact {artifact}")
         if report['kind'] == 'reference_comparison' and 'reference_qualification' in report:
             if not qualification_matches_commit(report):
@@ -294,14 +326,14 @@ def validate(data):
         if f['reference_baseline'] != reference['baseline_id']:
             raise ValueError(f"{f['id']}: baseline mismatch")
         for path in f['implementation_locations'] + f['evidence_ids']:
-            local(path)
+            published(path)
         for path, digest in f.get('contract_documents', {}).items():
-            if hashlib.sha256(local(path).read_bytes()).hexdigest() != digest:
+            if hashlib.sha256(published(path).read_bytes()).hexdigest() != digest:
                 raise ValueError(f"{f['id']}: reviewed contract document hash differs {path}")
         for scenario in f['scenarios']:
-            local(scenario['path'])
+            published(scenario['path'])
             for fixture, digest in scenario['fixture_hashes'].items():
-                if hashlib.sha256(local(fixture).read_bytes()).hexdigest() != digest:
+                if hashlib.sha256(published(fixture).read_bytes()).hexdigest() != digest:
                     raise ValueError(f"{f['id']}: stale fixture {fixture}")
         current_reports = []
         for run in f['verification_runs']:
@@ -432,7 +464,7 @@ def generate(data, reference):
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--check',action='store_true');args=parser.parse_args()
-    data=read('parity/features.yaml');reference=validate(data)
+    data=read('parity/features.yaml');reference=validate(data, require_tracked=args.check)
     for path,content in generate(data,reference).items():
         if args.check:
             if not (ROOT/path).exists() or (ROOT/path).read_text()!=content:raise ValueError(f'{path} is stale; run cargo xtask progress')

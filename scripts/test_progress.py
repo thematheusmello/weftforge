@@ -121,6 +121,15 @@ class EvidenceHistoryTests(unittest.TestCase):
                                             | {'path': path})
         return report
 
+    def test_publication_requires_tracked_evidence_even_when_ignored_file_exists(self):
+        self.report('UNPUBLISHED')
+        self.write('.gitignore', 'artifacts/*.txt\n')
+        self.git('add', 'parity/reports')
+        with self.assertRaisesRegex(ValueError, 'untracked public evidence: artifacts/UNPUBLISHED.txt'):
+            progress.validate(self.data, require_tracked=True)
+        self.git('add', '-f', 'artifacts/UNPUBLISHED.txt')
+        progress.validate(self.data, require_tracked=True)
+
     def parity(self, feature=None):
         return progress.parity_verified(feature or self.feature,
                                         {f['id']: f for f in self.data['features']},
