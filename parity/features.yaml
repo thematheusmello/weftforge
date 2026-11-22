@@ -52085,7 +52085,9 @@
         "spec/observations/REF-FILE-003-OBJ-SELECTED-001.json",
         "parity/reports/WF-20261120-NATIVE-EDITABLE-OBJ-001.json",
         "parity/reports/WF-20261120-EDITABLE-OBJ-REFERENCE-RETURN-001.json",
-        "parity/reports/WF-20261120-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json"
+        "parity/reports/WF-20261120-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json",
+        "spec/observations/REF-FILE-003-OBJ-POSED-001.json",
+        "spec/features/FILE-003-posed-obj-import.md"
       ],
       "scenarios": [
         {
@@ -53040,7 +53042,8 @@
         "One reviewed two-fabric reference return preserved RGB and per-fabric area within 4.92 \u00d7 10\u207b\u2078 m\u00b2. It remeshed the surface and emitted no group records. Draped interoperability, editable construction and broader reference parity remain open.",
         "The two-fabric draped OBJ replays global strain from saved positions, rest UVs, groups and diffuse library. The previous rest interchange report retains its original source scope.",
         "The selected-panel case covers native rest and draped export and explicit rest selections in both adapters. One independently returned reference selection retained terracotta and its physical area. Textures, animation, welding options, bidirectional garment import and full numerical reference comparison remain open.",
-        "Editable flat garments import in the studio, CLI and MCP. A previously returned 5,304-triangle panel failed the rigid-chart check. Its maximum measured material-to-surface residual was 10.95 \u00b5m. Drape reconstruction, sewing and curve recovery, avatars and broader interoperability remain open."
+        "Editable flat garments import in the studio, CLI and MCP. A previously returned 5,304-triangle panel failed the rigid-chart check. Its maximum measured material-to-surface residual was 10.95 \u00b5m. Drape reconstruction, sewing and curve recovery, avatars and broader interoperability remain open.",
+        "Reference garment import produced flat charts and nonplanar surfaces on the bent, extended and Harbor fixtures. WeftForge posed import, scale recovery and a qualifying comparison remain open."
       ],
       "contradictions": [],
       "blockers": [
@@ -53049,7 +53052,8 @@
       "freshness": "stale",
       "contract_documents": {
         "spec/features/FILE-003-editable-obj-import.md": "ba401cc1ea1794f3c100e39bf8cbec8564a04e5b65d17e7eb1a30dcb52d54a5e",
-        "spec/features/FILE-003-obj-fabrics.md": "bb0aaba839269cf2599d8fece7cb9b8f6d68a809fe00d6b0bfdc0add10eea21f"
+        "spec/features/FILE-003-obj-fabrics.md": "bb0aaba839269cf2599d8fece7cb9b8f6d68a809fe00d6b0bfdc0add10eea21f",
+        "spec/features/FILE-003-posed-obj-import.md": "f03efa87f760e2fc947ea837096a436e742224bccac8986af60951abeed7788c"
       }
     },
     {
@@ -65422,7 +65426,8 @@
       ],
       "reference_observation_status": "unobserved",
       "evidence_ids": [
-        "parity/reference.json"
+        "parity/reference.json",
+        "spec/observations/REF-001-MACOS-LOCALE-001.json"
       ],
       "scenarios": [],
       "comparison_criteria": {
@@ -65446,7 +65451,8 @@
       "verification_status": "blocked",
       "verification_runs": [],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "English is checked and the macOS host uses en_US. The application displays decimal points. Decimal-comma and fractional-input interpretation remain unverified."
       ],
       "contradictions": [],
       "blockers": [

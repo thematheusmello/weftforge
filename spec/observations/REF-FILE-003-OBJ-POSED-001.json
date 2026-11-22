@@ -1,0 +1,294 @@
+{
+  "case_id": "REF-FILE-003-OBJ-POSED-001",
+  "schema_version": 1,
+  "baseline_id": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "baseline_revision": 1,
+  "baseline_status": "provisional_unfrozen",
+  "product_build": "2026.1.237 (r58920)",
+  "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "observed_date": "2026-11-20",
+  "reviewed_evidence_ids": [
+    "ev_291282fb65878c8059d0400f7dc597469a5c4e85c578dcec5dbe7df9f672b45e",
+    "ev_3e0ac195e3453137dae17d38fc649c6e3265d5d9ff9ae7d10c4808e4c25736ba",
+    "ev_6263380aa57e7e4039297f1b5bbaa5502db78dbf2f379ff7ecb7c111f103a8b7",
+    "ev_6a6d61a4b68c022af661106f57d70d14d0a5703a878fe69b86b5a22c7bbbab0f",
+    "ev_8b207fad6576218efd70617370a8d2ff2a2951a6e6437f01f83578b546a99fae",
+    "ev_904b888a1068b8da5352c8a72b4204d32827d000782483b188a6cd3e0740ec5d"
+  ],
+  "import_settings": {
+    "object_type": "Garment",
+    "trace_2d_patterns_from_uv_map": true,
+    "units": "m",
+    "scale_percent": 100,
+    "up_axis": "Y"
+  },
+  "fixture_inputs": [
+    {
+      "path": "parity/reports/artifacts/native-selected-obj-20261120/Harbor draped.obj",
+      "sha256": "71a0fc0411020a79a8924cc31318a8fe129eaf17ec1b8ffdee8cacbd55aba124"
+    },
+    {
+      "path": "fixtures/posed-obj/Bent swatch.obj",
+      "sha256": "383e6890b3b37e2219786abe15feb7c5713dd62ae2fd22280baea82b918d777f"
+    },
+    {
+      "path": "fixtures/posed-obj/Extended bent swatch.obj",
+      "sha256": "1b2878c31e235fddc9abe0f745199e688f80539d9d4128c8e2bea31bbd4222e3"
+    }
+  ],
+  "surface_distance_method": "Per material, tested all unique positions and all triangle centroids against every triangle on the opposite surface in the same world coordinate frame; no registration. Distances describe these finite samples.",
+  "panels": [
+    {
+      "rgb": [
+        0.22,
+        0.55,
+        0.76
+      ],
+      "source": {
+        "groups": [
+          "piece_2"
+        ],
+        "triangles": 586,
+        "diffuse_rgb": [
+          0.22,
+          0.55,
+          0.76
+        ],
+        "area_m2": 0.5974329004680801,
+        "boundary_m": 4.138796969362678
+      },
+      "returned": {
+        "groups": [],
+        "triangles": 5408,
+        "diffuse_rgb": [
+          0.22,
+          0.55,
+          0.76
+        ],
+        "area_m2": 0.5951810296133442,
+        "boundary_m": 4.133383372904826
+      },
+      "source_shape": {
+        "point_bounds_m": [
+          [
+            -0.5955072856968052,
+            0.961904595371527,
+            -0.00013282688711488
+          ],
+          [
+            0.5957340364524604,
+            1.554313872271241,
+            0.22536199890593633
+          ]
+        ],
+        "rms_distance_to_own_best_fit_plane_m": 0.06598803625903224,
+        "max_distance_to_own_best_fit_plane_m": 0.12455519724203137
+      },
+      "returned_shape": {
+        "point_bounds_m": [
+          [
+            -0.595507,
+            0.961905,
+            -0.000309
+          ],
+          [
+            0.595734,
+            1.554314,
+            0.225359
+          ]
+        ],
+        "rms_distance_to_own_best_fit_plane_m": 0.059744078839296784,
+        "max_distance_to_own_best_fit_plane_m": 0.1162650556356405
+      },
+      "sampled_source_to_returned": {
+        "samples": 913,
+        "mean_m": 0.00024264232737919228,
+        "p95_m": 0.0013768062308850495,
+        "max_m": 0.004422765199786729
+      },
+      "sampled_returned_to_source": {
+        "samples": 8221,
+        "mean_m": 0.00012483833191180227,
+        "p95_m": 0.0006543990647656506,
+        "max_m": 0.005198880765255456
+      }
+    },
+    {
+      "rgb": [
+        0.78,
+        0.25,
+        0.12
+      ],
+      "source": {
+        "groups": [
+          "piece_31"
+        ],
+        "triangles": 586,
+        "diffuse_rgb": [
+          0.78,
+          0.25,
+          0.12
+        ],
+        "area_m2": 0.5974306876520666,
+        "boundary_m": 4.1389217298570635
+      },
+      "returned": {
+        "groups": [],
+        "triangles": 5428,
+        "diffuse_rgb": [
+          0.78,
+          0.25,
+          0.12
+        ],
+        "area_m2": 0.5952163236226207,
+        "boundary_m": 4.131858714310162
+      },
+      "source_shape": {
+        "point_bounds_m": [
+          [
+            -0.5955782168051756,
+            0.9619045953730266,
+            -0.22528504695004076
+          ],
+          [
+            0.5957250281099521,
+            1.5543138722711078,
+            0.00014658452105186
+          ]
+        ],
+        "rms_distance_to_own_best_fit_plane_m": 0.0659802156651734,
+        "max_distance_to_own_best_fit_plane_m": 0.12452966407167802
+      },
+      "returned_shape": {
+        "point_bounds_m": [
+          [
+            -0.595578,
+            0.961905,
+            -0.225273
+          ],
+          [
+            0.595725,
+            1.554314,
+            0.000414
+          ]
+        ],
+        "rms_distance_to_own_best_fit_plane_m": 0.05956453335743402,
+        "max_distance_to_own_best_fit_plane_m": 0.11620227914482907
+      },
+      "sampled_source_to_returned": {
+        "samples": 913,
+        "mean_m": 0.00023780893321664697,
+        "p95_m": 0.001373056162769041,
+        "max_m": 0.004422610830468109
+      },
+      "sampled_returned_to_source": {
+        "samples": 8251,
+        "mean_m": 0.00012097248734320634,
+        "p95_m": 0.0006238605167395925,
+        "max_m": 0.003436913869388036
+      }
+    }
+  ],
+  "flat_snapshot": {
+    "sha256": "9e8a0f5ede3a2329c23b3d04170378c1fd6b8bfc04e1a2cc9dcf415caba16fb0",
+    "dpi": 127,
+    "pixel_pitch_m": 0.0002,
+    "extent_uncertainty_m": 0.0006,
+    "image_px": [
+      14700,
+      4455
+    ],
+    "outline_bounding_boxes": [
+      {
+        "bounds_px": [
+          0,
+          1209,
+          6692,
+          4454
+        ],
+        "width_m": 1.3384,
+        "height_m": 0.649
+      },
+      {
+        "bounds_px": [
+          7298,
+          1209,
+          13992,
+          4454
+        ],
+        "width_m": 1.3388,
+        "height_m": 0.649
+      }
+    ]
+  },
+  "analytical_swatches": [
+    {
+      "source_name": "Bent swatch.obj",
+      "source_sha256": "383e6890b3b37e2219786abe15feb7c5713dd62ae2fd22280baea82b918d777f",
+      "ui_lengths_m": {
+        "2D": 1.2,
+        "3D": 1.1975
+      },
+      "snapshot": {
+        "sha256": "4790543861aaf32ce51d41b0ce1ee980e8083a1ef4b4ece40e5fa65d4e7a049d",
+        "dpi": 127,
+        "pixel_pitch_m": 0.0002,
+        "extent_uncertainty_m": 0.0006,
+        "image_px": [
+          1500,
+          2100
+        ],
+        "outline_bounding_boxes": [
+          {
+            "bounds_px": [
+              0,
+              298,
+              1201,
+              2099
+            ],
+            "width_m": 0.2402,
+            "height_m": 0.3602
+          }
+        ]
+      }
+    },
+    {
+      "source_name": "Extended bent swatch.obj",
+      "source_sha256": "1b2878c31e235fddc9abe0f745199e688f80539d9d4128c8e2bea31bbd4222e3",
+      "ui_lengths_m": {
+        "2D": 1.2267,
+        "3D": 1.2188
+      },
+      "snapshot": {
+        "sha256": "e7065f0031d154ef8ecac87c1511315a88b9d690d4df33b5c40f557d9675e709",
+        "dpi": 127,
+        "pixel_pitch_m": 0.0002,
+        "extent_uncertainty_m": 0.0006,
+        "image_px": [
+          1500,
+          2100
+        ],
+        "outline_bounding_boxes": [
+          {
+            "bounds_px": [
+              0,
+              258,
+              1227,
+              2099
+            ],
+            "width_m": 0.2454,
+            "height_m": 0.3682
+          }
+        ]
+      }
+    }
+  ],
+  "returned_sha256": {
+    "returned_obj_sha256": "c79e368bd24d566e5c653672bcf64562bc79917f346d292786c07bd0d560a9ea",
+    "returned_mtl_sha256": "2138d642379aeddeebb3f65f653dfa16b287677026ded2d4755bdb137b7914f9"
+  },
+  "limits": [
+    "Finite-sample surface distances and the measured outline boxes characterize these runs. They do not establish a pointwise bound or a scale rule for other charts.",
+    "The reference resampled the garment and emitted no OBJ group records. Sewing, texture maps, simulation continuation and saved reference-native construction were not evaluated."
+  ]
+}

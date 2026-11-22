@@ -1,0 +1,40 @@
+{
+  "case_id": "REF-001-MACOS-LOCALE-001",
+  "product_build": "2026.1.237 (r58920)",
+  "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "baseline_revision": 1,
+  "baseline_status": "provisional_unfrozen",
+  "language_menu": {
+    "observed_date": "2026-11-20",
+    "control": "Settings > Language",
+    "item_count": 9,
+    "items_with_checkmark": [
+      "English"
+    ],
+    "selected_highlight": false,
+    "private_readback_sha256": "e173fc0a2f842f56767dbe04d835511c46a88ffceae53e6b1ffb25f0d1b3a77e"
+  },
+  "host_numeric_conventions": {
+    "observed_date": "2026-11-22",
+    "macos_global_AppleLocale": "en_US",
+    "Foundation_Locale_current_identifier": "en_US",
+    "Foundation_decimalSeparator": ".",
+    "Foundation_groupingSeparator": ","
+  },
+  "application_numeric_evidence": {
+    "configured_display_decimal_places": 1,
+    "observed_decimal_mark": ".",
+    "example": "The bent swatch selected outline displayed 1200.0 mm in 2D and 1197.5 mm in 3D.",
+    "evidence_id": "ev_3e0ac195e3453137dae17d38fc649c6e3265d5d9ff9ae7d10c4808e4c25736ba",
+    "fractional_input_probe": "blocked",
+    "limitation": "The translocated application exposed its menus and window tree. The native input provider returned noWindowsAvailable for the rectangle canvas press. No rectangle width field received the proposed decimal-point and decimal-comma entries."
+  },
+  "next_case": "Open Create Rectangle in an original scratch project. Enter 12.5 and 12,5 separately in Width, commit each with Tab, record the normalized value and measure the resulting width. Cancel or undo between trials.",
+  "fresh_import_scale_trial": {
+    "date": "2026-11-22",
+    "input": "fixtures/posed-obj/Bent swatch.obj",
+    "control": "Import OBJ > Scale (%)",
+    "initial_value": 100,
+    "result": "Fresh launch opened the import review. The exact process exposed the scale control with value 100 through accessibility. The selected-window driver refused the modal window and keyboard focus remained on the background workspace. Neither proposed fractional entry was submitted. The import was cancelled by closing the scratch process."
+  }
+}
