@@ -51777,7 +51777,8 @@
         "spec/observations/REF-FILE-003-OBJ-SELECTED-001.json",
         "parity/reports/WF-20261120-NATIVE-EDITABLE-OBJ-001.json",
         "parity/reports/WF-20261120-EDITABLE-OBJ-REFERENCE-RETURN-001.json",
-        "parity/reports/WF-20261120-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json"
+        "parity/reports/WF-20261120-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json",
+        "parity/reports/WF-20261122-DEBIAN-WAYLAND-POSED-OBJ-001.json"
       ],
       "scenarios": [
         {
@@ -51889,6 +51890,18 @@
           },
           "initial_conditions": "An empty unsigned studio on Debian ARM64 in a Sway Wayland session. The two-slot pocket is in millimetres and the two-fabric Harbor shirt is in metres.",
           "expected_outcomes": "Undo restores the empty document. Redo and reopen preserve editable construction. Pocket dimensions are 0.240 \u00d7 0.360 m, area is 0.0756 m\u00b2 and three boundary loops total 1.74 m. The two Harbor panels retain their source positions, colors and 0.5923 m\u00b2 each."
+        },
+        {
+          "id": "APP-DEBIAN-WAYLAND-POSED-OBJ-001",
+          "path": "parity/scenarios/APP-DEBIAN-WAYLAND-POSED-OBJ-001.json",
+          "fixture_hashes": {
+            "fixtures/posed-obj/Bent swatch.obj": "383e6890b3b37e2219786abe15feb7c5713dd62ae2fd22280baea82b918d777f",
+            "fixtures/posed-obj/Extended bent swatch.obj": "1b2878c31e235fddc9abe0f745199e688f80539d9d4128c8e2bea31bbd4222e3",
+            "parity/reports/artifacts/native-selected-obj-20261120/Harbor draped.obj": "71a0fc0411020a79a8924cc31318a8fe129eaf17ec1b8ffdee8cacbd55aba124",
+            "parity/reports/artifacts/native-selected-obj-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784"
+          },
+          "initial_conditions": "An empty unsigned Debian GNU/Linux 13 aarch64 studio for each of the two original folded swatches and the original two-fabric draped Harbor. Use metres, Y up, and Posed. The hosted Sway session has a 1640 \u00d7 1000 virtual output and CPU Vulkan rendering.",
+          "expected_outcomes": "After a fresh process opens the v8 project, expected maximum errors are 1 nm per exported XYZ component and per flat extent and perimeter, and 0.000001 per source diffuse color component. Oriented triangles must match up to cyclic rotation, including multiplicities. All six studio processes must exit cleanly."
         }
       ],
       "comparison_criteria": {
@@ -52722,6 +52735,44 @@
             "parity/scenarios/APP-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json": "d3e37429f26f4fa7aba580fa0a7c347e82cac58199a9a7c62e9ee41bbac15132"
           },
           "path": "parity/reports/WF-20261120-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json"
+        },
+        {
+          "id": "WF-20261122-DEBIAN-WAYLAND-POSED-OBJ-001",
+          "commit": "42094ed44a4cce49f62304dfdf997f153d57a23f",
+          "timestamp": "2026-11-22T22:31:16Z",
+          "platform": "Debian GNU/Linux 13.7 aarch64 unsigned offline package, Sway Wayland virtual output, GTK file chooser and Mesa lavapipe",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/BUILD-SOURCE-SHA256SUMS": "9f3079316a0cb49b58cc751b84d671c6d94e66f9cc9bbb604f8b0f38a54bf334",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/CLEANUP.json": "b69fa81322a1f23c763fb989d1bcac2e6d9decac57a0d540fcb71b5e71fc8143",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/GEOMETRY.json": "2f05eef5f759b7006e21946c87bb4462d08f9f700a0c7dfba3040053aa155fb2",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/NATIVE.json": "1508f1d5061b018a9c7603ee1e69de68e21eedf4cbbbe1ad34b5c6dfb8152011",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/PACKAGE-READBACK.json": "49db5b240183443e7fea027e61571e8816ebee3a60e3cdecd24ae9f330975c11",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/PACKAGE-SHA256SUMS": "1e3700d1789ba6eb531d36e47eae052973bc2117243c86cfda9a755a94f1283b",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/bent-metres.png": "b41efe99b3658a08d9ee017942d5b05fe77b48edbf9c805b0d44c70dffb20cee",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/bent-reopened.obj": "6ae5deec8f921d90c4dcfe890c521f1d144181ad3fdf42b0296600083ef5e0de",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/bent.weftforge": "22807afea6c52c20d416936b67f906256660a9eb33416b28af045f8ba1f41644",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/extended-reopened.obj": "48ce6d64f04acf17b38c9a0e1c2f5fad12268150febc28a6294efcbb4cb07e1e",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/extended-saved.png": "281bb8689db56754377c85901f4427387290bbfeb21286d14d80e3d4d34fd469",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/extended.weftforge": "2cd5c0125621242da1c71515bed4d423d0a21008a85a3227f1c3525940738836",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/fixtures/Bent swatch.obj": "383e6890b3b37e2219786abe15feb7c5713dd62ae2fd22280baea82b918d777f",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/fixtures/Extended bent swatch.obj": "1b2878c31e235fddc9abe0f745199e688f80539d9d4128c8e2bea31bbd4222e3",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/fixtures/Harbor draped.obj": "71a0fc0411020a79a8924cc31318a8fe129eaf17ec1b8ffdee8cacbd55aba124",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/fixtures/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/harbor-exported.png": "9652a46474019e747dc0352e8d2fa6fed6893031548e3eb71eef69a67f571066",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/harbor-reopened.obj": "d02a684bfdd2c7d5dccad84854c944cb2100d9f9d0b0e65cc82b289306b59c0f",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/harbor-reopened.png": "5f53aae736e91bacf5c7e8c753cae17f8b0de0ac39e83347d243b80a53ffb102",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/harbor.weftforge": "cc75b57129a8588ffb9a2edf9edbf58d0fee1212a3769524b9351aa459e42671",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/measure.py": "a2d91007ea30de1a9b1ec160772857b29142c22c8539f7c0c52f40fa5b392d8a",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/protocol.json": "99d60695d3840f148b4ecd2da4319b61915e3ea637fe35b9a5182c075d79bfd0",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/weftforge-fabrics-80c3709947a8404fb43d1e8084c55ef32af3c733a0d21b8afb971d9f7fc6ee95.mtl": "80c3709947a8404fb43d1e8084c55ef32af3c733a0d21b8afb971d9f7fc6ee95",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "fixtures/posed-obj/Bent swatch.obj": "383e6890b3b37e2219786abe15feb7c5713dd62ae2fd22280baea82b918d777f",
+            "fixtures/posed-obj/Extended bent swatch.obj": "1b2878c31e235fddc9abe0f745199e688f80539d9d4128c8e2bea31bbd4222e3",
+            "parity/reports/artifacts/native-selected-obj-20261120/Harbor draped.obj": "71a0fc0411020a79a8924cc31318a8fe129eaf17ec1b8ffdee8cacbd55aba124",
+            "parity/reports/artifacts/native-selected-obj-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/scenarios/APP-DEBIAN-WAYLAND-POSED-OBJ-001.json": "edb611102cff6347df3a270be553bb9e5c563bb6bd19f00ebc52ae80c82a68df"
+          },
+          "path": "parity/reports/WF-20261122-DEBIAN-WAYLAND-POSED-OBJ-001.json"
         }
       ],
       "known_gaps": [
@@ -64305,7 +64356,8 @@
         "parity/reports/WF-20261120-DEBIAN-ARM64-CARGO-NOTICES-001.json",
         "parity/reports/WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001.json",
         "parity/reports/WF-20261120-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json",
-        "parity/reports/WF-20261120-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json"
+        "parity/reports/WF-20261120-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json",
+        "parity/reports/WF-20261122-DEBIAN-WAYLAND-POSED-OBJ-001.json"
       ],
       "scenarios": [
         {
@@ -64377,6 +64429,18 @@
           },
           "initial_conditions": "An empty unsigned studio on Debian ARM64 in a Sway Wayland session. The two-slot pocket is in millimetres and the two-fabric Harbor shirt is in metres.",
           "expected_outcomes": "Undo restores the empty document. Redo and reopen preserve editable construction. Pocket dimensions are 0.240 \u00d7 0.360 m, area is 0.0756 m\u00b2 and three boundary loops total 1.74 m. The two Harbor panels retain their source positions, colors and 0.5923 m\u00b2 each."
+        },
+        {
+          "id": "APP-DEBIAN-WAYLAND-POSED-OBJ-001",
+          "path": "parity/scenarios/APP-DEBIAN-WAYLAND-POSED-OBJ-001.json",
+          "fixture_hashes": {
+            "fixtures/posed-obj/Bent swatch.obj": "383e6890b3b37e2219786abe15feb7c5713dd62ae2fd22280baea82b918d777f",
+            "fixtures/posed-obj/Extended bent swatch.obj": "1b2878c31e235fddc9abe0f745199e688f80539d9d4128c8e2bea31bbd4222e3",
+            "parity/reports/artifacts/native-selected-obj-20261120/Harbor draped.obj": "71a0fc0411020a79a8924cc31318a8fe129eaf17ec1b8ffdee8cacbd55aba124",
+            "parity/reports/artifacts/native-selected-obj-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784"
+          },
+          "initial_conditions": "An empty unsigned Debian GNU/Linux 13 aarch64 studio for each of the two original folded swatches and the original two-fabric draped Harbor. Use metres, Y up, and Posed. The hosted Sway session has a 1640 \u00d7 1000 virtual output and CPU Vulkan rendering.",
+          "expected_outcomes": "After a fresh process opens the v8 project, expected maximum errors are 1 nm per exported XYZ component and per flat extent and perimeter, and 0.000001 per source diffuse color component. Oriented triangles must match up to cyclic rotation, including multiplicities. All six studio processes must exit cleanly."
         }
       ],
       "comparison_criteria": {
@@ -64718,6 +64782,44 @@
             "parity/scenarios/APP-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json": "d3e37429f26f4fa7aba580fa0a7c347e82cac58199a9a7c62e9ee41bbac15132"
           },
           "path": "parity/reports/WF-20261120-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json"
+        },
+        {
+          "id": "WF-20261122-DEBIAN-WAYLAND-POSED-OBJ-001",
+          "commit": "42094ed44a4cce49f62304dfdf997f153d57a23f",
+          "timestamp": "2026-11-22T22:31:16Z",
+          "platform": "Debian GNU/Linux 13.7 aarch64 unsigned offline package, Sway Wayland virtual output, GTK file chooser and Mesa lavapipe",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/BUILD-SOURCE-SHA256SUMS": "9f3079316a0cb49b58cc751b84d671c6d94e66f9cc9bbb604f8b0f38a54bf334",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/CLEANUP.json": "b69fa81322a1f23c763fb989d1bcac2e6d9decac57a0d540fcb71b5e71fc8143",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/GEOMETRY.json": "2f05eef5f759b7006e21946c87bb4462d08f9f700a0c7dfba3040053aa155fb2",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/NATIVE.json": "1508f1d5061b018a9c7603ee1e69de68e21eedf4cbbbe1ad34b5c6dfb8152011",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/PACKAGE-READBACK.json": "49db5b240183443e7fea027e61571e8816ebee3a60e3cdecd24ae9f330975c11",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/PACKAGE-SHA256SUMS": "1e3700d1789ba6eb531d36e47eae052973bc2117243c86cfda9a755a94f1283b",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/bent-metres.png": "b41efe99b3658a08d9ee017942d5b05fe77b48edbf9c805b0d44c70dffb20cee",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/bent-reopened.obj": "6ae5deec8f921d90c4dcfe890c521f1d144181ad3fdf42b0296600083ef5e0de",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/bent.weftforge": "22807afea6c52c20d416936b67f906256660a9eb33416b28af045f8ba1f41644",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/extended-reopened.obj": "48ce6d64f04acf17b38c9a0e1c2f5fad12268150febc28a6294efcbb4cb07e1e",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/extended-saved.png": "281bb8689db56754377c85901f4427387290bbfeb21286d14d80e3d4d34fd469",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/extended.weftforge": "2cd5c0125621242da1c71515bed4d423d0a21008a85a3227f1c3525940738836",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/fixtures/Bent swatch.obj": "383e6890b3b37e2219786abe15feb7c5713dd62ae2fd22280baea82b918d777f",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/fixtures/Extended bent swatch.obj": "1b2878c31e235fddc9abe0f745199e688f80539d9d4128c8e2bea31bbd4222e3",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/fixtures/Harbor draped.obj": "71a0fc0411020a79a8924cc31318a8fe129eaf17ec1b8ffdee8cacbd55aba124",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/fixtures/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/harbor-exported.png": "9652a46474019e747dc0352e8d2fa6fed6893031548e3eb71eef69a67f571066",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/harbor-reopened.obj": "d02a684bfdd2c7d5dccad84854c944cb2100d9f9d0b0e65cc82b289306b59c0f",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/harbor-reopened.png": "5f53aae736e91bacf5c7e8c753cae17f8b0de0ac39e83347d243b80a53ffb102",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/harbor.weftforge": "cc75b57129a8588ffb9a2edf9edbf58d0fee1212a3769524b9351aa459e42671",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/measure.py": "a2d91007ea30de1a9b1ec160772857b29142c22c8539f7c0c52f40fa5b392d8a",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/protocol.json": "99d60695d3840f148b4ecd2da4319b61915e3ea637fe35b9a5182c075d79bfd0",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/weftforge-fabrics-80c3709947a8404fb43d1e8084c55ef32af3c733a0d21b8afb971d9f7fc6ee95.mtl": "80c3709947a8404fb43d1e8084c55ef32af3c733a0d21b8afb971d9f7fc6ee95",
+            "parity/reports/artifacts/debian-wayland-posed-obj-20261122/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "fixtures/posed-obj/Bent swatch.obj": "383e6890b3b37e2219786abe15feb7c5713dd62ae2fd22280baea82b918d777f",
+            "fixtures/posed-obj/Extended bent swatch.obj": "1b2878c31e235fddc9abe0f745199e688f80539d9d4128c8e2bea31bbd4222e3",
+            "parity/reports/artifacts/native-selected-obj-20261120/Harbor draped.obj": "71a0fc0411020a79a8924cc31318a8fe129eaf17ec1b8ffdee8cacbd55aba124",
+            "parity/reports/artifacts/native-selected-obj-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/scenarios/APP-DEBIAN-WAYLAND-POSED-OBJ-001.json": "edb611102cff6347df3a270be553bb9e5c563bb6bd19f00ebc52ae80c82a68df"
+          },
+          "path": "parity/reports/WF-20261122-DEBIAN-WAYLAND-POSED-OBJ-001.json"
         }
       ],
       "known_gaps": [

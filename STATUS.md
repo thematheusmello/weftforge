@@ -1,3 +1,17 @@
+# Debian posed garment import — 22 November 2026
+
+The unsigned Debian aarch64 package from `42094ed4` opened the original bent
+swatch, stretched swatch and two-panel Harbor through the native Wayland file
+dialogs. Each v8 save reopened in a fresh studio and exported the initial
+surface. The independent reader checks all four panels and compares source
+positions, oriented faces, flat extents, perimeter and the two Harbor colors.
+All six studio processes exited normally and the dedicated guest stopped.
+
+[Native runs, package identities and independent measurements](parity/reports/artifacts/debian-wayland-posed-obj-20261122/NATIVE.json) · [Reproducible geometry readback](parity/reports/artifacts/debian-wayland-posed-obj-20261122/GEOMETRY.json).
+The stretched swatch height and both Harbor outlines still exceed the reviewed
+reference extent budget. Physical GPU Linux, Windows x64 and the complete
+empty-project shirt qualification remain open.
+
 # Posed OBJ garment import — 22 November 2026
 
 The studio, CLI and MCP offer an explicit Posed mode after source units are
