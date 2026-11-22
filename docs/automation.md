@@ -245,7 +245,7 @@ legacy seam or ordered sewing group also refuses, including remote intervals.
 Existing annotations move unchanged to exactly one child; crossing, near-cut or
 ambiguous annotations refuse. See the [engineering contract](../spec/features/PAT-006-straight-cut.md)
 for clearance and work limits. This is one schema alternative on `project_execute`
-and CLI `execute`; the nine MCP tools are retained. Native v6 stores the resulting
+and CLI `execute`. Native v6 stores the resulting
 ordinary pieces. Curved cuts, cuts through holes and target relationship
 remapping remain open.
 

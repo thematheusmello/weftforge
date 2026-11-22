@@ -4,7 +4,7 @@
   "historical_map_commit": "af79f596f247cc48e709b818bb70a30d1b716580",
   "historical_map_sha256": "9323eb803af6d07d6178fd6e808fd61f87e5da71e3b07ab4b279b3141b11c8ec",
   "historical_source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
-  "source_commit": "a79bd6db00fe70c7c187b263685f59c23564a36c",
+  "source_commit": "bc3772196c0ea8dc206da1836c8f953e5cbedd44",
   "source_pins": [
     {
       "commit": "af79f596f247cc48e709b818bb70a30d1b716580",
@@ -221,6 +221,10 @@
     {
       "commit": "a79bd6db00fe70c7c187b263685f59c23564a36c",
       "scope": "Editable planar OBJ reconstruction with explicit physical units, rigid placements, cutouts, diffuse fabrics and atomic document edits."
+    },
+    {
+      "commit": "bc3772196c0ea8dc206da1836c8f953e5cbedd44",
+      "scope": "Garment OBJ import instructions in the studio usage guide, format matrix and automation guide."
     }
   ],
   "historical_invariants": {
@@ -1507,7 +1511,7 @@
           "path": "docs/automation.md",
           "anchor": "The supported shared commands are",
           "line": 172,
-          "sha256": "25bdc60145e7037e1d662716a3d7a5951f9e5376b2d24bd2664ea685b04744e5"
+          "sha256": "bdb40ea7053bb40e42417bbb4e361c440a0cc083ad155c233c3eab571eaa2fe9"
         },
         {
           "path": "apps/weftforge-cli/src/mcp.rs",
@@ -5783,7 +5787,7 @@
     },
     {
       "path": "docs/automation.md",
-      "sha256": "25bdc60145e7037e1d662716a3d7a5951f9e5376b2d24bd2664ea685b04744e5",
+      "sha256": "bdb40ea7053bb40e42417bbb4e361c440a0cc083ad155c233c3eab571eaa2fe9",
       "scope": "Shared authoring and fourteen stateless tools including the physical PNG and JPEG crops."
     },
     {
@@ -5798,7 +5802,7 @@
     },
     {
       "path": "docs/file-formats.md",
-      "sha256": "a6711b1fd38426685f4ac295c8c5ca1606727252d311c1020bf0995baa1bc707",
+      "sha256": "5784c7c287c899c79d33f79838a4265d3d0d14d43e7a5ecb2593352362d5756a",
       "scope": "Native projects, bounded SVG and DXF, static meshes, vector PDF and physical-scale PNG/JPEG crops."
     },
     {
@@ -5953,172 +5957,179 @@
     "H map preparation performs no Cargo, source test, model/native/reference workflow or project checker. G and prior proof identities/outcomes remain separately attributed; the original shutdown finding and its source correction are not rewritten as runtime evidence. Core/solver remain free of GUI/PNG dependencies; no typed authoring command, schema, tool or document format is added."
   ],
   "source_update_origin": {
-    "previous_addendum_commit": "3a564ee3cbaf3637f26cdd17f43e4c66b172d897",
-    "previous_source_commit": "dfdd91100c9825796eadb46c95e478ed2caabcaf",
-    "previous_addendum_sha256": "0af374a203d935b1e39ae378b5a185f8ac8983dbc867b79b39349438494a8ba9",
-    "previous_markdown_sha256": "fe684f1c470215b095f68c7e8bb5d9712c5670c48630f5a182496577da47778e",
+    "previous_addendum_commit": "c4909df123ffc3373c0f2c6ef2c390a91b8948fe",
+    "previous_source_commit": "a79bd6db00fe70c7c187b263685f59c23564a36c",
+    "previous_addendum_sha256": "708090f6658ba5c3596337cf033756cb4ba4405e463449b40371fadd8c978640",
+    "previous_markdown_sha256": "140f2808db7b4c37c36e954729ba6384453527abb3e21efd74354116cf8dccb4",
     "previous_source_update_origin": {
-      "previous_addendum_commit": "d974a00e218a78b5840332e7b203a83a546a1dc3",
-      "previous_source_commit": "a50aa0fa3b639a59e198e47069c7fe00552b250a",
-      "previous_addendum_sha256": "1ee838c5964427a36394a9fe46e9f19f2ff55c8255fb25920e52e9840f43208b",
-      "previous_markdown_sha256": "92570bf56813a027598041a298f7dab7511330036e10eb3620f322bbdb7e957b",
+      "previous_addendum_commit": "3a564ee3cbaf3637f26cdd17f43e4c66b172d897",
+      "previous_source_commit": "dfdd91100c9825796eadb46c95e478ed2caabcaf",
+      "previous_addendum_sha256": "0af374a203d935b1e39ae378b5a185f8ac8983dbc867b79b39349438494a8ba9",
+      "previous_markdown_sha256": "fe684f1c470215b095f68c7e8bb5d9712c5670c48630f5a182496577da47778e",
       "previous_source_update_origin": {
-        "previous_addendum_commit": "ad0b66752e76c97995d7309a8be2960850672d5b",
-        "previous_source_commit": "25c337859089b7ce93e6bef998d40dae2f05ae41",
-        "previous_addendum_sha256": "67c3810402f2e8a4f7661fe3742dc59169e0aa44dacf467dc574b1d0064eba69",
-        "previous_markdown_sha256": "7c8e60a818a5cc48400392957ac112e14ebd47e3c0cec7ecb5dfe6b385605ccf",
+        "previous_addendum_commit": "d974a00e218a78b5840332e7b203a83a546a1dc3",
+        "previous_source_commit": "a50aa0fa3b639a59e198e47069c7fe00552b250a",
+        "previous_addendum_sha256": "1ee838c5964427a36394a9fe46e9f19f2ff55c8255fb25920e52e9840f43208b",
+        "previous_markdown_sha256": "92570bf56813a027598041a298f7dab7511330036e10eb3620f322bbdb7e957b",
         "previous_source_update_origin": {
-          "previous_addendum_commit": "a98e0c880a2271f56ca4c89cb9a85097f26948f3",
-          "previous_source_commit": "9c0fe5fd417269c88db38b6f85f9c7bbed6f935e",
-          "previous_addendum_sha256": "fcfb3e35b714216d5d0a3ca6e6e103c0cd64a29b7c804326b6a026139632b2cd",
-          "previous_markdown_sha256": "ba0b4a118b678da211c7ba3654e11841992e7b2843593332259f5c67aded7651",
+          "previous_addendum_commit": "ad0b66752e76c97995d7309a8be2960850672d5b",
+          "previous_source_commit": "25c337859089b7ce93e6bef998d40dae2f05ae41",
+          "previous_addendum_sha256": "67c3810402f2e8a4f7661fe3742dc59169e0aa44dacf467dc574b1d0064eba69",
+          "previous_markdown_sha256": "7c8e60a818a5cc48400392957ac112e14ebd47e3c0cec7ecb5dfe6b385605ccf",
           "previous_source_update_origin": {
-            "previous_addendum_commit": "4fe4722c40503d28e61bec17f6415ef37ec791b8",
-            "previous_source_commit": "1b7312cca375bfca1b3ab067690a646726af5447",
-            "previous_addendum_sha256": "86a1760c3a1ab3d9c445ede12b1e6b88ed5dd7db9309f8b1e1b5c8f296751209",
-            "previous_markdown_sha256": "b18be6ed103165b95c9acd87d71fcf7a92c6489a1ddab97dc4987a7962feebe4",
+            "previous_addendum_commit": "a98e0c880a2271f56ca4c89cb9a85097f26948f3",
+            "previous_source_commit": "9c0fe5fd417269c88db38b6f85f9c7bbed6f935e",
+            "previous_addendum_sha256": "fcfb3e35b714216d5d0a3ca6e6e103c0cd64a29b7c804326b6a026139632b2cd",
+            "previous_markdown_sha256": "ba0b4a118b678da211c7ba3654e11841992e7b2843593332259f5c67aded7651",
             "previous_source_update_origin": {
-              "previous_addendum_commit": "9e7f1081e8505217889a35c9f77b3e79ae050f3f",
-              "previous_source_commit": "dd0dd54c42724bbd0d02018a43442302e2b7a84a",
-              "previous_addendum_sha256": "505b4967b7b2205ceadc5fe78a06ec546a9e2caebfeaac6b6f4ef001ef607406",
-              "previous_markdown_sha256": "73d1d838d30bc6bda185c18fc1a7bb847061d25462a1a3aeadcd0f153eb2d90e",
+              "previous_addendum_commit": "4fe4722c40503d28e61bec17f6415ef37ec791b8",
+              "previous_source_commit": "1b7312cca375bfca1b3ab067690a646726af5447",
+              "previous_addendum_sha256": "86a1760c3a1ab3d9c445ede12b1e6b88ed5dd7db9309f8b1e1b5c8f296751209",
+              "previous_markdown_sha256": "b18be6ed103165b95c9acd87d71fcf7a92c6489a1ddab97dc4987a7962feebe4",
               "previous_source_update_origin": {
-                "previous_addendum_commit": "4b7d30318b1a2c4cc6db4dc95fe64de346cc37ef",
-                "previous_source_commit": "fd1b10dc8472ad3150c83e092c79d8280a21384d",
-                "previous_addendum_sha256": "9a8e0e5f78247f144d30afb6ff959d1601950d646b2804140bb2510972cf119e",
-                "previous_markdown_sha256": "9b622df6edfd7ff992a724f9f4f5925a03dbd00ea2f24270436e867c62e441ab",
+                "previous_addendum_commit": "9e7f1081e8505217889a35c9f77b3e79ae050f3f",
+                "previous_source_commit": "dd0dd54c42724bbd0d02018a43442302e2b7a84a",
+                "previous_addendum_sha256": "505b4967b7b2205ceadc5fe78a06ec546a9e2caebfeaac6b6f4ef001ef607406",
+                "previous_markdown_sha256": "73d1d838d30bc6bda185c18fc1a7bb847061d25462a1a3aeadcd0f153eb2d90e",
                 "previous_source_update_origin": {
-                  "previous_addendum_commit": "ce71f09b20a1804a2089c214968fcfe3a2da144c",
-                  "previous_source_commit": "29c679968398d453cbb087526c48ee6a293d04e8",
-                  "previous_addendum_sha256": "e291b52ad75761ad30c98563389272e08b59c80385a71d32c79d853765234a3a",
-                  "previous_markdown_sha256": "b1729ff5faf519f732b16a18f0b082dbd1a1830a51a12d60b581defa1fe3304a",
+                  "previous_addendum_commit": "4b7d30318b1a2c4cc6db4dc95fe64de346cc37ef",
+                  "previous_source_commit": "fd1b10dc8472ad3150c83e092c79d8280a21384d",
+                  "previous_addendum_sha256": "9a8e0e5f78247f144d30afb6ff959d1601950d646b2804140bb2510972cf119e",
+                  "previous_markdown_sha256": "9b622df6edfd7ff992a724f9f4f5925a03dbd00ea2f24270436e867c62e441ab",
                   "previous_source_update_origin": {
-                    "previous_addendum_commit": "1be3a23c4c2c09feb20012008b4e43875be15feb",
-                    "previous_source_commit": "3767926bb2cd608c5054a9801d4931b579146778",
-                    "previous_addendum_sha256": "c8482851b4e400f664d0e52b5b647e0cafd2c42bec570502918126229f2f9c48",
-                    "previous_markdown_sha256": "35a9f6ce4bf33c666c00ba2d88abe0f3e66d62bfe51f611d5ac7ef7ce1a0fbc0",
+                    "previous_addendum_commit": "ce71f09b20a1804a2089c214968fcfe3a2da144c",
+                    "previous_source_commit": "29c679968398d453cbb087526c48ee6a293d04e8",
+                    "previous_addendum_sha256": "e291b52ad75761ad30c98563389272e08b59c80385a71d32c79d853765234a3a",
+                    "previous_markdown_sha256": "b1729ff5faf519f732b16a18f0b082dbd1a1830a51a12d60b581defa1fe3304a",
                     "previous_source_update_origin": {
-                      "previous_addendum_commit": "3074da243d22d0ad78397c4f3455a78dba996627",
-                      "previous_source_commit": "afdea5999423dd5c9952f20ff5e3d5f26c169751",
-                      "previous_addendum_sha256": "906bb6eca80cae995cc8f3a1da202535779c1d2b439212fcce25230fe6834a14",
-                      "previous_markdown_sha256": "a343105e8aa54ec7273fe2a5ffc5c46cb1be04b2176bf97fc0c0883ee9d95d20",
+                      "previous_addendum_commit": "1be3a23c4c2c09feb20012008b4e43875be15feb",
+                      "previous_source_commit": "3767926bb2cd608c5054a9801d4931b579146778",
+                      "previous_addendum_sha256": "c8482851b4e400f664d0e52b5b647e0cafd2c42bec570502918126229f2f9c48",
+                      "previous_markdown_sha256": "35a9f6ce4bf33c666c00ba2d88abe0f3e66d62bfe51f611d5ac7ef7ce1a0fbc0",
                       "previous_source_update_origin": {
-                        "previous_addendum_commit": "6622a625c0276f131032265c7726c617c74fd1fa",
-                        "previous_source_commit": "578520600521d378f9c1fc6a83f81ec9931ee07e",
-                        "previous_addendum_sha256": "9be6d406ffab6f7ddad8008cd16ab0054d9ab8501cfe79883a35284656b1dfa7",
-                        "previous_markdown_sha256": "512d42ec58c1a9b61c25f2128ed3cc2a35424d82aec0ad7dd964a10a7dd61102",
+                        "previous_addendum_commit": "3074da243d22d0ad78397c4f3455a78dba996627",
+                        "previous_source_commit": "afdea5999423dd5c9952f20ff5e3d5f26c169751",
+                        "previous_addendum_sha256": "906bb6eca80cae995cc8f3a1da202535779c1d2b439212fcce25230fe6834a14",
+                        "previous_markdown_sha256": "a343105e8aa54ec7273fe2a5ffc5c46cb1be04b2176bf97fc0c0883ee9d95d20",
                         "previous_source_update_origin": {
-                          "previous_addendum_commit": "7db72677af08f234e7044ce5d48aaea94b1baa48",
-                          "previous_source_commit": "7de4b5764449c3a35266ed22819134cb20f9e5a6",
-                          "previous_addendum_sha256": "8c116f01f5153883ee9702179ac0342f968e1d3178592bc515f651bc43a0be44",
-                          "previous_markdown_sha256": "3ff684c91a32f88978f82dbcfa1b3d29bc3ae309ed9c28c37c2021f2718410aa",
+                          "previous_addendum_commit": "6622a625c0276f131032265c7726c617c74fd1fa",
+                          "previous_source_commit": "578520600521d378f9c1fc6a83f81ec9931ee07e",
+                          "previous_addendum_sha256": "9be6d406ffab6f7ddad8008cd16ab0054d9ab8501cfe79883a35284656b1dfa7",
+                          "previous_markdown_sha256": "512d42ec58c1a9b61c25f2128ed3cc2a35424d82aec0ad7dd964a10a7dd61102",
                           "previous_source_update_origin": {
-                            "previous_addendum_commit": "23632d09a90cd1b9071eb1884325b20ec4bea53b",
-                            "previous_source_commit": "f440d126c9094b357deb99b68dd6b01235591a44",
-                            "previous_addendum_sha256": "968602f91c641f38788f408c38cec7b6b1e14ce2cfd5049d2d2cc6220735402d",
-                            "previous_markdown_sha256": "01262c8dbe68224287bdf165060b82eb1c041158b8c1da1f1cc4627e94f34cdd",
+                            "previous_addendum_commit": "7db72677af08f234e7044ce5d48aaea94b1baa48",
+                            "previous_source_commit": "7de4b5764449c3a35266ed22819134cb20f9e5a6",
+                            "previous_addendum_sha256": "8c116f01f5153883ee9702179ac0342f968e1d3178592bc515f651bc43a0be44",
+                            "previous_markdown_sha256": "3ff684c91a32f88978f82dbcfa1b3d29bc3ae309ed9c28c37c2021f2718410aa",
                             "previous_source_update_origin": {
-                              "previous_addendum_commit": "50f0a2a716fbd9c0fc508c05f9ef722e806aff10",
-                              "previous_source_commit": "0df44c4f23db77efbc30b1881e6f6b28cc9b48bd",
-                              "previous_addendum_sha256": "39fb56ed31c0859b2951bd07734939e9bbe9dbe83ced3221e46372dc9f865b5a",
-                              "previous_markdown_sha256": "e4e7531d89c98ba93640966270402f1fad9d536b2bcb42e75db9a4b3ec174990",
+                              "previous_addendum_commit": "23632d09a90cd1b9071eb1884325b20ec4bea53b",
+                              "previous_source_commit": "f440d126c9094b357deb99b68dd6b01235591a44",
+                              "previous_addendum_sha256": "968602f91c641f38788f408c38cec7b6b1e14ce2cfd5049d2d2cc6220735402d",
+                              "previous_markdown_sha256": "01262c8dbe68224287bdf165060b82eb1c041158b8c1da1f1cc4627e94f34cdd",
                               "previous_source_update_origin": {
-                                "previous_addendum_commit": "c7801bb1cb694ead6778b6cd9e81d78f58a1fc3b",
-                                "previous_source_commit": "d06b224b504a9c6c76b2b288d14c1ea0a845ed3b",
-                                "previous_addendum_sha256": "f7d499c371d68d88791510929c4739dbb1e9174de98b0763bbfb1418626e61db",
-                                "previous_markdown_sha256": "b5acd6721d7cf550118ad13bbdec3f25eff33fdb088138f252dc344739d9e267",
+                                "previous_addendum_commit": "50f0a2a716fbd9c0fc508c05f9ef722e806aff10",
+                                "previous_source_commit": "0df44c4f23db77efbc30b1881e6f6b28cc9b48bd",
+                                "previous_addendum_sha256": "39fb56ed31c0859b2951bd07734939e9bbe9dbe83ced3221e46372dc9f865b5a",
+                                "previous_markdown_sha256": "e4e7531d89c98ba93640966270402f1fad9d536b2bcb42e75db9a4b3ec174990",
                                 "previous_source_update_origin": {
-                                  "previous_addendum_commit": "8d157cbb73467ecdc98f78be70e8b971eb4f909f",
-                                  "previous_source_commit": "36a9be49097a53f1da4dc0c74062f553ff3194b7",
-                                  "previous_addendum_sha256": "04abfb3f0e6c80113dff6da48f2de5015dfa10c57f2a87160e695958f2bc9827",
-                                  "previous_markdown_sha256": "13a650e9e94110c1e01cfd1c8b1ef3c78aaffbf8c1e71a39f57bf520944c139b",
+                                  "previous_addendum_commit": "c7801bb1cb694ead6778b6cd9e81d78f58a1fc3b",
+                                  "previous_source_commit": "d06b224b504a9c6c76b2b288d14c1ea0a845ed3b",
+                                  "previous_addendum_sha256": "f7d499c371d68d88791510929c4739dbb1e9174de98b0763bbfb1418626e61db",
+                                  "previous_markdown_sha256": "b5acd6721d7cf550118ad13bbdec3f25eff33fdb088138f252dc344739d9e267",
                                   "previous_source_update_origin": {
-                                    "previous_addendum_commit": "29a1d0f9b17838d2229e90eeb0d36234784df55b",
-                                    "previous_source_commit": "89b2c27924f9a9c7546a274334c212fe269c1d46",
-                                    "previous_addendum_sha256": "436278a15254bf9152b840e20ae3bd266d749e28e57d73b8c573970f7336523f",
-                                    "previous_markdown_sha256": "b4d780604e152dbdc7ba4645b9fc4eedfd8796aff492f7907c8495d51a32bfea",
+                                    "previous_addendum_commit": "8d157cbb73467ecdc98f78be70e8b971eb4f909f",
+                                    "previous_source_commit": "36a9be49097a53f1da4dc0c74062f553ff3194b7",
+                                    "previous_addendum_sha256": "04abfb3f0e6c80113dff6da48f2de5015dfa10c57f2a87160e695958f2bc9827",
+                                    "previous_markdown_sha256": "13a650e9e94110c1e01cfd1c8b1ef3c78aaffbf8c1e71a39f57bf520944c139b",
                                     "previous_source_update_origin": {
-                                      "previous_addendum_commit": "2b8adb902aa93171feef7543d59c6722debd6d66",
-                                      "previous_source_commit": "d71577fe9015b278d9e66e070b2d97140a03328d",
-                                      "previous_addendum_sha256": "9f7989fd9c098015c1c732f8774231e59bf48fda951681369c03ea415a18674a",
-                                      "previous_markdown_sha256": "d2a0d5ce9e4d681918c2e347b4565f01b65f41e8bdf7c9bf3754a57b31a097df",
+                                      "previous_addendum_commit": "29a1d0f9b17838d2229e90eeb0d36234784df55b",
+                                      "previous_source_commit": "89b2c27924f9a9c7546a274334c212fe269c1d46",
+                                      "previous_addendum_sha256": "436278a15254bf9152b840e20ae3bd266d749e28e57d73b8c573970f7336523f",
+                                      "previous_markdown_sha256": "b4d780604e152dbdc7ba4645b9fc4eedfd8796aff492f7907c8495d51a32bfea",
                                       "previous_source_update_origin": {
-                                        "previous_addendum_commit": "a1d780c1fc1c8b61a922b487a64d560065bf0eed",
-                                        "previous_source_commit": "7f85908c6b7daf0be3594831f74f2a250b15d276",
-                                        "previous_addendum_sha256": "33eef531cd229b6dd54d63788fe9a10a9b06740cde4c83ffab4c210fd6411c76",
-                                        "previous_markdown_sha256": "d3e99d7ddd6ba2354f7220490c315397e506841f8ce3ecee87508c7516ee7150",
+                                        "previous_addendum_commit": "2b8adb902aa93171feef7543d59c6722debd6d66",
+                                        "previous_source_commit": "d71577fe9015b278d9e66e070b2d97140a03328d",
+                                        "previous_addendum_sha256": "9f7989fd9c098015c1c732f8774231e59bf48fda951681369c03ea415a18674a",
+                                        "previous_markdown_sha256": "d2a0d5ce9e4d681918c2e347b4565f01b65f41e8bdf7c9bf3754a57b31a097df",
                                         "previous_source_update_origin": {
-                                          "previous_addendum_commit": "0e764e88f212df28ee5e2f55ad8030a8d5571f4e",
-                                          "previous_source_commit": "b305cabf553411400bd342d46532a0d61f398d55",
-                                          "previous_addendum_sha256": "bb14bb01ade0c6b954d7b06cbe599b22357f03ace3cee37a651279dd44bc5cf5",
-                                          "previous_markdown_sha256": "6893ed1d76364e8d4c968605592952fbded01f087679917864e5ba985d529a88",
+                                          "previous_addendum_commit": "a1d780c1fc1c8b61a922b487a64d560065bf0eed",
+                                          "previous_source_commit": "7f85908c6b7daf0be3594831f74f2a250b15d276",
+                                          "previous_addendum_sha256": "33eef531cd229b6dd54d63788fe9a10a9b06740cde4c83ffab4c210fd6411c76",
+                                          "previous_markdown_sha256": "d3e99d7ddd6ba2354f7220490c315397e506841f8ce3ecee87508c7516ee7150",
                                           "previous_source_update_origin": {
-                                            "previous_addendum_commit": "d4255e16896e96841dffa67f7b03cfa60d2b4b5a",
-                                            "previous_source_commit": "8721469c10771624d3042b92d6f91c294ed04efc",
-                                            "previous_addendum_sha256": "884a9cedfb98a6eea6f07b86ba40d17f93019ed2840de8c641991d284a32114d",
-                                            "previous_markdown_sha256": "6c359f9dfa47dbcaae80299211a036917e0f9b5b0351c589b7fcdf5010c54d27",
+                                            "previous_addendum_commit": "0e764e88f212df28ee5e2f55ad8030a8d5571f4e",
+                                            "previous_source_commit": "b305cabf553411400bd342d46532a0d61f398d55",
+                                            "previous_addendum_sha256": "bb14bb01ade0c6b954d7b06cbe599b22357f03ace3cee37a651279dd44bc5cf5",
+                                            "previous_markdown_sha256": "6893ed1d76364e8d4c968605592952fbded01f087679917864e5ba985d529a88",
                                             "previous_source_update_origin": {
-                                              "previous_addendum_commit": "44552840f50fe6b9c2b2da99e17cce8d38666a94",
-                                              "previous_addendum_sha256": "bb47b8ba7bc957ce8565b54e2bc6bf3e6b6d6f979c930a1e0ae4304f2dc15c02",
-                                              "previous_markdown_sha256": "875e46c1eff750e38a390db52ca353d5ebecc4a76588fedd739819ec52364151",
-                                              "previous_source_commit": "54456690c60b44696c7d0da551211dab179a329d",
+                                              "previous_addendum_commit": "d4255e16896e96841dffa67f7b03cfa60d2b4b5a",
+                                              "previous_source_commit": "8721469c10771624d3042b92d6f91c294ed04efc",
+                                              "previous_addendum_sha256": "884a9cedfb98a6eea6f07b86ba40d17f93019ed2840de8c641991d284a32114d",
+                                              "previous_markdown_sha256": "6c359f9dfa47dbcaae80299211a036917e0f9b5b0351c589b7fcdf5010c54d27",
                                               "previous_source_update_origin": {
-                                                "previous_addendum_commit": "117179d2ee31deeecb8a9fb57881a097da77500d",
-                                                "previous_addendum_sha256": "c5f77c2bec0c941eef4f71e7e4856fd317d175055c6555fa0c469dbc06294556",
-                                                "previous_markdown_sha256": "0c179dd2db384497daafbd072380db17b0a90f81da95d39df568564e95647d49",
-                                                "previous_source_commit": "8929468332af68574ef33f2f305d33b276f8f5e7",
+                                                "previous_addendum_commit": "44552840f50fe6b9c2b2da99e17cce8d38666a94",
+                                                "previous_addendum_sha256": "bb47b8ba7bc957ce8565b54e2bc6bf3e6b6d6f979c930a1e0ae4304f2dc15c02",
+                                                "previous_markdown_sha256": "875e46c1eff750e38a390db52ca353d5ebecc4a76588fedd739819ec52364151",
+                                                "previous_source_commit": "54456690c60b44696c7d0da551211dab179a329d",
                                                 "previous_source_update_origin": {
-                                                  "previous_addendum_commit": "f7279e1d9af5647e77de527a7da7c61385320ef9",
-                                                  "previous_addendum_sha256": "d9dac67486c1f797a4d261b77084d69e5cdb18f6678e059e536cf4055fb152e8",
-                                                  "previous_markdown_sha256": "0e5276ad1322b3a0f1bd1442bf443722b73db6df529b298a52a93e662f9d646e",
-                                                  "previous_source_commit": "9a3b70b752868ece9340dc80fe5228e12a52aea1",
-                                                  "preservation_rule": "Keep all 457 prior literal source occurrences and the historical catalog. Re-pin matching occurrences and the two updated format documents to the tested source. Append five GLB occurrences. Keep previous outcomes and indexed source versions. The previous source-update origin stays in the preceding root-level record."
+                                                  "previous_addendum_commit": "117179d2ee31deeecb8a9fb57881a097da77500d",
+                                                  "previous_addendum_sha256": "c5f77c2bec0c941eef4f71e7e4856fd317d175055c6555fa0c469dbc06294556",
+                                                  "previous_markdown_sha256": "0c179dd2db384497daafbd072380db17b0a90f81da95d39df568564e95647d49",
+                                                  "previous_source_commit": "8929468332af68574ef33f2f305d33b276f8f5e7",
+                                                  "previous_source_update_origin": {
+                                                    "previous_addendum_commit": "f7279e1d9af5647e77de527a7da7c61385320ef9",
+                                                    "previous_addendum_sha256": "d9dac67486c1f797a4d261b77084d69e5cdb18f6678e059e536cf4055fb152e8",
+                                                    "previous_markdown_sha256": "0e5276ad1322b3a0f1bd1442bf443722b73db6df529b298a52a93e662f9d646e",
+                                                    "previous_source_commit": "9a3b70b752868ece9340dc80fe5228e12a52aea1",
+                                                    "preservation_rule": "Keep all 457 prior literal source occurrences and the historical catalog. Re-pin matching occurrences and the two updated format documents to the tested source. Append five GLB occurrences. Keep previous outcomes and indexed source versions. The previous source-update origin stays in the preceding root-level record."
+                                                  },
+                                                  "preservation_rule": "Retain historical groups, snapshots and literal anchors. Re-pin the changed app source and add the shared shortcut label anchor."
                                                 },
-                                                "preservation_rule": "Retain historical groups, snapshots and literal anchors. Re-pin the changed app source and add the shared shortcut label anchor."
+                                                "preservation_rule": "Keep the full historical catalog and preceding anchors. The old CLI export-glb match arm now also matches export-gltf. Re-pin changed source and reviewed format documents. Add four source occurrences for JSON glTF."
                                               },
-                                              "preservation_rule": "Keep the full historical catalog and preceding anchors. The old CLI export-glb match arm now also matches export-gltf. Re-pin changed source and reviewed format documents. Add four source occurrences for JSON glTF."
+                                              "preservation_rule": "Preserve the historical catalog and preceding anchors. Repin changed desktop paths and append the live visibility group, Scene controls and reviewed contract."
                                             },
-                                            "preservation_rule": "Preserve the historical catalog and preceding anchors. Repin changed desktop paths and append the live visibility group, Scene controls and reviewed contract."
+                                            "preservation_rule": "Keep the historical catalog and earlier anchors. Re-pin the desktop source and add the standard 3D orientation and command-search occurrences."
                                           },
-                                          "preservation_rule": "Keep the historical catalog and earlier anchors. Re-pin the desktop source and add the standard 3D orientation and command-search occurrences."
+                                          "preservation_rule": "Keep the historical catalog and camera anchors. Re-pin the desktop source and map Frame garment."
                                         },
-                                        "preservation_rule": "Keep the historical catalog and camera anchors. Re-pin the desktop source and map Frame garment."
+                                        "preservation_rule": "Keep the historical catalog and previous occurrences. Re-pin current sources and map tiled PDF."
                                       },
-                                      "preservation_rule": "Keep the historical catalog and previous occurrences. Re-pin current sources and map tiled PDF."
+                                      "preservation_rule": "Preserve the archived map and authoring commands. Re-pin source and add the configurable 2D pattern PNG."
                                     },
-                                    "preservation_rule": "Preserve the archived map and authoring commands. Re-pin source and add the configurable 2D pattern PNG."
+                                    "preservation_rule": "Preserve the archived map and typed command surface. Re-pin the crop dialog, panel outline and density source."
                                   },
-                                  "preservation_rule": "Preserve the archived map and typed command surface. Re-pin the crop dialog, panel outline and density source."
+                                  "preservation_rule": "Preserve the archived map and typed commands. Pin the optional grainline in the crop dialog, writer and adapter."
                                 },
-                                "preservation_rule": "Preserve the archived map and typed commands. Pin the optional grainline in the crop dialog, writer and adapter."
+                                "preservation_rule": "Preserve the archived map and authoring commands. Update the shared crop surface and add JPEG export."
                               },
-                              "preservation_rule": "Preserve the archived map and authoring commands. Update the shared crop surface and add JPEG export."
+                              "preservation_rule": "Preserve the archived catalog crosswalk and shared authoring commands. Add the direct native rest-placement gesture."
                             },
-                            "preservation_rule": "Preserve the archived catalog crosswalk and shared authoring commands. Add the direct native rest-placement gesture."
+                            "preservation_rule": "Preserve historical contracts and command identities. Recheck direct native placement and its selection and history controls."
                           },
-                          "preservation_rule": "Preserve historical contracts and command identities. Recheck direct native placement and its selection and history controls."
+                          "preservation_rule": "Keep the historical crosswalk and shared commands, and map local and world rotation onto the selected rest placement."
                         },
-                        "preservation_rule": "Keep the historical crosswalk and shared commands, and map local and world rotation onto the selected rest placement."
+                        "preservation_rule": "Preserve previous catalog and command identities. Recheck captured primary release in the established rest-pattern placement controls."
                       },
-                      "preservation_rule": "Preserve previous catalog and command identities. Recheck captured primary release in the established rest-pattern placement controls."
+                      "preservation_rule": "Preserve the catalog, shared commands and existing controls. Recheck the solid garment face in the 3D canvas."
                     },
-                    "preservation_rule": "Preserve the catalog, shared commands and existing controls. Recheck the solid garment face in the 3D canvas."
+                    "preservation_rule": "Keep the original catalog, packet definitions and command surface. Update editable SVG cutout import and its native and automation descriptions."
                   },
-                  "preservation_rule": "Keep the original catalog, packet definitions and command surface. Update editable SVG cutout import and its native and automation descriptions."
+                  "preservation_rule": "Retain all previous source groups, command and contract identities. Recheck multiple rest-pattern selection and shared world-space rotation."
                 },
-                "preservation_rule": "Retain all previous source groups, command and contract identities. Recheck multiple rest-pattern selection and shared world-space rotation."
+                "preservation_rule": "Retain earlier source groups and contracts. Recheck the fabric assignment, copy and rename controls."
               },
-              "preservation_rule": "Retain earlier source groups and contracts. Recheck the fabric assignment, copy and rename controls."
+              "preservation_rule": "Preserve fabric-inspector and historical source coverage. Recheck OBJ group assignments, diffuse material sidecars and stable prior exports."
             },
-            "preservation_rule": "Preserve fabric-inspector and historical source coverage. Recheck OBJ group assignments, diffuse material sidecars and stable prior exports."
+            "preservation_rule": "Retain earlier source groups and contracts. Recheck global strain controls, accepted surface and authored fabric colors."
           },
-          "preservation_rule": "Retain earlier source groups and contracts. Recheck global strain controls, accepted surface and authored fabric colors."
+          "preservation_rule": "Preserve the full strain-map and disjoint-cutout source contracts and entry points. Recheck both on their combined product source."
         },
-        "preservation_rule": "Preserve the full strain-map and disjoint-cutout source contracts and entry points. Recheck both on their combined product source."
+        "preservation_rule": "Preserve existing strain-map, disjoint-cutout and export coverage. Recheck selected-panel surface export in the current studio, CLI and MCP."
       },
-      "preservation_rule": "Preserve existing strain-map, disjoint-cutout and export coverage. Recheck selected-panel surface export in the current studio, CLI and MCP."
+      "preservation_rule": "Retain the historical map and earlier checked source revisions. Recheck the shared garment OBJ import command, both file adapters and the native import review."
     },
-    "preservation_rule": "Retain the historical map and earlier checked source revisions. Recheck the shared garment OBJ import command, both file adapters and the native import review."
+    "preservation_rule": "Retain the source and command inventory. Refresh the reviewed file-format matrix and automation guide for editable OBJ import."
   },
   "previous_source_update_origin": {
     "previous_addendum_commit": "7e56a324c5a2b4c731d019caedc752caf08e7310",

@@ -51732,7 +51732,8 @@
         "parity/reports/WF-20261120-NATIVE-SELECTED-OBJ-001.json",
         "spec/observations/REF-FILE-003-OBJ-SELECTED-001.json",
         "parity/reports/WF-20261120-NATIVE-EDITABLE-OBJ-001.json",
-        "parity/reports/WF-20261120-EDITABLE-OBJ-REFERENCE-RETURN-001.json"
+        "parity/reports/WF-20261120-EDITABLE-OBJ-REFERENCE-RETURN-001.json",
+        "parity/reports/WF-20261120-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json"
       ],
       "scenarios": [
         {
@@ -51832,6 +51833,18 @@
           },
           "initial_conditions": "Use the retained reference re-export from the earlier selected Harbor observation. Start with an existing project and recovery file.",
           "expected_outcomes": "A successful reverse import would recover one colored editable panel at the recorded scale. The reader refused the actual returned geometry and preserved both existing files."
+        },
+        {
+          "id": "APP-DEBIAN-WAYLAND-EDITABLE-OBJ-001",
+          "path": "parity/scenarios/APP-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/fixtures/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/fixtures/Pocket in millimetres.obj": "2c068bf5a34fb0cec320b36a74638780b021f59c9fd0ad4d5671c390b22b9a1b",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/fixtures/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/fixtures/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784"
+          },
+          "initial_conditions": "An empty unsigned studio on Debian ARM64 in a Sway Wayland session. The two-slot pocket is in millimetres and the two-fabric Harbor shirt is in metres.",
+          "expected_outcomes": "Undo restores the empty document. Redo and reopen preserve editable construction. Pocket dimensions are 0.240 \u00d7 0.360 m, area is 0.0756 m\u00b2 and three boundary loops total 1.74 m. The two Harbor panels retain their source positions, colors and 0.5923 m\u00b2 each."
         }
       ],
       "comparison_criteria": {
@@ -52620,6 +52633,51 @@
             "spec/observations/REF-FILE-003-OBJ-SELECTED-001.json": "49fb7cace6cf2c57f9be183790b139c26d097226f32d6bf85691755ad1d0966d"
           },
           "path": "parity/reports/WF-20261120-EDITABLE-OBJ-REFERENCE-RETURN-001.json"
+        },
+        {
+          "id": "WF-20261120-DEBIAN-WAYLAND-EDITABLE-OBJ-001",
+          "commit": "a79bd6db00fe70c7c187b263685f59c23564a36c",
+          "timestamp": "2026-11-20T19:50:59Z",
+          "platform": "Debian 13.7 ARM64 unsigned offline package, Sway 1.10.1 virtual Wayland output, GTK chooser and software Vulkan",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/07-pocket-mm.png": "9f00331bbfa89c8d360af3198a02909aea7c13da99d4518c6ef69945f49a63e9",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/11-pocket-undo.png": "a363379b022179af5040048fc06f0fd404b4de4fa7d3d3ccb6a383a463f67567",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/12-pocket-redo.png": "fee884da188d637508c996688c1239b559f0193c253715325bdc9cb25338dbc4",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/18-pocket-front.png": "396d0636582d86d4bbf5eb9784754d02a70b24c861cb04f44927391896aa9fde",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/26-harbor-back-fabric.png": "fc44b7e161abb580caca2f607ed387de6635afcc166bb97f11322b9872351425",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/CLEANUP.json": "a9cc1d76faae6ae72072258806950416c15f0677507915864ca3d47559ad6854",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/GEOMETRY.json": "7b0826a8ad3a78219718b9951c1f8db6b58615f59080ed2433465814ef6f9787",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/Harbor exported.obj": "45c58b52b6e5c0dc185a1c276f5c563d4529aaa0ab9a3aee8b1bc0315c9b07ce",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/Harbor imported.weftforge": "d74a056c5244fa5d32a213702222bf6dc554a9a608e96057f78938e34d42df1e",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/NATIVE.json": "5861e6fa192d6679ec2bdbfd859f83fbe8cd897b1c9e375d1d7a32b1668f4460",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/PACKAGE-READBACK.json": "689eaa4d6d9ac06121dce20dca1287ecfdd3c847697ce90b7f26db3947bdda09",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/PACKAGE-SHA256SUMS": "96b64ec72b80dc7d5461dc5dee89cc49d23a06c6c5e0f7ed274ca95246d7132d",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/Pocket exported.obj": "acf5b5f10f0e982613371467edd648e2e17806a0782a4b718afd859d65c3aea9",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/Pocket imported.weftforge": "38b871a3e9b433c033a275131c3e5dd99d95e9a4bbd85a5db85b8811450f7642",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/Pocket redo.weftforge": "c83aba56b1f0c471cdecda60bcf662feaa374600eaafc0b9415158295263f9fe",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/Pocket reopened.weftforge": "c83aba56b1f0c471cdecda60bcf662feaa374600eaafc0b9415158295263f9fe",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/Pocket undo.weftforge": "e9d47a639b594824bf5109605a08f2c7bae8a582d2017bba254edbba105b601a",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/check_native.py": "b80f248510c9e812e04ed35beb792b9e711b54453342355464a43f6de8569aae",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/fixtures/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/fixtures/Pocket in millimetres.obj": "2c068bf5a34fb0cec320b36a74638780b021f59c9fd0ad4d5671c390b22b9a1b",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/fixtures/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/fixtures/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/manifest.json": "294a36f1d3b1f7621d2afadb5afc43f23967f8010ce5240ed270f0f2ab1a09ee",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/weftforge-fabrics-5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c.mtl": "5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/weftforge-fabrics-80c3709947a8404fb43d1e8084c55ef32af3c733a0d21b8afb971d9f7fc6ee95.mtl": "80c3709947a8404fb43d1e8084c55ef32af3c733a0d21b8afb971d9f7fc6ee95",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/Imported.obj": "8de2bd3bf0ac881f99589e84e1e20c6fc0992eaca171b0b975435c41427dd57d",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/audit_package.py": "296e7a8c47e506f3366d159bfa0ad7d4876dba74ffafc2eb50479fb17038bbda",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/Combined pocket.obj": "acf5b5f10f0e982613371467edd648e2e17806a0782a4b718afd859d65c3aea9",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/Combined pocket.weftforge": "38b871a3e9b433c033a275131c3e5dd99d95e9a4bbd85a5db85b8811450f7642",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Harbor imported.weftforge": "d74a056c5244fa5d32a213702222bf6dc554a9a608e96057f78938e34d42df1e",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Harbor native.obj": "45c58b52b6e5c0dc185a1c276f5c563d4529aaa0ab9a3aee8b1bc0315c9b07ce",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket restored.weftforge": "c83aba56b1f0c471cdecda60bcf662feaa374600eaafc0b9415158295263f9fe",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/scenarios/APP-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json": "d3e37429f26f4fa7aba580fa0a7c347e82cac58199a9a7c62e9ee41bbac15132"
+          },
+          "path": "parity/reports/WF-20261120-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json"
         }
       ],
       "known_gaps": [
@@ -64180,7 +64238,8 @@
         "parity/reports/WF-20261120-DEBIAN-ARM64-NATIVE-SAVE-JPEG-001.json",
         "parity/reports/WF-20261120-DEBIAN-ARM64-CARGO-NOTICES-001.json",
         "parity/reports/WF-20261120-DEBIAN-WAYLAND-SVG-CUTOUT-001.json",
-        "parity/reports/WF-20261120-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json"
+        "parity/reports/WF-20261120-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json",
+        "parity/reports/WF-20261120-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json"
       ],
       "scenarios": [
         {
@@ -64240,6 +64299,18 @@
           },
           "initial_conditions": "An empty release studio on Debian 13.7 ARM64, a headless Sway Wayland output, the GTK file chooser, two original SVG fixtures and a single-hole editable pocket.",
           "expected_outcomes": "Undo and Redo restore the empty and imported states. Moving one corner preserves the other opening. Both OBJ meshes have three boundary loops and net areas of 0.0756 and 0.0744 m\u00b2. A rejected overlap preserves the last editable bytes. Adding the second opening in the inspector preserves all prior IDs."
+        },
+        {
+          "id": "APP-DEBIAN-WAYLAND-EDITABLE-OBJ-001",
+          "path": "parity/scenarios/APP-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/fixtures/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/fixtures/Pocket in millimetres.obj": "2c068bf5a34fb0cec320b36a74638780b021f59c9fd0ad4d5671c390b22b9a1b",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/fixtures/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/fixtures/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784"
+          },
+          "initial_conditions": "An empty unsigned studio on Debian ARM64 in a Sway Wayland session. The two-slot pocket is in millimetres and the two-fabric Harbor shirt is in metres.",
+          "expected_outcomes": "Undo restores the empty document. Redo and reopen preserve editable construction. Pocket dimensions are 0.240 \u00d7 0.360 m, area is 0.0756 m\u00b2 and three boundary loops total 1.74 m. The two Harbor panels retain their source positions, colors and 0.5923 m\u00b2 each."
         }
       ],
       "comparison_criteria": {
@@ -64536,22 +64607,68 @@
             "parity/reports/artifacts/debian-wayland-svg-cutout-20261120/manifest.json": "19dfd7cdd16f230af2835b13f3e30f56ff902aa86fe0035112552cd6163919e9"
           },
           "path": "parity/reports/WF-20261120-DEBIAN-WAYLAND-MULTIPLE-CUTOUTS-001.json"
+        },
+        {
+          "id": "WF-20261120-DEBIAN-WAYLAND-EDITABLE-OBJ-001",
+          "commit": "a79bd6db00fe70c7c187b263685f59c23564a36c",
+          "timestamp": "2026-11-20T19:50:59Z",
+          "platform": "Debian 13.7 ARM64 unsigned offline package, Sway 1.10.1 virtual Wayland output, GTK chooser and software Vulkan",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/07-pocket-mm.png": "9f00331bbfa89c8d360af3198a02909aea7c13da99d4518c6ef69945f49a63e9",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/11-pocket-undo.png": "a363379b022179af5040048fc06f0fd404b4de4fa7d3d3ccb6a383a463f67567",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/12-pocket-redo.png": "fee884da188d637508c996688c1239b559f0193c253715325bdc9cb25338dbc4",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/18-pocket-front.png": "396d0636582d86d4bbf5eb9784754d02a70b24c861cb04f44927391896aa9fde",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/26-harbor-back-fabric.png": "fc44b7e161abb580caca2f607ed387de6635afcc166bb97f11322b9872351425",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/CLEANUP.json": "a9cc1d76faae6ae72072258806950416c15f0677507915864ca3d47559ad6854",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/GEOMETRY.json": "7b0826a8ad3a78219718b9951c1f8db6b58615f59080ed2433465814ef6f9787",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/Harbor exported.obj": "45c58b52b6e5c0dc185a1c276f5c563d4529aaa0ab9a3aee8b1bc0315c9b07ce",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/Harbor imported.weftforge": "d74a056c5244fa5d32a213702222bf6dc554a9a608e96057f78938e34d42df1e",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/NATIVE.json": "5861e6fa192d6679ec2bdbfd859f83fbe8cd897b1c9e375d1d7a32b1668f4460",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/PACKAGE-READBACK.json": "689eaa4d6d9ac06121dce20dca1287ecfdd3c847697ce90b7f26db3947bdda09",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/PACKAGE-SHA256SUMS": "96b64ec72b80dc7d5461dc5dee89cc49d23a06c6c5e0f7ed274ca95246d7132d",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/Pocket exported.obj": "acf5b5f10f0e982613371467edd648e2e17806a0782a4b718afd859d65c3aea9",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/Pocket imported.weftforge": "38b871a3e9b433c033a275131c3e5dd99d95e9a4bbd85a5db85b8811450f7642",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/Pocket redo.weftforge": "c83aba56b1f0c471cdecda60bcf662feaa374600eaafc0b9415158295263f9fe",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/Pocket reopened.weftforge": "c83aba56b1f0c471cdecda60bcf662feaa374600eaafc0b9415158295263f9fe",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/Pocket undo.weftforge": "e9d47a639b594824bf5109605a08f2c7bae8a582d2017bba254edbba105b601a",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/check_native.py": "b80f248510c9e812e04ed35beb792b9e711b54453342355464a43f6de8569aae",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/fixtures/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/fixtures/Pocket in millimetres.obj": "2c068bf5a34fb0cec320b36a74638780b021f59c9fd0ad4d5671c390b22b9a1b",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/fixtures/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/fixtures/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/manifest.json": "294a36f1d3b1f7621d2afadb5afc43f23967f8010ce5240ed270f0f2ab1a09ee",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/weftforge-fabrics-5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c.mtl": "5eb07aa8b5e50bc13350015e5f4b95dfea262debe53a4a23297093cf4157695c",
+            "parity/reports/artifacts/debian-wayland-editable-obj-20261120/weftforge-fabrics-80c3709947a8404fb43d1e8084c55ef32af3c733a0d21b8afb971d9f7fc6ee95.mtl": "80c3709947a8404fb43d1e8084c55ef32af3c733a0d21b8afb971d9f7fc6ee95",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/Imported.obj": "8de2bd3bf0ac881f99589e84e1e20c6fc0992eaca171b0b975435c41427dd57d",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/audit_package.py": "296e7a8c47e506f3366d159bfa0ad7d4876dba74ffafc2eb50479fb17038bbda",
+            "parity/reports/artifacts/debian-wayland-multiple-cutouts-20261120/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/Combined pocket.obj": "acf5b5f10f0e982613371467edd648e2e17806a0782a4b718afd859d65c3aea9",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-combined/Combined pocket.weftforge": "38b871a3e9b433c033a275131c3e5dd99d95e9a4bbd85a5db85b8811450f7642",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Harbor imported.weftforge": "d74a056c5244fa5d32a213702222bf6dc554a9a608e96057f78938e34d42df1e",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Harbor native.obj": "45c58b52b6e5c0dc185a1c276f5c563d4529aaa0ab9a3aee8b1bc0315c9b07ce",
+            "parity/reports/artifacts/editable-garment-obj-20261120/macos-editing/Pocket restored.weftforge": "c83aba56b1f0c471cdecda60bcf662feaa374600eaafc0b9415158295263f9fe",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor.obj": "4e64a567ce40e37d571b8a8847cf3df563bf9edadf3bb134b46333fff5027445",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784",
+            "parity/scenarios/APP-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json": "d3e37429f26f4fa7aba580fa0a7c347e82cac58199a9a7c62e9ee41bbac15132"
+          },
+          "path": "parity/reports/WF-20261120-DEBIAN-WAYLAND-EDITABLE-OBJ-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "The unsigned ARM64 package ran on Debian 13.7 under X11/Vulkan software rendering. Windows, Linux x86-64, Wayland, GPU hardware, platform accessibility, signing and redistributable release acceptance remain open.",
+        "The unsigned ARM64 package ran on Debian 13.7 under X11/Vulkan software rendering. Windows, Linux x86-64, GPU hardware, platform accessibility, signing and redistributable release acceptance remain open.",
         "The updated ARM64 Debian package has a native X11 Ctrl+K and Escape smoke check with software rendering. Full platform accessibility, Windows and signed cross-platform builds remain open.",
         "The exact offline Debian 13.7 ARM64 JPEG package launched under X11/Vulkan software rendering and agreed with Apple Silicon on the two packaged CLI/MCP JPEG exports. The same package saved a project through the GTK chooser on X11. The afdea599 package saved the editable project and both pattern JPEGs through GTK. Seven Linux library notice entries, hardware GPU, Windows and signing remain open.",
         "Source fixtures check target-scoped notice collection, standalone app notice paths, executable hashes and interrupted staging recovery. Actual release notice closure, platform audits and signing remain open.",
         "The actual Apple Silicon release bundle opened Harbor. All recorded binary and 258 notice file hashes passed, and the packaged CLI reproduced both prior JPEGs. Resolve the 31 flagged runtime notices, audit platform runtimes and finish signed builds.",
-        "A second offline Apple Silicon package retained all runtime libraries and executable bytes. Ten pinned files supply 18 missing code licenses. Eleven declaration-only and two absent code texts remain open, along with other platform audits and signing."
+        "A second offline Apple Silicon package retained all runtime libraries and executable bytes. Ten pinned files supply 18 missing code licenses. Eleven declaration-only and two absent code texts remain open, along with other platform audits and signing.",
+        "The Debian ARM64 Wayland OBJ workflow used a virtual display and software Vulkan. Physical GPU, other host packages, signing and system-library notice audits remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "APP-003",

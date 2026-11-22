@@ -1,0 +1,113 @@
+{
+  "tested_commit": "a79bd6db00fe70c7c187b263685f59c23564a36c",
+  "tested_tree": "b65ea8676e3d09346d352c215ddac32487b05312",
+  "package_build": {
+    "target": "aarch64-unknown-linux-gnu",
+    "rustc": "1.94.1",
+    "cargo": "1.94.1",
+    "offline": true,
+    "network_interfaces": [
+      "lo"
+    ],
+    "build_exit": 0,
+    "build_finished": "2026-11-20T19:46:06.282295+00:00",
+    "packaged_studio_sha256": "6694a2732f3ae788f1b054ee3952cc8667b7594a96663b37c530c48096f28f2c"
+  },
+  "display": {
+    "compositor": "Sway 1.10.1",
+    "output": "HEADLESS-1",
+    "mode": {
+      "width": 1640,
+      "height": 1000,
+      "refresh": 60000
+    },
+    "scale": 1.0,
+    "compositor_renderer": "pixman",
+    "studio_renderer": "Vulkan with Mesa lavapipe selected",
+    "xwayland": false,
+    "gtk_portal_chooser_version": 4
+  },
+  "surface_columns": [
+    "node_id",
+    "app_id",
+    "title",
+    "pid",
+    "focused",
+    "rect"
+  ],
+  "surfaces": {
+    "01-studio": [
+      [
+        5,
+        "WeftForge",
+        "WeftForge",
+        3171,
+        true,
+        {
+          "x": 0,
+          "y": 0,
+          "width": 1640,
+          "height": 1000
+        }
+      ]
+    ],
+    "04-pocket-review": [
+      [
+        5,
+        "WeftForge",
+        "WeftForge",
+        3171,
+        false,
+        {
+          "x": 0,
+          "y": 0,
+          "width": 820,
+          "height": 1000
+        }
+      ],
+      [
+        6,
+        "xdg-desktop-portal-gtk",
+        "",
+        1253,
+        true,
+        {
+          "x": 820,
+          "y": 0,
+          "width": 820,
+          "height": 1000
+        }
+      ]
+    ],
+    "18-pocket-front": [
+      [
+        8,
+        "WeftForge",
+        "WeftForge",
+        3379,
+        true,
+        {
+          "x": 0,
+          "y": 0,
+          "width": 1640,
+          "height": 1000
+        }
+      ]
+    ],
+    "26-harbor-back-fabric": [
+      [
+        12,
+        "WeftForge",
+        "WeftForge",
+        3618,
+        true,
+        {
+          "x": 0,
+          "y": 0,
+          "width": 1640,
+          "height": 1000
+        }
+      ]
+    ]
+  }
+}
