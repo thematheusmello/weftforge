@@ -1,3 +1,9 @@
+# Checking published evidence — 22 November 2026
+
+The publication check rejects a report, artifact, scenario, fixture or reviewed contract that exists only as an untracked or ignored file. Stage new evidence before running `cargo xtask verify`. The history check still validates every recorded path and SHA-256 against its tested commit. It reads each distinct Git blob once per validation, even when many historical runs use the same source.
+
+[Publication verifier](scripts/progress.py) · [Ignored-artifact regression](scripts/test_progress.py).
+
 # Debian posed garment import — 22 November 2026
 
 The unsigned Debian aarch64 package from `42094ed4` opened the original bent
