@@ -1,0 +1,14 @@
+{
+  "id": "FILE-POSED-OBJ-001",
+  "kind": "implementation_only",
+  "fixture_hashes": {
+    "fixtures/posed-obj/Bent swatch.obj": "383e6890b3b37e2219786abe15feb7c5713dd62ae2fd22280baea82b918d777f",
+    "fixtures/posed-obj/Extended bent swatch.obj": "1b2878c31e235fddc9abe0f745199e688f80539d9d4128c8e2bea31bbd4222e3",
+    "parity/reports/artifacts/native-selected-obj-20261120/Harbor draped.obj": "71a0fc0411020a79a8924cc31318a8fe129eaf17ec1b8ffdee8cacbd55aba124",
+    "parity/reports/artifacts/native-selected-obj-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784"
+  },
+  "initial_conditions": "Empty document. Metres. Original two swatches and draped two-color Harbor, with their own material coordinates and world positions.",
+  "expected_outcomes": "Preserve oriented triangles and XYZ within 1 nm, area-scaled flat extent within 1 nm and assigned RGB within 1e-6. Flat refuses the bend. Undo and Redo affect one import, native restart retains the editable pose, and clearing it can be undone.",
+  "protocol": "parity/reports/artifacts/native-posed-obj-20261122/protocol.txt",
+  "replay": "python3 parity/reports/artifacts/native-posed-obj-20261122/check_pose.py"
+}

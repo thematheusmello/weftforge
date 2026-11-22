@@ -114,7 +114,7 @@ are rejected. The tool names and arguments are:
 | `project_lengths` | `path`, `query` | Applied `source_revision`, `length_unit: "m"`, echoed query, and unrounded authored/rest length(s); pairs include signed `mismatch_b_minus_a_m` |
 | `project_create` | `output` | Saved `output` and `revision`; existing output paths are refused |
 | `project_execute` | `input`, `output`, `commands` | Saved paths, new `revision`, and `commands_applied` |
-| `project_import_obj` | `input`, `output`, `obj`, `metres_per_unit` | New revision, counts of imported patterns, holes and materials, the resolved companion `material_library` path (null when absent), scale and supported scope |
+| `project_import_obj` | `input`, `output`, `obj`, `metres_per_unit`, optional `mode` | New revision, counts of imported patterns, holes and materials, the resolved companion `material_library` path (null when absent), scale and supported scope |
 | `project_import_svg` | `input`, `output`, `svg` | Added `pieces_imported` and `holes_imported`, new `revision`, `metres_per_user_unit`, preserved-origin convention and explicit construction-only `scope` |
 | `project_import_dxf` | `input`, `output`, `dxf` | Added `pieces_imported`, new `revision`, `metres_per_user_unit: 0.001`, preserved WCS X/Y origin/layout convention and explicit construction-only `scope` |
 | `project_export_svg` | `input`, `output` | Paths, `source_revision`, `kind: "authored_svg"`, `length_unit: "mm"`, pattern/SVG axis convention |
@@ -129,7 +129,7 @@ are rejected. The tool names and arguments are:
 Results include a text block containing the same JSON for older clients.
 Inspection returns authoritative authored state without building a mesh.
 Its `project` uses the native writer's JSON number representation, including f32
-display colors and f64 authored values. For v6 and v7 files written by this version,
+display colors and f64 authored values. For v6 through v8 files written by this version,
 parsed inspection and saved-project values agree exactly without changing stored
 numeric precision. Legacy-file inspection returns the migrated current model.
 The GLB and JSON glTF tools export the same static rest surface with named
@@ -327,14 +327,16 @@ holed project before staging; OBJ exports its physical surface with the openings
 the shared schema has 33 nontransaction alternatives; the core enum includes
 Transaction as its 34th variant. No CLI verb or MCP tool was added.
 
-`import-obj INPUT OUTPUT GARMENT.obj METRES_PER_UNIT` and MCP `project_import_obj`
-trace supported planar triangular garment islands into editable straight boundaries
-and holes. Supply the physical scale explicitly. Use `1` for OBJ coordinates in
-metres or `0.001` for millimetres. UVs must fit each island's flat 3D shape at
-a uniform scale. Each panel keeps its rigid 3D placement. A companion MTL
-supplies fabric names and diffuse colors, with default cloth properties.
-The import reconstructs straight edges. Folded panels and texture maps are
-unsupported, and OBJ carries no editable sewing or simulation history.
+`import-obj INPUT OUTPUT GARMENT.obj METRES_PER_UNIT [flat|posed]` and MCP `project_import_obj`
+trace triangular garment UV islands into editable straight boundaries and holes.
+Use `1` for OBJ coordinates in metres or `0.001` for millimetres. The default
+`flat` mode requires a rigid uniformly scaled UV-to-XYZ mapping. In `posed`
+mode each chart takes its physical area from the 3D surface and the panel keeps
+the source triangles for simulation initialization and export. The MCP file
+tool and inline command both accept optional `mode` as `flat` or `posed`.
+The `clear_piece_pose` command takes a `piece` ID and returns that panel to
+ordinary meshing. A companion MTL supplies fabric names and diffuse colors.
+[Scale, editing and fixture comparison](posed-obj.md).
 
 The file tools read up to 8 MiB of UTF-8 OBJ and 256 KiB of UTF-8 MTL. An OBJ
 can contain up to 100,000 rows each of vertices, UVs and normals, 200,000 triangles
@@ -476,7 +478,7 @@ with reference numerical/rounding/selection behavior still unobserved.
 lengths. Legacy seam maps retain their original normalized-t meaning. Different
 pieces/disconnected spans are supported; gaps never add sewing length. Group
 identity and map survive supported split/join/remesh operations. The native
-writer uses v7 when the project has an authored finish, and v6 otherwise. Strict v1/v2/v3/v4/v5 readers preserve legacy data and semantics.
+writer uses v8 when a panel has an imported pose, v7 when the project has an authored finish, and v6 otherwise. Strict v1/v2/v3/v4/v5 readers preserve legacy data and semantics.
 
 `add_sewing_by_length` creates one ordinary sewing group with one interval per
 side and the normalized physical arc-length map `[[0,0],[1,1]]`:
