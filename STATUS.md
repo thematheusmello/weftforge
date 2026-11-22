@@ -1,11 +1,17 @@
-# Apple Silicon package notice catalog — 22 November 2026
+# Apple Silicon package notices — 22 November 2026
 
-The catalog pairs the full Apache-2.0 text with the release declarations for
-dispatch2 0.3.1 and six objc2 framework crates at 0.3.2. The four MIT-only
-objc2-family exceptions retain their release declarations. The manifest also
-keeps dispatch 0.2.0 open. The next check packages the studio offline and
-reads each notice from the portable directory and the standalone app.
-[Acceptance scenario](parity/scenarios/APP-APPLE-APACHE-NOTICES-001.json).
+The offline package from `3cb8b515` contains 177 emitted Cargo crates.
+Seven retain their pinned release declaration and gain its linked 11,358-byte
+Apache-2.0 text. The readback verified every one of the 298 Cargo notice files
+and five project notices in both the portable directory and standalone app.
+Both executables match the preceding offline build byte for byte.
+[Package manifests, provenance and independent readback](parity/reports/WF-20261122-APPLE-APACHE-NOTICES-001.json).
+
+Five entries remain open. Resolve the historical MIT attribution for block2
+0.6.2, objc2 0.6.5, objc2-encode 4.1.0 and objc2-foundation 0.3.2. Locate a
+release-attributable MIT notice for dispatch 0.2.0. The pinned objc2
+declarations preserve upstream's SDK qualification. Signing and system-library
+review remain separate release work.
 
 # A Harbor shirt from an empty studio — 22 November 2026
 

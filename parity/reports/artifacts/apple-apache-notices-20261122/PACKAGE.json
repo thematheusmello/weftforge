@@ -1,0 +1,40 @@
+{
+  "baseline_commit": "4c379745bf776202a6cef2d4666a5b93289150c1",
+  "baseline_tree": "c4aa4249ca20c00b4843ca6f93651eba8885c7e8",
+  "tested_commit": "3cb8b515ec507dfc289549a3c963be63705ee863",
+  "tested_tree": "ac373d90940fb6566ab24442647d29e529fc5dba",
+  "platform": "Apple Silicon, macOS 27.2 (26B123), aarch64-apple-darwin",
+  "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+  "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+  "package_command": "CARGO_NET_OFFLINE=true cargo xtask package",
+  "baseline_exit": 0,
+  "tested_exit": 0,
+  "tested_clean_at_start": true,
+  "audit_command": "python3 check_package.py BEFORE.json target/package . <cargo-registry-cache>",
+  "audit_exit": 0,
+  "audit_utc": "2026-11-22T22:41:51Z",
+  "scope": "Unsigned local package and standalone app resource bytes. Signing, system libraries and upstream SDK terms require separate review.",
+  "selected_text_source": "https://www.apache.org/licenses/LICENSE-2.0",
+  "retained_declarations": [
+    "https://raw.githubusercontent.com/madsmtm/objc2/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b/LICENSE.md",
+    "https://raw.githubusercontent.com/madsmtm/objc2/8852b424193ca41602281b3d7540d7c8ed51e49a/LICENSE.md"
+  ],
+  "unresolved_evidence": {
+    "objc2_family": {
+      "release_trees": {
+        "objc2@0.6.5": "https://github.com/madsmtm/objc2/tree/d7d2fa23ceaa5e6096c923b081040e5d81b3b9df",
+        "block2@0.6.2": "https://github.com/madsmtm/objc2/tree/b4167b582b2f75f9a1be75495c41b765344fd03c",
+        "objc2-encode@4.1.0": "https://github.com/madsmtm/objc2/tree/8d214f5477365ffcbcbb7de058c86ed9a518efb7",
+        "objc2-foundation@0.3.2": "https://github.com/madsmtm/objc2/tree/7b1abfd750a2cacaea71d6a56ecfb83cb7de560b"
+      },
+      "finding": "Each pinned release tree contains the root declaration. One earlier tree credits Steven Sheldon in its MIT text. Upstream added three full texts in a different revision and subsequently left historical contributor attribution open. Current package entries retain each release declaration.",
+      "earlier_notice": "https://github.com/madsmtm/objc2/blob/757cd841d0293341dbefd9b99d7548dec244ffde/LICENSE.txt",
+      "newer_text_commit": "https://github.com/madsmtm/objc2/commit/ee9a7ada2131f5944b8750428e265c15632f2a19",
+      "upstream_discussion": "https://github.com/madsmtm/objc2/issues/826#issuecomment-6107377999"
+    },
+    "dispatch@0.2.0": {
+      "release_tree": "https://github.com/SSheldon/rust-dispatch/tree/82d6c7a5b75dc0c71c3f46f87bb6c16a476f7748",
+      "finding": "The Cargo release declares MIT. The release tree contains neither a dedicated license file nor permission text in its README."
+    }
+  }
+}
