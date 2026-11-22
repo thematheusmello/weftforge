@@ -35479,7 +35479,8 @@
         "parity/reports/WF-20261122-HARBOR-SHOULDER-001.json",
         "parity/reports/WF-20261122-HARBOR-SHOULDER-BALANCE-001.json",
         "parity/reports/WF-20261122-HARBOR-STUDIO-FIT-001.json",
-        "parity/reports/WF-20261122-HARBOR-SHOULDER-SUPPORT-001.json"
+        "parity/reports/WF-20261122-HARBOR-SHOULDER-SUPPORT-001.json",
+        "parity/reports/WF-20261122-INTEGRATED-HARBOR-FIT-001.json"
       ],
       "scenarios": [
         {
@@ -36340,6 +36341,25 @@
             "parity/reports/WF-20261122-HARBOR-SHOULDER-BALANCE-001.json": "cbcdf1a6d671e7c8b5bf6ccd1567f6563cd6906a608de612a0c797e2e78680c7"
           },
           "path": "parity/reports/WF-20261122-HARBOR-SHOULDER-SUPPORT-001.json"
+        },
+        {
+          "id": "WF-20261122-INTEGRATED-HARBOR-FIT-001",
+          "commit": "1497cb3e4537a72c7980fb4d4345b6e8417cb1b6",
+          "timestamp": "2026-11-22T23:04:19.592394Z",
+          "platform": "Apple Silicon macOS, integrated unsigned release CLI",
+          "artifact_hashes": {
+            "parity/reports/artifacts/integrated-harbor-fit-20261122/check_trajectories.py": "42d8c5fb87eee745a636abe7c36337467b04a63dde9ee91ce6e6291d63942fb0",
+            "parity/reports/artifacts/integrated-harbor-fit-20261122/fit-replay-protocol.json": "40d9cf9e13a53d13c31d19fdcf62d88ebc9a85f10045a59a2e82c5bdb806a08a",
+            "parity/reports/artifacts/integrated-harbor-fit-20261122/fit-replay-results.json": "bf610dc751f081cb21b8cb7ca2b51a35272397d64f1cef02baec04e7c4dd83bf",
+            "parity/reports/artifacts/integrated-harbor-fit-20261122/original-fit.json": "a1ce354fdbaffaa6e636cea81e761504dc34f8cf49a165fce58ae1d3f389e123",
+            "parity/reports/artifacts/integrated-harbor-fit-20261122/reopened-fit.json": "715df8a9a2fc1ebbc2a61fb08daf9a2a09a6d5418c52290797be2ed938b24070",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor authored.weftforge": "3c1c65061d1dab686d5d7c9dd54062c54006a2a779b2c38bc4793d6a25cc16ec",
+            "parity/reports/artifacts/native-harbor-studio-20261122/Harbor 670.weftforge": "5336fce20c26adab96a38c2dc67ed57c36c741f0e5c88257ec9cc4e524aa620a",
+            "parity/reports/artifacts/native-harbor-studio-20261122/original-trajectory.json": "f4857cd1dfeb452d1bd3d37a933b7a5ec598cd6efb593a42c242a3cbbd73620d",
+            "parity/reports/artifacts/native-harbor-studio-20261122/reopened-trajectory.json": "fc6c4ede061a8dd839bc669c64efd5d769eeb22a794aa11579bb4e1ce925cdc1",
+            "parity/reports/artifacts/native-harbor-studio-20261122/trajectory-protocol.json": "8fcd56bace73c6b63751950276c43531600e697b9cb7ef4be99fb61587ad89ac"
+          },
+          "path": "parity/reports/WF-20261122-INTEGRATED-HARBOR-FIT-001.json"
         }
       ],
       "known_gaps": [
@@ -36356,7 +36376,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/FIT-003-global-strain-map.md": "c51b56330f6d6b6f2a343fe176d4a65b18566aa386b51aa48d43eae36fbd0fd5"
       }
@@ -49408,7 +49428,8 @@
       ],
       "reference_observation_status": "unobserved",
       "evidence_ids": [
-        "parity/reports/WF-20261122-NATIVE-TIMELINE-001.json"
+        "parity/reports/WF-20261122-NATIVE-TIMELINE-001.json",
+        "parity/reports/WF-20261122-DEBIAN-WAYLAND-MINIMUM-TIMELINE-001.json"
       ],
       "scenarios": [
         {
@@ -49428,6 +49449,15 @@
           },
           "initial_conditions": "Revision 3 of the editable, posed 240 by 360 mm swatch. Six vertices and four triangles. Default step settings.",
           "expected_outcomes": "Record the initial surface and three steps, retain all four samples through a finish edit, scrub and export the selected frame, continue the latest solver state and invalidate the take on a physical edit. OBJ component error at most 1 nm; glTF at most 1 micrometre."
+        },
+        {
+          "id": "ANIM-DEBIAN-WAYLAND-MINIMUM-TIMELINE-001",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-timeline-20261122/Swatch.weftforge": "7cb72685b3939d344f23b9049b8661a38db3dd5d8ba3fa458b5ca6702d6b5d93"
+          },
+          "initial_conditions": "Native Debian arm64 Wayland, actual 1000 \u00d7 650 studio window at scale 1, default timestep, revision 3 of the posed bent swatch.",
+          "expected_outcomes": "Four frames after three Steps. Left on the last frame selects frame 3 at 0.033333 seconds, with latest solver time still 0.050000 seconds. Resizing to 0.370 m clears the take and the saved height is within 0.000001 m.",
+          "path": "parity/scenarios/ANIM-DEBIAN-WAYLAND-MINIMUM-TIMELINE-001.json"
         }
       ],
       "comparison_criteria": {
@@ -49481,6 +49511,32 @@
             "parity/scenarios/ANIM-SESSION-TIMELINE-001.json": "abb3f5a49f9d23d3d892c68e023f6d5937bea4a350b80b3dab42025fa49c8daa"
           },
           "path": "parity/reports/WF-20261122-NATIVE-TIMELINE-001.json"
+        },
+        {
+          "id": "WF-20261122-DEBIAN-WAYLAND-MINIMUM-TIMELINE-001",
+          "commit": "1497cb3e4537a72c7980fb4d4345b6e8417cb1b6",
+          "timestamp": "2026-11-22T23:03:38Z",
+          "platform": "Debian 13 arm64, native Sway Wayland at 1000 \u00d7 650, Mesa lavapipe; separate Apple Silicon package receipt",
+          "artifact_hashes": {
+            "parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/BUILD-SOURCE-SHA256SUMS": "4030c3a0da8bf27baefa1da6c6273d467f961125a2b051c3cee052776c4f00f1",
+            "parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/CLEANUP.json": "2e9974afcd5f82ae7a95aafd484a540cf0ea703bd1f89bfad15155fd01c8d396",
+            "parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/MACOS-COMPANION.json": "13927522f6ab6fa7b60c936916f42fd9dcad01b27fd3c42c19580232341da106",
+            "parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/PACKAGE-READBACK.json": "aff7a0cd1859be858d6aa7c5c8eaa2e6716b7908803e59644d7fd20fe2fdcf66",
+            "parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/PACKAGE-SHA256SUMS": "f16bdee9f061dc8c424c3f02b2742027d359ba1ea6b1abb500c5b3f1b13f6eeb",
+            "parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/README.md": "1c13aaa4bd717f7aced548f567946f12f7ad58e21b590256ae4cec1e6d38a03e",
+            "parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/RUN.json": "022eea10763791863a5772bb2b263de55fc3f8a5975e6c076f0cd867988bea47",
+            "parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/after-keyboard.png": "57bebb86d88b00c4f291707676a862368400a86dc8465aff6af2d2b114134916",
+            "parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/before-keyboard.png": "cef8aab1eaf3b904682c0f5d3a68f0ec53370facb09addd1f4882a04105729f5",
+            "parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/check_minimum.py": "615105e2a1cf2a5f3de1c61c8d38694b4b686652efd9125f281f7f3ea018ce3f",
+            "parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/height-edit.png": "0a765dba6754733f1da02515835feb6f691bf34793f23f92641ae1dc7f274eac",
+            "parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/manifest.json": "12e1c810ee3ee4fd94dc43558bf8ef9c4f1e11aaa3154ab8f801d02ef845a15a",
+            "parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/protocol.txt": "ea5fb0b2e21d863fbd9ce883cb1823e9a25f307bb2ccdd06faea9a4f5dced643",
+            "parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/recording-four.png": "3af8ef86b85ce3b157bf37c30d1a6d77e1b0cb4c9565966c96bb0c102dc15940",
+            "parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/resized.weftforge": "0fcf5d4d30e2ba6c182df70a7556da813151bc8d7318ad492e8f9f2acd2b65bc",
+            "parity/reports/artifacts/native-timeline-20261122/Swatch.weftforge": "7cb72685b3939d344f23b9049b8661a38db3dd5d8ba3fa458b5ca6702d6b5d93",
+            "parity/scenarios/ANIM-DEBIAN-WAYLAND-MINIMUM-TIMELINE-001.json": "cc450508265622a833ccbf5756920261f20945a6aed32f96a78b6b363d289e7a"
+          },
+          "path": "parity/reports/WF-20261122-DEBIAN-WAYLAND-MINIMUM-TIMELINE-001.json"
         }
       ],
       "known_gaps": [

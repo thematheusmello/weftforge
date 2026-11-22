@@ -1,3 +1,29 @@
+# Minimum-size packaged simulation timeline — 22 November 2026
+
+The offline Debian arm64 package from `1497cb3e` recorded four frames of the
+posed bent swatch in a 1000 × 650 Sway window. One Left key selected frame 3
+at 0.033333 s while the inspector showed the latest solver at 0.050000 s.
+Changing the selected height cleared the take. The v8 save read back at
+0.370 m, the application exited normally and the case VM stopped. The separate
+Mac receipt on the same source covers one recorded Harbor step and the bent
+swatch's fourth-step export. ANIM-002 remains partial. Next, add range playback
+and exercise an animated avatar with an independently readable cache.
+[Four native captures and replay](parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/README.md) ·
+[Companion Mac smoke](parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/MACOS-COMPANION.json).
+
+# Integrated Harbor fit replay — 22 November 2026
+
+The packaged `1497cb3e` CLI evaluated all 181 states of each 400 N/m
+native-authored shirt. Both crossed 15% strain at state 28. Every recorded
+physical field matched the earlier run, including the failure diagnostics and
+final state. Gate 1 remains open. The 520 N/m friction experiment below narrows
+the next measurement to sliding traction under the observed loads. Published
+manuals identify separate avatar static and kinetic friction controls. The
+installed probe ended at Autosave Recovery, leaving the pair-specific inputs
+and slip threshold unmeasured.
+[Reference documentation and probe limits](spec/features/SIM-003-avatar-friction-controls.md).
+[Current packaged fit results](parity/reports/WF-20261122-INTEGRATED-HARBOR-FIT-001.json).
+
 # Harbor shoulder sliding contact — 22 November 2026
 
 The 14-node equilibrium on the saved frame-28 predictor places all loaded
@@ -24,8 +50,8 @@ preserved the take. The embedded glTF retained the selected frame within
 the latest solver time. A subsequent height edit saved the swatch at 370 mm.
 
 The session keeps up to 600 samples and 64 MiB of positions. The packaged test
-captured the 1640 × 1000 window. Minimum-size timeline coverage currently comes
-from the widget regression. Next, record a moving avatar, add range playback
+captured the 1640 × 1000 Mac window. The Debian case above covers the native
+1000 × 650 window. Next, record a moving avatar, add range playback
 and verify persisted frame timing with an independent reader.
 [Native run and replay](parity/reports/WF-20261122-NATIVE-TIMELINE-001.json) ·
 [Studio controls](docs/studio-preview.md#recording-and-scrubbing-a-garment).
