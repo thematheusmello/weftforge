@@ -64689,6 +64689,13 @@
           },
           "initial_conditions": "An empty unsigned studio on Debian ARM64 in a Sway Wayland session. The two-slot pocket is in millimetres and the two-fabric Harbor shirt is in metres.",
           "expected_outcomes": "Undo restores the empty document. Redo and reopen preserve editable construction. Pocket dimensions are 0.240 \u00d7 0.360 m, area is 0.0756 m\u00b2 and three boundary loops total 1.74 m. The two Harbor panels retain their source positions, colors and 0.5923 m\u00b2 each."
+        },
+        {
+          "id": "APP-APPLE-APACHE-NOTICES-001",
+          "path": "parity/scenarios/APP-APPLE-APACHE-NOTICES-001.json",
+          "fixture_hashes": {},
+          "initial_conditions": "An unsigned aarch64-apple-darwin package from the preceding catalog has twelve unresolved Cargo notices. Cargo has all locked archives in its cache.",
+          "expected_outcomes": "Exactly seven newly resolved crates retain their pinned declarations and gain the 11,358-byte Apache-2.0 text linked from those declarations. Five MIT-only entries remain open. Each emitted notice verifies by size and SHA-256 in both copies."
         }
       ],
       "comparison_criteria": {

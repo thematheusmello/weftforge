@@ -1,3 +1,12 @@
+# Apple Silicon package notice catalog — 22 November 2026
+
+The catalog pairs the full Apache-2.0 text with the release declarations for
+dispatch2 0.3.1 and six objc2 framework crates at 0.3.2. The four MIT-only
+objc2-family exceptions retain their release declarations. The manifest also
+keeps dispatch 0.2.0 open. The next check packages the studio offline and
+reads each notice from the portable directory and the standalone app.
+[Acceptance scenario](parity/scenarios/APP-APPLE-APACHE-NOTICES-001.json).
+
 # A Harbor shirt from an empty studio — 22 November 2026
 
 On native Apple Silicon build `4b15c2ec`, the two 14-point patterns, eight
