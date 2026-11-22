@@ -1,3 +1,19 @@
+# Harbor shoulder sliding contact — 22 November 2026
+
+The 14-node equilibrium on the saved frame-28 predictor places all loaded
+shoulder contacts in sliding friction. Across the two 520 N/m fixtures, normal
+loads span 0.809–2.086 N. Removing tangential traction while retaining normal
+support drops the front warp from 15.220% to 14.290% in the original shirt
+and from 15.844% to 14.829% in the extended shirt. The exact spherical slip
+direction reproduces the recorded traction within 1.1 × 10⁻¹³ N.
+[Inputs, returned positions, independent force balance and limitations](parity/reports/artifacts/harbor-shoulder-support-20261122/README.md).
+
+The full fit still fails. Before changing the nominal 0.4 coefficient,
+measure the tangential/normal force ratio for an identified fabric and avatar
+surface at 0.81–2.09 N and 0.19–0.69 m/s, or obtain a controlled reference
+slip measurement. The saved-state runs have completed. The earlier registered
+181-state verdicts still apply.
+
 # Native simulation timeline — 22 November 2026
 
 On build `6fc11757`, the packaged Mac studio recorded a bent swatch, stepped
