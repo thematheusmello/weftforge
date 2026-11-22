@@ -1,5 +1,15 @@
 # WeftForge current-source addendum
 
+## Recording and scrubbing garment simulation
+
+Source `6fc1175739afa212fe69dbe33ac2fa1b9296f652` adds `animation-editor` coverage for
+recording, frame/time selection, a separate live solver state, cache invalidation
+and static mesh export in the bottom transport. The historical catalogue and
+transport commands remain traceable to their original sources. Recorded vertex
+positions have a 64 MiB limit and 600-frame ceiling. Avatar motion, keyframes,
+on-disk caches and animation export remain open.
+
+
 ## Posed OBJ garment import
 
 Source `42094ed44a4cce49f62304dfdf997f153d57a23f` adds an explicit posed mode to `obj-interchange`. Each chart

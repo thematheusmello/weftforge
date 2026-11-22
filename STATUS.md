@@ -1,3 +1,18 @@
+# Recording a garment simulation — 22 November 2026
+
+The bottom transport records garment positions from accepted simulation steps.
+Scrubbing by frame or time selects the 3D view, strain map and static export.
+Live continuation keeps the latest solver state. Color and finish edits preserve
+the take. Physical edits, Reset and replacing the document clear it. The source
+limits each take to 600 frames and 64 MiB of vertex positions.
+
+The native-event regression recorded a bent swatch, selected an earlier frame,
+read back its OBJ, continued from the latest solver time and checked both edit
+paths. An independent packaged studio case and reference comparison remain
+pending. Next, qualify the recorded take at the default and minimum window sizes.
+[Studio controls](docs/studio-preview.md#recording-and-scrubbing-a-garment) ·
+[Implementation and regression](apps/weftforge/src/timeline.rs).
+
 # Posed OBJ garment import — 22 November 2026
 
 The studio, CLI and MCP offer an explicit Posed mode after source units are

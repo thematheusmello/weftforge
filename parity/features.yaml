@@ -49389,17 +49389,21 @@
         "ANIM-001",
         "SIM-005"
       ],
-      "implementation_locations": [],
+      "implementation_locations": [
+        "apps/weftforge/src/timeline.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge/src/strain_map.rs"
+      ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/5"
       ],
       "prs": [],
-      "implementation_status": "planned",
+      "implementation_status": "partial",
       "verification_status": "not_run",
       "verification_runs": [],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established.",
-        "No timeline, cache persistence or animation implemented."
+        "Full reference contract and runtime comparison remain open.",
+        "The studio records garment positions in memory and exports a selected static surface. Keyframes, range playback, persistent caches, avatar motion and animation interchange remain open."
       ],
       "contradictions": [],
       "blockers": [
