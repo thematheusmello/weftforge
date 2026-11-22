@@ -3534,6 +3534,7 @@ impl Studio {
             || self.drag_start.is_some()
             || ((self.tool == Tool::Transform
                 || self.tool == Tool::Select
+                || self.tool == Tool::Sew
                 || self.tool == Tool::Rectangle
                 || self.tool == Tool::InternalLine
                 || self.tool == Tool::CutPiece)
@@ -3545,7 +3546,7 @@ impl Studio {
                     .filter_map(|id| ui.ctx().read_response(id))
                     .any(|response| {
                         ui.input(|input| {
-                            matches!(self.tool, Tool::Select | Tool::Rectangle)
+                            matches!(self.tool, Tool::Select | Tool::Rectangle | Tool::Sew)
                                 .then(|| {
                                     input.raw.events.iter().find_map(|event| match event {
                                         egui::Event::PointerButton {
@@ -18458,12 +18459,15 @@ mod tests {
         fn segment_sewing_retries_second_edge_and_commits_visible_ranges_once() {
             let ctx = egui::Context::default();
             let (mut app, curves) = fixture(false);
+            ctx.enable_accesskit();
+            app.select(&ctx, Some(app.editor.project.pieces[0].id));
             app.set_tool(Tool::Sew);
             app.intervals = [[0.1, 0.8], [0.2, 0.9]];
             app.reversed = true;
             let original = app.editor.project.clone();
             frame(&ctx, &mut app, vec![]);
             frame(&ctx, &mut app, vec![]);
+            stage_inspector(&ctx, &mut app);
             boundary_click(&ctx, &mut app, curves[0]);
             boundary_click(&ctx, &mut app, curves[0]);
             assert!(app.message.contains("distinct curves"));
@@ -18471,6 +18475,8 @@ mod tests {
             assert_eq!(app.editor.project, original);
             assert!(!app.editor.can_undo());
             boundary_click(&ctx, &mut app, curves[1]);
+            assert_eq!(app.editor.project.resolution, 0.08);
+            assert_eq!(app.editor.project.pieces[0].grain_angle, 0.25);
             let seam = &app.editor.project.seams[0];
             assert_eq!((seam.a.curve, seam.a.t0, seam.a.t1), (curves[0], 0.1, 0.8));
             assert_eq!((seam.b.curve, seam.b.t0, seam.b.t1), (curves[1], 0.9, 0.2));

@@ -3,9 +3,8 @@
 **Sew edges** marks the first and second intervals A and B as the pointer
 moves over the pattern. The arrow follows the interval shown by the Sewing
 inspector, including a reversed B. Clicking the first boundary again identifies
-the invalid second edge and keeps A available for a retry. A successful pair records one Undo entry.
-A separate focus test found that clicking an edge could commit a pending
-property draft before a refused seam. Correct that focus path and rerun it. Keyboard focus on a tool
+the invalid second edge and keeps A available for a retry. A successful pair
+and pending inspector edits share one Undo entry. Keyboard focus on a tool
 has a white outline and the active tool retains its blue fill.
 
 The native pointer regression picks the same curve twice, checks the original
