@@ -2281,6 +2281,14 @@ impl Studio {
                 }
                 Ok(JobOutput::Simulation(state, capture)) if can_accept => {
                     self.timeline.accept(capture, revision);
+                    if let Some(batch) = job.batch {
+                        self.timeline.accepted_endpoint(
+                            job.revision,
+                            state.simulation_time(),
+                            batch.settings.dt,
+                            state.positions(),
+                        );
+                    }
                     self.last_stage = job.batch.map_or("Manual simulation", |batch| batch.stage);
                     self.message = format!(
                         "{} complete · {:.3} s · {:.1} ms/step · assembly remaining {:.4} m",
@@ -3359,6 +3367,15 @@ impl Studio {
             } else {
                 self.last_stage.into()
             };
+            let stage = if self
+                .timeline
+                .selected(self.editor.project.revision)
+                .is_some()
+            {
+                format!("Latest solver · {stage}")
+            } else {
+                stage
+            };
             ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
                 let (response, menu) = egui::menu::MenuButton::new("Task details").ui(ui, |ui| {
                     ui.set_width(420.0);
@@ -4294,7 +4311,15 @@ impl Studio {
             "Cloth total mass (kg) {:.12}",
             cloth.masses().iter().sum::<f64>()
         ));
-        ui.small("Accepted cloth state for this revision.");
+        if self
+            .timeline
+            .selected(self.editor.project.revision)
+            .is_some()
+        {
+            ui.strong("Latest solver state");
+        } else {
+            ui.small("Accepted cloth state for this revision.");
+        }
         let diagnostics = cloth.diagnostics();
         ui.label(format!("Time {:.3} s\nAssembly remaining {:.4} m\nPeak material strain {:.2}%\nSeam gap {:.4} m\nContact error {:.4} m\nInitial intersections {}\nInitial overlap corrections {}\nUncertain capsule pairs {}",cloth.simulation_time(),diagnostics.seam_assembly_remaining,100.*diagnostics.max_stretch_error,diagnostics.max_seam_error,diagnostics.max_contact_error,diagnostics.initial_intersections,diagnostics.initial_contact_recovery_projections,diagnostics.capsule_surface_uncertain_pairs)).on_hover_text("Counts applied correction projections, including repeated visits. Initial placement repairs are kinematic and contribute to velocity. Simulation reset clears the count.");
         if let Some(peak) = diagnostics.peak_strain

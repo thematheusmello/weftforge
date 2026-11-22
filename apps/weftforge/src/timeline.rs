@@ -108,6 +108,28 @@ impl Timeline {
         }
     }
 
+    // Recording can be armed after a batch was dispatched. Its final state
+    // first becomes observable when the entire batch is accepted.
+    pub fn accepted_endpoint(
+        &mut self,
+        source_revision: u64,
+        time: f64,
+        dt: f64,
+        positions: &[[f64; 3]],
+    ) {
+        if self.recording && self.frames.last().is_some_and(|last| last.time < time) {
+            self.frames.push(Frame {
+                source_revision,
+                time,
+                dt: Some(dt),
+                positions: positions.into(),
+            });
+            if self.frames.len() == self.limit {
+                self.stop();
+            }
+        }
+    }
+
     pub fn selected(&self, revision: u64) -> Option<((u64, usize), &Frame)> {
         if self.revision != Some(revision) {
             return None;
@@ -185,6 +207,16 @@ impl Studio {
         }
         self.timeline.stop();
         self.timeline.selection = Some(index);
+        let live_time = self
+            .cloth
+            .as_ref()
+            .map_or(0., |state| state.simulation_time());
+        self.message = format!(
+            "Viewing frame {} at {:.6} s · latest solver {:.6} s",
+            index + 1,
+            self.timeline.frames[index].time,
+            live_time
+        );
         self.workspace_capture.cancel();
     }
 
@@ -244,7 +276,11 @@ impl Studio {
             if self.timeline.full() {
                 ui.label(format!("Recording limit reached · {len} frames"));
             } else {
-                ui.label(format!("{len} recorded"));
+                ui.label(if self.timeline.recording {
+                    format!("Recording · {len} frames")
+                } else {
+                    format!("{len} recorded")
+                });
             }
         });
     }
@@ -277,6 +313,7 @@ mod tests {
     fn native_record_scrub_export_and_resume_preserve_the_live_pose() {
         let ctx = egui::Context::default();
         ctx.enable_accesskit();
+        crate::studio_style(&ctx);
         let mut app = Studio::empty();
         app.session_autosave = None;
         let obj = include_bytes!("../../../fixtures/posed-obj/Bent swatch.obj");
@@ -317,17 +354,64 @@ mod tests {
             assert!((f.time - i as f64 * batch.settings.dt).abs() < 1e-12);
             assert_eq!(f.dt, (i != 0).then_some(batch.settings.dt));
         }
-        let out = frame(&ctx, &mut app, 1000., vec![]);
+        frame(&ctx, &mut app, 1000., vec![]);
         assert!(app.timeline.recording && app.timeline.selection.is_none());
-        let slider = out
-            .platform_output
-            .accesskit_update
-            .unwrap()
-            .nodes
-            .into_iter()
+        let min_frame = |app: &mut Studio, events| {
+            ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(egui::Rect::from_min_size(
+                        egui::Pos2::ZERO,
+                        egui::vec2(1000., 650.),
+                    )),
+                    events,
+                    ..Default::default()
+                },
+                |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+            )
+        };
+        min_frame(&mut app, vec![]);
+        let out = min_frame(&mut app, vec![]);
+        let nodes = out.platform_output.accesskit_update.unwrap().nodes;
+        for label in [
+            "Stop recording",
+            "Timeline frame",
+            "Timeline time (s)",
+            "Recording · 4 frames",
+            "Clear recording",
+            "Live",
+        ] {
+            let node = nodes
+                .iter()
+                .find(|(_, n)| n.label() == Some(label) || n.value() == Some(label))
+                .unwrap_or_else(|| panic!("Missing minimum-window control {label}"));
+            let bounds = node.1.bounds().unwrap();
+            assert!(
+                bounds.x0 >= 0.
+                    && bounds.x1 <= 1000.
+                    && bounds.y0 >= 0.
+                    && bounds.y1 <= 650.
+                    && bounds.x1 > bounds.x0
+                    && bounds.y1 > bounds.y0,
+                "{label} {bounds:?}"
+            );
+        }
+        let slider = nodes
+            .iter()
             .find(|(_, n)| n.role() == Role::Slider && n.max_numeric_value() == Some(4.))
             .unwrap()
             .0;
+        min_frame(&mut app, vec![action(slider, Action::Focus, None)]);
+        min_frame(
+            &mut app,
+            vec![egui::Event::Key {
+                key: egui::Key::ArrowLeft,
+                physical_key: None,
+                pressed: true,
+                repeat: false,
+                modifiers: egui::Modifiers::NONE,
+            }],
+        );
+        assert_eq!(app.timeline.selection, Some(2));
         frame(
             &ctx,
             &mut app,
@@ -421,6 +505,12 @@ mod tests {
         t.accept(Some(capture), 8);
         assert_eq!(t.frames.len(), MAX_FRAMES);
         assert!(t.full() && !t.recording && t.capture().is_none());
+        t.clear();
+        t.begin(7, 0., &p);
+        t.accepted_endpoint(7, 0.5, 0.1, &p);
+        t.accepted_endpoint(7, 0.5, 0.1, &p);
+        assert_eq!(t.frames.len(), 2);
+        assert_eq!(t.frames[1].time, 0.5);
         t.clear();
         t.begin(8, 0., &vec![[0.; 3]; 100_000]);
         assert_eq!(t.limit, POSITION_BUDGET / (24 * 100_000));

@@ -4,9 +4,13 @@
 
 Click **Record** in the bottom transport, then **Step**, **Play**, **Assemble** or
 **Drape**. The first frame is the current arrangement. Each accepted step adds
-its garment positions, simulation time and step duration. **Stop recording**
+its garment positions, simulation time and step duration. If recording begins
+during a running batch, the first new frame is that batch’s accepted endpoint.
+Subsequent batches record each step. **Stop recording**
 keeps the take. Select a **Frame** or enter a **Time (s)** to pause and display
-the nearest recorded step. Static OBJ, selected OBJ, GLB and glTF exports use
+the nearest recorded step. The focused frame slider also accepts the left and
+right arrow keys. The Simulation inspector labels the latest solver diagnostics
+while a historical frame is displayed. Static OBJ, selected OBJ, GLB and glTF exports use
 that surface. **Live** returns to the latest accepted solver state. Starting
 simulation again continues from that state.
 
