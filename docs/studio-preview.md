@@ -20,6 +20,13 @@ edits retain the take. Physical edits, Reset and document replacement clear it.
 Native project files store editable construction. Frame data lasts for the current
 session.
 
+At the 1000 × 650 minimum window size on Debian Wayland, one Left key moved
+the slider from frame 4 to frame 3. The selected time was 0.033333 s. The
+Simulation inspector kept the latest solver time visible at 0.050000 s.
+[Native case and readback](../parity/reports/WF-20261122-DEBIAN-WAYLAND-MINIMUM-TIMELINE-001.json).
+
+![Frame 3 selected in the minimum-size Debian studio, with latest solver time in the inspector](../parity/reports/artifacts/debian-wayland-minimum-timeline-20261122/after-keyboard.png)
+
 ## Reopening an imported fold
 
 The left canvas shows the editable 240 × 360 mm panel. The right canvas shows the original six vertices in their imported 3D positions. The two halves of this swatch meet at 60°. Clearing the pose regenerated a flat mesh, and Undo restored the fold. [Readback and original fixtures](../parity/reports/WF-20261122-NATIVE-POSED-OBJ-001.json).

@@ -1,0 +1,8 @@
+Use the release package made from 1497cb3e on a native Debian arm64 Wayland session with one 1000 × 650 output at scale 1. Unset DISPLAY, disable Xwayland and verify the studio's actual window rectangle through Sway. Use the original six-vertex posed Swatch.weftforge from ANIM-SESSION-TIMELINE-001. Keep the source fixture unchanged.
+
+1. Open a working copy of the swatch in the studio. Record its starting pose. Invoke Step three times, waiting for acceptance each time. Stop recording. Expect four samples with the newest at 0.050000 seconds.
+2. Focus the frame slider at its last frame. Retain the native capture. Press the Left arrow once and retain a second capture before any further interaction. Expect frame 3 at 0.033333 seconds with the latest solver state still at 0.050000 seconds.
+3. Select the pattern and change its height from 0.360 to 0.370 metres. Retain the minimum-size capture with the new height and the empty timeline. Save and independently read the authored height from the document points within 0.000001 metres.
+4. Close the studio and Wayland session. Keep cleanup observations separate from the state captures.
+
+This case exercises the minimum-size Linux workflow. Range playback, animated avatars, temporal cache interchange and reference behavior are outside the case.

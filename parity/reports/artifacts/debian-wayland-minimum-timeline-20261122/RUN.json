@@ -1,0 +1,92 @@
+{
+  "source": "1497cb3e4537a72c7980fb4d4345b6e8417cb1b6",
+  "platform": "Debian 13.7 arm64",
+  "kernel": "6.12.117+deb13-cloud-arm64",
+  "compositor": "1.10.1",
+  "output": {
+    "name": "HEADLESS-1",
+    "current_mode": {
+      "width": 1000,
+      "height": 650,
+      "refresh": 60000
+    },
+    "scale": 1.0
+  },
+  "renderer": "Mesa lavapipe Vulkan; wlroots headless pixman output. Xwayland disabled.",
+  "network": "Package build and studio ran in network namespaces containing only loopback.",
+  "build": {
+    "source": "1497cb3e4537a72c7980fb4d4345b6e8417cb1b6",
+    "status": 0,
+    "start": "2026-11-22T22:57:20.736087+00:00",
+    "end": "2026-11-22T23:00:16.801017+00:00"
+  },
+  "studio_sha256": "bc500350ef32720834ec4d3a385a1a734cbdd305355f299d00678af7b419594d",
+  "package_archive_sha256": "1ba7db2deb115705d0cf72eb9415c65463b1de00ba2c2029f678aaf7ac9963dd",
+  "source_inputs_sha256": "4030c3a0da8bf27baefa1da6c6273d467f961125a2b051c3cee052776c4f00f1",
+  "fixture_sha256": "7cb72685b3939d344f23b9049b8661a38db3dd5d8ba3fa458b5ca6702d6b5d93",
+  "retained_screens": {
+    "recording-four": {
+      "filename": "recording-four.png",
+      "sha256": "3af8ef86b85ce3b157bf37c30d1a6d77e1b0cb4c9565966c96bb0c102dc15940",
+      "window_id": 5,
+      "app_id": "WeftForge",
+      "studio_pid": 9751,
+      "focused": true,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 650
+      }
+    },
+    "before-keyboard": {
+      "filename": "before-keyboard.png",
+      "sha256": "cef8aab1eaf3b904682c0f5d3a68f0ec53370facb09addd1f4882a04105729f5",
+      "window_id": 5,
+      "app_id": "WeftForge",
+      "studio_pid": 9751,
+      "focused": true,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 650
+      }
+    },
+    "after-keyboard": {
+      "filename": "after-keyboard.png",
+      "sha256": "57bebb86d88b00c4f291707676a862368400a86dc8465aff6af2d2b114134916",
+      "window_id": 5,
+      "app_id": "WeftForge",
+      "studio_pid": 9751,
+      "focused": true,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 650
+      }
+    },
+    "height-edit": {
+      "filename": "height-edit.png",
+      "sha256": "0a765dba6754733f1da02515835feb6f691bf34793f23f92641ae1dc7f274eac",
+      "window_id": 5,
+      "app_id": "WeftForge",
+      "studio_pid": 9751,
+      "focused": true,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 650
+      }
+    }
+  },
+  "native_steps": [
+    "Opened a working copy of the saved revision-3 bent swatch from the GTK portal. Framed both views, selected the pattern, and opened the Simulation inspector.",
+    "Clicked Record, then Step three times, waiting for acceptance. The recording indicator showed four frames. Stopped recording at frame 4.",
+    "Used Tab to reach the File menu. After 22 forward Tabs reached the frame number, Shift+Tab focused the frame slider. Captured its last frame. A single Left selected frame 3, showing 0.033333 s, while the Simulation inspector and status showed the latest solver at 0.050000 s.",
+    "In Pattern properties, typed 0.370 into the selected pattern height and pressed Return. The timeline disappeared, the rest arrangement returned, and the height read 0.370. Saved the working copy and independently read its four pattern points."
+  ],
+  "completed_utc": "2026-11-22T23:03:38Z"
+}
