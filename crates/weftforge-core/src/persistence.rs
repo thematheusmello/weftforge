@@ -36,7 +36,9 @@ pub(crate) struct ImportedContour {
     pub controls: Vec<Option<[[f64; 2]; 2]>>,
 }
 
+/// Baseline writer version for projects using the original matte fabric model.
 pub const FORMAT_VERSION: u32 = 6;
+pub const FABRIC_SURFACE_FORMAT_VERSION: u32 = 7;
 pub const MAX_PROJECT_BYTES: u64 = 16 * 1024 * 1024;
 static TEMP_ID: AtomicU64 = AtomicU64::new(0);
 
@@ -334,6 +336,7 @@ impl From<ProjectV1> for Project {
                     friction: material.friction,
                     collision_thickness: material.collision_thickness,
                     color: material.color,
+                    surface: None,
                 })
                 .collect(),
             seams: old.seams,
@@ -353,12 +356,21 @@ pub fn recovery_path(path: impl AsRef<Path>) -> PathBuf {
 }
 
 impl Project {
+    /// Write the oldest lossless current representation to preserve existing file interchange.
+    pub fn format_version(&self) -> u32 {
+        if self.materials.iter().any(|m| m.surface.is_some()) {
+            FABRIC_SURFACE_FORMAT_VERSION
+        } else {
+            FORMAT_VERSION
+        }
+    }
+
     pub fn to_json(&self) -> Result<Vec<u8>> {
         self.validate()?;
         self.validate_sewing_metrics(None)?;
         let bytes = serde_json::to_vec_pretty(&Document {
             format: "weftforge".into(),
-            version: FORMAT_VERSION,
+            version: self.format_version(),
             project: self.clone(),
         })?;
         ensure(
@@ -391,13 +403,20 @@ impl Project {
             5 => serde_json::from_slice::<Document<ProjectV5>>(bytes)?
                 .project
                 .into(),
-            FORMAT_VERSION => serde_json::from_slice::<Document>(bytes)?.project,
+            FORMAT_VERSION | FABRIC_SURFACE_FORMAT_VERSION => {
+                serde_json::from_slice::<Document>(bytes)?.project
+            }
             _ => {
                 return Err(Error(
                     "Unsupported WeftForge project version; no data was loaded".into(),
                 ));
             }
         };
+        ensure(
+            header.version >= FABRIC_SURFACE_FORMAT_VERSION
+                || project.materials.iter().all(|m| m.surface.is_none()),
+            "Fabric surface factors require WeftForge project version 7",
+        )?;
         project.validate()?;
         project.validate_sewing_metrics(None)?;
         Ok(project)

@@ -26247,7 +26247,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/PAT-006-straight-cut.md": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c"
       }
@@ -48679,7 +48679,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/MAT-001-active-pattern-fabric.md": "8d899c486edabfead74ad43fded8302ed346b77bf083e4a271df30a5fb9a8659"
       }
@@ -48695,8 +48695,20 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
-      "scenarios": [],
+      "evidence_ids": [
+        "parity/reports/WF-20261122-NATIVE-FABRIC-FINISH-001.json"
+      ],
+      "scenarios": [
+        {
+          "id": "MAT-FABRIC-FINISH-001",
+          "path": "parity/scenarios/MAT-FABRIC-FINISH-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d"
+          },
+          "initial_conditions": "Use the saved two-fabric Harbor fixture. The cotton front and terracotta back begin matte, with the stored eight seams and distinct material IDs.",
+          "expected_outcomes": "Only the edited fabric receives the two authored factors. The front exports metallic 0 and roughness 1. A saved finish uses project version 7. The original project and its construction stay intact. Geometry buffers for the same pose match byte for byte before and after the edit, and the simulated position buffer differs from rest."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -48708,22 +48720,54 @@
       "dependencies": [
         "MAT-001"
       ],
-      "implementation_locations": [],
+      "implementation_locations": [
+        "apps/weftforge/src/fabric_surface.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/src/mcp.rs",
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/persistence/gltf.rs"
+      ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/5"
       ],
       "prs": [],
-      "implementation_status": "planned",
+      "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261122-NATIVE-FABRIC-FINISH-001",
+          "commit": "aec4fcb1d4d1cf46fd2712fbffe98defd16fb24f",
+          "timestamp": "2026-11-22T21:52:46Z",
+          "platform": "Apple Silicon macOS native studio, debug CLI, stdio MCP regression and independent glTF byte readback",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fabric-finish-20261122/Accepted finish.png": "ee4e64e7acd1ab6b0c2e3872b86baf6bbce2273951c38cf08a549972b9f80233",
+            "parity/reports/artifacts/fabric-finish-20261122/After finish.gltf": "9b39ec25fab443696ca3719aca4ba5408b7418eb5eac30213ec884acd2a20a67",
+            "parity/reports/artifacts/fabric-finish-20261122/Before finish.gltf": "e1ef676e1d633ba36fc2a5a03b6d10f653f80da582d8b2f6d4a071a63969ae05",
+            "parity/reports/artifacts/fabric-finish-20261122/Harbor finish.weftforge": "33b58da2f3ccf9abca0d535282ed6e21eb8efb5077b8fcae083be74e2adfd974",
+            "parity/reports/artifacts/fabric-finish-20261122/Reopened finish.png": "b028e6e6e5615694f70dddd02ed61fc4126047d84cb3b965ab4aab13f08b755b",
+            "parity/reports/artifacts/fabric-finish-20261122/check_exports.py": "e482d56d34c0207c360a0a25d31c3dc837adc9fd3b8537c57bebb25f2eea2a58",
+            "parity/reports/artifacts/fabric-finish-20261122/cleanup.json": "3a3f13ce3c793bc43b5f47ea03235236306b6f7c25d1bf33f9d538204a214add",
+            "parity/reports/artifacts/fabric-finish-20261122/exports.json": "7d9023836c041de204b39ff221f0267e73b9955ae89fcb54fa084338b396e1f8",
+            "parity/reports/artifacts/fabric-finish-20261122/session.json": "641a26bd21c1d88017207aaca2cc8a327598bb84d811c1e4dfa8628711712be2",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/scenarios/MAT-FABRIC-FINISH-001.json": "b02168e800302e626777ace332987cf092d92b3d5722c7df610d99a7d7cd467f"
+          },
+          "path": "parity/reports/WF-20261122-NATIVE-FABRIC-FINISH-001.json"
+        }
+      ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Metallic and roughness factors are editable. Texture maps, UV transforms and reference comparison remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "missing"
+      "freshness": "current",
+      "contract_documents": {
+        "spec/features/MAT-002-fabric-finish.md": "3c3955ddb8c1d83e7825cc951debc0e163a5755efbdc128950a1f447f8d81ae2"
+      }
     },
     {
       "id": "MAT-003",
@@ -52694,7 +52738,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/FILE-003-editable-obj-import.md": "ba401cc1ea1794f3c100e39bf8cbec8564a04e5b65d17e7eb1a30dcb52d54a5e",
         "spec/features/FILE-003-obj-fabrics.md": "bb0aaba839269cf2599d8fece7cb9b8f6d68a809fe00d6b0bfdc0add10eea21f"
@@ -52723,7 +52767,8 @@
         "parity/reports/WF-20261119-DEBIAN-ARM64-GLTF-001.json",
         "parity/reports/WF-20261119-NATIVE-PATTERN-VISIBILITY-001.json",
         "parity/reports/WF-20261119-NATIVE-STANDARD-CAMERA-VIEWS-001.json",
-        "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
+        "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json",
+        "parity/reports/WF-20261122-NATIVE-FABRIC-FINISH-001.json"
       ],
       "scenarios": [
         {
@@ -52928,6 +52973,26 @@
             "parity/reports/artifacts/static-glb-20261119/harbor-stepped.glb": "34f72ae86b9c27ff845265d8ac936e3a7df254b4ca1bbf6042bf85038fe9c8f7"
           },
           "path": "parity/reports/WF-20261119-NATIVE-FRAME-GARMENT-001.json"
+        },
+        {
+          "id": "WF-20261122-NATIVE-FABRIC-FINISH-001",
+          "commit": "aec4fcb1d4d1cf46fd2712fbffe98defd16fb24f",
+          "timestamp": "2026-11-22T21:52:46Z",
+          "platform": "Apple Silicon macOS native studio, debug CLI, stdio MCP regression and independent glTF byte readback",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fabric-finish-20261122/Accepted finish.png": "ee4e64e7acd1ab6b0c2e3872b86baf6bbce2273951c38cf08a549972b9f80233",
+            "parity/reports/artifacts/fabric-finish-20261122/After finish.gltf": "9b39ec25fab443696ca3719aca4ba5408b7418eb5eac30213ec884acd2a20a67",
+            "parity/reports/artifacts/fabric-finish-20261122/Before finish.gltf": "e1ef676e1d633ba36fc2a5a03b6d10f653f80da582d8b2f6d4a071a63969ae05",
+            "parity/reports/artifacts/fabric-finish-20261122/Harbor finish.weftforge": "33b58da2f3ccf9abca0d535282ed6e21eb8efb5077b8fcae083be74e2adfd974",
+            "parity/reports/artifacts/fabric-finish-20261122/Reopened finish.png": "b028e6e6e5615694f70dddd02ed61fc4126047d84cb3b965ab4aab13f08b755b",
+            "parity/reports/artifacts/fabric-finish-20261122/check_exports.py": "e482d56d34c0207c360a0a25d31c3dc837adc9fd3b8537c57bebb25f2eea2a58",
+            "parity/reports/artifacts/fabric-finish-20261122/cleanup.json": "3a3f13ce3c793bc43b5f47ea03235236306b6f7c25d1bf33f9d538204a214add",
+            "parity/reports/artifacts/fabric-finish-20261122/exports.json": "7d9023836c041de204b39ff221f0267e73b9955ae89fcb54fa084338b396e1f8",
+            "parity/reports/artifacts/fabric-finish-20261122/session.json": "641a26bd21c1d88017207aaca2cc8a327598bb84d811c1e4dfa8628711712be2",
+            "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
+            "parity/scenarios/MAT-FABRIC-FINISH-001.json": "b02168e800302e626777ace332987cf092d92b3d5722c7df610d99a7d7cd467f"
+          },
+          "path": "parity/reports/WF-20261122-NATIVE-FABRIC-FINISH-001.json"
         }
       ],
       "known_gaps": [
@@ -52938,9 +53003,10 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
-        "spec/features/FILE-004-glb-static-export.md": "a30bb3e5576861f221737734fb0bd2f1806153d3aa52497f93061ea12bb0b8df"
+        "spec/features/FILE-004-glb-static-export.md": "a30bb3e5576861f221737734fb0bd2f1806153d3aa52497f93061ea12bb0b8df",
+        "spec/features/MAT-002-fabric-finish.md": "3c3955ddb8c1d83e7825cc951debc0e163a5755efbdc128950a1f447f8d81ae2"
       }
     },
     {
@@ -64668,7 +64734,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "APP-003",

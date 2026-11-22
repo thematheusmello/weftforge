@@ -1,3 +1,26 @@
+# Editing fabric finishes — 22 November 2026
+
+Select a pattern and open **Properties → Fabric** to edit the metallic and
+roughness factors of its assigned fabric. Each factor runs from 0 to 1.
+The CLI exposes `fabric-surface` and MCP exposes the same command through
+`project_execute`. An authored finish saves in v7. Original matte projects
+continue to save in v6.
+
+An independent readback of the two-fabric Harbor fixture found the edited
+back at metallic 0.625 and roughness 0.25 in both glTF containers. All
+654 vertices moved after one simulation step. At rest and after that step,
+the geometry buffers matched byte for byte across the finish edit.
+In the native studio, Undo and Redo restored the back finish on the advanced
+pose. Its 34,992-byte glTF buffer matched the native export made before the
+edit and the independently replayed CLI step. A fresh studio reopened both
+factors at revision 28. Both case windows closed.
+[Native case and source](parity/reports/WF-20261122-NATIVE-FABRIC-FINISH-001.json) ·
+[Readback](parity/reports/artifacts/fabric-finish-20261122/exports.json) ·
+[Reopened fabric](parity/reports/artifacts/fabric-finish-20261122/Reopened%20finish.png).
+
+Next, qualify fabric texture maps and UV transforms against reviewed fixtures.
+The Harbor shoulder quality failure and the complete shirt journey remain open.
+
 # Debian Wayland editable OBJ import — 20 November 2026
 
 The Debian 13.7 ARM64 studio from `a79bd6db` imported a millimetre pocket and

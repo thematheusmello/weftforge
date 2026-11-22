@@ -9,18 +9,19 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 
 | Format | Import/read | Export/write | Editable construction | Static/animated | Current limits |
 | --- | --- | --- | --- | --- | --- |
+| `.weftforge` v7 | Yes | When a fabric has an authored finish | v6 construction with per-fabric metallic and roughness | Static authoring | Optional surface factors in [0, 1], with the same 16 MiB limit |
 | `.weftforge` v6 | Yes | Yes | Patterns, disjoint editable straight cutouts, straight annotations, authored notches, grain, orthotropy, seams and ordered groups | Static authoring | Required holes/notches/ownership arrays, strict JSON, 16 MiB; no embedded external assets or saved simulation frames |
 | `.weftforge` v5 | Yes, explicit migration | No | Patterns, holes, annotations, grain, orthotropy, seams and ordered groups | Static authoring | Preserves all fields; adds empty notch arrays; saving writes v6 |
 | `.weftforge` v4 | Yes, explicit migration | No | Patterns, straight annotations, grain, orthotropy, seams and ordered groups | Static authoring | Preserves all fields; adds empty holes/notches arrays; saving writes v6 |
 | `.weftforge` v3 | Yes, explicit migration | No | Legacy patterns, grain, orthotropy, seams and ordered groups | Static authoring | Preserves all legacy fields; adds empty internal/holes/notches arrays; saving writes v6 |
 | `.weftforge` v2 | Yes, explicit migration | No | Legacy grain/orthotropy model and parameter-based seams | Static authoring | Fields and seam metrics preserved; saving writes v6 with empty group/internal/holes/notches lists |
 | `.weftforge` v1 | Yes, explicit migration | No | Original supported model | Static authoring | Old stretch maps to both axes; grain defaults to zero; saving writes v6; round-trip numeric decoding; tested native I/O subset |
-| `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1–v6 model | Static authoring | One prior saved document; no silent fallback |
-| `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1–v6 model | Static authoring | Dirty named documents only; no automatic recovery UI |
+| `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1–v7 model | Static authoring | One prior saved document; no silent fallback |
+| `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1–v7 model | Static authoring | Dirty named documents only; no automatic recovery UI |
 | OBJ | Flat triangulated garments with UVs and declared source units | Whole garment or selected panels | Imported straight boundaries, cutouts, rigid placements and diffuse fabric assignments | Static | Exports thin triangles in metres. Imported avatars, posed garments, textures and sewing reconstruction remain open. |
 | SVG | Additive import of closed patterns with polygonal cutouts | Yes, compound outlines with holes and physical notch markers | Editable boundaries, cutouts and names on import | Static 2D | Explicit mm and uniform viewBox; drawings with notch markers cannot yet be reimported; sewing/materials/internal lines/print tiling unsupported |
-| Binary glTF 2.0 (`.glb`) | No | Yes | Mesh only | Static | Named pieces, fabric tint, normals and physical-scale UVs from a rest or current surface |
-| JSON glTF 2.0 (`.gltf`) | No | Yes, embedded buffer | Mesh only | Static | Single JSON file with the same named meshes, fabric tints, normals and UVs as binary glTF |
+| Binary glTF 2.0 (`.glb`) | No | Yes | Mesh only | Static | Named pieces, fabric tint, metallic and roughness, normals and physical-scale UVs from a rest or current surface |
+| JSON glTF 2.0 (`.gltf`) | No | Yes, embedded buffer | Mesh only | Static | Single JSON file with the same named meshes, fabric finishes, normals and UVs as binary glTF |
 | DXF R2000 | Bounded additive import | Yes, projects without holes or authored notches | Editable exterior boundaries with layer names | Static 2D | Holed/notched projects refuse before staging. Strict existing ASCII `LINE`/clamped cubic `SPLINE` profile, mm and `WF_PIECE` layers; no sewing, materials, grain, internal lines, 3D placement, apparel conventions or print layout |
 | Pattern PDF 1.7 | — | A4 and US Letter tiles at 1:1 | Authored curves and marks as vector paths | Static 2D print | Piece IDs and bookmarks, 10 mm overlap, 100 mm scale check; editable relationships stay in the project |
 | Pattern PNG | — | Physical crop with pixel density | Rasterized authored curves and marks | Static 2D | White paper, optional contours, internal lines, notches and grainline, integer pixels/metre metadata |
@@ -33,7 +34,7 @@ avatar reader is wired into the project model; an installed parsing dependency
 does not establish an import feature. Export validation with independent software
 must be evidenced separately from our own writer/reader round trips.
 
-## Native v6 representation
+## Native v6 and v7 representation
 
 The UTF-8 JSON envelope is:
 
@@ -58,7 +59,7 @@ The UTF-8 JSON envelope is:
 
 This structural illustration omits a valid default material; generate a valid
 empty project with `weftforge-cli new FILE.weftforge`. Treat the current Rust
-serialized types and validation as authoritative for v6. The reader accepts v1,
+serialized types and validation as authoritative for v6 and v7. The reader accepts v1,
 v2, v3, v4 and v5 through the explicit migrations below. A different format marker, unsupported
 version, unknown or duplicate field, malformed JSON or invalid construction is
 rejected without replacing the open project. Schemas are strict: a v1 envelope
@@ -69,6 +70,11 @@ internal array, and rejects `holes`. V5 additionally requires each piece's `hole
 array, including an empty one. Hole objects require exactly `id` and `boundary`.
 V6 additionally requires every piece's `notches` array. Each notch requires
 exactly `id`, `curve`, `t` and `length`; v1–v5 reject that newer field.
+V7 adds an optional `surface` object to each material. It contains both
+`metallic` and `roughness`, each a finite f64 in [0, 1]. A missing object
+means metallic 0 and roughness 1. Saving writes v7 when any material has an
+explicit finish. Projects with only the original matte fabrics save as v6.
+V1–v6 readers reject an explicit surface object.
 Modern materials cannot retain the old stretch field.
 
 Authoring coordinates use f64 metres. 3D is right-handed/Y-up; pattern coordinates
@@ -245,7 +251,7 @@ cargo run --release -p weftforge-cli -- recover garment.weftforge recovered.weft
 The desktop writes dirty named documents to `<filename>.autosave` every 30 seconds
 and also retains session autosaves for untitled work in the platform data directory.
 The Recover window lists session files and current project sidecars; recovering
-creates a dirty copy requiring Save As. Autosave writes v6 and recovery uses the
+creates a dirty copy requiring Save As. Autosave uses the project’s lossless writer version and recovery uses the
 same strict versioned reader;
 failed recovery preserves the current document. A window-close request with
 unsaved edits is blocked until save or an explicit discard action. macOS
@@ -286,7 +292,8 @@ mesh with its assigned fabric tint. The file stores float32 positions in metres 
 indexed triangles, winding-derived vertex normals and `TEXCOORD_0` as `(U, -V)`
 with one UV unit per metre. Negating V follows glTF's downward texture axis.
 The stored linear RGB tint becomes the material base color on a thin,
-double-sided, nonmetallic surface. Stable piece and material IDs and the source
+double-sided surface. Authored fabric finishes populate `metallicFactor` and
+`roughnessFactor` in both containers. Matte fabrics default to 0 and 1. Stable piece and material IDs and the source
 revision are retained as strings in glTF `extras`.
 
 Both writers stage the file before replacing its destination. A stale mesh or
