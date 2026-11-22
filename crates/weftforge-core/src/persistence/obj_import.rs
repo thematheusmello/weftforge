@@ -1,5 +1,6 @@
 use super::{ImportedContour, ImportedPattern};
-use crate::{Command, Error, Placement, Result, ensure};
+use crate::{Command, Error, InitialPose, Placement, Result, ensure};
+use serde::{Deserialize, Serialize};
 use std::{
     collections::{BTreeMap, BTreeSet},
     fs::File,
@@ -9,9 +10,25 @@ use std::{
 
 pub const MAX_OBJ_BYTES: usize = 8 * 1024 * 1024;
 pub const MAX_MTL_BYTES: usize = 256 * 1024;
-pub const OBJ_IMPORT_SCOPE: &str = "Traces planar triangle UV islands into editable straight boundaries and cutouts with fresh IDs. Each island keeps its physical scale and rigid 3D placement. Assigned MTL names and diffuse colors use default cloth physics. Sewing, original curves, shading normals, and simulation history are unavailable. Folded or distorted panels and texture maps are unsupported.";
+pub const OBJ_IMPORT_SCOPE: &str = "Traces triangular UV islands into editable boundaries and cutouts with fresh IDs. Flat requires planar uniform scale. Posed preserves source triangles in 3D and scales each flat UV chart to its surface area. Assigned MTL names and diffuse colors use default cloth physics. Sewing, original curves, texture maps and simulation history are unavailable.";
 const MAX_PIECES: usize = 64;
 const MAX_SPANS: usize = 4096;
+
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum ObjImportMode {
+    #[default]
+    Flat,
+    Posed,
+}
+
+#[derive(Debug, Clone)]
+pub(crate) struct ObjPanel {
+    pub pattern: ImportedPattern,
+    pub placement: Placement,
+    pub pose: Option<InitialPose>,
+    pub fabric: Option<String>,
+}
 
 #[derive(Debug, Clone)]
 pub struct ObjPatternImport {
@@ -19,7 +36,8 @@ pub struct ObjPatternImport {
     mtl: Option<String>,
     library: Option<String>,
     pub metres_per_unit: f64,
-    pub(crate) patterns: Vec<(ImportedPattern, Placement, Option<String>)>,
+    pub mode: ObjImportMode,
+    pub(crate) patterns: Vec<ObjPanel>,
     pub(crate) materials: BTreeMap<String, [f32; 3]>,
 }
 
@@ -28,7 +46,10 @@ impl ObjPatternImport {
         self.patterns.len()
     }
     pub fn hole_count(&self) -> usize {
-        self.patterns.iter().map(|(p, _, _)| p.holes.len()).sum()
+        self.patterns
+            .iter()
+            .map(|panel| panel.pattern.holes.len())
+            .sum()
     }
     pub fn material_count(&self) -> usize {
         self.materials.len()
@@ -42,10 +63,19 @@ impl ObjPatternImport {
             obj: self.obj.clone(),
             mtl: self.mtl.clone(),
             metres_per_unit: self.metres_per_unit,
+            mode: self.mode,
         }
     }
 
     pub fn load(path: impl AsRef<Path>, metres_per_unit: f64) -> Result<Self> {
+        Self::load_mode(path, metres_per_unit, ObjImportMode::Flat)
+    }
+
+    pub fn load_mode(
+        path: impl AsRef<Path>,
+        metres_per_unit: f64,
+        mode: ObjImportMode,
+    ) -> Result<Self> {
         let path = path.as_ref();
         let obj = read_file(path, MAX_OBJ_BYTES)?;
         let source = input_text(&obj, MAX_OBJ_BYTES)?;
@@ -53,12 +83,21 @@ impl ObjPatternImport {
         let mtl = library
             .map(|name| read_file(&path.with_file_name(name), MAX_MTL_BYTES))
             .transpose()?;
-        Self::from_bytes(&obj, mtl.as_deref(), metres_per_unit)
+        Self::from_bytes_mode(&obj, mtl.as_deref(), metres_per_unit, mode)
     }
 
     /// OBJ coordinates use the caller's physical unit. Texture coordinates may use a
     /// different uniform scale on each island. Input normals affect shading only.
     pub fn from_bytes(obj: &[u8], mtl: Option<&[u8]>, metres_per_unit: f64) -> Result<Self> {
+        Self::from_bytes_mode(obj, mtl, metres_per_unit, ObjImportMode::Flat)
+    }
+
+    pub fn from_bytes_mode(
+        obj: &[u8],
+        mtl: Option<&[u8]>,
+        metres_per_unit: f64,
+        mode: ObjImportMode,
+    ) -> Result<Self> {
         ensure(
             metres_per_unit.is_finite() && metres_per_unit > 0.,
             "OBJ metres per unit must be finite and positive",
@@ -79,13 +118,16 @@ impl ObjPatternImport {
             mtl: mtl.map(str::to_owned),
             library: library.map(str::to_owned),
             metres_per_unit,
+            mode,
             patterns: Vec::new(),
             materials: BTreeMap::new(),
         };
         let mut names = BTreeMap::new();
         let mut spans = 0;
         for ((object, group), faces) in &mesh.groups {
-            for island in islands(faces)? {
+            for island in
+                islands(faces).map_err(|e| Error(format!("OBJ panel {group} {object}: {e}")))?
+            {
                 ensure(
                     imported.patterns.len() < MAX_PIECES,
                     "OBJ exceeds the 64-pattern limit",
@@ -115,10 +157,15 @@ impl ObjPatternImport {
                     format!("{base} {count}")
                 };
                 crate::document::validate_name(&name)?;
-                let (pattern, placement) = mesh.trace(faces, island, name, &mut spans)?;
-                imported
-                    .patterns
-                    .push((pattern, placement, fabric.map(str::to_owned)));
+                let (pattern, placement, pose) = mesh
+                    .trace(faces, island, &name, &mut spans, mode)
+                    .map_err(|e| Error(format!("OBJ panel {name}: {e}")))?;
+                imported.patterns.push(ObjPanel {
+                    pattern,
+                    placement,
+                    pose,
+                    fabric: fabric.map(str::to_owned),
+                });
             }
         }
         ensure(
@@ -422,7 +469,10 @@ impl<'a> Drawing<'a> {
                     )?;
                     let [a, b, c] = corners.map(|c| mesh.uv[c.vt]);
                     let area = det(sub(b, a), sub(c, a));
-                    ensure(area.is_finite() && area != 0., "Degenerate OBJ UV triangle")?;
+                    ensure(
+                        area.is_finite() && area != 0.,
+                        &format!("Degenerate OBJ UV triangle in panel {group} {object}"),
+                    )?;
                     let next = mesh.groups.len();
                     let idx = *group_ids.entry((object, group)).or_insert(next);
                     if idx == next {
@@ -544,11 +594,10 @@ impl Drawing<'_> {
         &self,
         faces: &[Face<'_>],
         island: Island,
-        name: String,
+        name: &str,
         spans: &mut usize,
-    ) -> Result<(ImportedPattern, Placement)> {
-        let points = || island.faces.iter().flat_map(|&i| faces[i].corners);
-        let p = |corner: Corner| self.xyz[corner.v];
+        mode: ObjImportMode,
+    ) -> Result<(ImportedPattern, Placement, Option<InitialPose>)> {
         let t = |corner: Corner| self.uv[corner.vt];
 
         let [a, b, c] = faces[island.faces[0]].corners;
@@ -558,6 +607,104 @@ impl Drawing<'_> {
             let [u, v] = t(corner);
             [u, winding * v]
         };
+        let (scale, placement, pose) = match mode {
+            ObjImportMode::Posed => {
+                let (scale, pose) = self.posed_surface(faces, &island, uv)?;
+                (scale, Placement::default(), Some(pose))
+            }
+            ObjImportMode::Flat => {
+                let (scale, placement) = self.flat_placement(faces, &island, uv)?;
+                (scale, placement, None)
+            }
+        };
+        let pattern_point = |c| uv(c).map(|t| t * scale);
+        let mut exterior = None;
+        let mut holes = Vec::new();
+        for ring in island.loops {
+            let mut boundary: Vec<_> = ring.into_iter().map(pattern_point).collect();
+            simplify(&mut boundary)?;
+            *spans += boundary.len();
+            ensure(
+                *spans <= MAX_SPANS,
+                "OBJ exceeds the 4096 traced-edge limit",
+            )?;
+            let area: f64 = boundary[1..]
+                .windows(2)
+                .map(|ab| det(sub(ab[0], boundary[0]), sub(ab[1], boundary[0])))
+                .sum();
+            ensure(area.is_finite() && area != 0., "Degenerate traced OBJ loop")?;
+            if area > 0. {
+                ensure(
+                    exterior.replace(boundary).is_none(),
+                    "OBJ island has multiple exterior rings",
+                )?;
+            } else {
+                holes.push(boundary);
+            }
+        }
+        let vertices = exterior.ok_or_else(|| Error("OBJ island has no exterior ring".into()))?;
+        Ok((
+            ImportedPattern {
+                name: name.to_owned(),
+                exterior: ImportedContour {
+                    vertices,
+                    controls: Vec::new(),
+                },
+                holes,
+            },
+            placement,
+            pose,
+        ))
+    }
+    fn posed_surface(
+        &self,
+        faces: &[Face<'_>],
+        island: &Island,
+        uv: impl Fn(Corner) -> [f64; 2] + Copy,
+    ) -> Result<(f64, InitialPose)> {
+        let p = |corner: Corner| self.xyz[corner.v];
+        let mut uv_area = 0.;
+        let mut physical_area = 0.;
+        for &i in &island.faces {
+            let [a, b, c] = faces[i].corners.map(uv);
+            let area = det(sub(b, a), sub(c, a));
+            ensure(area > 0., "Folded or degenerate material chart")?;
+            uv_area += area;
+            let area = crate::pose::twice_surface_area(faces[i].corners.map(p));
+            ensure(
+                area.is_finite() && area > 1e-12,
+                "Degenerate physical triangle",
+            )?;
+            physical_area += area;
+        }
+        let scale = (physical_area / uv_area).sqrt();
+        ensure(
+            scale.is_finite() && scale > 0.,
+            "Cannot establish physical UV scale",
+        )?;
+        let mut pose = InitialPose::default();
+        let mut vertices = BTreeMap::new();
+        for &i in &island.faces {
+            let triangle = faces[i].corners.map(|corner| {
+                *vertices.entry(corner).or_insert_with(|| {
+                    pose.uv.push(uv(corner).map(|x| x * scale));
+                    pose.positions.push(p(corner));
+                    pose.positions.len() - 1
+                })
+            });
+            pose.triangles.push(triangle);
+        }
+        Ok((scale, pose))
+    }
+
+    fn flat_placement(
+        &self,
+        faces: &[Face<'_>],
+        island: &Island,
+        uv: impl Fn(Corner) -> [f64; 2] + Copy,
+    ) -> Result<(f64, Placement)> {
+        let points = || island.faces.iter().flat_map(|&i| faces[i].corners);
+        let p = |corner: Corner| self.xyz[corner.v];
         let a = points().next().unwrap();
         let b = points()
             .max_by(|&b, &c| length(sub(uv(b), uv(a))).total_cmp(&length(sub(uv(c), uv(a)))))
@@ -617,42 +764,7 @@ impl Drawing<'_> {
             }
         }
 
-        let mut exterior = None;
-        let mut holes = Vec::new();
-        for ring in island.loops {
-            let mut boundary: Vec<_> = ring.into_iter().map(pattern_point).collect();
-            simplify(&mut boundary)?;
-            *spans += boundary.len();
-            ensure(
-                *spans <= MAX_SPANS,
-                "OBJ exceeds the 4096 traced-edge limit",
-            )?;
-            let area: f64 = boundary[1..]
-                .windows(2)
-                .map(|ab| det(sub(ab[0], boundary[0]), sub(ab[1], boundary[0])))
-                .sum();
-            ensure(area.is_finite() && area != 0., "Degenerate traced OBJ loop")?;
-            if area > 0. {
-                ensure(
-                    exterior.replace(boundary).is_none(),
-                    "OBJ island has multiple exterior rings",
-                )?;
-            } else {
-                holes.push(boundary);
-            }
-        }
-        let vertices = exterior.ok_or_else(|| Error("OBJ island has no exterior ring".into()))?;
-        Ok((
-            ImportedPattern {
-                name,
-                exterior: ImportedContour {
-                    vertices,
-                    controls: Vec::new(),
-                },
-                holes,
-            },
-            placement,
-        ))
+        Ok((scale, placement))
     }
 }
 

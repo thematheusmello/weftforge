@@ -240,7 +240,7 @@ impl Project {
             doc_revision: self.revision,
             ..Mesh::default()
         };
-        for piece in &self.pieces {
+        for piece in self.pieces.iter().filter(|p| p.initial_pose.is_none()) {
             check_budget(cancelled, work)?;
             let start = mesh.positions.len();
             let mut vertex_for_point = BTreeMap::new();
@@ -328,6 +328,35 @@ impl Project {
             include_collinear_vertices(&mut mesh, start, triangle_start, cancelled, work)?;
         }
         refine(self, &mut mesh, cancelled, work)?;
+        // Source triangles carry creases and UV-to-XYZ correspondence. Remeshing or
+        // flipping their diagonals would change the imported surface at step zero.
+        for piece in &self.pieces {
+            let Some(pose) = &piece.initial_pose else {
+                continue;
+            };
+            let offset = mesh.positions.len();
+            ensure(
+                offset + pose.positions.len() <= MAX_MESH_VERTICES
+                    && mesh.triangles.len() + pose.triangles.len() <= MAX_MESH_TRIANGLES,
+                "Combined garment exceeds mesh resource limits",
+            )?;
+            for mut sample in
+                pose.checked_boundary(self, piece, || check_budget(cancelled, work))?
+            {
+                sample.vertex += offset;
+                mesh.boundary.push(sample);
+            }
+            for (&uv, &p) in pose.uv.iter().zip(&pose.positions) {
+                check_budget(cancelled, work)?;
+                mesh.positions.push(piece.placement.transform_3d(p));
+                mesh.uv.push(uv);
+                mesh.piece_ids.push(piece.id);
+            }
+            for triangle in &pose.triangles {
+                check_budget(cancelled, work)?;
+                mesh.triangles.push(triangle.map(|i| i + offset));
+            }
+        }
         for seam in &self.seams {
             check_budget(cancelled, work)?;
             append_stitches(&mesh.boundary, seam, &mut mesh.stitches, || {
@@ -1635,7 +1664,7 @@ fn point_segment_distance(p: [f64; 2], a: [f64; 2], b: [f64; 2]) -> f64 {
         (((p[0] - a[0]) * (b[0] - a[0]) + (p[1] - a[1]) * (b[1] - a[1])) / length2).clamp(0.0, 1.0);
     distance(p, [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t])
 }
-fn segments_intersect(a: [f64; 2], b: [f64; 2], c: [f64; 2], d: [f64; 2]) -> bool {
+pub(crate) fn segments_intersect(a: [f64; 2], b: [f64; 2], c: [f64; 2], d: [f64; 2]) -> bool {
     let [ab_c, ab_d, cd_a, cd_b] = [
         cross(a, b, c),
         cross(a, b, d),

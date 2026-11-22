@@ -1,5 +1,16 @@
 # WeftForge current-source addendum
 
+## Posed OBJ garment import
+
+Source `42094ed44a4cce49f62304dfdf997f153d57a23f` adds an explicit posed mode to `obj-interchange`. Each chart
+retains its material-space dimensions, editable boundary and fabric. The piece
+stores its initial XYZ surface for direct export and solver initialization.
+The studio, CLI and MCP share the same mode and `ClearPiecePose` command.
+The source lists 40 Rust command variants including Transaction, 39 MCP command
+schemas and 15 MCP tools. The scale and reference comparison are recorded in
+[Posed garment OBJ](../../docs/posed-obj.md).
+
+
 ## Global garment strain map
 
 Source `25c337859089b7ce93e6bef998d40dae2f05ae41` adds a global per-face principal-stretch display, editable percentage range and separate authored fabric colors on editable patterns. The reviewed reference observation records controls and display scope. Numerical comparison remains open.

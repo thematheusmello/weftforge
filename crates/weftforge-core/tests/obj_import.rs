@@ -10,6 +10,7 @@ fn run(
     metres_per_unit: f64,
 ) -> weftforge_core::Result<()> {
     editor.execute(Command::ImportObjPatterns {
+        mode: weftforge_core::ObjImportMode::Flat,
         obj: obj.into(),
         mtl: mtl.map(str::to_owned),
         metres_per_unit,
@@ -347,4 +348,274 @@ fn two_openings_survive_tracing_and_remeshing() {
     near(areas[1], -0.01);
     near(areas[2], -0.01);
     assert!(p.mesh().is_ok());
+}
+
+fn posed(path: &Path) -> Editor {
+    let parsed =
+        ObjPatternImport::load_mode(path, 1., weftforge_core::ObjImportMode::Posed).unwrap();
+    let mut editor = Editor::default();
+    editor.execute(parsed.command()).unwrap();
+    editor
+}
+
+fn swatch(name: &str) -> std::path::PathBuf {
+    Path::new(env!("CARGO_MANIFEST_DIR"))
+        .join("../../fixtures/posed-obj")
+        .join(name)
+}
+
+// Independent OBJ readback. Keep both winding and connectivity while allowing
+// vertex/face renumbering. Coordinate bins are one tenth of the 1 nm budget.
+fn oriented_faces(obj: &str) -> Vec<[[i64; 3]; 3]> {
+    let mut points = Vec::new();
+    let mut faces = Vec::new();
+    for line in obj.lines() {
+        let mut fields = line.split_whitespace();
+        match fields.next() {
+            Some("v") => points.push(std::array::from_fn(|_| {
+                (fields.next().unwrap().parse::<f64>().unwrap() * 1e10).round() as i64
+            })),
+            Some("f") => {
+                let mut triangle: [[i64; 3]; 3] = std::array::from_fn(|_| {
+                    let i = fields
+                        .next()
+                        .unwrap()
+                        .split('/')
+                        .next()
+                        .unwrap()
+                        .parse::<usize>()
+                        .unwrap();
+                    points[i - 1]
+                });
+                let start = (0..3).min_by_key(|&i| triangle[i]).unwrap();
+                triangle.rotate_left(start);
+                faces.push(triangle);
+            }
+            _ => {}
+        }
+    }
+    faces.sort_unstable();
+    faces
+}
+
+#[test]
+fn original_posed_surfaces_reopen_and_export_with_source_winding_and_flat_dimensions() {
+    let harbor = fixture("native-selected-obj-20261120/Harbor draped.obj");
+    let cases = [
+        (swatch("Bent swatch.obj"), vec![[0.240, 0.360, 1.200]]),
+        (
+            swatch("Extended bent swatch.obj"),
+            vec![[0.24592681838322228, 0.3688902275748334, 1.2296340919161113]],
+        ),
+        (
+            harbor,
+            vec![
+                [1.3257072537835786, 0.6427671533496141, 4.100800427633242],
+                [1.3257047986551815, 0.6427659629843306, 4.100792833202759],
+            ],
+        ),
+    ];
+    for (source, dimensions) in cases {
+        assert!(ObjPatternImport::load(&source, 1.).is_err());
+        let mut editor = posed(&source);
+        let project = editor.project.clone();
+        assert!(editor.undo());
+        assert!(editor.project.pieces.is_empty());
+        assert!(editor.redo());
+        assert_eq!(editor.project.pieces, project.pieces);
+        let dir = tempfile::tempdir().unwrap();
+        let file = dir.path().join("posed.weftforge");
+        project.save(&file).unwrap();
+        let reopened = Project::load(&file).unwrap();
+        assert_eq!(project, reopened);
+        assert_eq!(reopened.format_version(), 8);
+        assert_eq!(reopened.pieces.len(), dimensions.len());
+        for (i, (piece, [w, h, perimeter])) in reopened.pieces.iter().zip(dimensions).enumerate() {
+            let [a, b] = reopened.piece_bounds(piece.id).unwrap();
+            near(b[0] - a[0], w);
+            near(b[1] - a[1], h);
+            near(loop_lengths(&reopened, &piece.boundary).1, perimeter);
+            if reopened.pieces.len() == 2 {
+                let color = reopened.material(piece.material).unwrap().color;
+                for (actual, expected) in color
+                    .into_iter()
+                    .zip([[0.22, 0.55, 0.76], [0.78, 0.25, 0.12]][i])
+                {
+                    assert!((actual - expected).abs() <= 1e-6);
+                }
+            }
+        }
+        let mesh = reopened.mesh().unwrap();
+        let output = dir.path().join("direct.obj");
+        let mtl = mesh
+            .export_obj_with_materials(&reopened, &output)
+            .unwrap()
+            .unwrap();
+        if reopened.pieces.len() == 2 {
+            let material = fs::read_to_string(mtl).unwrap();
+            assert!(
+                material.contains("Kd 0.22 0.55 0.76") && material.contains("Kd 0.78 0.25 0.12")
+            );
+        }
+        assert_eq!(
+            oriented_faces(&fs::read_to_string(source).unwrap()),
+            oriented_faces(&fs::read_to_string(output).unwrap())
+        );
+        let cloth = weftforge_core::simulation::create_cloth(&reopened, &mesh).unwrap();
+        assert_eq!(cloth.positions(), mesh.positions);
+    }
+}
+
+#[test]
+fn posed_chart_edits_keep_material_rest_independent_of_start_and_undo() {
+    let mut editor = posed(&swatch("Extended bent swatch.obj"));
+    let id = editor.project.pieces[0].id;
+    let mesh = editor.project.mesh().unwrap();
+    let mut cloth = weftforge_core::simulation::create_cloth(&editor.project, &mesh).unwrap();
+    near(
+        cloth.diagnostics().max_stretch_error,
+        1.1 / 1.05_f64.sqrt() - 1.,
+    );
+    cloth.step(Default::default(), || false).unwrap();
+    assert_ne!(cloth.positions(), mesh.positions);
+    cloth.reset();
+    assert_eq!(cloth.positions(), mesh.positions);
+    editor
+        .execute(Command::ResizePiece {
+            piece: id,
+            width: 0.48,
+            height: 0.72,
+        })
+        .unwrap();
+    let sized = editor.project.mesh().unwrap();
+    assert_eq!(sized.positions, mesh.positions);
+    assert_ne!(sized.uv, mesh.uv);
+    let rotation = weftforge_core::Placement {
+        translation: [0.3, 0.6, -0.1],
+        rotation: [0.3, -0.4, 0.2],
+    };
+    editor
+        .execute(Command::SetPlacement {
+            piece: id,
+            placement: rotation,
+        })
+        .unwrap();
+    editor
+        .execute(Command::TransformPiece {
+            piece: id,
+            translation: [0.2, -0.3],
+            angle: 0.3,
+            pivot: [0.1, 0.2],
+        })
+        .unwrap();
+    let arranged = editor.project.mesh().unwrap();
+    for (&p, actual) in mesh.positions.iter().zip(arranged.positions) {
+        for (actual, expected) in actual.into_iter().zip(rotation.transform_3d(p)) {
+            near(actual, expected);
+        }
+    }
+    let p = &editor.project;
+    let point = p.curve(p.pieces[0].boundary[0]).unwrap().start;
+    let [x, y] = p.point(point).unwrap().position;
+    let command = Command::MovePoint {
+        point,
+        position: [x + 0.002, y],
+    };
+    let original = p.clone();
+    let error = editor.execute(command.clone()).unwrap_err();
+    assert!(error.0.contains("Folded swatch") && error.0.contains("Clear imported pose"));
+    assert_eq!(original, editor.project);
+    editor
+        .execute(Command::Transaction(vec![
+            Command::ClearPiecePose { piece: id },
+            command,
+        ]))
+        .unwrap();
+    assert!(editor.project.pieces[0].initial_pose.is_none());
+    assert!(editor.undo());
+    assert_eq!(original.pieces, editor.project.pieces);
+    assert_eq!(original.points, editor.project.points);
+}
+
+#[test]
+fn persisted_pose_requires_valid_chart_and_v8_and_preserves_failed_save() {
+    let mut editor = posed(&swatch("Bent swatch.obj"));
+    let id = editor.project.pieces[0].material;
+    editor
+        .execute(Command::SetFabricSurface {
+            material: id,
+            metallic: 0.15,
+            roughness: 0.4,
+        })
+        .unwrap();
+    let dir = tempfile::tempdir().unwrap();
+    let primary = dir.path().join("mixed.weftforge");
+    editor.project.save(&primary).unwrap();
+    let saved = fs::read(&primary).unwrap();
+    assert_eq!(Project::load(&primary).unwrap(), editor.project);
+    let good: serde_json::Value = serde_json::from_slice(&saved).unwrap();
+    for version in [6, 7] {
+        let mut wrong = good.clone();
+        wrong["version"] = version.into();
+        assert!(Project::from_json(&serde_json::to_vec(&wrong).unwrap()).is_err());
+    }
+    for triangles in [
+        serde_json::json!([[100, 1, 2]]),
+        serde_json::json!([[0, 1, 2], [0, 1, 2]]),
+        serde_json::json!([[2, 1, 0]]),
+    ] {
+        let mut wrong = good.clone();
+        wrong["project"]["pieces"][0]["initial_pose"]["triangles"] = triangles;
+        assert!(
+            Project::from_json(&serde_json::to_vec(&wrong).unwrap())
+                .unwrap_err()
+                .0
+                .contains("Folded swatch")
+        );
+    }
+    editor.project.pieces[0].initial_pose.as_mut().unwrap().uv[0] = [f64::NAN, 0.];
+    assert!(editor.project.save(&primary).is_err());
+    assert_eq!(fs::read(primary).unwrap(), saved);
+}
+
+#[test]
+fn posed_cutout_has_sewable_boundary_ownership_on_input_topology() {
+    let source = fixture("native-svg-cutout-20261120/Pocket edited.obj");
+    let editor = posed(&source);
+    let p = &editor.project;
+    let mesh = p.mesh().unwrap();
+    let panel = &p.pieces[0];
+    assert_eq!(panel.holes.len(), 1);
+    for &curve in panel.boundary_loops().flatten() {
+        assert!(
+            mesh.boundary
+                .iter()
+                .any(|s| s.piece == panel.id && s.curve == curve && s.t == 0.)
+        );
+        assert!(
+            mesh.boundary
+                .iter()
+                .any(|s| s.piece == panel.id && s.curve == curve && s.t == 1.)
+        );
+    }
+}
+
+#[test]
+fn a_bad_second_posed_chart_reports_its_panel_and_rolls_back_import() {
+    let source = fs::read_to_string(swatch("Bent swatch.obj")).unwrap();
+    let bad = format!("{source}\ng Bad_panel\nf 1/1 2/2 5/5\nf 1/1 5/5 4/3\n");
+    let mut editor = posed(&swatch("Bent swatch.obj"));
+    assert!(editor.undo());
+    let before = editor.project.clone();
+    let error = editor
+        .execute(Command::ImportObjPatterns {
+            obj: bad,
+            mtl: None,
+            metres_per_unit: 1.,
+            mode: weftforge_core::ObjImportMode::Posed,
+        })
+        .unwrap_err();
+    assert!(error.0.contains("Bad_panel"), "{error}");
+    assert_eq!(before, editor.project);
+    assert!(editor.redo());
 }
