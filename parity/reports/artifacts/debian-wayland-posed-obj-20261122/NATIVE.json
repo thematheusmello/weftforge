@@ -1,0 +1,57 @@
+{
+  "source": "42094ed44a4cce49f62304dfdf997f153d57a23f",
+  "source_tree": "76fd3b3159346af72b51cd8f247ad086afdbe11b",
+  "build_source_manifest_sha256": "9f3079316a0cb49b58cc751b84d671c6d94e66f9cc9bbb604f8b0f38a54bf334",
+  "package_archive_sha256": "773c08f6f70d173ddbd26dbbb595c19fc17d5240012b1e6b858e9ec78e730912",
+  "package_file_ledger": "PACKAGE-SHA256SUMS",
+  "audited_package": "PACKAGE-READBACK.json",
+  "build_window": {
+    "source": "42094ed44a4cce49f62304dfdf997f153d57a23f",
+    "status": 0,
+    "start": "2026-11-22T22:21:35.452860+00:00",
+    "end": "2026-11-22T22:26:49.608364+00:00"
+  },
+  "platform": "Debian 13.7 aarch64",
+  "kernel": "6.12.117+deb13-cloud-arm64",
+  "compositor": "1.10.1",
+  "output": {
+    "name": "HEADLESS-1",
+    "current_mode": {
+      "width": 1640,
+      "height": 1000,
+      "refresh": 60000
+    },
+    "scale": 1.0
+  },
+  "backend": "software Vulkan llvmpipe (lavapipe ICD), headless wlroots pixman output",
+  "network": "Both build and studio launched in separate Linux network namespaces containing only loopback.",
+  "geometry": "GEOMETRY.json",
+  "fixture_protocol": "protocol.json",
+  "steps": "Each process began with an empty studio. In each import, selected the original OBJ in the GTK dialog, clicked Posed and Metres, confirmed the preview, saved v8, and closed. A second process opened that project using the GTK dialog, exported OBJ with MTL, and closed.",
+  "runs": [
+    {
+      "input": "bent",
+      "import_process": 5357,
+      "reopen_process": 5580,
+      "saved_project": "bent.weftforge",
+      "reopened_export": "bent-reopened.obj",
+      "source_project_name": "bent.weftforge.weftforge"
+    },
+    {
+      "input": "extended",
+      "import_process": 5799,
+      "reopen_process": 5939,
+      "saved_project": "extended.weftforge",
+      "reopened_export": "extended-reopened.obj",
+      "source_project_name": "extended.weftforge"
+    },
+    {
+      "input": "harbor",
+      "import_process": 6047,
+      "reopen_process": 6193,
+      "saved_project": "harbor.weftforge",
+      "reopened_export": "harbor-reopened.obj",
+      "source_project_name": "harbor.weftforge"
+    }
+  ]
+}

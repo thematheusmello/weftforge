@@ -1,17 +1,57 @@
-# Recording a garment simulation — 22 November 2026
+# Native simulation timeline — 22 November 2026
 
-The bottom transport records garment positions from accepted simulation steps.
-Scrubbing by frame or time selects the 3D view, strain map and static export.
-Live continuation keeps the latest solver state. Color and finish edits preserve
-the take. Physical edits, Reset and replacing the document clear it. The source
-limits each take to 600 frames and 64 MiB of vertex positions.
+On build `6fc11757`, the packaged Mac studio recorded a bent swatch, stepped
+three times and scrubbed by keyboard. Four native OBJ exports matched the
+corresponding CLI positions and oriented triangles exactly. A metallic edit
+preserved the take. The embedded glTF retained the selected frame within
+14.2 nm per position component. Stepping while viewing an earlier frame resumed
+the latest solver time. A subsequent height edit saved the swatch at 370 mm.
 
-The native-event regression recorded a bent swatch, selected an earlier frame,
-read back its OBJ, continued from the latest solver time and checked both edit
-paths. An independent packaged studio case and reference comparison remain
-pending. Next, qualify the recorded take at the default and minimum window sizes.
-[Studio controls](docs/studio-preview.md#recording-and-scrubbing-a-garment) ·
-[Implementation and regression](apps/weftforge/src/timeline.rs).
+The session keeps up to 600 samples and 64 MiB of positions. The packaged test
+captured the 1640 × 1000 window. Minimum-size timeline coverage currently comes
+from the widget regression. Next, record a moving avatar, add range playback
+and verify persisted frame timing with an independent reader.
+[Native run and replay](parity/reports/WF-20261122-NATIVE-TIMELINE-001.json) ·
+[Studio controls](docs/studio-preview.md#recording-and-scrubbing-a-garment).
+
+# Apple Silicon package notices — 22 November 2026
+
+The offline package from `3cb8b515` contains 177 emitted Cargo crates.
+Seven retain their pinned release declaration and gain its linked 11,358-byte
+Apache-2.0 text. The readback verified every one of the 298 Cargo notice files
+and five project notices in both the portable directory and standalone app.
+Both executables match the preceding offline build byte for byte.
+[Package manifests, provenance and independent readback](parity/reports/WF-20261122-APPLE-APACHE-NOTICES-001.json).
+
+Five entries remain open. Resolve the historical MIT attribution for block2
+0.6.2, objc2 0.6.5, objc2-encode 4.1.0 and objc2-foundation 0.3.2. Locate a
+release-attributable MIT notice for dispatch 0.2.0. The pinned objc2
+declarations preserve upstream's SDK qualification. Signing and system-library
+review remain separate release work.
+
+
+The posed OBJ sources changed after packaging. Repeat the audit on the
+release candidate to refresh its executable and notice hashes.
+
+# Checking published evidence — 22 November 2026
+
+The publication check rejects a report, artifact, scenario, fixture or reviewed contract that exists only as an untracked or ignored file. Stage new evidence before running `cargo xtask verify`. The history check still validates every recorded path and SHA-256 against its tested commit. It reads each distinct Git blob once per validation, even when many historical runs use the same source.
+
+[Publication verifier](scripts/progress.py) · [Ignored-artifact regression](scripts/test_progress.py).
+
+# Debian posed garment import — 22 November 2026
+
+The unsigned Debian aarch64 package from `42094ed4` opened the original bent
+swatch, stretched swatch and two-panel Harbor through the native Wayland file
+dialogs. Each v8 save reopened in a fresh studio and exported the initial
+surface. The independent reader checks all four panels and compares source
+positions, oriented faces, flat extents, perimeter and the two Harbor colors.
+All six studio processes exited normally and the dedicated guest stopped.
+
+[Native runs, package identities and independent measurements](parity/reports/artifacts/debian-wayland-posed-obj-20261122/NATIVE.json) · [Reproducible geometry readback](parity/reports/artifacts/debian-wayland-posed-obj-20261122/GEOMETRY.json).
+The stretched swatch height and both Harbor outlines still exceed the reviewed
+reference extent budget. Physical GPU Linux, Windows x64 and the complete
+empty-project shirt qualification remain open.
 
 # Posed OBJ garment import — 22 November 2026
 

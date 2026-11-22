@@ -1,0 +1,10 @@
+{
+  "id": "APP-DEBIAN-WAYLAND-POSED-OBJ-001",
+  "status": "implementation_only",
+  "initial_conditions": "An empty unsigned Debian GNU/Linux 13 aarch64 studio for each of the two original folded swatches and the original two-fabric draped Harbor. Use metres, Y up, and Posed. The hosted Sway session has a 1640 \u00d7 1000 virtual output and CPU Vulkan rendering.",
+  "actions": [
+    "For each input, import using the native GTK chooser, select Posed and Metres, save, quit, reopen in a second process, export OBJ, then close.",
+    "Compare source and exported OBJ geometry, source materials, and the editable saved boundary. Run python3 -B parity/reports/artifacts/debian-wayland-posed-obj-20261122/measure.py from the repository root and compare its output with GEOMETRY.json."
+  ],
+  "expected_outcomes": "After a fresh process opens the v8 project, expected maximum errors are 1 nm per exported XYZ component and per flat extent and perimeter, and 0.000001 per source diffuse color component. Oriented triangles must match up to cyclic rotation, including multiplicities. All six studio processes must exit cleanly."
+}

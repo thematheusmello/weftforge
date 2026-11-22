@@ -1,0 +1,10 @@
+{
+  "id": "APP-APPLE-APACHE-NOTICES-001",
+  "status": "implementation_only",
+  "initial_conditions": "An unsigned aarch64-apple-darwin package from the preceding catalog has twelve unresolved Cargo notices. Cargo has all locked archives in its cache.",
+  "actions": [
+    "Build and package both executables offline before and after updating the catalog in the same worktree.",
+    "Compare emitted crate identities, license expressions, original notice files and executable hashes. Read back the staged bytes in the portable package and the standalone app."
+  ],
+  "expected_outcomes": "Exactly seven newly resolved crates retain their pinned declarations and gain the 11,358-byte Apache-2.0 text linked from those declarations. Five MIT-only entries remain open. Each emitted notice verifies by size and SHA-256 in both copies."
+}

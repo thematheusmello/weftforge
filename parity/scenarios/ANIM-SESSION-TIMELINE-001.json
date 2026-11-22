@@ -1,0 +1,11 @@
+{
+  "id": "ANIM-SESSION-TIMELINE-001",
+  "kind": "implementation_only",
+  "fixture_hashes": {
+    "parity/reports/artifacts/native-timeline-20261122/Swatch.weftforge": "7cb72685b3939d344f23b9049b8661a38db3dd5d8ba3fa458b5ca6702d6b5d93"
+  },
+  "initial_conditions": "Revision 3 of the editable, posed 240 by 360 mm swatch. Six vertices and four triangles. Default step settings.",
+  "expected_outcomes": "Record the initial surface and three steps, retain all four samples through a finish edit, scrub and export the selected frame, continue the latest solver state and invalidate the take on a physical edit. OBJ component error at most 1 nm; glTF at most 1 micrometre.",
+  "protocol": "parity/reports/artifacts/native-timeline-20261122/protocol.txt",
+  "replay": "python3 parity/reports/artifacts/native-timeline-20261122/check_timeline.py"
+}
