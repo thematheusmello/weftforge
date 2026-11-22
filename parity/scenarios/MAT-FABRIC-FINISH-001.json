@@ -1,0 +1,10 @@
+{
+  "id": "MAT-FABRIC-FINISH-001",
+  "status": "implementation_only",
+  "initial_conditions": "Use the saved two-fabric Harbor fixture. The cotton front and terracotta back begin matte, with the stored eight seams and distinct material IDs.",
+  "actions": [
+    "Set the back fabric to metallic 0.625 and roughness 0.25. Save and reopen it. Compare both glTF containers before and after a simulation step.",
+    "In a running studio, advance a garment, export the current pose, change its fabric finish, and export the pose again. Check Undo and Redo and record the exact build used."
+  ],
+  "expected_outcomes": "Only the edited fabric receives the two authored factors. The front exports metallic 0 and roughness 1. A saved finish uses project version 7. The original project and its construction stay intact. Geometry buffers for the same pose match byte for byte before and after the edit, and the simulated position buffer differs from rest."
+}

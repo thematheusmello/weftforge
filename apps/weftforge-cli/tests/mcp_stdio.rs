@@ -14,7 +14,7 @@ use std::{
 use weftforge_core::{Command, Editor, Project, recovery_path};
 
 const MCP_TOOL_COUNT: usize = 15;
-const MCP_COMMAND_COUNT: usize = 37;
+const MCP_COMMAND_COUNT: usize = 38;
 
 struct Server {
     child: Child,
@@ -3661,4 +3661,79 @@ fn obj_import_cli_and_mcp_trace_a_scaled_panel_and_preserve_sources_on_failure()
     assert_eq!(fs::read(&obj).unwrap(), OBJ.as_bytes());
     assert_eq!(Project::load(&input).unwrap(), Project::default());
     server.finish();
+}
+
+#[test]
+fn fabric_surface_cli_and_stdio_share_bounds_and_preserve_primary_and_recovery() {
+    let directory = Directory::new();
+    let base = directory.path("matte.weftforge");
+    let cli = directory.path("cli.weftforge");
+    let mcp = directory.path("mcp.weftforge");
+    Project::default().save(&base).unwrap();
+    let binary = env!("CARGO_BIN_EXE_weftforge-cli");
+    let invoke =
+        |input: &std::path::Path, output: &std::path::Path, metallic: &str, roughness: &str| {
+            std::process::Command::new(binary)
+                .arg("fabric-surface")
+                .arg(input)
+                .arg(output)
+                .args(["1", metallic, roughness])
+                .output()
+                .unwrap()
+                .status
+                .success()
+        };
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let listed = server.request("tools/list", json!({}));
+    let execute = listed["result"]["tools"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|t| t["name"] == "project_execute")
+        .unwrap();
+    let variants = execute["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
+        .as_array()
+        .unwrap();
+    let variant = variants
+        .iter()
+        .find(|v| v["properties"]["type"]["const"] == "set_fabric_surface")
+        .unwrap();
+    for name in ["metallic", "roughness"] {
+        assert_eq!(
+            variant["properties"]["data"]["properties"][name],
+            json!({"type":"number","minimum":0,"maximum":1})
+        );
+    }
+    let command = |id: u64, metallic: f64, roughness: f64| json!({"type":"set_fabric_surface","data":{"material":id,"metallic":metallic,"roughness":roughness}});
+    let apply = |server: &mut Server, c: Value| {
+        server.call(
+            "project_execute",
+            json!({"input":mcp,"output":mcp,"commands":[c]}),
+        )
+    };
+    fs::copy(&base, &cli).unwrap();
+    fs::copy(&base, &mcp).unwrap();
+    assert!(invoke(&cli, &cli, "0.625", "0.25"));
+    success(&apply(&mut server, command(1, 0.625, 0.25)));
+    let bytes = fs::read(&cli).unwrap();
+    assert_eq!(bytes, fs::read(&mcp).unwrap());
+    let recovery = fs::read(&base).unwrap();
+    for (metallic, roughness) in [("-0.01", "0"), ("1", "1.01"), ("NaN", "0"), ("0", "inf")] {
+        assert!(!invoke(&cli, &cli, metallic, roughness));
+    }
+    for bad in [
+        command(1, 0., 1.01),
+        command(1, -0.01, 1.),
+        command(99, 0., 1.),
+    ] {
+        tool_error(&apply(&mut server, bad));
+    }
+    for file in [cli, mcp] {
+        assert_eq!(fs::read(&file).unwrap(), bytes);
+        assert_eq!(
+            fs::read(weftforge_core::recovery_path(&file)).unwrap(),
+            recovery
+        );
+    }
 }

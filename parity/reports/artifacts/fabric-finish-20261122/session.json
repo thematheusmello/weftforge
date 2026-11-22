@@ -1,0 +1,15 @@
+{
+  "source_commit": "aec4fcb1d4d1cf46fd2712fbffe98defd16fb24f",
+  "platform": "27.2 macOS arm64",
+  "studio_sha256": "37292c9b6a04228df4c6efbcaf7caccbe81c1ab80e07cb1f5a09245c8d5e0f02",
+  "cli_sha256": "20847574040c9971e901af904bbf69a53dc2f5a87184a9bf0d00cc25ffa36a2e",
+  "build": "Debug profile with debug symbols and incremental compilation disabled, Rust 1.94.1",
+  "fixture": "parity/reports/artifacts/native-obj-fabrics-20261120/Harbor two fabrics.weftforge",
+  "steps": [
+    "Opened a disposable copy of Harbor at revision 24. Selected the back pattern and Fabric properties. Pressed Step; the transport reported Manual step. Exported Before finish.gltf through File.",
+    "Set the metallic and roughness steppers through their native accessibility value actions. Revision 25 displayed metallic 0.625. Revision 26 displayed roughness 0.25. The transport still reported Manual step.",
+    "Pressed Undo to revision 27: roughness 1, metallic 0.625. Pressed Redo to revision 28: roughness 0.25. Saved the project and exported After finish.gltf while the manual step was still displayed.",
+    "Quit and opened the saved project in a fresh process. The back fabric inspector showed metallic 0.625 and roughness 0.25 at revision 28. The reopened studio displayed the rest arrangement."
+  ],
+  "capture_timestamp": "2026-11-22T21:52:46Z"
+}

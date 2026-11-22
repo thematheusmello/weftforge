@@ -2694,7 +2694,7 @@ pub(crate) fn check_serialized_size(project: &Project) -> Result<()> {
     }
     let bytes = serde_json::to_vec_pretty(&Native {
         format: "weftforge",
-        version: crate::FORMAT_VERSION,
+        version: project.format_version(),
         project,
     })?;
     ensure(
