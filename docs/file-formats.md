@@ -27,7 +27,7 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 | Pattern PDF 1.7 | — | A4 and US Letter tiles at 1:1 | Authored curves and marks as vector paths | Static 2D print | Piece IDs and bookmarks, 10 mm overlap, 100 mm scale check; editable relationships stay in the project |
 | Pattern PNG | — | Physical crop with pixel density | Rasterized authored curves and marks | Static 2D | White paper, optional contours, internal lines, notches and grainline, integer pixels/metre metadata |
 | Pattern JPEG | — | Physical crop with pixel density | Rasterized authored curves and marks | Static 2D | Lossy grayscale, the same layers as PNG, whole pixels/inch in JFIF |
-| Animation/cache formats | No | No | None yet | None yet | Timeline, frame caches and export not implemented |
+| Animation/cache formats | No | No | None yet | None yet | The studio records a bounded in-memory timeline and exports one selected frame through the static mesh writers. Persistent caches and animation interchange remain open. |
 | Marvelous Designer `.zprj` / `.zpac` | No | No | None | None | Separate FILE-006 research/compatibility workstream |
 
 The current application has an original analytic capsule mannequin. No OBJ/glTF

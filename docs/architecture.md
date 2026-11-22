@@ -17,7 +17,8 @@ flips its vertical coordinate; OBJ uses metres/Y-up.
 - `weftforge`: native eframe/egui editor and wgpu-backed drawing. Pattern canvas,
   original capsule avatar and depth-sorted projected garment triangles are the
   first viewport implementation. It does not yet have a dedicated depth-buffered
-  garment shader, PBR, textures, shadows, animation timeline or GPU simulation.
+  garment shader, PBR, textures, shadows or GPU simulation. A session timeline
+  records accepted garment positions and exports a selected frame as static geometry.
 - `weftforge-cli`: offline creation/inspect/edit/mesh/simulate/export/benchmark and
   explicit recovery through the same library commands. Nine stateless local MCP
   file tools expose the shared validated engine; live-GUI control remains open.
@@ -178,8 +179,8 @@ is cooperative rather than a fixed cancellation-latency bound. Results for an
 obsolete document are rejected. Step failure or cancel
 retains the previous complete state. Expensive meshing and solver preparation
 must use the same revision/cancel discipline; command validation, file IO and
-native dialogs currently retain bounded synchronous portions. No timeline cache
-can yet be saved or reused. Persisted revision IDs alone are not a future cache
+native dialogs currently retain bounded synchronous portions. The session timeline
+retains complete accepted simulation steps in memory. Persisted revision IDs alone are not a future cache
 key: include a digest of all construction/material/avatar/solver/animation inputs.
 
 ## Dependency and toolchain decision
