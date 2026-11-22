@@ -1,3 +1,21 @@
+# Posed OBJ garment import — 22 November 2026
+
+The studio, CLI and MCP offer an explicit Posed mode after source units are
+chosen. Each panel keeps editable flat construction, fabric assignment and an
+independent triangle surface for its initial arrangement. A project containing
+a pose saves as v8. Flat import remains the default.
+
+Core regression checks cover both bent swatches and the two colored Harbor
+panels through save, reopen, direct export and solver initialization. Source
+triangles retain their winding and positions. Flat extents meet the measured
+reference uncertainty on both dimensions of the bent swatch and on the extended
+swatch width. The extended height and both Harbor dimensions fall outside it.
+[Scale and measurements](docs/posed-obj.md) · [Regression cases](crates/weftforge-core/tests/obj_import.rs).
+
+Next, qualify the native import, edits, save/reopen and direct export on the
+original inputs from a clean packaged build. The full garment import and
+reference resampling behavior remain open.
+
 # Editing fabric finishes — 22 November 2026
 
 Select a pattern and open **Properties → Fabric** to edit the metallic and
