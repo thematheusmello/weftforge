@@ -7,7 +7,7 @@ use std::{
     time::Instant,
 };
 use weftforge_core::{
-    Command, CurveInterval, DxfPatternImport, Editor, Mesh, ObjPatternImport,
+    Command, CurveInterval, DxfPatternImport, Editor, Mesh, ObjImportMode, ObjPatternImport,
     PatternSnapshotOptions, Placement, PrintPaper, Project, SvgPatternImport,
 };
 use weftforge_sim::{Diagnostics, StepSettings};
@@ -60,7 +60,7 @@ fn run() -> Result<()> {
     let args: Vec<_> = std::env::args().skip(1).collect();
     match args.first().map(String::as_str) {
         None | Some("--help" | "-h" | "help") => println!(
-            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\nlengths PROJECT interval CURVE_ID T0 T1   authored/rest length, unrounded SI JSON\nlengths PROJECT seam SEAM_ID\nlengths PROJECT sewing-group GROUP_ID\ninspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)\nexecute INPUT OUTPUT COMMANDS.json      one atomic shared command array\nimport-obj INPUT OUTPUT GARMENT.obj METRES_PER_UNIT   trace flat UV islands into editable patterns\nimport-svg INPUT OUTPUT PATTERNS.svg   editable outlines and straight-sided cutouts in physical mm\nimport-dxf INPUT OUTPUT PATTERNS.dxf   bounded R2000 LINE/cubic boundaries in mm\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT   four editable cubic spans\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nfabric-surface INPUT OUTPUT MATERIAL_ID METALLIC ROUGHNESS   factors in [0,1]\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj [PIECE_ID ...]          rest surface in metres, Y-up, with a companion MTL fabric library\nexport-glb PROJECT OUTPUT.glb          static rest surface, named pieces and fabric tint\nexport-gltf PROJECT OUTPUT.gltf        the same static rest surface as JSON with an embedded buffer\nexport-svg PROJECT OUTPUT.svg          outlines and authored notch markers; mm, inverted Y\nexport-dxf PROJECT OUTPUT.dxf          exterior boundaries in mm; refuses projects with holes or authored notches\nexport-pdf PROJECT OUTPUT.pdf a4|letter  1:1 pattern tiles with a 100 mm scale check\nexport-pattern-png PROJECT OUTPUT.png OPTIONS.json  physical 2D crop and density\nexport-pattern-jpeg PROJECT OUTPUT.jpg OPTIONS.json  physical 2D crop and whole PPI\nsimulate PROJECT OUTPUT.obj|.glb|.gltf STEPS f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj|.glb|.gltf           same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
+            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\nlengths PROJECT interval CURVE_ID T0 T1   authored/rest length, unrounded SI JSON\nlengths PROJECT seam SEAM_ID\nlengths PROJECT sewing-group GROUP_ID\ninspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)\nexecute INPUT OUTPUT COMMANDS.json      one atomic shared command array\nimport-obj INPUT OUTPUT GARMENT.obj METRES_PER_UNIT [flat|posed]   trace garment UV islands into editable patterns\nimport-svg INPUT OUTPUT PATTERNS.svg   editable outlines and straight-sided cutouts in physical mm\nimport-dxf INPUT OUTPUT PATTERNS.dxf   bounded R2000 LINE/cubic boundaries in mm\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT   four editable cubic spans\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nfabric-surface INPUT OUTPUT MATERIAL_ID METALLIC ROUGHNESS   factors in [0,1]\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj [PIECE_ID ...]          rest surface in metres, Y-up, with a companion MTL fabric library\nexport-glb PROJECT OUTPUT.glb          static rest surface, named pieces and fabric tint\nexport-gltf PROJECT OUTPUT.gltf        the same static rest surface as JSON with an embedded buffer\nexport-svg PROJECT OUTPUT.svg          outlines and authored notch markers; mm, inverted Y\nexport-dxf PROJECT OUTPUT.dxf          exterior boundaries in mm; refuses projects with holes or authored notches\nexport-pdf PROJECT OUTPUT.pdf a4|letter  1:1 pattern tiles with a 100 mm scale check\nexport-pattern-png PROJECT OUTPUT.png OPTIONS.json  physical 2D crop and density\nexport-pattern-jpeg PROJECT OUTPUT.jpg OPTIONS.json  physical 2D crop and whole PPI\nsimulate PROJECT OUTPUT.obj|.glb|.gltf STEPS f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj|.glb|.gltf           same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
         ),
         Some("mcp") => {
             count(&args, 1)?;
@@ -159,14 +159,25 @@ fn run() -> Result<()> {
             );
         }
         Some("import-obj") => {
-            count(&args, 5)?;
+            if args.len() != 5 && args.len() != 6 {
+                return Err(
+                    "Expected import-obj INPUT OUTPUT GARMENT.obj METRES_PER_UNIT [flat|posed]"
+                        .into(),
+                );
+            }
+            let mode = match args.get(5).map(String::as_str).unwrap_or("flat") {
+                "flat" => ObjImportMode::Flat,
+                "posed" => ObjImportMode::Posed,
+                _ => return Err("OBJ import mode must be flat or posed".into()),
+            };
             println!(
                 "{}",
                 import_obj(
                     Path::new(&args[1]),
                     Path::new(&args[2]),
                     Path::new(&args[3]),
-                    number(&args[4])?
+                    number(&args[4])?,
+                    mode
                 )?
             );
         }
@@ -483,9 +494,10 @@ fn import_obj(
     output: &Path,
     obj: &Path,
     metres_per_unit: f64,
+    mode: ObjImportMode,
 ) -> Result<serde_json::Value> {
     preserve_import_source(output, obj)?;
-    let imported = ObjPatternImport::load(obj, metres_per_unit)?;
+    let imported = ObjPatternImport::load_mode(obj, metres_per_unit, mode)?;
     let library = imported
         .material_library()
         .map(|name| obj.with_file_name(name));
@@ -497,7 +509,7 @@ fn import_obj(
         "input":input, "output":output, "obj":obj, "material_library":library,
         "revision":revision, "pieces_imported":imported.piece_count(),
         "holes_imported":imported.hole_count(), "materials_imported":imported.material_count(),
-        "metres_per_unit":metres_per_unit, "scope":weftforge_core::OBJ_IMPORT_SCOPE
+        "metres_per_unit":metres_per_unit, "mode":mode,"scope":weftforge_core::OBJ_IMPORT_SCOPE
     }))
 }
 

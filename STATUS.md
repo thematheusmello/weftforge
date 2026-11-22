@@ -1,3 +1,22 @@
+# Posed OBJ garment import — 22 November 2026
+
+The studio, CLI and MCP offer an explicit Posed mode after source units are
+chosen. Each panel keeps editable flat construction, fabric assignment and an
+independent triangle surface for its initial arrangement. A project containing
+a pose saves as v8. Flat import remains the default.
+
+Core regression checks cover both bent swatches and the two colored Harbor
+panels through save, reopen, direct export and solver initialization. Source
+triangles retain their winding and positions. Flat extents meet the measured
+reference uncertainty on both dimensions of the bent swatch and on the extended
+swatch width. The extended height and both Harbor dimensions fall outside it.
+[Scale and measurements](docs/posed-obj.md) · [Regression cases](crates/weftforge-core/tests/obj_import.rs).
+
+On macOS, the bent swatch survived a native Undo/Redo, save, quit and fresh-process reopen. Clearing its pose produced a flat, 49-vertex mesh. Undo restored the original six-vertex surface byte for byte in the exported OBJ. Apple Model I/O read four triangles. Direct exports retained every original XYZ component and oriented face in all three fixtures.
+[Native evidence](parity/reports/WF-20261122-NATIVE-POSED-OBJ-001.json) · [Reopened swatch](parity/reports/artifacts/native-posed-obj-20261122/Bent%20reopened.png).
+
+The reference scale estimator and resampled surface construction remain open. Test an asymmetric garment with cutouts and seams against a reviewed reference contract before extending interchange claims.
+
 # A Harbor shirt from an empty studio — 22 November 2026
 
 On native Apple Silicon build `4b15c2ec`, the two 14-point patterns, eight

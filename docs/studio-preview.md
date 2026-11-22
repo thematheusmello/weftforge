@@ -1,5 +1,11 @@
 # Native studio preview
 
+## Reopening an imported fold
+
+The left canvas shows the editable 240 × 360 mm panel. The right canvas shows the original six vertices in their imported 3D positions. The two halves of this swatch meet at 60°. Clearing the pose regenerated a flat mesh, and Undo restored the fold. [Readback and original fixtures](../parity/reports/WF-20261122-NATIVE-POSED-OBJ-001.json).
+
+![Bent swatch reopened with its editable dimensions and initial 3D surface](../parity/reports/artifacts/native-posed-obj-20261122/Bent%20reopened.png)
+
 ## Sewing and fitting Harbor from an empty document
 
 The blue A and magenta B arrows identify the two spans before the second

@@ -205,6 +205,8 @@ struct ImportObjArgs {
     output: String,
     obj: String,
     metres_per_unit: f64,
+    #[serde(default)]
+    mode: weftforge_core::ObjImportMode,
 }
 
 #[derive(Deserialize)]
@@ -490,6 +492,7 @@ fn call(line: &[u8]) -> Result<Value, String> {
                     Path::new(&args.output),
                     Path::new(&args.obj),
                     args.metres_per_unit,
+                    args.mode,
                 )
             }
             "project_import_svg" => {
@@ -713,7 +716,7 @@ fn command_schema() -> Value {
                 json!({
                     "obj":{"type":"string","maxLength":weftforge_core::MAX_OBJ_BYTES,"description":"OBJ text in UTF-8, limited by bytes and the command transport."},
                     "mtl":{"type":["string","null"],"maxLength":weftforge_core::MAX_MTL_BYTES,"description":"Companion MTL contents for the OBJ's declared library."},
-                    "metres_per_unit":{"type":"number","exclusiveMinimum":0}
+                    "mode":{"type":"string","enum":["flat","posed"],"default":"flat"},"metres_per_unit":{"type":"number","exclusiveMinimum":0}
                 }),
                 &["obj", "metres_per_unit"],
             ),
@@ -906,6 +909,7 @@ fn command_schema() -> Value {
             "remove_sewing_group",
             object(json!({"group":id}), &["group"]),
         ),
+        ("clear_piece_pose", object(json!({"piece":id}), &["piece"])),
         ("remove_piece", object(json!({"piece":id}), &["piece"])),
         (
             "set_resolution",
@@ -946,7 +950,7 @@ fn tools() -> Vec<Value> {
         ("project_lengths", "Read authored/rest interval, legacy seam or ordered sewing-group lengths in unrounded SI metres, with source revision and signed B minus A. No mesh, simulation, history or file writes.", object(json!({"path":path,"query":length_query_schema()}), &["path","query"]), true),
         ("project_create", "Save an empty native project to a new path. Existing files are refused.", object(json!({"output":path}), &["output"]), false),
         ("project_execute", "Load input, execute 1–1024 shared typed commands atomically as one document revision, then save output with native atomic/recovery handling. Input and output may be the same native file. Inspect stable IDs before edits; nested transactions are rejected.", object(json!({"input":path,"output":path,"commands":{"type":"array","minItems":1,"maxItems":MAX_COMMANDS,"items":command_schema()}}), &["input","output","commands"]), false),
-        ("project_import_obj", "Trace flat triangular OBJ garment islands with UVs into editable patterns, including straight-sided holes and MTL diffuse colors. Specify metres per OBJ coordinate unit. Reads one sibling material library if declared. Unsupported geometry rejects the entire import. Preserves both source files.", object(json!({"input":path,"output":path,"obj":path,"metres_per_unit":{"type":"number","exclusiveMinimum":0}}), &["input","output","obj","metres_per_unit"]), false),
+        ("project_import_obj", "Trace flat or posed triangular OBJ garment islands with UVs into editable patterns, including straight-sided holes and MTL diffuse colors. Specify metres per OBJ coordinate unit. Reads one sibling material library if declared. Unsupported geometry rejects the entire import. Preserves both source files.", object(json!({"input":path,"output":path,"obj":path,"mode":{"type":"string","enum":["flat","posed"],"default":"flat"},"metres_per_unit":{"type":"number","exclusiveMinimum":0}}), &["input","output","obj","metres_per_unit"]), false),
         ("project_import_svg", "Add closed straight/cubic SVG exterior patterns as one editable transaction. Compound paths can represent multiple disjoint straight-sided holes per polygon. Require physical mm width/height and a uniform viewBox scale; retain the SVG user-space origin and invert Y. Import names with first material/default 3D placement; omit appearance, sewing, grain and simulation. Unsupported content fails the entire import; source SVG is preserved.", object(json!({"input":path,"output":path,"svg":path}), &["input","output","svg"]), false),
         ("project_import_dxf", "Add the bounded FILE-005-v1 R2000 ASCII DXF LINE/clamped cubic SPLINE exterior patterns as one editable transaction. Require millimetres and exact closed ordered WF_PIECE layer contours; preserve WCS X/Y layout as U/V without inversion. Layer names become names with fresh IDs, first material and default 3D placement. Unsupported drawing content fails the entire import; source DXF is preserved.", object(json!({"input":path,"output":path,"dxf":path}), &["input","output","dxf"]), false),
         ("project_export_svg", "Export one compound evenodd path per piece with closed exterior and hole subpaths, plus authored perpendicular notch markers, at physical millimetre scale with inverted SVG Y. Internal lines are omitted; straight-sided holes can be reimported. Drawings with notch line elements are refused on import. Refuse replacement of the source or native project destinations.", files.clone(), false),

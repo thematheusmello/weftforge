@@ -14,7 +14,7 @@ use std::{
 use weftforge_core::{Command, Editor, Project, recovery_path};
 
 const MCP_TOOL_COUNT: usize = 15;
-const MCP_COMMAND_COUNT: usize = 38;
+const MCP_COMMAND_COUNT: usize = 39;
 
 struct Server {
     child: Child,
@@ -3611,6 +3611,40 @@ fn obj_import_cli_and_mcp_trace_a_scaled_panel_and_preserve_sources_on_failure()
         inline_schema["properties"]["mtl"]["maxLength"],
         weftforge_core::MAX_MTL_BYTES
     );
+    for schema in [file, inline_schema] {
+        assert_eq!(
+            schema["properties"]["mode"]["enum"],
+            json!(["flat", "posed"])
+        );
+        assert_eq!(schema["properties"]["mode"]["default"], "flat");
+    }
+    let swatch = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+        .join("../../fixtures/posed-obj/Bent swatch.obj");
+    let posed_file = directory.path("posed.weftforge");
+    let result = server.call(
+        "project_import_obj",
+        json!({"input":input,"output":posed_file,"obj":swatch,"metres_per_unit":1,"mode":"posed"}),
+    );
+    assert_eq!(success(&result)["mode"], "posed");
+    let posed_cli = directory.path("posed-cli.weftforge");
+    let cli_result = std::process::Command::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+        .arg("import-obj")
+        .arg(&input)
+        .arg(&posed_cli)
+        .arg(&swatch)
+        .args(["1", "posed"])
+        .output()
+        .unwrap();
+    assert!(cli_result.status.success(), "{:?}", cli_result.stderr);
+    assert_eq!(
+        fs::read(&posed_cli).unwrap(),
+        fs::read(&posed_file).unwrap()
+    );
+    let initial = Project::load(&posed_file).unwrap();
+    assert_eq!(initial.format_version(), 8);
+    let result=server.call("project_execute",json!({"input":posed_file,"output":posed_cli,"commands":[{"type":"clear_piece_pose","data":{"piece":initial.pieces[0].id}}]}));
+    success(&result);
+    assert_eq!(Project::load(&posed_cli).unwrap().format_version(), 6);
     let dest = directory.path("mcp.weftforge");
     let args = json!({"input":input,"output":dest,"obj":obj,"metres_per_unit":0.001});
     let result = server.call("project_import_obj", args.clone());

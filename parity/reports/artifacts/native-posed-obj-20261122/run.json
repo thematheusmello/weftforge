@@ -1,0 +1,14 @@
+{
+  "tested_commit": "42094ed44a4cce49f62304dfdf997f153d57a23f",
+  "native_executable_sha256": "1d902364a3db56a4462a921e93013e6e6e27d0263ff288efc3cf35979f4d178c",
+  "cli_executable_sha256": "bd105f1f68d84a7dbd95d5384fa142fee3198da2bee9508c8456f73b9ef4f89d",
+  "platform": "Apple Silicon macOS 27.2, Metal",
+  "native_steps": [
+    "Launched an empty project. The bent swatch with Flat and Metres showed a panel-specific planar mapping error and disabled Import. Posed produced one exterior contour. Import created six vertices and one piece at revision 1.",
+    "Undo emptied the document at revision 2. Redo restored the swatch at revision 3. Saved Bent native.weftforge and quit.",
+    "Launched a new empty process and used File \u2192 Open to reopen Bent native.weftforge. Revision 3 displayed one piece and six vertices. Exported Bent reopened.obj, selected the pattern, framed the 2D view and saved the workspace PNG.",
+    "Clear imported pose regenerated the panel with 49 vertices at revision 4. Exported Bent cleared.obj. Undo at revision 5 restored the six-vertex pose and the Clear imported pose control. Exported Bent restored.obj, saved Bent restored.weftforge and quit. The case app was absent from the running application list."
+  ],
+  "cli_steps": "A fresh empty project, import-obj with metres_per_unit 1 and mode posed, and export-obj on the saved file. Each command ran in a new process for the extended swatch and two-panel Harbor.",
+  "comparison": "Analytic area-uniform scale, unmodified XYZ, original oriented triangles and source color. Reference flat extent differences remain in docs/posed-obj.md. No live reference comparison or solved shirt acceptance."
+}

@@ -18,7 +18,9 @@ mod pattern_png;
 mod pdf;
 mod svg;
 pub use dxf_import::{DXF_IMPORT_SCOPE, DxfPatternImport, MAX_DXF_BYTES};
-pub use obj_import::{MAX_MTL_BYTES, MAX_OBJ_BYTES, OBJ_IMPORT_SCOPE, ObjPatternImport};
+pub use obj_import::{
+    MAX_MTL_BYTES, MAX_OBJ_BYTES, OBJ_IMPORT_SCOPE, ObjImportMode, ObjPatternImport,
+};
 pub use pattern_png::PatternSnapshotOptions;
 pub use pdf::PrintPaper;
 pub use svg::{MAX_SVG_BYTES, SVG_IMPORT_SCOPE, SvgPatternImport};
@@ -39,6 +41,7 @@ pub(crate) struct ImportedContour {
 /// Baseline writer version for projects using the original matte fabric model.
 pub const FORMAT_VERSION: u32 = 6;
 pub const FABRIC_SURFACE_FORMAT_VERSION: u32 = 7;
+pub const POSED_FORMAT_VERSION: u32 = 8;
 pub const MAX_PROJECT_BYTES: u64 = 16 * 1024 * 1024;
 static TEMP_ID: AtomicU64 = AtomicU64::new(0);
 
@@ -213,6 +216,7 @@ impl From<PieceV5> for Piece {
             holes: old.holes,
             internal_curves: old.internal_curves,
             notches: Vec::new(),
+            initial_pose: None,
             placement: old.placement,
             material: old.material,
             grain_angle: old.grain_angle,
@@ -241,6 +245,7 @@ impl From<PieceV4> for Piece {
             holes: Vec::new(),
             internal_curves: old.internal_curves,
             notches: Vec::new(),
+            initial_pose: None,
             placement: old.placement,
             material: old.material,
             grain_angle: old.grain_angle,
@@ -268,6 +273,7 @@ impl From<PieceV2V3> for Piece {
             holes: Vec::new(),
             internal_curves: Vec::new(),
             notches: Vec::new(),
+            initial_pose: None,
             placement: old.placement,
             material: old.material,
             grain_angle: old.grain_angle,
@@ -316,6 +322,7 @@ impl From<ProjectV1> for Project {
                     holes: Vec::new(),
                     internal_curves: Vec::new(),
                     notches: Vec::new(),
+                    initial_pose: None,
                     placement: piece.placement,
                     material: piece.material,
                     grain_angle: 0.0,
@@ -358,7 +365,9 @@ pub fn recovery_path(path: impl AsRef<Path>) -> PathBuf {
 impl Project {
     /// Write the oldest lossless current representation to preserve existing file interchange.
     pub fn format_version(&self) -> u32 {
-        if self.materials.iter().any(|m| m.surface.is_some()) {
+        if self.pieces.iter().any(|p| p.initial_pose.is_some()) {
+            POSED_FORMAT_VERSION
+        } else if self.materials.iter().any(|m| m.surface.is_some()) {
             FABRIC_SURFACE_FORMAT_VERSION
         } else {
             FORMAT_VERSION
@@ -403,7 +412,7 @@ impl Project {
             5 => serde_json::from_slice::<Document<ProjectV5>>(bytes)?
                 .project
                 .into(),
-            FORMAT_VERSION | FABRIC_SURFACE_FORMAT_VERSION => {
+            FORMAT_VERSION | FABRIC_SURFACE_FORMAT_VERSION | POSED_FORMAT_VERSION => {
                 serde_json::from_slice::<Document>(bytes)?.project
             }
             _ => {
@@ -416,6 +425,11 @@ impl Project {
             header.version >= FABRIC_SURFACE_FORMAT_VERSION
                 || project.materials.iter().all(|m| m.surface.is_none()),
             "Fabric surface factors require WeftForge project version 7",
+        )?;
+        ensure(
+            header.version >= POSED_FORMAT_VERSION
+                || project.pieces.iter().all(|p| p.initial_pose.is_none()),
+            "Initial pose requires WeftForge project version 8",
         )?;
         project.validate()?;
         project.validate_sewing_metrics(None)?;

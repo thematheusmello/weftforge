@@ -5,13 +5,14 @@ use std::{
     thread::JoinHandle,
     time::Duration,
 };
-use weftforge_core::ObjPatternImport;
+use weftforge_core::{ObjImportMode, ObjPatternImport};
 
 pub(super) const IMPORT_OBJ: &str = "Import garment OBJ…";
 
 pub(super) struct GarmentObjReview {
     path: PathBuf,
     unit: Option<f64>,
+    mode: ObjImportMode,
     state: Preview,
 }
 
@@ -27,6 +28,7 @@ impl GarmentObjReview {
         Self {
             path,
             unit: None,
+            mode: ObjImportMode::Flat,
             state: Preview::Pending,
         }
     }
@@ -42,7 +44,11 @@ impl GarmentObjReview {
         ui.heading("Import garment OBJ");
         ui.label(self.path.file_name().unwrap_or_default().to_string_lossy());
         ui.label("Choose the length unit used by the OBJ vertices.");
-        let previous = self.unit;
+        let previous = (self.unit, self.mode);
+        ui.horizontal_wrapped(|ui| {
+            ui.radio_value(&mut self.mode, ObjImportMode::Flat, "Flat");
+            ui.radio_value(&mut self.mode, ObjImportMode::Posed, "Posed");
+        });
         ui.horizontal_wrapped(|ui| {
             for (unit, label) in [
                 (0.001, "Millimetres"),
@@ -53,7 +59,7 @@ impl GarmentObjReview {
                 ui.radio_value(&mut self.unit, Some(unit), label);
             }
         });
-        if previous != self.unit {
+        if previous != (self.unit, self.mode) {
             self.state = Preview::Pending;
         }
         let Some(unit) = self.unit else { return false };
@@ -64,11 +70,13 @@ impl GarmentObjReview {
         {
             let (send, receive) = mpsc::channel();
             let path = self.path.clone();
+            let mode = self.mode;
             let ctx = ui.ctx().clone();
             self.state = match std::thread::Builder::new()
                 .name("garment-obj-preview".into())
                 .spawn(move || {
-                    let result = ObjPatternImport::load(path, unit).map_err(|e| e.to_string());
+                    let result =
+                        ObjPatternImport::load_mode(path, unit, mode).map_err(|e| e.to_string());
                     let _ = send.send(result);
                     ctx.request_repaint();
                 }) {
@@ -107,6 +115,6 @@ impl GarmentObjReview {
                 ));
             }
         }
-        previous != self.unit
+        previous != (self.unit, self.mode)
     }
 }

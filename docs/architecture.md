@@ -103,6 +103,11 @@ explicit errors for exhausted work or unsupported floating-point precision.
 Native v6 saves legacy seams, groups, owned annotations, holes and notches; strict v1–v5 migration
 does not reinterpret legacy correspondence.
 
+An imported pose stores the source triangle corners in piece-local 3D and
+their physical material coordinates separately. Simulation starts at the
+arranged 3D positions. The flat chart determines the membrane strain, mass
+and bending rest shape. [Posed OBJ](posed-obj.md).
+
 The rebuildable rest mesh has material coordinates, physical arranged positions,
 triangles, per-vertex piece IDs, source document revision and sampled boundary
 curve parameters. Sewing samples both intervals through their explicit map and

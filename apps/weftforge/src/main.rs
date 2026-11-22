@@ -3707,6 +3707,7 @@ impl Studio {
             let mut remove_notch=None;
             let mut remove_hole=None;
             let mut remove_piece=None;
+            let mut clear_pose=None;
             let mut assign_fabric=None;
             let mut edit_fabric_name=None;
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
@@ -3805,6 +3806,12 @@ impl Studio {
                 ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("piece",piece.id))),|ui| {
                 if self.properties_tab == PropertiesTab::Pattern {
                 pane_heading(ui,"Arrangement");
+                if piece.initial_pose.is_some() {
+                    let response=ui.button("Clear imported pose").on_hover_text("Return to the flat arrangement and generate a mesh from the editable outline.");
+                    self.retain_inspector_input(&response,false);
+                    acting|=response.is_pointer_button_down_on() || response.clicked();
+                    if response.clicked() { clear_pose=Some(piece.id); }
+                }
                 if let Some(dimensions)=&mut draft.dimensions {
                     ui.horizontal(|ui| {
                         ui.label("Size m");
@@ -4125,6 +4132,7 @@ impl Studio {
             if let Some(notch)=remove_notch { acting=true; self.apply_inspector_action(ui.ctx(),Command::RemoveNotch { notch },action_focus); }
             if let Some(curve)=remove_internal { acting=true; self.apply_inspector_action(ui.ctx(),Command::RemoveInternalCurve { curve },action_focus); }
             if let Some(hole)=remove_hole { acting=true; self.apply_inspector_action(ui.ctx(),Command::RemoveHole { hole },action_focus); }
+            if let Some(piece)=clear_pose { acting=true; self.apply_inspector_action(ui.ctx(),Command::ClearPiecePose { piece },action_focus); }
             if let Some(piece)=remove_piece { acting=true; self.apply_inspector_action(ui.ctx(),Command::RemovePiece { piece },action_focus); }
             if add_rectangle {
                 self.execute(Command::AddRectangle { name:self.name.clone(),origin:self.coordinate,width:self.size[0],height:self.size[1] });
@@ -7619,10 +7627,21 @@ impl Studio {
         let mut pivot = [0.; 3];
         for (index, id) in self.selection_ids().enumerate() {
             let member = self.editor.project.piece(id)?;
-            let [min, max] = self.editor.project.piece_bounds(id).ok()?;
-            let center = self
-                .arrangement_placement(member)
-                .transform(std::array::from_fn(|i| min[i].midpoint(max[i])));
+            let placement = self.arrangement_placement(member);
+            let center = if let Some(pose) = &member.initial_pose {
+                let mut min = [f64::INFINITY; 3];
+                let mut max = [f64::NEG_INFINITY; 3];
+                for p in &pose.positions {
+                    for i in 0..3 {
+                        min[i] = min[i].min(p[i]);
+                        max[i] = max[i].max(p[i]);
+                    }
+                }
+                placement.transform_3d(std::array::from_fn(|i| min[i].midpoint(max[i])))
+            } else {
+                let [min, max] = self.editor.project.piece_bounds(id).ok()?;
+                placement.transform(std::array::from_fn(|i| min[i].midpoint(max[i])))
+            };
             for i in 0..3 {
                 pivot[i] += (center[i] - pivot[i]) / (index + 1) as f64;
             }
@@ -7930,7 +7949,15 @@ impl Studio {
                         .as_ref()
                         .and_then(|placements| placements.get(&id))
                     {
-                        triangle.map(|index| placement.transform(mesh.uv[index]))
+                        let piece = self.editor.project.piece(id).expect("validated mesh owner");
+                        triangle.map(|index| {
+                            if piece.initial_pose.is_some() {
+                                placement
+                                    .transform_3d(piece.placement.inverse_3d(mesh.positions[index]))
+                            } else {
+                                placement.transform(mesh.uv[index])
+                            }
+                        })
                     } else {
                         triangle.map(|index| positions[index])
                     };
@@ -19947,6 +19974,47 @@ mod pattern_import_tests {
         app.history(&ctx, false);
         assert_eq!(app.editor.project.pieces, before.pieces);
         assert_eq!(app.editor.project.points, before.points);
+        fs::remove_file(path).unwrap();
+    }
+
+    #[test]
+    fn garment_obj_posed_mode_retraces_flat_rejection_and_commits_one_edit() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture();
+        let previous = app.editor.project.clone();
+        let path = source(PatternFormat::Obj);
+        fs::write(
+            &path,
+            include_bytes!("../../../fixtures/posed-obj/Bent swatch.obj"),
+        )
+        .unwrap();
+        ctx.data_mut(|d| {
+            d.insert_temp(egui::Id::new("test-obj-import-source"), Some(path.clone()))
+        });
+        click(&ctx, &mut app, IMPORT_OBJ);
+        click(&ctx, &mut app, "Metres");
+        wait_for_text(&ctx, &mut app, "OBJ panel Folded swatch");
+        click(&ctx, &mut app, "Posed");
+        wait_for_text(
+            &ctx,
+            &mut app,
+            "1 exterior contour · 0 cutouts · 0 assigned fabrics",
+        );
+        assert_eq!(app.editor.project, previous);
+        click(&ctx, &mut app, "Import");
+        assert!(
+            app.editor
+                .project
+                .pieces
+                .last()
+                .unwrap()
+                .initial_pose
+                .is_some()
+        );
+        assert_eq!(app.editor.project.format_version(), 8);
+        app.history(&ctx, false);
+        assert_eq!(app.editor.project.pieces, previous.pieces);
         fs::remove_file(path).unwrap();
     }
 

@@ -160,7 +160,27 @@ fn create_cloth_context(
     }
     check()?;
     let failure = std::cell::RefCell::new(None);
-    let result = Cloth::new_cancellable(
+    let posed: std::collections::BTreeSet<_> = project
+        .pieces
+        .iter()
+        .filter(|p| p.initial_pose.is_some())
+        .map(|p| p.id)
+        .collect();
+    let bending_rest = if posed.is_empty() {
+        None
+    } else {
+        let mut rest = Vec::with_capacity(mesh.positions.len());
+        for (i, &owner) in mesh.piece_ids.iter().enumerate() {
+            check()?;
+            rest.push(if posed.contains(&owner) {
+                [mesh.uv[i][0], mesh.uv[i][1], 0.]
+            } else {
+                mesh.positions[i]
+            });
+        }
+        Some(rest)
+    };
+    let result = Cloth::new_with_bending_rest(
         ClothInput {
             positions: mesh.positions.clone(),
             triangles: mesh.triangles.clone(),
@@ -170,6 +190,7 @@ fn create_cloth_context(
             pins: vec![],
             colliders,
         },
+        bending_rest.as_deref(),
         || {
             if let Some(work) = work
                 && let Err(error) = work.check().and_then(|()| work.step())

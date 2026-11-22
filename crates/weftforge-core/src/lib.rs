@@ -7,6 +7,8 @@ mod document;
 mod geometry;
 mod offset;
 mod persistence;
+mod pose;
+pub use pose::InitialPose;
 mod sewing;
 pub mod simulation;
 
@@ -15,9 +17,9 @@ pub use geometry::*;
 pub use offset::*;
 pub use persistence::{
     DXF_IMPORT_SCOPE, DxfPatternImport, FABRIC_SURFACE_FORMAT_VERSION, FORMAT_VERSION,
-    MAX_DXF_BYTES, MAX_MTL_BYTES, MAX_OBJ_BYTES, MAX_SVG_BYTES, OBJ_IMPORT_SCOPE, ObjPatternImport,
-    PatternSnapshotOptions, PrintPaper, SVG_IMPORT_SCOPE, StagedExport, SvgPatternImport,
-    recovery_path,
+    MAX_DXF_BYTES, MAX_MTL_BYTES, MAX_OBJ_BYTES, MAX_SVG_BYTES, OBJ_IMPORT_SCOPE, ObjImportMode,
+    ObjPatternImport, POSED_FORMAT_VERSION, PatternSnapshotOptions, PrintPaper, SVG_IMPORT_SCOPE,
+    StagedExport, SvgPatternImport, recovery_path,
 };
 pub use sewing::*;
 

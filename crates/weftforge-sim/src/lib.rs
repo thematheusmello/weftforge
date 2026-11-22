@@ -231,8 +231,31 @@ impl Cloth {
         input: ClothInput,
         cancelled: impl Fn() -> bool,
     ) -> Result<Self, SimulationError> {
+        Self::new_with_bending_rest(input, None, cancelled)
+    }
+
+    /// Use separate material-rest positions for bending when the starting state is posed.
+    pub fn new_with_bending_rest(
+        input: ClothInput,
+        bending_rest: Option<&[Vec3]>,
+        cancelled: impl Fn() -> bool,
+    ) -> Result<Self, SimulationError> {
         check_cancel(&cancelled)?;
         validate(&input, &cancelled)?;
+        let rest = bending_rest.unwrap_or(&input.positions);
+        if rest.len() != input.positions.len() {
+            return Err(invalid(
+                "bending rest vertex count differs from initial positions",
+            ));
+        }
+        if bending_rest.is_some() {
+            for &p in rest {
+                check_cancel(&cancelled)?;
+                if !finite(p) {
+                    return Err(invalid("non-finite bending rest position"));
+                }
+            }
+        }
         let n = input.positions.len();
         let mut positions = Vec::with_capacity(n);
         let mut velocities = Vec::with_capacity(n);
@@ -299,7 +322,7 @@ impl Cloth {
                 let rigidity = input.triangle_materials[a].bending_stiffness * 0.5
                     + input.triangle_materials[b].bending_stiffness * 0.5;
                 if rigidity > 0. {
-                    let bend = Bend::new([edge[0], edge[1], p, q], &input.positions, rigidity);
+                    let bend = Bend::new([edge[0], edge[1], p, q], rest, rigidity);
                     if !bend.valid_scale() {
                         return Err(invalid("non-finite derived bending coefficient"));
                     }

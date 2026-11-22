@@ -34,10 +34,10 @@ straight/cubic pattern boundaries at physical millimetre scale, with a review
 before importing. SVG requires explicit dimensions and a uniform viewBox;
 DXF accepts a bounded R2000 `LINE`/clamped cubic `SPLINE` profile.
 
-**Import garment OBJ…** traces flat triangle meshes into editable panels and
-cutouts. Choose the OBJ’s units before importing. The panels keep their 3D
-placements, and a sibling MTL supplies fabric names and colors.
-[Garment OBJ import](spec/features/FILE-003-editable-obj-import.md)
+**Import garment OBJ…** traces UV islands into editable panels and cutouts.
+Choose the source units and use **Flat** for planar panels or **Posed** to
+keep folds in the initial 3D surface. Both modes read fabric names and
+diffuse colors from the companion MTL. [Posed import and scale](docs/posed-obj.md).
 
 Imported boundaries remain editable. **Frame all** fits the visible outlines in
 the 2D view and preserves pending numeric edits. The Scene dock can temporarily
@@ -128,10 +128,10 @@ with a signed percentage for extension or compression.
 The solver is early; general garment convergence and contact robustness remain
 ongoing work.
 
-Version 6 `.weftforge` JSON uses a strict schema for supported editable
-construction, including ordered sewing groups and piece-owned straight internal
-annotations, holes and notches. The reader supports explicit version 1–5 migrations.
-Older apps cannot open v6. The studio exchanges supported SVG, DXF and OBJ
+`.weftforge` stores editable construction, including ordered sewing groups,
+internal annotations, holes and notches. The studio opens versions 1–8.
+Saving uses v6 for standard construction, v7 for an authored fabric finish,
+and v8 for a piece with an imported pose. The studio exchanges supported SVG, DXF and OBJ
 garments and exports GLB or embedded JSON glTF. Share an OBJ together with its
 companion MTL to retain its fabric colors. File and Command
 search export 1:1 tiled pattern PDFs for A4 or US Letter. Each PDF includes
