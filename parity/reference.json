@@ -65,12 +65,16 @@
     },
     "locale": {
       "ui_language_observed": "English interface labels",
-      "selected_language_setting": null,
+      "selected_language_setting": "English",
       "numeric_locale": null,
-      "limitation": "English UI labels, decimal point display and Decimal Places 1 observed. Checked Language setting and regional numeric parsing remain unobserved. Keyboard highlight in an opened language submenu is not a checked setting.",
+      "limitation": "The English language-menu item was checked. Foundation reported en_US for this host. The observed application fields display a decimal point. Application parsing of decimal points, commas and grouping remains unverified.",
       "numeric_decimal_separator_observed": ".",
       "numeric_display_decimal_places": 1,
-      "display_preferences_evidence_id": "CUA-PREF-USER-INTERFACE-20261114"
+      "display_preferences_evidence_id": "CUA-PREF-USER-INTERFACE-20261114",
+      "checked_language_evidence": "spec/observations/REF-001-MACOS-LOCALE-001.json",
+      "host_numeric_locale": "en_US",
+      "host_decimal_separator": ".",
+      "host_grouping_separator": ","
     },
     "preferences": {
       "inspected_pages": [
@@ -1999,5 +2003,5 @@
       "history_note": "Prior read-only Preferences inspection; preserved."
     }
   ],
-  "baseline_change_note": "Revision 1 retained and not frozen: new read-only unit, configured preference and post-restart graphics observations append evidence without changing settings. Regional numeric parsing and other qualifying conditions remain incomplete; a missing displayed default simulation-property path is recorded without causal inference."
+  "baseline_change_note": "Revision 1 remains provisional. The English language checkmark and macOS numeric conventions are observed. Fractional input parsing and other qualifying settings remain open."
 }

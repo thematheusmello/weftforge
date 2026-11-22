@@ -68,6 +68,30 @@ conditioning and corner subdivision controls failed their 181-state runs.
 [Source-qualified result](parity/reports/WF-20261122-HARBOR-SHOULDER-001.json) ·
 [Measurements, replay and controls](parity/reports/artifacts/harbor-shoulder-20261122/README.md).
 
+# Posed garment OBJ observations — 22 November 2026
+
+The reference studio imported two original folded swatches and draped Harbor
+as garments with flat UV patterns. Bending the 240 × 360 mm swatch kept its
+flat outline within raster uncertainty. Extending one half by 10% while keeping
+the UVs fixed enlarged the flat outline to 245.4 × 368.2 mm. Harbor kept its two
+colors and nonplanar surfaces after remeshing. Replaying the retained geometry
+and three snapshots reproduced the measured results. The next format increment
+is an explicit posed import with a declared physical scale policy, checked on
+all three fixtures. [Reviewed behavior](spec/features/FILE-003-posed-obj-import.md)
+· [Measurements](spec/observations/REF-FILE-003-OBJ-POSED-001.json).
+
+The language menu showed English checked. The macOS host reported `en_US`,
+a decimal point and comma grouping. Application parsing still needs a
+rectangle-field trial with `12.5` and `12,5`. The native input provider refused
+the canvas press on the translocated window. A fresh launch exposed an import
+scale of 100%, but keyboard focus stayed in the background workspace. Both
+fractional inputs remain untested. The settings baseline remains provisional. [Locale observation](spec/observations/REF-001-MACOS-LOCALE-001.json).
+
+Post-case cleanup on 22 November retained the original inputs, measurements and
+private captures. After normal Quit left the owned scratch process present,
+a termination signal closed it. The fresh scale trial also closed with its import
+uncommitted. Both processes were confirmed absent.
+
 # Editing fabric finishes — 22 November 2026
 
 Select a pattern and open **Properties → Fabric** to edit the metallic and

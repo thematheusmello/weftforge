@@ -42,6 +42,11 @@ remain unknown. A displayed default simulation-property path is absent at a
 metadata check; settings actually loaded are not inferred. The baseline stays
 unfrozen at revision 1.
 
+Settings > Language showed a checkmark next to English. The macOS host reported
+`en_US`, a decimal point and a comma grouping separator. The reference displayed
+1200.0 mm and 1197.5 mm on the bent swatch. The decimal input trial could not
+reach the rectangle fields. [Locale observation](../spec/observations/REF-001-MACOS-LOCALE-001.json).
+
 The [observed menu catalog](../spec/inventory/md-2026.1.237-main-menus.json) records
 17 main menus and 572 nonroot AX entries. These are presence observations, with
 505 leaf-like nodes that can include disabled headings or empty submenus. They
