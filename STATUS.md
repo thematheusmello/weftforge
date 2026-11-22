@@ -1,3 +1,19 @@
+# Native simulation timeline — 22 November 2026
+
+On build `6fc11757`, the packaged Mac studio recorded a bent swatch, stepped
+three times and scrubbed by keyboard. Four native OBJ exports matched the
+corresponding CLI positions and oriented triangles exactly. A metallic edit
+preserved the take. The embedded glTF retained the selected frame within
+14.2 nm per position component. Stepping while viewing an earlier frame resumed
+the latest solver time. A subsequent height edit saved the swatch at 370 mm.
+
+The session keeps up to 600 samples and 64 MiB of positions. The packaged test
+captured the 1640 × 1000 window. Minimum-size timeline coverage currently comes
+from the widget regression. Next, record a moving avatar, add range playback
+and verify persisted frame timing with an independent reader.
+[Native run and replay](parity/reports/WF-20261122-NATIVE-TIMELINE-001.json) ·
+[Studio controls](docs/studio-preview.md#recording-and-scrubbing-a-garment).
+
 # Apple Silicon package notices — 22 November 2026
 
 The offline package from `3cb8b515` contains 177 emitted Cargo crates.

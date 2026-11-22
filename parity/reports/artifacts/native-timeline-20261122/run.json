@@ -1,0 +1,16 @@
+{
+  "source": "6fc1175739afa212fe69dbe33ac2fa1b9296f652",
+  "platform": "Apple Silicon macOS 27.2, Metal",
+  "executable_sha256": {
+    "target/package/WeftForge.app/Contents/MacOS/weftforge": "c881e8add2d9c5611a254225548b5f8ef91352935e3197e33e4f8794481f29f8",
+    "target/package/weftforge-cli": "4eccbb9bfafe23663434390ff19dccd28a8bd0df855de12a473e52cab8f8eb55"
+  },
+  "native_steps": [
+    "Started the unsigned native studio with no file arguments, opened the saved v8 bent swatch, and framed both views. Started recording at rest, stepped three times, and stopped. The transport showed four frames ending at 0.050000 s.",
+    "Scrubbed to the initial frame, frame 2 (0.016667 s) and frame 3 (0.033333 s) and exported each displayed surface through the native Save panels. The first file labeled step 1 was captured at frame 3. That file is retained as Native second accepted.obj. The separate frame 2 sample is Native first accepted.obj.",
+    "At frame 2, set Metallic to 0.50. Revision 4 kept the selected frame and all four samples. Exported the displayed frame as embedded glTF. With focus on File, 22 Tab presses reached the timeline slider. Right selected frame 3 and Left returned to frame 2. The displayed time changed while the latest solver time stayed at 0.050000 s.",
+    "Issued Step while viewing frame 2. The live state advanced to 0.066667 s. Exported Native step 4.obj and then changed the pattern height from 0.360 to 0.370 m. Saved the revision-5 project and quit. The case application exited.",
+    "The 1640 by 1000 workspace image was captured from the native studio. Dragging the window edges in this run retained that size. The timeline minimum-size coverage comes from the separate native widget regression, with no minimum-size package capture in this run."
+  ],
+  "cli_comparison": "Ran the packaged CLI export-obj once and simulate at 1, 2, 3 and 4 whole steps, each from the same project in a new process. All five outputs byte-match the archived CLI files. The Python reader needs no Rust code. The CLI and studio use the same solver. This evaluates timeline selection and invalidation, not physical accuracy."
+}

@@ -27,8 +27,10 @@ use capture::{RenderedFrame, WorkspaceCapture};
 use pattern_fill::{PatternFill, fabric_color};
 mod pattern_snapshot;
 mod strain_map;
+mod timeline;
 use pattern_snapshot::{PatternSnapshotDialog, SnapshotAction, SnapshotFormat};
 use strain_map::{STRAIN_MAP, StrainMap};
+use timeline::{Capture, Timeline};
 
 const DEFAULT_ORBIT: [f32; 2] = [-0.45, 0.12];
 const MIN_CAMERA_SCALE: f32 = 60.;
@@ -168,7 +170,7 @@ struct FinishedJob {
 }
 enum JobOutput {
     Mesh(Arc<Mesh>),
-    Simulation(Arc<Cloth>),
+    Simulation(Arc<Cloth>, Option<Capture>),
     OutlineOffset(Box<OutlineOffsetPreview>),
 }
 #[derive(Clone, Copy)]
@@ -1190,6 +1192,7 @@ struct Studio {
     editor: Editor,
     mesh: Option<Arc<Mesh>>,
     strain_map: StrainMap,
+    timeline: Timeline,
     pattern_fill: Option<PatternFill>,
     cloth: Option<Arc<Cloth>>,
     job: Option<Job>,
@@ -1302,6 +1305,7 @@ impl Studio {
             editor: Editor::new(Project::default()).expect("valid empty project"),
             mesh: None,
             strain_map: StrainMap::default(),
+            timeline: Timeline::default(),
             pattern_fill: None,
             cloth: None,
             job: None,
@@ -2019,6 +2023,7 @@ impl Studio {
         }
     }
     fn reset_simulation(&mut self) {
+        self.timeline.clear();
         self.workspace_capture.cancel();
         if self
             .job
@@ -2039,6 +2044,7 @@ impl Studio {
         }
         let revision = self.editor.project.revision;
         let previous = revision - 1;
+        self.timeline.surface_edit(previous, revision);
         // Only the immediately preceding, mechanically identical state is reusable.
         if let Some(mesh) = self.mesh.as_mut().filter(|m| m.doc_revision == previous) {
             Arc::make_mut(mesh).doc_revision = revision;
@@ -2061,6 +2067,7 @@ impl Studio {
         self.message = "Fabric appearance updated.".into();
     }
     fn rebuild(&mut self) {
+        self.timeline.clear();
         self.appearance_job = None;
         self.placement_drag = None;
         self.pattern_snapshot = None;
@@ -2173,6 +2180,8 @@ impl Studio {
             return;
         };
         let project = self.editor.project.clone();
+        self.timeline.live();
+        let mut capture = self.timeline.capture();
         let cloth = self.cloth.clone();
         let settings = batch.settings;
         self.pending_batch = None;
@@ -2197,9 +2206,12 @@ impl Studio {
                             SimulationError::Cancelled => JobError::Cancelled,
                             error => JobError::Failed(error.to_string()),
                         })?;
+                    if let Some(recorder) = &mut capture {
+                        recorder.step(state.simulation_time(), settings.dt, state.positions());
+                    }
                     progress.fetch_add(1, Ordering::Relaxed);
                 }
-                Ok(JobOutput::Simulation(Arc::new(state)))
+                Ok(JobOutput::Simulation(Arc::new(state), capture))
             },
         );
         job.batch = Some(batch);
@@ -2267,7 +2279,16 @@ impl Studio {
                     self.last_stage = "Rest arrangement";
                     self.message = "Rest mesh rebuilt from editable construction.".into();
                 }
-                Ok(JobOutput::Simulation(state)) if can_accept => {
+                Ok(JobOutput::Simulation(state, capture)) if can_accept => {
+                    self.timeline.accept(capture, revision);
+                    if let Some(batch) = job.batch {
+                        self.timeline.accepted_endpoint(
+                            job.revision,
+                            state.simulation_time(),
+                            batch.settings.dt,
+                            state.positions(),
+                        );
+                    }
                     self.last_stage = job.batch.map_or("Manual simulation", |batch| batch.stage);
                     self.message = format!(
                         "{} complete · {:.3} s · {:.1} ms/step · assembly remaining {:.4} m",
@@ -2564,9 +2585,8 @@ impl Studio {
                     }
                     let mut output = (**mesh).clone();
                     output.doc_revision = project.revision;
-                    if let Some(state) = &self.cloth {
-                        output.positions = state.positions().to_vec();
-                    }
+                    let (_,positions)=self.garment_surface().ok_or("Garment surface is unavailable")?;
+                    output.positions.clone_from_slice(positions);
                     match format {
                         ExportFormat::Obj => output.export_obj_with_materials(project, path).map(|_| ()),
                         ExportFormat::SelectedObj => output.export_selected_obj(project, path, &self.selection_ids().collect::<Vec<_>>()).map(|_| ()),
@@ -3325,6 +3345,7 @@ impl Studio {
                 self.message =
                     "Cancellation requested; previous accepted snapshot retained.".into();
             }
+            self.record_button(ui);
             let response = ui.checkbox(&mut self.wireframe, "Wireframe");
             self.retain_inspector_input(&response, false);
             ui.separator();
@@ -3346,6 +3367,15 @@ impl Studio {
             } else {
                 self.last_stage.into()
             };
+            let stage = if self
+                .timeline
+                .selected(self.editor.project.revision)
+                .is_some()
+            {
+                format!("Latest solver · {stage}")
+            } else {
+                stage
+            };
             ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
                 let (response, menu) = egui::menu::MenuButton::new("Task details").ui(ui, |ui| {
                     ui.set_width(420.0);
@@ -3356,6 +3386,7 @@ impl Studio {
                     .on_hover_text(stage);
             });
         });
+        self.timeline_bar(ui);
     }
     fn task_details(&self, ui: &mut egui::Ui) {
         ui.horizontal_wrapped(|ui| {
@@ -4280,7 +4311,15 @@ impl Studio {
             "Cloth total mass (kg) {:.12}",
             cloth.masses().iter().sum::<f64>()
         ));
-        ui.small("Accepted cloth state for this revision.");
+        if self
+            .timeline
+            .selected(self.editor.project.revision)
+            .is_some()
+        {
+            ui.strong("Latest solver state");
+        } else {
+            ui.small("Accepted cloth state for this revision.");
+        }
         let diagnostics = cloth.diagnostics();
         ui.label(format!("Time {:.3} s\nAssembly remaining {:.4} m\nPeak material strain {:.2}%\nSeam gap {:.4} m\nContact error {:.4} m\nInitial intersections {}\nInitial overlap corrections {}\nUncertain capsule pairs {}",cloth.simulation_time(),diagnostics.seam_assembly_remaining,100.*diagnostics.max_stretch_error,diagnostics.max_seam_error,diagnostics.max_contact_error,diagnostics.initial_intersections,diagnostics.initial_contact_recovery_projections,diagnostics.capsule_surface_uncertain_pairs)).on_hover_text("Counts applied correction projections, including repeated visits. Initial placement repairs are kinematic and contribute to velocity. Simulation reset clears the count.");
         if let Some(peak) = diagnostics.peak_strain
@@ -7503,10 +7542,13 @@ impl Studio {
             .mesh
             .as_deref()
             .filter(|mesh| mesh.doc_revision == self.editor.project.revision)?;
-        let positions = self
-            .cloth
-            .as_ref()
-            .map_or(mesh.positions.as_slice(), |state| state.positions());
+        let positions = if let Some((_, frame)) = self.timeline.selected(mesh.doc_revision) {
+            frame.positions.as_ref()
+        } else {
+            self.cloth
+                .as_ref()
+                .map_or(mesh.positions.as_slice(), |state| state.positions())
+        };
         (positions.len() == mesh.piece_ids.len()).then_some((mesh, positions))
     }
 
@@ -7811,7 +7853,11 @@ impl Studio {
     }
 
     fn garment(&mut self, ui: &mut egui::Ui) {
-        let ready_to_place = self.selected.is_some()
+        let ready_to_place = self
+            .timeline
+            .selected(self.editor.project.revision)
+            .is_none()
+            && self.selected.is_some()
             && self.selection_ids().all(|id| {
                 !self.hidden_pieces.contains(&id) && self.editor.project.piece(id).is_some()
             })
@@ -7933,6 +7979,7 @@ impl Studio {
             self.editor.project.revision,
             self.mesh.as_ref(),
             self.cloth.as_ref(),
+            self.timeline.selected(self.editor.project.revision),
         );
         self.strain_map.panel(ui, r, &self.hidden_pieces);
         let mut picked = None;
@@ -8046,6 +8093,12 @@ impl Studio {
                 .is_some_and(|job| job.kind == JobKind::Mesh)
             {
                 "REBUILDING REST MESH · Y up · m"
+            } else if self
+                .timeline
+                .selected(self.editor.project.revision)
+                .is_some()
+            {
+                "RECORDED FRAME · Y up · m"
             } else if self.playing {
                 "SIMULATING · Y up · m"
             } else {
@@ -8312,7 +8365,7 @@ impl eframe::App for Studio {
                     )
                     .show(ui, |ui| self.status_bar(ui));
                 egui::Panel::bottom("studio-transport")
-                    .exact_size(32.0)
+                    .exact_size(if self.timeline.has_frames() { 59. } else { 32. })
                     .resizable(false)
                     .frame(
                         egui::Frame::new()
@@ -17590,7 +17643,7 @@ mod tests {
             receiver,
         });
         sender
-            .send(Ok(JobOutput::Simulation(Arc::new(cloth))))
+            .send(Ok(JobOutput::Simulation(Arc::new(cloth), None)))
             .ok()
             .unwrap();
         app.poll();
@@ -17674,7 +17727,9 @@ mod tests {
                 } else {
                     Ok(match kind {
                         JobKind::Mesh => JobOutput::Mesh(Arc::new((*mesh).clone())),
-                        JobKind::Simulation => JobOutput::Simulation(Arc::new((*cloth).clone())),
+                        JobKind::Simulation => {
+                            JobOutput::Simulation(Arc::new((*cloth).clone()), None)
+                        }
                         JobKind::OutlineOffset => {
                             unreachable!("offset jobs have separate lifecycle tests")
                         }

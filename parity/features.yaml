@@ -49365,7 +49365,9 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "parity/reports/WF-20261122-NATIVE-TIMELINE-001.json"
+      ],
       "scenarios": [
         {
           "id": "ANIMATION-CACHE-001",
@@ -49375,6 +49377,15 @@
           },
           "initial_conditions": "Original redistributable animated avatar, explicit seconds/frame range and validated collision mesh.",
           "expected_outcomes": "Changed input cannot reuse old simulation; temporal contact and scale correct; unsupported path stays unverified."
+        },
+        {
+          "id": "ANIM-SESSION-TIMELINE-001",
+          "path": "parity/scenarios/ANIM-SESSION-TIMELINE-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/native-timeline-20261122/Swatch.weftforge": "7cb72685b3939d344f23b9049b8661a38db3dd5d8ba3fa458b5ca6702d6b5d93"
+          },
+          "initial_conditions": "Revision 3 of the editable, posed 240 by 360 mm swatch. Six vertices and four triangles. Default step settings.",
+          "expected_outcomes": "Record the initial surface and three steps, retain all four samples through a finish edit, scrub and export the selected frame, continue the latest solver state and invalidate the take on a physical edit. OBJ component error at most 1 nm; glTF at most 1 micrometre."
         }
       ],
       "comparison_criteria": {
@@ -49389,23 +49400,56 @@
         "ANIM-001",
         "SIM-005"
       ],
-      "implementation_locations": [],
+      "implementation_locations": [
+        "apps/weftforge/src/timeline.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge/src/strain_map.rs"
+      ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/5"
       ],
       "prs": [],
-      "implementation_status": "planned",
+      "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261122-NATIVE-TIMELINE-001",
+          "commit": "6fc1175739afa212fe69dbe33ac2fa1b9296f652",
+          "timestamp": "2026-11-22T22:45:11.027257Z",
+          "platform": "Apple Silicon macOS, native Metal studio, CLI and Python 3",
+          "artifact_hashes": {
+            "parity/reports/artifacts/native-timeline-20261122/CLI initial.obj": "6ae5deec8f921d90c4dcfe890c521f1d144181ad3fdf42b0296600083ef5e0de",
+            "parity/reports/artifacts/native-timeline-20261122/CLI step 1.obj": "b4f847c16b557c0d1f871125437b0a71cdd8154e25756214c8b135b224d341d5",
+            "parity/reports/artifacts/native-timeline-20261122/CLI step 2.obj": "5a3fc14249d88bf2bbfbb5db75d15be24ab2d03d82316520802eb739f65d4ff9",
+            "parity/reports/artifacts/native-timeline-20261122/CLI step 3.obj": "29bdcb7fe55a8f7375331d0ebdc6b21b47a313650df4ca18444d7a58b038ffd7",
+            "parity/reports/artifacts/native-timeline-20261122/CLI step 4.obj": "8a71493522128c012d72c05fdb2a7db6235526b1b0a00cf837567cb8206cb448",
+            "parity/reports/artifacts/native-timeline-20261122/Native first accepted.obj": "b4f847c16b557c0d1f871125437b0a71cdd8154e25756214c8b135b224d341d5",
+            "parity/reports/artifacts/native-timeline-20261122/Native initial.obj": "6ae5deec8f921d90c4dcfe890c521f1d144181ad3fdf42b0296600083ef5e0de",
+            "parity/reports/artifacts/native-timeline-20261122/Native second accepted.obj": "5a3fc14249d88bf2bbfbb5db75d15be24ab2d03d82316520802eb739f65d4ff9",
+            "parity/reports/artifacts/native-timeline-20261122/Native step 4.obj": "8a71493522128c012d72c05fdb2a7db6235526b1b0a00cf837567cb8206cb448",
+            "parity/reports/artifacts/native-timeline-20261122/Resized recorded swatch.weftforge": "1c74d64a87a1c5d6f46b8bc2cf959aa0a3463b442d20af0a5e2bf72ad4441ae1",
+            "parity/reports/artifacts/native-timeline-20261122/Scrubbed finish.gltf": "d00a4b4a851cdd44c6734b74a6a03d9268b9c1cf796353e06db1feadfd5e7ce6",
+            "parity/reports/artifacts/native-timeline-20261122/Swatch.weftforge": "7cb72685b3939d344f23b9049b8661a38db3dd5d8ba3fa458b5ca6702d6b5d93",
+            "parity/reports/artifacts/native-timeline-20261122/Timeline default.png": "e739031ac6704968665f595bef50fd7075fe326b0bb75a48e5b0c7848b63f67c",
+            "parity/reports/artifacts/native-timeline-20261122/check_timeline.py": "14d541649d0d2da0c4d8fc1fd0ae3752185d22b939649b0842a4144fdefa27de",
+            "parity/reports/artifacts/native-timeline-20261122/measurements.json": "92480ec42013415914505faff4dc11d6e4b9e58dba30463371dae85e44cb75ae",
+            "parity/reports/artifacts/native-timeline-20261122/protocol.txt": "865bbee1e81bcebc2a027118b68702fbdfdbd3712704bf37851a29203c9dba9c",
+            "parity/reports/artifacts/native-timeline-20261122/run.json": "12e7c39aa8c7c3117d6f75af102dc691fc9113c9eaa47c746fe3953966c2fb46",
+            "parity/reports/artifacts/native-timeline-20261122/weftforge-fabrics-9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d.mtl": "9868ddeef18bd928a31e67c58f6b2a7b3820d07d882dfd43667f055afd950f0d",
+            "parity/scenarios/ANIM-SESSION-TIMELINE-001.json": "abb3f5a49f9d23d3d892c68e023f6d5937bea4a350b80b3dab42025fa49c8daa"
+          },
+          "path": "parity/reports/WF-20261122-NATIVE-TIMELINE-001.json"
+        }
+      ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established.",
-        "No timeline, cache persistence or animation implemented."
+        "Full reference contract and runtime comparison remain open.",
+        "The studio records garment positions in memory and exports a selected static surface. Keyframes, range playback, persistent caches, avatar motion and animation interchange remain open."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "ANIM-003",

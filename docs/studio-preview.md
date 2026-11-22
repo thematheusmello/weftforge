@@ -1,5 +1,25 @@
 # Native studio preview
 
+## Recording and scrubbing a garment
+
+Click **Record** in the bottom transport, then **Step**, **Play**, **Assemble** or
+**Drape**. The first frame is the current arrangement. Each accepted step adds
+its garment positions, simulation time and step duration. If recording begins
+during a running batch, the first new frame is that batch’s accepted endpoint.
+Subsequent batches record each step. **Stop recording**
+keeps the take. Select a **Frame** or enter a **Time (s)** to pause and display
+the nearest recorded step. The focused frame slider also accepts the left and
+right arrow keys. The Simulation inspector labels the latest solver diagnostics
+while a historical frame is displayed. Static OBJ, selected OBJ, GLB and glTF exports use
+that surface. **Live** returns to the latest accepted solver state. Starting
+simulation again continues from that state.
+
+The take holds up to 600 frames and 64 MiB of XYZ positions, stopping at the
+first limit reached. **Clear recording** releases them. Fabric color and finish
+edits retain the take. Physical edits, Reset and document replacement clear it.
+Native project files store editable construction. Frame data lasts for the current
+session.
+
 ## Reopening an imported fold
 
 The left canvas shows the editable 240 × 360 mm panel. The right canvas shows the original six vertices in their imported 3D positions. The two halves of this swatch meet at 60°. Clearing the pose regenerated a flat mesh, and Undo restored the fold. [Readback and original fixtures](../parity/reports/WF-20261122-NATIVE-POSED-OBJ-001.json).

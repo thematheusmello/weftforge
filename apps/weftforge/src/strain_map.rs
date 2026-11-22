@@ -21,6 +21,7 @@ pub(super) struct StrainMap {
 struct Snapshot {
     mesh: Weak<Mesh>,
     cloth: Option<Weak<Cloth>>,
+    recorded: Option<(u64, usize)>,
     field: Option<Field>,
 }
 
@@ -61,21 +62,32 @@ impl Default for StrainMap {
 }
 
 impl StrainMap {
-    pub fn refresh(&mut self, revision: u64, mesh: Option<&Arc<Mesh>>, cloth: Option<&Arc<Cloth>>) {
+    pub fn refresh(
+        &mut self,
+        revision: u64,
+        mesh: Option<&Arc<Mesh>>,
+        cloth: Option<&Arc<Cloth>>,
+        frame: Option<((u64, usize), &super::timeline::Frame)>,
+    ) {
         let Some(mesh) = mesh.filter(|m| self.enabled && m.doc_revision == revision) else {
             self.snapshot = None;
             return;
         };
         if self.snapshot.as_ref().is_some_and(|old| {
             old.mesh.as_ptr() == Arc::as_ptr(mesh)
+                && old.recorded == frame.map(|(key, _)| key)
                 && old.cloth.as_ref().map(Weak::as_ptr) == cloth.map(Arc::as_ptr)
         }) {
             return;
         }
-        let positions = cloth.map_or(mesh.positions.as_slice(), |c| c.positions());
+        let positions = frame.map_or_else(
+            || cloth.map_or(mesh.positions.as_slice(), |c| c.positions()),
+            |(_, frame)| frame.positions.as_ref(),
+        );
         self.snapshot = Some(Snapshot {
             mesh: Arc::downgrade(mesh),
             cloth: cloth.map(Arc::downgrade),
+            recorded: frame.map(|(key, _)| key),
             field: Field::from_surface(mesh, positions),
         });
     }
@@ -228,10 +240,10 @@ mod tests {
         ];
         let mesh = Arc::new(mesh);
         let mut map = StrainMap::default();
-        map.refresh(17, Some(&mesh), None);
+        map.refresh(17, Some(&mesh), None, None);
         assert!(map.snapshot.is_none());
         map.enabled = true;
-        map.refresh(17, Some(&mesh), None);
+        map.refresh(17, Some(&mesh), None, None);
         let field = map.snapshot.as_ref().unwrap().field.as_ref().unwrap();
         assert_eq!(field.pieces.len(), 2);
         assert!((field.faces[0] - 0.9).abs() < 1e-14);
@@ -250,7 +262,7 @@ mod tests {
         ] {
             map.upper_percent = upper;
             assert!((display_level(level, upper) - expected).abs() < 1e-12);
-            map.refresh(17, Some(&mesh), None);
+            map.refresh(17, Some(&mesh), None, None);
             assert_eq!(
                 map.snapshot
                     .as_ref()
@@ -265,14 +277,14 @@ mod tests {
         }
         assert_eq!(map.face_color(0), Some(ramp_color(0.)));
         assert_eq!(map.face_color(1), Some(ramp_color(1.)));
-        map.refresh(18, Some(&mesh), None);
+        map.refresh(18, Some(&mesh), None, None);
         assert!(map.snapshot.is_none());
         assert_eq!(map.face_color(0), Some(Color32::from_gray(110)));
         let invalid = Arc::new(Mesh {
             triangles: vec![[1, 2, 99]],
             ..(*mesh).clone()
         });
-        map.refresh(17, Some(&invalid), None);
+        map.refresh(17, Some(&invalid), None, None);
         assert!(map.snapshot.as_ref().unwrap().field.is_none());
         for c in [Color32::BLACK, Color32::from_rgb(15, 28, 43)] {
             assert_eq!(edge_color(c), Color32::from_gray(246));
