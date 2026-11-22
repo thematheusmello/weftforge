@@ -108,9 +108,13 @@ pub struct Placement {
 
 impl Placement {
     pub fn transform(&self, point: [f64; 2]) -> [f64; 3] {
+        self.transform_3d([point[0], point[1], 0.])
+    }
+
+    pub fn transform_3d(&self, [x, y, z]: [f64; 3]) -> [f64; 3] {
         let [sx, sy, sz] = self.rotation.map(f64::sin);
         let [cx, cy, cz] = self.rotation.map(f64::cos);
-        let [x, y, z] = [point[0], point[1] * cx, point[1] * sx];
+        let [y, z] = [y * cx - z * sx, y * sx + z * cx];
         let [x, y, z] = [x * cy + z * sy, y, -x * sy + z * cy];
         let [x, y, z] = [x * cz - y * sz, x * sz + y * cz, z];
         [
@@ -118,6 +122,15 @@ impl Placement {
             y + self.translation[1],
             z + self.translation[2],
         ]
+    }
+
+    pub fn inverse_3d(&self, world: [f64; 3]) -> [f64; 3] {
+        let [x, y, z] = std::array::from_fn(|i| world[i] - self.translation[i]);
+        let [sx, sy, sz] = self.rotation.map(f64::sin);
+        let [cx, cy, cz] = self.rotation.map(f64::cos);
+        let [x, y] = [x * cz + y * sz, -x * sz + y * cz];
+        let [x, z] = [x * cy - z * sy, x * sy + z * cy];
+        [x, y * cx + z * sx, -y * sx + z * cx]
     }
 
     /// Rotate in radians around a unit world-space axis through a pattern-space pivot.
@@ -289,6 +302,12 @@ pub struct Piece {
     /// Independent straight annotations, each with two exclusive endpoint IDs.
     pub internal_curves: Vec<Id>,
     pub notches: Vec<Notch>,
+    #[serde(
+        default,
+        deserialize_with = "crate::InitialPose::deserialize_present",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub initial_pose: Option<crate::InitialPose>,
     pub placement: Placement,
     pub material: Id,
     /// Warp axis in material UV: radians counterclockwise from +U toward +V.
@@ -679,9 +698,22 @@ impl Project {
         containment_work: &mut crate::geometry::ContainmentWork,
     ) -> Result<()> {
         let mut detail_count = 0;
+        let (mut pose_vertices, mut pose_triangles) = (0, 0);
         for piece in &self.pieces {
             containment_work.charge_request()?;
             detail_count += piece.holes.len() + piece.notches.len();
+            if let Some(pose) = &piece.initial_pose {
+                pose_vertices += pose.positions.len();
+                pose_triangles += pose.triangles.len();
+                ensure(
+                    pose_vertices <= crate::MAX_MESH_VERTICES
+                        && pose_triangles <= crate::MAX_MESH_TRIANGLES,
+                    &format!(
+                        "Panel {} exceeds the combined garment pose limit",
+                        piece.name
+                    ),
+                )?;
+            }
         }
         ensure(
             self.points.len()
@@ -885,6 +917,9 @@ impl Project {
                     used_points.insert(id),
                     "Points cannot be shared between pieces",
                 )?;
+            }
+            if let Some(pose) = &piece.initial_pose {
+                pose.checked_boundary(self, piece, || containment_work.charge_request())?;
             }
             if piece.holes.is_empty() {
                 crate::geometry::validate_contour_with_work(self, piece, containment_work)?;
@@ -1216,11 +1251,13 @@ impl Project {
                 obj,
                 mtl,
                 metres_per_unit,
+                mode,
             } => {
-                let imported = crate::ObjPatternImport::from_bytes(
+                let imported = crate::ObjPatternImport::from_bytes_mode(
                     obj.as_bytes(),
                     mtl.as_deref().map(str::as_bytes),
                     metres_per_unit,
+                    mode,
                 )?;
                 let mut material_ids = BTreeMap::new();
                 for (name, color) in imported.materials {
@@ -1242,14 +1279,15 @@ impl Project {
                             .id,
                     );
                 }
-                for (pattern, placement, fabric) in imported.patterns {
-                    self.import_patterns(vec![pattern], cut_work)?;
+                for panel in imported.patterns {
+                    self.import_patterns(vec![panel.pattern], cut_work)?;
                     let piece = self
                         .pieces
                         .last_mut()
                         .expect("import_patterns appended a piece");
-                    piece.placement = placement;
-                    if let Some(name) = fabric {
+                    piece.placement = panel.placement;
+                    piece.initial_pose = panel.pose;
+                    if let Some(name) = panel.fabric {
                         piece.material = material_ids[&name];
                     }
                 }
@@ -1304,6 +1342,7 @@ impl Project {
                     holes: Vec::new(),
                     internal_curves: Vec::new(),
                     notches: Vec::new(),
+                    initial_pose: None,
                     placement: Placement::default(),
                     material,
                     grain_angle: 0.,
@@ -1874,6 +1913,30 @@ impl Project {
                             min[axis] + (point.position[axis] - min[axis]) * scale[axis];
                     }
                 }
+                if let Some(pose) = &mut self
+                    .pieces
+                    .iter_mut()
+                    .find(|p| p.id == piece)
+                    .unwrap()
+                    .initial_pose
+                {
+                    for uv in &mut pose.uv {
+                        for axis in 0..2 {
+                            uv[axis] = min[axis] + (uv[axis] - min[axis]) * scale[axis];
+                        }
+                    }
+                }
+            }
+            Command::ClearPiecePose { piece } => {
+                let panel = self
+                    .pieces
+                    .iter_mut()
+                    .find(|p| p.id == piece)
+                    .ok_or_else(|| Error("Unknown piece".into()))?;
+                ensure(
+                    panel.initial_pose.take().is_some(),
+                    "Panel has no imported pose",
+                )?;
             }
             Command::TransformPiece {
                 piece,
@@ -1934,6 +1997,15 @@ impl Project {
                     .iter_mut()
                     .find(|item| item.id == piece)
                     .unwrap();
+                if let Some(pose) = &mut transformed.initial_pose {
+                    for uv in &mut pose.uv {
+                        *uv = transform(*uv);
+                    }
+                    for p in &mut pose.positions {
+                        let [x, y] = transform([p[0], p[1]]);
+                        *p = [x, y, p[2]];
+                    }
+                }
                 transformed.placement =
                     original
                         .placement
@@ -2378,6 +2450,11 @@ pub enum Command {
         obj: String,
         mtl: Option<String>,
         metres_per_unit: f64,
+        #[serde(default)]
+        mode: crate::ObjImportMode,
+    },
+    ClearPiecePose {
+        piece: Id,
     },
     ImportSvgPatterns {
         svg: String,
