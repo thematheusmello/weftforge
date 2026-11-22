@@ -35371,7 +35371,9 @@
         "parity/reports/WF-20261120-HARBOR-HEM-REGENERATION-001.json",
         "parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json",
         "spec/features/FIT-003-global-strain-map.md",
-        "parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json"
+        "parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json",
+        "parity/reports/WF-20261122-HARBOR-SHOULDER-001.json",
+        "parity/reports/WF-20261122-HARBOR-SHOULDER-BALANCE-001.json"
       ],
       "scenarios": [
         {
@@ -36114,6 +36116,53 @@
             "parity/reports/artifacts/native-global-strain-20261120/reopened.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
             "parity/reports/artifacts/native-global-strain-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784"
           }
+        },
+        {
+          "path": "parity/reports/WF-20261122-HARBOR-SHOULDER-001.json",
+          "id": "WF-20261122-HARBOR-SHOULDER-001",
+          "commit": "0a4bc886b12097719f63f91c3b3514595128a336",
+          "timestamp": "2026-11-22T21:44:30.405703Z",
+          "platform": "Apple Silicon macOS, optimized Rust CPU solver with stage observation and independent Python geometric replay",
+          "artifact_hashes": {
+            "parity/reports/artifacts/harbor-shoulder-20261122/README.md": "61abff87747980ad95a886a519571f16dea1423b3145556d293fc5caa837acf8",
+            "parity/reports/artifacts/harbor-shoulder-20261122/extended.jsonl": "59c9fb929fde1753e31c1b233bbb9980e36975f5662089304e6e09bfc7866605",
+            "parity/reports/artifacts/harbor-shoulder-20261122/extended.trace.xz": "39beafd18d37c77690ad79aad9bdf584e04aa93caac687f0256eeddc089f1644",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/baseline-extended.json": "02221b7479bd9d1740ece5fb67560ab5431cadffc0890e0b3942fb63cd314bf2",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/baseline-original.json": "5485239f5ac13f1de908528550141d9b8537c9c5cbc9f5f159c1026143a3cf79",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/condition.patch": "10fa5ff9cf0b9240990bd71d5cdea3bf72269097d739441ac56839d8362051fc",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/conditioned-extended.json": "1b69365908da3c8545dabf9ac2e3c84b5a237773b63c38188e81b0f860783a7e",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/conditioned-original.json": "4326d0e6af5c9ed33da3dbde71fd7ee14d652e4ee560b0900f00978edaa77b66",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/corners-extended.json": "4915a1c0bca226cb6c0070c87e9f1d82c5ee556dd614aea81d5aa87b46f19de6",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/corners-original.json": "5124cd3525e4610bee7f1f22e4cd92936f1317738cd9f08efe507ae2d918a900",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/corners.patch": "d7e3c9c00319568b2a612453e0d2d2090a88e3a669ef436711a67f984241c6c9",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/runs.json": "23149c084f29ed5d1bad12927dfcd7f16c135096b6ffaf2d4d046f43713febe9",
+            "parity/reports/artifacts/harbor-shoulder-20261122/observe.patch": "def5931d3eff8397c97a548d34dbb8f307e1f6a2e58430acbda02b08d32e2b9c",
+            "parity/reports/artifacts/harbor-shoulder-20261122/original.jsonl": "e5828c0c719122c0c978ab767be1699ddce3f80e4d7ca50576bd2f8ea6b0c29a",
+            "parity/reports/artifacts/harbor-shoulder-20261122/original.trace.xz": "4ca084fc1d9ed96eea901a317442df3b85ad6d5d53320898e8f1b09af48054fd",
+            "parity/reports/artifacts/harbor-shoulder-20261122/replay.py": "715497c748e9239f0d97db9eead2c859edd693bb46a204816dd42dcf125f0539",
+            "parity/reports/artifacts/harbor-shoulder-20261122/runs.json": "6a6864e92d9d66d684023dada4a7555f38f6e1bdca3bcfc02ecc62b9d47902c7",
+            "parity/reports/artifacts/harbor-shoulder-20261122/shoulder.rs": "f52126f07b6f4a6502c5726a772b3a45a82776e9e5af0bdd22feddb66d88bf1c",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/Harbor.weftforge": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef"
+          }
+        },
+        {
+          "path": "parity/reports/WF-20261122-HARBOR-SHOULDER-BALANCE-001.json",
+          "id": "WF-20261122-HARBOR-SHOULDER-BALANCE-001",
+          "commit": "6707eb7827006af475a52e97c96288c8df29dffd",
+          "timestamp": "2026-11-22T21:59:28Z",
+          "platform": "Apple Silicon macOS CPU, reduced local force equations and independent energy differences on saved substep inputs",
+          "artifact_hashes": {
+            "parity/reports/artifacts/harbor-shoulder-20261122/extended.jsonl": "59c9fb929fde1753e31c1b233bbb9980e36975f5662089304e6e09bfc7866605",
+            "parity/reports/artifacts/harbor-shoulder-20261122/original.jsonl": "e5828c0c719122c0c978ab767be1699ddce3f80e4d7ca50576bd2f8ea6b0c29a",
+            "parity/reports/artifacts/harbor-shoulder-balance-20261122/README.md": "27a5f51c48daed2b7334a02be80518c7e0e28e7ed27f54b2d4d1ab59603d01e4",
+            "parity/reports/artifacts/harbor-shoulder-balance-20261122/check_balance.py": "244ae42d6fa3a0ec83356d4865d9e726ff4ed014c9ba56451b7c01b1f987d495",
+            "parity/reports/artifacts/harbor-shoulder-balance-20261122/extended.json": "be8ae31d2e66720bbf1b24d6c2806dcd953118d52d5db35280c4c2447ce67e61",
+            "parity/reports/artifacts/harbor-shoulder-balance-20261122/original.json": "3e63f57d7bd5fc25397ba2678935514e9c33467015724173d97c829769d80e46",
+            "parity/reports/artifacts/harbor-shoulder-balance-20261122/protocol.json": "2130005027c1ccad369ea6ed86c105cf616b92ee70b6c20dd0062ad43bc06af6",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/Harbor.weftforge": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
+          }
         }
       ],
       "known_gaps": [
@@ -36123,13 +36172,14 @@
         "Current3eddef original control fails unchanged strain screen:24.1185%after1s assembly,32.3519%after3s. Fixed zero-G continuation reaches32.1699%and still evolves. No-avatar probe is causal only, quality null; full force balance/convergence/calibration remain unknown.",
         "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity.",
         "The 50 mm Harbor front hem edit survived reopening, simulation and a second edit. The longer garment reached 16.17% strain after assembly and 16.10% after drape, above the 15% limit. The matching CLI checked all 181 states on each construction. Both first exceeded the strain limit at state 28.",
-        "Displaying current accepted maximum-principal-stretch faces preserves the existing historical regeneration and extended-hem fitting outcomes. Numerical fitting equivalence remains open."
+        "Displaying current accepted maximum-principal-stretch faces preserves the existing historical regeneration and extended-hem fitting outcomes. Numerical fitting equivalence remains open.",
+        "Both 520 N/m Harbor documents exceed the 15% strain limit at frame 28. At frame 29, retaining the two opposing warp anchors and the measured stitch gap forces at least 15.703% and 16.024% extension. A mechanically verified correction for the surrounding shoulder remains open. Coupled mechanical replay with 14 mobile shoulder vertices leaves 15.220% and 15.844% front warp in the measured frame-28 substep."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/FIT-003-global-strain-map.md": "c51b56330f6d6b6f2a343fe176d4a65b18566aa386b51aa48d43eae36fbd0fd5"
       }
@@ -44142,7 +44192,9 @@
         "parity/reports/WF-20261120-HARBOR-HEM-DRAPE-001.json",
         "spec/features/FIT-003-global-strain-map.md",
         "spec/observations/REF-SIM-005-GARMENT-STRAIN-MAP-001.json",
-        "parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json"
+        "parity/reports/WF-20261120-NATIVE-GLOBAL-STRAIN-001.json",
+        "parity/reports/WF-20261122-HARBOR-SHOULDER-001.json",
+        "parity/reports/WF-20261122-HARBOR-SHOULDER-BALANCE-001.json"
       ],
       "scenarios": [
         {
@@ -44236,7 +44288,7 @@
         "https://github.com/thematheusmello/weftforge/pull/40"
       ],
       "implementation_status": "partial",
-      "verification_status": "not_run",
+      "verification_status": "failed",
       "verification_runs": [
         {
           "id": "WF-20261113-REGRESSION-001",
@@ -45646,6 +45698,53 @@
             "parity/reports/artifacts/native-global-strain-20261120/reopened.weftforge": "2f5afa9c05854bd0d8702b1779492f8bc2c223654396c962cb728b369a84063d",
             "parity/reports/artifacts/native-global-strain-20261120/weftforge-fabrics-a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784.mtl": "a0b56dcca19dbe37590f2f0b566946a97a19db80ef1228a2b00aa728d7614784"
           }
+        },
+        {
+          "path": "parity/reports/WF-20261122-HARBOR-SHOULDER-001.json",
+          "id": "WF-20261122-HARBOR-SHOULDER-001",
+          "commit": "0a4bc886b12097719f63f91c3b3514595128a336",
+          "timestamp": "2026-11-22T21:44:30.405703Z",
+          "platform": "Apple Silicon macOS, optimized Rust CPU solver with stage observation and independent Python geometric replay",
+          "artifact_hashes": {
+            "parity/reports/artifacts/harbor-shoulder-20261122/README.md": "61abff87747980ad95a886a519571f16dea1423b3145556d293fc5caa837acf8",
+            "parity/reports/artifacts/harbor-shoulder-20261122/extended.jsonl": "59c9fb929fde1753e31c1b233bbb9980e36975f5662089304e6e09bfc7866605",
+            "parity/reports/artifacts/harbor-shoulder-20261122/extended.trace.xz": "39beafd18d37c77690ad79aad9bdf584e04aa93caac687f0256eeddc089f1644",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/baseline-extended.json": "02221b7479bd9d1740ece5fb67560ab5431cadffc0890e0b3942fb63cd314bf2",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/baseline-original.json": "5485239f5ac13f1de908528550141d9b8537c9c5cbc9f5f159c1026143a3cf79",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/condition.patch": "10fa5ff9cf0b9240990bd71d5cdea3bf72269097d739441ac56839d8362051fc",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/conditioned-extended.json": "1b69365908da3c8545dabf9ac2e3c84b5a237773b63c38188e81b0f860783a7e",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/conditioned-original.json": "4326d0e6af5c9ed33da3dbde71fd7ee14d652e4ee560b0900f00978edaa77b66",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/corners-extended.json": "4915a1c0bca226cb6c0070c87e9f1d82c5ee556dd614aea81d5aa87b46f19de6",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/corners-original.json": "5124cd3525e4610bee7f1f22e4cd92936f1317738cd9f08efe507ae2d918a900",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/corners.patch": "d7e3c9c00319568b2a612453e0d2d2090a88e3a669ef436711a67f984241c6c9",
+            "parity/reports/artifacts/harbor-shoulder-20261122/mesh-controls/runs.json": "23149c084f29ed5d1bad12927dfcd7f16c135096b6ffaf2d4d046f43713febe9",
+            "parity/reports/artifacts/harbor-shoulder-20261122/observe.patch": "def5931d3eff8397c97a548d34dbb8f307e1f6a2e58430acbda02b08d32e2b9c",
+            "parity/reports/artifacts/harbor-shoulder-20261122/original.jsonl": "e5828c0c719122c0c978ab767be1699ddce3f80e4d7ca50576bd2f8ea6b0c29a",
+            "parity/reports/artifacts/harbor-shoulder-20261122/original.trace.xz": "4ca084fc1d9ed96eea901a317442df3b85ad6d5d53320898e8f1b09af48054fd",
+            "parity/reports/artifacts/harbor-shoulder-20261122/replay.py": "715497c748e9239f0d97db9eead2c859edd693bb46a204816dd42dcf125f0539",
+            "parity/reports/artifacts/harbor-shoulder-20261122/runs.json": "6a6864e92d9d66d684023dada4a7555f38f6e1bdca3bcfc02ecc62b9d47902c7",
+            "parity/reports/artifacts/harbor-shoulder-20261122/shoulder.rs": "f52126f07b6f4a6502c5726a772b3a45a82776e9e5af0bdd22feddb66d88bf1c",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/Harbor.weftforge": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef"
+          }
+        },
+        {
+          "path": "parity/reports/WF-20261122-HARBOR-SHOULDER-BALANCE-001.json",
+          "id": "WF-20261122-HARBOR-SHOULDER-BALANCE-001",
+          "commit": "6707eb7827006af475a52e97c96288c8df29dffd",
+          "timestamp": "2026-11-22T21:59:28Z",
+          "platform": "Apple Silicon macOS CPU, reduced local force equations and independent energy differences on saved substep inputs",
+          "artifact_hashes": {
+            "parity/reports/artifacts/harbor-shoulder-20261122/extended.jsonl": "59c9fb929fde1753e31c1b233bbb9980e36975f5662089304e6e09bfc7866605",
+            "parity/reports/artifacts/harbor-shoulder-20261122/original.jsonl": "e5828c0c719122c0c978ab767be1699ddce3f80e4d7ca50576bd2f8ea6b0c29a",
+            "parity/reports/artifacts/harbor-shoulder-balance-20261122/README.md": "27a5f51c48daed2b7334a02be80518c7e0e28e7ed27f54b2d4d1ab59603d01e4",
+            "parity/reports/artifacts/harbor-shoulder-balance-20261122/check_balance.py": "244ae42d6fa3a0ec83356d4865d9e726ff4ed014c9ba56451b7c01b1f987d495",
+            "parity/reports/artifacts/harbor-shoulder-balance-20261122/extended.json": "be8ae31d2e66720bbf1b24d6c2806dcd953118d52d5db35280c4c2447ce67e61",
+            "parity/reports/artifacts/harbor-shoulder-balance-20261122/original.json": "3e63f57d7bd5fc25397ba2678935514e9c33467015724173d97c829769d80e46",
+            "parity/reports/artifacts/harbor-shoulder-balance-20261122/protocol.json": "2130005027c1ccad369ea6ed86c105cf616b92ee70b6c20dd0062ad43bc06af6",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/extended/Harbor.weftforge": "8102eb5486897edbc7bc9276f12fc8cebf9acb72d9975272a83453a9d5a979ef",
+            "parity/reports/artifacts/native-hem-regeneration-20261120/full-fit/original/Harbor.weftforge": "6e8d3dcad320d3570719cb62417af1c4efb003fe30940938b16a484b44441e1f"
+          }
         }
       ],
       "known_gaps": [
@@ -45659,13 +45758,14 @@
         "Cross-reference only: the new actual 96 headless Harbor evaluator records complete independent strain/seam/contact attribution without disagreement or blocked diagnostic, while strict strain fails 28\u201337. This supplies no current GUI/CLI diagnostic feature verification; existing SIM-005 status/freshness and full scope remain unchanged.",
         "Actual13fb/integrated8fe material groups change the independent two-face component from RED4.266274346685227e-7m/2.7341292831298387e-3N to first GREEN5.683890753411727e-18m/1.0747913121812962e-14N at unchanged1e-8m/1e-6N bounds; source407 gates pass. One new full Harbor A8 case is operationally accepted251.83977058297023s/420s with all181 states independently analyzed, but STRICT QUALITY FAILED strain frames28..40, peak21.96202527055029percent at frame29/triangle214/piece2/weft. Final14.03608985percent does not override trajectory failure. Initial seam/target failures0..28 remain; all finite/contact/uncertainty screens pass and completed-fit seam from exactzero29 passes. V1 build-only monitor failure and V2 correction/build remain separate. Fresh producer receipts qualify inherited saved-state/new_garment_execution:false wording. No replay/regrade/native/reference/full-feature/physics/garment/roadmap acceptance.",
         "Actual a70c0df0 clean xtask and optimized native/CLI builds passed as separate D invocations. The 472-test source sequence belongs to f30c588d; unchanged source91 are explicit equivalence only. Native workflow and full feature/reference acceptance remain pending; runtime numerical quality is separately failed.",
-        "The dedicated reference observation establishes Global/Fabric controls, graph choices, numeric range and display scope. The global face map has an original physical definition and palette. A reference strain tensor, fabric calibration, graph-style response, stress and pressure remain open."
+        "The dedicated reference observation establishes Global/Fabric controls, graph choices, numeric range and display scope. The global face map has an original physical definition and palette. A reference strain tensor, fabric calibration, graph-style response, stress and pressure remain open.",
+        "Both 520 N/m Harbor documents exceed the 15% strain limit at frame 28. At frame 29, retaining the two opposing warp anchors and the measured stitch gap forces at least 15.703% and 16.024% extension. A mechanically verified correction for the surrounding shoulder remains open. Coupled mechanical replay with 14 mobile shoulder vertices leaves 15.220% and 15.844% front warp in the measured frame-28 substep."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/FIT-003-global-strain-map.md": "c51b56330f6d6b6f2a343fe176d4a65b18566aa386b51aa48d43eae36fbd0fd5"
       }

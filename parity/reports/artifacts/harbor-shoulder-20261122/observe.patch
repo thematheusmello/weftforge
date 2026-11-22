@@ -1,0 +1,75 @@
+--- a/crates/weftforge-sim/src/lib.rs
++++ b/crates/weftforge-sim/src/lib.rs
+@@ -473,7 +473,15 @@
+         let dt = settings.dt / f64::from(settings.substeps);
+         let mut contacts = 0;
+         let mut recovery_provenance = None;
++        let frame = (self.simulation_time()*60.).round() as usize + 1;
++        let face = self.input.triangles[6];
+         for substep in 0..settings.substeps {
++            let observe = |iteration: i32, stage: &str, positions: &[Vec3]| {
++                if (27..=29).contains(&frame) {
++                    eprintln!("TRACE {frame} {substep} {iteration} {stage} {:?}", face.map(|id| positions[id]));
++                }
++            };
++            observe(-1,"previous",&x);
+             if cancelled() {
+                 return Err(SimulationError::Cancelled);
+             }
+@@ -496,6 +504,7 @@
+                 }
+             }
+             self.apply_pins(&mut x);
++            observe(-1,"predict",&x);
+             for remaining in &mut seam_remaining {
+                 *remaining -= (settings.seam_closure_speed * dt).min(*remaining);
+             }
+@@ -503,7 +512,7 @@
+             let mut bend_corrections = vec![[0.; 3]; x.len()];
+             let mut sewing_corrections = vec![[0.; 3]; x.len()];
+             let mut hard_seam_lambda = vec![[0.; 3]; self.input.stitches.len()];
+-            for _ in 0..settings.iterations {
++            for iteration in 0..settings.iterations {
+                 if cancelled() {
+                     return Err(SimulationError::Cancelled);
+                 }
+@@ -515,6 +524,7 @@
+                     &mut material_corrections,
+                     &cancelled,
+                 )?;
++                observe(iteration as i32,"material",&x);
+                 constraints::solve_bending(
+                     &self.bends,
+                     &mut x,
+@@ -523,6 +533,7 @@
+                     &mut bend_corrections,
+                     &cancelled,
+                 )?;
++                observe(iteration as i32,"bend",&x);
+                 constraints::solve_sewing(
+                     &self.input.stitches,
+                     &seam_remaining,
+@@ -532,6 +543,7 @@
+                     &mut sewing_corrections,
+                     &cancelled,
+                 )?;
++                observe(iteration as i32,"soft_sewing",&x);
+                 for ((s, &remaining), lambda) in self
+                     .input
+                     .stitches
+@@ -550,11 +562,15 @@
+                         );
+                     }
+                 }
++                observe(iteration as i32,"hard_sewing",&x);
+                 contacts +=
+                     self.project_colliders(&mut x, &previous, &mut contact_history, &cancelled)?;
++                observe(iteration as i32,"avatar_ground",&x);
+                 contacts +=
+                     self.project_cloth(&mut x, &previous, &mut contact_history, &cancelled)?;
++                observe(iteration as i32,"self_contact",&x);
+                 self.apply_pins(&mut x);
++                observe(iteration as i32,"pins",&x);
+                 if !x.iter().copied().all(finite) {
+                     return Err(SimulationError::Unstable("non-finite position".into()));
+                 }

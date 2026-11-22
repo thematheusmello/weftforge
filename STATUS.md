@@ -1,3 +1,25 @@
+# Harbor shoulder closure — 22 November 2026
+
+On `0a4bc886` both 520 N/m Harbor constructions first exceeded 15% warp
+strain at frame 28. Closing seam 64 stretched the 50 mm front shoulder line
+to 57.778 mm in the original and 58.166 mm after the front hem edit.
+Holding the closing actuator for one frame from the same state reduced the
+line to 55.157 and 55.327 mm. A six-vertex reconstruction shows that by
+frame 29 the two stitch endpoints alone cannot recover the strain limit at
+the measured gap and opposite edge positions. The reduced substep solve included
+both opposite edges and the adjacent shoulder faces. Its 14 mobile vertices
+balanced forces within 2.6 × 10⁻⁹ N. Shoulder tension fell to 2.54 N
+and 2.63 N at the recovered roots. Front warp remained 15.220% and
+15.844%. The fit gate remains open. A historical coupled trajectory from rest also crossed the
+line limit in both garments. Check the intended sewing loads or material
+response against independent measurements before changing the fit model.
+[Saved-state mechanical replay](parity/reports/artifacts/harbor-shoulder-balance-20261122/README.md).
+
+Both probes exited successfully (PIDs 39111 and 39113). The retained mesh
+conditioning and corner subdivision controls failed their 181-state runs.
+[Source-qualified result](parity/reports/WF-20261122-HARBOR-SHOULDER-001.json) ·
+[Measurements, replay and controls](parity/reports/artifacts/harbor-shoulder-20261122/README.md).
+
 # Debian Wayland editable OBJ import — 20 November 2026
 
 The Debian 13.7 ARM64 studio from `a79bd6db` imported a millimetre pocket and

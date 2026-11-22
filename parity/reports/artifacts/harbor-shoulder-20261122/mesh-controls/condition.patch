@@ -1,0 +1,126 @@
+diff --git a/crates/weftforge-core/src/geometry.rs b/crates/weftforge-core/src/geometry.rs
+index 71f38dbb..99f17787 100644
+--- a/crates/weftforge-core/src/geometry.rs
++++ b/crates/weftforge-core/src/geometry.rs
+@@ -335,6 +335,7 @@ impl Project {
+             })?;
+         }
+         self.append_sewing_groups(&mut mesh, cancelled, work)?;
++        condition_seam_neighbors(self, &mut mesh, cancelled, work)?;
+         check_budget(cancelled, work)?;
+         mesh.validate_context(work)?;
+         check_budget(cancelled, work)?;
+@@ -1466,6 +1467,113 @@ fn refine(
+     Err(Error("Refinement did not converge within 20 levels".into()))
+ }
+ 
++// Keep seam anchors and topology fixed while improving the elements which transmit their loads.
++fn condition_seam_neighbors(
++    project: &Project,
++    mesh: &mut Mesh,
++    cancelled: &dyn Fn() -> bool,
++    work: Option<&crate::offset::Work<'_>>,
++) -> Result<()> {
++    if mesh.stitches.is_empty() {
++        return Ok(());
++    }
++    let mut seam_vertices = vec![false; mesh.uv.len()];
++    for stitch in &mesh.stitches {
++        check_budget(cancelled, work)?;
++        for endpoint in [stitch.a, stitch.b] {
++            for vertex in endpoint.vertices {
++                seam_vertices[vertex] = true;
++            }
++        }
++    }
++    let mut movable = vec![false; mesh.uv.len()];
++    for face in &mesh.triangles {
++        check_budget(cancelled, work)?;
++        if face.iter().any(|&v| seam_vertices[v]) {
++            for &v in face {
++                movable[v] = true;
++            }
++        }
++    }
++    for sample in &mesh.boundary {
++        check_budget(cancelled, work)?;
++        movable[sample.vertex] = false;
++    }
++    // Each pair is the opposite, oriented edge of one incident face.
++    let mut stars = BTreeMap::<usize, Vec<(usize, usize)>>::new();
++    for face in &mesh.triangles {
++        check_budget(cancelled, work)?;
++        for i in 0..3 {
++            if movable[face[i]] {
++                stars
++                    .entry(face[i])
++                    .or_default()
++                    .push((face[(i + 1) % 3], face[(i + 2) % 3]));
++            }
++        }
++    }
++    let edge_limit = project.resolution * 1.4;
++    let quality = |p, a, b| {
++        cross(p, a, b) / (distance(p, a).powi(2) + distance(a, b).powi(2) + distance(b, p).powi(2))
++    };
++    for (vertex, star) in stars {
++        check_budget(cancelled, work)?;
++        let old = mesh.uv[vertex];
++        let mut minimum = f64::INFINITY;
++        let mut worst = None;
++        for &(i, j) in &star {
++            check_budget(cancelled, work)?;
++            let (a, b) = (mesh.uv[i], mesh.uv[j]);
++            let q = quality(old, a, b);
++            if q < minimum {
++                minimum = q;
++                worst = Some((a, b));
++            }
++        }
++        let Some((a, b)) = worst else { continue };
++        let center = midpoint(a, b);
++        let equilateral = [
++            center[0] - 3.0_f64.sqrt() * (b[1] - a[1]) * 0.5,
++            center[1] + 3.0_f64.sqrt() * (b[0] - a[0]) * 0.5,
++        ];
++        let mut fraction = 1.0;
++        let mut best = old;
++        let mut best_quality = minimum;
++        for _ in 0..8 {
++            let p = [
++                old[0] + fraction * (equilateral[0] - old[0]),
++                old[1] + fraction * (equilateral[1] - old[1]),
++            ];
++            let mut smallest = f64::INFINITY;
++            for &(i, j) in &star {
++                check_budget(cancelled, work)?;
++                let (a, b) = (mesh.uv[i], mesh.uv[j]);
++                if cross(p, a, b) <= 1e-12
++                    || distance(p, a) > edge_limit
++                    || distance(p, b) > edge_limit
++                {
++                    smallest = 0.0;
++                    break;
++                }
++                smallest = smallest.min(quality(p, a, b));
++            }
++            if smallest > best_quality + 1e-12 {
++                best = p;
++                best_quality = smallest;
++            }
++            fraction *= 0.5;
++        }
++        if best != old {
++            mesh.uv[vertex] = best;
++            let piece = project
++                .piece(mesh.piece_ids[vertex])
++                .ok_or_else(|| Error("Missing mesh piece".into()))?;
++            mesh.positions[vertex] = piece.placement.transform(best);
++        }
++    }
++    Ok(())
++}
++
+ fn enqueue_refinement_edge(
+     split: &mut BTreeMap<(usize, usize), usize>,
+     edge: (usize, usize),
